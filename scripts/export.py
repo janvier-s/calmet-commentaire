@@ -106,6 +106,16 @@ def verses_by_chapter(key):
     return chapters, summaries
 
 
+def sort_notes(notes):
+    """Stable sort by verse; a note without a verse keeps the place of the note before it."""
+    keyed, last = [], 0
+    for i, n in enumerate(notes):
+        v = n.get("verse") if isinstance(n.get("verse"), int) else last
+        keyed.append((v, i, n))
+        last = v
+    return [n for _, _, n in sorted(keyed, key=lambda t: (t[0], t[1]))]
+
+
 def export(key):
     book = BOOKS[key]
     raw_dir, cal_dir = WEB / "raw" / book["site"], WEB / "calmet" / book["site"]
@@ -120,6 +130,9 @@ def export(key):
         try:
             out = notes(key, ch, 1, 999)
             out.pop("decisions", None)  # the Lectio review log; the site doesn't use it
+            # Notes in verse order: the printed book sometimes misplaces one (Genesis 2:9
+            # printed between 2:14 and 2:15). The source pages keep the printed order.
+            out["notes"] = sort_notes(out["notes"])
         except Exception as e:
             failed.append(f"{ch}: {e}")
             continue
