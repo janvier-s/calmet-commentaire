@@ -92,6 +92,7 @@ class ReviewEditor(PageEditor):
     BANNER_BG = "#2b2416"
 
     def __init__(self, root, items, progress):
+        self.all_items = items
         self.items = items
         self.progress = progress
         self.item_idx = next((i for i, it in enumerate(items) if not progress.status(it["id"])),
@@ -112,6 +113,18 @@ class ReviewEditor(PageEditor):
 
         left = tk.Frame(bar, bg=self.BANNER_BG)
         left.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=8, pady=6)
+        filters = tk.Frame(left, bg=self.BANNER_BG)
+        filters.pack(fill=tk.X, pady=(0, 4))
+        tk.Label(filters, text="Type:", bg=self.BANNER_BG, fg="#f0e6d2").pack(side=tk.LEFT)
+        self.kind_box = ttk.Combobox(filters, state="readonly", width=42)
+        self.kind_box.pack(side=tk.LEFT, padx=(4, 12))
+        tk.Label(filters, text="Book:", bg=self.BANNER_BG, fg="#f0e6d2").pack(side=tk.LEFT)
+        self.book_box = ttk.Combobox(filters, state="readonly", width=22)
+        self.book_box.pack(side=tk.LEFT, padx=4)
+        self.kind_box.bind("<<ComboboxSelected>>", lambda e: self._apply_filter())
+        self.book_box.bind("<<ComboboxSelected>>", lambda e: self._apply_filter())
+        self._kind_choice, self._book_choice = None, None
+        self._fill_filters()
         self.issue_kind = tk.Label(left, text="", bg=self.BANNER_BG, fg="#ffb347",
                                    font=("Helvetica", 12, "bold"), anchor="w")
         self.issue_kind.pack(fill=tk.X)
@@ -155,6 +168,40 @@ class ReviewEditor(PageEditor):
         super()._load_page(page_num)
         self._refresh_banner()
 
+    # --- Type / book selectors ---
+    def _fill_filters(self):
+        """Choices with the number of issues not yet resolved, in queue order."""
+        def left(pred):
+            return sum(1 for it in self.all_items if pred(it) and self.progress.status(it["id"]) != "resolved")
+        kinds = list(dict.fromkeys(it["kind"] for it in self.all_items))
+        books = list(dict.fromkeys(sorted(it["book_dir"] for it in self.all_items)))
+        self._kind_values = [None] + kinds
+        self._book_values = [None] + books
+        # each list counts within the other selector's choice
+        in_book = lambda it: self._book_choice is None or it["book_dir"] == self._book_choice
+        of_kind = lambda it: self._kind_choice is None or it["kind"] == self._kind_choice
+        self.kind_box["values"] = [f"All types ({left(in_book)})"] + [
+            f"{KIND_LABELS.get(k, k)} ({left(lambda it, k=k: it['kind'] == k and in_book(it))})" for k in kinds]
+        self.book_box["values"] = [f"All books ({left(of_kind)})"] + [
+            f"{b} ({left(lambda it, b=b: it['book_dir'] == b and of_kind(it))})" for b in books]
+        self.kind_box.current(self._kind_values.index(self._kind_choice))
+        self.book_box.current(self._book_values.index(self._book_choice))
+
+    def _apply_filter(self):
+        kind = self._kind_values[self.kind_box.current()]
+        book = self._book_values[self.book_box.current()]
+        items = [it for it in self.all_items
+                 if (kind is None or it["kind"] == kind) and (book is None or it["book_dir"] == book)]
+        if not items:
+            messagebox.showinfo("Queue", "No issues of this type in this book.")
+            self._fill_filters()
+            return
+        self._kind_choice, self._book_choice = kind, book
+        self.items = items
+        start = next((i for i, it in enumerate(items) if not self.progress.status(it["id"])),
+                     next((i for i, it in enumerate(items) if self.progress.status(it["id"]) != "resolved"), 0))
+        self._goto_item(start)
+
     # --- Queue navigation ---
     def _open_count(self):
         return sum(1 for it in self.items if not self.progress.status(it["id"]))
@@ -177,6 +224,7 @@ class ReviewEditor(PageEditor):
             if others else "")
         skipped = sum(1 for o in self.items if self.progress.status(o["id"]) == "skipped")
         self.counter.config(text=f"issue {self.item_idx + 1}/{len(self.items)} · {self._open_count()} open · {skipped} skipped")
+        self._fill_filters()
 
     def _goto_item(self, idx):
         if not self.items:
