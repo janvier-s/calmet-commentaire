@@ -66,17 +66,19 @@ def seams(book):
     for (a, da), (b, db) in zip(pages, pages[1:]):
         if not da or not db or int(b[5:9]) - int(a[5:9]) != 1:
             continue
-        ca = [c for c in da.get("commentary") or [] if (c.get("french_commentary") or "").strip()]
-        cb = [c for c in db.get("commentary") or [] if (c.get("french_commentary") or "").strip()]
+        # The text on each side of the break, whatever field it is in: a page often ends
+        # on a lemma (Latin + start of its translation) whose comment is on the next page.
+        def text(c):
+            return " ".join(filter(None, ((c.get(k) or "").strip() for k in
+                                          ("latin_quote", "french_translation", "french_commentary"))))
+        ca = [c for c in da.get("commentary") or [] if text(c)]
+        cb = [c for c in db.get("commentary") or [] if text(c)]
         if not ca or not cb:
             continue
         first = cb[0]
-        new_note = bool((first.get("latin_quote") or "").strip() or (first.get("french_translation") or "").strip())
-        head = first["french_commentary"].strip()
-        if new_note:
-            head = " ".join(filter(None, [first.get("latin_quote"), first.get("french_translation"), head]))
+        new_note = bool((first.get("latin_quote") or "").strip())
         out.append(dict(book=book, before_page=a, page=b, new_note=new_note,
-                        tail=ca[-1]["french_commentary"].strip()[-220:], head=head[:220]))
+                        tail=text(ca[-1])[-220:], head=text(first)[:220]))
     return out
 
 

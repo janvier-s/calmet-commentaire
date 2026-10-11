@@ -219,7 +219,9 @@ def audit_book(key, info, slug, published=True):
             tr = (c.get("french_translation") or "").strip()
             fc = c.get("french_commentary") or ""
             if not fc.strip():
-                if j == len(cs) - 1:
+                if j == len(cs) - 1 and lemma and not tr:
+                    problem = None  # a lemma alone at the foot of the page: its text is overleaf
+                elif j == len(cs) - 1:
                     first = ((nxt_page or {}).get("commentary") or [{}])[0]
                     problem = None if nxt_page and not (first.get("latin_quote") or "").strip() else \
                         "is the last note on the page and the next page starts a new lemma: comment lost at the page break?"
