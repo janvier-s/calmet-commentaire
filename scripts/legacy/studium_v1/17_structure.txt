@@ -1,0 +1,117 @@
+{
+  "type": "object",
+  "description": "Transcription of 17th-century French text preserving historical orthography.",
+  "properties": {
+    "book_title": {
+      "type": "string",
+      "nullable": true,
+      "description": "Large multi-line title at book start (not running headers). null if absent."
+    },
+    "chapter_number": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Chapter number extracted from centered all-caps block (e.g., 'CHAPITRE XXII.' → 22). null if absent."
+    },
+    "chapter_summary": {
+      "type": "string",
+      "nullable": true,
+      "description": "Italicized text block immediately after chapter title. null if absent."
+    },
+    "verses": {
+      "type": "array",
+      "description": "Biblical verses (often two-column layout). Verse number stripped from latin/french content.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "verse_number": {
+            "type": "integer",
+            "description": "Verse number as integer (e.g., 17)."
+          },
+          "latin": {
+            "type": "string",
+            "nullable": true,
+            "description": "Latin verse text without verse number prefix."
+          },
+          "french": {
+            "type": "string",
+            "nullable": true,
+            "description": "French verse text without verse number prefix."
+          },
+          "annotations": {
+            "type": "string",
+            "nullable": true,
+            "description": "Optional date/reference annotations (e.g., 'An. du monde 2553. avant J.-C. 1451.'). null if absent."
+          }
+        },
+        "required": ["verse_number", "latin", "french", "annotations"]
+      }
+    },
+    "commentary": {
+      "type": "array",
+      "description": "Commentary blocks with sequential IDs per page (starting at 1). New block triggered by: verse ref, ALL-CAPS Latin quote, numbered keyword (2°.), or chapter title.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "commentary_id": {
+            "type": "integer",
+            "description": "Sequential ID per page, starting at 1.",
+            "minimum": 1
+          },
+          "verse_ref": {
+            "type": "integer",
+            "nullable": true,
+            "description": "Verse number being commented on (e.g., 18). null if none."
+          },
+          "latin_quote": {
+            "type": "string",
+            "nullable": true,
+            "description": "ALL-CAPS Latin quote or numbered keyword (e.g., 'JUSSIT IRE...', '2°. Superbia,'). null if none."
+          },
+          "french_translation": {
+            "type": "string",
+            "nullable": true,
+            "description": "Italicized translation following latin_quote (marked as _text_). null if none."
+          },
+          "french_commentary": {
+            "type": "string",
+            "nullable": true,
+            "description": "Main commentary text. Footnote refs as ^{(a)}, ^{(b)}, etc. Multiple paragraphs joined with \\n. null if none."
+          }
+        },
+        "required": ["commentary_id", "verse_ref", "latin_quote", "french_translation", "french_commentary"]
+      }
+    },
+    "footnotes": {
+      "type": "array",
+      "description": "Page footnotes. Transcribe only visible content—no inference.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "marker": {
+            "type": "string",
+            "description": "Footnote marker (e.g., '(a)', '(b)')."
+          },
+          "text": {
+            "type": "string",
+            "description": "Exact footnote content as shown. If Greek/Hebrew text missing, transcribe only what's present."
+          }
+        },
+        "required": ["marker", "text"]
+      }
+    },
+    "book_end_marker": {
+      "type": "string",
+      "nullable": true,
+      "description": "Book conclusion phrase (e.g., 'FIN DU LIVRE DE...'). null if absent."
+    }
+  },
+  "required": [
+    "book_title",
+    "chapter_number",
+    "chapter_summary",
+    "verses",
+    "commentary",
+    "footnotes",
+    "book_end_marker"
+  ]
+}
