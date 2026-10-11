@@ -381,8 +381,8 @@ def audit_book(key, info, slug, published=True):
     return r
 
 
-# Left out of the audit and the review queue for now (Psalms: verse structure to redo first)
-EXCLUDED = {"psalms"}
+# Left out of the audit and the review queue
+EXCLUDED = set()
 # Problems reported by hand: [{book_dir, page, msg}], kept in the queue on every rebuild
 MANUAL = DOCS / "manual_issues.json"
 
@@ -406,9 +406,20 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "duplicate_verse", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
+    # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's
+    # numbering differs from the Vulgate's and numbers can't be compared
+    import psalms_check
+    for vol in BOOKS["psalms"]["studium"]:
+        if not (STUDIUM / vol / "normalized").is_dir():
+            continue
+        for x in psalms_check.check(vol)[1]:
+            kind = {"missing": "psalm_missing_verse", "missing_title": "psalm_missing_title",
+                    "number": "psalm_number", "repeated": "duplicate_verse"}.get(x["kind"], "psalm_" + x["kind"])
+            queue.append(dict(id=f"{vol}/{x['page']:04d}/{kind}/{hashlib.md5(x['msg'].encode()).hexdigest()[:8]}",
+                              book_dir=vol, page=x["page"], kind=kind, msg=x["msg"], optional=False))
     if MANUAL.exists():
         for m in json.loads(MANUAL.read_text()):
             queue.append(dict(id=f"{m['book_dir']}/{m['page']:04d}/reported/{hashlib.md5(m['msg'].encode()).hexdigest()[:8]}",
