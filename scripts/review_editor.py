@@ -148,6 +148,7 @@ class ReviewEditor(PageEditor):
         ttk.Button(right, text="+ Comment", command=self._add_commentary).grid(row=2, column=1, padx=2, pady=(4, 0))
         ttk.Button(right, text="+ Footnote", command=self._add_footnote).grid(row=2, column=2, padx=2, pady=(4, 0))
         ttk.Button(right, text="Delete…", command=self._delete_entry).grid(row=2, column=3, padx=2, pady=(4, 0))
+        ttk.Button(right, text="Reorder…", command=self._reorder).grid(row=2, column=4, padx=2, pady=(4, 0))
 
         for seq in ("<Command-Return>", "<Control-Return>"):
             self.root.bind(seq, lambda e: self._mark("resolved") or "break")
@@ -367,6 +368,89 @@ class ReviewEditor(PageEditor):
                 self._commit_and_rebuild()
 
         ttk.Button(win, text="Delete selected", command=go).pack(pady=(0, 10))
+
+
+    def _reorder(self):
+        """Move verses or commentary blocks up and down; saved when the window closes."""
+        if self.data is None:
+            return
+        self._save()
+        win = tk.Toplevel(self.root)
+        win.title("Reorder")
+        win.transient(self.root)
+        section = tk.StringVar(value="commentary")
+        renumber = tk.BooleanVar(value=True)
+        moved = [False]
+
+        def label(sec, x):
+            if sec == "verses":
+                return f"Verse {x.get('verse_number')}: {(x.get('latin') or x.get('french') or '')[:70]}"
+            text = x.get("latin_quote") or x.get("french_translation") or x.get("french_commentary") or ""
+            return f"#{x.get('commentary_id')} (℣ {x.get('verse_ref')}): {text[:70]}"
+
+        top = tk.Frame(win)
+        top.pack(fill=tk.X, padx=10, pady=(10, 0))
+        for value, text in (("commentary", "Commentary"), ("verses", "Verses")):
+            ttk.Radiobutton(top, text=text, value=value, variable=section,
+                            command=lambda: fill()).pack(side=tk.LEFT, padx=(0, 10))
+        body = tk.Frame(win)
+        body.pack(padx=10, pady=10)
+        lb = tk.Listbox(body, width=100, height=18, exportselection=False)
+        lb.pack(side=tk.LEFT)
+        buttons = tk.Frame(body)
+        buttons.pack(side=tk.LEFT, padx=(8, 0), fill=tk.Y)
+
+        def fill(select=None):
+            items = self.data.get(section.get()) or []
+            lb.delete(0, tk.END)
+            for x in items:
+                lb.insert(tk.END, label(section.get(), x))
+            if select is not None and items:
+                lb.selection_set(select)
+                lb.see(select)
+
+        def move(step):
+            sel = lb.curselection()
+            items = self.data.get(section.get()) or []
+            if not sel:
+                return
+            i, j = sel[0], sel[0] + step
+            if not 0 <= j < len(items):
+                return
+            items[i], items[j] = items[j], items[i]
+            moved[0] = True
+            fill(j)
+
+        def to_end(end):
+            sel = lb.curselection()
+            items = self.data.get(section.get()) or []
+            if not sel:
+                return
+            x = items.pop(sel[0])
+            items.insert(0 if end == "top" else len(items), x)
+            moved[0] = True
+            fill(0 if end == "top" else len(items) - 1)
+
+        ttk.Button(buttons, text="⤒ Top", command=lambda: to_end("top")).pack(fill=tk.X)
+        ttk.Button(buttons, text="↑ Up", command=lambda: move(-1)).pack(fill=tk.X, pady=(4, 0))
+        ttk.Button(buttons, text="↓ Down", command=lambda: move(1)).pack(fill=tk.X, pady=(4, 0))
+        ttk.Button(buttons, text="⤓ Bottom", command=lambda: to_end("bottom")).pack(fill=tk.X, pady=(4, 0))
+        for seq, step in (("<Up>", -1), ("<Down>", 1)):
+            lb.bind(f"<Option-{seq[1:-1]}>", lambda e, s=step: move(s) or "break")
+        ttk.Checkbutton(win, text="Renumber commentary_id 1, 2, 3… in the new order",
+                        variable=renumber).pack(anchor="w", padx=10)
+
+        def done():
+            if moved[0]:
+                if renumber.get():
+                    for k, c in enumerate(self.data.get("commentary") or [], 1):
+                        c["commentary_id"] = k
+                self._commit_and_rebuild()
+            win.destroy()
+
+        ttk.Button(win, text="Done", command=done).pack(pady=10)
+        win.protocol("WM_DELETE_WINDOW", done)
+        fill()
 
 
 def load_queue(args):
