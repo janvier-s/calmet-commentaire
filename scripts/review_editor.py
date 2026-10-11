@@ -2,7 +2,7 @@
 """
 Review Editor: page_editor.py driven by the integrity-audit worklist.
 
-Walks the issues in docs/review_queue.json (written by Lectio/build/audit_integrity.py),
+Walks the issues in docs/review_queue.json (written by audit_integrity.py),
 showing each one in a banner above the usual scan + JSON view, and adds what the
 plain editor lacks: add/delete verses, commentary blocks and footnotes, and creating
 a page that has a scan but no JSON.
@@ -12,8 +12,11 @@ Usage: python3 review_editor.py [--all] [--kind missing_verse] [--book 05_deuter
   --kind   only this kind of issue (missing_page, missing_verse, duplicate_verse,
            possible_gap, missing_footnote, empty_page, seam_artifact)
   --book   only this book folder
+  --skipped  only the issues you skipped (--resolved: only those marked resolved)
 
 Keys: Cmd+Return = resolved, go to next   Cmd+] / Cmd+[ = next / previous issue
+◀/▶ visit open and skipped issues (resolved ones are passed over); ↺ Reopen clears
+the current issue's status.
 Progress is kept in data/.review_queue_progress.json; resolved items stay resolved
 across runs. Changes reach the website only after the book is re-exported.
 """
@@ -72,7 +75,10 @@ class Progress:
         return self.data.get(item_id)
 
     def set(self, item_id, status):
-        self.data[item_id] = status
+        if status:
+            self.data[item_id] = status
+        else:
+            self.data.pop(item_id, None)
         self.save()
 
     def save(self):
@@ -88,7 +94,8 @@ class ReviewEditor(PageEditor):
     def __init__(self, root, items, progress):
         self.items = items
         self.progress = progress
-        self.item_idx = next((i for i, it in enumerate(items) if not progress.status(it["id"])), 0)
+        self.item_idx = next((i for i, it in enumerate(items) if not progress.status(it["id"])),
+                             next((i for i, it in enumerate(items) if progress.status(it["id"]) != "resolved"), 0))
         first = items[self.item_idx]
         book_path = DATA_DIR / first["book_dir"]
         pages = book_pages(book_path)
@@ -118,11 +125,12 @@ class ReviewEditor(PageEditor):
         right = tk.Frame(bar, bg=self.BANNER_BG)
         right.pack(side=tk.RIGHT, padx=8, pady=6)
         self.counter = tk.Label(right, text="", bg=self.BANNER_BG, fg="#f0e6d2", font=("Helvetica", 10))
-        self.counter.grid(row=0, column=0, columnspan=4, sticky="e")
+        self.counter.grid(row=0, column=0, columnspan=5, sticky="e")
         ttk.Button(right, text="◀ Issue", command=self._prev_item).grid(row=1, column=0, padx=2)
         ttk.Button(right, text="Issue ▶", command=self._next_item).grid(row=1, column=1, padx=2)
         ttk.Button(right, text="✓ Resolved", command=lambda: self._mark("resolved")).grid(row=1, column=2, padx=2)
         ttk.Button(right, text="Skip", command=lambda: self._mark("skipped")).grid(row=1, column=3, padx=2)
+        ttk.Button(right, text="↺ Reopen", command=self._reopen).grid(row=1, column=4, padx=2)
         ttk.Button(right, text="+ Verse", command=self._add_verse).grid(row=2, column=0, padx=2, pady=(4, 0))
         ttk.Button(right, text="+ Comment", command=self._add_commentary).grid(row=2, column=1, padx=2, pady=(4, 0))
         ttk.Button(right, text="+ Footnote", command=self._add_footnote).grid(row=2, column=2, padx=2, pady=(4, 0))
@@ -167,7 +175,8 @@ class ReviewEditor(PageEditor):
         self.issue_more.config(text=("Also on this page: " + " · ".join(
             f"{KIND_LABELS.get(o['kind'], o['kind']).lower()}: {o['msg'][:70]}" for o in others[:3]))
             if others else "")
-        self.counter.config(text=f"issue {self.item_idx + 1}/{len(self.items)} · {self._open_count()} open")
+        skipped = sum(1 for o in self.items if self.progress.status(o["id"]) == "skipped")
+        self.counter.config(text=f"issue {self.item_idx + 1}/{len(self.items)} · {self._open_count()} open · {skipped} skipped")
 
     def _goto_item(self, idx):
         if not self.items:
@@ -189,13 +198,13 @@ class ReviewEditor(PageEditor):
 
     def _next_item(self):
         for i in range(self.item_idx + 1, len(self.items)):
-            if not self.progress.status(self.items[i]["id"]):
+            if self.progress.status(self.items[i]["id"]) != "resolved":
                 return self._goto_item(i)
-        messagebox.showinfo("Queue", "No open issues after this one.")
+        messagebox.showinfo("Queue", "No open or skipped issues after this one.")
 
     def _prev_item(self):
         for i in range(self.item_idx - 1, -1, -1):
-            if not self.progress.status(self.items[i]["id"]):
+            if self.progress.status(self.items[i]["id"]) != "resolved":
                 return self._goto_item(i)
 
     def _mark(self, status):
@@ -204,6 +213,11 @@ class ReviewEditor(PageEditor):
         self.progress.set(self.items[self.item_idx]["id"], status)
         self._refresh_banner()
         self._next_item()
+
+    def _reopen(self):
+        """Clear the status of the current issue (undo a Skip or a Resolved)."""
+        self.progress.set(self.items[self.item_idx]["id"], None)
+        self._refresh_banner()
 
     # --- Creating pages and entries ---
     def _create_page(self, page):
@@ -328,12 +342,18 @@ if __name__ == "__main__":
     try:
         items = load_queue(args)
     except FileNotFoundError:
-        print(f"No queue found at {QUEUE_FILE}. Run Lectio/build/audit_integrity.py first.")
+        print(f"No queue found at {QUEUE_FILE}. Run audit_integrity.py first.")
         sys.exit(1)
     if not items:
         print("Nothing to review with these filters.")
         sys.exit(0)
     progress = Progress(PROGRESS_FILE)
+    for flag in ("--skipped", "--resolved"):
+        if flag in args:
+            items = [it for it in items if progress.status(it["id"]) == flag[2:]]
+    if not items:
+        print("Nothing to review with these filters.")
+        sys.exit(0)
     print(f"{len(items)} issues, {sum(1 for it in items if not progress.status(it['id']))} open")
     root = tk.Tk()
     ReviewEditor(root, items, progress)
