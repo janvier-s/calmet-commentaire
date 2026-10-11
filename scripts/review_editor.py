@@ -31,6 +31,8 @@ QUEUE_FILE = DATA_DIR.parent / "docs" / "review_queue.json"
 PROGRESS_FILE = DATA_DIR / ".review_queue_progress.json"
 
 KIND_LABELS = {
+    "reported": "REPORTED BY YOU",
+    "duplicate_page": "PAGE COPIED FROM ANOTHER",
     "malformed_page": "MALFORMED PAGE",
     "missing_page": "MISSING PAGE",
     "missing_verse": "MISSING VERSE",

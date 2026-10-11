@@ -250,6 +250,18 @@ def audit_book(key, info, slug, published=True):
                     pos = t.find(b)
                     item("broken_marker", vol, int(n[5:9]),
                          f"Footnote call “{b}” in {k}: “…{t[max(0, pos - 30):pos + len(b) + 10]}…”")
+    # A page whose commentary repeats a neighbour's: one of the two scans was transcribed twice
+    def shingles(d):
+        w = re.findall(r"\w+", " ".join((c.get("french_commentary") or "") + " " + (c.get("latin_quote") or "")
+                                        for c in d.get("commentary") or []).lower())
+        return {" ".join(w[k:k + 4]) for k in range(len(w) - 3)}
+    sh = [(vol, n, shingles(d)) for vol, n, d in pages]
+    for i, (vol, n, a) in enumerate(sh):
+        for vol2, n2, b in sh[i + 1:i + 3]:
+            if vol2 == vol and len(a) > 40 and len(b) > 40 and len(a & b) / min(len(a), len(b)) > 0.5:
+                item("duplicate_page", vol, int(n[5:9]),
+                     f"Commentary of page {int(n[5:9])} repeats page {int(n2[5:9])} "
+                     f"({round(100 * len(a & b) / min(len(a), len(b)))}% the same): one of them must be retranscribed from its scan")
     r["empty_commentary"], r["caps_in_commentary"], r["broken_markers"] = empty_notes, caps_runs, odd_marks
 
     # ---------- what the site serves ----------
@@ -367,17 +379,21 @@ def audit_book(key, info, slug, published=True):
     return r
 
 
+# Left out of the audit and the review queue for now (Psalms: verse structure to redo first)
+EXCLUDED = {"psalms"}
+# Problems reported by hand: [{book_dir, page, msg}], kept in the queue on every rebuild
+MANUAL = DOCS / "manual_issues.json"
+
+
 def main():
     slugs = site_slugs()
     results = []
     for key, info in BOOKS.items():
         if info["number"] > 21:
             continue
-        # Psalms are not live yet: check a local export of their verses if there is one
-        if key == "psalms":
-            r = audit_book(key, info, "psaumes" if (SITE / "raw" / "psaumes").is_dir() else None, published=False)
-        else:
-            r = audit_book(key, info, slugs.get(info["fr"]))
+        if key in EXCLUDED:
+            continue
+        r = audit_book(key, info, slugs.get(info["fr"]))
         results.append(r)
         print(f"{info['number']:>2} {info['fr']:<14} pages={r['pages']:<4} "
               f"vmiss={r.get('verses_missing_count','-')} vdup={r.get('verses_duplicated_count','-')} "
@@ -388,15 +404,21 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["malformed_page", "missing_page", "missing_verse", "duplicate_verse", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "duplicate_verse", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
+    if MANUAL.exists():
+        for m in json.loads(MANUAL.read_text()):
+            queue.append(dict(id=f"{m['book_dir']}/{m['page']:04d}/reported/{hashlib.md5(m['msg'].encode()).hexdigest()[:8]}",
+                              book_dir=m["book_dir"], page=m["page"], kind="reported", msg=m["msg"], optional=False))
     # Page breaks read by seam_check.py replace the punctuation guesses for those books
     seam_file = DOCS / "seam_check.json"
     if seam_file.exists():
         read = json.loads(seam_file.read_text())
         queue = [q for q in queue if not (q["book_dir"] in read and q["kind"] in ("possible_gap", "seam_artifact"))]
         for book, res in read.items():
+            if any(book in BOOKS[k]["studium"] for k in EXCLUDED):
+                continue
             for x in res["flagged"]:
                 kind = {"missing": "seam_missing", "repeat": "seam_repeat"}.get(x["verdict"], "seam_unclear")
                 queue.append(dict(id=f"{book}/{x['page'][5:9]}/{kind}/{x['before_page'][5:9]}", book_dir=book,
