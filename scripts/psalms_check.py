@@ -135,6 +135,8 @@ def check(volume):
         for v, vw in VULGATE[ps].items():
             if len(covered[v] & set(vw)) / max(len(set(vw)), 1) < 0.5:
                 before = [r for r in rs if r["vulgate"] and r["vulgate"] < v]
+                if v == 1 and any(r["number"] == 0 for r in rs):
+                    continue  # a verse 0 is the title, even when it spans Vulgate 1-2
                 title = v == 1 and re.match(r"\s*(In finem|Psalmus|Canticum|Ipsi David|David|Alleluia|Oratio|Intellectus|Pro )", VULGATE_TEXT[ps][v])
                 issues.append(dict(kind="missing_title" if title else "missing", page=(before[-1] if before else rs[0])["page"],
                                    msg=f"Ps {ps}:{v} (Vulgate) is not in the transcription: “{' '.join(VULGATE_TEXT[ps][v].split()[:10])}…”"))
