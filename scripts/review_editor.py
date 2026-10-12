@@ -41,6 +41,7 @@ KIND_LABELS = {
     "missing_verse": "MISSING VERSE",
     "psalm_missing_verse": "PSALM VERSE MISSING (from the Vulgate text)",
     "psalm_missing_title": "PSALM TITLE MISSING",
+    "vulgate_filled": "VERSE FILLED FROM THE VULGATE: TYPE THE FRENCH",
     "psalm_number": "PSALM VERSE NUMBER OUT OF STEP",
     "psalm_wrong_psalm": "VERSE UNDER THE WRONG PSALM",
     "psalm_unmatched": "VERSE NOT FOUND IN THE VULGATE",

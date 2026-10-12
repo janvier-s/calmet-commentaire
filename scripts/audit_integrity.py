@@ -264,6 +264,13 @@ def audit_book(key, info, slug, published=True):
                 item("duplicate_page", vol, int(n[5:9]),
                      f"Commentary of page {int(n[5:9])} repeats page {int(n2[5:9])} "
                      f"({round(100 * len(a & b) / min(len(a), len(b)))}% the same): one of them must be retranscribed from its scan")
+    # verses filled in from the Vulgate (fill_psalm_verses.py) until their French is typed
+    for vol, n, d in pages:
+        for v in d.get("verses") or []:
+            if str(v.get("annotations") or "").startswith("Latin from the Vulgate") and not (v.get("french") or "").strip():
+                item("vulgate_filled", vol, int(n[5:9]),
+                     f"Verse {v.get('verse_number')} was missing: its Latin is filled in from the Vulgate "
+                     f"(“{(v.get('latin') or '')[:50]}…”). Check it against the scan, type Calmet's French, then clear the note")
     r["empty_commentary"], r["caps_in_commentary"], r["broken_markers"] = empty_notes, caps_runs, odd_marks
 
     # ---------- what the site serves ----------
@@ -406,7 +413,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's
