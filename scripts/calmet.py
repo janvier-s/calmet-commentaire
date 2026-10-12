@@ -289,10 +289,9 @@ def _flatten(note, number):
     # Anything still in `^{...}` is transcription noise, not an apparatus
     # marker, and would print as-is.
     text, lemma, latin = (STRAY.sub("", x) for x in (text, lemma, latin))
-    # The lemma is already set apart by its own weight, so its italic
-    # markers are redundant; in the body they are Calmet's Latin and his
-    # French rendering of it, which the template sets in italic.
-    lemma = lemma.replace("_", "").strip()
+    # The site sets the translation in italic. Underscores left in it mark partial
+    # italics (Calmet's translation, then his remark in roman) and are kept for the site.
+    lemma = lemma.strip()
     return dict(verse=note["verse"], sub=note["sub"],
                 latin_lemma=latin.replace("_", "").strip() or None,
                 lemma=lemma or None,
