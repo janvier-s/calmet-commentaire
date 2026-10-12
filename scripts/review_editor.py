@@ -165,11 +165,41 @@ class ReviewEditor(PageEditor):
 
     def _build_json_editor(self):
         super()._build_json_editor()
+        self._add_delete_buttons()
         # The base editor doesn't show chapter_title, which a newly created page may need.
         if self.data is not None:
             row = self._add_section_header(self.json_inner, self.json_inner.grid_size()[1], "PAGE HEADING")
             self._add_field(self.json_inner, row, "chapter_title", self.data.get("chapter_title"),
                             ("chapter_title",))
+
+    def _add_delete_buttons(self):
+        """A small ✕ on each verse and commentary header: delete that entry."""
+        if self.data is None:
+            return
+        counters = {"verses": 0, "commentary": 0}
+        for w in list(self.json_inner.winfo_children()):
+            text = w.cget("text") if isinstance(w, tk.Label) else ""
+            section = "verses" if text.startswith("  Verse ") else "commentary" if text.startswith("  Commentary ") else None
+            if not section:
+                continue
+            i = counters[section]
+            counters[section] += 1
+            btn = tk.Button(self.json_inner, text="✕ delete", font=("Helvetica", 9), fg="#c0392b",
+                            relief="flat", cursor="hand2",
+                            command=lambda s=section, i=i: self._delete_one(s, i))
+            btn.grid(row=w.grid_info()["row"], column=1, sticky="e", padx=5)
+
+    def _delete_one(self, section, i):
+        entry = (self.data.get(section) or [])[i]
+        what = (f"verse {entry.get('verse_number')}: {(entry.get('latin') or entry.get('french') or '')[:60]}"
+                if section == "verses" else
+                f"commentary {entry.get('commentary_id')} (v.{entry.get('verse_ref')}): "
+                f"{(entry.get('latin_quote') or entry.get('french_commentary') or '')[:60]}")
+        if not messagebox.askyesno("Delete", f"Delete {what}?", default="yes"):
+            return
+        self._save()  # keep edits typed elsewhere on the page
+        del self.data[section][i]
+        self._commit_and_rebuild()
 
     def _load_page(self, page_num):
         super()._load_page(page_num)
