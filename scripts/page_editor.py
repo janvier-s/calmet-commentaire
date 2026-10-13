@@ -768,23 +768,31 @@ class PageEditor:
             messagebox.showerror("Error", f"Failed to reveal image:\n{e}")
 
     def _flag_for_review(self):
-        """Copy raw_json file to modernization_error folder for manual review."""
+        """Copy the page's raw_json file and its scan to the modernization_error folder."""
         page_str = f"{self.page_num:04d}"
         raw_json_path = self.book_path / "raw_json" / "commentaire" / f"page_{page_str}.json"
+        img_path = find_source_image(self.book_path, self.page_num)
+        sources = [p for p in (raw_json_path, img_path) if p is not None and p.exists()]
 
-        if not raw_json_path.exists():
-            messagebox.showwarning("Not Found", f"Raw JSON file not found:\n{raw_json_path}")
+        if not sources:
+            messagebox.showwarning("Not Found", f"Neither the raw JSON nor the scan was found for page {self.page_num}.")
             return
 
         # Create modernization_error folder
         error_dir = self.book_path / "modernization_error"
         error_dir.mkdir(exist_ok=True)
 
-        # Copy file
-        dest_path = error_dir / f"page_{page_str}.json"
+        # Copy files (page_NNNN.json and page_NNNN.png side by side)
         try:
-            shutil.copy(raw_json_path, dest_path)
-            messagebox.showinfo("Flagged", f"Page {self.page_num} copied to:\n{dest_path}")
+            copied = []
+            for src in sources:
+                dest_path = error_dir / f"page_{page_str}{src.suffix}"
+                shutil.copy(src, dest_path)
+                copied.append(dest_path.name)
+            missing = [] if raw_json_path.exists() else ["raw JSON"]
+            missing += [] if img_path is not None and img_path.exists() else ["scan"]
+            note = f"\n\nNot found: {', '.join(missing)}" if missing else ""
+            messagebox.showinfo("Flagged", f"Page {self.page_num} copied to:\n{error_dir}\n\n{', '.join(copied)}{note}")
         except Exception as e:
             messagebox.showerror("Error", f"Failed to copy file:\n{e}")
 
