@@ -9,6 +9,8 @@ Run everything from this folder with `python3` (the editors need Pillow, see bel
 
 ## A new book
 
+The full spec, with the conventions and the reasons behind each step: `NEXT_VOLUMES.md`.
+
 1. Seed `normalized/` from `raw_json/commentaire/` (only if it doesn't exist yet).
 2. `modernize.py <volume>`: rule-based pre-pass (ſ, common OCR slips).
 3. `LLM_BACKEND=claude python3 llm_modernize.py <volume>`: modernize the French with an LLM
@@ -16,8 +18,11 @@ Run everything from this folder with `python3` (the editors need Pillow, see bel
 4. `fix_typography.py <volume>`: ſ → s, `&c.` → etc., `&` → et.
 5. `normalize_refs.py <volume>`: verse numbers and `verse_ref` to digits, no numbers in verse text.
 6. `fix_markers.py <volume>`: footnote calls to `^{(a)}`, Jésus-Christ.
-7. Psalms only: `fix_psalm_verses.py <volume>`.
-8. `assign_chapters.py <book key>`: the `chapter` field on every verse and commentary block
+7. `tidy_fields.py <volume>`: underscores, empty annotations, margin years, blank lines.
+8. `paragraph_breaks.py <volume>`: numbered points (1°. 2°.) on their own paragraph.
+9. Psalms only: `fix_psalm_verses.py`, `psalms_check.py`, `fill_psalm_verses.py`,
+   `add_psalm_titles.py` (see NEXT_VOLUMES.md).
+10. `assign_chapters.py <book key>`: the `chapter` field on every verse and commentary block
    (export reads it; edit it in the editor). Writes `docs/chapter_check.json` with the places
    it had to decide; they go into the review queue.
 
