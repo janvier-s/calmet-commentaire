@@ -701,6 +701,8 @@ class PageEditor:
 
         # Auto-size to fit content — no internal scrolling
         self._autosize_text(txt)
+        if field_name == "french_commentary" and not val_str.strip():
+            txt.config(height=4)  # room to type the comment in
 
         txt.edit_modified(False)
         txt.bind("<<Modified>>", lambda e, w=txt: self._on_modified(w))

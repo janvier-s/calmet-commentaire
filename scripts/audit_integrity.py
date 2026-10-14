@@ -217,7 +217,23 @@ def audit_book(key, info, slug, published=True):
     CAPS = re.compile(r"\b[A-ZÀ-ÝŒÆ]{2,}(?:[\s,;:'’.-]+[A-ZÀ-ÝŒÆ]{2,})+\b")
     ODD_MARK = re.compile(r"\^[^{]|\^\{(?!\([a-z]\)\})[^}]*\}")
     empty_notes = caps_runs = odd_marks = 0
+
+    def runs_over(i):
+        """The first note of page i+1 finishes the last note of page i (no comment yet, same verse)."""
+        if i + 1 >= len(pages) or pages[i + 1][0] != pages[i][0]:
+            return None
+        last = (pages[i][2].get("commentary") or [None])[-1]
+        first = (pages[i + 1][2].get("commentary") or [None])[0]
+        if not last or not first or (last.get("french_commentary") or "").strip():
+            return None
+        ref = str(first.get("verse_ref") or "").strip()
+        return first if not ref or ref == str(last.get("verse_ref") or "").strip() else None
+
     for i, (vol, n, d) in enumerate(pages):
+        if chapter_of(d) and not str(d.get("chapter_summary") or "").strip():
+            item("empty_summary", vol, int(n[5:9]),
+                 f"Chapter {chapter_of(d)} opens here but chapter_summary is empty: type it from the scan "
+                 f"(or the heading is a running head and chapter_number/chapter_title should go)")
         cs = d.get("commentary") or []
         nxt_page = pages[i + 1][2] if i + 1 < len(pages) and pages[i + 1][0] == vol else None
         notes_here = {re.sub(r"\W", "", str(fn.get("marker") or "")) for fn in d.get("footnotes") or []}
@@ -250,6 +266,27 @@ def audit_book(key, info, slug, published=True):
                 where = "starts the comment" if m.start() < 3 else "inside the comment"
                 item("caps_in_commentary", vol, int(n[5:9]),
                      f"Capitals {where}: “…{fc[max(0, m.start() - 25):m.end() + 15]}…”: a lemma that should start its own note, or a word to put in lower case?")
+            # the lemma: printed in capitals, with a verse_ref, and a translation of about its length
+            bare = re.sub(r"\^\{[^}]*\}", "", lemma)
+            if (lemma or tr) and not str(c.get("verse_ref") or "").strip():
+                item("no_verse_ref", vol, int(n[5:9]), f"Note “{(lemma or tr)[:50]}” has no verse_ref")
+            if re.search(r"[a-zàâçéèêëîïôûùüÿœæ]", bare):
+                item("lowercase_lemma", vol, int(n[5:9]),
+                     f"Lower case in latin_quote “{lemma[:70]}”: French or commentary in the lemma field?")
+            # a lemma and translation split by the page turn are measured whole
+            la, fr, cut = bare, tr, ""
+            if j == len(cs) - 1 and (rest := runs_over(i)):
+                la = (la + " " + re.sub(r"\^\{[^}]*\}", "", rest.get("latin_quote") or "")).strip()
+                fr, cut = (fr + " " + (rest.get("french_translation") or "")).strip(), " (with the next page)"
+            if j == 0 and i and runs_over(i - 1):
+                la = ""  # measured with the previous page's last note
+            if la and len(fr) > 3 * len(la) and len(fr) - len(la) > 40:
+                item("long_translation", vol, int(n[5:9]),
+                     f"Translation of {len(fr)} characters for a lemma of {len(la)}{cut} “{lemma[:40]}”: "
+                     f"“{fr[:90]}…”: commentary run into the translation?")
+            if re.search(r"\bl['’]\s?h[ée]breu", tr, re.I):
+                item("hebrew_in_translation", vol, int(n[5:9]),
+                     f"“L'Hébreu” in the translation of “{lemma[:40]}”: “{tr[:100]}…”: commentary run into the translation?")
             for k in ("latin_quote", "french_translation", "french_commentary"):
                 t = c.get(k) or ""
                 bad = [m.group() for m in ODD_MARK.finditer(t)]
@@ -259,6 +296,15 @@ def audit_book(key, info, slug, published=True):
                     pos = t.find(b)
                     item("broken_marker", vol, int(n[5:9]),
                          f"Footnote call “{b}” in {k}: “…{t[max(0, pos - 30):pos + len(b) + 10]}…”")
+        fns = d.get("footnotes") or []
+        called = set(re.findall(r"\^\{\(([a-z])\)\}", json.dumps({k: v for k, v in d.items() if k != "footnotes"},
+                                                                ensure_ascii=False)))
+        if len(fns) > len(called):
+            uncalled = [str(f.get("marker")) for f in fns if re.sub(r"\W", "", str(f.get("marker") or "")) not in called]
+            item("extra_footnotes", vol, int(n[5:9]),
+                 f"{len(fns)} footnotes for {len(called)} calls in the text"
+                 + (f": nothing calls {', '.join(uncalled)}" if uncalled else ": a marker is used twice")
+                 + " (footnote from another page, a call lost, or a duplicate?)")
     # A page whose commentary repeats a neighbour's: one of the two scans was transcribed twice
     def shingles(d):
         w = re.findall(r"\w+", " ".join((c.get("french_commentary") or "") + " " + (c.get("latin_quote") or "")
@@ -420,7 +466,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "long_translation", "hebrew_in_translation", "lowercase_lemma", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's

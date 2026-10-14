@@ -1,8 +1,7 @@
 """Field clean-ups decided during the review of volumes 1-21, in one pass.
 
   - verses: no underscores in `latin` or `french` (the site styles verses itself)
-  - french_translation: underscores removed where they only wrap the whole translation
-    (the site sets it in italic); partial italics ("_Il sera votre bouche_ ; vous…") are kept
+  - french_translation: no underscores (the site sets the whole translation in italic)
   - annotations: [] / "[]" / "" and bare verse marks (℣. 1., †., *.) -> null;
     a bare year ("2949.") -> "An du M. 2949."
   - french_commentary: blank lines (\\n\\n) -> a single \\n (one \\n = one paragraph on the site),
@@ -23,7 +22,6 @@ import sys
 
 from paths import DATA, LLM_CACHE, pages
 
-WHOLE = re.compile(r"\s*_([^_]*)_?\s*([.,;:]?)\s*|\s*_?([^_]*)_\s*")
 MARK = re.compile(r"(℣|†|\*)\.?\s*(\d+\.?)?")
 YEAR = re.compile(r"\d{3,4}\.?")
 DATED = re.compile(r"An\.? du M(?:\.|onde)\s*(\d{4})")
@@ -55,10 +53,10 @@ def tidy(d, cache, stats):
             changed = True
     for b in d.get("commentary") or []:
         t = b.get("french_translation")
-        if isinstance(t, str) and "_" in t and WHOLE.fullmatch(t):
-            b["french_translation"] = t.replace("_", "").strip()
+        if isinstance(t, str) and "_" in t:
+            b["french_translation"] = strip_us(t)
             cache[hashlib.md5(b["french_translation"].encode()).hexdigest()] = b["french_translation"]
-            stats["translations unwrapped"] += 1
+            stats["translation underscores"] += 1
             changed = True
         t = b.get("french_commentary")
         if isinstance(t, str) and ("\n\n" in t or t != t.rstrip()):
