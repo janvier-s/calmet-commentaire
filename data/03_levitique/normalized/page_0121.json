@@ -28,7 +28,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 10,
       "latin_quote": null,
       "french_translation": null,
@@ -36,7 +36,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 10,
       "latin_quote": "TOLLITE FRATRES VESTROS DE CONSPECTU SANCTUARII.",
       "french_translation": "Ôtez vos frères de devant le Sanctuaire.",
@@ -44,15 +44,15 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 10,
       "latin_quote": "EJECERUNT FORAS.",
-      "french_translation": "Ils les mirent hors du Saint, et ensuite du parvis ; et on les enterra hors du camp.",
-      "french_commentary": null
+      "french_translation": "Ils les mirent hors du Saint,",
+      "french_commentary": "et ensuite du parvis ; et on les enterra hors du camp."
     },
     {
       "commentary_id": 4,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 10,
       "latin_quote": "CAPITA VESTRA NOLITE NUDARE.",
       "french_translation": "Ne découvrez point vos têtes.",
@@ -81,5 +81,6 @@
       "text": "Aug. qu. 32. in Levit."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

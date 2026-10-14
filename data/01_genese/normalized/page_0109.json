@@ -28,7 +28,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 1,
       "latin_quote": "FIAT LUX.",
       "french_translation": "Que la lumière soit faite.",
@@ -36,7 +36,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 1,
       "latin_quote": "DIVISITQUE LUCEM A TENEBRIS.",
       "french_translation": "Il sépara la lumière d'avec les ténèbres.",
@@ -44,9 +44,9 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 1,
-      "latin_quote": "APPELLAVITQUE LUCEM DIEM, ET TENEBRAS NOCTEM.",
+      "latin_quote": "APPELLAVITQUE LUCEM DIEM, ET TENEBRAS NOC-",
       "french_translation": null,
       "french_commentary": null
     }
@@ -65,5 +65,6 @@
       "text": "Hugo Victorin. Lyran. Menoch. etc."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

@@ -21,7 +21,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 30,
       "latin_quote": null,
       "french_translation": null,
@@ -29,7 +29,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 30,
       "latin_quote": "DA MIHI LIBEROS, ALIOQUIN MORIAR.",
       "french_translation": "Donnez-moi des enfants, ou je mourrai.",
@@ -37,15 +37,15 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 30,
       "latin_quote": "NUM PRO DEO EGO SUM ?",
-      "french_translation": "Tiens-je la place de Dieu ? Suis-je donc un Dieu, pour me demander des miracles ?",
-      "french_commentary": "L'Arabe traduit : Suis-je au-dessus de Dieu, pour me demander ce qu'il vous a refusé ? Onkelos : N'était-ce pas à Dieu qu'il fallait demander un fils, et non pas à moi ?"
+      "french_translation": "Tiens-je la place de Dieu ?",
+      "french_commentary": "Suis-je donc un Dieu, pour me demander des miracles ? L'Arabe traduit : Suis-je au-dessus de Dieu, pour me demander ce qu'il vous a refusé ? Onkelos : N'était-ce pas à Dieu qu'il fallait demander un fils, et non pas à moi ?"
     },
     {
       "commentary_id": 4,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 30,
       "latin_quote": "HABEO FAMULAM BALAM ; INGREDERE AD ILLAM, UT PARIAT SUPER GENUA.",
       "french_translation": "J'ai Bala ma servante, allez à elle, afin que je mette sur mes genoux ce qu'elle enfantera.",
@@ -78,5 +78,6 @@
       "text": "אמה"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

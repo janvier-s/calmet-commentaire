@@ -28,7 +28,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 12,
       "latin_quote": null,
       "french_translation": null,
@@ -36,19 +36,19 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 12,
       "latin_quote": "PRIMITIAS MANUUM VESTRARUM.",
-      "french_translation": "Les prémices des ouvrages de vos mains. Voyez le verset 6 Les anciens Interprètes Grecs avaient traduit^{(c)} : Vos offrandes volontaires.",
-      "french_commentary": null
+      "french_translation": "Les prémices des ouvrages de vos mains. ",
+      "french_commentary": "Voyez le verset 6 Les anciens Interprètes Grecs avaient traduit^{(c)} : _Vos offrandes volontaires._"
     },
     {
       "commentary_id": 3,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 12,
       "latin_quote": "QUICQUID PRÆCIPUUM EST IN MUNERIBUS.",
-      "french_translation": "Tout ce qu'il y aura de meilleur dans les dons. L'Hébreu^{(d)} : Toute l'élite de vos vœux, tout ce que vous aurez voué de meilleur et de plus excellent.",
-      "french_commentary": "Les vœux se doivent faire, de tout ce qu'il y a de plus exquis, disent les Docteurs Juifs."
+      "french_translation": "Tout ce qu'il y aura de meilleur dans les dons.",
+      "french_commentary": "L'Hébreu^{(d)} : _Toute l'élite de vos vœux_, tout ce que vous aurez voué de meilleur et de plus excellent. Les vœux se doivent faire, de tout ce qu'il y a de plus exquis, disent les Docteurs Juifs."
     }
   ],
   "footnotes": [
@@ -69,5 +69,6 @@
       "text": "כל מבחר נדריכם"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }
