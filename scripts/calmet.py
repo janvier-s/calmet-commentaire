@@ -96,24 +96,6 @@ def verse_number(ref):
     return total
 
 
-def _nums(items, key):
-    return [verse_number(it.get(key)) for it in items]
-
-
-def in_chapter(items, key, before, after, want):
-    """The items on one page that belong to chapter `want`.
-
-    The page on which a chapter opens also carries the tail of the previous
-    one: Calmet's p. 656 prints Matthew 22:46 and then Matthew 23:1. Split at
-    the point where the verse numbering restarts.
-    """
-    if before == after:
-        return items if want == after else []
-    nums = _nums(items, key)
-    split = next((i for i, n in enumerate(nums) if n == 1), 0)
-    return items[:split] if want == before else items[split:]
-
-
 def _words(s):
     return re.findall(r"[^\W\d_]+", s, re.UNICODE)
 
@@ -166,10 +148,8 @@ def notes(book, chapter, first, last, joins=None):
     # Every commentary block of this chapter, in reading order.
     blocks = []
     for stem, before, after, page in page_list:
-        if chapter not in (before, after):
-            continue
-        for b in in_chapter(page.get("commentary") or [], "verse_ref",
-                            before, after, chapter):
+        # each block carries its chapter (assign_chapters.py)
+        for b in (c for c in page.get("commentary") or [] if c.get("chapter") == chapter):
             blocks.append(dict(page=stem, cid=b["commentary_id"],
                                verse=verse_number(b.get("verse_ref")),
                                latin=bind((b.get("latin_quote") or "").strip(),

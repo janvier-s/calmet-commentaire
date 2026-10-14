@@ -46,6 +46,9 @@ KIND_LABELS = {
     "psalm_wrong_psalm": "VERSE UNDER THE WRONG PSALM",
     "psalm_unmatched": "VERSE NOT FOUND IN THE VULGATE",
     "duplicate_verse": "DUPLICATE VERSE",
+    "chapter_field": "CHAPTER FIELD OUT OF STEP",
+    "chapter_vulgate": "CHAPTER SET FROM THE VULGATE: CHECK THE VERSE NUMBER",
+    "chapter_heading": "CHAPTER HEADING TO CHECK",
     "dropped_commentary": "COMMENTARY NOT ON SITE",
     "seam_missing": "TEXT MISSING AT PAGE BREAK",
     "seam_repeat": "TEXT REPEATED AT PAGE BREAK",
@@ -345,8 +348,16 @@ class ReviewEditor(PageEditor):
                 prev = k
                 if k < n:
                     pos = i + 1
-        verses.insert(pos, {"verse_number": n, "latin": "", "french": "", "annotations": None})
+        verses.insert(pos, {"verse_number": n, "chapter": self._neighbour_chapter(verses, pos),
+                            "latin": "", "french": "", "annotations": None})
         self._commit_and_rebuild()
+
+    def _neighbour_chapter(self, entries, pos):
+        """The chapter of the entry before position `pos` (or after it): a new entry's default."""
+        for e in list(reversed(entries[:pos])) + entries[pos:]:
+            if isinstance(e.get("chapter"), int):
+                return e["chapter"]
+        return None
 
     def _add_commentary(self):
         if self.data is None:
@@ -354,8 +365,8 @@ class ReviewEditor(PageEditor):
         self._save()
         comms = self.data.setdefault("commentary", [])
         next_id = max([c.get("commentary_id") or 0 for c in comms] + [0]) + 1
-        comms.append({"commentary_id": next_id, "verse_ref": None, "latin_quote": None,
-                      "french_translation": None, "french_commentary": ""})
+        comms.append({"commentary_id": next_id, "verse_ref": None, "chapter": self._neighbour_chapter(comms, len(comms)),
+                      "latin_quote": None, "french_translation": None, "french_commentary": ""})
         self._commit_and_rebuild()
         self.json_canvas.yview_moveto(1.0)
 

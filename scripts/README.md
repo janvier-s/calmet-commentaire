@@ -17,6 +17,9 @@ Run everything from this folder with `python3` (the editors need Pillow, see bel
 5. `normalize_refs.py <volume>`: verse numbers and `verse_ref` to digits, no numbers in verse text.
 6. `fix_markers.py <volume>`: footnote calls to `^{(a)}`, Jésus-Christ.
 7. Psalms only: `fix_psalm_verses.py <volume>`.
+8. `assign_chapters.py <book key>`: the `chapter` field on every verse and commentary block
+   (export reads it; edit it in the editor). Writes `docs/chapter_check.json` with the places
+   it had to decide; they go into the review queue.
 
 ## Checks and review
 

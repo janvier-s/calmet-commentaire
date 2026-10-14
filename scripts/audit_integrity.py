@@ -176,33 +176,40 @@ def audit_book(key, info, slug, published=True):
                  f"Page-turn glitch (stray full stop / repeated syllable): “…{s['before'][-40:]}” ‖ “{s['after'][:40]}…”",
                  optional=True)
 
-    # verse_ref must run in order through a chapter. A drop is fine where a chapter
-    # begins (to verse 1-3, or the first drop on or just after a page opening a chapter).
-    refs = []
-    for i, (vol, n, d) in enumerate(pages):
-        if chapter_of(d):
-            refs.append(("chapter", i))
+    # verse_ref must run in order within a chapter (the `chapter` field, assign_chapters.py):
+    # a drop inside a chapter is a misread number, or Calmet going back to a verse.
+    nums = []
+    for vol, n, d in pages:
         for c in d.get("commentary") or []:
             m = re.match(r"(\d+)", str(c.get("verse_ref") or ""))
             if m:
-                refs.append((vol, n, i, int(m.group(1))))
-    prev, allow_until, out_of_order = None, -1, []
-    nums = [x for x in refs if x[0] != "chapter"]
-    j = 0
-    for x in refs:
-        if x[0] == "chapter":
-            allow_until = x[1] + 2
-            continue
-        vol, n, i, ref = x
-        if prev is not None and ref < prev:
-            if ref <= 3 or i <= allow_until:
-                allow_until = -1
-            else:
-                ctx = ", ".join(str(y[3]) for y in nums[max(0, j - 3):j + 2])
-                out_of_order.append(f"{vol}/{n}")
-                item("ref_order", vol, int(n[5:9]),
-                     f"verse_ref goes back from {prev} to {ref} (… {ctx} …): misread number, or Calmet returning to a verse?")
-        prev, j = ref, j + 1
+                nums.append((vol, n, c.get("chapter"), int(m.group(1))))
+    out_of_order = []
+    for j in range(1, len(nums)):
+        vol, n, ch, ref = nums[j]
+        pch, prev = nums[j - 1][2], nums[j - 1][3]
+        if ch == pch and ref < prev:
+            ctx = ", ".join(str(y[3]) for y in nums[max(0, j - 3):j + 2])
+            out_of_order.append(f"{vol}/{n}")
+            item("ref_order", vol, int(n[5:9]),
+                 f"verse_ref goes back from {prev} to {ref} (… {ctx} …) in chapter {ch}: "
+                 f"misread number, or Calmet returning to a verse?")
+
+    # The chapter field: on every entry after the book's first heading, never going back
+    # or skipping a chapter.
+    for section, field in (("verses", "verse_number"), ("commentary", "verse_ref")):
+        prev = None
+        for vol, n, d in pages:
+            for e in d.get(section) or []:
+                ch = e.get("chapter")
+                if not isinstance(ch, int):
+                    if prev is not None:
+                        item("chapter_field", vol, int(n[5:9]), f"{section}: {field} {e.get(field)} has no chapter")
+                    continue
+                if prev is not None and not (prev <= ch <= prev + 1):
+                    item("chapter_field", vol, int(n[5:9]),
+                         f"{section}: chapter goes from {prev} to {ch} at {field} {e.get(field)}")
+                prev = ch
     r["ref_out_of_order"] = out_of_order
 
     # Notes with no commentary. Fine when the comment opens the next page, or when
@@ -413,7 +420,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's
@@ -427,6 +434,16 @@ def main():
                     "number": "psalm_number", "repeated": "duplicate_verse"}.get(x["kind"], "psalm_" + x["kind"])
             queue.append(dict(id=f"{vol}/{x['page']:04d}/{kind}/{hashlib.md5(x['msg'].encode()).hexdigest()[:8]}",
                               book_dir=vol, page=x["page"], kind=kind, msg=x["msg"], optional=False))
+    # Where assign_chapters.py had to decide a chapter against the numbering, or saw a heading out of step
+    chapter_file = DOCS / "chapter_check.json"
+    if chapter_file.exists():
+        for x in json.loads(chapter_file.read_text()):
+            kind = {"vulgate": "chapter_vulgate", "vulgate_verse": "chapter_vulgate",
+                    "restart": "chapter_heading", "jump": "chapter_heading"}.get(x["kind"])
+            if kind:
+                vol, stem = x["page"].split("/")
+                queue.append(dict(id=f"{vol}/{stem[5:9]}/{kind}/{hashlib.md5(x['msg'].encode()).hexdigest()[:8]}",
+                                  book_dir=vol, page=int(stem[5:9]), kind=kind, msg=x["msg"], optional=False))
     if MANUAL.exists():
         for m in json.loads(MANUAL.read_text()):
             queue.append(dict(id=f"{m['book_dir']}/{m['page']:04d}/reported/{hashlib.md5(m['msg'].encode()).hexdigest()[:8]}",

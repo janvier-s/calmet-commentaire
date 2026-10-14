@@ -54,6 +54,7 @@ def join(left, right):
 
 
 def verses_by_chapter(key):
+    """Each verse goes to its `chapter` field (assign_chapters.py)."""
     chapters, summaries, current = defaultdict(list), {}, None
     for volume in BOOKS[key]["studium"]:
         for p in pages(volume):
@@ -62,29 +63,15 @@ def verses_by_chapter(key):
             except json.JSONDecodeError:
                 print(f"  skipped malformed {volume}/{p.name}")
                 continue
-            ch = chapter_of(page)
-            page_verses = page.get("verses") or []
-            for v in page_verses:
+            for v in page.get("verses") or []:
+                ch = v.pop("chapter", None)
+                if ch is None:
+                    continue
                 v["source_pages"] = [p.name]
-            if ch and ch != current and current:
-                # New chapter starting mid-page: leading verses that continue the
-                # previous chapter's numbering stay with it.
-                last = max((num(v) for v in chapters[current]), default=0)
-                carried = 0
-                for v in (page_verses if last else []):
-                    if not isinstance(v.get("verse_number"), int) or num(v) < last:
-                        break
-                    chapters[current].append(v)
-                    last = num(v)
-                    carried += 1
-                page_verses = page_verses[carried:]
-            if ch:
-                current = ch
-            if not current:
-                continue
-            if page.get("chapter_summary") and current not in summaries:
+                chapters[ch].append(v)
+            current = chapter_of(page) or current
+            if current and page.get("chapter_summary") and current not in summaries:
                 summaries[current] = page["chapter_summary"]
-            chapters[current].extend(page_verses)
 
     for ch, verses in chapters.items():
         verses.sort(key=num)

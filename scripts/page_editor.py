@@ -153,6 +153,7 @@ class PageEditor:
 
     FIELD_COLORS = {
         "verse_number": "#6ec6ff",
+        "chapter": "#6ec6ff",
         "latin": "#c0c0c0",
         "french": "#ffffff",
         "annotations": "#aaaaaa",
@@ -564,7 +565,7 @@ class PageEditor:
             for i, v in enumerate(verses):
                 row = self._add_section_header(self.json_inner, row,
                     f"  Verse {v.get('verse_number', '?')}", level=2)
-                for field in ("verse_number", "latin", "french", "annotations"):
+                for field in ("verse_number", "chapter", "latin", "french", "annotations"):
                     if field in v:
                         row = self._add_field(self.json_inner, row, field, v.get(field),
                                               ("verses", i, field))
@@ -584,7 +585,7 @@ class PageEditor:
                 cid = c.get("commentary_id", "?")
                 row = self._add_section_header(self.json_inner, row,
                     f"  Commentary {cid} (v.{vref_display})", level=2)
-                for field in ("commentary_id", "verse_ref", "latin_quote",
+                for field in ("commentary_id", "verse_ref", "chapter", "latin_quote",
                               "french_translation", "french_commentary"):
                     if field == "french_commentary" and i == 0 and prev_tail:
                         row = self._add_prev_commentary_tail(self.json_inner, row, prev_tail)
@@ -808,7 +809,7 @@ class PageEditor:
                 val = None
             else:
                 field_name = json_path[-1]
-                if field_name in ("verse_number", "commentary_id", "verse_ref", "chapter_number"):
+                if field_name in ("verse_number", "commentary_id", "verse_ref", "chapter_number", "chapter"):
                     try:
                         val = int(raw.strip())
                     except ValueError:
