@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "46",
+      "verse_ref": 46,
       "chapter": 33,
       "latin_quote": null,
       "french_translation": null,
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "47",
+      "verse_ref": 47,
       "chapter": 33,
       "latin_quote": "VENERUNT AD MONTEM ABARIM CONTRA NABO.",
       "french_translation": "Ils vinrent aux montagnes d'Abarim, vis-à-vis de Nabo.",
@@ -69,8 +69,13 @@
   "footnotes": [
     {
       "marker": "(b)",
-      "text": "Campestria Moab. Heb. Arabot Moab."
+      "text": "Campestria Moab. L'Hébreu : Arabot Moab. Les Septante. A l'Occident de Moab."
+    },
+    {
+      "marker": "(a)",
+      "text": "Jérémie 28:22"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }
