@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 26,
@@ -63,7 +64,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -71,11 +72,11 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 1,
       "latin_quote": "SED INCREDULI AD SERMONEM DEI VESTRI.",
       "french_translation": "Étant incrédules à la parole de votre Dieu.",
-      "french_commentary": "Le Texte à la lettre^{(a)} : _Vous avez irrité la bouche du Seigneur votre Dieu._ Ou, _vous vous êtes révoltés contre l'ordre de votre Dieu ;_ ou, _vous avez changé les paroles de votre Dieu ; vous avez"
+      "french_commentary": "Le Texte à la lettre^{(a)} : _Vous avez irrité la bouche du Seigneur votre Dieu._ Ou, _vous vous êtes révoltés contre l'ordre de votre Dieu ;_ ou, vous avez changé les paroles de votre Dieu ; vous avez"
     }
   ],
   "footnotes": [
@@ -84,5 +85,6 @@
       "text": "תמרו את פי יהוה אלהיכם"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

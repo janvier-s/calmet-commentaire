@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 42,
@@ -21,23 +22,31 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "41",
+      "verse_ref": 40,
+      "chapter": 32,
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "Dieu lève sa main au Ciel, et jure par lui-même, n'ayant personne plus grand que lui, par qui il pût jurer, dit l'Apôtre ^{(a)}."
+    },
+    {
+      "commentary_id": 2,
+      "verse_ref": 41,
       "chapter": 32,
       "latin_quote": "SI ACUERO UT FULGUR GLADIUM MEUM.",
       "french_translation": "Si je rends mon épée aussi pénétrante que les éclairs.",
       "french_commentary": "L'Hébreu à la lettre : _Si une fois j'aiguise l'éclair de mon épée. Mon épée foudroyante, ou qui brille, qui pénètre, qui va aussi vite qu'un éclair_ ^{(b)} : _Fulminis acta modo._"
     },
     {
-      "commentary_id": 2,
-      "verse_ref": "42",
+      "commentary_id": 3,
+      "verse_ref": 42,
       "chapter": 32,
       "latin_quote": "INEBRIABO SAGITTAS MEAS SANGUINE.",
       "french_translation": "J'enivrerai mes flèches de leur sang.",
       "french_commentary": "Expression admirable, et qui dit plus que tout ce qu'on y pourrait ajouter. Pour prendre le sens de ce verset, il faut joindre ces paroles : _j'enivrerai mes flèches de sang_ ; à celles-ci, _de cruore occisorum, etc. Je les enivrerai_, dis-je, _du sang des morts, des captifs, et des chefs de mes ennemis dépouillés_ ; ou, _de la tête découverte de mes ennemis_. Je tirerai mes flèches contre mes ennemis, de dessus la tête desquels j'arracherai la couronne, qu'ils y avaient mise ^{(c)} ; ou simplement : _je tirerai contre la tête de mes ennemis_ ; rien n'arrêtera la force de mon coup. Ou peut-être en prenant tout le verset ^{(d)} ; _Mes flèches seront enivrées du sang, du sang des morts, et des captifs ; et mon épée sera rassasiée de carnage, de la tête nue et découverte de mes ennemis._"
     },
     {
-      "commentary_id": 3,
-      "verse_ref": "43",
+      "commentary_id": 4,
+      "verse_ref": 43,
       "chapter": 32,
       "latin_quote": "LAUDATE GENTES POPULUM EJUS.",
       "french_translation": "Nations, louez le peuple du Seigneur.",
@@ -62,5 +71,6 @@
       "text": "השכיר חצי מדם וחרבי תאכל בשר מדם חלל ושביה מראש פרעות אויב"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

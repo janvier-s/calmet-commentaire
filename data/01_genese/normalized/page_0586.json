@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 17,
@@ -21,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
@@ -29,15 +30,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 23,
-      "latin_quote": null,
-      "french_translation": null,
+      "latin_quote": "APPENDIT PECUNIAM 400. SICLOS ARGENTI PROBATÆ MONETÆ PUBLICÆ",
+      "french_translation": "Il lui pesa quatre cents sicles d'argent, et les paya en bonne monnaie, reçue de tout le monde.",
       "french_commentary": "Les termes de _pecunia_, et de _moneta_ qu'on lit ici, insinuent l'usage de l'argent monnayé et frappé au coin ; mais l'hébreu met seulement, _peser de l'argent_ ; ce qui ne marque que le poids du métal. Le terme _Schekel_ ne marque non plus qu'un certain poids. Les quatre cents sicles pouvaient monter à six cents livres de notre monnaie, selon les Auteurs que nous suivons."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 23,
       "latin_quote": "PROBATÆ MONETÆ PUBLICÆ.",
       "french_translation": null,
@@ -45,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 23,
       "latin_quote": "CONFIRMATUS EST AGER QUONDAM EPHRONIS.",
       "french_translation": "Le champ qui avait été autrefois à Ephron fut assuré à Abraham.",
@@ -62,5 +63,6 @@
       "text": "Α᾿ργυρίῳ δοκίμῳ ἐμπόροις."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

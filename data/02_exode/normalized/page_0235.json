@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 7,
@@ -21,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 15,
       "latin_quote": null,
       "french_translation": null,
@@ -29,23 +30,23 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 15,
-      "latin_quote": null,
-      "french_translation": null,
+      "latin_quote": "IN MULTITUDINE GLORIÆ TUÆ DEPOSUISTI ADVERSARIOS TUOS.",
+      "french_translation": "Vous avez terrassé vos ennemis par l'éclat de votre gloire.",
       "french_commentary": "Il entend par-là les éclairs et les tonnerres qui parurent contre les Egyptiens, du côté de la nuée qui les séparait des Israélites. Ces phénomènes qui effraient les hommes, sont quelquefois nommés la gloire de Dieu. Ainsi on dit que _la gloire de Dieu parut sur Sinaï_, lorsqu'on y ouït les tonnerres, et qu'on y vit le feu et les éclairs ; et peut-être que Dieu faisait retentir le tonnerre, et briller les éclairs, dans toutes les rencontres où il est dit dans l'Ecriture que la gloire de Dieu paraissait dans la colonne de nuée. Isaïe^{(a)} parle en ces termes du passage merveilleux de la mer rouge : _Où est celui qui a tiré son peuple de la mer, avec les pasteurs de son troupeau ; qui a pris Moïse avec sa main droite, avec le bras de sa majesté ; qui a divisé les flots devant eux, pour s'acquérir un nom éternel ; qui les conduit dans le fond des abîmes, comme un cheval qu'on mène dans une campagne, sans qu'il fasse un faux pas ?_"
     },
     {
       "commentary_id": 3,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 15,
       "latin_quote": "MISISTI IRAM TUAM.\n",
-      "french_translation": "Vous avez envoyé votre colère",
-      "french_commentary": " ; c'est-à-dire, les foudres, les éclairs, le feu du Ciel, qui sont les marques et les effets de votre colère ; et vous les avez consumés comme le feu consume la paille, avec facilité, précipitation, rapidité."
+      "french_translation": "Vous avez envoyé votre colère ;",
+      "french_commentary": "c'est-à-dire, les foudres, les éclairs, le feu du Ciel, qui sont les marques et les effets de votre colère ; et vous les avez consumés comme le feu consume la paille, avec facilité, précipitation, rapidité."
     },
     {
       "commentary_id": 4,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 15,
       "latin_quote": "IN SPIRITU FURORIS TUI CONGREGATÆ SUNT AQUÆ.\n",
       "french_translation": "Le vent de votre fureur a fait remonter les eaux des deux côtés.",
@@ -78,5 +79,6 @@
       "text": "Habacuc 3:15. Viam fecisti in mari equis tuis, in luto aquarum multarum."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

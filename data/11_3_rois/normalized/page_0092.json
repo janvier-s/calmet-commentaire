@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_title": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 23,
@@ -21,15 +22,23 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 20,
+      "chapter": 2,
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "^{(a)} que _In generali juris concessione, non veniunt ea quæ quis non esset verisimiliter concessurus._"
+    },
+    {
+      "commentary_id": 2,
+      "verse_ref": 22,
       "chapter": 2,
       "latin_quote": "POSTULA EI ET REGNUM.",
       "french_translation": "Demandez aussi pour lui le Royaume.",
       "french_commentary": "La coutume des Hébreux, et de la plupart des Rois d'Orient, ne permettait pas que ce qui avait servi au Roi défunt, servît à un autre, qu'à son successeur. Ses femmes ne pouvaient épouser qu'un Roi. ^{(b)} Ainsi Adonias demandant pour femme Abisag, affectait par là même la Royauté, et se rendait coupable de mort. On peut traduire ainsi tout ce ℣. suivant l'Hébreu : ^{(c)} _Demandez aussi pour lui le Royaume, puisqu'il est mon aîné ; demandez-le pour lui, et pour le grand-Prêtre Abiathar, et pour Joab fils de Sarvia._ Demander qu'il épouse une femme du feu Roi, c'est demander qu'il règne, et avec lui Abiathar, et Joab, Chefs de son parti."
     },
     {
-      "commentary_id": 2,
-      "verse_ref": "24",
+      "commentary_id": 3,
+      "verse_ref": 24,
       "chapter": 2,
       "latin_quote": "VIVIT DOMINUS, QUI FECIT MIHI DOMUM.",
       "french_translation": "Je jure par le Seigneur, qui a établi ma maison.",
@@ -39,10 +48,6 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "que In generali juris concessione, non veniunt ea quæ quis non esset verisimiliter concessurus."
-    },
-    {
-      "marker": "(a)",
       "text": "Vide Srav. hic."
     },
     {
@@ -50,11 +55,11 @@
       "text": "Vide Grot. ad ℣. 17. Vatab. ad ℣. 24. שאלי לך את המלוכה כי הוא אחי"
     },
     {
-      "marker": "(d)",
+      "marker": "(c)",
       "text": "Vide Exod. 1. 21."
     },
     {
-      "marker": "(e)",
+      "marker": "(d)",
       "text": "Hieronym. Epist. 132. ad Vital."
     }
   ],

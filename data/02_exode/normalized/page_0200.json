@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 42,
@@ -35,15 +36,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "41",
+      "verse_ref": 41,
       "chapter": 12,
       "latin_quote": null,
       "french_translation": null,
-      "french_commentary": ": mais il faut l'entendre, comme il est marqué ici, de grand matin, _in corpore,_ ou, _in osse diei,_ ^{(a)} que la Vulgate a traduit par, _eadem die._"
+      "french_commentary": "mais il faut l'entendre, comme il est marqué ici, de grand matin, _in corpore,_ ou, _in osse diei,_ ^{(a)} que la Vulgate a traduit par, _eadem die._"
     },
     {
       "commentary_id": 2,
-      "verse_ref": "42",
+      "verse_ref": 42,
       "chapter": 12,
       "latin_quote": "NOX ISTA EST OBSERVABILIS DOMINI, ETC.",
       "french_translation": "Cette nuit est une nuit consacrée en l'honneur du Seigneur ;",
@@ -51,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "43",
+      "verse_ref": 43,
       "chapter": 12,
       "latin_quote": "ALIENIGENA NON COMEDET EX EO.",
       "french_translation": "Nul étranger n'y aura part,",
@@ -59,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "44",
+      "verse_ref": 44,
       "chapter": 12,
       "latin_quote": "SERVUS EMPTITIUS CIRCUMCIDETUR.",
       "french_translation": "L'esclave acheté se fera circoncis,",
@@ -67,11 +68,11 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "45",
+      "verse_ref": 45,
       "chapter": 12,
-      "latin_quote": "ADVENA ET MERCENARIUS.",
-      "french_translation": "^{(f)} L'étranger et le Mercenaire.",
-      "french_commentary": "Les étrangers qui sont habitués dans le pays. Les prosélytes de domicile, et ceux qui n'y sont qu'en passant, et qui n'y demeurent que pour trafiquer. Comme ce terme d'_étranger_ se rencontre souvent dans les Livres de l'ancien et du nouveau Testament, il est bon de l'expliquer ici pour toute la suite, et de marquer quelles étaient les diverses sortes d'étrangers, dont il est par-."
+      "latin_quote": "ADVENA ET MERCENARIUS.^{(f)} ",
+      "french_translation": "L'étranger et le Mercenaire.",
+      "french_commentary": "Les étrangers qui sont habitués dans le pays. Les prosélytes de domicile, et ceux qui n'y sont qu'en passant, et qui n'y demeurent que pour trafiquer. Comme ce terme d'_étranger_ se rencontre souvent dans les Livres de l'ancien et du nouveau Testament, il est bon de l'expliquer ici pour toute la suite, et de marquer quelles étaient les diverses sortes d'étrangers, dont il est par-"
     }
   ],
   "footnotes": [
@@ -100,5 +101,6 @@
       "text": "תושב ושכיר"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

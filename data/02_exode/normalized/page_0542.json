@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 4,
@@ -28,15 +29,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 31,
       "latin_quote": null,
-      "french_translation": null,
+      "french_translation": "de Dieu.",
       "french_commentary": "Les Anciens attribuèrent à Dieu les talents naturels et acquis, comme nous l'avons déjà remarqué. Sénèque : ^{(a)} _Insita nobis omnium artium semina, magisterque ex occulto Deus producit ingenia._ Homère dit aussi : ^{(b)} _Un homme habile, instruit par Vulcain lui-même, et par Pallas, fait tout ce qu'il veut, et achève d'excellents ouvrages._"
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 31,
       "latin_quote": "EX AURO, ARGENTO, ET ÆRE.",
       "french_translation": "En or, en argent, et en airain.",
@@ -44,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 31,
       "latin_quote": "MARMORE, ET GEMMIS, ET DIVERSITATE LIGNORUM.",
       "french_translation": "Le marbre, les pierres précieuses, et tous les bois différents.",
@@ -52,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 31,
       "latin_quote": "IN CORDE OMNIS ERUDITI POSUI SAPIENTIAM.",
       "french_translation": "j'ai mis dans le cœur de tous les artisans habiles un esprit de sagesse.",
@@ -89,5 +90,6 @@
       "text": "Senec. Epist. 90."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

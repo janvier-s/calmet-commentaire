@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 22,
@@ -14,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 29,
       "latin_quote": null,
       "french_translation": null,
@@ -22,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 29,
       "latin_quote": "TOLLES ADIPEM DE ARIETE, ET CAUDAM.",
       "french_translation": "Vous prendrez la graisse du bélier, et la queue.",
@@ -30,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 29,
       "latin_quote": "ARMUMQUE DEXTRUM.",
       "french_translation": "Et l'épaule droite.",
@@ -47,9 +48,10 @@
       "text": "Aristoph. in pace ; et Acharnens. act. 3 scen. pau."
     },
     {
-      "marker": "(b)",
+      "marker": "(c)",
       "text": "Hebr. פיגול 70. Βεβηλον. Alii : Τὸ μιάσμα."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

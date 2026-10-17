@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 9,
@@ -21,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 49,
       "latin_quote": null,
       "french_translation": null,
@@ -29,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 49,
       "latin_quote": "CATULUS LEONIS.",
       "french_translation": "Juda est un jeune lion.",
@@ -37,10 +38,10 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 49,
       "latin_quote": "NON AUFERETUR SCEPTRUM DE JUDA, ETC.",
-      "french_translation": "Le sceptre ne sera point ôté de Juda, etc.",
+      "french_translation": "Le sceptre ne sera point ôté de Juda, etc.^{(e)}",
       "french_commentary": "Le sceptre marque la souveraine puissance. Les 70.^{(f)} le Prince ne cessera point dans Juda. Aquila^{(g)},"
     }
   ],
@@ -74,5 +75,6 @@
       "text": "Aquil. σκηπτρον."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

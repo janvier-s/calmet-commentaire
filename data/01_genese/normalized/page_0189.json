@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 5,
@@ -14,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -22,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 3,
       "latin_quote": "NE FORTE MORIAMUR.",
       "french_translation": "De peur que peut-être nous ne mourions.",
@@ -30,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 3,
       "latin_quote": "SCIT ENIM DEUS, ETC.",
       "french_translation": "Car Dieu sait, etc.",
@@ -38,11 +39,11 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 3,
       "latin_quote": "ERITIS SICUT DII SCIENTES BONUM ET MALUM.",
       "french_translation": "Vous serez comme des Dieux, sachant le bien et le mal.",
-      "french_commentary": "Le terme hébreu _Elohim_^{(c)} signifie Dieu, les Dieux, les Princes, les Anges, les Juges. Le Chaldéen traduit : _Vous serez comme des Princes_^{(d)}. Les Rabbins et plusieurs Interprètes : _Vous serez comme des Anges._ Enfin on peut traduire : _Vous serez semblables à Dieu, par la connaissance que vous_"
+      "french_commentary": "Le terme hébreu _Elohim_^{(c)} signifie Dieu, les Dieux, les Princes, les Anges, les Juges. Le Chaldéen traduit : _Vous serez comme des Princes_^{(d)}. Les Rabbins et plusieurs Interprètes : _Vous serez comme des Anges._ Enfin on peut traduire : _Vous serez semblables à Dieu_, par la connaissance que vous"
     }
   ],
   "footnotes": [
@@ -56,12 +57,13 @@
     },
     {
       "marker": "(c)",
-      "text": "אלהימ"
+      "text": "אלהים"
     },
     {
       "marker": "(d)",
-      "text": "ורברבין"
+      "text": "רברבין"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

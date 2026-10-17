@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 25,
@@ -42,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 7,
       "latin_quote": "ADIPEM CADAVERIS MORTICINI HABEBITIS IN VARIOS USUS.",
       "french_translation": "Vous pourrez vous servir à divers usages de la graisse d'une bête qui sera morte d'elle même.",
@@ -50,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 7,
       "latin_quote": "SANGUINEM OMNIS ANIMALIS NON SUMETIS IN CIBUM.",
       "french_translation": "Vous ne prendrez point pour votre nourriture le sang d'aucun animal.",
@@ -58,11 +59,11 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 7,
       "latin_quote": "QUI OFFERT VICTIMAM PACIFICORUM DOMINO, OFFERAT SIMUL ET SACRIFICIUM, ID EST, LIBAMENTA EJUS.",
-      "french_translation": "Que celui qui offre au Seigneur une hostie pacifique, lui offre en même temps les oblations de farine, d'huile et de vin, qui doivent accompagner ces sacrifices.",
-      "french_commentary": "L'Hébreu^{(c)} fait un autre sens : _Quiconque voudra offrir au Seigneur un sacrifice pacifique, lui offrira son offrande d'un sacrifice pacifique ;_"
+      "french_translation": "Que celui qui offre au Seigneur une hostie pacifique, lui offre en même temps les oblations de farine, d'huile et de vin,",
+      "french_commentary": "qui doivent accompagner ces sacrifices.^{(b)} L'Hébreu^{(c)} fait un autre sens : _Quiconque voudra offrir au Seigneur un sacrifice pacifique, lui offrira son offrande d'un sacrifice pacifique ;_"
     }
   ],
   "footnotes": [
@@ -79,5 +80,6 @@
       "text": "המקריב את זבח שלמיו יביא את קרבנו ליהוה מזבח שלמיו"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

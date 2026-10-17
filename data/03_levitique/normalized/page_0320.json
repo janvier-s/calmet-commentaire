@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 12,
@@ -37,7 +38,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 25,
       "latin_quote": "PRIMITIAS VINDEMIÆ NON COLLIGETIS.",
       "french_translation": "Vous ne recueillerez point les prémices de vos vignes.",
@@ -45,7 +46,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 25,
       "latin_quote": "OB SANCTIFICATIONEM JUBILÆI, SED STATIM OBLATA COMEDETIS.",
       "french_translation": "À cause de la sainteté du Jubilé. Mais vous mangerez les premières choses que vous trouverez.",
@@ -53,11 +54,11 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 25,
       "latin_quote": "QUANDO VENDES QUIDPIAM CIVI TUO, NE CONTRISTES FRATREM TUUM.",
       "french_translation": "Quand vous vendrez quelque chose à quelqu'un de vos citoyens, vous n'attristerez point votre frère.",
-      "french_commentary": "L'Hébreu : _Quand vous vendez …. ne trompez point ;_ ou, ne faites point de tort à vo-"
+      "french_commentary": "L'Hébreu :^{(a)} _Quand vous vendez ... ne trompez point ;_ ou, ne faites point de tort à vo-"
     }
   ],
   "footnotes": [
@@ -66,5 +67,6 @@
       "text": "כי תמכרו… אל תונו איש את אחיו"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 6,
@@ -32,11 +33,11 @@
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
-      "french_commentary": "rùm, porrò. On pourrait aussi traduire la première partie du verset 5. de cette forte : _Veruntamen sanguinem vestrum pro animabus vestris requiram_. Je tirerai la vengeance de votre sang répandu, pour vous-même, en votre place ; ou bien, _Sanguinem vestrum [ seu ] animas vestras requiram_ : Je punirai l'homicide de soi-même, etc. ou, Je vengerai votre sang, qui est votre âme, qui vous anime, quant à la vie animale^{(a)}."
+      "french_commentary": "_rùm, porrò_. On pourrait aussi traduire la première partie du verset 5. de cette forte : _Veruntamen sanguinem vestrum pro animabus vestris requiram_. Je tirerai la vengeance de votre sang répandu, pour vous-même, en votre place ; ou bien, _Sanguinem vestrum [ seu ] animas vestras requiram_ : Je punirai l'homicide de soi-même, etc. ou, Je vengerai votre sang, qui est votre âme, qui vous anime, quant à la vie animale^{(a)}."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 9,
       "latin_quote": "DE MANU CUNCTARUM BESTIARUM.",
       "french_translation": "De la main de toutes sortes de bêtes.",
@@ -44,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 9,
       "latin_quote": "QUICUMQUE EFFUDERIT HUMANUM SANGUINEM, FUNDETUR SANGUIS ILLIUS.",
       "french_translation": "Quiconque répandra le sang humain, sera puni par l'effusion de son propre sang.",
@@ -58,7 +59,7 @@
     },
     {
       "marker": "(b)",
-      "text": "מן יד כל חיה de manu omnis viventis."
+      "text": "מיד כל חי de manu omnis viventis."
     },
     {
       "marker": "(c)",
@@ -73,5 +74,6 @@
       "text": "שפך דם האדם באדם דמו ישפך Voyez Selden de Synedr. liv. 1. c. 5."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

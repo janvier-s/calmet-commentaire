@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 15,
@@ -21,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
@@ -29,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 11,
       "latin_quote": "MILVUM.",
       "french_translation": "Le milan.^{(a)}",
@@ -37,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 11,
       "latin_quote": "ET VULTUREM.",
       "french_translation": "Le vautour.^{(c)}",
@@ -45,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 11,
       "latin_quote": "STRUTHIONEM.",
       "french_translation": "L'autruche.",
@@ -53,7 +54,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 11,
       "latin_quote": "ET NOCTUAM.",
       "french_translation": "La chouette,^{(f)}",
@@ -61,11 +62,11 @@
     },
     {
       "commentary_id": 6,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 11,
       "latin_quote": "ET LARUM.",
       "french_translation": "Le larus.^{(g)}",
-      "french_commentary": "D'autres traduisent l'Hébreu par, _le coucou ;"
+      "french_commentary": "D'autres traduisent l'Hébreu par, _le coucou ;_"
     }
   ],
   "footnotes": [
@@ -98,5 +99,6 @@
       "text": "שחף hafchah."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

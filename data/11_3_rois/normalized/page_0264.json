@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_title": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 6,
@@ -28,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
@@ -36,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 11,
       "latin_quote": "ÆDIFICAVIT FANUM IN MONTE QUI EST CONTRA JERUSALEM.",
       "french_translation": "Il bâtit aussi un Temple sur la montagne qui était vis-à-vis de Jérusalem.",
@@ -44,11 +45,11 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 11,
       "latin_quote": "IN HUNC MODUM FECIT UNIVERSIS UXORIBUS SUIS.",
-      "french_translation": "Il fit la même chose pour toutes ses femmes étrangères. Il fit",
-      "french_commentary": null
+      "french_translation": "Il fit la même chose pour toutes ses femmes étrangères.",
+      "french_commentary": "Il fit"
     }
   ],
   "footnotes": [

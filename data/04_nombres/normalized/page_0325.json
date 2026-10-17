@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 4,
@@ -35,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 26,
       "latin_quote": null,
       "french_translation": null,
@@ -43,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 26,
       "latin_quote": "SICUT DOMINUS IMPERAVERAT; QUORUM ISTE EST NUMERUS.",
       "french_translation": "Comme le Seigneur l'avait ordonné ; dont voici le nombre.",
@@ -51,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 26,
       "latin_quote": "QUADRAGINTA TRIA MILLIA, ET SEPTINGENTI TRIGINTA.",
       "french_translation": null,
@@ -65,16 +66,13 @@
     },
     {
       "marker": "(b)",
-      "text": "Voyez 1 Chroniques 23:6-8 et suiv."
-    },
-    {
-      "marker": "(c)",
-      "text": "Exode 6:16 et suiv."
+      "text": "Voyez 1 Chroniques 23:6-8 et suiv.\nExode 6:16 et suiv."
     },
     {
       "marker": "(c)",
       "text": "Exode 30:14 et 38:25."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

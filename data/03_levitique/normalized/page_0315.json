@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 5,
@@ -19,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 25,
       "latin_quote": null,
       "french_translation": null,
@@ -27,15 +28,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 25,
       "latin_quote": "QUÆ SPONTE GIGNET HUMUS, NON METES.",
       "french_translation": "Vous ne moissonnerez point ce que la terre produit d'elle-même.",
-      "french_commentary": "Il n'était pas défendu aux propriétaires de recueillir dans leurs champs une partie des fruits que la terre produisait sans être cultivée. Quelques Interprètes soutiennent même que le propriétaire avait droit de prendre quelque chose pour son usage dans son champ, avant que les autres y touchassent."
+      "french_commentary": "Il n'était pas défendu aux propriétaires de recueillir dans leurs champs une partie des fruits que la terre produisait sans être cultivée. Quelques Interprètes^{(a)} soutiennent même que le propriétaire avait droit de prendre quelque chose pour son usage dans son champ, avant que les autres y touchassent."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 25,
       "latin_quote": "UVAS PRIMITIARUM TUARUM NON COLLIGES, QUASI VINDEMIAM.",
       "french_translation": "Vous n'en ferez point la vendange.",
@@ -52,5 +53,6 @@
       "text": "את עבדי כוייך לא תבצר 70. Tà ἀγίασματα. matris ex Samarit. Tõn χωρίων ex Separatorum inftans."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

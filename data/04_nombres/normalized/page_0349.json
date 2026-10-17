@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 19,
@@ -56,7 +57,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 28,
       "latin_quote": null,
       "french_translation": null,
@@ -64,7 +65,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 28,
       "latin_quote": "PRÆTER HOLOCAUSTUM MATUTINUM.",
       "french_translation": "Sans compter l'holocauste du matin.",
@@ -72,11 +73,11 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 28,
       "latin_quote": "IN FOMITEM IGNIS, ET IN ODOREM SUAVISSIMUM DOMINO, QUI SURGET DE HOLOCAUSTO.",
       "french_translation": "Pour entretenir le feu de l'Autel, et l'odeur très-agréable au Seigneur qui s'élevera de l'holocauste.",
-      "french_commentary": "Voici l'Hébreu à la lettre : On offrira au Seigneur un pain (une nourriture) qui brûlera en odeur agréable au Seigneur, sans y comprendre l'holocauste perpétuel, et ses libations. Ces sacrifices seront offerts au Seigneur, comme"
+      "french_commentary": "Voici l'Hébreu à la lettre :^{(b)} On offrira au Seigneur un pain (une nourriture) qui brûlera en odeur agréable au Seigneur, sans y comprendre l'holocauste perpétuel, et ses libations. Ces sacrifices seront offerts au Seigneur, comme"
     }
   ],
   "footnotes": [
@@ -89,5 +90,6 @@
       "text": "לחם אשה ריח ניחח ליהוה על עלת התמיד יעשה ואת נסכה"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

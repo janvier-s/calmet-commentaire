@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 18,
@@ -28,15 +29,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 22,
       "latin_quote": null,
       "french_translation": null,
-      "french_commentary": "exemple dans saint Matthieu 16:18, _Les portes de l'enfer ne prévaudront point contre l'Église. Posséder les portes de ses ennemis,_ peut aussi marquer : gouverner, juger, être le maître de ses ennemis ; parce qu'anciennement l'on rendait les jugements aux portes des Villes. L'accomplissement littéral de ces prophéties se vit après la conquête du pays des Cananéens, des Moabites et des Ammonites par les Hébreux. Mais il parut plus parfaitement après l'établissement de l'Église, dans l'assujettissement de tous les pays du monde à l'Évangile ; les Princes les plus déclarés contre cette Religion, et les peuples qui y paraissaient les plus contraires, l'ayant enfin embrassée."
+      "french_commentary": "exemple dans saint Matthieu^{(a)}, _Les portes de l'enfer ne prévaudront point contre l'Église. Posséder les portes de ses ennemis,_ peut aussi marquer : gouverner, juger, être le maître de ses ennemis ; parce qu'anciennement l'on rendait les jugements aux portes des Villes. L'accomplissement littéral de ces prophéties se vit après la conquête du pays des Cananéens, des Moabites et des Ammonites par les Hébreux. Mais il parut plus parfaitement après l'établissement de l'Église, dans l'assujettissement de tous les pays du monde à l'Évangile ; les Princes les plus déclarés contre cette Religion, et les peuples qui y paraissaient les plus contraires, l'ayant enfin embrassée."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 22,
       "latin_quote": "BENEDICENTUR IN SEMINE TUO OMNES GENTES TERRÆ.",
       "french_translation": "Toutes les Nations seront bénies dans celui qui sortira de vous.",
@@ -44,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 22,
       "latin_quote": "NUNCIATUM EST ABRAHÆ QUOD MELCHA QUOQUE GENUISSET FILIOS NACHOR FRATRI SUO.",
       "french_translation": "On dit à Abraham que Nachor avait eu de sa femme Melcha des enfants.",
@@ -65,5 +66,6 @@
       "text": "Genèse 12:3."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

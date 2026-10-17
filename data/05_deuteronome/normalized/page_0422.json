@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 37,
@@ -42,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "36",
+      "verse_ref": 36,
       "chapter": 32,
       "latin_quote": null,
       "french_translation": null,
@@ -50,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "38",
+      "verse_ref": 38,
       "chapter": 32,
       "latin_quote": "ET BIBEBANT VINUM LIBAMINUM.",
       "french_translation": "Ils buvaient du vin de leurs sacrifices.",
@@ -58,11 +59,11 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "40",
+      "verse_ref": 40,
       "chapter": 32,
       "latin_quote": "VIVO EGO IN ÆTERNUM.",
       "french_translation": "Aussi vrai que je vis éternellement.",
-      "french_commentary": "Dieu lève sa main au Ciel, et jure par lui-même, n'ayant personne plus grand que lui, par qui il pût jurer, dit l'Apôtre ^{(a)}."
+      "french_commentary": ""
     }
   ],
   "footnotes": [
@@ -71,5 +72,6 @@
       "text": "Lud. de Dieu."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

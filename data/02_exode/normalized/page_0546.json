@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 2,
@@ -28,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 32,
       "latin_quote": "FAC NOBIS DEOS, QUI PRÆCEDANT.",
       "french_translation": "Faites-nous des Dieux, qui marchent devant nous.",
@@ -36,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 32,
       "latin_quote": "TOLLITE INAURES AUREAS DE UXORUM, FILIORUMQUE AURIBUS.",
       "french_translation": "Otez les pendants d'oreilles, qui sont aux oreilles de vos femmes, et vos fils.",
@@ -44,11 +45,11 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 32,
       "latin_quote": "FORMAVIT OPERE FUSORIO, ET FECIT EX EIS VITULUM CONFLATILEM.",
       "french_translation": "Il forma par l'art du fondeur, un veau jetté en fonte.",
-      "french_commentary": "L'Hébreu ^{(f)} porte à la lettre : _Il leur forma un veau avec le burin, etc."
+      "french_commentary": "L'Hébreu ^{(f)} porte à la lettre : _Il leur forma_ un veau _avec le burin, etc._"
     }
   ],
   "footnotes": [
@@ -77,5 +78,6 @@
       "text": "ויצר אתו בחרט ויעשהו עגל מסכה"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

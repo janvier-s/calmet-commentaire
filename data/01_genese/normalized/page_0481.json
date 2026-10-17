@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 8,
@@ -28,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 16,
       "latin_quote": null,
       "french_translation": null,
@@ -36,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 16,
       "latin_quote": "AFFLIGENTE EAM SARAI, FUGAM INIIT.",
       "french_translation": "Saraï la traitant mal, elle s'enfuit.",
@@ -44,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 16,
       "latin_quote": "JUXTA FONTEM AQUÆ IN SOLITUDINE, QUÆ EST IN VIA SUR IN DESERTO.",
       "french_translation": "Auprès de la fontaine qui est dans le désert, sur le chemin de Sur.",
@@ -52,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 16,
       "latin_quote": "ISMÆL",
       "french_translation": null,
@@ -60,11 +61,11 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 16,
       "latin_quote": "ERIT FERUS HOMO.",
       "french_translation": "Ce sera un homme fier et sauvage.",
-      "french_commentary": "L'Hébreu^{(g)} à la lettre porte : _Il sera un âne sauvage._ Le Paraphraste Chaldéen : _il sera parmi les hommes comme un âne sauvage, [ féroce, indompté ]_"
+      "french_commentary": "L'Hébreu^{(g)} à la lettre porte : _Il sera un âne sauvage._ Le Paraphraste Chaldéen : _il sera parmi les hommes comme un âne sauvage, [ féroce, indomp-"
     }
   ],
   "footnotes": [
@@ -94,8 +95,9 @@
     },
     {
       "marker": "(g)",
-      "text": "פרא אדם"
+      "text": "פרא"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

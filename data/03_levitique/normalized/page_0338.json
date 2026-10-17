@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 27,
@@ -19,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 26,
       "latin_quote": null,
       "french_translation": null,
@@ -27,15 +28,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 26,
       "latin_quote": "POSTQUAM CONFREGERO BACULUM PANIS VESTRI.",
       "french_translation": "Après que j'aurai brisé votre soutien, qui est le pain.",
-      "french_commentary": "À la lettre : _Le bâton de votre pain._ C'est une expression qui tient du proverbe. Je briserai la tige de votre froment, tandis qu'il est encore sur le pied. Ou : J'ôterai à votre pain la vertu naturelle qu'il a de nourrir. Ou enfin : Je vous priverai de la nourriture dont vous avez besoin.^{(c)} Vous serez réduits à manquer des choses les plus nécessaires."
+      "french_commentary": "À la lettre : _Le bâton de votre pain._ C'est une expression qui tient du proverbe. Je briserai la tige de votre froment, tandis qu'il est encore sur le pied. Ou : J'ôterai à votre pain la vertu naturelle qu'il a de nourrir.^{(b)} Ou enfin : Je vous priverai de la nourriture dont vous avez besoin.^{(c)} Vous serez réduits à manquer des choses les plus nécessaires."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 26,
       "latin_quote": "ITA UT DECEM MULIERES IN UNO CLIBANO COQUANT PANES, ET REDDANT EOS AD PONDUS.",
       "french_translation": "En sorte que dix femmes cuiront du pain dans un même four, et le distribueront au poids.",
@@ -43,7 +44,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 26,
       "latin_quote": "COMEDETIS ET NON SATURABIMINI.",
       "french_translation": "Vous en mangerez, sans en être rassasiés.",
@@ -51,7 +52,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 26,
       "latin_quote": "EGO INCEDAM ADVERSUS VOS IN FURORE CONTRARIO.",
       "french_translation": "Je marcherai contre vous dans ma fureur, et je l'opposerai à la vôtre.",
@@ -80,5 +81,6 @@
       "text": "Genèse 31:7, Nombres 14:22, Job 19:3, 2 Esdras 4:12, Ecclésiaste 7:20"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

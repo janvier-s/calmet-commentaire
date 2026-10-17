@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 21,
@@ -28,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 19,
       "latin_quote": null,
       "french_translation": null,
@@ -36,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 19,
       "latin_quote": "QUÆSO DOMINE MI.",
       "french_translation": "Je vous prie, mon Seigneur.",
@@ -44,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 19,
       "latin_quote": "EST CIVITAS HÆC JUXTA AD QUAM POSSUM FUGERE, NUMQUID NON MODICA EST, ET VIVET ANIMA MEA:",
       "french_translation": "Il y a ici près une Ville, où je puis fuir ; n'est-elle pas petite ? et elle me sauvera la vie.",
@@ -52,11 +53,11 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 19,
       "latin_quote": "ECCE ETIAM IN HOC SUSCEPI PRECES TUAS.",
       "french_translation": "J'accorde encore cette grâce à vos prières.",
-      "french_commentary": "L'Hébreu ^{(e)} _Fais reçu_, ou [_j'ai élevé_] _votre face_. Expression qui est souvent employée dans l'Écriture."
+      "french_commentary": "L'Hébreu ^{(e)} _Fais reçu_, ou [_j'ai élevé_] _votre face_. Expression qui est souvent employée dans l'Écriture"
     }
   ],
   "footnotes": [
@@ -66,7 +67,7 @@
     },
     {
       "marker": "(b)",
-      "text": "אדוני"
+      "text": "אדני"
     },
     {
       "marker": "(c)",
@@ -81,5 +82,6 @@
       "text": "נשאתי פניך"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

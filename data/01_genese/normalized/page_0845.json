@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 12,
@@ -35,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 42,
       "latin_quote": null,
       "french_translation": null,
@@ -43,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 42,
       "latin_quote": "PACIFICI VENIMUS.",
       "french_translation": "Nous sommes venus dans des sentimens de paix.",
@@ -51,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 42,
       "latin_quote": "IMMUNITA TERRÆ CONSIDERARE VENISTIS.",
       "french_translation": "Vous êtes venus considérer ce qu'il y a de moins fort dans le pays.",
@@ -59,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 42,
       "latin_quote": "HOC EST QUOD LOCUTUS SUM ; EXPLORATORES ESTIS, ETC.",
       "french_translation": "Voilà ce que je vous ai dit : vous êtes des Espions.",
@@ -77,28 +78,25 @@
     },
     {
       "marker": "(c)",
-      "text": "תמים"
+      "text": ""
     },
     {
       "marker": "(d)",
-      "text": "Voyez Genèse 34:21, 3.Reg. 2:13."
+      "text": "Voyez Genèse 34:21 ; 3 Rois 2:13 ; Ecclésiastique 6:6 ; Jérémie 20:10 etc."
     },
     {
       "marker": "(e)",
-      "text": "Ecclésiastique 6:6, Jérémie 20:10, etc."
-    },
-    {
-      "marker": "(f)",
       "text": "ערות"
     },
     {
-      "marker": "(g)",
-      "text": "עקבות"
+      "marker": "(f)",
+      "text": ""
     },
     {
-      "marker": "(h)",
+      "marker": "(g)",
       "text": "Τα Κρυπτα."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

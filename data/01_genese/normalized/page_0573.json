@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 13,
@@ -14,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 22,
       "latin_quote": null,
       "french_translation": null,
@@ -22,15 +23,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 22,
       "latin_quote": "NON EXTENDAS MANUM TUAM SUPER PUERUM.",
       "french_translation": "Ne mettez point la main sur l'enfant.",
-      "french_commentary": "Quelques Pères^{(a)} ont cru que Jésus-Christ faisait allusion au sacrifice d'Isaac, qui était la figure de son immolation réelle, lorsqu'il dit dans saint Jean 8, que le Patriarche Abraham avait vu son jour, et qu'il s'en était réjoui. Nous avons proposé un autre sentiment sur cela, au chapitre 17:17."
+      "french_commentary": "Quelques Pères^{(a)} ont cru que Jésus-Christ faisait allusion au sacrifice d'Isaac, qui était la figure de son immolation réelle, lorsqu'il dit dans saint Jean ^{(b)}, que le Patriarche Abraham avait vu son jour, et qu'il s'en était réjoui. Nous avons proposé un autre sentiment sur cela, au chapitre 17:17."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 22,
       "latin_quote": "NUNC COGNOVI QUOD TIMES DEUM.",
       "french_translation": "Je connais maintenant que vous craignez Dieu.",
@@ -38,7 +39,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 22,
       "latin_quote": "NON PEPERCISTI UNIGENITO FILIO TUO PROPTER ME.",
       "french_translation": "Vous n'avez pas épargné votre fils unique pour m'obéir.",
@@ -46,7 +47,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 22,
       "latin_quote": "VIDIT POST TERGUM ARIETEM.",
       "french_translation": "Il vit derrière lui un",
@@ -60,7 +61,7 @@
     },
     {
       "marker": "(b)",
-      "text": "Johan. 8."
+      "text": "Jean 8."
     },
     {
       "marker": "(c)",
@@ -75,5 +76,6 @@
       "text": "לא חשכת את בנך את יחידך ממני."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

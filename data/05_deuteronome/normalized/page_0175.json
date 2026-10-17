@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 16,
@@ -21,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 11,
       "latin_quote": "FOENUM EX AGRIS AD PASCENDA JUMENTA.",
       "french_translation": "Et du foin de vos champs pour nourrir vos bêtes.",
@@ -29,15 +30,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 11,
       "latin_quote": "NE DECIPIATUR COR VESTRUM.",
       "french_translation": "Que votre cœur ne se laisse pas séduire.",
-      "french_commentary": "L'Hébreu à la lettre^{(f)} : _Que votre cœur ne devienne pas sot.__Que votre cœur ne devienne pas sot._ Les Septante : _Que votre cœur ne se dilate_^{(g)}_Que votre cœur ne se dilate._^{(g)}"
+      "french_commentary": "L'Hébreu à la lettre^{(f)} : _Que votre cœur ne devienne pas sot._ Les Septante : _Que votre cœur ne se dilate_^{(g)}"
     },
     {
       "commentary_id": 3,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 11,
       "latin_quote": "IRATUSQUE DOMINUS CLAUDAT COELUM.",
       "french_translation": "De peur que le Seigneur ne se mette en colère, et ne ferme le Ciel.",
@@ -74,5 +75,6 @@
       "text": "Μὴ πλατυνθῇ ἡ καρδία ὑμῶν. Je pense qu'il faut lire, μὴ ἐκπλαγῇ, conformément au texte."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }

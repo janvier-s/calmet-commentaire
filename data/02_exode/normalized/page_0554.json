@@ -2,6 +2,7 @@
   "book_title": null,
   "chapter_number": null,
   "chapter_summary": null,
+  "chapter_intro": null,
   "verses": [
     {
       "verse_number": 9,
@@ -28,15 +29,23 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 6,
+      "chapter": 32,
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "_Tum verò in numerum, silvásque ferásque videres_  \n_Ludere._   \nEt quelquefois jouer des instruments :^{(a)}\n_Ludere quæ vellem, calamo permisit agresti._ "
+    },
+    {
+      "commentary_id": 2,
+      "verse_ref": 9,
       "chapter": 32,
       "latin_quote": "RURSUMQUE AIT DOMINUS AD MOYSEN.",
       "french_translation": "Et le Seigneur dit encore à Moïse.",
       "french_commentary": "Ce verset n'est pas dans les Septante."
     },
     {
-      "commentary_id": 2,
-      "verse_ref": "10",
+      "commentary_id": 3,
+      "verse_ref": 10,
       "chapter": 32,
       "latin_quote": "DIMITTE ME, UT IRASCATUR FUROR MEUS CONTRA EOS.",
       "french_translation": "Laissez-moi faire, afin que ma colère s'enflamme contre eux.",
@@ -57,5 +66,6 @@
       "text": "Greg. l. 9. Moral. c. 11."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }
