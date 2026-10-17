@@ -62,6 +62,16 @@ def load_state():
         return None, None
 
 
+LRM = "‎"
+HEBREW_RUN = re.compile(r"[֐-׿יִ-ﭏ]+(?:[  ]+[֐-׿יִ-ﭏ]+)*")
+
+
+def isolate_hebrew(s):
+    """Fence each Hebrew phrase with left-to-right marks for display, so numbers, Greek and
+    the order of a list of words around it stay put; the marks are stripped again on save."""
+    return HEBREW_RUN.sub(lambda m: LRM + m.group() + LRM, s.replace(LRM, ""))
+
+
 CLOSING_FOLLOWERS = set(",.;:!?)»]")
 
 
@@ -695,7 +705,7 @@ class PageEditor:
 
         txt = Text(frame, wrap=tk.WORD, font=("Helvetica", 10),
                    bg=self.PREV_COMM_BG, fg="#88cc88", relief="flat", bd=3)
-        txt.insert("1.0", prev_tail["tail"])
+        txt.insert("1.0", isolate_hebrew(prev_tail["tail"]))
         self._setup_italic_tags(txt)
         self._render_italics(txt)
         txt.config(state="disabled")
@@ -732,7 +742,7 @@ class PageEditor:
 
         txt = Text(frame, wrap=tk.WORD, font=("Helvetica", 10),
                    bg=self.NEXT_COMM_BG, fg="#8888cc", relief="flat", bd=3)
-        txt.insert("1.0", next_head["head"])
+        txt.insert("1.0", isolate_hebrew(next_head["head"]))
         self._setup_italic_tags(txt)
         self._render_italics(txt)
         txt.config(state="disabled")
@@ -779,7 +789,7 @@ class PageEditor:
             txt.insert("1.0", "null")
             txt.config(fg="#888")
         else:
-            txt.insert("1.0", val_str)
+            txt.insert("1.0", isolate_hebrew(val_str))
 
         # Auto-size to fit content — no internal scrolling
         self._autosize_text(txt)
@@ -951,7 +961,7 @@ class PageEditor:
             return
 
         for json_path, widget, was_null in self.field_widgets:
-            raw = widget.get("1.0", "end-1c")
+            raw = widget.get("1.0", "end-1c").replace(LRM, "")
 
             if raw.strip() == "null" or (raw.strip() == "" and was_null):
                 val = None
