@@ -28,6 +28,13 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
 
 ## Checks and review
 
+- `footnotes.py run <volume> [99-140]` (with Pillow: `uv run --no-project --with pillow python …`):
+  Bible references written out with Calmet's names and checked against the Vulgate; Hebrew and
+  Greek checked against the Hebrew Bible and the Septuagint (`cache/refs/`), the doubtful ones
+  read on the scan by Claude; other abbreviations written out (`footnote_glossary.txt`) →
+  `docs/footnotes/<volume>.json`. `footnotes.py apply <volume> [99-140]` writes it in, holding
+  flagged notes. Claude's answers are cached in `cache/footnote_cache.json`.
+
 - `seam_check.py <volume> …`: reads every page break for lost or repeated lines
   (Claude, cached in `cache/seam_cache.json`) → `docs/seam_check.json`.
 - `audit_integrity.py ../docs/integrity_audit_<date>.json` → that report plus

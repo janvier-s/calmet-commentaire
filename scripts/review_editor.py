@@ -56,8 +56,16 @@ KIND_LABELS = {
     "seam_unclear": "PAGE BREAK TO CHECK",
     "ref_order": "VERSE REFERENCE OUT OF ORDER",
     "no_verse_ref": "NOTE WITHOUT VERSE_REF",
+    "no_lemma": "NOTE WITHOUT LATIN_QUOTE",
+    "spaced_letters": "L E T T E R - S P A C E D WORD",
+    "leading_punctuation": "COMMENT STARTS WITH PUNCTUATION",
+    "italic_seam": "ITALICS BROKEN AT PAGE TURN",
+    "period_seam": "FULL STOP AT PAGE END, LOWER CASE OVERLEAF",
+    "etc_for_et": "“ETC.” WHERE “&” (ET) WAS MEANT?",
+    "hyphen_cut": "LEMMA / TRANSLATION CUT AT PAGE TURN (hyphen or no full stop)",
     "long_translation": "TRANSLATION MUCH LONGER THAN THE LEMMA",
     "hebrew_in_translation": "“L'HÉBREU” IN THE TRANSLATION",
+    "hebrew_recheck": "FOOTNOTE HEBREW UNCERTAIN: CHECK AGAINST THE SCAN",
     "lowercase_lemma": "LOWER CASE IN THE LATIN LEMMA",
     "extra_footnotes": "MORE FOOTNOTES THAN CALLS",
     "empty_commentary": "NOTE WITHOUT COMMENTARY",
@@ -69,7 +77,7 @@ KIND_LABELS = {
     "seam_artifact": "PAGE-TURN GLITCH",
 }
 
-EMPTY_PAGE = {"book_title": None, "chapter_title": None, "chapter_summary": None,
+EMPTY_PAGE = {"book_title": None, "chapter_title": None, "chapter_summary": None, "chapter_intro": None,
               "verses": [], "commentary": [], "footnotes": []}
 
 
@@ -304,6 +312,8 @@ class ReviewEditor(PageEditor):
     def _mark(self, status):
         if self.dirty:
             self._save()
+            if self.dirty:  # the save failed (error shown): stay on the page, nothing lost
+                return
         self.progress.set(self.items[self.item_idx]["id"], status)
         self._refresh_banner()
         self._next_item()

@@ -62,6 +62,61 @@ def load_state():
         return None, None
 
 
+CLOSING_FOLLOWERS = set(",.;:!?)»]")
+
+
+def italic_runs(s):
+    """Italic stretches of `s` between _underscore_ marks, as (start, end) offsets.
+
+    Returns (runs, marks, open_at). With an odd number of marks the italics cross
+    the field's edge: open_at is "start" when the first mark closes a run begun
+    before the field (followed by a space or punctuation), else "end".
+    """
+    marks = [i for i, c in enumerate(s) if c == "_"]
+    edges, open_at = marks, None
+    if len(marks) % 2:
+        i = marks[0]
+        closes = i + 1 == len(s) or s[i + 1].isspace() or s[i + 1] in CLOSING_FOLLOWERS
+        open_at = "start" if closes else "end"
+        edges = [-1] + marks if closes else marks + [len(s)]
+    runs = [(edges[k] + 1, edges[k + 1]) for k in range(0, len(edges), 2)]
+    return runs, marks, open_at
+
+
+def toggle_italics(s, sa, sb):
+    """Italicize s[sa:sb], or make it roman when it is all italic already.
+
+    Only the selection and the marks touching it change. Returns (text, start, end)
+    with the new selection, or None when the selection holds no text.
+    """
+    while sa < sb and (s[sa] == "_" or s[sa].isspace()):
+        sa += 1
+    while sb > sa and (s[sb - 1] == "_" or s[sb - 1].isspace()):
+        sb -= 1
+    if sa >= sb:
+        return None
+    runs, _, open_at = italic_runs(s)
+    italic = {i for a, b in runs for i in range(a, b)}
+    make = not all(i in italic for i in range(sa, sb) if s[i] != "_" and not s[i].isspace())
+    # Take in the marks at the selection's edges, and when un-italicizing the spaces
+    # too, so that "_a b c_" becomes "_a_ b _c_".
+    def absorbs(c):
+        return c == "_" or (not make and c.isspace() and c != "\n")
+    while sa > 0 and absorbs(s[sa - 1]):
+        sa -= 1
+    while sb < len(s) and absorbs(s[sb]):
+        sb += 1
+
+    def italic_at(p):
+        return (s[:p].count("_") % 2 == 1) != (open_at == "start")
+    # Italics carried over a field edge simply stop there: no mark at the edge itself.
+    opening = "_" if italic_at(sa) != make and (make or sa > 0) else ""
+    closing = "_" if italic_at(sb) != make and (make or sb < len(s)) else ""
+    mid = s[sa:sb].replace("_", "")
+    start = sa + len(opening)
+    return s[:sa] + opening + mid + closing + s[sb:], start, start + len(mid)
+
+
 class FileSelector:
     """Initial screen to pick a book and page."""
 
@@ -148,6 +203,16 @@ class FileSelector:
         self.callback(book_path, page_num, self.pages)
 
 
+def keypad_enter_as_return(root):
+    """The numeric keypad's Enter does whatever Return does (with or without Cmd/Ctrl/Shift)."""
+    def relay(event, mods):
+        event.widget.event_generate(f"<{mods}Return>")
+        return "break"
+    for mods in ("", "Command-", "Control-", "Shift-"):
+        for cls in ("Text", "Entry", "TEntry", "TCombobox", "Spinbox", "TSpinbox", "all"):
+            root.bind_class(cls, f"<{mods}KP_Enter>", lambda e, m=mods: relay(e, m))
+
+
 class PageEditor:
     """Main editor: source image on the left, editable JSON on the right."""
 
@@ -165,10 +230,13 @@ class PageEditor:
         "marker": "#ff9966",
         "text": "#ffcc66",
     }
+    # Printed in italics throughout: here _underscored_ stretches show in roman
+    ITALIC_FIELDS = {"chapter_summary", "latin", "french_translation"}
 
 
     def __init__(self, root, book_path, page_num, all_pages):
         self.root = root
+        keypad_enter_as_return(root)
         self.book_path = book_path
         self.page_num = page_num
         self.all_pages = all_pages
@@ -178,7 +246,8 @@ class PageEditor:
         self.field_widgets = []
         self.photo_image = None
         self._last_paste = {"text": None, "time": 0, "widget": None}
-
+        self._last_text = None  # the field the italic button acts on
+        self.show_marks = tk.BooleanVar(value=True)
 
         self._define_styles()
         self._build_ui()
@@ -210,6 +279,9 @@ class PageEditor:
         self.style.configure("TButton", background="#444", foreground=self.FG, font=("Helvetica", 10))
         self.style.map("TButton", background=[("active", "#666")])
         self.style.configure("Header.TLabel", font=("Helvetica", 12, "bold"), foreground=self.ACCENT)
+        self.style.configure("Italic.TButton", font=("Helvetica", 12, "bold italic"))
+        self.style.configure("TCheckbutton", background=self.BG, foreground=self.FG, font=("Helvetica", 10))
+        self.style.map("TCheckbutton", background=[("active", self.BG)])
 
     def _build_ui(self):
         # Top bar
@@ -224,6 +296,11 @@ class PageEditor:
 
         self.next_btn = ttk.Button(top, text="Next (Right) >", command=self._next_page)
         self.next_btn.pack(side=tk.LEFT, padx=5)
+
+        ttk.Button(top, text="I", width=2, style="Italic.TButton", takefocus=False,
+                   command=self._toggle_italic).pack(side=tk.LEFT, padx=(15, 2))
+        ttk.Checkbutton(top, text="Show _ marks", variable=self.show_marks,
+                        command=self._on_show_marks).pack(side=tk.LEFT, padx=5)
 
         self.save_btn = ttk.Button(top, text="Save (Cmd+S)", command=self._save)
         self.save_btn.pack(side=tk.RIGHT, padx=5)
@@ -555,7 +632,7 @@ class PageEditor:
 
         row = 0
 
-        for key in ("book_title", "chapter_number", "chapter_summary", "book_end_marker"):
+        for key in ("book_title", "chapter_number", "chapter_summary", "chapter_intro", "book_end_marker"):
             if key in self.data:
                 row = self._add_field(self.json_inner, row, key, self.data.get(key), (key,))
 
@@ -619,6 +696,8 @@ class PageEditor:
         txt = Text(frame, wrap=tk.WORD, font=("Helvetica", 10),
                    bg=self.PREV_COMM_BG, fg="#88cc88", relief="flat", bd=3)
         txt.insert("1.0", prev_tail["tail"])
+        self._setup_italic_tags(txt)
+        self._render_italics(txt)
         txt.config(state="disabled")
         # Auto-size height
         self._autosize_text(txt)
@@ -654,6 +733,8 @@ class PageEditor:
         txt = Text(frame, wrap=tk.WORD, font=("Helvetica", 10),
                    bg=self.NEXT_COMM_BG, fg="#8888cc", relief="flat", bd=3)
         txt.insert("1.0", next_head["head"])
+        self._setup_italic_tags(txt)
+        self._render_italics(txt)
         txt.config(state="disabled")
         self._autosize_text(txt)
         txt.pack(fill=tk.BOTH, expand=True)
@@ -687,7 +768,8 @@ class PageEditor:
         val_str = "" if value is None else str(value)
         is_null = value is None
 
-        txt = Text(parent, wrap=tk.WORD, font=("Helvetica", 10),
+        italic_field = field_name in self.ITALIC_FIELDS
+        txt = Text(parent, wrap=tk.WORD, font=("Helvetica", 10, "italic" if italic_field else "normal"),
                    bg=self.FIELD_BG, fg=fg, insertbackground=fg,
                    relief="flat", bd=3, undo=True)
         txt.grid(row=row, column=1, sticky="ew", padx=(0, 10), pady=1)
@@ -704,8 +786,13 @@ class PageEditor:
         if field_name == "french_commentary" and not val_str.strip():
             txt.config(height=4)  # room to type the comment in
 
+        self._setup_italic_tags(txt, inverse=italic_field)
+        self._render_italics(txt)
         txt.edit_modified(False)
         txt.bind("<<Modified>>", lambda e, w=txt: self._on_modified(w))
+        txt.bind("<FocusIn>", lambda e, w=txt: setattr(self, "_last_text", w))
+        for seq in ("<Command-i>", "<Command-I>", "<Control-i>", "<Control-I>"):
+            txt.bind(seq, lambda e, w=txt: self._toggle_italic(w) or "break")
 
         # Prevent double paste by handling paste manually with debounce
         def handle_paste(event):
@@ -749,6 +836,65 @@ class PageEditor:
                 self.dirty = True
                 self.dirty_label.config(text="* unsaved changes", foreground=self.WARN_COLOR)
             widget.edit_modified(False)
+            self._render_italics(widget)
+
+    # --- Italics (_underscores_ in the JSON) ---
+    def _setup_italic_tags(self, txt, inverse=False):
+        txt.tag_configure("italic", font=("Helvetica", 10, "normal" if inverse else "italic"))
+        txt.tag_configure("mark", foreground="#5a5a5a", elide=not self.show_marks.get())
+        # an unpaired mark: italics carried across a field or page break
+        txt.tag_configure("mark_open", foreground="#ff9944")
+        txt.tag_raise("mark_open", "mark")
+
+    def _render_italics(self, txt):
+        for tag in ("italic", "mark", "mark_open"):
+            txt.tag_remove(tag, "1.0", "end")
+        s = txt.get("1.0", "end-1c")
+        if "_" not in s:
+            return
+        runs, marks, open_at = italic_runs(s)
+        for a, b in runs:
+            txt.tag_add("italic", f"1.0+{a}c", f"1.0+{b}c")
+        for i in marks:
+            txt.tag_add("mark", f"1.0+{i}c")
+        if open_at:
+            i = marks[0] if open_at == "start" else marks[-1]
+            txt.tag_add("mark_open", f"1.0+{i}c")
+
+    def _toggle_italic(self, txt=None):
+        """Cmd+I / the I button: italicize the selection, or make it roman if already italic."""
+        txt = txt or self._last_text
+        if txt is None or not txt.winfo_exists() or not txt.tag_ranges("sel"):
+            return
+        s = txt.get("1.0", "end-1c")
+        sa = len(txt.get("1.0", "sel.first"))
+        sb = len(txt.get("1.0", "sel.last"))
+        result = toggle_italics(s, sa, sb)
+        if result is None:
+            return
+        new, start, end = result
+        # Replace only the stretch that changed, as one undo step
+        p = 0
+        while p < min(len(s), len(new)) and s[p] == new[p]:
+            p += 1
+        q = 0
+        while q < min(len(s), len(new)) - p and s[-1 - q] == new[-1 - q]:
+            q += 1
+        txt.config(autoseparators=False)
+        txt.edit_separator()
+        txt.delete(f"1.0+{p}c", f"1.0+{len(s) - q}c")
+        txt.insert(f"1.0+{p}c", new[p:len(new) - q])
+        txt.edit_separator()
+        txt.config(autoseparators=True)
+        txt.tag_remove("sel", "1.0", "end")
+        txt.tag_add("sel", f"1.0+{start}c", f"1.0+{end}c")
+        txt.mark_set("insert", f"1.0+{end}c")
+        txt.focus_set()
+        self._render_italics(txt)
+
+    def _on_show_marks(self):
+        for _, txt, _ in self.field_widgets:
+            txt.tag_configure("mark", elide=not self.show_marks.get())
 
     def _open_in_editor(self):
         """Open the current JSON file in the default editor (VSCode / system default)."""

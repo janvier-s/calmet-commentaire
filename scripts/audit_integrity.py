@@ -215,6 +215,8 @@ def audit_book(key, info, slug, published=True):
     # Notes with no commentary. Fine when the comment opens the next page, or when
     # Calmet gives only the translation; suspicious when nothing follows the lemma.
     CAPS = re.compile(r"\b[A-ZÀ-ÝŒÆ]{2,}(?:[\s,;:'’.-]+[A-ZÀ-ÝŒÆ]{2,})+\b")
+    ABBREV = re.compile(r"\b(etc|v|ch|c|chap|[Ii]bid|S|St|M|p|l|liv|[Ll]ib|cap|Ps|Gen|Reg|Exod|Num|Deut|Jos|Judic|"
+                        r"Isai|Jerem|Ezech|Matt|Luc|Joan|Rom|Cor|Hebr?|vers|n|An)\.$|\b[IVXLC]+\.$|\d\.$")
     ODD_MARK = re.compile(r"\^[^{]|\^\{(?!\([a-z]\)\})[^}]*\}")
     empty_notes = caps_runs = odd_marks = 0
 
@@ -266,6 +268,68 @@ def audit_book(key, info, slug, published=True):
                 where = "starts the comment" if m.start() < 3 else "inside the comment"
                 item("caps_in_commentary", vol, int(n[5:9]),
                      f"Capitals {where}: “…{fc[max(0, m.start() - 25):m.end() + 15]}…”: a lemma that should start its own note, or a word to put in lower case?")
+            for k in ("latin_quote", "french_translation", "french_commentary"):
+                for m in re.finditer(r"(?<![\w.])(?:[A-Za-zÀ-ÿŒÆœæ] ){3,}[A-Za-zÀ-ÿŒÆœæ](?!\w)", c.get(k) or ""):
+                    item("spaced_letters", vol, int(n[5:9]),
+                         f"Letter-spaced word in {k}: “{m.group()}”: close up the letters (put the word breaks back)")
+            if re.match(r"\s*[.,;:!?»]", fc):
+                item("leading_punctuation", vol, int(n[5:9]),
+                     f"Comment starts with punctuation “{fc[:40]}…”"
+                     + (": move it to the end of the translation (tidy_fields.py does)" if tr else
+                        ": no translation in this block, so it belongs to the text before (previous page?)"))
+            # a lemma or translation cut by the page turn ("PER-", or mid-sentence in a note whose
+            # comment hasn't started) must go on in the same field overleaf
+            for k in ("latin_quote", "french_translation"):
+                t = re.sub(r"\^\{[^}]*\}", "", c.get(k) or "").rstrip()
+                if not t:
+                    continue
+                hyphen = t.endswith("-")
+                open_ = (j == len(cs) - 1 and not fc.strip() and not re.search(r"[.!?»…)\]]$", t)
+                         and (k == "french_translation" or not tr))
+                if not (hyphen or open_):
+                    continue
+                first = ((nxt_page or {}).get("commentary") or [{}])[0] if j == len(cs) - 1 else {}
+                if (first.get(k) or "").strip():
+                    continue
+                overleaf = (first.get("french_commentary") or first.get("french_translation")
+                            or first.get("latin_quote") or "")
+                item("hyphen_cut", vol, int(n[5:9]),
+                     f"{k} ends “…{t[-40:]}”" + ("" if hyphen else " with no full stop") + " but "
+                     + (f"the next page's first note has no {k} (it starts “{overleaf[:50]}…”)"
+                        if j == len(cs) - 1 else "another note follows on this page")
+                     + f": put the rest of the {k} back together"
+                     + ("" if hyphen else " (or add the missing full stop)"))
+            # the page turn inside a comment: italics and sentences must carry over
+            nfirst = ((nxt_page or {}).get("commentary") or [{}])[0] if j == len(cs) - 1 else {}
+            nfc = nfirst.get("french_commentary") or ""
+            if fc.strip() and nfc.strip() and not (nfirst.get("latin_quote") or "").strip() \
+                    and not (nfirst.get("french_translation") or "").strip():
+                if fc.count("_") % 2 and not nfc.count("_") % 2:
+                    item("italic_seam", vol, int(n[5:9]),
+                         f"Italics still open at the foot of the page (“…{fc[fc.rfind('_'):][-60:]}”) but not closed "
+                         f"overleaf (“{nfc[:50]}…”): close them here, or a “_” is missing or extra")
+                tail = re.sub(r"(\s*\^\{[^}]*\})+\s*$", "", fc).rstrip()
+                head = re.match(r"\s*[_«\"(]*\s*(\w)", nfc)
+                # italics closed right at the foot of the page, mid-sentence, while the quotation runs
+                # on in roman overleaf (Ruth 25-26: "…d'un homme_" ‖ "d'honneur.")
+                run = re.search(r"_([^_]+)_$", tail)
+                if (run and not fc.count("_") % 2 and not re.search(r"[.;:!?»]$", run.group(1).rstrip())
+                        and len(run.group(1).split()) >= 2 and not re.match(r"\s*_", nfc)
+                        and head and head.group(1).islower()):
+                    item("italic_seam", vol, int(n[5:9]),
+                         f"Italics closed at the very foot of the page (“…{tail[-50:]}”) but the sentence goes on "
+                         f"in roman overleaf (“{nfc[:50]}…”): carry the italics over to where the quotation ends")
+                if tail.endswith(".") and head and head.group(1).islower() and not ABBREV.search(tail):
+                    item("period_seam", vol, int(n[5:9]),
+                         f"Full stop at the foot of the page (“…{tail[-45:]}”) but the next page goes on in "
+                         f"lower case (“{nfc[:45]}…”): stray full stop, or a capital to restore?")
+            # only the first block of a page may lack a lemma (it continues the page before)
+            if not lemma and c.get("commentary_id") != 1:
+                why = ("the lemma is at the start of the comment: move it to latin_quote"
+                       if re.match(r"\s*[A-ZÀ-ÝŒÆ]{2,}[\sA-ZÀ-ÝŒÆ',.;:?!-]{6,}", fc) else
+                       "one note split in two, or a lemma lost?")
+                item("no_lemma", vol, int(n[5:9]),
+                     f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}) has no latin_quote: “{(tr or fc)[:70]}…”: {why}")
             # the lemma: printed in capitals, with a verse_ref, and a translation of about its length
             bare = re.sub(r"\^\{[^}]*\}", "", lemma)
             if (lemma or tr) and not str(c.get("verse_ref") or "").strip():
@@ -305,6 +369,24 @@ def audit_book(key, info, slug, published=True):
                  f"{len(fns)} footnotes for {len(called)} calls in the text"
                  + (f": nothing calls {', '.join(uncalled)}" if uncalled else ": a marker is used twice")
                  + " (footnote from another page, a call lost, or a duplicate?)")
+    # "&" (et) misread as "etc.": an etc. that the sentence runs on from (lower case after it,
+    # or more of the lemma after an ETC.)
+    ETC_LOW = re.compile(r"\b(?:etc|ETC)\.?,?\s+(?:_\s*)?[a-zàâçéèêëîïôûùüÿœæ]")
+    ETC_LEMMA = re.compile(r"\bETC\.?,?\s+[A-ZÀ-ÝŒÆ]{2,}")
+    for vol, n, d in pages:
+        fields = [("chapter_summary", d.get("chapter_summary")), ("chapter_intro", d.get("chapter_intro"))]
+        fields += [(k, v.get(k)) for v in d.get("verses") or [] for k in ("latin", "french", "annotations")]
+        fields += [(k, b.get(k)) for b in d.get("commentary") or []
+                   for k in ("latin_quote", "french_translation", "french_commentary")]
+        fields += [("footnote", f.get("text")) for f in d.get("footnotes") or []]
+        for k, t in fields:
+            if not isinstance(t, str):
+                continue
+            hits = list(ETC_LOW.finditer(t)) + (list(ETC_LEMMA.finditer(t)) if k == "latin_quote" else [])
+            for m in hits:
+                item("etc_for_et", vol, int(n[5:9]),
+                     f"“etc.” in {k} with the sentence going on: “…{t[max(0, m.start() - 35):m.end() + 25]}…”: "
+                     f"an “&” (et) misread as etc.? (fine if the scan has &c.)")
     # A page whose commentary repeats a neighbour's: one of the two scans was transcribed twice
     def shingles(d):
         w = re.findall(r"\w+", " ".join((c.get("french_commentary") or "") + " " + (c.get("latin_quote") or "")
@@ -466,7 +548,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "long_translation", "hebrew_in_translation", "lowercase_lemma", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "lowercase_lemma", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's
@@ -490,6 +572,15 @@ def main():
                 vol, stem = x["page"].split("/")
                 queue.append(dict(id=f"{vol}/{stem[5:9]}/{kind}/{hashlib.md5(x['msg'].encode()).hexdigest()[:8]}",
                                   book_dir=vol, page=int(stem[5:9]), kind=kind, msg=x["msg"], optional=False))
+    # Footnote Hebrew that footnotes.py's scan corrected but still couldn't find in the Hebrew Bible
+    for fn_file in sorted((DOCS / "footnotes").glob("*.json")):
+        vol = fn_file.stem
+        for n in json.loads(fn_file.read_text())["notes"]:
+            if "hebrew-recheck" in n["flags"]:
+                queue.append(dict(id=f"{vol}/{n['page'][5:9]}/hebrew_recheck/{n['marker']}", book_dir=vol,
+                                  page=int(n["page"][5:9]), kind="hebrew_recheck", optional=False,
+                                  msg=f"footnote {n['marker']}: was {n['text'][:80]} → now {n['proposed'][:80]}. "
+                                      + " ".join(n["why"])))
     if MANUAL.exists():
         for m in json.loads(MANUAL.read_text()):
             queue.append(dict(id=f"{m['book_dir']}/{m['page']:04d}/reported/{hashlib.md5(m['msg'].encode()).hexdigest()[:8]}",

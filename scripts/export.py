@@ -55,7 +55,7 @@ def join(left, right):
 
 def verses_by_chapter(key):
     """Each verse goes to its `chapter` field (assign_chapters.py)."""
-    chapters, summaries, current = defaultdict(list), {}, None
+    chapters, summaries, intros, current = defaultdict(list), {}, {}, None
     for volume in BOOKS[key]["studium"]:
         for p in pages(volume):
             try:
@@ -72,6 +72,10 @@ def verses_by_chapter(key):
             current = chapter_of(page) or current
             if current and page.get("chapter_summary") and current not in summaries:
                 summaries[current] = page["chapter_summary"]
+            # Calmet's introduction to a chapter can run over several pages: each page's
+            # chapter_intro continues the one before, from the page that opens the chapter
+            if current and (page.get("chapter_intro") or "").strip():
+                intros[current] = join(intros.get(current), page["chapter_intro"])
 
     for ch, verses in chapters.items():
         verses.sort(key=num)
@@ -90,7 +94,7 @@ def verses_by_chapter(key):
             else:
                 merged.append(v)
         chapters[ch] = merged
-    return chapters, summaries
+    return chapters, summaries, intros
 
 
 def sort_notes(notes):
@@ -108,9 +112,10 @@ def export(key):
     raw_dir, cal_dir = WEB / "raw" / book["site"], WEB / "calmet" / book["site"]
     raw_dir.mkdir(parents=True, exist_ok=True)
     cal_dir.mkdir(parents=True, exist_ok=True)
-    chapters, summaries = verses_by_chapter(key)
+    chapters, summaries, intros = verses_by_chapter(key)
     for ch, verses in sorted(chapters.items()):
-        out = dict(book=book["fr"], chapter=ch, chapter_summary=summaries.get(ch), verses=verses)
+        out = dict(book=book["fr"], chapter=ch, chapter_summary=summaries.get(ch),
+                   chapter_intro=intros.get(ch), verses=verses)
         (raw_dir / f"chapter_{ch:02d}.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     failed = []
     for ch in range(1, max(chapters, default=0) + 1):

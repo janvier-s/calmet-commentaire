@@ -31,34 +31,82 @@ async def run_agy_batch(text_batch, semaphore):
                 stderr=asyncio.subprocess.PIPE
             )
             stdout, stderr = await process.communicate(prompt.encode('utf-8'))
+            if process.returncode != 0:
+                raise Exception(f"Error calling {BACKEND}: {(stderr or stdout).decode('utf-8')[:200]}")
+            result = stdout.decode('utf-8').strip()
         else:
             process = await asyncio.create_subprocess_exec(
-                'agy', '-p', prompt,
+                'agy', '--print-timeout', '180s', '-p', prompt,
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE
             )
-            stdout, stderr = await process.communicate()
-        
-        if process.returncode == 0:
-            result = stdout.decode('utf-8').strip()
-            # Failsafe if the LLM adds markdown or quotes
-            if result.startswith("```"):
-                lines = result.split("\n")
-                if len(lines) > 2:
-                    result = "\n".join(lines[1:-1]).strip()
-            if result.startswith("json"):
-                result = result[4:].strip()
-                
+            chunks = []
+            parsed_early = None
+
+            async def read_until_json():
+                nonlocal parsed_early
+                while True:
+                    line = await process.stdout.readline()
+                    if not line:
+                        break
+                    chunks.append(line)
+                    s = line.decode('utf-8', errors='replace').strip()
+                    if s.endswith(']') or s == '```':
+                        raw = b"".join(chunks).decode('utf-8', errors='replace').strip()
+                        if raw.startswith("```"):
+                            r_lines = raw.split("\n")
+                            if len(r_lines) > 2:
+                                raw = "\n".join(r_lines[1:-1]).strip()
+                        if raw.startswith("json"):
+                            raw = raw[4:].strip()
+                        try:
+                            candidate = json.loads(raw)
+                            if isinstance(candidate, list):
+                                parsed_early = candidate
+                                return
+                        except json.JSONDecodeError:
+                            pass
+
             try:
-                output_batch = json.loads(result)
-                if isinstance(output_batch, list) and len(output_batch) == len(text_batch):
-                    return output_batch
+                await asyncio.wait_for(read_until_json(), timeout=180)
+            except asyncio.TimeoutError:
+                pass
+
+            if process.returncode is None:
+                try:
+                    process.kill()
+                except ProcessLookupError:
+                    pass
+                await process.wait()
+
+            if parsed_early is not None:
+                if len(parsed_early) == len(text_batch):
+                    return parsed_early
                 else:
-                    raise Exception(f"Output array length ({len(output_batch if isinstance(output_batch, list) else 0)}) does not match input ({len(text_batch)})")
-            except json.JSONDecodeError as e:
-                raise Exception(f"Error parsing JSON from agy: {e}\nRaw Output: {result[:200]}...")
-        else:
-            raise Exception(f"Error calling {BACKEND}: {(stderr or stdout).decode('utf-8')[:200]}")
+                    raise Exception(f"Output array length ({len(parsed_early)}) does not match input ({len(text_batch)})")
+
+            stdout = b"".join(chunks)
+            stderr = await process.stderr.read() if process.stderr else b""
+            result = stdout.decode('utf-8', errors='replace').strip()
+            if not result:
+                raise Exception(f"Error calling {BACKEND}: {(stderr or stdout).decode('utf-8', errors='replace')[:200]}")
+
+        # Failsafe if the LLM adds markdown or quotes
+        if result.startswith("```"):
+            lines = result.split("\n")
+            if len(lines) > 2:
+                result = "\n".join(lines[1:-1]).strip()
+        if result.startswith("json"):
+            result = result[4:].strip()
+            
+        try:
+            output_batch = json.loads(result)
+            if isinstance(output_batch, list) and len(output_batch) == len(text_batch):
+                return output_batch
+            else:
+                raise Exception(f"Output array length ({len(output_batch if isinstance(output_batch, list) else 0)}) does not match input ({len(text_batch)})")
+        except json.JSONDecodeError as e:
+            raise Exception(f"Error parsing JSON from agy: {e}\nRaw Output: {result[:200]}...")
 
 import hashlib
 import os
@@ -93,8 +141,9 @@ async def main():
     
     semaphore = asyncio.Semaphore(10)
     cache = load_cache()
+    cache_values = set(cache.values())
     
-    print(f"Loading {len(files)} files into memory...")
+    print(f"Loading {len(files)} files into memory...", flush=True)
     
     file_data_map = {}
     pointers = [] # stores (data_dict, key, original_text, hash)
@@ -112,7 +161,7 @@ async def main():
             h = get_hash(text)
             if h in cache:
                 item[key] = cache[h] # Apply cached version immediately
-            elif text in cache.values():
+            elif text in cache_values:
                 pass # Already perfectly modernized, nothing to do
             else:
                 pointers.append((item, key, text, h))
@@ -144,9 +193,11 @@ async def main():
         batches = batches[:MAX_BATCHES]
 
     print(f"Total batches to process: {len(batches)}")
+    completed_batches = 0
     
     async def process_batch(batch_pointers, batch_texts, idx):
-        print(f"Sending batch {idx}/{len(batches)}...")
+        nonlocal completed_batches
+        print(f"Sending batch {idx}/{len(batches)}...", flush=True)
         try:
             modernized_texts = await run_agy_batch(batch_texts, semaphore)
             # apply and cache
@@ -158,9 +209,12 @@ async def main():
                 elif modernized_texts[j] == orig:
                     # also cache if LLM decided no changes were needed, to prevent re-running forever
                     cache[h] = modernized_texts[j]
-            print(f"Batch {idx}/{len(batches)} completed.")
+            completed_batches += 1
+            print(f"Batch {idx}/{len(batches)} completed ({completed_batches}/{len(batches)}).", flush=True)
+            if completed_batches % 10 == 0:
+                save_cache(cache)
         except Exception as e:
-            print(f"Batch {idx}/{len(batches)} failed: {e}", file=sys.stderr)
+            print(f"Batch {idx}/{len(batches)} failed: {e}", file=sys.stderr, flush=True)
             # Do NOT cache, leave original text in memory so it doesn't crash
             for j, (parent, key, orig, h) in enumerate(batch_pointers):
                 parent[key] = orig
@@ -171,7 +225,7 @@ async def main():
         
     await asyncio.gather(*tasks)
     
-    print("All texts modernized! Saving cache and files to disk...")
+    print("All texts modernized! Saving cache and files to disk...", flush=True)
     # Merge with the cache on disk: other scripts may have added entries during the run.
     on_disk = load_cache()
     on_disk.update(cache)

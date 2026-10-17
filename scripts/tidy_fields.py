@@ -2,6 +2,10 @@
 
   - verses: no underscores in `latin` or `french` (the site styles verses itself)
   - french_translation: no underscores (the site sets the whole translation in italic)
+  - chapter_summary: no underscores
+  - latin_quote: "etc." in capitals like the rest of the lemma ("…EJUS, ETC.")
+  - french_commentary starting with punctuation ("; c'est-à-dire…"): the punctuation goes to
+    the end of the block's french_translation (replacing a final full stop or comma there)
   - annotations: [] / "[]" / "" and bare verse marks (℣. 1., †., *.) -> null;
     a bare year ("2949.") -> "An du M. 2949."
   - french_commentary: blank lines (\\n\\n) -> a single \\n (one \\n = one paragraph on the site),
@@ -22,6 +26,7 @@ import sys
 
 from paths import DATA, LLM_CACHE, pages
 
+LEAD = re.compile(r"\s*([.,;:!?»]+)[ \t\u00a0]*")
 MARK = re.compile(r"(℣|†|\*)\.?\s*(\d+\.?)?")
 YEAR = re.compile(r"\d{3,4}\.?")
 DATED = re.compile(r"An\.? du M(?:\.|onde)\s*(\d{4})")
@@ -51,14 +56,34 @@ def tidy(d, cache, stats):
             v["annotations"] = "An du M. " + a.strip()
             stats["bare years dated"] += 1
             changed = True
+    t = d.get("chapter_summary")
+    if isinstance(t, str) and "_" in t:
+        d["chapter_summary"] = strip_us(t)
+        stats["summary underscores"] += 1
+        changed = True
     for b in d.get("commentary") or []:
+        t = b.get("latin_quote")
+        if isinstance(t, str) and re.search(r"\betc\b", t):
+            b["latin_quote"] = re.sub(r"\betc\b", "ETC", t)
+            stats["lemma etc"] += 1
+            changed = True
         t = b.get("french_translation")
         if isinstance(t, str) and "_" in t:
             b["french_translation"] = strip_us(t)
             cache[hashlib.md5(b["french_translation"].encode()).hexdigest()] = b["french_translation"]
             stats["translation underscores"] += 1
             changed = True
-        t = b.get("french_commentary")
+        t, tr = b.get("french_commentary"), (b.get("french_translation") or "").strip()
+        m = LEAD.match(t or "")
+        if m and tr:
+            tr = re.sub(r"(?<!etc)[.,;:]$", "", tr).rstrip()
+            mark = m.group(1)
+            b["french_translation"] = tr + (" " if mark[0] in ";:!?" else "") + mark
+            b["french_commentary"] = t = t[m.end():]
+            for x in (b["french_translation"], t):
+                cache[hashlib.md5(x.encode()).hexdigest()] = x
+            stats["leading punctuation moved"] += 1
+            changed = True
         if isinstance(t, str) and ("\n\n" in t or t != t.rstrip()):
             new = re.sub(r"\n(?:[ \t ]*\n)+", "\n", t).rstrip()
             if new != t:

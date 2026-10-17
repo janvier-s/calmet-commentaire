@@ -1,0 +1,74 @@
+# How Calmet's abbreviations are written out in the footnotes (footnotes.py gives this to Claude).
+# "abbreviation = French". Context decides between two readings (marked "or").
+
+## Words
+l. / lib. / Lib. = livre        c. / cap. / Cap. / ch. / chap. = chapitre       n. = numéro
+hom. / homil. = homélie         ep. / epist. = lettre       serm. = sermon      orat. = discours
+q. / qu. / quæst. / quaest. = question       tract. = traité       art. = article
+p. / pag. = page                edit. / Edit. = édition      not. = note        col. = colonne
+v. (in a poem) = vers            ℣. = verset                 init. = au commencement
+apud X = dans X                  ex X = d'après X             vide / vid. / voi = voyez
+ibid. = au même endroit (or: the reference before it, written out)   id. / idem = le même
+hic / in loc. / in hunc locum = sur ce passage       et alii / alii = et d'autres     passim = passim
+seq. / sequ. / sq. = et suivants        etc. = etc.        Ms. / Mss. = manuscrit(s)
+
+## Versions and texts
+Hebr. / Heb. (not followed by a chapter) = l'Hébreu      70. / LXX / Sept. = les Septante
+Sym. / Symm. / Symmach. = Symmaque     Aq. / Aqu. / Aquil. = Aquila    Theodot. / Theod. (a version) = Théodotion
+Syr. = le Syriaque    Arab. = l'Arabe    Chald. / Cald. = le Chaldéen    Samar. = le Samaritain    Vulg. = la Vulgate
+Græc. = le Grec    Onkel. = Onkelos    Jonath. / Jonat. = Jonathan    Targ. = le Targum    Complut. = l'édition de Complute
+Hexapl. = les Hexaples    Psalter. / Psalt. Roman. = le Psautier romain    Carnut. / Carnot. = le Psautier de Chartres
+German. / Germ. = le Psautier de Saint-Germain    Mediol. = le Psautier de Milan    Rabb. / Rab. / Rabbini = les rabbins
+R. Salom. / Salom. = Rabbi Salomon    Kimchi = Kimhi    Maimonid. = Maïmonide    Abenezra = Aben Ezra
+
+## Fathers and church writers (saints with "saint", lower case unless the note starts with it)
+Aug. / August. = saint Augustin    Hieron. / Hieronym. / Ieron. / Jeron. / Jer. (a Father) = saint Jérôme
+Ambros. = saint Ambroise    Basil. = saint Basile    Chrysost. / Chrys. = saint Jean Chrysostome
+Nazianz. / Greg. Nazianz. = saint Grégoire de Nazianze    Nyssen. = saint Grégoire de Nysse
+Greg. (Moral., Dialog.) = saint Grégoire le Grand    Hilar. = saint Hilaire    Athanas. = saint Athanase
+Cyrill. = saint Cyrille (d'Alexandrie; Catech. = de Jérusalem)    Epiphan. = saint Épiphane    Iren. = saint Irénée
+Justin. (Apolog., Dialog.) = saint Justin    Cyprian. = saint Cyprien    Isidor. = saint Isidore    Thom. / D. Thom. = saint Thomas
+Clem. Alex. = saint Clément d'Alexandrie    Bern. = saint Bernard    Damascen. = saint Jean Damascène    Ephrem = saint Éphrem
+Origen. / Orig. = Origène    Tertul. / Tertull. = Tertullien    Theodoret. / Theodor. / Theod. (a Father) = Théodoret
+Euseb. = Eusèbe    Lactant. = Lactance    Procop. = Procope de Gaza    Euthym. = Euthyme    Cassiodor. / Cassiod. = Cassiodore
+Beda / Bed. = Bède    Rupert. = Rupert    Severian. Gabal. = Sévérien de Gabala    Isidor. Pelus. = saint Isidore de Péluse
+Nicephor. = Nicéphore    Philo = Philon    Diodor. Tars. = Diodore de Tarse    Theophyl. = Théophylacte    Anastas. = Anastase
+Sulpit. Sever. = Sulpice Sévère    Prosper. = saint Prosper    Hugo Victorin. = Hugues de Saint-Victor    Eucher. = saint Eucher
+
+## Commentators
+Grot. = Grotius    Vat. / Vatab. = Vatable    Jun. / Iun. = Junius    Menoch. / Menoc. = Ménochius    Munst. = Munster
+Drus. = Drusius    Bonfr. / Bonfrer. = Bonfrère    Pisc. / Piscat. = Piscator    Cornel. / Cornel. à Lap. / Lap. = Cornelius a Lapide
+Malv. = Malvenda    Serar. = Serarius    Tirin. / Tir. = Tirin    Lyr. / Lyran. / Liran. = Nicolas de Lyre    Pagn. / Pag. = Pagnin
+Fag. = Fagius    Tost. / Tostat. / Abulens. = Tostat    Est. = Estius    Boch. / Bochart = Bochart    Genebr. = Génébrard
+Mercer. = Mercier    Castal. = Castalion    Tremel. / Tremell. = Tremellius    Oleast. = Oleaster    Jansen. = Jansénius
+Cajet. / Caiet. = Cajetan    Cleric. / Le Clerc = Le Clerc    Usser. = Ussérius    Salian. = Salian    Muis = de Muis
+Mont. = Arias Montanus    Mas. = Masius    Sanct. / Sanst. = Sanctius    Marian. = Mariana    Pined. = Pineda
+Cocc. = Cocceius    Glass. = Glassius    Osiand. = Osiander    Geier = Geier    Rivet. = Rivet    Flamin. = Flaminius
+Hamm. = Hammond    Ligf. / Lightf. = Lightfoot    Lud. de Dieu = Louis de Dieu    Fuller. = Fuller    Selden. = Selden
+Buxtorf. = Buxtorf    Huet. = Huet    Bellarm. = Bellarmin    Calvin. = Calvin    Eugubin. / Eugub. = Eugubinus    Catharin. = Catharin
+
+## Classical authors
+Plin. = Pline    Herodot. / Herod. = Hérodote    Strab. = Strabon    Diodor. / Diod. Sicul. = Diodore de Sicile
+Joseph. = Josèphe    Antiq. / Antiquit. = Antiquités judaïques    de Bello = Guerre des Juifs    contra Appion. = Contre Apion
+Virgil. = Virgile    Æneid. / Aeneid. = Énéide    Georg. = Géorgiques    Eclog. = Églogues    Homer. = Homère
+Iliad. = Iliade    Odyss. / Odiss. = Odyssée    Ovid. = Ovide    Metam. / Metamorph. = Métamorphoses    Fast. = Fastes
+Horat. = Horace    Curt. / Q. Curt. = Quinte-Curce    Tacit. = Tacite    Xenoph. = Xénophon    Cyropæd. = Cyropédie
+Plutarch. / Plut. = Plutarque    Senec. = Sénèque    Hesych. = Hésychius    Hesiod. = Hésiode    Solin. = Solin
+Ammian. = Ammien Marcellin    Arist. / Aristot. = Aristote    Plato = Platon    Tull. / Cic. = Cicéron    Juvenal. = Juvénal
+Lucan. = Lucain    Ælian. / Aelian. = Élien    Athen. = Athénée    Porphyr. = Porphyre    Pausan. = Pausanias
+Laërt. / Diogen. Laërt. = Diogène Laërce    Justin. (Histor.) = Justin    Polyb. = Polybe    Sext. Empyr. = Sextus Empiricus
+Jamblic. = Jamblique    Stephan. = Étienne de Byzance    Suidas = Suidas    Ptolem. = Ptolémée    Theophr. = Théophraste
+
+## Works
+de Civit. (Dei) = La Cité de Dieu    Confess. = Confessions    de Genesi ad litt. = De la Genèse à la lettre
+de Genesi contra Manich. = De la Genèse contre les manichéens    contra Faust. = Contre Fauste    de Trinit. = De la Trinité
+Retract. = Rétractations    Enchirid. = Enchiridion    quæst. in Genes. = Questions sur la Genèse    in Psal. = sur le Psaume
+in Genes. = sur la Genèse (a commentary on the book)    Moral. = Morales sur Job    Strom. = Stromates
+Præp. / Prep. / Praep. = Préparation évangélique    Demonst. = Démonstration évangélique    Hist. Eccl. = Histoire ecclésiastique
+Hexaëm. / Hexaëmer. / Hexaëmeron = Hexaméron    contra Cels. = Contre Celse    περὶ ἀρχῶν / de princip. = Des principes
+Apolog. / Apologet. = Apologétique    adv. / advers. Marcion. = Contre Marcion    advers. Judæos = Contre les Juifs
+Catech. = Catéchèses    Dialog. cum Tryph. = Dialogue avec Tryphon    quæst. Hebr. / Hebraic. = Questions hébraïques
+tradit. Hebr. = Traditions hébraïques    de locis Hebr. = Des lieux hébreux    de nominib. Hebr. = Des noms hébreux
+de mundi opificio = De la création du monde    de nat. Deorum = De la nature des dieux    Academic. = Questions académiques
+Hierozoic. = Hierozoicon    Phaleg = Phaleg    Chanaan = Chanaan    de Jure Nat. et Gent. = Du droit naturel et des gens
+de Synedr. = Des Sanhédrins    de Diis Syris = Des dieux syriens    Bibliot. / Bibl. (Diodore) = Bibliothèque historique

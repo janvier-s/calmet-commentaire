@@ -172,7 +172,8 @@ def assign(key, dry, report):
                 continue
             where = f"{volume}/{p.stem}"
             opens = chapter_of(page)
-            if opens and current and opens != current + 1:
+            if opens and current and opens not in (current, current + 1):  # repeated: the heading over
+                # the commentary (often with the chapter's introduction) and again over the text
                 report.append(dict(kind="jump", page=where, msg=f"chapter heading {opens} after {current}"))
             changed = False
             for section, t in tracks.items():
