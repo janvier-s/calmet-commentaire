@@ -44,7 +44,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 26,
       "latin_quote": null,
       "french_translation": null,
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 26,
       "latin_quote": "CONFREGI CATENAS CERVICUM VESTRARUM, UT INCEDERETIS ERECTI.",
       "french_translation": "J'ai brisé les chaînes dont votre cou était chargé, et je vous ai fait marcher droit.",
@@ -62,8 +62,9 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "אשר סבת עלכם"
+      "text": "אשר מטת עלכם"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }
