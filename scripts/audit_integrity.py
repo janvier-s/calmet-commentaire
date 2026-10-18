@@ -8,6 +8,7 @@ import hashlib, json, re, sys, statistics
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from calmet import STRAY, _fold, vulgate_words
 from export import chapter_of
 from paths import BOOKS, DATA as STUDIUM, DOCS, VUL, WEB as SITE
 
@@ -337,6 +338,15 @@ def audit_book(key, info, slug, published=True):
             if re.search(r"[a-zàâçéèêëîïôûùüÿœæ]", bare):
                 item("lowercase_lemma", vol, int(n[5:9]),
                      f"Lower case in latin_quote “{lemma[:70]}”: French or commentary in the lemma field?")
+            # the site takes the lemma's capitals from the Vulgate (calmet.py latin_case): a word the
+            # Vulgate lacks comes out in lower case
+            unknown = [w for w in re.findall(r"[^\W\d_]{3,}", STRAY.sub("", lemma))
+                       if _fold(w) not in vulgate_words() and w.lower() != "etc"]
+            if unknown:
+                item("lemma_unknown_word", vol, int(n[5:9]),
+                     f"Not in the Vulgate: {', '.join(unknown)} in “{lemma[:60]}”: a name (add it to "
+                     f"scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
+                     optional=True)
             # a lemma and translation split by the page turn are measured whole
             la, fr, cut = bare, tr, ""
             if j == len(cs) - 1 and (rest := runs_over(i)):
@@ -361,6 +371,12 @@ def audit_book(key, info, slug, published=True):
                     item("broken_marker", vol, int(n[5:9]),
                          f"Footnote call “{b}” in {k}: “…{t[max(0, pos - 30):pos + len(b) + 10]}…”")
         fns = d.get("footnotes") or []
+        # an asterisk marks footnote text that was guessed, not read on the scan: one item per page
+        starred = [str(f.get("marker")) for f in fns if "*" in str(f.get("text") or "")]
+        if starred:
+            item("footnote_asterisk", vol, int(n[5:9]),
+                 f"Footnote{'s' if len(starred) > 1 else ''} {', '.join(starred)}: words marked * were guessed: "
+                 f"check them against the scan, then remove the asterisks")
         called = set(re.findall(r"\^\{\(([a-z])\)\}", json.dumps({k: v for k, v in d.items() if k != "footnotes"},
                                                                 ensure_ascii=False)))
         if len(fns) > len(called):
@@ -399,13 +415,20 @@ def audit_book(key, info, slug, published=True):
                 item("duplicate_page", vol, int(n[5:9]),
                      f"Commentary of page {int(n[5:9])} repeats page {int(n2[5:9])} "
                      f"({round(100 * len(a & b) / min(len(a), len(b)))}% the same): one of them must be retranscribed from its scan")
-    # verses filled in from the Vulgate (fill_psalm_verses.py) until their French is typed
+    # verses filled in from the Vulgate (fill_psalm_verses.py) until their French is typed;
+    # any other verse without French lost it in transcription
     for vol, n, d in pages:
         for v in d.get("verses") or []:
-            if str(v.get("annotations") or "").startswith("Latin from the Vulgate") and not (v.get("french") or "").strip():
+            if (v.get("french") or "").strip():
+                continue
+            if str(v.get("annotations") or "").startswith("Latin from the Vulgate"):
                 item("vulgate_filled", vol, int(n[5:9]),
                      f"Verse {v.get('verse_number')} was missing: its Latin is filled in from the Vulgate "
                      f"(“{(v.get('latin') or '')[:50]}…”). Check it against the scan, type Calmet's French, then clear the note")
+            else:
+                item("missing_french", vol, int(n[5:9]),
+                     f"Verse {v.get('chapter')}:{v.get('verse_number')} has no French "
+                     f"(Latin: “{(v.get('latin') or '')[:50]}…”): type Calmet's translation from the scan")
     r["empty_commentary"], r["caps_in_commentary"], r["broken_markers"] = empty_notes, caps_runs, odd_marks
 
     # ---------- what the site serves ----------
@@ -548,7 +571,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "lowercase_lemma", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's

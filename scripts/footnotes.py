@@ -3,28 +3,35 @@
 Stages (`run` does all three; every Claude answer is cached):
   1. local, free: Bible references written out with Calmet's (Vulgate) names and checked
      against the Vulgate, and against the Latin they are cited for; Hebrew checked against
-     the Hebrew Bible, Greek against the Septuagint; [UNCERTAIN …], [ILLEGIBLE] and the
+     the Hebrew Bible, Greek against the Septuagint, allowing for misread type (letters set
+     right from the Bible); [UNCERTAIN …], [ILLEGIBLE] and the
      references garbled by the earlier expansion ("inGenèse 50actant.") flagged.
   2. scan: Claude reads the footnote area of the scan, for the flagged Hebrew, Greek and
      uncertain notes only. Text it supplies for an uncertain or illegible place gets "*".
-  3. expand: Claude writes out the other abbreviations (Fathers, commentators, classical
-     authors), in batches, following footnote_glossary.txt.
+  2b. context (--context): what stays doubtful (Hebrew and Greek not found, [UNCERTAIN …],
+     references that do not exist or are ambiguous) set right by Claude from the passage the
+     note is called from, text only, the answer only the edits; guessed text gets "*".
+  3. expand: footnote_expand.py writes out, without Claude, the notes made of citations the
+     glossary knows; Claude writes out the rest (Fathers, commentators, classical authors),
+     in batches, following footnote_glossary.txt. With --local, only footnote_expand.py.
 Writes docs/footnotes/<volume>.json: each changed or flagged note with its current text,
 the proposal, why, and flags. `apply` writes the proposals into normalized/.
 
-Usage: uv run --no-project --with pillow python footnotes.py run <volume> [--pages 99-140] [--local]
+Usage: uv run --no-project --with pillow python footnotes.py run <volume> [--pages 99-140] [--local | --no-scan] [--uncertain-only] [--context]
        python3 footnotes.py apply <volume> [--pages 99-140] [--no-hold]
+       python3 footnotes.py held      (every note still held, all volumes: docs/footnotes/held.json)
 CLAUDE_MODEL (expand) and SCAN_MODEL (scan) choose the models (default sonnet for both) choose the models.
 """
-import asyncio, hashlib, json, os, re, sys, unicodedata
+import asyncio, difflib, hashlib, json, os, re, sys, unicodedata
 from collections import Counter, defaultdict
 
 import bible_refs as B
+import footnote_spell
 from paths import BOOKS, BY_VOLUME, DATA, DOCS, SCRIPTS, pages as volume_pages
 
 OUT_DIR = DOCS / "footnotes"
 CACHE = SCRIPTS / "cache" / "footnote_cache.json"
-CROPS = SCRIPTS / "cache" / "footnote_crops"
+CROPS = SCRIPTS / "cache" / "footnote_crops2"
 GLOSSARY = (SCRIPTS / "footnote_glossary.txt").read_text(encoding="utf-8")
 EXPAND_MODEL = os.environ.get("CLAUDE_MODEL", "sonnet")
 SCAN_MODEL = os.environ.get("SCAN_MODEL", "sonnet")
@@ -37,7 +44,7 @@ GRK_SEG = re.compile(r"[Ͱ-Ͽἀ-῿][Ͱ-Ͽἀ-῿̀-ͯ'’᾽ʼ]*"
 UNSURE = re.compile(r"\[(?:UNCERTAIN[^\]]*|ILLEGIBLE)\]")
 FRENCH_BOOKS = "|".join(sorted({re.escape(k.split(" ", 1)[-1]) for k in B.BOOK} | {"Samuel", "Chroniques"}, key=len, reverse=True))
 GLUED = re.compile(rf"[a-zà-ÿ](?:{FRENCH_BOOKS})\b|\b(?:{FRENCH_BOOKS})\s?\d+(?::\d+)?[A-Za-zÀ-ÿ]")
-SEE = re.compile(r"^\s*(?:Vide|Vid\.|Voi|Voyez|Voy\.)\s*", re.I)
+SEE = re.compile(r"^\s*(?:Vide|Vid\.|Voir|Voi|Voyez|Voy\.)\s*", re.I)
 SEQ = re.compile(r"^\s*\.?\s*(?:&|et)\s*(?:seq|sequ|sq|suiv)\w*\.?", re.I)
 COMPARE = re.compile(r"^\s*\.?\s*(?:comparé à|comparez|conf\.?|cf\.?)\s*", re.I)
 GAP = re.compile(r"^[\s.,;:&]*(?:et\s*)?[\s.,;:&]*$")
@@ -102,7 +109,7 @@ def load_volume(volume, lo, hi):
             if isinstance(v.get("annotations"), str):
                 blocks.append((v["annotations"], v.get("chapter"), v.get("verse_number")))
         for fn in d.get("footnotes") or []:
-            if not isinstance(fn.get("text"), str):
+            if not isinstance(fn.get("text"), str) or "marker" not in fn:
                 continue
             call = "^{" + str(fn["marker"]) + "}"
             chap = verse = None
@@ -122,20 +129,6 @@ def load_volume(volume, lo, hi):
 
 # ---- stage 1: local ------------------------------------------------------------
 
-def heb_words(s):
-    return [w for w in (re.sub(r"[^א-ת]", "", x) for x in re.split(r"[\s־]+", s)) if w]
-
-
-def grk_words(s):
-    s = B.plain(s).replace("ς", "σ")
-    return [w for w in re.findall(r"[α-ω]+", s)]
-
-
-def contains(seq, words):
-    k = len(seq)
-    return any(words[i:i + k] == seq for i in range(len(words) - k + 1))
-
-
 def chapters_around(book, chap):
     """Hebrew-book chapters to look in for a Calmet chapter (psalm numbers converted)."""
     if not chap:
@@ -145,98 +138,295 @@ def chapters_around(book, chap):
     return [chap - 1, chap, chap + 1]
 
 
-_HEB_ALL = {}
+HEB_POINTS = re.compile(r"[֑-ׇ]")
+HEB_ALIKE = str.maketrans("דחכזןךםףץ", "רהבווכמפצ")  # letters small type confuses (ר/ד, ה/ח, ב/כ, ו/ז/ן); final forms
 
 
-def heb_index():
-    if not _HEB_ALL:
-        for b, vs in B.hebrew().items():
-            for (c, v), ws in vs.items():
-                for i, w in enumerate(ws):
-                    _HEB_ALL.setdefault(w, []).append((b, c, v, i))
-    return _HEB_ALL
+def heb_skel(w):
+    """A Hebrew word with the letters small type confuses made one, and without ו/י (spelled full or not)."""
+    return re.sub("[וי]", "", re.sub(r"[^א-ת]", "", w).translate(HEB_ALIKE))
 
 
-def heb_phrase_anywhere(ws):
-    idx, H = heb_index(), B.hebrew()
-    for b, c, v, i in idx.get(ws[0], []):
-        if H[b][(c, v)][i:i + len(ws)] == ws:
-            return f"{b} {c}:{v}"
-    return None
+def grk_skel(w):
+    """A Greek word without accents, with the ligatures the transcription misreads made one (ου read ε or ω, στ read σ)."""
+    w = B.plain(unicodedata.normalize("NFD", w.replace("ẽ", "ου")).replace("\u0345", "ι")).replace("ς", "σ").replace("ȣ", "ου").replace("στ", "σ")
+    return re.sub(r"[^α-ω]", "", w.replace("ου", "ε").replace("ω", "ε"))
 
 
-def one_off(a, b):
-    """One letter added, dropped or changed."""
-    if a == b or abs(len(a) - len(b)) > 1:
-        return False
-    if len(a) == len(b):
-        return sum(x != y for x, y in zip(a, b)) == 1
-    s, l = sorted((a, b), key=len)
-    return any(l[:i] + l[i + 1:] == s for i in range(len(l)))
+# Greek runs, with the ου ligature as the transcription writes it (ẽ, ȣ)
+GRK_RUN = re.compile(r"[Ͱ-Ͽἀ-῿ẽȣ][Ͱ-Ͽἀ-῿ẽȣ̀-ͯ'’᾽ʼ]*(?:[\s,.;·:()]+[Ͱ-Ͽἀ-῿ẽȣ][Ͱ-Ͽἀ-῿ẽȣ̀-ͯ'’᾽ʼ]*)*")
+LXX_NAME = {nr: name for name, (_, _, nr) in B.BOOK.items() if nr}
+_STREAMS = {}
+
+
+def stream(kind):
+    """The whole Hebrew Bible or Septuagint as one word list: (words, skeletons, (book, c, v) of each, skeleton -> positions)."""
+    if kind not in _STREAMS:
+        words, where = [], []
+        if kind == "hebrew":
+            for b, vs in B.hebrew().items():
+                for (c, v), ws in sorted(vs.items()):
+                    words += ws
+                    where += [(b, c, v)] * len(ws)
+        else:
+            for f in sorted((B.REFS / "lxx").glob("[0-9]*.json"), key=lambda f: int(f.stem)):
+                for (c, v), t in sorted(B.lxx(int(f.stem)).items()):
+                    ws = re.findall(r"[^\W\d_]+(?:[᾽’'][^\W\d_]*)?", t)
+                    words += ws
+                    where += [(int(f.stem), c, v)] * len(ws)
+        skel = heb_skel if kind == "hebrew" else grk_skel
+        sk = [skel(w) for w in words]
+        index = defaultdict(list)
+        for i, s in enumerate(sk):
+            index[s].append(i)
+        plain = {heb_skel(w) if kind == "hebrew" else B.plain(w).replace("ς", "σ") for w in words}
+        _STREAMS[kind] = (words, sk, where, index, plain)
+    return _STREAMS[kind]
+
+
+def find_in_bible(tokens, kind, book, chaps):
+    """The passage of the Hebrew Bible / Septuagint the words quote, allowing for misread letters.
+    Returns (pairs (token index, Bible position), where) or None. Near the verse commented (book,
+    chapters `chaps`): two words are enough; elsewhere, three. Three words in four must match."""
+    words, sk, where, index, _ = stream(kind)
+    skel = heb_skel if kind == "hebrew" else grk_skel
+    ts = [skel(t) for t in tokens]
+    k = len(ts)
+    if k < 2:
+        return None
+    rare = sorted((i for i in range(k) if ts[i] and len(index.get(ts[i], [])) > 0), key=lambda i: len(index[ts[i]]))[:3]
+    best = None
+    for i in rare:
+        for p in index[ts[i]][:2000]:
+            start = p - i
+            window = sk[max(0, start - 2):start + k + 2]
+            sm = difflib.SequenceMatcher(None, ts, window, autojunk=False)
+            pairs = [(b.a + j, max(0, start - 2) + b.b + j) for b in sm.get_matching_blocks() for j in range(b.size)]
+            near = where[p][0] == book and where[p][1] in chaps
+            if len(pairs) < (2 if near else 3) or len(pairs) < -(-3 * k // 4):
+                continue
+            score = (len(pairs), near)
+            if not best or score > best[0]:
+                best = (score, pairs, where[p])
+    return (best[1], best[2]) if best else None
+
+
+CONFUSED = [set("רד"), set("הח"), set("בכ"), set("וזן"), set("ןנ"), set("מם"), set("ךכ"), set("ףפ"), set("ץצ")]
+
+
+def heb_misread(old, ref):
+    """`old` is `ref` with one letter small type confuses (beyond ו/י spelled full or not)."""
+    a, b = re.sub("[וי]", "", old), re.sub("[וי]", "", ref)
+    diffs = [(x, y) for x, y in zip(a, b) if x != y]
+    return len(a) == len(b) and len(diffs) == 1 and any({*diffs[0]} <= c for c in CONFUSED)
+
+
+def marks(w):
+    """The accents and breathings of a Greek word."""
+    return [c for c in unicodedata.normalize("NFD", w) if unicodedata.combining(c)]
+
+
+def known(token, kind):
+    _, _, _, _, plain = stream(kind)
+    return (heb_skel(token) if kind == "hebrew" else B.plain(token).replace("ς", "σ")) in plain
+
+
+def heb_variant(a, b):
+    """Only ו and י differ: the same word spelled full or not, left as Calmet prints it."""
+    return re.sub("[וי]", "", a) == re.sub("[וי]", "", b)
+
+
+def verify(seg, kind, book, chaps):
+    """Check one Hebrew or Greek phrase against the Bible. Returns (ok, corrected phrase, notes on what changed)."""
+    parts = re.split(r"([\s־,.;:·]+)", seg)
+    idx = [i for i, p in enumerate(parts) if p and not re.fullmatch(r"[\s־,.;:·]+", p)]
+    tokens = [parts[i] for i in idx]
+    if kind == "hebrew":
+        tokens = [re.sub(r"[^א-ת֑-ׇ]", "", t) for t in tokens]
+    if len(tokens) == 1:  # a word alone: spell() checks it
+        return False, seg, []
+    found = find_in_bible(tokens, kind, book, chaps)
+    if not found and kind == "hebrew":  # Hebrew transcribed in visual order
+        rev = find_in_bible(tokens[::-1], kind, book, chaps)
+        if rev:
+            words = [parts[i] for i in idx][::-1]
+            for i, w in zip(idx, words):
+                parts[i] = w
+            seg2 = "".join(parts)
+            ok, fixed, changes = verify(seg2, kind, book, chaps)
+            return ok, fixed, [f"word order reversed: {seg} -> {seg2}"] + changes
+    if not found:
+        return False, seg, []
+    pairs, (b, c, v) = found
+    words = stream(kind)[0]
+    matched = {a for a, _ in pairs}
+    if not all(known(tokens[i], kind) for i in range(len(tokens)) if i not in matched):
+        return False, seg, []
+    changes = []
+    for a, p in pairs:
+        old, ref = parts[idx[a]], words[p]
+        if kind == "hebrew":
+            bare = re.sub(r"[^א-ת]", "", old)
+            if HEB_POINTS.search(old) or bare == ref or heb_variant(bare, ref):
+                continue
+            if not heb_misread(bare, ref):
+                return False, seg, []  # not a slip of the type: the scan decides
+            new = re.sub(r"[א-ת]+", ref, old, count=1)
+        else:
+            same_letters = B.plain(old).replace("ς", "σ") == B.plain(ref).replace("ς", "σ")
+            if old == ref or not marks(ref) or (same_letters and marks(old) and
+                                               [m for m in marks(old) if m in "\u0313\u0314"] == [m for m in marks(ref) if m in "\u0313\u0314"]):
+                continue  # proper nouns are unaccented in the Septuagint text; accents placed otherwise are Calmet's
+            new = ref[0].upper() + ref[1:] if old[:1].isupper() else ref
+            if new == old:
+                continue
+        parts[idx[a]] = new
+        changes.append(f"{old} -> {new}")
+    label = f"the Hebrew Bible, {b} {c}:{v}" if kind == "hebrew" else f"the Septuagint, {LXX_NAME.get(b, b)} {c}:{v}"
+    return True, "".join(parts), [f"checked against {label}" + (": " + ", ".join(changes) if changes else "")]
+
+
+def check_script(note, kind):
+    """Each Hebrew (or Greek) phrase: in the Hebrew Bible (or the Septuagint), allowing for misread type?
+    Misread letters are set right from the Bible; what cannot be found waits for the scan."""
+    vul, oshb, nr = B.BOOK.get(note["vol_book"], (None, None, None))
+    if kind == "hebrew":
+        book, chaps, segs = oshb, set(chapters_around(oshb, note["chap"])) if oshb else set(), HEB_SEG.findall(note["proposed"])
+    else:
+        book, chaps = nr, {note["chap"] - 1, note["chap"], note["chap"] + 1} if note["chap"] else set()
+        segs = [g.strip(" ,.;:") for g in GRK_RUN.findall(note["proposed"])]
+    text, unsure = note["proposed"], []
+    for seg in segs:
+        if not seg.strip():
+            continue
+        ok, fixed, why = verify(seg.replace("ẽ", "ου"), kind, book, chaps) if kind == "greek" else verify(seg, kind, book, chaps)
+        if not ok:  # not from the Bible: a Father, a classical author, a version; checked word by word
+            ok, fixed, why, unknown = spell(seg, kind)
+            if unknown:
+                unsure.append(" ".join(unknown)[:80])
+        if fixed != seg:
+            text = text.replace(seg, fixed, 1)
+        note["why"] += [("Hebrew " if kind == "hebrew" else "Greek ") + w for w in why]
+    note["proposed"] = text
+    if unsure:
+        note["flags"].append(kind)
+        source = "the Hebrew Bible" if kind == "hebrew" else "the Septuagint or the Greek dictionary"
+        note["scan_why"].append(f"{'Hebrew' if kind == 'hebrew' else 'Greek'} words not found in {source}: " + " / ".join(unsure))
+
+
+_HEB_WORDS, _LXX_FORMS = set(), set()
+FINAL = dict(zip("כמנפצ", "ךםןףץ"))
+
+
+def hebrew_words():
+    """The Hebrew Bible's words, the Targums' (Sefaria) and Strong's lexicon forms, consonants only."""
+    if not _HEB_WORDS:
+        _HEB_WORDS.update(w for vs in B.hebrew().values() for ws in vs.values() for w in ws)
+
+        def walk(x):
+            if isinstance(x, str):
+                _HEB_WORDS.update(re.sub(r"[^א-ת]", "", y) for y in re.split(r"[\s־]+", re.sub(r"<[^>]+>", "", x)))
+            elif isinstance(x, list):
+                for y in x:
+                    walk(y)
+        for f in (B.REFS / "targum").glob("*.json"):
+            walk(json.loads(f.read_text(encoding="utf-8"))["text"])
+        lex = (B.REFS / "strongs" / "StrongHebrewG.xml").read_text(encoding="utf-8")
+        _HEB_WORDS.update(re.sub(r"[^א-ת]", "", w) for m in re.findall(r'lemma="([^"]*)"', lex) for w in m.split())
+        _HEB_WORDS.discard("")
+        _HEB_WORDS.add("ייי")  # the divine name as Calmet and the rabbis abbreviate it
+    return _HEB_WORDS
+
+
+# two letters at least: with one (ה ו י ם…) almost any misreading would pass for a word
+SUFFIXES = sorted("ים ות נו כם הם הן יו יה יך ינו יכם יהם יהן ותיו ותיהם ותי ותם ותינו תי".split(), key=len, reverse=True)
+FINAL_OF = dict(zip("כמנפצ", "ךםןףץ"))
+
+
+def hebrew_word(w):
+    """A word of the Bible, the Targums or the lexicon, as written, or after its prefixes (ו ה ב כ ל מ ש),
+    or its suffixes (plural, possessive; two letters at least) with a stem of three letters at least."""
+    words = hebrew_words()
+    stems = {w} | {w[k:] for k in range(1, 4) if len(w) - k >= 2 and all(c in "והבכלמש" for c in w[:k])}
+    if stems & words:
+        return True
+    for st in stems:
+        for suf in SUFFIXES:
+            if st.endswith(suf) and len(st) - len(suf) >= 3:
+                base = st[:-len(suf)]
+                if base in words or base[:-1] + FINAL_OF.get(base[-1], base[-1]) in words or base + "ה" in words:
+                    return True
+    return False
+
+
+def lxx_form(w):
+    """A Greek word as the Septuagint would have it: lower case, a final grave made acute."""
+    return unicodedata.normalize("NFC", unicodedata.normalize("NFD", w.lower()).replace("\u0300", "\u0301"))
+
+
+def in_septuagint(w):
+    """The word, accents and breathings as printed, is in the Septuagint."""
+    if not _LXX_FORMS:
+        _LXX_FORMS.update(lxx_form(x) for x in stream("greek")[0])
+    return lxx_form(re.sub(r"[᾽’'ʼ]$", "", w)) in _LXX_FORMS
+
+
+def spell(seg, kind):
+    """A phrase not from the Bible: is each word a word? Greek: the dictionary and the Septuagint,
+    misread ligatures set right (footnote_spell.py). Hebrew: hebrew_word(); a letter that should
+    be final set right.
+    Returns (ok, phrase, notes on what changed, words not found)."""
+    parts = re.split(r"([\s־,.;:·()]+)", seg)
+    if kind == "hebrew":
+        why = []
+        for i, p in enumerate(parts):
+            w = re.sub(r"[^א-ת]", "", p)
+            if w and not hebrew_word(w) and w[-1] in FINAL and hebrew_word(w[:-1] + FINAL[w[-1]]):
+                parts[i] = p[::-1].replace(w[-1], FINAL[w[-1]], 1)[::-1]  # תקפ -> תקף
+                why.append(f"{p} -> {parts[i]}")
+        unknown = [p for p in parts if re.search(r"[א-ת]", p) and not hebrew_word(re.sub(r"[^א-ת]", "", p))]
+        if unknown:
+            return False, "".join(parts), [], unknown
+        return True, "".join(parts), ["words found in the Hebrew Bible, the Targums or Strong's lexicon"
+                                      + (": final letter " + ", ".join(why) if why else "")], []
+    fixed, unknown = footnote_spell.fix(parts, in_septuagint)
+    new = "".join(fixed.get(p, p) for p in parts)
+    why = ["spelling checked against a Greek dictionary" + (": " + ", ".join(f"{a} -> {b}" for a, b in fixed.items()) if fixed else "")]
+    return not unknown, new, why if not unknown or fixed else [], unknown
 
 
 def check_hebrew(note):
-    """Each Hebrew phrase: in the verses around the one commented, or anywhere in the Bible?"""
-    vul, oshb, _ = B.BOOK.get(note["vol_book"], (None, None, None))
-    H = B.hebrew()
-    near = [ws for (c, v), ws in H.get(oshb, {}).items() if c in chapters_around(oshb, note["chap"])] if oshb else []
-    text, unsure = note["proposed"], []
-    for seg in HEB_SEG.findall(text):
-        ws = heb_words(seg)
-        if not ws:
-            continue
-        if any(contains(ws, v) for v in near) or (len(ws) > 1 and heb_phrase_anywhere(ws)):
-            continue
-        rev = ws[::-1]
-        if len(ws) > 1 and (any(contains(rev, v) for v in near) or heb_phrase_anywhere(rev)):
-            fixed = " ".join(seg.split()[::-1])
-            text = text.replace(seg, fixed)
-            note["why"].append(f"Hebrew word order reversed: {seg} -> {fixed}")
-            continue
-        near_words = {w for v in near for w in v}
-        slips = [w for w in ws if w not in near_words for x in near_words if len(w) >= 3 and one_off(w, x)]
-        if len(ws) == 1 and ws[0] in heb_index() and not slips:
-            continue  # a word that exists, cited from elsewhere
-        unsure.append(seg)
-    note["proposed"] = text
-    if unsure:
-        note["flags"].append("hebrew")
-        note["scan_why"].append("Hebrew not found in the verse or anywhere in the Hebrew Bible: " + " / ".join(unsure))
-
-
-_LXX_WORDS = {}
-
-
-def lxx_phrase(ws, nr, chap):
-    """Is the word sequence in the Septuagint chapter (±1), or in the whole Septuagint?"""
-    if nr and chap:
-        for (c, v), t in B.lxx(nr).items():
-            if abs(c - chap) <= 1 and contains(ws, grk_words(t)):
-                return True
-    if not _LXX_WORDS:
-        for f in (B.REFS / "lxx").glob("[0-9]*.json"):
-            _LXX_WORDS[f.stem] = [grk_words(t) for t in B.lxx(int(f.stem)).values()]
-    return any(contains(ws, v) for vs in _LXX_WORDS.values() for v in vs) if len(ws) >= 3 else False
+    check_script(note, "hebrew")
 
 
 def check_greek(note):
-    nr = B.BOOK.get(note["vol_book"], (None, None, None))[2]
-    bad = []
-    for seg in GRK_SEG.findall(note["proposed"]):
-        ws = grk_words(seg)
-        if ws and not lxx_phrase(ws, nr, note["chap"]):
-            bad.append(seg.strip()[:60])
-    if bad:
-        note["flags"].append("greek")
-        note["scan_why"].append("Greek not found in the Septuagint (not checked against any source): " + " / ".join(bad))
+    check_script(note, "greek")
 
 
-def resolve_ambiguous(ref, raw_refs):
-    """'1 Rois 18:38' written by the earlier expansion: Calmet's 1 Rois, or a modern 1 Kings (3 Rois)?"""
+def resolve_ambiguous(ref, raw_refs, note=None, from_volume=False):
+    """'1 Rois 18:38' written by the earlier expansion: Calmet's 1 Rois, or a modern 1 Kings (3 Rois)?
+    The raw page; else, for a bare verse, the volume's own book; else the one reading where the
+    verse exists; else the one whose Vulgate text is the Latin quoted with the note."""
     same = [r for r in raw_refs if r.chap == ref.chap and r.verses[:1] == ref.verses[:1] and r.name in ("Rois", "Paralipomènes")]
     if same:
         return same[0].book
-    return None
+    if from_volume:
+        return ref.book
+    m = re.match(r"([12]) Rois$", ref.book)
+    if not m or note is None:
+        return None
+    other = f"{int(m.group(1)) + 2} Rois"
+    cands = []
+    for book in (ref.book, other):
+        r = B.Ref(ref.start, ref.end, book, ref.name, ref.chap, ref.verses, ref.src)
+        if B.exists(r):
+            cands.append(r)
+    if len(cands) == 1:
+        return cands[0].book
+    quotes = [q for q in map(latin_words, quotes_for(note) + re.findall(r"_([^_]{12,})_", note["text"])) if len(q) >= 3]
+    scores = {r.book: max((len(q & latin_words(B.vulgate_text(r))) / len(q) for q in quotes), default=0) for r in cands}
+    good = [b for b, sc in scores.items() if sc >= 0.5]
+    return good[0] if len(good) == 1 else None
 
 
 def render_bible(note, prev):
@@ -248,7 +438,8 @@ def render_bible(note, prev):
         vm = VERSET_ONLY.match(rest)
         t = f"{prev.book} {prev.chap}. {vm.group(1)}." if vm else f"{prev.book} {rest}"
     vm = VERSET_ONLY.match(t)
-    if vm and note["chap"]:
+    from_volume = bool(vm and note["chap"])
+    if from_volume:
         t = f"{note['vol_book']} {note['chap']}. {vm.group(1)}."
     refs = B.find_refs(t)
     if not refs:
@@ -256,7 +447,7 @@ def render_bible(note, prev):
     raw_refs = B.find_refs(note["raw"]) if note["raw"] else []
     out, pos = [], 0
     lead = t[:refs[0].start]
-    if lead.strip() and not SEE.fullmatch(lead + " ") and not SEE.match(lead):
+    if lead.strip() and not SEE.fullmatch(lead):  # "Voyez Grotius sur …": not references alone
         return None
     see = bool(SEE.match(lead))
     for i, r in enumerate(refs):
@@ -271,7 +462,7 @@ def render_bible(note, prev):
             out.append(sep)
         book = r.book
         if r.name in B.AMBIGUOUS and "Reg" not in r.src and "Par" not in r.src:
-            book = resolve_ambiguous(r, raw_refs)
+            book = resolve_ambiguous(r, raw_refs, note, from_volume)
             if not book:
                 note["flags"].append("ambiguous-name")
                 return None
@@ -318,7 +509,7 @@ def local_stage(notes):
 # ---- stage 2: the scans --------------------------------------------------------
 
 def crop(volume, page):
-    """The footnote area of a page (below the rule), enlarged; cached."""
+    """The footnote area of a page: from the lowest rule to the last line of print; cached."""
     from PIL import Image
     out = CROPS / volume / f"{page}.png"
     if out.exists():
@@ -330,27 +521,31 @@ def crop(volume, page):
     w, h = im.size
     px = im.load()
     x0, x1 = int(w * 0.12), int(w * 0.88)
-    top = None
-    for y in range(int(h * 0.35), int(h * 0.97)):
-        dark = sum(1 for x in range(x0, x1, 2) if px[x, y] < 110)
-        if dark > 0.55 * (x1 - x0) / 2:
-            top = y
-            break
-    top = top if top is not None else int(h * 0.55)
+
+    def dark(y):
+        return sum(1 for x in range(x0, x1, 2) if px[x, y] < 110)
+
+    # the lowest rule: a heading or a band of type higher up can look like one
+    top = next((y for y in range(int(h * 0.97), int(h * 0.35), -1) if dark(y) > 0.55 * (x1 - x0) / 2), int(h * 0.55))
+    bottom = next((y for y in range(h - 1, top, -1) if dark(y) > 3), h - 1)
+    y0, y1 = max(0, top - 4), min(h, bottom + 12)
+    cols = [x for x in range(w) if sum(1 for y in range(y0, y1, 2) if px[x, y] < 110) > 1]
+    c = im.crop((max(0, cols[0] - 10), y0, min(w, cols[-1] + 10), y1) if cols else (0, y0, w, y1))
+    scale = min(2.0, 1560 / c.width)  # as large as Claude reads it (about 1568 px across)
+    if scale > 1.05:
+        c = c.resize((int(c.width * scale), int(c.height * scale)), Image.LANCZOS)
     out.parent.mkdir(parents=True, exist_ok=True)
-    c = im.crop((0, max(0, top - 4), w, h))
-    c = c.resize((int(c.width * 1.6), int(c.height * 1.6)), Image.LANCZOS)
     c.save(out)
     return out
 
 
 SCAN_PROMPT = """You are checking the transcription of footnotes in an 18th-century French Bible commentary (Dom Calmet, 1707), against the printed page.
-Read the image {image} (the footnote area of the page, enlarged). Then, for each footnote below, give its corrected text.
+Read the images {images} (the footnote area of each page; note 0101(a) is on page_0101.png). Then, for each footnote below, give its corrected text.
 
 Rules:
 - Correct only the Hebrew and the Greek, and fill in [UNCERTAIN HEBREW], [UNCERTAIN GREEK] and [ILLEGIBLE]. Change nothing else: keep the Latin and French exactly as given (spelling, abbreviations, punctuation).
 - Hebrew and Greek: copy what is PRINTED, letter for letter (Greek with its accents and breathings; Hebrew with vowel points only if printed). 18th-century Greek type uses ligatures: στ (often misread as ς, σ or ι), ου (misread as ε, ω or ȣ), and others. Hebrew must be in logical (right-to-left reading) order.
-- For [UNCERTAIN …]/[ILLEGIBLE]: replace the placeholder with what the page shows. If you can read it with confidence, write it plainly (no asterisk). Only where the page is not legible enough and you supply the most likely text from the context, put an asterisk right after each guessed word, e.g. "Imago, צלם* umbra". Corrections to existing Hebrew/Greek never get an asterisk.
+- For [UNCERTAIN …]/[ILLEGIBLE]: replace the placeholder with what the page shows. If you can read it with confidence, write it plainly (no asterisk). Only where the page is not legible enough and you supply the most likely text from the context, put an asterisk right after each guessed word, e.g. "Imago, צלם* umbra". Never leave a placeholder: where the page cannot be read at all, write what Calmet most likely printed, from the passage the note is called from, the verse, and the usual form of such citations, with the asterisk. Corrections to existing Hebrew/Greek never get an asterisk.
 - List every placeholder you filled in "fills", in order: {{"text": "<what replaced it, with its asterisk if guessed>", "read": true if read on the page with confidence, false if guessed}}.
 - Small Hebrew type is easily misread (ו/ן/ז/י, ר/ד, ה/ח, ב/כ). Where the print is unclear and the REFERENCE has the word, write the reference's spelling: Calmet quotes the Hebrew of the verse commented as it stands.
 - The reference text (Septuagint or Hebrew Bible) is given as a hint when the note quotes the verse commented; Calmet may quote another version (Aquila, Symmachus) or another passage, so the page wins.
@@ -407,6 +602,28 @@ NOTES:
 {items}"""
 
 
+def glossary_for(notes):
+    """The glossary lines a batch needs: the "Words" section, and every entry one of whose
+    abbreviations begins with a word found in the notes (the whole glossary is ~3x a batch)."""
+    import footnote_expand as X
+    words = {X.key(w) for n in notes for w in re.findall(r"[A-Za-zÀ-ÿæœÆŒſ]+", n["proposed"] + " " + n.get("raw", ""))}
+    words |= {w.replace("f", "s") for w in words}
+    keep, section = [], None
+    for line in GLOSSARY.splitlines():
+        if line.startswith("## "):
+            section = line
+            keep.append(line)
+        elif section and section.startswith("## Words"):
+            keep.append(line)
+    for sec, abbr, fr in X.entries():
+        if sec == "words":
+            continue
+        firsts = [X.key(re.findall(r"[^\s.]+", a)[0]) for a in abbr.split(" / ") if a.strip()]
+        if any(f in words or any(w.startswith(f) and len(f) >= 4 for w in words) for f in firsts):
+            keep.append(f"{abbr} = {fr}")
+    return "\n".join(l for i, l in enumerate(keep) if not (l.startswith("## ") and (i + 1 == len(keep) or keep[i + 1].startswith("## "))))
+
+
 def expand_items(notes):
     out = []
     for n in notes:
@@ -421,6 +638,22 @@ def expand_items(notes):
     return "\n\n".join(out)
 
 
+def expand_local(notes):
+    """Notes made of citations the glossary knows: written out by footnote_expand.py, no Claude."""
+    import footnote_expand
+    done = 0
+    for n in notes:
+        if n["done"] or "garbled-reference" in n["flags"] or not needs_expansion(n["proposed"]) \
+                or re.search(r"\b(?:Samuel|Rois|Chroniques)\b", n["proposed"]):
+            continue
+        new = footnote_expand.expand(n["proposed"], ABBREV)
+        if new and script_kept(n["proposed"], new):
+            n["proposed"], n["done"] = new, True
+            n["why"].append("abbreviations written out (footnote_expand.py)")
+            done += 1
+    print(f"  expand locally: {done} notes written out", flush=True)
+
+
 def script_kept(old, new):
     """Every Hebrew and Greek passage of `new` is in `old` unchanged; one left out may only be a
     short title written out in French ("περὶ ἀρχῶν" -> "Des principes")."""
@@ -433,14 +666,39 @@ def script_kept(old, new):
 
 # ---- Claude ------------------------------------------------------------------------
 
+USAGE = SCRIPTS / "cache" / "usage.log"
+LIMIT_HIT = False  # set once Claude answers "session limit": no more calls this run
+NO_CALLS = False   # --local
+
+
 async def claude(prompt, model, sem, image_dir=None):
-    args = ["claude", "-p", "--model", model, "--strict-mcp-config", "--disable-slash-commands"]
+    global LIMIT_HIT
+    # --safe-mode: no CLAUDE.md, plugins, hooks or skills loaded into each call (half the overhead)
+    args = ["claude", "-p", "--model", model, "--strict-mcp-config", "--disable-slash-commands",
+            "--safe-mode", "--no-session-persistence", "--output-format", "json"]
     args += ["--tools", "Read", "--allowedTools", "Read", "--add-dir", str(image_dir)] if image_dir else ["--tools", ""]
     async with sem:
+        if LIMIT_HIT or NO_CALLS:
+            return {}
         proc = await asyncio.create_subprocess_exec(*args, stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
                                                     stderr=asyncio.subprocess.PIPE, cwd=str(image_dir or SCRIPTS))
         out, err = await proc.communicate(prompt.encode())
     text = out.decode().strip()
+    try:  # --output-format json: the answer, and what it cost (cache/usage.log)
+        d = json.loads(text)
+        text = str(d.get("result") or "")
+        u = d.get("usage") or {}
+        with USAGE.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(dict(model=model, image=bool(image_dir), cost=d.get("total_cost_usd"),
+                                    **{k: u.get(k, 0) for k in ("input_tokens", "cache_creation_input_tokens",
+                                                                "cache_read_input_tokens", "output_tokens")})) + "\n")
+    except (json.JSONDecodeError, AttributeError):
+        pass
+    if re.search(r"hit your (?:session |usage |weekly )?limit", text, re.I):
+        if not LIMIT_HIT:
+            print(f"  {text[:100]}: no more calls this run; answers so far are cached", file=sys.stderr, flush=True)
+        LIMIT_HIT = True
+        return {}
     m = re.search(r"\[\s*\{.*\}\s*\]", text, re.S)
     try:
         return {str(r["id"]).removeprefix("id ").strip(): r for r in json.loads(m.group())}
@@ -479,24 +737,35 @@ def checked(t, cache):
     return bool(segs) and all(cache.get(key("checked", s)) for s in segs)
 
 
-async def scan_stage(volume, notes, cache):
+PAGES_PER_CALL = 5  # one call reads several pages: the cost of a call is mostly its fixed part
+
+
+async def scan_stage(volume, notes, cache, uncertain_only=False):
     todo = defaultdict(list)
     for n in notes:
-        if {"hebrew", "greek"} & set(n["flags"]) and "uncertain" not in n["flags"] and checked(n["proposed"], cache):
-            n["flags"] = [f for f in n["flags"] if f not in ("hebrew", "greek")]  # read on the scan before
+        if not {"hebrew", "greek", "uncertain"} & set(n["flags"]):
             continue
-        if {"hebrew", "greek", "uncertain"} & set(n["flags"]):
-            n["scan_key"] = key("scan4", SCAN_MODEL, n["page"], n["proposed"], n["scan_why"])
-            if n["scan_key"] not in cache:
-                todo[n["page"]].append(n)
+        n["scan_key"] = key("scan4", SCAN_MODEL, n["page"], n["proposed"], n["scan_why"])
+        if n["scan_key"] in cache:  # this note's own reading wins: it holds the corrections
+            continue
+        if "uncertain" not in n["flags"] and checked(n["proposed"], cache):
+            n["flags"] = [f for f in n["flags"] if f not in ("hebrew", "greek")]  # read on the scan before
+            del n["scan_key"]
+            continue
+        if uncertain_only and "uncertain" not in n["flags"]:
+            continue  # --uncertain-only: Hebrew and Greek not found in the Bible wait
+        todo[n["page"]].append(n)
     sem = asyncio.Semaphore(PARALLEL)
     jobs = []
-    for page, ns in todo.items():
-        img = crop(volume, page)
-        if not img:
-            continue
-        jobs.append((ns, claude(SCAN_PROMPT.format(image=img.name, items=scan_items(ns)), SCAN_MODEL, sem, img.parent)))
-    print(f"  scan: {sum(len(v) for v in todo.values())} notes on {len(jobs)} pages to read", flush=True)
+    pages = [(p, ns, None if NO_CALLS else crop(volume, p)) for p, ns in todo.items()]
+    pages = [x for x in pages if x[2]]
+    for i in range(0, len(pages), PAGES_PER_CALL):
+        group = pages[i:i + PAGES_PER_CALL]
+        ns = [n for _, g, _ in group for n in g]
+        images = ", ".join(img.name for _, _, img in group)
+        jobs.append((ns, claude(SCAN_PROMPT.format(images=images, items=scan_items(ns)), SCAN_MODEL, sem, group[0][2].parent)))
+    print(f"  scan: {sum(len(v) for v in todo.values())} notes on {len(todo)} pages to read"
+          + (" (--local: left unread)" if NO_CALLS else ""), flush=True)
     for ns, ans in zip([j[0] for j in jobs], await asyncio.gather(*(j[1] for j in jobs))):
         for n in ns:
             if n["id"] in ans:
@@ -528,19 +797,128 @@ async def scan_stage(volume, notes, cache):
                     n["flags"][n["flags"].index("hebrew")] = "hebrew-recheck"
 
 
+# ---- stage 2b: context, without the scan ----------------------------------------
+
+CONTEXT_PROMPT = """You are correcting the transcription of footnotes in an 18th-century French Bible commentary (Dom Calmet, 1707). There is no image: work from the passage the note is called from, the note itself, the Bible text given, and what you know of the authors Calmet cites (Fathers, rabbis, classical authors, the versions: Septuagint, Aquila, Symmachus, Theodotion, the Chaldee paraphrase).
+
+Each note below has a PROBLEM found by an automatic check. For each, give the smallest edits that set it right:
+- A misprinted Greek or Hebrew word whose intended form is clear (a misread letter, accent or ligature; a word of a passage you recognise): correct it, "guessed": false.
+- [UNCERTAIN …] or [ILLEGIBLE], or a word that cannot be read and that you reconstruct from the context: replace it with the most likely text, "guessed": true. If you cannot say what it was, leave it.
+- A Bible reference whose verse does not exist, or "1 Rois"/"2 Rois" that may mean Calmet's 1-2 Rois (1-2 Samuel) or the modern 1-2 Kings (= 3-4 Rois): decide from the passage and the Latin; an edit that changes a number you cannot confirm is "guessed": true.
+- A word the check did not know but that is right (a rare form, a proper name, an Aramaic word, Calmet's spelling, a reading of another edition than the Septuagint text you know): no edit, and say so. Do not bring Calmet's text into line with the Septuagint or the Hebrew where his form is a real word.
+Do not touch anything else: no modernising, no expanding abbreviations, no translating.
+
+Output ONLY a JSON array, one object per note:
+[{{"id": "<id>", "edits": [{{"from": "<exact text in the note>", "to": "<replacement>", "guessed": true|false}}], "resolved": true|false, "why": "<max 5 words>"}}]
+"resolved": true only if after your edits nothing in the note is doubtful; false if something must wait for the printed page. Never delete an [UNCERTAIN …] or [ILLEGIBLE]: replace it with text, or leave it.
+
+NOTES:
+{items}"""
+
+CONTEXT_FLAGS = {"hebrew", "greek", "uncertain", "ambiguous-name"}
+
+
+def bad_refs(n):
+    return [r for r in B.find_refs(n["proposed"]) if B.exists(r) is False]
+
+
+def context_items(notes):
+    out = []
+    for n in notes:
+        problems = list(n["scan_why"])
+        hints = []
+        vul, oshb, nr = B.BOOK.get(n["vol_book"], (None, None, None))
+        if n["chap"] and n["verse"]:
+            if vul:
+                hints.append(f"VULGATE {n['vol_book']} {n['chap']}:{n['verse']}: " + B.vulgate(vul).get((n["chap"], n["verse"]), ""))
+            if "greek" in n["flags"] and nr:
+                hints.append("SEPTUAGINT: " + B.lxx(nr).get((n["chap"], n["verse"]), ""))
+            if "hebrew" in n["flags"] and oshb:
+                ch = chapters_around(oshb, n["chap"])
+                hints.append("HEBREW: " + " ".join(B.hebrew()[oshb].get((ch[1] if len(ch) > 1 else n["chap"], n["verse"]), [])))
+        if "ambiguous-name" in n["flags"]:
+            problems.append("'Rois' reference: Calmet's numbering (1-2 Rois = 1-2 Samuel) or the modern one (1-2 Kings = 3-4 Rois)?")
+            for r in B.find_refs(n["proposed"]):
+                m = re.match(r"([12]) Rois$", r.book)
+                if m:
+                    for book in (r.book, f"{int(m.group(1)) + 2} Rois"):
+                        x = B.Ref(r.start, r.end, book, r.name, r.chap, r.verses, r.src)
+                        if B.exists(x):
+                            hints.append(f"{x.render()}: {B.vulgate_text(x)[:200]}")
+        for r in bad_refs(n):
+            vg = B.vulgate(B.BOOK[r.book][0])
+            problems.append(f"{r.render()} does not exist (the chapter has {max((v for c, v in vg if c == r.chap), default=0)} verses)")
+        ctx = (n["before"][-220:] + " ^{" + n["marker"] + "} " + n["after"][:80]).replace("\n", " ")
+        out.append(f'id {n["id"]}\nNOTE: {n["proposed"]}\nPROBLEM: {"; ".join(problems)}\nCALLED FROM: …{ctx}…'
+                   + "".join("\n" + h for h in hints if h.strip()))
+    return "\n\n".join(out)
+
+
+def starred(t, src=""):
+    """An asterisk after each word of guessed text (before its punctuation); not on the words
+    already printed in `src`, the text it replaces."""
+    kept = set(src.split())
+    return re.sub(r"(\S*?[^\s.,;:!?»)\]])([.,;:!?»)\]]*)(?=\s|$)",
+                  lambda m: m.group(0) if m.group(0) in kept or m.group(1) in kept else m.group(1) + "*" + m.group(2), t.replace("*", ""))
+
+
+CONTEXT_BATCH = 75
+
+
+async def context_stage(notes, cache):
+    """The held notes (Hebrew and Greek not found, [UNCERTAIN …], references that do not exist or
+    are ambiguous) set right from the context, without the scan; text only, a batch of notes a call,
+    the answer only the edits. Guessed text gets "*"; what Claude cannot settle stays held."""
+    todo = []
+    for n in notes:
+        if not (CONTEXT_FLAGS & set(n["flags"]) or bad_refs(n)):
+            continue
+        n["ctx_key"] = key("ctx1", EXPAND_MODEL, n["proposed"], n["scan_why"], n["flags"], n["before"][-220:])
+        if n["ctx_key"] not in cache:
+            todo.append(n)
+    print(f"  context: {len(todo)} notes for Claude to settle from the context" + (" (--local: left)" if NO_CALLS else ""), flush=True)
+    sem = asyncio.Semaphore(PARALLEL)
+    batches = [todo[i:i + CONTEXT_BATCH] for i in range(0, len(todo), CONTEXT_BATCH)]
+    answers = await asyncio.gather(*(claude(CONTEXT_PROMPT.format(items=context_items(b)), EXPAND_MODEL, sem) for b in batches))
+    for b, ans in zip(batches, answers):
+        for n in b:
+            if n["id"] in ans:
+                a = ans[n["id"]]
+                cache[n["ctx_key"]] = {"edits": a.get("edits") or [], "resolved": bool(a.get("resolved")), "why": a.get("why", "")}
+    for n in notes:
+        hit = cache.get(n.get("ctx_key", ""))
+        if not hit:
+            continue
+        text, done = n["proposed"], []
+        for e in hit["edits"]:
+            src, to = str(e.get("from", "")), str(e.get("to", ""))
+            if not src or src not in text or (UNSURE.search(src) and not to.strip()):
+                hit = dict(hit, resolved=False)  # an edit that does not fit the note, or drops a placeholder: held
+                continue
+            to = starred(to, src) if e.get("guessed") else to.replace("*", "")
+            text = text.replace(src, to, 1)
+            done.append(f"{src} -> {to}")
+        n["proposed"] = text
+        n["why"].append(f"context: {hit['why']}" + (": " + ", ".join(done) if done else ""))
+        if hit["resolved"] and not UNSURE.search(text):
+            n["flags"] = [f for f in n["flags"] if f not in CONTEXT_FLAGS | {"scan-unread"}] + ["context"]
+
+
 async def expand_stage(notes, cache):
     todo = []
     for n in notes:
         if n["done"] or not (needs_expansion(n["proposed"]) or "garbled-reference" in n["flags"]
                              or re.search(r"\b(?:Samuel|Chroniques)\b", n["proposed"])):
             continue
+        if {"scan-unread", "hebrew", "greek", "uncertain"} & set(n["flags"]):
+            continue  # waiting for its scan: held at apply anyway, and the scan may change the text
         n["exp_key"] = key("exp2", EXPAND_MODEL, n["proposed"], n["prev"], n["raw"] if "garbled-reference" in n["flags"] else "")
         if n["exp_key"] not in cache:
             todo.append(n)
-    print(f"  expand: {len(todo)} notes to write out", flush=True)
+    print(f"  expand: {len(todo)} notes for Claude to write out" + (" (--local: left as they are)" if NO_CALLS else ""), flush=True)
     sem = asyncio.Semaphore(PARALLEL)
     batches = [todo[i:i + BATCH] for i in range(0, len(todo), BATCH)]
-    answers = await asyncio.gather(*(claude(EXPAND_PROMPT.format(glossary=GLOSSARY, items=expand_items(b)), EXPAND_MODEL, sem)
+    answers = await asyncio.gather(*(claude(EXPAND_PROMPT.format(glossary=glossary_for(b), items=expand_items(b)), EXPAND_MODEL, sem)
                                      for b in batches))
     for b, ans in zip(batches, answers):
         for n in b:
@@ -597,13 +975,41 @@ def quotes_for(n):
     return out
 
 
+DIGITS = {"1": "74", "7": "1", "3": "8", "8": "3", "5": "6", "6": "5", "0": "9", "9": "0", "4": "1"}
+
+
+def misread(r):
+    """The references `r` may be, misread: a Roman chapter one, four, five or ten off (XXII/XXIII, IV/VI,
+    XV/XX), a verse with one digit taken for another (1/7, 3/8, 5/6, 0/9)."""
+    chaps = {r.chap + d for d in (-10, -5, -4, -1, 1, 4, 5, 10)} | {r.chap}
+    out = []
+    for c in sorted(chaps):
+        verse_sets = [r.verses] if c != r.chap else []
+        for i, v in enumerate(r.verses):
+            sv = str(v)
+            for j, ch in enumerate(sv):
+                for alt in DIGITS.get(ch, ""):
+                    nv = int(sv[:j] + alt + sv[j + 1:] or 0)
+                    if nv:
+                        verse_sets.append(r.verses[:i] + [nv] + r.verses[i + 1:])
+        out += [B.Ref(r.start, r.end, r.book, r.name, c, vs, r.src) for vs in verse_sets]
+    return [x for x in out if x.chap > 0 and B.exists(x)]
+
+
 def check_refs(n):
     refs = B.find_refs(n["proposed"])
+    quotes = [q for q in map(latin_words, quotes_for(n) + re.findall(r"_([^_]{12,})_", n["text"])) if len(q) >= 4]
     for r in refs:
         if B.exists(r) is False:
+            fits = [x for x in misread(r) if quotes and max(len(q & latin_words(B.vulgate_text(x))) / len(q) for q in quotes) >= 0.5]
+            if len(fits) == 1:  # the Latin quoted says which verse it is
+                n["why"].append(f"{r.render()} does not exist; the Latin quoted is {fits[0].render()}")
+                n["proposed"] = n["proposed"][:r.start] + n["proposed"][r.start:r.end].replace(
+                    r.render(with_book=False), fits[0].render(with_book=False), 1) + n["proposed"][r.end:]
+                n["flags"].append("reference-corrected")
+                return
             n["flags"].append("reference-not-in-vulgate")
             n["why"].append(f"{r.render()} does not exist in the Vulgate")
-    quotes = [q for q in map(latin_words, quotes_for(n)) if len(q) >= 4]
     if not quotes or not refs:
         return
     score = lambda q, ws: len(q & ws) / len(q)
@@ -620,7 +1026,7 @@ def check_refs(n):
     if len(refs) == 1 and r.book == name and not (r.chap == c and r.verses and abs(r.verses[0] - v) <= 1):
         n["why"].append(f"{r.render()} -> {found}: the Latin quoted («{' '.join(sorted(q))[:60]}») is {found}")
         n["proposed"] = n["proposed"][:r.start] + found + n["proposed"][r.end:]
-        n["flags"].append("reference-corrected")
+        n["flags"] = [f for f in n["flags"] if f != "reference-not-in-vulgate"] + ["reference-corrected"]
     elif not (r.book == name and r.chap == c):
         n["flags"].append("reference-mismatch")
         n["why"].append(f"the Latin next to the call is {found}, not {', '.join(x.render() for x in refs)}")
@@ -649,14 +1055,21 @@ def page_range(argv):
     return tuple(map(int, m.split("-"))) if m else (0, 99999)
 
 
-async def run(volume, lo, hi, local_only):
+async def run(volume, lo, hi, local_only, scan=True, uncertain_only=False, context=False):
     notes = load_volume(volume, lo, hi)
     print(f"{volume}: {len(notes)} footnotes", flush=True)
     local_stage(notes)
     cache = json.loads(CACHE.read_text(encoding="utf-8")) if CACHE.exists() else {}
-    if not local_only:
-        await scan_stage(volume, notes, cache)
-        CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+    global NO_CALLS
+    # --local: only Claude's answers already cached, no new call; --no-scan: the same, for the scans only
+    NO_CALLS = local_only or not scan
+    await scan_stage(volume, notes, cache, uncertain_only)
+    NO_CALLS = local_only
+    if context and not LIMIT_HIT:
+        await context_stage(notes, cache)
+    CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+    expand_local(notes)  # after the scan: its cache keys are made from the text before
+    if not LIMIT_HIT:
         await expand_stage(notes, cache)
         CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
     for n in notes:
@@ -706,10 +1119,31 @@ def apply(volume, lo, hi, hold=True):
     print(f"{volume}: {changed} notes written; {len(held)} held for review: {' '.join(held)}")
 
 
+def held():
+    """Every note still held, from all the reports, in one list: docs/footnotes/held.json, by volume
+    and page, with why (the flags) and the text as it stands. What the scans are for."""
+    out, counts = [], Counter()
+    for f in sorted(OUT_DIR.glob("[0-9]*.json")):
+        for n in json.loads(f.read_text(encoding="utf-8"))["notes"]:
+            h = sorted(HOLD & set(n["flags"]))
+            if h:
+                out.append(dict(volume=f.stem, page=n["page"], marker=n["marker"], flags=h, text=n["proposed"]))
+                counts[f.stem] += 1
+    (OUT_DIR / "held.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    flags = Counter(x for n in out for x in n["flags"] if x != "scan-unread")
+    print(f"{len(out)} notes held on {len({(n['volume'], n['page']) for n in out})} pages -> {OUT_DIR / 'held.json'}")
+    print("  by volume:", dict(counts))
+    print("  by flag:", dict(flags.most_common()))
+
+
 if __name__ == "__main__":
+    if sys.argv[1:] == ["held"]:
+        held()
+        sys.exit()
     cmd, volume, *rest = sys.argv[1:]
     lo, hi = page_range(rest)
     if cmd == "run":
-        asyncio.run(run(volume, lo, hi, "--local" in rest))
+        asyncio.run(run(volume, lo, hi, "--local" in rest, scan="--no-scan" not in rest, uncertain_only="--uncertain-only" in rest,
+                        context="--context" in rest))
     elif cmd == "apply":
         apply(volume, lo, hi, hold="--no-hold" not in rest)

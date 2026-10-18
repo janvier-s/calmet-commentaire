@@ -8,8 +8,10 @@ between transcriptions and no per-page overrides.
 import functools
 import json
 import re
+import unicodedata
+from pathlib import Path
 
-from paths import BOOKS, load, pages as volume_pages
+from paths import BOOKS, VUL, load, pages as volume_pages
 
 STRAY = re.compile(r"\^\{[^}]*\}")
 # The apparatus is transcribed with Anglo chapter:verse references; the
@@ -17,6 +19,52 @@ STRAY = re.compile(r"\^\{[^}]*\}")
 CHAPTER_VERSE = re.compile(r"(\d)\s*:\s*(\d)")
 ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 GREEK_FIX = {"р": "ρ", "д": "δ", "с": "ς", "е": "ε", "о": "ο", "у": "υ"}
+
+
+LATIN_NAMES = Path(__file__).resolve().parent / "latin_names.txt"
+
+
+def _fold(w):
+    w = w.lower().replace("æ", "ae").replace("œ", "ae")
+    w = unicodedata.normalize("NFD", w).encode("ascii", "ignore").decode()
+    # spellings that vary between Calmet and the Vulgate: cœli / cæli, eius / ejus, Noe / Noë
+    return w.replace("oe", "ae").replace("j", "i")
+
+
+@functools.lru_cache(maxsize=None)
+def proper_nouns():
+    """Words the Vulgate writes with a capital in most of their mid-sentence uses
+    (Deus, Dominus, Abraham), keyed by their unaccented lower case."""
+    caps, seen = {}, {}
+    for f in VUL.glob("*.json"):
+        for ch in json.loads(f.read_text(encoding="utf-8"))["chapters"]:
+            for v in ch["verses"]:
+                for m in re.finditer(r"(?<![.;:?!]\s)(?<!^)\b[^\W\d_]+", v["text"]):
+                    k = _fold(m.group())
+                    seen[k] = seen.get(k, 0) + 1
+                    caps[k] = caps.get(k, 0) + m.group()[0].isupper()
+    vulgate_words.cache = set(seen)
+    # names Calmet spells otherwise than the Vulgate (Canaan, Sehir), added during review
+    lines = LATIN_NAMES.read_text(encoding="utf-8").splitlines() if LATIN_NAMES.exists() else []
+    names = {_fold(w) for line in lines if not line.startswith("#") for w in line.split()}
+    vulgate_words.cache |= names
+    return {k for k, n in seen.items() if caps.get(k, 0) * 2 > n} | names
+
+
+def vulgate_words():
+    """Every word of the Vulgate (unaccented lower case), first words of sentences aside."""
+    proper_nouns()
+    return vulgate_words.cache
+
+
+def latin_case(s):
+    """The lemma is printed in capitals: lower case, but for the Vulgate's proper nouns.
+    The site sets it in small caps with a capital first letter."""
+    if not s or re.search(r"[a-zæœ]", STRAY.sub("", s)):  # already in mixed case
+        return s
+    nouns = proper_nouns()
+    return re.sub(r"[^\W\d_]+", lambda m: m.group().capitalize() if _fold(m.group()) in nouns
+                  else m.group().lower(), s)
 
 
 def greek_fix(s):
@@ -273,7 +321,7 @@ def _flatten(note, number):
     # italics (Calmet's translation, then his remark in roman) and are kept for the site.
     lemma = lemma.strip()
     return dict(verse=note["verse"], sub=note["sub"],
-                latin_lemma=latin.replace("_", "").strip() or None,
+                latin_lemma=latin_case(latin.replace("_", "").strip()) or None,
                 lemma=lemma or None,
                 text=_balance(greek_fix(text)))
 

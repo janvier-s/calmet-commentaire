@@ -270,6 +270,11 @@ def vulgate(vul):
     return {(c["chapter"], v["verse"]): v["text"] for c in d["chapters"] for v in c["verses"]}
 
 
+def clementine(ref, v):
+    """Our Vulgate text numbers Psalm 115 from 1; the Clementine (Calmet's) from 10, following on Psalm 114."""
+    return v - 9 if ref.book == "Psaumes" and ref.chap == 115 and v >= 10 else v
+
+
 def exists(ref):
     vul = BOOK.get(ref.book, (None,))[0]
     if not vul:
@@ -277,7 +282,7 @@ def exists(ref):
     vg = vulgate(vul)
     if not ref.verses:
         return any(c == ref.chap for c, _ in vg)
-    return all((ref.chap, v) in vg for v in ref.verses)
+    return all((ref.chap, clementine(ref, v)) in vg for v in ref.verses)
 
 
 def vulgate_text(ref):
@@ -285,7 +290,7 @@ def vulgate_text(ref):
     if not vul:
         return ""
     vg = vulgate(vul)
-    return " ".join(vg.get((ref.chap, v), "") for v in ref.verses)
+    return " ".join(vg.get((ref.chap, clementine(ref, v)), "") for v in ref.verses)
 
 
 @lru_cache(None)

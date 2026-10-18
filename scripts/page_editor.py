@@ -17,6 +17,8 @@ import shutil
 from pathlib import Path
 from PIL import Image, ImageTk
 
+from calmet import latin_case
+
 # --- Configuration ---
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 STATE_FILE = DATA_DIR / ".page_editor_state.json"
@@ -798,11 +800,19 @@ class PageEditor:
 
         self._setup_italic_tags(txt, inverse=italic_field)
         self._render_italics(txt)
+        if field_name == "latin_quote":
+            txt.tag_configure("smallcap", font=("Helvetica", 8))
+            self._render_smallcaps(txt)
         txt.edit_modified(False)
         txt.bind("<<Modified>>", lambda e, w=txt: self._on_modified(w))
         txt.bind("<FocusIn>", lambda e, w=txt: setattr(self, "_last_text", w))
         for seq in ("<Command-i>", "<Command-I>", "<Control-i>", "<Control-I>"):
             txt.bind(seq, lambda e, w=txt: self._toggle_italic(w) or "break")
+        txt.bind("<Tab>", lambda e, w=txt: self._focus_field(w, 1))
+        txt.bind("<Shift-Tab>", lambda e, w=txt: self._focus_field(w, -1))
+        # Right click: Button-2 on macOS, Button-3 elsewhere, or Ctrl+click
+        for seq in ("<Button-2>", "<Button-3>", "<Control-Button-1>"):
+            txt.bind(seq, lambda e, w=txt: self._show_context_menu(e, w))
 
         # Prevent double paste by handling paste manually with debounce
         def handle_paste(event):
@@ -847,6 +857,7 @@ class PageEditor:
                 self.dirty_label.config(text="* unsaved changes", foreground=self.WARN_COLOR)
             widget.edit_modified(False)
             self._render_italics(widget)
+            self._render_smallcaps(widget)
 
     # --- Italics (_underscores_ in the JSON) ---
     def _setup_italic_tags(self, txt, inverse=False):
@@ -870,6 +881,21 @@ class PageEditor:
         if open_at:
             i = marks[0] if open_at == "start" else marks[-1]
             txt.tag_add("mark_open", f"1.0+{i}c")
+
+    def _render_smallcaps(self, txt):
+        """latin_quote as the site shows it: small caps, but for the first letter and the
+        Vulgate's proper nouns (calmet.latin_case). The text itself stays in capitals."""
+        if "smallcap" not in txt.tag_names():
+            return
+        txt.tag_remove("smallcap", "1.0", "end")
+        s = txt.get("1.0", "end-1c")
+        cased = latin_case(s)
+        if len(cased) != len(s):
+            return
+        first = next((i for i, c in enumerate(cased) if c.isalpha()), None)
+        for i, c in enumerate(cased):
+            if c.islower() and i != first:
+                txt.tag_add("smallcap", f"1.0+{i}c")
 
     def _toggle_italic(self, txt=None):
         """Cmd+I / the I button: italicize the selection, or make it roman if already italic."""
@@ -901,6 +927,59 @@ class PageEditor:
         txt.mark_set("insert", f"1.0+{end}c")
         txt.focus_set()
         self._render_italics(txt)
+
+    # --- Field navigation and context menu ---
+    def _focus_field(self, txt, step):
+        """Tab / Shift+Tab: move to the next / previous field, its text selected."""
+        widgets = [w for _, w, _ in self.field_widgets if w.winfo_exists()]
+        if txt not in widgets:
+            return "break"
+        target = widgets[(widgets.index(txt) + step) % len(widgets)]
+        target.focus_set()
+        target.tag_remove("sel", "1.0", "end")
+        target.tag_add("sel", "1.0", "end-1c")
+        target.mark_set("insert", "end-1c")
+        self._scroll_into_view(target)
+        return "break"
+
+    def _scroll_into_view(self, widget):
+        """Scroll the JSON pane just enough for `widget` to be visible."""
+        total = self.json_inner.winfo_height()
+        if total <= 1:
+            return
+        top = widget.winfo_y()  # fields are gridded straight into json_inner
+        bottom = top + widget.winfo_height()
+        view_top = self.json_canvas.canvasy(0)
+        view_h = self.json_canvas.winfo_height()
+        margin = 30
+        if top < view_top + margin:
+            self.json_canvas.yview_moveto(max(0, top - margin) / total)
+        elif bottom > view_top + view_h - margin:
+            # a field taller than the pane is shown from its top
+            y = top - margin if bottom - top > view_h - 2 * margin else bottom + margin - view_h
+            self.json_canvas.yview_moveto(max(0, y) / total)
+
+    def _show_context_menu(self, event, txt):
+        txt.focus_set()
+        has_sel = bool(txt.tag_ranges("sel"))
+        if not has_sel:
+            txt.mark_set("insert", f"@{event.x},{event.y}")
+        sel_state = tk.NORMAL if has_sel else tk.DISABLED
+        menu = tk.Menu(txt, tearoff=0)
+        menu.add_command(label="Cut", accelerator="Cmd+X", state=sel_state,
+                         command=lambda: txt.event_generate("<<Cut>>"))
+        menu.add_command(label="Copy", accelerator="Cmd+C", state=sel_state,
+                         command=lambda: txt.event_generate("<<Copy>>"))
+        menu.add_command(label="Paste", accelerator="Cmd+V",
+                         command=lambda: txt.event_generate("<<Paste>>"))
+        menu.add_separator()
+        menu.add_command(label="Italics", accelerator="Cmd+I", state=sel_state,
+                         command=lambda: self._toggle_italic(txt))
+        try:
+            menu.tk_popup(event.x_root, event.y_root)
+        finally:
+            menu.grab_release()
+        return "break"
 
     def _on_show_marks(self):
         for _, txt, _ in self.field_widgets:

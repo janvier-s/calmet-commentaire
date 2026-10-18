@@ -40,7 +40,11 @@ this is the full spec.
 - Website: `/Users/Janvier/Documents/Bible n stuff/Websites/dom-calmet-web` (SvelteKit on
   Cloudflare Workers, https://dom-calmet-web.janvier-sabates.workers.dev).
 - Reports: `STUDIUM/docs/` (`review_queue.json`, `seam_check.json`, `psalms_check.json`,
-  `chapter_check.json`, `manual_issues.json` for issues the user reports by hand).
+  `chapter_check.json`, `manual_issues.json` for issues the user reports by hand);
+  `docs/footnotes/<vol>.json` (the footnote report of each volume) and
+  `docs/footnotes/held.json` (every footnote still held, §10).
+- `scripts/cache/` is not in git (`.gitignore`): Claude's caches and the downloaded sources
+  in `cache/refs/` (§10) live only on this disk.
 - Review progress: `data/.review_queue_progress.json`. Item ids are hashes of the message, so
   progress survives a re-audit as long as the message doesn't change.
 
@@ -117,7 +121,9 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
 12. `python3 audit_integrity.py ../docs/integrity_audit_<date>.json` → `docs/review_queue.json`.
     Report the counts by kind to the user.
 13. **The user reviews** in `review_editor.py` (§7). Commit `data/` when they say.
-14. **Publish** (§8).
+14. **Footnotes** (§10): references and authors written out in French, Hebrew and Greek
+    checked, doubtful notes settled from context; what is left waits for the scans.
+15. **Publish** (§8).
 
 ## 5. Chapters
 
@@ -201,8 +207,110 @@ From volumes 1–21; look for the same in new volumes:
 - Psalms: titles missing or misread as "PSEAUME", verses filed under the wrong psalm, a refrain
   repeated in two psalms (don't "fix" one from the other).
 
-## 10. Not done yet (as of Oct 14, 2026)
+## 10. Footnotes (`footnotes.py`, Oct 15–18, 2026)
 
+Calmet's notes are abbreviated Latin citations ("Aug. l. 22. contra Faust. c. 10.", "Joseph.
+Antiq. l. 5. c. 1."), Bible references, and quotations in Hebrew and Greek that the
+transcription often garbled. Volumes 01–21a went through all of this; 1,579 notes of about
+25,000 are still held for the scans.
+
+### What the user decided (memory: footnote-fix-conventions)
+
+- Everything written out in French: "Saint Augustin, Contre Fauste, livre 22, chapitre 10";
+  Bible books with Calmet's Vulgate names (1–4 Rois, 1–2 Paralipomènes, 1–2 Esdras = Ezra and
+  Nehemiah, Ecclésiastique, Machabées), Psalms in Vulgate numbering. A quotation before the
+  citations stays as printed.
+- Hebrew and Greek as printed; misreadings set right silently.
+- **An asterisk marks only text guessed from context** (`צלם*`, `Isaïe* 49:16*`), never a
+  correction confirmed by a source.
+- Calmet's own forms stay: Μωσῆς, ἀναμέσον, readings of other editions than our Septuagint.
+- "Theod." beside Aquila and Symmachus is **Théodotion**; "Theodoret." printed in full is
+  Théodoret (his commentary on the Psalms reports the Hexapla readings).
+- Psalm 115 is in Clementine numbering (verses 10–19: *Pretiosa* is 115:15); our Vulgate text
+  numbers it from 1, `bible_refs.clementine()` maps it.
+
+### The commands, in order (run from `scripts/`)
+
+```
+uv run --no-project --with pillow python footnotes.py run <vol> --local            # free: all the local checks, report only
+uv run --no-project --with pillow python footnotes.py run <vol> --no-scan --context # + Claude, text only
+python3 footnotes.py apply <vol>                                                    # proposals into normalized/; flagged notes held
+python3 footnotes.py held                                                           # every held note, all volumes -> docs/footnotes/held.json
+```
+
+`run` writes `docs/footnotes/<vol>.json` (each changed or flagged note: text, proposal, why,
+flags). Every Claude answer is cached (`cache/footnote_cache.json`), so re-running is free for
+what was done; usage goes to `cache/usage.log`. On "hit your limit" the run stops calling
+Claude, writes what it has and ends: it does not wait or resume by itself.
+
+### What `run` does
+
+1. **Local, free.**
+   - Bible references rendered (`render_bible`): only when the note is references alone after
+     a bare "Voyez/Vide/Voir"; anything else in front ("Voyez Grotius sur…") goes to the
+     expander. (This check was too loose once and cut 16 notes down to their reference.)
+   - Hebrew against the Hebrew Bible (OSHB) and Greek against the Septuagint, allowing for
+     the type: ר/ד ה/ח ב/כ ו/ז/ן confused, ו/י spelt full or not; the ου ligature read ε ω υ
+     ῦ ȣ ẽ, στ read ς, καὶ read κὶ. A quotation found there is corrected word by word from it
+     (accents kept as Calmet prints them; proper nouns, unaccented in the Septuagint text,
+     left alone).
+   - Greek not from the Bible: each word against an Ancient Greek dictionary
+     (`footnote_spell.py`, hunspell-grc): misread ligatures set right when one reading is a
+     word; missing breathings/accents completed (keeping Calmet's); one-letter misprints when
+     the dictionary has one candidate; words with no accent at all get the Septuagint's usual
+     form. The dictionary writes acutes as *oxia* (U+1F79…), our text as *tonos*: map before
+     looking up (`OXIA`). Keep one hunspell process for the run (it loads 760,000 forms).
+   - Hebrew not from the Bible: each word in the Hebrew Bible, the Targums or Strong's lexicon,
+     as written, after its prefixes (ו ה ב כ ל מ ש) or its plural/possessive suffixes (two
+     letters at least, stem of three). Only a non-final letter at a word's end is corrected
+     automatically (תקפ → תקף); one-letter guesses on short unpointed words proved wrong too
+     often. Known gap: a misreading that splits into real parts passes (הבטים for הבטחים).
+   - References: "1/2 Rois" left by an older expansion (Calmet's 1 Samuel or a modern 1 Kings?)
+     settled by the volume, by which verse exists, or by the Latin quoted; a verse that does
+     not exist corrected only when the Latin quoted confirms the right one.
+   - Abbreviations written out by `footnote_expand.py` from `footnote_glossary.txt` where every
+     citation is known.
+2. **Scan** (not run on 01–21a beyond Genesis): Claude reads the crop of the footnote area
+   (`crop()`: from the lowest rule, margins trimmed, ~1560 px across), several pages a call.
+   `--uncertain-only` limits it to [UNCERTAIN]/[ILLEGIBLE] notes.
+3. **Context** (`--context`): the notes still doubtful go to Claude as text, 75 a call, with
+   the passage the note is called from, the Bible verse (Vulgate, Septuagint, Hebrew), and the
+   problem; Claude answers with edits only (`from`/`to`/`guessed`). Guessed text is starred;
+   a placeholder may be replaced, never deleted; anything Claude is unsure of stays held.
+   About $0.005 a note (Sonnet); $16 for all of 01–21a.
+4. **Expand**: Claude writes out what the glossary could not (50 notes a call).
+
+Run with `--local` first and look at the report; then the Claude stages; `apply`; then sample
+`docs/footnotes/<vol>.json` (`why` says what changed and why) before committing.
+
+### The sources (`scripts/cache/refs/`, downloaded once)
+
+| Folder | What | From |
+|---|---|---|
+| `hebrew_oshb.json` | Hebrew Bible | Open Scriptures (OSHB) |
+| `lxx/` | Septuagint | getbible |
+| `grc_hunspell/` | Ancient Greek dictionary (grc.dic/.aff) | Fedora `hunspell-grc` RPM (archives.fedoraproject.org, release 38), himeros.eu |
+| `targum/` | Onkelos, Jonathan, Jerusalem, the Writings | Sefaria export bucket (storage.googleapis.com/sefaria-export, `json/Tanakh/Targum/…/Hebrew/merged.json`); Tafsir Rasag left out (Arabic in Hebrew letters) |
+| `strongs/StrongHebrewG.xml` | Strong's Hebrew lexicon | github.com/openscriptures/strongs |
+
+### Costs and lessons
+
+- Each Claude call is a `claude -p --safe-mode` subprocess: a fixed ~10k tokens a call,
+  whatever its size, so batch large. Output (Greek and Hebrew are about a token a character)
+  costs five times input: ask for edits, not whole notes.
+- Scanning every flagged note would have meant 3,630 pages. The local checks, the dictionary,
+  the Targums and the context pass brought 6,340 notes waiting for a scan down to 1,579 on
+  1,230 pages, for about $16 of Claude.
+- Sample every new rule's corrections before applying: each round found a few wrong ones
+  (ἄυλης "fixed" to αὔλης, a lone ἐ read οὐ, Νωεμὶ aligned to the Septuagint).
+
+## 11. Not done yet (as of Oct 18, 2026)
+
+- Footnotes: 1,579 notes held (`python3 footnotes.py held`, then `docs/footnotes/held.json`):
+  Greek too garbled to rebuild (≈960), [UNCERTAIN]/[ILLEGIBLE] not settled (≈500), Hebrew
+  (≈140), references (≈90). They need the scans: `run <vol> --uncertain-only` or a scan run on
+  the held pages. The two pages with another footnote schema (3 Rois p.403, Esdras p.49) are
+  skipped by the pipeline.
 - Psalms 21b, 21c: raw only (288 + 422 pages), the whole pipeline is to do; then the site
   changes in §8.2 before Psalms can be published.
 - 1 Samuel: LLM modernization was noted as unfinished (6 batches).
