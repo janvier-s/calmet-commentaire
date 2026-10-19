@@ -10,6 +10,7 @@ from pathlib import Path
 
 from calmet import STRAY, _fold, vulgate_words
 from export import chapter_of
+from modernize_refs import MANUAL as REF_MANUAL
 from paths import BOOKS, DATA as STUDIUM, DOCS, VUL, WEB as SITE
 
 # --- archaic spelling markers (French) -------------------------------------
@@ -33,6 +34,10 @@ ARCHAIC = [
     ("joye/voye", re.compile(r"\b(?:joye|voye|monnoye|proye)s?\b", re.I)),
     ("Pseaume", re.compile(r"\bPseaume", re.I)),
 ]
+# "Esther 15:16*", "Isaïe* 49:16*", "et 13*" (modernize_refs.py, footnotes.py)
+_VV = r"\d+:\d+(?:(?:-|,\s?)\d+)*"
+GUESSED_REF = re.compile(rf"(?:(?:[1-4] )?[A-ZÉ][a-zéèëïô]+(?: des cantiques)?\*? )?{_VV}\*"
+                         rf"|(?:[1-4] )?[A-ZÉ][a-zéèëïô]+\* {_VV}|(?<=et )\d+\*")
 LATIN_OLD = [("ſ", re.compile(r"ſ")), ("&", re.compile(r"&")),
              ("accented (cùm, à)", re.compile(r"[àèìòùáíóú]"))]
 
@@ -371,8 +376,19 @@ def audit_book(key, info, slug, published=True):
                     item("broken_marker", vol, int(n[5:9]),
                          f"Footnote call “{b}” in {k}: “…{t[max(0, pos - 30):pos + len(b) + 10]}…”")
         fns = d.get("footnotes") or []
+        # Bible references guessed from the context (starred), or left as printed with no such verse
+        texts = [(f"commentary {c.get('commentary_id')}", c.get("french_commentary") or "") for c in d.get("commentary") or []]
+        texts += [(f"footnote {f.get('marker')}", str(f.get("text") or "")) for f in fns]
+        guessed = [f"{where}: “{m.group()}”" for where, t in texts for m in GUESSED_REF.finditer(t)]
+        printed = [f"“{src}”" for (page, src), v in REF_MANUAL.items() if v is None and page == f"{vol}/page_{n[5:9]}"]
+        if guessed or printed:
+            item("guessed_ref", vol, int(n[5:9]), "; ".join(
+                ([", ".join(guessed) + " guessed from the context: check against the scan, then remove the asterisk "
+                  "or set the reference right"] if guessed else [])
+                + ([f"Calmet's {', '.join(printed)} written out as printed, but no such verse in the Vulgate: "
+                    "check against the scan"] if printed else [])))
         # an asterisk marks footnote text that was guessed, not read on the scan: one item per page
-        starred = [str(f.get("marker")) for f in fns if "*" in str(f.get("text") or "")]
+        starred = [str(f.get("marker")) for f in fns if "*" in GUESSED_REF.sub("", str(f.get("text") or ""))]
         if starred:
             item("footnote_asterisk", vol, int(n[5:9]),
                  f"Footnote{'s' if len(starred) > 1 else ''} {', '.join(starred)}: words marked * were guessed: "
@@ -571,7 +587,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's
@@ -598,6 +614,8 @@ def main():
     # Footnote Hebrew that footnotes.py's scan corrected but still couldn't find in the Hebrew Bible
     for fn_file in sorted((DOCS / "footnotes").glob("*.json")):
         vol = fn_file.stem
+        if vol == "held":  # footnotes.py held: every volume's held notes, not a volume
+            continue
         for n in json.loads(fn_file.read_text())["notes"]:
             if "hebrew-recheck" in n["flags"]:
                 queue.append(dict(id=f"{vol}/{n['page'][5:9]}/hebrew_recheck/{n['marker']}", book_dir=vol,

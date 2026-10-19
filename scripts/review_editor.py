@@ -67,6 +67,7 @@ KIND_LABELS = {
     "long_translation": "TRANSLATION MUCH LONGER THAN THE LEMMA",
     "hebrew_in_translation": "“L'HÉBREU” IN THE TRANSLATION",
     "hebrew_recheck": "FOOTNOTE HEBREW UNCERTAIN: CHECK AGAINST THE SCAN",
+    "guessed_ref": "BIBLE REFERENCE GUESSED (*) OR AS PRINTED: CHECK ON THE SCAN",
     "footnote_asterisk": "FOOTNOTE WITH GUESSED WORDS (*): CHECK AGAINST THE SCAN",
     "lowercase_lemma": "LOWER CASE IN THE LATIN LEMMA",
     "lemma_unknown_word": "LEMMA WORD NOT IN THE VULGATE (name? misreading?)",

@@ -332,6 +332,9 @@ script finds them with `bible_refs.find_refs` and writes them as the notes are w
   115:10, Psalm 10:7, 14 = 9:28, 35), Roman numerals misread (XXVIII as XVIII, II as LII),
   "70" = the Septuagint, not a verse ("Genes. XXVI. 14. 70."), and **"Sup." = *Supra***, not
   Sagesse (*Sap.*).
+- The audit (step 12) queues every starred reference, in the commentary or the notes, and the
+  `None` entries of `MANUAL` as `guessed_ref`, for the user to check on the scan in the
+  editor; `footnote_asterisk` keeps the notes with other guessed words (Hebrew, Greek, fills).
 - `bible_refs._VN` was changed with it: a verse number is cut off before a book name only when
   it is 1–4 (a book's number: "31. 1 Rois"); before, "XXXI. 24. 25. Isai." lost its 25.
 
