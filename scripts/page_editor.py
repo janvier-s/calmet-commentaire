@@ -674,7 +674,7 @@ class PageEditor:
                 cid = c.get("commentary_id", "?")
                 row = self._add_section_header(self.json_inner, row,
                     f"  Commentary {cid} (v.{vref_display})", level=2)
-                for field in ("commentary_id", "verse_ref", "chapter", "latin_quote",
+                for field in ("commentary_id", "chapter", "verse_ref", "latin_quote",
                               "french_translation", "french_commentary"):
                     if field == "french_commentary" and i == 0 and prev_tail:
                         row = self._add_prev_commentary_tail(self.json_inner, row, prev_tail)

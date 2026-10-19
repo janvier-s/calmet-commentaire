@@ -123,7 +123,10 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
 13. **The user reviews** in `review_editor.py` (§7). Commit `data/` when they say.
 14. **Footnotes** (§10): references and authors written out in French, Hebrew and Greek
     checked, doubtful notes settled from context; what is left waits for the scans.
-15. **Publish** (§8).
+15. `python3 modernize_refs.py <vol>`, then with `--apply`: Bible references left in the old
+    form (Roman chapters, abbreviations) written out in the commentary and the notes (§11).
+    After the footnotes, which write out most of the notes' references themselves.
+16. **Publish** (§8).
 
 ## 5. Chapters
 
@@ -304,7 +307,35 @@ Run with `--local` first and look at the report; then the Claude stages; `apply`
 - Sample every new rule's corrections before applying: each round found a few wrong ones
   (ἄυλης "fixed" to αὔλης, a lone ἐ read οὐ, Νωεμὶ aligned to the Septuagint).
 
-## 11. Not done yet (as of Oct 18, 2026)
+## 11. Bible references in the commentary (`modernize_refs.py`, Oct 19, 2026)
+
+The footnote pipeline writes out the references in the notes; the commentary kept Calmet's
+form ("Voyez 3. Reg. IV. 9.", "le Pseaume XXXV. 25."), and some notes slipped through. The
+script finds them with `bible_refs.find_refs` and writes them as the notes are written
+("3 Rois 4:9", "le Psaume 36:25"). No model is called; volumes 01–21a: about 1,640 references.
+
+- Only references with an old tell are touched (Roman chapter, abbreviated or old spelling,
+  "3." / "I." before the name, "℣."); modern ones are left alone.
+- Also read: book names in italics (`_Genes._ XXI. 14.`, the italics are dropped), and lists
+  that go on with bare chapters (`Prov. II. 2. VI. 21. et XI. 21.`), even past items already
+  written out.
+- Every rewrite is checked against the Clementine Vulgate. What fails goes to
+  `reports/modernize_refs_review.tsv` instead of being changed; a bare chapter in a list after
+  a good reference is written as printed (a misprint of Calmet's, not a misreading).
+- Words read as references are thrown out: "deuil" (Deu + il = 49), "deux", "Lévi", "exil",
+  "collet", "Genèse. Cet" (C = 100). These passed the Vulgate check, so don't loosen this.
+- Settled cases go in its `MANUAL` dict, keyed by page and the reference as printed: the
+  reference it is, `None` (write out as printed), or `""` (not a reference: leave). The user
+  asked that **no tokens be spent on scans** for this: settle from the passage and the Vulgate
+  (the Latin quoted, the theme of a list), star what is guessed, write the rest as printed.
+- What the review found in 01–21a: Hebrew numbering (Num 11:35 = Vulgate 11:34, Psalm 116:10 =
+  115:10, Psalm 10:7, 14 = 9:28, 35), Roman numerals misread (XXVIII as XVIII, II as LII),
+  "70" = the Septuagint, not a verse ("Genes. XXVI. 14. 70."), and **"Sup." = *Supra***, not
+  Sagesse (*Sap.*).
+- `bible_refs._VN` was changed with it: a verse number is cut off before a book name only when
+  it is 1–4 (a book's number: "31. 1 Rois"); before, "XXXI. 24. 25. Isai." lost its 25.
+
+## 12. Not done yet (as of Oct 19, 2026)
 
 - Footnotes: 1,579 notes held (`python3 footnotes.py held`, then `docs/footnotes/held.json`):
   Greek too garbled to rebuild (≈960), [UNCERTAIN]/[ILLEGIBLE] not settled (≈500), Hebrew
@@ -317,3 +348,7 @@ Run with `--local` first and look at the report; then the Claude stages; `apply`
 - Margin years flagged by `tidy_fields.py` in 1 Samuel, 3/4 Kings, 2 Chronicles and Esther are
   still to check.
 - Literal verse numbers inside translations (`[19.]`) were offered to the user, not done.
+- References: 8 settled "as printed" with no candidate (the `None` entries in
+  `modernize_refs.MANUAL`), e.g. `3. Reg. XXX.311` on Josué p.287; and old references with no
+  modern one before them, in a spelling `find_refs` doesn't know (`Iudic.`, `Iosuæ`, `Ierem.`,
+  `Iob`, `Lævit.`, `Coloff.`, `Ysai.`): add those to `bible_refs._TABLE` and re-run.
