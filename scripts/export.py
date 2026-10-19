@@ -5,6 +5,9 @@
 
 Usage: python3 export.py genesis job          (keys of books.json)
        python3 export.py --published          (every book already on the site)
+The site gets French non-breaking spaces (the data keeps ordinary ones, punctuation.py):
+a narrow one before ; ? ! and a full one before : and inside « »; and curly apostrophes
+(’, not next to Greek or Hebrew).
 Then, in dom-calmet-web: npm run build, commit, npm run deploy.
 """
 import json
@@ -16,6 +19,21 @@ from calmet import notes
 from paths import BOOKS, WEB, load, pages
 
 ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
+
+NBSP = [(re.compile(r" ([;?!])"), "\u202f\\1"), (re.compile(r" ([:»])"), "\u00a0\\1"), (re.compile(r"« "), "«\u00a0"),
+        (re.compile(r"(?<![\u0370-\u03ff\u1f00-\u1fff\u0590-\u05ff])'(?![\u0370-\u03ff\u1f00-\u1fff\u0590-\u05ff])"), "’")]
+
+
+def nbsp(o):
+    if isinstance(o, dict):
+        return {k: nbsp(v) for k, v in o.items()}
+    if isinstance(o, list):
+        return [nbsp(v) for v in o]
+    if isinstance(o, str):
+        for rx, rep in NBSP:
+            o = rx.sub(rep, o)
+    return o
 
 
 def roman(s):
@@ -116,7 +134,7 @@ def export(key):
     for ch, verses in sorted(chapters.items()):
         out = dict(book=book["fr"], chapter=ch, chapter_summary=summaries.get(ch),
                    chapter_intro=intros.get(ch), verses=verses)
-        (raw_dir / f"chapter_{ch:02d}.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+        (raw_dir / f"chapter_{ch:02d}.json").write_text(json.dumps(nbsp(out), ensure_ascii=False, indent=2), encoding="utf-8")
     failed = []
     for ch in range(1, max(chapters, default=0) + 1):
         try:
@@ -128,7 +146,7 @@ def export(key):
         except Exception as e:
             failed.append(f"{ch}: {e}")
             continue
-        (cal_dir / f"calmet_chapter_{ch:02d}.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+        (cal_dir / f"calmet_chapter_{ch:02d}.json").write_text(json.dumps(nbsp(out), ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"{key} -> {book['site']}: {len(chapters)} chapters" + (f", notes failed for {failed}" if failed else ""))
 
 

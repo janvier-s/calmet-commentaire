@@ -278,6 +278,13 @@ def audit_book(key, info, slug, published=True):
                 for m in re.finditer(r"(?<![\w.])(?:[A-Za-zÀ-ÿŒÆœæ] ){3,}[A-Za-zÀ-ÿŒÆœæ](?!\w)", c.get(k) or ""):
                     item("spaced_letters", vol, int(n[5:9]),
                          f"Letter-spaced word in {k}: “{m.group()}”: close up the letters (put the word breaks back)")
+            for k in ("latin_quote", "french_translation", "french_commentary"):
+                m = re.match(r"\s*\^\{[^}]*\}", c.get(k) or "")
+                if m:
+                    item("leading_call", vol, int(n[5:9]),
+                         f"{k} of note {c.get('commentary_id')} (℣ {c.get('verse_ref')}) starts with the footnote call "
+                         f"“{m.group().strip()}”: “{(c.get(k) or '')[:60]}…”: move it after the word it belongs to "
+                         f"(end of the previous field or page?)")
             if re.match(r"\s*[.,;:!?»]", fc):
                 item("leading_punctuation", vol, int(n[5:9]),
                      f"Comment starts with punctuation “{fc[:40]}…”"
@@ -587,7 +594,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's

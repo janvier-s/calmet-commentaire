@@ -97,7 +97,11 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
    so the first note of a chapter can carry the last ref of the previous one (Lev 23:1 → 27).
    Step 10 finds these; the user fixes the ref in the editor.
 6. `python3 fix_markers.py <vol>`: footnote calls and markers, Jésus-Christ.
-7. `python3 tidy_fields.py <vol>`: underscores, annotations, blank lines (see §3). It also
+7. `python3 tidy_fields.py <vol>`: underscores, annotations, blank lines, spaces at the ends
+   of fields, calls inside footnote text (see §3), then `python3 punctuation.py --apply <vol>`:
+   French spacing with ordinary spaces (space before ; : ? ! », after «; none before , .;
+   straight ' apostrophes; no non-breaking spaces or curly ’ in the data: export.py adds them
+   for the site), … for .... The editors apply the same rules on every save. `tidy_fields.py` also
    lists margin years out of step with their neighbours. Show those to the user; fix them only
    when the neighbours make the reading certain (1989 among 2989s), and say which you changed.
 8. `python3 paragraph_breaks.py <vol>`: numbered points on their own paragraph; a literal

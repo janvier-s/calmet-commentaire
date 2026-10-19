@@ -10,6 +10,9 @@
     a bare year ("2949.") -> "An du M. 2949."
   - french_commentary: blank lines (\\n\\n) -> a single \\n (one \\n = one paragraph on the site),
     none at the end of a block
+  - footnote text: no footnote calls (^{(a)}: the note's own call repeated, or one left by the OCR);
+    other superscripts written on the line (H^{ieros} -> Hieros)
+  - every text field (footnotes too): no spaces or line breaks at either end, no spaces around a line break
 Changed French is added to the LLM cache, so llm_modernize.py won't send it again
 (don't run this while llm_modernize.py is running: it rewrites the cache when it finishes).
 
@@ -90,6 +93,35 @@ def tidy(d, cache, stats):
                 b["french_commentary"] = new
                 cache[hashlib.md5(new.encode()).hexdigest()] = new
                 stats["blank lines"] += 1
+                changed = True
+    for f in d.get("footnotes") or []:
+        t = f.get("text")
+        if isinstance(t, str) and "^{" in t:
+            new = re.sub(r"[ \t]*\^\{\(?(?:[a-z]|\d+)\)?\}[ \t]*", " ", t)
+            new = re.sub(r"\^\{(\w+)\}", r"\1", new)
+            new = re.sub(r" ?\n ?", "\n", re.sub(r" ([.,])", r"\1", new)).strip()
+            if new != t:
+                f["text"] = new
+                stats["calls in footnotes"] += 1
+                changed = True
+    if trim(d, cache, stats):
+        changed = True
+    return changed
+
+
+def trim(o, cache, stats):
+    """Leading and trailing spaces and line breaks off every string in the page."""
+    changed = False
+    for k, v in (o.items() if isinstance(o, dict) else enumerate(o)):
+        if isinstance(v, (dict, list)):
+            changed |= trim(v, cache, stats)
+        elif isinstance(v, str):
+            new = re.sub(r"[ \t\u00a0]*\n[ \t\u00a0]*", "\n", v).strip()
+            if new != v:
+                o[k] = new
+                if k in ("french", "french_translation", "french_commentary", "chapter_summary"):
+                    cache[hashlib.md5(new.encode()).hexdigest()] = new
+                stats["spaces at the ends"] += 1
                 changed = True
     return changed
 

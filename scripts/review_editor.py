@@ -60,6 +60,7 @@ KIND_LABELS = {
     "no_lemma": "NOTE WITHOUT LATIN_QUOTE",
     "spaced_letters": "L E T T E R - S P A C E D WORD",
     "leading_punctuation": "COMMENT STARTS WITH PUNCTUATION",
+    "leading_call": "FIELD STARTS WITH A FOOTNOTE CALL",
     "italic_seam": "ITALICS BROKEN AT PAGE TURN",
     "period_seam": "FULL STOP AT PAGE END, LOWER CASE OVERLEAF",
     "etc_for_et": "“ETC.” WHERE “&” (ET) WAS MEANT?",
@@ -341,6 +342,7 @@ class ReviewEditor(PageEditor):
         return True
 
     def _commit_and_rebuild(self):
+        self.data = page_editor.trim(page_editor.clean_page(self.data))
         with open(self.json_path, "w", encoding="utf-8") as f:
             json.dump(self.data, f, ensure_ascii=False, indent=2)
         self._build_json_editor()

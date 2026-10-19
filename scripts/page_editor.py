@@ -18,6 +18,7 @@ from pathlib import Path
 from PIL import Image, ImageTk
 
 from calmet import latin_case
+from punctuation import clean_page
 
 # --- Configuration ---
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -45,6 +46,17 @@ def find_source_image(book_path, page_num):
         if p.exists():
             return p
     return None
+
+
+def trim(o):
+    """No spaces or line breaks at either end of a field, none around a line break (as tidy_fields.py)."""
+    if isinstance(o, dict):
+        return {k: trim(v) for k, v in o.items()}
+    if isinstance(o, list):
+        return [trim(v) for v in o]
+    if isinstance(o, str):
+        return re.sub(r"[ \t\u00a0]*\n[ \t\u00a0]*", "\n", o).strip()
+    return o
 
 
 def save_state(book_name, page_num):
@@ -1059,6 +1071,7 @@ class PageEditor:
                 obj = obj[key]
             obj[json_path[-1]] = val
 
+        self.data = trim(clean_page(self.data))  # punctuation.py rules, then the ends trimmed
         try:
             with open(self.json_path, "w", encoding="utf-8") as f:
                 json.dump(self.data, f, ensure_ascii=False, indent=2)
