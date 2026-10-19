@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "34",
+      "verse_ref": 34,
       "chapter": 30,
       "latin_quote": "GALBANUM BONI ODORIS.",
       "french_translation": "Du galbanum de bonne odeur ; ou, du galbanum aromatique.",
@@ -23,23 +23,23 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "34",
+      "verse_ref": 34,
       "chapter": 30,
       "latin_quote": "THUS LUCIDISSIMUM.",
-      "french_translation": "L'encens le plus transparent.",
-      "french_commentary": "^{(b)} L'encens est un suc odoriférant qu'on tire par incision du tronc d'un arbre, qui croît particulièrement dans la région de Saba, dans l'Arabie Heureuse. Ce pays confine à celui des Minéens. Ce furent, dit-on, ces peuples, qui les premiers inventèrent la manière de faire des incisions dans les arbres, pour en tirer l'encens. L'encens le plus pur, le plus luisant et le meilleur, est celui qui sortant de l'arbre, tombe sur de petites clayes qui sont dessous."
+      "french_translation": "L'encens le plus transparent.^{(b)}",
+      "french_commentary": "L'encens est un suc odoriférant qu'on tire par incision du tronc d'un arbre, qui croît particulièrement dans la région de Saba, dans l'Arabie Heureuse. Ce pays confine à celui des Minéens. Ce furent, dit-on, ces peuples, qui les premiers inventèrent la manière de faire des incisions dans les arbres, pour en tirer l'encens. L'encens le plus pur, le plus luisant et le meilleur, est celui qui sortant de l'arbre, tombe sur de petites clayes qui sont dessous."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "34",
+      "verse_ref": 34,
       "chapter": 30,
       "latin_quote": "ÆQUALIS PONDERIS ERUNT UNIVERSA.",
       "french_translation": "Le tout de poids égal.",
-      "french_commentary": "Quelques-uns entendent l'Hébreu de cette sorte : ^{(c)} _On les mettra en poudre séparément._ Le Caldéen : _Le poids sera dans le poids._ Les Septante : ^{(d)} _Il sera égal à égal._ Le Syriaque : _Chaque poids d'un sicle. Il y en aura autant de l'un que de l'autre._ Les Hébreux disent qu'il y avait soixante et dix ou soixante et quatorze livres de chaque espèce. On peut traduire l'Hébreu à la lettre : _Ils seront seul à seul._"
+      "french_commentary": "Quelques-uns entendent l'Hébreu de cette sorte : ^{(c)} _On les mettra en poudre séparément._ Le Caldéen : _Le poids sera dans le poids._ Les Septante : ^{(d)} _Il sera égal à égal._ Le Syriaque : _Chaque poids d'un sicle. Il y en aura autant de l'un que de l'autre._ Les Hébreux disent qu'il y avait soixante et dix ou soixante et quatorze livres de chaque espèce. On peut traduire l'Hébreu à la lettre : _Ils seront seul à seul._"
     },
     {
       "commentary_id": 4,
-      "verse_ref": "35",
+      "verse_ref": 35,
       "chapter": 30,
       "latin_quote": "FACIESQUE THYMIAMA COMPOSITUM OPERE UNGUENTARII.",
       "french_translation": "Vous en ferez un parfum selon l'art du parfumeur.",
@@ -57,7 +57,7 @@
     },
     {
       "marker": "(c)",
-      "text": "בד בבד יהיה A la lettre : Solum cum solo erit."
+      "text": "בד בבד יהיה A la lettre : Solum cum solo erit."
     },
     {
       "marker": "(d)",
@@ -72,5 +72,6 @@
       "text": "Plutarque, D'Isis et d'Osiris."
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }
