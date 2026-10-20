@@ -8,10 +8,12 @@ import hashlib, json, re, sys, statistics
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from chapter_refs import REF as CH_REF, write as chapter_write
 from calmet import STRAY, _fold, vulgate_words
 from export import chapter_of
 from modernize_refs import MANUAL as REF_MANUAL
 from paths import BOOKS, DATA as STUDIUM, DOCS, VUL, WEB as SITE
+WHICH_BOOK = re.compile(r"\b(?:Rois|Paralipomènes|Machabées|Esdras),?\s+chapitres?\s+\d+(?::\d+(?:(?:-|, )\d+)*)?")
 
 # --- archaic spelling markers (French) -------------------------------------
 OK_OIT = set("""soit doit voit croit droit toit endroit étroit exploit adroit maladroit reçoit aperçoit
@@ -394,6 +396,17 @@ def audit_book(key, info, slug, published=True):
                   "or set the reference right"] if guessed else [])
                 + ([f"Calmet's {', '.join(printed)} written out as printed, but no such verse in the Vulgate: "
                     "check against the scan"] if printed else [])))
+        # chapter references chapter_refs.py could not write out: which book, or which numbers?
+        for c in d.get("commentary") or []:
+            t, where = c.get("french_commentary") or "", f"commentary {c.get('commentary_id')} (℣ {c.get('verse_ref')})"
+            left = [m.group().strip(" ,") for m in CH_REF.finditer(t) if chapter_write(m, t) == m.group()]
+            which = [t[max(0, m.start() - 30):m.end()].lstrip() for m in WHICH_BOOK.finditer(t)]
+            if left:
+                item("chapter_ref", vol, int(n[5:9]), f"{where}: “{'”, “'.join(left)}” left as printed (chapters "
+                     "not in order: a verse, or a word?): write it as “chapitre C:V”, or “Livre C:V” after a book")
+            if which:
+                item("chapter_ref", vol, int(n[5:9]), f"{where}: “…{'”, “…'.join(which)}”: which book? write it as "
+                     "“2 Rois 1:18” / “1 Paralipomènes 9:22”")
         # an asterisk marks footnote text that was guessed, not read on the scan: one item per page
         starred = [str(f.get("marker")) for f in fns if "*" in GUESSED_REF.sub("", str(f.get("text") or ""))]
         if starred:
@@ -594,7 +607,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's
