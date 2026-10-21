@@ -10,6 +10,8 @@ Septuagint; the ligatures the transcription misreads set right when one reading 
   letters accented otherwise (ἀριθμους -> ἀριθμούς), or one letter changed, when it has only one.
 A word with no reading in the dictionary is left as it is, for the scan.
 """
+import atexit
+import json
 import re
 import subprocess
 import unicodedata
@@ -37,8 +39,20 @@ def nfc(w):
     return unicodedata.normalize("NFC", w)
 
 
+ASKED_FILE = SCRIPTS / "cache" / "refs" / "grc_hunspell_asked.json"
 _HUNSPELL = []
-_ASKED = {}
+_ASKED = json.loads(ASKED_FILE.read_text(encoding="utf-8")) if ASKED_FILE.exists() else {}
+_ASKED_DIRTY = False
+
+
+def save_asked():
+    global _ASKED_DIRTY
+    if _ASKED_DIRTY:
+        ASKED_FILE.write_text(json.dumps(_ASKED, ensure_ascii=False), encoding="utf-8")
+        _ASKED_DIRTY = False
+
+
+atexit.register(save_asked)
 
 
 def ask(w):
@@ -59,6 +73,8 @@ def ask(w):
                 break
             lines.append(line.strip())
         _ASKED[w] = lines
+        global _ASKED_DIRTY
+        _ASKED_DIRTY = True
     return _ASKED[w]
 
 

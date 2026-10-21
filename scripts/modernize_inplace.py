@@ -1463,6 +1463,217 @@ WORD_MAP = {
     "addressées": "adressées",
     "addressèrent": "adressèrent",
     "addressent": "adressent",
+
+    # Soul
+    "ame": "âme",
+    "ames": "âmes",
+
+    # Weak
+    "foible": "faible",
+    "foibles": "faibles",
+    "foiblesse": "faiblesse",
+    "foiblesses": "faiblesses",
+    "foiblement": "faiblement",
+    "affoiblir": "affaiblir",
+    "affoibli": "affaibli",
+    "affoiblit": "affaiblit",
+    "affoiblis": "affaiblis",
+    "affoiblie": "affaiblie",
+    "affoiblies": "affaiblies",
+    "affoiblissement": "affaiblissement",
+    "affoiblissements": "affaiblissements",
+
+    # Wounds
+    "playe": "plaie",
+    "playes": "plaies",
+
+    # True
+    "vray": "vrai",
+    "vraye": "vraie",
+    "vrays": "vrais",
+    "vrayes": "vraies",
+    "vrayement": "vraiment",
+
+    # Grace
+    "grace": "grâce",
+    "graces": "grâces",
+
+    # Island
+    "isle": "île",
+    "isles": "îles",
+
+    # Century & Rules
+    "siecle": "siècle",
+    "siecles": "siècles",
+    "regle": "règle",
+    "regles": "règles",
+
+    # Same
+    "mesme": "même",
+    "mesmes": "mêmes",
+
+    # Master
+    "maistre": "maître",
+    "maistres": "maîtres",
+    "maistresse": "maîtresse",
+
+    # Stiff
+    "roide": "raide",
+    "roides": "raides",
+    "roideur": "raideur",
+    "roideurs": "raideurs",
+
+    # Why
+    "pourquoy": "pourquoi",
+    "quoy": "quoi",
+
+    # Vault
+    "voute": "voûte",
+    "voutes": "voûtes",
+
+    # Priest
+    "prestre": "prêtre",
+    "prestres": "prêtres",
+
+    # Host
+    "hoste": "hôte",
+    "hostes": "hôtes",
+
+    # Head
+    "testes": "têtes",
+
+    # Clothes
+    "vestement": "vêtement",
+    "vestemens": "vêtements",
+
+    # Forests
+    "forests": "forêts",
+    "foreste": "forêt",
+
+    # Please
+    "plaist": "plaît",
+
+    # Roles
+    "roles": "rôles",
+    "role": "rôle",
+
+    # Demonstratives
+    "icy": "ici",
+    "cecy": "ceci",
+    "celuy": "celui",
+
+    # Verbs and participles
+    "connoissais": "connaissais",
+    "connoiffez": "connaissez",
+    "connoissez": "connaissez",
+    "connoissait": "connaissait",
+    "connoissaient": "connaissaient",
+    "connoissant": "connaissant",
+    "connoissance": "connaissance",
+    "connoissances": "connaissances",
+    "paroissais": "paraissais",
+    "paroissait": "paraissait",
+    "paroissaient": "paraissaient",
+    "paroissant": "paraissant",
+    "reconnoissais": "reconnaissais",
+    "reconnoissait": "reconnaissait",
+    "reconnoissaient": "reconnaissaient",
+    "reconnoissant": "reconnaissant",
+    "reconnoissance": "reconnaissance",
+    "reconnoissances": "reconnaissances",
+    "pécheroit": "pécherait",
+    "sortans": "sortants",
+    "lieutenans": "lieutenants",
+    "imposans": "imposants",
+    "saccagemens": "saccagements",
+    "attachemens": "attachements",
+    "embrasemens": "embrasements",
+    "clémens": "cléments",
+    "expédiens": "expédients",
+    "démens": "déments",
+
+    # -uë feminine participles
+    "venuë": "venue",
+    "venuës": "venues",
+    "étenduë": "étendue",
+    "étenduës": "étendues",
+    "connuë": "connue",
+    "connuës": "connues",
+    "résoluë": "résolue",
+    "résoluës": "résolues",
+    "reçuë": "reçue",
+    "reçuës": "reçues",
+    "pourveuë": "pourvue",
+    "pourveuës": "pourvues",
+    "dûë": "due",
+    "dûës": "dues",
+    "décheuë": "déchue",
+    "décheuës": "déchues",
+    "émûë": "émue",
+    "émûës": "émues",
+    "continuë": "continue",
+    "continuës": "continues",
+
+    # -yent verb forms
+    "croyent": "croient",
+    "ayent": "aient",
+    "voyent": "voient",
+    "employent": "emploient",
+    "envoyent": "envoient",
+    "fuyent": "fuient",
+    "appuyent": "appuient",
+    "essuyent": "essuient",
+
+    # y -> i / i -> y nouns & adverbs
+    "proye": "proie",
+    "proyes": "proies",
+    "stile": "style",
+    "stiles": "styles",
+    "autrefais": "autrefois",
+    "toutefais": "toutefois",
+    "noye": "noie",
+    "noyent": "noient",
+
+    # Accents & circumflexes
+    "plûpart": "plupart",
+    "misericorde": "miséricorde",
+    "misericordes": "miséricordes",
+    "misericordieux": "miséricordieux",
+    "siécle": "siècle",
+    "siécles": "siècles",
+    "déja": "déjà",
+    "regne": "règne",
+    "regnes": "règnes",
+    "regner": "régner",
+    "fléche": "flèche",
+    "fléches": "flèches",
+    "chûte": "chute",
+    "chûtes": "chutes",
+    "disgrace": "disgrâce",
+    "disgraces": "disgrâces",
+    "précede": "précède",
+    "précedent": "précèdent",
+    "succede": "succède",
+    "succedent": "succèdent",
+
+    # ü digraphs
+    "orgüeil": "orgueil",
+    "orgüils": "orgueils",
+    "orgüilleux": "orgueilleux",
+    "écüeil": "écueil",
+    "écüeils": "écueils",
+    "obéïssance": "obéissance",
+    "obéïr": "obéir",
+    "obéït": "obéit",
+    "obéïrent": "obéirent",
+    "obéïssent": "obéissent",
+    "obéïssant": "obéissant",
+    "louë": "loue",
+    "louënt": "louent",
+    "avouë": "avoue",
+    "avouënt": "avouent",
+    "dévouë": "dévoue",
+    "dévouënt": "dévouent",
 }
 
 def match_case(src, tgt):
@@ -1480,6 +1691,77 @@ def modernize_text(text):
         return text, 0
     
     count = 0
+
+    # 1. Trailing apostrophe OCR artifacts (e.g., "moi'")
+    def strip_ocr_apostrophe(m):
+        nonlocal count
+        count += 1
+        return m.group(1)
+    text = re.sub(r"\b(moi|toi|lui|soi)'", strip_ocr_apostrophe, text)
+
+    # 2. Contextual participles (after auxiliaries)
+    def participles_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + ' ' + (m.group(2) or '') + ('étonnés' if 'étonn' in m.group(3).lower() else 'troublés')
+    text = re.sub(r'\b(sont|étaient|seront|furent|été|yeux)\s+(tout\s+)?(étonnez|troublez)\b', participles_replacer, text, flags=re.I)
+
+    # 3. Contextual noun "péchés" (when preceded by determiners)
+    def pechez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + ' ' + match_case(m.group(2), 'péchés')
+    text = re.sub(r'\b(les|des|mes|tes|ses|nos|vos|leurs|ces|aux|plusieurs|tous)\s+(p[ée]chez)\b', pechez_replacer, text, flags=re.I)
+
+    # 4. Jusques elisions & normalization
+    def jusque_elide(m):
+        nonlocal count
+        count += 1
+        lead = m.group(1)
+        vowel_part = m.group(2)
+        prefix = "Jusqu'" if lead[0].isupper() else "jusqu'"
+        return prefix + vowel_part
+    text = re.sub(r"\b(jusques?)\s+([àaâeéèêiîoôuûy]|aujourd'hui|au-delà|alors|où)\b", jusque_elide, text, flags=re.I)
+
+    def jusque_hyphen(m):
+        nonlocal count
+        count += 1
+        lead = m.group(1)
+        prefix = "Jusque-là" if lead[0].isupper() else "jusque-là"
+        return prefix
+    text = re.sub(r'\b(jusques?)\s*-\s*là\b', jusque_hyphen, text, flags=re.I)
+
+    def standalone_jusques(m):
+        nonlocal count
+        count += 1
+        return match_case(m.group(0), 'jusque')
+    text = re.sub(r'\bjusques\b', standalone_jusques, text, flags=re.I)
+
+    # 5. Adjective vôtre/nôtre vs pronoun le/la/les vôtre/nôtre
+    def votre_notre_replacer(m):
+        nonlocal count
+        prefix = m.group(1) or ""
+        word = m.group(2)
+        prev = prefix.lower().strip()
+        if prev in ("le", "la", "les", "du", "des", "au", "aux"):
+            return m.group(0)  # keep pronoun with circumflex
+        count += 1
+        base = "votre" if "v" in word.lower() else "notre"
+        return prefix + match_case(word, base)
+    text = re.sub(r'(\b\w+\s+)?\b([VvNn]ôtre)\b', votre_notre_replacer, text)
+
+    # 5b. très-X hyphen modernization (keep "Très-Haut" for God's title)
+    def tres_replacer(m):
+        nonlocal count
+        lead = m.group(1)
+        word = m.group(2)
+        if word.lower() == "haut" and lead == "Très":
+            return "Très-Haut"
+        count += 1
+        return lead + " " + word
+    text = re.sub(r'\b(très|Très)-([A-Za-zÀ-ÿ]+)\b', tres_replacer, text)
+
+    # 6. Global WORD_MAP matching
     def replacer(match):
         nonlocal count
         word = match.group(0)
@@ -1491,18 +1773,14 @@ def modernize_text(text):
                 return tgt
         return word
 
-    new_text = pattern.sub(replacer, text)
-    return new_text, count
+    text = pattern.sub(replacer, text)
+    return text, count
 
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: python modernize_inplace.py <book_folder> [--dry-run]")
-        sys.exit(1)
-
-    folder_name = sys.argv[1]
-    dry_run = "--dry-run" in sys.argv
+def process_volume(folder_name, dry_run):
     folder = DATA / folder_name / "normalized"
-
+    if not folder.is_dir():
+        print(f"Directory not found: {folder}")
+        return 0, 0
 
     total_replacements = 0
     pages_updated = 0
@@ -1513,7 +1791,6 @@ def main():
 
         if isinstance(data, list) and len(data) == 1 and isinstance(data[0], dict):
             data = data[0]
-            changed = True
 
         changed = False
 
@@ -1546,6 +1823,30 @@ def main():
 
     mode = "Dry-run: would make" if dry_run else "Applied"
     print(f"{mode} {total_replacements} in-place modernizations across {pages_updated} pages in {folder_name}.")
+    return total_replacements, pages_updated
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python modernize_inplace.py <book_folder | all> [--dry-run]")
+        sys.exit(1)
+
+    dry_run = "--dry-run" in sys.argv
+    args = [a for a in sys.argv[1:] if a != "--dry-run"]
+
+    if "all" in args:
+        volumes = sorted([d.name for d in DATA.iterdir() if (d / "normalized").is_dir()])
+    else:
+        volumes = args
+
+    grand_replacements = 0
+    grand_pages = 0
+    for vol in volumes:
+        r, p = process_volume(vol, dry_run)
+        grand_replacements += r
+        grand_pages += p
+
+    mode = "Dry-run total" if dry_run else "Total applied"
+    print(f"\n{mode}: {grand_replacements} replacements across {grand_pages} pages in {len(volumes)} volumes.")
 
 if __name__ == "__main__":
     main()
