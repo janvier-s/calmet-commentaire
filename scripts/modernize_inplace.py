@@ -1686,6 +1686,41 @@ def match_case(src, tgt):
 keys = sorted(WORD_MAP.keys(), key=len, reverse=True)
 pattern = re.compile(r"(?<![A-Za-zÀ-ÿ0-9])(" + "|".join(re.escape(k) for k in keys) + r")(?![A-Za-zÀ-ÿ0-9])", re.I)
 
+SAINT_FOLLOWERS = (
+    "Jérôme", "Jerôme", "Jérome", "Jeronyme", "Hieronym", "Hieronymi", "Ieronym", "Ieronymi",
+    "Ieron", "Ierom", "Ierôme", "Hier", "Augustin", "Aug", "August", "Paul", "Ambroise",
+    "Ambros", "Ambr", "Chrysostome", "Chrysost", "Hilaire", "Hilar", "Grégoire", "Cyprien",
+    "Pierre", "Petri", "Matthieu", "Mathieu", "Matth", "Jean", "Jean-Baptiste", "Joannis",
+    "Joan", "Ioan", "Germain", "Germ", "Germani", "German", "Thomas", "Thom", "Cyrille",
+    "Cyrill", "Cyr", "Michel", "Athanase", "Athan", "Justin", "Jacques", "Clément", "Fulgence",
+    "Épiphane", "Epiphane", "Luc", "Marc", "Bernard", "Raphaël", "Benoît", "Bened", "Basile",
+    "Bafil", "Étienne", "Etienne", "Prosper", "Isidore", "Irénée", "Irenée", "Aubin", "Albini",
+    "Timothée", "Éphrem", "Philippe", "Fiacre", "Antoine", "Hilarion", "Jude", "Martin",
+    "Martini", "Léon", "Satyre", "Symeon", "Maxim", "Ignace", "Zabulon", "Dorotheus", "Saba",
+    "Esprit", "Siège", "Prophète", "Abbé", "Cher", "Paule"
+)
+
+S_PATTERN = re.compile(
+    r'(^|[\.\?!;:]|\n)?(\s*(?:[\"\'_«\(\*]|\^\{[^\}]+\}\s*)*)\bS\.\s+(' +
+    '|'.join(re.escape(n) for n in sorted(SAINT_FOLLOWERS, key=len, reverse=True)) +
+    r')\b'
+)
+
+# 1. Expand J. C. and variants to Jésus-Christ
+RX_JC_FULL = re.compile(r"\b(Jesus-Christ|JESUS-CHRIST|JEsus-Christ|Jésus\s+Christ|JESUS\s+CHRIST)\b")
+RX_JC_ABBR = re.compile(r"\bJ\s*\.?\s*-?\s*C(\.?)")
+
+# 2. Move punctuation to the left of footnote calls (e.g. ^{(a)})
+RX_FN_PUNCT = re.compile(r"(\S+)?(\s*)(\^\{\([a-zA-Z_0-9\*\+†]+\)\})(\s*)([,;:\.!\?]+)")
+RX_FN_FOLLOW = re.compile(r"(\^\{\([a-zA-Z_0-9\*\+†]+\)\})(?=[A-Za-zÀ-ÿ«“])")
+
+# 3. Ensure space after punctuation
+RX_SPACE_COMMA = re.compile(r"(?<=[a-zA-ZÀ-ÿ0-9_\)»”]),(?=[A-Za-zÀ-ÿ«“])")
+RX_SPACE_SEMI = re.compile(r"(?<=[a-zA-ZÀ-ÿ0-9_\)»”]);(?=[A-Za-zÀ-ÿ«“])")
+RX_SPACE_COLON = re.compile(r"(?<=[a-zA-ZÀ-ÿ0-9_\)»”]):(?=[A-Za-zÀ-ÿ«“])")
+RX_SPACE_EXCL_QUEST = re.compile(r"(?<=[a-zA-ZÀ-ÿ0-9_\)»”])([!\?])(?=[A-Za-zÀ-ÿ«“])")
+RX_SPACE_PERIOD = re.compile(r"(?<=[a-zA-ZÀ-ÿ]{2})\.(?=[A-ZÀ-ÿ«“])")
+
 def modernize_text(text):
     if not text:
         return text, 0
@@ -1725,9 +1760,10 @@ def modernize_text(text):
 
     def jusque_hyphen(m):
         nonlocal count
-        count += 1
         lead = m.group(1)
         prefix = "Jusque-là" if lead[0].isupper() else "jusque-là"
+        if prefix != m.group(0):
+            count += 1
         return prefix
     text = re.sub(r'\b(jusques?)\s*-\s*là\b', jusque_hyphen, text, flags=re.I)
 
@@ -1756,10 +1792,110 @@ def modernize_text(text):
         lead = m.group(1)
         word = m.group(2)
         if word.lower() == "haut" and lead == "Très":
+            if word != "Haut":
+                count += 1
             return "Très-Haut"
         count += 1
         return lead + " " + word
     text = re.sub(r'\b(très|Très)-([A-Za-zÀ-ÿ]+)\b', tres_replacer, text)
+
+    # 5c. Expand "S." / "Ste" to "Saint" / "saint" / "sainte" before saint names / titles
+    def s_replacer(m):
+        nonlocal count
+        lead = m.group(1)
+        sep = m.group(2)
+        name = m.group(3)
+        count += 1
+        is_start = m.start() == 0 or (lead is not None and lead != "")
+        prefix = (lead or "") + sep
+        if name in ("Esprit", "Siège", "Cher"):
+            return prefix + f"Saint-{name}"
+        sw = "Saint" if is_start else "saint"
+        return prefix + f"{sw} {name}"
+    text = S_PATTERN.sub(s_replacer, text)
+
+    def ste_replacer(m):
+        nonlocal count
+        count += 1
+        lead = m.group(1)
+        sep = m.group(2)
+        sw = "Sainte" if (m.start() == 0 or (lead is not None and lead != "")) else "sainte"
+        return (lead or "") + sep + sw + " Paule"
+    text = re.sub(r'(^|[\.\?!;:]|\n)?(\s*(?:[\"\'_«\(\*]|\^\{[^\}]+\}\s*)*)\bSte\.?\s+Paule\b', ste_replacer, text)
+
+    # 5d. Capitalize "saint" -> "Saint" at start of field/sentence or after a semicolon/colon
+    def saint_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + m.group(2) + "Saint"
+    text = re.sub(r'(^|[\.\?!;:]|\n)(\s*(?:[\"\'_«\(\*]|\^\{[^\}]+\}\s*)*)\bsaint\b', saint_replacer, text)
+
+    # 5e. Expand J. C. and variants to Jésus-Christ
+    def jc_full_sub(m):
+        nonlocal count
+        count += 1
+        return "Jésus-Christ"
+    text = RX_JC_FULL.sub(jc_full_sub, text)
+
+    def jc_abbr_sub(m):
+        nonlocal count
+        count += 1
+        dot = m.group(1)
+        rest = m.string[m.end():]
+        if dot:
+            if re.match(r'^\s*$', rest) or re.match(r'^\s*\^\{[^\}]+\}\s*([A-ZÀ-ÿ«“]|$)', rest) or re.match(r'^\s+[A-ZÀ-ÿ«“]', rest):
+                return "Jésus-Christ."
+        return "Jésus-Christ"
+    text = RX_JC_ABBR.sub(jc_abbr_sub, text)
+
+    # 5f. Move punctuation to the left of footnote calls (e.g. ^{(a)})
+    def fn_move_sub(m):
+        nonlocal count
+        lead = m.group(1) or ""
+        call = m.group(3)
+        punct = m.group(5)
+
+        p = punct[0]
+        stripped = lead.rstrip("_*\"'»)]")
+        last_char = stripped[-1] if stripped else ""
+
+        if last_char == p:
+            new_lead = lead
+        elif last_char == "." and p == ".":
+            new_lead = lead
+        elif last_char in (":", ";", "?", "!") and p in (".", ","):
+            new_lead = lead
+        elif last_char == "." and p in (",", ";", ":", "?", "!"):
+            if p == ",":
+                new_lead = lead + ","
+            else:
+                new_lead = lead + " " + p
+        else:
+            if p in (",", "."):
+                new_lead = lead + p
+            else:
+                new_lead = lead + " " + p
+
+        count += 1
+        rest_idx = m.end()
+        rest = m.string[rest_idx:]
+        sep_after = " " if (rest and not rest.startswith((" ", "\n", "\r", "\t", ")", "»", "”"))) else ""
+        return new_lead + " " + call + sep_after
+
+    text = RX_FN_PUNCT.sub(fn_move_sub, text)
+
+    def fn_follow_sub(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + " "
+    text = RX_FN_FOLLOW.sub(fn_follow_sub, text)
+
+    # 5g. Ensure space after punctuation
+    text, n = RX_SPACE_COMMA.subn(", ", text); count += n
+    text, n = RX_SPACE_SEMI.subn("; ", text); count += n
+    text, n = RX_SPACE_COLON.subn(": ", text); count += n
+    text, n = RX_SPACE_EXCL_QUEST.subn(r"\1 ", text); count += n
+    text, n = RX_SPACE_PERIOD.subn(". ", text); count += n
 
     # 6. Global WORD_MAP matching
     def replacer(match):
@@ -1796,10 +1932,10 @@ def process_volume(folder_name, dry_run):
 
         def update_field(container, key):
             nonlocal changed, total_replacements
-            if container.get(key):
+            if container.get(key) and isinstance(container[key], str):
                 orig = container[key]
                 mod, c = modernize_text(orig)
-                if c > 0:
+                if mod != orig:
                     container[key] = mod
                     changed = True
                     total_replacements += c
@@ -1814,6 +1950,10 @@ def process_volume(folder_name, dry_run):
         for comm in data.get("commentary") or []:
             update_field(comm, "french_translation")
             update_field(comm, "french_commentary")
+
+        for fn in data.get("footnotes") or []:
+            update_field(fn, "text")
+            update_field(fn, "footnote_text")
 
         if changed:
             pages_updated += 1

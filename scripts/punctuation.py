@@ -34,7 +34,10 @@ RULES = [
     ("non-breaking space", re.compile(r"[\u00a0\u202f\u2009]"), " "),
     ("straight apostrophe", re.compile(rf"(?<![{GREEK_HEBREW}])’(?![{GREEK_HEBREW}])"), "'"),
     ("ellipsis", re.compile(r"(?!…(?! ?[.…]))\.*(?:\.(?: ?\.){2,}|…)(?: ?(?:\.(?: ?\.){2,}|…))*"), "…"),
-    ("space after , ; :", re.compile(r"(?<=[a-zà-ÿ_)])([,;]|:(?!\d))(?=[A-Za-zÀ-ÿ])"), r"\1 "),
+    ("space after , ; :", re.compile(r"(?<=[a-zA-ZÀ-ÿ0-9_\)»”])([,;]|:(?!\d))(?=[A-Za-zÀ-ÿ«“])"), r"\1 "),
+    ("space after ! ?", re.compile(r"(?<=[a-zA-ZÀ-ÿ0-9_\)»”])([!\?])(?=[A-Za-zÀ-ÿ«“])"), r"\1 "),
+    ("space after .", re.compile(r"(?<=[a-zA-ZÀ-ÿ]{2})\.(?=[A-ZÀ-ÿ«“])"), ". "),
+    ("space after footnote call", re.compile(r"(\^\{\([a-zA-Z_0-9\*\+†]+\)\})(?=[A-Za-zÀ-ÿ«“])"), r"\1 "),
     ("space before ; : ? ! »", re.compile(
         rf"(?<=[^\s({{\[«?!{GREEK_HEBREW}])([;?!»]|:(?!\d))"), r" \1"),
     ("space after «", re.compile(r"«(?=\S)"), "« "),

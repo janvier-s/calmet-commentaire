@@ -385,14 +385,23 @@ Over 16,600 replacements applied across all 46 Old Testament volumes in two stag
     `siécle(s)` → `siècle(s)`, `fléche(s)` → `flèche(s)`, `chûte(s)` → `chute(s)`, `plûpart` → `plupart`,
     `disgrace(s)` → `disgrâce(s)`;
   - **Diphthongs & trémas**: `autrefais` → `autrefois`, `toutefais` → `toutefois`, `stile(s)` → `style(s)`,
-    `proye(s)` → `proie(s)`, `orgüeil` → `orgueil`, `obéïssance` → `obéissance`, `louë` → `loue`, `avouë` → `avoue`.
+    `proye(s)` → `proie(s)`, `orgüeil` → `orgueil`, `obéïssance` → `obéissance`, `louë` → `loue`, `avouë` → `avoue`;
+  - **Saints & Titles (`S.` expansion & capitalization)**:
+    - Expanded abbreviation `S.` → `Saint` / `saint` before Church Fathers and Apostles across commentary and footnotes (`S. Jérôme` → `Saint/saint Jérôme`, `S. Augustin` → `Saint/saint Augustin`, `S. Paul` → `Saint/saint Paul`, `S. Esprit` → `Saint-Esprit`, `S. Siège` → `Saint-Siège`);
+    - Capitalized `saint` → `Saint` at the start of fields/sentences or after semicolons (`;`) and colons (`:`) across all commentary and footnote text fields (`footnotes[].text`).
+  - **Expansion of `J. C.` to `Jésus-Christ`**:
+    - Expanded all variants (`J. C.`, `J.-C.`, `J.C.`, `J. C`, `J.-C`, `Jesus-Christ`, `JESUS-CHRIST`, `Jésus Christ`, `JESUS CHRIST`) to standardized `Jésus-Christ` (rendered in small caps on the website), retaining sentence-ending periods where applicable (`J.-C. Qui...` → `Jésus-Christ. Qui...`).
+  - **Footnote Calls Punctuation Movement**:
+    - Moved punctuation placed after footnote calls to the left of the call (`mot ^{(a)}.` → `mot. ^{(a)}`, `mot ^{(a)},` → `mot, ^{(a)}`, `mot ^{(a)} ;` → `mot ; ^{(a)}`, `mot ^{(a)} :` → `mot : ^{(a)}`, `mot ^{(a)} ?` → `mot ? ^{(a)}`), deduplicating when punctuation already existed on the left and respecting French typographic spacing around high punctuation.
+  - **Punctuation Spacing**:
+    - Enforced mandatory spacing after punctuation marks (`,`, `;`, `:`, `!`, `?`, `.`) when immediately followed by text or opening quotes, and after footnote calls.
 
 ## 13. Current status & remaining work (as of Oct 21, 2026)
 
 - **Structural Normalization**: 100% complete across all 46 Old Testament books (`01_genese` through
   `46_2_maccabees`) with **0 page gaps** in `audit_integrity.py`.
 - **Bible References in Commentary**: 100% complete across all 46 Old Testament books with **0 items to review**.
-- **French Modernization & `très-X`**: 100% complete across all 46 Old Testament books (`modernize_inplace.py all`).
+- **French Modernization, Typography & Footnote Calls**: 100% complete across all 46 Old Testament books (`modernize_inplace.py all`), including `Jésus-Christ` expansion, footnote punctuation repositioning, space after punctuation, and `S.` expansion.
 - **Footnotes Pipeline (`footnotes.py`)**:
   - `01_genese` through `21a_psaumes`: completed and held notes indexed in `docs/footnotes/held.json`.
   - `21b_psaumes` through `26_ecclesiastique`: local checks run and applied into `normalized/` (over 1,440
