@@ -163,7 +163,9 @@ Check new books for other heading styles before running (the New Testament may d
 chapter issues, commentary that doesn't reach the site, page breaks (seam_check), `verse_ref`
 going backwards inside a chapter, notes with a lemma but no `verse_ref`, notes other than the page's first with no `latin_quote`, letter-spaced words ("J E S U S"), comments starting with punctuation, a `latin_quote`/`french_translation` cut by the page turn (ending in "-", or with no full stop in a last note with no comment yet) and not continued in the same field overleaf, italics broken at the page turn (left open at the foot of a page and not closed overleaf, or closed exactly at the foot mid-sentence while the quotation goes on in roman overleaf), a full stop at the foot of a page followed by lower case overleaf, "etc." with the sentence running on (an "&" misread as etc.), translations over 3×
 the lemma's length (and 40+ characters longer), "l'Hébreu" in a translation (both: commentary
-run into `french_translation`), lower case in `latin_quote` (footnote calls ignored), an empty `chapter_summary` on a page that opens a chapter, more
+run into `french_translation`), `french_translation` not ending with punctuation (`translation_no_punct`, page's final commentary and footnote calls ignored),
+missing capital in `french_translation` 1st letter (`lowercase_translation`, page's first commentary ignored), lower case in `latin_quote`
+(footnote calls ignored), `latin_quote` not ending with punctuation (`lemma_no_punct`, page's final commentary and footnote calls ignored), an empty `chapter_summary` on a page that opens a chapter, more
 footnotes than distinct calls on the page, notes with no commentary (a lemma alone at the foot of a
 page is fine), capitals left in commentary (Roman numerals excepted), broken footnote calls,
 missing footnotes.

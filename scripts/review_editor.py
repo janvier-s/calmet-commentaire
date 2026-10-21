@@ -10,7 +10,8 @@ a page that has a scan but no JSON.
 Usage: python3 review_editor.py [--all] [--kind missing_verse] [--book 05_deuteronome] [--queue path]
   --all    include optional items (page-turn glitches)
   --kind   only this kind of issue (missing_page, missing_verse, duplicate_verse,
-           possible_gap, missing_footnote, empty_page, seam_artifact)
+           possible_gap, missing_footnote, empty_page, seam_artifact,
+           translation_no_punct, lowercase_translation)
   --book   only this book folder
   --skipped  only the issues you skipped (--resolved: only those marked resolved)
 
@@ -22,6 +23,7 @@ across runs. Changes reach the website only after the book is re-exported.
 """
 
 import json
+import re
 import sys
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
@@ -74,6 +76,9 @@ KIND_LABELS = {
     "guessed_ref": "BIBLE REFERENCE GUESSED (*) OR AS PRINTED: CHECK ON THE SCAN",
     "footnote_asterisk": "FOOTNOTE WITH GUESSED WORDS (*): CHECK AGAINST THE SCAN",
     "lowercase_lemma": "LOWER CASE IN THE LATIN LEMMA",
+    "lemma_no_punct": "LATIN LEMMA NOT ENDING WITH PUNCTUATION",
+    "translation_no_punct": "TRANSLATION NOT ENDING WITH PUNCTUATION",
+    "lowercase_translation": "MISSING CAPITAL IN FRENCH TRANSLATION",
     "lemma_unknown_word": "LEMMA WORD NOT IN THE VULGATE (name? misreading?)",
     "extra_footnotes": "MORE FOOTNOTES THAN CALLS",
     "empty_commentary": "NOTE WITHOUT COMMENTARY",
@@ -242,8 +247,12 @@ class ReviewEditor(PageEditor):
         # each list counts within the other selector's choice
         in_book = lambda it: self._book_choice is None or it["book_dir"] == self._book_choice
         of_kind = lambda it: self._kind_choice is None or it["kind"] == self._kind_choice
-        self.kind_box["values"] = [f"All types ({left(in_book)})"] + [
-            f"{KIND_LABELS.get(k, k)} ({left(lambda it, k=k: it['kind'] == k and in_book(it))})" for k in kinds]
+        tot = left(in_book)
+        tot_label = f"🔴 ({tot}) All types" if tot > 0 else f"   (0) All types"
+        def format_kind(k):
+            c = left(lambda it, k=k: it["kind"] == k and in_book(it))
+            return f"🔴 ({c}) {KIND_LABELS.get(k, k)}" if c > 0 else f"   (0) {KIND_LABELS.get(k, k)}"
+        self.kind_box["values"] = [tot_label] + [format_kind(k) for k in kinds]
         self.book_box["values"] = [f"All books ({left(of_kind)})"] + [
             f"{b} ({left(lambda it, b=b: it['book_dir'] == b and of_kind(it))})" for b in books]
         self.kind_box.current(self._kind_values.index(self._kind_choice))

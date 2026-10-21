@@ -198,7 +198,7 @@ def notes(book, chapter, first, last, joins=None):
     for stem, before, after, page in page_list:
         # each block carries its chapter (assign_chapters.py)
         for b in (c for c in page.get("commentary") or [] if c.get("chapter") == chapter):
-            blocks.append(dict(page=stem, cid=b["commentary_id"],
+            blocks.append(dict(page=stem, cid=b.get("commentary_id") or b.get("comment_id"),
                                verse=verse_number(b.get("verse_ref")),
                                latin=bind((b.get("latin_quote") or "").strip(),
                                           stem) or None,

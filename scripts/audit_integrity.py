@@ -418,6 +418,24 @@ def audit_book(key, info, slug, published=True):
             if re.search(r"\bl['’]\s?h[ée]breu", tr, re.I):
                 item("hebrew_in_translation", vol, int(n[5:9]),
                      f"“L'Hébreu” in the translation of “{lemma[:40]}”: “{tr[:100]}…”: commentary run into the translation?")
+            if tr:
+                tr_bare = tr.rstrip("_* \t")
+                if j != len(cs) - 1 and not re.search(r"\^\{[^\}]+\}\s*$", tr_bare):
+                    if not tr_bare.rstrip("])»”\"'").endswith((".", ",", ";", ":", "!", "?", "…")):
+                        item("translation_no_punct", vol, int(n[5:9]),
+                             f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}): french_translation does not end with punctuation: “{tr[-50:]}”")
+                if j != 0:
+                    clean_start = re.sub(r"^\s*(\^\{[^}]*\}|[\s_«\"'‘“\(\[\{:§.])+", "", tr)
+                    m = re.search(r"[A-Za-zÀ-ÖØ-öø-ÿœæŒÆ]", clean_start)
+                    if m and m.group(0).islower():
+                        item("lowercase_translation", vol, int(n[5:9]),
+                             f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}): french_translation missing initial capital: starts with “{m.group(0)}” in “{tr[:50]}…”")
+            if lemma:
+                la_bare = lemma.rstrip("_* \t")
+                if j != len(cs) - 1 and not re.search(r"\^\{[^\}]+\}\s*$", la_bare):
+                    if not la_bare.rstrip("])»”\"'").endswith((".", ",", ";", ":", "!", "?", "…")):
+                        item("lemma_no_punct", vol, int(n[5:9]),
+                             f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}): latin_quote does not end with punctuation: “{lemma[-50:]}”")
             for k in ("latin_quote", "french_translation", "french_commentary"):
                 t = c.get(k) or ""
                 bad = [m.group() for m in ODD_MARK.finditer(t)]
@@ -678,7 +696,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "translation_no_punct", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's
