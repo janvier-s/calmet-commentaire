@@ -446,7 +446,8 @@ def parse(text):
             elif sep == "." and place[0] == "livre":
                 raise Unknown(t)
             sep = ", " if sep == "." else sep
-            val = f"{word} {sep.join(map(str, ns))}" if ns else word
+            ns = list(map(str, ns))  # "cap. 21. & 22." -> "chapitres 21 et 22"; "1. 2. 3." -> "1, 2 et 3"
+            val = f"{word} {', '.join(ns[:-1]) + ' et ' + ns[-1] if len(ns) > 1 else ''.join(ns)}" if ns else word
             item("place", (val, place[2]))
             i += 1 + used
             continue

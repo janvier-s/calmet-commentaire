@@ -105,8 +105,14 @@ def main():
         with open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
             
+        if isinstance(data, list) and len(data) == 1 and isinstance(data[0], dict):
+            data = data[0]
+            
         if data.get("chapter_summary"):
             data["chapter_summary"] = modernize_french(data["chapter_summary"])
+            
+        if data.get("chapter_argument"):
+            data["chapter_argument"] = modernize_french(data["chapter_argument"])
             
         if "verses" in data:
             for verse in data["verses"]:

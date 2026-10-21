@@ -113,6 +113,7 @@ def toggle_italics(s, sa, sb):
     Only the selection and the marks touching it change. Returns (text, start, end)
     with the new selection, or None when the selection holds no text.
     """
+    sa, sb = max(0, sa), min(sb, len(s))  # a selection to the end takes in Tk's final newline
     while sa < sb and (s[sa] == "_" or s[sa].isspace()):
         sa += 1
     while sb > sa and (s[sb - 1] == "_" or s[sb - 1].isspace()):

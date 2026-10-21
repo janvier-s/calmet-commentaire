@@ -21,14 +21,20 @@ VOLUME = "21a_psaumes"
 NOTE = ("Latin from the Vulgate (title missing from the transcription): check it against the scan, "
         "keep only what Calmet prints, and type his French")
 # where the Vulgate title ends inside verse 1, the first line (Calmet's verse 1) starts with:
-FIRST_LINE = {12: "Usquequo", 14: "Domine, quis", 34: "Judica", 65: "Jubilate"}
+FIRST_LINE = {12: "Usquequo", 14: "Domine, quis", 34: "Judica", 65: "Jubilate",
+              102: "Benedic", 109: "Dixit Dominus", 138: "Domine, probasti"}
 TWO_VERSE_TITLE = {51, 53}
 
 
 def main(argv):
     dry = "--dry-run" in argv
+    vol = VOLUME
+    if "--volume" in argv:
+        idx = argv.index("--volume")
+        vol = argv[idx + 1]
+        argv = [a for i, a in enumerate(argv) if i not in (idx, idx + 1)]
     psalms = [int(a) for a in argv if not a.startswith("--")]
-    rows, _ = P.check(VOLUME)
+    rows, _ = P.check(vol)
     pages = {}
     for ps in sorted(psalms, reverse=True):  # last first, so indexes on a shared page stay right
         rs = [r for r in rows if r["psalm"] == ps]
@@ -46,7 +52,7 @@ def main(argv):
                 new.append(line)
         else:
             new.append(v1 + (" " + P.VULGATE_TEXT[ps][2] if ps in TWO_VERSE_TITLE else ""))
-        path = DATA / VOLUME / "normalized" / f"page_{first['page']:04d}.json"
+        path = DATA / vol / "normalized" / f"page_{first['page']:04d}.json"
         d = pages.setdefault(path, json.loads(path.read_text(encoding="utf-8")))
         for n, latin in reversed(list(enumerate(new))):
             d["verses"].insert(first["index"], {"verse_number": n, "latin": latin, "french": "", "annotations": NOTE})

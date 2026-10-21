@@ -13,6 +13,8 @@ from calmet import STRAY, _fold, vulgate_words
 from export import chapter_of
 from modernize_refs import MANUAL as REF_MANUAL
 from paths import BOOKS, DATA as STUDIUM, DOCS, VUL, WEB as SITE
+ORDER_OK = json.loads((STUDIUM / "verse_ref_order_ok.json").read_text(encoding="utf-8")) \
+    if (STUDIUM / "verse_ref_order_ok.json").exists() else {}  # fix_verse_refs.py: out of order on purpose
 WHICH_BOOK = re.compile(r"\b(?:Rois|Paralipomènes|Machabées|Esdras),?\s+chapitres?\s+\d+(?::\d+(?:(?:-|, )\d+)*)?")
 
 # --- archaic spelling markers (French) -------------------------------------
@@ -81,6 +83,39 @@ def site_slugs():
             m[json.loads(f.read_text())["book"]] = d.name
     return m
 
+
+
+def lemma_added(vol, name):
+    """Blocks of this page that had no latin_quote in some committed version and have one now
+    (the no_lemma issues resolved by hand): {their french_commentary then}."""
+    import subprocess
+    if not hasattr(lemma_added, "pages"):  # pages with a resolved no_lemma issue
+        prog = STUDIUM / ".review_queue_progress.json"
+        done = json.loads(prog.read_text(encoding="utf-8")) if prog.exists() else {}
+        lemma_added.pages = {tuple(k.split("/")[:2]) for k, v in done.items() if "/no_lemma/" in k and v == "resolved"}
+    if (vol, name[5:9]) not in lemma_added.pages:
+        return set()
+    path = f"{vol}/normalized/{name}"
+    git = lambda *a: subprocess.run(["git", "-C", str(STUDIUM), *a], capture_output=True, text=True).stdout
+    out = set()
+    for h in git("log", "--format=%H", "--", path).split():
+        try:
+            old = json.loads(git("show", f"{h}:{path}"))
+        except json.JSONDecodeError:
+            continue
+        out |= {flat(c.get("french_commentary") or "") for c in old.get("commentary") or []
+                if not (c.get("latin_quote") or "").strip() and str(c.get("commentary_id")) != "1"}
+    out.discard("")
+    return out
+
+
+def best_verse(lemma, verses):
+    """The verse whose Latin holds most of the lemma's words: (score of each verse, best key)."""
+    ws = {_fold(w) for w in re.findall(r"[^\W\d_]{3,}", lemma)}
+    if not ws:
+        return {}, None
+    score = {k: len(ws & {_fold(w) for w in re.findall(r"[^\W\d_]{3,}", t)}) / len(ws) for k, t in verses.items()}
+    return score, max(score, key=score.get) if score else None
 
 def audit_book(key, info, slug, published=True):
     r = dict(key=key, fr=info["fr"], slug=slug, volumes=info["studium"])
@@ -156,6 +191,13 @@ def audit_book(key, info, slug, published=True):
     def vol_of(page_name):
         return next((v for v in info["studium"] if (STUDIUM / v / "normalized" / page_name).exists()), None)
 
+    latin = {}
+    def latin_of(vol):
+        if vol not in latin:
+            latin[vol] = {(str(v.get("chapter")), str(v.get("verse_number"))): v.get("latin") or ""
+                          for vv, _, dd in pages if vv == vol for v in dd.get("verses") or []}
+        return latin[vol]
+
     def item(kind, vol, page, msg, optional=False):
         # Stable across runs, so review progress survives a re-audit
         uid = hashlib.md5(msg.encode()).hexdigest()[:8]
@@ -191,12 +233,13 @@ def audit_book(key, info, slug, published=True):
         for c in d.get("commentary") or []:
             m = re.match(r"(\d+)", str(c.get("verse_ref") or ""))
             if m:
-                nums.append((vol, n, c.get("chapter"), int(m.group(1))))
+                ok = ORDER_OK.get(f"{vol}/{n}/{c.get('commentary_id')}") == str(c.get("verse_ref"))
+                nums.append((vol, n, c.get("chapter"), int(m.group(1)), ok))
     out_of_order = []
     for j in range(1, len(nums)):
-        vol, n, ch, ref = nums[j]
+        vol, n, ch, ref, ok = nums[j]
         pch, prev = nums[j - 1][2], nums[j - 1][3]
-        if ch == pch and ref < prev:
+        if ch == pch and ref < prev and not (ok or nums[j - 1][4]):  # not a move made on purpose
             ctx = ", ".join(str(y[3]) for y in nums[max(0, j - 3):j + 2])
             out_of_order.append(f"{vol}/{n}")
             item("ref_order", vol, int(n[5:9]),
@@ -396,6 +439,34 @@ def audit_book(key, info, slug, published=True):
                   "or set the reference right"] if guessed else [])
                 + ([f"Calmet's {', '.join(printed)} written out as printed, but no such verse in the Vulgate: "
                     "check against the scan"] if printed else [])))
+        # lemmas filled in by hand where there was none, and lemmas whose words are in another verse
+        added = lemma_added(vol, n)
+        for c in d.get("commentary") or []:
+            lemma = c.get("latin_quote") or ""
+            if not lemma.strip():
+                continue
+            fc = flat(c.get("french_commentary") or "")
+            # the same block: one commentary holds the other's start (a lemma moved out of it, a block joined)
+            by_hand = fc and any(fc[:40] in o or o[:40] in fc or fc[-40:] in o for o in added)
+            ch, ref = str(c.get("chapter") or ""), str(c.get("verse_ref") or "")
+            score, best = best_verse(re.sub(r"\^\{[^}]*\}", "", lemma), {v: t for (cc, v), t in latin_of(vol).items() if cc == ch})
+            span = re.fullmatch(r"(\d+)\s*[-–]\s*(\d+)", ref)  # "16-17": the best of the verses it covers
+            if span and score:
+                inside = [str(v) for v in range(int(span[1]), int(span[2]) + 1)]
+                score[ref] = max(score.get(v, 0) for v in inside)
+                best = ref if best in inside else best
+            if by_hand:
+                hint = (f"its words fit ℣ {best} better ({score[best]:.0%} against {score.get(ref, 0):.0%})"
+                        if best and best != ref and score[best] > score.get(ref, 0) else
+                        f"its words fit ℣ {ref}" if score.get(ref) else "")
+                item("lemma_verse", vol, int(n[5:9]),
+                     f"Note {c.get('commentary_id')} had no latin_quote; now “{lemma[:60]}” at chapter {ch}, ℣ {ref}: "
+                     f"check the verse number{': ' + hint if hint else ''}", optional="better" not in hint)
+            elif best and best != ref and score[best] >= 0.8 and score.get(ref, 0) <= 0.4 \
+                    and len(re.findall(r"[^\W\d_]{3,}", lemma)) >= 2:
+                item("verse_mismatch", vol, int(n[5:9]),
+                     f"Note {c.get('commentary_id')} “{lemma[:60]}” is under chapter {ch}, ℣ {ref}, but its words are in "
+                     f"℣ {best} ({score[best]:.0%} against {score.get(ref, 0):.0%}): wrong verse_ref, or the verse misnumbered?")
         # chapter references chapter_refs.py could not write out: which book, or which numbers?
         for c in d.get("commentary") or []:
             t, where = c.get("french_commentary") or "", f"commentary {c.get('commentary_id')} (℣ {c.get('verse_ref')})"
@@ -592,7 +663,7 @@ def main():
     slugs = site_slugs()
     results = []
     for key, info in BOOKS.items():
-        if info["number"] > 21:
+        if info["number"] > 46:
             continue
         if key in EXCLUDED:
             continue
@@ -607,7 +678,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's

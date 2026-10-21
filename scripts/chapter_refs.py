@@ -61,7 +61,7 @@ def write(m, text):
     word = "chapitres" if len(ch) > 1 else "chapitre"
     if not before.strip() or re.search(r"[.!?]\s*$", before):
         word = word.capitalize()
-    out = m["sep"] + word + " " + fmt_verses(ch)
+    out = m["sep"] + word + " " + " et ".join(fmt_verses(ch).rsplit(", ", 1))  # runs stay "8-11"
     if m["v"] and len(ch) == 1:
         out += ":" + fmt_verses(numbers(m["v"]))
     elif m["v"]:

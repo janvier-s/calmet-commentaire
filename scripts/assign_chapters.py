@@ -100,7 +100,16 @@ class Track:
                 return self.chapter  # continuation of the block before
         if self.pending is not None:
             unnumbered_verse = n is None and self.section == "verses"
-            if (n is not None and n < self.last) or unnumbered_verse or not self.last:
+            switch_now = (n is not None and n < self.last) or unnumbered_verse
+            if not switch_now and not self.last:
+                if self.section == "verses":
+                    lat = entry.get("latin") or ""
+                    so = vul_score(self.key, self.chapter, lat)
+                    sn = vul_score(self.key, self.pending, lat)
+                    switch_now = not (so is not None and sn is not None and so > sn)
+                else:
+                    switch_now = True
+            if switch_now:
                 self.switch(n)
         elif n is not None and n <= 3 and self.last >= 10 and self.chapter:
             self.report.append(dict(kind="restart", page=where,

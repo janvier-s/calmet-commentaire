@@ -19,9 +19,9 @@ VUL_FIRST = {re.sub(r"[^a-zà-ÿæœ]", "", v["text"].split()[0].lower())
              for f in VUL.glob("*.json") for c in json.loads(f.read_text())["chapters"]
              for v in c["verses"] if v["verse"] == 1 and v["text"].split()}
 ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
-PSALM_TITLE = re.compile(r"[\W_]*(In finem|Psalmus|Pſalmus|Ne disperdas|Canticum|Intellectus|Oratio|Alleluia)")
+PSALM_TITLE = re.compile(r"[\W_]*(In finem|Psalmus|Pſalmus|Ne disperdas|Canticum|Intellectus|Oratio|Alleluia|Laus)")
 # verses with no number that begin a new verse rather than continue one
-MANUAL = {("20_job/page_0113", "Voca ergo, s"): 1, ("21a_psaumes/page_0234", "Notas mihi f"): 11}
+MANUAL = {("20_job/page_0113", "Voca ergo, s"): 1, ("21a_psaumes/page_0234", "Notas mihi f"): 11, ("21c_psaumes/page_0110", "Dixit Dominu"): 1}
 NUM = r"(\d+|[IVXLC]+\b|i\b)"
 
 

@@ -6,7 +6,8 @@ import sys
 
 PROMPT_TEMPLATE = """You are an expert French proofreader. Modernize the spelling and grammar of the following 18th-century French text blocks.
 Make contextual corrections for archaic words or OCR outliers (e.g., "assez constans" -> "assez constants", "défert" -> "désert", "cy-devant" -> "ci-devant", "arrosez et cultivez" -> "arrosés et cultivés", "enfans" -> "enfants").
-DO NOT change the meaning. 
+DO NOT change the meaning.
+DO NOT use any tools or run any commands.
 
 You MUST output ONLY a valid JSON array of strings containing the exact modernized strings in the exact same order as the input array. DO NOT wrap it in markdown block quotes. Just the raw JSON array.
 
@@ -36,7 +37,7 @@ async def run_agy_batch(text_batch, semaphore):
             result = stdout.decode('utf-8').strip()
         else:
             process = await asyncio.create_subprocess_exec(
-                'agy', '--print-timeout', '180s', '-p', prompt,
+                'agy', '--print-timeout', '180s', '--disable-slash-commands', '-p', prompt,
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE
             )

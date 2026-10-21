@@ -56,7 +56,7 @@ def chapter_of(page):
     m = re.search(r"CHAPITRE\s+([A-Z]+)", title) or re.match(r"\s*PSE?AUME\s+([A-Z]+)", title)
     if not m:
         return None
-    return 1 if m.group(1) == "PREMIER" else roman(m.group(1))
+    return 1 if m.group(1) in ("PREMIER", "UNIQUE") else roman(m.group(1))
 
 
 def num(v):
