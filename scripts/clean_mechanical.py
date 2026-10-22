@@ -145,6 +145,349 @@ def fix_spelling(s):
         s,
     )
     s = re.sub(r"\b(méchants|impies|esclaves)\s+traitez\b", r"\1 traités", s)
+
+    # 23. jouës / jouë -> joues / joue
+    s = re.sub(r"\b([Jj])ouë", r"\1oue", s)
+
+    # 24. coù / coû -> cou
+    s = re.sub(r"\bco[ùû]\b", "cou", s)
+    s = re.sub(r"\bCo[ùû]\b", "Cou", s)
+    s = re.sub(r"\bco[ùû]-tume\b", "coutume", s)
+
+    # 25. yvoire(s) -> ivoire(s)
+    s = re.sub(r"\byvoire(s?)\b", r"ivoire\1", s)
+    s = re.sub(r"\bYvoire(s?)\b", r"Ivoire\1", s)
+
+    # 26. particuliérement -> particulièrement
+    s = re.sub(r"\bparticuliérement\b", "particulièrement", s)
+    s = re.sub(r"\bParticuliérement\b", "Particulièrement", s)
+
+    # 27. Epouse(s) -> Épouse(s)
+    s = re.sub(r"\bEpouse(s?)\b", r"Épouse\1", s)
+
+    # 28. Epoux -> Époux
+    s = re.sub(r"\bEpoux\b", "Époux", s)
+
+    # 29. Eglise(s) -> Église(s)
+    s = re.sub(r"\bEglise(s?)\b", r"Église\1", s)
+
+    # 30. sçû / sçu -> su
+    s = re.sub(r"\bsç[ûu]\b", "su", s)
+    s = re.sub(r"\bSç[ûu]\b", "Su", s)
+    s = re.sub(r"\bsç[ûu]ë\b", "sue", s)
+
+    # 31. enflammez -> enflammés
+    s = re.sub(r"\benflammez\b", "enflammés", s)
+    s = re.sub(r"\bEnflammez\b", "Enflammés", s)
+
+    # 32. Doćtrine / ćt -> Doctrine / ct
+    s = re.sub(r"\bDoćtrine(s?)\b", r"Doctrine\1", s)
+    s = re.sub(r"\bdoćtrine(s?)\b", r"doctrine\1", s)
+    s = s.replace("ćt", "ct").replace("Ćt", "Ct")
+
+    # 33. mammelle(s) -> mamelle(s)
+    s = re.sub(r"\b([Mm])ammelle(s?)\b", r"\1amelle\2", s)
+
+    # 34. Ecriture(s) -> Écriture(s)
+    s = re.sub(r"\bEcriture(s?)\b", r"Écriture\1", s)
+
+    # 35. Evangile(s), Evangiliste(s) -> Évangile(s), Évangéliste(s)
+    s = re.sub(r"\bEvangile(s?)\b", r"Évangile\1", s)
+    s = re.sub(r"\bEvangiliste(s?)\b", r"Évangéliste\1", s)
+
+    # 36. Egypte, Egyptien(s), Egyptienne(s) -> Égypte, Égyptien(s), Égyptienne(s)
+    s = re.sub(r"\bEgypte\b", "Égypte", s)
+    s = re.sub(r"\bEgyptien(s?)\b", r"Égyptien\1", s)
+    s = re.sub(r"\bEgyptienne(s?)\b", r"Égyptienne\1", s)
+
+    # 37. nôce(s) -> noce(s)
+    s = re.sub(r"\b([Nn])ôce(s?)\b", r"\1oce\2", s)
+
+    # 38. éleve / élevent -> élève / élèvent
+    s = re.sub(r"\b([Éé])leve\b", r"\1lève", s)
+    s = re.sub(r"\b([Éé])levent\b", r"\1lèvent", s)
+
+    # 39. societé(s) -> société(s)
+    s = re.sub(r"\b([Ss])ocieté(s?)\b", r"\1ociété\2", s)
+
+    # 40. ajoût* -> ajout*
+    s = re.sub(r"\b([Aa])joût", r"\1jout", s)
+
+    # 41. colomne(s) -> colonne(s)
+    s = re.sub(r"\b([Cc])olomne(s?)\b", r"\1olonne\2", s)
+
+    # 42. fidelle(s), infidelle(s) -> fidèle(s), infidèle(s)
+    s = re.sub(r"\b([Ff])idelle(s?)\b", r"\1idèle\2", s)
+    s = re.sub(r"\b([Ii]n[Ff])idelle(s?)\b", r"\1idèle\2", s)
+
+    # 43. régle(s) -> règle(s)
+    s = re.sub(r"\b([Rr])égle(s?)\b", r"\1ègle\2", s)
+
+    # 44. chevreüil(s) -> chevreuil(s)
+    s = re.sub(r"\b([Cc])hevreüil(s?)\b", r"\1hevreuil\2", s)
+
+    # 45. printems -> printemps
+    s = re.sub(r"\b([Pp])rintems\b", r"\1rintemps", s)
+
+    # 46. bonne-chere -> bonne chère
+    s = re.sub(r"\bbonne-chere\b", "bonne chère", s)
+
+    # 47. misere(s) -> misère(s)
+    s = re.sub(r"\b([Mm])isere(s?)\b", r"\1isère\2", s)
+
+    # 48. maniere(s) -> manière(s)
+    s = re.sub(r"\b([Mm])aniere(s?)\b", r"\1anière\2", s)
+
+    # 49. lumiere(s) -> lumière(s)
+    s = re.sub(r"\b([Ll])umiere(s?)\b", r"\1umière\2", s)
+
+    # 50. premiere(s) -> première(s)
+    s = re.sub(r"\b([Pp])remiere(s?)\b", r"\1remière\2", s)
+
+    # 51. derniere(s) -> dernière(s)
+    s = re.sub(r"\b([Dd])erniere(s?)\b", r"\1ernière\2", s)
+
+    # 52. colere(s) -> colère(s)
+    s = re.sub(r"\b([Cc])olere(s?)\b", r"\1olère\2", s)
+
+    # 53. priere(s) -> prière(s)
+    s = re.sub(r"\b([Pp])riere(s?)\b", r"\1rière\2", s)
+
+    # 54. matiere(s) -> matière(s)
+    s = re.sub(r"\b([Mm])atiere(s?)\b", r"\1atière\2", s)
+
+    # 55. remede(s) -> remède(s)
+    s = re.sub(r"\b([Rr])emede(s?)\b", r"\1emède\2", s)
+
+    # 56. mystere(s) -> mystère(s), mystérieux
+    s = re.sub(r"(?<![A-Za-zÀ-ÿ])([Mm])yst[eé]re(s?)(?![A-Za-zÀ-ÿ])", r"\1ystère\2", s)
+    s = re.sub(r"(?<![A-Za-zÀ-ÿ])([Mm])ysterieux\b", r"\1ystérieux", s)
+    s = re.sub(r"(?<![A-Za-zÀ-ÿ])([Mm])ysterieuse(s?)\b", r"\1ystérieuse\2", s)
+    s = re.sub(r"(?<![A-Za-zÀ-ÿ])([Mm])ysterieusement\b", r"\1ystérieusement", s)
+
+    # 57. statuë(s) -> statue(s)
+    s = re.sub(r"\b([Ss])tatuë(s?)\b", r"\1tatue\2", s)
+
+    # 58. bouë(s) -> boue(s)
+    s = re.sub(r"\b([Bb])ouë(s?)\b", r"\1oue\2", s)
+
+    # 59. excez -> excès
+    s = re.sub(r"\b([Ee])xcez\b", r"\1xcès", s)
+
+    # 60. Ezéchias -> Ézéchias
+    s = re.sub(r"\bEzéchias\b", "Ézéchias", s)
+
+    # 61. Elie -> Élie
+    s = re.sub(r"\bElie\b", "Élie", s)
+
+    # 62. Elisée -> Élisée
+    s = re.sub(r"\bElisée\b", "Élisée", s)
+
+    # 63. Hebreux -> Hébreux (French form)
+    s = re.sub(r"\bHebreux\b", "Hébreux", s)
+
+    # 64. Edit(s) -> Édit(s)
+    s = re.sub(r"\bEdit(s?)\b", r"Édit\1", s)
+
+    # 65. Elûs -> Élus
+    s = re.sub(r"\bElûs\b", "Élus", s)
+
+    # 66. ECCLESIASTIQUE -> ECCLÉSIASTIQUE
+    s = re.sub(r"\bECCLESIASTIQUE\b", "ECCLÉSIASTIQUE", s)
+
+    # 67. verité(s) -> vérité(s)
+    s = re.sub(r"\b([Vv])erité(s?)\b", r"\1érité\2", s)
+
+    # 68. impieté(s) -> impiété(s)
+    s = re.sub(r"\b([Ii])mpieté(s?)\b", r"\1mpiété\2", s)
+
+    # 69. posterité(s) -> postérité(s)
+    s = re.sub(r"\b([Pp])osterité(s?)\b", r"\1ostérité\2", s)
+
+    # 70. adultere(s) -> adultère(s)
+    s = re.sub(r"\b([Aa])dultere(s?)\b", r"\1dultère\2", s)
+
+    # 71. Ephraïm -> Éphraïm
+    s = re.sub(r"\bEphraïm\b", "Éphraïm", s)
+
+    # 72. Ezéchiel -> Ézéchiel
+    s = re.sub(r"\bEzéchiel\b", "Ézéchiel", s)
+
+    # 73. Ethiopie, Ethiopien(s), Ethiopienne(s) -> Éthiopie, Éthiopien(s), Éthiopienne(s)
+    s = re.sub(r"\bEthiopie\b", "Éthiopie", s)
+    s = re.sub(r"\bEthiopien(s?)\b", r"Éthiopien\1", s)
+    s = re.sub(r"\bEthiopienne(s?)\b", r"Éthiopienne\1", s)
+
+    # 74. Eliacim -> Éliacim
+    s = re.sub(r"\bEliacim\b", "Éliacim", s)
+
+    # 75. ISAIE -> ISAÏE (in headings)
+    s = re.sub(r"\bISAIE\b", "ISAÏE", s)
+
+    # 76. entiérement -> entièrement
+    s = re.sub(r"\b([Ee])ntiérement\b", r"\1ntièrement", s)
+
+    # 77. aîle(s) -> aile(s)
+    s = re.sub(r"\b([Aa])île(s?)\b", r"\1ile\2", s)
+
+    # 78. élevera / éleveront -> élèvera / élèveront
+    s = re.sub(r"\b([Éé])levera\b", r"\1lèvera", s)
+    s = re.sub(r"\b([Éé])leveront\b", r"\1lèveront", s)
+
+    # 79. rejetté(e)(s) -> rejeté(e)(s)
+    s = re.sub(r"\b([Rr])ejetté(e?s?)\b", r"\1ejeté\2", s)
+
+    # 80. Tremas on mute e / archaic feminines
+    s = re.sub(r"\b([Dd])evenuë(s?)\b", r"\1evenue\2", s)
+    s = re.sub(r"\b([Ii])nconnuë(s?)\b", r"\1nconnue\2", s)
+    s = re.sub(r"\b([Nn])uë(s?)\b", r"\1ue\2", s)
+    s = re.sub(r"\b([Ll])ieuë(s?)\b", r"\1ieue\2", s)
+    s = re.sub(r"\b([Vv])uë(s?)\b", r"\1ue\2", s)
+    s = re.sub(r"\b([Aa])battuë(s?)\b", r"\1battue\2", s)
+    s = re.sub(r"\b([Rr])enduë(s?)\b", r"\1endue\2", s)
+    s = re.sub(r"\b([Cc])onfonduë(s?)\b", r"\1onfondue\2", s)
+    s = re.sub(r"\b([Ee])ntenduë(s?)\b", r"\1ntendue\2", s)
+    s = re.sub(r"\b([Tt])enuë(s?)\b", r"\1enue\2", s)
+    s = re.sub(r"\b([Vv])êtuë(s?)\b", r"\1êtue\2", s)
+    s = re.sub(r"\b([Ee])uë(s?)\b", r"\1ue\2", s)
+    s = re.sub(r"\b([Ff])enduë(s?)\b", r"\1endue\2", s)
+    s = re.sub(r"\b([Bb])attuë(s?)\b", r"\1attue\2", s)
+    s = re.sub(r"\b([Aa])pperçuë(s?)\b", r"\1perçue\2", s)
+    s = re.sub(r"\b([Rr])é?panduë(s?)\b", r"\1épandue\2", s)
+    s = re.sub(r"\b([Ff])eüille(s?)\b", r"\1euille\2", s)
+    s = re.sub(r"\b([Ff])eüillage(s?)\b", r"\1euillage\2", s)
+    s = re.sub(r"\b([Oo])rguëil\b", r"\1rgueil", s)
+    s = re.sub(r"\b([Qq])ueuë(s?)\b", r"\1ueue\2", s)
+    s = re.sub(r"\b([Pp])oële(s?)\b", r"\1oêle\2", s)
+    s = re.sub(r"\b([Ii])nsinuë\b", r"\1nsinue", s)
+    s = re.sub(r"\b([Cc])ontinuënt\b", r"\1ontinuent", s)
+    s = re.sub(r"\b([Dd])iminuënt\b", r"\1iminuent", s)
+    s = re.sub(r"\b([Rr])éüssi([a-z]*)\b", r"\1éussi\2", s)
+    s = re.sub(r"\b([Vv])eüille(s?)\b", r"\1euille\2", s)
+
+    # 81. ménace(s), ménacer, etc. -> menace(s), menacer
+    s = re.sub(r"\b([Mm])énace(s?)\b", r"\1enace\2", s)
+    s = re.sub(r"\b([Mm])énacé(e?s?)\b", r"\1enacé\2", s)
+    s = re.sub(r"\b([Mm])énacer([a-zà-ÿ]*)\b", r"\1enacer\2", s)
+
+    # 82. Prophête(s) -> Prophète(s)
+    s = re.sub(r"\b([Pp])rophête(s?)\b", r"\1rophète\2", s)
+
+    # 83. regna, etc. -> régna, etc.
+    s = re.sub(r"\b([Rr])egna\b", r"\1égna", s)
+    s = re.sub(r"\b([Rr])egnait\b", r"\1égnait", s)
+    s = re.sub(r"\b([Rr])egnaient\b", r"\1égnaient", s)
+    s = re.sub(r"\b([Rr])egnera\b", r"\1égnera", s)
+    s = re.sub(r"\b([Rr])egnérent\b", r"\1égnèrent", s)
+
+    # 84. brébis -> brebis
+    s = re.sub(r"\b([Bb])rébis\b", r"\1rebis", s)
+
+    # 85. premiérement -> premièrement
+    s = re.sub(r"\b([Pp])remiérement\b", r"\1remièrement", s)
+
+    # 86. auprés -> auprès
+    s = re.sub(r"\b([Aa])uprés\b", r"\1uprès", s)
+
+    # 87. plutot -> plutôt
+    s = re.sub(r"\b([Pp])lutot\b", r"\1lutôt", s)
+
+    # 88. prédecesseur(s) -> prédécesseur(s)
+    s = re.sub(r"\b([Pp])rédecesseur(s?)\b", r"\1rédécesseur\2", s)
+
+    # 89. soûmis -> soumis, soûtiennent -> soutiennent
+    s = re.sub(r"\b([Ss])oûmi(s|se|ses)\b", r"\1oumi\2", s)
+    s = re.sub(r"\b([Ss])oûtien(s|t|nent)\b", r"\1outien\2", s)
+
+    # 90. jetté, jetta, etc. -> jeté, jeta, etc.
+    s = re.sub(r"\b([Jj])etté(e?s?)\b", r"\1eté\2", s)
+    s = re.sub(r"\b([Jj])etta\b", r"\1eta", s)
+    s = re.sub(r"\b([Jj])ettait\b", r"\1etait", s)
+    s = re.sub(r"\b([Jj])ettaient\b", r"\1etaient", s)
+    s = re.sub(r"\b([Jj])ettant\b", r"\1etant", s)
+    s = re.sub(r"\b([Jj])ettérent\b", r"\1etèrent", s)
+
+    # 91. rejetton(s), etc. -> rejeton(s), etc.
+    s = re.sub(r"\b([Rr])ejetton(s?)\b", r"\1ejeton\2", s)
+    s = re.sub(r"\b([Rr])ejetta\b", r"\1ejeta", s)
+    s = re.sub(r"\b([Rr])ejettant\b", r"\1ejetant", s)
+    s = re.sub(r"\b([Rr])ejettérent\b", r"\1ejetèrent", s)
+
+    # 92. auxquels
+    s = re.sub(r"\b([Aa])usquels\b", r"\1uxquels", s)
+
+    # 93. cachetté -> cacheté
+    s = re.sub(r"\b([Cc])achetté(e?s?)\b", r"\1acheté\2", s)
+
+    # 94. cuirrasse -> cuirasse
+    s = re.sub(r"\b([Cc])uirrasse(s?)\b", r"\1uirasse\2", s)
+
+    # 95. allarme -> alarme
+    s = re.sub(r"\b([Aa])llarme(s?)\b", r"\1larme\2", s)
+
+    # 96. courier -> courrier
+    s = re.sub(r"\b([Cc])ourier(s?)\b", r"\1ourrier\2", s)
+
+    # 97. rappeller -> rappeler
+    s = re.sub(r"\b([Rr])appeller\b", r"\1appeler", s)
+
+    # 98. retraitte -> retraite
+    s = re.sub(r"\b([Rr])etraitte(s?)\b", r"\1etraite\2", s)
+
+    # 99. vuide -> vide
+    s = re.sub(r"\b([Vv])uide(s?)\b", r"\1ide\2", s)
+
+    # 100. asne -> âne
+    s = re.sub(r"\bAsne(s?)\b", r"Âne\1", s)
+    s = re.sub(r"\basne(s?)\b", r"âne\1", s)
+
+    # 101. Ecoutez -> Écoutez
+    s = re.sub(r"\bEcoutez\b", "Écoutez", s)
+
+    # 102. Etat / Etats -> État / États
+    s = re.sub(r"\bEtat(s?)\b", r"État\1", s)
+
+    # 103. Edition(s) -> Édition(s)
+    s = re.sub(r"\bEdition(s?)\b", r"Édition\1", s)
+
+    # 104. Ecrit(s) -> Écrit(s)
+    s = re.sub(r"\bEcrit(s?)\b", r"Écrit\1", s)
+
+    # 105. Ecrivez -> Écrivez
+    s = re.sub(r"\bEcrivez\b", "Écrivez", s)
+
+    # 106. Elevez -> Élevez
+    s = re.sub(r"\bElevez\b", "Élevez", s)
+
+    # 107. Epiphane(s) -> Épiphane(s)
+    s = re.sub(r"\bEpiphane(s?)\b", r"Épiphane\1", s)
+
+    # 108. Secretaire(s) -> Secrétaire(s)
+    s = re.sub(r"\b([Ss])ecretaire(s?)\b", r"\1ecrétaire\2", s)
+
+    # 109. OCR long-s artifacts (f -> s)
+    s = re.sub(r"\b([Cc])irconcifion(s?)\b", r"\1irconcision\2", s)
+    s = re.sub(r"\b([Ii])ncirconcife(s?)\b", r"\1ncirconcise\2", s)
+    s = re.sub(r"\b([Ee])nfeveli(s|r|rent)\b", r"\1nseveli\2", s)
+    s = re.sub(r"\b([Pp])rophétif([a-zà-ÿ]+)\b", r"\1rophétis\2", s)
+    s = re.sub(r"\b([Cc])onfume(z?|nt)?\b", r"\1onsume\2", s)
+    s = re.sub(r"\b([Ii])nfinue([a-zà-ÿ]*)\b", r"\1nsinue\2", s)
+    s = re.sub(r"\b([Ff])ignifie\b", "signifie", s)
+    s = re.sub(r"\b([Bb])ienféance(s?)\b", r"\1ienséance\2", s)
+    s = re.sub(r"\b([Cc])onfidér([a-zà-ÿ]+)\b", r"\1onsidér\2", s)
+    s = re.sub(r"\b([Ff])errurier(s?)\b", r"serrurier\2", s)
+    s = re.sub(r"\b([Ff])upplice(s?)\b", r"supplice\2", s)
+    s = re.sub(r"\b([Mm])enfonge(s?)\b", r"\1ensonge\2", s)
+    s = re.sub(r"\b([Tt])réfors\b", r"\1résors", s)
+    s = re.sub(r"\b([Ff])ourdent\b", "sourdent", s)
+    s = re.sub(r"\b([Aa])bufe(z|r|nt|s)?\b", r"\1buse\2", s)
+    s = re.sub(r"\b([Aa])bufé(e?s?)\b", r"\1busé\2", s)
+    s = re.sub(r"\b([Aa])ccroiffement(s?)\b", r"\1ccroissement\2", s)
+
+    # 110. Past historic 3rd pl: -érent -> -èrent
+    s = re.sub(r"\b([Ee])mmenérent\b", r"\1mmenèrent", s)
+    s = re.sub(r"\b([Ee])ntrérent\b", r"\1ntrèrent", s)
+    s = re.sub(r"\b([Ss])auvérent\b", r"\1auvèrent", s)
     return s
 
 
