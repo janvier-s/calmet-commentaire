@@ -3,11 +3,19 @@
   "chapter_title": null,
   "chapter_summary": null,
   "chapter_intro": null,
-  "verses": [],
+  "verses": [
+    {
+      "verse_number": 2,
+      "chapter": 1,
+      "latin": "Vanitas vanitatum, dixit Ecclesiastes : vanitas vanitatum, et omnia vanitas.",
+      "french": "Vanité des vanités, dit l'Ecclésiaste ; Vanité des vanités ; et tout est vanité.",
+      "annotations": null
+    }
+  ],
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 1,
       "latin_quote": "VANITAS VANITATUM ; ET OMNIA VANITAS.",
       "french_translation": "Vanité des vanités ; et tout n'est que vanité.",
