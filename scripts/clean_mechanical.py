@@ -48,6 +48,19 @@ def fix_spelling(s):
     s = re.sub(r"\bA\s+la\s+lettre\b", "À la lettre", s)
     # 3. a la lettre -> à la lettre
     s = re.sub(r"\ba\s+la\s+lettre\b", "à la lettre", s)
+    # 4. Pseaume(s) -> Psaume(s)
+    s = re.sub(r"\bPseaumes\b", "Psaumes", s)
+    s = re.sub(r"\bPseaume\b", "Psaume", s)
+    s = re.sub(r"\bpseaumes\b", "psaumes", s)
+    s = re.sub(r"\bpseaume\b", "psaume", s)
+    # 5. Noë -> Noé
+    s = re.sub(r"\bNoë\b", "Noé", s)
+    # 6. Leading preposition A -> À
+    s = re.sub(r"\bA\s+l'égard\b", "À l'égard", s)
+    s = re.sub(r"\bA\s+cause\b", "À cause", s)
+    s = re.sub(r"\bA\s+peine\b", "À peine", s)
+    s = re.sub(r"\bA\s+peu\s+près\b", "À peu près", s)
+    s = re.sub(r"\bA\s+moins\b", "À moins", s)
     return s
 
 
