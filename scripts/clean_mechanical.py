@@ -39,14 +39,62 @@ def fix_spaced_letters(s):
     return s
 
 
+def fix_spelling(s):
+    if not s or not isinstance(s, str):
+        return s
+    # 1. Moyse -> Moïse (French fields)
+    s = re.sub(r"\bMoyse\b", "Moïse", s)
+    # 2. A la lettre -> À la lettre
+    s = re.sub(r"\bA\s+la\s+lettre\b", "À la lettre", s)
+    # 3. a la lettre -> à la lettre
+    s = re.sub(r"\ba\s+la\s+lettre\b", "à la lettre", s)
+    return s
+
+
 def clean_page(d):
     changed = False
+
+    # Top-level string fields
+    for k in (
+        "book_title",
+        "chapter_title",
+        "chapter_intro",
+        "chapter_summary",
+        "chapter_argument",
+        "chapter_preface",
+    ):
+        v = d.get(k)
+        if v and isinstance(v, str):
+            v2 = fix_spelling(v)
+            if v2 != v:
+                d[k] = v2
+                changed = True
+
+    # Verses
+    for v in d.get("verses", []):
+        s = v.get("french")
+        if s and isinstance(s, str):
+            s2 = fix_spelling(s)
+            if s2 != s:
+                v["french"] = s2
+                changed = True
+
+    # Footnotes
+    for fn in d.get("footnotes", []):
+        t = fn.get("text")
+        if t and isinstance(t, str):
+            t2 = fix_spelling(t)
+            if t2 != t:
+                fn["text"] = t2
+                changed = True
+
     for c in d.get("commentary", []):
-        # 1. Spaced letters
+        # 1. Spaced letters and spelling
         for k in ("french_translation", "french_commentary"):
             s = c.get(k)
             if s:
                 s2 = fix_spaced_letters(s)
+                s2 = fix_spelling(s2)
                 if s2 != s:
                     c[k] = s2
                     changed = True
