@@ -61,6 +61,90 @@ def fix_spelling(s):
     s = re.sub(r"\bA\s+peine\b", "À peine", s)
     s = re.sub(r"\bA\s+peu\s+près\b", "À peu près", s)
     s = re.sub(r"\bA\s+moins\b", "À moins", s)
+    s = re.sub(r"\bA\s+la\s+naissance\b", "À la naissance", s)
+    s = re.sub(r"\ba\s+la\s+naissance\b", "à la naissance", s)
+
+    # 7. corrompuë(s) -> corrompue(s)
+    s = re.sub(r"\bcorrompuë(s?)\b", r"corrompue\1", s)
+    s = re.sub(r"\bCorrompuë(s?)\b", r"Corrompue\1", s)
+
+    # 8. Loix / loix -> Lois / lois
+    s = re.sub(r"\bLoix\b", "Lois", s)
+    s = re.sub(r"\bloix\b", "lois", s)
+
+    # 9. foux -> fous
+    s = re.sub(r"\bfoux\b", "fous", s)
+    s = re.sub(r"\bFoux\b", "Fous", s)
+
+    # 10. rouë(s) -> roue(s)
+    s = re.sub(r"\brouë(s?)\b", r"roue\1", s)
+    s = re.sub(r"\bRouë(s?)\b", r"Roue\1", s)
+
+    # 11. foye(s) -> foie(s)
+    s = re.sub(r"\bfoye(s?)\b", r"foie\1", s)
+    s = re.sub(r"\bFoye(s?)\b", r"Foie\1", s)
+
+    # 12. possede / possedent -> possède / possèdent
+    s = re.sub(r"\bpossede\b", "possède", s)
+    s = re.sub(r"\bpossedent\b", "possèdent", s)
+    s = re.sub(r"\bPossede\b", "Possède", s)
+    s = re.sub(r"\bPossedent\b", "Possèdent", s)
+
+    # 13. deüil(s) -> deuil(s)
+    s = re.sub(r"\bdeüil(s?)\b", r"deuil\1", s)
+    s = re.sub(r"\bDeüil(s?)\b", r"Deuil\1", s)
+
+    # 14. sévrait / sévraient / sévrer -> sevrait / sevraient / sevrer
+    s = re.sub(r"\bsévrait\b", "sevrait", s)
+    s = re.sub(r"\bsévraient\b", "sevraient", s)
+    s = re.sub(r"\bsévrer\b", "sevrer", s)
+
+    # 15. obséques -> obsèques
+    s = re.sub(r"\bobséques\b", "obsèques", s)
+    s = re.sub(r"\bObséques\b", "Obsèques", s)
+
+    # 16. haye(s) -> haie(s) [lowercase only, preserving 'de la Haye', 'La Haye']
+    s = re.sub(r"\bhaye\b", "haie", s)
+    s = re.sub(r"\bhayes\b", "haies", s)
+
+    # 17. ruës / ruë -> rues / rue
+    s = re.sub(r"\bruës\b", "rues", s)
+    s = re.sub(r"\bruë\b", "rue", s)
+    s = re.sub(r"\bRuës\b", "Rues", s)
+    s = re.sub(r"\bRuë\b", "Rue", s)
+
+    # 18. péchez (noun) -> péchés
+    s = re.sub(
+        r"\b(de|d\'|des|les|ses|mes|tes|nos|vos|leurs|ces|quelques|plusieurs|grands|petits|autres|anciens|nouveaux|premiers|moindres|propres|certains|mille|sans|pour)\s+péchez\b",
+        r"\1 péchés",
+        s,
+        flags=re.I,
+    )
+    s = re.sub(
+        r"\bpéchez\s+(sur\s+péchez|en\s+péchez|spirituels|véniels|d\'ignorance)\b",
+        lambda m: "péchés " + m.group(1).replace("péchez", "péchés"),
+        s,
+    )
+
+    # 19. entraînez (participle) -> entraînés
+    s = re.sub(r"\b(ou|a|ont|avaient|étaient|sont|furent|seront|aye|ayant|avez|ai)\s+entraînez\b", r"\1 entraînés", s)
+    s = re.sub(r"\bentraînez\s+(par|en\s+captivité|les\s+chaînes)\b", r"entraînés \1", s)
+
+    # 20. fortifiez (participle) -> fortifiés
+    s = re.sub(r"\b(sont|étaient|s\'étaient|se\s+sont|lieux)\s+fortifiez\b", r"\1 fortifiés", s)
+
+    # 21. laissez (participle) -> laissés
+    s = re.sub(r"\b(ont|avaient|étaient|sont|furent|auront|saient|s\'étaient|se\s+sont|été|habits)\s+laissez\b", r"\1 laissés", s)
+    s = re.sub(r"\b(nous\s+a|vous\s+a|l\'a)\s+laissez\b", r"\1 laissés", s)
+
+    # 22. traitez (participle / noun) -> traités
+    s = re.sub(r"\b(les|vos|des)\s+traitez\b", r"\1 traités", s)
+    s = re.sub(
+        r"\b(sont|seront|étaient|furent|ont\s+été|avaient|ont|a|ai|aye|aurai|soient|soyons|serons|être|d\'être|mieux|bien)\s+(?:infailliblement\s+|indignement\s+|assez\s+doucement\s+|cruellement\s+|durement\s+|fort\s+bien\s+|mieux\s+|bien\s+)?traitez\b",
+        lambda m: m.group(0).replace("traitez", "traités"),
+        s,
+    )
+    s = re.sub(r"\b(méchants|impies|esclaves)\s+traitez\b", r"\1 traités", s)
     return s
 
 
