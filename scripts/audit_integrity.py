@@ -17,6 +17,26 @@ ORDER_OK = json.loads((STUDIUM / "verse_ref_order_ok.json").read_text(encoding="
     if (STUDIUM / "verse_ref_order_ok.json").exists() else {}  # fix_verse_refs.py: out of order on purpose
 WHICH_BOOK = re.compile(r"\b(?:Rois|Paralipomènes|Machabées|Esdras),?\s+chapitres?\s+\d+(?::\d+(?:(?:-|, )\d+)*)?")
 
+# False positives tagged in the review editor: permanently excluded from review queue on every audit run
+def load_false_positives():
+    fp_file = DOCS / "false_positives.json"
+    prog_file = STUDIUM / ".review_queue_progress.json"
+    fp_ids = set()
+    if fp_file.exists():
+        try:
+            fp_ids.update(json.loads(fp_file.read_text(encoding="utf-8")).keys())
+        except Exception:
+            pass
+    if prog_file.exists():
+        try:
+            prog = json.loads(prog_file.read_text(encoding="utf-8"))
+            fp_ids.update(k for k, v in prog.items() if v in ("false_positive", "resolved_false_positive"))
+        except Exception:
+            pass
+    return fp_ids
+
+FP_IDS = load_false_positives()
+
 # --- archaic spelling markers (French) -------------------------------------
 OK_OIT = set("""soit doit voit croit droit toit endroit étroit exploit adroit maladroit reçoit aperçoit
 conçoit perçoit déçoit prévoit pourvoit revoit entrevoit soient voient croient emploient envoient
@@ -203,7 +223,10 @@ def audit_book(key, info, slug, published=True):
     def item(kind, vol, page, msg, optional=False):
         # Stable across runs, so review progress survives a re-audit
         uid = hashlib.md5(msg.encode()).hexdigest()[:8]
-        queue.append(dict(id=f"{vol}/{page:04d}/{kind}/{uid}", book_dir=vol, page=page,
+        item_id = f"{vol}/{page:04d}/{kind}/{uid}"
+        if item_id in FP_IDS:
+            return
+        queue.append(dict(id=item_id, book_dir=vol, page=page,
                           kind=kind, msg=msg, optional=optional))
 
     for g in gaps:
@@ -752,6 +775,12 @@ def main():
                                   msg=f"{x['why']} — “…{x['tail'][-50:]}” ‖ “{x['head'][:50]}…”"))
     queue = sorted(queue,
                    key=lambda q: (order.index(q["kind"]), q["book_dir"], q["page"]))
+    if FP_IDS:
+        before_len = len(queue)
+        queue = [q for q in queue if q["id"] not in FP_IDS]
+        filtered = before_len - len(queue)
+        if filtered:
+            print(f"filtered out {filtered} permanently resolved false positive(s)")
     qpath = out.with_name("review_queue.json")
     qpath.write_text(json.dumps(queue, ensure_ascii=False, indent=1))
     print(f"wrote {qpath} ({len(queue)} items, {sum(not q['optional'] for q in queue)} required)")

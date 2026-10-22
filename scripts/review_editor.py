@@ -93,6 +93,25 @@ KIND_LABELS = {
 EMPTY_PAGE = {"book_title": None, "chapter_title": None, "chapter_summary": None, "chapter_intro": None,
               "verses": [], "commentary": [], "footnotes": []}
 
+VERSE_KINDS = {
+    "missing_verse", "psalm_missing_verse", "duplicate_verse", "missing_french",
+    "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "psalm_number",
+    "psalm_missing_title", "chapter_field", "chapter_vulgate", "chapter_heading",
+    "empty_summary",
+}
+
+FOOTNOTE_KINDS = {
+    "missing_footnote", "broken_marker", "extra_footnotes", "hebrew_recheck",
+    "footnote_asterisk",
+}
+
+def kind_category(k):
+    if k in VERSE_KINDS:
+        return "verses"
+    if k in FOOTNOTE_KINDS:
+        return "footnotes"
+    return "commentary"
+
 
 def book_pages(book_path):
     return sorted(int(f.stem[5:9]) for f in (book_path / "normalized").glob("page_*.json")
@@ -110,12 +129,32 @@ class Progress:
     def status(self, item_id):
         return self.data.get(item_id)
 
-    def set(self, item_id, status):
+    def set(self, item_id, status, item_info=None):
         if status:
             self.data[item_id] = status
         else:
             self.data.pop(item_id, None)
         self.save()
+        # Keep docs/false_positives.json in sync
+        fp_path = DATA_DIR.parent / "docs" / "false_positives.json"
+        fps = {}
+        if fp_path.exists():
+            try:
+                fps = json.loads(fp_path.read_text(encoding="utf-8"))
+            except Exception:
+                fps = {}
+        if status == "false_positive":
+            fps[item_id] = item_info or True
+            try:
+                fp_path.write_text(json.dumps(fps, ensure_ascii=False, indent=2), encoding="utf-8")
+            except Exception:
+                pass
+        elif item_id in fps:
+            fps.pop(item_id, None)
+            try:
+                fp_path.write_text(json.dumps(fps, ensure_ascii=False, indent=2), encoding="utf-8")
+            except Exception:
+                pass
 
     def save(self):
         try:
@@ -132,7 +171,7 @@ class ReviewEditor(PageEditor):
         self.items = items
         self.progress = progress
         self.item_idx = next((i for i, it in enumerate(items) if not progress.status(it["id"])),
-                             next((i for i, it in enumerate(items) if progress.status(it["id"]) != "resolved"), 0))
+                             next((i for i, it in enumerate(items) if progress.status(it["id"]) not in ("resolved", "false_positive")), 0))
         first = items[self.item_idx]
         book_path = DATA_DIR / first["book_dir"]
         pages = book_pages(book_path)
@@ -151,15 +190,23 @@ class ReviewEditor(PageEditor):
         left.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=8, pady=6)
         filters = tk.Frame(left, bg=self.BANNER_BG)
         filters.pack(fill=tk.X, pady=(0, 4))
+
+        tk.Label(filters, text="Category:", bg=self.BANNER_BG, fg="#f0e6d2").pack(side=tk.LEFT)
+        self.cat_box = ttk.Combobox(filters, state="readonly", width=14)
+        self.cat_box.pack(side=tk.LEFT, padx=(4, 10))
+
         tk.Label(filters, text="Type:", bg=self.BANNER_BG, fg="#f0e6d2").pack(side=tk.LEFT)
-        self.kind_box = ttk.Combobox(filters, state="readonly", width=42)
-        self.kind_box.pack(side=tk.LEFT, padx=(4, 12))
+        self.kind_box = ttk.Combobox(filters, state="readonly", width=36)
+        self.kind_box.pack(side=tk.LEFT, padx=(4, 10))
+
         tk.Label(filters, text="Book:", bg=self.BANNER_BG, fg="#f0e6d2").pack(side=tk.LEFT)
-        self.book_box = ttk.Combobox(filters, state="readonly", width=22)
+        self.book_box = ttk.Combobox(filters, state="readonly", width=18)
         self.book_box.pack(side=tk.LEFT, padx=4)
+
+        self.cat_box.bind("<<ComboboxSelected>>", lambda e: self._on_cat_select())
         self.kind_box.bind("<<ComboboxSelected>>", lambda e: self._apply_filter())
         self.book_box.bind("<<ComboboxSelected>>", lambda e: self._apply_filter())
-        self._kind_choice, self._book_choice = None, None
+        self._cat_choice, self._kind_choice, self._book_choice = None, None, None
         self._fill_filters()
         self.issue_kind = tk.Label(left, text="", bg=self.BANNER_BG, fg="#ffb347",
                                    font=("Helvetica", 12, "bold"), anchor="w")
@@ -174,12 +221,13 @@ class ReviewEditor(PageEditor):
         right = tk.Frame(bar, bg=self.BANNER_BG)
         right.pack(side=tk.RIGHT, padx=8, pady=6)
         self.counter = tk.Label(right, text="", bg=self.BANNER_BG, fg="#f0e6d2", font=("Helvetica", 10))
-        self.counter.grid(row=0, column=0, columnspan=5, sticky="e")
+        self.counter.grid(row=0, column=0, columnspan=6, sticky="e")
         ttk.Button(right, text="◀ Issue", command=self._prev_item).grid(row=1, column=0, padx=2)
         ttk.Button(right, text="Issue ▶", command=self._next_item).grid(row=1, column=1, padx=2)
         ttk.Button(right, text="✓ Resolved", command=lambda: self._mark("resolved")).grid(row=1, column=2, padx=2)
-        ttk.Button(right, text="Skip", command=lambda: self._mark("skipped")).grid(row=1, column=3, padx=2)
-        ttk.Button(right, text="↺ Reopen", command=self._reopen).grid(row=1, column=4, padx=2)
+        ttk.Button(right, text="False Positive", command=lambda: self._mark("false_positive")).grid(row=1, column=3, padx=2)
+        ttk.Button(right, text="Skip", command=lambda: self._mark("skipped")).grid(row=1, column=4, padx=2)
+        ttk.Button(right, text="↺ Reopen", command=self._reopen).grid(row=1, column=5, padx=2)
         ttk.Button(right, text="+ Verse", command=self._add_verse).grid(row=2, column=0, padx=2, pady=(4, 0))
         ttk.Button(right, text="+ Comment", command=self._add_commentary).grid(row=2, column=1, padx=2, pady=(4, 0))
         ttk.Button(right, text="+ Footnote", command=self._add_footnote).grid(row=2, column=2, padx=2, pady=(4, 0))
@@ -188,6 +236,8 @@ class ReviewEditor(PageEditor):
 
         for seq in ("<Command-Return>", "<Control-Return>"):
             self.root.bind(seq, lambda e: self._mark("resolved") or "break")
+        for seq in ("<Command-p>", "<Control-p>"):
+            self.root.bind(seq, lambda e: self._mark("false_positive") or "break")
         for seq in ("<Command-bracketright>", "<Control-bracketright>"):
             self.root.bind(seq, lambda e: self._next_item() or "break")
         for seq in ("<Command-bracketleft>", "<Control-bracketleft>"):
@@ -229,25 +279,51 @@ class ReviewEditor(PageEditor):
             return
         self._save()  # keep edits typed elsewhere on the page
         del self.data[section][i]
+        if section == "commentary":
+            for idx, c in enumerate(self.data.get("commentary") or [], start=1):
+                c["commentary_id"] = idx
         self._commit_and_rebuild()
 
     def _load_page(self, page_num):
         super()._load_page(page_num)
         self._refresh_banner()
 
+    def _on_cat_select(self):
+        cat = self._cat_values[self.cat_box.current()]
+        self._cat_choice = cat
+        self._kind_choice = None
+        self._apply_filter()
+
     # --- Type / book selectors ---
     def _fill_filters(self):
         """Choices with the number of issues not yet resolved, in queue order."""
         def left(pred):
-            return sum(1 for it in self.all_items if pred(it) and self.progress.status(it["id"]) != "resolved")
-        kinds = list(dict.fromkeys(it["kind"] for it in self.all_items))
+            return sum(1 for it in self.all_items
+                       if pred(it) and self.progress.status(it["id"]) not in ("resolved", "false_positive"))
+
+        cats = [("all", "All"), ("verses", "Verses"), ("commentary", "Commentary"), ("footnotes", "Footnotes")]
+        self._cat_values = [None if c[0] == "all" else c[0] for c in cats]
+
+        relevant_items = [it for it in self.all_items
+                          if self._cat_choice is None or kind_category(it["kind"]) == self._cat_choice]
+        kinds = list(dict.fromkeys(it["kind"] for it in relevant_items))
         books = list(dict.fromkeys(sorted(it["book_dir"] for it in self.all_items)))
         self._kind_values = [None] + kinds
         self._book_values = [None] + books
-        # each list counts within the other selector's choice
+
         in_book = lambda it: self._book_choice is None or it["book_dir"] == self._book_choice
-        of_kind = lambda it: self._kind_choice is None or it["kind"] == self._kind_choice
-        tot = left(in_book)
+        in_cat = lambda it: self._cat_choice is None or kind_category(it["kind"]) == self._cat_choice
+        of_kind = lambda it: (self._kind_choice is None or it["kind"] == self._kind_choice) and in_cat(it)
+
+        cat_labels = []
+        for cval, clabel in cats:
+            pred = (lambda it: in_book(it)) if cval == "all" else (lambda it, cv=cval: kind_category(it["kind"]) == cv and in_book(it))
+            cnt = left(pred)
+            cat_labels.append(f"🔴 ({cnt}) {clabel}" if cnt > 0 else f"   (0) {clabel}")
+        self.cat_box["values"] = cat_labels
+        self.cat_box.current(self._cat_values.index(self._cat_choice))
+
+        tot = left(lambda it: in_book(it) and in_cat(it))
         tot_label = f"🔴 ({tot}) All types" if tot > 0 else f"   (0) All types"
         def format_kind(k):
             c = left(lambda it, k=k: it["kind"] == k and in_book(it))
@@ -255,27 +331,35 @@ class ReviewEditor(PageEditor):
         self.kind_box["values"] = [tot_label] + [format_kind(k) for k in kinds]
         self.book_box["values"] = [f"All books ({left(of_kind)})"] + [
             f"{b} ({left(lambda it, b=b: it['book_dir'] == b and of_kind(it))})" for b in books]
-        self.kind_box.current(self._kind_values.index(self._kind_choice))
+
+        if self._kind_choice in self._kind_values:
+            self.kind_box.current(self._kind_values.index(self._kind_choice))
+        else:
+            self._kind_choice = None
+            self.kind_box.current(0)
+
         self.book_box.current(self._book_values.index(self._book_choice))
 
     def _apply_filter(self):
+        cat = self._cat_values[self.cat_box.current()]
         kind = self._kind_values[self.kind_box.current()]
         book = self._book_values[self.book_box.current()]
         items = [it for it in self.all_items
-                 if (kind is None or it["kind"] == kind) and (book is None or it["book_dir"] == book)]
+                 if (cat is None or kind_category(it["kind"]) == cat)
+                 and (kind is None or it["kind"] == kind)
+                 and (book is None or it["book_dir"] == book)]
         if not items:
-            messagebox.showinfo("Queue", "No issues of this type in this book.")
+            messagebox.showinfo("Queue", "No issues matching these filters.")
             self._fill_filters()
             return
-        self._kind_choice, self._book_choice = kind, book
+        self._cat_choice, self._kind_choice, self._book_choice = cat, kind, book
         self.items = items
-        start = next((i for i, it in enumerate(items) if not self.progress.status(it["id"])),
-                     next((i for i, it in enumerate(items) if self.progress.status(it["id"]) != "resolved"), 0))
+        start = next((i for i, it in enumerate(items) if self.progress.status(it["id"]) not in ("resolved", "false_positive")), 0)
         self._goto_item(start)
 
     # --- Queue navigation ---
     def _open_count(self):
-        return sum(1 for it in self.items if not self.progress.status(it["id"]))
+        return sum(1 for it in self.items if self.progress.status(it["id"]) not in ("resolved", "false_positive"))
 
     def _refresh_banner(self):
         if not hasattr(self, "issue_kind") or not self.items:
@@ -289,12 +373,13 @@ class ReviewEditor(PageEditor):
         self.issue_msg.config(text=f"{it['book_dir']} p.{it['page']}: {it['msg']}")
         others = [o for o in self.items
                   if o is not it and o["book_dir"] == self.book_path.name and o["page"] == self.page_num
-                  and not self.progress.status(o["id"])]
+                  and self.progress.status(o["id"]) not in ("resolved", "false_positive")]
         self.issue_more.config(text=("Also on this page: " + " · ".join(
             f"{KIND_LABELS.get(o['kind'], o['kind']).lower()}: {o['msg'][:70]}" for o in others[:3]))
             if others else "")
         skipped = sum(1 for o in self.items if self.progress.status(o["id"]) == "skipped")
-        self.counter.config(text=f"issue {self.item_idx + 1}/{len(self.items)} · {self._open_count()} open · {skipped} skipped")
+        fp_count = sum(1 for o in self.items if self.progress.status(o["id"]) == "false_positive")
+        self.counter.config(text=f"issue {self.item_idx + 1}/{len(self.items)} · {self._open_count()} open · {skipped} skipped · {fp_count} false pos")
         self._fill_filters()
 
     def _goto_item(self, idx):
@@ -317,13 +402,13 @@ class ReviewEditor(PageEditor):
 
     def _next_item(self):
         for i in range(self.item_idx + 1, len(self.items)):
-            if self.progress.status(self.items[i]["id"]) != "resolved":
+            if self.progress.status(self.items[i]["id"]) not in ("resolved", "false_positive"):
                 return self._goto_item(i)
         messagebox.showinfo("Queue", "No open or skipped issues after this one.")
 
     def _prev_item(self):
         for i in range(self.item_idx - 1, -1, -1):
-            if self.progress.status(self.items[i]["id"]) != "resolved":
+            if self.progress.status(self.items[i]["id"]) not in ("resolved", "false_positive"):
                 return self._goto_item(i)
 
     def _mark(self, status):
@@ -331,13 +416,20 @@ class ReviewEditor(PageEditor):
             self._save()
             if self.dirty:  # the save failed (error shown): stay on the page, nothing lost
                 return
-        self.progress.set(self.items[self.item_idx]["id"], status)
+        it = self.items[self.item_idx]
+        self.progress.set(it["id"], status, {
+            "book_dir": it.get("book_dir"),
+            "page": it.get("page"),
+            "kind": it.get("kind"),
+            "msg": it.get("msg"),
+        })
         self._refresh_banner()
         self._next_item()
 
     def _reopen(self):
-        """Clear the status of the current issue (undo a Skip or a Resolved)."""
-        self.progress.set(self.items[self.item_idx]["id"], None)
+        """Clear the status of the current issue (undo a Skip, Resolved, or False Positive)."""
+        it = self.items[self.item_idx]
+        self.progress.set(it["id"], None)
         self._refresh_banner()
 
     # --- Creating pages and entries ---
@@ -382,8 +474,8 @@ class ReviewEditor(PageEditor):
                 prev = k
                 if k < n:
                     pos = i + 1
-        verses.insert(pos, {"verse_number": n, "chapter": self._neighbour_chapter(verses, pos),
-                            "latin": "", "french": "", "annotations": None})
+        verses.insert(pos, {"chapter": self._neighbour_chapter(verses, pos),
+                            "verse_number": n, "latin": "", "french": "", "annotations": None})
         self._commit_and_rebuild()
 
     def _neighbour_chapter(self, entries, pos):
@@ -445,6 +537,9 @@ class ReviewEditor(PageEditor):
             section, i, label = entries[sel[0]]
             if messagebox.askyesno("Delete", f"Delete this entry?\n\n{label}", parent=win):
                 del self.data[section][i]
+                if section == "commentary":
+                    for idx, c in enumerate(self.data.get("commentary") or [], start=1):
+                        c["commentary_id"] = idx
                 win.destroy()
                 self._commit_and_rebuild()
 
@@ -541,6 +636,15 @@ def load_queue(args):
     items = json.loads(path.read_text())
     if "--all" not in args:
         items = [it for it in items if not it.get("optional")]
+    if "--category" in args:
+        cat = args[args.index("--category") + 1].lower()
+        items = [it for it in items if kind_category(it["kind"]) == cat]
+    if "--type" in args:
+        val = args[args.index("--type") + 1].lower()
+        if val in ("verses", "commentary", "footnotes"):
+            items = [it for it in items if kind_category(it["kind"]) == val]
+        else:
+            items = [it for it in items if it["kind"] == val]
     if "--kind" in args:
         kind = args[args.index("--kind") + 1]
         items = [it for it in items if it["kind"] == kind]
@@ -561,9 +665,10 @@ if __name__ == "__main__":
         print("Nothing to review with these filters.")
         sys.exit(0)
     progress = Progress(PROGRESS_FILE)
-    for flag in ("--skipped", "--resolved"):
+    for flag in ("--skipped", "--resolved", "--false-positive"):
         if flag in args:
-            items = [it for it in items if progress.status(it["id"]) == flag[2:]]
+            st = "false_positive" if flag == "--false-positive" else flag[2:]
+            items = [it for it in items if progress.status(it["id"]) == st]
     if not items:
         print("Nothing to review with these filters.")
         sys.exit(0)

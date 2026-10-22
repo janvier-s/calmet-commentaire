@@ -17,7 +17,7 @@ from collections import Counter
 from paths import DATA, LLM_CACHE, pages
 
 FRENCH = {"french", "french_translation", "french_commentary", "chapter_summary"}
-CALL = re.compile(r"\^\s*\{\s*[({]?\s*([a-z])\s*[)}]?\s*\}|\^\s*\(\(?\s*([a-z])\s*\)?\)")
+CALL = re.compile(r"\^\s*\{\s*[({]?\s*_?\s*([a-z])\s*_?\s*[)}]?\s*\}|\^\s*\(\(?\s*([a-z])\s*\)?\)")
 BARE = re.compile(r"(?<![\^{\w])\(\s?([a-z])\s?\)(?!\})")
 JC = re.compile(r"J[ÉE]SUS-CHRIST")
 
@@ -50,6 +50,9 @@ def main(argv):
                 continue
             before = json.dumps(d, ensure_ascii=False)
             for fn in d.get("footnotes") or []:
+                if "footnote_ref" in fn and "marker" not in fn:
+                    fn["marker"] = fn["footnote_ref"]
+                    stats["footnote_ref to marker"] += 1
                 m = re.fullmatch(r"\s*\(\s*([a-z])\s*\)\s*", str(fn.get("marker") or ""))
                 if m and fn["marker"] != f"({m.group(1)})":
                     fn["marker"] = f"({m.group(1)})"

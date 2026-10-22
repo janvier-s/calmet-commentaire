@@ -17,6 +17,9 @@ JC_RE = re.compile(r"J\s+E\s+S\s+U\s+S(?:\s*-\s*|\s+)C\s+H\s+R\s+I\s+S\s+T")
 J_RE = re.compile(r"\bJ\s+E\s+S\s+U\s+S\b")
 C_RE = re.compile(r"\bC\s+H\s+R\s+I\s+S\s+T\b")
 
+HEADER_PREFIX = re.compile(r"^\s*(?:COMMENTAIRE|ARGUMENT)\s*\.?\s*\n+", re.I)
+FORBIDDEN_LEMMAS = {"COMMENTAIRE.", "ARGUMENT.", "PREFACE.", "AVERTISSEMENT.", "DISCOURS."}
+
 # Regex to detect Latin lemmata at start of french_commentary
 # e.g., "FILII DAVID, FILII ABRAHAM. Fils de David, fils d'Abraham. L'Evangéliste..."
 # or "⁼⁾. 23. ECCE VIRGO IN UTERO HABEBIT, etc. Une Vierge concevra... "
@@ -48,16 +51,24 @@ def clean_page(d):
                     c[k] = s2
                     changed = True
 
+        # Strip OCR headers like "COMMENTAIRE.\n" or "ARGUMENT.\n"
+        fc = c.get("french_commentary")
+        if fc:
+            fc_clean = HEADER_PREFIX.sub("", fc)
+            if fc_clean != fc:
+                c["french_commentary"] = fc_clean
+                changed = True
+
         # 2. Extract missing lemma/translation if merged into french_commentary
-        if not c.get("latin_quote") and c.get("french_commentary"):
+        # Note: block 1 legitimately continues the note from previous page without a lemma
+        if c.get("commentary_id") != 1 and not c.get("latin_quote") and c.get("french_commentary"):
             raw_fc = c["french_commentary"].strip()
             # Strip junk prefixes like "⁼⁾. 23." or "ⁱ. 12."
             stripped = PREFIX_JUNK.sub("", raw_fc).strip()
             m = LEMMA_PATTERN.match(stripped)
             if m:
                 cand_lemma, cand_trans, rest_comm = m.group(1).strip() + ".", m.group(2).strip(), m.group(3).strip()
-                # Check that cand_lemma looks like Latin and cand_trans looks like French
-                if len(cand_lemma) >= 5 and re.search(r"[A-Z]{3,}", cand_lemma):
+                if cand_lemma not in FORBIDDEN_LEMMAS and len(cand_lemma) >= 5 and re.search(r"[A-Z]{3,}", cand_lemma):
                     c["latin_quote"] = cand_lemma
                     if not c.get("french_translation"):
                         c["french_translation"] = cand_trans

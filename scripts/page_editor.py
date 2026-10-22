@@ -273,6 +273,7 @@ class PageEditor:
         self._last_paste = {"text": None, "time": 0, "widget": None}
         self._last_text = None  # the field the italic button acts on
         self.show_marks = tk.BooleanVar(value=True)
+        self.section_filter = tk.StringVar(value="All")
 
         self._define_styles()
         self._build_ui()
@@ -326,6 +327,12 @@ class PageEditor:
                    command=self._toggle_italic).pack(side=tk.LEFT, padx=(15, 2))
         ttk.Checkbutton(top, text="Show _ marks", variable=self.show_marks,
                         command=self._on_show_marks).pack(side=tk.LEFT, padx=5)
+
+        ttk.Label(top, text="Section:").pack(side=tk.LEFT, padx=(12, 2))
+        self.section_box = ttk.Combobox(top, textvariable=self.section_filter, state="readonly", width=12,
+                                        values=["All", "Verses", "Commentary", "Footnotes"])
+        self.section_box.pack(side=tk.LEFT, padx=2)
+        self.section_box.bind("<<ComboboxSelected>>", lambda e: self._build_json_editor())
 
         self.save_btn = ttk.Button(top, text="Save (Cmd+S)", command=self._save)
         self.save_btn.pack(side=tk.RIGHT, padx=5)
@@ -655,25 +662,27 @@ class PageEditor:
         if self.data is None:
             return
 
+        sec = (self.section_filter.get() or "All").lower()
         row = 0
 
-        for key in ("book_title", "chapter_number", "chapter_summary", "chapter_intro", "book_end_marker"):
-            if key in self.data:
-                row = self._add_field(self.json_inner, row, key, self.data.get(key), (key,))
+        if sec in ("all",):
+            for key in ("book_title", "chapter_number", "chapter_summary", "chapter_intro", "book_end_marker"):
+                if key in self.data:
+                    row = self._add_field(self.json_inner, row, key, self.data.get(key), (key,))
 
         verses = self.data.get("verses", [])
-        if verses:
+        if verses and sec in ("all", "verses"):
             row = self._add_section_header(self.json_inner, row, f"VERSES ({len(verses)})")
             for i, v in enumerate(verses):
                 row = self._add_section_header(self.json_inner, row,
                     f"  Verse {v.get('verse_number', '?')}", level=2)
-                for field in ("verse_number", "chapter", "latin", "french", "annotations"):
+                for field in ("chapter", "verse_number", "latin", "french", "annotations"):
                     if field in v:
                         row = self._add_field(self.json_inner, row, field, v.get(field),
                                               ("verses", i, field))
 
         comms = self.data.get("commentary", [])
-        if comms:
+        if comms and sec in ("all", "commentary"):
             row = self._add_section_header(self.json_inner, row, f"COMMENTARY ({len(comms)})")
             prev_tail = self._get_prev_page_commentary_tail()
 
@@ -700,7 +709,7 @@ class PageEditor:
                 row = self._add_next_commentary_head(self.json_inner, row, next_head)
 
         notes = self.data.get("footnotes", [])
-        if notes:
+        if notes and sec in ("all", "footnotes"):
             row = self._add_section_header(self.json_inner, row, f"FOOTNOTES ({len(notes)})")
             for i, fn in enumerate(notes):
                 row = self._add_section_header(self.json_inner, row,
