@@ -151,8 +151,10 @@ def audit_book(key, info, slug, published=True):
     for vol, n, d in pages:
         c = sum(len(b.get("french_commentary") or "") for b in d.get("commentary") or [])
         v = sum(len(x.get("french") or "") for x in d.get("verses") or [])
-        sizes.append(c + v)
-        if not (d.get("commentary") or d.get("verses") or (d.get("chapter_argument") or "").strip()):  # Psalms: argument pages
+        i = len((d.get("chapter_intro") or "").strip())
+        a = len((d.get("chapter_argument") or "").strip())
+        sizes.append(c + v + i + a)
+        if not (d.get("commentary") or d.get("verses") or a or i):  # Intro / argument / commentary pages
             empty.append(f"{vol}/{n}")
     med = statistics.median(sizes) if sizes else 0
     for (vol, n, d), s in zip(pages, sizes):
