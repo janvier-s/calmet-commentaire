@@ -46,7 +46,7 @@
       "chapter": 49,
       "latin_quote": "VASTATUM EST SEMEN EJUS, ET FRATRES EJUS, ET VICINI EJUS.",
       "french_translation": "Ses enfants, ses frères, et ses voisins ont été ruinez.",
-      "french_commentary": "Les frères d'Esaü sont les Hébreux ; ses voisins sont les Moabites, et les peuples de l'Arabie pétrée, et déserte. Après avoir perdu ses enfants, ses frères, et ses voisins, que peut-il espérer ? Que lui reste-t'il ? _Et non erit_ : Il ne sera plus ; ou plutôt, _il n'est plus_. ^{(a)} Edom est péri : il n'est plus au rang des peuples. Les Septante (b) : _Ils sont péris par la main de leurs frères, et de leurs voisins ; et il n'est pas même resté de leurs orphelins, etc._"
+      "french_commentary": "Les frères d'Esaü sont les Hébreux ; ses voisins sont les Moabites, et les peuples de l'Arabie pétrée, et déserte. Après avoir perdu ses enfants, ses frères, et ses voisins, que peut-il espérer ? Que lui reste-t'il ? _Et non erit_ : Il ne sera plus ; ou plutôt, _il n'est plus_. ^{(a)} Edom est péri : il n'est plus au rang des peuples. Les Septante ^{(b)} : _Ils sont péris par la main de leurs frères, et de leurs voisins ; et il n'est pas même resté de leurs orphelins, etc._"
     },
     {
       "commentary_id": 4,
@@ -68,18 +68,21 @@
   "footnotes": [
     {
       "footnote_id": 1,
-      "footnote_ref": "(a)",
-      "text": "ואיננו"
+      "footnote_ref": "^{(a)}",
+      "text": "ואיננו",
+      "marker": "(a)"
     },
     {
       "footnote_id": 2,
-      "footnote_ref": "(b)",
-      "text": "ἔπεσεν ἀπὸ ϗειρὸς ἀδελφῶν ἀυτῦ, καὶ γειτόνων ἀυτῦ, et ουκ ἔςι κατάλειμμα ο'ρφανῶν αυ."
+      "footnote_ref": "^{(b)}",
+      "text": "ἔπεσεν ἀπὸ ϗειρὸς ἀδελφῶν ἀυτῦ, καὶ γειτόνων ἀυτῦ, et ουκ ἔςι κατάλειμμα ο'ρφανῶν αυ.",
+      "marker": "(b)"
     },
     {
       "footnote_id": 3,
-      "footnote_ref": "(c)",
-      "text": "Theodoret. Sanct. Grot. _Vide Abdiæ_ ℣. 18. _Non erunt reliquiæ domûs Esaü_."
+      "footnote_ref": "^{(c)}",
+      "text": "Theodoret. Sanct. Grot. _Vide Abdiæ_ ℣. 18. _Non erunt reliquiæ domûs Esaü_.",
+      "marker": "(c)"
     }
   ],
   "book_end_marker": null
