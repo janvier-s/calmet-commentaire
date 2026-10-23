@@ -820,4 +820,7 @@ if __name__ == "__main__":
 
     root = tk.Tk()
     ReviewEditor(root, items, progress, initial_status=init_status)
-    root.mainloop()
+    try:
+        root.mainloop()
+    except KeyboardInterrupt:  # Ctrl+C in the terminal: quit quietly
+        pass

@@ -1170,4 +1170,7 @@ if __name__ == "__main__":
 
     root = tk.Tk()
     app = App(root, book_dir, page_num)
-    root.mainloop()
+    try:
+        root.mainloop()
+    except KeyboardInterrupt:  # Ctrl+C in the terminal: quit quietly
+        pass
