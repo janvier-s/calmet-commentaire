@@ -66,10 +66,12 @@ def tidy(d, cache, stats):
         changed = True
     for b in d.get("commentary") or []:
         t = b.get("latin_quote")
-        if isinstance(t, str) and re.search(r"\betc\b", t):
-            b["latin_quote"] = re.sub(r"\betc\b", "ETC", t)
-            stats["lemma etc"] += 1
-            changed = True
+        if isinstance(t, str):
+            new = re.sub(r"(?i)\betc+\b", "ETC", t)
+            if new != t:
+                b["latin_quote"] = new
+                stats["lemma etc"] += 1
+                changed = True
         t = b.get("french_translation")
         if isinstance(t, str) and "_" in t:
             b["french_translation"] = strip_us(t)

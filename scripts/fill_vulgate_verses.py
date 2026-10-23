@@ -63,20 +63,22 @@ def process_volume(vol, key, dry=False):
 
     pages_cache = {}
     v_entries = []
+    current_ch = None
 
     for p in page_files:
         d = load(p)
         pages_cache[p.name] = (p, d)
         for idx, v in enumerate(d.get("verses") or []):
-            v_entries.append((v.get("chapter"), v.get("verse_number"), p.name, idx, v))
+            ch = v.get("chapter")
+            if ch is not None:
+                current_ch = ch
+            v_entries.append((current_ch, v.get("verse_number"), p.name, idx, v))
 
     by_ch = defaultdict(list)
     for ch, vn, pnm, idx, v in v_entries:
         if ch is not None and isinstance(vn, int):
             by_ch[ch].append((vn, pnm, idx, v))
 
-    # Determine plan of insertions: list of (pnm, insert_idx, new_verse_dict)
-    # We must insert in reverse order per page so indices stay valid
     to_insert = []
     for ch, vlist in by_ch.items():
         if ch not in vul_map:
@@ -96,10 +98,39 @@ def process_volume(vol, key, dry=False):
 
                 before = [item for item in vlist if item[0] < v]
                 after = [item for item in vlist if item[0] > v]
-                if before:
-                    pnm, idx = before[-1][1], before[-1][2] + 1
+
+                target_pnm = None
+                if v == 1 and after:
+                    pnm_after = after[0][1]
+                    p_num = int(pnm_after.split("_")[1].split(".")[0])
+                    prev_pnm = "page_%04d.json" % (p_num - 1)
+                    if prev_pnm in pages_cache:
+                        d_prev = pages_cache[prev_pnm][1]
+                        if d_prev.get("chapter_title") or d_prev.get("chapter_summary"):
+                            target_pnm = prev_pnm
+                    if not target_pnm:
+                        target_pnm = pnm_after
+                elif before and after:
+                    pnm_before = before[-1][1]
+                    pnm_after = after[0][1]
+                    num_b = int(pnm_before.split("_")[1].split(".")[0])
+                    num_a = int(pnm_after.split("_")[1].split(".")[0])
+                    if num_a > num_b:
+                        # Check intermediate pages
+                        for mid_num in range(num_b + 1, num_a + 1):
+                            mid_pnm = "page_%04d.json" % mid_num
+                            if mid_pnm in pages_cache:
+                                d_mid = pages_cache[mid_pnm][1]
+                                comm_refs = [str(c.get("verse_ref")) for c in d_mid.get("commentary") or [] if c.get("verse_ref") is not None]
+                                if str(v) in comm_refs or len(d_mid.get("verses") or []) == 0:
+                                    target_pnm = mid_pnm
+                                    break
+                    if not target_pnm:
+                        target_pnm = pnm_before
+                elif before:
+                    target_pnm = before[-1][1]
                 elif after:
-                    pnm, idx = after[0][1], after[0][2]
+                    target_pnm = after[0][1]
                 else:
                     continue
 
@@ -111,25 +142,34 @@ def process_volume(vol, key, dry=False):
                     "french": "",
                     "annotations": NOTE,
                 }
-                to_insert.append((pnm, idx, new_v))
+                to_insert.append((target_pnm, new_v))
 
     if not to_insert:
         return 0, []
 
-    # Sort descending by index so earlier insertions don't alter later indices
-    # Group by page
     by_page = defaultdict(list)
-    for pnm, idx, new_v in to_insert:
-        by_page[pnm].append((idx, new_v))
+    for pnm, new_v in to_insert:
+        by_page[pnm].append(new_v)
 
     modified_pages = set()
     for pnm, items in by_page.items():
         p_path, d = pages_cache[pnm]
         if "verses" not in d or d["verses"] is None:
             d["verses"] = []
-        for idx, new_v in sorted(items, key=lambda t: t[0], reverse=True):
-            d["verses"].insert(min(idx, len(d["verses"])), new_v)
+        for new_v in items:
+            d["verses"].append(new_v)
             modified_pages.add(pnm)
+        def sort_key(x):
+            vn = x.get("verse_number")
+            if vn is None:
+                return -1
+            if isinstance(vn, int):
+                return vn
+            try:
+                return int(vn)
+            except:
+                return 9999
+        d["verses"].sort(key=sort_key)
 
     if not dry:
         for pnm in modified_pages:
@@ -162,7 +202,7 @@ def main(argv):
         if count:
             total_inserted += count
             print(f"{vol} ({key}): {count} verses {'would be ' if dry else ''}inserted")
-            for pnm, idx, v in items[:5]:
+            for pnm, v in items[:5]:
                 print(f"   ch {v['chapter']}:{v['verse_number']} on {pnm}")
             if len(items) > 5:
                 print(f"   ... and {len(items) - 5} more")
