@@ -1195,6 +1195,40 @@ def fix_spelling(s):
     s = _sub(r"(?<![A-Za-zÀ-ÿ])Eclairer(?![A-Za-zÀ-ÿ])", "Éclairer", s)
     s = _sub(r"(?<![A-Za-zÀ-ÿ])Elisa(?![A-Za-zÀ-ÿ])", "Élisa", s)
     s = _sub(r"(?<![A-Za-zÀ-ÿ])Eloï(?![A-Za-zÀ-ÿ])", "Éloi", s)
+
+    # === BATCH 9 (20_job findings) ===
+    # 216. Archaic verb endings (-oit / -oient -> -ait / -aient)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Aa])voit(?![A-Za-zÀ-ÿ])", r"\1vait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Aa])voient(?![A-Za-zÀ-ÿ])", r"\1vaient", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ll])isoit(?![A-Za-zÀ-ÿ])", r"\1isait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Dd])emeuroit(?![A-Za-zÀ-ÿ])", r"\1emeurait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Mm])ontroit(?![A-Za-zÀ-ÿ])", r"\1ontrait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Aa])ppelloit(?![A-Za-zÀ-ÿ])", r"\1ppelait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Aa])ppelloient(?![A-Za-zÀ-ÿ])", r"\1ppelaient", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])ervoit(?![A-Za-zÀ-ÿ])", r"\1ervait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Vv])ouloient(?![A-Za-zÀ-ÿ])", r"\1oulaient", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])étoit(?![A-Za-zÀ-ÿ])", "était", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Étoit(?![A-Za-zÀ-ÿ])", "Était", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])eroit(?![A-Za-zÀ-ÿ])", r"\1erait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Pp])ortoit(?![A-Za-zÀ-ÿ])", r"\1ortait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Vv])enoit(?![A-Za-zÀ-ÿ])", r"\1enait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Vv])enoient(?![A-Za-zÀ-ÿ])", r"\1enaient", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Vv])oudroient(?![A-Za-zÀ-ÿ])", r"\1oudraient", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Rr])endoit(?![A-Za-zÀ-ÿ])", r"\1endait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Vv])ivoient(?![A-Za-zÀ-ÿ])", r"\1ivaient", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Aa])uroit(?![A-Za-zÀ-ÿ])", r"\1urait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Aa])lloit(?![A-Za-zÀ-ÿ])", r"\1llait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Dd])onnoit(?![A-Za-zÀ-ÿ])", r"\1onnait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ff])alloit(?![A-Za-zÀ-ÿ])", r"\1allait", s)
+
+    # 217. Future forms of -lever (-lever* -> -lèver*)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])ouleveron([ts])(?![A-Za-zÀ-ÿ])", r"\1oulèveron\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])oulevera(?![A-Za-zÀ-ÿ])", r"\1oulèvera", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ee])nleveron([ts])(?![A-Za-zÀ-ÿ])", r"\1nlèveron\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ee])nlevera(?![A-Za-zÀ-ÿ])", r"\1nlèvera", s)
+
+    # 218. Specific OCR & accent corrections
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Eugéne(?![A-Za-zÀ-ÿ])", "Eugène", s)
     return s
 
 

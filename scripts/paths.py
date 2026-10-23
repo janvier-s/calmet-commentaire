@@ -10,6 +10,8 @@ WEB = Path("/Users/Janvier/Documents/Bible n stuff/Websites/dom-calmet-web/src/l
 VUL = Path("/Users/Janvier/Library/Mobile Documents/com~apple~CloudDocs/for-the-kingdom/douayrheimsbible/static/data/vul")
 LLM_CACHE = SCRIPTS / "cache" / "llm_cache.json"
 SEAM_CACHE = SCRIPTS / "cache" / "seam_cache.json"
+HUNSPELL_CACHE = SCRIPTS / "cache" / "hunspell_cache.json"
+HUNSPELL_DICT = Path.home() / "Library" / "Spelling" / "fr_FR"     # fr_FR.dic + fr_FR.aff
 
 # key -> {fr, vul, studium: [volume folders], site: website slug}
 BOOKS = json.loads((SCRIPTS / "books.json").read_text(encoding="utf-8"))

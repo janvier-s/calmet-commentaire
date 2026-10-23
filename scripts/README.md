@@ -37,6 +37,14 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
 
 - `seam_check.py <volume> …`: reads every page break for lost or repeated lines
   (Claude, cached in `cache/seam_cache.json`) → `docs/seam_check.json`.
+- `spellcheck.py scan <volume|book> …`: hunspell (`brew install hunspell`, French dictionary
+  in `~/Library/Spelling/fr_FR`) over every French field (cached per word in
+  `cache/hunspell_cache.json`) → `docs/hunspell/<volume>.json`. Then
+  `spellcheck.py inspect …` (long s, -oit/-oient, trémas, frequent words) and
+  `spellcheck.py candidates … [--limit N]` (likely errors by kind) to read it; both leave out
+  Latin (words of the Vulgate), abbreviations and the names in `spellcheck_names.txt`
+  (`--all` keeps them). `spellcheck.py context <volume|book> <word> …` shows where a word
+  occurs. Report only; fixes go into `clean_mechanical.py`.
 - `audit_integrity.py ../docs/integrity_audit_<date>.json` → that report plus
   `docs/review_queue.json` (missing verses, page breaks, verse_ref order, notes without
   commentary, capitals, broken footnote calls, …).
