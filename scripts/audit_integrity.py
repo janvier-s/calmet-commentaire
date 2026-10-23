@@ -9,8 +9,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from chapter_refs import REF as CH_REF, write as chapter_write
-from calmet import STRAY, _fold, vulgate_words
-from export import chapter_of
+from calmet import STRAY, _fold, notes as calmet_notes, vulgate_words
+from export import chapter_of, verses_by_chapter
 from modernize_refs import MANUAL as REF_MANUAL
 from paths import BOOKS, DATA as STUDIUM, DOCS, VUL, WEB as SITE
 ORDER_OK = json.loads((STUDIUM / "verse_ref_order_ok.json").read_text(encoding="utf-8")) \
@@ -535,24 +535,18 @@ def audit_book(key, info, slug, published=True):
                  f"{len(fns)} footnotes for {len(called)} calls in the text"
                  + (f": nothing calls {', '.join(uncalled)}" if uncalled else ": a marker is used twice")
                  + " (footnote from another page, a call lost, or a duplicate?)")
-    # "&" (et) misread as "etc.": an etc. that the sentence runs on from (lower case after it,
-    # or more of the lemma after an ETC.)
-    ETC_LOW = re.compile(r"\b(?:etc|ETC)\.?,?\s+(?:_\s*)?[a-zàâçéèêëîïôûùüÿœæ]")
-    ETC_LEMMA = re.compile(r"\bETC\.?,?\s+[A-ZÀ-ÝŒÆ]{2,}")
+    # "&" (et) at the bottom of the page misread as "etc." at the end of the last commentary block
+    ETC_END = re.compile(r"\b(?:etc|ETC)\.?[_\s»”)]*$")
     for vol, n, d in pages:
-        fields = [("chapter_summary", d.get("chapter_summary")), ("chapter_intro", d.get("chapter_intro"))]
-        fields += [(k, v.get(k)) for v in d.get("verses") or [] for k in ("latin", "french", "annotations")]
-        fields += [(k, b.get(k)) for b in d.get("commentary") or []
-                   for k in ("latin_quote", "french_translation", "french_commentary")]
-        fields += [("footnote", f.get("text")) for f in d.get("footnotes") or []]
-        for k, t in fields:
-            if not isinstance(t, str):
-                continue
-            hits = list(ETC_LOW.finditer(t)) + (list(ETC_LEMMA.finditer(t)) if k == "latin_quote" else [])
-            for m in hits:
-                item("etc_for_et", vol, int(n[5:9]),
-                     f"“etc.” in {k} with the sentence going on: “…{t[max(0, m.start() - 35):m.end() + 25]}…”: "
-                     f"an “&” (et) misread as etc.? (fine if the scan has &c.)")
+        comm = d.get("commentary") or []
+        if not comm:
+            continue
+        t = (comm[-1].get("french_commentary") or "").strip()
+        m = ETC_END.search(t)
+        if m:
+            item("etc_for_et", vol, int(n[5:9]),
+                 f"Last commentary ends with “{m.group(0).strip()}”: “…{t[max(0, m.start() - 45):]}” — "
+                 f"an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)")
     # A page whose commentary repeats a neighbour's: one of the two scans was transcribed twice
     def shingles(d):
         w = re.findall(r"\w+", " ".join((c.get("french_commentary") or "") + " " + (c.get("latin_quote") or "")
@@ -581,27 +575,24 @@ def audit_book(key, info, slug, published=True):
                      f"(Latin: “{(v.get('latin') or '')[:50]}…”): type Calmet's translation from the scan")
     r["empty_commentary"], r["caps_in_commentary"], r["broken_markers"] = empty_notes, caps_runs, odd_marks
 
-    # ---------- what the site serves ----------
-    if not slug:
+    # ---------- assembled chapters & notes (from normalized/) ----------
+    if not pages:
         r["published"] = False
         return r
     r["published"] = published
-    raw_dir, cal_dir = SITE / "raw" / slug, SITE / "calmet" / slug
+    chapters, summaries, _ = verses_by_chapter(key)
     vul = {c["chapter"]: {v["verse"] for v in c["verses"]}
            for c in json.loads((VUL / f"{info['vul']}.json").read_text())["chapters"]}
-    chap_files = sorted(raw_dir.glob("chapter_*.json"))
-    r["chapters_site"], r["chapters_vulgate"] = len(chap_files), len(vul)
-    r["chapters_missing"] = sorted(set(vul) - {int(f.stem[8:]) for f in chap_files})
+    r["chapters_site"], r["chapters_vulgate"] = len(chapters), len(vul)
+    r["chapters_missing"] = sorted(set(vul) - set(chapters))
     verse_issues, empty_verse = [], []
     fr_hits, fr_words, la_hits = Counter(), 0, Counter()
     note_hits, note_words = Counter(), 0
     site_text = []
     orphan_notes, missing_fn = [], 0
     total_verses = 0
-    for f in chap_files:
-        ch = int(f.stem[8:])
-        d = json.loads(f.read_text())
-        vs = d["verses"]
+    for ch in sorted(chapters):
+        vs = chapters[ch]
         total_verses += len(vs)
         nums = [v.get("verse_number") for v in vs if isinstance(v.get("verse_number"), int)]
         have = set(nums)
@@ -637,15 +628,15 @@ def audit_book(key, info, slug, published=True):
             fr_hits += archaic_hits(v.get("french")); fr_words += words(v.get("french"))
             for name, rx in LATIN_OLD:
                 la_hits[name] += len(rx.findall(v.get("latin") or ""))
-        if d.get("chapter_summary"):
-            fr_hits += archaic_hits(d["chapter_summary"]); fr_words += words(d["chapter_summary"])
+        if summaries.get(ch):
+            fr_hits += archaic_hits(summaries[ch]); fr_words += words(summaries[ch])
         if not published:
             continue
-        cf = cal_dir / f"calmet_chapter_{ch:02d}.json"
-        if not cf.exists():
+        try:
+            c = calmet_notes(key, ch, 1, 999)
+        except Exception:
             verse_issues.append(dict(chapter=ch, notes_file_missing=True))
             continue
-        c = json.loads(cf.read_text())
         missing_fn += len(c.get("missing_footnotes") or [])
         for k in c.get("missing_footnotes") or []:
             m = re.match(r"page_(\d+)-(\w)", k)
@@ -710,14 +701,14 @@ def main():
             continue
         if key in EXCLUDED:
             continue
-        r = audit_book(key, info, slugs.get(info["fr"]))
+        r = audit_book(key, info, info.get("site") or slugs.get(info["fr"]))
         results.append(r)
         print(f"{info['number']:>2} {info['fr']:<14} pages={r['pages']:<4} "
               f"vmiss={r.get('verses_missing_count','-')} vdup={r.get('verses_duplicated_count','-')} "
               f"gaps={len(r['page_number_gaps'])} empty={len(r['empty_pages'])} "
               f"seams={len(r['suspicious_seams'])} dropped={len(r.get('commentary_blocks_not_on_site', []))}"
               f"/{r.get('commentary_blocks_checked','-')}", flush=True)
-    out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("integrity_audit.json")
+    out = Path(sys.argv[1]) if len(sys.argv) > 1 else DOCS / "integrity_audit.json"
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order

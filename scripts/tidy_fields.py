@@ -3,7 +3,7 @@
   - verses: no underscores in `latin` or `french` (the site styles verses itself)
   - french_translation: no underscores (the site sets the whole translation in italic)
   - chapter_summary: no underscores
-  - latin_quote: "etc." in capitals like the rest of the lemma ("…EJUS, ETC.")
+  - latin_quote: no underscores; "etc." in capitals like the rest of the lemma ("…EJUS, ETC.")
   - french_commentary starting with punctuation ("; c'est-à-dire…"): the punctuation goes to
     the end of the block's french_translation (replacing a final full stop or comma there)
   - annotations: [] / "[]" / "" and bare verse marks (℣. 1., †., *.) -> null;
@@ -33,6 +33,12 @@ LEAD = re.compile(r"\s*([.,;:!?»]+)[ \t\u00a0]*")
 MARK = re.compile(r"(℣|†|\*)\.?\s*(\d+\.?)?")
 YEAR = re.compile(r"\d{3,4}\.?")
 DATED = re.compile(r"An\.? du M(?:\.|onde)\s*(\d{4})")
+EMBEDDED_LEMMA = re.compile(
+    r"^\s*_?([A-ZÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸ][A-ZÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸ\s,.;:?!'\’\-()&]+?(?:\s*,?\s*(?:etc|ETC)\.?)?[.,;:?!]?)_?\s+"
+    r"_([^_]+?)_([.,;:?!])?"
+    r"(?:\s+(.+))?$",
+    re.DOTALL,
+)
 
 
 def strip_us(s):
@@ -64,9 +70,25 @@ def tidy(d, cache, stats):
         d["chapter_summary"] = strip_us(t)
         stats["summary underscores"] += 1
         changed = True
-    for b in d.get("commentary") or []:
+    for b_idx, b in enumerate(d.get("commentary") or []):
+        if b_idx > 0 and not (b.get("latin_quote") or "").strip() and not (b.get("french_translation") or "").strip():
+            m = EMBEDDED_LEMMA.match(b.get("french_commentary") or "")
+            if m:
+                b["latin_quote"] = strip_us(m.group(1))
+                b["french_translation"] = strip_us(m.group(2) + (m.group(3) or ""))
+                b["french_commentary"] = (m.group(4) or "").strip() or None
+                for x in (b["french_translation"], b["french_commentary"]):
+                    if x:
+                        cache[hashlib.md5(x.encode()).hexdigest()] = x
+                stats["embedded lemma extracted"] += 1
+                changed = True
         t = b.get("latin_quote")
         if isinstance(t, str):
+            if "_" in t:
+                t = strip_us(t)
+                b["latin_quote"] = t
+                stats["lemma underscores"] += 1
+                changed = True
             new = re.sub(r"(?i)\betc+\b", "ETC", t)
             if new != t:
                 b["latin_quote"] = new

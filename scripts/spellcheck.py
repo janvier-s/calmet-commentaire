@@ -6,6 +6,8 @@
   python3 spellcheck.py inspect <volume|book> ...     long s, -oit/-oient, trémas, frequent words
   python3 spellcheck.py candidates <volume|book> ...  likely errors, grouped by kind [--limit N]
   python3 spellcheck.py context <volume|book> <word> ...  where the words occur [--limit N]
+  python3 spellcheck.py ez <volume|book|all> ...      archaic -ez -> -és participles/nouns [--limit N] [--fp] [--apply]
+        -> docs/hunspell/<volume>_ez.json (or updates normalized/ pages with --apply)
 
 A book key from books.json (job, psalms) stands for all its volumes; several volumes are
 read together. Report only: nothing here changes the pages.
@@ -31,7 +33,7 @@ from functools import lru_cache
 from itertools import islice
 
 from calmet import _fold, vulgate_words
-from paths import BOOKS, DATA, DOCS, HUNSPELL_CACHE, HUNSPELL_DICT, SCRIPTS, load, pages
+from paths import BOOKS, DATA, DOCS, HUNSPELL_CACHE, HUNSPELL_DICT, LLM_CACHE, SCRIPTS, load, pages
 
 OUT = DOCS / "hunspell"
 NAMES = SCRIPTS / "spellcheck_names.txt"
@@ -350,10 +352,342 @@ def context(volumes, targets, limit):
             print(f"  … (--limit to see more)")
 
 
+# --- archaic -ez -> -és scan (valid in hunspell as 2p verbs / "nez", so missed by plain scan) ---
+
+ETRE_PL = (r"(?:sont|étaient|étoient|furent|seront|seraient|seroient|soient|fussent|"
+           r"sommes|étions|fûmes|fumes|êtes|étiez|fûtes|futes|serez|soyez|être|étant|été|feront|"
+           r"deviendront|deviennent|devenus|devenez)")
+AVOIR_COD = (r"(?:(?:les|nous|vous|que(?:\s+(?:le|la|les|ce|cet|cette|ces|mon|ton|son|notre|votre|leur|mes|tes|ses|nos|vos|leurs))?(?:\s+[a-zà-ÿ]+){0,2}|qu['’]\s*(?:il|ils|elle|elles|on|un|[a-zà-ÿ]+))\s+"
+             r"(?:n['’]|ne\s+)?(?:en\s+|y\s+|vous\s+|nous\s+|les\s+|lui\s+|leur\s+)?(?:ont|avaient|avoient|eurent|auront|auraient|"
+             r"auroient|aient|ayent|eussent|avons|avions|avez|aviez|aurez|ayez|avoir|ayant|"
+             r"a|avait|avoit|eut|aura|aurait|auroit|ait|eût|ai|avais|avois))")
+STATE_PL = (r"(?:(?<!au\s)(?<!Au\s)(?:tient|tiennent|tenait|tenoient|tenaient|tint|tinrent|"
+            r"demeurent|demeuraient|demeureront|demeurer|restent|restaient|resteront|paraissent|semblent|"
+            r"trouvent|trouvaient|trouvé|trouvés|trouvez|voient|voyaient|virent|rendent|rendaient|laissent|laissaient)"
+            r"(?:\s+(?:les\s+[a-zà-ÿ]+|leurs\s+[a-zà-ÿ]+|des\s+[a-zà-ÿ]+|[a-zà-ÿ]+))?)")
+ADV = (r"(?:tout\s+d['’]un\s+coup|plus|moins|si|fort|bien|mal|très|tout|tous|toutes|souvent|toujours|jamais|point|"
+       r"pas|autrefois|dès-lors|encore|ainsi|aussi|même|eux-mêmes|entièrement|éternellement|"
+       r"heureusement|proprement|fortement|étroitement|ensemble|déjà|bientôt|presque|comme|"
+       r"donc|peut-être|quelquefois|pourtant|cependant|néanmoins|enfin|aussitôt|peu|tant|"
+       r"trop|assez|ici|là|y|en|[a-zà-ÿ]+ment)")
+AUX_CHAIN = (rf"(?:\b(?:{ETRE_PL}|{AVOIR_COD}|{STATE_PL})\b(?:\s+{ADV})*"
+             rf"(?:\s+[a-zà-ÿ]+(?:és|ez|is|us|ts)(?:\s+(?:à|au|aux|de|du|des|dans|en|par|pour|sur|sous|avec|sans)\s+(?:la\s+|le\s+|les\s+|l['’]|un\s+|une\s+)?[a-zà-ÿ]+)?\s*(?:,\s*)?(?:(?:et|ou|ni)\s+)?(?:\s*{ADV}\s*)*)*)")
+PLURAL_NP = (
+    r"(?:"
+    r"\b(?:les|des|aux|ces|ses|mes|tes|nos|vos|leurs|plusieurs|quelques|tous|autres|premiers|"
+    r"nouveaux|anciens|grands|petits|bons|mauvais|faux|vrais|saints|mêmes|tels|quels|"
+    r"deux|trois|quatre|cinq|six|sept|huit|neuf|dix|cent|mille\s+de)\s+(?:[a-zà-ÿ]+(?:s|x)\s+){1,3}"
+    r"(?:(?:bien|mal|plus|moins|si|fort|très|tout|tous|souvent|toujours|encore|ainsi|aussi|même|déjà|presque|comme|[a-zà-ÿ]+(?:és|ez|is|us|ts)\s*,?)\s+)*"
+    r"|(?<!\bet\s)(?<!\bou\s)(?<!\bmais\s)\b(?:les|des|aux|ces|ses|mes|tes|nos|vos|leurs|plusieurs|quelques|tous|autres)\s+"
+    r"|\b(?:des|aux)\s+"
+    r")"
+)
+POS_EZ_BEFORE = re.compile(rf"(?:{AUX_CHAIN}|{PLURAL_NP})\s*$", re.I)
+APPOS_NP_BEFORE = re.compile(
+    r"\b(?:les|des|aux|ces|ses|mes|tes|nos|vos|leurs|plusieurs|quelques|tous|autres)\s+(?:[a-zà-ÿ]+(?:s|x)\s+){1,3},\s*"
+    r"(?:(?:[a-zà-ÿ]+(?:és|ez|is|us|ts)\s*,\s*(?:et\s+)?)*)$",
+    re.I
+)
+APPOS_EZ_AFTER = re.compile(
+    r"^\s*(?:[,.;:!?)]|\b(?:par|de|du|d['’]|dans|à|au|aux|en|sur|sous|avec|sans|pour|contre|entre|vers|chez|selon|comme|depuis|pendant|après|avant|ici|et|ou)\b)",
+    re.I
+)
+IMMED_ETRE = re.compile(rf"\b{ETRE_PL}\b(?:\s+{ADV})*\s*$", re.I)
+VOUS_VERB_SPAN = re.compile(
+    r"^\s*(?:ne\s+|n['’]\s*)?(?:me\s+|m['’]\s*|te\s+|t['’]\s*|se\s+|s['’]\s*|le\s+|la\s+|les\s+|l['’]\s*|nous\s+|vous\s+|lui\s+|leur\s+|y\s+|en\s+)*"
+    rf"(?:{ADV}\s+)*$",
+    re.I
+)
+EZ_TOKEN = re.compile(rf"(?<![{LETTER}-])([{LETTER}]+(?:-[{LETTER}]+)*ez)(?![{LETTER}-])")
+
+NEVER_ES = {
+    "assez", "chez", "rez", "avez", "aviez", "aurez", "ayez",
+    "serez", "soyez", "étiez", "ferez", "feriez", "direz", "diriez",
+    "irez", "iriez", "viendrez", "verrez", "voudrez", "voulez", "vouliez",
+    "pouvez", "pouviez", "pourrez", "savez", "saviez", "saurez",
+    "devez", "deviez", "devrez", "allez", "venez", "tenez", "prenez",
+    "comprenez", "apprenez", "entreprenez", "craignez", "joignez",
+    "peignez", "feignez", "atteignez", "éteignez", "ceignez", "plaignez",
+    "oignez", "buvez", "recevez", "apercevez", "concevez", "décevez",
+    "mouvez", "pleuvez", "vivez", "suivez", "écrivez", "serviez",
+    "sortez", "partez", "dormez", "mentez", "sentez", "repentez",
+    "ouvrez", "couvrez", "offrez", "souffrez", "cueillez", "assaillez",
+    "bouillez", "mourez", "mourrez", "courez", "courrez", "secourez",
+    "acquérez", "conquérez", "requérez", "asseyez", "voyez", "croyez",
+    "fuyez", "oyez", "riez", "conduisez", "instruisez", "détruisez",
+    "produisez", "réduisez", "séduisez", "traduisez", "luisez", "nuisez",
+    "cuisez", "lisez", "élisez", "plaisiez", "taisez", "faisez", "disiez",
+    "connaissez", "paraissez", "naissez", "paissez", "croissez", "haïssez",
+    "mettez", "permettez", "promettez", "commettez", "soumettez", "remettez",
+    "admettez", "omettez", "transmettez", "battez", "combattez", "abattez",
+    "rompez", "corrompez", "interrompez", "poursuivez", "vainquez", "convainquez",
+    "rendez", "vendez", "pendez", "tendez", "étendez", "entendez", "attendez",
+    "défendez", "descendez", "fendez", "répandez", "répondez", "confondez",
+    "tondez", "fondez", "mordez", "perdez", "tordez", "puissiez", "fussiez",
+    "eussiez", "faisiez", "voyiez", "croyiez", "sachiez", "veuillez",
+    "daignez", "fez", "suez", "jabez", "pharez", "suarez", "alvarez", "sanchez",
+    "vasquez", "valez", "gomez", "lopez", "perez", "abez", "remez", "éliez",
+    "cortez", "rodanez", "bouez", "renez",
+}
+ER_EREZ_STEMS = (
+    "espérez", "considérez", "modérez", "préférez", "référez", "différez", "conférez",
+    "altérez", "tempérez", "vénérez", "libérez", "opérez", "insérez", "exagérez",
+    "digérez", "suggérez", "tolérez", "accélérez", "énumérez", "rémunérez", "délibérez",
+    "avérez", "persévérez", "révérez", "ulcérez", "lacérez", "macérez", "incarcérez",
+    "désespérez", "coopérez", "récupérez", "exaspérez", "prospérez", "réinsérez",
+    "adultérez", "oblitérez", "réitérez", "dégénérez", "régénérez", "pondérez",
+    "confédérez", "inférez", "proférez", "transférez", "inconsidérez",
+)
+
+
+def classify_ez(w, t, start, end, unconditional):
+    """(is_archaic_es, reason) for an occurrence of an -ez word at t[start:end]."""
+    wl = w.lower()
+    if start == 0 and w[0].islower():
+        return False, "page-turn fragment"
+    if w in unconditional:
+        return True, "unconditional (-ez not a verb)"
+    before = t[max(0, start - 100):start]
+    after = t[end:min(len(t), end + 60)]
+    b_clean = re.sub(r"\^\{[^}]*\}|[_*]", " ", before)
+    a_clean = re.sub(r"\^\{[^}]*\}|[_*]", " ", after)
+    clause_before = re.split(r"[.;:!?«»]", b_clean)[-1]
+
+    if re.match(r"^\s*-(?:vous|le|la|les|moi|nous|lui|leur|y|en)\b", a_clean, re.I):
+        return False, "imperative/inverted pronoun"
+    if wl == "nez":
+        if re.search(r"\b(?:le|du|au|aux|un|son|mon|ton|votre|vôtre|notre|nôtre|leur|leurs|les|des|ces|ni)\s+$", b_clean, re.I):
+            return False, "nose (determiner)"
+        if re.match(r"^\s*(?:tortu|camus|écrasé|coupé|plat|aquilin|long|court|en\s+fut|fumera)", a_clean, re.I):
+            return False, "nose (adj/verb)"
+        return True, "nés (born)"
+
+    vous_matches = list(re.finditer(r"\bvous\b", clause_before, re.I))
+    if vous_matches:
+        inter = clause_before[vous_matches[-1].end():]
+        if VOUS_VERB_SPAN.match(inter):
+            return False, "2p vous subject"
+
+    if re.search(r"\bqui\s+(?:ne\s+|n['’]\s*|les\s+|la\s+|le\s+|l['’]|en\s+|y\s+|vous\s+|nous\s+|me\s+|m['’]|se\s+|s['’])*$", clause_before, re.I):
+        return False, "qui + 2p verb"
+
+    if re.search(r"\b(?:ne|n['’])\s*(?:me\s+|m['’]\s*|te\s+|t['’]\s*|se\s+|s['’]\s*|la\s+|les\s+|le\s+|l['’]\s*|vous\s+|nous\s+|lui\s+|leur\s+|en\s+|y\s+)*$", clause_before, re.I):
+        return False, "negative imperative/2p"
+
+    has_direct_obj = bool(re.match(
+        r"^\s+(?:le|la|les|l['’]|un|une|ce|cet|cette|ces|mon|ton|son|notre|votre|leur|"
+        r"mes|tes|ses|nos|vos|leurs|tous\s+les|toutes\s+les|tout\s+le|toute\s+la|toutes\s+choses|tout\s+ce)\b",
+        a_clean, re.I
+    ))
+    if has_direct_obj and not re.search(r"\b(?:tenait|tenaient|tient|tiennent)\s+$", clause_before, re.I) and not IMMED_ETRE.search(clause_before):
+        return False, "active verb + direct object"
+
+    if POS_EZ_BEFORE.search(clause_before):
+        return True, "participle/noun"
+
+    if not re.search(r",\s*_\s*$", before) and APPOS_NP_BEFORE.search(clause_before) and APPOS_EZ_AFTER.search(a_clean):
+        return True, "appositive participle"
+
+    return False, "imperative/2p verb (no plural/aux context)"
+
+
+def _build_ez_maps(all_ez):
+    cands_to_check = set()
+    es_candidates = {}
+    ez_variants = {}
+    for w in all_ez:
+        wl = w.lower()
+        if wl.endswith(("issez", "erez", "irez", "drez")) and not wl.endswith(ER_EREZ_STEMS):
+            continue
+        cands = [w[:-2] + "és", wl[:-2] + "és"]
+        ez_vars = [w, wl]
+        stem = w[:-2]
+        for m in re.finditer(r"e(?=[^aeiouyéèêëàâîïôûùü]{1,3}$)", stem, re.I):
+            rep = "É" if stem[m.start()].isupper() else "é"
+            acc_stem = stem[:m.start()] + rep + stem[m.start() + 1:]
+            cands.append(acc_stem + "és")
+            ez_vars.append(acc_stem + "ez")
+            ez_vars.append(acc_stem.lower() + "ez")
+        es_candidates[w] = cands
+        ez_variants[w] = ez_vars
+        cands_to_check.update((*ez_vars, *cands))
+
+    unknown = check(sorted(cands_to_check))
+    names, latin = known_names(), vulgate_words()
+
+    valid_replacement = {}
+    unconditional = set()
+    for w, cands in es_candidates.items():
+        wl = w.lower()
+        if wl in names or _fold(wl) in latin:
+            continue
+        good = [c for c in cands if c not in unknown]
+        if not good:
+            continue
+        best = good[0]
+        if w[0].isupper() and best[0].islower():
+            best = best[0].upper() + best[1:]
+        valid_replacement[w] = best
+        # Only unconditional if NO -ez variant (even with restored accent on stem) is a known verb in hunspell,
+        # OR if it is a hyphenated compound (premiers-nez, bien-aimez, nouveau-nez)
+        any_ez_known = any(v not in unknown for v in ez_variants[w])
+        if (not any_ez_known and len(wl) >= 4) or "-" in w:
+            unconditional.add(w)
+    return valid_replacement, unconditional
+
+
+def _replace_ez_in_text(t, valid_replacement, unconditional):
+    if not t or not isinstance(t, str):
+        return t, 0
+    count = 0
+
+    def _repl(m):
+        nonlocal count
+        w = m.group(1)
+        if w not in valid_replacement:
+            return w
+        ok, _ = classify_ez(w, t, m.start(), m.end(), unconditional)
+        if ok:
+            count += 1
+            return valid_replacement[w]
+        return w
+
+    new_t = EZ_TOKEN.sub(_repl, t)
+    return new_t, count
+
+
+def scan_ez(volumes, limit=30, show_fp=False, apply=False):
+    """Scan volumes for archaic -ez words that should be -és, excluding 2p verbs and 'le nez'."""
+    vol_occurrences = {}
+    all_ez = Counter()
+    for vol in volumes:
+        occ = []
+        for p in pages(vol):
+            no = page_no(p)
+            for t in french_texts(load(p)):
+                if t and isinstance(t, str):
+                    for m in EZ_TOKEN.finditer(t):
+                        w = m.group(1)
+                        if w.lower() not in NEVER_ES and not w.isupper() and len(w) >= 3:
+                            all_ez[w] += 1
+                            occ.append((no, w, t, m.start(), m.end()))
+        vol_occurrences[vol] = occ
+
+    valid_replacement, unconditional = _build_ez_maps(all_ez)
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    merged_hits = Counter()
+    merged_fp = Counter()
+    examples = {}
+    fp_examples = {}
+    pages_updated = 0
+    replacements_applied = 0
+    llm_cache = None
+    if apply:
+        import hashlib
+        try:
+            llm_cache = json.loads(LLM_CACHE.read_text(encoding="utf-8")) if LLM_CACHE.exists() else {}
+        except Exception:
+            llm_cache = None
+
+    for vol, occ in vol_occurrences.items():
+        vol_words = {}
+        for no, w, t, start, end in occ:
+            if w not in valid_replacement:
+                continue
+            ok, why = classify_ez(w, t, start, end, unconditional)
+            snippet = t[max(0, start - 35):min(len(t), end + 35)].replace("\n", " ")
+            if ok:
+                merged_hits[w] += 1
+                examples.setdefault(w, []).append((f"{vol}/{no}", why, snippet))
+                entry = vol_words.setdefault(w, {"replacement": valid_replacement[w], "total": 0, "fp_skipped": 0, "pages": []})
+                entry["total"] += 1
+                if no not in entry["pages"]:
+                    entry["pages"].append(no)
+            else:
+                merged_fp[w] += 1
+                fp_examples.setdefault(w, []).append((f"{vol}/{no}", why, snippet))
+                if w in vol_words:
+                    vol_words[w]["fp_skipped"] += 1
+        out = OUT / f"{vol}_ez.json"
+        out.write_text(json.dumps({"ez_errors": dict(sorted(vol_words.items()))}, ensure_ascii=False, indent=2), encoding="utf-8")
+
+        if apply:
+            vol_page_cnt = 0
+            vol_repl_cnt = 0
+            for p in pages(vol):
+                d = load(p)
+                changed = False
+                for k in TOP_FIELDS:
+                    v = d.get(k)
+                    if v and isinstance(v, str):
+                        v2, n_rep = _replace_ez_in_text(v, valid_replacement, unconditional)
+                        if n_rep:
+                            d[k] = v2
+                            if llm_cache is not None and k == "chapter_summary":
+                                llm_cache[hashlib.md5(v2.encode()).hexdigest()] = v2
+                            vol_repl_cnt += n_rep
+                            changed = True
+                for v in d.get("verses", []):
+                    s = v.get("french")
+                    if s and isinstance(s, str):
+                        s2, n_rep = _replace_ez_in_text(s, valid_replacement, unconditional)
+                        if n_rep:
+                            v["french"] = s2
+                            if llm_cache is not None:
+                                llm_cache[hashlib.md5(s2.encode()).hexdigest()] = s2
+                            vol_repl_cnt += n_rep
+                            changed = True
+                for fn in d.get("footnotes", []):
+                    s = fn.get("text")
+                    if s and isinstance(s, str):
+                        s2, n_rep = _replace_ez_in_text(s, valid_replacement, unconditional)
+                        if n_rep:
+                            fn["text"] = s2
+                            vol_repl_cnt += n_rep
+                            changed = True
+                for c in d.get("commentary", []):
+                    for k in ("french_translation", "french_commentary"):
+                        s = c.get(k)
+                        if s and isinstance(s, str):
+                            s2, n_rep = _replace_ez_in_text(s, valid_replacement, unconditional)
+                            if n_rep:
+                                c[k] = s2
+                                if llm_cache is not None:
+                                    llm_cache[hashlib.md5(s2.encode()).hexdigest()] = s2
+                                vol_repl_cnt += n_rep
+                                changed = True
+                if changed:
+                    p.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
+                    vol_page_cnt += 1
+            pages_updated += vol_page_cnt
+            replacements_applied += vol_repl_cnt
+            if vol_page_cnt:
+                print(f"  {vol}: updated {vol_page_cnt} pages ({vol_repl_cnt} replacements)", flush=True)
+
+    if apply and llm_cache is not None and replacements_applied:
+        LLM_CACHE.write_text(json.dumps(llm_cache, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    print(f"Scanned {len(volumes)} volume(s): {sum(merged_hits.values())} archaic -ez occurrences "
+          f"across {len(merged_hits)} distinct words ({sum(merged_fp.values())} verb/nose false positives excluded)")
+    if apply:
+        print(f"Applied {replacements_applied} replacements across {pages_updated} pages.")
+    for w, cnt in merged_hits.most_common(limit):
+        rep = valid_replacement[w]
+        fp_cnt = merged_fp[w]
+        loc, why, snip = examples[w][0]
+        print(f"  {w:22} -> {rep:22} (archaic: {cnt:3d}, fp skipped: {fp_cnt:3d}) | {loc}: …{snip}…")
+        if show_fp and fp_examples.get(w):
+            floc, fwhy, fsnip = fp_examples[w][0]
+            print(f"      [FP skipped ({fwhy})]: {floc}: …{fsnip}…")
+
+
 def volumes_of(args):
     vols = []
     for a in args:
-        if a in BOOKS:
+        if a == "all":
+            vols += sorted(p.name for p in DATA.iterdir() if (p / "normalized").is_dir())
+        elif a in BOOKS:
             vols += BOOKS[a]["studium"]
         elif (DATA / a / "normalized").is_dir():
             vols.append(a)
@@ -370,8 +704,10 @@ def main(argv):
         limit = int(argv[i + 1])
         del argv[i:i + 2]
     show_all = "--all" in argv
-    argv = [a for a in argv if a != "--all"]
-    if len(argv) < 2 or argv[0] not in ("scan", "inspect", "candidates", "context"):
+    show_fp = "--fp" in argv
+    apply = "--apply" in argv
+    argv = [a for a in argv if a not in ("--all", "--fp", "--apply")]
+    if len(argv) < 2 or argv[0] not in ("scan", "inspect", "candidates", "context", "ez"):
         sys.exit(__doc__)
     cmd = argv[0]
     if cmd == "context":
@@ -380,6 +716,8 @@ def main(argv):
     vols = volumes_of(argv[1:])
     if cmd == "scan":
         scan(vols)
+    elif cmd == "ez":
+        scan_ez(vols, limit, show_fp, apply)
     elif cmd == "inspect":
         inspect(*drop_noise(load_errors(vols), show_all))
     else:
