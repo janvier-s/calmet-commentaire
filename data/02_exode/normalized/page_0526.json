@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 30,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 30,
       "latin_quote": "NEC OBLATIONEM, NEC VICTIMAM, NEC LIBABITIS.",
       "french_translation": "On n'y fera ni oblation, ni sacrifice, et on n'y répandra point de liqueurs.",
@@ -38,11 +38,11 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 30,
       "latin_quote": "ET DEPRECABITUR.",
       "french_translation": "Et il priera ;",
-      "french_commentary": "ou, _il fera une expiation, etc._"
+      "french_commentary": "ou, _il fera une expiation,_"
     }
   ],
   "footnotes": [
@@ -59,5 +59,6 @@
       "text": "ועלה ומנחה ונסך"
     }
   ],
-  "book_end_marker": null
+  "book_end_marker": null,
+  "chapter_title": null
 }
