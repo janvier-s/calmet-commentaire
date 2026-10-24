@@ -29,88 +29,11 @@ from tkinter import ttk, messagebox, simpledialog
 
 import page_editor
 from page_editor import PageEditor, find_source_image
+from review_store import EMPTY_PAGE, KIND_LABELS, kind_category
 
 DATA_DIR = page_editor.DATA_DIR
 QUEUE_FILE = DATA_DIR.parent / "docs" / "review_queue.json"
 PROGRESS_FILE = DATA_DIR / ".review_queue_progress.json"
-
-KIND_LABELS = {
-    "reported": "REPORTED BY YOU",
-    "duplicate_page": "PAGE COPIED FROM ANOTHER",
-    "malformed_page": "MALFORMED PAGE",
-    "missing_page": "MISSING PAGE",
-    "missing_verse": "MISSING VERSE",
-    "psalm_missing_verse": "PSALM VERSE MISSING (from the Vulgate text)",
-    "psalm_missing_title": "PSALM TITLE MISSING",
-    "missing_french": "VERSE WITHOUT FRENCH",
-    "vulgate_filled": "VERSE FILLED FROM THE VULGATE: TYPE THE FRENCH",
-    "psalm_number": "PSALM VERSE NUMBER OUT OF STEP",
-    "psalm_wrong_psalm": "VERSE UNDER THE WRONG PSALM",
-    "psalm_unmatched": "VERSE NOT FOUND IN THE VULGATE",
-    "duplicate_verse": "DUPLICATE VERSE",
-    "latin_long_s": "LATIN: f READ FOR s? (check the word against the scan)",
-    "chapter_field": "CHAPTER FIELD OUT OF STEP",
-    "empty_summary": "CHAPTER SUMMARY EMPTY",
-    "chapter_vulgate": "CHAPTER SET FROM THE VULGATE: CHECK THE VERSE NUMBER",
-    "chapter_heading": "CHAPTER HEADING TO CHECK",
-    "dropped_commentary": "COMMENTARY NOT ON SITE",
-    "seam_missing": "TEXT MISSING AT PAGE BREAK",
-    "seam_repeat": "TEXT REPEATED AT PAGE BREAK",
-    "seam_unclear": "PAGE BREAK TO CHECK",
-    "ref_order": "VERSE REFERENCE OUT OF ORDER",
-    "no_verse_ref": "NOTE WITHOUT VERSE_REF",
-    "no_lemma": "NOTE WITHOUT LATIN_QUOTE",
-    "spaced_letters": "L E T T E R - S P A C E D WORD",
-    "leading_punctuation": "COMMENT STARTS WITH PUNCTUATION",
-    "leading_call": "FIELD STARTS WITH A FOOTNOTE CALL",
-    "italic_seam": "ITALICS BROKEN AT PAGE TURN",
-    "period_seam": "FULL STOP AT PAGE END, LOWER CASE OVERLEAF",
-    "etc_for_et": "“ETC.” WHERE “&” (ET) WAS MEANT?",
-    "hyphen_cut": "LEMMA / TRANSLATION CUT AT PAGE TURN (hyphen or no full stop)",
-    "long_translation": "TRANSLATION MUCH LONGER THAN THE LEMMA",
-    "hebrew_in_translation": "“L'HÉBREU” IN THE TRANSLATION",
-    "hebrew_recheck": "FOOTNOTE HEBREW UNCERTAIN: CHECK AGAINST THE SCAN",
-    "lemma_verse": "LATIN_QUOTE FILLED IN BY HAND: RIGHT VERSE NUMBER?",
-    "verse_mismatch": "LATIN_QUOTE FITS ANOTHER VERSE: WRONG VERSE NUMBER?",
-    "chapter_ref": "CHAPTER REFERENCE NOT WRITTEN OUT (WHICH BOOK? WHICH NUMBERS?)",
-    "guessed_ref": "BIBLE REFERENCE GUESSED (*) OR AS PRINTED: CHECK ON THE SCAN",
-    "footnote_asterisk": "FOOTNOTE WITH GUESSED WORDS (*): CHECK AGAINST THE SCAN",
-    "lowercase_lemma": "LOWER CASE IN THE LATIN LEMMA",
-    "lemma_no_punct": "LATIN LEMMA NOT ENDING WITH PUNCTUATION",
-    "translation_no_punct": "TRANSLATION NOT ENDING WITH PUNCTUATION",
-    "lowercase_translation": "MISSING CAPITAL IN FRENCH TRANSLATION",
-    "lemma_unknown_word": "LEMMA WORD NOT IN THE VULGATE (name? misreading?)",
-    "extra_footnotes": "MORE FOOTNOTES THAN CALLS",
-    "empty_commentary": "NOTE WITHOUT COMMENTARY",
-    "caps_in_commentary": "CAPITALS IN COMMENTARY",
-    "broken_marker": "BROKEN FOOTNOTE CALL",
-    "possible_gap": "POSSIBLE GAP",
-    "missing_footnote": "MISSING FOOTNOTE",
-    "empty_page": "EMPTY PAGE",
-    "seam_artifact": "PAGE-TURN GLITCH",
-}
-
-EMPTY_PAGE = {"book_title": None, "chapter_title": None, "chapter_summary": None, "chapter_intro": None,
-              "verses": [], "commentary": [], "footnotes": []}
-
-VERSE_KINDS = {
-    "missing_verse", "psalm_missing_verse", "duplicate_verse", "missing_french",
-    "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "psalm_number",
-    "psalm_missing_title", "chapter_field", "chapter_vulgate", "chapter_heading",
-    "empty_summary", "latin_long_s",
-}
-
-FOOTNOTE_KINDS = {
-    "missing_footnote", "broken_marker", "extra_footnotes", "hebrew_recheck",
-    "footnote_asterisk",
-}
-
-def kind_category(k):
-    if k in VERSE_KINDS:
-        return "verses"
-    if k in FOOTNOTE_KINDS:
-        return "footnotes"
-    return "commentary"
 
 
 def book_pages(book_path):
