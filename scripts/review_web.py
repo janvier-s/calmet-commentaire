@@ -12,6 +12,7 @@ Usage: python3 review_web.py [VOLUME [PAGE]] [--resume] [filters] [--port N] [--
 Serves on 127.0.0.1 only; the printed link carries the session key.
 """
 import json
+import threading
 import mimetypes
 import re
 import secrets
@@ -36,7 +37,7 @@ class ApiError(Exception):
         self.code, self.body = code, body
 
 
-def make_server(store, queue_path, port=0, token=None, include_optional=False, start=None):
+def make_server(store, queue_path, port=0, token=None, include_optional=False, start=None, recheck=None):
     """The HTTP server over `store` and the queue at `queue_path`, not yet serving."""
     token = token or secrets.token_hex(16)
     fp_path = store.docs / "false_positives.json"
@@ -154,6 +155,20 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         save_state(body["vol"], int(body["page"]), state_file)
         return {"ok": True}
 
+    recheck_lock = threading.Lock()
+
+    def run_recheck(body):
+        vol, page = vol_page(body)
+        audit = recheck
+        if audit is None:
+            from page_audit import recheck_book as audit
+        with recheck_lock:  # one at a time: a second save waits and audits the later file
+            r = rs.merge_recheck(items, progress, rs.book_volumes(vol), audit(vol), include_optional)
+            by_id.update({it["id"]: it for it in items})
+        return {"fixed": len(r["fixed"]), "added": len(r["added"]),
+                "issues": rs.page_issues(items, progress, vol, page),
+                "around": rs.neighbour_issue_pages(items, progress, vol, page)}
+
     def create(body):
         vol, page = vol_page(body)
         try:
@@ -168,7 +183,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
            "/api/locate": locate, "/api/state": lambda q: state(None)}
     POST = {"/api/page": lambda b: (lambda r: {"data": r[0], "version": r[1]})(save(*vol_page(b), b)),
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
-            "/api/open": open_file, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state}
+            "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state}
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *a):

@@ -441,3 +441,43 @@ def neighbour_issue_pages(items, progress, vol, page):
     return {"prev": max((p for p in open_pages if p < page), default=None),
             "next": min((p for p in open_pages if p > page), default=None),
             "open_in_book": sum(1 for it in items if it["book_dir"] == vol and in_status(it, progress, "open"))}
+
+
+# --- Re-check on save ---
+# Kinds audit_integrity.audit_book produces; the others come from other scripts and are left alone.
+# duplicate_verse is also psalms_check.py's, so a re-check never closes it.
+AUDIT_KINDS = frozenset(KIND_LABELS) - {
+    "reported", "psalm_missing_verse", "psalm_missing_title", "psalm_number", "psalm_wrong_psalm",
+    "psalm_unmatched", "chapter_vulgate", "chapter_heading", "hebrew_recheck", "latin_long_s",
+    "seam_missing", "seam_repeat", "seam_unclear", "duplicate_verse"}
+
+
+def book_volumes(vol):
+    from paths import BOOKS, BY_VOLUME
+    return BOOKS[BY_VOLUME[vol]]["studium"] if vol in BY_VOLUME else [vol]
+
+
+def merge_recheck(items, progress, vols, new_items, include_optional=True):
+    """Fold a fresh audit of the volumes `vols` into `items` (in place). Open items it no longer
+    finds are resolved and kept with fixed=True; ones fixed this way that come back are reopened;
+    items marked by hand keep their status; new ones are appended."""
+    new = {q["id"]: q for q in new_items if include_optional or not q.get("optional")}
+    fixed, added = [], []
+    known = set()
+    for it in items:
+        known.add(it["id"])
+        if it["book_dir"] not in vols or it["kind"] not in AUDIT_KINDS:
+            continue
+        if it["id"] in new:
+            it.update(msg=new[it["id"]]["msg"], **({"where": new[it["id"]]["where"]} if "where" in new[it["id"]] else {}))
+            if it.pop("fixed", False) and progress.status(it["id"]) == "resolved":
+                progress.set(it["id"], None)
+        elif in_status(it, progress, "open"):
+            progress.set(it["id"], "resolved")
+            it["fixed"] = True
+            fixed.append(it["id"])
+    for qid, q in new.items():
+        if qid not in known:
+            items.append(dict(q))
+            added.append(qid)
+    return {"fixed": fixed, "added": added}
