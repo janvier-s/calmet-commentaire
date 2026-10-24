@@ -18,14 +18,20 @@ export function point(item) {
   }
   const needles = snippets(item.msg, item.kind);
   const prefix = w ? `${w.section}/${w.index}/` : "";
-  let fields = S.fields.filter((x) => x.path.join("/").startsWith(prefix));
-  if (!fields.length) fields = S.fields;
+  // where to look: the issue's entry; without one, its section (a verse quoted in a note must not
+  // light up the verse), and the whole page only if nothing is found there
+  const section = (S.config.kind_category || {})[item.kind] || "commentary";
+  const tiers = w ? [S.fields.filter((x) => x.path.join("/").startsWith(prefix))]
+                  : [S.fields.filter((x) => x.path[0] === section), S.fields];
   let first = null;
-  for (const x of fields) {
-    const spans = needles.length ? findSpans(x.field.text, needles) : [];
-    const named = w && x.path.join("/") === `${prefix}${w.field}`;
-    if (spans.length || named) x.field.setMarks(spans, named && !spans.length);
-    if (spans.length && !first) first = x.field.el;
+  for (const fields of tiers) {
+    for (const x of fields) {
+      const spans = needles.length ? findSpans(x.field.text, needles) : [];
+      const named = w && x.path.join("/") === `${prefix}${w.field}`;
+      if (spans.length || named) x.field.setMarks(spans, named && !spans.length);
+      if (spans.length && !first) first = x.field.el;
+    }
+    if (first) break;
   }
   const named = w && document.querySelector(`.f[data-path="${prefix}${w.field}"]`);
   const block = w && document.querySelector(`.block[data-section="${w.section}"][data-index="${w.index}"]`);
