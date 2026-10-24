@@ -127,3 +127,8 @@ def test_flag(web):
 def test_state(web):
     assert web("/api/state", {"vol": VOL, "page": 195})[0] == 200
     assert web("/api/state")[1] == {"vol": VOL, "page": 195}
+
+
+def test_page_defaults_to_first(web):
+    code, p = web(f"/api/page?vol={VOL}")
+    assert code == 200 and p["page"] == 193

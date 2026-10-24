@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calmet Review</title>
+<link rel="stylesheet" href="/static/style.css">
+<script>
+  // theme before first paint: saved choice, else the Mac's setting (light → paper)
+  (() => {
+    let t = null;
+    try { t = localStorage.getItem("rw-theme"); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "paper";
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<script type="module" src="/static/app.js"></script>
+</head>
+<body>
+<header id="top">
+  <select id="vol" title="Book"></select>
+  <div class="group">
+    <button id="page-prev" title="Previous page (←)">◀</button>
+    <input id="page-num" size="4" title="Go to page">
+    <button id="page-next" title="Next page (→)">▶</button>
+  </div>
+  <input id="jump" placeholder="ch:v" size="7" title="Chapter and verse (17:2) or chapter (17), Return to go">
+  <span id="jump-msg" class="muted"></span>
+  <span class="grow"></span>
+  <span id="dirty" class="muted"></span>
+  <button id="save" title="Save (⌘S)">Save</button>
+  <div class="group">
+    <button id="issue-prev" title="Previous issue (⌘[)">◀ Issue</button>
+    <span id="counter" class="muted"></span>
+    <button id="issue-next" title="Next issue (⌘])">Issue ▶</button>
+  </div>
+  <button id="mark-resolved" class="ok" title="Resolved, go to next (⌘⏎)">✓ Resolved</button>
+  <button id="mark-fp" class="warn" title="False positive (⌘P)">False positive</button>
+  <button id="mark-skip" title="Skip">Skip</button>
+  <button id="mark-reopen" title="Clear this issue's status">Reopen</button>
+  <div class="menu">
+    <button id="menu-btn" title="More">⋯</button>
+    <div id="menu" hidden>
+      <label>Theme <select id="theme"><option value="paper">Paper</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
+      <label><input type="checkbox" id="show-marks" checked> Show _ marks</label>
+      <button data-tool="flag">Flag for review</button>
+      <button data-tool="json">Open JSON</button>
+      <button data-tool="png">Reveal PNG in Finder</button>
+    </div>
+  </div>
+</header>
+<main id="cols">
+  <aside id="left">
+    <div id="filters">
+      <label>Status <select id="f-status"></select></label>
+      <label>Category <select id="f-cat"></select></label>
+      <label>Type <select id="f-kind"></select></label>
+      <label>Book <select id="f-book"></select></label>
+    </div>
+    <div class="sec" id="page-issues-title">This page</div>
+    <div id="page-issues"></div>
+    <div id="around"></div>
+  </aside>
+  <section id="scan-pane">
+    <div id="scan-tools">
+      <button id="zoom-out" title="Zoom out">−</button><span id="zoom-label">100%</span><button id="zoom-in" title="Zoom in">+</button>
+      <button id="zoom-fit">Fit</button><button id="zoom-1">1:1</button>
+      <label class="muted" title="Darken the scan">Dim <input type="range" id="dim" min="0" max="100" value="10"></label>
+      <span class="grow"></span><span class="muted small">drag to pan · ⌘ scroll to zoom</span>
+    </div>
+    <div id="scan-view"><img id="scan-img" alt="" draggable="false"><div id="scan-dim"></div><p id="no-scan" hidden>No scan for this page</p></div>
+  </section>
+  <div id="divider" title="Drag to resize"></div>
+  <section id="text-pane">
+    <div id="sections">
+      <button data-sec="all" class="on">All</button><button data-sec="verses">Verses</button>
+      <button data-sec="commentary">Commentary</button><button data-sec="footnotes">Footnotes</button>
+    </div>
+    <div id="page-text"></div>
+  </section>
+</main>
+<dialog id="dialog"><form method="dialog"><p id="dialog-msg"></p><div id="dialog-body"></div><menu id="dialog-buttons"></menu></form></dialog>
+</body>
+</html>

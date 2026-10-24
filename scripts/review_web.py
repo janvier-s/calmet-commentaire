@@ -49,13 +49,15 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         vol = q.get("vol")
         if vol not in store.volumes():
             raise ApiError(404, {"error": f"no volume {vol}"})
+        if q.get("page") in (None, "", "null") and store.pages(vol):
+            return vol, store.pages(vol)[0]
         try:
             return vol, int(q.get("page"))
         except (TypeError, ValueError):
             raise ApiError(400, {"error": "bad page"})
 
     def page_payload(vol, page, data, version):
-        return {"data": data, "version": version, "scan": store.scan(vol, page) is not None,
+        return {"page": page, "data": data, "version": version, "scan": store.scan(vol, page) is not None,
                 "context": store.context(vol, page), "pages": store.pages(vol),
                 "issues": rs.page_issues(items, progress, vol, page),
                 "around": rs.neighbour_issue_pages(items, progress, vol, page)}
