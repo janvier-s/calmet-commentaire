@@ -30,6 +30,23 @@ export function toast(msg) {
   setTimeout(() => t.remove(), 2600);
 }
 
+/** A modal: message, optional body element, buttons [[value, label, className]]. Resolves to the
+ *  value clicked, or null on Escape. */
+export function ask(msg, buttons, body = null) {
+  const d = $("dialog");
+  $("dialog-msg").textContent = msg;
+  $("dialog-body").replaceChildren(...(body ? [body] : []));
+  $("dialog-buttons").replaceChildren(...buttons.map(([value, label, cls]) =>
+    el("button", { value, textContent: label, className: cls || "" })));
+  return new Promise((resolve) => {
+    d.onclose = () => resolve(d.returnValue || null);
+    d.returnValue = "";
+    d.showModal();
+    const first = body && body.querySelector("input");
+    (first || d.querySelector("menu button")).focus();  // the first button is the safe one
+  });
+}
+
 // --- pages ---
 export async function loadPage(vol, page) {
   const r = await api(`/api/page?vol=${encodeURIComponent(vol)}&page=${page ?? ""}`);
@@ -144,7 +161,7 @@ const NOTE_FIELDS = ["commentary_id", "chapter", "verse_ref", "latin_quote", "fr
 const SHORT = new Set(["chapter", "verse_number", "commentary_id", "verse_ref", "chapter_number", "marker"]);
 
 /** One labelled field; `makeField` turns it into an editor (set by the editing module). */
-export const hooks = { makeField: null, afterRender: [] };
+export const hooks = { makeField: null, beforeRender: null, afterRender: [] };
 
 function fieldRow(name, value, path) {
   const f = el("div", { className: "f" + (SHORT.has(name) ? " short" : "") });
@@ -186,6 +203,7 @@ export function blockHead(title, section, i) {
 export function renderPage() {
   const root = $("page-text");
   root.textContent = "";
+  if (hooks.beforeRender) hooks.beforeRender();
   const d = S.data;
   if (!d) return;
   const sec = S.section;
@@ -281,12 +299,13 @@ export const ready = (async () => {
   return S;
 })();
 
-// The editing and queue modules load after this one and decide the first page.
-const mods = await Promise.all([import("./edit.js").catch(() => null), import("./queue.js").catch(() => null)]);
-await ready;
-if (!mods[1]) {
-  const st = (await api("/api/state")).body;
-  const start = S.config.start;
-  const vol = start.vol || st.vol || S.config.volumes[0];
-  go(vol, start.page || (vol === st.vol ? st.page : null));
-}
+/** Open the first page: the start options, else where the last session stopped. The queue module
+ *  replaces this with the first issue. */
+export const boot = {
+  async start() {
+    const st = (await api("/api/state")).body;
+    const start = S.config.start;
+    const vol = start.vol || st.vol || S.config.volumes[0];
+    return go(vol, start.page || (vol === st.vol ? st.page : null));
+  },
+};
