@@ -1,6 +1,7 @@
 // The queue: filters with counts, the page's issues, issue to issue, Resolved / False positive / Skip.
 import { S, api, ask, boot, go, nav, renderPage, showScan, toast, updateTop } from "./app.js";
 import { save, setDirty } from "./edit.js";
+import { icon } from "./icons.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => {
@@ -11,6 +12,9 @@ const el = (tag, props = {}, ...kids) => {
 const DONE = new Set(["resolved", "false_positive"]);
 const STATUS_LABELS = { open: "Open", false_positive: "False positives", skipped: "Skipped", resolved: "Resolved", all: "All" };
 const CAT_LABELS = { all: "All", verses: "Verses", commentary: "Commentary", footnotes: "Footnotes" };
+
+const KIND = { verses: "k-verse", commentary: "k-note", footnotes: "k-fn" };
+let CAT_OF = {};  // kind -> category, from the server
 
 const Q = { items: [], idx: 0, status: "open", cat: null, kind: null, book: null, counts: null, current: null };
 const label = (k) => S.config.labels[k] || k;
@@ -120,9 +124,10 @@ function renderIssues() {
     el("button", { className: "link", textContent: "Back to it", onclick: () => go(cur.book_dir, cur.page) })) : null;
   box.replaceChildren(...(away ? [away] : []), ...S.issues.map((it) => {
     const st = statusOf(it);
-    const card = el("div", { className: "issue" + (DONE.has(st) ? " done" : "") + (it.id === Q.current ? " cur" : "") },
+    const cat = it.kind in CAT_OF ? CAT_OF[it.kind] : "commentary";
+    const card = el("div", { className: `issue ${KIND[cat]}` + (DONE.has(st) ? " done" : "") + (it.id === Q.current ? " cur" : "") },
       st ? el("span", { className: "st", textContent: st.replace("_", " ") }) : null,
-      el("small", { textContent: label(it.kind) }), el("span", { className: "msg", textContent: it.msg }));
+      el("small", {}, icon(cat, 11), " ", label(it.kind)), el("span", { className: "msg", textContent: it.msg }));
     card.onclick = () => {
       Q.current = it.id;
       const i = Q.items.findIndex((x) => x.id === it.id);
@@ -191,6 +196,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 boot.start = async () => {
+  CAT_OF = S.config.kind_category || {};
   const st = S.config.start;
   const f = { status: st.status || "open", cat: st.cat || null, kind: st.kind || null, book: st.book || null };
   const r = await query(f);

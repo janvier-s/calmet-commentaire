@@ -8,6 +8,7 @@
   --translation: #3b3a64; --ok: #2e7d32; --ok-text: #fff; --warn: #c25e0c; --danger: #b03a2e;
   --info-bg: #eef2f8; --info: #4d6288; --info-border: #b9c6dc; --hi: #ffe1a8; --scan-bg: #e4dccb;
   --mark: #b9a77c;
+  --c-verse: #3b6ea5; --c-note: #c27a12; --c-fn: #7a4fa0; --c-head: #3f8a5a;
 }
 :root[data-theme="light"] {
   --bg: #f5f5f7; --panel: #ececf0; --surface: #ffffff; --field: #fbfbfd; --border: #dcdce2;
@@ -15,6 +16,7 @@
   --translation: #2c3e8f; --ok: #248a3d; --ok-text: #fff; --warn: #c25e0c; --danger: #c0392b;
   --info-bg: #eef3fb; --info: #3a5a95; --info-border: #c5d3ea; --hi: #ffe7a3; --scan-bg: #e6e6ea;
   --mark: #a8a8b0;
+  --c-verse: #2f6fb8; --c-note: #c47100; --c-fn: #7d4cb0; --c-head: #2e8a55;
 }
 :root[data-theme="dark"] {
   --bg: #171512; --panel: #1f1c17; --surface: #25211b; --field: #2b2620; --border: #3a342a;
@@ -22,6 +24,7 @@
   --translation: #aab8f0; --ok: #3f9a48; --ok-text: #fff; --warn: #e07b2a; --danger: #e06a5c;
   --info-bg: #1e2633; --info: #9db4dc; --info-border: #34435c; --hi: #6b4f17; --scan-bg: #0f0e0c;
   --mark: #6a6152;
+  --c-verse: #7fb0e8; --c-note: #f0a23a; --c-fn: #b892e0; --c-head: #7cc79a;
 }
 
 * { box-sizing: border-box; }
@@ -140,3 +143,34 @@ dialog menu { display: flex; gap: 6px; justify-content: flex-end; padding: 0; ma
 #dialog-body input { width: 100%; }
 .toast { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); background: var(--text); color: var(--bg);
          padding: 7px 14px; border-radius: 6px; font-size: 13px; z-index: 50; }
+
+/* colour and icons */
+.ic { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+button.has-icon { display: inline-flex; align-items: center; gap: 5px; }
+button.icon { padding: 3px 6px; }
+button.icon-after { flex-direction: row-reverse; }
+.jumpbox { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); }
+.k-verse { --c: var(--c-verse); }
+.k-note { --c: var(--c-note); }
+.k-fn { --c: var(--c-fn); }
+.k-head { --c: var(--c-head); }
+.block[class*="k-"] { border-left: 3px solid var(--c); }
+.block .block-head .title, .block .block-head > .ic { color: var(--c); }
+.h2[class*="k-"] { color: var(--c); display: flex; align-items: center; gap: 2px; }
+#sections button[class*="k-"] .ic { color: var(--c); }
+#sections button[class*="k-"].on { background: color-mix(in srgb, var(--c) 16%, var(--surface)); border-color: var(--c); }
+.issue[class*="k-"] { border-left-color: var(--c); }
+.issue[class*="k-"] small { color: var(--c); display: flex; align-items: center; gap: 3px; }
+.issue.cur { box-shadow: 0 0 0 2px var(--c, var(--accent)); }
+.issue.done { border-left-color: var(--ok); }
+.ctx { display: flex; align-items: baseline; gap: 3px; flex-wrap: wrap; }
+.ctx .ic { align-self: center; }
+.tool { display: inline-flex; padding: 1px 3px; border-radius: 4px; }
+.tool:hover { background: var(--field); }
+.tool.danger:hover { color: var(--danger); }
+.handle { display: inline-flex; color: var(--muted); }
+.fl { color: var(--c, var(--muted)); opacity: .85; }
+
+/* the scan in the dark theme: light on dark, unless switched off */
+:root:not([data-theme="dark"]) .dark-only { display: none; }
+:root[data-theme="dark"] #scan-view:not(.no-invert) #scan-img { filter: invert(.9) hue-rotate(180deg); }

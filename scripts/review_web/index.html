@@ -21,27 +21,27 @@
 <header id="top">
   <select id="vol" title="Book"></select>
   <div class="group">
-    <button id="page-prev" title="Previous page (←)">◀</button>
+    <button id="page-prev" class="icon" data-icon="prev" title="Previous page (←)"></button>
     <input id="page-num" size="4" title="Go to page">
-    <button id="page-next" title="Next page (→)">▶</button>
+    <button id="page-next" class="icon" data-icon="next" title="Next page (→)"></button>
   </div>
-  <input id="jump" placeholder="ch:v" size="7" title="Chapter and verse (17:2) or chapter (17), Return to go">
+  <span class="jumpbox" data-icon="search"><input id="jump" placeholder="ch:v" size="7" title="Chapter and verse (17:2) or chapter (17), Return to go"></span>
   <span id="jump-msg" class="muted"></span>
   <span class="grow"></span>
   <span id="dirty" class="muted"></span>
-  <button id="italic" title="Italics on the selection (⌘I)"><i>I</i></button>
-  <button id="save" title="Save (⌘S)">Save</button>
+  <button id="italic" class="icon" data-icon="italic" title="Italics on the selection (⌘I)"></button>
+  <button id="save" data-icon="save" title="Save (⌘S)">Save</button>
   <div class="group">
-    <button id="issue-prev" title="Previous issue (⌘[)">◀ Issue</button>
+    <button id="issue-prev" data-icon="back" title="Previous issue (⌘[)">Issue</button>
     <span id="counter" class="muted"></span>
-    <button id="issue-next" title="Next issue (⌘])">Issue ▶</button>
+    <button id="issue-next" class="icon-after" data-icon="fwd" title="Next issue (⌘])">Issue</button>
   </div>
-  <button id="mark-resolved" class="ok" title="Resolved, go to next (⌘⏎)">✓ Resolved</button>
-  <button id="mark-fp" class="warn" title="False positive (⌘P)">False positive</button>
-  <button id="mark-skip" title="Skip">Skip</button>
-  <button id="mark-reopen" title="Clear this issue's status">Reopen</button>
+  <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to next (⌘⏎)">Resolved</button>
+  <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
+  <button id="mark-skip" data-icon="skip" title="Skip">Skip</button>
+  <button id="mark-reopen" data-icon="reopen" title="Clear this issue's status">Reopen</button>
   <div class="menu">
-    <button id="menu-btn" title="More">⋯</button>
+    <button id="menu-btn" class="icon" data-icon="more" title="More"></button>
     <div id="menu" hidden>
       <label>Theme <select id="theme"><option value="paper">Paper</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
       <label><input type="checkbox" id="show-marks" checked> Show _ marks</label>
@@ -69,6 +69,7 @@
       <button id="zoom-out" title="Zoom out">−</button><span id="zoom-label">100%</span><button id="zoom-in" title="Zoom in">+</button>
       <button id="zoom-fit">Fit</button><button id="zoom-1">1:1</button>
       <label class="muted" title="Darken the scan">Dim <input type="range" id="dim" min="0" max="100" value="10"></label>
+      <label class="muted dark-only" title="Show the scan light-on-dark in the dark theme"><input type="checkbox" id="invert" checked> Invert</label>
       <span class="grow"></span><span class="muted small">drag to pan · ⌘ scroll to zoom</span>
     </div>
     <div id="scan-view"><img id="scan-img" alt="" draggable="false"><div id="scan-dim"></div><p id="no-scan" hidden>No scan for this page</p></div>
@@ -76,8 +77,8 @@
   <div id="divider" title="Drag to resize"></div>
   <section id="text-pane">
     <div id="sections">
-      <button data-sec="all" class="on">All</button><button data-sec="verses">Verses</button>
-      <button data-sec="commentary">Commentary</button><button data-sec="footnotes">Footnotes</button>
+      <button data-sec="all" class="on">All</button><button data-sec="verses" class="k-verse" data-icon="verses">Verses</button>
+      <button data-sec="commentary" class="k-note" data-icon="commentary">Commentary</button><button data-sec="footnotes" class="k-fn" data-icon="footnotes">Footnotes</button>
     </div>
     <div id="page-text"></div>
   </section>

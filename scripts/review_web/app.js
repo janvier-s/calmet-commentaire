@@ -1,6 +1,7 @@
 // The review editor's page: one module, state in S, the server in review_web.py.
 import { render, ITALIC_FIELDS } from "./field.js";
 import { parseRef } from "./text.js";
+import { icon } from "./icons.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => {
@@ -118,6 +119,14 @@ function setupScan() {
     layoutScan();
   };
   $("dim").oninput = (e) => { S.dim = +e.target.value; layoutScan(); };
+  let inv = true;
+  try { inv = localStorage.getItem("rw-invert") !== "0"; } catch (e) {}
+  $("invert").checked = inv;
+  view.classList.toggle("no-invert", !inv);
+  $("invert").onchange = (e) => {
+    view.classList.toggle("no-invert", !e.target.checked);
+    try { localStorage.setItem("rw-invert", e.target.checked ? "1" : "0"); } catch (err) {}
+  };
   view.addEventListener("wheel", (e) => {
     if (!(e.metaKey || e.ctrlKey)) return;
     e.preventDefault();
@@ -221,7 +230,7 @@ function prevStrip() {
   if (!p) return null;
   const verse = p.verse != null ? `ch.${p.chapter ?? "?"} v.${p.verse}` : "no verse";
   const note = p.verse_ref != null || p.commentary_chapter != null ? ` · note on ${ref(p.commentary_chapter, p.verse_ref)}` : "";
-  return el("div", { className: "ctx" }, el("b", { textContent: `◀ p.${p.page} ends: ` }),
+  return el("div", { className: "ctx" }, icon("back", 13), el("b", { textContent: ` p.${p.page} ends: ` }),
             `${verse}${note}`, p.tail ? ` “${p.tail}”` : "");
 }
 
@@ -229,7 +238,7 @@ function nextStrip() {
   const n = S.ctx && S.ctx.next;
   if (!n) return null;
   const verse = n.verse != null ? `ch.${n.chapter ?? "?"} v.${n.verse}` : "";
-  return el("div", { className: "ctx" }, el("b", { textContent: `▶ p.${n.page} starts: ` }),
+  return el("div", { className: "ctx" }, icon("fwd", 13), el("b", { textContent: ` p.${n.page} starts: ` }),
             n.continuation ? el("span", { className: "cont", textContent: "CONTINUATION " }) : null,
             [verse, n.verse_ref != null ? `note on v.${n.verse_ref}` : ""].filter(Boolean).join(" · "),
             n.head ? ` “${n.head}”` : "");
@@ -242,8 +251,15 @@ export function blockHead(title, section, i, ...inline) {
             ...(hooks.blockTools ? hooks.blockTools(section, i) : []));
 }
 
+const KIND = { verses: "k-verse", commentary: "k-note", footnotes: "k-fn", heading: "k-head" };
+
+/** A section heading with its icon and colour. */
+function h2(section, text) {
+  return el("div", { className: `h2 ${KIND[section]}` }, icon(section, 14), text);
+}
+
 function block(section, i, head, ...body) {
-  const b = el("div", { className: "block" }, head, ...body.filter(Boolean));
+  const b = el("div", { className: `block ${KIND[section]}` }, head, ...body.filter(Boolean));
   b.dataset.section = section;
   b.dataset.index = i;
   return b;
@@ -279,7 +295,8 @@ function headingBlock(d) {
   const names = HEAD_FIELDS.filter((k) => k in d || k === "chapter_title");
   const entry = Object.fromEntries(names.map((k) => [k, d[k] ?? null]));
   const { f, chips } = fields(entry, names, [], new Set(names));
-  return block("heading", 0, blockHead("Page heading", "heading", 0, f.chapter_number, chips),
+  return block("heading", 0, blockHead(null, "heading", 0, icon("heading", 13),
+                                      el("span", { className: "title", textContent: "Page heading" }), f.chapter_number, chips),
                pair(f.book_title, f.chapter_title), f.chapter_summary, f.chapter_intro, f.book_end_marker);
 }
 
@@ -292,12 +309,12 @@ export function renderPage() {
   const sec = S.section;
   if (sec === "all") root.append(headingBlock(d));
   if (sec === "all" || sec === "verses") {
-    root.append(el("div", { className: "h2", textContent: `Verses (${(d.verses || []).length})` }));
+    root.append(h2("verses", ` Verses (${(d.verses || []).length})`));
     (d.verses || []).forEach((v, i) => root.append(verseBlock(v, i)));
     if (hooks.addEnd) root.append(hooks.addEnd("verses"));
   }
   if (sec === "all" || sec === "commentary") {
-    root.append(el("div", { className: "h2", textContent: `Commentary (${(d.commentary || []).length})` }));
+    root.append(h2("commentary", ` Commentary (${(d.commentary || []).length})`));
     root.append(prevStrip() || "");
     if (hooks.addTop) root.append(hooks.addTop());
     (d.commentary || []).forEach((c, i) => {
@@ -307,7 +324,7 @@ export function renderPage() {
     root.append(nextStrip() || "");
   }
   if (sec === "all" || sec === "footnotes") {
-    root.append(el("div", { className: "h2", textContent: `Footnotes (${(d.footnotes || []).length})` }));
+    root.append(h2("footnotes", ` Footnotes (${(d.footnotes || []).length})`));
     (d.footnotes || []).forEach((n, i) => root.append(footnoteBlock(n, i)));
     if (hooks.addEnd) root.append(hooks.addEnd("footnotes"));
   }

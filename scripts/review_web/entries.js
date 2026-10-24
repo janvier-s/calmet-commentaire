@@ -1,6 +1,7 @@
 // Adding, deleting and moving verses, commentary blocks and footnotes; the page tools menu.
 import { S, api, ask, hooks, toast } from "./app.js";
 import { op } from "./edit.js";
+import { icon } from "./icons.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => {
@@ -8,7 +9,7 @@ const el = (tag, props = {}, ...kids) => {
   e.append(...kids.filter((k) => k != null));
   return e;
 };
-const btn = (text, title, onclick) => el("button", { className: "link", textContent: text, title, onclick });
+const btn = (name, title, onclick, cls = "") => el("button", { className: `link tool ${cls}`, title, onclick }, icon(name, 14));
 
 function describe(section, i) {
   const x = S.data[section][i];
@@ -34,17 +35,17 @@ hooks.blockTools = (section, i) => {
   const n = (S.data[section] || []).length;
   const tools = [];
   if (section !== "footnotes" && n > 1) {
-    const handle = el("span", { className: "handle", textContent: "⠿", title: "Drag to move", draggable: true });
+    const handle = el("span", { className: "handle", title: "Drag to move", draggable: true }, icon("grip", 14));
     handle.addEventListener("dragstart", (e) => {
       e.dataTransfer.setData("text/x-entry", JSON.stringify({ section, i }));
       e.dataTransfer.effectAllowed = "move";
     });
-    tools.push(handle, btn("⤒", "Move to the top", () => move(section, i, 0)),
-               btn("↑", "Move up", () => move(section, i, i - 1)),
-               btn("↓", "Move down", () => move(section, i, i + 1)),
-               btn("⤓", "Move to the bottom", () => move(section, i, n - 1)));
+    tools.push(handle, btn("top", "Move to the top", () => move(section, i, 0)),
+               btn("up", "Move up", () => move(section, i, i - 1)),
+               btn("down", "Move down", () => move(section, i, i + 1)),
+               btn("bottom", "Move to the bottom", () => move(section, i, n - 1)));
   }
-  tools.push(btn("✕ delete", "Delete this entry", () => remove(section, i)));
+  tools.push(btn("trash", "Delete this entry", () => remove(section, i), "danger"));
   return tools;
 };
 

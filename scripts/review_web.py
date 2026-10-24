@@ -161,7 +161,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         except FileExistsError:
             raise ApiError(409, {"error": "the page exists"})
 
-    config = {"token": token, "labels": rs.KIND_LABELS, "categories": list(rs.CATEGORIES),
+    config = {"token": token, "labels": rs.KIND_LABELS,
+              "kind_category": {k: rs.kind_category(k) for k in rs.KIND_LABELS}, "categories": list(rs.CATEGORIES),
               "statuses": list(rs.STATUSES), "volumes": store.volumes(), "start": start or {}}
     GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None)}
