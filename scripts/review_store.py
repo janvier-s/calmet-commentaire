@@ -169,3 +169,90 @@ class Store:
         if verse is None:
             return chapters.get(chapter)
         return verses.get((chapter, verse)) or notes.get((chapter, verse))
+
+
+# --- Entries (pure: a new page dict back, nothing written) ---
+def _renumber(page):
+    for k, c in enumerate(page.get("commentary") or [], 1):
+        c["commentary_id"] = k
+
+
+def _neighbour_chapter(entries, pos):
+    """The chapter of the entry before position `pos` (or after it): a new entry's default."""
+    for e in list(reversed(entries[:pos])) + entries[pos:]:
+        if isinstance(e.get("chapter"), int):
+            return e["chapter"]
+    return None
+
+
+def add_verse(page, n):
+    """After the last lower-numbered verse before the numbering restarts (a page can end one
+    chapter and start the next)."""
+    page = copy.deepcopy(page)
+    verses = page.setdefault("verses", [])
+    pos, prev = 0, None
+    for i, v in enumerate(verses):
+        k = v.get("verse_number")
+        if isinstance(k, int):
+            if prev is not None and k < prev:
+                break
+            prev = k
+            if k < n:
+                pos = i + 1
+    verses.insert(pos, {"chapter": _neighbour_chapter(verses, pos), "verse_number": n,
+                        "latin": "", "french": "", "annotations": None})
+    return page
+
+
+def add_commentary(page, after, prev_page):
+    """A block at the top (`after` None), continuing the previous page's last note, or below
+    block `after`, on the same verse."""
+    page = copy.deepcopy(page)
+    comms = page.setdefault("commentary", [])
+    if after is None:
+        src = ((prev_page or {}).get("commentary") or [{}])[-1]
+        pos = 0
+    else:
+        src, pos = comms[after], after + 1
+    comms.insert(pos, {"commentary_id": None, "verse_ref": src.get("verse_ref"), "chapter": src.get("chapter"),
+                       "latin_quote": None, "french_translation": None, "french_commentary": ""})
+    _renumber(page)
+    return page
+
+
+def add_footnote(page, marker):
+    page = copy.deepcopy(page)
+    page.setdefault("footnotes", []).append({"marker": f"({marker.strip('() ')})", "text": ""})
+    return page
+
+
+def delete_entry(page, section, i):
+    page = copy.deepcopy(page)
+    del page[section][i]
+    if section == "commentary":
+        _renumber(page)
+    return page
+
+
+def move_entry(page, section, i, j, renumber=True):
+    page = copy.deepcopy(page)
+    items = page[section]
+    items.insert(j, items.pop(i))
+    if section == "commentary" and renumber:
+        _renumber(page)
+    return page
+
+
+def apply_op(page, op, prev_page):
+    kind = op["op"]
+    if kind == "add_verse":
+        return add_verse(page, int(op["n"]))
+    if kind == "add_commentary":
+        return add_commentary(page, op.get("after"), prev_page)
+    if kind == "add_footnote":
+        return add_footnote(page, op["marker"])
+    if kind == "delete":
+        return delete_entry(page, op["section"], int(op["index"]))
+    if kind == "move":
+        return move_entry(page, op["section"], int(op["from"]), int(op["to"]), op.get("renumber", True))
+    raise ValueError(f"unknown operation: {kind}")
