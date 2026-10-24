@@ -57,7 +57,10 @@ def align(rs, ps):
     """
     vn = sorted(VULGATE[ps])
     m, n = len(rs), len(vn)
-    S = [[sim(r["words"], VULGATE[ps][v]) if len(r["words"]) >= 3 else 0 for v in vn] for r in rs]
+    # a tie (a refrain: 117:10 and 117:11 share their second half) goes to the Vulgate verse whose
+    # own words the transcription covers best
+    S = [[sim(r["words"], VULGATE[ps][v]) + 0.01 * sim(VULGATE[ps][v], r["words"]) if len(r["words"]) >= 3 else 0
+          for v in vn] for r in rs]
     # best[i][j]: best total for verses i.. when the previous one sat at Vulgate index >= j
     NONE = -1
     best = [[0.0] * (n + 1) for _ in range(m + 1)]
