@@ -1,0 +1,304 @@
+#!/usr/bin/env python3
+"""
+The review editor in the browser: the integrity-audit queue (docs/review_queue.json) and every page,
+scan beside text. Replaces review_editor.py and page_editor.py; works on the same files.
+
+Usage: python3 review_web.py [VOLUME [PAGE]] [--resume] [filters] [--port N] [--no-open]
+  filters  --all (optional items too), --kind K, --category C, --type T, --book B,
+           --skipped | --resolved | --false-positive | --all-status (the view to start in)
+  --queue PATH, --data DIR, --docs DIR   other files (a copy for testing)
+  --list-fp  print the issues marked false positive and exit
+
+Serves on 127.0.0.1 only; the printed link carries the session key.
+"""
+import json
+import mimetypes
+import re
+import secrets
+import shutil
+import subprocess
+import sys
+import urllib.parse
+import webbrowser
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+
+import review_store as rs
+from page_text import load_state, save_state, toggle_italics
+
+STATIC = Path(__file__).resolve().parent / "review_web"
+REF = re.compile(r"\s*(\d+)\s*(?:[:.,]\s*(\d+))?\s*")
+
+
+class ApiError(Exception):
+    def __init__(self, code, body):
+        super().__init__(body)
+        self.code, self.body = code, body
+
+
+def make_server(store, queue_path, port=0, token=None, include_optional=False, start=None):
+    """The HTTP server over `store` and the queue at `queue_path`, not yet serving."""
+    token = token or secrets.token_hex(16)
+    fp_path = store.docs / "false_positives.json"
+    items = rs.load_queue(queue_path, fp_path, include_optional)
+    progress = rs.Progress(store.data / ".review_queue_progress.json", fp_path)
+    state_file = store.data / ".page_editor_state.json"
+    by_id = {it["id"]: it for it in items}
+
+    def vol_page(q):
+        vol = q.get("vol")
+        if vol not in store.volumes():
+            raise ApiError(404, {"error": f"no volume {vol}"})
+        try:
+            return vol, int(q.get("page"))
+        except (TypeError, ValueError):
+            raise ApiError(400, {"error": "bad page"})
+
+    def page_payload(vol, page, data, version):
+        return {"data": data, "version": version, "scan": store.scan(vol, page) is not None,
+                "context": store.context(vol, page), "pages": store.pages(vol),
+                "issues": rs.page_issues(items, progress, vol, page),
+                "around": rs.neighbour_issue_pages(items, progress, vol, page)}
+
+    def save(vol, page, body):
+        try:
+            return store.save(vol, page, body["data"], body.get("version"), bool(body.get("force")))
+        except rs.Conflict as c:
+            raise ApiError(409, {"error": "changed on disk", "disk": c.disk, "version": c.version})
+
+    def get_page(q):
+        vol, page = vol_page(q)
+        if not store.path(vol, page).exists():
+            raise ApiError(404, {"missing": True, "scan": store.scan(vol, page) is not None,
+                                 "issues": rs.page_issues(items, progress, vol, page)})
+        return page_payload(vol, page, *store.read(vol, page))
+
+    def queue(q):
+        f = {k: q.get(k) or None for k in ("cat", "kind", "book")}
+        status = q.get("status") or "open"
+        sel = rs.select(items, progress, status, **f)
+        return {"items": [dict(it, status=progress.status(it["id"])) for it in sel],
+                "counts": rs.counts(items, progress, status, f["cat"], f["kind"], f["book"])}
+
+    def locate(q):
+        vol = q.get("vol")
+        m = REF.fullmatch(q.get("ref") or "")
+        if vol not in store.volumes() or not m:
+            raise ApiError(400, {"error": "bad reference"})
+        page = store.locate(vol, int(m.group(1)), int(m.group(2)) if m.group(2) else None)
+        if page is None:
+            raise ApiError(404, {"error": "not found"})
+        return {"page": page}
+
+    def op(body):
+        vol, page = vol_page(body)
+        data, version = save(vol, page, body)
+        prev = store.context(vol, page)["prev"]
+        prev_page = store.read(vol, prev["page"])[0] if prev else None
+        data, version = store.save(vol, page, rs.apply_op(data, body["op"], prev_page), version)
+        return {"data": data, "version": version}
+
+    def mark(body):
+        it = by_id.get(body.get("id"))
+        if not it:
+            raise ApiError(404, {"error": "no such item"})
+        progress.set(it["id"], body.get("status"),
+                     {k: it.get(k) for k in ("book_dir", "page", "kind", "msg")})
+        return {"ok": True}
+
+    def flag(body):
+        vol, page = vol_page(body)
+        raw = store.data / vol / "raw_json" / "commentaire" / f"page_{page:04d}.json"
+        sources = [p for p in (raw, store.scan(vol, page)) if p and p.exists()]
+        if not sources:
+            raise ApiError(404, {"error": "neither the raw JSON nor the scan was found"})
+        dest = store.data / vol / "modernization_error"
+        dest.mkdir(exist_ok=True)
+        for src in sources:
+            shutil.copy(src, dest / f"page_{page:04d}{src.suffix}")
+        return {"copied": [f"page_{page:04d}{s.suffix}" for s in sources], "to": str(dest)}
+
+    def open_file(body):
+        vol, page = vol_page(body)
+        if body.get("what") == "png":
+            img = store.scan(vol, page)
+            if not img:
+                raise ApiError(404, {"error": "no scan"})
+            subprocess.Popen(["open", "-R", str(img)])
+        else:
+            try:
+                subprocess.Popen(["code", str(store.path(vol, page))])
+            except FileNotFoundError:
+                subprocess.Popen(["open", str(store.path(vol, page))])
+        return {"ok": True}
+
+    def latin(body):
+        from calmet import latin_case
+        return {"text": latin_case(body.get("text") or "")}
+
+    def italics(body):
+        r = toggle_italics(body.get("text") or "", int(body["start"]), int(body["end"]))
+        return r and {"text": r[0], "start": r[1], "end": r[2]}
+
+    def state(body):
+        if body is None:
+            vol, page = load_state(state_file)
+            return {"vol": vol, "page": page}
+        save_state(body["vol"], int(body["page"]), state_file)
+        return {"ok": True}
+
+    def create(body):
+        vol, page = vol_page(body)
+        try:
+            return page_payload(vol, page, *store.create(vol, page))
+        except FileExistsError:
+            raise ApiError(409, {"error": "the page exists"})
+
+    config = {"token": token, "labels": rs.KIND_LABELS, "categories": list(rs.CATEGORIES),
+              "statuses": list(rs.STATUSES), "volumes": store.volumes(), "start": start or {}}
+    GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
+           "/api/locate": locate, "/api/state": lambda q: state(None)}
+    POST = {"/api/page": lambda b: (lambda r: {"data": r[0], "version": r[1]})(save(*vol_page(b), b)),
+            "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
+            "/api/open": open_file, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state}
+
+    class Handler(BaseHTTPRequestHandler):
+        def log_message(self, *a):
+            pass
+
+        def _send(self, code, body, ctype="application/json; charset=utf-8", headers=()):
+            if ctype.startswith("application/json"):
+                body = json.dumps(body, ensure_ascii=False).encode()
+            self.send_response(code)
+            self.send_header("Content-Type", ctype)
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            for h in headers:
+                self.send_header(*h)
+            self.end_headers()
+            self.wfile.write(body)
+
+        def _authorized(self):
+            if secrets.compare_digest(self.headers.get("X-Token", ""), token):
+                return True
+            cookies = dict(c.strip().split("=", 1) for c in self.headers.get("Cookie", "").split(";") if "=" in c)
+            return secrets.compare_digest(cookies.get("rw_key", ""), token)
+
+        def _file(self, path):
+            if path is None or not path.is_file():
+                return self._send(404, b"not found", "text/plain")
+            self._send(200, path.read_bytes(), mimetypes.guess_type(path.name)[0] or "application/octet-stream")
+
+        def _route(self, table, arg):
+            url = urllib.parse.urlsplit(self.path)
+            fn = table.get(url.path)
+            if fn is None:
+                return self._send(404, {"error": "no such route"})
+            try:
+                self._send(200, fn(arg(url)))
+            except ApiError as e:
+                self._send(e.code, e.body)
+            except Exception as e:  # shown in the page, not swallowed
+                self._send(500, {"error": f"{type(e).__name__}: {e}"})
+
+        def do_GET(self):
+            url = urllib.parse.urlsplit(self.path)
+            path = urllib.parse.unquote(url.path)
+            if path == "/":
+                key = urllib.parse.parse_qs(url.query).get("key", [""])[0]
+                if key and secrets.compare_digest(key, token):
+                    return self._send(303, b"", "text/plain", [
+                        ("Location", "/"), ("Set-Cookie", f"rw_key={token}; Path=/; HttpOnly; SameSite=Strict")])
+                if not self._authorized():
+                    return self._send(403, b"Open the link printed by review_web.py (it carries the key).",
+                                      "text/plain; charset=utf-8")
+                return self._file(STATIC / "index.html")
+            if path.startswith("/static/"):
+                target = (STATIC / path[len("/static/"):]).resolve()
+                return self._file(target if STATIC.resolve() in target.parents else None)
+            if not self._authorized():
+                return self._send(403, {"error": "missing session key"})
+            if path.startswith("/scan/"):
+                parts = path.split("/")
+                if len(parts) != 4 or parts[2] not in store.volumes() or not parts[3].isdigit():
+                    return self._send(404, b"not found", "text/plain")
+                return self._file(store.scan(parts[2], int(parts[3])))
+            self._route(GET, lambda u: {k: v[0] for k, v in urllib.parse.parse_qs(u.query).items()})
+
+        def do_POST(self):
+            if not self._authorized():
+                return self._send(403, {"error": "missing session key"})
+            n = int(self.headers.get("Content-Length") or 0)
+            try:
+                body = json.loads(self.rfile.read(n) or b"{}")
+            except ValueError:
+                return self._send(400, {"error": "bad JSON"})
+            self._route(POST, lambda u: body)
+
+    return ThreadingHTTPServer(("127.0.0.1", port), Handler), token
+
+
+def list_fp(docs):
+    try:
+        fps = json.loads((docs / "false_positives.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        fps = {}
+    if not fps:
+        print("No issues currently marked as false positives.")
+        return
+    print(f"{len(fps)} issues marked as false positive:\n")
+    for item_id, info in sorted(fps.items()):
+        if isinstance(info, dict):
+            kind = rs.KIND_LABELS.get(info.get("kind", ""), info.get("kind", ""))
+            print(f"  • {info.get('book_dir', '')} p.{info.get('page', '')} [{kind}]")
+            print(f"    {info.get('msg', '')}\n")
+        else:
+            print(f"  • {item_id}\n")
+
+
+def main(argv):
+    def opt(name, default=None):
+        return argv[argv.index(name) + 1] if name in argv else default
+
+    data = Path(opt("--data", rs.Path(__file__).resolve().parent.parent / "data"))
+    docs = Path(opt("--docs", data.parent / "docs"))
+    if "--list-fp" in argv or "--list-false-positives" in argv:
+        return list_fp(docs)
+    store = rs.Store(data, docs)
+    queue_path = Path(opt("--queue", docs / "review_queue.json"))
+    if not queue_path.exists():
+        sys.exit(f"No queue found at {queue_path}. Run audit_integrity.py first.")
+    status = ("false_positive" if {"--false-positive", "--false-positives"} & set(argv) else
+              "skipped" if "--skipped" in argv else "resolved" if "--resolved" in argv else
+              "all" if {"--all-status", "--all-statuses"} & set(argv) else "open")
+    typ = (opt("--type") or "").lower()
+    start = {"status": status, "book": opt("--book"), "kind": opt("--kind"),
+             "cat": (opt("--category") or "").lower() or (typ if typ in rs.CATEGORIES else None)}
+    if typ and typ not in rs.CATEGORIES:
+        start["kind"] = typ
+    with_value = {"--port", "--kind", "--category", "--type", "--book", "--queue", "--data", "--docs"}
+    positional, skip = [], False
+    for a in argv:
+        if not skip and not a.startswith("--"):
+            positional.append(a)
+        skip = a in with_value
+    if positional:
+        start["vol"] = positional[0]
+        start["page"] = int(positional[1]) if len(positional) > 1 else None
+    elif "--resume" in argv:
+        vol, page = load_state(data / ".page_editor_state.json")
+        if vol:
+            start["vol"], start["page"] = vol, page
+    server, token = make_server(store, queue_path, int(opt("--port", 0)), None, "--all" in argv, start)
+    url = f"http://127.0.0.1:{server.server_address[1]}/?key={token}"
+    print(f"Review editor: {url}\n(Ctrl+C to stop)")
+    if "--no-open" not in argv:
+        webbrowser.open(url)
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        pass
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
