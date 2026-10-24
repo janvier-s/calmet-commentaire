@@ -161,7 +161,8 @@ const NOTE_FIELDS = ["commentary_id", "chapter", "verse_ref", "latin_quote", "fr
 const SHORT = new Set(["chapter", "verse_number", "commentary_id", "verse_ref", "chapter_number", "marker"]);
 
 /** One labelled field; `makeField` turns it into an editor (set by the editing module). */
-export const hooks = { makeField: null, beforeRender: null, afterRender: [] };
+export const hooks = { makeField: null, beforeRender: null, afterRender: [],
+                       blockTools: null, addTop: null, addBelow: null, addEnd: null };
 
 function fieldRow(name, value, path) {
   const f = el("div", { className: "f" + (SHORT.has(name) ? " short" : "") });
@@ -197,7 +198,15 @@ function nextStrip() {
 }
 
 export function blockHead(title, section, i) {
-  return el("div", { className: "block-head" }, el("span", { className: "title", textContent: title }));
+  return el("div", { className: "block-head" }, el("span", { className: "title", textContent: title }),
+            ...(hooks.blockTools ? hooks.blockTools(section, i) : []));
+}
+
+function block(section, i, title, fields) {
+  const b = el("div", { className: "block" }, blockHead(title, section, i), ...fields);
+  b.dataset.section = section;
+  b.dataset.index = i;
+  return b;
 }
 
 export function renderPage() {
@@ -214,23 +223,26 @@ export function renderPage() {
   }
   if (sec === "all" || sec === "verses") {
     root.append(el("div", { className: "h2", textContent: `Verses (${(d.verses || []).length})` }));
-    (d.verses || []).forEach((v, i) => root.append(el("div", { className: "block" },
-      blockHead(`Verse ${v.verse_number ?? "?"}`, "verses", i),
-      ...VERSE_FIELDS.filter((k) => k in v).map((k) => fieldRow(k, v[k], ["verses", i, k])))));
+    (d.verses || []).forEach((v, i) => root.append(block("verses", i, `Verse ${v.verse_number ?? "?"}`,
+      VERSE_FIELDS.filter((k) => k in v).map((k) => fieldRow(k, v[k], ["verses", i, k])))));
+    if (hooks.addEnd) root.append(hooks.addEnd("verses"));
   }
   if (sec === "all" || sec === "commentary") {
     root.append(el("div", { className: "h2", textContent: `Commentary (${(d.commentary || []).length})` }));
     root.append(prevStrip() || "");
-    (d.commentary || []).forEach((c, i) => root.append(el("div", { className: "block" },
-      blockHead(`${c.commentary_id ?? "?"} · ℣ ${ref(c.chapter, c.verse_ref)}`, "commentary", i),
-      ...NOTE_FIELDS.filter((k) => k in c).map((k) => fieldRow(k, c[k], ["commentary", i, k])))));
+    if (hooks.addTop) root.append(hooks.addTop());
+    (d.commentary || []).forEach((c, i) => {
+      root.append(block("commentary", i, `${c.commentary_id ?? "?"} · ℣ ${ref(c.chapter, c.verse_ref)}`,
+        NOTE_FIELDS.filter((k) => k in c).map((k) => fieldRow(k, c[k], ["commentary", i, k]))));
+      if (hooks.addBelow) root.append(hooks.addBelow(i));
+    });
     root.append(nextStrip() || "");
   }
   if (sec === "all" || sec === "footnotes") {
     root.append(el("div", { className: "h2", textContent: `Footnotes (${(d.footnotes || []).length})` }));
-    (d.footnotes || []).forEach((n, i) => root.append(el("div", { className: "block" },
-      blockHead(n.marker || "?", "footnotes", i),
-      ...["marker", "text"].filter((k) => k in n).map((k) => fieldRow(k, n[k], ["footnotes", i, k])))));
+    (d.footnotes || []).forEach((n, i) => root.append(block("footnotes", i, n.marker || "?",
+      ["marker", "text"].filter((k) => k in n).map((k) => fieldRow(k, n[k], ["footnotes", i, k])))));
+    if (hooks.addEnd) root.append(hooks.addEnd("footnotes"));
   }
   for (const f of hooks.afterRender) f(root);
 }
