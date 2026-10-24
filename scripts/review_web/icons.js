@@ -23,6 +23,7 @@ const P = {
   back: "M10 7l-5 5 5 5M5 12h14",
   fwd: "M14 7l5 5-5 5M19 12H5",
   invert: "M12 3a9 9 0 1 0 0 18zM12 3a9 9 0 0 1 0 18",
+  copy: "M9 9h11v11H9zM5 15H4V4h11v1",
   search: "M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM16 16l4 4",
 };
 

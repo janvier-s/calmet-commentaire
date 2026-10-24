@@ -175,8 +175,9 @@ const HEAD_FIELDS = ["book_title", "chapter_number", "chapter_title", "chapter_s
 // short fields sit in the block's header line, with a short tag
 const TAGS = { chapter: "ch", verse_number: "v", commentary_id: "#", verse_ref: "℣", chapter_number: "chapter", marker: "" };
 
-/** `makeField` turns a field into an editor (set by the editing module). */
-export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [],
+/** `makeField` turns a field into an editor (set by the editing module); `valueAt(path)` reads the
+ *  text as typed. */
+export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [], valueAt: null,
                        blockTools: null, addTop: null, addBelow: null, addEnd: null };
 
 S.reveal = new Set();  // empty optional fields the user asked to see ("+ annotations")
@@ -195,7 +196,35 @@ function field(name, value, path) {
   else if (value === null || value === undefined) { f.textContent = "null"; f.classList.add("null"); }
   else render(f, String(value));
   if (short) return el("span", { className: "inl" }, TAGS[name] ? el("span", { className: "tag", textContent: TAGS[name] }) : null, f);
-  return el("div", { className: "fw" }, el("span", { className: "fl", textContent: name.replace(/_/g, " ") }), f);
+  const copy = el("button", { className: "copy", title: "Copy this field's location and text (for an AI chat)",
+                              onclick: () => copyRef(path) }, icon("copy", 12));
+  return el("div", { className: "fw" }, el("span", { className: "fl", textContent: name.replace(/_/g, " ") }), copy, f);
+}
+
+/** Where a field or entry is, and what it says now: to paste into an AI chat with a screenshot. */
+export function copyRef(path) {
+  const val = (p) => {
+    const typed = hooks.valueAt && hooks.valueAt(p);
+    if (typed !== undefined) return typed;
+    return p.reduce((o, k) => (o == null ? o : o[k]), S.data);
+  };
+  const [section, i] = path;
+  const entry = section in (S.data || {}) && typeof i === "number" ? S.data[section][i] : null;
+  const what = !entry ? "page heading"
+    : section === "verses" ? `verse ${val([section, i, "chapter"]) ?? "?"}:${val([section, i, "verse_number"]) ?? "?"}`
+    : section === "commentary" ? `commentary ${val([section, i, "commentary_id"]) ?? "?"} (ch ${val([section, i, "chapter"]) ?? "?"} ℣ ${val([section, i, "verse_ref"]) ?? "?"})`
+    : `footnote ${val([section, i, "marker"]) ?? "?"}`;
+  const jsonPath = typeof i === "number" ? `${section}[${i}]${path.length > 2 ? "." + path[2] : ""}` : path.join(".");
+  const lines = [`${S.vol} p.${S.page} · ${what}` + (path.length > 2 ? ` · ${path[2]}` : ""),
+                 `data/${S.vol}/normalized/page_${String(S.page).padStart(4, "0")}.json → ${jsonPath}`];
+  const fields = path.length > 2 || !entry ? [path.length > 2 ? path[2] : path[0]]
+    : Object.keys(entry).filter((k) => !["chapter", "verse_number", "commentary_id", "verse_ref", "marker"].includes(k));
+  for (const k of fields) {
+    const v = path.length > 2 || !entry ? val(path) : val([section, i, k]);
+    lines.push(`${k}: «${v ?? "null"}»`);
+  }
+  const text = lines.join("\n");
+  navigator.clipboard.writeText(text).then(() => toast("Copied location and text"), () => toast("Could not copy"));
 }
 
 /** "+ name" for an empty optional field: shows it, focused. */
@@ -252,8 +281,10 @@ function nextStrip() {
 
 /** The header line of a block: its title, short fields, chips, then the move/delete tools. */
 export function blockHead(title, section, i, ...inline) {
+  const copy = section !== "heading" ? el("button", { className: "link tool", title: "Copy this entry's location and text (for an AI chat)",
+                                                      onclick: () => copyRef([section, i]) }, icon("copy", 14)) : null;
   return el("div", { className: "block-head" }, title ? el("span", { className: "title", textContent: title }) : null,
-            ...inline.flat().filter(Boolean), el("span", { className: "grow" }),
+            ...inline.flat().filter(Boolean), el("span", { className: "grow" }), copy,
             ...(hooks.blockTools ? hooks.blockTools(section, i) : []));
 }
 

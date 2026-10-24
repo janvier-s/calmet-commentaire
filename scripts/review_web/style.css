@@ -198,3 +198,9 @@ button.icon-after { flex-direction: row-reverse; }
 #shelf { display: flex; flex-wrap: wrap; gap: 2px; }
 .shelf-item { padding: 1px 6px; font-size: 12.5px; min-width: 24px; background: var(--field); }
 .shelf-item:hover { border-color: var(--accent); color: var(--accent); }
+
+/* copy a field's location and text */
+.fw .copy { position: absolute; top: -8px; right: 6px; z-index: 2; display: inline-flex; padding: 1px 3px; border-radius: 4px;
+            background: var(--surface); border: 1px solid var(--border); color: var(--muted); opacity: 0; transition: opacity .12s; }
+.fw:hover .copy, .fw .copy:focus { opacity: 1; }
+.fw .copy:hover { color: var(--c, var(--accent)); border-color: var(--c, var(--accent)); }

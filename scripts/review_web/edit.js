@@ -52,6 +52,11 @@ hooks.makeField = (f, name, value, path) => {
   S.fields.push({ path, field });
 };
 hooks.beforeRender = () => { S.fields = []; lastField = null; };
+hooks.valueAt = (path) => {
+  const k = path.join("/");
+  const x = S.fields.find((y) => y.path.join("/") === k);
+  return x ? x.field.value : undefined;
+};
 hooks.collect = () => { if (S.fields.length) S.data = typedData(); };  // keep typed text over a redraw
 
 export function setDirty(on) {
