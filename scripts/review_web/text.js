@@ -51,3 +51,57 @@ export function parseRef(s) {
   m = /^\s*p\.?\s*(\d+)\s*$/i.exec(s) || /^\s*(\d+)\s*p\s*$/i.exec(s);
   return m ? { page: +m[1] } : null;
 }
+
+/** The words an issue message quotes (“…”), to look for in the page: each quotation split at its
+ *  ellipses into pieces of 6+ characters; a footnote call for the footnote kinds. */
+export function snippets(msg, kind) {
+  const out = [];
+  if (kind === "missing_footnote") {
+    const m = /marker \(([a-z])\)/.exec(msg);
+    if (m) out.push(`^{(${m[1]})}`);
+  }
+  let first = true;
+  for (const m of msg.matchAll(/“([^”]*)”/g)) {
+    if (kind === "broken_marker" && first) { out.push(m[1].trim()); first = false; continue; }  // the call itself
+    first = false;
+    for (const piece of m[1].split("…")) {
+      const p = piece.trim();
+      if (p.length >= 6) out.push(p);
+    }
+  }
+  return out;
+}
+
+const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const loose = (s) => new RegExp(s.trim().split(/\s+/).map(escape).join("\\s+"), "g");
+
+/** Where the needles are in `text`: every exact or whitespace-insensitive occurrence; for a needle
+ *  found nowhere, its longest run of whole words (12+ characters) that is. Sorted, overlaps merged. */
+export function findSpans(text, needles) {
+  const spans = [];
+  const all = (rx) => [...text.matchAll(rx)].map((m) => [m.index, m.index + m[0].length]);
+  for (const n of needles) {
+    if (!n.trim()) continue;
+    let found = all(loose(n));
+    if (!found.length) {
+      const words = n.trim().split(/\s+/);
+      search: for (let len = words.length - 1; len >= 2; len--) {
+        for (let i = 0; i + len <= words.length; i++) {
+          const part = words.slice(i, i + len).join(" ");
+          if (part.length < 12) continue;
+          found = all(loose(part));
+          if (found.length) break search;
+        }
+      }
+    }
+    spans.push(...found);
+  }
+  spans.sort((a, b) => a[0] - b[0]);
+  const merged = [];
+  for (const s of spans) {
+    const last = merged[merged.length - 1];
+    if (last && s[0] <= last[1]) last[1] = Math.max(last[1], s[1]);
+    else merged.push([...s]);
+  }
+  return merged;
+}
