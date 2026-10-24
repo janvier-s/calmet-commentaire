@@ -30,8 +30,9 @@ function move(section, i, j) {
 }
 
 hooks.blockTools = (section, i) => {
+  if (section === "heading") return [];
   const n = (S.data[section] || []).length;
-  const tools = [el("span", { className: "grow" })];
+  const tools = [];
   if (section !== "footnotes" && n > 1) {
     const handle = el("span", { className: "handle", textContent: "⠿", title: "Drag to move", draggable: true });
     handle.addEventListener("dragstart", (e) => {

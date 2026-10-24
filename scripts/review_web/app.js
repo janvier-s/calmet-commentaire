@@ -53,6 +53,7 @@ export async function loadPage(vol, page) {
   if (r.status === 404 && r.body.missing) return { missing: true, ...r.body };
   if (r.status !== 200) { toast(r.body.error || "Could not load the page"); return null; }
   page = r.body.page;
+  S.reveal = new Set();
   Object.assign(S, { vol, page, data: r.body.data, version: r.body.version, ctx: r.body.context,
                      pages: r.body.pages, issues: r.body.issues, around: r.body.around });
   api("/api/state", { vol, page });
@@ -156,23 +157,60 @@ function setupScan() {
 
 // --- the page's text ---
 const HEAD_FIELDS = ["book_title", "chapter_number", "chapter_title", "chapter_summary", "chapter_intro", "book_end_marker"];
-const VERSE_FIELDS = ["chapter", "verse_number", "latin", "french", "annotations"];
-const NOTE_FIELDS = ["commentary_id", "chapter", "verse_ref", "latin_quote", "french_translation", "french_commentary"];
-const SHORT = new Set(["chapter", "verse_number", "commentary_id", "verse_ref", "chapter_number", "marker"]);
+// short fields sit in the block's header line, with a short tag
+const TAGS = { chapter: "ch", verse_number: "v", commentary_id: "#", verse_ref: "℣", chapter_number: "chapter", marker: "" };
 
-/** One labelled field; `makeField` turns it into an editor (set by the editing module). */
-export const hooks = { makeField: null, beforeRender: null, afterRender: [],
+/** `makeField` turns a field into an editor (set by the editing module). */
+export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [],
                        blockTools: null, addTop: null, addBelow: null, addEnd: null };
 
-function fieldRow(name, value, path) {
-  const f = el("div", { className: "f" + (SHORT.has(name) ? " short" : "") });
+S.reveal = new Set();  // empty optional fields the user asked to see ("+ annotations")
+const key = (path) => path.join("/");
+const shown = (value, path) => !(value === null || value === undefined) || S.reveal.has(key(path));
+
+/** A field with its name as a small tag on the border; short ones inline. */
+function field(name, value, path) {
+  const short = name in TAGS;
+  const f = el("div", { className: "f" + (short ? " short" : "") });
   f.dataset.name = name;
+  f.dataset.path = key(path);
+  f.title = name;
   if (ITALIC_FIELDS.has(name)) f.dataset.italic = "";
   if (hooks.makeField) hooks.makeField(f, name, value, path);
   else if (value === null || value === undefined) { f.textContent = "null"; f.classList.add("null"); }
   else render(f, String(value));
-  return el("div", { className: "row" }, el("label", { textContent: name }), f);
+  if (short) return el("span", { className: "inl" }, TAGS[name] ? el("span", { className: "tag", textContent: TAGS[name] }) : null, f);
+  return el("div", { className: "fw" }, el("span", { className: "fl", textContent: name.replace(/_/g, " ") }), f);
 }
+
+/** "+ name" for an empty optional field: shows it, focused. */
+function chip(name, path) {
+  return el("button", { className: "chip", textContent: `+ ${name.replace(/_/g, " ")}`, title: `Add ${name}`,
+    onclick: () => {
+      if (hooks.collect) hooks.collect();
+      S.reveal.add(key(path));
+      renderPage();
+      const f = document.querySelector(`.f[data-path="${key(path)}"]`);
+      if (f) f.focus();
+    } });
+}
+
+/** Fields of an entry: the ones present, the empty optional ones as chips. */
+function fields(entry, names, path, optional) {
+  const out = {}, chips = [];
+  for (const k of names) {
+    if (!(k in entry)) continue;
+    const p = [...path, k];
+    if (optional.has(k) && !shown(entry[k], p)) chips.push(chip(k, p));
+    else out[k] = field(k, entry[k], p);
+  }
+  return { f: out, chips };
+}
+
+const pair = (...xs) => {
+  const kids = xs.filter(Boolean);
+  return kids.length ? el("div", { className: kids.length > 1 ? "pair" : "" }, ...kids) : null;
+};
 
 function ref(ch, v) {
   return [ch, v].filter((x) => x !== null && x !== undefined).join(":") || "?";
@@ -197,16 +235,52 @@ function nextStrip() {
             n.head ? ` “${n.head}”` : "");
 }
 
-export function blockHead(title, section, i) {
-  return el("div", { className: "block-head" }, el("span", { className: "title", textContent: title }),
+/** The header line of a block: its title, short fields, chips, then the move/delete tools. */
+export function blockHead(title, section, i, ...inline) {
+  return el("div", { className: "block-head" }, title ? el("span", { className: "title", textContent: title }) : null,
+            ...inline.flat().filter(Boolean), el("span", { className: "grow" }),
             ...(hooks.blockTools ? hooks.blockTools(section, i) : []));
 }
 
-function block(section, i, title, fields) {
-  const b = el("div", { className: "block" }, blockHead(title, section, i), ...fields);
+function block(section, i, head, ...body) {
+  const b = el("div", { className: "block" }, head, ...body.filter(Boolean));
   b.dataset.section = section;
   b.dataset.index = i;
   return b;
+}
+
+const NONE = new Set();
+const VERSE_OPT = new Set(["annotations"]);
+const NOTE_OPT = new Set(["latin_quote", "french_translation"]);
+
+function verseBlock(v, i) {
+  const { f, chips } = fields(v, ["chapter", "verse_number", "latin", "french", "annotations"], ["verses", i], VERSE_OPT);
+  return block("verses", i, blockHead("Verse", "verses", i, f.chapter, f.verse_number, chips),
+               pair(f.latin, f.french), f.annotations);
+}
+
+function noteBlock(c, i) {
+  // the first block of a page usually continues the previous note: no lemma, no translation
+  const opt = i === 0 ? NOTE_OPT : NONE;
+  const { f, chips } = fields(c, ["commentary_id", "chapter", "verse_ref", "latin_quote", "french_translation", "french_commentary"],
+                              ["commentary", i], opt);
+  return block("commentary", i, blockHead(null, "commentary", i, f.commentary_id, f.chapter, f.verse_ref, chips),
+               pair(f.latin_quote, f.french_translation), f.french_commentary);
+}
+
+function footnoteBlock(n, i) {
+  const { f } = fields(n, ["marker", "text"], ["footnotes", i], NONE);
+  const b = block("footnotes", i, blockHead(null, "footnotes", i, f.marker, f.text));
+  b.classList.add("fn");
+  return b;
+}
+
+function headingBlock(d) {
+  const names = HEAD_FIELDS.filter((k) => k in d || k === "chapter_title");
+  const entry = Object.fromEntries(names.map((k) => [k, d[k] ?? null]));
+  const { f, chips } = fields(entry, names, [], new Set(names));
+  return block("heading", 0, blockHead("Page heading", "heading", 0, f.chapter_number, chips),
+               pair(f.book_title, f.chapter_title), f.chapter_summary, f.chapter_intro, f.book_end_marker);
 }
 
 export function renderPage() {
@@ -216,15 +290,10 @@ export function renderPage() {
   const d = S.data;
   if (!d) return;
   const sec = S.section;
-  if (sec === "all") {
-    const head = HEAD_FIELDS.filter((k) => k in d || k === "chapter_title");
-    root.append(el("div", { className: "block" }, el("div", { className: "block-head" },
-      el("span", { className: "title", textContent: "Page heading" })), ...head.map((k) => fieldRow(k, d[k] ?? null, [k]))));
-  }
+  if (sec === "all") root.append(headingBlock(d));
   if (sec === "all" || sec === "verses") {
     root.append(el("div", { className: "h2", textContent: `Verses (${(d.verses || []).length})` }));
-    (d.verses || []).forEach((v, i) => root.append(block("verses", i, `Verse ${v.verse_number ?? "?"}`,
-      VERSE_FIELDS.filter((k) => k in v).map((k) => fieldRow(k, v[k], ["verses", i, k])))));
+    (d.verses || []).forEach((v, i) => root.append(verseBlock(v, i)));
     if (hooks.addEnd) root.append(hooks.addEnd("verses"));
   }
   if (sec === "all" || sec === "commentary") {
@@ -232,16 +301,14 @@ export function renderPage() {
     root.append(prevStrip() || "");
     if (hooks.addTop) root.append(hooks.addTop());
     (d.commentary || []).forEach((c, i) => {
-      root.append(block("commentary", i, `${c.commentary_id ?? "?"} · ℣ ${ref(c.chapter, c.verse_ref)}`,
-        NOTE_FIELDS.filter((k) => k in c).map((k) => fieldRow(k, c[k], ["commentary", i, k]))));
+      root.append(noteBlock(c, i));
       if (hooks.addBelow) root.append(hooks.addBelow(i));
     });
     root.append(nextStrip() || "");
   }
   if (sec === "all" || sec === "footnotes") {
     root.append(el("div", { className: "h2", textContent: `Footnotes (${(d.footnotes || []).length})` }));
-    (d.footnotes || []).forEach((n, i) => root.append(block("footnotes", i, n.marker || "?",
-      ["marker", "text"].filter((k) => k in n).map((k) => fieldRow(k, n[k], ["footnotes", i, k])))));
+    (d.footnotes || []).forEach((n, i) => root.append(footnoteBlock(n, i)));
     if (hooks.addEnd) root.append(hooks.addEnd("footnotes"));
   }
   for (const f of hooks.afterRender) f(root);

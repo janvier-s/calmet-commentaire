@@ -93,18 +93,27 @@ input, select { background: var(--surface); border: 1px solid var(--border); bor
        border-radius: 5px; padding: 5px 8px; margin: 6px 0 10px; }
 .ctx b { font-weight: 600; }
 .ctx .cont { color: var(--warn); font-weight: 600; font-size: 10px; letter-spacing: .05em; }
-.block { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 8px 10px; margin-bottom: 8px; }
+.block { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 5px 8px 7px; margin-bottom: 6px; }
 .block.flash { box-shadow: 0 0 0 2px var(--accent); }
-.block-head { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.block-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 11px; color: var(--muted); min-height: 24px; }
 .block-head .title { font-weight: 600; }
 .block-head .handle { cursor: grab; }
-.row { display: grid; grid-template-columns: 118px 1fr; gap: 8px; align-items: start; margin: 3px 0; }
-.row > label { font-size: 11px; color: var(--muted); text-align: right; padding-top: 4px; }
-.f { background: var(--field); border: 1px solid transparent; border-radius: 4px; padding: 3px 6px; min-height: 1.6em;
-     white-space: pre-wrap; overflow-wrap: anywhere; outline: none; }
+.block.fn .block-head { flex-wrap: nowrap; align-items: flex-start; }
+.block.fn .fw { flex: 1; margin-top: 0; }
+.block.fn .fw .fl { display: none; }
+.block.fn .grow { display: none; }
+.block.fn { padding: 4px 8px; margin-bottom: 4px; }
+.inl { display: inline-flex; align-items: center; gap: 3px; }
+.tag { font-size: 10.5px; color: var(--muted); }
+.fw { position: relative; margin-top: 8px; min-width: 0; }
+.fl { position: absolute; top: -7px; left: 7px; z-index: 1; font-size: 9px; line-height: 12px; letter-spacing: .03em;
+      color: var(--muted); background: var(--surface); padding: 0 3px; border-radius: 3px; pointer-events: none; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 8px; }
+.f { background: var(--field); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px 3px; min-height: 1.7em;
+     white-space: pre-wrap; overflow-wrap: anywhere; outline: none; font-size: 13.5px; }
 .f:focus { border-color: var(--accent); background: var(--surface); }
+.f.short { display: inline-block; min-width: 2.4em; min-height: 0; padding: 0 5px; font-size: 12.5px; text-align: center; white-space: nowrap; }
 .f.null { color: var(--muted); font-style: italic; }
-.f.short { max-width: 9em; }
 .f[data-name="latin_quote"], .f[data-name="latin"] { color: var(--lemma); }
 .f[data-name="french_translation"] { color: var(--translation); }
 .f .it { font-style: italic; }
@@ -115,10 +124,12 @@ input, select { background: var(--surface); border: 1px solid var(--border); bor
 .f .mk.open { color: var(--danger); font-weight: 700; }
 .f .sc { font-size: .78em; }
 .f mark { background: var(--hi); color: inherit; }
-.add { display: block; width: 100%; text-align: center; color: var(--muted); font-size: 11.5px; border: 1px dashed var(--border);
-       background: none; border-radius: 5px; padding: 3px; margin: -2px 0 8px; }
-.add:hover { color: var(--accent); border-color: var(--accent); }
-.h2 { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 16px 0 6px; }
+.chip { font-size: 10.5px; color: var(--muted); background: none; border: 1px dashed var(--border); border-radius: 10px; padding: 0 7px; }
+.chip:hover { color: var(--accent); border-color: var(--accent); }
+.add { display: block; width: 100%; text-align: center; color: var(--muted); font-size: 11px; border: 1px dashed transparent;
+       background: none; border-radius: 5px; padding: 0; margin: -4px 0 2px; line-height: 14px; opacity: .55; }
+.add:hover { opacity: 1; color: var(--accent); border-color: var(--accent); }
+.h2 { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 12px 0 5px; }
 .adds { display: flex; gap: 6px; margin-top: 8px; }
 
 /* dialog */
