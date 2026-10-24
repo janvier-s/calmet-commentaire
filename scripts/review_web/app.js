@@ -26,6 +26,7 @@ export async function api(path, body) {
 }
 
 export function toast(msg) {
+  document.querySelectorAll(".toast").forEach((t) => t.remove());  // one at a time
   const t = el("div", { className: "toast", textContent: msg });
   document.body.append(t);
   setTimeout(() => t.remove(), 2600);
@@ -177,7 +178,7 @@ const TAGS = { chapter: "ch", verse_number: "v", commentary_id: "#", verse_ref: 
 
 /** `makeField` turns a field into an editor (set by the editing module); `valueAt(path)` reads the
  *  text as typed. */
-export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [], valueAt: null,
+export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [], valueAt: null, afterSave: null,
                        blockTools: null, addTop: null, addBelow: null, addEnd: null };
 
 S.reveal = new Set();  // empty optional fields the user asked to see ("+ annotations")

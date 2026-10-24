@@ -7,11 +7,14 @@ import json
 
 import audit_integrity
 import calmet
+import paths
 from paths import BOOKS, BY_VOLUME, DOCS
 
 
-def recheck_book(vol):
-    """The audit's queue items for the book that holds `vol`."""
+def recheck_book(vol, data=None):
+    """The audit's queue items for the book that holds `vol`; `data`: another data folder (a copy)."""
+    if data is not None:  # the audit and the export read paths.DATA and their own copy of it
+        paths.DATA = audit_integrity.STUDIUM = data
     key = BY_VOLUME[vol]
     info = BOOKS[key]
     calmet.pages.cache_clear()

@@ -98,6 +98,7 @@ export async function save({ redraw = true } = {}) {
   const changed = JSON.stringify(r.body.data) !== JSON.stringify(data);
   S.data = r.body.data;
   S.version = r.body.version;
+  if (hooks.afterSave) hooks.afterSave();
   if (S.edits !== edits) return true;  // typed during the save: still unsaved, fields kept
   setDirty(false);
   $("dirty").textContent = "saved";
@@ -121,6 +122,7 @@ export async function op(o) {
   const top = $("text-pane").scrollTop;
   renderPage();
   $("text-pane").scrollTop = top;
+  if (hooks.afterSave) hooks.afterSave();
   return true;
 }
 
@@ -151,6 +153,7 @@ async function undoAll() {
     if (r.status !== 200) { toast(r.status === 409 ? "The page changed on disk: reload it first" : (r.body.error || "Failed")); return; }
     S.data = r.body.data;
     S.version = r.body.version;
+    if (hooks.afterSave) hooks.afterSave();
   }
   setDirty(false);
   const top = $("text-pane").scrollTop;

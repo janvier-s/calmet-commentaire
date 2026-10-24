@@ -1,5 +1,5 @@
 // The queue: filters with counts, the page's issues, issue to issue, Resolved / False positive / Skip.
-import { S, api, ask, boot, go, nav, renderPage, showScan, toast, updateTop } from "./app.js";
+import { S, api, ask, boot, go, hooks, nav, renderPage, showScan, toast, updateTop } from "./app.js";
 import { save, setDirty } from "./edit.js";
 import { icon } from "./icons.js";
 import { point } from "./point.js";
@@ -202,6 +202,32 @@ nav.go = async (vol, page) => {
   }
   return r;
 };
+
+// --- re-check on save: the audit of the book runs again on the server ---
+let running = 0;
+async function recheck() {
+  const vol = S.vol, page = S.page;
+  running++;
+  $("rechecking").textContent = "re-checking…";
+  let r;
+  try { r = await api("/api/recheck", { vol, page }); } catch (e) { r = { status: 0, body: {} }; }
+  if (--running === 0) $("rechecking").textContent = "";
+  if (r.status !== 200) { toast(`Re-check failed: ${r.body.error || "no answer"}`); return; }
+  const byId = new Map(r.body.issues.map((it) => [it.id, it]));
+  for (const it of Q.items) {
+    const fresh = byId.get(it.id);
+    if (fresh) Object.assign(it, { status: fresh.status, fixed: fresh.fixed, msg: fresh.msg, where: fresh.where });
+  }
+  if (S.vol === vol && S.page === page) {
+    S.issues = r.body.issues;
+    S.around = r.body.around;
+    renderIssues();
+  }
+  await refreshCounts();
+  const said = [r.body.fixed && `${r.body.fixed} fixed on save`, r.body.added && `${r.body.added} new`].filter(Boolean);
+  if (said.length) toast(said.join(", "));
+}
+hooks.afterSave = recheck;
 
 // --- wiring ---
 $("f-status").onchange = () => applyFilters(readFilters(true));

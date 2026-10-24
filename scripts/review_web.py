@@ -161,7 +161,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         vol, page = vol_page(body)
         audit = recheck
         if audit is None:
-            from page_audit import recheck_book as audit
+            from page_audit import recheck_book
+            audit = lambda v: recheck_book(v, store.data)
         with recheck_lock:  # one at a time: a second save waits and audits the later file
             r = rs.merge_recheck(items, progress, rs.book_volumes(vol), audit(vol), include_optional)
             by_id.update({it["id"]: it for it in items})
