@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Calmet Review</title>
-<link rel="icon" href="data:,">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23c27a12'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='21' font-weight='bold' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="/static/style.css">
 <script>
   // theme before first paint: saved choice, else the Mac's setting (light → paper)
@@ -21,15 +21,16 @@
 <header id="top">
   <select id="vol" title="Book"></select>
   <div class="group">
-    <button id="page-prev" class="icon" data-icon="prev" title="Previous page (←)"></button>
+    <button id="page-prev" class="pagebtn" data-icon="prev" title="Previous page (←)"><span id="prev-num"></span></button>
     <input id="page-num" size="4" title="Go to page">
-    <button id="page-next" class="icon" data-icon="next" title="Next page (→)"></button>
+    <button id="page-next" class="pagebtn icon-after" data-icon="next" title="Next page (→)"><span id="next-num"></span></button>
   </div>
   <span class="jumpbox" data-icon="search"><input id="jump" placeholder="ch:v" size="7" title="Chapter and verse (17:2) or chapter (17), Return to go"></span>
   <span id="jump-msg" class="muted"></span>
   <span class="grow"></span>
   <span id="dirty" class="muted"></span>
   <button id="italic" class="icon" data-icon="italic" title="Italics on the selection (⌘I)"></button>
+  <button id="undo-all" data-icon="undo" title="Put the page back as it was when you opened it">Undo all</button>
   <button id="save" data-icon="save" title="Save (⌘S)">Save</button>
   <div class="group">
     <button id="issue-prev" data-icon="back" title="Previous issue (⌘[)">Issue</button>
@@ -52,18 +53,21 @@
     </div>
   </div>
 </header>
-<main id="cols">
-  <aside id="left">
-    <div id="filters">
-      <label>Status <select id="f-status"></select></label>
-      <label>Category <select id="f-cat"></select></label>
-      <label>Type <select id="f-kind"></select></label>
-      <label>Book <select id="f-book"></select></label>
-    </div>
-    <div class="sec" id="page-issues-title">This page</div>
-    <div id="page-issues"></div>
+<section id="issuebar">
+  <div id="filters">
+    <select id="f-status" title="Status"></select>
+    <select id="f-cat" title="Category"></select>
+    <select id="f-kind" title="Type of issue"></select>
+    <select id="f-book" title="Book"></select>
+  </div>
+  <div id="current"></div>
+  <div id="pageinfo">
+    <div id="pills"></div>
     <div id="around"></div>
-  </aside>
+  </div>
+</section>
+<section id="page-issues" hidden></section>
+<main id="cols">
   <section id="scan-pane">
     <div id="scan-tools">
       <button id="zoom-out" title="Zoom out">−</button><span id="zoom-label">100%</span><button id="zoom-in" title="Zoom in">+</button>
@@ -79,6 +83,8 @@
     <div id="sections">
       <button data-sec="all" class="on">All</button><button data-sec="verses" class="k-verse" data-icon="verses">Verses</button>
       <button data-sec="commentary" class="k-note" data-icon="commentary">Commentary</button><button data-sec="footnotes" class="k-fn" data-icon="footnotes">Footnotes</button>
+      <span class="grow"></span>
+      <span id="shelf" title="Click: insert at the cursor (or copy if no field is active)"></span>
     </div>
     <div id="page-text"></div>
   </section>

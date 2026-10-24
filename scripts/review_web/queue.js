@@ -10,14 +10,16 @@ const el = (tag, props = {}, ...kids) => {
   return e;
 };
 const DONE = new Set(["resolved", "false_positive"]);
-const STATUS_LABELS = { open: "Open", false_positive: "False positives", skipped: "Skipped", resolved: "Resolved", all: "All" };
-const CAT_LABELS = { all: "All", verses: "Verses", commentary: "Commentary", footnotes: "Footnotes" };
+const STATUS_LABELS = { open: "🟠 Open", false_positive: "🚩 False positives", skipped: "⏭️ Skipped", resolved: "✅ Resolved", all: "📋 All statuses" };
+const CAT_LABELS = { all: "🗂️ All categories", verses: "📖 Verses", commentary: "💬 Commentary", footnotes: "📝 Footnotes" };
+const CAT_EMOJI = { verses: "📖", commentary: "💬", footnotes: "📝" };
 
 const KIND = { verses: "k-verse", commentary: "k-note", footnotes: "k-fn" };
 let CAT_OF = {};  // kind -> category, from the server
 
 const Q = { items: [], idx: 0, status: "open", cat: null, kind: null, book: null, counts: null, current: null };
 const label = (k) => S.config.labels[k] || k;
+const sentence = (t) => t.charAt(0) + t.slice(1).toLowerCase();  // "MISSING VERSE" -> "Missing verse"
 const statusOf = (it) => it.status || null;
 const isOpen = (it) => !statusOf(it) || !["resolved", "false_positive", "skipped"].includes(statusOf(it));
 
@@ -35,11 +37,12 @@ function fillFilters() {
   const kinds = Object.keys(c.kind);
   if (Q.kind && !kinds.includes(Q.kind)) kinds.push(Q.kind);
   const kindTotal = Object.values(c.kind).reduce((a, b) => a + b, 0);
-  $("f-kind").replaceChildren(opt("", `All types (${kindTotal})`), ...kinds.map((k) => opt(k, `${label(k)} (${c.kind[k] || 0})`)));
+  $("f-kind").replaceChildren(opt("", `🔎 All types (${kindTotal})`),
+    ...kinds.map((k) => opt(k, `${CAT_EMOJI[CAT_OF[k]] || "💬"} ${sentence(label(k))} (${c.kind[k] || 0})`)));
   const books = Object.keys(c.book).sort();
   if (Q.book && !books.includes(Q.book)) books.push(Q.book);
   const bookTotal = Object.values(c.book).reduce((a, b) => a + b, 0);
-  $("f-book").replaceChildren(opt("", `All books (${bookTotal})`), ...books.map((b) => opt(b, `${b} (${c.book[b] || 0})`)));
+  $("f-book").replaceChildren(opt("", `📚 All books (${bookTotal})`), ...books.map((b) => opt(b, `${b} (${c.book[b] || 0})`)));
   $("f-status").value = Q.status;
   $("f-cat").value = Q.cat || "";
   $("f-kind").value = Q.kind || "";
@@ -113,35 +116,54 @@ async function mark(status) {
   if (status) step(1);
 }
 
-// --- the left column ---
+// --- the issue bar: the current issue, the page's issues as pills, all of them in a panel ---
+let panelOpen = false;
+
+function card(it, big) {
+  const st = statusOf(it);
+  const cat = CAT_OF[it.kind] || "commentary";
+  const c = el("div", { className: `issue ${KIND[cat]}` + (DONE.has(st) || it.fixed ? " done" : "") + (it.id === Q.current ? " cur" : "") + (big ? " big" : "") },
+    el("small", {}, icon(cat, 12), " ", label(it.kind),
+       st || it.fixed ? el("span", { className: "st", textContent: it.fixed ? "fixed on save" : st.replace("_", " ") }) : null),
+    el("span", { className: "msg", textContent: it.msg }));
+  if (!big) c.onclick = () => select(it);
+  return c;
+}
+
+function select(it) {
+  Q.current = it.id;
+  const i = Q.items.findIndex((x) => x.id === it.id);
+  if (i >= 0) Q.idx = i;
+  updateCounter();
+  renderIssues();
+}
+
 function renderIssues() {
-  const box = $("page-issues");
   const cur = currentItem();
   const here = cur && cur.book_dir === S.vol && cur.page === S.page;
-  $("page-issues-title").textContent = `This page · ${S.issues.length} issue${S.issues.length === 1 ? "" : "s"}`;
-  const away = cur && !here ? el("p", { className: "muted small" },
-    `You have left the current issue's page (${cur.book_dir} p.${cur.page}). `,
+  const away = cur && !here ? el("div", { className: "away" },
+    `You have left this issue's page (${cur.book_dir} p.${cur.page}). `,
     el("button", { className: "link", textContent: "Back to it", onclick: () => go(cur.book_dir, cur.page) })) : null;
-  box.replaceChildren(...(away ? [away] : []), ...S.issues.map((it) => {
+  $("current").replaceChildren(...(cur ? [card(cur, true)] : [el("div", { className: "muted", textContent: "No issue selected" })]),
+                               ...(away ? [away] : []));
+  const n = S.issues.length;
+  const pills = S.issues.map((it, k) => {
+    const cat = CAT_OF[it.kind] || "commentary";
     const st = statusOf(it);
-    const cat = it.kind in CAT_OF ? CAT_OF[it.kind] : "commentary";
-    const card = el("div", { className: `issue ${KIND[cat]}` + (DONE.has(st) ? " done" : "") + (it.id === Q.current ? " cur" : "") },
-      st ? el("span", { className: "st", textContent: st.replace("_", " ") }) : null,
-      el("small", {}, icon(cat, 11), " ", label(it.kind)), el("span", { className: "msg", textContent: it.msg }));
-    card.onclick = () => {
-      Q.current = it.id;
-      const i = Q.items.findIndex((x) => x.id === it.id);
-      if (i >= 0) Q.idx = i;
-      updateCounter();
-      renderIssues();
-    };
-    return card;
-  }));
+    const p = el("button", { className: `pill ${KIND[cat]}` + (DONE.has(st) || it.fixed ? " done" : "") + (it.id === Q.current ? " cur" : ""),
+                             title: `${label(it.kind)}: ${it.msg}`, onclick: () => select(it) }, icon(cat, 11), String(k + 1));
+    return p;
+  });
+  const toggle = el("button", { className: "link", textContent: n ? `${panelOpen ? "▴ hide" : "▾ show"} all ${n}` : "no issues on this page",
+                                disabled: !n, onclick: () => { panelOpen = !panelOpen; renderIssues(); } });
+  $("pills").replaceChildren(el("span", { className: "muted small", textContent: "This page: " }), ...pills, toggle);
+  $("page-issues").hidden = !(panelOpen && n);
+  $("page-issues").replaceChildren(...S.issues.map((it) => card(it, false)));
   const a = S.around || {};
   $("around").replaceChildren(
-    a.prev != null ? el("button", { textContent: `◀ p.${a.prev} has open issues`, onclick: () => go(S.vol, a.prev) }) : null,
-    a.next != null ? el("button", { textContent: `p.${a.next} has open issues ▶`, onclick: () => go(S.vol, a.next) }) : null,
-    el("span", { className: "muted", textContent: `${a.open_in_book ?? 0} open in ${S.vol}` }));
+    a.prev != null ? el("button", { className: "link", onclick: () => go(S.vol, a.prev) }, icon("prev", 12), `p.${a.prev}`) : null,
+    el("span", { className: "muted small", textContent: ` ${a.open_in_book ?? 0} open in this book ` }),
+    a.next != null ? el("button", { className: "link", onclick: () => go(S.vol, a.next) }, `p.${a.next}`, icon("next", 12)) : null);
 }
 
 // a page without JSON (scan only) can be created; every load redraws the column

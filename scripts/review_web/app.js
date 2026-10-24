@@ -55,6 +55,7 @@ export async function loadPage(vol, page) {
   if (r.status !== 200) { toast(r.body.error || "Could not load the page"); return null; }
   page = r.body.page;
   S.reveal = new Set();
+  S.opened = { vol, page, data: structuredClone(r.body.data) };  // for Undo all
   Object.assign(S, { vol, page, data: r.body.data, version: r.body.version, ctx: r.body.context,
                      pages: r.body.pages, issues: r.body.issues, around: r.body.around });
   api("/api/state", { vol, page });
@@ -68,6 +69,11 @@ export async function loadPage(vol, page) {
 export function updateTop() {
   $("vol").value = S.vol;
   $("page-num").value = S.page;
+  const i = S.pages.indexOf(S.page);
+  $("prev-num").textContent = i > 0 ? S.pages[i - 1] : "";
+  $("next-num").textContent = i >= 0 && i < S.pages.length - 1 ? S.pages[i + 1] : "";
+  $("page-prev").disabled = !(i > 0);
+  $("page-next").disabled = !(i >= 0 && i < S.pages.length - 1);
   document.title = `${S.vol} p.${S.page} · Calmet Review`;
 }
 
@@ -155,7 +161,7 @@ function setupScan() {
   // the divider between scan and text
   const cols = $("cols");
   $("divider").addEventListener("pointerdown", (e) => {
-    const left = $("left").getBoundingClientRect().width;
+    const left = cols.getBoundingClientRect().left;
     const move = (ev) => cols.style.setProperty("--scan-w", `${Math.max(200, ev.clientX - left)}px`);
     const up = () => { removeEventListener("pointermove", move); removeEventListener("pointerup", up); };
     addEventListener("pointermove", move);
@@ -295,8 +301,7 @@ function headingBlock(d) {
   const names = HEAD_FIELDS.filter((k) => k in d || k === "chapter_title");
   const entry = Object.fromEntries(names.map((k) => [k, d[k] ?? null]));
   const { f, chips } = fields(entry, names, [], new Set(names));
-  return block("heading", 0, blockHead(null, "heading", 0, icon("heading", 13),
-                                      el("span", { className: "title", textContent: "Page heading" }), f.chapter_number, chips),
+  return block("heading", 0, blockHead("Page heading", "heading", 0, f.chapter_number, chips),
                pair(f.book_title, f.chapter_title), f.chapter_summary, f.chapter_intro, f.book_end_marker);
 }
 
@@ -372,11 +377,11 @@ function setupTop() {
   $("theme").value = document.documentElement.dataset.theme;
   $("menu-btn").onclick = () => { $("menu").hidden = !$("menu").hidden; };
   document.addEventListener("click", (e) => { if (!e.target.closest(".menu")) $("menu").hidden = true; });
-  for (const b of document.querySelectorAll("#sections button")) {
+  for (const b of document.querySelectorAll("#sections button[data-sec]")) {
     b.onclick = () => {
       if (hooks.collect) hooks.collect();
       S.section = b.dataset.sec;
-      document.querySelectorAll("#sections button").forEach((x) => x.classList.toggle("on", x === b));
+      document.querySelectorAll("#sections button[data-sec]").forEach((x) => x.classList.toggle("on", x === b));
       renderPage();
     };
   }

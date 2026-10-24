@@ -119,13 +119,41 @@ export async function op(o) {
   return true;
 }
 
-// leaving a page saves it first; a failed save stays
+// leaving a page with unsaved changes asks first; a failed save stays
 const plainGo = nav.go;
 nav.go = async (vol, page) => {
-  if (S.dirty && !(await save({ redraw: false }))) return null;
+  if (S.dirty && S.data) {
+    const choice = await ask(`Save your changes to ${S.vol} p.${S.page} before leaving?`,
+                             [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
+    if (choice === "save") { if (!(await save({ redraw: false }))) return null; }
+    else if (choice !== "discard") return null;
+  }
   setDirty(false);
   return plainGo(vol, page);
 };
+
+/** Undo all: the page as it was when it was opened (unsaved edits dropped, saved ones written back). */
+async function undoAll() {
+  const o = S.opened;
+  if (!o || o.vol !== S.vol || o.page !== S.page || !S.data) return;
+  const savedSince = JSON.stringify(S.data) !== JSON.stringify(o.data);
+  if (!S.dirty && !savedSince) { toast("Nothing to undo on this page"); return; }
+  const msg = savedSince ? "Put the page back as it was when you opened it? Changes already saved to it are undone too."
+                         : "Drop your unsaved changes to this page?";
+  if (await ask(msg, [["cancel", "Cancel"], ["yes", "Undo all", "warn"]]) !== "yes") return;
+  if (savedSince) {
+    const r = await api("/api/page", { vol: S.vol, page: S.page, data: o.data, version: S.version });
+    if (r.status !== 200) { toast(r.status === 409 ? "The page changed on disk: reload it first" : (r.body.error || "Failed")); return; }
+    S.data = r.body.data;
+    S.version = r.body.version;
+  }
+  setDirty(false);
+  const top = $("text-pane").scrollTop;
+  renderPage();
+  $("text-pane").scrollTop = top;
+  toast("Page put back as you opened it");
+}
+$("undo-all").onclick = undoAll;
 
 $("save").onclick = () => save();
 $("italic").onmousedown = (e) => e.preventDefault();  // keep the selection in the field
@@ -135,3 +163,40 @@ document.addEventListener("keydown", (e) => {
   if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") { e.preventDefault(); save(); }
 });
 addEventListener("beforeunload", (e) => { if (S.dirty) e.preventDefault(); });
+
+// --- a little italics button over a selection in a field ---
+const floatBtn = Object.assign(document.createElement("button"), { id: "float-italic", title: "Italics (⌘I)", hidden: true });
+floatBtn.innerHTML = "<i>I</i>";
+document.body.append(floatBtn);
+const fieldAt = (node) => (S.fields.find((x) => x.field.el.contains(node)) || {}).field || null;
+floatBtn.addEventListener("mousedown", (e) => e.preventDefault());  // keep the selection
+floatBtn.onclick = () => {
+  const s = getSelection();
+  const f = s.rangeCount ? fieldAt(s.anchorNode) : null;
+  if (f) f.toggleItalic();
+};
+document.addEventListener("selectionchange", () => {
+  const s = getSelection();
+  const f = !s.isCollapsed && s.rangeCount ? fieldAt(s.anchorNode) : null;
+  if (!f || !f.el.contains(s.focusNode)) { floatBtn.hidden = true; return; }
+  const r = s.getRangeAt(0).getBoundingClientRect();
+  floatBtn.hidden = false;
+  floatBtn.style.left = `${Math.max(4, r.left + r.width / 2 - 14)}px`;
+  floatBtn.style.top = `${Math.max(4, r.top - 34)}px`;
+});
+document.getElementById("text-pane").addEventListener("scroll", () => { floatBtn.hidden = true; });
+
+// --- the shelf: one click puts a symbol at the cursor (or copies it) ---
+const SHELF = ["℣", "^{(a)}", "^{(b)}", "^{(c)}", "^{(d)}", "^{(e)}", "^{(f)}", "«", "»"];
+for (const t of SHELF) {
+  const b = Object.assign(document.createElement("button"), { className: "shelf-item", textContent: t, title: `Insert ${t}` });
+  b.addEventListener("mousedown", (e) => e.preventDefault());  // the field keeps its cursor
+  b.onclick = async () => {
+    const s = getSelection();
+    const f = s.rangeCount ? fieldAt(s.anchorNode) : null;
+    const sel = f && f.selection();
+    if (f && sel && document.activeElement === f.el) { f.edit(sel[0], sel[1], t); return; }
+    try { await navigator.clipboard.writeText(t); toast(`Copied ${t}`); } catch (e) { toast("Could not copy"); }
+  };
+  $("shelf").append(b);
+}
