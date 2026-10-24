@@ -173,11 +173,16 @@ export class Field {
     this.lastEdit = now;
     this.lastKind = kind;
     if (this.isNull()) { a = 0; b = this.text.length; }
-    this.marks = null;
-    this.el.classList.remove("flagged");
+    this.unmark();
     this.text = this.text.slice(0, a) + ins + this.text.slice(b);
     this.draw([a + ins.length, a + ins.length]);
     this.onChange(this);
+  }
+
+  /** The issue's marks go with the first change to the text (their offsets no longer hold). */
+  unmark() {
+    this.marks = null;
+    this.el.classList.remove("flagged");
   }
 
   /** Text changed outside our hands (composition, the accent menu): take the DOM's. */
@@ -185,6 +190,7 @@ export class Field {
     const sel = this.selection();
     const t = this.domText();
     if (t === this.text) return;
+    this.unmark();
     this.undo.push({ text: this.text, sel: sel || [0, 0] });
     this.redo = [];
     this.lastKind = "other";
@@ -197,6 +203,7 @@ export class Field {
     const h = from.pop();
     if (!h) return;
     to.push({ text: this.text, sel: this.selection() || [0, 0] });
+    this.unmark();
     this.text = h.text;
     this.lastKind = "other";
     this.draw(h.sel);
@@ -211,6 +218,7 @@ export class Field {
     this.undo.push({ text: this.text, sel });
     this.redo = [];
     this.lastKind = "other";
+    this.unmark();
     this.text = r.text;
     this.draw([r.start, r.end]);
     this.onChange(this);

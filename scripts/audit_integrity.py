@@ -781,7 +781,7 @@ def main():
     slugs = site_slugs()
     results = []
     for key, info in BOOKS.items():
-        if info["number"] > 46:
+        if info["number"] > 46:  # page_audit.recheck_book skips the same books
             continue
         if key in EXCLUDED:
             continue

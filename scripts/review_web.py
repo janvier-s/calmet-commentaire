@@ -12,13 +12,13 @@ Usage: python3 review_web.py [VOLUME [PAGE]] [--resume] [filters] [--port N] [--
 Serves on 127.0.0.1 only; the printed link carries the session key.
 """
 import json
-import threading
 import mimetypes
 import re
 import secrets
 import shutil
 import subprocess
 import sys
+import threading
 import urllib.parse
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -106,12 +106,15 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         data, version = store.save(vol, page, rs.apply_op(data, body["op"], prev_page), version)
         return {"data": data, "version": version}
 
+    lock = threading.Lock()  # every change to the progress and the queue: marks and re-checks
+
     def mark(body):
         it = by_id.get(body.get("id"))
         if not it:
             raise ApiError(404, {"error": "no such item"})
-        progress.set(it["id"], body.get("status"),
-                     {k: it.get(k) for k in ("book_dir", "page", "kind", "msg")})
+        with lock:
+            progress.set(it["id"], body.get("status"),
+                         {k: it.get(k) for k in ("book_dir", "page", "kind", "msg")})
         return {"ok": True}
 
     def flag(body):
@@ -155,16 +158,16 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         save_state(body["vol"], int(body["page"]), state_file)
         return {"ok": True}
 
-    recheck_lock = threading.Lock()
-
     def run_recheck(body):
         vol, page = vol_page(body)
         audit = recheck
         if audit is None:
             from page_audit import recheck_book
             audit = lambda v: recheck_book(v, store.data)
-        with recheck_lock:  # one at a time: a second save waits and audits the later file
-            r = rs.merge_recheck(items, progress, rs.book_volumes(vol), audit(vol), include_optional)
+        with lock:  # one at a time: a second save waits and audits the later file
+            new = audit(vol)
+            r = rs.merge_recheck(items, progress, rs.book_volumes(vol), new, include_optional) \
+                if new is not None else {"fixed": [], "added": []}  # a book the full audit leaves out
             by_id.update({it["id"]: it for it in items})
         return {"fixed": len(r["fixed"]), "added": len(r["added"]),
                 "issues": rs.page_issues(items, progress, vol, page),

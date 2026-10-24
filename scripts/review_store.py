@@ -341,6 +341,12 @@ STATUSES = ("open", "false_positive", "skipped", "resolved", "all")
 CATEGORIES = ("verses", "commentary", "footnotes")
 
 
+def _atomic_write(path, text):
+    tmp = Path(path).with_name(Path(path).name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
 class Progress:
     """Each item's status (resolved, false_positive, skipped) in data/.review_queue_progress.json;
     false positives are kept in docs/false_positives.json as well, which outlives the queue."""
@@ -364,18 +370,25 @@ class Progress:
         return self.data.get(item_id)
 
     def set(self, item_id, status, info=None):
-        if status:
-            self.data[item_id] = status
-        else:
-            self.data.pop(item_id, None)
-        self.path.write_text(json.dumps(self.data, indent=1))
+        self.update({item_id: status}, {item_id: info} if info else None)
+
+    def update(self, changes, infos=None):
+        """Several statuses at once (None clears one), each file written once, atomically."""
+        for item_id, status in changes.items():
+            if status:
+                self.data[item_id] = status
+            else:
+                self.data.pop(item_id, None)
+        _atomic_write(self.path, json.dumps(self.data, indent=1))
         fps = self._fps()
-        if status == "false_positive":
-            new = dict(fps, **{item_id: info or True})
-        else:
-            new = {k: v for k, v in fps.items() if k != item_id}
+        new = dict(fps)
+        for item_id, status in changes.items():
+            if status == "false_positive":
+                new[item_id] = (infos or {}).get(item_id) or True
+            else:
+                new.pop(item_id, None)
         if new != fps:
-            self.fp_path.write_text(json.dumps(new, ensure_ascii=False, indent=2), encoding="utf-8")
+            _atomic_write(self.fp_path, json.dumps(new, ensure_ascii=False, indent=2))
 
 
 def load_queue(queue_path, fp_path, include_optional=False):
@@ -461,23 +474,28 @@ def merge_recheck(items, progress, vols, new_items, include_optional=True):
     """Fold a fresh audit of the volumes `vols` into `items` (in place). Open items it no longer
     finds are resolved and kept with fixed=True; ones fixed this way that come back are reopened;
     items marked by hand keep their status; new ones are appended."""
-    new = {q["id"]: q for q in new_items if include_optional or not q.get("optional")}
-    fixed, added = [], []
+    produced = {q["id"]: q for q in new_items}
+    # a page the audit could not read (malformed, gone) says nothing about its issues
+    unreadable = {(q["book_dir"], q["page"]) for q in new_items if q["kind"] in ("malformed_page", "missing_page")}
+    fixed, added, changes = [], [], {}
     known = set()
     for it in items:
         known.add(it["id"])
         if it["book_dir"] not in vols or it["kind"] not in AUDIT_KINDS:
             continue
-        if it["id"] in new:
-            it.update(msg=new[it["id"]]["msg"], **({"where": new[it["id"]]["where"]} if "where" in new[it["id"]] else {}))
+        q = produced.get(it["id"])
+        if q:
+            it.update(msg=q["msg"], **({"where": q["where"]} if "where" in q else {}))
             if it.pop("fixed", False) and progress.status(it["id"]) == "resolved":
-                progress.set(it["id"], None)
-        elif in_status(it, progress, "open"):
-            progress.set(it["id"], "resolved")
+                changes[it["id"]] = None
+        elif (it["book_dir"], it["page"]) not in unreadable and in_status(it, progress, "open"):
+            changes[it["id"]] = "resolved"
             it["fixed"] = True
             fixed.append(it["id"])
-    for qid, q in new.items():
-        if qid not in known:
+    for qid, q in produced.items():
+        if qid not in known and (include_optional or not q.get("optional")):
             items.append(dict(q))
             added.append(qid)
+    if changes:
+        progress.update(changes)
     return {"fixed": fixed, "added": added}

@@ -146,3 +146,84 @@ def test_recheck_sees_fresh_page(tmp_path, monkeypatch):
             break
     after = recheck_book(VOL)
     assert any(i["kind"] == "lowercase_lemma" and i["page"] == page and "ZZQ fresh test" in i["msg"] for i in after)
+
+
+# --- from the branch review ---
+
+def test_merge_optional_still_produced_is_not_fixed(progress):
+    item = dict(QUEUE[2], optional=False)  # an optional kind, loaded from false_positives.json as required
+    items = [item]
+    r = merge_recheck(items, progress, [VOL], [QUEUE[2]], include_optional=False)
+    assert r["fixed"] == [] and progress.status(item["id"]) is None
+
+
+def test_merge_leaves_unreadable_pages_alone(progress):
+    items = copy.deepcopy(QUEUE)
+    malformed = {"id": "22_proverbes/0194/malformed_page/hhhh", "book_dir": VOL, "page": 194, "kind": "malformed_page",
+                 "msg": "malformed", "optional": False}
+    r = merge_recheck(items, progress, [VOL], [malformed])
+    assert not any(i.startswith("22_proverbes/0194/hyphen_cut") or i.startswith("22_proverbes/0194/missing_footnote")
+                   for i in r["fixed"])
+    assert progress.status("22_proverbes/0194/hyphen_cut/aaaa") is None
+
+
+def test_progress_update_writes_once_and_atomically(progress, data_dir, monkeypatch):
+    writes = []
+    import review_store
+    real = review_store.os.replace
+    monkeypatch.setattr(review_store.os, "replace", lambda a, b: (writes.append(str(b)), real(a, b)))
+    progress.update({"a": "resolved", "b": "resolved", "c": None})
+    assert sum(w.endswith(".review_queue_progress.json") for w in writes) == 1
+    assert json.loads((data_dir / ".review_queue_progress.json").read_text()) == {"a": "resolved", "b": "resolved"}
+
+
+def test_mark_waits_for_a_running_recheck(data_dir):
+    order = []
+
+    def slow(vol):
+        order.append("audit start")
+        time.sleep(0.3)
+        order.append("audit end")
+        return list(QUEUE)
+    srv, post = server(data_dir, slow)
+    try:
+        t = threading.Thread(target=post, args=("/api/recheck", {"vol": VOL, "page": 194}))
+        t.start()
+        time.sleep(0.1)
+        post("/api/mark", {"id": QUEUE[0]["id"], "status": "resolved"})
+        order.append("marked")
+        t.join()
+        assert order == ["audit start", "audit end", "marked"]
+    finally:
+        srv.shutdown()
+
+
+def test_recheck_not_audited_changes_nothing(data_dir):
+    srv, post = server(data_dir, lambda vol: None)  # a book the full audit leaves out
+    try:
+        r = post("/api/recheck", {"vol": VOL, "page": 194})
+        assert r["fixed"] == 0 and r["added"] == 0
+        assert not (data_dir / ".review_queue_progress.json").exists() or \
+            "resolved" not in (data_dir / ".review_queue_progress.json").read_text()
+    finally:
+        srv.shutdown()
+
+
+@pytest.mark.skipif(not (REAL_DATA / "47_matthieu" / "normalized").is_dir(), reason="no real data")
+def test_recheck_book_skips_books_the_audit_leaves_out():
+    from page_audit import recheck_book
+    assert recheck_book("47_matthieu") is None
+
+
+@pytest.mark.skipif(not (REAL_DATA / VOL / "normalized").is_dir(), reason="no real data")
+def test_recheck_reloads_false_positives(tmp_path, monkeypatch):
+    import audit_integrity
+    import paths
+    from page_audit import recheck_book
+    shutil.copytree(REAL_DATA / VOL / "normalized", tmp_path / VOL / "normalized")
+    monkeypatch.setattr(paths, "DATA", tmp_path)
+    monkeypatch.setattr(audit_integrity, "STUDIUM", tmp_path)
+    monkeypatch.setattr(audit_integrity, "FP_IDS", {"stale"})
+    monkeypatch.setattr(audit_integrity, "load_false_positives", lambda: {"fresh"})
+    recheck_book(VOL)
+    assert audit_integrity.FP_IDS == {"fresh"}
