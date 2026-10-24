@@ -3,6 +3,7 @@ import { ready, boot } from "./app.js";
 import "./edit.js";
 import "./queue.js";
 import "./entries.js";
+import "./point.js";
 import { decorate } from "./icons.js";
 
 decorate();

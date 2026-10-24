@@ -107,7 +107,7 @@ body { grid-template-rows: auto auto auto 1fr; }
 .ctx b { font-weight: 600; }
 .ctx .cont { color: var(--warn); font-weight: 600; font-size: 10px; letter-spacing: .05em; }
 .block { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 5px 8px 7px; margin-bottom: 6px; }
-.block.flash { box-shadow: 0 0 0 2px var(--accent); }
+
 .block-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 11px; color: var(--muted); min-height: 24px; }
 .block-head .title { font-weight: 600; }
 .block-head .handle { cursor: grab; }
@@ -204,3 +204,9 @@ button.icon-after { flex-direction: row-reverse; }
             background: var(--surface); border: 1px solid var(--border); color: var(--muted); opacity: 0; transition: opacity .12s; }
 .fw:hover .copy, .fw .copy:focus { opacity: 1; }
 .fw .copy:hover { color: var(--c, var(--accent)); border-color: var(--c, var(--accent)); }
+
+/* pointing at an issue */
+.f mark { background: var(--hi); color: inherit; border-radius: 2px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 60%, transparent); }
+.f.flagged { border-color: var(--danger); box-shadow: 0 0 0 1px var(--danger); }
+@keyframes flash { 0% { box-shadow: 0 0 0 3px var(--accent); } 100% { box-shadow: 0 0 0 3px transparent; } }
+.block.flash { animation: flash 1.2s ease-out; }

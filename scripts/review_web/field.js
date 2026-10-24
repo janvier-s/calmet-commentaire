@@ -20,9 +20,10 @@ export const ITALIC_FIELDS = new Set(["chapter_summary", "latin", "french_transl
 const HEBREW = /[֐-׿יִ-ﭏ]+(?:[  ]+[֐-׿יִ-ﭏ]+)*/g;
 
 /** Per character: is it italic, is it a mark, is it the unpaired mark, is it small caps. */
-function styles(s, smallcaps) {
+function styles(s, smallcaps, highlight) {
   const { runs, marks, openAt } = italicRuns(s);
-  const st = Array.from(s, () => ({ it: false, mk: false, open: false, sc: false, he: false }));
+  const st = Array.from(s, () => ({ it: false, mk: false, open: false, sc: false, he: false, hl: false }));
+  if (highlight) for (const [a, b] of highlight) for (let i = a; i < b && i < s.length; i++) st[i].hl = true;
   for (const [a, b] of runs) for (let i = a; i < b; i++) st[i].it = true;
   for (const i of marks) st[i].mk = true;
   if (openAt) st[openAt === "start" ? marks[0] : marks[marks.length - 1]].open = true;
@@ -31,21 +32,22 @@ function styles(s, smallcaps) {
   return st;
 }
 
-/** Fill `el` with `s` as styled spans. `smallcaps`: indexes set in small caps. */
-export function render(el, s, smallcaps = null) {
+/** Fill `el` with `s` as styled spans. `smallcaps`: indexes set in small caps; `highlight`: [a, b]
+ *  spans drawn as <mark> (the words an issue points at). */
+export function render(el, s, smallcaps = null, highlight = null) {
   el.textContent = "";
   if (!s) return;
-  const st = styles(s, smallcaps);
+  const st = styles(s, smallcaps, highlight);
   let i = 0;
   while (i < s.length) {
     const k = st[i];
     let j = i + 1;
     while (j < s.length && st[j].it === k.it && st[j].mk === k.mk && st[j].open === k.open
-           && st[j].sc === k.sc && st[j].he === k.he) j++;
+           && st[j].sc === k.sc && st[j].he === k.he && st[j].hl === k.hl) j++;
     const piece = s.slice(i, j);
-    if (!k.it && !k.mk && !k.sc && !k.he) el.append(piece);
+    if (!k.it && !k.mk && !k.sc && !k.he && !k.hl) el.append(piece);
     else {
-      const span = document.createElement("span");
+      const span = document.createElement(k.hl ? "mark" : "span");
       span.className = [k.it && "it", k.mk && "mk", k.open && "open", k.sc && "sc"].filter(Boolean).join(" ");
       if (k.he) span.dir = "rtl";
       span.textContent = piece;
@@ -133,8 +135,15 @@ export class Field {
     if (this.latinCase && this.text && !this.isNull()) {
       sc = this.latinCase(this.text, () => { if (!this.composing) this.draw(this.selection()); });
     }
-    render(this.el, this.text, sc);
+    render(this.el, this.text, sc, this.marks);
     if (sel) this.select(...sel);
+  }
+
+  /** Mark the words an issue points at (until the next edit); `flag` outlines the field. */
+  setMarks(spans, flag = false) {
+    this.marks = spans && spans.length ? spans : null;
+    this.el.classList.toggle("flagged", flag);
+    this.draw(document.activeElement === this.el ? this.selection() : null);
   }
 
   selection() {
@@ -164,6 +173,8 @@ export class Field {
     this.lastEdit = now;
     this.lastKind = kind;
     if (this.isNull()) { a = 0; b = this.text.length; }
+    this.marks = null;
+    this.el.classList.remove("flagged");
     this.text = this.text.slice(0, a) + ins + this.text.slice(b);
     this.draw([a + ins.length, a + ins.length]);
     this.onChange(this);

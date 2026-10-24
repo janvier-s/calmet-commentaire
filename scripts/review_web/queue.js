@@ -2,6 +2,7 @@
 import { S, api, ask, boot, go, nav, renderPage, showScan, toast, updateTop } from "./app.js";
 import { save, setDirty } from "./edit.js";
 import { icon } from "./icons.js";
+import { point } from "./point.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => {
@@ -89,7 +90,9 @@ async function goItem(i) {
   const it = Q.items[Q.idx];
   Q.current = it.id;
   updateCounter();
-  return go(it.book_dir, it.page);
+  const r = await go(it.book_dir, it.page);
+  if (r) point(it);
+  return r;
 }
 
 function step(dir) {
@@ -136,6 +139,7 @@ function select(it) {
   if (i >= 0) Q.idx = i;
   updateCounter();
   renderIssues();
+  point(it);
 }
 
 function renderIssues() {
@@ -160,10 +164,11 @@ function renderIssues() {
   $("page-issues").hidden = !(panelOpen && n);
   $("page-issues").replaceChildren(...S.issues.map((it) => card(it, false)));
   const a = S.around || {};
-  $("around").replaceChildren(
+  $("around").replaceChildren(...[
     a.prev != null ? el("button", { className: "link", onclick: () => go(S.vol, a.prev) }, icon("prev", 12), `p.${a.prev}`) : null,
     el("span", { className: "muted small", textContent: ` ${a.open_in_book ?? 0} open in this book ` }),
-    a.next != null ? el("button", { className: "link", onclick: () => go(S.vol, a.next) }, `p.${a.next}`, icon("next", 12)) : null);
+    a.next != null ? el("button", { className: "link", onclick: () => go(S.vol, a.next) }, `p.${a.next}`, icon("next", 12)) : null,
+  ].filter(Boolean));
 }
 
 // a page without JSON (scan only) can be created; every load redraws the column
