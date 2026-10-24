@@ -79,7 +79,9 @@ class Store:
 
     def save(self, vol, page, data, version, force=False):
         p = self.path(vol, page)
-        if not force and version is not None and p.exists() and self._version(p) != version:
+        if not p.exists():  # only create() makes a page
+            raise FileNotFoundError(p)
+        if not force and version is not None and self._version(p) != version:
             disk, v = self.read(vol, page)
             raise Conflict(disk, v)
         d = trim(clean_page(form_values(data)))

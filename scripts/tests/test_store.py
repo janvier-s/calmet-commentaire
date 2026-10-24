@@ -74,3 +74,12 @@ def test_create_page(store):
 def test_scan(store):
     assert store.scan("22_proverbes", 194).name == "page_0194.png"
     assert store.scan("22_proverbes", 193) is None
+
+
+def test_save_missing_page_refused(store):
+    d, v = store.read("22_proverbes", 193)
+    with pytest.raises(FileNotFoundError):
+        store.save("22_proverbes", 196, d, v)
+    with pytest.raises(FileNotFoundError):
+        store.save("22_proverbes", 196, d, None, force=True)
+    assert not path(store, 196).exists()

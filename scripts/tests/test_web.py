@@ -132,3 +132,17 @@ def test_state(web):
 def test_page_defaults_to_first(web):
     code, p = web(f"/api/page?vol={VOL}")
     assert code == 200 and p["page"] == 193
+
+
+def test_save_and_op_on_missing_page_refused(web):
+    _, p = web(f"/api/page?vol={VOL}&page=193")
+    body = {"vol": VOL, "page": 196, "data": p["data"], "version": p["version"]}
+    assert web("/api/page", body)[0] == 404
+    assert web("/api/op", dict(body, op={"op": "add_footnote", "marker": "z"}))[0] == 404
+    assert not (web.data / VOL / "normalized" / "page_0196.json").exists()
+
+
+def test_post_needs_a_page(web):
+    _, p = web(f"/api/page?vol={VOL}&page=193")
+    assert web("/api/page", {"vol": VOL, "data": p["data"], "version": p["version"]})[0] == 400
+    assert web("/api/page", {"vol": VOL, "page": -1, "data": p["data"], "version": p["version"]})[0] == 400

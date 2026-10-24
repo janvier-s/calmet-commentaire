@@ -21,20 +21,21 @@ function latinCase(text, redraw) {
     for (let i = 0; i < c.length; i++) if (c[i] !== c[i].toUpperCase() && i !== first) idx.push(i);
     cased.set(text, idx);
     redraw();
-  });
+  }).catch(() => cased.delete(text));
   return null;
 }
 
-let typingTimer = null;
+S.edits = 0;  // counts every edit, so a save knows whether typing went on meanwhile
 hooks.makeField = (f, name, value, path) => {
+  let timer = null;  // per field: each lemma gets its small caps
   const field = new Field(f, {
     name, value, latinCase: (t, redraw) => {
-      clearTimeout(typingTimer);
+      clearTimeout(timer);
       if (cased.has(t)) return cased.get(t);
-      typingTimer = setTimeout(() => latinCase(t, redraw), 300);
+      timer = setTimeout(() => latinCase(t, redraw), 300);
       return null;
     },
-    onChange: () => setDirty(true),
+    onChange: () => { S.edits++; setDirty(true); },
   });
   f.classList.toggle("hide-marks", !$("show-marks").checked);
   if (name === "french_commentary" && !field.text.trim()) f.style.minHeight = "6em";
@@ -51,6 +52,7 @@ hooks.makeField = (f, name, value, path) => {
   S.fields.push({ path, field });
 };
 hooks.beforeRender = () => { S.fields = []; lastField = null; };
+hooks.collect = () => { if (S.fields.length) S.data = typedData(); };  // keep typed text over a redraw
 
 export function setDirty(on) {
   S.dirty = on;
@@ -76,6 +78,7 @@ export function typedData() {
 export async function save({ redraw = true } = {}) {
   if (!S.data) return true;
   const data = typedData();
+  const edits = S.edits;
   let r = await api("/api/page", { vol: S.vol, page: S.page, data, version: S.version });
   if (r.status === 409) {
     const choice = await ask(
@@ -90,6 +93,7 @@ export async function save({ redraw = true } = {}) {
   const changed = JSON.stringify(r.body.data) !== JSON.stringify(data);
   S.data = r.body.data;
   S.version = r.body.version;
+  if (S.edits !== edits) return true;  // typed during the save: still unsaved, fields kept
   setDirty(false);
   $("dirty").textContent = "saved";
   setTimeout(() => { if (!S.dirty) $("dirty").textContent = ""; }, 1500);

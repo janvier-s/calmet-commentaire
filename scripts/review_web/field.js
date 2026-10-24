@@ -110,7 +110,8 @@ export class Field {
       else if (k === "y") { e.preventDefault(); this.history(this.redo, this.undo); }
       else if (k === "i") { e.preventDefault(); this.toggleItalic(); }
     });
-    el.addEventListener("compositionend", () => this.resync());
+    el.addEventListener("compositionstart", () => { this.composing = true; });
+    el.addEventListener("compositionend", () => { this.composing = false; this.resync(); });
     el.addEventListener("input", (e) => { if (!e.isComposing && this.domText() !== this.text) this.resync(); });
     el.addEventListener("focus", () => { if (this.isNull()) this.select(0, this.text.length); });
     this.draw();
@@ -130,7 +131,7 @@ export class Field {
     this.el.classList.toggle("null", this.isNull());
     let sc = null;
     if (this.latinCase && this.text && !this.isNull()) {
-      sc = this.latinCase(this.text, () => this.draw(this.selection()));
+      sc = this.latinCase(this.text, () => { if (!this.composing) this.draw(this.selection()); });
     }
     render(this.el, this.text, sc);
     if (sel) this.select(...sel);
@@ -215,7 +216,7 @@ export class Field {
 
   beforeInput(e) {
     const t = e.inputType;
-    if (e.isComposing || t === "insertCompositionText") return;  // resynced on compositionend
+    if (e.isComposing || t.includes("Composition")) return;  // WebKit's too; resynced on compositionend
     const [a, b] = this.range(e);
     const plain = () => (e.dataTransfer && e.dataTransfer.getData("text/plain")) || e.data || "";
     e.preventDefault();

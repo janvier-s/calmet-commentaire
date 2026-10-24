@@ -63,7 +63,7 @@ export async function loadPage(vol, page) {
   return S;
 }
 
-function updateTop() {
+export function updateTop() {
   $("vol").value = S.vol;
   $("page-num").value = S.page;
   document.title = `${S.vol} p.${S.page} · Calmet Review`;
@@ -72,7 +72,7 @@ function updateTop() {
 // --- the scan ---
 const ZOOM_STEPS = [0.5, 0.65, 0.8, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0];
 
-function showScan(has) {
+export function showScan(has) {
   const img = $("scan-img");
   $("no-scan").hidden = has;
   img.hidden = !has;
@@ -290,6 +290,7 @@ function setupTop() {
   document.addEventListener("click", (e) => { if (!e.target.closest(".menu")) $("menu").hidden = true; });
   for (const b of document.querySelectorAll("#sections button")) {
     b.onclick = () => {
+      if (hooks.collect) hooks.collect();
       S.section = b.dataset.sec;
       document.querySelectorAll("#sections button").forEach((x) => x.classList.toggle("on", x === b));
       renderPage();

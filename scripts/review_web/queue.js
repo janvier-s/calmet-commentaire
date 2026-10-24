@@ -1,5 +1,5 @@
 // The queue: filters with counts, the page's issues, issue to issue, Resolved / False positive / Skip.
-import { S, api, ask, boot, go, nav, toast } from "./app.js";
+import { S, api, ask, boot, go, nav, renderPage, showScan, toast, updateTop } from "./app.js";
 import { save, setDirty } from "./edit.js";
 
 const $ = (id) => document.getElementById(id);
@@ -147,7 +147,12 @@ nav.go = async (vol, page) => {
     const msg = `${vol} page ${page} has no JSON.\nCreate an empty page to transcribe from the scan?` +
       (r.scan ? "" : "\n\n(No scan was found for this page either.)");
     if (await ask(msg, [["no", "Cancel"], ["yes", "Create page", "ok"]]) !== "yes") {
-      Object.assign(S, { vol, page, issues: r.issues || [], around: S.around });
+      Object.assign(S, { vol, page, data: null, version: null, ctx: null, issues: r.issues || [] });
+      setDirty(false);
+      renderPage();
+      document.getElementById("page-text").textContent = `Page ${page} has no JSON yet.`;
+      updateTop();
+      showScan(r.scan);
       renderIssues();
       return null;
     }

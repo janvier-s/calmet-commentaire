@@ -49,12 +49,13 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         vol = q.get("vol")
         if vol not in store.volumes():
             raise ApiError(404, {"error": f"no volume {vol}"})
-        if q.get("page") in (None, "", "null") and store.pages(vol):
-            return vol, store.pages(vol)[0]
         try:
-            return vol, int(q.get("page"))
+            page = int(q.get("page"))
         except (TypeError, ValueError):
             raise ApiError(400, {"error": "bad page"})
+        if page < 1:
+            raise ApiError(400, {"error": "bad page"})
+        return vol, page
 
     def page_payload(vol, page, data, version):
         return {"page": page, "data": data, "version": version, "scan": store.scan(vol, page) is not None,
@@ -65,10 +66,14 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     def save(vol, page, body):
         try:
             return store.save(vol, page, body["data"], body.get("version"), bool(body.get("force")))
+        except FileNotFoundError:
+            raise ApiError(404, {"error": f"{vol} page {page} has no JSON: nothing saved"})
         except rs.Conflict as c:
             raise ApiError(409, {"error": "changed on disk", "disk": c.disk, "version": c.version})
 
     def get_page(q):
+        if q.get("page") in (None, "", "null") and q.get("vol") in store.volumes() and store.pages(q["vol"]):
+            q = dict(q, page=store.pages(q["vol"])[0])  # a book opens at its first page
         vol, page = vol_page(q)
         if not store.path(vol, page).exists():
             raise ApiError(404, {"missing": True, "scan": store.scan(vol, page) is not None,
