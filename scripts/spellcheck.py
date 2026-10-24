@@ -39,13 +39,23 @@ OUT = DOCS / "hunspell"
 NAMES = SCRIPTS / "spellcheck_names.txt"
 
 LETTER = "A-Za-zÀ-ÖØ-öø-ÿœŒæÆ"
-WORD = re.compile(rf"[{LETTER}]+(?:['’][{LETTER}]+)?")
+WORD = re.compile(rf"[{LETTER}]+(?:['’][{LETTER}]+)*")
+HYPHENATED = re.compile(rf"([{LETTER}]+)-\s*$")          # a word the printer broke at the end of a page
 CALL = re.compile(r"\^\{[^}]*\}")
 UNSURE = re.compile(r"\[(?:UNCERTAIN[^\]]*|ILLEGIBLE)\]")    # transcription placeholders
 ACCENT = re.compile(r"[éèêëàâîïôûùüç]", re.I)
 MARKUP = re.compile(r"[_*#`]")
 NUMBER = re.compile(r"\b\d+([,.:]\d+)*\b")
 ELISION = re.compile(r"^(?:qu|[dljcsnmt])['’]", re.I)
+GRAVE = str.maketrans("àèìòù", "aeiou")
+# The spellings of Calmet's time that the modernization missed, as (old, modern) letter groups:
+# azyle -> asile, hazard -> hasard, isle -> île, enfans -> enfants, appeller -> appeler, vûe -> vue
+OLD_SPELLINGS = [("y", "i"), ("z", "s"), ("s", "z"), ("ans", "ants"), ("ens", "ents"), ("ll", "l"),
+                 ("tt", "t"), ("pp", "p"), ("mm", "m"), ("nn", "n"), ("rr", "r"), ("l", "ll"), ("t", "tt"),
+                 ("es", "ê"), ("is", "î"), ("os", "ô"), ("as", "â"), ("us", "û"), ("ë", "e"), ("ü", "u"),
+                 ("ë", "é"), ("û", "u"), ("ô", "o"), ("î", "i"), ("â", "a"), ("ê", "e"), ("ê", "è"), ("é", "è"),
+                 ("è", "é"), ("e", "é"), ("e", "è"), ("sç", "s"), ("th", "t"), ("ay", "ai"), ("oy", "oi"),
+                 ("ai", "oi"), ("oi", "ai"), ("ez", "és"), ("c", "qu"), ("qu", "c"), ("x", "s"), ("s", "x")]
 TOP_FIELDS = ("book_title", "chapter_title", "chapter_intro", "chapter_summary",
               "chapter_argument", "chapter_preface")
 
@@ -67,13 +77,44 @@ def french_texts(d):
 def clean(text):
     if not text or not isinstance(text, str):
         return ""
-    return NUMBER.sub(" ", MARKUP.sub(" ", CALL.sub(" ", UNSURE.sub(" ", text))))
+    return NUMBER.sub(" ", MARKUP.sub(" ", CALL.sub(" ", UNSURE.sub(" ", text.replace("\xad", "")))))
 
 
 def words(text):
-    """(word, followed by a full stop) for each word of text."""
+    """(word, followed by a full stop) for each word of text. A word with two apostrophes
+    loses its elision (jusqu'aujourd'hui -> aujourd'hui: hunspell knows only the second)."""
     text = clean(text)
-    return [(m.group(), text[m.end():m.end() + 1] == ".") for m in WORD.finditer(text)]
+    out = []
+    for m in WORD.finditer(text):
+        w = m.group()
+        if len(re.findall("['’]", w)) > 1:
+            w = re.sub(r"^[^'’]+['’]", "", w)
+        out.append((w, text[m.end():m.end() + 1] == "."))
+    return out
+
+
+def volume_texts(vol):
+    """(page number, French texts) for each page of vol, with the words the printer broke
+    across a page turn put back together ("re-" / "vient de" -> "revient de"), as calmet.py
+    sews them; if the next page reprints the whole word ("con-" / "concupiscence"), the
+    fragment goes. A fragment ending a field inside a page (a note cut short) is left out."""
+    out = []
+    for p in pages(vol):
+        out.append((page_no(p), [t for t in french_texts(load(p)) if isinstance(t, str) and t.strip()]))
+    for i, (_, texts) in enumerate(out):
+        for j, t in enumerate(texts):
+            m = HYPHENATED.search(t)
+            if not m:
+                continue
+            texts[j] = t[:m.start()]
+            nxt = out[i + 1][1] if j == len(texts) - 1 and i + 1 < len(out) else []
+            if nxt and nxt[0].lstrip()[:1].islower():
+                head = nxt[0].lstrip()
+                first = WORD.match(head)
+                if first and first.group().lower().startswith(m.group(1).lower()):
+                    continue
+                nxt[0] = m.group(1) + head
+    return out
 
 
 def performance_cores():
@@ -142,13 +183,13 @@ def scan(volumes):
     counts = {}
     for vol in volumes:
         c, dots, where = Counter(), Counter(), {}
-        vol_pages = pages(vol)
-        for p in vol_pages:
-            for t in french_texts(load(p)):
+        vol_pages = volume_texts(vol)
+        for no, texts in vol_pages:
+            for t in texts:
                 for w, dot in words(t):
                     c[w] += 1
                     dots[w] += dot
-                    where.setdefault(w, []).append(page_no(p))
+                    where.setdefault(w, []).append(no)
         counts[vol] = c, dots, where
         print(f"{vol}: {len(vol_pages)} pages, {sum(c.values())} words, {len(c)} distinct", flush=True)
 
@@ -217,8 +258,8 @@ def noise(errors):
             why[w] = "known name"
         elif info["total"] >= 3 and info["dots"] >= 0.9 * info["total"] and not s_twin(w, errors):
             why[w] = "abbreviation"
-        elif not ACCENT.search(wl) and _fold(wl) in latin:
-            why[w] = "Latin"
+        elif not ACCENT.search(wl.translate(GRAVE)) and _fold(wl.translate(GRAVE)) in latin:
+            why[w] = "Latin"    # with Calmet's grave accents too: cùm, quàm, ità
     return why
 
 
@@ -312,10 +353,49 @@ def classify(w, info, everything):
     return None
 
 
+def classify_all(w, info, everything):
+    """classify, then for what it leaves: an old spelling whose modern form is in the text."""
+    hit = classify(w, info, everything)
+    if hit or len(bare(w)) <= 3:
+        return hit
+    modern = old_spelling(bare(w))
+    if not modern:
+        return None
+    head = w[:len(w) - len(bare(w))]                    # the elided article, as written
+    if w[len(head):][:1].isupper():
+        modern = modern[:1].upper() + modern[1:]
+    return "old_spelling", [head + modern + " (in the text)"]
+
+
+@lru_cache(maxsize=None)
+def bare_french_words():
+    return frozenset(bare(w) for w in french_words())
+
+
+def old_spelling(wl):
+    """The modern word wl is, one or two old letter groups changed (OLD_SPELLINGS), if hunspell
+    knows it from the text; None if none or several."""
+    known = bare_french_words()
+
+    def step(w):
+        for old, new in OLD_SPELLINGS:
+            i = w.find(old)
+            while i >= 0:
+                yield w[:i] + new + w[i + len(old):]
+                i = w.find(old, i + 1)
+
+    first = set(step(wl))
+    found = {v for v in first if v in known}
+    if not found:
+        found = {v2 for v in first for v2 in step(v) if v2 in known}
+    found.discard(wl)
+    return found.pop() if len(found) == 1 else None
+
+
 def candidates(errors, everything, limit):
     groups = {}
     for w, info in errors.items():
-        hit = classify(w, info, everything)
+        hit = classify_all(w, info, everything)
         if hit:
             # capitalized words are mostly names: list them after the others
             kind = hit[0] + (" (capitalized, often names)" if ELISION.sub("", w)[:1].isupper() else "")

@@ -17,23 +17,34 @@ Stages (`run` does all three; every Claude answer is cached):
 Writes docs/footnotes/<volume>.json: each changed or flagged note with its current text,
 the proposal, why, and flags. `apply` writes the proposals into normalized/.
 
-Usage: uv run --no-project --with pillow python footnotes.py run <volume> [--pages 99-140] [--local | --no-scan] [--uncertain-only] [--context]
-       python3 footnotes.py apply <volume> [--pages 99-140] [--no-hold]
+Usage: uv run --no-project --with pillow python footnotes.py run <volume|book|all> ... [--pages 99-140] [--local | --no-scan] [--uncertain-only] [--context] [--apply]
+       python3 footnotes.py apply <volume|book|all> ... [--pages 99-140] [--no-hold]
        python3 footnotes.py held      (every note still held, all volumes: docs/footnotes/held.json)
-CLAUDE_MODEL (expand) and SCAN_MODEL (scan) choose the models (default sonnet for both) choose the models.
+Several volumes run one after another in one process (the Bible indexes are built once).
+run --apply writes each volume's proposals in as soon as it is done, flagged notes held.
+CLAUDE_MODEL (expand) and SCAN_MODEL (scan) choose the models (default sonnet for both).
+FOOTNOTE_BACKEND=agy sends the text-only calls (expand, --context) to agy instead of Claude Code
+(AGY_MODEL picks its model, e.g. gemini-3.8-flash-medium; default: agy's own); the scan stays with Claude.
+Answers Claude already gave for the same notes are used as they are, not asked again.
 """
-import asyncio, difflib, hashlib, json, os, re, sys, unicodedata
+import asyncio, difflib, hashlib, json, os, re, sys, tempfile, unicodedata
 from collections import Counter, defaultdict
+from pathlib import Path
+from functools import lru_cache
 
 import bible_refs as B
 import footnote_spell
-from paths import BOOKS, BY_VOLUME, DATA, DOCS, SCRIPTS, pages as volume_pages
+from paths import BOOKS, BY_VOLUME, DATA, DOCS, SCRIPTS, pages as volume_pages, volumes_of
 
 OUT_DIR = DOCS / "footnotes"
 CACHE = SCRIPTS / "cache" / "footnote_cache.json"
 CROPS = SCRIPTS / "cache" / "footnote_crops2"
 GLOSSARY = (SCRIPTS / "footnote_glossary.txt").read_text(encoding="utf-8")
-EXPAND_MODEL = os.environ.get("CLAUDE_MODEL", "sonnet")
+BACKEND = os.environ.get("FOOTNOTE_BACKEND", "claude")
+AGY_MODEL = os.environ.get("AGY_MODEL", "")
+CLAUDE_EXPAND = os.environ.get("CLAUDE_MODEL", "sonnet")
+# the model's name goes into the cache keys: agy's answers are kept apart from Claude's
+EXPAND_MODEL = f"agy:{AGY_MODEL or 'default'}" if BACKEND == "agy" else CLAUDE_EXPAND
 SCAN_MODEL = os.environ.get("SCAN_MODEL", "sonnet")
 BATCH, PARALLEL = 50, 4
 
@@ -142,11 +153,13 @@ HEB_POINTS = re.compile(r"[֑-ׇ]")
 HEB_ALIKE = str.maketrans("דחכזןךםףץ", "רהבווכמפצ")  # letters small type confuses (ר/ד, ה/ח, ב/כ, ו/ז/ן); final forms
 
 
+@lru_cache(None)
 def heb_skel(w):
     """A Hebrew word with the letters small type confuses made one, and without ו/י (spelled full or not)."""
     return re.sub("[וי]", "", re.sub(r"[^א-ת]", "", w).translate(HEB_ALIKE))
 
 
+@lru_cache(None)
 def grk_skel(w):
     """A Greek word without accents, with the ligatures the transcription misreads made one (ου read ε or ω, στ read σ)."""
     w = B.plain(unicodedata.normalize("NFD", w.replace("ẽ", "ου")).replace("\u0345", "ι")).replace("ς", "σ").replace("ȣ", "ου").replace("στ", "σ")
@@ -195,14 +208,20 @@ def find_in_bible(tokens, kind, book, chaps):
     if k < 2:
         return None
     rare = sorted((i for i in range(k) if ts[i] and len(index.get(ts[i], [])) > 0), key=lambda i: len(index[ts[i]]))[:3]
+    want = Counter(ts)
     best = None
     for i in rare:
         for p in index[ts[i]][:2000]:
             start = p - i
             window = sk[max(0, start - 2):start + k + 2]
+            near = where[p][0] == book and where[p][1] in chaps
+            # the words window and tokens share bound the pairs difflib can find: skip the
+            # windows that could not pass, or not beat the best so far
+            most = sum((Counter(window) & want).values())
+            if most < (2 if near else 3) or most < -(-3 * k // 4) or (best and (most, near) <= best[0]):
+                continue
             sm = difflib.SequenceMatcher(None, ts, window, autojunk=False)
             pairs = [(b.a + j, max(0, start - 2) + b.b + j) for b in sm.get_matching_blocks() for j in range(b.size)]
-            near = where[p][0] == book and where[p][1] in chaps
             if len(pairs) < (2 if near else 3) or len(pairs) < -(-3 * k // 4):
                 continue
             score = (len(pairs), near)
@@ -664,6 +683,23 @@ def script_kept(old, new):
     return all(x in b or (not HEB_SEG.fullmatch(x) and len(x.split()) <= 3) for x in a)
 
 
+def numbers(t):
+    """The numbers a text holds, arabic or Roman (XXXII., cxiii)."""
+    out = {int(x) for x in re.findall(r"\d+", t or "")}
+    out |= {v for w in re.findall(r"\b[IVXLCivxlc]+\b", t or "") if (v := B.num(w))}
+    return out
+
+
+def numbers_kept(old, new, n):
+    """Every number of the written-out note was in the note already (arabic or Roman), in the
+    reference before it (Ibid.), in the printed note, or is the chapter commented (℣. 17. alone);
+    a book's number before its name (1 Esdras) aside. A model that changes Josué 13:27 to 12:27,
+    or adds a reference of its own, is caught here."""
+    allowed = numbers(old) | numbers(n.get("prev")) | numbers(n.get("raw")) | {n.get("chap") or 0}
+    book_no = {m.start() for m in re.finditer(r"\b[1-4](?= [A-ZÉ])", new)}
+    return all(int(m.group()) in allowed or m.start() in book_no for m in re.finditer(r"\d+", new))
+
+
 # ---- Claude ------------------------------------------------------------------------
 
 USAGE = SCRIPTS / "cache" / "usage.log"
@@ -671,7 +707,62 @@ LIMIT_HIT = False  # set once Claude answers "session limit": no more calls this
 NO_CALLS = False   # --local
 
 
+def answer_key(tag, *parts):
+    """The cache key for this question; an answer Claude or agy's default model already gave to it counts too."""
+    keys = [key(tag, m, *parts) for m in dict.fromkeys([EXPAND_MODEL, CLAUDE_EXPAND, "agy:default"])]
+    return keys, keys[0]
+
+
+AGY_PLAIN = "Answer directly, with text only: do not use any tool, do not run commands, do not read or write files.\n\n"
+
+
+async def agy(prompt, sem):
+    """claude() for the text-only calls, through agy (FOOTNOTE_BACKEND=agy). agy is an agent: some
+    models reach for a tool (a shell command, which print mode refuses, leaving no answer), so it is
+    told to answer in text and runs in an empty folder."""
+    global LIMIT_HIT
+    empty = Path(tempfile.gettempdir()) / "footnotes_agy"
+    empty.mkdir(exist_ok=True)
+    args = ["agy", "-p", AGY_PLAIN + prompt, "--print-timeout", "600s", "--disable-slash-commands", "--output-format", "json"]
+    args += ["--model", AGY_MODEL] if AGY_MODEL else []
+    async with sem:
+        if LIMIT_HIT or NO_CALLS:
+            return {}
+        proc = await asyncio.create_subprocess_exec(*args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE,
+                                                    cwd=str(empty))
+        try:  # agy does not always keep to --print-timeout
+            out, err = await asyncio.wait_for(proc.communicate(), 660)
+        except asyncio.TimeoutError:
+            proc.kill()
+            out, err = b"", b"timed out"
+    try:
+        d = json.loads(out.decode())
+    except json.JSONDecodeError:
+        d = {"status": "ERROR", "response": (err or out).decode()[:300]}
+    text = str(d.get("response") or "")
+    u = d.get("usage") or {}
+    with USAGE.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(dict(model=EXPAND_MODEL, image=False, cost=None, input_tokens=u.get("input_tokens", 0),
+                                output_tokens=u.get("output_tokens", 0))) + "\n")
+    if d.get("status") != "SUCCESS":
+        if re.search(r"quota|limit|exhausted|429", text + err.decode(), re.I):
+            if not LIMIT_HIT:
+                print(f"  agy: {text[:100]}: no more calls this run; answers so far are cached", file=sys.stderr, flush=True)
+            LIMIT_HIT = True
+        else:
+            print("  agy call failed:", text[:200], file=sys.stderr)
+        return {}
+    m = re.search(r"\[\s*\{.*\}\s*\]", text, re.S)
+    try:
+        return {str(r["id"]).removeprefix("id ").strip(): r for r in json.loads(m.group())}
+    except Exception:
+        print("  agy call failed:", text[:200], file=sys.stderr)
+        return {}
+
+
 async def claude(prompt, model, sem, image_dir=None):
+    if BACKEND == "agy" and not image_dir:
+        return await agy(prompt, sem)
     global LIMIT_HIT
     # --safe-mode: no CLAUDE.md, plugins, hooks or skills loaded into each call (half the overhead)
     args = ["claude", "-p", "--model", model, "--strict-mcp-config", "--disable-slash-commands",
@@ -873,10 +964,11 @@ async def context_stage(notes, cache):
     for n in notes:
         if not (CONTEXT_FLAGS & set(n["flags"]) or bad_refs(n)):
             continue
-        n["ctx_key"] = key("ctx1", EXPAND_MODEL, n["proposed"], n["scan_why"], n["flags"], n["before"][-220:])
+        keys, n["ctx_key"] = answer_key("ctx1", n["proposed"], n["scan_why"], n["flags"], n["before"][-220:])
+        n["ctx_key"] = next((k for k in keys if k in cache), n["ctx_key"])
         if n["ctx_key"] not in cache:
             todo.append(n)
-    print(f"  context: {len(todo)} notes for Claude to settle from the context" + (" (--local: left)" if NO_CALLS else ""), flush=True)
+    print(f"  context: {len(todo)} notes for {EXPAND_MODEL} to settle from the context" + (" (--local: left)" if NO_CALLS else ""), flush=True)
     sem = asyncio.Semaphore(PARALLEL)
     batches = [todo[i:i + CONTEXT_BATCH] for i in range(0, len(todo), CONTEXT_BATCH)]
     answers = await asyncio.gather(*(claude(CONTEXT_PROMPT.format(items=context_items(b)), EXPAND_MODEL, sem) for b in batches))
@@ -912,10 +1004,11 @@ async def expand_stage(notes, cache):
             continue
         if {"scan-unread", "hebrew", "greek", "uncertain"} & set(n["flags"]):
             continue  # waiting for its scan: held at apply anyway, and the scan may change the text
-        n["exp_key"] = key("exp2", EXPAND_MODEL, n["proposed"], n["prev"], n["raw"] if "garbled-reference" in n["flags"] else "")
+        keys, n["exp_key"] = answer_key("exp2", n["proposed"], n["prev"], n["raw"] if "garbled-reference" in n["flags"] else "")
+        n["exp_key"] = next((k for k in keys if k in cache), n["exp_key"])
         if n["exp_key"] not in cache:
             todo.append(n)
-    print(f"  expand: {len(todo)} notes for Claude to write out" + (" (--local: left as they are)" if NO_CALLS else ""), flush=True)
+    print(f"  expand: {len(todo)} notes for {EXPAND_MODEL} to write out" + (" (--local: left as they are)" if NO_CALLS else ""), flush=True)
     sem = asyncio.Semaphore(PARALLEL)
     batches = [todo[i:i + BATCH] for i in range(0, len(todo), BATCH)]
     answers = await asyncio.gather(*(claude(EXPAND_PROMPT.format(glossary=glossary_for(b), items=expand_items(b)), EXPAND_MODEL, sem)
@@ -932,6 +1025,9 @@ async def expand_stage(notes, cache):
             n["flags"].append("expand-unread")
         elif not script_kept(n["proposed"], new):
             n["flags"].append("expand-changed-hebrew-or-greek")
+        elif not numbers_kept(n["proposed"], new, n):
+            n["flags"].append("expand-changed-numbers")  # a number from nowhere: held, the note as it was
+            n["why"].append(f"written out, but a number changed or added: {new[:200]}")
         elif new != n["proposed"]:
             n["proposed"] = new
             n["why"].append("abbreviations written out")
@@ -1088,7 +1184,7 @@ async def run(volume, lo, hi, local_only, scan=True, uncertain_only=False, conte
     print(f"  {summary}\nwrote {out}")
 
 
-HOLD = {"hebrew", "hebrew-recheck", "uncertain-fill-unclear", "uncertain-fill-asterisk-wrong", "greek", "uncertain", "scan-unread", "expand-unread", "expand-changed-hebrew-or-greek",
+HOLD = {"hebrew", "hebrew-recheck", "uncertain-fill-unclear", "uncertain-fill-asterisk-wrong", "greek", "uncertain", "scan-unread", "expand-unread", "expand-changed-hebrew-or-greek", "expand-changed-numbers",
         "asterisk-outside-uncertain", "ambiguous-name", "reference-not-in-vulgate", "reference-mismatch"}
 
 
@@ -1140,10 +1236,16 @@ if __name__ == "__main__":
     if sys.argv[1:] == ["held"]:
         held()
         sys.exit()
-    cmd, volume, *rest = sys.argv[1:]
+    cmd, *rest = sys.argv[1:]
     lo, hi = page_range(rest)
-    if cmd == "run":
-        asyncio.run(run(volume, lo, hi, "--local" in rest, scan="--no-scan" not in rest, uncertain_only="--uncertain-only" in rest,
-                        context="--context" in rest))
-    elif cmd == "apply":
-        apply(volume, lo, hi, hold="--no-hold" not in rest)
+    volumes = volumes_of([a for a in rest if not a.startswith("--") and not re.fullmatch(r"\d+-\d+", a)])
+    for i, volume in enumerate(volumes, 1):
+        if len(volumes) > 1:
+            print(f"[{i}/{len(volumes)}]", end=" ", flush=True)
+        if cmd == "run":
+            asyncio.run(run(volume, lo, hi, "--local" in rest, scan="--no-scan" not in rest, uncertain_only="--uncertain-only" in rest,
+                            context="--context" in rest))
+            if "--apply" in rest:
+                apply(volume, lo, hi, hold=True)
+        elif cmd == "apply":
+            apply(volume, lo, hi, hold="--no-hold" not in rest)

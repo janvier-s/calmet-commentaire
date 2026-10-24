@@ -16,8 +16,7 @@ Usage: python3 review_editor.py [--all] [--kind missing_verse] [--book 05_deuter
   --skipped  only the issues you skipped (--resolved: only those marked resolved)
 
 Keys: Cmd+Return = resolved, go to next   Cmd+] / Cmd+[ = next / previous issue
-◀/▶ visit open and skipped issues (resolved ones are passed over); ↺ Reopen clears
-the current issue's status.
+◀/▶ visit open and skipped issues (resolved ones are passed over).
 Progress is kept in data/.review_queue_progress.json; resolved items stay resolved
 across runs. Changes reach the website only after the book is re-exported.
 """
@@ -49,6 +48,7 @@ KIND_LABELS = {
     "psalm_wrong_psalm": "VERSE UNDER THE WRONG PSALM",
     "psalm_unmatched": "VERSE NOT FOUND IN THE VULGATE",
     "duplicate_verse": "DUPLICATE VERSE",
+    "latin_long_s": "LATIN: f READ FOR s? (check the word against the scan)",
     "chapter_field": "CHAPTER FIELD OUT OF STEP",
     "empty_summary": "CHAPTER SUMMARY EMPTY",
     "chapter_vulgate": "CHAPTER SET FROM THE VULGATE: CHECK THE VERSE NUMBER",
@@ -97,7 +97,7 @@ VERSE_KINDS = {
     "missing_verse", "psalm_missing_verse", "duplicate_verse", "missing_french",
     "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "psalm_number",
     "psalm_missing_title", "chapter_field", "chapter_vulgate", "chapter_heading",
-    "empty_summary",
+    "empty_summary", "latin_long_s",
 }
 
 FOOTNOTE_KINDS = {
@@ -249,16 +249,25 @@ class ReviewEditor(PageEditor):
                                    font=("Helvetica", 10), anchor="w", justify=tk.LEFT, wraplength=900)
         self.issue_more.pack(fill=tk.X)
 
+        self.style.configure("Resolved.TButton", background="#2e7d32", foreground="#ffffff", font=("Helvetica", 10, "bold"))
+        self.style.map("Resolved.TButton",
+                       background=[("active", "#388e3c"), ("pressed", "#1b5e20")],
+                       foreground=[("active", "#ffffff"), ("pressed", "#ffffff")])
+
+        self.style.configure("FalsePositive.TButton", background="#d35400", foreground="#ffffff", font=("Helvetica", 10, "bold"))
+        self.style.map("FalsePositive.TButton",
+                       background=[("active", "#e67e22"), ("pressed", "#a04000")],
+                       foreground=[("active", "#ffffff"), ("pressed", "#ffffff")])
+
         right = tk.Frame(bar, bg=self.BANNER_BG)
         right.pack(side=tk.RIGHT, padx=8, pady=6)
         self.counter = tk.Label(right, text="", bg=self.BANNER_BG, fg="#f0e6d2", font=("Helvetica", 10))
-        self.counter.grid(row=0, column=0, columnspan=6, sticky="e")
+        self.counter.grid(row=0, column=0, columnspan=5, sticky="e")
         ttk.Button(right, text="◀ Issue", command=self._prev_item).grid(row=1, column=0, padx=2)
         ttk.Button(right, text="Issue ▶", command=self._next_item).grid(row=1, column=1, padx=2)
-        ttk.Button(right, text="✓ Resolved", command=lambda: self._mark("resolved")).grid(row=1, column=2, padx=2)
-        ttk.Button(right, text="False Positive", command=lambda: self._mark("false_positive")).grid(row=1, column=3, padx=2)
+        ttk.Button(right, text="✓ Resolved", style="Resolved.TButton", command=lambda: self._mark("resolved")).grid(row=1, column=2, padx=2)
+        ttk.Button(right, text="False Positive", style="FalsePositive.TButton", command=lambda: self._mark("false_positive")).grid(row=1, column=3, padx=2)
         ttk.Button(right, text="Skip", command=lambda: self._mark("skipped")).grid(row=1, column=4, padx=2)
-        ttk.Button(right, text="↺ Reopen", command=self._reopen).grid(row=1, column=5, padx=2)
         ttk.Button(right, text="+ Verse", command=self._add_verse).grid(row=2, column=0, padx=2, pady=(4, 0))
         ttk.Button(right, text="+ Comment", command=self._add_commentary).grid(row=2, column=1, padx=2, pady=(4, 0))
         ttk.Button(right, text="+ Footnote", command=self._add_footnote).grid(row=2, column=2, padx=2, pady=(4, 0))

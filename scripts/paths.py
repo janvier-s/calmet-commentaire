@@ -1,5 +1,6 @@
 """Every location the Calmet pipeline reads or writes, in one place."""
 import json
+import sys
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
@@ -25,3 +26,19 @@ def pages(volume):
 
 def load(p):
     return json.loads(Path(p).read_text(encoding="utf-8"))
+
+
+def volumes_of(args):
+    """Volume folders named on the command line; a book key (job, psalms) stands for all its
+    volumes, `all` for every volume."""
+    vols = []
+    for a in args:
+        if a == "all":
+            vols += sorted(p.name for p in DATA.iterdir() if (p / "normalized").is_dir())
+        elif a in BOOKS:
+            vols += BOOKS[a]["studium"]
+        elif (DATA / a / "normalized").is_dir():
+            vols.append(a)
+        else:
+            sys.exit(f"Unknown volume or book: {a}")
+    return vols

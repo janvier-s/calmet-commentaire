@@ -19,11 +19,13 @@ STRAY = re.compile(r"\^\{[^}]*\}")
 CHAPTER_VERSE = re.compile(r"(\d)\s*:\s*(\d)")
 ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 GREEK_FIX = {"р": "ρ", "д": "δ", "с": "ς", "е": "ε", "о": "ο", "у": "υ"}
+GREEK_TABLE = str.maketrans(GREEK_FIX)
 
 
 LATIN_NAMES = Path(__file__).resolve().parent / "latin_names.txt"
 
 
+@functools.lru_cache(maxsize=None)
 def _fold(w):
     w = w.lower().replace("æ", "ae").replace("œ", "ae")
     w = unicodedata.normalize("NFD", w).encode("ascii", "ignore").decode()
@@ -70,14 +72,9 @@ def latin_case(s):
 def greek_fix(s):
     """Undo Cyrillic look-alikes in the transcribed Greek.
 
-    Only inside runs that are already Greek, so French text is untouched.
+    Cyrillic letters only occur in Greek runs, so French text is untouched.
     """
-    def fix(m):
-        t = m.group(0)
-        for bad, good in GREEK_FIX.items():
-            t = t.replace(bad, good)
-        return t
-    return re.sub(r"[Ͱ-Ͽἀ-῿Ѐ-ӿ]+", fix, s or "")
+    return (s or "").translate(GREEK_TABLE)
 
 
 def roman(s):
@@ -148,6 +145,28 @@ def _words(s):
     return re.findall(r"[^\W\d_]+", s, re.UNICODE)
 
 
+# what follows a hyphen in a compound, not the rest of a broken word
+COMPOUND = re.compile(r"(?:à|dire|Christ|là|ci|même|mêmes|il|ils|elle|elles|on|vous|nous|je|tu|t|y|en)\b")
+
+
+def join_seam(tail, txt, mode, stub):
+    """tail and the text overleaf as one, by infer_join's mode."""
+    if mode == "hyphen":
+        txt = txt.split(maxsplit=1)[1] if " " in txt.strip() else ""
+    if not tail.strip():
+        return txt
+    if mode == "mend":
+        return tail.rstrip()[:-1] + " " + txt
+    if mode == "splice":
+        return tail.rstrip()[:-1] + txt
+    if mode == "keep" or re.match(r"[,;:.!?]", txt):
+        return tail.rstrip() + txt
+    if mode == "refrag":
+        kept = tail.rstrip()[:-1]
+        return kept[:len(kept) - len(stub)].rstrip() + " " + txt
+    return tail.rstrip() + " " + txt
+
+
 def infer_join(prev, nxt):
     """How the fragment `nxt` attaches to the tail of `prev`.
 
@@ -161,6 +180,9 @@ def infer_join(prev, nxt):
     # The transcription sometimes keeps the printer's hyphen instead of
     # completing the word: "nulle compa-" then "raison entre ces deux choses".
     if prev.endswith("-"):
+        # a compound broken at its own hyphen keeps it: "c'est-" / "à-dire"
+        if COMPOUND.match(nxt):
+            return "keep", None
         # ...unless the next page reprints the whole word ("la con-" / "concupiscence"):
         # then the fragment is dropped instead of doubled.
         frag, nw = _words(prev[:-1]), _words(nxt)
@@ -179,6 +201,23 @@ def infer_join(prev, nxt):
         # a sentence cut in two, with a period the printer never set
         return ("mend", None) if prev.endswith(".") else ("flow", None)
     return ("para", None) if prev.endswith((".", "!", "?", "»")) else ("flow", None)
+
+
+@functools.lru_cache(maxsize=None)
+def apparatus(book):
+    """Calmet's apparatus, keyed by page: the letters restart on every page,
+    so a marker only means something together with the page it sits on.
+    The whole book's, built once (notes() is called chapter by chapter)."""
+    available = {}
+    for stem, before, after, page in pages(book)[0]:
+        for f in page.get("footnotes") or []:
+            marker = re.sub(r"[^a-z]", "", str(f.get("marker") or "").lower())
+            available.setdefault(
+                f"{stem}-{marker}",
+                _balance(CHAPTER_VERSE.sub(
+                    r"\1,\2",
+                    STRAY.sub("", greek_fix(str(f.get("text") or "").strip())))))
+    return available
 
 
 def notes(book, chapter, first, last, joins=None):
@@ -207,6 +246,24 @@ def notes(book, chapter, first, last, joins=None):
 
     out, seams, cur = [], [], None
     for b in blocks:
+        # A lemma or translation the page turn cut goes on in the same field overleaf, in a block
+        # with no verse of its own (seam_join.py), before the note's comment has begun.
+        # A Latin lemma goes on only when the one before is still open (no full stop, no
+        # translation yet): otherwise it is a second lemma of the verse (ARIARATHI. ‖ ARSACI.).
+        open_latin = (not cur["french_lemma"] and cur["latin_lemma"]
+                      and not re.search(r"[.!?]\W*$", STRAY.sub("", cur["latin_lemma"]))) if cur else False
+        if (cur is not None and b["verse"] in (None, cur["verse"]) and cur["paragraphs"] == [""]
+                and (open_latin if b["latin"] else b["lemma"])):
+            if b["latin"]:
+                cur["latin_lemma"] = join_seam(cur["latin_lemma"] or "", b["latin"],
+                                               *infer_join(cur["latin_lemma"] or "", b["latin"]))
+            if b["lemma"]:
+                fr = bind(b["lemma"], b["page"])
+                cur["french_lemma"] = join_seam(cur["french_lemma"] or "", fr,
+                                                *infer_join(cur["french_lemma"] or "", fr))
+            cur["paragraphs"] = [bind(b["text"], b["page"])]
+            cur["pages"].append(b["page"])
+            continue
         # The transcription often tags the top of a page with the verse it
         # continues; with no lemma of its own that is a continuation, not a new note.
         if (b["verse"] is not None and cur is not None and b["verse"] == cur["verse"]
@@ -240,37 +297,16 @@ def notes(book, chapter, first, last, joins=None):
             seams.append(dict(seam=key, verse=cur["verse"], mode=mode,
                               before=probe[-58:], after=b["text"][:58]))
             txt = bind(b["text"], b["page"])
-            if mode == "hyphen":
-                txt = txt.split(maxsplit=1)[1] if " " in txt.strip() else ""
-            if not tail.strip():
-                cur["paragraphs"][-1] = txt
-            elif mode == "para":
+            if mode == "para" and tail.strip():
                 cur["paragraphs"].append(txt)
-            elif mode == "mend":
-                cur["paragraphs"][-1] = tail.rstrip()[:-1] + " " + txt
-            elif mode == "splice":
-                cur["paragraphs"][-1] = tail.rstrip()[:-1] + txt
-            elif mode == "refrag":
-                kept = tail.rstrip()[:-1]
-                cur["paragraphs"][-1] = kept[:len(kept) - len(stub)].rstrip() + " " + txt
             else:
-                cur["paragraphs"][-1] = tail.rstrip() + " " + txt
+                cur["paragraphs"][-1] = join_seam(tail, txt, mode, stub)
             cur["pages"].append(b["page"])
 
     out = [n for n in out if first <= n["verse"] <= last]
     seams = [j for j in seams if first <= j["verse"] <= last]
 
-    # Calmet's apparatus, keyed by page: the letters restart on every page,
-    # so a marker only means something together with the page it sits on.
-    available = {}
-    for stem, before, after, page in page_list:
-        for f in page.get("footnotes") or []:
-            marker = re.sub(r"[^a-z]", "", str(f.get("marker") or "").lower())
-            available.setdefault(
-                f"{stem}-{marker}",
-                _balance(CHAPTER_VERSE.sub(
-                    r"\1,\2",
-                    STRAY.sub("", greek_fix(str(f.get("text") or "").strip())))))
+    available = apparatus(book)
 
     # Number across the whole pericope, not per note: the apparatus prints
     # once under the section, so [1] must mean the same thing throughout.

@@ -120,6 +120,7 @@ OT_NAME = {v[0]: k for k, v in BOOK.items() if k not in ("Siracide", "Néhémie"
 ROMAN = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100}
 
 
+@lru_cache(None)
 def plain(s):
     """lower case, no accents, ſ -> s."""
     s = unicodedata.normalize("NFD", s.replace("ſ", "s").replace("æ", "ae").replace("œ", "oe"))

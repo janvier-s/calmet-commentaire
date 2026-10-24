@@ -8,7 +8,10 @@ Usage: python3 clean_mechanical.py [--dry-run] [volume ...]
 """
 import json
 import re
+import re._constants as _c
+import re._parser as _parser
 import sys
+import unicodedata
 from concurrent.futures import ProcessPoolExecutor
 from functools import lru_cache
 from pathlib import Path
@@ -46,10 +49,60 @@ def _rx(pattern, flags=0):
     return re.compile(pattern, flags)
 
 
+def _literal(pattern, flags=0):
+    """The longest run of plain characters every match of pattern contains ("" if none)."""
+    parsed = _parser.parse(pattern, flags)
+    if parsed.state.flags & re.I:                          # flags=re.I or an inline (?i)
+        return ""
+    best, run = "", []
+
+    def walk(items):
+        nonlocal best, run
+        for op, av in items:
+            if op is _c.LITERAL:
+                run.append(chr(av))
+                continue
+            if op in (_c.AT, _c.ASSERT, _c.ASSERT_NOT):
+                continue                                   # zero-width: the text around it is adjacent
+            if op is _c.SUBPATTERN and not av[1] & _c.SRE_FLAG_IGNORECASE:
+                walk(av[3])                                # a plain group is just more sequence
+                continue
+            if len(run) > len(best):
+                best = "".join(run)
+            run = []
+
+    walk(parsed)
+    return max(best, "".join(run), key=len)
+
+
+@lru_cache(maxsize=None)
+def _rule(pattern, flags=0):
+    return _rx(pattern, flags), _literal(pattern, flags)
+
+
 def _sub(pattern, repl, s, flags=0):
     # fix_spelling has more patterns than re's internal cache (512) holds, so plain
-    # re.sub would recompile every one of them on every call.
-    return _rx(pattern, flags).sub(repl, s)
+    # re.sub would recompile every one of them on every call. Most rules are one word
+    # that cleaned text no longer has; a substring test skips those without the regex.
+    rx, lit = _rule(pattern, flags)
+    if lit and lit not in s:
+        return s
+    return rx.sub(repl, s)
+
+
+def _word_table():
+    """spelling_words.txt as {old: modern}, with a capitalized entry for each lower-case one."""
+    table = {}
+    for line in (Path(__file__).parent / "spelling_words.txt").read_text(encoding="utf-8").splitlines():
+        if line.strip() and not line.startswith("#"):
+            old, new = line.split()
+            table[old] = new
+            table.setdefault(old[:1].upper() + old[1:], new[:1].upper() + new[1:])
+    return table
+
+
+WORD_TABLE = _word_table()
+TABLE_WORD = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿœŒæÆ]+")
 
 
 def fix_spelling(s):
@@ -1229,6 +1282,129 @@ def fix_spelling(s):
 
     # 218. Specific OCR & accent corrections
     s = _sub(r"(?<![A-Za-zÀ-ÿ])Eugéne(?![A-Za-zÀ-ÿ])", "Eugène", s)
+
+    # === BATCH 10 (spellcheck.py findings, Job to Matthieu) ===
+    # 219. -oi- of the stem made -ai- by the -oit -> -ait modernization
+    s = _sub(r"(?<![A-Za-zÀ-ÿ\-\xad])([Vv])aient(?![A-Za-zÀ-ÿ])", r"\1oient", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ\-\xad])([Ee])mplais(?![A-Za-zÀ-ÿ])", r"\1mplois", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ\-\xad])([Ee])mplaient(?![A-Za-zÀ-ÿ])", r"\1mploient", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ\-\xad])([Ee])nvaient(?![A-Za-zÀ-ÿ])", r"\1nvoient", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ\-\xad])bait(?![A-Za-zÀ-ÿ])", "boit", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ\-\xad])([Dd])étrait(?![A-Za-zÀ-ÿ])", r"\1étroit", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ\-\xad])conçais(?![A-Za-zÀ-ÿ])", "conçois", s)
+
+    # 220. envoye / employe -> envoie / emploie; envoyerai -> enverrai
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ee])nvoye(nt|s?)(?![A-Za-zÀ-ÿ])", r"\1nvoie\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ee])mploye(nt|s?)(?![A-Za-zÀ-ÿ])", r"\1mploie\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ee])nvoyer(ai|as|a|ons|ez|ont|ais|ait|ions|iez|aient)(?![A-Za-zÀ-ÿ])", r"\1nverr\2", s)
+
+    # 221. Long s: je sai / je ne fai -> je sais; fix -> six
+    s = _sub(r"(?<![A-Za-zÀ-ÿ'’])sai(?![A-Za-zÀ-ÿ-])", "sais", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Jj]e|ne)\s+fai(?![A-Za-zÀ-ÿ-])", r"\1 sais", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])fix(?![A-Za-zÀ-ÿ])", "six", s)
+
+    # 222. Old spellings and accents
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Bb])lasphême(s?)(?![A-Za-zÀ-ÿ])", r"\1lasphème\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Bb])lasphêm", r"\1lasphém", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])oût(en|ien)", r"\1out\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ii])nterêt(s?)(?![A-Za-zÀ-ÿ])", r"\1ntérêt\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Pp])articuliere(s?|ment)(?![A-Za-zÀ-ÿ])", r"\1articulière\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Pp])ossed(é|ée|és|ées|er|ait|aient|ant|ons|ez)(?![A-Za-zÀ-ÿ])", r"\1osséd\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Aa])usquel(le)?s(?![A-Za-zÀ-ÿ])", r"\1uxquel\2s", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])olemnité(s?)(?![A-Za-zÀ-ÿ])", r"\1olennité\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])plû(?![A-Za-zÀ-ÿ]|\s*ôt)", "plu", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])conçû(?![A-Za-zÀ-ÿ])", "conçu", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Pp])ourvû(?![A-Za-zÀ-ÿ])", r"\1ourvu", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ee])spece(s?)(?![A-Za-zÀ-ÿ])", r"\1spèce\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])plurier(?![A-Za-zÀ-ÿ])", "pluriel", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])(ils|elles)\s+different(?![A-Za-zÀ-ÿ])", r"\1 diffèrent", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Dd])ifferent(s?)(?![A-Za-zÀ-ÿ])", r"\1ifférent\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ_])méne(?![A-Za-zÀ-ÿ])", "mène", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Rr])améne(?![A-Za-zÀ-ÿ])", r"\1amène", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Rr])elévent(?![A-Za-zÀ-ÿ])", r"\1elèvent", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Rr])appell(é|ée|és|ées|er)(?![A-Za-zÀ-ÿ])", r"\1appel\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])descens(?![A-Za-zÀ-ÿ])", "descends", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])exprés(?![A-Za-zÀ-ÿ])", "exprès", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])çu(t|rent)(?![A-Za-zÀ-ÿ])", r"\1u\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Pp])anch(er|é|ée|e|es|ent|ait|aient|ant)(?![A-Za-zÀ-ÿ])", r"\1ench\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])asseyer(ai|as|a|ons|ez|ont|ais|ait|aient)(?![A-Za-zÀ-ÿ])", r"assiér\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Dd])ixme(s?)(?![A-Za-zÀ-ÿ])", r"\1îme\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Dd])ragme(s?)(?![A-Za-zÀ-ÿ])", r"\1rachme\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])deça(?![A-Za-zÀ-ÿ])", "deçà", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])grincemens(?![A-Za-zÀ-ÿ])", "grincements", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ll])uimême(?![A-Za-zÀ-ÿ])", r"\1ui-même", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Éé])tendart(s?)(?![A-Za-zÀ-ÿ])", r"\1tendard\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])lescive(?![A-Za-zÀ-ÿ])", "lessive", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Aa])vantur(e|es|ier|iers)(?![A-Za-zÀ-ÿ])", r"\1ventur\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ee])nsorte(?![A-Za-zÀ-ÿ])", r"\1n sorte", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Dd])'enhaut(?![A-Za-zÀ-ÿ])", r"\1'en haut", s)
+
+    # === BATCH 11 (names, modern forms) ===
+    # 223. Trémas the modern names do not have
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ii])sraëlite(s?)(?![A-Za-zÀ-ÿ])", r"\1sraélite\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ii])smaëlite(s?)(?![A-Za-zÀ-ÿ])", r"\1smaélite\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Samuël(?![A-Za-zÀ-ÿ])", "Samuel", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Emmanuël(?![A-Za-zÀ-ÿ])", "Emmanuel", s)
+
+    # 224. Old forms of names
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Machabée(s?)(?![A-Za-zÀ-ÿ])", r"Maccabée\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Balthasar(?![A-Za-zÀ-ÿ])", "Balthazar", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Caldée(?![A-Za-zÀ-ÿ])", "Chaldée", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Hircan(?![A-Za-zÀ-ÿ])", "Hyrcan", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Appion(?![A-Za-zÀ-ÿ])", "Apion", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Sathan(?![A-Za-zÀ-ÿ])", "Satan", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Moloc(?![A-Za-zÀ-ÿ])", "Moloch", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Troye(?![A-Za-zÀ-ÿ])", "Troie", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Lybie(ns?)?(?![A-Za-zÀ-ÿ])", r"Libye\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Cypre(?![A-Za-zÀ-ÿ])", "Chypre", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Sabbath(?![A-Za-zÀ-ÿ])", "Sabbat", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Nabathéen(s?)(?![A-Za-zÀ-ÿ])", r"Nabatéen\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Massorette(s?)(?![A-Za-zÀ-ÿ])", r"Massorète\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Carthaginais(?![A-Za-zÀ-ÿ])", "Carthaginois", s)
+
+    # 225. Accents missing on capitals and names
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Hebreu(x?)(?![A-Za-zÀ-ÿ])", r"Hébreu\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Béde(?![A-Za-zÀ-ÿ])", "Bède", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Prophete(s?)(?![A-Za-zÀ-ÿ])", r"Prophète\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Genese(?![A-Za-zÀ-ÿ])", "Genèse", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Deuteronome(?![A-Za-zÀ-ÿ])", "Deutéronome", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Paralipomenes(?![A-Za-zÀ-ÿ])", "Paralipomènes", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Grece(?![A-Za-zÀ-ÿ])", "Grèce", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Homere(?![A-Za-zÀ-ÿ])", "Homère", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Séneque(?![A-Za-zÀ-ÿ])", "Sénèque", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Juvenal(?![A-Za-zÀ-ÿ])", "Juvénal", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Xenophon(?![A-Za-zÀ-ÿ])", "Xénophon", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Ciceron(?![A-Za-zÀ-ÿ])", "Cicéron", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Clement(?![A-Za-zÀ-ÿ])", "Clément", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Barthelemy(?![A-Za-zÀ-ÿ])", "Barthélemy", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Sanhedrin(?![A-Za-zÀ-ÿ])", "Sanhédrin", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Ecrivain(s?)(?![A-Za-zÀ-ÿ])", r"Écrivain\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Ecclesiastique(?![A-Za-zÀ-ÿ])", "Ecclésiastique", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Evangeliste(s?)(?![A-Za-zÀ-ÿ])", r"Évangéliste\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Jehovah(?![A-Za-zÀ-ÿ])", "Jéhovah", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Cyréne(?![A-Za-zÀ-ÿ])", "Cyrène", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Medes(?![A-Za-zÀ-ÿ])", "Mèdes", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Otez(?![A-Za-zÀ-ÿ])", "Ôtez", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Eviter(?![A-Za-zÀ-ÿ])", "Éviter", s)
+
+    # 226. Soft hyphens left from the printer's line breaks (de­venus): invisible, but they break search
+    s = _sub("\xad", "", s)
+
+    # === BATCH 12 ===
+    # 227. sç -> s (sçavoir, sçachant, sçaura, insçu); the forms that change more first
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])çai(s?)(?![A-Za-zÀ-ÿ])", r"\1ais", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])çeu(t|rent)(?![A-Za-zÀ-ÿ])", r"\1u\2", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])çroit(?![A-Za-zÀ-ÿ])", r"\1aurait", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])çûss", r"\1uss", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ss])ç(?=[aeiouû])", r"\1", s)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])([Ii])nsç[uû](e?s?)(?![A-Za-zÀ-ÿ])", r"\1nsu\2", s)
+
+    # 228. An accent stored apart from its letter (d'Alphée as e + U+0301): made one character
+    s = _sub(r"[aeiouyAEIOUY][̀-̃̈]|[cC]̧|[nN]̃", lambda m: unicodedata.normalize("NFC", m.group()), s)
+
+    # 229. Old spellings word by word, from spelling_words.txt (vîte, élûs, continuëra): one pass
+    # with a dictionary instead of a rule per word
+    s = TABLE_WORD.sub(lambda m: WORD_TABLE.get(m.group(), m.group()), s)
     return s
 
 

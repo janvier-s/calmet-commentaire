@@ -4,7 +4,7 @@ what the website actually serves (dom-calmet-web raw + calmet JSON).
 Usage: python3 audit_integrity.py [out.json]
 Read-only: writes nothing but the JSON result.
 """
-import hashlib, json, re, sys, statistics
+import functools, hashlib, json, re, sys, statistics
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -108,33 +108,63 @@ def site_slugs():
 def lemma_added(vol, name):
     """Blocks of this page that had no latin_quote in some committed version and have one now
     (the no_lemma issues resolved by hand): {their french_commentary then}."""
+    if not hasattr(lemma_added, "found"):
+        lemma_added.found = _lemma_added_all()
+    return lemma_added.found.get(f"{vol}/normalized/{name}", set())
+
+
+def _lemma_added_all():
+    """lemma_added for every page with a resolved no_lemma issue at once: one git log for their
+    history, one git cat-file for all the old versions (a git process per version took half a minute)."""
     import subprocess
-    if not hasattr(lemma_added, "pages"):  # pages with a resolved no_lemma issue
-        prog = STUDIUM / ".review_queue_progress.json"
-        done = json.loads(prog.read_text(encoding="utf-8")) if prog.exists() else {}
-        lemma_added.pages = {tuple(k.split("/")[:2]) for k, v in done.items() if "/no_lemma/" in k and v == "resolved"}
-    if (vol, name[5:9]) not in lemma_added.pages:
-        return set()
-    path = f"{vol}/normalized/{name}"
-    git = lambda *a: subprocess.run(["git", "-C", str(STUDIUM), *a], capture_output=True, text=True).stdout
-    out = set()
-    for h in git("log", "--format=%H", "--", path).split():
-        try:
-            old = json.loads(git("show", f"{h}:{path}"))
-        except json.JSONDecodeError:
+    prog = STUDIUM / ".review_queue_progress.json"
+    done = json.loads(prog.read_text(encoding="utf-8")) if prog.exists() else {}
+    paths = sorted({f"{vol}/normalized/page_{no}.json" for vol, no in
+                    (k.split("/")[:2] for k, v in done.items() if "/no_lemma/" in k and v == "resolved")})
+    if not paths:
+        return {}
+    log = subprocess.run(["git", "-C", str(STUDIUM), "log", "--format=@%H", "--name-only", "--", *paths],
+                         capture_output=True, text=True).stdout
+    wanted, h = [], None
+    for line in log.splitlines():
+        if line.startswith("@"):
+            h = line[1:]
+        elif line.strip() in paths:
+            wanted.append((h, line.strip()))
+    cat = subprocess.run(["git", "-C", str(STUDIUM), "cat-file", "--batch"], capture_output=True,
+                         input="".join(f"{h}:{p}\n" for h, p in wanted).encode()).stdout
+    out, pos = defaultdict(set), 0
+    for h, p in wanted:
+        end = cat.index(b"\n", pos)
+        header = cat[pos:end].split()
+        pos = end + 1
+        if len(header) < 3 or header[1] != b"blob":  # "missing": the page did not exist in that commit
             continue
-        out |= {flat(c.get("french_commentary") or "") for c in old.get("commentary") or []
-                if not (c.get("latin_quote") or "").strip() and str(c.get("commentary_id")) != "1"}
-    out.discard("")
-    return out
+        size = int(header[2])
+        blob, pos = cat[pos:pos + size], pos + size + 1
+        try:
+            old = json.loads(blob.decode("utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            continue
+        out[p] |= {flat(c.get("french_commentary") or "") for c in old.get("commentary") or []
+                   if not (c.get("latin_quote") or "").strip() and str(c.get("commentary_id")) != "1"}
+    for s in out.values():
+        s.discard("")
+    return dict(out)
+
+
+@functools.lru_cache(maxsize=None)
+def latin_words(text):
+    """The words of three letters or more in a Latin text, folded."""
+    return frozenset(_fold(w) for w in re.findall(r"[^\W\d_]{3,}", text))
 
 
 def best_verse(lemma, verses):
     """The verse whose Latin holds most of the lemma's words: (score of each verse, best key)."""
-    ws = {_fold(w) for w in re.findall(r"[^\W\d_]{3,}", lemma)}
+    ws = latin_words(lemma)
     if not ws:
         return {}, None
-    score = {k: len(ws & {_fold(w) for w in re.findall(r"[^\W\d_]{3,}", t)}) / len(ws) for k, t in verses.items()}
+    score = {k: len(ws & latin_words(t)) / len(ws) for k, t in verses.items()}
     return score, max(score, key=score.get) if score else None
 
 def audit_book(key, info, slug, published=True):
@@ -598,12 +628,10 @@ def audit_book(key, info, slug, published=True):
         have = set(nums)
         top = max(have) if have else 0
         expect = max(vul.get(ch, {0}))
-        missing = [n for n in range(1, top + 1) if n not in have]
+        missing = [n for n in range(1, min(top, expect) + 1) if n not in have] if key != "psalms" and ch in vul else []
         dups = sorted({n for n in nums if nums.count(n) > 1})
-        tail = list(range(top + 1, expect + 1)) if key != "psalms" else []
+        tail = list(range(top + 1, expect + 1)) if key != "psalms" and ch in vul else []
         if missing or dups or tail:
-            verse_issues.append(dict(chapter=ch, missing=missing, duplicated=dups,
-                                     missing_tail=tail, vulgate_count=expect))
             located = [(v["verse_number"], v.get("source_pages", [None])[0]) for v in vs
                        if isinstance(v.get("verse_number"), int) and v.get("source_pages")]
 
@@ -613,15 +641,25 @@ def audit_book(key, info, slug, published=True):
                 pg = before[-1] if before else (after[0] if after else None)
                 return int(pg[5:9]) if pg else None
 
+            kept_missing, kept_tail = [], []
             for n in missing + tail:
                 pg = page_of(n)
                 vol = pg and vol_of(f"page_{pg:04d}.json")
                 if vol:
-                    item("missing_verse", vol, pg, f"{info['fr']} {ch}:{n} is missing (page shown holds the nearest verse)")
+                    msg = f"{info['fr']} {ch}:{n} is missing (page shown holds the nearest verse)"
+                    uid = hashlib.md5(msg.encode()).hexdigest()[:8]
+                    if f"{vol}/{pg:04d}/missing_verse/{uid}" in FP_IDS:
+                        continue
+                    item("missing_verse", vol, pg, msg)
+                (kept_missing if n in missing else kept_tail).append(n)
+            missing, tail = kept_missing, kept_tail
             for n in dups:
                 for k, pg in located:
                     if k == n and vol_of(pg):
                         item("duplicate_verse", vol_of(pg), int(pg[5:9]), f"{info['fr']} {ch}:{n} appears more than once")
+            if missing or dups or tail:
+                verse_issues.append(dict(chapter=ch, missing=missing, duplicated=dups,
+                                         missing_tail=tail, vulgate_count=expect))
         for v in vs:
             if not (v.get("french") or "").strip() or not (v.get("latin") or "").strip():
                 empty_verse.append(f"{ch}:{v.get('verse_number')}")
@@ -693,6 +731,24 @@ EXCLUDED = set()
 MANUAL = DOCS / "manual_issues.json"
 
 
+def latin_long_s():
+    """Latin verse words vulgate_check.py found with f where the Vulgate has s, but could not set
+    right by itself (the word differs from the Vulgate's in more than the f): read on the scan."""
+    f = DOCS / "vulgate_check.json"
+    if not f.exists():
+        return []
+    out = []
+    for x in json.loads(f.read_text(encoding="utf-8"))["items"]:
+        if x["kind"] != "long_s" or x.get("fix"):
+            continue
+        vol, stem = x["where"].split("/")
+        msg = (f"Latin of verse {x['ref']}: “{x['calmet']}” — an f read for a long s? The Vulgate has "
+               f"“{x['vulgate_word']}”. Verse: {x['latin'][:120]}")
+        out.append(dict(id=f"{vol}/{stem[5:9]}/latin_long_s/{hashlib.md5(msg.encode()).hexdigest()[:8]}",
+                        book_dir=vol, page=int(stem[5:9]), kind="latin_long_s", msg=msg, optional=False))
+    return out
+
+
 def main():
     slugs = site_slugs()
     results = []
@@ -712,7 +768,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "translation_no_punct", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "latin_long_s", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "translation_no_punct", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's
@@ -747,6 +803,7 @@ def main():
                                   page=int(n["page"][5:9]), kind="hebrew_recheck", optional=False,
                                   msg=f"footnote {n['marker']}: was {n['text'][:80]} → now {n['proposed'][:80]}. "
                                       + " ".join(n["why"])))
+    queue += latin_long_s()
     if MANUAL.exists():
         for m in json.loads(MANUAL.read_text()):
             queue.append(dict(id=f"{m['book_dir']}/{m['page']:04d}/reported/{hashlib.md5(m['msg'].encode()).hexdigest()[:8]}",

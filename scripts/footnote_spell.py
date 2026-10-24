@@ -12,8 +12,12 @@ A word with no reading in the dictionary is left as it is, for the scan.
 """
 import atexit
 import json
+import os
 import re
+import select
 import subprocess
+import sys
+import time
 import unicodedata
 from collections import Counter, defaultdict
 
@@ -43,38 +47,63 @@ ASKED_FILE = SCRIPTS / "cache" / "refs" / "grc_hunspell_asked.json"
 _HUNSPELL = []
 _ASKED = json.loads(ASKED_FILE.read_text(encoding="utf-8")) if ASKED_FILE.exists() else {}
 _ASKED_DIRTY = False
+_SAVED_AT = time.monotonic()
 
 
 def save_asked():
-    global _ASKED_DIRTY
+    global _ASKED_DIRTY, _SAVED_AT
     if _ASKED_DIRTY:
         ASKED_FILE.write_text(json.dumps(_ASKED, ensure_ascii=False), encoding="utf-8")
         _ASKED_DIRTY = False
+    _SAVED_AT = time.monotonic()
 
 
 atexit.register(save_asked)
 
 
+TIMEOUT = 5  # seconds for one word: a real word takes milliseconds; on some misread ones
+             # hunspell's suggestion search runs for minutes
+
+
+def _read_until(p, end):
+    """hunspell's output up to `end`, or None if it has not come within TIMEOUT."""
+    buf, deadline = b"", time.monotonic() + TIMEOUT
+    while not buf.endswith(end):
+        left = deadline - time.monotonic()
+        if left <= 0 or not select.select([p.stdout], [], [], left)[0]:
+            return None
+        chunk = os.read(p.stdout.fileno(), 65536)
+        if not chunk:
+            return None
+        buf += chunk
+    return buf.decode("utf-8")
+
+
 def ask(w):
     """hunspell's answer for one word (pipe mode; one process kept for the run): '*' or '+ …' a word,
-    '& … : suggestions', '#' none."""
+    '& … : suggestions', '#' none. A word hunspell cannot answer within TIMEOUT counts as '#'
+    (unknown, no suggestion: left for the scan), and hunspell is started again for the next."""
     if w not in _ASKED:
         if not _HUNSPELL:
-            p = subprocess.Popen(["hunspell", "-d", str(DICT), "-a"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True, bufsize=1)
-            p.stdout.readline()  # the banner
+            p = subprocess.Popen(["hunspell", "-d", str(DICT), "-a"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+            _read_until(p, b"\n")  # the banner
             _HUNSPELL.append(p)
         p = _HUNSPELL[0]
-        p.stdin.write("^" + w.translate(OXIA) + "\n")
+        p.stdin.write(("^" + w.translate(OXIA) + "\n").encode("utf-8"))
         p.stdin.flush()
-        lines = []
-        while True:
-            line = p.stdout.readline()
-            if not line.strip():
-                break
-            lines.append(line.strip())
+        out = _read_until(p, b"\n\n")
+        if out is None:
+            print(f"  hunspell gave no answer for {w} in {TIMEOUT} s: left for the scan", file=sys.stderr, flush=True)
+            p.kill()
+            _HUNSPELL.clear()
+            lines = ["# timeout"]
+        else:
+            lines = [l.strip() for l in out.splitlines() if l.strip()]
         _ASKED[w] = lines
         global _ASKED_DIRTY
         _ASKED_DIRTY = True
+        if time.monotonic() - _SAVED_AT > 60:  # every minute too, so a run stopped midway keeps its answers
+            save_asked()
     return _ASKED[w]
 
 
@@ -82,7 +111,7 @@ def check(words):
     """The words the dictionary has (as printed, or with a final acute made grave, or in lower case)."""
     for w in words:
         if w not in _VALID:
-            _VALID[w] = any(all(x[:1] in "*+-" for x in ask(re.sub(r"[᾽’'ʼ]$", "", v)) or ["#"]) for v in forms(w))
+            _VALID[w] = any(all(x[:1] in "*+-" for x in ask(re.sub(r"[᾽’'ʼ]$", "", v)) or ["#"]) for v in sorted(forms(w)))  # sorted: the same forms asked every run, so the cache answers
     return {w for w in words if _VALID.get(w)}
 
 

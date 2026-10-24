@@ -270,6 +270,10 @@ class PageEditor:
         self.dirty = False
         self.field_widgets = []
         self.photo_image = None
+        self.current_pil_img = None
+        self.current_img_path = None
+        self.zoom_factor = 1.0
+        self._img_drag_active = False
         self._last_paste = {"text": None, "time": 0, "widget": None}
         self._last_text = None  # the field the italic button acts on
         self.show_marks = tk.BooleanVar(value=True)
@@ -373,7 +377,26 @@ class PageEditor:
         self.img_frame = tk.Frame(self.paned, bg=self.PANEL_BG)
         self.paned.add(self.img_frame, minsize=400, width=700)
 
-        self.img_canvas = tk.Canvas(self.img_frame, bg=self.PANEL_BG, highlightthickness=0)
+        self.img_toolbar = tk.Frame(self.img_frame, bg=self.PANEL_BG)
+        self.img_toolbar.pack(side=tk.TOP, fill=tk.X, padx=6, pady=(3, 2))
+
+        tk.Label(self.img_toolbar, text="Zoom:", bg=self.PANEL_BG, fg="#ccc",
+                 font=("Helvetica", 9, "bold")).pack(side=tk.LEFT, padx=(2, 4))
+        ttk.Button(self.img_toolbar, text="−", width=3,
+                   command=self._zoom_out).pack(side=tk.LEFT, padx=1)
+        self.zoom_label = tk.Label(self.img_toolbar, text="100%", bg=self.PANEL_BG, fg=self.FG,
+                                   font=("Helvetica", 9, "bold"), width=5)
+        self.zoom_label.pack(side=tk.LEFT, padx=2)
+        ttk.Button(self.img_toolbar, text="+", width=3,
+                   command=self._zoom_in).pack(side=tk.LEFT, padx=1)
+        ttk.Button(self.img_toolbar, text="Fit", width=4,
+                   command=self._zoom_fit).pack(side=tk.LEFT, padx=(6, 2))
+        ttk.Button(self.img_toolbar, text="1:1", width=4,
+                   command=self._zoom_actual).pack(side=tk.LEFT, padx=2)
+        tk.Label(self.img_toolbar, text="(Drag to pan · Cmd+scroll)",
+                 bg=self.PANEL_BG, fg="#888", font=("Helvetica", 8)).pack(side=tk.RIGHT, padx=4)
+
+        self.img_canvas = tk.Canvas(self.img_frame, bg=self.PANEL_BG, highlightthickness=0, cursor="hand2")
         self.img_scrollbar_y = ttk.Scrollbar(self.img_frame, orient=tk.VERTICAL, command=self.img_canvas.yview)
         self.img_scrollbar_x = ttk.Scrollbar(self.img_frame, orient=tk.HORIZONTAL, command=self.img_canvas.xview)
         self.img_canvas.configure(yscrollcommand=self.img_scrollbar_y.set,
@@ -381,6 +404,15 @@ class PageEditor:
         self.img_scrollbar_y.pack(side=tk.RIGHT, fill=tk.Y)
         self.img_scrollbar_x.pack(side=tk.BOTTOM, fill=tk.X)
         self.img_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        self.img_canvas.bind("<ButtonPress-1>", self._on_img_press)
+        self.img_canvas.bind("<B1-Motion>", self._on_img_drag)
+        self.img_canvas.bind("<ButtonRelease-1>", self._on_img_release)
+        self.img_canvas.bind("<ButtonPress-2>", self._on_img_press)
+        self.img_canvas.bind("<B2-Motion>", self._on_img_drag)
+        self.img_canvas.bind("<ButtonRelease-2>", self._on_img_release)
+        self.img_canvas.bind("<Double-Button-1>", self._on_img_double_click)
+        self.img_canvas.bind("<Configure>", self._on_img_canvas_configure)
 
         self.no_img_label = tk.Label(self.img_canvas, text="No source image found",
                                       bg=self.PANEL_BG, fg="#888", font=("Helvetica", 14))
@@ -408,6 +440,12 @@ class PageEditor:
         self.root.bind("<Command-S>", lambda e: self._save() or "break")
         self.root.bind("<Control-s>", lambda e: self._save() or "break")
         self.root.bind("<Control-S>", lambda e: self._save() or "break")
+        for seq in ("<Command-plus>", "<Command-equal>", "<Control-plus>", "<Control-equal>"):
+            self.root.bind(seq, lambda e: self._zoom_in() or "break")
+        for seq in ("<Command-minus>", "<Control-minus>"):
+            self.root.bind(seq, lambda e: self._zoom_out() or "break")
+        for seq in ("<Command-0>", "<Control-0>"):
+            self.root.bind(seq, lambda e: self._zoom_fit() or "break")
 
         # Scroll: global intercept, route to correct pane. "break" prevents
         # child Text widgets from also scrolling their own viewport.
@@ -417,8 +455,7 @@ class PageEditor:
         """Update overlay when slider changes."""
         opacity = int(float(value))
         self.overlay_label.config(text=f"{opacity}%")
-        # Reload current image with new overlay
-        self._load_image(self.page_num)
+        self._render_image(preserve_view=True)
 
     def _on_left_key(self, event):
         if isinstance(event.widget, Text):
@@ -480,6 +517,15 @@ class PageEditor:
 
         def _on_mousewheel(event):
             canvas = _which_canvas(event)
+            # If over image canvas and Command or Control is held, zoom
+            if canvas is self.img_canvas and ((event.state & 0x4) or (event.state & 0x8) or (event.state & 0x10)):
+                focus = (event.x_root - self.img_canvas.winfo_rootx(),
+                         event.y_root - self.img_canvas.winfo_rooty())
+                if event.delta > 0:
+                    self._zoom_in(focus_point=focus)
+                elif event.delta < 0:
+                    self._zoom_out(focus_point=focus)
+                return "break"
             d = event.delta
             if abs(d) >= 120:
                 units = -(d // 120)
@@ -502,6 +548,8 @@ class PageEditor:
         self.root.bind_all("<TouchpadScroll>", _on_touchpad_scroll)
         self.root.bind_all("<MouseWheel>", _on_mousewheel)
         self.root.bind_all("<Shift-MouseWheel>", _on_shift_mousewheel)
+        self.img_canvas.bind("<Command-MouseWheel>", self._on_img_mousewheel_zoom)
+        self.img_canvas.bind("<Control-MouseWheel>", self._on_img_mousewheel_zoom)
 
     # --- Prev/Next page commentary context ---
     def _get_next_page_commentary_head(self):
@@ -617,41 +665,165 @@ class PageEditor:
         self.json_canvas.configure(scrollregion=self.json_canvas.bbox("all"))
         self.json_canvas.yview_moveto(0)
 
+    ZOOM_STEPS = (0.5, 0.65, 0.8, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0)
+
     def _load_image(self, page_num):
         self.img_canvas.delete("all")
         img_path = find_source_image(self.book_path, page_num)
         if img_path is None:
             self.no_img_label.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
             self.photo_image = None
+            self.current_pil_img = None
+            self.current_img_path = None
             return
         self.no_img_label.place_forget()
 
         try:
-            pil_img = Image.open(img_path)
-            canvas_w = self.img_canvas.winfo_width() or 700
-            scale = canvas_w / pil_img.width
-            new_w = int(pil_img.width * scale)
-            new_h = int(pil_img.height * scale)
-            pil_img = pil_img.resize((new_w, new_h), Image.LANCZOS)
-
-            # Apply semi-transparent black overlay
-            overlay_opacity = self.overlay_var.get()
-            if overlay_opacity > 0:
-                # Convert to RGBA if needed
-                if pil_img.mode != "RGBA":
-                    pil_img = pil_img.convert("RGBA")
-                # Create black overlay with opacity
-                overlay = Image.new("RGBA", pil_img.size, (0, 0, 0, int(255 * overlay_opacity / 100)))
-                pil_img = Image.alpha_composite(pil_img, overlay)
-                pil_img = pil_img.convert("RGB")
-
-            self.photo_image = ImageTk.PhotoImage(pil_img)
-            self.img_canvas.create_image(0, 0, anchor=tk.NW, image=self.photo_image)
-            self.img_canvas.configure(scrollregion=(0, 0, new_w, new_h))
-            self.img_canvas.yview_moveto(0)
+            if getattr(self, "current_img_path", None) != img_path or self.current_pil_img is None:
+                self.current_pil_img = Image.open(img_path).convert("RGB")
+                self.current_img_path = img_path
+            self._render_image(preserve_view=False)
         except Exception as e:
+            self.current_pil_img = None
+            self.current_img_path = None
             self.no_img_label.config(text=f"Image load error: {e}")
             self.no_img_label.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    def _render_image(self, preserve_view=True, focus_point=None):
+        if self.current_pil_img is None:
+            return
+
+        canvas_w = self.img_canvas.winfo_width()
+        if canvas_w <= 10:
+            canvas_w = 700
+        canvas_h = self.img_canvas.winfo_height()
+        if canvas_h <= 10:
+            canvas_h = 900
+
+        fit_scale = canvas_w / self.current_pil_img.width
+        scale = fit_scale * self.zoom_factor
+        new_w = max(50, min(8000, int(self.current_pil_img.width * scale)))
+        new_h = max(50, min(12000, int(self.current_pil_img.height * scale)))
+
+        old_scrollregion = self.img_canvas.cget("scrollregion")
+        old_w, old_h = 0, 0
+        if old_scrollregion:
+            try:
+                coords = [float(c) for c in old_scrollregion.split()]
+                if len(coords) == 4:
+                    old_w, old_h = coords[2], coords[3]
+            except Exception:
+                pass
+
+        if focus_point and old_w > 0 and old_h > 0:
+            fx, fy = focus_point
+            world_x = self.img_canvas.canvasx(fx)
+            world_y = self.img_canvas.canvasy(fy)
+            rx = world_x / old_w
+            ry = world_y / old_h
+        elif preserve_view:
+            x_view = self.img_canvas.xview()
+            y_view = self.img_canvas.yview()
+            rx = (x_view[0] + x_view[1]) / 2.0
+            ry = (y_view[0] + y_view[1]) / 2.0
+        else:
+            rx, ry = None, None
+
+        resized_pil = self.current_pil_img.resize((new_w, new_h), Image.LANCZOS)
+
+        overlay_opacity = self.overlay_var.get()
+        if overlay_opacity > 0:
+            resized_pil = resized_pil.convert("RGBA")
+            overlay = Image.new("RGBA", resized_pil.size, (0, 0, 0, int(255 * overlay_opacity / 100)))
+            resized_pil = Image.alpha_composite(resized_pil, overlay).convert("RGB")
+
+        self.photo_image = ImageTk.PhotoImage(resized_pil)
+        self.img_canvas.delete("all")
+        self.img_canvas.create_image(0, 0, anchor=tk.NW, image=self.photo_image)
+        self.img_canvas.configure(scrollregion=(0, 0, new_w, new_h))
+
+        if focus_point and rx is not None:
+            fx, fy = focus_point
+            target_fx = (rx * new_w - fx) / new_w
+            target_fy = (ry * new_h - fy) / new_h
+            self.img_canvas.xview_moveto(max(0.0, min(1.0, target_fx)))
+            self.img_canvas.yview_moveto(max(0.0, min(1.0, target_fy)))
+        elif preserve_view and rx is not None:
+            vx = canvas_w / new_w
+            vy = canvas_h / new_h
+            self.img_canvas.xview_moveto(max(0.0, min(1.0, rx - vx / 2.0)))
+            self.img_canvas.yview_moveto(max(0.0, min(1.0, ry - vy / 2.0)))
+        else:
+            self.img_canvas.xview_moveto(0)
+            self.img_canvas.yview_moveto(0)
+
+        if hasattr(self, "zoom_label"):
+            self.zoom_label.config(text=f"{int(round(self.zoom_factor * 100))}%")
+
+    def _zoom_in(self, focus_point=None):
+        for s in self.ZOOM_STEPS:
+            if s > self.zoom_factor + 0.05:
+                self.zoom_factor = s
+                break
+        else:
+            self.zoom_factor = min(5.0, round(self.zoom_factor * 1.25, 2))
+        self._render_image(preserve_view=True, focus_point=focus_point)
+
+    def _zoom_out(self, focus_point=None):
+        for s in reversed(self.ZOOM_STEPS):
+            if s < self.zoom_factor - 0.05:
+                self.zoom_factor = s
+                break
+        else:
+            self.zoom_factor = max(0.4, round(self.zoom_factor / 1.25, 2))
+        self._render_image(preserve_view=True, focus_point=focus_point)
+
+    def _zoom_fit(self):
+        self.zoom_factor = 1.0
+        self._render_image(preserve_view=True)
+
+    def _zoom_actual(self):
+        if self.current_pil_img:
+            canvas_w = self.img_canvas.winfo_width()
+            if canvas_w <= 10:
+                canvas_w = 700
+            if canvas_w > 0:
+                self.zoom_factor = min(5.0, max(0.5, round(self.current_pil_img.width / canvas_w, 2)))
+        else:
+            self.zoom_factor = 2.0
+        self._render_image(preserve_view=True)
+
+    def _on_img_mousewheel_zoom(self, event):
+        focus = (event.x, event.y)
+        if event.delta > 0:
+            self._zoom_in(focus_point=focus)
+        elif event.delta < 0:
+            self._zoom_out(focus_point=focus)
+        return "break"
+
+    def _on_img_press(self, event):
+        self.img_canvas.scan_mark(event.x, event.y)
+        self._img_drag_active = True
+
+    def _on_img_drag(self, event):
+        if getattr(self, "_img_drag_active", False):
+            self.img_canvas.scan_dragto(event.x, event.y, gain=1)
+
+    def _on_img_release(self, event):
+        self._img_drag_active = False
+
+    def _on_img_double_click(self, event):
+        if abs(self.zoom_factor - 1.0) < 0.1:
+            self.zoom_factor = 2.0
+            self._render_image(preserve_view=True, focus_point=(event.x, event.y))
+        else:
+            self._zoom_fit()
+
+    def _on_img_canvas_configure(self, event):
+        if abs(self.zoom_factor - 1.0) < 0.01 and self.current_pil_img is not None:
+            if hasattr(self, "_img_resize_after"):
+                self.root.after_cancel(self._img_resize_after)
+            self._img_resize_after = self.root.after(100, lambda: self._render_image(preserve_view=True))
 
     # --- JSON editor ---
     def _build_json_editor(self):

@@ -28,12 +28,14 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
 
 ## Checks and review
 
-- `footnotes.py run <volume> [99-140]` (with Pillow: `uv run --no-project --with pillow python …`):
+- `footnotes.py run <volume|book|all> … [99-140] [--apply]` (with Pillow: `uv run --no-project --with pillow python …`):
   Bible references written out with Calmet's names and checked against the Vulgate; Hebrew and
   Greek checked against the Hebrew Bible and the Septuagint (`cache/refs/`), the doubtful ones
   read on the scan by Claude; other abbreviations written out (`footnote_glossary.txt`) →
   `docs/footnotes/<volume>.json`. `footnotes.py apply <volume> [99-140]` writes it in, holding
-  flagged notes. Claude's answers are cached in `cache/footnote_cache.json`.
+  flagged notes. Claude's answers are cached in `cache/footnote_cache.json`. With
+  `FOOTNOTE_BACKEND=agy` (and `AGY_MODEL` to pick a model) the abbreviations are written out by agy
+  instead; the scans stay with Claude, and answers Claude already gave are reused.
 
 - `seam_check.py <volume> …`: reads every page break for lost or repeated lines
   (Claude, cached in `cache/seam_cache.json`) → `docs/seam_check.json`.
@@ -41,10 +43,33 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   in `~/Library/Spelling/fr_FR`) over every French field (cached per word in
   `cache/hunspell_cache.json`) → `docs/hunspell/<volume>.json`. Then
   `spellcheck.py inspect …` (long s, -oit/-oient, trémas, frequent words) and
-  `spellcheck.py candidates … [--limit N]` (likely errors by kind) to read it; both leave out
+  `spellcheck.py candidates … [--limit N]` (likely errors by kind, `old_spelling` among them:
+  azyle, succez, appella, whose modern form is elsewhere in the text) to read it; both leave out
   Latin (words of the Vulgate), abbreviations and the names in `spellcheck_names.txt`
   (`--all` keeps them). `spellcheck.py context <volume|book> <word> …` shows where a word
   occurs. Report only; fixes go into `clean_mechanical.py`.
+- `vulgate_check.py <volume|book|all> … [--apply]`: the Latin of every verse against the Vulgate,
+  word by word, edition spellings aside (cœli/caeli, tanquam/tamquam) → `docs/vulgate_check.json`,
+  sorted into long s and broken words (`--apply` writes these in, in Calmet's spelling), dropped æ
+  (terra/terræ), typos, other readings, verse numbering (the text is a neighbour's) and verses that
+  match nothing (a lemma or French in the Latin field). All but the first two are for review.
+- `ref_check.py <volume|book|all> … [--apply]`: the commentary's Bible references (chapitre:verset)
+  against the Vulgate → `docs/ref_check.json`: verses that do not exist, and Latin quoted with a
+  reference that is another verse, each with its candidates (a digit misread, a Roman numeral off,
+  the verses around, the verse the quotation is). `--apply` writes in those the quotation settles;
+  the rest go to a model (one Haiku call settled a dozen for under a cent) or a reader.
+- `seam_join.py <volume|book|all> … [--apply]`: a lemma or translation the page turn cut off
+  (`hyphen_cut` in the queue) goes on in the same field of the next page's first block, taken from
+  its french_commentary: the capitals up to the lemma's full stop, the French up to the earliest
+  stop near the lemma's length; a repeat over the turn printed once → `docs/seam_join.json`.
+  `calmet.py` joins the two halves on export (a word broken by a hyphen too). Also a comment whose
+  last line the transcription finished as a sentence and the next page repeats (`period_seam`:
+  "aujourd'hui. ‖ d'hui"): the fragment and the made-up words are dropped. Nothing moves between pages.
+- `pasted_footnotes.py <volume|book|all> … [--apply]`: footnotes pasted at the end of a comment as
+  lines "(a) …" (Jérémie) moved into the page's footnotes.
+- `profile_rules.py <volume|book> … [--top N]`: times each rule of
+  `clean_mechanical.fix_spelling` on those pages (slowest first, with its line) and lists the
+  rules that still change already-cleaned text. Changes no page.
 - `audit_integrity.py ../docs/integrity_audit_<date>.json` → that report plus
   `docs/review_queue.json` (missing verses, page breaks, verse_ref order, notes without
   commentary, capitals, broken footnote calls, …).

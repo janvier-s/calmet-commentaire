@@ -32,9 +32,9 @@ def steps():
         call = node.value
         if isinstance(call, ast.Call) and ast.unparse(call.func) == "_sub":
             flags = next((eval(ast.unparse(k.value), env) for k in call.keywords if k.arg == "flags"), 0)
-            rx = clean_mechanical._rx(call.args[0].value, flags)
+            rx, lit = clean_mechanical._rule(call.args[0].value, flags)
             repl = eval(ast.unparse(call.args[1]), env)
-            return call.args[0].value, lambda s: rx.subn(repl, s)
+            return call.args[0].value, lambda s: (s, 0) if lit and lit not in s else rx.subn(repl, s)
         f = eval("lambda s: " + ast.unparse(call), env)    # any other step: hits = 1 if it changed s
         return ast.unparse(call), lambda s: (lambda t: (t, t != s))(f(s))
 
@@ -92,9 +92,10 @@ def main(argv):
     if off:
         print(f"WARNING: the steps differ from fix_spelling on {off} strings; "
               "profile_rules.py misreads a rule")
-    print(f"fix_spelling: {whole:.2f} s; {len(rules)} steps: {total:.2f} s\n")
-
     timings.sort(reverse=True)
+    median = timings[len(timings) // 2][0]
+    print(f"fix_spelling: {whole:.2f} s; {len(rules)} steps: {total:.2f} s "
+          f"(median step {median * 1000:.1f} ms)\n")
     shown = timings[:top]
     print(f"Slowest {len(shown)} ({sum(t for t, *_ in shown) / total:.0%} of the time):")
     print("     ms  share  line  rule")

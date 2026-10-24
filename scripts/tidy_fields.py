@@ -11,7 +11,8 @@
   - french_commentary: blank lines (\\n\\n) -> a single \\n (one \\n = one paragraph on the site),
     none at the end of a block
   - footnote text: no footnote calls (^{(a)}: the note's own call repeated, or one left by the OCR);
-    other superscripts written on the line (H^{ieros} -> Hieros)
+    other superscripts written on the line (H^{ieros} -> Hieros); a note set in italic as a whole
+    (_Genèse 3:5._) loses the underscores, so footnotes.py can write its references out
   - every text field (footnotes too): no spaces or line breaks at either end, no spaces around a line break
 Changed French is added to the LLM cache, so llm_modernize.py won't send it again
 (don't run this while llm_modernize.py is running: it rewrites the cache when it finishes).
@@ -39,7 +40,7 @@ EMBEDDED_LEMMA = re.compile(
     r"(?:\s+(.+))?$",
     re.DOTALL,
 )
-
+WRAPPED = re.compile(r"^\s*_([^_]+)_([.,;:]?)\s*$")    # the whole note one italic span
 
 def strip_us(s):
     return re.sub(r"[ \t]{2,}", " ", s.replace("_", "")).strip()
@@ -128,6 +129,12 @@ def tidy(d, cache, stats):
                 f["text"] = new
                 stats["calls in footnotes"] += 1
                 changed = True
+        t = f.get("text")
+        m = WRAPPED.match(t) if isinstance(t, str) else None
+        if m:
+            f["text"] = m.group(1).strip() + m.group(2)
+            stats["footnotes unwrapped"] += 1
+            changed = True
     if trim(d, cache, stats):
         changed = True
     return changed
