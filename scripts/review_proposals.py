@@ -55,7 +55,7 @@ def _footnote_items(store, vol):
                                  "options": [{"label": "write-out", "changes": [
                                      {"vol": vol, "page": page, "path": ["footnotes", i, "text"],
                                       "old": n["text"], "new": n["proposed"]}]}]}})
-    return out
+    return sorted(out, key=lambda it: it["page"])
 
 
 def _ref_items(store, volumes):

@@ -24,7 +24,9 @@ import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+import review_proposals as rp
 import review_store as rs
+import review_turns as rt
 from page_text import load_state, save_state, toggle_italics
 
 STATIC = Path(__file__).resolve().parent / "review_web"
@@ -42,6 +44,12 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     token = token or secrets.token_hex(16)
     fp_path = store.docs / "false_positives.json"
     items = rs.load_queue(queue_path, fp_path, include_optional)
+    at = {it["id"]: i for i, it in enumerate(items)}
+    for g in rp.generated_items(store):  # write-outs and reference candidates, after the audit's
+        if g["id"] in at:
+            items[at[g["id"]]] = g  # a false positive kept from an earlier session
+        else:
+            items.append(g)
     progress = rs.Progress(store.data / ".review_queue_progress.json", fp_path)
     state_file = store.data / ".page_editor_state.json"
     by_id = {it["id"]: it for it in items}
@@ -85,7 +93,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         f = {k: q.get(k) or None for k in ("cat", "kind", "book")}
         status = q.get("status") or "open"
         sel = rs.select(items, progress, status, **f)
-        return {"items": [dict(it, status=progress.status(it["id"])) for it in sel],
+        return {"items": [dict({k: v for k, v in it.items() if k != "proposal"}, status=progress.status(it["id"]))
+                          for it in sel],
                 "counts": rs.counts(items, progress, status, f["cat"], f["kind"], f["book"])}
 
     def locate(q):
@@ -173,6 +182,103 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 "issues": rs.page_issues(items, progress, vol, page),
                 "around": rs.neighbour_issue_pages(items, progress, vol, page)}
 
+    def item_of(iid):
+        it = by_id.get(iid)
+        if not it:
+            raise ApiError(404, {"error": "no such item"})
+        return it
+
+    def turn_issues(vol, a, b):
+        return [dict({k: v for k, v in it.items() if k != "proposal"}, status=progress.status(it["id"]))
+                for it in items if it["book_dir"] == vol and it["page"] in (a, b) and it["kind"] in rt.TURN_KINDS
+                and rt.turn_of(store, it) == (vol, a, b)]
+
+    def turn_around(vol, a):
+        turns = {t[1] for it in items if it["book_dir"] == vol and it["kind"] in rt.TURN_KINDS
+                 and rs.in_status(it, progress, "open") and (t := rt.turn_of(store, it))}
+        return {"prev": max((x for x in turns if x < a), default=None),
+                "next": min((x for x in turns if x > a), default=None)}
+
+    def get_turn(q):
+        if q.get("id"):
+            t = rt.turn_of(store, item_of(q["id"]))
+            if not t:
+                raise ApiError(404, {"error": "not a page-turn issue"})
+            vol, a, b = t
+        else:
+            vol, a = vol_page(dict(q, page=q.get("a")))
+            pages = store.pages(vol)
+            later = [p for p in pages if p > a]
+            if a not in pages or not later:
+                raise ApiError(404, {"error": f"no page turn after {vol} p.{a}"})
+            b = later[0]
+        return dict(rt.turn(store, vol, a, b), issues=turn_issues(vol, a, b), around=turn_around(vol, a))
+
+    def get_proposal(q):
+        return {"proposal": rp.proposal_for(store, progress, item_of(q.get("id")))}
+
+    def info(it):
+        return {k: it.get(k) for k in ("book_dir", "page", "kind", "msg")}
+
+    def accept_one(it, proposal_id=None, option=0, edited=None):
+        """Apply the item's proposal and mark it resolved; the caller holds the lock."""
+        p = rp.proposal_for(store, progress, it)
+        if not p or (proposal_id is not None and p["id"] != proposal_id):
+            raise ApiError(409, {"error": "the proposal changed since it was shown: reload"})
+        try:
+            r = rp.apply(store, p, int(option), edited)
+        except rs.Conflict:
+            raise ApiError(409, {"error": "the text changed since the proposal was made: reload"})
+        except (IndexError, ValueError, TypeError):
+            raise ApiError(400, {"error": "bad option"})
+        progress.set(it["id"], "resolved", info(it))
+        return r
+
+    def accept(body):
+        it = item_of(body.get("id"))
+        with lock:
+            return accept_one(it, body.get("proposal_id"), body.get("option") or 0, body.get("edited"))
+
+    def reject(body):
+        it = item_of(body.get("id"))
+        with lock:
+            if it.get("proposal"):  # the proposal was the issue: a false positive
+                progress.set(it["id"], "false_positive", info(it))
+            else:
+                progress.set("proposal:" + str(body.get("proposal_id")), "rejected")
+        return {"ok": True}
+
+    def batch(q):
+        f = {k: q.get(k) or None for k in ("cat", "kind", "book")}
+        rows = []
+        for it in rs.select(items, progress, q.get("status") or "open", **f):
+            ctx = None
+            if it["kind"] in rt.TURN_KINDS:
+                t = rt.turn_of(store, it)
+                if t:
+                    tt = rt.turn(store, *t)
+                    ctx = tt["join"] and {k: tt["join"][k] for k in ("tail", "head", "joined")}
+            elif it.get("where"):
+                w = it["where"]
+                entries = (store._load(it["book_dir"], it["page"]) or {}).get(w.get("section")) or []
+                i = w.get("index")
+                ctx = entries[i].get(w.get("field")) if isinstance(i, int) and i < len(entries) else None
+            rows.append({"id": it["id"], "book_dir": it["book_dir"], "page": it["page"], "kind": it["kind"],
+                         "msg": it["msg"], "status": progress.status(it["id"]), "context": ctx,
+                         "proposal": rp.proposal_for(store, progress, it)})
+        return {"rows": rows}
+
+    def batch_accept(body):
+        done, failed = [], []
+        with lock:
+            for iid in body.get("ids") or []:
+                try:
+                    accept_one(item_of(iid))
+                    done.append(iid)
+                except ApiError as e:
+                    failed.append({"id": iid, "error": e.body.get("error")})
+        return {"done": done, "failed": failed}
+
     def create(body):
         vol, page = vol_page(body)
         try:
@@ -182,12 +288,15 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
 
     config = {"token": token, "labels": rs.KIND_LABELS,
               "kind_category": {k: rs.kind_category(k) for k in rs.KIND_LABELS}, "categories": list(rs.CATEGORIES),
-              "statuses": list(rs.STATUSES), "volumes": store.volumes(), "start": start or {}}
+              "statuses": list(rs.STATUSES), "volumes": store.volumes(), "start": start or {},
+              "turn_kinds": sorted(rt.TURN_KINDS)}
     GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
-           "/api/locate": locate, "/api/state": lambda q: state(None)}
+           "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
+           "/api/proposal": get_proposal, "/api/batch": batch}
     POST = {"/api/page": lambda b: (lambda r: {"data": r[0], "version": r[1]})(save(*vol_page(b), b)),
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
-            "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state}
+            "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
+            "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept}
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *a):
