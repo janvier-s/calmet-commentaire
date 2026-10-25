@@ -233,3 +233,20 @@ button.icon-after { flex-direction: row-reverse; }
 .turn-issues .issue { cursor: default; }
 body.turn-open #undo-all, body.turn-open #sections { display: none; }
 body.turn-open #turn-btn { background: var(--accent-weak); border-color: var(--accent); }
+
+/* proposals */
+.proposal { margin-top: 6px; padding: 7px 10px; background: var(--surface); border: 1px solid var(--accent);
+            border-radius: 7px; font-size: 13px; }
+.proposal .ptitle { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 4px; }
+.tagpill { font-size: 10.5px; padding: 0 6px; border-radius: 8px; border: 1px solid var(--border); color: var(--muted); }
+.tagpill.ok-pill { border-color: var(--ok); color: var(--ok); }
+.proposal .option + .option { border-top: 1px dashed var(--border); margin-top: 6px; padding-top: 6px; }
+.diff { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: baseline; margin: 2px 0; }
+.diff .where { font-size: 11px; color: var(--muted); white-space: nowrap; }
+.diff .dt { white-space: pre-wrap; }
+del { background: color-mix(in srgb, var(--danger) 18%, transparent); color: var(--danger); text-decoration: line-through; }
+ins { background: color-mix(in srgb, var(--ok) 20%, transparent); color: var(--ok); text-decoration: none; }
+.proposal .acts { display: flex; gap: 6px; margin-top: 6px; }
+.proposal .acts button { display: inline-flex; align-items: center; gap: 3px; }
+.proposal .acts button:disabled { opacity: .45; cursor: default; }
+#current { max-height: 46vh; overflow: auto; }

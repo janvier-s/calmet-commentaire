@@ -105,3 +105,26 @@ export function findSpans(text, needles) {
   }
   return merged;
 }
+
+/** Word-by-word difference of a and b: [[op, text]], op "=" kept, "-" only in a, "+" only in b
+ *  (the "=" and "-" parts give a back, the "=" and "+" parts b). Spaces count as words. */
+export function wordDiff(a, b) {
+  const x = (a || "").match(/\s+|\S+/g) || [], y = (b || "").match(/\s+|\S+/g) || [];
+  // L[i][j]: longest common run of x[i..] and y[j..]
+  const L = Array.from({ length: x.length + 1 }, () => new Array(y.length + 1).fill(0));
+  for (let i = x.length - 1; i >= 0; i--)
+    for (let j = y.length - 1; j >= 0; j--)
+      L[i][j] = x[i] === y[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  const out = [];
+  const push = (op, t) => {
+    const last = out[out.length - 1];
+    if (last && last[0] === op) last[1] += t; else out.push([op, t]);
+  };
+  let i = 0, j = 0;
+  while (i < x.length || j < y.length) {
+    if (i < x.length && j < y.length && x[i] === y[j]) { push("=", x[i]); i++; j++; }
+    else if (j >= y.length || (i < x.length && L[i + 1][j] >= L[i][j + 1])) push("-", x[i++]);
+    else push("+", y[j++]);
+  }
+  return out;
+}

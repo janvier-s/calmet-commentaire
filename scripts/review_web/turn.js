@@ -20,7 +20,7 @@ let scans = true;
 try { scans = localStorage.getItem("rw-turn-scans") !== "0"; } catch (e) {}
 
 const sides = () => [T.a, T.b].filter(Boolean);
-const dirty = () => sides().some((s) => s.dirty);
+export const dirty = () => sides().some((s) => s.dirty);
 const allFields = () => sides().flatMap((s) => s.fields.map((x) => x.field));
 
 function showDirty() {
@@ -189,6 +189,7 @@ export async function openTurn(q) {
   }
   if (T.open && !(await settle())) return false;
   if (!(await fetchTurn(q))) return false;
+  T.itemId = q.id || null;
   show(true);
   render();
   $("turn").scrollTop = 0;
@@ -210,7 +211,7 @@ async function stepTurn(dir) {
 }
 
 /** Write each changed side; true when everything is saved. */
-async function saveTurn() {
+export async function saveTurn() {
   let wrote = false;
   for (const s of sides().filter((x) => x.dirty)) {
     const data = typed(s);

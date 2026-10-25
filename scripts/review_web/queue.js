@@ -155,6 +155,7 @@ function renderIssues() {
     el("button", { className: "link", textContent: "Back to it", onclick: () => go(cur.book_dir, cur.page) })) : null;
   $("current").replaceChildren(...(cur ? [card(cur, true)] : [el("div", { className: "muted", textContent: "No issue selected" })]),
                                ...(away ? [away] : []));
+  if (hooks.afterIssues) hooks.afterIssues(cur, here);
   const n = S.issues.length;
   const pills = S.issues.map((it, k) => {
     const cat = CAT_OF[it.kind] || "commentary";
@@ -234,7 +235,11 @@ export async function recheck(vol = S.vol, page = S.page, also = []) {
   return r.body;
 }
 hooks.afterSave = () => recheck();
-export { currentItem, renderIssues, refreshCounts };
+/** An issue's status changed elsewhere (a proposal accepted or rejected): the lists follow. */
+export function setStatus(id, status) {
+  for (const x of [...Q.items, ...S.issues]) if (x.id === id) x.status = status;
+}
+export { currentItem, renderIssues, refreshCounts, step };
 
 // --- wiring ---
 $("f-status").onchange = () => applyFilters(readFilters(true));

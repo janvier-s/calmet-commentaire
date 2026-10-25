@@ -1,7 +1,7 @@
 // The same cases as tests/test_page_text.py: the JS port must match page_text.py.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { italicRuns, toggleItalics, parseRef, snippets, findSpans } from "../../review_web/text.js";
+import { italicRuns, toggleItalics, parseRef, snippets, findSpans, wordDiff } from "../../review_web/text.js";
 
 const TOGGLE = [
   [["a b c", 2, 3], { text: "a _b_ c", start: 3, end: 4 }],
@@ -55,4 +55,27 @@ test("findSpans", () => {
   assert.deepEqual(findSpans("voir ^{(b)} et ^{(b)}", ["^{(b)}"]), [[5, 11], [15, 21]]);
   // a quote the audit cut mid-word and that no longer matches whole: its longest whole-word part
   assert.deepEqual(findSpans("Le serviteur sage dominera les enfants", ["xur sage dominera les enfants insensés"]), [[13, 38]]);
+});
+
+test("wordDiff one word changed", () => {
+  assert.deepEqual(wordDiff("a b c", "a x c"), [["=", "a "], ["-", "b"], ["+", "x"], ["=", " c"]]);
+});
+
+test("wordDiff identical and from empty", () => {
+  assert.deepEqual(wordDiff("même texte", "même texte"), [["=", "même texte"]]);
+  assert.deepEqual(wordDiff("", "nouveau"), [["+", "nouveau"]]);
+  assert.deepEqual(wordDiff(null, "nouveau"), [["+", "nouveau"]]);
+});
+
+test("wordDiff gives back both texts", () => {
+  const pairs = [
+    ["Vide Basil. Homil. in init. Proverb.", "Voyez saint Basile, Homélie au commencement des Proverbes."],
+    ["terité. Adam signifie roux ou vermeil.", "Adam signifie roux ou vermeil."],
+    ["Ambr. Hilar. lib. 2.", "Saint Ambroise ; saint Hilaire, livre 2."],
+  ];
+  for (const [a, b] of pairs) {
+    const d = wordDiff(a, b);
+    assert.equal(d.filter(([op]) => op !== "+").map(([, t]) => t).join(""), a);
+    assert.equal(d.filter(([op]) => op !== "-").map(([, t]) => t).join(""), b);
+  }
 });
