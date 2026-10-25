@@ -996,6 +996,20 @@ async def context_stage(notes, cache):
             n["flags"] = [f for f in n["flags"] if f not in CONTEXT_FLAGS | {"scan-unread"}] + ["context"]
 
 
+def tidy_expansion(old, new):
+    """A list of authors written out one per line goes back on one line; a note that began with a
+    capital keeps it ("Ambr." → "saint Ambroise" → "Saint Ambroise")."""
+    if new and "\n" not in old:
+        new = re.sub(r"\s*\n\s*", " ", new)
+    if new[:1].islower() and old[:1].isupper():
+        new = new[0].upper() + new[1:]
+    return new
+
+
+def script_chars(s):
+    return len(re.findall(r"[Ͱ-Ͽἀ-῿֐-׿]", s))
+
+
 async def expand_stage(notes, cache):
     todo = []
     for n in notes:
@@ -1020,11 +1034,14 @@ async def expand_stage(notes, cache):
     for n in notes:
         if "exp_key" not in n:
             continue
-        new = (cache.get(n["exp_key"]) or "").strip()
+        new = tidy_expansion(n["proposed"], (cache.get(n["exp_key"]) or "").strip())
         if not new:
             n["flags"].append("expand-unread")
-        elif not script_kept(n["proposed"], new):
-            n["flags"].append("expand-changed-hebrew-or-greek")
+        elif not script_kept(n["proposed"], new) or script_chars(new) < script_chars(n["proposed"]) - 2:
+            n["flags"].append("expand-changed-hebrew-or-greek")  # a Greek or Hebrew title translated away, too
+        elif new.count("_") != n["proposed"].count("_"):
+            n["flags"].append("expand-changed-italics")  # italics dropped or moved: held, the note as it was
+            n["why"].append(f"written out, but the italics changed: {new[:200]}")
         elif not numbers_kept(n["proposed"], new, n):
             n["flags"].append("expand-changed-numbers")  # a number from nowhere: held, the note as it was
             n["why"].append(f"written out, but a number changed or added: {new[:200]}")
@@ -1184,7 +1201,7 @@ async def run(volume, lo, hi, local_only, scan=True, uncertain_only=False, conte
     print(f"  {summary}\nwrote {out}")
 
 
-HOLD = {"hebrew", "hebrew-recheck", "uncertain-fill-unclear", "uncertain-fill-asterisk-wrong", "greek", "uncertain", "scan-unread", "expand-unread", "expand-changed-hebrew-or-greek", "expand-changed-numbers",
+HOLD = {"hebrew", "hebrew-recheck", "uncertain-fill-unclear", "uncertain-fill-asterisk-wrong", "greek", "uncertain", "scan-unread", "expand-unread", "expand-changed-hebrew-or-greek", "expand-changed-numbers", "expand-changed-italics",
         "asterisk-outside-uncertain", "ambiguous-name", "reference-not-in-vulgate", "reference-mismatch"}
 
 
