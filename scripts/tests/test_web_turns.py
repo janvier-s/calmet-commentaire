@@ -149,3 +149,23 @@ def test_batch_accept_partial(web):
     assert [f["id"] for f in r["failed"]] == [b["id"]]
     pr = progress(web)
     assert pr[a["id"]] == "resolved" and b["id"] not in pr
+
+
+def test_batch_accept_refuses_a_proposal_changed_since_shown(web):
+    put(web.data, 194, lambda d: d["commentary"][-1].update(french_commentary="Le nom de toute sa posterité."))
+    put(web.data, 195, lambda d: d.update(commentary=[{"commentary_id": 1, "verse_ref": None, "chapter": 17,
+                                                      "latin_quote": None, "french_translation": None,
+                                                      "french_commentary": "terité. Adam signifie roux."}]))
+    iid = f"{VOL}/0195/seam_artifact/eeee"
+    shown = web(f"/api/proposal?id={iid}")[1]["proposal"]
+    put(web.data, 195, lambda d: d["commentary"][0].update(french_commentary="terité. Adam signifie roux et vermeil."))
+    code, r = web("/api/batch/accept", {"ids": [{"id": iid, "proposal_id": shown["id"]}]})
+    assert code == 200 and r["done"] == [] and [f["id"] for f in r["failed"]] == [iid]
+    assert "vermeil" in json.loads((web.data / VOL / "normalized" / "page_0195.json").read_text())["commentary"][0]["french_commentary"]
+
+
+def test_batch_accept_reports_unexpected_errors(web):
+    a, b = footnote_item(web, 193), footnote_item(web, 194)
+    (web.data / VOL / "normalized" / "page_0193.json").unlink()
+    code, r = web("/api/batch/accept", {"ids": [{"id": a["id"]}, {"id": b["id"]}]})
+    assert code == 200 and r["done"] == [b["id"]] and [f["id"] for f in r["failed"]] == [a["id"]]

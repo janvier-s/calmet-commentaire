@@ -185,7 +185,7 @@ export async function openTurn(q) {
                              [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
     if (choice === "save") { if (!(await save({ redraw: false }))) return false; }
     else if (choice !== "discard") return false;
-    else setDirty(false);
+    else { setDirty(false); await loadPage(S.vol, S.page); }  // the dropped edits leave the fields too
   }
   if (T.open && !(await settle())) return false;
   if (!(await fetchTurn(q))) return false;
@@ -258,6 +258,8 @@ nav.go = async (vol, page) => {
   }
   return innerGo(vol, page);
 };
+
+addEventListener("beforeunload", (e) => { if (T.open && dirty()) e.preventDefault(); });
 
 document.addEventListener("keydown", (e) => {
   const typing = e.target.closest("input, select, textarea, [contenteditable]");

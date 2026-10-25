@@ -2,7 +2,7 @@
 import { S, api, hooks, loadPage, toast } from "./app.js";
 import { save } from "./edit.js";
 import { icon } from "./icons.js";
-import { refreshCounts, recheck, renderIssues, setStatus, step } from "./queue.js";
+import { currentItem, refreshCounts, recheck, renderIssues, setStatus, step } from "./queue.js";
 import { T, dirty as turnDirty, refresh as refreshTurn, saveTurn } from "./turn.js";
 import { wordDiff } from "./text.js";
 
@@ -107,6 +107,8 @@ hooks.afterIssues = async (cur, here) => {
     p = r.status === 200 ? r.body.proposal : null;
     cache.set(cur.id, p);
   }
+  const now = currentItem();
+  if (!now || now.id !== cur.id) return;  // moved on while it was asked for
   const box = document.getElementById("current");
   box.querySelectorAll(".proposal").forEach((x) => x.remove());
   if (p) box.append(proposalCard(p));

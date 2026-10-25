@@ -1,5 +1,5 @@
 // The batch table: every issue of one type, each with its context and proposal; tick, then accept.
-import { S, api, ask, nav, toast } from "./app.js";
+import { S, api, ask, loadPage, nav, toast } from "./app.js";
 import { save, setDirty } from "./edit.js";
 import { icon } from "./icons.js";
 import { diffLine } from "./proposal.js";
@@ -73,12 +73,13 @@ function tickAll() {
 
 async function acceptTicked() {
   const ids = [...$("batch").querySelectorAll("tbody input:checked")].map((b) => b.closest("tr").dataset.id);
+  const byId = new Map(B.rows.map((x) => [x.id, x]));
   if (!ids.length) return;
   if (await ask(`Accept the ${ids.length} ticked proposals? Each page is written and its issue resolved.`,
                 [["cancel", "Cancel"], ["yes", `Accept ${ids.length}`, "ok"]]) !== "yes") return;
-  const r = await api("/api/batch/accept", { ids });
+  // each with the proposal it shows: one that changed since is refused, not applied unseen
+  const r = await api("/api/batch/accept", { ids: ids.map((id) => ({ id, proposal_id: byId.get(id).proposal.id })) });
   if (r.status !== 200) { toast(r.body.error || "Failed"); return; }
-  const byId = new Map(B.rows.map((x) => [x.id, x]));
   for (const id of r.body.done) {
     const row = byId.get(id);
     row.status = "resolved";
@@ -104,7 +105,7 @@ async function acceptTicked() {
 }
 
 async function go(r) {
-  closeBatch();
+  await closeBatch(false);
   if (!(await openItem(r.id))) toast("This issue is not in the current list");
 }
 
@@ -120,7 +121,7 @@ export async function openBatch() {
                              [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
     if (choice === "save") { if (!(await save({ redraw: false }))) return; }
     else if (choice !== "discard") return;
-    else setDirty(false);
+    else { setDirty(false); await loadPage(S.vol, S.page); }  // the dropped edits leave the fields too
   }
   const q = new URLSearchParams({ status: f.status, kind: f.kind });
   if (f.cat) q.set("cat", f.cat);
@@ -135,14 +136,16 @@ export async function openBatch() {
   $("batch").scrollTop = 0;
 }
 
-export function closeBatch() {
+/** Back to the page, reloaded unless a page change follows (a batch may have written it). */
+export async function closeBatch(reload = true) {
   if (!B.open) return;
   show(false);
+  if (reload && S.vol && S.data) await loadPage(S.vol, S.page);
   renderIssues();
 }
 
 const innerGo = nav.go;
-nav.go = (vol, page) => { closeBatch(); return innerGo(vol, page); };
+nav.go = async (vol, page) => { await closeBatch(false); return innerGo(vol, page); };
 
 $("batch-btn").onclick = () => (B.open ? closeBatch() : openBatch());
 document.addEventListener("keydown", (e) => {

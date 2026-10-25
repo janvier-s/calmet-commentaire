@@ -272,12 +272,17 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     def batch_accept(body):
         done, failed = [], []
         with lock:
-            for iid in body.get("ids") or []:
+            # each row carries the proposal it showed: one that changed since is not applied
+            for row in body.get("ids") or []:
+                row = row if isinstance(row, dict) else {"id": row}
+                iid = row.get("id")
                 try:
-                    accept_one(item_of(iid))
+                    accept_one(item_of(iid), row.get("proposal_id"))
                     done.append(iid)
                 except ApiError as e:
                     failed.append({"id": iid, "error": e.body.get("error")})
+                except Exception as e:  # reported with the row; the others go on
+                    failed.append({"id": iid, "error": f"{type(e).__name__}: {e}"})
         return {"done": done, "failed": failed}
 
     def create(body):
