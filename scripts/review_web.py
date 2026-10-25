@@ -306,6 +306,20 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         except FileExistsError:
             raise ApiError(409, {"error": "the page exists"})
 
+    def versions(q):
+        """The pages' versions on disk (None: no JSON), for the editor to see edits made outside it."""
+        vol = q.get("vol")
+        if vol not in store.volumes():
+            raise ApiError(404, {"error": f"no volume {vol}"})
+        out = {}
+        for n in (q.get("pages") or "").split(","):
+            if n.strip().isdigit():
+                try:
+                    out[n.strip()] = store._version(store.path(vol, int(n)))
+                except OSError:
+                    out[n.strip()] = None
+        return {"versions": out}
+
     searcher = Searcher(store)
     threading.Thread(target=searcher.warm, args=(store.volumes(),), daemon=True).start()
 
@@ -321,7 +335,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
               "turn_kinds": sorted(rt.TURN_KINDS)}
     GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
-           "/api/proposal": get_proposal, "/api/batch": batch, "/api/search": search}
+           "/api/proposal": get_proposal, "/api/batch": batch, "/api/search": search, "/api/versions": versions}
     POST = {"/api/page": lambda b: (lambda r: {"data": r[0], "version": r[1]})(save(*vol_page(b), b)),
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,

@@ -13,16 +13,21 @@ const el = (tag, props = {}, ...kids) => {
 export const S = {
   config: null, vol: null, page: null, pages: [], data: null, version: null,
   ctx: null, issues: [], around: null, section: "all",
-  zoom: 1, dim: 10,
+  zoom: 1, dim: 10, posting: 0,
 };
 
 // --- server ---
 export async function api(path, body) {
-  const r = await fetch(path, body === undefined ? {} : {
-    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body),
-  });
-  const ct = r.headers.get("Content-Type") || "";
-  return { status: r.status, body: ct.includes("json") ? await r.json() : await r.text() };
+  if (body !== undefined) S.posting++;  // a write under way: the disk watch waits (watch.js)
+  try {
+    const r = await fetch(path, body === undefined ? {} : {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body),
+    });
+    const ct = r.headers.get("Content-Type") || "";
+    return { status: r.status, body: ct.includes("json") ? await r.json() : await r.text() };
+  } finally {
+    if (body !== undefined) S.posting--;
+  }
 }
 
 export function toast(msg) {

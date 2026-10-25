@@ -82,6 +82,9 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   quotes and outlines the field it names (`where` in the queue, from `audit_integrity.py`). Saving a
   page re-runs the audit of its book (`page_audit.py`, 1–3 s): issues no longer found close as
   "fixed on save", new ones appear (the queue file itself changes only with the next full audit).
+  A page edited outside the editor (by hand, by an LLM) is loaded again within a couple of seconds and
+  its book re-checked the same way, so you only have to look and mark it; with unsaved edits to that
+  page it asks first (Keep mine / Reload theirs).
   A page-turn issue opens the page-turn view (`T` from any page, Esc back): the foot of the page over
   the head of the next, both editable, with the text as the site joins it (`review_turns.py`).
   Proposed fixes show word by word with Accept (write and resolve), Edit (into the fields, unsaved)

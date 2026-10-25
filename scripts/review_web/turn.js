@@ -105,6 +105,7 @@ let zoom = 1;
 function layoutCrops(at) {
   for (const box of document.querySelectorAll("#turn .turn-scan")) {
     const img = box.querySelector("img");
+    if (!img.naturalWidth) continue;  // not loaded yet: its onload sizes it
     const focus = at && at.box === box ? at : { x: box.clientWidth / 2, y: box.clientHeight / 2 };
     const before = img.width || 1;
     img.style.width = `${Math.round((box.clientWidth - 2) * zoom)}px`;
@@ -122,8 +123,12 @@ function zoomCrops(dir, at) {
   layoutCrops(at);
 }
 
+const cropBoxes = new Map();  // "vol/page/end" -> its scan box, kept over redraws (zoom and scroll stay)
+
 function scanCrop(side, end) {
   if (!scans || !side || !side.scan) return null;
+  const kept = cropBoxes.get(`${T.vol}/${side.page}/${end}`);
+  if (kept) { kept.classList.toggle("no-invert", !localStorageInvert()); return kept; }
   const img = el("img", { src: `/scan/${encodeURIComponent(T.vol)}/${side.page}`, alt: "", draggable: false });
   const box = el("div", { className: "turn-scan" + (localStorageInvert() ? "" : " no-invert") }, img);
   img.onload = () => {
@@ -151,6 +156,7 @@ function scanCrop(side, end) {
   const stop = () => { drag = null; box.classList.remove("dragging"); };
   box.addEventListener("pointerup", stop);
   box.addEventListener("pointercancel", stop);
+  cropBoxes.set(`${T.vol}/${side.page}/${end}`, box);
   return box;
 }
 
@@ -218,6 +224,7 @@ function render() {
   const crops = scans ? el("div", { className: "turn-scans" }, scanCrop(a, true), scanCrop(b, false)) : null;
   root.replaceChildren(head, el("div", { className: "turn-body" + (scans ? "" : " no-scans") }, text, crops),
                        joinLine(), el("div", { id: "turn-proposal" }), issueList());
+  layoutCrops();  // a scan box kept from before may have missed a zoom
   if (hooks.renderProposal) hooks.renderProposal($("turn-proposal"), T.proposal, { turn: true });
   showDirty();
 }
@@ -349,6 +356,26 @@ export async function refresh(recheckFirst = true) {
   if (a != null && (await fetchTurn({ vol: T.vol, a }))) render();
   $("dirty").textContent = "saved";
   setTimeout(() => { if (!dirty()) showDirty(); }, 1500);
+}
+
+/** Pages of the turn changed on disk: load them again. Unsaved edits on the other page stay. */
+export async function reloadFromDisk(pages) {
+  const keep = sides().filter((s) => s.dirty && !pages.includes(s.page))
+    .map((s) => ({ page: s.page, data: typed(s), version: s.version, dirty: true }));
+  const a = T.a ? T.a.page : null;
+  if (a == null) return;
+  const at = [...document.querySelectorAll("#turn .turn-scan")].map((b) => [b, b.scrollLeft, b.scrollTop]);
+  const top = $("turn").scrollTop;
+  if (!(await fetchTurn({ vol: T.vol, a }))) return;
+  for (const k of keep) {
+    const s = sides().find((x) => x.page === k.page);
+    if (s) Object.assign(s, k);
+  }
+  render();
+  for (const [b, l, t] of at) { b.scrollLeft = l; b.scrollTop = t; }
+  $("turn").scrollTop = top;
+  showDirty();
+  await recheck(T.vol, a, T.b ? [T.b.page] : []);
 }
 
 // --- wiring ---

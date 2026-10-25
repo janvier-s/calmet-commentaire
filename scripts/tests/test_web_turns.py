@@ -187,3 +187,15 @@ def test_search_route(web):
     assert code == 200 and r["total"] == 1 and r["hits"][0]["page"] == 195
     code, r = web("/api/search?q=mechant")  # no book: every book
     assert code == 200 and r["total"] == 1
+
+
+def test_versions_route(web):
+    code, page = web(f"/api/page?vol={VOL}&page=194")
+    code, r = web(f"/api/versions?vol={VOL}&pages=194,195,999")
+    assert code == 200 and r["versions"]["194"] == page["version"] and r["versions"]["999"] is None
+    put(web.data, 194, lambda d: d["commentary"][0].update(french_commentary="changed by hand, and longer"))
+    assert web(f"/api/versions?vol={VOL}&pages=194")[1]["versions"]["194"] != page["version"]
+
+
+def test_versions_route_bad_book(web):
+    assert web("/api/versions?vol=nope&pages=1")[0] == 404
