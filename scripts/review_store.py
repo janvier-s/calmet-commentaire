@@ -315,6 +315,9 @@ KIND_LABELS = {
     "missing_footnote": "MISSING FOOTNOTE",
     "empty_page": "EMPTY PAGE",
     "seam_artifact": "PAGE-TURN GLITCH",
+    # proposals from the scripts' reports (review_proposals.py)
+    "footnote_writeout": "FOOTNOTE WRITE-OUT TO CHECK",
+    "ref_candidate": "VERSE REFERENCE TO CHECK",
 }
 
 VERSE_KINDS = {
@@ -326,7 +329,7 @@ VERSE_KINDS = {
 
 FOOTNOTE_KINDS = {
     "missing_footnote", "broken_marker", "extra_footnotes", "hebrew_recheck",
-    "footnote_asterisk",
+    "footnote_asterisk", "footnote_writeout",
 }
 
 def kind_category(k):
@@ -462,7 +465,7 @@ def neighbour_issue_pages(items, progress, vol, page):
 AUDIT_KINDS = frozenset(KIND_LABELS) - {
     "reported", "psalm_missing_verse", "psalm_missing_title", "psalm_number", "psalm_wrong_psalm",
     "psalm_unmatched", "chapter_vulgate", "chapter_heading", "hebrew_recheck", "latin_long_s",
-    "seam_missing", "seam_repeat", "seam_unclear", "duplicate_verse"}
+    "seam_missing", "seam_repeat", "seam_unclear", "duplicate_verse", "footnote_writeout", "ref_candidate"}
 
 
 def book_volumes(vol):
