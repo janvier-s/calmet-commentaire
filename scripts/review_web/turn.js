@@ -128,6 +128,7 @@ function render() {
     a && a.verse != null ? verseLine(a) : null,
     a && a.note != null ? noteBlock(a, `p.${a.page} · last note`) : el("p", { className: "muted", textContent: a ? `p.${a.page} has no commentary` : "No page before" }),
     el("div", { className: "turn-rule" }, el("span", { textContent: "page turn" })),
+    b ? addTop(b) : null,
     b && b.note != null ? noteBlock(b, `p.${b.page} · first note`) : el("p", { className: "muted", textContent: b ? `p.${b.page} has no commentary` : "The next page has no JSON" }),
     b && b.verse != null ? verseBlock(b, `p.${b.page} · first verse`) : null);
   const crops = scans ? el("div", { className: "turn-scans" }, scanCrop(a, true), scanCrop(b, false)) : null;
@@ -135,6 +136,30 @@ function render() {
                        joinLine(), el("div", { id: "turn-proposal" }), issueList());
   if (hooks.renderProposal) hooks.renderProposal($("turn-proposal"), T.proposal, { turn: true });
   showDirty();
+}
+
+/** "+ add block at top" of page B: a commentary block continuing page A's last note. */
+function addTop(side) {
+  const last = T.a && T.a.note != null ? typed(T.a).commentary[T.a.note] : null;
+  const ref = last ? [last.chapter, last.verse_ref].filter((x) => x != null).join(":") : "";
+  const where = ref ? ` (continues ${ref} from p.${T.a.page})` : "";
+  return el("button", { className: "add", textContent: `+ add block at top of p.${side.page}${where}`,
+                        onclick: () => addBlockTop(side) });
+}
+
+async function addBlockTop(side) {
+  const r = await api("/api/op", { vol: T.vol, page: side.page, data: typed(side), version: side.version,
+                                   op: { op: "add_commentary", after: null } });
+  if (r.status === 409) { toast(`p.${side.page} was changed on disk: save or reopen the page turn first`); return; }
+  if (r.status !== 200) { toast(r.body.error || "Failed"); return; }
+  Object.assign(side, { data: r.body.data, version: r.body.version, dirty: false, note: 0 });
+  if (dirty()) {  // the other page has unsaved edits: kept, the turn drawn again without reloading it
+    for (const s of sides()) if (s !== side) s.data = typed(s);  // (side's fields are the old page)
+    await recheck(T.vol, side.page);
+    render();
+  } else await refresh();
+  const f = T.b && T.b.fields.find((x) => x.path.join("/") === "commentary/0/french_commentary");
+  if (f) f.field.el.focus();
 }
 
 function setScans(on) {
