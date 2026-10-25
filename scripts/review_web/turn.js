@@ -147,6 +147,14 @@ function zoomTools() {
     el("button", { title: "Fit the scans to the column", onclick: () => zoomCrops(0) }, "Fit"));
 }
 
+/** The same switch as the main scan's Invert: both follow it. */
+function setInvert(on) {
+  const main = $("invert");
+  main.checked = on;
+  main.dispatchEvent(new Event("change"));  // stores it and redraws the main scan
+  for (const box of document.querySelectorAll("#turn .turn-scan")) box.classList.toggle("no-invert", !on);
+}
+
 function localStorageInvert() {
   try { return localStorage.getItem("rw-invert") !== "0"; } catch (e) { return true; }
 }
@@ -179,6 +187,9 @@ function render() {
                    onclick: () => stepTurn(1) }, icon("next", 14)),
     el("span", { className: "grow" }),
     scans ? zoomTools() : null,
+    scans ? el("label", { className: "muted small dark-only", title: "Show the scans light-on-dark in the dark theme" },
+               el("input", { type: "checkbox", checked: localStorageInvert(), onchange: (e) => setInvert(e.target.checked) }),
+               " Invert") : null,
     el("label", { className: "muted small" },
        el("input", { type: "checkbox", checked: scans, onchange: (e) => setScans(e.target.checked) }), " Scans"),
     el("button", { title: "Back to the page (Esc)", onclick: () => closeTurn() }, icon("back", 13), " Page"));
