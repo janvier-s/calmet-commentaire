@@ -77,7 +77,7 @@ export function updateTop() {
 }
 
 // --- the scan ---
-const ZOOM_STEPS = [0.5, 0.65, 0.8, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0];
+export const ZOOM_STEPS = [0.5, 0.65, 0.8, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0];
 
 export function showScan(has) {
   const img = $("scan-img");

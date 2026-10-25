@@ -1,6 +1,6 @@
 // The page-turn view: the foot of page A over the head of page B, both editable, the text as the site
 // joins it, and the fix a script proposes there.
-import { S, api, ask, hooks, loadPage, nav, toast } from "./app.js";
+import { S, ZOOM_STEPS, api, ask, hooks, loadPage, nav, toast } from "./app.js";
 import { INT_FIELDS, extra, latinCaseFor, save, setDirty, wireField } from "./edit.js";
 import { Field, ITALIC_FIELDS } from "./field.js";
 import { icon } from "./icons.js";
@@ -82,12 +82,69 @@ function verseLine(side) {
             `${v.chapter ?? "?"}:${v.verse_number ?? "?"}`, v.french ? ` “${v.french.slice(0, 70)}${v.french.length > 70 ? "…" : ""}”` : "");
 }
 
+// both scans share one zoom (1 = the width of the column), kept from one turn to the next
+let zoom = 1;
+
+/** Size both scans to the zoom; `at` = {box, x, y}: that point of that box stays still, the other
+ *  scan keeps its centre. */
+function layoutCrops(at) {
+  for (const box of document.querySelectorAll("#turn .turn-scan")) {
+    const img = box.querySelector("img");
+    const focus = at && at.box === box ? at : { x: box.clientWidth / 2, y: box.clientHeight / 2 };
+    const before = img.width || 1;
+    img.style.width = `${Math.round((box.clientWidth - 2) * zoom)}px`;
+    const k = img.width / before;
+    box.scrollLeft = (box.scrollLeft + focus.x) * k - focus.x;
+    box.scrollTop = (box.scrollTop + focus.y) * k - focus.y;
+  }
+  const label = $("turn-zoom");
+  if (label) label.textContent = `${Math.round(zoom * 100)}%`;
+}
+
+function zoomCrops(dir, at) {
+  const i = ZOOM_STEPS.findIndex((z) => z >= zoom - 1e-6);
+  zoom = dir === 0 ? 1 : ZOOM_STEPS[Math.max(0, Math.min(ZOOM_STEPS.length - 1, (i < 0 ? ZOOM_STEPS.length - 1 : i) + dir))];
+  layoutCrops(at);
+}
+
 function scanCrop(side, end) {
   if (!scans || !side || !side.scan) return null;
   const img = el("img", { src: `/scan/${encodeURIComponent(T.vol)}/${side.page}`, alt: "", draggable: false });
   const box = el("div", { className: "turn-scan" + (localStorageInvert() ? "" : " no-invert") }, img);
-  if (end) img.onload = () => { box.scrollTop = box.scrollHeight; };  // the foot of page A
+  img.onload = () => {
+    img.style.width = `${Math.round((box.clientWidth - 2) * zoom)}px`;
+    if (end) box.scrollTop = box.scrollHeight;  // the foot of page A
+  };
+  const point = (e) => { const r = box.getBoundingClientRect(); return { box, x: e.clientX - r.left, y: e.clientY - r.top }; };
+  box.addEventListener("wheel", (e) => {
+    if (!(e.metaKey || e.ctrlKey)) return;
+    e.preventDefault();
+    zoomCrops(e.deltaY < 0 ? 1 : -1, point(e));
+  }, { passive: false });
+  box.addEventListener("dblclick", (e) => zoomCrops(e.altKey ? -1 : 1, point(e)));
+  let drag = null;
+  box.addEventListener("pointerdown", (e) => {
+    drag = { x: e.clientX, y: e.clientY, l: box.scrollLeft, t: box.scrollTop };
+    box.setPointerCapture(e.pointerId);
+    box.classList.add("dragging");
+  });
+  box.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    box.scrollLeft = drag.l - (e.clientX - drag.x);
+    box.scrollTop = drag.t - (e.clientY - drag.y);
+  });
+  const stop = () => { drag = null; box.classList.remove("dragging"); };
+  box.addEventListener("pointerup", stop);
+  box.addEventListener("pointercancel", stop);
   return box;
+}
+
+function zoomTools() {
+  return el("span", { className: "turn-zoom" },
+    el("button", { title: "Zoom the scans out", onclick: () => zoomCrops(-1) }, "−"),
+    el("span", { id: "turn-zoom", textContent: `${Math.round(zoom * 100)}%` }),
+    el("button", { title: "Zoom the scans in (or double-click a scan; ⌘ scroll; drag to pan)", onclick: () => zoomCrops(1) }, "+"),
+    el("button", { title: "Fit the scans to the column", onclick: () => zoomCrops(0) }, "Fit"));
 }
 
 function localStorageInvert() {
@@ -121,6 +178,7 @@ function render() {
     el("button", { className: "pagebtn", title: "Next page turn with an open issue (→)", disabled: T.around.next == null,
                    onclick: () => stepTurn(1) }, icon("next", 14)),
     el("span", { className: "grow" }),
+    scans ? zoomTools() : null,
     el("label", { className: "muted small" },
        el("input", { type: "checkbox", checked: scans, onchange: (e) => setScans(e.target.checked) }), " Scans"),
     el("button", { title: "Back to the page (Esc)", onclick: () => closeTurn() }, icon("back", 13), " Page"));
@@ -285,6 +343,7 @@ nav.go = async (vol, page) => {
 };
 
 addEventListener("beforeunload", (e) => { if (T.open && dirty()) e.preventDefault(); });
+addEventListener("resize", () => { if (T.open) layoutCrops(); });
 
 document.addEventListener("keydown", (e) => {
   const typing = e.target.closest("input, select, textarea, [contenteditable]");

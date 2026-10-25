@@ -222,8 +222,12 @@ button.icon-after { flex-direction: row-reverse; }
 .turn-body { display: grid; grid-template-columns: minmax(360px, 1.25fr) minmax(240px, 1fr); gap: 14px; align-items: start; }
 .turn-body.no-scans { grid-template-columns: minmax(0, 1fr); }
 .turn-scans { display: grid; gap: 8px; position: sticky; top: 52px; }
-.turn-scan { height: 38vh; overflow: auto; background: var(--scan-bg); border: 1px solid var(--border); border-radius: 6px; }
-.turn-scan img { display: block; width: 100%; user-select: none; }
+.turn-scan { height: 38vh; overflow: auto; background: var(--scan-bg); border: 1px solid var(--border); border-radius: 6px;
+             cursor: grab; scrollbar-gutter: stable; }
+.turn-scan.dragging { cursor: grabbing; }
+.turn-scan img { display: block; max-width: none; user-select: none; }
+.turn-zoom { display: inline-flex; align-items: center; gap: 3px; }
+.turn-zoom > span { min-width: 40px; text-align: center; font-size: 12px; }
 :root[data-theme="dark"] .turn-scan:not(.no-invert) img { filter: invert(.9) hue-rotate(180deg); }
 .turn-rule { display: flex; align-items: center; gap: 8px; margin: 12px 0; color: var(--warn); font-size: 11px;
              font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
