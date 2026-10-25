@@ -91,7 +91,10 @@ async function goItem(i) {
   Q.current = it.id;
   updateCounter();
   const r = await go(it.book_dir, it.page);
-  if (r) point(it);
+  if (r) {
+    point(it);
+    if (hooks.showTurn) await hooks.showTurn(it);
+  }
   return r;
 }
 
@@ -111,6 +114,7 @@ async function mark(status) {
   const it = currentItem();
   if (!it) { toast("No issue selected: click one in the left column"); return; }
   if (S.dirty && !(await save({ redraw: false }))) return;  // a failed save stays put
+  if (hooks.beforeMark && !(await hooks.beforeMark())) return;
   const r = await api("/api/mark", { id: it.id, status });
   if (r.status !== 200) { toast(r.body.error || "Could not mark the issue"); return; }
   for (const x of [...Q.items, ...S.issues]) if (x.id === it.id) x.status = status;
@@ -140,6 +144,7 @@ function select(it) {
   updateCounter();
   renderIssues();
   point(it);
+  if (hooks.showTurn) hooks.showTurn(it);
 }
 
 function renderIssues() {
@@ -205,12 +210,12 @@ nav.go = async (vol, page) => {
 
 // --- re-check on save: the audit of the book runs again on the server ---
 let running = 0;
-async function recheck() {
-  const vol = S.vol, page = S.page;
+/** Run the audit of the book again; `also`: other pages whose issues to bring back (a page turn). */
+export async function recheck(vol = S.vol, page = S.page, also = []) {
   running++;
   $("rechecking").textContent = "re-checking…";
   let r;
-  try { r = await api("/api/recheck", { vol, page }); } catch (e) { r = { status: 0, body: {} }; }
+  try { r = await api("/api/recheck", { vol, page, also }); } catch (e) { r = { status: 0, body: {} }; }
   if (--running === 0) $("rechecking").textContent = "";
   if (r.status !== 200) { toast(`Re-check failed: ${r.body.error || "no answer"}`); return; }
   const byId = new Map(r.body.issues.map((it) => [it.id, it]));
@@ -218,16 +223,18 @@ async function recheck() {
     const fresh = byId.get(it.id);
     if (fresh) Object.assign(it, { status: fresh.status, fixed: fresh.fixed, msg: fresh.msg, where: fresh.where });
   }
-  if (S.vol === vol && S.page === page) {
-    S.issues = r.body.issues;
+  if (S.vol === vol && (S.page === page || also.includes(S.page))) {
+    S.issues = r.body.issues.filter((it) => it.page === S.page);
     S.around = r.body.around;
     renderIssues();
   }
   await refreshCounts();
   const said = [r.body.fixed && `${r.body.fixed} fixed on save`, r.body.added && `${r.body.added} new`].filter(Boolean);
   if (said.length) toast(said.join(", "));
+  return r.body;
 }
-hooks.afterSave = recheck;
+hooks.afterSave = () => recheck();
+export { currentItem, renderIssues, refreshCounts };
 
 // --- wiring ---
 $("f-status").onchange = () => applyFilters(readFilters(true));

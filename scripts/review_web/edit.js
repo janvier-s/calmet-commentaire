@@ -3,7 +3,7 @@ import { S, api, ask, hooks, nav, renderPage, toast, loadPage } from "./app.js";
 import { Field } from "./field.js";
 
 const $ = (id) => document.getElementById(id);
-const INT_FIELDS = new Set(["verse_number", "commentary_id", "verse_ref", "chapter_number", "chapter"]);
+export const INT_FIELDS = new Set(["verse_number", "commentary_id", "verse_ref", "chapter_number", "chapter"]);
 
 S.fields = [];      // [{path, field}] of the page drawn
 S.dirty = false;
@@ -25,30 +25,42 @@ function latinCase(text, redraw) {
   return null;
 }
 
-S.edits = 0;  // counts every edit, so a save knows whether typing went on meanwhile
-hooks.makeField = (f, name, value, path) => {
-  let timer = null;  // per field: each lemma gets its small caps
-  const field = new Field(f, {
-    name, value, latinCase: (t, redraw) => {
-      clearTimeout(timer);
-      if (cased.has(t)) return cased.get(t);
-      timer = setTimeout(() => latinCase(t, redraw), 300);
-      return null;
-    },
-    onChange: () => { S.edits++; setDirty(true); },
-  });
+/** Small caps for a lemma, asked of the server once the typing stops (one timer per field). */
+export function latinCaseFor() {
+  let timer = null;
+  return (t, redraw) => {
+    clearTimeout(timer);
+    if (cased.has(t)) return cased.get(t);
+    timer = setTimeout(() => latinCase(t, redraw), 300);
+    return null;
+  };
+}
+
+/** Fields drawn outside the page (the page-turn view): the italics button, the shelf and Tab see
+ *  them too. `list()` gives them in order; set to null when that view closes. */
+export const extra = { list: null };
+
+/** What every field gets: marks shown or not, a taller empty comment, the last-focused field, Tab. */
+export function wireField(field, name, list) {
+  const f = field.el;
   f.classList.toggle("hide-marks", !$("show-marks").checked);
   if (name === "french_commentary" && !field.text.trim()) f.style.minHeight = "6em";
   f.addEventListener("focus", () => { lastField = field; });
   f.addEventListener("keydown", (e) => {
     if (e.key !== "Tab") return;
     e.preventDefault();
-    const all = S.fields.map((x) => x.field);
+    const all = list();
     const next = all[(all.indexOf(field) + (e.shiftKey ? -1 : 1) + all.length) % all.length];
     next.el.focus();
     next.select(0, next.text.length);
     next.el.scrollIntoView({ block: "nearest" });
   });
+}
+
+S.edits = 0;  // counts every edit, so a save knows whether typing went on meanwhile
+hooks.makeField = (f, name, value, path) => {
+  const field = new Field(f, { name, value, latinCase: latinCaseFor(), onChange: () => { S.edits++; setDirty(true); } });
+  wireField(field, name, () => S.fields.map((x) => x.field));
   S.fields.push({ path, field });
 };
 hooks.beforeRender = () => { S.fields = []; lastField = null; };
@@ -163,12 +175,14 @@ async function undoAll() {
 }
 $("undo-all").onclick = undoAll;
 
-$("save").onclick = () => save();
+// the page-turn view saves its own two pages (hooks.saveActive)
+const saveActive = () => (hooks.saveActive ? hooks.saveActive() : save());
+$("save").onclick = saveActive;
 $("italic").onmousedown = (e) => e.preventDefault();  // keep the selection in the field
 $("italic").onclick = () => lastField && lastField.toggleItalic();
 $("show-marks").onchange = (e) => document.querySelectorAll(".f").forEach((f) => f.classList.toggle("hide-marks", !e.target.checked));
 document.addEventListener("keydown", (e) => {
-  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") { e.preventDefault(); save(); }
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") { e.preventDefault(); saveActive(); }
 });
 addEventListener("beforeunload", (e) => { if (S.dirty) e.preventDefault(); });
 
@@ -176,7 +190,8 @@ addEventListener("beforeunload", (e) => { if (S.dirty) e.preventDefault(); });
 const floatBtn = Object.assign(document.createElement("button"), { id: "float-italic", title: "Italics (⌘I)", hidden: true });
 floatBtn.innerHTML = "<i>I</i>";
 document.body.append(floatBtn);
-const fieldAt = (node) => (S.fields.find((x) => x.field.el.contains(node)) || {}).field || null;
+const fieldAt = (node) => (S.fields.find((x) => x.field.el.contains(node)) || {}).field
+  || (extra.list ? extra.list().find((f) => f.el.contains(node)) : null) || null;
 floatBtn.addEventListener("mousedown", (e) => e.preventDefault());  // keep the selection
 floatBtn.onclick = () => {
   const s = getSelection();
@@ -193,6 +208,7 @@ document.addEventListener("selectionchange", () => {
   floatBtn.style.top = `${Math.max(4, r.top - 34)}px`;
 });
 document.getElementById("text-pane").addEventListener("scroll", () => { floatBtn.hidden = true; });
+document.getElementById("turn").addEventListener("scroll", () => { floatBtn.hidden = true; }, true);
 
 // --- the shelf: one click puts a symbol at the cursor (or copies it) ---
 const SHELF = ["℣", "^{(a)}", "^{(b)}", "^{(c)}", "^{(d)}", "^{(e)}", "^{(f)}", "«", "»"];

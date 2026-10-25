@@ -227,3 +227,13 @@ def test_recheck_reloads_false_positives(tmp_path, monkeypatch):
     monkeypatch.setattr(audit_integrity, "load_false_positives", lambda: {"fresh"})
     recheck_book(VOL)
     assert audit_integrity.FP_IDS == {"fresh"}
+
+
+def test_recheck_returns_the_other_page_of_a_turn(data_dir):
+    srv, post = server(data_dir, lambda vol: list(QUEUE))
+    try:
+        r = post("/api/recheck", {"vol": VOL, "page": 193, "also": [194]})
+        assert {i["page"] for i in r["issues"]} == {194}
+        assert r["around"]["next"] == 194
+    finally:
+        srv.shutdown()

@@ -210,3 +210,26 @@ button.icon-after { flex-direction: row-reverse; }
 .f.flagged { border-color: var(--danger); box-shadow: 0 0 0 1px var(--danger); }
 @keyframes flash { 0% { box-shadow: 0 0 0 3px var(--accent); } 100% { box-shadow: 0 0 0 3px transparent; } }
 .block.flash { animation: flash 1.2s ease-out; }
+
+/* the page-turn view */
+#turn { overflow: auto; min-height: 0; padding: 0 14px 60px; }
+.turn-head { display: flex; align-items: center; gap: 8px; position: sticky; top: 0; z-index: 5; padding: 8px 0;
+             background: var(--bg); border-bottom: 1px solid var(--border); margin-bottom: 10px; }
+.turn-head b { font-size: 14px; }
+.turn-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 34%); gap: 14px; align-items: start; }
+.turn-body.no-scans { grid-template-columns: minmax(0, 1fr); }
+.turn-scans { display: grid; gap: 8px; position: sticky; top: 52px; }
+.turn-scan { height: 38vh; overflow: auto; background: var(--scan-bg); border: 1px solid var(--border); border-radius: 6px; }
+.turn-scan img { display: block; width: 100%; user-select: none; }
+:root[data-theme="dark"] .turn-scan:not(.no-invert) img { filter: invert(.9) hue-rotate(180deg); }
+.turn-rule { display: flex; align-items: center; gap: 8px; margin: 12px 0; color: var(--warn); font-size: 11px;
+             font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.turn-rule::before, .turn-rule::after { content: ""; flex: 1; border-top: 2px dashed var(--warn); opacity: .6; }
+.turn-join { margin: 12px 0; padding: 8px 10px; background: var(--surface); border: 1px dashed var(--border); border-radius: 7px; }
+.turn-join .joined { white-space: pre-wrap; }
+.join-mark { display: inline-block; width: 3px; height: 1.1em; vertical-align: text-bottom; margin: 0 2px;
+             background: var(--warn); border-radius: 2px; }
+.turn-issues { display: grid; gap: 6px; margin-top: 12px; }
+.turn-issues .issue { cursor: default; }
+body.turn-open #undo-all, body.turn-open #sections { display: none; }
+body.turn-open #turn-btn { background: var(--accent-weak); border-color: var(--accent); }

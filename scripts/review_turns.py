@@ -46,7 +46,11 @@ def join_preview(la, fb):
     if not tail or not head:
         return None
     mode, stub = infer_join(tail, head)
-    return {"tail": tail, "head": head, "mode": mode, "joined": join_seam(tail[-200:], head[:200], mode, stub)}
+    joined = join_seam(tail[-200:], head[:200], mode, stub)
+    rest = head[:200]  # what of the head is printed: all of it, or what follows a reprinted word
+    if mode == "hyphen":
+        rest = rest.split(maxsplit=1)[1] if " " in rest.strip() else ""
+    return {"tail": tail, "head": head, "mode": mode, "joined": joined, "at": len(joined) - len(rest)}
 
 
 def _side(store, vol, page, last):

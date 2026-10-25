@@ -4,6 +4,7 @@ import "./edit.js";
 import "./queue.js";
 import "./entries.js";
 import "./point.js";
+import "./turn.js";
 import { decorate } from "./icons.js";
 
 decorate();

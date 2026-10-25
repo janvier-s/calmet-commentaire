@@ -44,6 +44,13 @@ def test_turn_payload(store):
     assert t["join"]["head"] == "suite du commentaire."
     assert t["join"]["mode"] == "mend"
     assert "victimes suite du commentaire." in t["join"]["joined"]
+    assert t["join"]["joined"][t["join"]["at"]:] == "suite du commentaire."
+
+
+def test_join_point_after_a_cut_word():
+    from review_turns import join_preview
+    j = join_preview({"french_commentary": "toute sa posterité."}, {"french_commentary": "terité. Adam est roux."})
+    assert j["mode"] == "hyphen" and j["joined"][j["at"]:] == "Adam est roux."
 
 
 def test_turn_without_commentary(store):

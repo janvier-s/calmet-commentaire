@@ -25,6 +25,10 @@ const P = {
   invert: "M12 3a9 9 0 1 0 0 18zM12 3a9 9 0 0 1 0 18",
   copy: "M9 9h11v11H9zM5 15H4V4h11v1",
   search: "M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM16 16l4 4",
+  turn: "M4 4h12v7M4 4v16h8M4 11h16M14 15l3 3 3-3M17 11v7",
+  pencil: "M4 20l4-1 11-11-3-3L5 16zM14 7l3 3",
+  x: "M6 6l12 12M18 6L6 18",
+  table: "M4 5h16v14H4zM4 10h16M4 15h16M10 5v14",
 };
 
 export function icon(name, size = 15) {

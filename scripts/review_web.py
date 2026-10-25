@@ -178,8 +178,9 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             r = rs.merge_recheck(items, progress, rs.book_volumes(vol), new, include_optional) \
                 if new is not None else {"fixed": [], "added": []}  # a book the full audit leaves out
             by_id.update({it["id"]: it for it in items})
+        also = [int(p) for p in body.get("also") or [] if str(p).isdigit() and int(p) != page]
         return {"fixed": len(r["fixed"]), "added": len(r["added"]),
-                "issues": rs.page_issues(items, progress, vol, page),
+                "issues": [i for p in [page, *also] for i in rs.page_issues(items, progress, vol, p)],
                 "around": rs.neighbour_issue_pages(items, progress, vol, page)}
 
     def item_of(iid):
