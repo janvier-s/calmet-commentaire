@@ -92,7 +92,9 @@ body { grid-template-rows: auto auto auto 1fr; }
 #scan-tools button { padding: 1px 8px; }
 #zoom-label { min-width: 44px; text-align: center; font-size: 12px; }
 #dim { width: 70px; vertical-align: middle; }
-#scan-view { position: relative; overflow: auto; cursor: grab; min-height: 0; }
+/* the scrollbar's room is always kept: fitting the scan to a width that a scrollbar coming and going
+   changes made it resize without end (the scan flickered) */
+#scan-view { position: relative; overflow: auto; cursor: grab; min-height: 0; scrollbar-gutter: stable; }
 #scan-view.dragging { cursor: grabbing; }
 #scan-img { display: block; user-select: none; max-width: none; }
 #scan-dim { position: absolute; left: 0; top: 0; background: #000; pointer-events: none; }
