@@ -137,6 +137,17 @@ function card(it, big) {
   return c;
 }
 
+/** The issue fits the category and type chosen in the filters. */
+const inFilters = (it) => (!Q.cat || (CAT_OF[it.kind] || "commentary") === Q.cat) && (!Q.kind || it.kind === Q.kind);
+
+/** Pages before and after this one with an issue of the list, and how many the book has. */
+function around() {
+  const mine = Q.items.filter((it) => it.book_dir === S.vol && (Q.status !== "open" || isOpen(it)));
+  const before = mine.filter((it) => it.page < S.page).map((it) => it.page);
+  const after = mine.filter((it) => it.page > S.page).map((it) => it.page);
+  return { prev: before.length ? Math.max(...before) : null, next: after.length ? Math.min(...after) : null, n: mine.length };
+}
+
 function select(it) {
   Q.current = it.id;
   const i = Q.items.findIndex((x) => x.id === it.id);
@@ -156,8 +167,9 @@ function renderIssues() {
   $("current").replaceChildren(...(cur ? [card(cur, true)] : [el("div", { className: "muted", textContent: "No issue selected" })]),
                                ...(away ? [away] : []));
   if (hooks.afterIssues) hooks.afterIssues(cur, here);
-  const n = S.issues.length;
-  const pills = S.issues.map((it, k) => {
+  const here_ = S.issues.filter(inFilters), hidden = S.issues.length - here_.length;
+  const n = here_.length;
+  const pills = here_.map((it, k) => {
     const cat = CAT_OF[it.kind] || "commentary";
     const st = statusOf(it);
     const p = el("button", { className: `pill ${KIND[cat]}` + (DONE.has(st) || it.fixed ? " done" : "") + (it.id === Q.current ? " cur" : ""),
@@ -166,13 +178,15 @@ function renderIssues() {
   });
   const toggle = el("button", { className: "link", textContent: n ? `${panelOpen ? "▴ hide" : "▾ show"} all ${n}` : "no issues on this page",
                                 disabled: !n, onclick: () => { panelOpen = !panelOpen; renderIssues(); } });
-  $("pills").replaceChildren(el("span", { className: "muted small", textContent: "This page: " }), ...pills, toggle);
+  const other = hidden ? el("span", { className: "muted small", title: "Issues of this page the category or type filter leaves out",
+                                       textContent: ` +${hidden} of other type${hidden > 1 ? "s" : ""}` }) : null;
+  $("pills").replaceChildren(el("span", { className: "muted small", textContent: "This page: " }), ...pills, toggle, other);
   $("page-issues").hidden = !(panelOpen && n);
-  $("page-issues").replaceChildren(...S.issues.map((it) => card(it, false)));
-  const a = S.around || {};
+  $("page-issues").replaceChildren(...here_.map((it) => card(it, false)));
+  const a = around();
   $("around").replaceChildren(...[
     a.prev != null ? el("button", { className: "link", onclick: () => go(S.vol, a.prev) }, icon("prev", 12), `p.${a.prev}`) : null,
-    el("span", { className: "muted small", textContent: ` ${a.open_in_book ?? 0} open in this book ` }),
+    el("span", { className: "muted small", textContent: ` ${a.n} ${Q.status === "open" ? "open " : ""}in this book ` }),
     a.next != null ? el("button", { className: "link", onclick: () => go(S.vol, a.next) }, `p.${a.next}`, icon("next", 12)) : null,
   ].filter(Boolean));
 }
@@ -201,7 +215,7 @@ nav.go = async (vol, page) => {
   }
   if (r) {
     if (!Q.current) {  // opened on a page, not an issue: its first open issue is the current one
-      const first = S.issues.find(isOpen);
+      const first = S.issues.find((it) => isOpen(it) && inFilters(it));
       if (first) Q.current = first.id;
     }
     renderIssues();
