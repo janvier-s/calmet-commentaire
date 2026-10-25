@@ -247,6 +247,24 @@ export function openItem(id) {
   const i = Q.items.findIndex((x) => x.id === id);
   return i >= 0 ? goItem(i) : null;
 }
+/** Another book chosen at the top: its issues (same status and category; the type kept if it has
+ *  any there), from the first; a book without any opens at its first page. */
+hooks.switchBook = async (vol) => {
+  const f = { status: Q.status, cat: Q.cat, kind: Q.kind, book: vol };
+  let r = await query(f);
+  if (!r.body.items.length && f.kind) { f.kind = null; r = await query(f); }
+  const prev = { ...Q };
+  Object.assign(Q, f, { items: r.body.items, counts: r.body.counts, current: null });
+  fillFilters();
+  const ok = Q.items.length ? await goItem(0) : await go(vol, null);
+  if (!ok) {  // cancelled: back to where it was
+    Object.assign(Q, prev);
+    fillFilters();
+    updateCounter();
+    renderIssues();
+  }
+  return ok;
+};
 export { currentItem, renderIssues, refreshCounts, step };
 
 // --- wiring ---

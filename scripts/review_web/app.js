@@ -71,8 +71,6 @@ export function updateTop() {
   $("vol").value = S.vol;
   $("page-num").value = S.page;
   const i = S.pages.indexOf(S.page);
-  $("prev-num").textContent = i > 0 ? S.pages[i - 1] : "";
-  $("next-num").textContent = i >= 0 && i < S.pages.length - 1 ? S.pages[i + 1] : "";
   $("page-prev").disabled = !(i > 0);
   $("page-next").disabled = !(i >= 0 && i < S.pages.length - 1);
   document.title = `${S.vol} p.${S.page} · Calmet Review`;
@@ -399,7 +397,8 @@ function setupTop() {
   for (const v of S.config.volumes) $("vol").append(el("option", { value: v, textContent: v }));
   $("vol").onchange = async () => {
     const vol = $("vol").value;
-    go(vol, null);
+    $("vol").value = S.vol;  // until the change is through (it may be cancelled)
+    if (hooks.switchBook) hooks.switchBook(vol); else go(vol, null);
   };
   $("page-num").onkeydown = (e) => { if (e.key === "Enter") go(S.vol, parseInt($("page-num").value, 10)); };
   $("page-prev").onclick = () => pageStep(-1);

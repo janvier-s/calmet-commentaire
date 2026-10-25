@@ -70,3 +70,14 @@ def test_seam_proposal_repeat(store):
         {"vol": VOL, "page": 194, "path": ["commentary", 0, "french_commentary"],
          "old": "terité. Adam signifie roux.", "new": "Adam signifie roux."}]
     assert turn(store, VOL, 193, 194)["proposal"]["id"] == p["id"]
+
+
+def test_repeat_gone(store):
+    from review_turns import repeat_gone
+    it = item("seam_repeat", 194, suffix="0193")
+    assert repeat_gone(store, it) is True  # "…victimes." ‖ "suite du commentaire."
+    edit(store, 194, lambda d: d["commentary"][0].update(french_commentary="de victimes. Et la suite."))
+    assert repeat_gone(store, it) is False  # the last words come again overleaf
+    edit(store, 194, lambda d: d["commentary"][0].update(french_commentary="times. Et la suite."))
+    assert repeat_gone(store, it) is False  # the end of a word comes again
+    assert repeat_gone(store, item("seam_missing", 194, suffix="0193")) is False  # only repeats are judged

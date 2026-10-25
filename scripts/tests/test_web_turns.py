@@ -169,3 +169,14 @@ def test_batch_accept_reports_unexpected_errors(web):
     (web.data / VOL / "normalized" / "page_0193.json").unlink()
     code, r = web("/api/batch/accept", {"ids": [{"id": a["id"]}, {"id": b["id"]}]})
     assert code == 200 and r["done"] == [b["id"]] and [f["id"] for f in r["failed"]] == [a["id"]]
+
+
+def test_stale_repeat_closes_at_start(data_dir):
+    docs = data_dir.parent / "docs"
+    rep = {"id": f"{VOL}/0194/seam_repeat/0193", "book_dir": VOL, "page": 194, "kind": "seam_repeat",
+           "msg": "repeated", "optional": False}
+    dump(docs / "review_queue.json", QUEUE + [rep])
+    server, _ = make_server(Store(data_dir, docs), docs / "review_queue.json", port=0)
+    server.server_close()
+    prog = json.loads((data_dir / ".review_queue_progress.json").read_text())
+    assert prog[rep["id"]] == "resolved"

@@ -54,6 +54,18 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     state_file = store.data / ".page_editor_state.json"
     by_id = {it["id"]: it for it in items}
 
+    def close_stale_repeats(vols=None):
+        """Repeats at a page turn (seam_check.py's verdicts) the pages no longer show are fixed."""
+        gone = [it for it in items if it["kind"] == "seam_repeat" and (vols is None or it["book_dir"] in vols)
+                and rs.in_status(it, progress, "open") and rt.repeat_gone(store, it)]
+        for it in gone:
+            it["fixed"] = True
+        if gone:
+            progress.update({it["id"]: "resolved" for it in gone})
+        return [it["id"] for it in gone]
+
+    close_stale_repeats()
+
     def vol_page(q):
         vol = q.get("vol")
         if vol not in store.volumes():
@@ -178,6 +190,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             r = rs.merge_recheck(items, progress, rs.book_volumes(vol), new, include_optional) \
                 if new is not None else {"fixed": [], "added": []}  # a book the full audit leaves out
             by_id.update({it["id"]: it for it in items})
+            r["fixed"] = r["fixed"] + close_stale_repeats(set(rs.book_volumes(vol)))
         also = [int(p) for p in body.get("also") or [] if str(p).isdigit() and int(p) != page]
         return {"fixed": len(r["fixed"]), "added": len(r["added"]),
                 "issues": [i for p in [page, *also] for i in rs.page_issues(items, progress, vol, p)],

@@ -108,3 +108,19 @@ def turn(store, vol, a, b):
     if sa and sb and sa["note"] is not None and sb["note"] is not None:
         join = join_preview(sa["data"]["commentary"][sa["note"]], sb["data"]["commentary"][0])
     return {"vol": vol, "a": sa, "b": sb, "join": join, "proposal": seam_proposal(store, vol, a, b, sa, sb)}
+
+
+WORD = re.compile(r"[^\W\d_]+")
+
+
+def repeat_gone(store, item):
+    """A seam_repeat issue (seam_check.py, read once) whose repeat the pages no longer show: neither
+    the end of a word nor the last words of page A come again at the head of page B."""
+    t = item["kind"] == "seam_repeat" and turn_of(store, item)
+    j = t and turn(store, *t)["join"]
+    if not j:
+        return False
+    if infer_join(j["tail"], j["head"])[0] in ("hyphen", "refrag"):
+        return False
+    a, b = WORD.findall(j["tail"].lower()), WORD.findall(j["head"].lower())
+    return not any(a[-k:] == b[:k] for k in range(1, 9) if len(a) >= k and len(b) >= k)
