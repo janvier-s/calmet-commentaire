@@ -239,6 +239,14 @@ hooks.afterSave = () => recheck();
 export function setStatus(id, status) {
   for (const x of [...Q.items, ...S.issues]) if (x.id === id) x.status = status;
 }
+/** The filters in use. */
+export const filters = () => ({ status: Q.status, cat: Q.cat, kind: Q.kind, book: Q.book });
+
+/** Open an issue of the list by id. */
+export function openItem(id) {
+  const i = Q.items.findIndex((x) => x.id === id);
+  return i >= 0 ? goItem(i) : null;
+}
 export { currentItem, renderIssues, refreshCounts, step };
 
 // --- wiring ---

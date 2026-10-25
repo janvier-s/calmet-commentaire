@@ -80,7 +80,15 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   127.0.0.1 only and the printed link carries the session key. Opening an issue marks the words it
   quotes and outlines the field it names (`where` in the queue, from `audit_integrity.py`). Saving a
   page re-runs the audit of its book (`page_audit.py`, 1–3 s): issues no longer found close as
-  "fixed on save", new ones appear (the queue file itself changes only with the next full audit). The Tk editors
+  "fixed on save", new ones appear (the queue file itself changes only with the next full audit).
+  A page-turn issue opens the page-turn view (`T` from any page, Esc back): the foot of the page over
+  the head of the next, both editable, with the text as the site joins it (`review_turns.py`).
+  Proposed fixes show word by word with Accept (write and resolve), Edit (into the fields, unsaved)
+  and Reject (`review_proposals.py`): `seam_join.py`'s join at a page turn, computed from the pages
+  as they are; the held write-outs of `docs/footnotes/<volume>.json` and the candidates of
+  `docs/ref_check.json`, which become issues of their own types ("Footnote write-out to check",
+  "Verse reference to check"; Reject makes them false positives). Batch: every issue of the type
+  chosen in the filters in a table, tick and accept many at once. The Tk editors
   (`uv run --no-project --with pillow python review_editor.py`, `page_editor.py`) still work on the
   same files during the switch. Commit in `data/` after a session.
   Tests: `uv run --no-project --with pytest python -m pytest tests -q` and `node --test tests/js`.
