@@ -27,7 +27,8 @@
   </div>
   <button id="batch-btn" data-icon="table" title="Batch: every issue of the chosen type in a table">Batch</button>
   <button id="turn-btn" data-icon="turn" title="Page turn: the foot of this page over the head of the next (T)">Turn</button>
-  <span class="jumpbox" data-icon="search"><input id="jump" placeholder="ch:v" size="7" title="Chapter and verse (17:2) or chapter (17), Return to go"></span>
+  <span class="jumpbox" data-icon="search"><input id="jump" placeholder="ch:v or word" size="10" title="Chapter and verse (17:2), chapter (17) or page (p194), Return to go; anything else searches the book's text, accents and case aside (Return again: next hit)"><div id="search-panel" hidden></div></span>
+  <span id="search-step" class="group" hidden><button id="search-prev" data-icon="prev" title="Previous hit"></button><button id="search-pos" class="link small" title="Show the hits"></button><button id="search-next" data-icon="next" title="Next hit"></button></span>
   <span id="jump-msg" class="muted"></span>
   <span class="grow"></span>
   <span id="rechecking" class="muted small"></span>

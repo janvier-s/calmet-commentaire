@@ -163,6 +163,20 @@ button.has-icon { display: inline-flex; align-items: center; gap: 5px; }
 button.icon { padding: 3px 6px; }
 button.icon-after { flex-direction: row-reverse; }
 .jumpbox { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); }
+/* word search: the hits under the box */
+.jumpbox { position: relative; }
+#search-panel { position: absolute; left: 0; top: calc(100% + 4px); z-index: 30; width: min(620px, 92vw); max-height: 62vh;
+                display: flex; flex-direction: column; background: var(--surface); color: var(--text);
+                border: 1px solid var(--border); border-radius: 7px; box-shadow: 0 6px 24px #0003; }
+#search-panel .search-head { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-bottom: 1px solid var(--border); font-size: 12px; }
+#search-panel .hits { overflow: auto; }
+#search-panel .hit { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--border);
+                     border-radius: 0; padding: 5px 10px; font-size: 12.5px; line-height: 1.4; color: var(--text); }
+#search-panel .hit:hover, #search-panel .hit.cur { background: var(--accent-weak); }
+#search-panel .where { display: block; font-size: 11px; color: var(--muted); }
+#search-panel mark { background: var(--hi); color: inherit; border-radius: 2px; }
+#search-step button { padding: 3px 4px; }
+#search-pos { min-width: 0; font-size: 12px; }
 .k-verse { --c: var(--c-verse); }
 .k-note { --c: var(--c-note); }
 .k-fn { --c: var(--c-fn); }

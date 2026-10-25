@@ -75,7 +75,8 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   commentary, capitals, broken footnote calls, …).
 - Work through the queue in the browser: `python3 review_web.py [VOLUME [PAGE]] [--resume] [filters]`
   opens the review editor (scan beside text, the page's issues on the left, chapter:verse jump box,
-  three themes). Same filters as before (`--all`, `--kind`, `--category`, `--type`, `--book`,
+  three themes; anything else typed in that box searches the book's text, accents and case aside, with
+  an All books switch: `review_search.py`). Same filters as before (`--all`, `--kind`, `--category`, `--type`, `--book`,
   `--skipped`, `--resolved`, `--false-positive`, `--all-status`, `--list-fp`); it serves on
   127.0.0.1 only and the printed link carries the session key. Opening an issue marks the words it
   quotes and outlines the field it names (`where` in the queue, from `audit_integrity.py`). Saving a

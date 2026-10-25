@@ -386,7 +386,8 @@ export const go = (vol, page) => nav.go(vol, page);
 async function jump() {
   const r = parseRef($("jump").value);
   $("jump-msg").textContent = "";
-  if (!r) { $("jump-msg").textContent = "type 17:2, 17 or p194"; return; }
+  if (!r && hooks.search && $("jump").value.trim().length >= 2) return hooks.search($("jump").value);
+  if (!r) { $("jump-msg").textContent = "type 17:2, 17, p194 or a word"; return; }
   if (r.page) return go(S.vol, r.page);
   const res = await api(`/api/locate?vol=${encodeURIComponent(S.vol)}&ref=${encodeURIComponent($("jump").value)}`);
   if (res.status === 200) return go(S.vol, res.body.page);

@@ -28,6 +28,7 @@ import review_proposals as rp
 import review_store as rs
 import review_turns as rt
 from page_text import load_state, save_state, toggle_italics
+from review_search import Searcher
 
 STATIC = Path(__file__).resolve().parent / "review_web"
 REF = re.compile(r"\s*(\d+)\s*(?:[:.,]\s*(\d+))?\s*")
@@ -305,13 +306,22 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         except FileExistsError:
             raise ApiError(409, {"error": "the page exists"})
 
+    searcher = Searcher(store)
+    threading.Thread(target=searcher.warm, args=(store.volumes(),), daemon=True).start()
+
+    def search(q):
+        vol = q.get("vol")
+        if vol and vol not in store.volumes():
+            raise ApiError(400, {"error": "no such book"})
+        return searcher.search(q.get("q") or "", [vol] if vol else store.volumes())
+
     config = {"token": token, "labels": rs.KIND_LABELS,
               "kind_category": {k: rs.kind_category(k) for k in rs.KIND_LABELS}, "categories": list(rs.CATEGORIES),
               "statuses": list(rs.STATUSES), "volumes": store.volumes(), "start": start or {},
               "turn_kinds": sorted(rt.TURN_KINDS)}
     GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
-           "/api/proposal": get_proposal, "/api/batch": batch}
+           "/api/proposal": get_proposal, "/api/batch": batch, "/api/search": search}
     POST = {"/api/page": lambda b: (lambda r: {"data": r[0], "version": r[1]})(save(*vol_page(b), b)),
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,

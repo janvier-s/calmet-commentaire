@@ -180,3 +180,10 @@ def test_stale_repeat_closes_at_start(data_dir):
     server.server_close()
     prog = json.loads((data_dir / ".review_queue_progress.json").read_text())
     assert prog[rep["id"]] == "resolved"
+
+
+def test_search_route(web):
+    code, r = web(f"/api/search?vol={VOL}&q=mechant")
+    assert code == 200 and r["total"] == 1 and r["hits"][0]["page"] == 195
+    code, r = web("/api/search?q=mechant")  # no book: every book
+    assert code == 200 and r["total"] == 1

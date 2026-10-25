@@ -7,6 +7,7 @@ import "./point.js";
 import "./turn.js";
 import "./proposal.js";
 import "./batch.js";
+import "./search.js";
 import { decorate } from "./icons.js";
 
 decorate();
