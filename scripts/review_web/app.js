@@ -200,22 +200,24 @@ function field(name, value, path) {
   return el("div", { className: "fw" }, el("span", { className: "fl", textContent: name.replace(/_/g, " ") }), copy, f);
 }
 
-/** Where a field or entry is, and what it says now: to paste into an AI chat with a screenshot. */
-export function copyRef(path) {
+/** Where a field or entry is, and what it says now: to paste into an AI chat with a screenshot.
+ *  `at`: another page than the one shown (the page-turn view's), with its own `valueAt`. */
+export function copyRef(path, at = null) {
+  const { vol, page, data, valueAt } = at || { vol: S.vol, page: S.page, data: S.data, valueAt: hooks.valueAt };
   const val = (p) => {
-    const typed = hooks.valueAt && hooks.valueAt(p);
+    const typed = valueAt && valueAt(p);
     if (typed !== undefined) return typed;
-    return p.reduce((o, k) => (o == null ? o : o[k]), S.data);
+    return p.reduce((o, k) => (o == null ? o : o[k]), data);
   };
   const [section, i] = path;
-  const entry = section in (S.data || {}) && typeof i === "number" ? S.data[section][i] : null;
+  const entry = section in (data || {}) && typeof i === "number" ? data[section][i] : null;
   const what = !entry ? "page heading"
     : section === "verses" ? `verse ${val([section, i, "chapter"]) ?? "?"}:${val([section, i, "verse_number"]) ?? "?"}`
     : section === "commentary" ? `commentary ${val([section, i, "commentary_id"]) ?? "?"} (ch ${val([section, i, "chapter"]) ?? "?"} ℣ ${val([section, i, "verse_ref"]) ?? "?"})`
     : `footnote ${val([section, i, "marker"]) ?? "?"}`;
   const jsonPath = typeof i === "number" ? `${section}[${i}]${path.length > 2 ? "." + path[2] : ""}` : path.join(".");
-  const lines = [`${S.vol} p.${S.page} · ${what}` + (path.length > 2 ? ` · ${path[2]}` : ""),
-                 `data/${S.vol}/normalized/page_${String(S.page).padStart(4, "0")}.json → ${jsonPath}`];
+  const lines = [`${vol} p.${page} · ${what}` + (path.length > 2 ? ` · ${path[2]}` : ""),
+                 `data/${vol}/normalized/page_${String(page).padStart(4, "0")}.json → ${jsonPath}`];
   const fields = path.length > 2 || !entry ? [path.length > 2 ? path[2] : path[0]]
     : Object.keys(entry).filter((k) => !["chapter", "verse_number", "commentary_id", "verse_ref", "marker"].includes(k));
   for (const k of fields) {

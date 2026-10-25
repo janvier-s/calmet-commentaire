@@ -1,6 +1,6 @@
 // The page-turn view: the foot of page A over the head of page B, both editable, the text as the site
 // joins it, and the fix a script proposes there.
-import { S, ZOOM_STEPS, api, ask, hooks, loadPage, nav, toast } from "./app.js";
+import { S, ZOOM_STEPS, api, ask, copyRef, hooks, loadPage, nav, toast } from "./app.js";
 import { INT_FIELDS, extra, latinCaseFor, save, setDirty, wireField } from "./edit.js";
 import { Field, ITALIC_FIELDS } from "./field.js";
 import { icon } from "./icons.js";
@@ -55,7 +55,22 @@ function field(side, name, path) {
   wireField(fld, name, allFields);
   side.fields.push({ path, field: fld });
   if (name in TAGS) return el("span", { className: "inl" }, el("span", { className: "tag", textContent: TAGS[name] }), f);
-  return el("div", { className: "fw" }, el("span", { className: "fl", textContent: name.replace(/_/g, " ") }), f);
+  const copy = el("button", { className: "copy", title: "Copy this field's location and text (for an AI chat)",
+                              onclick: () => copyRef(path, refAt(side)) }, icon("copy", 12));
+  return el("div", { className: "fw" }, el("span", { className: "fl", textContent: name.replace(/_/g, " ") }), copy, f);
+}
+
+/** A side's page for copyRef: its text as typed. */
+function refAt(side) {
+  return { vol: T.vol, page: side.page, data: side.data, valueAt: (p) => {
+    const x = side.fields.find((y) => y.path.join("/") === p.join("/"));
+    return x ? x.field.value : undefined;
+  } };
+}
+
+function copyEntry(side, section, i) {
+  return el("button", { className: "link tool", title: "Copy this entry's location and text (for an AI chat)",
+                        onclick: () => copyRef([section, i], refAt(side)) }, icon("copy", 14));
 }
 
 function noteBlock(side, title) {
@@ -63,7 +78,7 @@ function noteBlock(side, title) {
   const p = (k) => field(side, k, ["commentary", i, k]);
   return el("div", { className: "block k-note" },
     el("div", { className: "block-head" }, icon("commentary", 13), el("span", { className: "title", textContent: title }),
-       p("commentary_id"), p("chapter"), p("verse_ref")),
+       p("commentary_id"), p("chapter"), p("verse_ref"), el("span", { className: "grow" }), copyEntry(side, "commentary", i)),
     el("div", { className: "pair" }, p("latin_quote"), p("french_translation")), p("french_commentary"));
 }
 
@@ -72,7 +87,7 @@ function verseBlock(side, title) {
   const p = (k) => field(side, k, ["verses", i, k]);
   return el("div", { className: "block k-verse" },
     el("div", { className: "block-head" }, icon("verses", 13), el("span", { className: "title", textContent: title }),
-       p("chapter"), p("verse_number")),
+       p("chapter"), p("verse_number"), el("span", { className: "grow" }), copyEntry(side, "verses", i)),
     el("div", { className: "pair" }, p("latin"), p("french")));
 }
 
