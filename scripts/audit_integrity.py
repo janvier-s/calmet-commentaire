@@ -647,6 +647,36 @@ def audit_book(key, info, slug, published=True):
                      f"Verse {v.get('chapter')}:{v.get('verse_number')} has no French "
                      f"(Latin: “{(v.get('latin') or '')[:50]}…”): type Calmet's translation from the scan",
                      where=dict(section="verses", index=vi, field="french"))
+    # the end of a verse, a footnote; italics opened and never closed (or the reverse) within a field
+    tail = lambda s: re.sub(r"(\s*(\^\{[^}]*\}|[_*»”\"')\]]))+\s*$", "", s.rstrip())
+    for vol, n, d in pages:
+        for vi, v in enumerate(d.get("verses") or []):
+            for k in ("latin", "french"):
+                end = tail(v.get(k) or "")
+                if end and not end.endswith((".", ",", ";", ":", "!", "?", "…")):
+                    item("verse_no_punct", vol, int(n[5:9]),
+                         f"Verse {v.get('chapter')}:{v.get('verse_number')}: {k} does not end with punctuation: “…{end[-50:]}” "
+                         "(a word lost, or the verse runs on overleaf?)", where=dict(section="verses", index=vi, field=k))
+        for fi, f in enumerate(d.get("footnotes") or []):
+            end = tail(str(f.get("text") or ""))
+            # Hebrew and Greek are printed without a stop after them
+            if end and not end.endswith((".", "!", "?", "…")) and not re.search(r"[\u0370-\u03FF\u1F00-\u1FFF\u0590-\u05FF\uFB1D-\uFB4F]\W*$", end) \
+                    and not re.search(r"\[UNCERTAIN [A-Z]+\]?$", end):
+                item("footnote_no_period", vol, int(n[5:9]),
+                     f"Footnote {f.get('marker')} does not end with a full stop: “…{end[-60:]}”",
+                     where=dict(section="footnotes", index=fi, field="text"))
+        cs = d.get("commentary") or []
+        fields = [("verses", vi, v, k) for vi, v in enumerate(d.get("verses") or []) for k in ("latin", "french", "annotations")]
+        fields += [("commentary", j, c, k) for j, c in enumerate(cs) for k in ("latin_quote", "french_translation", "french_commentary")]
+        fields += [("footnotes", fi, f, "text") for fi, f in enumerate(d.get("footnotes") or [])]
+        for sec, i, e, k in fields:
+            text = str(e.get(k) or "")
+            # a comment's italics may run over the page turn (italic_seam checks those)
+            if text.count("_") % 2 and not (sec == "commentary" and k == "french_commentary" and i in (0, len(cs) - 1)):
+                pos = [m.start() for m in re.finditer("_", text)]
+                item("stray_underscore", vol, int(n[5:9]),
+                     f"{len(pos)} “_” in {k} ({sec} {i + 1}), one without its pair: italics left open or closed twice? "
+                     f"“{text[max(0, pos[-1] - 40):pos[-1] + 20]}”", where=dict(section=sec, index=i, field=k))
     r["empty_commentary"], r["caps_in_commentary"], r["broken_markers"] = empty_notes, caps_runs, odd_marks
 
     # ---------- assembled chapters & notes (from normalized/) ----------
@@ -812,7 +842,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "latin_long_s", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "no_translation", "translation_no_punct", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "latin_long_s", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "no_translation", "translation_no_punct", "verse_no_punct", "footnote_no_period", "stray_underscore", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's

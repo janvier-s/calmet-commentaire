@@ -296,6 +296,9 @@ KIND_LABELS = {
     "hyphen_cut": "LEMMA / TRANSLATION CUT AT PAGE TURN (hyphen or no full stop)",
     "long_translation": "TRANSLATION MUCH LONGER THAN THE LEMMA",
     "no_translation": "LEMMA WITHOUT FRENCH_TRANSLATION",
+    "verse_no_punct": "VERSE NOT ENDING WITH PUNCTUATION",
+    "footnote_no_period": "FOOTNOTE NOT ENDING WITH A FULL STOP",
+    "stray_underscore": "STRAY _ (ITALICS WITHOUT ITS PAIR)",
     "hebrew_in_translation": "“L'HÉBREU” IN THE TRANSLATION",
     "hebrew_recheck": "FOOTNOTE HEBREW UNCERTAIN: CHECK AGAINST THE SCAN",
     "lemma_verse": "LATIN_QUOTE FILLED IN BY HAND: RIGHT VERSE NUMBER?",
@@ -325,12 +328,12 @@ VERSE_KINDS = {
     "missing_verse", "psalm_missing_verse", "duplicate_verse", "missing_french",
     "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "psalm_number",
     "psalm_missing_title", "chapter_field", "chapter_vulgate", "chapter_heading",
-    "empty_summary", "latin_long_s",
+    "empty_summary", "latin_long_s", "verse_no_punct",
 }
 
 FOOTNOTE_KINDS = {
     "missing_footnote", "broken_marker", "extra_footnotes", "hebrew_recheck",
-    "footnote_asterisk", "footnote_writeout",
+    "footnote_asterisk", "footnote_writeout", "footnote_no_period",
 }
 
 def kind_category(k):

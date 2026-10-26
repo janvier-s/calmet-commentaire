@@ -10,7 +10,7 @@ from paths import DATA
 
 pytestmark = pytest.mark.skipif(not (DATA / "22_proverbes" / "normalized").is_dir(), reason="no real data")
 
-MUST = {"lowercase_lemma", "long_translation", "no_translation", "caps_in_commentary", "hyphen_cut", "period_seam"}
+MUST = {"lowercase_lemma", "long_translation", "no_translation", "verse_no_punct", "footnote_no_period", "stray_underscore", "caps_in_commentary", "hyphen_cut", "period_seam"}
 
 
 @pytest.fixture(scope="module")
