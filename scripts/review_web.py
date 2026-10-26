@@ -3,7 +3,7 @@
 The review editor in the browser: the integrity-audit queue (docs/review_queue.json) and every page,
 scan beside text. The review itself (statuses, false positives, to-dos) is in data/<book>/review.json.
 
-Usage: python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters] [--port N] [--no-open]
+Usage: python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters] [--port N (8642)] [--no-open]
   with neither VOLUME nor --fresh it resumes where the last session stopped: its page, and (no filters
   given) its filters and issue; --fresh starts at the first open issue (--resume: the default, kept)
   filters  --all (optional items too), --kind K, --category C, --type T, --book B,
@@ -471,6 +471,9 @@ def todo_presets():
         return []
 
 
+PORT = 8642  # review_web.py's own address: http://127.0.0.1:8642
+
+
 def read_state(state_file):
     try:
         d = json.loads(state_file.read_text())
@@ -525,7 +528,12 @@ def main(argv):
                 start["issue"] = saved.get("issue")
             print(f"Resuming at {start['vol']} p.{start['page']}"
                   + (f" ({start['kind']})" if start.get("kind") else "") + " (--fresh: from the first open issue)")
-    server, token = make_server(store, queue_path, int(opt("--port", 0)), None, "--all" in argv, start)
+    # always the same address, so that the browser keeps what it was allowed (pasting from the clipboard)
+    try:
+        server, token = make_server(store, queue_path, int(opt("--port", PORT)), None, "--all" in argv, start)
+    except OSError:  # taken (another editor open): any free port
+        print(f"Port {opt('--port', PORT)} is in use: another one is taken, and the browser will ask again for the clipboard")
+        server, token = make_server(store, queue_path, 0, None, "--all" in argv, start)
     url = f"http://127.0.0.1:{server.server_address[1]}/?key={token}"
     print(f"Review editor: {url}\n(Ctrl+C to stop)")
     if "--no-open" not in argv:
