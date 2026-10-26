@@ -42,11 +42,7 @@
     <button id="issue-next" class="icon-after" data-icon="fwd" title="Next issue (⌘])">Issue</button>
   </div>
   <div id="marks">
-    <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to next (⌘⏎)">Resolved</button>
-    <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
     <div class="group">
-      <button id="mark-skip" data-icon="skip" title="Skip">Skip</button>
-      <button id="mark-reopen" data-icon="reopen" title="Reopen the issue you last marked resolved, false positive or skipped, and go back to it">Reopen</button>
       <div class="menu">
         <button id="menu-btn" class="icon" data-icon="more" title="More"></button>
         <div id="menu" hidden>
@@ -58,6 +54,12 @@
           <button data-tool="png">Reveal PNG in Finder</button>
         </div>
       </div>
+      <button id="mark-skip" data-icon="skip" title="Skip">Skip</button>
+      <button id="mark-reopen" data-icon="reopen" title="Reopen the issue you last marked resolved, false positive or skipped, and go back to it">Reopen</button>
+    </div>
+    <div class="group">
+      <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to next (⌘⏎)">Resolved</button>
+      <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
     </div>
   </div>
 </header>

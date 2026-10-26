@@ -7,7 +7,7 @@
   --text: #2a2620; --muted: #8a7d5e; --accent: #d98b1a; --accent-weak: #fbe6c4; --lemma: #6b3d1f;
   --translation: #3b3a64; --ok: #2e7d32; --ok-text: #fff; --warn: #c25e0c; --danger: #b03a2e;
   --info-bg: #eef2f8; --info: #4d6288; --info-border: #b9c6dc; --hi: #ffe1a8; --scan-bg: #e4dccb;
-  --mark: #b9a77c; --quote: #9a7200; --trans: #8a5cc4; --save: #3b6ea5;
+  --mark: #b9a77c; --quote: #9a7200; --trans: #8a5cc4; --save: #3b6ea5; --unsaved: #c2185b;
   --c-verse: #3b6ea5; --c-note: #c27a12; --c-fn: #7a4fa0; --c-head: #3f8a5a;
 }
 :root[data-theme="light"] {
@@ -15,7 +15,7 @@
   --text: #1d1d1f; --muted: #86868b; --accent: #c77700; --accent-weak: #fff1d6; --lemma: #7a3e12;
   --translation: #2c3e8f; --ok: #248a3d; --ok-text: #fff; --warn: #c25e0c; --danger: #c0392b;
   --info-bg: #eef3fb; --info: #3a5a95; --info-border: #c5d3ea; --hi: #ffe7a3; --scan-bg: #e6e6ea;
-  --mark: #a8a8b0; --quote: #946f00; --trans: #8656c8; --save: #2f6fb8;
+  --mark: #a8a8b0; --quote: #946f00; --trans: #8656c8; --save: #2f6fb8; --unsaved: #c2185b;
   --c-verse: #2f6fb8; --c-note: #c47100; --c-fn: #7d4cb0; --c-head: #2e8a55;
 }
 :root[data-theme="dark"] {
@@ -23,7 +23,7 @@
   --text: #e8e1d2; --muted: #9a8f74; --accent: #f0a23a; --accent-weak: #4a3612; --lemma: #e0a36f;
   --translation: #aab8f0; --ok: #3f9a48; --ok-text: #fff; --warn: #e07b2a; --danger: #e06a5c;
   --info-bg: #1e2633; --info: #9db4dc; --info-border: #34435c; --hi: #6b4f17; --scan-bg: #0f0e0c;
-  --mark: #6a6152; --quote: #ecc85a; --trans: #c9a9f2; --save: #33639c;
+  --mark: #6a6152; --quote: #ecc85a; --trans: #c9a9f2; --save: #33639c; --unsaved: #b0306a;
   --c-verse: #7fb0e8; --c-note: #f0a23a; --c-fn: #b892e0; --c-head: #7cc79a;
 }
 
@@ -309,13 +309,14 @@ body.no-hi .f mark { background: none; box-shadow: none; }
 body.no-hi .f.flagged { border-color: var(--border); box-shadow: none; }
 body.no-hi .block.flash { animation: none; }
 
-/* Save in colour; brighter with unsaved changes */
+/* Save in colour; rose with unsaved changes (no other button has it) */
 #save { background: var(--save); color: #fff; border-color: transparent; font-weight: 600; }
 #save:hover { filter: brightness(1.1); }
-#save.unsaved { background: var(--warn); box-shadow: 0 0 0 2px color-mix(in srgb, var(--warn) 35%, transparent); }
+#save.unsaved { background: var(--unsaved); box-shadow: 0 0 0 2px color-mix(in srgb, var(--unsaved) 35%, transparent); }
 
-/* the marking buttons: one block on the right; short of room, Skip, Reopen and … go under Resolved, together */
-#marks { flex: 1 1 230px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 5px; }
+/* the marking buttons: one block on the right (…, Skip, Reopen, Resolved, False positive); short of room,
+   Resolved and False positive stay on top and the other three go under them */
+#marks { flex: 1 1 230px; display: flex; flex-wrap: wrap-reverse; justify-content: flex-end; align-items: center; gap: 5px; }
 #marks button { padding: 3px 7px; }
 #marks .group { gap: 5px; }
 #mark-reopen { color: var(--c-fn); border-color: var(--c-fn); background: color-mix(in srgb, var(--c-fn) 14%, var(--surface)); }
