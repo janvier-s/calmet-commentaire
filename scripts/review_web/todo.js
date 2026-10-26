@@ -75,6 +75,8 @@ hooks.afterRender.push((root) => {
     const b = el("button", { className: "todo-add", title: "Add a to-do about this field",
                              onclick: (e) => { e.stopPropagation(); prompt(whereOf(f.dataset.path)); } }, icon("plus", 11));
     b.addEventListener("mousedown", (e) => e.preventDefault());
-    f.parentElement.insertBefore(b, f);
+    const tools = f.closest(".block.fn") && f.closest(".block-head").querySelector(":scope > .tool");
+    if (tools) tools.before(b);  // a footnote: with its tools, not on the edge of its one line
+    else f.parentElement.insertBefore(b, f);
   }
 });
