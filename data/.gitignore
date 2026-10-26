@@ -1,0 +1,9 @@
+# Track only the working transcription: */normalized/page_*.json
+/*
+!/.gitignore
+!/*/
+/*/*
+!/*/normalized/
+/*/normalized/*
+!/*/normalized/page_[0-9][0-9][0-9][0-9].json
+!/verse_ref_order_ok.json
