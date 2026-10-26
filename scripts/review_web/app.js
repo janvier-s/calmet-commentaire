@@ -38,8 +38,8 @@ export function toast(msg) {
 }
 
 /** A modal: message, optional body element, buttons [[value, label, className]]. Resolves to the
- *  value clicked, or null on Escape. */
-export function ask(msg, buttons, body = null) {
+ *  value clicked, or null on Escape. `focus`: the value of the button Return presses (else the first). */
+export function ask(msg, buttons, body = null, focus = null) {
   const d = $("dialog");
   $("dialog-msg").textContent = msg;
   $("dialog-body").replaceChildren(...(body ? [body] : []));
@@ -50,7 +50,8 @@ export function ask(msg, buttons, body = null) {
     d.returnValue = "";
     d.showModal();
     const first = body && body.querySelector("input");
-    (first || d.querySelector("menu button")).focus();  // the first button is the safe one
+    const chosen = focus && [...d.querySelectorAll("menu button")].find((b) => b.value === focus);
+    (first || chosen || d.querySelector("menu button")).focus();  // the first button is the safe one
   });
 }
 

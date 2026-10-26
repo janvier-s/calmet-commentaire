@@ -145,7 +145,7 @@ const plainGo = nav.go;
 nav.go = async (vol, page) => {
   if (S.dirty && S.data) {
     const choice = await ask(`Save your changes to ${S.vol} p.${S.page} before leaving?`,
-                             [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
+                             [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]], null, "save");
     if (choice === "save") { if (!(await save({ redraw: false }))) return null; }
     else if (choice !== "discard") return null;
   }
