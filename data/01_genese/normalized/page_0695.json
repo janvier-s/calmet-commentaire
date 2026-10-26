@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 30,
       "latin_quote": "AT ILLE AIT : NIHIL VOLO.",
       "french_translation": "Je ne veux rien.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 30,
       "latin_quote": "GYRA OMNES GREGES TUOS ET SEPARA CUNCTAS OVES VARIAS ET SPARSO VELLERE, ET QUODCUMQUE FURVUM ET MACULOSUM, VARIUMQUE FUERIT, TAM IN OVIBUS QUAM IN CAPRIS ERIT MERCES MEA.",
       "french_translation": "Visitez tous vos troupeaux, et mettez à part toutes les brebis qui sont de diverse couleur, et tout ce qui naîtra d'un noir mêlé de blanc, ou tacheté de couleurs différentes, soit dans les brebis ou dans les chèvres, sera ma récompense.",
@@ -40,11 +40,20 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Esti. τᾶς δικαιοσύνης, καὶ ἐφόνεν ἐν ταῖς δίξαι, ἱςῶσι μὲν μίσθον."
+      "text": "Esti. τᾶς δικαιοσύνης, καὶ ἐφόνων ἐν ταῖς δίξαι, ἱστῶσι μὲν μίσθον.",
+      "tags": [
+        "greek",
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καὶ ἀρίθμει τῶν προβάτων σοῦ, καὶ διάχρισον ἐκεῖθεν πᾶν πρόβατον φαιὸν ἐν τοῖς ἄρνασι, καὶ πᾶν διάλευκον, καὶ ῥαντὸν ἐν ταῖς αἰξί. Ils ont lu העביר, au lieu de אעבר que nous lisons aujourd'hui."
+      "text": "Καὶ ἀρίθμει τῶν προβάτων σοῦ, καὶ διάχρισον ἐκεῖθεν πᾶν πρόβατον φαιὸν ἐν τοῖς ἄρνασι, καὶ πᾶν διάλευκον, καὶ ῥαντὸν ἐν ταῖς αἰξί. Ils ont lu העביר, au lieu de אעבר que nous lisons aujourd'hui.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

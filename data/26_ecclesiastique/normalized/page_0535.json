@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 34,
       "latin_quote": "SINE MENDACIO CONSUMMABITUR VERBUM LEGIS.",
       "french_translation": "La parole de la Loi s'accomplira entièrement, et la sagesse sera claire dans la bouche du fidèle.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 34,
       "latin_quote": "QUI NON EST TENTATUS, QUID SCIT ? VIR IN MULTIS EXPERTUS, ETC.",
       "french_translation": "Que sait celui qui n'a point été tenté ? l'homme d'une grande expérience, aura de grandes vues.",
@@ -40,15 +40,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide Lévitique 19:26. Deutéronome 13:1, 5. 18:10."
+      "text": "Vide Lévitique 19:26. Deutéronome 13:1, 5. 18:10.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Isaïe 8:20 ;\nVatable ;\net Cornelius a Lapide, sur ce passage."
+      "text": "Voyez Isaïe 8:20 ;\nVatable ;\net Cornelius a Lapide, sur ce passage.",
+      "tags": [
+        "verse",
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Homer. de Ulysse… Ο'ι μάλα πολλὰ Πλάγχθη ἐπεὶ τϱοίης ἱεϱὸν πλολίεθϱον ἔπεϱσε, Πολλῶν δ' ἀνθϱώπων ἴδεν ἄςεα, καὶ νόον ἔγνω."
+      "text": "Homer. de Ulysse… Ὀι μάλα πολλὰ Πλάγχθη ἐπεὶ τροίης ἱερὸν πλολίεθρον ἔπερσε, Πολλῶν δ' ἀνθρώπων ἴδεν ἄστεα, καὶ νόον ἔγνω.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

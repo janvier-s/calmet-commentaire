@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "40",
+      "verse_ref": 40,
       "chapter": 17,
       "latin_quote": "QUINQUE LIMPIDISSIMOS LAPIDES.",
       "french_translation": "Cinq pierres polies.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "40",
+      "verse_ref": 40,
       "chapter": 17,
       "latin_quote": "MISIT EOS IN PERAM PASTORALEM.",
       "french_translation": "Il les mit dans sa panetière.",
@@ -55,15 +55,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "חמשה חלקי אבנים"
+      "text": "חמשה חלקי אבנים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Xénophon lib. 5. Anabas. Παμψύλιας τᾶς γυρῶτας λίθων ἔχων μετὰς ἦν διπλᾶς…"
+      "text": "Xénophon lib. 5. Anabas. Παμψύλιας τᾶς γυρίτας λίθων ἔχων μετὰς ἦν διπλᾶς…",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Homère en plusieurs endroits."
+      "text": "Voyez Homère en plusieurs endroits.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

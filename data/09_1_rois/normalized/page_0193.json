@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 9,
       "latin_quote": "ET COGNATIO MEA NOVISSIMA.",
       "french_translation": "Et ma famille la moindre de toutes.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 9,
       "latin_quote": "DEDIT EIS LOCUM IN CAPITE.",
       "french_translation": "Il les fit asseoir au-dessus de tous les conviés.",
@@ -41,19 +41,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Juges 20."
+      "text": "Juges 20.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εδωκεν αὐτοῖς τόπον ἐν πρώτοις. Les Septante, édition de Rome."
+      "text": "Εδωκεν αὐτοῖς τόπον ἐν πρώτοις. Les Septante, édition de Rome.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Luc 14:8."
+      "text": "Luc 14:8.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Iliad. Ω. En parlant d'Achilles ; Εξετο δ' εν κλισμω πιλναμενος, τοιχε αντιον αλλου. Τοιχω τω ετερῳ. Et ailleurs : Αυτος δ' αντικρυ ιδρυθη θεοειδης Αχιλλευς Τοιχω τω ετερῳ."
+      "text": "Iliad. Ω. En parlant d'Achilles ; Ἄξετο δ' ἐν κλισμῶ πιλναμενος, τοῖχε ἀντίον ἄλλου. Τοίχῳ τῷ ἑτέρῳ. Et ailleurs : Αὐτὸς δ' αντικρυ ἱδρύθη θεοειδης Αχιλλευς Τοίχῳ τῷ ἑτέρῳ.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     }
   ],
   "book_end_marker": null

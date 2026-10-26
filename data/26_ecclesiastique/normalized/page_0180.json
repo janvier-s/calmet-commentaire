@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 6,
       "latin_quote": "NE ACEDIERIS VINCULIS EJUS.",
       "french_translation": "Ne vous ennuyez point de ses liens.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 6,
       "latin_quote": "INVESTIGA ILLAM, ET MANIFESTABITUR TIBI.",
       "french_translation": "Cherchez-la avec soin, et elle vous sera découverte.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 6,
       "latin_quote": "ET CONTINENS FACTUS, NE DERELINQUAS EAM.",
       "french_translation": "Quand vous l'aurez une fois embrassée, ne la quittez point.",
@@ -68,7 +68,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 6,
       "latin_quote": "IN NOVISSIMIS ENIM INVENIES REQUIEM IN EA.",
       "french_translation": null,
@@ -78,31 +78,57 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Μὴ προσοχθίσῃς τοῖς δεσμοῖς ἀυτῆς. Alii, Μὴ προσοχθίσῃς."
+      "text": "Μὴ προσοχθίσῃς τοῖς δεσμοῖς ἀυτῆς. Alii, Μὴ προσοχθίσῃς.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Hérodote, livre 1 ; et Baruch 6:42."
+      "text": "Hérodote, livre 1 ; et Baruch 6:42.",
+      "tags": [
+        "verse",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez le Tableau d'Isis."
+      "text": "Voyez le Tableau d'Isis.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Tacite, De Moribus ; le Psautier de Saint-Germain."
+      "text": "Tacite, De Moribus ; le Psautier de Saint-Germain.",
+      "tags": [
+        "versions",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Sagesse 6:14 ; Proverbes 8, 9."
+      "text": "Sagesse 6:14 ; Proverbes 8, 9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Matthieu 7:7."
+      "text": "Matthieu 7:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Εγκρατὴς ὀλβιόφρων. Vide Sagesse 8:21. Ut scivi quoniam aliter non possum esse continens. Græc. Εγκρατὴς."
+      "text": "Ἐγκρατὴς ὀλβιόφρων. Vide Sagesse 8:21. Ut scivi quoniam aliter non possum esse continens. Græc. Ἐγκρατὴς.",
+      "tags": [
+        "greek",
+        "verse",
+        "versions",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

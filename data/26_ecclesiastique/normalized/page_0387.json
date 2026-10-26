@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 22,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 22,
       "latin_quote": "LORAMENTUM LIGNEUM COLLIGATUM IN FUNDAMENTO ÆDIFICII, NON DISSOLVETUR.",
       "french_translation": "Comme un bois bien lié dans le fondement d'un édifice ne s'en sépare point ; ainsi le cœur établi sur un conseil solide, demeurera ferme.",
@@ -47,31 +47,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Proverbes 27:11."
+      "text": "Proverbes 27:11.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "4. Macc. II."
+      "text": "4. Macc. II.",
+      "tags": [
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "3 Rois 6:36."
+      "text": "3 Rois 6:36.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "3 Rois 7:12."
+      "text": "3 Rois 7:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Vitruve, liv._ I. ch. 5. et les Notes de M. Perrault sur cet endroit."
+      "text": "_Vitruve, liv._ I. ch. 5. et les Notes de M. Perrault sur cet endroit.",
+      "tags": [
+        "classical",
+        "commentators",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Cæsar de Bello Gallico."
+      "text": "Cæsar de Bello Gallico.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Εἰς ἱμάντωσιν ξυλίνη δεδεμένη εἰς ἐποικοδομὴν, οὐ διαλυθήσεται, ὅυτως ἡ καρδία ἐστηριγμένη ἐπὶ διαβουλίω βουλῆς, οὐ δειλιάσει."
+      "text": "Εἰς ἱμάντωσις ξυλίνη δεδεμένη εἰς ἐποικοδομὴν, οὐ διαλυθήσεται, ὅυτως ἡ καρδία ἐστηριγμένη ἐπὶ διαβουλίου βουλῆς, οὐ δειλιάσει.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

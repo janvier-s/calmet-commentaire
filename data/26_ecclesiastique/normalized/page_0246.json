@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 11,
       "latin_quote": "PRIUSQUAM INTERROGES, NE VITUPERES QUEMQUAM.",
       "french_translation": "Ne blâmez personne, avant que de vous être bien informé ; et quand vous l'aurez fait, reprenez-le avec équité.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 11,
       "latin_quote": "PRIUSQUAM AUDIAS, NE RESPONDEAS VERBUM.",
       "french_translation": "Ne répondez point avant que d'avoir écouté, et n'interrompez point une personne au milieu de son discours.",
@@ -53,9 +53,9 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 11,
-      "latin_quote": "DE EA RE QUÆ TE NON MOLESTAT, NE CERTERIS.",
+      "latin_quote": "DE EA RE QUÆ TE NON MOLESTAT, NE CERTERIS.^{(e)}",
       "french_translation": "Ne disputez point des choses qui ne vous regardent point. ^{(f)}",
       "french_commentary": "Ne con-"
     }
@@ -63,27 +63,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "2 Rois 16:4."
+      "text": "2 Rois 16:4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Senec. in Medea."
+      "text": "Senec. in Medea.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Proverbes 18:13."
+      "text": "Proverbes 18:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Proverbes 29:20."
+      "text": "Proverbes 29:20.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Ne certeris ; id est, ne certes, ne disputes. Vide infra_ XXXVIII. 29. _Et Sap._ XV. 9. _Ubi certari legitur, pro certare._"
+      "text": "_Ne certeris ; id est, ne certes, ne disputes. Vide infra_ XXXVIII. 29. _Et Sap._ XV. 9. _Ubi certari legitur, pro certare._",
+      "tags": [
+        "verse",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Μὴ ἀντιλέγειν ἐν κρίσει καὶ χρίσει, μὴ κρίνειν."
+      "text": "Μὴ ἀντιλέγειν ἐν κρίσει καὶ χρίσει, μὴ κρίνειν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

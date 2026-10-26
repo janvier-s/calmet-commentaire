@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 25,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 25,
       "latin_quote": "RATIONALE.",
       "french_translation": "Le rational.",
@@ -33,35 +33,82 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "M. l'Abbé Fleury."
+      "text": "M. l'Abbé Fleury.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Isidore, livre 19, Origines, chapitre avant-dernier. Voyez Martinii Lexicon, sur Redimiculum."
+      "text": "Saint Isidore, livre 19, Origines, chapitre avant-dernier. Voyez Martinii Lexicon, sur Redimiculum.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Origines",
+          "original": "Etymologiae sive Origines"
+        },
+        {
+          "fr": "Martinii Lexicon",
+          "original": "Lexicon philologicum"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Cassien, Institutions, livre 1, chapitre 6."
+      "text": "Cassien, Institutions, livre 1, chapitre 6.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Institutions",
+          "original": "De institutis coenobiorum"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Hérodote, livre 2, chapitre 36 et 81. Kalasiris verbum."
+      "text": "Hérodote, livre 2, chapitre 36 et 81. Kalasiris verbum.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Αἰεὶ οι ἱερεῖς λινέα ἐπεσθίεσθαι ὀφείλων."
+      "text": "Αἰεὶ οἱ ἱερεῖς λινέα ἐπεσθίεσθαι ὀφείλων.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Les Septante : Ποδήρη. Aquila ; Symmaque : Λόγιον Rationale."
+      "text": "Les Septante : Ποδήρη. Aquila ; Symmaque : Λόγιον Rationale.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Exode 28:4. Περιστήθιον."
+      "text": "Exode 28:4. Περιστήθιον.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Λογεῖον. Exode 28:15."
+      "text": "Λογεῖον. Exode 28:15.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

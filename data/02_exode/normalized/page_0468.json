@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 28,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 28,
       "latin_quote": "LINEAM STRICTAM.",
       "french_translation": "Une tunique de lin plus serrée.",
@@ -25,43 +25,86 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Hérodote, livre 1, chapitre 195."
+      "text": "Hérodote, livre 1, chapitre 195.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "תשבץ"
+      "text": "תשבץ",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Exode 28:30, 33."
+      "text": "Exode 28:30, 33.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "2 Rois 1:9. Tement me angustiæ. l'Hébreu Tenuerunt me schabaz. אחזני השבץ"
+      "text": "2 Rois 1:9. Tement me angustiæ. l'Hébreu Tenuerunt me schabaz. אחזני השבץ",
+      "tags": [
+        "hebrew",
+        "verse",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Κοσύμβατα. Or κόσυμβα, selon Hésychius, signifie une ceinture à l'Égyptienne : Νιελ ζώμα Αἰγύπτιον."
+      "text": "Κοσύμβατα. Or κόσυμβα, selon Hésychius, signifie une ceinture à l'Égyptienne : Νιεῖ ζώμα Αἰγύπτιον.",
+      "tags": [
+        "greek",
+        "classical",
+        "explanation"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Κροσσωτὸν."
+      "text": "Κροσσωτὸν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Munster ; Vatable ; etc."
+      "text": "Munster ; Vatable ; etc.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Junius ; Pagnin ; Arias Montanus ; Fagius ; etc."
+      "text": "Junius ; Pagnin ; Arias Montanus ; Fagius ; etc.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Du vêtement des prêtres hébreux, livre 1 ; l'Hébreu, chapitre 17, article 4."
+      "text": "Du vêtement des prêtres hébreux, livre 1 ; l'Hébreu, chapitre 17, article 4.",
+      "tags": [
+        "versions",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Du vêtement des prêtres hébreux",
+          "original": "De vestitu sacerdotum Hebraeorum"
+        }
+      ]
     },
     {
       "marker": "(k)",
-      "text": "M. le Pelletier."
+      "text": "M. le Pelletier.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

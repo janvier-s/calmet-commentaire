@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 10,
       "latin_quote": null,
       "french_translation": null,
@@ -34,7 +34,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 10,
       "latin_quote": "VERBA ORIS SAPIENTIS GRATIA, ETC.",
       "french_translation": "Les paroles qui sortent de la bouche du sage, sont pleines de grâce ; les lèvres de l'insensé le feront tomber dans le précipice.",
@@ -44,15 +44,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide Psaumes 139:12. איש לשון בל יכון בארץ בעל חמס Un emporté. L'Hébreu lit ici בעל לשון de même que Genèse 37:19. בעל החלומות Samniator. Et XLIX. 23. בעלי חצים Sagittarii. Proverbes 22:24."
+      "text": "Vide Psaumes 139:12. איש לשון בל יכון בארץ בעל חמס Un emporté. L'Hébreu lit ici בעל לשון de même que Genèse 37:19. בעל החלומות Samniator. Et XLIX. 23. בעלי חצים Sagittarii. Proverbes 22:24.",
+      "tags": [
+        "hebrew",
+        "verse",
+        "versions",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εαν δάκη ὁ ὄφις ἐν ὐ ψιθυρισμῷ, ὐκ ἔςι περıσσεια τῷ ἐπάδοντι."
+      "text": "Ἐὰν δάκη ὁ ὄφις ἐν ὐ ψιθυρισμῷ, οὐκ ἔστι περıσύεια τῷ ἐπάδοντι.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Jérôme, sur ce passage ; et Olympiodore ; et Cassien, Conférences 2, chapitre 1."
+      "text": "Saint Jérôme, sur ce passage ; et Olympiodore ; et Cassien, Conférences 2, chapitre 1.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Conférences",
+          "original": "Collationes"
+        }
+      ]
     }
   ],
   "book_end_marker": null

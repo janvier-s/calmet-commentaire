@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 18,
       "latin_quote": "CONGLUTINATA EST ANIMA JONATHÆ, ANIMÆ DAVID.",
       "french_translation": "L'âme de Jonathas s'attacha fortement à celle de David.",
@@ -25,7 +25,11 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Τὴν φιλίαν ἰσότητα ἴναι, ὴ μίαν ψυχὴν, τὸν φίλον ἕτερον ἀυτόν. Pytagor."
+      "text": "Τὴν φιλίαν ἰσότητα ἴναι, ὴ μίαν ψυχὴν, τὸν φίλον ἕτερον αὐτόν. Pytagor.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 4,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 4,
       "latin_quote": "MISERUNT IN OMNEM SAMARIAM, PER CIRCUITUM, USQUE JERICHO.",
       "french_translation": "Ils envoyèrent dans toute la Samarie, et aux environs, jusqu'à Jéricho.",
@@ -33,39 +33,76 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "_Joseph Antiq. lib._ 10. _cap._ 4. Καὶ τὸν ναὸν ἅγιον, et τὴν πόλιν ζηλῶσαι, et μηδὲ μέρη τὰ λοιπὰ τῆς γῆς, et χάριν τὶ τῆς σωτηρίας, ἑαυτῶν τῷ Θεῷ, et διατηρεῖν ἀυτὸν ἐνδυμῇ πρὸς ὅλον τὸν βίον."
+      "text": "_Joseph Antiq. lib._ 10. _cap._ 4. Καὶ τὸν ναὸν ἅγιον, et τὴν πόλιν ζηλῶσαι, et μηδὲ μέρη τὰ λοιπὰ τῆς γῆς, et χάριν τὶ τῆς σωτηρίας, ἑαυτῶν τῷ Θεῷ, et διατηρεῖν αὐτὸν ἐνδυμῇ πρὸς ὅλον τὸν βίον.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. lib",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "2 Paralipomènes 30:1, 5-6, 10, 18."
+      "text": "2 Paralipomènes 30:1, 5-6, 10, 18.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Paralipomènes 34:6, 33."
+      "text": "2 Paralipomènes 34:6, 33.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Judith 3:13-14."
+      "text": "Judith 3:13-14.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Κώμας Bible de l'édition de Complute. Kômas."
+      "text": "Κώμας Bible de l'édition de Complute. Kômas.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Grotius, sur ce passage."
+      "text": "Grotius, sur ce passage.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Ortelius in Thes."
+      "text": "Ortelius in Thes.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Josué 11:1."
+      "text": "Josué 11:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Nombres 33:17 ; Josué 6:10 ; 15:3."
+      "text": "Nombres 33:17 ; Josué 6:10 ; 15:3.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

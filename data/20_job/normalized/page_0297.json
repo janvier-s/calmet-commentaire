@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 22,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 22,
       "latin_quote": "SUSCIPE EX ORE ILLIUS LEGEM.",
       "french_translation": "Recevez la Loi de sa bouche.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 22,
       "latin_quote": "DABIT PRO TERRA SILICEM, ET PRO SILICE, TORRENTES AUREOS.",
       "french_translation": "Il vous donnera au lieu de la terre, le rocher, et au lieu de la pierre, des torrents d'or.",
@@ -48,19 +48,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Job 23:11-12."
+      "text": "Voyez Job 23:11-12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἐκλαβεῖ ἐκ ςόματ[UNCERTAIN GREEK] αὐτ[UNCERTAIN GREEK] ῥήματα Sym. Ἐξομαλόγησιν. Ils ont lû רדה rhoda, etqu."
+      "text": "Ἐκλαβεῖ ἐκ στόματ[UNCERTAIN GREEK] αὐτ[UNCERTAIN GREEK] ῥήματα Sym. Ἐξομολόγησιν. Ils ont lû רדה rhoda, etqu.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "explanation",
+        "abbrev",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Némer. L'Hébreu תורה thorab legem. וְשַׂת עַל־עָפָר בָּצֶר וּבְצוּר נְחָלִים אוֹפִיר"
+      "text": "Némer. L'Hébreu תורה thorab legem. וְשַׂת עַל־עָפָר בָּצֶר וּבְצוּר נְחָלִים אוֹפִיר",
+      "tags": [
+        "hebrew",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "3 Rois 10:27."
+      "text": "3 Rois 10:27.",
+      "tags": [
+        "verse"
+      ]
     }
   ]
 }

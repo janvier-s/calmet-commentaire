@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 30,
       "latin_quote": "APPLICA AD ME EPHOD.",
       "french_translation": "Appliquez-moi l'Éphod.^{(a)}",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 30,
       "latin_quote": "LATRUNCULOS HOS.",
       "french_translation": "Poursuivrai-je ces brigands.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 30,
       "latin_quote": "AD TORRENTEM BESOR.",
       "french_translation": "Au torrent de Bésor.",
@@ -48,23 +48,58 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "הגישה לי האפוד Aquila : Ἐγγισον μοι τὴν ἐπωμίδα. Symmaque : Στῆσον πρός με τὴν ἐπωμίδα."
+      "text": "הגישה לי האפוד Aquila : Ἐγγισον μοι τὴν ἐπωμίδα. Symmaque : Στῆσον πρός με τὴν ἐπωμίδα.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Cunæus, De la république des Hébreux, livre 1, chapitre 14 ; Spencer, De Urim. Voyez aussi 1 Rois 23:9."
+      "text": "Cunæus, De la république des Hébreux, livre 1, chapitre 14 ; Spencer, De Urim. Voyez aussi 1 Rois 23:9.",
+      "tags": [
+        "verse",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la république des Hébreux",
+          "original": "De republica Hebraeorum"
+        },
+        {
+          "fr": "De Urim",
+          "original": "De Urim et Thummim"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ménochius ; Estius ; Piscator ; etc."
+      "text": "Ménochius ; Estius ; Piscator ; etc.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Exode 28:30."
+      "text": "Exode 28:30.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "ארדוף אחרי הגדוד הזה 70. Ο'mικον τω γιδιμ. Ils ont lû גדוד ici et au ℣. 15. Aq. Μιλίτζαν ταυτην. Sym. Βειτ'εν λόχον ταυτην. Alius. Στρατόπεδον. Cettæ armatæ. Th. Στρατευματις. Cette troupe."
+      "text": "ארדוף אחרי הגדוד הזה 70. Ὀmικον τῷ γιδιμ. Ils ont lû גדוד ici et au ℣. 15. Aq. Μιλίτζαν ταύτην. Sym. Βειτ'εν λόχον ταύτην. Alius. Στρατόπεδον. Cettæ armatæ. Th. Στρατευματις. Cette troupe.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "verse",
+        "versions",
+        "latin",
+        "explanation",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

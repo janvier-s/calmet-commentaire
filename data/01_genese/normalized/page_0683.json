@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 30,
       "latin_quote": null,
       "french_translation": null,
@@ -32,43 +32,106 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Strabon, livre 11, page 357, et livre 15, page 485."
+      "text": "Strabon, livre 11, page 357, et livre 15, page 485.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "המני"
+      "text": "המני",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Plutarque, D'Isis et d'Osiris. Voyez Diogène Laërce, dans le proème."
+      "text": "Plutarque, D'Isis et d'Osiris. Voyez Diogène Laërce, dans le proème.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "D'Isis et d'Osiris",
+          "original": "De Iside et Osiride"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Brisson, Du royaume des Perses, livre 2."
+      "text": "Voyez Brisson, Du royaume des Perses, livre 2.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Du royaume des Perses",
+          "original": "De regio Persarum principatu"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ἀγαθὴ τύχη."
+      "text": "Ἀγαθὴ τύχη.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ἀγαθὴ τύχη."
+      "text": "Ἀγαθὴ τύχη.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Macrobe, Saturnales, livre 1, chapitre 19. Δαίμων, Τύχη, Ἔρως, Ἀνάγκη."
+      "text": "Macrobe, Saturnales, livre 1, chapitre 19. Δαίμων, Τύχη, Ἔρως, Ἀνάγκη.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Saturnales",
+          "original": "Saturnalia"
+        }
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Selden, Des dieux syriens, Syntagme 1, chapitre 1."
+      "text": "Selden, Des dieux syriens, Syntagme 1, chapitre 1.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des dieux syriens",
+          "original": "De diis Syris"
+        },
+        {
+          "fr": "Syntagme",
+          "original": "De diis Syris syntagmata"
+        }
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Κλῆροι τῆς τύχης et τῦ δαίμονος σημανθὲς ἡλίου et σέληνης."
+      "text": "Κλῆροι τῆς τύχης et τοῦ δαίμονος σημανθὲς ἡλίου et σέληνης.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "Strabon, livre 11, page 352."
+      "text": "Strabon, livre 11, page 352.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

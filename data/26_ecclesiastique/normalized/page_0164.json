@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -23,15 +23,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 5,
       "latin_quote": "ESTO MANSUETUS AD AUDIENDUM VERBUM.",
-      "french_translation": null,
-      "french_commentary": "Écoutez avec douceur ce que l'on vous dit, afin d'acquérir l'intelligence, et de rendre avec sagesse une réponse véritable. Écoutez avec attention, et ne vous hâtez point de parler, que vous ne soyez parfaitement instruit. Le Grec : ^{(b)} _Soyez promt à écouter le bien, et que votre vie soit dans la vérité, et rendez une réponse juste avec patience._ L'Édition Romaine est plus courte : _Soyez promt à écouter, et lent à répondre._ La nature pour nous faire comprendre l'utilité d'écouter, et d'apprendre, nous a donné deux oreilles ; mais elle ne nous a donné qu'une langue, pour nous enseigner à parler peu. ^{(c)} Saint Jacques nous a dit la même chose que le Sage en cet endroit. ^{(d)} _Que tout homme soit promt à écouter, et tardif à parler._ Et saint Augustin : ^{(e)} _Il est plus sûr d'écouter la vérité, que de la prêcher._ Celui qui l'écoute, demeure dans l'humilité, et celui qui la prêche, est toujours exposé au danger de la complaisance, et d'une secrète vanité."
+      "french_translation": "Écoutez avec douceur ce que l'on vous dit, afin d'acquérir l'intelligence, et de rendre avec sagesse une réponse véritable. ^{(a)}",
+      "french_commentary": "Écoutez avec attention, et ne vous hâtez point de parler, que vous ne soyez parfaitement instruit. Le Grec : ^{(b)} _Soyez promt à écouter le bien, et que votre vie soit dans la vérité, et rendez une réponse juste avec patience._ L'Édition Romaine est plus courte : _Soyez promt à écouter, et lent à répondre._ La nature pour nous faire comprendre l'utilité d'écouter, et d'apprendre, nous a donné deux oreilles ; mais elle ne nous a donné qu'une langue, pour nous enseigner à parler peu. ^{(c)} Saint Jacques nous a dit la même chose que le Sage en cet endroit. ^{(d)} _Que tout homme soit promt à écouter, et tardif à parler._ Et saint Augustin : ^{(e)} _Il est plus sûr d'écouter la vérité, que de la prêcher._ Celui qui l'écoute, demeure dans l'humilité, et celui qui la prêche, est toujours exposé au danger de la complaisance, et d'une secrète vanité."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 5,
       "latin_quote": "SI EST TIBI INTELLECTUS, RESPONDE PROXIMO.",
       "french_translation": null,
@@ -41,35 +41,61 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "_Complus._ Verbum Dei. Ita et alii multi."
+      "text": "_Complus._ Verbum Dei. Ita et alii multi.",
+      "tags": [
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Γίνου ταχὺς ἐν ἀκροάσει σου ἀγαθῇ, καὶ ἐν ἀληθείᾳ ζώων σου, καὶ ἐν μακροθυμίᾳ φθέγγου ἀπόκρισιν ὀρθήν. L'édition romaine lit : Γίνου ταχὺς ἐν ἀκροάσει σου, καὶ ἐν μακροθυμίᾳ φθέγγου ἀπόκρισιν."
+      "text": "Γίνου ταχὺς ἐν ἀκροάσει σου ἀγαθῇ, καὶ ἐν ἀληθείᾳ ζώων σου, καὶ ἐν μακροθυμίᾳ φθέγγου ἀπόκρισιν ὀρθήν. L'édition romaine lit : Γίνου ταχὺς ἐν ἀκροάσει σου, καὶ ἐν μακροθυμίᾳ φθέγγου ἀπόκρισιν.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Plutarque, Περὶ τοῦ ἀκούειν. Η φύσις τοῖς μὲν ὠσὶν οὐδὲν ἀπέφραξε, τοῖς δὲ ὀδοῦσι καὶ χείλεσιν ὥσπερ τείχη περιέβαλεν, ἵνα μὴ ῥᾳδίως ὁ λόγος προπέσῃ."
+      "text": "Plutarque, Περὶ τοῦ ἀκούειν. Η φύσις τοῖς μὲν ὠσὶν οὐδὲν ἀπέφραξε, τοῖς δὲ ὀδοῦσι καὶ χείλεσιν ὥσπερ τείχη περιέβαλεν, ἵνα μὴ ῥᾳδίως ὁ λόγος προπέσῃ.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Jacques 1:19."
+      "text": "Jacques 1:19.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_August. tract._ 59. in _Johan._"
+      "text": "_August. tract._ 59. in _Johan._",
+      "tags": []
     },
     {
       "marker": "(f)",
-      "text": "_Apud Grot._ Η λέγε τί σιγῆς κρεῖττον, ἢ σιγὴν ἔχε."
+      "text": "_Apud Grot._ Η λέγε τί σιγῆς κρεῖττον, ἢ σιγὴν ἔχε.",
+      "tags": [
+        "greek",
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Job 21:5. 29:9."
+      "text": "Job 21:5. 29:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "_Anson. Ep._ 22. ad. _Paulin._"
+      "text": "_Anson. Ep._ 22. ad. _Paulin._",
+      "tags": [
+        "fathers"
+      ]
     }
   ],
   "book_end_marker": "℣. 15."

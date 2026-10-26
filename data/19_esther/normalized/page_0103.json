@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 5,
       "latin_quote": "OBSECRO UT VENIAS AD ME HODIE, ET AMAN TECUM AD CONVIVIUM, QUOD PARAVI.",
       "french_translation": "Je prie le Roi de venir aujourd'hui avec Aman, au festin que je lui ai préparé.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 5,
       "latin_quote": "DIXIT EI REX, POSTQUAM VINUM BIBERAT ABUNDANTER.",
       "french_translation": "Le Roi lui dit, après avoir bu beaucoup de vin.",
@@ -47,15 +47,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Herodot. lib. VII. cap. 110. Τῶν τι με-εχόντων ἄν ἔχοι σφι μεγάλην χάριν, ὅτι Βασιλέῒς ἐδέησε κὶ ὁ ἐκέλευσε ἡμέας ἑτοιμίσαι οἴην αἰφνιδίως. Voyez Strab. in Esther. v. qu. 12."
+      "text": "Herodot. lib. VII. cap. 110. Τῶν τί με-ἐχόντων ἄν ἔχοι σφι μεγάλην χάριν, ὅτι Βασιλέῒς ἐδέησε καὶ ὁ ἐκέλευσε ἡμέας ἑτοιμίσαι οἴην αἰφνιδίως. Voyez Strab. in Esther. v. qu. 12.",
+      "tags": [
+        "greek",
+        "verse",
+        "fathers",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "במשתה היין"
+      "text": "במשתה היין",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Drusius, Observations, livre 12, chapitre 15 ; Élien, Histoire variée, livre 12, chapitre 1. Μετὰ γὰρ μεσημβρίαν πρῶτον οἱ Πέρ-σαι πρὸς οἶνον, κ᾿ ὥσπερ πολεμίοισι ἐν μάλαι ἐποχή-ἄνται, ἐπειδὰν πρὸς τὸν πότον, ὡς πρὸς ἀντίπαλον ἐκταθῶσιν."
+      "text": "Drusius, Observations, livre 12, chapitre 15 ; Élien, Histoire variée, livre 12, chapitre 1. Μετὰ γὰρ μεσημβρίαν πρῶτον οἱ Πέρ-σαι πρὸς οἶνον, κ᾿ ὥσπερ πολεμίοισι ἐν μάλαι ἐποχή-ἄνται, ἐπειδὰν πρὸς τὸν πότον, ὡς πρὸς ἀντίπαλον ἐκταθῶσιν.",
+      "tags": [
+        "greek",
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Observations",
+          "original": "Les observations de plusieurs singularitez et choses mémorables"
+        },
+        {
+          "fr": "Histoire variée",
+          "original": "Varia Historia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 24,
       "latin_quote": "VENIT AD CAULAS OVIUM… ERATQUE IBI SPELUNCA.",
       "french_translation": "Étant venu à des parcs de brebis, il se trouva là une caverne.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 24,
       "latin_quote": "DIXERUNT SERVI DAVID… ECCE DIES DE QUA LOCUTUS EST DOMINUS.",
       "french_translation": "Les gens de David lui dirent : Voici le jour que le Seigneur vous a dit.",
@@ -40,19 +40,45 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Homer. Odyss. I. Αὐτὰρ ἐγὼν ἐς ἀγρὸν καὶ ἐπ᾽ ἀγροὺς ἔρχομαι ἠδὲ βουκόλους καὶ ἐς πόλιν. [UNCERTAIN GREEK] δρόμους δέκαθαι δωμάτων. Vide et Joseph. An-t.q. lib. 14. c. 27. et l. 15."
+      "text": "Homer. Odyss. I. Αὐτὰρ ἐγὼν ἐς ἀγρὸν καὶ ἐπ᾽ ἀγροὺς ἔρχομαι ἠδὲ βουκόλους καὶ ἐς πόλιν. [UNCERTAIN GREEK] δρόμους δέκαται δωμάτων. Vide et Joseph. An-t.q. lib. 14. c. 27. et l. 15.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev",
+        "uncertain"
+      ],
+      "titles": [
+        {
+          "fr": "Odyss",
+          "original": "Odyssea"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Virgile, Énéide 8."
+      "text": "Virgile, Énéide 8.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Strabon, livre 16. Οἱ μὲν δὴ Κοῖλα ἐν τῷ ὀρεινῷ τῆς Συρίας ἐν σπηλαίῳ, ἐν ᾧ καὶ τετρακισχιλίους ἀνθρώπους δέχεσθαι."
+      "text": "Strabon, livre 16. Οἱ μὲν δὴ Κοῖλα ἐν τῷ ὀρεινῷ τῆς Συρίας ἐν σπηλαίῳ, ἐν ᾧ καὶ τετρακισχιλίους ἀνθρώπους δέχεσθαι.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ויבא להסך את רגליו Aq. Εἰσῆλθεν ἀποκε-νῶσαι. Alius. Κενῶσαι. Alius Σκεπάσαι ἀγυιαν. Jo-seph. Συνιέναι ἱκνείουσαν ποίησαι."
+      "text": "ויבא להסך את רגליו Aq. Εἰσῆλθεν ἀποκε-νῶσαι. Alius. Κενῶσαι. Alius Σκεπάσαι ἀγυιαν. Jo-seph. Συνιέναι ἱκνείουσαν ποίησαι.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "latin",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

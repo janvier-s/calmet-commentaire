@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 17,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 17,
       "latin_quote": "LIBERA ME, ET PONE ME JUXTA TE ; ET CUJUSVIS MANUS PUGNET CONTRA ME.",
       "french_translation": "Délivrez-moi, Seigneur, et me mettez auprès de vous ; et après cela, combatte qui voudra contre moi.",
@@ -40,19 +40,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Λαλοῦμαι κέντρα, καὶ τὶ ποιήσας; ἐπῆλθεν δι ῥεῖαι καὶ ἐταράχθη ἀπέπεσον. In aliis, καὶ τὶ ποιήσω"
+      "text": "Λαλοῦμαι κέντρα, καὶ τὶ ποιήσας; ἐπῆλθεν δῑ ῥεῖαι καὶ ἐταράχθη ἀπέπεσον. In aliis, καὶ τὶ ποιήσω",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "נא ערבני עמך מי הוא לידי יתקעני. Hoc tantùm legunt : Tis is ἐστὶν, τῇ χειρὶ μου συδιδότω."
+      "text": "נא ערבני עמך מי הוא לידי יתקעני. Hoc tantùm legunt : Tis is ἐστὶν, τῇ χειρὶ μου συδιδότω.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez ci-devant XVI. 4. _Atque utinam esses anima vestra, pro anima mea._"
+      "text": "Voyez ci-devant XVI. 4. _Atque utinam esses anima vestra, pro anima mea._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Proverbes 6:1 ; 11:15 ; 17:18 ; 22:26."
+      "text": "Voyez Proverbes 6:1 ; 11:15 ; 17:18 ; 22:26.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 32,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 32,
       "latin_quote": "NE CREDAS TE VIÆ LABORIOSÆ.",
       "french_translation": "Ne vous engagez point dans un chemin pénible.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 32,
       "latin_quote": "ET A FILIIS TUIS CAVE.",
       "french_translation": "Donnez-vous de garde de vos enfants-mêmes.",
@@ -55,15 +55,29 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Cicero Philipica 2."
+      "text": "Cicero Philipica 2.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Plin. l. 1. Ep. ad Rufum."
+      "text": "Plin. l. 1. Ep. ad Rufum.",
+      "tags": [
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ms. ἀνευθετῷ ἐν ὁδῷ ἀνευθετῷ. Rom. Οὐδ᾽ ἀνευθετῷ vide Hesebel. Quid. Ενεργον κ' τ. α. Grot. emendat, ἀνερματιςῷ. Non bene explorata."
+      "text": "Ms. ἀνευθετῷ ἐν ὁδῷ ἀνευθετῷ. Rom. Οὐδ᾽ ἀνευθετῷ vide Hesebel. Quid. Ἄνεργον κ' τ. ἃ. Grot. emendat, ἀνερματιςῷ. Non bene explorata.",
+      "tags": [
+        "greek",
+        "versions",
+        "commentators",
+        "latin",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

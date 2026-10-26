@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 6,
       "latin_quote": "NOCTE ILLA DIXIT DOMINUS AD EUM.",
       "french_translation": "La nuit suivante le Seigneur lui dit.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 6,
       "latin_quote": "TOLLE TAURUM PATRIS TUI, ET ALTERUM TAURUM ANNORUM SEPTEM.",
       "french_translation": "Prenez le taureau de votre père, et cet autre taureau de sept ans.",
@@ -41,19 +41,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "ויהי בלילה ההוא _Et fuit in nocte illa._"
+      "text": "ויהי בלילה ההוא _Et fuit in nocte illa._",
+      "tags": [
+        "hebrew",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Hésiode, _Les Travaux et les Jours._\n… Βοῦς δ᾽ ἐνναετήρω\nἄρσενε κεκτῆσθαι, τῶν γ᾽ ἀλκὴ ἀκαμάτη."
+      "text": "Hésiode, _Les Travaux et les Jours._\n… Βοῦς δ᾽ ἐνναετήρω\nἄρσενε κεκτῆσθαι, τῶν γ᾽ ἀλκὴ ἀκαμάτη.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Vide Tirin. V etab. Cornel. à Lapide. Vida\net 70. μὴχ᾽ ὃ σταθμος."
+      "text": "Vide Tirin. V etab. Cornel. à Lapide. Vida\net 70. μὴχ᾽ ὃ σταθμὸς.",
+      "tags": [
+        "greek",
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Cajetan ;\nJunius ;\nTremellius ;\nPiscator ;\nPierre Martyr."
+      "text": "Cajetan ;\nJunius ;\nTremellius ;\nPiscator ;\nPierre Martyr.",
+      "tags": [
+        "fathers",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

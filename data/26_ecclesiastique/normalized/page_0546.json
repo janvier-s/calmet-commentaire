@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 35,
       "latin_quote": null,
       "french_translation": null,
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 35,
       "latin_quote": "NOLI INSPICERE SACRIFICIUM INJUSTUM.",
       "french_translation": "Ne mettez point votre confiance en un sacrifice d'iniquité ; parce que le Seigneur est votre juge.",
@@ -59,7 +59,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 35,
       "latin_quote": "NONNE LACRYMÆ VIDUÆ AD MAXILLAM DESCENDUNT, ETC.",
       "french_translation": "Les larmes de la veuve n'arrosent-elles pas son visage, et ne crient-elles pas vengeance contre celui qui les tire de ses yeux ?",
@@ -69,11 +69,17 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Sagesse 6:8. Isaïe 42:1. Aet. X. 34. Galates 2:6. Éphésiens 6:9."
+      "text": "Sagesse 6:8. Isaïe 42:1. Aet. X. 34. Galates 2:6. Éphésiens 6:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Μὴ ἐπίσχες δωρία ἀδίκῳ, ὅτι ταῦτα Κύριος ἴσι, κὶ ἐκ ἴσι παρ' ἀυτῷ δόξα προσώπου."
+      "text": "Μὴ ἐπίσχες δωρία ἀδίκῳ, ὅτι ταῦτα Κύριος ἴσι, καὶ ἐκ ἴσι παρ' αὐτῷ δόξα προσώπου.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

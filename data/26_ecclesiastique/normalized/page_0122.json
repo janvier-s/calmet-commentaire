@@ -44,15 +44,23 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 5,
       "chapter": 2,
-      "latin_quote": "CREDE DEO, ET RECUPERABIT TE.",
-      "french_translation": "Ayez confiance en Dieu, et il vous tirera de tous ces maux.",
-      "french_commentary": "Prosanes même,^{(a)} emploient assez souvent dans ce cas, la comparaison des métaux qu'on éprouve par le feu.\nOu selon le Grec : _Croyez au Seigneur, attendez l'effet de ses promesses ; ou ayez confiance en son secours, et il vous recevra, il vous secourera, il vous garantira, etc._"
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "Profanes même,^{(a)} emploient assez souvent dans ce cas, la comparaison des métaux qu'on éprouve par le feu."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 6,
+      "chapter": 2,
+      "latin_quote": "CREDE DEO, ET RECUPERABIT TE.",
+      "french_translation": "Ayez confiance en Dieu, et il vous tirera de tous ces maux.",
+      "french_commentary": "Ou selon le Grec : _Croyez au Seigneur, attendez l'effet de ses promesses ; ou ayez confiance en son secours, et il vous recevra, il vous secourera, il vous garantira, etc._"
+    },
+    {
+      "commentary_id": 3,
+      "verse_ref": 9,
       "chapter": 2,
       "latin_quote": "QUI TIMETIS DOMINUM, SPERATE IN ILLUM, ETC.",
       "french_translation": "Vous qui craignez le Seigneur, espérez en lui ; et la miséricorde qu'il vous fera, vous comblera de joie.",
@@ -62,15 +70,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ovid. Scilicet ut fulvum spectatur in ignibus aurum Tempore sic duro est experienda fides. Menander. Χρυσὸς μὲν δίδω ἐξελέγχεθαι πυρὶ,"
+      "text": "Ovid. Scilicet ut fulvum spectatur in ignibus aurum Tempore sic duro est experienda fides. Menander. Χρυσὸς μὲν δίδω ἐξελέγχεθαι πυρὶ,",
+      "tags": [
+        "greek",
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Πιστεύσατε αὐτῷ, καὶ ἀντιλήψεται ὑμῶν."
+      "text": "Πιστεύσατε αὐτῷ, καὶ ἀντιλήψεται ὑμῶν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Οἱ φοβούμενοι τὸν Κύριον, ἐλπίσατε εἰς ἀγαθὰ, καὶ εἰς εὐφροσύνην αἰῶνος, καὶ ἐλέος."
+      "text": "Οἱ φοβούμενοι τὸν Κύριον, ἐλπίσατε εἰς ἀγαθὰ, καὶ εἰς εὐφροσύνην αἰῶνος, καὶ ἐλέος.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

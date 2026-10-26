@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 25,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 25,
       "latin_quote": "QUI NON ÆDIFICAT DOMUM FRATRIS SUI.",
       "french_translation": "Qui n'établit point la maison de son frère.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 25,
       "latin_quote": "ABSCINDES MANUM ILLIUS.",
       "french_translation": "Vous lui couperez la main.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 25,
       "latin_quote": "NON FLECTERIS SUPER EAM ULLA MISERICORDIA.",
       "french_translation": "Vous ne vous laisserez fléchir d'aucune compassion pour elle.",
@@ -61,7 +61,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 25,
       "latin_quote": "DIVERSA PONDERA.",
       "french_translation": "Deux sortes de poids.",
@@ -71,27 +71,56 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Josèphe. Antiq. l. 5 c. 11 Il faut lire, οτυλον ὡς τ' ἀτιμωτον, au lieu de τυπτειν, qu'on y lit."
+      "text": "Josèphe. Antiq. l. 5 c. 11 Il faut lire, κότυλον ὡς τ' ἀτιμωτον, au lieu de τύπτειν, qu'on y lit.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title",
+        "explanation",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. l",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Nombres 12:14 ; Isaïe 50:6 ; Matthieu 26:67 ; 27:30."
+      "text": "Nombres 12:14 ; Isaïe 50:6 ; Matthieu 26:67 ; 27:30.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Genèse 16:11 ; Exode 1:21."
+      "text": "Voyez Genèse 16:11 ; Exode 1:21.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Münster."
+      "text": "Münster.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Les rabbins, dans Grotius."
+      "text": "Les rabbins, dans Grotius.",
+      "tags": [
+        "rabbis",
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Michée 6:11 ; Proverbes 20:10, 23 ; 16:11."
+      "text": "Michée 6:11 ; Proverbes 20:10, 23 ; 16:11.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

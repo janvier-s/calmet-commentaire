@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 16,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 16,
       "latin_quote": "QUI MINORATUR CORDE, COGITAT INANIA.",
       "french_translation": "L'imprudent a des pensées vaines ; et l'homme indiscret ne s'occupe que de folies.",
@@ -45,33 +45,48 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 16,
       "latin_quote": "DISCE DISCIPLINAM SENSUS.",
-      "french_translation": "Apprenez à bien régler votre esprit, à vous former le jugement, et devenir un homme sage et prudent.",
-      "french_commentary": "Le Grec :^{(e)} Apprenez la science. Il parle de la science des mœurs, qui est la vraie science des gens de bien, et des sages."
+      "french_translation": "Apprenez à bien régler votre esprit,",
+      "french_commentary": "à vous former le jugement, et devenir un homme sage et prudent. Le Grec :^{(e)} Apprenez la science. Il parle de la science des mœurs, qui est la vraie science des gens de bien, et des sages."
     }
   ],
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Cornil. à Lapide."
+      "text": "Cornil. à Lapide.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Grotius, sur ce passage ; et Vatable."
+      "text": "Grotius, sur ce passage ; et Vatable.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ἐλαττούμενος καρδίᾳ διανοεῖται κενὰ, et ἀνὴρ, et πλανώμενος, διανοεῖται μωρά."
+      "text": "Ἐλαττούμενος καρδίᾳ διανοεῖται κενὰ, et ἀνὴρ, et πλανώμενος, διανοεῖται μωρά.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Proverbes 7:7. 9:4. XJI. II. XV. 21. XVII. 18. Osée IV. II. et VII. II. etc."
+      "text": "Voyez Proverbes 7:7. 9:4. XJI. II. XV. 21. XVII. 18. Osée IV. II. et VII. II. etc.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Μάθε ἐπιστήμην."
+      "text": "Μάθε ἐπιστήμην.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

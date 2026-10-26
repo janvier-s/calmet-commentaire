@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 16,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 16,
       "latin_quote": "MENSE SEPTIMO, DECIMA DIE, MENSIS.",
       "french_translation": "Au dixième jour du septième mois.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 16,
       "latin_quote": "AFFLIGETIS ANIMAS VESTRAS.",
       "french_translation": "Vous affligerez vos âmes par le jeûne, l'abstinence, la douleur, la pénitence.",
@@ -41,15 +41,33 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Πάντες οἱ τάυτη ἁμαρτάνοντες δι δωρίχες ὡς ταμοῖς ἐπὶ ἀκτῶν εἰ τὰς ἀποῤῥωγάδας δυσίας τῶν θυομένων, καθαροί τε το χείριστον: μη γὰρ ἔτι εἰς ἄςυ, μετ' ὡς ἴασιν τοῖον, μὴ πρότερον ἀπὸ ὕδατος τὸ σῶμα ἀποκλύσαντες. Porphyr. de abstin. lib. 2. §. 44."
+      "text": "Πάντες οἱ τάυτη ἁμαρτάνοντες δῑ δωρίχες ὡς ταμοῖς ἐπὶ ἀκτῶν εἰ τὰς ἀπορρωγάδας δυσίας τῶν θυομένων, καθαροί τε τὸ χείριστον: μὴ γὰρ ἔτι εἰς ἄστυ, μετ' ὡς ἴασιν τοῖον, μὴ πρότερον ἀπὸ ὕδατος τὸ σῶμα ἀποκλύσαντες. Porphyr. de abstin. lib. 2. §. 44.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Jérôme, Contre Jovinien, livre 2."
+      "text": "Saint Jérôme, Contre Jovinien, livre 2.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Buxtorf, Synagogue judaïque, chapitre 15."
+      "text": "Buxtorf, Synagogue judaïque, chapitre 15.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Synagogue judaïque",
+          "original": "Synagoga Judaica"
+        }
+      ]
     }
   ],
   "book_end_marker": null

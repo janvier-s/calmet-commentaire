@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 15,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 15,
       "latin_quote": "ET IN MEDIO ECCLESIÆ APERIET OS EJUS.",
       "french_translation": "Elle lui ouvrira la bouche au milieu de l'assemblée.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 15,
       "latin_quote": "JUCUNDITATEM, ET EXULTATIONEM THESAURIZABIT SUPER ILLUM.",
       "french_translation": "Elle lui amassera un trésor de joie, et d'allégresse, et lui donnera pour héritage un nom éternel,",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 15,
       "latin_quote": "HOMINES STULTI NON APPREHENDENT ILLAM, ET HOMINES SENSATI OBVIABUNT ILLI.",
       "french_translation": "Les hommes insensés ne la comprendront point ; mais les hommes de bon sens iront au-devant d'elle, etc.",
@@ -63,19 +63,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Psaumes 111:7."
+      "text": "Psaumes 111:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Sagesse 8:13."
+      "text": "Sagesse 8:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Εὐφροσύνω καὶ ςόανον ἀγαλλιάματος εὑρήσει, καὶ ὄνομα αἰώνιον κληρονομήσει. Complut. addit : αὐτὸν."
+      "text": "Εὐφροσύνου καὶ ςόανον ἀγαλλιάματος εὑρήσει, καὶ ὄνομα αἰώνιον κληρονομήσει. Complut. addit : αὐτὸν.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Οὓ μὴ καταλήψονται ἀνδρὲς ὕβριςαὶ, καὶ ἁμαρτωλοὶ ὐ μὴ ἴδωσιν αὐτὼ. Μακρὰν ἰςιν ἀπὸ ὑπερηφανίας, καὶ ἀνδρὲs ψεῦδεῖς ὐ μὴ μνησθήσονται αὐτῆς."
+      "text": "Οὓ μὴ καταλήψονται ἀνδρὲς ὕβρισταὶ, καὶ ἁμαρτωλοὶ ὐ μὴ ἴδωσιν αὐτὼ. Μακρὰν ἰςιν ἀπὸ ὑπερηφανίας, καὶ ἀνδρὲs ψεῦδες ὐ μὴ μνησθήσονται αὐτῆς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": "Bb ij"

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 43,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 43,
       "latin_quote": "CONSUMMATIO SERMONUM ; IPSE EST IN OMNIBUS.",
       "french_translation": "La conclusion de tout ce que l'on peut dire, est qu'il est l'âme de tout.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 43,
       "latin_quote": "IN OMNIBUS GLORIANTES, AD QUID VALEBIMUS ?",
       "french_translation": "Si nous voulons nous glorifier, que pourrons-nous faire ? Car le Tout-puissant est au-dessus de tous ses ouvrages.",
@@ -48,19 +48,35 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vatable et Castalion : quasi in Hebr. fuisset : מלאכתו opus ejus : pro quo Interpres legerit : מלאכו Angelus ejus."
+      "text": "Vatable et Castalion : quasi in Hebr. fuisset : מלאכתו opus ejus : pro quo Interpres legerit : מלאכו Angelus ejus.",
+      "tags": [
+        "hebrew",
+        "versions",
+        "commentators",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Συντέλεια λόγων, αὐτὸς ἐστι τὰ πᾶν."
+      "text": "Συντέλεια λόγων, αὐτὸς ἐστι τὰ πᾶν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ecclésiaste 12:13."
+      "text": "Ecclésiaste 12:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Διηξέλθομεν καυχώμενοι ; ἀυτὸς γὰρ μέγας."
+      "text": "Διηξέλθομεν καυχώμενοι ; αὐτὸς γὰρ μέγας.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

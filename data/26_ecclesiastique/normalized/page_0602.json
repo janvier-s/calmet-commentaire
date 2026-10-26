@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "33",
+      "verse_ref": 33,
       "chapter": 39,
       "latin_quote": "SUNT.",
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "34",
+      "verse_ref": 34,
       "chapter": 39,
       "latin_quote": "IN TEMPORE CONSUMMATIONIS EFFUNDENT VIRTUTEM.",
       "french_translation": "Ils se répandront dans toute leur violence, au temps que la mesure de la justice de Dieu sera remplie ; ou, au dernier jour, lorsque tout sera accompli : In tempore consummationis.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "35",
+      "verse_ref": 35,
       "chapter": 39,
       "latin_quote": "IGNIS, GRANDO, FAMES, ETC.",
       "french_translation": "Le feu, la grêle, la famine.",
@@ -48,35 +48,62 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Raban Maur ; Nicolas de Lyre ; Denys le Chartreux ; Cornelius a Lapide ; Hoeschel ; Vatable ; Drusius ; Bossuet."
+      "text": "Raban Maur ; Nicolas de Lyre ; Denys le Chartreux ; Cornelius a Lapide ; Hoeschel ; Vatable ; Drusius ; Bossuet.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Genèse 19:13."
+      "text": "Genèse 19:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Isaïe 37:36 ; 4 Rois 19:35."
+      "text": "Isaïe 37:36 ; 4 Rois 19:35.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Certains dans Vatable ; et Cornelius a Lapide ; Grotius."
+      "text": "Certains dans Vatable ; et Cornelius a Lapide ; Grotius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Psaumes 10:7."
+      "text": "Psaumes 10:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Psaumes 148:8."
+      "text": "Psaumes 148:8.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Εν πνεύματα ἁ εἰς εκδίκησιν ἔκτισαι, ὴ ἐν θυμῶ αὐτῶν ςερεοῦσι μασίγας αὐτῶν."
+      "text": "Ἐν πνεύματα ἁ εἰς ἐκδίκησιν ἔκτισαι, ὴ ἐν θυμῶ αὐτῶν ςερεοῦσι μασίγας αὐτῶν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Consummatio. L'Hébreu, כלה. Le Grec, Συντέλεια. Voyez Exode 32:10 ; Nombres 16:21 ; Josué 24:20 ; et 1 Rois 9:7, 9 ; 14:17 ; Psaumes 58:14 ; Jérémie 4:27 ; 5:10 ; 9 ; 30:11, etc."
+      "text": "Consummatio. L'Hébreu, כלה. Le Grec, Συντέλεια. Voyez Exode 32:10 ; Nombres 16:21 ; Josué 24:20 ; et 1 Rois 9:7, 9 ; 14:17 ; Psaumes 58:14 ; Jérémie 4:27 ; 5:10 ; 9 ; 30:11, etc.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "verse",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

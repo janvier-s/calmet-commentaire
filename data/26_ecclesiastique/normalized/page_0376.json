@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 21,
       "latin_quote": "VERBUM SAPIENS… AD SE ADJICIET. AUDIVIT LUXURIOSUS, ET DISPLICEBIT ILLI.",
       "french_translation": "Que l'homme habile entende une parole sage, il la louera, et se l'appliquera. Il en fera son profit, et la réduira en pratique. Que le voluptueux l'entende, elle lui déplaira.",
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 21,
       "latin_quote": "NARRATIO FATUI, QUASI SARCINA IN VIA.",
       "french_translation": "L'entretien de l'insensé est comme un fardeau, qui pèse dans le chemin.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 21,
       "latin_quote": "OS PRUDENTIS QUÆRITUR IN ECCLESIA.",
       "french_translation": "La bouche de l'homme prudent est recherchée dans les assemblées.",
@@ -62,11 +62,19 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Édit. Complut. et Ald. H' ακουσε αυτὴν αυτὸς· Sed Rom. et alii ; H' ακουση αυτὴν αυτὸς, καὶ ἀτιμάσει αυτὴν."
+      "text": "Édit. Complut. et Ald. H' ἄκουσε αὐτὴν αὐτὸς· Sed Rom. et alii ; H' ἀκούσῃ αὐτὴν αὐτὸς, καὶ ἀτιμάσει αὐτὴν.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Job 29:11, 21, 23-24."
+      "text": "Job 29:11, 21, 23-24.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

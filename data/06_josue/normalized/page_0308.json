@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 17,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 17,
       "latin_quote": "BETSAN.",
       "french_translation": null,
@@ -33,19 +33,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "באשר יפגעו. נגשו"
+      "text": "באשר יפגעו. נגשו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "2. M cc. XII. 29."
+      "text": "2. M cc. XII. 29.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Hérodote, livre 1, 105."
+      "text": "Hérodote, livre 1, 105.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Eusèbe, Chronique grecque, livre 1, page 40. Σκύθαι τὴν Παλαιστίνην κατέδραμον· ἦς τὴν Βασὰν κατῴκησαν ἐξ ἀυτῶν κληθεῖσαν Σκυθόπολιν."
+      "text": "Eusèbe, Chronique grecque, livre 1, page 40. Σκύθαι τὴν Παλαιστίνων κατέδραμον· ἦς τὴν Βασὰν κατῴκησαν ἐξ ἀυτῶν κληθεῖσαν Σκυθόπολιν.",
+      "tags": [
+        "greek",
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Chronique grecque",
+          "original": "Chronicon"
+        }
+      ]
     }
   ],
   "book_end_marker": null

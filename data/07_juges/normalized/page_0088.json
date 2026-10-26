@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 4,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 4,
       "latin_quote": "DUC EXERCITUM.",
       "french_translation": "Conduisez l'armée.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 4,
       "latin_quote": "ADDUCAM AD TE IN LOCO TORRENTIS CISON, SISARAM.",
       "french_translation": "Je vous amènerai, au torrent de Cison Sisara.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 4,
       "latin_quote": "SI NOLUERIS VENIRE MECUM, NON PERGAM.",
       "french_translation": "Si vous ne voulez point venir avec moi, je n'irai point.",
@@ -56,27 +56,70 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Jérôme, Lettre à Marcelle ;\net Épitaphe de Paule ;\nSaint Cyrille ;\nBède, etc."
+      "text": "Saint Jérôme, Lettre à Marcelle ;\net Épitaphe de Paule ;\nSaint Cyrille ;\nBède, etc.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Épitaphe de Paule",
+          "original": "Epitaphium Paulae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Adeschomius ;\nBonfrère, sur ce passage ;\nCotovicus ;\net Radzivill."
+      "text": "Voyez Adeschomius ;\nBonfrère, sur ce passage ;\nCotovicus ;\net Radzivill.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Doubdan, Voyage de la Terre-Sainte,"
+      "text": "Doubdan, Voyage de la Terre-Sainte,",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Terre-Sainte",
+          "original": "La Terre Sainte, ou Description topographique très particulière des Saints Lieux"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "chapitre 58. Et Maundrell, Voyage de Jérusalem. משכת בהר תבור"
+      "text": "chapitre 58. Et Maundrell, Voyage de Jérusalem. משכת בהר תבור",
+      "tags": [
+        "hebrew",
+        "verse",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Voyage de Jérusalem",
+          "original": "Itinerarium Hierosolymitanum et Syriacum"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Cantique des cantiques 1:4."
+      "text": "Cantique des cantiques 1:4.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Iudit. v. 35."
+      "text": "Judith 5:35.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     }
   ],
   "book_end_marker": null

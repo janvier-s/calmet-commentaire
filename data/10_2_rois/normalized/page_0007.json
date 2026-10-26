@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 1,
       "latin_quote": "CUM.",
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 1,
       "latin_quote": "SICUT SCRIPTUM EST IN LIBRO JUSTORUM.",
       "french_translation": "Comme il est écrit dans le Livre des Justes.",
@@ -25,51 +25,91 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Serarius ;\nSanctius ;\nPierre Martyr."
+      "text": "Serarius ;\nSanctius ;\nPierre Martyr.",
+      "tags": [
+        "fathers",
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Vatable ;\nMunster ;\nJunius ;\nCornelius a Lapide ;\nMénochius ;\nEstius."
+      "text": "Vatable ;\nMunster ;\nJunius ;\nCornelius a Lapide ;\nMénochius ;\nEstius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Kai irne to didaskai tus yius Iuda. Idou gegraptai épi Bibliw tu Euthus."
+      "text": "Kai irne to didaskai tus yius Iuda. Idou gegraptai épi Bibliw tu Euthus.",
+      "tags": []
     },
     {
       "marker": "(d)",
-      "text": "Voyez Josué 10:13."
+      "text": "Voyez Josué 10:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "2 Rois 3:33."
+      "text": "3 Rois 3:33.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "4 Rois 23:29."
+      "text": "3 Rois 23:29.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Jérémie 48:31."
+      "text": "Jérémie 48:31.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Ézéchiel 19:1."
+      "text": "Ézéchiel 19:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Ézéchiel 27:1."
+      "text": "Ézéchiel 27:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "Le même, Ézéchiel 28:11."
+      "text": "Le même, Ézéchiel 28:11.",
+      "tags": [
+        "verse",
+        "ibid"
+      ]
     },
     {
       "marker": "(l)",
-      "text": "Homère, Iliade, ψ."
+      "text": "Homère, Iliade, ψ.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(m)",
-      "text": "Iliade, ζ."
+      "text": "Iliade, ζ.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

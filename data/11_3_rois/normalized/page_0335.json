@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 15,
       "latin_quote": null,
       "french_translation": null,
@@ -25,23 +25,52 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Horace, livre 1, satire 8."
+      "text": "Horace, livre 1, satire 8.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Castalio. Gatuk."
+      "text": "Castalio. Gatuk.",
+      "tags": [
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Selden, Des dieux syriens, Syntagme, chapitre 5."
+      "text": "Selden, Des dieux syriens, Syntagme, chapitre 5.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des dieux syriens",
+          "original": "De diis Syris"
+        },
+        {
+          "fr": "Syntagme",
+          "original": "De diis Syris syntagmata"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Herodot. lib. 2. cap. 48. et 49. Διττὸι δὲ ἴσοντες εἰσὶ διθυράμβοι. Φαλικὸν ᾆσμα ὅτι ἐπὶ ἱζάρημεν ὄντος πηχυαῖα ἀγάλματα νευρόσπασα, ἃ περιφορᾶσι κατὰ κώμας. καὶ γυ νικαί· νεύει τὸ αἰδοῖον ἐπομῆς τῷ ἵλαος· σοι ἐστὶν τὸ Ἅδης σῶματ᾽. προηγεῖται δὲ αὐλός. αι"
+      "text": "Herodot. lib. 2. cap. 48. et 49. Διττὸι δὲ ἴσοντες εἰσὶ διθυράμβοι. Φαλικὸν ᾆσμα ὅτι ἐπὶ ἱζάρημεν ὄντος πηχυαῖα ἀγάλματα νευρόσπασα, ἃ περιφορᾶι κατὰ κώμας. καὶ γυ νικαί· νεύει τὸ αἰδοῖον ἐποχῆς τῷ ἵλαος· σοι ἐστὶν τὸ Ἅδης σῶματ᾽. προηγεῖται δὲ αὐλός. αἱ",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Μητέρα ἑαυτῦ μετέσησε τῦ μὴ εἶναι ἡγεμόνα, καὶ διέκοψεν εὔνοδος αὐτῆς. Et dans les Paralipomènes ils lisent : Καὶ τὴν Μααχὰ τὴν μητέρα αὐτῦ μετέσησεν τῦ μὴ εἶναι τῆ Αςάρτη λειτυργῆσαι, καὶ ἐξέκοψε τὸ εἴδωλον."
+      "text": "Μητέρα ἑαυτοῦ μετέστησε τοῦ μὴ εἶναι ἡγεμόνα, καὶ διέκοψεν εὔνοδος αὐτῆς. Et dans les Paralipomènes ils lisent : Καὶ τὴν Μααχὰ τὴν μητέρα αὐτοῦ μετέστησεν τοῦ μὴ εἶναι τῆ Αςάρτη λειτουργῆσαι, καὶ ἐξέκοψε τὸ εἴδωλον.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 32,
       "latin_quote": null,
       "french_translation": null,
@@ -17,39 +17,80 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Ambroise, Lettre 66 à Romulus."
+      "text": "Saint Ambroise, Lettre 66 à Romulus.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Quinte-Curce, livre 4."
+      "text": "Quinte-Curce, livre 4.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Lucain, livre 9."
+      "text": "Lucain, livre 9.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ovide, Métamorphoses, livre 5, fable 5."
+      "text": "Ovide, Métamorphoses, livre 5, fable 5.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Virgile, Énéide 8."
+      "text": "Virgile, Énéide 8.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Herod. l. 2 c. 31. Ἰσίδος ἄγαλμα ἐὸν γυναικήϊον, βύκερων ἴσι καὶ διάςις Ἑλλήνες τλὸ Ἰὸν γράφουσιν."
+      "text": "Herod. l. 2 c. 31. Ἀσίδος ἄγαλμα ἐὸν γυναικήϊον, βούκερων ἴσι καὶ διάςις Ἑλλήνες τλὸ Ἰὸν γράφουσιν.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Sanchoniaton, dans Eusèbe, Préparation évangélique, livre 1, dernier chapitre. Ἀστάρτην ἐπιθεῖναι τῇ ἰδίᾳ κεφαλῇ βασιλείας παράσημον κεφαλὴν ταύρου."
+      "text": "Sanchoniaton, dans Eusèbe, Préparation évangélique, livre 1, dernier chapitre. Ἀστάρτην ἐπιθεῖναι τῇ ἰδίᾳ κεφαλῇ βασιλείας παράσημον κεφαλὴν ταύρου.",
+      "tags": [
+        "greek",
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Préparation évangélique",
+          "original": "Praeparatio evangelica"
+        }
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Porphyr. de abstin. l. 4 sect. 9. Παρ' ἀυτοῖς οἷς μίξεις τηγχάνω ἀνθρωποειδεῖς, τὸ δὲ πρόσωπον ὀρνίθι, ἢ λεόντι, ἢ ἄλλῳ τινὸς ζώου κεκτημένοις."
+      "text": "Porphyr. de abstin. l. 4 sect. 9. Παρ' αὐτοῖς οἷς μίξεις τυγχάνω ἀνθρωποειδεῖς, τὸ δὲ πρόσωπον ὀρνίθι, ἢ λεῶντι, ἢ ἄλλῳ τινὸς ζώου κεκτημένοις.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Athanas. orat. contra Gentes, n. 9. Αιγυπτίοι γὰρ ἀλόγοις ἐπιμυθεύτες, ὴ ἀνθρωπο τῇ φύσει ὑποβαλόντες, ὡς Θεὸς ἐθρησκευσαν διὰ ἀυτῶν ἃς παρ' Αιγυπτίοις κυνικέφαλοι, ὴ ὁ παρὰ Λίβυσι κριόμορφος Ἀμμων."
+      "text": "Athanas. orat. contra Gentes, n. 9. Αἰγυπτίαι γὰρ ἀλόγοις ἐπιμυθεύτες, ὴ ἀνθρωπο τῇ φύσει ὑποβαλόντες, ὡς Θεὸς ἐθρήσκευσαν διὰ ἀυτῶν ἃς παρ' Αἰγυπτίοις κυνοκέφαλοι, ὴ ὁ παρὰ Λίβυσι κριόμορφος Ἀμμων.",
+      "tags": [
+        "greek",
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

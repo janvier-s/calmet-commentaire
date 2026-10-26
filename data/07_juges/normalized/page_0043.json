@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 1,
       "latin_quote": "NEC POTUIT DELERE HABITATORES VALLIS, QUIA FALCATIS CURRIBUS ABUNDABANT.",
       "french_translation": "Ils ne purent défaire ceux qui étaient dans la Vallée, parce qu'ils avaient quantité de chariots armés de faux.",
@@ -33,15 +33,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph Antiq. l. 5. c. 2. Τῶν δ' ἐν τῷ πεδίῳ τὰς ἀπολωλεκότων, τρεῖς δακδάρη, Ἀσκαλωνίτων, ὴ Ἀζώτιον ἥλωσαν. Διαφυγόν δ' αυτοὺς γάζα ὴ Ἀκκαρὼν, πεδίον δ' ὄντες, ὴ πολλῆς ἁρμάτων ἰυμορίας, κακῶς ἐκεῖνον."
+      "text": "Joseph Antiq. l. 5. c. 2. Τῶν δ' ἐν τῷ πεδίῳ τὰς ἀπολωλεκότων, τρεῖς δακδάρη, Ἀσκαλωνίτων, ὴ Ἀζώτιον ἥλωσαν. Διαφυγόν δ' αὐτοὺς γάζα ὴ Ἀκκαρὼν, πεδίον δ' ὄντες, ὴ πολλῆς ἁρμάτων ἰυμορίας, κακῶς ἐκεῖνον.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Joseph Antiq",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Josué 10:16-17."
+      "text": "Josué 10:16-17.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "ויסר את יושבי העמק כי רכב ברזל לו Quia non ad expellendum habitatores vallis."
+      "text": "ויסר את יושבי העמק כי רכב ברזל לו Quia non ad expellendum habitatores vallis.",
+      "tags": [
+        "hebrew",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

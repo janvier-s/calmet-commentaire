@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 31,
       "latin_quote": "SI COMEDI BUCCELLAM MEAM SOLUS.",
       "french_translation": "Si j'ai mangé seul mon pain.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 31,
       "latin_quote": "AB INFANTIA CREVIT MECUM MISERATIO, ETC.",
       "french_translation": "La compassion est crue avec moi dès mon enfance",
@@ -55,27 +55,62 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez saint Grégoire le Grand sur cet endroit ; et saint Augustin, La Cité de Dieu, livre 10, chapitre 25."
+      "text": "Voyez saint Grégoire le Grand sur cet endroit ; et saint Augustin, La Cité de Dieu, livre 10, chapitre 25.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Athen. lib. I. Ex Aristip. Εἴπ' τις ἀλέγνας με ἐδάψῃ, κ' τυχεψύχῃ."
+      "text": "Athen. lib. I. Ex Aristip. Εἴπ' τίς λέγνας με ἐδάψῃ, κ' τυχεψύχῃ.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Plutarque, Propos de table, livre 8, question 6. Τὸ μὲ γὰρ δεῖπνον quasi κοινὰ διὰ τῆς κοινωνίας καλεῖσθαι."
+      "text": "Plutarque, Propos de table, livre 8, question 6. Τὸ μὲ γὰρ δεῖπνον quasi κοινὰ διὰ τῆς κοινωνίας καλεῖσθαι.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Propos de table",
+          "original": "Quaestiones convivales"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Tobie 4:17."
+      "text": "Tobie 4:17.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "כי מנעורי גדלני כאב ומבטן אמי אנחנה"
+      "text": "כי מנעורי גדלני כאב ומבטן אמי אנחנה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ὅτι ἐκ νεότητός μου ἐξέθρεψα ὡς πατὴρ, καὶ ἐκ γαστρὸς μητρός μου ὡδήγησα."
+      "text": "Ὅτι ἐκ νεότητός μου ἐξέθρεψα ὡς πατὴρ, καὶ ἐκ γαστρὸς μητρός μου ὡδήγησα.",
+      "tags": [
+        "greek"
+      ]
     }
   ]
 }

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 45,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 45,
       "latin_quote": "EXPRESSA SIGNO SANCTITATIS, GLORIA HONORIS, ET OPUS VIRTUTIS, DESIDERIA OCULORUM ORNATA.",
       "french_translation": "Où était gravé le nom de la sainteté, et la gloire souveraine ; cet ouvrage était plein de majesté.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 45,
       "latin_quote": "NON EST INDUTUS ILLA ALIENGENA ALIQUIS.",
       "french_translation": "Nul étranger n'a été revêtu de cette robbe.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 45,
       "latin_quote": "SACRIFICIA EJUS CONSUMPTA SUNT IGNE QUO",
       "french_translation": null,
@@ -63,15 +63,22 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Exode 28:4, page 387 et 388 ; et là même verset 16, page 411 et suivants."
+      "text": "Voyez Exode 28:4, page 387 et 388 ; et là même verset 16, page 411 et suivants.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ε᾿ϰτύπωμα σφραγῖδΘ, ἁγιάσματΘ, χαμα τιμῆς, ἔργον ἰσχύΘ, ἐπιθυμήματα ὀφθαλμῶν, ϰοσμήματα τέχνης."
+      "text": "Ἐκτύπωμα σφραγῖδΘ, ἁγιάσματΘ, χἄμα τιμῆς, ἔργον ἰσχύΘ, ἐπιθυμήματα ὀφθαλμῶν, κοσμήματα τέχνης.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Supra ℣. 9."
+      "text": "Supra ℣. 9.",
+      "tags": []
     }
   ],
   "book_end_marker": null

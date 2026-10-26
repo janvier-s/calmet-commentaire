@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 16,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 16,
       "latin_quote": "CIRCUIT TERMINOS CONTRA ORIENTEM IN THANATHSELO.",
       "french_translation": "Tourne vers l'orient à Thanath-Silo.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 16,
       "latin_quote": "PERTRANSIT AB ORIENTE JANOE.",
       "french_translation": "Passe à l'orient de Janoë.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 16,
       "latin_quote": "DESCENDIT DE JANOE IN ATHAROTH, ET NAARATHA.",
       "french_translation": "Il descend de Janoë à Atharoth et à Naaratha.",
@@ -54,7 +54,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 16,
       "latin_quote": "DE TAPHUA PERTRANSIT CONTRA MARE, IN VALLEM ARUNDINETI.",
       "french_translation": "De Taphua il passe vers la mer, jusqu'à la vallée des Roseaux.",
@@ -64,19 +64,33 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Συριμ αλ גבול סב. περιόδευεται τὸ ὅριον. Vide Serar. Bonfr. Vatab."
+      "text": "Συριῶ αλ גבול סב. περιόδευεται τὸ ὅριον. Voyez Serarius ; Bonfrère ; Vatable.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "4 Rois 15:29."
+      "text": "4 Rois 15:29.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Josué 16:2."
+      "text": "Josué 16:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Josué 17:8."
+      "text": "Josué 17:8.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 27,
       "latin_quote": "IN MEDIO INSENSATORUM SERVA VERBUM TEMPORI.",
       "french_translation": "Quand vous serez au milieu des insensés, réservez-vous à parler dans un autre temps.",
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 27,
       "latin_quote": "NARRATIO PECCANTIUM, ODIOSA.",
       "french_translation": "Les entretiens des pécheurs sont insupportables, parce qu'ils font un jeu du péché même.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 27,
       "latin_quote": "IRREVERENTIA IPSIUS OBTURATIO AURIUM.",
       "french_translation": "A ces mots horribles, à leurs jurements on se bouchera les oreilles.",
@@ -62,15 +62,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Εἰς μέσον ἀσυνέτων συντήρησον [ILLEGIBLE], εἰς μέσον δὲ διανοεμένων ἐνδελέχιζε."
+      "text": "Εἰς μέσον ἀσυνέτων συντήρησον [ILLEGIBLE], εἰς μέσον δὲ διανοουμένων ἐνδελέχιζε.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Λαλιὰ πολυόρκου ὀρθώσει τρίχας, ἡ δὲ μάχη αὐτῶν, ἐμφραγμὸς ὠτίων."
+      "text": "Λαλιὰ πολυόρκου ὀρθώσει τρίχας, ἡ δὲ μάχη αὐτῶν, ἐμφραγμὸς ὠτίων.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Actes 7:56."
+      "text": "Actes 7:56.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

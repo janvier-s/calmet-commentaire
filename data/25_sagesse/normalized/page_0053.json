@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 2,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 2,
       "latin_quote": "PROMITTIT SE SCIENTIAM DEI HABERE, ET FILIUM DEI SE NOMINAT.",
       "french_translation": "Il assure qu'il a la science de Dieu, et il s'appelle le Fils de Dieu.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 2,
       "latin_quote": "FACTUS EST NOBIS IN TRADUCTIONEM COGITATIONUM NOSTRARUM.",
       "french_translation": "Il est devenu le censeur de nos pensées.",
@@ -48,15 +48,28 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Grotius, Préface sur le livre de la Sagesse."
+      "text": "Grotius, Préface sur le livre de la Sagesse.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἐνεδρεύσωμεν δὲ τὸν δίκαιον, ὅτι δύσχρηστος ἡμῖν ἐςι."
+      "text": "Ἐνεδρεύσωμεν δὲ τὸν δίκαιον, ὅτι δύσχρηστος ἡμῖν ἐςι.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Antisthen. apud Philo. lib. quod omnis probus liber. Δυσβάςακτον ἔσιν ἀνὴρ ἀγαθός. Οὐ γὰρ ἡ ἀκορεσία μόνον, κ, ἡ ἀκρασία, κ, ἡ ἀφροσύνη, κ, ὁ φθόνος, κ, ὁ φόνος, ἐφησυχάζειν ἐπιτρέψουσιν, κ, ἀκίνητοι, κ, ἠθάδες ἔχοντες ἀνάλγητοι."
+      "text": "Antisthen. apud Philo. lib. quod omnis probus liber. Δυσβάστακτον ἔσιν ἀνὴρ ἀγαθός. Οὐ γὰρ ἡ ἀκορεσία μόνον, κ, ἡ ἀκρασία, κ, ἡ ἀφροσύνη, κ, ὁ φθόνος, κ, ὁ φόνος, ἐφησυχάζειν ἐπιτρέψουσιν, κ, ἀκίνητοι, κ, ἠθάδες ἔχοντες ἀνάλγητοι.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

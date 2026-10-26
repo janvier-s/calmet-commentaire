@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 24,
       "latin_quote": "QUASI CYPRESSUS IN MONTE SION.",
       "french_translation": "Comme le cyprès de la montagne de Sion.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 24,
       "latin_quote": "QUASI PALMA EXALTATA SUM IN CADES.",
       "french_translation": "J'ai poussé mes branches en haut, comme les palmiers de Cadés.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 24,
       "latin_quote": "QUASI PLANTATIO ROSÆ IN JERICHO.",
       "french_translation": "Comme les plantes de rosiers de Jéricho.",
@@ -41,39 +41,71 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Καὶ ὡς Κυπάρισσος ἐν ὄρεσι ἀερμών."
+      "text": "Καὶ ὡς Κυπάρισσος ἐν ὄρεσι ἀερμών.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Deutéronome 4:48."
+      "text": "Deutéronome 4:48.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Psaumes 132:3."
+      "text": "Psaumes 132:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Nombres 20:1 ; 32:36."
+      "text": "Nombres 20:1 ; 32:36.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ὡς Φοῖνιξ ἀνυψώθην ἐν Εγδαδδί. _Quid. Εγγαδδί; Alii : Εν γαδδίς. Alii : Εν αἰγιαλοῖς._"
+      "text": "Ὡς Φοῖνιξ ἀνυψώθην ἐν Εγδαδδί. _Quid. Εγγαδδί; Alii : Ἐν γαδδίς. Alii : Ἐν αἰγιαλοῖς._",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Cantique des cantiques 1:14. 1 Rois 24:2. Josué 15:62."
+      "text": "Cantique des cantiques 1:14. 1 Rois 24:2. Josué 15:62.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Saint Jérôme, Des lieux hébreux."
+      "text": "Saint Jérôme, Des lieux hébreux.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des lieux hébreux",
+          "original": "De locis Hebraicis"
+        }
+      ]
     },
     {
       "marker": "(h)",
-      "text": "_Plin. lib._ 5. _cap._ 17."
+      "text": "_Plin. lib._ 5. _cap._ 17.",
+      "tags": []
     },
     {
       "marker": "(i)",
-      "text": "_Solin. cap._ 35."
+      "text": "_Solin. cap._ 35.",
+      "tags": []
     }
   ],
   "book_end_marker": null

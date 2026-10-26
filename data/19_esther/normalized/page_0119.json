@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": "Il trouva qu'Aman s'était jeté sur le lit où était Esther.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 7,
       "latin_quote": "STATIM OPERUERUNT FACIEM EJUS.",
       "french_translation": null,
@@ -33,27 +33,63 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Plut. in Artaxerce, pag. 1025. Διέταξεν ὡς διὰ βαρβαρικῶν διελθὼν… ὥςε μὴ μόνον τῶν πρὸς συνεσίαν, ἢ θιγμὸν γυναικὸς Βασιλέως, ἀλλὰ καὶ τῶν ἐν πορείᾳ προεξιόντων, καὶ διακόντων τῆς ἁμάξης ἰδ' εἰς παραβολὴν, θανάτῳ κολάζεσθαι."
+      "text": "Plut. in Artaxerce, pag. 1025. Διέταξεν ὡς διὰ βαρβαρικῶν διελθὼν… ὥστε μὴ μόνον τῶν πρὸς συνουσίαν, ἢ θιγμὸν γυναικὸς Βασιλέως, ἀλλὰ καὶ τῶν ἐν πορείᾳ προεξιόντων, καὶ διακόντων τῆς ἁμάξης ἰδ' εἰς παραβολὴν, θανάτῳ κολάζεσθαι.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Quinte-Curce, livre 6."
+      "text": "Quinte-Curce, livre 6.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Euripide, Hécube."
+      "text": "Euripide, Hécube.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Hécube",
+          "original": "Hecuba"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Tacite, Annales, livre 4."
+      "text": "Tacite, Annales, livre 4.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Annales",
+          "original": "Annales"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Καὶ ἀκούσας Ἀμὰν διετράπη τῷ προσώπῳ."
+      "text": "Καὶ ἀκούσας Ἀμὰν διετράπη τῷ προσώπῳ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Autre ancienne édition, publiée par Ussérius. Καὶ εἶπεν ὁ Βασιλεὺς Ἀπάγετε τὸν Ἀμὰν, ἢ μὴ ζήτω. κ' ἤγετο ἀπαίρειν."
+      "text": "Autre ancienne édition, publiée par Ussérius. Καὶ εἶπεν ὁ Βασιλεὺς Ἀπάγετε τὸν Ἀμὰν, ἢ μὴ ζήτω. κ' ἤγετο ἀπαίρειν.",
+      "tags": [
+        "greek",
+        "versions",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

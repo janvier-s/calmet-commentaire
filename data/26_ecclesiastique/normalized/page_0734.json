@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 51,
       "latin_quote": null,
       "french_translation": null,
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 51,
       "latin_quote": "A VERBO MENDACII, A REGE INIQUO, ETC.",
       "french_translation": "Des paroles de mensonge, du Roi injuste, et des langues médisantes.",
@@ -59,7 +59,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 51,
       "latin_quote": "LAUDABIT USQUE AD MORTEM ANIMA MEA DOMINUM. 9. ET VITA MEA APPROPINQUANS ERAT IN INFERNO DEORSUM.",
       "french_translation": "Mon âme louera le Seigneur jusqu'à la mort, parce qu'elle était prête de tomber au plus profond du tombeau.",
@@ -67,7 +67,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 51,
       "latin_quote": "MEMORATUS SUM OPERATIONIS TUÆ, QUÆ A SÆCULO, ETC.",
       "french_translation": "Je me suis souvenu, Seigneur, de votre miséricorde, et des œuvres que vous avez faites dès le commencement du monde.",
@@ -75,7 +75,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 51,
       "latin_quote": "DE MANIBUS GENTIUM.",
       "french_translation": "De la puissance des nations.",
@@ -85,19 +85,35 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Jonas 2:3."
+      "text": "Jonas 2:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ex λόγε ψευδῶς βασιλεῖ διαβάλλοντος ἀδίκω Grot. legit : Διαβολῆς; Alii διαβολῆ."
+      "text": "Ex λόγε ψευδῶς βασιλεῖ διαβάλλοντος ἀδίκω Grot. legit : Διαβολῆς; Alii διαβολῆ.",
+      "tags": [
+        "greek",
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Η ψυχη μου ἕως θανάτε ἤγγικε καὶ ἡ ζωὴ μου ἦν πλησίον ᾅδε κάτω. Vulg. legit : autem, au lieu de de infero."
+      "text": "Η ψυχη μου ἕως θανάτου ἤγγικε καὶ ἡ ζωὴ μου ἦν πλησίον ᾅδου κάτω. Vulg. legit : autem, au lieu de de infero.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "D'après χειρὸς ἐχθρῶν. La Vulgate, d'après χειρὸς ἐθνῶν."
+      "text": "D'après χειρὸς ἐχθρῶν. La Vulgate, d'après χειρὸς ἐθνῶν.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

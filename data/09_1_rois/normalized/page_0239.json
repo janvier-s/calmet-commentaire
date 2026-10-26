@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 13,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 13,
       "latin_quote": "CASTRAMETATI SUNT IN MACHMAS AD ORIENTEM BETHAVEN.",
       "french_translation": "Ils vinrent se camper à Machmas à l'orient de Bethaven.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 13,
       "latin_quote": "QUOD CUM VIDISSENT VIRI ISRAEL SE IN ARCTO POSITOS.",
       "french_translation": "Les Israélites se voyant fort à l'étroit.",
@@ -41,19 +41,48 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Iliad. Π. Ξάνθε τε καὶ Βαλίε τε δύω πνειόντες ἀνέμω."
+      "text": "Iliad. Π. Ξάνθε τε καὶ Βαλίε τε δύω πνειόντες ἀνέμω.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Iliad. H. Ενδεκα δ᾽ ου᾽ ἀκάρηγε καὶ αἴθων λάμπετο δίφ."
+      "text": "Iliad. H. Ἕνδεκα δ᾽ ου᾽ ἀκάρηγε καὶ αἴθων λάμπετο δίφ.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Orphæus de Neptuno… τετράκυκλον ἄγων δίφρον."
+      "text": "Orphæus de Neptuno… τετράκυκλον ἄγων δίφρον.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ויחנו במכמש קדמת בית און"
+      "text": "ויחנו במכמש קדמת בית און",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

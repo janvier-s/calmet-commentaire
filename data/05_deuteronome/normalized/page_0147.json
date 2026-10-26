@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 8,
       "latin_quote": "PES TUUS NON EST SUBTRITUS.",
       "french_translation": "Vos pieds n'ont point été foulés.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 8,
       "latin_quote": "SICUT ERUDIT FILIUM SUUM HOMO.",
       "french_translation": "Comme un père instruit son fils, ou, comme il le châtie. ^{(g)}",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 8,
       "latin_quote": "TERRAM RIVORUM, ETC.",
       "french_translation": "Une terre pleine de ruisseaux.",
@@ -55,35 +55,60 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "רגלך לא בצקה"
+      "text": "רגלך לא בצקה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ὁ πέλνς sου οὐκ ἐτυλώθη."
+      "text": "Ὁ πέλνς sοὐ οὐκ ἐτυλώθη.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Deutéronome 29:5 Nec calceamenta pedum vestrorum vetustate consumpta sunt."
+      "text": "Deutéronome 29:5 Nec calceamenta pedum vestrorum vetustate consumpta sunt.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ainsi Malvenda."
+      "text": "Ainsi Malvenda.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Hérodote, livre 2, chapitre 36 ; et Strabon, livre 17."
+      "text": "Hérodote, livre 2, chapitre 36 ; et Strabon, livre 17.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "2 Esdras 9:21."
+      "text": "2 Esdras 9:21.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "כאשר ייסר"
+      "text": "כאשר ייסר",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Proverbes 3:12."
+      "text": "Proverbes 3:12.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

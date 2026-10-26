@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 45,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 45,
       "latin_quote": "JUSSIT ILLI CORAM POPULO SUO.",
       "french_translation": "Il lui a prescrit ses ordonnances devant son peuple.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 45,
       "latin_quote": "IN FIDE ET LENITATE IPSIUS SANCTUM FECIT ILLUM.",
       "french_translation": "Il l'a sanctifié dans sa foi, et dans sa douceur.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 45,
       "latin_quote": "AUDIVIT ENIM EUM, ET VOCEM IPSIUS.",
       "french_translation": "Car Dieu l'a écouté, et a entendu sa voix ; et il l'a fait entrer dans la nuée.",
@@ -56,23 +56,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Josué 2:10-11."
+      "text": "Josué 2:10-11.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἔδειξεν αὐτῷ τῆς δόξης αὐτοῦ."
+      "text": "Ἔδειξεν αὐτῷ τῆς δόξης αὐτοῦ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Nombres 12:3, 7."
+      "text": "Nombres 12:3, 7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Nombres 12:6-7."
+      "text": "Nombres 12:6-7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ηκέτισε αὐτῷ τῆς φωνῆς αὐτῦ, κὶ εἰσήγαγεν δυμιχλῆς τὸν γνόφον."
+      "text": "Ηκέτισε αὐτῷ τῆς φωνῆς αὐτοῦ, καὶ εἰσήγαγεν δυμιχλῆς τὸν γνόφον.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

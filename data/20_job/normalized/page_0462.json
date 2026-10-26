@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 39,
       "latin_quote": "VEL PARIENTES CERVAS OBSERVASTI ?",
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 39,
       "latin_quote": "INCURVANTUR AD FOETUM, ET PARIUNT, ET RUGITUS EMITTUNT.",
       "french_translation": "Elles se courbent pour faire leurs faons, et elles les mettent au jour en jetant des cris, et des hurlements.",
@@ -40,27 +40,57 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Psaumes 28:9."
+      "text": "Psaumes 28:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "_Plin. lib._ VIII. _cap._ 32. _Femina ante partum purgantur herba quadam, quæ seselis dicitur, facilioresque utentes utero._"
+      "text": "_Plin. lib._ VIII. _cap._ 32. _Femina ante partum purgantur herba quadam, quæ seselis dicitur, facilioresque utentes utero._",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "_Arist. Histor. animal. lib._ 9. _cap._ 5. Καὶ ὅταν τέκῃ ἡ ἔλαφος, ἐσθίει τὸ χόριον, καὶ ἐπὶ τὴν δίκταμνον νίσει, κ' ἐκβάλλει τὰς ἱχῶρας ὡς ἐκ ῥιζῶν πάλιν."
+      "text": "_Arist. Histor. animal. lib._ 9. _cap._ 5. Καὶ ὅταν τέκῃ ἡ ἔλαφος, ἐσθίει τὸ χόριον, καὶ ἐπὶ τὴν δίκταμνον νίσει, κ' ἐκβάλλει τὰς ἰχῶρας ὡς ἐκ ῥιζῶν πάλιν.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histor",
+          "original": "Historia animalium"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Vatable ; Mercier ; Rabbi Levi ; Scultet ; Piscator ; et d'autres, passim."
+      "text": "Vatable ; Mercier ; Rabbi Levi ; Scultet ; Piscator ; et d'autres, passim.",
+      "tags": [
+        "verse",
+        "rabbis",
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "תכרענה ילדיהן תפלחנה חבליהן תשלחנה"
+      "text": "תכרענה ילדיהן תפלחנה חבליהן תשלחנה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "_Aristote, livre 5, chapitre 2, et livre 6, chapitre 29._ Ἡ δὲ ἔλαφος τὴν μὲν ὀχείαν ποιεῖται ὣ ἀνακλίνουσα, τίκτει δὲ ὀρθὴ ἑστῶσα."
+      "text": "_Aristote, livre 5, chapitre 2, et livre 6, chapitre 29._ Ἡ δὲ ἔλαφος τὴν μὲν ὀχείαν ποιεῖται ὣ ἀνακλίνουσα, τίκτει δὲ ὀρθὴ ἑστῶσα.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ]
 }

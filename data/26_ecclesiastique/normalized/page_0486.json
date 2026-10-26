@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 30,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 30,
       "latin_quote": "MELIOR EST PAUPER SANUS, QUAM DIVES IMBECILLIS.",
       "french_translation": "Un pauvre qui est sain, vaut mieux qu'un riche affligé de maladies.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 30,
       "latin_quote": "SALUS ANIMÆ IN SANCTITATE JUSTITIÆ.",
       "french_translation": "La sainteté de la justice, est la santé de l'âme.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 30,
       "latin_quote": "MELIOR EST MORS, QUAM VITA AMARA, ETC.",
       "french_translation": "La mort vaut mieux, qu'une vie amère ; et le repos éternel, qu'une langueur qui",
@@ -70,23 +70,50 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Homer. Odyss. E.\nΠαυροι γὰρ τοι παῖδες ὁμοῖοι πατρὶ πέλονται.\nΟἱ πλείονες κακίους, παῦροι δέ τε πατρὸς ἀρείους."
+      "text": "Homer. Odyss. E.\nΠαῦροι γὰρ τοι παῖδες ὁμοῖοι πατρὶ πέλονται.\nΟἱ πλείονες κακίους, παῦροι δέ τε πατρὸς ἀρείους.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Odyss",
+          "original": "Odyssea"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἢ πλούσιος μεμαστιγωμένος εἰς σῶμα αὐτῷ.\nLa Vulgate, _Imbecillis, et flagellatus malitiâ._"
+      "text": "Ἢ πλούσιος μεμαστιγωμένος εἰς σῶμα αὐτῷ.\nLa Vulgate, _Imbecillis, et flagellatus malitiâ._",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Pythagor."
+      "text": "Pythagor.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Thalès apud Laërt. Τις εὐδαίμων; ὁ τὸ σῶμα ὑγιὴς, τὴν δὲ ψυχὴν εὔπορος, τὴν δὲ φύσιν εὐπαίδευτος."
+      "text": "Thalès apud Laërt. Τίς εὐδαίμων; ὁ τὸ σῶμα ὑγιὴς, τὴν δὲ ψυχὴν εὔπορος, τὴν δὲ φύσιν εὐπαίδευτος.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ὑγίεια δὲ ἀντὶ ἀπάσης τίμιος χρυσῆς."
+      "text": "Ὑγίεια δὲ ἀντὶ ἀπάσης τίμιος χρυσῆς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

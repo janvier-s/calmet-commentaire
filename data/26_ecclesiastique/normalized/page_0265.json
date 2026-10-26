@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 12,
       "latin_quote": null,
       "french_translation": "malheureux, ^{(a)} on connaît quel est son ami.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 12,
       "latin_quote": "NON CREDAS INIMICO TUO IN ÆTERNUM, ETC.",
       "french_translation": "Ne vous fiez point à votre ennemi ; car sa malice est comme la rouille du cui-vre, elle va toujours en augmentant.",
@@ -33,31 +33,50 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "In malitia illius. E'x τῆς κακίας αὐτοῦ."
+      "text": "In malitia illius. E'x τῆς κακίας αὐτοῦ.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 17:17."
+      "text": "Proverbes 17:17.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Demetr. Phaler. apud Laërt. lib. 5."
+      "text": "Demetr. Phaler. apud Laërt. lib. 5.",
+      "tags": [
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ὡς γὰρ ὁ χαλκὸς ἰοῦται, οὕτως ἡ πονηρία αὐτοῦ."
+      "text": "Ὡς γὰρ ὁ χαλκὸς ἰοῦται, οὕτως ἡ πονηρία αὐτοῦ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Horat. lib. 1. ser. 4._\n_Hic niger succus Loliginis ; hæc est ærugo mera._"
-    },
-    {
-      "marker": null,
-      "text": "Martial. lib. 2.\n… _Nimiaque ærugine captus._\n… _Allacras omnem, quod tibi cumque datum est._\nIta sæbus ex Perianda Laert. ex Antisthene.\nAlii."
+      "text": "_Horat. lib. 1. ser. 4._\n_Hic niger succus Loliginis ; hæc est ærugo mera._\nMartial. lib. 2.\n… _Nimiaque ærugine captus._\n… _Allacras omnem, quod tibi cumque datum est._\nIta sæbus ex Perianda Laert. ex Antisthene.\nAlii.",
+      "tags": [
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Horat. Ep. lib. 1. Ep. 3."
+      "text": "Horat. Ep. lib. 1. Ep. 3.",
+      "tags": [
+        "classical",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": "X iij"

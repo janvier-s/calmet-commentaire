@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 5,
       "latin_quote": "EXTENDIT CONTRA EAM VIRGAM AUREAM.",
       "french_translation": "Il étendit vers elle le sceptre d'or, qu'il avait à la main.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 5,
       "latin_quote": "ETIAM SI DIMIDIAM PARTEM REGNI PETIERIS, DABITUR TIBI.",
       "french_translation": "Quand vous me demanderiez la moitié de mon Royaume, je vous la donnerais.",
@@ -48,23 +48,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Le Chaldéen, sur le chapitre 1 d'Esther, verset 1."
+      "text": "Le Chaldéen, sur le chapitre 1 d'Esther, verset 1.",
+      "tags": [
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Xenoph. lib. VIII. Cyropæd. Ou τòν χρυσõν σκῆπτρον τὸ τὴν Βασιλείαν διασώζον ἴσι, δι πισοὶ φίλοι σκῆπτρον Βασιλέυσι ἀληθέστατον καὶ ἀσφαλέστατον."
+      "text": "Xenoph. lib. VIII. Cyropæd. Ou τòν χρυσõν σκῆπτρον τὸ τὴν Βασιλείαν διασώζον ἴσι, δῑ πισοὶ φίλοι σκῆπτρον Βασιλέυσι ἀληθέστατον καὶ ἀσφαλέστατον.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Sénèque, Des bienfaits, livre 6, chapitre 3."
+      "text": "Sénèque, Des bienfaits, livre 6, chapitre 3.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des bienfaits",
+          "original": "De beneficiis"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Hérodote, livre 9."
+      "text": "Hérodote, livre 9.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Marc 6:23."
+      "text": "Marc 6:23.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

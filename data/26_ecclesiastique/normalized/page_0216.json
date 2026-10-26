@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -23,29 +23,45 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 9,
       "latin_quote": "NON DES MULIERI POTESTATEM ANIMÆ TUÆ.",
-      "french_translation": "Ne rendez point la femme maîtresse de votre propre esprit, de peur qu'elle ne prenne trop d'autorité sur vous. Le Grec est plus court : ^{(c)} Ne donnez point votre âme à une femme, de peur qu'elle ne s'élève sur votre âme.",
-      "french_commentary": "La femme est naturellement impérieuse. Si vous lui donnez trop d'autorité, elle en abusera,^{(d)} et bien-tôt vous serez réduit à ne pouvoir reprendre l'ascendant, que vous lui avez imprudemment laissé prendre. Caton se plaignait, qu'ailleurs les hommes étaient les maîtres de leurs femmes ; mais qu'à Rome où l'on dominait sur tous les peuples, les hommes étaient dominés par les femmes : _Omnes homines uxoribus dominantur : nos omnibus hominibus ; nobis uxores._ L'exemple de Samson, et de Salomon, qui se livrèrent à l'amour des femmes, et qui les rendirent maîtresses de leur esprit, devrait apprendre à tous les hommes à se défier d'elles, et à se conserver toujours une autorité juste, et une empire raisonnable sur"
+      "french_translation": "Ne rendez point la femme maîtresse de votre propre esprit,",
+      "french_commentary": "de peur qu'elle ne prenne trop d'autorité sur vous. Le Grec est plus court : ^{(c)} _Ne donnez point votre âme à une femme, de peur qu'elle ne s'élève sur votre âme_. La femme est naturellement impérieuse. Si vous lui donnez trop d'autorité, elle en abusera,^{(d)} et bien-tôt vous serez réduit à ne pouvoir reprendre l'ascendant, que vous lui avez imprudemment laissé prendre. Caton se plaignait, qu'ailleurs les hommes étaient les maîtres de leurs femmes ; mais qu'à Rome où l'on dominait sur tous les peuples, les hommes étaient dominés par les femmes : _Omnes homines uxoribus dominantur : nos omnibus hominibus ; nobis uxores._ L'exemple de Samson, et de Salomon, qui se livrèrent à l'amour des femmes, et qui les rendirent maîtresses de leur esprit, devrait apprendre à tous les hommes à se défier d'elles, et à se conserver toujours une autorité juste, et une empire raisonnable sur"
     }
   ],
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Lact. lib. 6. de Vera Religione."
+      "text": "Lact. lib. 6. de Vera Religione.",
+      "tags": [
+        "fathers",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Tibull.\n_Ipse miser docui quo posset ludere pacto_\n_Custodes : Eheu ! nunc premor arte mea._"
+      "text": "Tibull.\n_Ipse miser docui quo posset ludere pacto_\n_Custodes : Eheu ! nunc premor arte mea._",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Μὴ δῷς γυναικὶ τὴν ψυχήν σε, ἵνα μὴ ἐπιβῇ ἐπὶ τὴν ψυχὴν σε."
+      "text": "Μὴ δῷς γυναικὶ τὴν ψυχήν σε, ἵνα μὴ ἐπιβῇ ἐπὶ τὴν ψυχὴν σε.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Caton dans Tite-Live, liv. 34. en parlant aux hommes, leur dit : _Date frænos impotenti naturæ, et indomito animali ; desperatis ipsas modum licentiæ facturas, nisi vos faciatis._"
+      "text": "Caton dans Tite-Live, liv. 34. en parlant aux hommes, leur dit : _Date frænos impotenti naturæ, et indomito animali ; desperatis ipsas modum licentiæ facturas, nisi vos faciatis._",
+      "tags": [
+        "classical",
+        "latin",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

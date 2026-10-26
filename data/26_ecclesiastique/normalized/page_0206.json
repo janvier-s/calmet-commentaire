@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 8,
       "latin_quote": "NON LITIGES CUM HOMINE POTENTE.",
       "french_translation": "N'ayez point de démêlé avec un homme puissant, de peur que vous ne tombiez entre ses mains :",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 8,
       "latin_quote": "NE FORTE CONTRA TE CONSTITUAT LITEM TIBI.",
       "french_translation": "De peur qu'il ne vienne à vous faire un procès.",
@@ -40,11 +40,18 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "_Vetus Poëta._ Κρείσσονός τ᾽ ἀνδρὸς πρὸς κρείσσονα ἀντιφερίζειν. Νίκης τι εἴησιν, πρὸς αἴσχεσι ἀλγέα πάσχει. _Et Pindar. Nem. Od. 10._"
+      "text": "_Vetus Poëta._ Κρείσσονός τ᾽ ἀνδρὸς πρὸς κρείσσονα ἀντιφερίζειν. Νίκης τί εἴησιν, πρὸς αἴσχεσι ἀλγέα πάσχει. _Et Pindar. Nem. Od. 10._",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Μὴ ἴριζε μετ᾽ ἀνδρὸς πλουσίου, μήποτε ἀντίστηση σοι τὴν ὁλκήν."
+      "text": "Μὴ ἴριζε μετ᾽ ἀνδρὸς πλουσίου, μήποτε ἀντίστηση σοι τὴν ὁλκήν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 17,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 17,
       "latin_quote": "AARON ET HUR.",
       "french_translation": null,
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 17,
       "latin_quote": "UT MANUS EJUS NON LASSARENTUR.",
       "french_translation": "Que ses mains demeurèrent étendues, sans se lasser.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 17,
       "latin_quote": "SCRIBE HOC OB MONUMENTUM IN LIBRO.",
       "french_translation": "Écrivez ceci dans un livre, pour en conserver la mémoire.",
@@ -61,7 +61,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 17,
       "latin_quote": "ET TRADE AURIBUS JOSUE.",
       "french_translation": "Instruisez-en Josué.",
@@ -71,23 +71,69 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Augustin, Sermon 352 de tempore, nouvelle édition, et Contre Fauste, livre 12, chapitre 30, et De la Trinité, livre 4, chapitre 15 ;\nSaint Justin, Dialogue avec Tryphon ;\nSaint Irénée, livre 4 ;\nSaint Grégoire de Nazianze, Discours à son père, et Apologétique 1, et ailleurs ;\nTertullien, Contre Marcion, livre 3, chapitre 18 ;\nSaint Jérôme, sur Osée 12."
+      "text": "Saint Augustin, Sermon 352 de tempore, nouvelle édition, et Contre Fauste, livre 12, chapitre 30, et De la Trinité, livre 4, chapitre 15 ;\nSaint Justin, Dialogue avec Tryphon ;\nSaint Irénée, livre 4 ;\nSaint Grégoire de Nazianze, Discours à son père, et Apologétique 1, et ailleurs ;\nTertullien, Contre Marcion, livre 3, chapitre 18 ;\nSaint Jérôme, sur Osée 12.",
+      "tags": [
+        "verse",
+        "fathers",
+        "commentators",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Contre Fauste",
+          "original": "Contra Faustum Manichaeum"
+        },
+        {
+          "fr": "De la Trinité",
+          "original": "De sancta Trinitate et operibus eius"
+        },
+        {
+          "fr": "Dialogue avec Tryphon",
+          "original": "Dialogus cum Tryphone"
+        },
+        {
+          "fr": "Apologétique",
+          "original": "Apologeticum"
+        },
+        {
+          "fr": "Contre Marcion",
+          "original": "Adversus Marcionem"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Barnabé. Epist. Τύπον ἐν Μωϋσῇ, etc. ἵνα ἐν μέσῳ τῆς μαχῆς, ἡ τυθεὶς ἀπλώσας πάλμας, ἵστηται τὰς χεῖρας."
+      "text": "Barnabé. Epist. Τύπον ἐν Μωϋσῇ, etc. ἵνα ἐν μέσῳ τῆς μαχῆς, ἡ τυθεὶς ἁπλώσας πάλμας, ἵστηται τὰς χεῖρας.",
+      "tags": [
+        "greek",
+        "fathers",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "1 Paralipomènes 11:19-20."
+      "text": "1 Paralipomènes 11:19-20.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Josèphe, Antiquités judaïques, livre 3, chapitre 2."
+      "text": "Josèphe, Antiquités judaïques, livre 3, chapitre 2.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "ויהי ידיו אמונה Les Septante : Αἱ χεῖρες ἐστηριγμέναι. Aquila : Αἱ χεῖρες αὐτοῦ πίστις."
+      "text": "ויהי ידיו אמונה Les Septante : Αἱ χεῖρες ἐστηριγμέναι. Aquila : Αἱ χεῖρες αὐτοῦ πίστις.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

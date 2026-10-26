@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 45,
       "latin_quote": "DEDIT ILLI IN PRÆCEPTIS SUIS POTESTATEM.",
       "french_translation": "Il lui donna l'autorité de faire observer ses préceptes, ses volontés, et son alliance.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 45,
       "latin_quote": "CONTRA ILLUM STETERUNT ALIENI.",
       "french_translation": "Les étrangers se sont soulevés contre lui.",
@@ -40,19 +40,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Deutéronome 17:8-9 et 21:5 et 19:17 ; Ézéchiel 44:24 ; Josèphe, Antiquités judaïques, livre 10, dernier chapitre."
+      "text": "Deutéronome 17:8-9 et 21:5 et 19:17 ; Ézéchiel 44:24 ; Josèphe, Antiquités judaïques, livre 10, dernier chapitre.",
+      "tags": [
+        "verse",
+        "rabbis",
+        "classical",
+        "old-ref"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "À la tête des Nombres, Dissertation 1, page 5."
+      "text": "À la tête des Nombres, Dissertation 1, page 5.",
+      "tags": []
     },
     {
       "marker": "(c)",
-      "text": "Ἔδωκεν ἀυτῷ ἐν ἐντολαῖς ἀυτῦ, ἐξεσίαν ἐν δίκαις κειμάτων. Διδάξαι τὸν Ἰακὼβ τὰ μαρτύρια."
+      "text": "Ἔδωκεν αὐτῷ ἐν ἐντολαῖς αὐτοῦ, ἐξουσίαν ἐν δίκαις κειμάτων. Διδάξαι τὸν Ἰακὼβ τὰ μαρτύρια.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Malachie 2:6-7."
+      "text": "Malachie 2:6-7.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

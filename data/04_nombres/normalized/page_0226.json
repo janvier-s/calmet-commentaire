@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 19,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 19,
       "latin_quote": "NEC PORTAVERIT JUGUM.",
       "french_translation": "Qui n'ait pas porté le joug.",
@@ -25,31 +25,79 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Plutarque. de Iside et Osiride. τω̃ν βοω̃ν τω̃ν πυρ’ῥω̃ν καθιέρευον, ὑπὸ ἀκριβη̃ πιύμενοι τω̃ν ἐπισήμων, ὥςε καὶ μίαν ἔχειν τρίχα λευκὴν, ἢ μέλαιναν, δυσθύμια ἐγένετο."
+      "text": "Plutarque. de Iside et Osiride. τῶν βοῶν τῶν πυρ’ῥοῦν καθιέρευον, ὑπὸ ἀκριβῆ πιύμενοι τῶν ἐπισήμων, ὥστε καὶ μίαν ἔχειν τρίχα λευκὴν, ἢ μέλαιναν, δυσθύμια ἐγένετο.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Plutarque, au même endroit."
+      "text": "Plutarque, au même endroit.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Diodore de Sicile. l. 1. Bibliot. τω̃ν ἀνθρώπων τω̃ν ὁμοχρόων τω̃ν πυρ’ῥω̃ν τω̃ν παλαιω̃ν. Καὶ γὰρ Φάων Σνίδᾳ."
+      "text": "Diodore de Sicile. l. 1. Bibliot. τῶν ἀνθρώπων τῶν ὁμοχρόων τῶν πυρ’ῥοῦν τῶν παλαιῶν. Καὶ γὰρ Φάων Σνίδᾳ.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Περὶ ἀποχῆς, ὡς τῆν γεωργίαν ὑπηρετησάντων, etc. livre 4, De l'abstinence."
+      "text": "Περὶ ἀποχῆς, ὡς τῆν γεωργίαν ὑπηρετησάντων, etc. livre 4, De l'abstinence.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De l'abstinence",
+          "original": "De abstinentia ab esu animalium"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Homère, Odyssée, γ."
+      "text": "Homère, Odyssée, γ.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Voyez Macrobe, Saturnales, livre 2, chapitre 4."
+      "text": "Voyez Macrobe, Saturnales, livre 2, chapitre 4.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Saturnales",
+          "original": "Saturnalia"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Géorgiques, livre 4. Voyez Bochart, De animalibus sacris, partie 1, livre 2, chapitre 33."
+      "text": "Géorgiques, livre 4. Voyez Bochart, De animalibus sacris, partie 1, livre 2, chapitre 33.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De animalibus sacris",
+          "original": "De animalibus sacris"
+        }
+      ]
     }
   ],
   "book_end_marker": null

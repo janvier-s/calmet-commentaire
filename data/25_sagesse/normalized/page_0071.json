@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 4,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 4,
       "latin_quote": "SENECTUS ENIM VENERABILIS EST, NON DIUTURNA,… (℣. 9.) CANI AUTEM SUNT SENSUS HOMINIS.",
       "french_translation": null,
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 4,
       "latin_quote": "VIVENS INTER PECCATORES TRANSLATUS EST.",
       "french_translation": null,
@@ -55,27 +55,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Λέγεται δίκαιος φθάσας τελειωθῆναι."
+      "text": "Λέγεται δίκαιος φθάσας τελειωθῆναι.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Menander. Οὐκ ἂν τοίχις πείθοι ἂν καὶ Σωκράτης, Λέγων ὁ τοίχων· ἀλλ' ἐστὶ τῇ φύσει γέρων."
+      "text": "Menander. Οὐκ ἂν τοίχις πείθοι ἂν καὶ Σωκράτης, Λέγων ὁ τοίχων· ἀλλ' ἐστὶ τῇ φύσει γέρων.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Sénèque, De la brièveté de la vie."
+      "text": "Sénèque, De la brièveté de la vie.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la brièveté de la vie",
+          "original": "De brevitate vitae"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Πολιὰ δὲ ἐστι φρόνησις ἀνθρώποις."
+      "text": "Πολιὰ δὲ ἐστι φρόνησις ἀνθρώποις.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Genèse 5:24. _Vide_ Μετέστηκεν ἀυτὸν ὁ Θεὸς. _Vide_ et Hébreux 11:5. Ecclésiastique 44:16."
+      "text": "Genèse 5:24. _Vide_ Μετέστηκεν αὐτὸν ὁ Θεὸς. _Vide_ et Hébreux 11:5. Ecclésiastique 44:16.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ο, γὰρ φιλῶν ἀπεχθήσεαι γένῳ;"
+      "text": "Ὁ, γὰρ φιλῶν ἀπεχθήσεαι γένῳ;",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

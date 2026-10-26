@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 10,
       "latin_quote": null,
       "french_translation": "vendrais son âme même, parce qu'il s'est dépouillé tout vivant de ses propres entrailles.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 10,
       "latin_quote": "OMNIS POTENTATUS BREVIS VITA.",
       "french_translation": "Toute puissance subsistera peu ; la maladie longue fatigue le médecin, le médecin coupe par la racine un mal qui dure peu : Tel est Roi aujourd'hui qui mourra demain.",
@@ -40,23 +40,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "_Horat. Epist. 1. lib. 1._\n_Impiger extremos curris mercator ad Indos,_\n_Per mare pauperiem fugiens, per saxa, per ignes._"
+      "text": "_Horat. Epist. 1. lib. 1._\n_Impiger extremos curris mercator ad Indos,_\n_Per mare pauperiem fugiens, per saxa, per ignes._",
+      "tags": [
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Colossiens 3:5."
+      "text": "Colossiens 3:5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Horace."
+      "text": "Horace.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Οτῷ γὰρ οὐκ ἔστιν ἑαυτῷ ψυχὴ ἑαυτῷ ποιεῖ, ὅτι ἐν ζωῇ ἔῤῥιψα τὰ σπλάγχνα αὐτῷ. Complut. Ὅτι ἐν ζωῇ αὐτῆς ἔῤῥιψαν τὰ σπλάγχνα αὐτῶν. Vulg. δι' ὅτι ἐν ζωῇ αὐτοῦ ἔῤῥιψεν τὰ σπλάγχνα αὐτοῦ."
+      "text": "Οτῷ γὰρ οὐκ ἔστιν ἑαυτῷ ψυχὴ ἑαυτῷ ποιεῖ, ὅτι ἐν ζωῇ ἔρριψα τὰ σπλάγχνα αὐτῷ. Complut. Ὅτι ἐν ζωῇ αὐτῆς ἔρριψαν τὰ σπλάγχνα αὐτῶν. Vulg. δι' ὅτι ἐν ζωῇ αὐτοῦ ἔρριψεν τὰ σπλάγχνα αὐτοῦ.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Μάχαιρα ἀρρώστημα κ' αἰτίαν ἰατρὸς. Καὶ Βασιλεὺς σήμερον, καὶ αὔριον τελευτήσει."
+      "text": "Μάχαιρα ἀρρώστημα κ' αἰτίαν ἰατρὸς. Καὶ Βασιλεὺς σήμερον, καὶ αὔριον τελευτήσει.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

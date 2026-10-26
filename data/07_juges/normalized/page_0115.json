@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 5,
       "latin_quote": "UNGULÆ EQUORUM CECIDERUNT.",
       "french_translation": "La corne du pied de leurs chevaux est tombée dans l'impétuosité de leur course.",
@@ -33,19 +33,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Judith 7:3."
+      "text": "Judith 7:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "נחל קדומים, au lieu de נחל קדשים. _Sym. ἁγίαν φάραγξ. Malè in editis ἀγρίων φάραγξ. Theod._ Καδησίμ."
+      "text": "נחל קדומים, au lieu de נחל קדשים. _Sym. ἁγίαν φάραγξ. Malè in editis ἀγρίων φάραγξ. Theod._ Καδησίμ.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "fathers"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "אז הלמו עקבי סוס מדהרות דהרות אביריו. Le verbe הלם se prend pour frapper sur l'enclume ; et הלמות pour un marteau. Juges 5:26 ; Psaumes 73:6 ; Isaïe 41:7."
+      "text": "אז הלמו עקבי סוס מדהרות דהרות אביריו. Le verbe הלם se prend pour frapper sur l'enclume ; et הלמות pour un marteau. Juges 5:26 ; Psaumes 73:6 ; Isaïe 41:7.",
+      "tags": [
+        "hebrew",
+        "verse",
+        "explanation"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "℣. 70. ὅτι ἀσθενήσει ἀλιτρῶν ἵππων. Tunc abscissa sunt ungulæ equorum. Codex Rom. τότε ἠσθένησαν. Tunc impeditæ sunt. Cod. Basil. τότε διεφθάρησαν, Tunc submersæ sunt."
+      "text": "Juges 5:70. ὅτι ἀσθενήσει ἀλιτρῶν ἵππων. Tunc abscissa sunt ungulæ equorum. Codex Romanus τότε ἠσθένησαν. Tunc impeditæ sunt. Codex Basiliensis τότε διεφθάρησαν, Tunc submersæ sunt.",
+      "tags": [
+        "greek",
+        "verse",
+        "versions",
+        "latin",
+        "bad-ref"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 15,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 15,
       "latin_quote": "SITIENSQUE VALDE CLAMAVIT AD DOMINUM.",
       "french_translation": "Il fut ensuite pressé d'une grande soif, et il cria au Seigneur.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 15,
       "latin_quote": "APERUIT ITAQUE DEUS MOLAREM DENTEM IN MAXILLA ASINI, ET EGRESSÆ SUNT EX EO AQUÆ.",
       "french_translation": "Le Seigneur ouvrit donc une des grosses dents de cette mâchoire d'âne, et il en sortit de l'eau.",
@@ -48,19 +48,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph. Antiq. l. 5. c. 10. μάξα η χρι̃σις το̃υ ρευστο̃υ, η χαλα̃ δι' η̃ς συνερχεται ελεγε, το̃υτο δε ει̃ναι, την δε̃ ιδιω αρετω̃ ανη̃ψαι το̃ γεγονε̃."
+      "text": "Joseph. Antiq. l. 5. c. 10. μάξα η χρῖσις το͂υ ρευστο͂υ, η χαλᾶ δι' ῆς συνέρχεται ἔλεγε, το͂υτο δὲ εἶναι, τὴν δοῦ ἰδίῳ ἀρετῶ ἀνῆψαι το͂ γεγονε͂.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. l",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Ambroise, Lettre 19."
+      "text": "Saint Ambroise, Lettre 19.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Tostat ;\nMénochius ;\nSerarius ;\nCornelius a Lapide ;\nBonfrère."
+      "text": "Tostat ;\nMénochius ;\nSerarius ;\nCornelius a Lapide ;\nBonfrère.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Καὶ ἐκάλεσεν ὁ θεὸς τὸ πρανὲς τῆς σιαγόνος, η ἐξῆλθεν ἐξ αὐτοῦ ὕδωρ."
+      "text": "Καὶ ἐκάλεσεν ὁ θεὸς τὸ πρανὲς τῆς σιαγόνος, η ἐξῆλθεν ἐξ αὐτοῦ ὕδωρ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

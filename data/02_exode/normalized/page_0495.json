@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 28,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "33",
+      "verse_ref": 33,
       "chapter": 28,
       "latin_quote": "DEORSUM VERO AD PEDES, QUASI MALA PUNICA FACIES EX HYACINTHO.",
       "french_translation": "Par le bas vous mettrez des grenades de couleur d'hyacinthe.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "35",
+      "verse_ref": 35,
       "chapter": 28,
       "latin_quote": "UT AUDIATUR SONITUS, QUANDO INGREDITUR.",
       "french_translation": "Afin qu'on entende le son de ces sonnettes, lorsqu'il entrera dans le Sanctuaire.",
@@ -55,15 +55,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Jean 19:23. Erat autem tunica inconsutilis, desuper contexta per totum."
+      "text": "Jean 19:23. Erat autem tunica inconsutilis, desuper contexta per totum.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Philo, l. 2 de Monarch. Περι δε τοις κλωμασι τα ωοειδως ἀναδεδεμενα χρυσια ροισκοι, κωδωνες, et ἀνθη."
+      "text": "Philo, l. 2 de Monarch. Περὶ δὲ τοῖς κλωμασι τὰ ωοειδως ἀναδεδεμενα χρυσία ροισκοι, κώδωνες, et ἄνθη.",
+      "tags": [
+        "greek",
+        "rabbis"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Καὶ ἔσται Ααρων ἐν τω λειτουργεῖν ἀκουστὴ ἡ φωνὴ αὐτοῦ."
+      "text": "Καὶ ἔσται Ααρων ἐν τω λειτουργεῖν ἀκουστὴ ἡ φωνὴ αὐτοῦ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 31,
       "latin_quote": "IN OMNIBUS OPERIBUS TUIS ESTO VELOX, ETC.",
       "french_translation": "Soyez promt dans toutes vos actions, et vous ne tomberez dans aucune",
@@ -40,23 +40,46 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide Francisc. Vales. sacr. Philosoph. cap. 73. Jansen. hic. Cornel. à Lapid. alios."
+      "text": "Vide Francisc. Vales. sacr. Philosoph. cap. 73. Jansen. hic. Cornel. à Lapid. alios.",
+      "tags": [
+        "commentators",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εμεειν, non est in Ald. nec Rom. nec Ms. Vide Heschel. et Drus."
+      "text": "Ἐμέειν, non est in Ald. nec Rom. nec Ms. Vide Heschel. et Drus.",
+      "tags": [
+        "greek",
+        "versions",
+        "commentators",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Proverbes 23:8."
+      "text": "Proverbes 23:8.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Cicero Orat. pro Rege Dejotaro. Vide et Plutarch. lib. de Sanitate. et Symposiac. et Plin. b 14. cap. 22."
+      "text": "Cicero Orat. pro Rege Dejotaro. Vide et Plutarch. lib. de Sanitate. et Symposiac. et Plin. b 14. cap. 22.",
+      "tags": [
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Καὶ ἐὰν ἐβιάσθης ἐν ἐδέσμασιν, ἀνάςα, μισοπορεύσας, (aliis μισοπορῶν,) ἔμεσον, καὶ ἀναπαύσῃ."
+      "text": "Καὶ ἐὰν ἐβιάσθης ἐν ἐδέσμασιν, ἀνάστα, μισοπορεύσας, (aliis μεσοπορῶν,) ἔμεσον, καὶ ἀναπαύσῃ.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

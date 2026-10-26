@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 31,
       "latin_quote": "VIGILIA HONESTATIS TABEFACIET CARNES.",
       "french_translation": "Les soins que l'on prend pour amasser du bien, dessèchent la chair.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 31,
       "latin_quote": "COGITATUS PRÆSCIENTIÆ AVERTIT SENSUM :",
       "french_translation": "La pensée inquiète de l'avenir, renverse le sens ; et la maladie violente, rend l'âme sobre.",
@@ -40,11 +40,18 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Μέριμνα ἀγρυπνίας ἀναίσει νωεαγμόν, κὶ ἀῤῥώςημα βαρὺ ἐκνήψει ὕπνον."
+      "text": "Μέριμνα ἀγρυπνίας ἀναίσει νωεαγμόν, καὶ ἀῤῥώςημα βαρὺ ἐκνήψει ὕπνον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Euripid. Ὕπν᾽ ὀδύνας ἐφ᾽ ᾧ λήθει ὦ φίλον ὄμμασι ῥεῦμα."
+      "text": "Euripid. Ὕπν᾽ ὀδύνας ἐφ᾽ ᾧ λήθει ὦ φίλον ὄμμασι ῥεῦμα.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

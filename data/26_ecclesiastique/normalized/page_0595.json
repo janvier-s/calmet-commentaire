@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 39,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 39,
       "latin_quote": "ADHUC CONSILIABOR UT ENARREM : UT FURORE ENIM REPLETUS SUM.",
       "french_translation": "Je suis résolu encore à publier ce que je médite ; car je suis rempli comme d'une sainte fureur.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 39,
       "latin_quote": "IN VOCE DICIT : OBAUDITE ME, DIVINI FRUCTUS, ETC.",
       "french_translation": "Qui dit ces paroles : Écoutez-moi, ô germes divins, et portez",
@@ -48,27 +48,46 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Grotius."
+      "text": "Grotius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εαν ἐμμείνῃ, ἔςαι κληρονομία ἐν χιλίοις. Και ἐαν ἀναπαύσηται, ἐμμενεῖ ἀυτῷ."
+      "text": "Ἐὰν ἐμμείνῃ, ἔσται κληρονομία ἐν χιλίοις. Καὶ ἐαν ἀναπαύσηται, ἐμμενεῖ αὐτῷ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Vatable ;\nCornelius a Lapide ;\nJansénius."
+      "text": "Vatable ;\nCornelius a Lapide ;\nJansénius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ἔτι διανοηθεὶς ἐκδιηγήσομαι, ὅτι ὡς διχομηνία ἐπλήσθην."
+      "text": "Ἔτι διανοηθεὶς ἐκδιηγήσομαι, ὅτι ὡς διχομηνία ἐπλήσθην.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ainsi Grotius ; et d'autres, sur ce passage."
+      "text": "Ainsi Grotius ; et d'autres, sur ce passage.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ainsi lit le Syriaque ; la Bible de Zurich ; Bossuet ; l'édition de Rome."
+      "text": "Ainsi lit le Syriaque ; la Bible de Zurich ; Bossuet ; l'édition de Rome.",
+      "tags": [
+        "versions",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

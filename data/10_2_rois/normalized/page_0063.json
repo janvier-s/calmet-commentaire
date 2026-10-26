@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 6,
       "latin_quote": "POSTQUAM VENERUNT AD AREAM NACHON.",
       "french_translation": "Lorsqu'on fut arrivé près de l'aire de Nachon.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 6,
       "latin_quote": "QUONIAM CALCITRABANT BOVES.",
       "french_translation": "Parce que les bœufs regimbaient.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 6,
       "latin_quote": "PERCUSSIT EUM SUPER TEMERITATE.",
       "french_translation": "Il le frappa à cause de sa témérité.",
@@ -41,43 +41,79 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "1 Rois 23:1."
+      "text": "1 Rois 23:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἕως τῆς ἅλω Ναχώρ."
+      "text": "Ἕως τῆς ἅλω Ναχώρ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "עד גרן נכון Aquila : Ἕως ἅλωνος ἑτοίμης."
+      "text": "עד גרן נכון Aquila : Ἕως ἅλωνος ἑτοίμης.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez ci-dessous chapitre 6:13."
+      "text": "Voyez ci-dessous chapitre 6:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "1 Paralipomènes 13:9. Cùm pervenissent ad aream Chidon."
+      "text": "1 Paralipomènes 13:9. Cùm pervenissent ad aream Chidon.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "כי שׁמטו הבקר"
+      "text": "כי שׁמטו הבקר",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Οτι απεκλινεν αυτην ὁ μισχ@."
+      "text": "Ὅτι ἀπέκλινεν αυτην ὁ μισῶ@.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "1 Paralipomènes 13:9."
+      "text": "1 Paralipomènes 13:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Ἐξέκλινεν αὐτήν."
+      "text": "Ἐξέκλινεν αὐτήν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "על השל Aquila : Ἐπὶ τῇ ἄνοια, pro ignorantia, ou insania. Alius ἁμαρτία, temeritate."
+      "text": "על השל Aquila : Ἐπὶ τῇ ἄνοια, pro ignorantia, ou insania. Alius ἁμαρτία, temeritate.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

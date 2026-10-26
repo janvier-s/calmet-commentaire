@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 19,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 19,
       "latin_quote": "NE APPROPINQUETIS UXORIBUS VESTRIS.",
       "french_translation": "Ne vous approchez point de vos femmes.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 19,
       "latin_quote": "TOTUS MONS SINAÏ FUMABAT.",
       "french_translation": "Toute la montagne de Sinaï était couverte de fumée.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 19,
       "latin_quote": "ERATQUE OMNIS MONS TERRIBILIS.",
       "french_translation": "Toute la montagne était",
@@ -70,15 +70,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ὅταν δὲ αἱ φῶναι, καὶ αἱ σάλπιγγες, καὶ ἡ νεφέλη ἀπέλθη. Κγρὶδα χρὴ τοὺς δυνατὸς ἀναβῆναι ἐπὶ τὸ ὄρος. Σ'μμετρον."
+      "text": "Ὅταν δὲ αἱ φῶναι, καὶ αἱ σάλπιγγες, καὶ ἡ νεφέλη ἀπέλθῃ. Κγρὶδα χρὴ τοὺς δυνατὸς ἀναβῆναι ἐπὶ τὸ ὄρος. Σ'μμετρον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Clément d'Alexandrie, Stromates, livre 5."
+      "text": "Clément d'Alexandrie, Stromates, livre 5.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Stromates",
+          "original": "Stromata"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Deutéronome 4:11, 24."
+      "text": "Deutéronome 4:11, 24.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

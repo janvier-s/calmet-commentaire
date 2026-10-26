@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 9,
       "latin_quote": "QUI COMMOVET TERRAM DE LOCO SUO, ET COLUMNÆ EIUS CONCUTIUNTUR.",
       "french_translation": "Qui remue la terre de sa place, et qui fait que ses colonnes sont ébranlées.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 9,
       "latin_quote": "STELLAS CLAUDIT QUASI SUB SIGNACULO.",
       "french_translation": "Qui tient les étoiles enfermées comme sous le sceau.",
@@ -41,15 +41,28 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "O παλαιῶν ὄρη, καὶ ὐκ ἤσθεσαν. L'Hébreu : המעתיק הרים ולא ידעו 1. _Psaumes 17:16*. Jonas_ II. 6. 7. _Psal. CXXXV._ 6. Proverbes 8:29."
+      "text": "O παλαιῶν ὄρη, καὶ οὐκ ἤσθεσαν. L'Hébreu : המעתיק הרים ולא ידעו 1. _Psaumes 17:16*. Jonas_ II. 6. 7. _Psal. CXXXV._ 6. Proverbes 8:29.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "verse",
+        "versions",
+        "uncertain"
+      ]
     },
     {
       "marker": "b)",
-      "text": "Voyez Psaumes 64:4 ; Job 38:4."
+      "text": "Voyez Psaumes 64:4 ; Job 38:4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "_Macrob. Satur. lib._ 7. _cap._ 3."
+      "text": "_Macrob. Satur. lib._ 7. _cap._ 3.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "metadata": {

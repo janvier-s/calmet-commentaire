@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 3,
       "latin_quote": "SYNAGOGÆ SUPERBORUM NON ERIT SANITAS, ETC.",
       "french_translation": "L'assemblée des superbes ne se guérira point, parce que la tige du péché a pris racine en eux, sans qu'ils s'en aperçoivent.",
@@ -33,23 +33,55 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "_Psaumes 15:4._ נבזה בעיניו נמאס CXXXVIII. 24. הרד אם צעצבו _Item Psaumes 7:17. Concepit dolorem, et peperit iniquitatem. Et x. 7. Sub lingua ejus labor et dolor, … in labore et dolorem consideras._"
+      "text": "_Psaumes 15:4._ נבזה בעיניו נמאס CXXXVIII. 24. הרד אם צעצבו _Item Psaumes 7:17. Concepit dolorem, et peperit iniquitatem. Et x. 7. Sub lingua ejus labor et dolor, … in labore et dolorem consideras._",
+      "tags": [
+        "hebrew",
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Grégoire le Grand, Morales sur Job, livre 25, chapitre 12."
+      "text": "Saint Grégoire le Grand, Morales sur Job, livre 25, chapitre 12.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Morales sur Job",
+          "original": "Moralia in Job"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Augustin, Confessions, livre 8, chapitre 5."
+      "text": "Saint Augustin, Confessions, livre 8, chapitre 5.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Confessions",
+          "original": "Confessiones"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "_Εν ιμαγωγῆ υπερηφανιας ουκ εςιν ιασις. ιδιωτισμοι αυτω εκριζωθησονται. Φυσις γαρ πονηριας ιρριζωκεν εν αυτω._ L'Auteur de la Vulgate a lû : _Εν συναγωγῆ υπερηφανων_, etc."
+      "text": "_Ἐν ιμαγωγῆ ὑπερηφανίας οὐκ εστιν ἴασις. ἰδιωτισμοῦ αὐτῷ εκριζωθησονται. Φύσις γὰρ πονηρίας ιρριζωκεν ἐν αὐτῷ._ L'Auteur de la Vulgate a lû : _Ἐν συναγωγῆ ὑπερηφάνων_, etc.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Proverbes 18:3."
+      "text": "Proverbes 18:3.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": "℣. 31."

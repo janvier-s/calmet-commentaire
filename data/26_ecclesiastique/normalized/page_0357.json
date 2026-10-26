@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 20,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 20,
       "latin_quote": "QUAM BONUM EST CORREPTUM MANIFESTARE POENITENTIAM !",
       "french_translation": "Que c'est un grand bien, lorsqu'on est repris, de témoigner son repentir.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 20,
       "latin_quote": "EST TACENS, QUI INVENITUR SAPIENS.",
       "french_translation": "Il y en a qui se taisent, qui sont reconnus pour sages : Et il y en a qui se rendent odieux",
@@ -48,15 +48,29 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Εὐνοῦχος ὁπόταν ἀποπαρθενεύσῃ παῖδα, ὅτως ὁ ποιῶν ἐν κρίσει βία."
+      "text": "Εὐνοῦχος ὁπόταν ἀποπαρθενεύσῃ παῖδα, ὅτως ὁ ποιῶν ἐν κρίσει βία.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Cyrill. apud Suidam, voce σπαδῶν, et Εὐνοῦχοι. Εὐνοῦχοι γὰρ οὐ μέντοι οἱ σπαδῶντες, etc. καὶ μάλιςα τῆς αἰσχυργίας πόθους ἔχουσι τὸ ἀντιγαμεῖν ἀφέρπως, et ἀκολασαίνειν ἀναιδῶς, et ἀκορέσως, ἀλλὰ γε et οἱ τούτων ἀπείρατοι, et ἐπιθυμημένοι σφόδρα. Vide et Basil. de Vera virginitate. Et Arnob. lib. 5. contra Gentes."
+      "text": "Cyrill. apud Suidam, voce σπαδῶν, et Εὐνοῦχοι. Εὐνοῦχοι γὰρ οὐ μέντοι οἱ σπαδῶντες, etc. καὶ μάλιστα τῆς αἰσχυργίας πόθους ἔχουσι τὸ ἀντιγαμεῖν ἀφέρπως, et ἀκολασταίνειν ἀναιδῶς, et ἀκορέστως, ἀλλὰ γε et οἱ τούτων ἀπείρατοι, et ἐπιθυμημένοι σφόδρα. Vide et Basil. de Vera virginitate. Et Arnob. lib. 5. contra Gentes.",
+      "tags": [
+        "greek",
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "August. lib. 6. contra Julian. Pelag. cap. 14. Ita ut non desit concupiscentia quam spadonum quoque castitas frænet ; minus quidem laborant, quia ubi materiam de qua operetur non invenit, minus adversùs eam libido consurgit : Est pudicéque comprimitur, ne concumbendi, quis irritus ipse conatus in eam turpitudinem veniat ; propter quam Calligonum eunuchum gladiô novimus ultore punitum, meretricis confessione convictum."
+      "text": "August. lib. 6. contra Julian. Pelag. cap. 14. Ita ut non desit concupiscentia quam spadonum quoque castitas frænet ; minus quidem laborant, quia ubi materiam de qua operetur non invenit, minus adversùs eam libido consurgit : Est pudicéque comprimitur, ne concumbendi, quis irritus ipse conatus in eam turpitudinem veniat ; propter quam Calligonum eunuchum gladiô novimus ultore punitum, meretricis confessione convictum.",
+      "tags": [
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": "Kk"

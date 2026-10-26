@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 39,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 39,
       "latin_quote": "IN ARDUIS PONET NIDUM SUUM ?",
       "french_translation": "L'aigle fera-t-elle son nid dans les lieux les plus élevés ?",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 39,
       "latin_quote": "DE LONGE OCULI EJUS PROSPICIUNT.",
       "french_translation": "Ses yeux perçants découvrent de loin.",
@@ -55,31 +55,89 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Mercier ; Saint Grégoire le Grand ; et plusieurs autres."
+      "text": "Mercier ; Saint Grégoire le Grand ; et plusieurs autres.",
+      "tags": [
+        "fathers",
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Élien, livre 2, chapitre 46."
+      "text": "Voyez Élien, livre 2, chapitre 46.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Pline, Histoire naturelle, livre 10, chapitre 8. Hierne absents."
+      "text": "Pline, Histoire naturelle, livre 10, chapitre 8. Hierne absents.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ἱέραξ ἀναπετάσας τὰς πτέρυγας ἀκίνητος καθορᾶν πρὸς νότον."
+      "text": "ἱέραξ ἀναπετάσας τὰς πτέρυγας ἀκίνητος καθορᾶν πρὸς νότον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Élien, De la nature des animaux, livre 10, chapitre 14. Οὐδὲν δὲ ἰδέσθαι ὀρνίθων μεῖζον ἀπὸ τῆς ἀκτῖνος τὸ ἡλίου φαῦλος, καὶ ἀβασανίστως βλέπων, καὶ κατακόρως."
+      "text": "Élien, De la nature des animaux, livre 10, chapitre 14. Οὐδὲν δὲ ἰδέσθαι ὀρνίθων μεῖζον ἀπὸ τῆς ἀκτῖνος τὸ ἡλίου φαῦλος, καὶ ἀβασανίστως βλέπων, καὶ κατακόρως.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la nature des animaux",
+          "original": "De natura animalium"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Voyez Abdias 1:4. Aristote, Histoire des animaux, livre 9, chapitre 32 ; Pline, Histoire naturelle, livre 10, chapitre 3."
+      "text": "Voyez Abdias 1:4. Aristote, Histoire des animaux, livre 9, chapitre 32 ; Pline, Histoire naturelle, livre 10, chapitre 3.",
+      "tags": [
+        "verse",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire des animaux",
+          "original": "Historia animalium"
+        },
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Horat. lib. 1. satyr. 3. Ælian. lib. 1. cap. 42. Aris δὲ ὀξύθεον ἐπωνομίζετο. Homer. Iliad. XVII. Οξὺτατον δέρκεσθαι, ἐν ἰδὲν Οὐρανιώνων. Οξὺτατον δέρκεσθαι ὑπερανίωνων πτηνῶν."
+      "text": "Horat. lib. 1. satyr. 3. Ælian. lib. 1. cap. 42. Aris δὲ ὀξύθεον ἐπωνομάζετο. Homer. Iliad. XVII. Οξὺτατον δέρκεσθαι, ἐν ἰδὲν Οὐρανιώνων. Οξὺτατον δέρκεσθαι ὑπερανίωνων πτηνῶν.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     }
   ]
 }

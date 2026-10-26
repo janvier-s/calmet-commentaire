@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "35",
+      "verse_ref": 35,
       "chapter": 25,
       "latin_quote": "HONORAVI FACIEM TUAM.",
       "french_translation": "C'est en considération de votre personne que je l'ai fait.",
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "36",
+      "verse_ref": 36,
       "chapter": 25,
       "latin_quote": "NON INDICAVIT EI VERBUM.",
       "french_translation": "Abigaïl ne lui parla de rien jusqu'au matin.",
@@ -54,19 +54,49 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "אשא פניך"
+      "text": "אשא פניך",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "70. seu Sym. Εντρεψαμαι τὸ προσωπον. Aq. ἠρα, tuli. Sy. Εληψα, honoravi. Th. λαϐον, accepi. 70. Ηρτισα, suscepi."
+      "text": "70. seu Sym. Εντρεψαμαι τὸ πρόσωπον. Aq. ἦρα, tuli. Sy. Εληψα, honoravi. Th. λαβον, accepi. 70. Ηρτισα, suscepi.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Ambroise, Des devoirs, livre 1, dernier chapitre."
+      "text": "Saint Ambroise, Des devoirs, livre 1, dernier chapitre.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des devoirs",
+          "original": "De officiis"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Pline, Histoire naturelle, livre 17, chapitre 27."
+      "text": "Pline, Histoire naturelle, livre 17, chapitre 27.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

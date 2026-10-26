@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 42,
       "latin_quote": "DE DISCIPLINA INSENSATI, ETC.",
       "french_translation": "Ne rougissez point de corriger l'insensé, et l'imprudent, ni de condamner les vieillards, qui sont jugés par de jeunes gens.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 42,
       "latin_quote": "FILIA PATRIS ABSCONDITA, EST VIGILIA PATRIS.",
       "french_translation": "La fille qui n'est pas mariée, est un sujet continuel d'inquiétude à son père.",
@@ -40,15 +40,29 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Daniel 13:46 et suivants."
+      "text": "Daniel 13:46 et suivants.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Περὶ παιδείας ἀνοήτε, ὴ μωρῶ, ὴ ἐγχειρητῶ γήρα κρινομένω πρὸς νέων."
+      "text": "Περὶ παιδείας ἀνοήτου, ὴ μωροῦ, ὴ ἐγχειρητῶ γήρα κρινομένω πρὸς νέων.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "העלמה-ἀποκρυφος; Vide Isai. VII. II. II. 2. Maccab. III. 19. Αἱ δὲ παρθένοι τῆς κλεισίουσαι. Philon. Θυγατέρες παρθένων. Theocrit. Παρθένον ἐκ θαλάμων."
+      "text": "העלמה-ἀπόκρυφος; Vide Isai. VII. II. II. 2. Maccab. III. 19. Αἱ δὲ παρθένοι τῆς κλεισίουσαι. Philon. Θυγατέρες παρθένων. Theocrit. Παρθένον ἐκ θαλάμων.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "verse",
+        "rabbis",
+        "classical",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

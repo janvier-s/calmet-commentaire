@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 5,
       "latin_quote": "SI QUID VOVISTI DEO, NE MORERIS REDDERE.",
       "french_translation": "Si vous avez fait un vœu à Dieu, ne différez point de vous en acquitter.",
@@ -33,15 +33,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "כי בא החלום ברב ענין וקול כסיל ברב דברים. 70. ὅτι παρεγγύησις ἐπόπλου ἐν πλήθει πειρασμῶν, κὶ φωνὴ ἄφρονος ἐν πλήθει λόγων."
+      "text": "כי בא החלום ברב ענין וקול כסיל ברב דברים. 70. ὅτι παρεγγύησις ἐπόπλου ἐν πλήθει πειρασμῶν, καὶ φωνὴ ἄφρονος ἐν πλήθει λόγων.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Deutéronome 23:21."
+      "text": "Deutéronome 23:21.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Luc 10:28. Matthieu 19:17. Si vis ad vitam ingredi, serva mandata."
+      "text": "Luc 10:28. Matthieu 19:17. Si vis ad vitam ingredi, serva mandata.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

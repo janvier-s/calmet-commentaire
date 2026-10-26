@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 21,
       "latin_quote": "CONSUMMATIO TIMORIS DEI, SAPIENTIA ET SENSUS.",
       "french_translation": "La sagesse et le bon sens, est le fruit de la parfaite crainte de Dieu.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 21,
       "latin_quote": "NON ERUDIETUR, QUI NON EST SAPIENS IN BONO.",
       "french_translation": "Celui qui n'est pas sage dans le bien, qui n'a pas la piété, ou la crainte de Dieu, ne deviendra jamais véritablement habile.",
@@ -55,15 +55,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Bern. Epist. olim. CVIII. num. 2."
+      "text": "Bern. Epist. olim. CVIII. num. 2.",
+      "tags": [
+        "verse",
+        "fathers",
+        "abbrev",
+        "old-ref"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Συντέλεια δὲ τοῦ φόβου Κυρίου σοφίας περιποίησις."
+      "text": "Συντέλεια δὲ τοῦ φόβου Κυρίου σοφίας περιποίησις.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ὁ μὴ πανδούργος, ἐκ ἔςι παιδευτός."
+      "text": "Ὁ μὴ πανδούργος, ἐκ ἔστι παιδευτός.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

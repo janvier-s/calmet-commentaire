@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 21,
       "latin_quote": "PES FATUI VELOX IN DOMUM PROXIMI.",
       "french_translation": "L'insensé met aisément le pied dans la maison de son voisin ; mais l'homme qui sait vivre, est fort réservé à visiter une personne puissante.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 21,
       "latin_quote": "STULTUS A FENESTRA RESPICIET IN DOMUM.",
       "french_translation": "L'insensé regardera par la fenêtre dans une maison, mais l'homme discret se tiendra dehors.",
@@ -55,23 +55,44 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Clem. Alexand. lib. 2. Padag. cap. 5."
+      "text": "Clem. Alexand. lib. 2. Padag. cap. 5.",
+      "tags": [
+        "fathers",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "August. contra Academic. lib. 2. disp. 2."
+      "text": "August. contra Academic. lib. 2. disp. 2.",
+      "tags": [
+        "fathers",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Idem de lib. Arbitr. lib. 1. cap. 8."
+      "text": "Idem de lib. Arbitr. lib. 1. cap. 8.",
+      "tags": [
+        "fathers",
+        "abbrev",
+        "ibid"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ποὺς μωροῦ ταχὺς εἰς οἰκίας, ἀνὴρ δὲ πολύπειρος αἰσχυνθήσεται εἰσελθεῖν. Alii legunt : Ἀνὴρ αὐτὸς Ita Complus."
+      "text": "Ποὺς μωροῦ ταχὺς εἰς οἰκίας, ἀνὴρ δὲ πολύπειρος αἰσχυνθήσεται εἰσελθεῖν. Alii legunt : Ἀνὴρ αὐτὸς Ita Complus.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Κἄξω ἀπὸ θύρας παρεςηκὼς εἰς οἰκίαν, ἀνὴρ δὲ πεπαιδευμένος ἔξω τήσεται."
+      "text": "Κἄξω ἀπὸ θύρας παρεστηκὼς εἰς οἰκίαν, ἀνὴρ δὲ πεπαιδευμένος ἔξω τήσεται.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

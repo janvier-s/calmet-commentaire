@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 5,
       "latin_quote": "OCULI EJUS SICUT COLUMBÆ SUPER RIVULOS AQUARUM, QUÆ LACTE SUNT LOTÆ.",
       "french_translation": "Ses yeux sont comme les colombes qu'on voit sur l'eau des ruisseaux, et qui sont comme lavées dans du lait ; qui sont d'une blancheur pareille à celle du lait.",
@@ -40,27 +40,62 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "קווצותיו תלתלים שחרות כעורב"
+      "text": "קווצותיו תלתלים שחרות כעורב",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Βότρυχοι αυτᾶ ἐλαται, μέλανες ὡς κόραξ."
+      "text": "Βότρυχοι αυτᾶ ἐλάται, μέλανες ὡς κόραξ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Horace, Art poétique ; Anacréon, Ode 24 sur Bathylle : Μέλαν ὄμμα γοργὸν ἔχων. Καὶ τὰ χείλη γαλήνην."
+      "text": "Horace, Art poétique ; Anacréon, Ode 24 sur Bathylle : Μέλαν ὄμμα γοργὸν ἔχων. Καὶ τὰ χείλη γαλήνην.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Art poétique",
+          "original": "Ars poetica"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Columelle, De re rustica, livre 8, chapitre 8 : Color albus qui ubique vulgo conspicitur, à quibusdam non nimium laudatur. In vagis maxime est improbandus, quod eum facillimè speculator accipiter. Voyez aussi la Fable 101 d'Ésope."
+      "text": "Columelle, De re rustica, livre 8, chapitre 8 : Color albus qui ubique vulgo conspicitur, à quibusdam non nimium laudatur. In vagis maxime est improbandus, quod eum facillimè speculator accipiter. Voyez aussi la Fable 101 d'Ésope.",
+      "tags": [
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "De re rustica",
+          "original": "De re rustica"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Athénée, livre 9, chapitre 2."
+      "text": "Athénée, livre 9, chapitre 2.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Cantique des cantiques 1:15 ; 4:1."
+      "text": "Cantique des cantiques 1:15 ; 4:1.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     }
   ],
   "book_end_marker": null

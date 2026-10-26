@@ -23,7 +23,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 105,
       "latin_quote": null,
       "french_translation": null,
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 105,
       "latin_quote": "SALVAVIT EOS PROPTER NOMEN SUUM.",
       "french_translation": "Il les sauva pour la gloire de son nom.",
@@ -39,33 +39,55 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 105,
       "latin_quote": "INCREPUIT MARE RUBRUM.",
-      "french_translation": "et il la mit à sec.",
-      "french_commentary": "Expression poétique, pour marquer la colère de Dieu, et sa force toute-puissante. Il n'eut pas plutôt parlé d'un ton menaçant, qu'on vit cet élément indomptable, céder, et se retirer. Nahum parle de même : ^{(d)} _Increpans mare, et exsiccans illud._ Et David : ^{(e)} _Les fontaines ont découvert le fond de leurs sources, et les fondements de la terre se sont découverts, aussi-tôt que vous les avez réprimandés dans votre colère._\nDEDUXIT EOS IN ABYSSIS SICUT IN DESERTO. _Il les_"
+      "french_translation": "Il menaça la mer Rouge,",
+      "french_commentary": "et il la mit à sec. Expression poétique, pour marquer la colère de Dieu, et sa force toute-puissante. Il n'eut pas plutôt parlé d'un ton menaçant, qu'on vit cet élément indomptable, céder, et se retirer. Nahum parle de même : ^{(d)} _Increpans mare, et exsiccans illud._ Et David : ^{(e)} _Les fontaines ont découvert le fond de leurs sources, et les fondements de la terre se sont découverts, aussi-tôt que vous les avez réprimandés dans votre colère._\nDEDUXIT EOS IN ABYSSIS SICUT IN DESERTO. _Il les_"
     }
   ],
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Basile, Homélie 4 sur l'Hexaméron."
+      "text": "Saint Basile, Homélie 4 sur l'Hexaméron.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Hexaméron",
+          "original": "Hexaemeron"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Strabon ;\nPline ;\nAristote."
+      "text": "Voyez Strabon ;\nPline ;\nAristote.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Isaïe 63:12, 14."
+      "text": "Isaïe 63:12, 14.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Nahum 1:4."
+      "text": "Nahum 1:4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Psaumes 17:16 ; 2 Rois 22:16."
+      "text": "Psaumes 17:16 ; 2 Rois 22:16.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 12,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 12,
       "latin_quote": "EST ENIM PHASE, ID EST, TRANSITUS DOMINI.",
       "french_translation": "Car c'est la Pâque, c'est-à-dire, le passage du Seigneur.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 12,
       "latin_quote": "PERCUTIAM OMNE PRIMOGENITUM IN TERRA ÆGYPTI.",
       "french_translation": "Je frapperai de mort tous les premiers-nés des Égyptiens.",
@@ -41,47 +41,96 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "פסח"
+      "text": "פסח",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Le Chaldéen : פסחא"
+      "text": "Le Chaldéen : פסחא",
+      "tags": [
+        "hebrew",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Pascha. Ainsi l'entendent saint Irénée, livre 4, Contre les Juifs, chapitre 10 ; Lactance, Institutions, livre 4, chapitre 26. Gr."
+      "text": "Pascha. Ainsi l'entendent saint Irénée, livre 4, Contre les Juifs, chapitre 10 ; Lactance, Institutions, livre 4, chapitre 26. Gr.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Contre les Juifs",
+          "original": "Adversus Judaeos"
+        },
+        {
+          "fr": "Institutions",
+          "original": "De institutis coenobiorum"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Aqu. Εν Σαυβω υπερβασεως ist."
+      "text": "Aqu. Ἐν Σαυβω υπερβασεως ist.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Sym. Εν ιπασιαι ινιρμαλμσης ist. 70. Μετὰ σπυδῆς πάσχα ist."
+      "text": "Sym. Ἐν ιπασιαι ινιρμαλμσης ist. 70. Μετὰ σπουδῆς πάσχα ist.",
+      "tags": [
+        "greek",
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Colossiens 1:15."
+      "text": "Colossiens 1:15.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Romains 8:2."
+      "text": "Romains 8:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Apocalypse 1:5."
+      "text": "Apocalypse 1:5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Voyez Exode 4:22 ;\nMichée 6:7 ;\nZacharie 12:10 ;\nHébreux 12:23."
+      "text": "Voyez Exode 4:22 ;\nMichée 6:7 ;\nZacharie 12:10 ;\nHébreux 12:23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "Jérémie 21:9."
+      "text": "Jérémie 21:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(l)",
-      "text": "Iliade. Γ. Ἀρνῶν πρωτογόνων ῥέξειν κλειτὴν ἑκατόμβην."
+      "text": "Iliade. Γ. Ἀρνῶν πρωτογόνων ῥέξειν κλειτὴν ἑκατόμβην.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

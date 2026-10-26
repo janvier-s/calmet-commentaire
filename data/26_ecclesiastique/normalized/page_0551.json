@@ -50,7 +50,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 36,
       "latin_quote": null,
       "french_translation": null,
@@ -58,7 +58,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 36,
       "latin_quote": "INNOVA SIGNA, ET IMMUTA MIRABILIA.",
       "french_translation": "Renouvelez vos prodiges, et faites des miracles qui n'aient point encore été vus.",
@@ -66,7 +66,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 36,
       "latin_quote": "GLORIFICA MANUM.",
       "french_translation": "Glorifiez votre main.",
@@ -74,7 +74,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 36,
       "latin_quote": "TOLLE ADVERSARIUM.",
       "french_translation": "Détruisez l'ennemi, et brisez celui qui nous fait la guerre.",
@@ -82,7 +82,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 36,
       "latin_quote": "FESTINA TEMPUS, ET MEMENTO FINIS.",
       "french_translation": "Pressez le temps, et hâtez la fin.",
@@ -90,7 +90,7 @@
     },
     {
       "commentary_id": 6,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 36,
       "latin_quote": "IN IRA FLAMMÆ DEVORETUR, QUI SALVATUR.",
       "french_translation": "Que celui qui sera échappé à l'épée, soit dévoré par l'ardeur des flammes ;",
@@ -100,15 +100,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Οἵπως διηγῶνται τὰ θαυμάσια σε."
+      "text": "Οἵπως διηγῶνται τὰ θαυμάσια σε.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἐξαερώσαι διώκοντα, καὶ ἐκτρίψαι ἐχθρόν."
+      "text": "Ἐξαερώσαι διώκοντα, καὶ ἐκτρίψαι ἐχθρόν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Σπεῦσον καιρὸν, καὶ μνίσθητι ὀργῆς. Alii, μνήσθητι ὅρκων. Alii, τερασμῶ. Vide Drus. hic."
+      "text": "Σπεῦσον καιρὸν, καὶ μνήσθητι ὀργῆς. Alii, μνήσθητι ὅρκων. Alii, τερασμῶ. Voyez Drusius, sur ce passage.",
+      "tags": [
+        "greek",
+        "commentators",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

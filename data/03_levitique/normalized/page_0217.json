@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 17,
       "latin_quote": "SI VENATIONE, ATQUE AUCUPIO CEPERIT FERAM, VEL AVEM QUIBUS VESCI LICITUM EST.",
       "french_translation": "S'il prend à la chasse une bête, ou un oiseau dont il est permis de manger.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 17,
       "latin_quote": "FUNDAT SANGUINEM EJUS, ET OPERIAT ILLUM TERRA.",
       "french_translation": "Qu'il en répande le sang, et qu'il le couvre de terre.",
@@ -33,19 +33,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Chardin, Voyage de Perse, tome 2, page 32."
+      "text": "Chardin, Voyage de Perse, tome 2, page 32.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Homère, Odyssée, χ."
+      "text": "Homère, Odyssée, χ.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Apollodor. lib. 2. c. 6. Bibliot. Βελιάλωρ δὲ λύτ' ἀσπαξαμένω ξίφος ὀξὺ, δι φάσγανον ἄξω Κύματ' ὄφρα πίω, κ' τοι νημερτέα εἴπω."
+      "text": "Apollodor. lib. 2. c. 6. Bibliot. Βελιάλωρ δὲ λύτο ἀσπαξαμένω ξίφος ὀξὺ, δῑ φάσγανον ἄξω Κύματ' ὄφρα πίω, κ' τοι νημερτέα εἴπω.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Θάνατον ὁ καθαγμὸς τῆς δι ἀγχόνης ζωοφθορίας. αἷμα πνικτὸν ἀποφαίνει, 1801."
+      "text": "Θάνατον ὁ καθαρμὸς τῆς δῑ ἀγχόνης ζωοφθορίας. αἷμα πνικτὸν ἀποφαίνει, 1801.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

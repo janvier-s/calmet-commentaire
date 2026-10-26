@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "34",
+      "verse_ref": 34,
       "chapter": 46,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 47,
       "latin_quote": "EXTREMOS FRATRUM SUORUM QUINQUE VIROS CONSTITUIT CORAM REGE.",
       "french_translation": "Il présenta au Roi cinq des derniers de ses frères, etc.",
@@ -47,19 +47,33 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Porphyr. de Abstin. lib. IV. §. 22. Ουτος Κρητων ἀγαπᾶν. ζῶα μὴ σινεσθαι."
+      "text": "Porphyr. de Abstin. lib. IV. §. 22. Οὗτος Κρητῶν ἀγαπᾶν. ζῶα μὴ σίνεσθαι.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "מקצי אחיו"
+      "text": "מקצי אחיו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ludov. de Dieu."
+      "text": "Ludov. de Dieu.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Isaïe 26:15 ; Juges 18:2."
+      "text": "Voyez Isaïe 26:15 ; Juges 18:2.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,15 +22,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 42,
       "latin_quote": "MELIOR EST INIQUITAS VIRI, QUAM MULIER BENEFACIENS.",
       "french_translation": "Un homme qui vous fait du mal, vaut mieux qu'une femme qui vous fait du bien.",
-      "french_commentary": "Il vaut mieux avoir l'homme pour ennemi, que la femme pour amie. La haine de l'un est moins dangereuse, que la douceur et les caresses de l'autre. (A) Quelques-uns traduisent le Grec, par : _La laideur de l'homme vaut mieux, que la beauté de la femme._ Quelquefois les mots de _mauvais_, et de _bon_, se prennent en Hébreu pour signifier laid et beau ; mais la suite du discours détruit cette explication. Quelqu'autres le prennent à la lettre :^{(b)} Le plus mauvais homme est moins méchant, que la meilleure femme. C'est ainsi que Joseph l'a entendu. ^{(c)} Il attribue cette sentence à Moïse, et dit que la femme est en toute chose plus méchante que l'homme, d'où vient que la Loi la soumet absolument à son mari : comme ayant besoin d'être conduite, et retenue par l'autorité d'un autre. L'homme a différentes passions qui l'entraînent à différents crimes. La femme est entraînée dans tous les désordres par une seule passion, dit un Ancien. ^{(d)} _Viros ad unum quodque maleficium singulæ cupiditates impellunt, mulieres ad omnia maleficia cupiditas una ducit._ Et Euripide dans saint Clément d'Alexandrie : ^{(e)} La meilleure femme vaut moins que l'homme, quand celui-ci serait le plus mauvais, et celle-là la meilleure qu'on aurait pu choisir. La première explication est la bonne."
+      "french_commentary": "Il vaut mieux avoir l'homme pour ennemi, que la femme pour amie. La haine de l'un est moins dangereuse, que la douceur et les caresses de l'autre.^{(a)} Quelques-uns traduisent le Grec, par : _La laideur de l'homme vaut mieux, que la beauté de la femme._ Quelquefois les mots de _mauvais_, et de _bon_, se prennent en Hébreu pour signifier laid et beau ; mais la suite du discours détruit cette explication. Quelqu'autres le prennent à la lettre :^{(b)} Le plus mauvais homme est moins méchant, que la meilleure femme. C'est ainsi que Joseph l'a entendu. ^{(c)} Il attribue cette sentence à Moïse, et dit que la femme est en toute chose plus méchante que l'homme, d'où vient que la Loi la soumet absolument à son mari : comme ayant besoin d'être conduite, et retenue par l'autorité d'un autre. L'homme a différentes passions qui l'entraînent à différents crimes. La femme est entraînée dans tous les désordres par une seule passion, dit un Ancien. ^{(d)} _Viros ad unum quodque maleficium singulæ cupiditates impellunt, mulieres ad omnia maleficia cupiditas una ducit._ Et Euripide dans saint Clément d'Alexandrie : ^{(e)} La meilleure femme vaut moins que l'homme, quand celui-ci serait le plus mauvais, et celle-là la meilleure qu'on aurait pu choisir. La première explication est la bonne."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 42,
       "latin_quote": "MEMOR ERO IGITUR OPERUM DOMINI.",
       "french_translation": "Je publierai donc les ouvrages du Seigneur, etc.",
@@ -40,23 +40,52 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Grotius ; Drusius ; Palac. ; Cornelius a Lapide ; Denys ; et d'autres. Mulier benefaciens, sive prona et facilis ministra voluptatum. Bossuet. Vulgò dicitur : Cui mulier benefacit, ei se prostituit. Drusius. Voyez Proverbes 7:10. Τιμητὸς κακὸν πέφυκεν ἀνδρὸς γυνή."
+      "text": "Grotius ; Drusius ; Palac. ; Cornelius a Lapide ; Denys ; et d'autres. Mulier benefaciens, sive prona et facilis ministra voluptatum. Bossuet. Vulgò dicitur : Cui mulier benefacit, ei se prostituit. Drusius. Voyez Proverbes 7:10. Τιμητὸς κακὸν πέφυκεν ἀνδρὸς γυνή.",
+      "tags": [
+        "greek",
+        "verse",
+        "commentators",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "70. Κρείσσων πονηρία ἀνδρὸς, ἢ ἀγαθοποιὸς γυνή."
+      "text": "70. Κρείσσων πονηρία ἀνδρὸς, ἢ ἀγαθοποιὸς γυνή.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Joseph. lib. 2. contra Apion. pag. 1074. Γυνὴ δὲ χείρων ἀνδρὸς εἰς ἅπαντα, τῷ μὲν ἀγαθοποιὸς γυναικὶς. Τοιγαρῦν ὑποτέτακται, μὴ παρὰ δόξαν ἑαυτῆς, ἀλλ' ὡς ἄρχηται. Εἰ γὰρ ἀδικεῖ χώραν ἀδικεῖ."
+      "text": "Joseph. lib. 2. contra Apion. pag. 1074. Γυνὴ δὲ χείρων ἀνδρὸς εἰς ἅπαντα, τῷ μὲν ἀγαθοποιὸς γυναικὶς. Τοιγαροῦν ὑποτέτακται, μὴ παρὰ δόξαν ἑαυτῆς, ἀλλ' ὡς ἄρχηται. Εἰ γὰρ ἀδικεῖ χώραν ἀδικεῖ.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Author ad Herennium."
+      "text": "Author ad Herennium.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Saint Clément d'Alexandrie, Stromates, livre 4."
+      "text": "Saint Clément d'Alexandrie, Stromates, livre 4.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Stromates",
+          "original": "Stromata"
+        }
+      ]
     }
   ],
   "book_end_marker": null

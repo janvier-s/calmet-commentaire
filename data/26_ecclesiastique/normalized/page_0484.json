@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 30,
       "latin_quote": "RA SUA.",
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 30,
       "latin_quote": "EQUUS INDOMITUS, EVADIT DURUS.",
       "french_translation": null,
@@ -47,27 +47,57 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Raban Maur ; la Glose ; Nicolas de Lyre."
+      "text": "Raban Maur ; la Glose ; Nicolas de Lyre.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "2 Corinthiens 12:15. _Ego libentissimè impendam, et superimpendar ipse pro animabus vestris._"
+      "text": "2 Corinthiens 12:15. _Ego libentissimè impendam, et superimpendar ipse pro animabus vestris._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ο' πλενάζων υἱὸν, καταδήσει τραύματα αὐτῦ, καὶ ἐπὶ πάσῃ βοῇ σπλαγχνισθήσεται. αὐτῦ. Complut. πλενάζων υἱὸν, _Fricans filium._ Vulg. et Ald. Basil. etc. Πληγὰς ψυχῶν ὑιῶν. _Pro animabus filiorum._"
+      "text": "Ὀ πλεονάζων υἱὸν, καταδήσει τραύματα αὐτοῦ, καὶ ἐπὶ πάσῃ βοῇ σπλαγχνισθήσεται. αὐτοῦ. Complut. πλεονάζων υἱὸν, _Fricans filium._ Vulg. et Ald. Basil. etc. Πληγὰς ψυχῶν ὑιῶν. _Pro animabus filiorum._",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Le Syriaque ; Vatable ; Castellion."
+      "text": "Le Syriaque ; Vatable ; Castellion.",
+      "tags": [
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Voyez Palacio ; et Cornelius a Lapide ; et Grotius sur ce passage."
+      "text": "Voyez Palacio ; et Cornelius a Lapide ; et Grotius sur ce passage.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Plutarque, Apophtegmes des Lacédémoniens, de Thémistocle."
+      "text": "Plutarque, Apophtegmes des Lacédémoniens, de Thémistocle.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Apophtegmes",
+          "original": "Apophthegmata"
+        }
+      ]
     }
   ],
   "book_end_marker": null

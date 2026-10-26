@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 1,
       "latin_quote": "IN MENSE CASLEU.",
       "french_translation": "Au mois de Casleu.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 1,
       "latin_quote": "EGO ERAM IN SUSIS CASTRO.",
       "french_translation": "J'étais dans le Château de Suze,",
@@ -39,7 +39,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 1,
       "latin_quote": "IPSE, ET VIRI DE JUDA.",
       "french_translation": "Hanani, et quelques-uns de la tribu de Juda.",
@@ -49,31 +49,64 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Athénée, Deipnosophistes, livre 12, chapitre 1. C', et Βασιλεὺς ἐχείμαζον μὲν ἐν Σούσοις ἐθέριζον δὲ ἐν Ἐκβατάνοις."
+      "text": "Athénée, Deipnosophistes, livre 12, chapitre 1. C', et Βασιλεὺς ἐχείμαζον μὲν ἐν Σούσοις ἐθέριζον δὲ ἐν Ἐκβατάνοις.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Deipnosophistes",
+          "original": "Deipnosophistae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Esther 1:2, passim ; Daniel 8:2."
+      "text": "Voyez Esther 1:2, passim ; Daniel 8:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Xénophon Cyropæd. lib. 8. Quint. Curt. lib. 5. c. 8. Plut lib. de Exilio."
+      "text": "Xénophon, Cyropédie, livre 8 ; Quinte-Curce, livre 5, chapitre 8 ; Plutarque, De l'exil.",
+      "tags": [
+        "verse",
+        "classical",
+        "old-ref",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Esther 1:2."
+      "text": "Voyez Esther 1:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "חנני ואנשים מיהודה"
+      "text": "חנני ואנשים מיהודה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Voyez ci-dessous chapitre 7:2."
+      "text": "Voyez ci-dessous chapitre 7:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Josèphe, Antiquités judaïques, livre 11, chapitre 5."
+      "text": "Josèphe, Antiquités judaïques, livre 11, chapitre 5.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

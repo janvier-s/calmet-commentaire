@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 18,
       "latin_quote": null,
       "french_translation": null,
@@ -17,27 +17,84 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Clemens. Alex. Strom. l. 3. ex Xantho in Magis. Μιγνῦνται δὲ μάγοι μητράσι καὶ θυγατράσι ; καὶ ἀδελφαῖς μιγνυσθαι δίκαιον εἶναι."
+      "text": "Clemens. Alex. Strom. l. 3. ex Xantho in Magis. Μιγνῦνται δὲ μάγοι μητράσι καὶ θυγατράσι ; καὶ ἀδελφαῖς μίγνυσθαι δίκαιον εἶναι.",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "classical",
+        "title",
+        "latin",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Strom",
+          "original": "Stromata"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Eusèbe, Préparation évangélique, livre 6, chapitre 10."
+      "text": "Eusèbe, Préparation évangélique, livre 6, chapitre 10.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Préparation évangélique",
+          "original": "Praeparatio evangelica"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Clément de Rome, Reconnaissances, livre 9 ; et Selden, Du droit naturel et des gens, livre 5, chapitre 11."
+      "text": "Clément de Rome, Reconnaissances, livre 9 ; et Selden, Du droit naturel et des gens, livre 5, chapitre 11.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Reconnaissances",
+          "original": "Recognitiones"
+        },
+        {
+          "fr": "Du droit naturel et des gens",
+          "original": "De iure naturali et gentium iuxta disciplinam Ebraeorum libri septem"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Diodore de Sicile, livre 1."
+      "text": "Diodore de Sicile, livre 1.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Philo de spécial. leg. ad 6. præcept."
+      "text": "Philo de spécial. leg. ad 6. præcept.",
+      "tags": [
+        "rabbis"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Saint Augustin, La Cité de Dieu, livre 15, chapitre 16. Habita est enim ratio rectissima charitatis, ut homines quibus esset utilis atque honesta concordia, diversarum necessitudinum vinculis necterentur, etc."
+      "text": "Saint Augustin, La Cité de Dieu, livre 15, chapitre 16. Habita est enim ratio rectissima charitatis, ut homines quibus esset utilis atque honesta concordia, diversarum necessitudinum vinculis necterentur, etc.",
+      "tags": [
+        "fathers",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        }
+      ]
     }
   ],
   "book_end_marker": null

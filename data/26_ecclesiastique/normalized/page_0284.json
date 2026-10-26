@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 14,
       "latin_quote": "VIRO CUPIDO, ET TENACI SINE RATIONE EST SUBSTANTIA.",
       "french_translation": "Le bien est inutile à un homme avare, et attaché à l'argent.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 14,
       "latin_quote": "QUI ACERVAT EX ANIMO SUO INJUSTE, ALIIS CONGREGAT.",
       "french_translation": "Celui qui amasse injustement des richesses sans en user, les amasse pour d'autres.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 14,
       "latin_quote": "QUI SIBI NEQUAM EST, CUI ALII BONUS ERIT ?",
       "french_translation": "A qui sera bon, celui qui est mauvais à lui-même ?",
@@ -55,27 +55,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide infra ℣. 6. et 8. et XVIII. 1. XXXVIII. 12. Grot. Bossuet."
+      "text": "Vide infra ℣. 6. et 8. et XVIII. 1. XXXVIII. 12. Grot. Bossuet.",
+      "tags": [
+        "verse",
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Horace, livre 1, lettre 1."
+      "text": "Horace, livre 1, lettre 1.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Matthieu 6:19-20 ; Luc 12:33."
+      "text": "Matthieu 6:19-20 ; Luc 12:33.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Luc 16:9."
+      "text": "Luc 16:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Græc. Ο' συνάγων ἀπὸ τῆς ψυχῆς ἀυτῶ."
+      "text": "Græc. Ὁ συνάγων ἀπὸ τῆς ψυχῆς αὐτοῦ.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ecclésiaste 2:18. 4:7-8. 6:2."
+      "text": "Ecclésiaste 2:18. 4:7-8. 6:2.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

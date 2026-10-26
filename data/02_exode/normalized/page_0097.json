@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 3,
       "latin_quote": "EGO SUM QUI SUM.",
       "french_translation": "Je suis celui qui est.",
@@ -33,31 +33,56 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "אֶהְיֶה אֲשֶׁר אֶהְיֶה Aquila ; Théodotion : ἔσομαι, ὃς ἔσομαι. Je serai, je serai. Les Septante : Ἐγώ εἰμι ὁ ὢν. Je suis celui qui est."
+      "text": "אֶהְיֶה אֲשֶׁר אֶהְיֶה Aquila ; Théodotion : ἔσομαι, ὃς ἔσομαι. Je serai, je serai. Les Septante : Ἐγώ εἰμι ὁ ὢν. Je suis celui qui est.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "אֶהְיֶה שְׁלָחַנִי אֲלֵיהֶם"
+      "text": "אֶהְיֶה שְׁלָחַנִי אֲלֵיהֶם",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "יְהוָה"
+      "text": "יְהוָה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Pererius ;\nZanchius ;\nBuxtorf."
+      "text": "Pererius ;\nZanchius ;\nBuxtorf.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "ה marque le futur, ו le présent, ה le passé."
+      "text": "ה marque le futur, ו le présent, ה le passé.",
+      "tags": [
+        "hebrew",
+        "explanation"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Apocalypse 1:4. Ὁ ὧν, ὁ ἦν, καὶ ὁ ἐρχόμενος."
+      "text": "Apocalypse 1:4. Ὁ ὧν, ὁ ἦν, καὶ ὁ ἐρχόμενος.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Ἀρχὴν ἁδὲς ἔχων, ἅμα καὶ μέσον, ἠδὲ τελευτὴν. Ως λόγος ἀρχαίων, ὡς ὑδογενὴς διέταξε Εκ διπλῶν γραμμῶν λαβὼν παρὰ διπλᾶκα δακτῶν."
+      "text": "Ἀρχὴν ἁδὲς ἔχων, ἅμα καὶ μέσον, ἠδὲ τελευτὴν. Ὡς λόγος ἀρχαίων, ὡς ὑδογενὴς διέταξε Ἐκ διπλῶν γραμμῶν λαβὼν παρὰ διπλᾶκα δακτῶν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

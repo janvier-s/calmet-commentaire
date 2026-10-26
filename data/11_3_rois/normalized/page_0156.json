@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 6,
       "latin_quote": "SED ET PAVIMENTUM DOMUS TEXIT AURO INTERIUS ET EXTERIUS.",
       "french_translation": "Il couvrit aussi d'or le pavé du Temple au-dedans, et au-dehors.",
@@ -40,23 +40,49 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "וכל קירות הבית מסב קלע פתוחי מקלעות כרובים ותמרת ופטורי ציצים מבית ולחוץ"
+      "text": "וכל קירות הבית מסב קלע פתוחי מקלעות כרובים ותמרת ופטורי ציצים מבית ולחוץ",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Herodot. lib. 2. c. 169. E'st δὲνεν αὐλὴ τῆ ἱρῆ κατὰ λιθίνα μεγάλα, κ, κολossοῖσι Φοίνικας τὰ δώδεκα μεμιμημένοισι."
+      "text": "Herodot. lib. 2. c. 169. E'st δῦνεν αὐλὴ τῆ ἱρῆ κατὰ λιθίνα μεγάλα, κ, κολossοῖσι Φοίνικας τὰ δώδεκα μεμιμημένοισι.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Villalpand, tome 2, livre 5, chapitre 5, page 423."
+      "text": "Villalpand, tome 2, livre 5, chapitre 5, page 423.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Athénée, Deipnosophistes, livre 5, chapitre 9. Voyez notre Commentaire sur Exode 26:31."
+      "text": "Athénée, Deipnosophistes, livre 5, chapitre 9. Voyez notre Commentaire sur Exode 26:31.",
+      "tags": [
+        "verse",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Deipnosophistes",
+          "original": "Deipnosophistae"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "2 Paralipomènes 3:5. Sculpsitque in ea palmas, et quasi catenulas se invicem complectentes. Voyez aussi 2 Paralipomènes 3:16."
+      "text": "2 Paralipomènes 3:5. Sculpsitque in ea palmas, et quasi catenulas se invicem complectentes. Voyez aussi 2 Paralipomènes 3:16.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

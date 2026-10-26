@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 13,
       "latin_quote": null,
       "french_translation": null,
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 13,
       "latin_quote": "IN ORE ABSALON ERAT POSITUS, EX DIE QUO OPPRESSIT THAMAR.",
       "french_translation": "Absalon avait résolu de le perdre, depuis le jour qu'il avait fait violence à Thamar.",
@@ -61,19 +61,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Idem lib. 6. c. 36. Kiri et de Zveija δι καλαφθεῖσαι ἀφαίρεσιν ἔνεμον ἦσαν τῆς εἰς συνουσιασμὸν ἀλογοφόρου ὁρμῆς, ὅμοιοι δὲ καὶ ὀψιν … τὴν ἰσχυρότητα διαφέροντες."
+      "text": "Idem lib. 6. c. 36. Kiri et de Zveija δῑ κολαφθεῖσαι ἀφαίρεσιν ἔνεμον ἦσαν τῆς εἰς συνουσιασμὸν ἀλογοφόρου ὁρμῆς, ὅμοιοι δὲ καὶ ὄψιν … τὴν ἰσχυρότητα διαφέροντες.",
+      "tags": [
+        "greek",
+        "classical",
+        "latin",
+        "abbrev",
+        "ibid"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Nombres 3:16 ; 9:18, 20, passim."
+      "text": "Nombres 3:16 ; 9:18, 20, passim.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Junius ;\nPiscator ;\nMalvenda."
+      "text": "Junius ;\nPiscator ;\nMalvenda.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Aquila ; Symmaque : Ὅτι ἐν ἀγρῷ ἦν αὐτῷ Αβεσσαλὼμ ἀπὸ τῆς ἡμέρας, etc."
+      "text": "Aquila ; Symmaque : Ὅτι ἐν ἀγρῷ ἦν αὐτῷ Αβεσσαλὼμ ἀπὸ τῆς ἡμέρας, etc.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

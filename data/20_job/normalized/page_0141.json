@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 7,
       "latin_quote": "ELEGIT ANIMA MEA SUSPENDIUM, ET MORTEM OSSA MEA.",
       "french_translation": "C'est pourquoi je choisirais plutôt une mort violente, et il vaudrait mieux que mes os fussent réduits en poudre.",
@@ -40,19 +40,42 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Strabon, livres 1 et 3 ;\net Végèce, De re militari, livre 4, chapitre 42 ;\nSolin, chapitre 32."
+      "text": "Voyez Strabon, livres 1 et 3 ;\net Végèce, De re militari, livre 4, chapitre 42 ;\nSolin, chapitre 32.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De re militari",
+          "original": "De re militari"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Agell. lib. 13. cap. 21. Ferocissimos, et immanes et alienos ab omni humanitate, [UNCERTAIN GREEK] quàm à mari genitos, Neptuni filios dixerunt."
+      "text": "Agell. lib. 13. cap. 21. Ferocissimos, et immanes et alienos ab omni humanitate, [UNCERTAIN GREEK] quàm à mari genitos, Neptuni filios dixerunt.",
+      "tags": [
+        "classical",
+        "latin",
+        "abbrev",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "[UNCERTAIN GREEK] _Ημ, η θαλασση, η γυνη, κακα τρια._"
+      "text": "[UNCERTAIN GREEK] _Ημ, η θαλάσσῃ, η γυνη, κακα τρία._",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "[UNCERTAIN HEBREW]"
+      "text": "[UNCERTAIN HEBREW]",
+      "tags": [
+        "uncertain"
+      ]
     }
   ],
   "metadata": {

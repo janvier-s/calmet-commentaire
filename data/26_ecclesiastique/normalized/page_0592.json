@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 39,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 39,
       "latin_quote": "IN MEDIO MAGNATORUM MINISTRABIT.",
       "french_translation": "Il entrera au service des Grands, et il paraîtra devant les Gouverneurs de Province.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 39,
       "latin_quote": "IN TERRAM ALIENIGENARUM GENTIUM PERTRANSIET.",
       "french_translation": "Il passera dans les terres des nations étrangères.",
@@ -48,31 +48,63 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Supra 38:38. _In parabolis non invenientur_"
+      "text": "Supra 38:38. _In parabolis non invenientur_",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 26:7. _Indecens in ore stulti parabola._ Ecclésiastique 20:22. _Ex ore stulti reprobabitur parabola._"
+      "text": "Proverbes 26:7. _Indecens in ore stulti parabola._ Ecclésiastique 20:22. _Ex ore stulti reprobabitur parabola._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ε'ν μέσῳ μεγιϛάνων ἱδρύθησε."
+      "text": "Ἐν μέσῳ μεγιϛάνων ἱδρύθησε.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Daniel 1:4-5."
+      "text": "Daniel 1:4-5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Genèse 42:32, 38."
+      "text": "Genèse 42:32, 38.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Genèse 46:2 ; 47:3-4."
+      "text": "Genèse 46:2 ; 47:3-4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Homer. Odyss. XVIII. et XIX. Αυ'ταρ ε'γώ θυμῶ σοι'σιν, η'δ' α'γαθα η'δε κακα Ε'ιδέναι η'γ' ω' χρύσα."
+      "text": "Homer. Odyss. XVIII. et XIX. Αυ'ταρ ε'γώ θυμῶ σοι'σιν, η'δ' α'γαθα η'δε κακα Εἰδέναι η'γ' ω' χρύσα.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Odyss",
+          "original": "Odyssea"
+        }
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 13,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 13,
       "latin_quote": "QUASI APPENSUM QUID.",
       "french_translation": "Comme une chose suspendue.",
@@ -40,55 +40,117 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Josèphe, Contre Apion."
+      "text": "Voyez Josèphe, Contre Apion.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Tacite, Histoires, livre 5."
+      "text": "Tacite, Histoires, livre 5.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoires",
+          "original": "Historiae"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "טוטפות"
+      "text": "טוטפות",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ἀσάλευτον."
+      "text": "Ἀσάλευτον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Εις ατιναξία. Voyez nov. Édit. Hexaplorum."
+      "text": "Εἰς ατιναξία. Voyez nouvelle édition ; les Hexaples.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "תפילין"
+      "text": "תפילין",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Esther 8:15 ; Ézéchiel 14:17, 23."
+      "text": "Esther 8:15 ; Ézéchiel 14:17, 23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "2 Rois 1:10."
+      "text": "2 Rois 1:10.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "טוף"
+      "text": "טוף",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "Arabe. טפא"
+      "text": "Arabe. טפא",
+      "tags": [
+        "hebrew",
+        "versions"
+      ]
     },
     {
       "marker": "(l)",
-      "text": "Rabbini quidam apud Munster."
+      "text": "Rabbini quidam apud Munster.",
+      "tags": [
+        "rabbis",
+        "commentators"
+      ]
     },
     {
       "marker": "(m)",
-      "text": "Oleaster ;\nMunster ;\nMayer, Philologia sacra, page 120."
+      "text": "Oleaster ;\nMunster ;\nMayer, Philologia sacra, page 120.",
+      "tags": [
+        "commentators",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Philologia sacra",
+          "original": "Philologia sacra"
+        }
+      ]
     },
     {
       "marker": "(n)",
-      "text": "Petit Var. Lect. טוטפות Pudenda è luto efformata. Idem Ἀσάλευτον, rescissenda, legit, pro ἀσάλευτον, apud 70."
+      "text": "Petit Var. Lect. טוטפות Pudenda è luto efformata. Idem Ἀσάλευτον, rescissenda, legit, pro ἀσάλευτον, apud 70.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "commentators",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

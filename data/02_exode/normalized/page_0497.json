@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "36",
+      "verse_ref": 36,
       "chapter": 28,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "37",
+      "verse_ref": 37,
       "chapter": 28,
       "latin_quote": "LIGABISQUE EAM VITTA HYACINTHINA, ET ERIT SUPER TIARAM, IMMINENS FRONTI PONTIFICIS.",
       "french_translation": "Vous la lierez avec un ruban de couleur d'hyacinthe, et elle sera sur la tiare, et sur le front du grand-Prêtre.",
@@ -33,19 +33,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ecclésiastique 45:13."
+      "text": "Ecclésiastique 45:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Quinte-Curce, livre 3."
+      "text": "Quinte-Curce, livre 3.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Philon, Vie de Moïse, livre 3. Μίτρα δὲ ἦν διπλῆ, καὶ ψαύει κεφαλῆς τὸ μέλλον."
+      "text": "Philon, Vie de Moïse, livre 3. Μίτρα δὲ ἦν διπλῆ, καὶ ψαύει κεφαλῆς τὸ μέλλον.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Vie de Moïse",
+          "original": "De vita Mosis"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Aristæ de 70 Interpp. Ἐπὶ δὲ τοῦ μετώπου (κυρίας) τὴν ἀκίρρωτον μίτραν, τὸ καθηγιασμένον βασιλεῖον. Ἐν εἰκόνι ἐπὶ πετάλῳ χρυσῷ τὸ ὄνομα τοῦ Θεοῦ, κατὰ μέσον τῶν ὀφρύων."
+      "text": "Aristæ de 70 Interpp. Ἐπὶ δὲ τοῦ μετώπου (κυρίας) τὴν ἀκίρρωτον μίτραν, τὸ καθηγιασμένον βασιλεῦον. Ἐν εἰκόνι ἐπὶ πετάλῳ χρυσῷ τὸ ὄνομα τοῦ Θεοῦ, κατὰ μέσον τῶν ὀφρύων.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

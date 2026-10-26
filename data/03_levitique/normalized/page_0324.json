@@ -32,7 +32,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 25,
       "latin_quote": "IMPLEATUR ANNUS.",
       "french_translation": "Il aura le pouvoir de la racheter pendant un an.",
@@ -40,7 +40,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 25,
       "latin_quote": "ANNI CIRCULUS EVOLUTUS.",
       "french_translation": "Qu'il ait laissé passer l'année.",
@@ -48,7 +48,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 25,
       "latin_quote": "ÆDES LEVITARUM QUÆ IN URBIBUS SUNT,",
       "french_translation": null,
@@ -58,7 +58,13 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "[UNCERTAIN HEBREW] 70. Ενιαυτὸς ἀμώμ. Annus integer. Alius : Ενιαυτὸς ἀμώμ. Annus immaculatus."
+      "text": "[UNCERTAIN HEBREW] 70. Ἐνιαυτὸς ἀμώμ. Annus integer. Alius : Ἐνιαυτὸς ἀμώμ. Annus immaculatus.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "uncertain"
+      ]
     }
   ],
   "book_end_marker": null

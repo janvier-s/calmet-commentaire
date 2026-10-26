@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 2,
       "latin_quote": "AQUAM EMPTAM HAURIETIS.",
       "french_translation": "Vous payerez l'eau que vous boirez.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 2,
       "latin_quote": "NOVIT ITER TUUM.",
       "french_translation": "Il a eu soin de vous dans votre chemin.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 2,
       "latin_quote": "PER VIAM CAMPESTREM DE ELAT, ET DE ASION-GABER.",
       "french_translation": "Par le chemin de la plaine d'Elat, et d'Asion-Gaber.",
@@ -48,19 +48,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Nombres 20:20."
+      "text": "Nombres 20:20.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Psaumes 1:6."
+      "text": "Psaumes 1:6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Psaumes 36:18."
+      "text": "Psaumes 36:18.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Psaume 10:9, 10, 16:2, 32:18, 33:16, etc."
+      "text": "Psaumes 10:9-10 ; 16:2 ; 32:18 ; 33:16 etc.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     }
   ],
   "book_end_marker": null

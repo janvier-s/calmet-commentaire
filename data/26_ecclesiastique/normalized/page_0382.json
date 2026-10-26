@@ -29,15 +29,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 22,
       "latin_quote": "CONFUSIO PATRIS EST DE FILIO INDISCIPLINATO.",
-      "french_translation": "Le fils mal instruit, est la honte de son père, et la fille immodeste sera peu estimée. Ou, Elle ruinera sa famille : In deminoratione fiet. ^{(a)}",
-      "french_commentary": "Le Sage fait souvent cette remarque, que comme les enfants d'une bonne éducation, et le dérèglement de leur vie, sont la honte, et la douleur de leurs parents. Les filles vaines et somptueuses sont d'ordinaire peu réglées, et causent la honte, et la ruine de leur famille. Auguste qui n'avait point été heureux en enfants, s'écriait souvent dans sa douleur : _Plût à Dieu que je n'eusse jamais été ni époux, ni père._ ^{(b)}"
+      "french_translation": "Le fils mal instruit, est la honte de son père, et la fille immodeste sera peu estimée.",
+      "french_commentary": "Ou, _Elle ruinera sa famille : In deminoratione fiet_. ^{(a)} Le Sage fait souvent cette remarque, que comme les enfants d'une bonne éducation, et le dérèglement de leur vie, sont la honte, et la douleur de leurs parents. Les filles vaines et somptueuses sont d'ordinaire peu réglées, et causent la honte, et la ruine de leur famille. Auguste qui n'avait point été heureux en enfants, s'écriait souvent dans sa douleur : _Plût à Dieu que je n'eusse jamais été ni époux, ni père._ ^{(b)}"
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 22,
       "latin_quote": "FILIA PRUDENS HÆREDITAS VIRO SUO.",
       "french_translation": "La fille prudente sera un héritage pour son mari.",
@@ -45,29 +45,43 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 22,
       "latin_quote": "PATREM, ET VIRUM CONFUNDIT AUDAX.",
-      "french_translation": "La femme hardie, impudente, immodeste, couvre de honte son père, et son mari :",
-      "french_commentary": null
+      "french_translation": "La femme hardie,",
+      "french_commentary": "impudente, immodeste, _couvre de honte son père, et son mari :_"
     }
   ],
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ἐν ̓ ἐλαττώσει γένους."
+      "text": "Ἐν ̓ ἐλαττώσει γένους.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Sueton. in August. Κἂν ὄφελον ἄγαμός τ' ἔμεναι, ἄγονός τ' ἀπολέσθαι."
+      "text": "Sueton. in August. Κἂν ὄφελον ἄγαμός τ' ἔμεναι, ἄγονός τ' ἀπολέσθαι.",
+      "tags": [
+        "greek",
+        "fathers",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Proverbes 31:29."
+      "text": "Proverbes 31:29.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Θυγάτηρ Φρόνιμη κληρονομήσει τὸν ἄνδρα ἀυτῆς. _Complut._ Κληρονομήσει ἄνδρος ἀυτῆς."
+      "text": "Θυγάτηρ Φρόνιμη κληρονομήσει τὸν ἄνδρα ἀυτῆς. _Complut._ Κληρονομήσει ἄνδρος ἀυτῆς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

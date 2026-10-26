@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "38",
+      "verse_ref": 38,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "39",
+      "verse_ref": 39,
       "chapter": 7,
       "latin_quote": "QUINQUE AD DEXTERAM PARTEM TEMPLI, ET QUINQUE AD SINISTRAM : MARE AUTEM POSUIT AD DEXTERAM PARTEM TEMPLI.",
       "french_translation": "Il plaça cinq socles au côté droit du Temple, et cinq autres au côté gauche. Et il mit la mer d'airain au côté droit.",
@@ -33,15 +33,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide 2 Paralipomènes 4:6. Ut lavarent in eis omnia quæ in holocaustum oblaturi erant. Porrò in mari Sacerdotes lavabantur. Joseph antiq. l. 8. c. 2. τὰς δὲ λεκύθες εἰς τὸ κήδειον ὡς ἵναῖς τῶν ἀλοκαυλυμsων ζώων, ὴ τὰς αἰδας ἀν."
+      "text": "Vide 2 Paralipomènes 4:6. Ut lavarent in eis omnia quæ in holocaustum oblaturi erant. Porrò in mari Sacerdotes lavabantur. Joseph antiq. l. 8. c. 2. τὰς δὲ λεκύθες εἰς τὸ κήδειον ὡς ἵναῖς τῶν ἀλοκαυλυμsὧν ζώων, ὴ τὰς αἰδας ἀν.",
+      "tags": [
+        "greek",
+        "verse",
+        "rabbis",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ovide, Fastes, livre 5."
+      "text": "Ovide, Fastes, livre 5.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Virgile, Énéide, livre 6. Voyez Spencer, Des lois rituelles des Hébreux, dissertation 3, De lustrationibus et purificationibus, etc."
+      "text": "Virgile, Énéide, livre 6. Voyez Spencer, Des lois rituelles des Hébreux, dissertation 3, De lustrationibus et purificationibus, etc.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des lois rituelles des Hébreux",
+          "original": "De legibus Hebraeorum ritualibus"
+        }
+      ]
     }
   ],
   "book_end_marker": null

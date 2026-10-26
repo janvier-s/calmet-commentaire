@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 3,
       "latin_quote": "JUDICIUM PATRIS, AUDITE, FILII, ETC.",
       "french_translation": "Écoutez, enfants, les avis de votre père.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 3,
       "latin_quote": "DEUS ENIM HONORAVIT PATREM IN FILIIS, ET JUDICIUM MATRIS EXQUIRENS, FIRMAVIT IN FILIOS.",
       "french_translation": "Car Dieu a rendu le père vénérable aux enfants, et il a affermi sur eux l'autorité de la mère.",
@@ -48,19 +48,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Augustin, dans le Miroir."
+      "text": "Saint Augustin, dans le Miroir.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εμᾶ τε λόγες ἀκέσατε, τέκνα."
+      "text": "Εμᾶ τε λόγους ἀκούσατε, τέκνα.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Philon, livre du Décalogue."
+      "text": "Philon, livre du Décalogue.",
+      "tags": [
+        "rabbis"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ὁ γὰρ Κύριος ἐδόξασε πατέρα ἐπὶ τέκνοις τὲ πάλιν κρίσιν μητρὸς ἐστερέωσεν ἐφ' υἱοῖς. Le Grec ne lit pas le mot, _exquirens_, qui rend ce passage obscur."
+      "text": "Ὁ γὰρ Κύριος ἐδόξασε πατέρα ἐπὶ τέκνοις τὲ πάλιν κρίσιν μητρὸς ἐστερέωσεν ἐφ' υἱοῖς. Le Grec ne lit pas le mot, _exquirens_, qui rend ce passage obscur.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

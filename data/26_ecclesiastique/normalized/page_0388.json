@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 22,
       "latin_quote": "COGITATUS SENSATI, ETC.",
       "french_translation": "La résolution d'un homme sensé ne s'affoiblira point, en quelque temps que ce soit.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 22,
       "latin_quote": "SICUT PALI ^{(b)} IN EXCELSIS, ET CÆMENTA SINE IMPENSA, ETC.",
       "french_translation": "Comme des piquets en un lieu élevé, et une muraille de pierres séches ne peuvent résister à la violence des vents ; ainsi le cœur timide, etc.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 22,
       "latin_quote": "SIC COR TREPIDUM IN COGITATIONE FATUI, OMNI TEMPORE NON METUET, ETC.",
       "french_translation": "Comme le cœur craintif de l'insensé, demeure toujours dans sa pensée, sans aucune crainte ; ainsi est immuable celui qui se tient toujours attaché aux commandements de Dieu.",
@@ -55,11 +55,21 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Καρδία ἠδρασμένη ἐπὶ διανοίας συνετῆς ὡς χρίσμα ψάμμου ἐπὶ τοίχου ξυστοῦ. Sicut Palere in excelsis. Græc. Χάρακες ἐπὶ ριπίδων. Pali in excelso."
+      "text": "Καρδία ἡδρασμένη ἐπὶ διανοίας συνετῆς ὡς χρίσμα ψάμμου ἐπὶ τοίχου ξυστοῦ. Sicut Palere in excelsis. Græc. Χάρακες ἐπὶ ῥιπίδων. Pali in excelso.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Complut. Sixt. V. alii plerique antiqui."
+      "text": "Complut. Sixt. V. alii plerique antiqui.",
+      "tags": [
+        "versions",
+        "latin",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

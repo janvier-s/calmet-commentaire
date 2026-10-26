@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": "vous fiez pas si-tôt à lui.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 6,
       "latin_quote": "EST ENIM AMICUS, SECUNDUM TEMPUS SUUM.",
       "french_translation": "Car tel est ami, qui ne l'est que tant qu'il y trouve son avantage :",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 6,
       "latin_quote": "EST AMICUS, QUI CONVERTITUR AD INIMICITIAM.",
       "french_translation": null,
@@ -48,31 +48,62 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Εἰ κτάσῃ φίλον, ἐν πειρασμῷ κτῆσαι αὐτὸν, et μὴ ταχὺ ἐμπιστεύσῃς αὐτῷ."
+      "text": "Εἰ κτάσῃ φίλον, ἐν πειρασμῷ κτῆσαι αὐτὸν, et μὴ ταχὺ ἐμπιστεύσῃς αὐτῷ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Φίλον μὴ ταχὺ κτῶ, ὃν δ' ἂν κτήσῃ, μὴ ἀποδοκίμαζε. Dans Diogène Laërce, livre 1."
+      "text": "Φίλον μὴ ταχὺ κτῶ, ὃν δ' ἂν κτήσῃ, μὴ ἀποδοκίμαζε. Dans Diogène Laërce, livre 1.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Plut. Περὶ πολυφιλ. Δεῖ φιλίας κῤ συνήθειαν τέλῳ παραλαβεῖν ἐν τιμῇ κῤ χρείαις."
+      "text": "Plut. Περὶ πολυφιλ. Δεῖ φιλίας κῤ συνήθειαν τέλῳ παραλαβεῖν ἐν τιμῇ κῤ χρείαις.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Diogène Laërce, livre 2, chapitre 8."
+      "text": "Diogène Laërce, livre 2, chapitre 8.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Saint Jean Chrysostome, Homélie 61 sur saint Matthieu."
+      "text": "Saint Jean Chrysostome, Homélie 61 sur saint Matthieu.\nCassien, Conférences 16, chapitre 3.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Conférences",
+          "original": "Collationes"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Cassien, Conférences 16, chapitre 3."
-    },
-    {
-      "marker": "(g)",
-      "text": "Cicéron, De l'amitié ; et saint Augustin, livre 3, Contre les Académiques."
+      "text": "Cicéron, De l'amitié ; et saint Augustin, livre 3, Contre les Académiques.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De l'amitié",
+          "original": "De amicitia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

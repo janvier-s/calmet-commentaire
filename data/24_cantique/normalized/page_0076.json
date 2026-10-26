@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 4,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 4,
       "latin_quote": "VULNERASTI COR MEUM, SOROR MEA, SPONSA ; IN UNO OCULORUM TUORUM, ET IN UNO CRINE COLLI TUI.",
       "french_translation": "Vous avez blessé mon cœur, ma sœur, mon Épouse, par un de vos yeux, et par un cheveu de votre cou.",
@@ -33,19 +33,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "לבבתני אחותי כלה 70. _Exastimaras me._ Édit. _E'Saponas µe._ Vous m'avez donné du cœur. _Ita Sym apud Theodoret._"
+      "text": "לבבתני אחותי כלה 70. _Exastimaras me._ Édit. _E'Saponas µe._ Vous m'avez donné du cœur. _Ita Sym apud Theodoret._",
+      "tags": [
+        "hebrew",
+        "verse",
+        "fathers",
+        "versions",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Virgile, Énéide 1."
+      "text": "Virgile, Énéide 1.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "70. Εν µια οαθµατι τραχηλου συ. Sym. Τω όµοιωµατι τω τραχηλω συ. Mais Aqu Εν ἑνι κλοιω µας απω τραχηλω συ. Par une de vos tresses."
+      "text": "70. Ἐν µια οαθµἅτι τραχήλου σὺ. Sym. Τῷ όµοιωµἅτι τῷ τραχήλῳ σὺ. Mais Aqu Ἐν ἑνι κλοιῷ µἃς ἀπῶ τραχήλῳ σὺ. Par une de vos tresses.",
+      "tags": [
+        "greek",
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Proverbes 7:4 ; Esther 15:8."
+      "text": "Voyez Proverbes 7:4 ; Esther 15:8.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

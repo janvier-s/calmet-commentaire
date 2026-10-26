@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 38,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 38,
       "latin_quote": "NUMQUID PRODUCIS LUCIFERUM ?",
       "french_translation": "Est-ce vous qui faites paraître l'étoile du matin ?",
@@ -33,27 +33,59 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "[UNCERTAIN HEBREW] התקשר מעדנות כימה. Comme s'ils avaient lû [UNCERTAIN HEBREW] מעדנים plenum, au lieu de [UNCERTAIN HEBREW] מעדנות. _Amenitates_. Le verbe _ligabis_, favorise la première leçon. Aq. et Sym. [UNCERTAIN GREEK] Η' συνδήσεις πέλειας πλειάδος. Joindrez-vous les parties de la Pleiade."
+      "text": "[UNCERTAIN HEBREW] התקשר מעדנות כימה. Comme s'ils avaient lû [UNCERTAIN HEBREW] מעדנים plenum, au lieu de [UNCERTAIN HEBREW] מעדנות. _Amenitates_. Le verbe _ligabis_, favorise la première leçon. Aq. et Sym. [UNCERTAIN GREEK] Ἠ συνδήσεις πέλειας πλειάδος. Joindrez-vous les parties de la Pleiade.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "latin",
+        "explanation",
+        "abbrev",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "[UNCERTAIN GREEK] Και φαινομένων ἀστέρων ἡνιόχας."
+      "text": "[UNCERTAIN GREEK] Καὶ φαινομένων ἀστέρων ἡνιόχης.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "[UNCERTAIN HEBREW] או מושכות כסיל תפתח."
+      "text": "[UNCERTAIN HEBREW] או מושכות כסיל תפתח.",
+      "tags": [
+        "hebrew",
+        "uncertain"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "[UNCERTAIN HEBREW] התוציא מזרות בעתו. _Numquid educes Mazuroth in tempore suo ?_ Comme s'ils avaient lû [UNCERTAIN HEBREW] מזרותם au lieu de [UNCERTAIN HEBREW] מזרות. _Educens Mazuroth_. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule."
+      "text": "[UNCERTAIN HEBREW] התוציא מזרות בעתו. _Numquid educes Mazuroth in tempore suo ?_ Comme s'ils avaient lû [UNCERTAIN HEBREW] מזרותם au lieu de [UNCERTAIN HEBREW] מזרות. _Educens Mazuroth_. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule.",
+      "tags": [
+        "hebrew",
+        "latin",
+        "explanation",
+        "uncertain"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "[UNCERTAIN GREEK] Η' διανοίξεις μαζουρὼθ ἐν καιρῷ αὐτῶν. Chrys. sost. μαζουρὼθ τὰ συστήματα τῶν ἀστέρων, ἢ τὰ τῆς οἰκουμένης ζώδια καλέσαι. Ήτοι δὲ φάινεσθαι… τὰ ἀστέρων χορεία. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule."
+      "text": "[UNCERTAIN GREEK] Ἦ διανοίξεις μαζουρὼθ ἐν καιρῷ αὐτῶν. Chrys. sost. μαζουρὼθ τὰ συστήματα τῶν ἀστέρων, ἢ τὰ τῆς οἰκουμένης ζώδια καλέσαι. Ἤτοι δὲ φάινεσθαι… τὰ ἀστέρων χορεία. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule.",
+      "tags": [
+        "greek",
+        "fathers",
+        "explanation",
+        "uncertain"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "2 Rois 23:5."
+      "text": "2 Rois 23:5.",
+      "tags": [
+        "verse"
+      ]
     }
   ]
 }

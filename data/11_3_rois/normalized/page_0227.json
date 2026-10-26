@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 9,
       "latin_quote": "BAALATH.",
       "french_translation": null,
@@ -40,27 +40,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "1 Rois 18:25."
+      "text": "1 Rois 18:25.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "2 Machabées 1:13-14."
+      "text": "2 Machabées 1:13-14.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Genèse 34:12."
+      "text": "Genèse 34:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Homère, Iliade, I. Τάων ἐκ ἐθέλοιμι φίλον ἄπο δῶρον ἄγεσθαι, Πρὸς δέ τοι ἑπτὰ πόλεις εὖ ναιομένας κιχήσω."
+      "text": "Homère, Iliade, I. Τάων ἐκ ἐθέλοιμι φίλον ἄπο δῶρον ἄγεσθαι, Πρὸς δέ τοι ἑπτὰ πόλεις εὖ ναιομένας κιχήσω.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Προικαμιαῖα, ὅσα ἔθος ἦν ἐπιδιδόναι δωρεὰς, Ἐπὶ δὲ δι δῶρα διδόμενα πλεῖστα. מהר שלחים ומתנה καὶ δῶρα."
+      "text": "Προικαμιαῖα, ὅσα ἔθος ἦν ἐπιδιδόναι δωρεὰς, Ἐπὶ δὲ δῑ δῶρα διδόμενα πλεῖστα. מהר שלחים ומתנה καὶ δῶρα.",
+      "tags": [
+        "hebrew",
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Εἴδια."
+      "text": "Εἴδια.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": "III. Livre des Rois."

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "35",
+      "verse_ref": 35,
       "chapter": 4,
       "latin_quote": "NOLI ESSE SICUT LEO IN DOMO TUA, ETC.",
       "french_translation": "Ne soyez point comme un lion dans votre maison, en vous rendant terrible à vos domestiques, et à ceux qui vous sont soumis.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "36",
+      "verse_ref": 36,
       "chapter": 4,
       "latin_quote": "NON SIT PORRECTA MANUS AD ACCIPIENDUM, ETC.",
       "french_translation": "Que votre main ne soit point ouverte pour recevoir, et fermée pour donner.",
@@ -33,11 +33,20 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Μὴ ἰσθι ὡς λέων ἐν τῷ ἰκῷ σου, καὶ φαντασιοκοπῶν ἐν τοῖς οἰκέταις σου. D'autres lisent : Φαντασιοπλήκτος; Soupçonneux, un homme qui a le cerveau blessé, qui se repaît de chimères. Voyez Grotius, et Hoeschelius."
+      "text": "Μὴ ἴσθι ὡς λέων ἐν τῷ ἰκῷ σου, καὶ φαντασιοκοπῶν ἐν τοῖς οἰκέταις σου. D'autres lisent : Φαντασιοπλήκτως; Soupçonneux, un homme qui a le cerveau blessé, qui se repaît de chimères. Voyez Grotius, et Hoeschelius.",
+      "tags": [
+        "greek",
+        "versions",
+        "commentators",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Actes 20:35."
+      "text": "Actes 20:35.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

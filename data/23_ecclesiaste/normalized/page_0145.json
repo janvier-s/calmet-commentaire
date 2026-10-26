@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 12,
       "latin_quote": "IMPINGUABITUR LOCUSTA.",
       "french_translation": "La sauterelle s'engraissera.",
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 12,
       "latin_quote": "DISSIPABITUR CAPPARIS.",
       "french_translation": "Les capres se dissiperont.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 12,
       "latin_quote": "IBIT HOMO AD DOMUM ÆTERNITATIS SUÆ.",
       "french_translation": "L'homme s'en ira dans la maison de son éternité.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 12,
       "latin_quote": "CIRCUIBUNT IN PLATEA PLANGENTES.",
       "french_translation": "On marchera en",
@@ -41,31 +41,66 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Iliad. 3. Γήραϊ δὴ πόλεμοιο πεπαυμένοι ἀλλ᾽ ἀγορηταὶ ἐσθλοὶ, τεττίγεσσιν ἐοικότες, ὄἵτε καθ᾽ ὕλην. Δένδρεῳ ἐφεζόμενοι ὄπα λειριόεσσαν ἱεῖσι."
+      "text": "Iliad. 3. Γήραϊ δὴ πόλεμοι πεπαυμένοι ἀλλ᾽ ἀγορηταὶ ἐσθλοὶ, τεττίγεσσιν ἐοικότες, ὄἵτε καθ᾽ ὕλην. Δένδρεῳ ἐφεζόμενοι ὄπα λειριόεσσαν ἱεῖσι.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "וחגב תסחבל 70. Παχυνθῇ ἡ ἀκρίς."
+      "text": "וחגב תסחבל 70. Παχυνθῇ ἡ ἀκρίς.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Dioscorid. l. 2. c. 169."
+      "text": "Dioscorid. l. 2. c. 169.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ותפר האביונה 70. Καὶ διασκεδασθῇ ἡ κάππαρις."
+      "text": "ותפר האביונה 70. Καὶ διασκεδασθῇ ἡ κάππαρις.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Vat. Grot. Gaier. Tir. alii plerique."
+      "text": "Vat. Grot. Gaier. Tir. alii plerique.",
+      "tags": [
+        "commentators",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Psaumes 48:12."
+      "text": "Psaumes 48:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Job 7:9-10."
+      "text": "Job 7:9-10.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

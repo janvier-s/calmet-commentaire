@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "37",
+      "verse_ref": 37,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "38",
+      "verse_ref": 38,
       "chapter": 7,
       "latin_quote": "NON DESIS PLORANTIBUS IN CONSOLATIONE, ET CUM LUGENTIBUS AMBULA.",
       "french_translation": "Ne manquez pas de consoler ceux qui sont dans la tristesse, et marchez avec ceux qui sont dans le deuil.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "39",
+      "verse_ref": 39,
       "chapter": 7,
       "latin_quote": "NON TE PIGEAT VISITARE INFIRMUM, ETC.",
       "french_translation": "Ne soyez point paresseux à visiter les malades ; car c'est ainsi que vous vous affermirez dans la charité.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "40",
+      "verse_ref": 40,
       "chapter": 7,
       "latin_quote": "IN OMNIBUS OPERIBUS TUIS MEMORARE NOVISSIMA TUA, ET IN ÆTERNUM NON PECCABIS.",
       "french_translation": "Souvenez-vous dans toutes vos actions de votre dernière fin, et vous ne pécherez jamais.",
@@ -63,15 +63,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "August. Conf. ß lib 6. cap. 2."
+      "text": "August. Conf. ß lib 6. cap. 2.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "August. Epistol. 29. nov. Édit. et alibi."
+      "text": "August. Epistol. 29. nov. Édit. et alibi.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Μὴ ὄκνει ἐπισκέπτεσθαι ἄῤῥωστον, ἐκ γὰρ τῶν τοιύτων ἀγαπηθήσῃ."
+      "text": "Μὴ ὄκνει ἐπισκέπτεσθαι ἄρρωστον, ἐκ γὰρ τῶν τοιύτων ἀγαπηθήσῃ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

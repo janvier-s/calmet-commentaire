@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 8,
       "latin_quote": "IN MENSE ETHANIM, IN SOLEMNI DIE.",
       "french_translation": "Au jour solennel du mois Ethanim.",
@@ -32,7 +32,19 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph. Antiq. lib. 8. c. 2. Σνίδας in τῆς οφίδρα παρὰ τοῖς ἑβραίοις ἀγιοθέτης ὴ μετὰ ἀυτὸν χρόνω, ὴ τῆς σκηνοπηγίας καιρὸς ἑορτάζετο."
+      "text": "Joseph. Antiq. lib. 8. c. 2. Σνίδας in τῆς οφίδρα παρὰ τοῖς ἑδραίοις ἀγιοθέτης ὴ μετὰ αὐτὸν χρόνω, ὴ τῆς σκηνοπηγίας καιρὸς ἑορτάζετο.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. lib",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 30,
       "latin_quote": "TICULAM, QUAM PARIETES.",
       "french_translation": "Vous le revêtirez d'un or très pur, tant sa grille, que ses côtés.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 30,
       "latin_quote": "FACIESQUE EI CORONAM AUREOLAM PER GYRUM.",
       "french_translation": "Et nous lui ferez une petite couronne d'or, qui régnera tout autour ;",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 30,
       "latin_quote": "PONESQUE ALTARE CONTRA VELUM, ETC.",
       "french_translation": null,
@@ -55,35 +55,61 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "70. E'χαρα."
+      "text": "70. E'χαρα.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Josèphe, Antiquités judaïques, livre 3, chapitre 7."
+      "text": "Josèphe, Antiquités judaïques, livre 3, chapitre 7.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "גג"
+      "text": "גג",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Lévitique 10:1 et suivants."
+      "text": "Lévitique 10:1 et suivants.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Nombres 16:17 et suivants."
+      "text": "Nombres 16:17 et suivants.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ézéchiel 41:22."
+      "text": "Ézéchiel 41:22.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Στρεπλὼ στέφανον χρυσου̃ κυκλω."
+      "text": "Στρεπλὼ στέφανον χρυσοῦ κύκλῳ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Καὶ θήσεις αὐτὸ ἀπέναντι τοῦ καταπετάσματος, τοῦ ὄντος ἐπὶ τῆς κιβωτοῦ."
+      "text": "Καὶ θήσεις αὐτὸ ἀπέναντι τοῦ καταπετάσματος, τοῦ ὄντος ἐπὶ τῆς κιβωτοῦ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

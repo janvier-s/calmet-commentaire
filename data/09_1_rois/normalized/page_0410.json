@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 26,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 26,
       "latin_quote": "QUOD VENISSET CERTISSIME.",
       "french_translation": "Qu'il était venu très certainement.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 26,
       "latin_quote": "CUMQUE VIDISSET SAUL DORMIENTEM IN TENTORIO.",
       "french_translation": "Voyant que Saül dormait dans sa tente ; ou plutôt s'en doutant ;",
@@ -48,27 +48,51 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "הישימון 70. Ιεσσιμῶν. Aq. Tῆς ἐρημώσεως. Sym. Ερήμε. Du pays ruiné. Sym. E'ρημε. Du désert."
+      "text": "הישימון 70. Ιεσσιμῶν. Aq. Tῆς ἐρημώσεως. Sym. Ερήμε. Du pays ruiné. Sym. E'ἔρημε. Du désert.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "כי בא אל נכון"
+      "text": "כי בא אל נכון",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ἔγνω ὅτι ἦλθε Σαὺλ ἕτοιμος ἐκεῖ."
+      "text": "Ἔγνω ὅτι ἦλθε Σαὺλ ἕτοιμος ἐκεῖ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "שאול שכב במעגל"
+      "text": "שאול שכב במעגל",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Justin, livre 2."
+      "text": "Justin, livre 2.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ἐν λαμπήνῃ. Symmaque : Σκηνῇ. La tente, la lampéne, selon un Scholiaste Grec, était un chariot magnifique comme un carosse. Λαμπήνην, Εἶδος ἁμάξης λαμπρᾶς καὶ ποικίλης."
+      "text": "Ἐν λαμπήνῃ. Symmaque : Σκηνῇ. La tente, la lampéne, selon un Scholiaste Grec, était un chariot magnifique comme un carosse. Λαμπήνην, Εἶδος ἁμάξης λαμπρᾶς καὶ ποικίλης.",
+      "tags": [
+        "greek",
+        "versions",
+        "classical",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

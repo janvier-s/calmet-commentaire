@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 13,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 13,
       "latin_quote": "QUORUM ETSI SPECIE DELECTATI DEOS PUTAVERUNT, ETC.",
       "french_translation": "S'ils les ont cru des Dieux, à cause de leur beauté, qu'ils jugent de là quelle doit être la beauté du Créateur qui les a faits.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 13,
       "latin_quote": "A MAGNITUDINE SPECIEI, COGNOSCIBILITER POTERIT CREATOR EORUM VIDERI.",
       "french_translation": "Car la beauté, et la grandeur de la créature, peut faire connaître le Créateur.",
@@ -48,27 +48,61 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Boèce, livre 3 de la Consolation de la philosophie, mètre 9."
+      "text": "Boèce, livre 3 de la Consolation de la philosophie, mètre 9.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Augustin, Confessions, livre 10, chapitre 6."
+      "text": "Saint Augustin, Confessions, livre 10, chapitre 6.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Confessions",
+          "original": "Confessiones"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Le même, Confessions, livre 10, chapitre 27."
+      "text": "Le même, Confessions, livre 10, chapitre 27.",
+      "tags": [
+        "fathers",
+        "title",
+        "ibid"
+      ],
+      "titles": [
+        {
+          "fr": "Confessions",
+          "original": "Confessiones"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Romains 1:20."
+      "text": "Romains 1:20.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Complut. Ex ὴ ἀναλογίας, ϰ καλλος, ϰ μεγέθει κτισμάτων ἀναλόγως ὁ γενεσιεργὸς αὐτῶν θεωρεῖται."
+      "text": "Complut. Ex ὴ ἀναλογίας, ϰ κάλλος, ϰ μεγέθει κτισμάτων ἀναλόγως ὁ γενεσιουργὸς αὐτῶν θεωρεῖται.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Édition romaine : Ex γὰρ μεγέθους καλλονῆς κτισμάτων ἀναλόγως, etc."
+      "text": "Édition romaine : Ex γὰρ μεγέθους καλλονῆς κτισμάτων ἀναλόγως, etc.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 8,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 8,
       "latin_quote": "NON EST IN HOMINIS POTESTATE PROHIBERE SPIRITUM ; NEC HABET POTESTATEM IN DIE MORTIS, ETC.",
       "french_translation": "Il n'est pas au pouvoir de l'homme d'empêcher que l'âme ne quitte le corps ; il n'a point de puissance sur le jour de la mort, etc.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 8,
       "latin_quote": "INTERDUM DOMINATUR HOMO HOMINI IN MALUM SUUM.",
       "french_translation": "Un homme quelquefois en domine un autre pour son propre malheur.",
@@ -41,19 +41,33 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Οτι ουκ ἔστι γινώσκων τὶ τὸ ἐσόμενον, ὅτι καθὼς ἔσαι τίς ἀναγγελεῖ ἀυτῷ. Sym. Τίς τὰ ἐρόμενα ἀναγγελεῖ ἀυτῷ."
+      "text": "Ὅτι οὐκ ἔστι γινώσκων τὶ τὸ ἐσόμενον, ὅτι καθὼς ἔσται τίς ἀναγγελεῖ ἀυτῷ. Sym. Τίς τὰ ἐρόμενα ἀναγγελεῖ αὐτῷ.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "אין אדם שליט ברוח לכלא את הרוח ואין שלטון ביום המות ואין משלחת במלחמה ולא ימלט רשע את בעליו"
+      "text": "אין אדם שליט ברוח לכלא את הרוח ואין שלטון ביום המות ואין משלחת במלחמה ולא ימלט רשע את בעליו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ainsi l'entendent Olympiodore ; Cajetan."
+      "text": "Ainsi l'entendent Olympiodore ; Cajetan.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Jérôme. _Non in potestate animæ nostræ ne auferatur à nobis, et egrediatur ad imperium Domini spiritum cohibere. Nihil prodest ora concludere, et vitam retinere fugientem._"
+      "text": "Saint Jérôme. _Non in potestate animæ nostræ ne auferatur à nobis, et egrediatur ad imperium Domini spiritum cohibere. Nihil prodest ora concludere, et vitam retinere fugientem._",
+      "tags": [
+        "fathers",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

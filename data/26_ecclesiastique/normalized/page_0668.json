@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 45,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 45,
       "latin_quote": "DEDIT ILLI CORAM ^{(b)} PRÆCEPTA, ET LEGEM VITÆ, ETC.",
       "french_translation": "Il lui a donné ses préceptes devant tout son peuple.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 45,
       "latin_quote": "EXCELSUM FECIT AARON FRATREM SUUM.",
       "french_translation": "Il a élevé son frère Aaron, qui était comme lui de la Tribu de Lévi.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 45,
       "latin_quote": "STATUIT ILLI TESTAMENTUM ÆTERNUM.",
       "french_translation": "Il a fait",
@@ -56,35 +56,67 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Exode 19:16-17. 20:18-19, 21."
+      "text": "Exode 19:16-17. 20:18-19, 21.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "L'édition de Complute ; Sixte V ; et d'autres. _Dedit illi cor ad præcepta_. etc."
+      "text": "L'édition de Complute ; Sixte V ; et d'autres. _Dedit illi cor ad præcepta_. etc.",
+      "tags": [
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Εδωκεν αυτῶ εντολὰς κατὰ πρόσωπον."
+      "text": "Ἔδωκεν αυτῶ ἐντολὰς κατὰ πρόσωπον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez le Commentaire sur la Genèse, Chapitre 2, verset 9, page 75, 76."
+      "text": "Voyez le Commentaire sur la Genèse, Chapitre 2, verset 9, page 75, 76.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Commentaire sur la Genèse",
+          "original": "Commentarius in Genesim"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Exode 4:14, 27-28."
+      "text": "Exode 4:14, 27-28.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Exode 28:1-2."
+      "text": "Exode 28:1-2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Αγίον αυτῶ ὁμοιον ἀγίοις ἔδωκεν αυτῶ, etc."
+      "text": "Σαγίον αυτῶ ὅμοιον ἀγίοις ἔδωκεν αυτῶ, etc.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Psaumes 105:16."
+      "text": "Psaumes 105:16.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

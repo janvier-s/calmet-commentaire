@@ -14,7 +14,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 22,
       "latin_quote": null,
       "french_translation": null,
@@ -22,7 +22,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 22,
       "latin_quote": "OMNE ANIMAL QUOD VEL CONTRITIS… TESTICULIS EST, NON OFFERETUR DOMINO.",
       "french_translation": "Vous n'offrirez au Seigneur nul animal qui aura ce qui est nécessaire pour la conservation de son espèce, froissé.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 22,
       "latin_quote": "ET IN TERRA VESTRA HÆC OMNINO NE FACIATIS.",
       "french_translation": "Et gardez-vous de rien faire de pareil dans votre pays.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 22,
       "latin_quote": "DE MANU ALIENIGENÆ NON OFFERETIS PANES.",
       "french_translation": "Vous n'offrirez point des pains de la main d'un étranger.",
@@ -48,23 +48,50 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "De animalibus sacris, page 1, livre 2, chapitre 46."
+      "text": "De animalibus sacris, page 1, livre 2, chapitre 46.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De animalibus sacris",
+          "original": "De animalibus sacris"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "וכתות ונתוק וכרות וכו׳ 70. Εκθλιψιν, θλασίαν, εκτομίαν. Aqu. Συγκεκολαμμένον, τεθρασμένον."
+      "text": "וכתות ונתוק וכרות וכו׳ 70. Ἔκθλιψιν, θλασίαν, ἐκτομίαν. Aqu. Συγκεκολαμμένον, τεθρασμένον.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Josèphe, livre 2, Contre Apion."
+      "text": "Josèphe, livre 2, Contre Apion.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Gomar, édition de Bâle, sur le titre Chagiga, chapitre 1 ;\nMoïse Mikolzi, Précepte négatif 110 ;\nMaïmonide, Halachot isurifbie, chapitre 16."
+      "text": "Gomar, édition de Bâle, sur le titre Chagiga, chapitre 1 ;\nMoïse Mikolzi, Précepte négatif 110 ;\nMaïmonide, Halachot isurifbie, chapitre 16.",
+      "tags": [
+        "rabbis",
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Strabon, livre 16."
+      "text": "Strabon, livre 16.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

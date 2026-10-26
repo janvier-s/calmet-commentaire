@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 15,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 15,
       "latin_quote": "FLAVIT SPIRITUS TUUS, ET OPERUIT EOS MARE.",
       "french_translation": "Votre vent a soufflé, et la mer les a couverts et abîmés.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 15,
       "latin_quote": "QUIS SIMILIS TUI IN FORTIBUS, DOMINE ?",
       "french_translation": "Qui est semblable à vous parmi les Héros ?",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 15,
       "latin_quote": "MAGNIFICUS IN SANCTITATE.",
       "french_translation": "Grand dans sa sainteté.",
@@ -56,51 +56,107 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Kyrie. χάρις. Dux fuiisti in misericordia tua populo."
+      "text": "Kyrie. χάρις. Dux fuiisti in misericordia tua populo.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "נשפת ברוחך"
+      "text": "נשפת ברוחך",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ἀπέστειλας τὸ πνεῦμά σῦ."
+      "text": "Ἀπέστειλας τὸ πνεῦμά σῦ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Augustin, Question 55 sur l'Exode."
+      "text": "Saint Augustin, Question 55 sur l'Exode.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Saint Ambroise, De Spiritu sancto, livre 3, chapitres 2 et 4."
+      "text": "Saint Ambroise, De Spiritu sancto, livre 3, chapitres 2 et 4.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De Spiritu sancto",
+          "original": "De Spiritu sancto"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "מי כמכה באלם יהוה 70. Τίς ὅμοιος σοι ἐν θεοῖς Sym. Ομῖς σοι ἐν δυναςάις. Ἢ τίς σοι ἁγιοπρεπὴς ἐξομολόγησις τις δυνάσεως, ἢ κατὰ τι γὰρ ἀφωμοιώθης. Nul ne pourra vous être comparable ni en puissance, ni en sainteté, ni en aucune autre chose."
+      "text": "מי כמכה באלם יהוה 70. Τίς ὅμοιος σοι ἐν θεοῖς Sym. Ομῖς σοι ἐν δυναςάις. Ἢ τίς σοι ἀξιοπρεπὴς ἐξομολόγησις τίς δυνάμεως, ἢ κατὰ τί γὰρ ἀφωμοιώθης. Nul ne pourra vous être comparable ni en puissance, ni en sainteté, ni en aucune autre chose.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "explanation",
+        "abbrev"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "נורא תהלות"
+      "text": "נורא תהלות",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Θαυμαστός ἐν δόξαις. Autrement Θαυμαστός, ποιῶν ἐνδόξως."
+      "text": "Θαυμαστός ἐν δόξαις. Autrement Θαυμαστός, ποιῶν ἐνδόξως.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Génébrard, Chronologie, livre 2."
+      "text": "Génébrard, Chronologie, livre 2.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Chronologie",
+          "original": "Chronographia"
+        }
+      ]
     },
     {
       "marker": "(k)",
-      "text": "מכבי MCBAI Maccabæus."
+      "text": "מכבי MCBAI Maccabæus.",
+      "tags": [
+        "hebrew",
+        "latin"
+      ]
     },
     {
       "marker": "(l)",
-      "text": "Δεδοξασμένος ἐν ἁγίοις."
+      "text": "Δεδοξασμένος ἐν ἁγίοις.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(m)",
-      "text": "Psaumes 150:1."
+      "text": "Psaumes 150:1.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

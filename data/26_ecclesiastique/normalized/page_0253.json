@@ -29,15 +29,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
-      "french_commentary": "avec le Seigneur dans la personne de leurs Pères. Premièrement, dans le désert à Sinaï.^{(b)} Après cela sous Josué, après leur entrée dans la Terre promise.^{(c)} Et enfin, au retour de la captivité, sous Néhémie ;^{(d)} où l'on renouvela solennellement l'ancienne alliance. Chaque particulier en recevant la circoncision, prenait aussi la marque de l'alliance, et s'engageait par-là à l'observation de la Loi du Seigneur. De cette sorte, l'alliance générale devenait particulière à chaque Israélite : Comme par le Baptême, l'alliance que Jésus-Christ a faite avec la nature humaine, nous devient propre, et nous entrons par-là dans la participation de tous les biens qui y sont attachés, et dans toutes les obligations qui en sont des suites. _In illo colloquere. Entretenez-vous avec elle._ Étudiez-les, ruminez-les. Voyez. Proverbes 6:22."
+      "french_commentary": "avec le Seigneur dans la personne de leurs Pères. Premièrement, dans Abraham, chef de leur race. ^{(a)} En second lieu, avec leurs Pères dans le désert à Sinaï.^{(b)} Après cela sous Josué, après leur entrée dans la Terre promise.^{(c)} Et enfin, au retour de la captivité, sous Néhémie ;^{(d)} où l'on renouvela solennellement l'ancienne alliance. Chaque particulier en recevant la circoncision, prenait aussi la marque de l'alliance, et s'engageait par-là à l'observation de la Loi du Seigneur. De cette sorte, l'alliance générale devenait particulière à chaque Israélite : Comme par le Baptême, l'alliance que Jésus-Christ a faite avec la nature humaine, nous devient propre, et nous entrons par-là dans la participation de tous les biens qui y sont attachés, et dans toutes les obligations qui en sont des suites. _In illo colloquere. Entretenez-vous avec elle._ Étudiez-les, ruminez-les. Voyez. Proverbes 6:22."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 11,
       "latin_quote": "NE MANSERIS IN OPERIBUS PECCATORUM.",
       "french_translation": "Ne vous arrêtez point à ce que font les pécheurs : mettez votre confiance en Dieu.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 11,
       "latin_quote": "BENEDICTIO DEI IN MERCEDEM JUSTI FESTINAT.",
       "french_translation": "Dieu bénit le juste, et se hâte de le récompenser ; il le fait croître, et lui fait porter du fruit en peu de temps.",
@@ -55,23 +55,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Genèse 15:18."
+      "text": "Genèse 15:18.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Exode 19:6-8. XX. XXI."
+      "text": "Exode 19:6-8. XX. XXI.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Josué 8:30-31."
+      "text": "Josué 8:30-31.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "2 Esdras 9:38. 10:1-2. et seq."
+      "text": "2 Esdras 9:38. 10:1-2. et seq.",
+      "tags": [
+        "verse",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Μὴ θαύμαζε ἐν ἔργοις ἁμαρτωλοῦ, ἀλλὰ πίστευε Κυρίῳ, καὶ ἐπίμενε τῷ πόνῳ σου."
+      "text": "Μὴ θαύμαζε ἐν ἔργοις ἁμαρτωλοῦ, ἀλλὰ πίστευε Κυρίῳ, καὶ ἐπίμενε τῷ πόνῳ σου.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": "V"

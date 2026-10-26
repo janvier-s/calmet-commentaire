@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 36,
       "latin_quote": "POSSESSIONEM, ETC.",
       "french_translation": "Celui qui a une femme vertueuse, commence à établir sa maison ; il a un secours qui lui est semblable. Celui qui pense à un établissement, doit commencer par chercher une femme vertueuse.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 36,
       "latin_quote": "UBI NON EST MULIER, INGEMISCIT EGENS.",
       "french_translation": "Où il n'y a point de femme, l'homme soupire dans l'indigence.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 36,
       "latin_quote": "QUIS CREDIT EI, QUI NON HABET NIDUM, ETC.",
       "french_translation": "Qui se fiera à celui qui n'a point de retraite, et qui va chercher le couvert par tout où la nuit le prend ?",
@@ -48,15 +48,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ο᾽ κτώμμο γυναῖκα εὐάρεσον κτᾶται, Βον-δίτ κατ᾽ ἀυτόν, κτῆσιν ἀναπαύσεως."
+      "text": "Ο᾽ κτώμμο γυναῖκα εὐάρεστον κτᾶται, Βον-δίτ κατ᾽ αὐτόν, κτῆσιν ἀναπαύσεως.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Genèse 2:18. [UNCERTAIN HEBREW] 70. Bon-Dieu sur' αὐτόν."
+      "text": "Genèse 2:18. [UNCERTAIN HEBREW] 70. Bon-Dieu sur' αὐτόν.",
+      "tags": [
+        "greek",
+        "verse",
+        "versions",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Τίς γδ πιςεύσει Εὐζώνω ληςῆ σφαλλομλύω ἐκ πόλεως εἰς πόλιν ; Ἤτοι ἀνθρώπω μὴ ἔχοντι νεοσσίαν, κὶ καταλύοντι ὅπε ἂν ἐφίκοιτο."
+      "text": "Τίς γδ πιστεύσει Εὐζώνου ληςῆ σφαλλομλύω ἐκ πόλεως εἰς πόλιν ; Ἤτοι ἀνθρώπω μὴ ἔχοντι νεοσσίαν, καὶ καταλύοντι ὅπου ἂν ἐφίκοιτο.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

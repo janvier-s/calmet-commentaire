@@ -22,15 +22,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 18,
       "latin_quote": "MEMENTO IRÆ IN DIE CONSUMMATIONIS.",
-      "french_translation": "Souvenez-vous de la colère du dernier jour, de ce jour terrible auquel Dieu rendra à chacun selon ses œuvres.",
-      "french_commentary": "Le Sage nous rappelle souvent à cette importante et sérieuse considération du jour du Jugement. Car, comme il nous l'a dit plus haut,^{(a)} si nous nous souvenions de nos fins dernières, il serait comme impossible que nous péchassions. Le Grec^{(b)} _Souvenez-vous de la colère au jour de la mort, et du jour de la vengeance_, lorsqu'il détournera sa face de devant vous. Ayez soin de prévenir la colère de Dieu avant votre mort, et avant le jugement dernier, où il détournera son visage des méchants, et leur dira : Allez, maudits, aux flammes éternelles, etc."
+      "french_translation": "Souvenez-vous de la colère du dernier jour,",
+      "french_commentary": "de ce jour terrible auquel Dieu rendra à chacun selon ses œuvres. Le Sage nous rappelle souvent à cette importante et sérieuse considération du jour du Jugement. Car, comme il nous l'a dit plus haut,^{(a)} si nous nous souvenions de nos fins dernières, il serait comme impossible que nous péchassions. Le Grec^{(b)} _Souvenez-vous de la colère au jour de la mort, et du jour de la vengeance_, lorsqu'il détournera sa face de devant vous. Ayez soin de prévenir la colère de Dieu avant votre mort, et avant le jugement dernier, où il détournera son visage des méchants, et leur dira : Allez, maudits, aux flammes éternelles, etc."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 18,
       "latin_quote": "MEMENTO PAUPERTATIS IN DIE ABUNDANTIÆ.",
       "french_translation": "Souvenez-vous de la pauvreté pendant l'abondance, et de l'indigence au jour des richesses.",
@@ -40,23 +40,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ecclésiastique 7:40."
+      "text": "Ecclésiastique 7:40.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "μνήσθητι θυμοῦ ἐν ἡμέραις θανάτου, καὶ καιρῷ ἐκδικήσεως ἐν ἀποστροφῇ προσώπου."
+      "text": "μνήσθητι θυμοῦ ἐν ἡμέραις θανάτου, καὶ καιρῷ ἐκδικήσεως ἐν ἀποστροφῇ προσώπου.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ecclésiastique 11:27."
+      "text": "Ecclésiastique 11:27.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Chrysost. homil. 8. in Matth. et Bern. serm. in Ramis palmarum."
+      "text": "Chrysost. homil. 8. in Matth. et Bern. serm. in Ramis palmarum.",
+      "tags": [
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Distich. Catonis."
+      "text": "Distich. Catonis.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

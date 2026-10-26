@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 18,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 18,
       "latin_quote": "MANUS ABSALOM.",
       "french_translation": null,
@@ -40,23 +40,56 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph. Antiq. lib. 7. c. 9. Εστησε γάρλας δύο παμμεγέθεις δύο σταδίοις ἀπέχουσας ἱεροσολύμων."
+      "text": "Joseph. Antiq. lib. 7. c. 9. Ἔστησε γάρλας δύο παμμεγέθεις δύο σταδίοις ἀπέχουσας ἱεροσολύμων.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. lib",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Sanctius ; et Tirin."
+      "text": "Sanctius ; et Tirin.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Deutéronome 23:12, sur 2 Rois 18:4. Jonathan ; Grotius ; etc."
+      "text": "Voyez Deutéronome 23:12, sur 2 Rois 18:4. Jonathan ; Grotius ; etc.",
+      "tags": [
+        "verse",
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "מצּיב לו יד"
+      "text": "מצּיב לו יד",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "L'auteur des Traditions hébraïques sur les livres des Rois, sur ce passage."
+      "text": "L'auteur des Traditions hébraïques sur les livres des Rois, sur ce passage.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Traditions hébraïques",
+          "original": "Traditiones hebraicae in Genesim"
+        }
+      ]
     }
   ],
   "book_end_marker": null

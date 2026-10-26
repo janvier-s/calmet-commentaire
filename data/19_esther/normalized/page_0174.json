@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 16,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 16,
       "latin_quote": "UT NON SOLUM HOMINIBUS, SED ETIAM BESTIIS INVIA SIT.",
       "french_translation": "Qu'elle demeure inaccessible pour jamais non seulement aux hommes, mais aussi aux bêtes.",
@@ -40,15 +40,30 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Hérodote, livre 3, chapitre 79. Μαγοφόνια."
+      "text": "Hérodote, livre 3, chapitre 79. Μαγοφόνια.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Jérémie 9:10. 12:4. 32:43. 33:10. 36:29. 50:1. 1. Ézéchiel 14:13. 15:13. 29:8. Sophon. lib. 3. Grot. hic."
+      "text": "Jérémie 9:10 ; 12:4 ; 32:43 ; 33:10 ; 36:29 ; 50:1, 1 ; Ézéchiel 14:13 ; 15:13 ; 29:8 ; Sophonie, livre 3. Grotius, sur ce passage.",
+      "tags": [
+        "verse",
+        "commentators",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Οτι μένειν ἀδιάβατος ἔςαι, ἀλλὰ μὴ δι-ελεῖς, κ᾿ ἐςαυροῖς εἰς τὴν ἀπωλείαν χώραν ἐχθρῶν, καὶ ἀβαδιεῖται. Édit. Origem. ab Usser. legit, ἀντὶ χιςΘ, pro ἐχθιςΘ."
+      "text": "Ὅτι μένειν ἀδιάβατος ἔσται, ἀλλὰ μὴ δῑ-ελεῖς, κ᾿ ἐςαυροῖς εἰς τὴν ἀπωλείαν χώραν ἐχθρῶν, καὶ βαδιεῖται. Édit. Origem. ab Usser. legit, ἀντὶ χιςΘ, pro ἐχθιςΘ.",
+      "tags": [
+        "greek",
+        "versions",
+        "commentators",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

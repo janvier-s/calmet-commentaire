@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -34,7 +34,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 7,
       "latin_quote": "SCIT ENIM CONSCIENTIA TUA, QUIA ET TU CREBRO MALEDIXISTI ALIIS.",
       "french_translation": "Car vous savez en votre conscience que vous avez vous-même souvent parlé mal des autres.",
@@ -42,7 +42,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 7,
       "latin_quote": "DIXI : SAPIENS EFFICIAR ; ET IPSA LONGIUS RECESSIT A ME. MULTO MAGIS QUAM ERAT.",
       "french_translation": "J'ai dit en moi-même : je deviendrai sage ; et la sagesse s'est retirée loin de moi beaucoup plus qu'elle n'était.",
@@ -50,7 +50,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 7,
       "latin_quote": "ET ALTA PROFUNDITAS ! QUIS INVENIET EAM ?",
       "french_translation": "O combien est grande sa profondeur ! Et qui la pourra sonder ?",
@@ -60,15 +60,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Horace, Satires, livre 1, satire 3."
+      "text": "Horace, Satires, livre 1, satire 3.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Satires",
+          "original": "Satirae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Aristot. _Αρχη σοφιας αμφιια._"
+      "text": "Aristot. _Αρχη σοφίας αμφιια._",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "[UNCERTAIN HEBREW]"
+      "text": "[UNCERTAIN HEBREW]",
+      "tags": [
+        "uncertain"
+      ]
     }
   ],
   "book_end_marker": null

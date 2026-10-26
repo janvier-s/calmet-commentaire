@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 43,
       "latin_quote": null,
       "french_translation": "apaise l'abyme.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 43,
       "latin_quote": "PLANTAVIT IN ILLA INSULAS.",
       "french_translation": "C'est lui qui a fondé les îles au milieu de la mer.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 43,
       "latin_quote": "QUI NAVIGANT MARE, ENARRENT PERICULA EJUS.",
       "french_translation": "Que ceux qui navigent sur la mer, racontent les périls que l'on y court.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 43,
       "latin_quote": "PROPTER IPSUM CONFIRMATUS EST ITINERIS FINIS.",
       "french_translation": "C'est par lui que chaque chose tend à sa fin, et sa parole règle toutes choses.",
@@ -63,27 +63,52 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Λογισμῷ αὐτῆς ἐκόπασεν ἀβυσσον."
+      "text": "Λογισμῷ αὐτῆς ἐκόπασεν ἀβυσσον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καὶ ἱδρύσθη ἐν αὐτῷ Ἰησῦς. Ita Ald. Rom. Ms. apud Drus. Fęüardentius αὐτὴν legit."
+      "text": "Καὶ ἱδρύσθη ἐν αὐτῷ Ἰησοῦς. Ita Ald. Rom. Ms. apud Drus. Fęüardentius αὐτὴν legit.",
+      "tags": [
+        "greek",
+        "versions",
+        "commentators",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Εὔκαρπον ἐν αὐτῇ γῆν. au lieu de νήσους, comme portent les autres Exemplaires, en place de quoi on a mis, ἰησοῦς."
+      "text": "Εὔκαρπον ἐν αὐτῇ γῆν. au lieu de νήσους, comme portent les autres Exemplaires, en place de quoi on a mis, ἰησοῦς.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Psaumes 106:23."
+      "text": "Psaumes 106:23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Posidippe, dans Athénée, livre 4. Οὐ μὴ κακῶς εἰδῇς ναυτιλίαν ἀπείρατος ὤν."
+      "text": "Posidippe, dans Athénée, livre 4. Οὐ μὴ κακῶς εἰδῇς ναυτιλίαν ἀπείρατος ὤν.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Καὶ δι᾽ αὐτὸν διωδοῖ ὁ Αἰγυπτίων αὐτῇ, τῇ δὲ λόγῳ αὐτῆς ἐσύγκειται τὰ πάντα; Vulgat legit : Καὶ δι᾽ αὐτὸν διωδοῖ γῆν αὐτῇ."
+      "text": "Καὶ δι᾽ αὐτὸν διδοῖ ὁ Αἰγυπτίων αὐτῇ, τῇ δὲ λόγῳ αὐτῆς ἐσύγκειται τὰ πάντα; Vulgat legit : Καὶ δι᾽ αὐτὸν διδοῖ γῆν αὐτῇ.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

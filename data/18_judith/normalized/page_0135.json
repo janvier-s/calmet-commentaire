@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "",
+      "verse_ref": null,
       "chapter": 13,
       "latin_quote": null,
       "french_translation": null,
@@ -62,15 +62,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Εἴπων Ἰεδὶθ τῇ δέλῃ αὐτῆς, εἴπως ἔξω τῆς αὐτῆς."
+      "text": "Εἴπων Ἰεδὶθ τῇ δούλῃ αὐτῆς, εἴπως ἔξω τῆς αὐτῆς.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εἴπεν ἐν τῇ καρδίᾳ αὐτῆς."
+      "text": "Εἴπεν ἐν τῇ καρδίᾳ αὐτῆς.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Προσελθοῦσα τῷ κανόνι τῆς κλίνης. Il faut lire : τῷ κίονι. Ita le Syriaque et l'ancienne Vulgate. Ad columnam lecti."
+      "text": "Προσελθοῦσα τῷ κανόνι τῆς κλίνης. Il faut lire : τῷ κίονι. Ita le Syriaque et l'ancienne Vulgate. Ad columnam lecti.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

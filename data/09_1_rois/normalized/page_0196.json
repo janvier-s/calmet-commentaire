@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 9,
       "latin_quote": "STRAVIT QUE SAÜL IN SOLARIO, ET DORMIVIT.",
       "french_translation": "Il y fit préparer un lit, où Saül dormit.",
@@ -40,19 +40,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "70. Édit. Rom. Καὶ διέστρωσαν τῷ Σαὺλ ἐπὶ τῷ δώματι."
+      "text": "70. Édit. Rom. Καὶ διέστρωσαν τῷ Σαὺλ ἐπὶ τῷ δώματι.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Josué 2:6."
+      "text": "Josué 2:6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Rois 16:22."
+      "text": "2 Rois 16:22.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Aristoph. in Vespis act. 1. Εἶτ᾽ οὐχ ὕπνος σ᾽ ἔλαβε; ΟΛ. ἐμοὶ μεν οὔκ· Αλλ᾽ ἠρόμην, ὁπόσαι ὦσιν αἱ φυλαί."
+      "text": "Aristoph. in Vespis act. 1. Εἶτ᾽ οὐχ ὕπνος σ᾽ ἔλαβε; ΟΛ. ἐμοὶ μὲν οὔκ· Αλλ᾽ ἠρόμην, ὁπόσαι ὦσιν αἱ φυλαί.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 2,
       "latin_quote": null,
       "french_translation": null,
@@ -17,43 +17,87 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Herodot. l. 2. c. 35. Εν Οἰσι αἱ μὲν γυναῖκες ἀγοράζουσιν ὴ καπηλεύουσιν, οἱ δὲ ἄνδρες κατ' οἰκον ὄντες ὑφαίνουσιν. à la 14. istius."
+      "text": "Herodot. l. 2. c. 35. Ἐν Οἰσι αἱ μὲν γυναῖκες ἀγοράζουσιν ὴ καπηλεύουσιν, οἱ δὲ ἄνδρες κατ' οἶκον ὄντες ὑφαίνουσιν. à la 14. istius.",
+      "tags": [
+        "greek",
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Sophocle, Œdipe à Colone, page 283, édition d'Henri Estienne. Ἐκεῖ γὰρ οἱ μὲν ἄρσενες κατὰ στέγας οἰκουροῦσιν ἱστουργοῦντες, αἱ δὲ ξύννομοι τἀ'ξω βίον τροφεῖα πορσύνουσιν ἀεί."
+      "text": "Sophocle, Œdipe à Colone, page 283, édition d'Henri Estienne. Ἐκεῖ γὰρ οἱ μὲν ἄρσενες κατὰ στέγας οἰκουροῦσιν ἱστουργοῦντες, αἱ δὲ ξύννομοι τἀ'ξω βίον τροφεῖα πορσύνουσιν ἀεί.",
+      "tags": [
+        "greek",
+        "classical",
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Aristophane, Plutus, acte 2, scène 4 ; et Les Grenouilles, acte 2, scène 4."
+      "text": "Aristophane, Plutus, acte 2, scène 4 ; et Les Grenouilles, acte 2, scène 4.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Plutus",
+          "original": "Plutus"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Apulée, Métamorphoses, livre 1. Quod primum stabulum conspicatus sum, accessi, et de quadam anu caupona illicò percontor."
+      "text": "Apulée, Métamorphoses, livre 1. Quod primum stabulum conspicatus sum, accessi, et de quadam anu caupona illicò percontor.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Juges 16:1."
+      "text": "Juges 16:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Proverbes 31:13-14, 24."
+      "text": "Proverbes 31:13-14, 24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Sur 3 Rois 3:16."
+      "text": "Sur 3 Rois 3:16.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Proverbes 31:24."
+      "text": "Proverbes 31:24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Deutéronome 23:18. Non erit meretrix de filiabus Israël."
+      "text": "Deutéronome 23:18. Non erit meretrix de filiabus Israël.",
+      "tags": [
+        "verse",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "Isaïe 23:15."
+      "text": "Isaïe 23:15.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

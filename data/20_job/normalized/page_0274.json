@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 21,
       "latin_quote": "NUMQUID CONTRA HOMINEM DISPUTATIO MEA EST, UT MERITO NON DEBEAM CONTRISTARI ?",
       "french_translation": "Est-ce contre un homme que je prétends disputer, pour n'avoir pas sujet de m'affliger ?",
@@ -40,15 +40,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ἀκούσατε με τῶν λόγων, ἵνα μὴ τωαὶ ὑμῶν ᾖ παράκλησις. Complut. et alii, ἵνα μὴ παρ᾽ ὑμῶν. etc. Sym. ἵνα ἠδέσθη τότε βέβηλα μὴ εἰπῶν. (℣. 3.) Αἴρετέ με, ἵνα ὁ λήσω, ἵν᾽ ἃ καταγελάσητε με. Sym. Καὶ μὴ λόγος με εἴσητε."
+      "text": "Ἀκούσατε με τῶν λόγων, ἵνα μὴ τωαὶ ὑμῶν ᾖ παράκλησις. Complut. et alii, ἵνα μὴ παρ᾽ ὑμῶν. etc. Sym. ἵνα ᾐδέσθη τότε βέβηλα μὴ εἰπῶν. (℣. 3.) Αἴρετέ με, ἵνα ὁ λήσω, ἵν᾽ ἃ καταγελάσητε με. Sym. Καὶ μὴ λόγος με εἴσητε.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "האנוש לאדם שיחי ואם מדוע לא תקצר רוחי"
+      "text": "האנוש לאדם שיחי ואם מדוע לא תקצר רוחי",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Exode 6:9 ;\nNombres 21:4 ;\nJuges 16:16 ;\nProverbes 14:27 ;\nZacharie 11:8."
+      "text": "Voyez Exode 6:9 ;\nNombres 21:4 ;\nJuges 16:16 ;\nProverbes 14:27 ;\nZacharie 11:8.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "metadata": {

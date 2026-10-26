@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 26,
       "latin_quote": "SPIRITUS EJUS ORNAVIT COELOS, ET OBSTETRICANTE MANU EJUS, EDUCTUS EST COLUBER TORTUOSUS.",
       "french_translation": "Son Esprit a orné les Cieux, et l'adresse de sa main puissante a fait paraître le serpent tortueux.",
@@ -25,55 +25,114 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Genèse 1:2. _Spiritus Dei ferebatur super aquas._"
+      "text": "Genèse 1:2. _Spiritus Dei ferebatur super aquas._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Psaumes 32:6."
+      "text": "Psaumes 32:6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Sagesse 1:7."
+      "text": "Sagesse 1:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ברוחו שמים שפרה"
+      "text": "ברוחו שמים שפרה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Le Chaldéen ; Scultet ; Pineda."
+      "text": "Le Chaldéen ; Scultet ; Pineda.",
+      "tags": [
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Κλεῖθες δ᾽ ἀγρῶ δέδεσθαι αὐτὸν."
+      "text": "Κλεῖδες δ᾽ ἀγρῶ δέδεσθαι αὐτὸν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Isa 70. Περιαγωγέων δὲ αὐτῷ ἐξώρθωσεν δράκοντα ἀποστάτην. _Ita Gregor. Magn. D. Thom. alii plures._"
+      "text": "Isa 70. Περιαγωγέων δὲ αὐτῷ ἐξώρθωσεν δράκοντα ἀποστάτην. _Ita Gregor. Magn. D. Thom. alii plures._",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Mercier ;\nDrusius ;\nPiscator ;\nCocceius ;\nMalvenda."
+      "text": "Mercier ;\nDrusius ;\nPiscator ;\nCocceius ;\nMalvenda.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Scultet ; Mercier."
+      "text": "Scultet ; Mercier.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "l'Hébreu ;\nCodurcus ;\nVatable ;\nGrotius ;\nTirin."
+      "text": "l'Hébreu ;\nCodurcus ;\nVatable ;\nGrotius ;\nTirin.",
+      "tags": [
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(l)",
-      "text": "_Vallesius, De sacra philosophia, chapitre_ 47."
+      "text": "_Vallesius, De sacra philosophia, chapitre_ 47.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De sacra philosophia",
+          "original": "De sacra philosophia"
+        }
+      ]
     },
     {
       "marker": "(m)",
-      "text": "Voyez Vatable ;\nScultet ;\nPineda."
+      "text": "Voyez Vatable ;\nScultet ;\nPineda.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(n)",
-      "text": "_Virgil, Georgic._ 1."
+      "text": "_Virgil, Georgic._ 1.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Georgic",
+          "original": "Georgica"
+        }
+      ]
     }
   ]
 }

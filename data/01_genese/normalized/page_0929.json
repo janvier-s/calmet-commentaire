@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 49,
       "latin_quote": "STETIT IN FORTI ARCUS EJUS.",
       "french_translation": "Son arc s'est tenu fortement tendu ;",
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 49,
       "latin_quote": "ET DISSOLUTA SUNT BRACHIA EJUS.",
       "french_translation": "Ses bras ont été déliés ;",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 49,
       "latin_quote": "PER MANUM POTENTIS JACOB ETC.",
       "french_translation": "Par la main du puissant [Dieu] de Jacob etc.",
@@ -33,23 +33,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "תשב באיתן קשתו."
+      "text": "תשב באיתן קשתו.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Συνετρίβη μετὰ κράτος τὰ τόξα αὐτῶν."
+      "text": "Συνετρίβη μετὰ κράτος τὰ τόξα αὐτῶν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "ויפוזו זרועי ידיו"
+      "text": "ויפוזו זרועי ידיו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "70. E'ξελύθη τὰ νῦρα βραχιόνων etc."
+      "text": "70. E'ἐξελύθη τὰ νῦρα βραχιόνων etc.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Je lis משכם Mischem, au lieu de Mischam."
+      "text": "Je lis משכם Mischem, au lieu de Mischam.",
+      "tags": [
+        "hebrew",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

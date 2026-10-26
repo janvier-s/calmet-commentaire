@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 14,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 14,
       "latin_quote": "LIGNUM CEDRINUM, VERMICULUMQUE, ET HYSSOPUM.",
       "french_translation": "Du bois de cèdre, de l'écarlate, et de l'hysope.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 14,
       "latin_quote": "UNUM EX PASSERIBUS IMMOLARE JUBEDIT IN VASE FICTILI SUPER AQUAS VIVENTES.",
       "french_translation": "Et d'immoler l'un des passereaux dans un vaisseau de terre, sur l'eau vive.",
@@ -41,27 +41,56 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "צפרים"
+      "text": "צפרים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "70. Ὀρνίθια."
+      "text": "70. Ὀρνίθια.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Bochart, De animalibus sacris, tome 2, livre 1, chapitre 22."
+      "text": "Voyez Bochart, De animalibus sacris, tome 2, livre 1, chapitre 22.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De animalibus sacris",
+          "original": "De animalibus sacris"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Homélie 8 sur le Lévitique."
+      "text": "Homélie 8 sur le Lévitique.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "תולעת שני Κυκλαμίνου κλωνιον, Du cramoisi filé. Theodot. Κυκλαμίνου ἀκάνθινον. Du cramoisi teint. Sym. Δίβαφον κόκκινον. Du cramoisi teint deux fois. Aqu. Δίφορον σκάλαγχ."
+      "text": "שני תולעת Κυκλαμίνου κλωνίον, Du cramoisi filé. Theodot. Κυκλαμίνου ἀκάνθινον. Du cramoisi teint. Sym. Δίβαφον κόκκινον. Du cramoisi teint deux fois. Aqu. Δίφορον σκάλαγχ.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ménochius ;\nNicolas de Lyre ;\nTirin."
+      "text": "Ménochius ;\nNicolas de Lyre ;\nTirin.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 11,
       "latin_quote": "NON OMNEM HOMINEM INDUCAS IN DOMUM TUAM.",
       "french_translation": "N'introduisez point toute sorte de personnes dans votre maison ; car le trompeur a beaucoup de pièges.",
@@ -33,15 +33,29 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ovid. lib. 3. Metamorph. Sophocles. Αῤχὴν μὲν ἀνδρὸς οὐδὲν ἂν γνώης θανατ. Ως ἐκ ἂν εἰδείης κακὸν τε καὶ ἀγαθὸν, πρὶν ἂν θάνῃ τις, ὅτ’ ἐπὶ κρηνέος, ὅτ’ οὔτε κακός."
+      "text": "Ovid. lib. 3. Metamorph. Sophocles. Ἀρχὴν μὲν ἀνδρὸς οὐδὲν ἂν γνώῃς θανατῶ. Ὡς ἐκ ἂν εἰδείης κακὸν τε καὶ ἀγαθὸν, πρὶν ἂν θάνῃ τίς, ὅτ’ ἐπὶ πρηνέος, ὅτ’ οὔτε κακός.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ambros. de Bono mortis, cap. 8. Vide et Bern. serm. 5. in Festo omnium Sanctorum."
+      "text": "Ambros. de Bono mortis, cap. 8. Vide et Bern. serm. 5. in Festo omnium Sanctorum.",
+      "tags": [
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Μὴ πάντα ἄνθρωπον οἴκαγε εἰσάγου, πολλὰ γὰρ ἐνέδρα τὸ δόλι. Aliùs, τῷ διαβόλῳ. Ita Complut."
+      "text": "Μὴ πάντα ἄνθρωπον οἴκαγε εἰσάγου, πολλὰ γὰρ ἐνέδρα τὸ δόλι. Aliùs, τῷ διαβόλῳ. Ainsi l'édition de Complute.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

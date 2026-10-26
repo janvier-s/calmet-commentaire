@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 20,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 20,
       "latin_quote": "IN VAGINA, QUI FABRICATUS, LEVI MOTU EGREDI POTERAT, ET PERCUTERE.",
       "french_translation": "Dans un fourreau fait de telle sorte, qu'on pouvait tirer, et en frapper en un moment.",
@@ -41,19 +41,42 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "ותפל ותצא חרבו 70. Καὶ ἡ μάχαιρα ἐξῆλθε καὶ ἔπεσε."
+      "text": "ותפל ותצא חרבו 70. Καὶ ἡ μάχαιρα ἐξῆλθε καὶ ἔπεσε.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Homère, Iliade, A. Γούνων … Καὶ λίσσετο γούνων."
+      "text": "Homère, Iliade, A. Γούνων … Καὶ λίσσετο γούνων.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Pline, Histoire naturelle, livre 11, chapitre 45."
+      "text": "Pline, Histoire naturelle, livre 11, chapitre 45.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Euripid. Hecub. ψυχῆς τῆς γένειον προσπιτνῶν παρηΐδος."
+      "text": "Euripid. Hecub. ψυχῆς τῆς γένειον προσπιτνῶ παρηΐδος.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

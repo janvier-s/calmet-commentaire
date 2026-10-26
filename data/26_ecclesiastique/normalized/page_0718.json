@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 50,
       "latin_quote": "SIMON ONIÆ FILIUS.",
       "french_translation": "Simon fils d'Onias, Grand - Pontife.",
@@ -25,23 +25,71 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph Antiq. lib. 12. cap. 2. pag. 392. ΤελΕυτήσαντG Ο᾿νία τῆς ἀρχιερωσύνης, ὁ παῖς αυτ μὲν γίγνεται διάδοχG, ὁ νὴ δίκαιG ἐπικληθεὶς διὰτε τὸ πρὸς Θεὸν ἐυσΕβὲς, κỳ τὸ πρὸς τυς ὁμοφύλυς ἐυνῦν."
+      "text": "Joseph Antiq. lib. 12. cap. 2. pag. 392. ΤελΕυτήσαντG Ὀνία τῆς ἀρχιερωσύνης, ὁ παῖς αυτ μὲν γίγνεται διάδοχG, ὁ νὴ δίκαιG ἐπικληθεὶς διὰτε τὸ πρὸς Θεὸν εὐσεβὲς, κỳ τὸ πρὸς τυς ὁμοφύλους ἐυνῦν.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Joseph Antiq. lib",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Joseph. Antiq. lib. 12. cap. 4. Α᾿ντίπαπG ἐς ὁ Ο᾿νίας ἀυτῶ Ο᾿νίας, τλῶ ἀρχιΕρωσύνην Σίμων τῷ παιδὶ κατέλιπεν."
+      "text": "Joseph. Antiq. lib. 12. cap. 4. ἈντίπαπG ἐς ὁ Ὀνίας ἀυτῶ Ὀνίας, τλῶ ἀρχιΕρωσύνην Σίμων τῷ παιδὶ κατέλιπεν.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. lib",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "3 Machabées 2:1."
+      "text": "3 Machabées 2:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Eusèbe, dans sa Chronique ; Génébrard ; Salian ; Torniel ; Jansénius ; Palacio ; Sa ; Cornelius a Lapide ; Drusius ; Baduellus sur ce passage."
+      "text": "Eusèbe, dans sa Chronique ; Génébrard ; Salian ; Torniel ; Jansénius ; Palacio ; Sa ; Cornelius a Lapide ; Drusius ; Baduellus sur ce passage.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Chronique",
+          "original": "Chronicon"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ainsi l'entendent Raban Maur ; Hugues de Saint-Cher ; Nicolas de Lyre ; Denys le Chartreux ; Grotius ; Bossuet sur ce passage ; Sigonius, livre 8, De la république des Hébreux, chapitre 2 ; Serarius sur les Machabées."
+      "text": "Ainsi l'entendent Raban Maur ; Hugues de Saint-Cher ; Nicolas de Lyre ; Denys le Chartreux ; Grotius ; Bossuet sur ce passage ; Sigonius, livre 8, De la république des Hébreux, chapitre 2 ; Serarius sur les Machabées.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la république des Hébreux",
+          "original": "De republica Hebraeorum"
+        }
+      ]
     }
   ],
   "book_end_marker": null

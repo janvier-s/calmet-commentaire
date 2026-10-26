@@ -22,23 +22,31 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 10,
+      "chapter": 26,
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "_colla eorum labefactentur, jugumque meliùs aptum cervicibus insideat._"
+    },
+    {
+      "commentary_id": 2,
+      "verse_ref": 11,
       "chapter": 26,
       "latin_quote": "MULIER EBRIOSA, IRA MAGNA.",
       "french_translation": "La femme sujette au vin, sera un sujet de colère, et de honte à son mari.",
       "french_commentary": "Ou plutôt : une femme adonnée au vin, et vagabonde, est d'ordinaire aussi sujette à la colère, et à la débauche ; et dans la chaleur du vin, elle se découvrira d'une manière honteuse. Il semble que c'est-là le sens du Grec. ^{(a)} On présume qu'une femme qui aime le vin et la bonne chère, est déréglée dans sa conduite : ^{(b)} _Omnis mulier quæ vinolenta, et comessatrix est, eadem quoque meretrix est._ Romulus avait fait une loi, qui permettait de punir comme adultère, une femme, qui s'était laissée prendre de vin : _Si vinum biberit domi, uti adulteram punito._ Et l'Histoire remarque qu'un nommé Mecennius ^{(c)} ayant fait mourir sa femme pour une pareille faute, en fut absous par Romulus. Faunus Roi de Latium fit fouetter la Reine son épouse jusqu'à la mort, parce qu'elle avait bû du vin. ^{(d)}"
     },
     {
-      "commentary_id": 2,
-      "verse_ref": "12",
+      "commentary_id": 3,
+      "verse_ref": 12,
       "chapter": 26,
       "latin_quote": "FORNICATIO MULIERIS IN EXTOLLENTIA OCULORUM COGNOSCETUR.",
       "french_translation": "La prostitution de la femme se connoîtra à son visage altier, et à ses yeux.",
       "french_commentary": "Ce qui distingue une femme d'honneur de celle qui est perdue, c'est l'air modeste, et les yeux chastes. Quelle idée peut-on avoir d'une femme qui marche d'un air altier et délibéré, et avec un regard impudent et effronté, ^{(e)} sinon qu'elle n'a ni honneur, ni pudeur ? Isaïe dépeignant les filles de Sion, contre lesquelles le Seigneur était en colère, dit, ^{(f)} qu'elles allaient la tête élevée, et le col droit, remuant impudemment les yeux, et marchant comme en cadence : _Elevatæ sunt filiæ Sion, et ambulaverunt extento collo ; et nutibus oculorum ibant, et plaudebant pedibus suis._"
     },
     {
-      "commentary_id": 3,
-      "verse_ref": "13",
+      "commentary_id": 4,
+      "verse_ref": 13,
       "chapter": 26,
       "latin_quote": "IN FILIA NON AVERTENTE SE, FIRMA CUSTODIAM.",
       "french_translation": "Redoublez votre vigilance, ou redoublez la garde envers une fille qui ne détourne point ses yeux des hommes.",
@@ -48,27 +56,62 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ὀργὴ μεγάλη γυνὴ μέθυσο, κὶ ῥιμβὰς Καὶ νλὼ ἀσχημοσύλω ἀυτῆς ἐ συγκαλύψι. Vide Grot. hic."
+      "text": "Ὀργὴ μεγάλη γυνὴ μέθυσο, καὶ ῥεμβὰς Καὶ νλὼ ἀσχημοσύλω ἀυτῆς ἐ συγκαλύψι. Voyez Grotius, sur ce passage.",
+      "tags": [
+        "greek",
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "L'Auteur de l'Ouvrage imparfait sur saint Matthieu, chapitre 1."
+      "text": "L'Auteur de l'Ouvrage imparfait sur saint Matthieu, chapitre 1.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Pline, Histoire naturelle, livre 14, chapitre 13 ; et Valère Maxime, livre 6, chapitre 3."
+      "text": "Pline, Histoire naturelle, livre 14, chapitre 13 ; et Valère Maxime, livre 6, chapitre 3.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Arnobe, Contre les Gentils, livre 5."
+      "text": "Arnobe, Contre les Gentils, livre 5.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Contre les Gentils",
+          "original": "Summa contra gentiles"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "2 Pierre 2:14. Oculos habentes plenos adulteræ."
+      "text": "2 Pierre 2:14. Oculos habentes plenos adulteræ.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Isaïe 3:16."
+      "text": "Isaïe 3:16.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

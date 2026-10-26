@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 7,
       "latin_quote": "QUONIAM VINDICTA CARNIS IMPII, IGNIS, ET VERMIS.",
       "french_translation": "Car la chair de l'impie sera la pâture du feu, et des vers.",
@@ -33,19 +33,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Οὓτε διάνοιαν ἀσεβῦς πῦρ, ὴ σκώληξ."
+      "text": "Οὓτε διάνοιαν ἀσεβοῦς πῦρ, ὴ σκώληξ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Marc 9:44-45."
+      "text": "Marc 9:44-45.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Origène, Homélie 13 sur l'Exode, et Des principes, livre 2, chapitre 11."
+      "text": "Origène, Homélie 13 sur l'Exode, et Des principes, livre 2, chapitre 11.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des principes",
+          "original": "De principiis"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Ambroise, sur saint Luc, livre 7, chapitre 14."
+      "text": "Saint Ambroise, sur saint Luc, livre 7, chapitre 14.",
+      "tags": [
+        "fathers"
+      ]
     }
   ],
   "book_end_marker": "M iij"

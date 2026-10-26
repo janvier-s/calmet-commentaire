@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 49,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 49,
       "latin_quote": "NAM RELIQUERUNT LEGEM ALTISSIMI, ETC.",
       "french_translation": "Car les Rois de Juda ont abandonné la Loy du Très-Haut, et ont méprisé la crainte de Dieu.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 49,
       "latin_quote": "DEDERUNT ENIM REGNUM SUUM ALIIS.",
       "french_translation": "Ils ont abandonné leur Royaume à un peuple étranger, et leur gloire à une nation inconnue.",
@@ -55,27 +55,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "4 Rois 20:15-16."
+      "text": "4 Rois 20:15-16.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Κατέλιπον τὸν νόμον τõ ὑψίςυ, δι Βασιλᾶς Ιὐδα ἐκλίνωσιν."
+      "text": "Κατέλιπον τὸν νόμον τõ ὑψίστου, δῑ Βασιλᾶς Ιὐδα ἐκλίνωσιν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "4 Rois 16:7."
+      "text": "4 Rois 16:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez 4 Rois 18:7 : Rebellavit Ezechias contra Regem Assyriorum. Voyez et verset 14."
+      "text": "Voyez 4 Rois 18:7 : Rebellavit Ezechias contra Regem Assyriorum. Voyez et verset 14.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "4 Rois 24:1-2 : Factus est ei Joakim servus tribus annis, et rursùm rebellavit contra eum, etc."
+      "text": "4 Rois 24:1-2 : Factus est ei Joakim servus tribus annis, et rursùm rebellavit contra eum, etc.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Εδωκε τὸ κέρας ἀυτῶν ἑτέροις, τὴ ν δόξαν ἀυτῶν ἔθνει ἀλλοτρίῳ."
+      "text": "Ἔδωκε τὸ κέρας ἀυτῶν ἑτέροις, τὴ ν δόξαν ἀυτῶν ἔθνει ἀλλοτρίῳ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

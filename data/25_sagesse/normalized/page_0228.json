@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 19,
       "latin_quote": "PERCUSSI SUNT COECITATE, SICUT ILLI IN FORIBUS JUSTI.",
       "french_translation": "Les Égyptiens furent frappés d'aveuglement, comme ceux de Sodome à la porte du juste.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 19,
       "latin_quote": "IN SE ENIM ELEMENTA DUM CONVERTUNTUR, SICUT IN ORGANO QUALITATIS SONUS IMMUTATUR, ETC.",
       "french_translation": "Car les éléments changent d'ordre entre eux, sans perdre néanmoins cette harmonie qui leur est propre ; comme dans un instrument de musique, l'air se diversifie par le changement des tons.",
@@ -40,11 +40,17 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide Plutarch. de Musica, et Macrob. in Somn Scipionis lib 2."
+      "text": "Vide Plutarch. de Musica, et Macrob. in Somn Scipionis lib 2.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Σωτὴρ ἐςὶ Ψαλτηρίῳ φθόγγος τὸ ῥυθμῷ τε ἄμικτος διὰ Ἰακώβου ἀναπέμπεται Η'χω. On peut bien traduire Η'χω. par un son."
+      "text": "Σωτὴρ ἐστὶ Ψαλτηρίῳ φθόγγος τὸ ῥυθμῷ τε ἄμικτος διὰ Ἰακώβου ἀναπέμπεται Ἠχω. On peut bien traduire Ἠχω. par un son.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

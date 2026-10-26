@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 34,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 34,
       "latin_quote": "MULTOS ENIM ERRARE FECERUNT SOMNIA.",
       "french_translation": "Les songes en ont jeté plusieurs dans l'égarement.",
@@ -33,43 +33,84 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Genèse 37:5."
+      "text": "Genèse 37:5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Genèse 41:1… 5."
+      "text": "Genèse 41:1… 5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Daniel 2:1 et suivants."
+      "text": "Daniel 2:1 et suivants.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "3 Rois 3:5."
+      "text": "3 Rois 3:5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Jérémie 23:28."
+      "text": "Jérémie 23:28.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Matthieu 1:20."
+      "text": "Matthieu 1:20.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Matthieu 2:13, 19."
+      "text": "Matthieu 2:13, 19.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Matthieu 2:12."
+      "text": "Matthieu 2:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Vide Gregor. Magn lib. 4. Dialog. cap. 48. et 49. et Tertull. l. de Anima, et Raban. hic, et Grot. in not. ad lib. 1. de Verit. Relig. Christ."
+      "text": "Vide Gregor. Magn lib. 4. Dialog. cap. 48. et 49. et Tertull. l. de Anima, et Raban. hic, et Grot. in not. ad lib. 1. de Verit. Relig. Christ.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "abbrev"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "Odyss. XIX. Δοιαὶ γάρ τε πύλαι ἀμενηνῶν εἰσὶν ὀνείρων. Αἱ μὲν γὰρ κεράεσσι τετεύχαται, αἱ δ᾽ ἐλέφαντι. Τῶν οἳ μέν κ᾽ ἔλθωσι διὰ πριστοῦ ἐλέφαντος, Οἵ δ᾽ ἐλεφαίρονται, ἔπε᾽ ἀκράαντα φέροντες. Οἵ δὲ διὰ ξεστῶν κεράων ἔλθωσι θύραζε, Οἵ ῥ᾽ ἔτυμα κραίνουσι, βροτῶν ὅτε κέν τις ἴδηται."
+      "text": "Odyss. XIX. Δοιαὶ γάρ τε πύλαι ἀμενηνῶν εἰσὶν ὀνείρων. Αἱ μὲν γὰρ κεράεσσι τετεύχαται, αἱ δ᾽ ἐλέφαντι. Τῶν οἳ μέν κ᾽ ἔλθωσι διὰ πριστοῦ ἐλέφαντος, Οἵ δ᾽ ἐλεφαίρονται, ἔπε᾽ ἀκράαντα φέροντες. Οἵ δὲ διὰ ξεστῶν κεράων ἔλθωσι θύραζε, Οἵ ῥ᾽ ἔτυμα κραίνουσι, βροτῶν ὅτε κέν τίς ἴδηται.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Odyss",
+          "original": "Odyssea"
+        }
+      ]
     }
   ],
   "book_end_marker": null

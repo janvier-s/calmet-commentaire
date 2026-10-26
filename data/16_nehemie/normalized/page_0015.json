@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 2,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 2,
       "latin_quote": "ERAM QUASI LANGUIDUS.",
       "french_translation": "Le Roi me trouvant le visage tout abattu, etc.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 2,
       "latin_quote": "NON EST HOC FRUSTRA : SED MALUM NESCIO QUOD IN CORDE TUO EST.",
       "french_translation": "Cela n'est pas sans raison : il faut que vous cachiez dans le cœur quelque mauvais dessein.",
@@ -41,35 +41,63 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Athen. lib. x. cap. 6. pag. 424. 425. qua. χθιζον παρὰ τοῖς ἀρχαίοις δι ἰνοχόοι, ὅπως παῖδες,…-cest παρὰ Βασιλεῖ, διὰ τί προσωπόν σε σκυθρωπόν; ἦ παρὰ Βασιλεῖ δι ἰνοχόοι τῶν παίδων, τὴν ἀκρεστυλίαν ζῶσαν ἐκτέλλοντες τῷ ζῶν δημοσιλῶν τῶν θυσιῶν."
+      "text": "Athen. lib. x. cap. 6. pag. 424. 425. qua. χθιζον παρὰ τοῖς ἀρχαίοις δῑ οἰνοχόοι, ὅπως παῖδες,…-cest παρὰ Βασιλεῖ, διὰ τί πρόσωπόν σε σκυθρωπόν; ἦ παρὰ Βασιλεῖ δῑ οἰνοχόοι τῶν παίδων, τὴν ἀκρεστυλίαν ζῶσαν ἐκτίλλοντες τῷ ζῶν δημοσιλῶν τῶν θυσιῶν.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ποιητῶν δ᾽ υἱὸς Μενελάω κυδαλίμοιο."
+      "text": "Ποιητῶν δ᾽ υἱὸς Μενελάω κυδαλίμοιο.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "ולא הייתי רע לפניו ויאמר לי המלך מדוע פניך רעים"
+      "text": "ולא הייתי רע לפניו ויאמר לי המלך מדוע פניך רעים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Καὶ ὡς ἐν ἕτερος οὐδεὶς ἦν ἐνώπιον αὐτῶ."
+      "text": "Καὶ ὡς ἐν ἕτερος οὐδεὶς ἦν ἐνώπιον αὐτῶ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Le nom d'étranger dans l'Écriture, se prend souvent pour un ennemi ; en Grec ἕτερος, de même que ἀλλότριος se peut mettre pour πολέμιος, et comme opposé à οἰκεῖος."
+      "text": "Le nom d'étranger dans l'Écriture, se prend souvent pour un ennemi ; en Grec ἕτερος, de même que ἀλλότριος se peut mettre pour πολέμιος, et comme opposé à οἰκεῖος.",
+      "tags": [
+        "greek",
+        "versions",
+        "explanation"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Vatable ;\nTirin ;\nLyre ;\nCornelius a Lapide ;\nMénochius."
+      "text": "Vatable ;\nTirin ;\nLyre ;\nCornelius a Lapide ;\nMénochius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Malvenda ;\nJunius ;\nPiscator."
+      "text": "Malvenda ;\nJunius ;\nPiscator.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "אין זה כי אם רע לבב"
+      "text": "אין זה כי אם רע לבב",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

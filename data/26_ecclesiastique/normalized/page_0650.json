@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 43,
       "latin_quote": "SUPER IMBREM EJUS EXPAVESCIT COR.",
       "french_translation": "Elle tombe en si grande quantité, que le cœur en est effrayé.",
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 43,
       "latin_quote": "GELU, SICUT SALEM, EFFUNDET SUPER TERRAM.",
       "french_translation": "Il répand sur la terre, comme du sel, les frimats, et la gelée.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 43,
       "latin_quote": "FRIGIDUS AQUILO FLAVIT, ET GELAVIT CHRYSTALLUS AB AQUA.",
       "french_translation": "Lorsqu'il fait souffler l'aquilon, l'eau se gèle aussi-tôt.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 43,
       "latin_quote": "DEVORABIT MONTES, ET EXURET DESERTUM.",
       "french_translation": "Elle dévore les montagnes, elle brûle le désert, et desséche tout ce qui était",
@@ -70,23 +70,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Grotius hic."
+      "text": "Grotius hic.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Xénophon, dans le livre 4 de l'Expédition du jeune Cyrus. Ἐλυπήθη δὲ καὶ στρατιώτης εἰ τίς διηρπάζετο ὑπὸ τῆς χιόνος τοὺς ὀφθαλμοὺς, etc."
+      "text": "Xénophon, dans le livre 4 de l'Expédition du jeune Cyrus. Ἐλυπήθη δὲ καὶ στρατιώτης εἰ τίς διηρπάζετο ὑπὸ τῆς χιόνος τοὺς ὀφθαλμοὺς, etc.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Bossuet hic."
+      "text": "Bossuet hic.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Matthieu 5:13. Vos estis sal terræ."
+      "text": "Matthieu 5:13. Vos estis sal terræ.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Παγιώσεται κρύςαλλος ἀφ᾽ ὕδατος… καὶ ὡς θώραξα ἐνδύσεται τὸ ὕδωρ."
+      "text": "Παγιώσεται κρύσταλλος ἀφ᾽ ὕδατος… καὶ ὡς θώραξα ἐνδύσεται τὸ ὕδωρ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

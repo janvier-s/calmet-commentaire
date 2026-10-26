@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 41,
       "latin_quote": "O MORS, QUAM AMARA EST MEMORIA TUA, ETC !",
       "french_translation": "O mort, que ton souvenir est amer à un homme qui vit en paix au milieu de ses biens ! … 3. O mort, que ta sentence est douce à un homme pauvre, à qui les forces manquent !",
@@ -25,15 +25,18 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Sénèque."
+      "text": "Sénèque.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Menand."
-    },
-    {
-      "marker": "I . . . . .",
-      "text": "Ἡδὺ δὲ ἀποθανεῖν ὅτῳ Ζῆν μὴ πάρεσθ᾽ ὡς βούλεται."
+      "text": "Menand.\n…Ἡδὺ δὲ ἀποθανεῖν ὅτῳ Ζῆν μὴ πάρεσθ᾽ ὡς βούλεται.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

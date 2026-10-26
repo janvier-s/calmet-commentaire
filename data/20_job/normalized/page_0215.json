@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 15,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 15,
       "latin_quote": "NUMQUID GRANDE EST UT CONSOLETUR TE DEUS ? SED VERBA TUA PRAVA HOC PROHIBENT.",
       "french_translation": "Serait-il difficile à Dieu de vous consoler ? Mais vous l'en empêchez par l'emportement de vos paroles.",
@@ -33,19 +33,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Job 12:12. In antiquis est sapientia, et in multo tempore prudentia."
+      "text": "Job 12:12. In antiquis est sapientia, et in multo tempore prudentia.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "המעט ממך תנחומות אל ודבר לאט עמך"
+      "text": "המעט ממך תנחומות אל ודבר לאט עמך",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Mercier ; Arias Montanus."
+      "text": "Mercier ; Arias Montanus.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ὀλίγα ἀνημάρτηκας μεμαςίγωσαι. Μεγάλα ἐπεῤῥημόνησας λαλῆσας"
+      "text": "Ὀλίγα ἀνημάρτηκας μεμαστίγωσαι. Μεγάλα ἐπεῤῥημόνησας λαλῆσας",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "metadata": {

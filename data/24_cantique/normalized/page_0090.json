@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 5,
       "latin_quote": "DILECTUS MEUS CANDIDUS, ET RUBICUNDUS.",
       "french_translation": "Mon bien-aimé éclate par sa blancheur, et par sa rougeur.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 5,
       "latin_quote": "ELECTUS EX MILLIBUS.",
       "french_translation": "Il est choisi entre mille.",
@@ -41,23 +41,58 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Augustin, Confessions, livre 4, chapitre 4."
+      "text": "Saint Augustin, Confessions, livre 4, chapitre 4.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Confessions",
+          "original": "Confessiones"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "צח ואדום"
+      "text": "צח ואדום",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Théodoret ; _saint Justin_ sur ce passage ; saint Ambroise, livre 1 Des vierges ; saint Jérôme sur Isaïe 53 et 63 ; et d'autres."
+      "text": "Voyez Théodoret ; _saint Justin_ sur ce passage ; saint Ambroise, livre 1 Des vierges ; saint Jérôme sur Isaïe 53 et 63 ; et d'autres.",
+      "tags": [
+        "verse",
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des vierges",
+          "original": "De virginibus"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "דגול מרבבה Sym. Στίλϐων, Aqu. λαμπρὸς. 70. Ἐκλελοχισμέν."
+      "text": "דגול מרבבה Sym. Στίλβων, Aqu. λαμπρὸς. 70. Ἐκλελοχισμέν.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Mosch. Idyll. 3. Ες δ᾽ ἀ μαῖς μελεδαμ. Οὐ τίτθος πᾶσι μάθοις νιν. Χρῶτα μὲν ὁ λευκός, πυρσὸς δ᾽ ἔπλεθ᾽. Ὄμματα δ᾽ αὐτῷ Δριμύλα, καὶ φλογόεντα, κακαὶ φρένες, ἀδὺ λάλημα. Οὐ γὰρ ἴσον νοέει, καὶ φθέγγεται. Ὡς μέλι φωνά, etc."
+      "text": "Mosch. Idyll. 3. Ες δ᾽ ἀ μαῖς μελεδαμ. Οὐ τίτθος πᾶσι μάθοις νιν. Χρῶτα μὲν ὁ λευκός, πυρσὸς δ᾽ ἔπλεθ᾽. Ὄμματα δ᾽ αὐτῷ Δριμύλα, καὶ φλογόεντα, κακαὶ φρένες, ἁδὺ λάλημα. Οὐ γὰρ ἴσον νοέει, καὶ φθέγγεται. Ὡς μέλι φωνά, etc.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

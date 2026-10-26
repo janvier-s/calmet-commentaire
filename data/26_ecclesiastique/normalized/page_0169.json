@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 6,
       "latin_quote": "ANIMA ENIM NEQUAM DISPERDET QUI SE HABET.",
       "french_translation": "L'âme maligne perdra celui en qui elle se trouvera.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 6,
       "latin_quote": "VERBUM DULCE MULTIPLICAT AMICOS.",
       "french_translation": "La parole douce acquiert beaucoup d'amis, et adoucit les ennemis.",
@@ -55,19 +55,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Τὰ φύλλα σου καταφάγεται, καὶ τοὺς καρποὺς σου ἀπολέσεις, etc."
+      "text": "Τὰ φύλλα σου καταφάγεται, καὶ τοὺς καρποὺς σου ἀπολέσεις, etc.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Λάρυγξ γλυκὺς πληθυνεῖ φίλους ἀυτỡ, καὶ γλῶσσα διλαλΘ ἐν ἀνδρὶ διπροσήγορῳ."
+      "text": "Λάρυγξ γλυκὺς πληθυνεῖ φίλους αὐτỡ, καὶ γλῶσσα διλαλΘ ἐν ἀνδρὶ διπροσήγορῳ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Proverbes 15:4."
+      "text": "Proverbes 15:4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "_Isocrat. ad Demonic._ Τῷ μὲν τρόπῳ γινου προσηγορος, τῷ δὲ λόγῳ διπροσήγορος. Εἶτα φιλοπροσήγοριας μὲν τὸ προσαγορεύειν τινς. ἀσπαζεσθαι, διπροσηγορίας δὲ, τὸ τοῖς λόγοις ἀυτοῖς εὐτυχάνειν."
+      "text": "_Isocrat. ad Demonic._ Τῷ μὲν τρόπῳ γίνου προσήγορος, τῷ δὲ λόγῳ διπροσήγορος. Εἶτα φιλοπροσήγοριας μὲν τὸ προσαγορεύειν τινς. ἀσπάζεσθαι, διπροσηγορίας δὲ, τὸ τοῖς λόγοις αὐτοῖς εὐτυχάνειν.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 13,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 13,
       "latin_quote": "PUGIONEM EJUS.",
       "french_translation": "Son sabre, ou son coutelas.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 13,
       "latin_quote": "PERCUSSIT BIS IN CERVICEM EJUS.",
       "french_translation": "Elle lui frappa sur le col par deux fois, de toutes ses forces, dit le Grec.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 13,
       "latin_quote": "ABSTULIT CONOPEUM.",
       "french_translation": "Elle détacha le pavillon des colonnes.",
@@ -61,7 +61,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 13,
       "latin_quote": "IN PERAM SUAM.",
       "french_translation": "Dans son sac.",
@@ -71,23 +71,49 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Κάνουν. Hésychius : αἱ τῆς ἀσπίδος ἱμάντες ἀφ᾽ ὧν ὁ τελαμὼν ἐξῆπται. Voyez Henri Estienne, Thesaurus ; et Ser. sur ce passage."
+      "text": "Κάνουν. Hésychius : αἱ τῆς ἀσπίδος ἱμάντες ἀφ᾽ ὧν ὁ τελαμὼν ἐξῆπται. Voyez Henri Estienne, Thesaurus ; et Ser. sur ce passage.",
+      "tags": [
+        "greek",
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Thesaurus",
+          "original": "Thesaurus geographicus"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καβέλας καὶ ἀκινάκην ἀυτό."
+      "text": "Καβέλας καὶ ἀκινάκην αὐτό.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Hérodote, livre 7. Περσικὸν ξίφος, τὸν Ἀκινάκην καλέουσι."
+      "text": "Hérodote, livre 7. Περσικὸν ξίφος, τὸν Ἀκινάκην καλέουσι.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Josèphe, Antiquités judaïques, livre dernier, chapitre 7."
+      "text": "Josèphe, Antiquités judaïques, livre dernier, chapitre 7.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Diodore de Sicile, livre 17 ; et Quinte-Curce, livre 3."
+      "text": "Diodore de Sicile, livre 17 ; et Quinte-Curce, livre 3.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

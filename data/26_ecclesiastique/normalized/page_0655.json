@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 44,
       "latin_quote": "LAUDEMUS VIROS GLORIOSOS, ETC.",
       "french_translation": "Louons ces hommes pleins de gloire qui sont nos pères.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 44,
       "latin_quote": "MULTAM GLORIAM FECIT DOMINUS.",
       "french_translation": "Le Seigneur a signalé dans eux sa gloire.",
@@ -40,15 +40,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide Infra ℣. 15. Sapientiam eorum narrent populi, et laudem eorum nuntiet Ecclesia."
+      "text": "Vide Infra ℣. 15. Sapientiam eorum narrent populi, et laudem eorum nuntiet Ecclesia.",
+      "tags": [
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Πατέρων Ὕμνος."
+      "text": "Πατέρων Ὕμνος.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "πολλὼ δόξαν ἔκλισεν ὁ Κύριος δι' ἀυτῶν. Grot. legit : Εποίησεν δι' ἀυτῶν."
+      "text": "πολλὼ δόξαν ἔκλισεν ὁ Κύριος δι' ἀυτῶν. Grot. legit : Ἐποίησεν δι' ἀυτῶν.",
+      "tags": [
+        "greek",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

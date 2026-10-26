@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 17,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 17,
       "latin_quote": "FECERUNT SIBI DE NOVISSIMIS SACERDOTES EXCELSO RUM.",
       "french_translation": "Ils choisirent les derniers du peuple pour Prêtres des hauts lieux.",
@@ -41,11 +41,19 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "עשים כמשפטם הראשון הם אינם יראים את יהוה ואינם עשים כחקתם וכמשפטם [UNCERTAIN HEBREW] κρίμα ἀυτῶν. ἀυτοὶ φοβῶνται, κὶ ἀυτοὶ ποιοῦσι καὶ τὸ δικαιώματα ἀυτῶν, κὶ κατὰ τὴν κρίσιν ἀυτῶν, κὶ ἐπὶ τῶν νόμων, κὶ κατὰ τὴν ἐντολὴν ἣν συνέταξε κύριος, κὶ ὁ θεὸς."
+      "text": "עשים כמשפטם הראשון הם אינם יראים את יהוה ואינם עשים כחקתם וכמשפטם [UNCERTAIN HEBREW] κρίμα ἀυτῶν. αὐτοὶ φοβῶνται, καὶ αὐτοὶ ποιοῦσι καὶ τὸ δικαιώματα ἀυτῶν, καὶ κατὰ τὴν κρίσιν ἀυτῶν, καὶ ἐπὶ τῶν νόμων, καὶ κατὰ τὴν ἐντολὴν ἣν συνέταξε κύριος, καὶ ὁ θεὸς.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "ἕως τῆς ἡμέρας ταύτης ἀυτοὶ ἐποιοῦν κατὰ τὸ"
+      "text": "ἕως τῆς ἡμέρας ταύτης ἀυτοὶ ἐποιοῦν κατὰ τὸ",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

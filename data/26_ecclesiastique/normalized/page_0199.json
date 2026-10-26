@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 7,
       "latin_quote": "FILII TIBI SUNT ? ERUDI ILLOS.",
       "french_translation": "Avez-vous des fils ? Instruisez-les bien, et accoutumez-les au joug dès leur enfance.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 7,
       "latin_quote": "FILIÆ TIBI SUNT ? SERVA CORPUS ILLARUM.",
       "french_translation": "Avez-vous des filles ? Conservez la pureté de leur corps ; et ne vous montrez pas à elles avec un visage gay.",
@@ -45,29 +45,41 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 7,
       "latin_quote": "TRADE FILIAM, ET GRANDE OPUS FECERIS.",
-      "french_translation": "Mariez votre fille, et vous aurez fait une grande affaire : mais donnez-la à un homme de bon sens ; à un homme sage, et entendu.",
-      "french_commentary": "Les Juifs mariaient leurs filles d'assez bonne heure. On dit qu'encore aujourd'hui ils sont dans cette pratique. Il est utile de fixer de bonne heure leur inclination, et leur état. Le service le plus important qu'un père puisse rendre à sa"
+      "french_translation": "Mariez votre fille, et vous aurez fait une grande affaire : mais donnez-la à un homme de bon sens ;",
+      "french_commentary": "à un homme sage, et entendu. Les Juifs mariaient leurs filles d'assez bonne heure. On dit qu'encore aujourd'hui ils sont dans cette pratique. Il est utile de fixer de bonne heure leur inclination, et leur état. Le service le plus important qu'un père puisse rendre à sa"
     }
   ],
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Proverbes 13:24."
+      "text": "Proverbes 13:24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Genèse 34."
+      "text": "Genèse 34.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Juvénal, satire 14."
+      "text": "Juvénal, satire 14.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Plutarque, Vie de Caton."
+      "text": "Plutarque, Vie de Caton.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

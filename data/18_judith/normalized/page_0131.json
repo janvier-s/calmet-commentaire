@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 12,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 12,
       "latin_quote": "OMNE QUOD ERIT ANTE OCULOS EJUS BONUM FACIAM.",
       "french_translation": "Je ferai tout ce qu'il trouvera bon.",
@@ -40,19 +40,43 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Esther 12:6. _Aman Amadathi Bugæus._ Item livre 7, et Cicéron, action 5, Contre Verrès."
+      "text": "Esther 12:6. _Aman Amadathi Bugæus._ Item livre 7, et Cicéron, action 5, Contre Verrès.",
+      "tags": [
+        "verse",
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Contre Verrès",
+          "original": "In Verrem"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Esther 1:11."
+      "text": "Esther 1:11.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Herodot. lib 5. cap. 18. Εἴωθε δὲ Πέρσαισι, σμὰ. Ἡμῖν νόμος Περσέων ἐστὶ, δειπνα κροτέειν γυναῖκας μίγα, τάς τε δὴ γαμετὰς, κ τὰς παλλακὰς παρεῖναι. Vide et Just."
+      "text": "Herodot. lib 5. cap. 18. Εἴωθε δὲ Πέρσαισι, σμὰ. Ἡμῖν νόμος Περσέων ἐστὶ, δεῖπνα κροτέειν γυναῖκας μίγα, τάς τε δὴ γαμετὰς, κ τὰς παλλακὰς παρεῖναι. Vide et Just.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Athen. Dipnosop. lib. 12. cap 2. Τῆς δὲ νυκτὸς ἀθέους, κ πάμφοροι διατελῦσι λύ. ται καλοῦμεναι. Χρῶνται δὲ αὐταῖς, κὴ πολέμοις ὁ Βασιλεὺς, etc."
+      "text": "Athen. Dipnosop. lib. 12. cap 2. Τῆς δὲ νυκτὸς ἀθέους, κ πάμφοροι διατελοῦσι λύ. ται καλοῦμεναι. Χρῶνται δὲ αὐταῖς, καὶ πολέμοις ὁ Βασιλεὺς, etc.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

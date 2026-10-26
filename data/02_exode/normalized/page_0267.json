@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 17,
       "latin_quote": "FECIT JOSUE UT LOCUTUS EST MOYSES.",
       "french_translation": "Josué fit ce qui lui avait été dit par Moïse.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 17,
       "latin_quote": "CUMQUE LEVARET MANUS, VINCEBAT ISRAËL.",
       "french_translation": "Pendant que Moïse élevait ses mains en haut, Israël avait l'avantage.",
@@ -33,31 +33,63 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Orus d'Égypte, Hiéroglyphes, livre 1, hiéroglyphe 21."
+      "text": "Orus d'Égypte, Hiéroglyphes, livre 1, hiéroglyphe 21.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Hiéroglyphes",
+          "original": "Hieroglyphica"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "יהושוע Jehoshuah."
+      "text": "יהושוע Jehoshuah.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Homère. Iliade. Ψ."
+      "text": "Homère. Iliade. Ψ.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ενθα με διδάξω σε δόμωσι ἰσαίρειν Πηλῆος Κηρυξιν᾽ εὐδείελος, κὴ σοι διακονέοντ᾽ ὀπάσσων. Μηριόνης θεράπων ἀγαπήνορος Ἰδομῆνος."
+      "text": "Ἔνθα με διδάξω σε δόμωσι σαίρειν Πηλῆος Κηρυξιν᾽ εὐδείελος, καὶ σοι διακονέοντ᾽ ὀπάσσων. Μηριόνης θεράπων ἀγαπήνορος Ἰδομῆνος.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Saint Jérôme, Contre Jovinien, livre 2."
+      "text": "Saint Jérôme, Contre Jovinien, livre 2.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Voyez Psaumes 27:2. Isaïe 31:12."
+      "text": "Voyez Psaumes 27:2 ; Isaïe 31:12.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Cajetan ; Rivet ; Tirin ; et d'après les anciens, Origène, Homélie 11 sur l'Exode, et d'après lui l'auteur du Sermon 26 dans l'Appendice du tomi 5, nouvelle édition. Saint Augustin. Moysus quidem manus elevat, non tamen extendit, etc."
+      "text": "Cajetan ; Rivet ; Tirin ; et d'après les anciens, Origène, Homélie 11 sur l'Exode, et d'après lui l'auteur du Sermon 26 dans l'Appendice du tomi 5, nouvelle édition. Saint Augustin. Moysus quidem manus elevat, non tamen extendit, etc.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 8,
       "latin_quote": null,
       "french_translation": null,
@@ -33,19 +33,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph. l. 5. Antiq. c. 8. Γεδεὼν δὲ τὴν ἀρχὴν ἀποθέσθαι βουλόμενος, Βασιλέα ἴσχειν ἀυτὸν ἐπὶ τῆς παναγηρέσεως."
+      "text": "Joseph. l. 5. Antiq. c. 8. Γεδεὼν δὲ τὴν ἀρχὴν ἀποθέσθαι βουλόμενος, Βασιλέα ἴσχειν αὐτὸν ἐπὶ τῆς παναγηρέσεως.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ménochius ;\nTirin ;\nSerarius ;\nBonfrère ;\nCornelius a Lapide."
+      "text": "Ménochius ;\nTirin ;\nSerarius ;\nBonfrère ;\nCornelius a Lapide.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "1 Rois 8:7."
+      "text": "1 Rois 8:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "תנו לי איש נזם שללו כי נזמי זהב להם כי ישמעאלים הם Grotius, etc."
+      "text": "תנו לי איש נזם שללו כי נזמי זהב להם כי ישמעאלים הם Grotius, etc.",
+      "tags": [
+        "hebrew",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

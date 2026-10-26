@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 6,
       "latin_quote": "MANSIT PRIMA MANSIONE JUXTA FLUVIUM TIGRIS.",
       "french_translation": "Il demeura la première nuit dans un lieu proche le fleuve du Tigre.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 6,
       "latin_quote": "EXIIT UT LAVARET PEDES SUOS.",
       "french_translation": "Étant allé laver ses pieds.",
@@ -33,15 +33,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Herodot. lib. 5. cap. 52. Ἔχεσι γδ ἀμφὶ τὰς ὁδὸς ζώην ἀνὴρ, σταθμοῖσι καὶ καταλύσεσι Βασιληίοισι, κὴ κατυλύσεις κάλλισαι."
+      "text": "Herodot. lib. 5. cap. 52. Ἔχεσι γδ ἀμφὶ τὰς ὁδὸς ζώην ἀνὴρ, σταθμοῖσι καὶ καταλύσουσι Βασιληίοισι, καὶ καταλύσεις κάλλισται.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "בעיר לדיקיאה"
+      "text": "בעיר לדיקיאה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Genèse 18:4 ; 24:32 ; Juges 19:21 etc."
+      "text": "Voyez Genèse 18:4 ; 24:32 ; Juges 19:21 etc.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

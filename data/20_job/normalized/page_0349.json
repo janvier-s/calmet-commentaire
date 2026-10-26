@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 28,
       "latin_quote": "TRAHITUR AUTEM SAPIENTIA DE OCCULTIS.",
       "french_translation": "La sagesse a une secrète origine d'où elle se tire.",
@@ -17,31 +17,57 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Dissertation sur la pluie de pierres de Josué."
+      "text": "Dissertation sur la pluie de pierres de Josué.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "[UNCERTAIN HEBREW] ספנינים חכמה מבו"
+      "text": "[UNCERTAIN HEBREW] ספנינים חכמה מבו",
+      "tags": [
+        "hebrew",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Lamentations 4:7."
+      "text": "Voyez Lamentations 4:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Plin. IX. 35. et XXXVII. 4."
+      "text": "Plin. IX. 35. et XXXVII. 4.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Voyez-notre Commentaire sur I, PAY. ℣. 27."
+      "text": "Voyez-notre Commentaire sur I, PAY. ℣. 27.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "_Lamentations 4:7. Rubicundi pre peninim._ [UNCERTAIN HEBREW] אדמו עצם מפנינים"
+      "text": "_Lamentations 4:7. Rubicundi pre peninim._ [UNCERTAIN HEBREW] אדמו עצם מפנינים",
+      "tags": [
+        "hebrew",
+        "verse",
+        "latin",
+        "uncertain"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Vide Androsthen. apud Athen. lib. 3. cap. 15. [UNCERTAIN GREEK] Καὶ ἔςι ὁ Δρ χρυσονδὴς σφίδεα, ὡς ἐπὶ ἰη δια-σίας διαγῶναι ὄρος κατιδῆ παρὰ τὸ χρυσίον, ὃ δὲ ἀργυροειδὴς, ὃ δὲ νελίμῳ λευκῷ, ἐμεῖς τοῖς σφ-δαλμοῖς τῶν ἰχθύων"
+      "text": "Vide Androsthen. apud Athen. lib. 3. cap. 15. [UNCERTAIN GREEK] Καὶ ἔστι ὁ Δρ χρυσονδὴς σφίδεα, ὡς ἐπὶ ἰη διὰ-σίας διαγνῶναι ὄρος κατιδῆ παρὰ τὸ χρυσίον, ὃ δὲ ἀργυροειδὴς, ὃ δὲ νελίμῳ λευκῷ, ἐμεῖς τοῖς σφ-δαλμοῖς τῶν ἰχθύων",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev",
+        "uncertain"
+      ]
     }
   ]
 }

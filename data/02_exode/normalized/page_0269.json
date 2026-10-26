@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 17,
       "latin_quote": "DELEBO MEMORIAM AMALEC.",
       "french_translation": "J'abolirai la mémoire d'Amalec.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 17,
       "latin_quote": "ÆDIFICAVITQUE MOYSES ALTARE, ET VOCAVIT NOMEN EJUS : DOMINUS EXALTATIO MEA.",
       "french_translation": "Moïse dressa un Autel, à qui il donna ce nom : Le Seigneur est mon élévation.",
@@ -40,31 +40,59 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "1 Rois 15:3."
+      "text": "1 Rois 15:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Deutéronome 25:18."
+      "text": "Deutéronome 25:18.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Philon, Vie de Moïse, livre 1."
+      "text": "Philon, Vie de Moïse, livre 1.",
+      "tags": [
+        "rabbis",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Vie de Moïse",
+          "original": "De vita Mosis"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Judith 4:13-14."
+      "text": "Judith 4:13-14.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "יהוה נסי"
+      "text": "יהוה נסי",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Κύριος καταφυγή με."
+      "text": "Κύριος καταφυγή με.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Νικαῖος ἐποράσας τὸν Θεὸν."
+      "text": "Νισαῖος ἐποράσας τὸν Θεὸν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

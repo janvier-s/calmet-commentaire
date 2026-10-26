@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 30,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 30,
       "latin_quote": "QUID PRODERIT LIBATIO IDOLO ?…20. SIC QUI EFFUGATUR A DOMINO.",
       "french_translation": "Que sert à l'idole l'oblation, la libation des liqueurs qu'on lui fait ? 20. Tel est celui que Dieu chasse de devant fa face, et qui porte la peine de son iniquité.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 30,
       "latin_quote": "VIDENS OCULIS, ET INGEMISCENS, SICUT SPADO COMPLECTENS VIRGINEM, ET SUSPIRANS.",
       "french_translation": "Qui voit les viandes de ses yeux, et qui gémit, comme un eunuque qui embrasse une vierge, et soupire.",
@@ -55,15 +55,29 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Épiphane. in Ancorato. Κελέυε, ὁ δῖνα, φάγε, κὶ πίθι, κὶ ἐυφράνθητι."
+      "text": "Épiphane. in Ancorato. Κελέυε, ὁ δῖνα, φάγε, καὶ πίθι, καὶ εὐφράνθητι.",
+      "tags": [
+        "greek",
+        "fathers"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Τί ὠφελεῖ εἰδώλῳ κνίσσωσις, ἐπεὶ οὐδὲ ὀσφρανθήσεται, ἐπὶ μὴ ὄν; οὕτως ὁ ἐκδιωκόμενος παρὰ Κυρίου."
+      "text": "Τί ὠφελεῖ εἰδώλῳ κνίσσωσις, ἐπεὶ οὐδὲ ὀσφρανθήσεται, ἐπὶ μὴ ὄν; οὕτως ὁ ἐκδιωκόμενος παρὰ Κυρίου.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Κνίσσωσις, feu κνῆσμα. Iofra xiv. 20. Lévitique 4:10, 18. 16:24. 22:22. Idem cum Hebr. ריח, feu ניחוח"
+      "text": "Κνίσσωσις, feu κνῆσμα. Iofra xiv. 20. Lévitique 4:10, 18. 16:24. 22:22. Idem cum Hebr. ריח, feu ניחוח",
+      "tags": [
+        "hebrew",
+        "greek",
+        "verse",
+        "versions",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

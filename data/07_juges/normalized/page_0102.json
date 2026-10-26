@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 5,
       "latin_quote": "QUI SEDETIS IN JUDICIO, ET AMBULATIS IN VIA, LOQUIMINI.",
       "french_translation": "Vous qui remplissez les sièges de la justice, vous qui êtes sur les chemins, parlez, louez le Seigneur.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 5,
       "latin_quote": "UBI COLLISI SUNT CURRUS, ET HOSTIUM SUFFOCATUS EST EXERCITUS, IBI NARRENTUR JUSTITIÆ DOMINI.",
       "french_translation": "Que là où l'on voit ces débris de chariots renversés, où l'on voit le carnage de l'armée ennemie, que là même on publie la justice du Seigneur.",
@@ -41,39 +41,69 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "3 Rois 1:33, 38, 44."
+      "text": "1 Rois 1:33, 38, 44.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "2 Rois 13:29."
+      "text": "2 Rois 13:29.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Rois 18:9."
+      "text": "2 Rois 18:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "3 Rois 4:26, 28 etc."
+      "text": "3 Rois 4:26, 28 etc.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Tavernier, tome 1, livre 3, chapitre 5, et livre 4, chapitre 3."
+      "text": "Tavernier, tome 1, livre 3, chapitre 5, et livre 4, chapitre 3.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Chardin, Voyage de Perse, tome 2, page 26."
+      "text": "Chardin, Voyage de Perse, tome 2, page 26.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "ישבי על מדין והלכי על דרך שיחו"
+      "text": "ישבי על מדין והלכי על דרך שיחו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Josué 15:61."
+      "text": "Josué 15:61.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "καθήμενοι ἐπὶ κριτηρίων, ἢ πορευόμενοι ἐπὶ ὁδῶν."
+      "text": "καθήμενοι ἐπὶ κριτηρίων, ἢ πορευόμενοι ἐπὶ ὁδῶν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

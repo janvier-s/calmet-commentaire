@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 13,
       "latin_quote": "FACIAT IN OCULIS MEIS DUAS SORBITIONCULAS.",
       "french_translation": "Qu'elle fasse devant moi deux petits plats, ou deux petites prises de quelques liqueurs, ou de quelques jus.",
@@ -39,31 +39,65 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "שתי לבבות"
+      "text": "שתי לבבות",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "תרתין חליטתא"
+      "text": "תרתין חליטתא",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Δύο κολλυρίδας."
+      "text": "Δύο κολλυρίδας.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Vide ad ℣. 9. Joseph Antiq. lib. 7. c. 7. Ap. 25 [ILLEGIBLE]"
+      "text": "Vide ad ℣. 9. Joseph Antiq. lib. 7. c. 7. Ap. 25 [ILLEGIBLE]",
+      "tags": [
+        "rabbis",
+        "title",
+        "abbrev",
+        "uncertain"
+      ],
+      "titles": [
+        {
+          "fr": "Joseph Antiq. lib",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Athen. lib. 3. c. 28. Γαλακτερας κολλαβους Σιρους."
+      "text": "Athen. lib. 3. c. 28. Γαλακτερας κολλάβους Σιρους.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Genèse 18:6."
+      "text": "Genèse 18:6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Herodot. lib. 8 c. 137. Η' δι γυνὴ τῆ Βασιλέη ἀυτὴ ῶ σιτία σφι ἐπεσσε."
+      "text": "Herodot. lib. 8 c. 137. Ἠ δῑ γυνὴ τῆ Βασιλέη ἀυτὴ ῶ σιτία σφι ἔπεσσε.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

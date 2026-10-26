@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 9,
       "latin_quote": "RATORES, OMNISQUE DIGNITAS.",
       "french_translation": "Les Juges, les Gouverneurs, les Intendants, et tous ceux qui avaient quelque Dignité.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 9,
       "latin_quote": "QUEM PRINCIPEM ESSE PALATII, ET PLURIMUM POSSE COGNOVERANT, ETC.",
       "french_translation": "Qu'ils savaient être le Grand-Maître du Palais, et avoir beaucoup de pouvoir, etc.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 9,
       "latin_quote": "EXTRA DECEM FILIOS AMAN.",
       "french_translation": "Outre les dix fils d'Aman.",
@@ -55,23 +55,44 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "וכל שרי המדינות והאחשדרפנים והפחות ועשי המלאכה אשר למלך"
+      "text": "וכל שרי המדינות והאחשדרפנים והפחות ועשי המלאכה אשר למלך",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Οι άρχοντες τῶν σατραπῶν, (forsè σατραπειῶν,) καὶ οι τύραννοι, καὶ οι γραμματεῖς οι Βασιλικοὶ, τίμων τὰς Ιυδαίας. Édit vet. ab Usser. Οι άρχοντες, καὶ οι τύραννοι, καὶ οι σατράπαι, καὶ οι Βασιλικοῖ γραμματεῖς. Joseph. Antiquit. lib. XI. cap. 6. Οι άρχοντες τῶν σατραπειῶν, καὶ οι τύραννοι, καὶ οι Βασιλεῖς, καὶ οι γραμματεῖς ἀκῶν οι τί-μῶντες τὰς Ιυδαίας. Vide Sup. I. 3."
+      "text": "Οἱ ἄρχοντες τῶν σατραπῶν, (forsè σατραπειῶν,) καὶ οἱ τύραννοι, καὶ οἱ γραμματεῖς οἱ Βασιλικοὶ, τίμων τὰς Ιουδαίας. Édit vet. ab Usser. Οἱ ἄρχοντες, καὶ οἱ τύραννοι, καὶ οἱ σατράπαι, καὶ οι Βασιλικοῖ γραμματεῖς. Joseph. Antiquit. lib. XI. cap. 6. Οἱ ἄρχοντες τῶν σατραπειῶν, καὶ οἱ τύραννοι, καὶ οἱ Βασιλεῖς, καὶ οἱ γραμματεῖς ἀκῶν οἱ τί-μῶντες τὰς Ιουδαίας. Vide Sup. I. 3.",
+      "tags": [
+        "greek",
+        "classical",
+        "commentators",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "כי גדול מרדכי בבית המלך ושמעו הולך בכל המדינות כי האיש מרדכי הולך וגדול"
+      "text": "כי גדול מרדכי בבית המלך ושמעו הולך בכל המדינות כי האיש מרדכי הולך וגדול",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Græc. Origen. ab Usser. Édit. Xystinæ. Καὶ γδ ὁ Μαρδοχαῖος προεκόπλε, προεγίνετο γδ ὁ Μαρδοχαῖος μέγας, καὶ τὸ πρόςαγμα τῶ Βασιλέως ὀνομαςὸν ἦν αὐτῷ ἐν πάσῃ τῇ Βασιλείᾳ, καὶ ἐμεγαλύνθη."
+      "text": "Græc. Origen. ab Usser. Édit. Xystinæ. Καὶ γδ ὁ Μαρδοχαῖος προεκόπλε, προεγίνετο γδ ὁ Μαρδοχαῖος μέγας, καὶ τὸ πρόσταγμα τῶ Βασιλέως ὀνομαστὸν ἦν αὐτῷ ἐν πάσῃ τῇ Βασιλείᾳ, καὶ ἐμεγαλύνθη.",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Esther 8:2."
+      "text": "Esther 8:2.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

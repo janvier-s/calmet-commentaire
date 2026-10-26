@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 22,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 22,
       "latin_quote": "QUORUM SENTENTIA PROCUL SIT A ME.",
       "french_translation": "Mais loin de moi ces pensées des impies.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 22,
       "latin_quote": "VIDEBUNT JUSTI, ET LÆTABUNTUR ; ET INNOCENS SUBSANNABIT EOS.",
       "french_translation": "Les Justes les verront périr, et s'en réjouiront ; et l'innocent leur insultera.",
@@ -62,23 +62,43 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "אשר קמטו ולא עת נהר יוצק יסודם _plutôt. Ridés ἄδικοι. Ita et antiqua versio Latina._"
+      "text": "אשר קמטו ולא עת נהר יוצק יסודם _plutôt. Ridés ἄδικοι. Ita et antiqua versio Latina._",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "_Mès respon. ἀνδρῶν φαύλων, si indagatur sudpes divinæ._ (16.) _Οἱ συνειληθέντες ἄωροι. Πόταμος ἐπιῤῥέων οἱ θεμέλιοι αὐτῶν. Édition de Complute._"
+      "text": "_Mès respon. ἀνδρῶν φαύλων, si indagatur sudpes divinæ._ (16.) _Οἱ συνειληθέντες ἄωροι. Πόταμος ἐπιρρέων οἱ θεμέλιοι αὐτῶν. Édition de Complute._",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Vide Scoliast. hic apud Nobil."
+      "text": "Vide Scoliast. hic apud Nobil.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ci-dessus 21:15."
+      "text": "Ci-dessus 21:15.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Βουλὴ δὲ ἀσεβῶν πόρρω ἀπ’ αὐτοῦ."
+      "text": "Βουλὴ δὲ ἀσεβῶν πόρρω ἀπ’ αὐτοῦ.",
+      "tags": [
+        "greek"
+      ]
     }
   ]
 }

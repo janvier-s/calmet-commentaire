@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 4,
       "latin_quote": "COR INOPIS NE AFFLIXERIS.",
       "french_translation": "N'attristez point le cœur du pauvre. ^{(a)}",
@@ -37,9 +37,9 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 4,
-      "latin_quote": "AB INOPE NE AVERTAS OCULOS TUOS, PROPTER IRAM, ETC.",
+      "latin_quote": "AB INOPE NE AVERTAS OCULOS TUOS, PROPTER IRAM, ETC.^{(d)}",
       "french_translation": null,
       "french_commentary": "Ne détournez point vos yeux du pauvre, de peur qu'il ne se fâche ; et qu'outré de douleur, il ne prononce contre vous des malédictions, qui ne seront point sans effet. Voici le Grec : ^{(e)} _Ne détournez point les yeux de celui qui vous demande quelque chose, et ne donnez point lieu au pauvre de faire des imprécations contre vous._ Il répète pour la troisième fois ce précepte, de ne pas détourner les yeux du pauvre qui demande. Les imprécations, et les cris des pauvres sont écoutés de Dieu, comme il dit dans le verset suivant : _Maledicentis enim tibi in amaritudine animæ, exaudietur deprecatio._ Vous ne nuirez point à la veuve, et à l'orphelin, dit le Seigneur par Moïse. ^{(f)} Que si vous les affligez, _ils crieront vers moi, et je les écouterai._ Celui qui ferme ses oreilles à la clameur du pauvre, dit le Sage, ^{(g)} criera lui-même à son tour, et il ne sera point exaucé. Homère ^{(h)} représente les prières, comme des personnes vivantes, lesquelles étant rebutées, et méprisées par les hommes, portent leurs plaintes au"
     }
@@ -47,35 +47,69 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Καρδίαν τεταραγμένην μὴ προσταράξῃς."
+      "text": "Καρδίαν τεταραγμένην μὴ προσταράξῃς.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Plaut. Fames et mora bilem in nasum concitant."
+      "text": "Plaut. Fames et mora bilem in nasum concitant.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Proverbes 13:12."
+      "text": "Proverbes 13:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "_Propter iram_, n'est pas dans le Grec."
+      "text": "_Propter iram_, n'est pas dans le Grec.",
+      "tags": [
+        "versions",
+        "latin"
+      ]
     },
     {
-      "marker": "(d)",
-      "text": "Ἀπὸ δεομένου μὴ ἀποστρέψῃς ὀφθαλμὸν, καὶ μὴ δῷς τόπον ἀνθρώπῳ καταράσασθαί σε."
+      "marker": "(e)",
+      "text": "Ἀπὸ δεομένου μὴ ἀποστρέψῃς ὀφθαλμὸν, καὶ μὴ δῷς τόπον ἀνθρώπῳ καταράσασθαί σε.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Exode 22:22-23."
+      "text": "Exode 22:22-23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Proverbes 21:13."
+      "text": "Proverbes 21:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "_Homer. Iliad. X._\nΟἵ δέ κ᾽ ἀτιμήσῃ, καὶ ἀνήνηται, καὶ ἀέκων,\nΛίσσονθ᾽ αἳ δ᾽ ἄρ᾽ ἴσαι γι Δία κρονίωνα κίεσαι,\nΤῷ λίσσονται ἵνα σφιν ἐποτρύνῃσιν ἀοιδόν."
+      "text": "_Homer. Iliad. X._\nΟἵ δέ κ᾽ ἀτιμήσῃ, καὶ ἀνήνηται, καὶ ἀέκων,\nΛίσσονθ᾽ αἳ δ᾽ ἄρ᾽ ἴσαι γι Δία κρονίωνα κίεσαι,\nΤῷ λίσσονται ἵνα σφιν ἐποτρύνῃσιν ἀοιδόν.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     }
   ],
   "book_end_marker": "F iij"

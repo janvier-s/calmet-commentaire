@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 18,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 18,
       "latin_quote": "IMMISIT ENIM IN RETE PEDES SUOS, ET IN MACULIS EJUS AMBULAT.",
       "french_translation": "Il a engagé ses pieds dans les rets, et il marche au milieu du filet. À la lettre : il marche dans les mailles du filet.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 18,
       "latin_quote": "EXARDESCET CONTRA EUM SITIS.",
       "french_translation": "La soif le brûlera par ses ardeurs.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 18,
       "latin_quote": "UNDIQUE TERREBUNT EUM FORMIDINES.",
       "french_translation": "Les terreurs l'assiégeront de toutes parts.",
@@ -70,23 +70,42 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Psaumes 4:2 ; Proverbes 4:12, 18."
+      "text": "Psaumes 4:2 ; Proverbes 4:12, 18.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Θηράματα ἱκάθισαν et ἐκλέψονται αὐτὸν, ὀφθαλμοὶ δὲ αὐτῷ ἐπὶ ἀδυνάτε. Ils ont lû dans l'Hébreu : יצודו צעדיו אונו au lieu de יצודו צעדיו און."
+      "text": "Θηράματα ἱκάθισαν et ἐκλέψονται αὐτὸν, ὀφθαλμοὶ δὲ αὐτῷ ἐπὶ ἀδυνάτου. Ils ont lû dans l'Hébreu : יצרו צעדיו אונו au lieu de יצודו צעדיו און.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "explanation"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "כי שלח ברגליו רשת ועל שבכה יתהלך"
+      "text": "כי שלח ברגליו רשת ועל שבכה יתהלך",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "יחזק עליו צמים"
+      "text": "יחזק עליו צמים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "70. Καταδραμοῦνται ἐπ' αὐτὸν διψῶντες."
+      "text": "70. Καταδραμοῦνται ἐπ' αὐτὸν διψῶντες.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "metadata": {

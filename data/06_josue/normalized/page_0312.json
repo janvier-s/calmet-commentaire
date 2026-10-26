@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 17,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 17,
       "latin_quote": "NON POTERIMUS AD MONTANA CONSCENDERE, CUM FERREIS CURRIBUS UTANTUR CANANÆI.",
       "french_translation": "Nous ne pourrons pas gagner le pays des montagnes, parce que les Cananéens qui habitent dans la plaine, ont des chariots armés de faux :",
@@ -33,19 +33,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Junius ;\nMalvenda ;\nCornelius a Lapide ;\nBonfrère."
+      "text": "Junius ;\nMalvenda ;\nCornelius a Lapide ;\nBonfrère.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Nombres 2:2."
+      "text": "Nombres 2:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Nombres 26:34."
+      "text": "Nombres 26:34.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "3 Rois 20:23, 25."
+      "text": "4 Rois 20:23, 25.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 13,
       "latin_quote": "TOLLENS QUOD COXERAT, EFFUDIT ET POSUIT CORAM EO.",
       "french_translation": "Prenant ce qu'elle avait fait cuire, elle le mit dans un plat, et le lui présenta.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 13,
       "latin_quote": "INFER CIBUM IN CONCLAVI.",
       "french_translation": "Portez dans mon cabinet ce que vous avez apprêté.",
@@ -47,11 +47,18 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "ותקח את הבצק ותלוש לעיניו ותבשל את הלבבות ותקח את המשרת ותצק לפניו"
+      "text": "ותקח את הבצק ותלוש לעיניו ותבשל את הלבבות ותקח את המשרת ותצק לפניו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Vide Exode 8:3. Juges 15:1 et 16:9. Reg. IV. 7. 4. _Reg. XI._ 2. Eccle. X. 20. Cantique des cantiques 1:4. Joël 2:16."
+      "text": "Voyez Exode 8:3 ; Juges 15:1 et 16:9 ; 1 Rois 4:7 ; 4 Rois 11:2 ; Ecclésiaste 10:20 ; Cantique des cantiques 1:4 ; Joël 2:16.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     }
   ],
   "book_end_marker": null

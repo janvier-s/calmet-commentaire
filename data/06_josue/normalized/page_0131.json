@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": "Ôtez vos souliers de vos pieds ; ou déliez les courroies de vos sandales.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 5,
       "latin_quote": "LOCUS IN QUO STAS, SANCTUS EST.",
       "french_translation": "Le lieu où vous êtes est saint ;",
@@ -33,19 +33,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ovide, Fastes, livre 6. hic pede Matronam nudo descendere vidi."
+      "text": "Ovide, Fastes, livre 6. hic pede Matronam nudo descendere vidi.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Tertullien, cum slupet cœlum et aret annus, nudipedalia denuntiantur."
+      "text": "Tertullien, cum slupet cœlum et aret annus, nudipedalia denuntiantur.",
+      "tags": [
+        "fathers",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Porphyre, De l'abstinence des animaux, livre 2. τò ἐκ μοι καθαρὰ δὲ εἶναι, ϗ ἀκάλυπτα πέδιλα, etc."
+      "text": "Porphyre, De l'abstinence des animaux, livre 2. τò ἐκ μοι καθαρὰ δὲ εἶναι, ϗ ἀκάλυπτα πέδιλα, etc.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De l'abstinence des animaux",
+          "original": "De abstinentia ab esu animalium"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "A'rrian. ἐς τὰ ἱεϱὰ κράαν ουδ'αϱχὴ θεοῦ ἐςι·, πλὴν ὅτι πνεύματι δ'οὐδὶ ἀπομύξασθαι ὅλον ὡς νόμισμα, ϗ μύξα."
+      "text": "A'rrian. ἐς τὰ ἱερὰ κράαν ουδ'αρχὴ θεοῦ ἐστι·, πλὴν ὅτι πνεύματι δ'οὐδὶ ἀπομύξασθαι ὅλον ὡς νόμισμα, ϗ μύξα.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

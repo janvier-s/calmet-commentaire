@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 5,
       "latin_quote": "PROFECTO CURASSET EUM A LEPRA.",
       "french_translation": "Il l'aurait sans doute guéri de sa lèpre.",
@@ -47,19 +47,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Strabo l. XI. ὁ δὲ ἐν λάβωσι ἐπιλυίρα ποιῆσαι ῥαδίως, μετὰ τῆς ἀδικίας μυχθείσης τοῖς ἀπολένουσι."
+      "text": "Strabo l. XI. ὁ δὲ ἐν λάβωσι ἐπιλυίρα ποιῆσαι ῥαδίως, μετὰ τῆς ἀδικίας μυχθείσης τοῖς ἀπολένουσι.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "César, Guerre des Gaules, livre 6."
+      "text": "César, Guerre des Gaules, livre 6.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Guerre des Gaules",
+          "original": "De bello Gallico"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "יאספך או יאסף את צרעתו. τότ' ἀποσυνάξει ἀυτὸν ἀπὸ τῆς λέπρας ἀυτῦ."
+      "text": "יאספך או יאסף את צרעתו. τότ' ἀποσυνάξει αὐτὸν ἀπὸ τῆς λέπρας αὐτοῦ.",
+      "tags": [
+        "hebrew",
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Munster ;\nVatable ;\nJunius. Voyez 4 Rois 5:6."
+      "text": "Munster ;\nVatable ;\nJunius. Voyez 4 Rois 5:6.",
+      "tags": [
+        "verse",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

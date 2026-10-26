@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -28,7 +28,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 3,
       "latin_quote": "EN LECTULUM SALOMONIS SEXAGINTA FORTES AMBIUNT EX FORTISSIMIS ISRAEL.",
       "french_translation": "Voici le lit de Salomon environné de soixante hommes des plus vaillants d'entre les forts d'Israël.",
@@ -38,11 +38,21 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "מי זאת עלה מן המדבר כחמרות עשן מקטרת מר ולבונה מכל אבקת רכל. σελίχα κανῶ τεθυμιαμένη σμύρναν, etc. Aqu. et Sym. Ως ςμύλοις καπνῦ ἀπὸ θυμιάματ. Ambros. Ep. 62. Sicut virga fumo incensa, odorificata myrrhâ, et thure, ab omnibus pulveribus unguentis."
+      "text": "מי זאת עלה מן המדבר כחמרות עשן מקטרת מר ולבונה מכל אבקת רכל. σελίδα κανοῦ τεθυμιαμένη σμύρναν, etc. Aqu. et Sym. Ὡς ςμύλοις καπνοῦ ἀπὸ θυμιάματ. Ambros. Ep. 62. Sicut virga fumo incensa, odorificata myrrhâ, et thure, ab omnibus pulveribus unguentis.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez au besoin saint Grégoire ; Bède ; Apocalypse, etc."
+      "text": "Voyez au besoin saint Grégoire ; Bède ; Apocalypse, etc.",
+      "tags": [
+        "fathers"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 9,
       "latin_quote": "DE FILIIS ISRAEL NON CONSTITUIT SERVIRE QUEMQUAM.",
       "french_translation": "Il ne voulut point qu'aucun des enfants d'Israël servît d'esclave.",
@@ -33,15 +33,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph. Antiq. lib. 8. cap. 2. Φόρον αυτοῖς τελοῦντας, ὴ πρὸς τῷ δουλεύειν ἀυτῷ, ὴ τῆς δουλείας ἀφεῖσθαι, ὴ πρὸς γεωργίαν καθ’ ἕκαστον ἐνιαυτὸν ἐκπέμπειν."
+      "text": "Joseph. Antiq. lib. 8. cap. 2. Φόρον αὐτοῖς τελοῦντας, ὴ πρὸς τῷ δουλεύειν αὐτῷ, ὴ τῆς δουλείας ἀφεῖσθαι, ὴ πρὸς γεωργίαν καθ’ ἕκαστον ἐνιαυτὸν ἐκπέμπειν.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. lib",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "1 Esdras 2:55 et 2 Esdras 7:60. Omnes Nathinæi, et filii servorum Salomonis trecenti nonaginta-duo."
+      "text": "1 Esdras 2:55 et 2 Esdras 7:60. Omnes Nathinæi, et filii servorum Salomonis trecenti nonaginta-duo.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Paralipomènes 8:9."
+      "text": "2 Paralipomènes 8:9.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

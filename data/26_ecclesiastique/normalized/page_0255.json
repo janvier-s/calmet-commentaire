@@ -33,8 +33,8 @@
       "verse_ref": 27,
       "chapter": 11,
       "latin_quote": "IN DIE MALORUM, NE IMMEMOR SIS BONORUM.",
-      "french_translation": "Ne perdez point le souvenir du mal au jour heureux : ni le souvenir du bien au jour malheureux. }",
-      "french_commentary": "Dans la prospérité, craignez toujours l'adversité ; et dans l'adversité, ne désespérez jamais du retour de la prospérité.^{(f)\n_Nemo confidat nimium secundis,\nNemo desperet meliora lapsis ;\nRes Deus nostras celeri citatas\nTurbine versat._\nLe sage est toujours préparé à tout événement. S'il lui arrive une disgrâce, elle ne le surprend pas ; il s'y est préparé de longue main ; si quelque bonne fortune le tire de l'obscurité et de la poussière, il ne s'en élève point, persuadé qu'il est du néant, et de l'inconstance des choses de ce monde.^{(g)} L'insensé au contraire se livre à la douleur, et au découragement dans l'adversité ; il est insolent, et téméraire dans la bonne fortune."
+      "french_translation": "Ne perdez point le souvenir du mal au jour heureux : ni le souvenir du bien au jour malheureux.",
+      "french_commentary": "Dans la prospérité, craignez toujours l'adversité ; et dans l'adversité, ne désespérez jamais du retour de la prospérité.^{(f)}\n_Nemo confidat nimium secundis,\nNemo desperet meliora lapsis ;\nRes Deus nostras celeri citatas\nTurbine versat._\nLe sage est toujours préparé à tout événement. S'il lui arrive une disgrâce, elle ne le surprend pas ; il s'y est préparé de longue main ; si quelque bonne fortune le tire de l'obscurité et de la poussière, il ne s'en élève point, persuadé qu'il est du néant, et de l'inconstance des choses de ce monde.^{(g)} L'insensé au contraire se livre à la douleur, et au découragement dans l'adversité ; il est insolent, et téméraire dans la bonne fortune."
     },
     {
       "commentary_id": 3,
@@ -48,31 +48,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "4 Rois 18:34-35."
+      "text": "4 Rois 18:34-35.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Isaïe 14:14-15."
+      "text": "Isaïe 14:14-15.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Exode 5:2 ; Ézéchiel 29:3."
+      "text": "Exode 5:2 ; Ézéchiel 29:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ézéchiel 28:2."
+      "text": "Ézéchiel 28:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Psaumes 13. et LVII."
+      "text": "Psaumes 13. et LVII.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Senec. Thyest."
+      "text": "Senec. Thyest.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Horat. lib. 2. Ode. 10.\n_Sperat infestis, metuit secundis\nAlteram sortem, benè præparatum\nPectus._"
+      "text": "Horat. lib. 2. Ode. 10.\n_Sperat infestis, metuit secundis\nAlteram sortem, benè præparatum\nPectus._",
+      "tags": [
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": "V ij"

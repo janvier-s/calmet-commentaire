@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 21,
       "latin_quote": "EIUS ^{(a)} PERVENIET.",
       "french_translation": "La prière du pauvre s'élèvera de sa bouche jusqu'aux oreilles de Dieu. C'est ainsi que la plupart l'entendent.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 21,
       "latin_quote": "QUI ODIT CORREPTIONEM, VESTIGIUM EST PECCATORIS.",
       "french_translation": "Celui qui hait la réprimande, marche sur les traces du méchant.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 21,
       "latin_quote": "NOTUS A LONGE, POTENS LINGUA AUDACI.",
       "french_translation": "L'homme puissant et audacieux en paroles, se fera connaître de loin : et le sage sait la manière de se défaire de lui.",
@@ -55,27 +55,49 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Quidam Cod. Usque ad aures Dei."
+      "text": "Quidam Cod. Usque ad aures Dei.",
+      "tags": [
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Psaumes 9:26, 38. XXX. II. 16. IX. 13. 19. XXI. 25. et passim."
+      "text": "Psaumes 9:26, 38. XXX. II. 16. IX. 13. 19. XXI. 25. et passim.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Δέησις πτωχȣ ἐκ σόματος, ἕως ὠίων αὐτȣ, καὶ κρίμα αὐτȣ κατὰ σπευδὴν ἐρχεται."
+      "text": "Δέησις πτωχȣ ἐκ σόματος, ἕως ὠίων αὐτȣ, καὶ κρίμα αὐτȣ κατὰ σπουδὴν ἔρχεται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Grot. Nec improbat Vtab."
+      "text": "Grot. Nec improbat Vtab.",
+      "tags": [
+        "commentators",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Viae Clem. Alexand. Paedag. lib. 1. cap. 8. et 9."
+      "text": "Viae Clem. Alexand. Paedag. lib. 1. cap. 8. et 9.",
+      "tags": [
+        "fathers",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Γνωτὸς μακρόθεν ὁ δυνατὸς ἐν γλώσσῃ, ὁ δὲ φρόνιμος οἶδεν ἐν τῷ ὀλισθαίνειν αὐτὸν."
+      "text": "Γνωτὸς μακρόθεν ὁ δυνατὸς ἐν γλώσσῃ, ὁ δὲ φρόνιμος οἶδεν ἐν τῷ ὀλισθαίνειν αὐτὸν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

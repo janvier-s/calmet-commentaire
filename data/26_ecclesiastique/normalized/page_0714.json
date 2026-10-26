@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 49,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 49,
       "latin_quote": "ZOROBABEL QUASI SIGNUM IN DEXTERA MANU.^{(d)}",
       "french_translation": "Zorobabel a été mis comme un anneau à la main droite.",
@@ -33,31 +33,55 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Καὶ τὰ δώδεκα προφητῶν τὰ ὀςᾶ ἀναθάλοι ἐκ τοῦ τόπου αὐτῶν. Καὶ Σάλοικοι ἐςᾶ αὐτῶν."
+      "text": "Καὶ τὰ δώδεκα προφητῶν τὰ ὀᾶ ἀναθάλοι ἐκ τοῦ τόπου αὐτῶν. Καὶ Σόλοικοι ἐςᾶ αὐτῶν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ecclésiastique 45:15. Ossa eorum pullulent de loco suo."
+      "text": "Ecclésiastique 45:15. Ossa eorum pullulent de loco suo.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Matthieu 23:29."
+      "text": "Matthieu 23:29.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "L'édition de Complute, Sixte V et plusieurs d'autres ajoutent sur ce passage, Israël : Quasi signum in manu dextra Israël."
+      "text": "L'édition de Complute, Sixte V et plusieurs d'autres ajoutent sur ce passage, Israël : Quasi signum in manu dextra Israël.",
+      "tags": [
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Aggée 2:24."
+      "text": "Aggée 2:24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Jérémie 22:24."
+      "text": "Jérémie 22:24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Cantique des cantiques 8:6."
+      "text": "Cantique des cantiques 8:6.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     }
   ],
   "book_end_marker": null

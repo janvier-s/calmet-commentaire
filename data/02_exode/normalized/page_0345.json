@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 21,
       "latin_quote": "QUI PERCUSSERIT PATREM SUUM, AUT MATREM, MORTE MORIATUR.",
       "french_translation": "Quiconque frappera son père ou sa mère, sera mis à mort.",
@@ -40,27 +40,56 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Demosthen. Or. 3 de Lycurgi liberis. Κρατιτὸς ἐςι νόμος, etc. Idem Orat. Tima., ἡ σωτηρίας τῶν χρηστῶν ἀνδρῶν εἴδεται, ἀκρίτως ἀπάγειν τῷ θεῷ, μὴ κατ' ἐξαδίκην. Πῶς γὰρ ἀνίερον ὁρᾶν, ἐκπερὶ τοῦ."
+      "text": "Demosthen. Or. 3 de Lycurgi liberis. Κρατητὸς ἐστι νόμος, etc. Idem Orat. Tima., ἡ σωτηρίας τῶν χρηστῶν ἀνδρῶν εἴδεται, ἀκρίτως ἀπάγειν τῷ θεῷ, μὴ κατ' ἐξαδίκην. Πῶς γὰρ ἀνίερον ὁρᾶν, ἐκπερᾷ τοῦ.",
+      "tags": [
+        "greek",
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Philon, livre De la légation à Caïus. Arulas."
+      "text": "Philon, livre De la légation à Caïus. Arulas.",
+      "tags": [
+        "rabbis",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la légation à Caïus",
+          "original": "Legatio ad Gaium"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Deutéronome 21:18."
+      "text": "Deutéronome 21:18.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ménochius ; Malvenda."
+      "text": "Ménochius ; Malvenda.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Les Hébreux, dans Ménochius ; Rabbi Salomon."
+      "text": "Les Hébreux, dans Ménochius ; Rabbi Salomon.",
+      "tags": [
+        "rabbis",
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Cicero pro Saint Roscio Amerino."
+      "text": "Cicero pro Saint Roscio Amerino.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 17,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 17,
       "latin_quote": "TRANSIERUNT GUSTATA PAULULUM AQUA.",
       "french_translation": "Ils ont pris un peu d'eau, et s'en sont allés bien vite.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 17,
       "latin_quote": "TRANSIERUNT JORDANEM DONEC ILLUCESCERET, ET NE UNUS QUIDEM SUPERFUIT.",
       "french_translation": "Il passa le Jourdain avant la pointe du jour, sans qu'il en restât un seul au-deçà du fleuve.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 17,
       "latin_quote": "DISPOSITA DOMO SUA, SUSPENDIO INTERIIT.",
       "french_translation": "Ayant mis ordre à toutes ses affaires, il se pendit.",
@@ -63,19 +63,35 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Εψύχεν ἰπ᾽ ἀυτᾶ παλάδας. Aq. Sym. Πάλ᾽ατ as. Grana contusa."
+      "text": "Εψύχεν ἰπ᾽ αὐτοῦ παλάδας. Aq. Sym. Πάλ᾽ατ as. Grana contusa.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "עברו מיכל המים Forte. מיכל המים"
+      "text": "עברו מיכל המים Forte. מיכל המים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "70. Παρήλιον μικρὸν τõ ὕδατος."
+      "text": "70. Παρήλιον μικρὸν τõ ὕδατος.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ויצו אל ביתו ויחנק 70. Ἀπήγξατο."
+      "text": "ויצו אל ביתו ויחנק 70. Ἀπήγξατο.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

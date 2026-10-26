@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 5,
       "latin_quote": "MALEDICITE TERRÆ MEROZ, DIXIT ANGELUS DOMINI ; MALEDICITE HABITATORIBUS EJUS, QUIA NON VENERUNT AD AUXILIUM DOMINI.",
       "french_translation": "Malheur à la terre de Méroz, dit l'Ange du Seigneur ; malheur à ceux qui l'habitent, parce qu'ils ne sont pas venus au secours du Seigneur.",
@@ -33,19 +33,57 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Homer Iliad. IX. Ex' ἵππων, τὴν ὄρεα ὀξύαλλοι κένεσσι ἵπποι, χαλκῷ ἀκέοντες. Eustath. χαλκῷ δὲ νῦν λέγη τὰ σεληνᾶια τὰ ὑπὸ τοῖς ποσὶ τῶν ἵππων."
+      "text": "Homer Iliad. IX. Ex' ἵππων, τὴν ὄρεα ὀξύαλλοι κύνεσσι ἵπποι, χαλκῷ ἀκέοντες. Eustath. χαλκῷ δὲ νῦν λέγη τὰ σεληνᾶια τὰ ὑπὸ τοῖς ποσὶ τῶν ἵππων.",
+      "tags": [
+        "greek",
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Suétone, Néron, chapitre 30 ; Pline, Histoire naturelle, livre 33, chapitre 11. Nostra quoque ætate Poppæa Conjux Neronis Principis delicatioribus jumentis suis soleas ex auro quoque inducere solebat."
+      "text": "Suétone, Néron, chapitre 30 ; Pline, Histoire naturelle, livre 33, chapitre 11. Nostra quoque ætate Poppæa Conjux Neronis Principis delicatioribus jumentis suis soleas ex auro quoque inducere solebat.",
+      "tags": [
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Nicétas, Histoire, vers la fin, dans Pancirole, livre 2."
+      "text": "Nicétas, Histoire, vers la fin, dans Pancirole, livre 2.",
+      "tags": [
+        "fathers",
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire",
+          "original": "Historiae"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Tavernier, tome 1, livre 2, chapitre 5."
+      "text": "Tavernier, tome 1, livre 2, chapitre 5.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

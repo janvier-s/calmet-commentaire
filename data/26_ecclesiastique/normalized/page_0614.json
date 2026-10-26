@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 40,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 40,
       "latin_quote": "FRATER IN ADJUTORIUM, IN TEMPORE TRIBULATIONIS.",
       "french_translation": "Les frères sont un secours au temps de l'affliction : mais la miséricorde en délivrera encore plus qu'eux.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 40,
       "latin_quote": "AURUM ET ARGENTUM CONSTITUTIO PEDUM.",
       "french_translation": "L'or et l'argent sont un puissant appui ; mais un bon conseil surpasse l'un et l'autre.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 40,
       "latin_quote": "FACULTATES, ET VIRTUTES EXALTANT COR.",
       "french_translation": "Le bien, et la force du corps élèvent le cœur ; mais la crainte du Seigneur passe",
@@ -63,19 +63,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ἀδελφοὶ ὡς βοήθημα εἰς καιρὸν θλίψεως, καὶ ὑπὲρ ἀμφότερα ἐλεημοσύνη ῥύσεται."
+      "text": "Ἀδελφοὶ ὡς βοήθημα εἰς καιρὸν θλίψεως, καὶ ὑπὲρ ἀμφότερα ἐλεημοσύνη ῥύσεται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Χρυσίον καὶ ἀργύριον ἱστήσουσι πόδα, καὶ ὑπὲρ ἀμφότερα βολὴ ἐδοκιμώθη."
+      "text": "Χρυσίον καὶ ἀργύριον στήσουσι πόδα, καὶ ὑπὲρ ἀμφότερα βολὴ ἐδοκιμώθη.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Proverbes 11:14."
+      "text": "Proverbes 11:14.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "1 Machabées 8:3."
+      "text": "1 Machabées 8:3.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

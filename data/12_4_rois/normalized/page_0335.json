@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 23,
       "latin_quote": "ABIIT JOSIAS REX IN OCCURSUM EIUS.",
       "french_translation": "Le Roi Josias marcha contre lui.",
@@ -25,39 +25,95 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Josèphe, Antiquités judaïques, livre 10, chapitre 6. Μήδως πολεμήσων καὶ τῆς Βαβυλωνίας, ἣ τὴν Ἀσσυρίων κατήργησεν ἀρχήν."
+      "text": "Josèphe, Antiquités judaïques, livre 10, chapitre 6. Μήδως πολεμήσων καὶ τῆς Βαβυλωνίας, ἣ τὴν Ἀσσυρίων κατήργησεν ἀρχήν.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Marsham, Canon Ægyptiacus, siècle 18."
+      "text": "Marsham, Canon Ægyptiacus, siècle 18.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Canon Ægyptiacus",
+          "original": "Canon chronicus Aegyptiacus, Ebraicus, Graecus et disquisitiones"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Paralipomènes 35:21. Non adversum te hodie venio, sed contra aliam pugno domum, ad quam me Deus festinato ire præcipit."
+      "text": "2 Paralipomènes 35:21. Non adversum te hodie venio, sed contra aliam pugno domum, ad quam me Deus festinato ire præcipit.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Ammien Marcellin, livre 23, chapitre 11 ; et Procope de Gaza, livre 1, Persiques."
+      "text": "Voyez Ammien Marcellin, livre 23, chapitre 11 ; et Procope de Gaza, livre 1, Persiques.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Persiques",
+          "original": "Persica"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Isaïe 10:9. Numquid sicut Carchamis, sic Calanne."
+      "text": "Isaïe 10:9. Numquid sicut Carchamis, sic Calanne.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Jérémie 46:1-2. Adversus exercitum Pharaonis Nechao Regis Ægypti, qui erat juxta fluvium Euphratem in Carchamis, quem percussit Nabuchodonosor, etc."
+      "text": "Jérémie 46:1-2. Adversus exercitum Pharaonis Nechao Regis Ægypti, qui erat juxta fluvium Euphratem in Carchamis, quem percussit Nabuchodonosor, etc.",
+      "tags": [
+        "verse",
+        "fathers",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Adversus",
+          "original": "Adversus haereses"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Voyez Munster ; et Junius ; etc."
+      "text": "Voyez Munster ; et Junius ; etc.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "2 Paralipomènes 35:21-22."
+      "text": "2 Paralipomènes 35:21-22.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "3. Esdr. 1. 28. ἐπροσέχει ῥήμασι Ἱερεμία προφήτε ἐκ σόματῷ κυρία."
+      "text": "3. Esdr. 1. 28. ἐπροσέχει ῥήμασι Ἱερεμία προφήτου ἐκ σόματῷ κυρία.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

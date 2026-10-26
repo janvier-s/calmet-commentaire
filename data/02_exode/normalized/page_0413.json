@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 25,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 25,
       "latin_quote": "BYSSUS.",
       "french_translation": "Du fin lin.",
@@ -25,35 +25,80 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Braun, Du vêtement des prêtres hébreux, livre 1, chapitre 15."
+      "text": "Braun, Du vêtement des prêtres hébreux, livre 1, chapitre 15.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Du vêtement des prêtres hébreux",
+          "original": "De vestitu sacerdotum Hebraeorum"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "סט"
+      "text": "סט",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez le même, livre 1, chapitre 7."
+      "text": "Voyez le même, livre 1, chapitre 7.",
+      "tags": []
     },
     {
       "marker": "(d)",
-      "text": "בד"
+      "text": "בד",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Philon, livre Des songes."
+      "text": "Philon, livre Des songes.",
+      "tags": [
+        "rabbis",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des songes",
+          "original": "De somniis"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Pline, livre 19, chapitre 1. Inventum jam ist quod ignibus non absumeretur ; vivum id vocant, ardentesque in focis conviviorum, ex eo vidimus mappas sordibus exustis splendescentes igni, magis quam possent aquis."
+      "text": "Pline, livre 19, chapitre 1. Inventum jam ist quod ignibus non absumeretur ; vivum id vocant, ardentesque in focis conviviorum, ex eo vidimus mappas sordibus exustis splendescentes igni, magis quam possent aquis.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Pausan. in Eliacis, τ. Οὐκ ἀποδἐι τῆς ἰδίας ἰσχυος, ἴσι δὲ ἐκ ἐρυθρὰ ἐυανθής."
+      "text": "Pausan. in Eliacis, τ. Οὐκ ἀποδεῖ τῆς ἰδίας ἰσχύος, ἴσι δὲ ἐκ ἐρυθρὰ εὐανθής.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Pline, Histoire naturelle, livre 19, chapitre 1."
+      "text": "Pline, Histoire naturelle, livre 19, chapitre 1.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

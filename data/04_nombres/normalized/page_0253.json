@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 21,
       "latin_quote": "FAC SERPENTEM ÆNEUM, ET PONE EUM PRO SIGNO.",
       "french_translation": "Faites un Serpent d'airain, et mettez-le pour servir de signe.",
@@ -40,31 +40,72 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ὄφεις τοὺς θανατοῦντας."
+      "text": "Ὄφεις τοὺς θανατοῦντας.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Macrobe, Saturnales, livre 1, chapitre 20."
+      "text": "Macrobe, Saturnales, livre 1, chapitre 20.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Saturnales",
+          "original": "Saturnalia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Isaïe 14:29 et 30:6. שרף מעופף"
+      "text": "Isaïe 14:29 et 30:6. שרף מעופף",
+      "tags": [
+        "hebrew",
+        "verse",
+        "old-ref"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Hérodote. l. 2 c. 76. τὸ δὲ δ'ὄφιος ἀ μορΦὴ, ἔιρμε τῶι ὕδρωι· πλέρα δὲ ὐ πέρατα Φέρει, ἀλλὰ τῆι τῆς νυκτερίδος πλερύγεσσι, etc."
+      "text": "Hérodote. l. 2 c. 76. τὸ δὲ δ'ὄφιος ἀ μορΦὴ, ἔιρμε τῶι ὕδρωι· πλέρα δὲ ὐ πέρατα Φέρει, ἀλλὰ τῆι τῆς νυκτερίδος πτερύγεσσι, etc.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Cicéron ;\nJosèphe ;\nPomponius Mela ;\nAmmien Marcellin ;\nSolin."
+      "text": "Cicéron ;\nJosèphe ;\nPomponius Mela ;\nAmmien Marcellin ;\nSolin.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "עשה לך שרף etc. dans Bochart, De animalibus sacris, tome 2, livre 3, chapitre 13."
+      "text": "עשה לך שרף etc. dans Bochart, De animalibus sacris, tome 2, livre 3, chapitre 13.",
+      "tags": [
+        "hebrew",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De animalibus sacris",
+          "original": "De animalibus sacris"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "2 Rois 18:4. Confregit serpentem æneum, quem fecerat Moyses ; siquidem usque ad illud tempus filii Israël adolebant ei incensum."
+      "text": "2 Rois 18:4. Confregit serpentem æneum, quem fecerat Moyses ; siquidem usque ad illud tempus filii Israël adolebant ei incensum.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 30,
       "latin_quote": null,
       "french_translation": "ne finit point.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 30,
       "latin_quote": "BONA ABSCONDITA IN ORE CLAUSO, ETC.",
       "french_translation": "Des biens cachés dans une bouche fermée, sont comme un grand festin posé sur un sépulcre.",
@@ -33,23 +33,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Job 3:13."
+      "text": "Job 3:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἀγαθὰ ἐκκεχυμένα ἐπὶ σόματι κεκλεισμένῳ, ὡσαύτως παραθέματα ἐδεσμάτων προκείμενα ἐπὶ τάφῳ. Complut. Θέματα ἐδεσμάτων παρκείμενα. Vulg. legit : Κεκρυμμένα."
+      "text": "Ἀγαθὰ ἐκκεχυμένα ἐπὶ σόματι κεκλεισμένῳ, ὡσαύτως παραθέματα ἐδεσμάτων προκείμενα ἐπὶ τάφῳ. Complut. Θέματα ἐδεσμάτων παρακείμενα. Vulg. legit : Κεκρυμμένα.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Augustin, Des mœurs de l'Église, chapitre 34 ; sermon 15 de Sanctis ; et souvent ailleurs."
+      "text": "Saint Augustin, Des mœurs de l'Église, chapitre 34 ; sermon 15 de Sanctis ; et souvent ailleurs.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des mœurs de l'Église",
+          "original": "De moribus Ecclesiae catholicae"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Tobie 4:18. Panem tuum, et vinum tuum super sepulturam justi constitue : et noli ex eo manducare et bibere cum peccatoribus."
+      "text": "Tobie 4:18. Panem tuum, et vinum tuum super sepulturam justi constitue : et noli ex eo manducare et bibere cum peccatoribus.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Baruch 6:26."
+      "text": "Baruch 6:26.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

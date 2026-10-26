@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 40,
       "latin_quote": "STRINGIT CAUDAM SUAM QUASI CEDRUM ; NERVI TESTICULORUM EJUS PERPLEXI SUNT.",
       "french_translation": "Sa queue se raidit comme un cèdre ; les nerfs de cette partie qui sert à la conservation de l'espèce, sont entrelacés l'un dans l'autre.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 40,
       "latin_quote": "OSSA EJUS VELUT FISTULÆ ÆRIS ; CARTILAGO EJUS QUASI LAMINÆ FERREÆ.",
       "french_translation": "Ses os sont comme des tuyaux d'airain, et ses cartilages sont comme des lames de fer.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 40,
       "latin_quote": "IPSE EST PRINCIPIUM VIARUM DOMINI.",
       "french_translation": "Il est le commencement des voies du Seigneur, le chef-d'œuvre de sa puissance.",
@@ -55,19 +55,33 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Sculat. ;\nPiscator ;\nCocceius ;\nOsiander ;\nAlbert ;\nEugubinus."
+      "text": "Sculat. ;\nPiscator ;\nCocceius ;\nOsiander ;\nAlbert ;\nEugubinus.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ita Boët. Codurc. Cartvvigt."
+      "text": "Ita Boët. Codurc. Cartvvigt.",
+      "tags": [
+        "commentators",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Αἱ δὲ πλευραὶ αὐτὸ, πλευραὶ χάλκειαι, ἡ δὲ ῥάχις αὐτὸ σίδηρος χυτός. Sym. Ως συρβλίβασις σιδήρου. Comme des jointures de fer."
+      "text": "Αἱ δὲ πλευραὶ αὐτὸ, πλευραὶ χάλκειαι, ἡ δὲ ῥάχις αὐτὸ σίδηρος χυτός. Sym. Ὡς συρβλίβασις σιδήρου. Comme des jointures de fer.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "עַצְמָיו אֲפִיקֵי נְחֻשָׁה גַרְמָיו כִּמְטִיל בַּרְזֶל."
+      "text": "עַצְמָיו אֲפִיקֵי נְחֻשָׁה גַרְמָיו כִּמְטִיל בַּרְזֶל.",
+      "tags": [
+        "hebrew"
+      ]
     }
   ]
 }

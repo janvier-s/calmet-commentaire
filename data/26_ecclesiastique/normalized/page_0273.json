@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 13,
       "latin_quote": "SI NECESSARIUS ILLI FUERIS, SUPPLANTABIT TE.",
       "french_translation": "Tant que vous lui serez nécessaire, il vous trompera par ses caresses, et par ses vains offres de service.",
@@ -34,7 +34,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 13,
       "latin_quote": "CONFUNDET TE IN CIBIS SUIS.",
       "french_translation": "Il vous comblera d'honnêtetés, et vous donnera à manger, pour vous engager à faire le même.",
@@ -44,15 +44,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Χρείαν ἔσχηκε σου, καὶ ἀποπλανήσει σὲ."
+      "text": "Χρείαν ἔσχηκε σου, καὶ ἀποπλανήσει σὲ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καὶ αἰσχύνη σε τοῖς ζεύμασιν ἀυτῦ."
+      "text": "Καὶ αἰσχύνη σε τοῖς ζεύμασιν αὐτοῦ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Prov. XXIII. I."
+      "text": "Prov. XXIII. I.",
+      "tags": [
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": "Y iij"

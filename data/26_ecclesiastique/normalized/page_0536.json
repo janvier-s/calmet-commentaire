@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 34,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 34,
       "latin_quote": "QUI IMPLANATUS EST, ABUNDABIT NEQUITIA.",
       "french_translation": "Celui qui a été surpris, aura une grande adresse, pour ne l'être plus.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 34,
       "latin_quote": "MULTA VIDI ^{(e)} ERRANDO, ETC.",
       "french_translation": "J'ai bien vu des choses dans mes voyages, et j'ai remarqué bien des coutumes différentes.",
@@ -55,23 +55,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ieronym. ad Paulin. _Legimus in veteribus historiis quasdam lustrasse provincias, novos adisse populos, maria transisse, ut eos quos ex libris noverint, coram quoque viderent. Sic Pythagoras Memphiticos vates ; sic Plato Ægyptum et Architam Tarentinum ; eamque oram Italiæ, quæ quondam magna Græcia dicebatur, laboriossimè peragravit ; ut qui Athenis magister erat et potens… sieret peregrinus atque discipulus, etc._"
+      "text": "Ieronym. ad Paulin. _Legimus in veteribus historiis quasdam lustrasse provincias, novos adisse populos, maria transisse, ut eos quos ex libris noverint, coram quoque viderent. Sic Pythagoras Memphiticos vates ; sic Plato Ægyptum et Architam Tarentinum ; eamque oram Italiæ, quæ quondam magna Græcia dicebatur, laboriossimè peragravit ; ut qui Athenis magister erat et potens… sieret peregrinus atque discipulus, etc._",
+      "tags": [
+        "fathers",
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἀνὴρ πεπλανημένΘ ἔγνω πολλὰ, καὶ ὁ πολὺς ἐν πείρᾳ διηγήσεται συνέσιν. (10) Ὁς ἐκ ἐπειράθη ὀλίγα οἶδεν, ὁ δὲ πεπλανημένΘ, πληθυνεῖ πανεργίαν."
+      "text": "Ἀνὴρ πεπλανημένΘ ἔγνω πολλὰ, καὶ ὁ πολὺς ἐν πείρᾳ διηγήσεται συνέσιν. (10) Ὁς ἐκ ἐπειράθη ὀλίγα οἶδεν, ὁ δὲ πεπλανημένΘ, πληθυνεῖ πανουργίαν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "_Implanatus_, vient du Grec πλανάω, _erro, decipio_. Πῶς ἀπλανήτως διέζησεν ἐχθρὸν ἐλθών."
+      "text": "_Implanatus_, vient du Grec πλανάτω, _erro, decipio_. Πῶς ἀπλανήτως διέζησεν ἐχθρὸν ἐλθών.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Πλάνη βίον τίθησι παρρησιαςέραν."
+      "text": "Πλάνη βίον τίθησι παρρησιαςέραν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Quid. Multa vidi enarrando."
+      "text": "Quid. Multa vidi enarrando.",
+      "tags": [
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

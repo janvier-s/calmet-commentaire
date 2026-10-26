@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 22,
       "latin_quote": "QUI A PROXIMO SUO QUIDPIAM HORUM MUTUO POSTULAVERIT.",
       "french_translation": "Si quelqu'un emprunte d'un autre quelqu'une de ces choses.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 22,
       "latin_quote": "QUOD SI IN PRÆSENTIARUM DOMINUS FUERIT, NON RESTITUET, MAXIME SI CONDUCTUM VENERAT.",
       "french_translation": "Mais si cela arrive en la présence du maître, le preneur ne la restituera point, principalement s'il l'avait louée, pour en payer l'usage qu'il en tirerait.",
@@ -33,11 +33,17 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Μ' ευρεθῆ, Η' ἀπολέσῃ, ἢ αἰχμάλωτον γένηται."
+      "text": "Μ' ευρεθῆ, Ἠ ἀπολέσῃ, ἢ αἰχμάλωτον γένηται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἐὰν δὲ μεθ'οὗ ᾖ, οὐκ ἀποτίσει ἐὰν δὲ μίσθωμα ᾖ."
+      "text": "Ἐὰν δὲ μεθ'οὗ ᾖ, οὐκ ἀποτίσει ἐὰν δὲ μίσθωμα ᾖ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

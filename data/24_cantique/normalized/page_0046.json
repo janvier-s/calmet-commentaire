@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 2,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 2,
       "latin_quote": "ADJURO VOS, FILIÆ JERUSALEM, PER CAPREAS, CERVOSQUE CAMPORUM, NE SUSCITETIS DILECTAM.",
       "french_translation": "Filles de Jérusalem, je vous conjure par les chevreuils, et les cerfs de la campagne, de ne point éveiller ma bien-aimée.",
@@ -33,27 +33,49 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Grégoire ; saint Anselme ; Juste d'Urgel ; Bède, etc."
+      "text": "Saint Grégoire ; saint Anselme ; Juste d'Urgel ; Bède, etc.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 3:16."
+      "text": "Proverbes 3:16.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Theocrit. Idyll. 18… Εγρεσθε δὴ πρὸς λώτριδα. Νύμφα μὲν παρὰ σοῖς ἴδεσιν μέγαν ἄνδρα φυλάσσει, Σὺ δ᾽ ἀνὰς κτλ. ἀνέγρεο διύγαν ὕπνον."
+      "text": "Theocrit. Idyll. 18… Ἔγρεσθε δὴ πρὸς λώτριδα. Νύμφα μὲν παρὰ σοῖς ἴδεσιν μέγαν ἄνδρα φυλάσσει, Σὺ δ᾽ ἀνὰς κτλ. ἀνέγρεο διύγαν ὕπνον.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Cantique des cantiques 3:5."
+      "text": "Cantique des cantiques 3:5.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Virgile, Énéide, livre 1. _Virginis os habitumque gerens, et virginis arma Spartana… Virginibus Tyriis mos est gestare pharetram Purpureoque altè suras vincire cothurno._"
+      "text": "Virgile, Énéide, livre 1. _Virginis os habitumque gerens, et virginis arma Spartana… Virginibus Tyriis mos est gestare pharetram Purpureoque altè suras vincire cothurno._",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "השבעתי אתכם בנות ירושלם בצבאות או באילות השדה"
+      "text": "השבעתי אתכם בנות ירושלם בצבאות או באילות השדה",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

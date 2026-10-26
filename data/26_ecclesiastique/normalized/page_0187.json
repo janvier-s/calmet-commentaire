@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 7,
       "latin_quote": "NON PECCES IN MULTITUDINEM CIVITATIS.",
       "french_translation": "N'offensez point toute la multitude d'une Ville, et ne vous jetez point dans la foule.",
@@ -40,15 +40,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Chrysost. Homil. XXXIV. in Hebr. cap. 13. Εἰ γὰρ δι-αὐτὴν ἐκώμισαν κέρμιαν ἴσχον καθεύ-γλῶ, κὴ ἀπολογίαν, κακῶν τὸ πρᾶγμα ἀπονομέντες, κὴ ἀμελῶσιε. Πόσῳ μᾶλλον δι οὐδὲν ταύτης τι-δίμοι, κὴ ἰνιψίχ'οντες ἑαυτὸς."
+      "text": "Chrysost. Homil. XXXIV. in Hebr. cap. 13. Εἰ γὰρ δῑ-αὐτὴν ἐκώμισαν κέρμιαν ἴσχον καθεύ-γλῶ, καὶ ἀπολογίαν, κακῶν τὸ πρᾶγμα ἀπονομέντες, καὶ ἀμελῶσιε. Πόσῳ μᾶλλον δῑ οὐδὲν ταύτης τί-δίμοι, καὶ ἰνιψίχ'οντες ἑαυτὸς.",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Tacite, Vie d'Agricola."
+      "text": "Tacite, Vie d'Agricola.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Vie d'Agricola",
+          "original": "De vita Iulii Agricolae"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "3 Rois 12:11, 18."
+      "text": "3 Rois 12:11, 18.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

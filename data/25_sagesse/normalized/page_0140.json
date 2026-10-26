@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 11,
       "latin_quote": "PRO COGITATIONIBUS INSENSATIS INIQUITATIS ILLORUM, ^{(b)} QUOD QUIDAM ERRANTES COLEBANT MUTOS SERPENTES, ET BESTIAS SUPERVACUAS.",
       "french_translation": "Vous avez voulu punir les pensées extravagantes, et impies de ces peuples, qui adoraient des serpents muets, et des bêtes méprisables.",
@@ -33,31 +33,83 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ansraviss. Sitientes. l'édition de Complute ; et de Sixte V : Faciens. Comme s'il y avait là, _mesouraviss_."
+      "text": "Ansraviss. Sitientes. l'édition de Complute ; et de Sixte V : Faciens. Comme s'il y avait là, _mesouraviss_.",
+      "tags": [
+        "versions",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "L'édition de Complute ; et de Sixte V : Iniquitates illorum."
+      "text": "L'édition de Complute ; et de Sixte V : Iniquitates illorum.",
+      "tags": [
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Élien, livre 17, Histoire des animaux, chapitre 5, d'après Phylarque, livre 12."
+      "text": "Élien, livre 17, Histoire des animaux, chapitre 5, d'après Phylarque, livre 12.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire des animaux",
+          "original": "Historia animalium"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "E'spendus ἄλογα ἑρπετὰ, κ' νωθέλεπα ἰοπλάη."
+      "text": "E'spendus ἄλογα ἑρπετὰ, κ' νωθέλεπα ἰοπλάη.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Philo de Decalogo. et in legatione ad Caium. O'κύνας, κ' λύκους, κ' Αἰλούρας, κ' κροκοδείλous, κ' ἄλλα πλεῖστα θηρία, κ' ἰνδικὰ, κ' χερσαῖα, κ' πτηνὰ θεωπλασῦντες. Et lib. de Decalogo. p. 583."
+      "text": "Philo de Decalogo. et in legatione ad Caium. O'κύνας, κ' λύκους, κ' Αἰλούρας, κ' κροκοδείλῳous, κ' ἄλλα πλεῖστα θηρία, κ' ἰδικὰ, κ' χερσαῖα, κ' πτηνὰ θεωπλασῦντες. Et lib. de Decalogo. p. 583.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Tertullien, Apologétique, chapitre 24, et Contre Marcion, chapitre 2."
+      "text": "Tertullien, Apologétique, chapitre 24, et Contre Marcion, chapitre 2.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Apologétique",
+          "original": "Apologeticum"
+        },
+        {
+          "fr": "Contre Marcion",
+          "original": "Adversus Marcionem"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Athénagore, Apologie pour les chrétiens."
+      "text": "Athénagore, Apologie pour les chrétiens.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Apologie",
+          "original": "Apologia David"
+        }
+      ]
     }
   ],
   "book_end_marker": null

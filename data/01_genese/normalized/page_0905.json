@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 49,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 49,
       "latin_quote": "TU FORTITUDO MEA, ET PRINCIPIUM DOLORIS MEI.",
       "french_translation": "Vous êtes ma force et le commencement de ma douleur.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 49,
       "latin_quote": "PRIOR IN DONIS, MAJOR IN IMPERIO.",
       "french_translation": "Le premier dans les dons, le plus grand en autorité.",
@@ -41,35 +41,78 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Cicéron, De la divination, livre 1 ; et Xénophon, Cyropédie."
+      "text": "Voyez Cicéron, De la divination, livre 1 ; et Xénophon, Cyropédie.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la divination",
+          "original": "De divinatione"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "ראשית אוני"
+      "text": "ראשית אוני",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "70. Ἀρχὴ τῶν τέκνων."
+      "text": "70. Ἀρχὴ τῶν τέκνων.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Aquila : Κεφάλαιον πόνων."
+      "text": "Aquila : Κεφάλαιον πόνων.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Symm. αρχη ιδυνος."
+      "text": "Symm. ὔρχη ιδυνος.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Josué 4:12."
+      "text": "Josué 4:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "1 Paralipomènes 5:10."
+      "text": "1 Paralipomènes 5:10.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Ainsi le Chaldéen ; Onkelos ; et le Targum de Jérusalem ; Saint Jérôme, Questions hébraïques ; et les interprètes, passim."
+      "text": "Ainsi le Chaldéen ; Onkelos ; et le Targum de Jérusalem ; Saint Jérôme, Questions hébraïques ; et les interprètes, passim.",
+      "tags": [
+        "fathers",
+        "rabbis",
+        "versions",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Questions hébraïques",
+          "original": "Quaestiones Hebraicae in Genesim"
+        }
+      ]
     }
   ],
   "book_end_marker": null

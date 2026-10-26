@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 28,
       "latin_quote": null,
       "french_translation": "Le feu s'embrase dans la forêt, selon qu'il y a de bois ;",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 28,
       "latin_quote": "CERTAMEN FESTINATUM INCENDIT IGNEM.",
       "french_translation": "La promtitude à disputer allume le feu, et la querelle précipitée répand le sang.",
@@ -47,19 +47,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Proverbes 19:12."
+      "text": "Proverbes 19:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καθὼς ὕλη δρυμῷ, τῷ πυρὶ ἔτως ἐπαυξηθήσεται, καὶ καθὼς σιρίμωσιν τῆς μάχης ἔτως αὐξηθήσεται. Καθὼς τω ἰσχύι τῷ ἀνθρώπω ὁ θυμὸς ἀυτῷ ἔσαι, καὶ καθ' τῶ πλέτῳ ἀυτῷ, ὑψώσει ὀργὴν ἀυτῷ."
+      "text": "Καθὼς ὕλη δρυμῷ, τῷ πυρὶ ἔτους ἐπαυξηθήσεται, καὶ καθὼς σιρίμωσιν τῆς μάχης ἔτους αὐξηθήσεται. Καθὼς τῷ ἰσχύι τῷ ἀνθρώπω ὁ θυμὸς αὐτῷ ἕσαι, καὶ καθ' τῶ πλούτῳ αὐτῷ, ὑψώσει ὀργὴν αὐτῷ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez saint Jean Chrysostome, Homélie 3 de non adeundis spectaculis."
+      "text": "Voyez saint Jean Chrysostome, Homélie 3 de non adeundis spectaculis.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Proverbes 26:21."
+      "text": "Proverbes 26:21.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

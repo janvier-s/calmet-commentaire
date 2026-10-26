@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 3,
       "latin_quote": "POST EUM, IN MONTE ÆDIFICAVIT BARUC.",
       "french_translation": "Baruc rebâtit après lui sur la montagne. Baruc eut son partage joignant Azer.",
@@ -59,7 +59,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 3,
       "latin_quote": "SACERDOTES, VIRI DE CAMPESTRIBUS JORDANIS.",
       "french_translation": "Les Prêtres, habitants des plaines qui sont le long du Jourdain.",
@@ -69,19 +69,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "70. Κιμβάλων τῆς συναλώσεως τῆς γαίης, μετ' ἀνδρῶν ἀοιδῶν Βαρώχ."
+      "text": "70. Κυμβάλων τῆς συναλώσεως τῆς γαίης, μετ' ἀνδρῶν ἀοιδῶν Βαρώχ.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "אחריו החזיק ברוך בן זבי Saint Jérôme a lû, החרה au lieu de החזיק Les Septan-"
+      "text": "אחריו החזיק ברוך בן זבי Saint Jérôme a lû, החרה au lieu de החזיק Les Septan-",
+      "tags": [
+        "hebrew",
+        "fathers",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "הכהנים אנשי הככר"
+      "text": "הכהנים אנשי הככר",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Οἱ ἱερεῖς ἄνδρες τῆς χεχὰρ."
+      "text": "Οἱ ἱερεῖς ἄνδρες τῆς χεχὰρ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

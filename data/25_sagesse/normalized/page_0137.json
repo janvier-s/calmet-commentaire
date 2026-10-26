@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 11,
       "latin_quote": "CUM ENIM TENTATI SUNT, ET QUIDEM CUM MISERICORDIA DISCIPLINAM ACCIPIENTES.",
       "french_translation": "Car après que vos enfants eurent été éprouvés, mais par un châtiment mêlé de miséricorde, etc.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 11,
       "latin_quote": "TAMQUAM DURUS REX INTERROGANS CONDEMNASTI.",
       "french_translation": "Vous les avez condamnés, comme un Roi qui punit sévèrement.",
@@ -62,23 +62,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Cantacuzène ; Osorius ; Vatable ; Jansénius ; Clarius ; Cornelius a Lapide."
+      "text": "Cantacuzène ; Osorius ; Vatable ; Jansénius ; Clarius ; Cornelius a Lapide.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Psaumes 105:11."
+      "text": "Psaumes 105:11.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ως ἀπότομ[UNCERTAIN GREEK] βασιλε[UNCERTAIN GREEK] κ[UNCERTAIN GREEK]δικάζων ἐξή[UNCERTAIN GREEK]."
+      "text": "Ὡς ἀπότομ[UNCERTAIN GREEK] βασιλε[UNCERTAIN GREEK] κ[UNCERTAIN GREEK]δικάζων ἐξή[UNCERTAIN GREEK].",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Sagesse 2:19 : _Tormento interrogemus eum_ ; 1:9 : _Impii interrogatio erit_ ; 4:6 ; 6:4, etc."
+      "text": "Sagesse 2:19 : _Tormento interrogemus eum_ ; 1:9 : _Impii interrogatio erit_ ; 4:6 ; 6:4, etc.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ecclésiastique 23:11. 16:22."
+      "text": "Ecclésiastique 23:11. 16:22.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

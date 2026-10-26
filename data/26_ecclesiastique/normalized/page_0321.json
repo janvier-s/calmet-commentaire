@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 17,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 17,
       "latin_quote": "VIÆ ILLORUM CORAM IPSO SUNT SEMPER.",
       "french_translation": "Leurs voies lui sont toujours présentes.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 17,
       "latin_quote": "IN UNAMQUAMQUE GENTEM PRÆPOSUIT RECTOREM. (15.) ET PARS DEI, ISRAEL FACTA EST.",
       "french_translation": "Il a établi un Prince pour gouverner chaque peuple. (15) Mais Israël a été le partage du Seigneur.",
@@ -55,15 +55,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Αἱ ὁδοὶ αὐτῶν πρὸς τὸ πονηρὸν, ἐκ νεότητος αὐτῶν, ἀντὶ λίθινον ποιοῦν σαρκίνας. Complut. Πᾶς δὲ ἄνθρωπος ἐκ νεότητος ἐπὶ τὸ πονηρὸν, et ἐκ ἠδύναντο τὰς καρδίας αὐτῶν."
+      "text": "Αἱ ὁδοὶ αὐτῶν πρὸς τὸ πονηρὸν, ἐκ νεότητος αὐτῶν, ἀντὶ λίθινον ποιοῦν σαρκίνας. Complut. Πᾶς δὲ ἄνθρωπος ἐκ νεότητος ἐπὶ τὸ πονηρὸν, et οὐκ ἠδύναντο τὰς καρδίας αὐτῶν.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ézéchiel 16:26."
+      "text": "Ézéchiel 16:26.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Deutéronome 32:8-9."
+      "text": "Deutéronome 32:8-9.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

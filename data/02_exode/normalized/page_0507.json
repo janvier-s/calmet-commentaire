@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 29,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 29,
       "latin_quote": "CUMQUE LAVERIS PATREM CUM FILIIS AQUA.",
       "french_translation": "Vous les laverez avec de l'eau.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 29,
       "latin_quote": "TUNICA, ET SUPERHUMERALI.",
       "french_translation": "De sa robe, et de l'éphod.",
@@ -55,23 +55,55 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Athénée, livre 3."
+      "text": "Athénée, livre 3.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Caton, De re rustica, chapitre 76, dans Clenic."
+      "text": "Caton, De re rustica, chapitre 76, dans Clenic.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De re rustica",
+          "original": "De re rustica"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Le satum, ou seah, était de la capacité de neuf pintes, chopine, demi-septier, un posson, quatre pouces, et quelque peu davantage."
+      "text": "Le satum, ou seah, était de la capacité de neuf pintes, chopine, demi-septier, un posson, quatre pouces, et quelque peu davantage.",
+      "tags": [
+        "explanation"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Selden, Des Sanhédrins, livre 1, chapitre 3."
+      "text": "Voyez Selden, Des Sanhédrins, livre 1, chapitre 3.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des Sanhédrins",
+          "original": "De synedriis et praefecturis iuridicis veterum Ebraeorum"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Clem. Alex. l. 5. Stromat. Τὰ μὲν μοχθηρῶν τῶν Ε'λλήνων ἀγχεῖα, καθάιρετε τοῖς θεοῖς ἐκείνοις λατρεύειν. Voyez et Apul. l. 11. Metam."
+      "text": "Clem. Alex. l. 5. Stromat. Τὰ μὲν μοχθηρῶν τῶν Ἑλλήνων ἀγχεῖα, καθάιρετε τοῖς θεοῖς ἐκείνοις λατρεύειν. Voyez et Apul. l. 11. Metam.",
+      "tags": [
+        "greek",
+        "fathers",
+        "classical",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

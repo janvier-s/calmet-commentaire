@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 30,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 30,
       "latin_quote": "INVENIT MANDRAGORAS.",
       "french_translation": "Il trouva des Mandragores.",
@@ -33,31 +33,56 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Josué 11:17 ; 12:7 ; 13:5."
+      "text": "Josué 11:17 ; 12:7 ; 13:5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Genèse 35:2, 4."
+      "text": "Genèse 35:2, 4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "דודאים"
+      "text": "דודאים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "70. Μῆλα μανδραγορῶν."
+      "text": "70. Μῆλα μανδραγορῶν.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Le Chaldéen : יברוחין"
+      "text": "Le Chaldéen : יברוחין",
+      "tags": [
+        "hebrew",
+        "versions"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Dioscor. lib. 4. c. 76. Κιρκαία καὶ λοῦσι ἐπιάλη δόξα ἧ εἴτε φιλτρῶν ὄντα ποιήτικα."
+      "text": "Dioscor. lib. 4. c. 76. Κιρκαία καὶ λοῦσι ἐπιάλης δόξα ἧ εἴτε φιτρῶν ὄντα ποιήτικα.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "In convivio."
+      "text": "In convivio.",
+      "tags": [
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

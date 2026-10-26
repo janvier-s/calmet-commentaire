@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 26,
       "latin_quote": "COLUMNAE AUREAE SUPER BASES ARGENTEAS, ETC.",
       "french_translation": "La femme posée demeure ferme sur ses pieds, comme des colonnes d'or sur des bases d'argent.",
@@ -39,27 +39,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Cantique des cantiques 7:2."
+      "text": "Cantique des cantiques 7:2.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Γυνὴ μισθωτὴ ἰσάλη σιάλω λογισθήσεται."
+      "text": "Γυνὴ μισθωτὴ σάλη σιάλου λογισθήσεται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Πόλις Θανάτου τοῖς χρωμένοις λογισθήσεται."
+      "text": "Πόλις Θανάτου τοῖς χρωμένοις λογισθήσεται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Γυνὴ ἀχάριστος ἀτιμίαν κατακτήσεται."
+      "text": "Γυνὴ ἀχάριστος ἀτιμίαν κατακτήσεται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Γυνὴ ἀδιάφορος. Vide sup. ℣. 13. Το θυγατρὸς ἀδιάφορος."
+      "text": "Γυνὴ ἀδιάφορος. Vide sup. ℣. 13. Τὸ θυγατρὸς ἀδιάφορος.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ἀτιμάζουσα δὲ, ἀσεβὴς ἐν ὑπερηφανίᾳ γνωσθήσεται."
+      "text": "Ἀτιμάζουσα δὲ, ἀσεβὴς ἐν ὑπερηφανίᾳ γνωσθήσεται.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

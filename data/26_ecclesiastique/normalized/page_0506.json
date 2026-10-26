@@ -57,7 +57,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -65,7 +65,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "33",
+      "verse_ref": 33,
       "chapter": 31,
       "latin_quote": "QUÆ EST VITA EI, QUI MINUITUR VINO ?",
       "french_translation": "Quelle est la vie d'un homme qui se laisse abattre par le vin ? Qui nous prive de la vie ?",
@@ -73,7 +73,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "40",
+      "verse_ref": 40,
       "chapter": 31,
       "latin_quote": "EBRIETATIS ANIMOSITAS, ETC.",
       "french_translation": "L'ivrognerie inspire l'audace, elle fait tomber l'insensé ; elle est la source, etc.",
@@ -83,27 +83,53 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Τίς ζωὴ ἰλασσομλύῳ οἴνῳ; ἢ αὐτὸς ἐκτίσθη εἰς εὐφροσύνω ἀνθρώπων."
+      "text": "Τίς ζωὴ ἰλασσομλύῳ οἴνῳ; ἢ αὐτὸς ἐκτίσθη εἰς εὐφροσύνου ἀνθρώπων.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Palæst. Jans. Sa. Cornel. Grot."
+      "text": "Palæst. Jans. Sa. Cornel. Grot.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Pline, Histoire naturelle, livre 14, chapitre 22."
+      "text": "Pline, Histoire naturelle, livre 14, chapitre 22.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Proverbes 31:6."
+      "text": "Proverbes 31:6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Theognid. Οὐδὲ πιέτω ἀνὴρ μεθύων οἴνοιο. Ἠ, δι' ὅτις ἀνὴρ, Πίνῃ ἐπισταμένως, οὐ κακὸς ἀλλ' ἀγαθός."
+      "text": "Theognid. Οὐδὲ πιέτω ἀνὴρ μεθύων οἴνοιο. Ἠ, δι' ὅτις ἀνὴρ, Πίνῃ ἐπισταμένως, οὐ κακὸς ἀλλ' ἀγαθός.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Πλησθέντ' μὲν θυμὸν ἀφροσύνῃ εἰς πρᾶγμα, ἐλαττῶν ἰσχὺν, κὶ προξενῶν τραύματα."
+      "text": "Πλησθέντ' μὲν θυμὸν ἀφροσύνῃ εἰς πρᾶγμα, ἐλαττῶν ἰσχὺν, καὶ προξενῶν τραύματα.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

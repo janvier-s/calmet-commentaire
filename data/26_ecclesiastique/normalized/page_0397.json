@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 23,
       "latin_quote": "DOCTRINAM AURIS AUDITE, FILII.",
       "french_translation": "Écoutez, mes enfants, les instructions que je vous donne pour régler la langue.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 23,
       "latin_quote": "IN VANITATE SUA APPREHENDITUR PECCATOR.",
       "french_translation": "Le pécheur sera pris par la vanité de ses paroles : le superbe, et le médisant y trouveront des sujets de chute.",
@@ -48,19 +48,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Senec. lib de Vita Beata. Alterum infruniti est animi, alterum timidi ac pusilli."
+      "text": "Senec. lib de Vita Beata. Alterum infruniti est animi, alterum timidi ac pusilli.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Senec. lib. 3. de Benefic. cap. 16. Infrunita et antiqua est, quæ nesciat matrimonium vocari suum adulterium."
+      "text": "Senec. lib. 3. de Benefic. cap. 16. Infrunita et antiqua est, quæ nesciat matrimonium vocari suum adulterium.",
+      "tags": [
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ελπιδας κενας καὶ ψευδεις μὴ δῶς μοι, καὶ ἐπιθυμιας ἀπ' ἐμοῦ ἀπόςρεψον. Κοιλιας ὀρέξεις, καὶ συνουσιασμος μὴ καταλαβέτωσαν με, καὶ ψυχῇ ἀναιδεῖ μὴ παραδῷς με."
+      "text": "Ἐλπίδας κενας καὶ ψευδεῖς μὴ δῶς μοι, καὶ ἐπιθυμίας ἀπ' ἐμοῦ ἀπόστρεψον. Κοιλίας ὀρέξεις, καὶ συνουσιασμὸς μὴ καταλαβέτωσαν με, καὶ ψυχῇ ἀναιδεῖ μὴ παραδῷς με.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ΠΑΙΔΕΙΑ ΣΤΟΜΑΤΟΣ."
+      "text": "Παιδεία ΣΤΟΜΑΤΟΣ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": "PP"

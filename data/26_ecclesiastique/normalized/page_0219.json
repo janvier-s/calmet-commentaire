@@ -32,7 +32,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -40,7 +40,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 9,
       "latin_quote": "AVERTE FACIEM TUAM A MULIERE COMPTA.",
       "french_translation": "Détournez vos yeux d'une femme parée ; et ne regardez point curieusement une beauté étrangère.",
@@ -48,7 +48,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 9,
       "latin_quote": "PROPTER SPECIEM MULIERIS MULTI PERIERUNT, ETC.",
       "french_translation": "Plusieurs se sont perdus par la beauté de la femme ; car c'est par-là que s'embrase le feu de la concupiscence.",
@@ -56,7 +56,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 9,
       "latin_quote": "OMNIS MULIER, ETC.",
       "french_translation": "Toute femme prostituée, est comme l'ordure, etc.",
@@ -66,23 +66,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Prou. XVII. 24."
+      "text": "Prou. XVII. 24.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "Ἀπόστρεψον ὀφθαλμὸν ἀπὸ γυναικὸς διμόρφου, καὶ μὴ καταμάνθανε κάλλος ἀλλότριον."
+      "text": "Ἀπόστρεψον ὀφθαλμὸν ἀπὸ γυναικὸς διμόρφου, καὶ μὴ καταμάνθανε κάλλος ἀλλότριον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Cyprian. lib. de Habitu virgin."
+      "text": "Cyprian. lib. de Habitu virgin.",
+      "tags": [
+        "fathers",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Clem. Alexand. Εἰς πῦρ ἄγεται ἀκατάσχετον διὰ τὴν ἀκρασίαν, ἡ ἐκ πυρὸς ὀρμωμένη φλόξ, ἐν τῇ ἀθανασία κολάζεται."
+      "text": "Clem. Alexand. Εἰς πῦρ ἄγεται ἀκατάσχετον διὰ τὴν ἀκρασίαν, ἡ ἐκ πυρὸς ὁρμωμένη φλόξ, ἐν τῇ ἀθανασία κολάζεται.",
+      "tags": [
+        "greek",
+        "fathers"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Job 31:12."
+      "text": "Job 31:12.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

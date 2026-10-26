@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 18,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 18,
       "latin_quote": "NE OBLECTERIS IN TURBIS.",
       "french_translation": "Ne vous plaisez point dans les assemblées pleines de tumulte, non pas même ce qu'on s'y commet, et qu'on y péche sans cesse.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "33",
+      "verse_ref": 33,
       "chapter": 18,
       "latin_quote": "NE FUERIS MEDIOCRIS IN CONTENTIONE EX FOE-",
       "french_translation": null,
@@ -55,11 +55,17 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Virgile."
+      "text": "Virgile.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Μὴ διώκειν ἐπὶ πολλῇ τρυφῇ σου. Καὶ μὴ προσδιδῷς συμβολῇ, (ou συμβολῇ) ἀυτῆς."
+      "text": "Μὴ διώκειν ἐπὶ πολλῇ τρυφῇ σου. Καὶ μὴ προσδιδῷς συμβολῇ, (ou συμβολῇ ἀυτῆς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": "Hh"

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 49,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 49,
       "latin_quote": "NEMO NATUS EST IN TERRA QUALIS HENOCH, ETC.",
       "french_translation": "Nul homme sur la terre n'a ressemblé à Hénoch, qui a été enlevé de dessus la terre.",
@@ -40,27 +40,43 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "2 Esdras 5:14."
+      "text": "2 Esdras 5:14.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Genèse 5:22, 24."
+      "text": "Genèse 5:22, 24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Genèse 5:24."
+      "text": "Genèse 5:24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ecclésiastique 44:16."
+      "text": "Ecclésiastique 44:16.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ecclésiastique 44, au dernier verset."
+      "text": "Ecclésiastique 44, au dernier verset.",
+      "tags": []
     },
     {
       "marker": "(f)",
-      "text": "Καὶ ὡς Ἰωσηφ ἐγενήθη ἀνὴρ ἡγέμενος ἀδελφῶν, σήριγμα λαῦ. καὶ τὰ ὀςᾶ ἀυτῦ ἐπεσκέπη ὑπὸ Κυρίυ."
+      "text": "Καὶ ὡς Ἰωσηφ ἐγενήθη ἀνὴρ ἡγούμενος ἀδελφῶν, σήριγμα λαοῦ. καὶ τὰ ὀᾶ αὐτοῦ ἐπεσκέπη ὑπὸ Κυρίυ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

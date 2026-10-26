@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 28,
       "latin_quote": "DIVIDIT TORRENS A POPULO PEREGRINANTE EOS QUOS OBLITUS EST PES EGENTIS HOMINIS ET INVIOS.",
       "french_translation": "Le torrent divise d'avec le peuple voyageur et étranger, ceux que l'homme pauvre a oubliés, et qui sont hors de la voie.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 28,
       "latin_quote": "TERRA DE QUA ORIEBATUR PANIS IN LOCO SUO, IGNI SUBVERSA EST.",
       "french_translation": "Une terre d'où il naissait des moissons propres à la nourriture de l'homme, a été renversée par le feu.",
@@ -40,11 +40,17 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "פרץ נחל מעם גר השכחים מני רגל דלו מאנוש נעו"
+      "text": "פרץ נחל מעם גר השכחים מני רגל דלו מאנוש נעו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Διακοπὴ χειμάῤῥου ἀπὸ κόνεως, οἱ δὲ ἐπιλανθανόμενοι ὁδὸν δικαίαν ἠσθένησαν, ἐν ἐξαλλαγμοῖς."
+      "text": "Διακοπὴ χειμάρρου ἀπὸ κόνεως, οἱ δὲ ἐπιλανθανόμενοι ὁδὸν δικαίαν ἠσθένησαν, ἐν ἐξαλλαγμοῖς.",
+      "tags": [
+        "greek"
+      ]
     }
   ]
 }

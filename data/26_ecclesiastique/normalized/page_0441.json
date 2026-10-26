@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 26,
       "latin_quote": null,
       "french_translation": null,
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 26,
       "latin_quote": "A TRIBUS TIMUIT COR MEUM.",
       "french_translation": "Mon cœur a appréhendé trois choses, qui sont, 1°. La haine de toute une ville. 2°. L'émotion séditieuse d'un peuple. 3°. La calomnie. Mais il y a une quatrième plus terrible que tout cela ; c'est une femme jalouse.",
@@ -59,7 +59,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 26,
       "latin_quote": "DELATURAM CIVITATIS.",
       "french_translation": null,
@@ -67,7 +67,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 26,
       "latin_quote": "DOLOR CORDIS, MULIER ZELOTYPA. 8. IN MULIERE ZELOTYPA FLAGELLUM LINGUÆ.",
       "french_translation": null,
@@ -77,15 +77,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Διαβολὴ πόλεως."
+      "text": "Διαβολὴ πόλεως.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Λύπη καρδίας, καὶ πένθος, γυνὴ ἀντίζηλος γυναικὶ, καὶ μάςιξ γλώσσης πᾶσιν ἐπικοινοῦσα."
+      "text": "Λύπη καρδίας, καὶ πένθος, γυνὴ ἀντίζηλος γυναικὶ, καὶ μάστιξ γλώσσης πᾶσιν ἐπικοινοῦσα.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "_Job 5:21. Vide infra_ XXVIII. 21. Πληγὴ γλώσσης συνθραύει ὀστᾶ."
+      "text": "_Job 5:21. Vide infra_ XXVIII. 21. Πληγὴ γλώσσης συνθραύει ὀστᾶ.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

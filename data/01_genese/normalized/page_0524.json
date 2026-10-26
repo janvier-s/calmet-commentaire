@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 19,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 19,
       "latin_quote": "IGITUR DOMINUS PLUIT SUPER SODOMAM ET GOMORRHAM SULPHUR ET IGNEM, A DOMINO DE COELO.",
       "french_translation": "Le Seigneur fit tomber sur Sodome et sur Gomorrhe une pluie de soufre et de feu, descendue du Seigneur et du Ciel.",
@@ -33,23 +33,45 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ἐθαύμασά σου τὸ πρόσωπον."
+      "text": "Ἐθαύμασά σου τὸ πρόσωπον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ο᾿ ἐφ᾿ ὅτι ἐνδυσωπήθην τὸ πρόσωπόν σου."
+      "text": "Ὀ ἐφ᾿ ὅτι ἐδυσωπήθην τὸ πρόσωπόν σου.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "La Cité de Dieu, livre 16, chapitre 29."
+      "text": "La Cité de Dieu, livre 16, chapitre 29.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Ignace, Lettre aux Antiochiens ; Saint Irénée, livre 3, chapitre 16 ; Saint Justin, Dialogue ; Tertullien ; saint Cyprien ; saint Athanase ; saint Ambroise ; et saint Augustin."
+      "text": "Saint Ignace, Lettre aux Antiochiens ; Saint Irénée, livre 3, chapitre 16 ; Saint Justin, Dialogue ; Tertullien ; saint Cyprien ; saint Athanase ; saint Ambroise ; et saint Augustin.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Tostat ;\nCajetan ;\nOleaster."
+      "text": "Tostat ;\nCajetan ;\nOleaster.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

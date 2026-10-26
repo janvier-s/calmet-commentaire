@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 1,
       "latin_quote": "TRANS JORDANEM.",
       "french_translation": "Au delà du Jourdain.",
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 1,
       "latin_quote": "IN SOLITUDINE CAMPESTRI.",
       "french_translation": "Dans la plaine du désert.",
@@ -25,23 +25,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "בעבר הירדן"
+      "text": "בעבר הירדן",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Deutéronome 4:41, 11:30 Josué 1:19, 21:1, 17:7, 20:8, 22:7."
+      "text": "Voyez Deutéronome 4:41 ; 11:30 ; Josué 1:19 ; 21:1 ; 17:7 ; 20:8 ; 22:7.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "1 Rois 14:40."
+      "text": "1 Rois 14:40.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "3 Rois 4:24."
+      "text": "3 Rois 4:24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Nombres 22:1 ; 26:3 ; 31:42."
+      "text": "Nombres 22:1 ; 26:3 ; 31:42.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

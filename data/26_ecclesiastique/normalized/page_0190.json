@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 7,
       "latin_quote": "ASSIDUITAS ILLIUS NON EST BONA.",
       "french_translation": null,
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 7,
       "latin_quote": "NOLI VERBOSUS ESSE IN MULTITUDINE PRESBY-,",
       "french_translation": null,
@@ -48,31 +48,73 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Alimeon apud Clemen. Alexand. lib. 6. Strom. Εχθρὸν ἀνδρα φαίεν Φυλαξαθαι, ὴ Φίλον."
+      "text": "Alimeon apud Clemen. Alexand. lib. 6. Strom. Ἐχθρὸν ἄνδρα φαίεν Φυλαξαθαι, ὴ Φίλον.",
+      "tags": [
+        "greek",
+        "fathers",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Strom",
+          "original": "Stromata"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Lévitique 19:11. Exode 20:15. Deutéronome 5:18. Comparez à Exode 22:28. 23:9. Deutéronome 24:17. 27:17. Jérémie 7:6."
+      "text": "Lévitique 19:11. Exode 20:15. Deutéronome 5:18. Comparez à Exode 22:28. 23:9. Deutéronome 24:17. 27:17. Jérémie 7:6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Οὐ γὰρ εὐοδωθήσεται ἀυτὴ ἐν εἰς ἀγαθὸν."
+      "text": "Οὐ γὰρ εὐοδωθήσεται ἀυτὴ ἐν εἰς ἀγαθὸν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Cicéron, Pour Roscius le comédien. _Qui mentiri solet, pejerare consuevit._"
+      "text": "Cicéron, Pour Roscius le comédien. _Qui mentiri solet, pejerare consuevit._",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Platon, De la République ; Origène ; saint Clément d'Alexandrie ; Cassien ; et d'autres encore. Voyez Cornelius a Lapide sur Exode 1:19 et sur ce passage."
+      "text": "Platon, De la République ; Origène ; saint Clément d'Alexandrie ; Cassien ; et d'autres encore. Voyez Cornelius a Lapide sur Exode 1:19 et sur ce passage.",
+      "tags": [
+        "verse",
+        "fathers",
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la République",
+          "original": "De re publica"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Matthieu 5:37."
+      "text": "Matthieu 5:37.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Apocalyp. XXI. 8."
+      "text": "Apocalyp. XXI. 8.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

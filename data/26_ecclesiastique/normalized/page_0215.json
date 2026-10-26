@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 8,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 9,
       "latin_quote": "ON ZELES MULIEREM SINUS TUI, ETC.",
       "french_translation": "Ne soyez point jaloux de la femme qui vous est unie, de peur qu'elle n'emploie contre vous la malice que vous lui aurez apprise.",
@@ -33,19 +33,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Valère Maxime, livre 3, chapitre 3."
+      "text": "Valère Maxime, livre 3, chapitre 3.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Plutarque, Morales sur Job."
+      "text": "Plutarque, Morales sur Job.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Morales sur Job",
+          "original": "Moralia in Job"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Mὴ ζήλει γυναῖκα τῦ κόλπε σε. Deut. XIII."
-    },
-    {
-      "marker": "6.",
-      "text": "Uxor quæ est in sinu tuo. XXVIII. 54. Invidere uxori quæ cubat in sinu suo. Vide et Michée 7:5."
+      "text": "Mὴ ζήλει γυναῖκα τῦ κόλπε σε. Deut. XIII. 6. Uxor quæ est in sinu tuo. XXVIII. 54. Invidere uxori quæ cubat in sinu suo. Vide et Michée 7:5.",
+      "tags": [
+        "greek",
+        "verse",
+        "latin",
+        "abbrev",
+        "old-ref"
+      ]
     }
   ],
   "book_end_marker": "P ij"

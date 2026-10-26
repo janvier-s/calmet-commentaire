@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 7,
       "latin_quote": "CORAM ARCA DOMINI.",
       "french_translation": "Devant l'Arche du Seigneur.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 7,
       "latin_quote": "UTINAM, UT CŒPIMUS, MANSISSEMUS TRANS JORDANEM.",
       "french_translation": "Il eût été à souhaiter que nous demeurassions au-delà du Jourdain, comme nous avions commencé.",
@@ -48,35 +48,69 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Genèse 37:34."
+      "text": "Genèse 37:34.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ibidem XLIV. 13."
+      "text": "Ibidem XLIV. 13.",
+      "tags": [
+        "verse",
+        "ibid"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Lévitique 21:10."
+      "text": "Lévitique 21:10.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Iliad. Σ. Α’μφιπολησαι δε χερσιν ιλυν αισχαλοεσσαν\nΧευατο κακκεφαλης, χαριεν δ' ησχυνε προσωπον"
+      "text": "Iliad. Σ. Ἀμφιπολησαι δὲ χερσὶν ἰλὺν αισχαλοεσσαν\nΧεύατο κακκεφαλης, χαριεῖ δ' ᾔσχυνε πρόσωπον",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Νεκτάρεον δὲ χιτῶνα μέλαιν ἀμφίζανε τέφρη.\nVirgile, Énéide, livre 12."
+      "text": "Νεκτάρεον δὲ χιτῶνα μέλαιν ἀμφίζανε τέφρη.\nVirgile, Énéide, livre 12.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Joël 2:17."
+      "text": "Joël 2:17.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "ולו הואלנו ונשב בעבר הירדן"
+      "text": "ולו הואלנו ונשב בעבר הירדן",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Apud Maf. hic."
+      "text": "Apud Maf. hic.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

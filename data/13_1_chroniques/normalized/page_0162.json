@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 9,
       "latin_quote": "FILII SACERDOTUM UNGUENTA EX AROMATIBUS CONFICIEBANT.",
       "french_translation": "Ceux qui étaient de la famille sacerdotale, composaient les parfums de plusieurs aromates.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 9,
       "latin_quote": "PRÆFECTUS EORUM QUÆ IN SARTAGINE FRIGEBANTUR.",
       "french_translation": "Sur tout ce qu'on faisait frire dans la poêle.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 9,
       "latin_quote": "SUPER PANES PROPOSITIONIS, UT SEMPER NOVOS",
       "french_translation": null,
@@ -63,23 +63,43 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Exode 30:34. Homo quicumque secerit simile, ut odore illius perfruatur, peribit de populi suis."
+      "text": "Exode 30:34. Homo quicumque secerit simile, ut odore illius perfruatur, peribit de populi suis.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "על מעשה הבתים [UNCERTAIN HEBREW]"
+      "text": "על מעשה הבתים [UNCERTAIN HEBREW]",
+      "tags": [
+        "hebrew",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "ἐπὶ τὰ ἔργα τῆς θυσίας τὸ τηγάνε ἐν μεγάλῳ ἱερέως. [UNCERTAIN GREEK]"
+      "text": "ἐπὶ τὰ ἔργα τῆς θυσίας τὸ τηγάνου ἐν μεγάλῳ ἱερέως. [UNCERTAIN GREEK]",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Ézéchiel 46:20."
+      "text": "Voyez Ézéchiel 46:20.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Lévitique 2:4. Lagana azyma oleo lita. Item Lévitique 7:21 et 8:28, etc."
+      "text": "Lévitique 2:4. Lagana azyma oleo lita. Item Lévitique 7:21 et 8:28, etc.",
+      "tags": [
+        "verse",
+        "latin",
+        "old-ref"
+      ]
     }
   ],
   "book_end_marker": null

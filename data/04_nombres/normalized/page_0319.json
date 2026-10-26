@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 25,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 25,
       "latin_quote": "CESSAVITQUE PLAGA A FILIIS ISRAEL.",
       "french_translation": "Et la plaie dont les enfants d'Israël avaient été frappés, cessa.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 25,
       "latin_quote": "OCCISI SUNT VIGINTI-QUATUOR MILLIA.",
       "french_translation": "Il y en eut vingt-quatre mille de tuez.",
@@ -55,15 +55,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "70. εἰς τὼν καμινον, et ἀπεκέντησεν ἀμφοτέ-ρας τόντε αἰσχρόν.. … ἐ τω̃ς γυναικὸς διὰ τῆς μή-τρας ἀυτῆς."
+      "text": "70. εἰς τὼν κάμινον, et ἀπεκέντησεν ἀμφοτέ-ῥᾶς τόντε αἰσχρόν.. … ἐ τῶς γυναικὸς διὰ τῆς μή-τρας ἀυτῆς.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "ויהיו המתים במגפה"
+      "text": "ויהיו המתים במגפה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "1 Corinthiens 10:7-8."
+      "text": "1 Corinthiens 10:7-8.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

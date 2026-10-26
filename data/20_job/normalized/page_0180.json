@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 11,
       "latin_quote": "TU AUTEM FIRMASTI COR TUUM, ET EXPANDISTI AD EUM MANUS TUAS.",
       "french_translation": "Mais pour vous, vous avez endurci votre cœur ; et cependant vous élevez vos mains vers Dieu.",
@@ -61,15 +61,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "ואיש נבוב ילבב ועיר פרא אדם יולד"
+      "text": "ואיש נבוב ילבב ועיר פרא אדם יולד",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Vide Proverbes 2:2, 10. 6:21, 32. 11:21. 15:14. 16:21. 20:5. et passim. Psaumes 89:12. Isaïe 6:10. 29:13. 54:18 etc."
+      "text": "Voyez Proverbes 2:2, 10 ; 6:21, 32 ; 11:21 ; 15:14 ; 16:21 ; 20:5, et passim ; Psaumes 89:12 ; Isaïe 6:10 ; 29:13 ; 54:18, etc.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "אם אתה הכינות לבך ופרשת אליו כפיך"
+      "text": "אם אתה הכינות לבך ופרשת אליו כפיך",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "metadata": {

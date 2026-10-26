@@ -22,15 +22,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 14,
       "latin_quote": null,
       "french_translation": null,
-      "french_commentary": "lui-même, qui est incorruptible. D'où vient que ceux qui sèment dans la chair, ne moissonneront que la corruption ; mais que ceux qui sèment dans l'esprit, recevront et moissonneront la vie éternelle."
+      "french_commentary": "lui-même, qui est incorruptible. D'où vient que saint Paul^{(a)} dit, que ceux qui sèment dans la chair, ne moissonneront que la corruption ; mais que ceux qui sèment dans l'esprit, recevront et moissonneront la vie éternelle."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 14,
       "latin_quote": "ET OMNE OPUS ELECTUM JUSTIFICABITUR.",
       "french_translation": null,
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 14,
       "latin_quote": "BEATUS VIR, QUI IN SAPIENTIA MORABITUR.",
       "french_translation": null,
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 14,
       "latin_quote": "QUI EXCOGITAVIT VIAS ILLIUS… INTELLIGENS, ET VADENS POST ILLAM.",
       "french_translation": null,
@@ -56,15 +56,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Galates 6:8."
+      "text": "Galates 6:8.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Complut. Μακάριος ἀνὴρ ὃς ἐν σοφίᾳ μελετήσει καλά, καὶ ἐν τῇ συνέσει αὐτῆς διαλεχθήσεται, ἁγία."
+      "text": "Complut. Μακάριος ἀνὴρ ὃς ἐν σοφίᾳ μελετήσει καλά, καὶ ἐν τῇ συνέσει αὐτῆς διαλεχθήσεται, ἁγία.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Édit. Rom. Μακάριος ἀνὴρ ὃς ἐν σοφίᾳ τελευτήσει, καὶ ἐν τῇ συνέσει αὐτῆς διαλεχθήσεται. Quidam Codd. addunt Κρίσιν, post συνέσει."
+      "text": "Édit. Rom. Μακάριος ἀνὴρ ὃς ἐν σοφίᾳ τελευτήσει, καὶ ἐν τῇ συνέσει αὐτῆς διαλεχθήσεται. Quidam Codd. addunt Κρίσιν, post συνέσει.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

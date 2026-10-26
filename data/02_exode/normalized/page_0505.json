@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "42",
+      "verse_ref": 42,
       "chapter": 28,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "43",
+      "verse_ref": 43,
       "chapter": 28,
       "latin_quote": "UTENTUR EIS,… QUANDO INGREDIENTUR TABERNACULUM TESTIMONII, VEL QUANDO APPROPINQUANT AD ALTARE, UT MINISTRENT IN SANCTUARIO.",
       "french_translation": "Ils s'en serviront quand ils entreront dans le Tabernacle, ou lorsqu'ils approcheront de l'Autel, pour servir dans le Sanctuaire du Tabernacle.",
@@ -33,11 +33,28 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Exode 20:26. Non ascendes per gradus ad altare meum, ne reveletur turpitudo tua. Πρὸς τὸ μὴ ἀποκαλυφθῆναι τὴν ἀσχημοσύνην σου. Ακατάληπτον ὄντος ἡμῶν, τὸ σεμνότερον οἴκει τῆς λατρείας, προαυτῷ ἀποσφίγγεται."
+      "text": "Exode 20:26. Non ascendes per gradus ad altare meum, ne reveletur turpitudo tua. Πρὸς τὸ μὴ ἀποκαλυφθῆναι τὴν ἀσχημοσύνην σου. Ἀκατάληπτον ὄντος ἡμῶν, τὸ σεμνότερον οἴκει τῆς λατρείας, προαυτῷ ἀποσφίγγεται.",
+      "tags": [
+        "greek",
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "L. 3. Antiq. c. 8. Διέζωμαι μὲν τὰ αἰδοῖα καὶ ἀντὶ ζώνης, ἐκ βύσσου κλωσῆς ἀγρηγόμενον, ἐφάπτεται αὐτ."
+      "text": "L. 3. Antiq. c. 8. Διέζωμαι μὲν τὰ αἰδοῖα καὶ ἀντὶ ζώνης, ἐκ βύσσου κλωστῆς ἀγρηγόμενον, ἐφάπτεται αὐτ.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     }
   ],
   "book_end_marker": null

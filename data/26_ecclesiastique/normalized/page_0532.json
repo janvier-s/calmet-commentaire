@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 34,
       "latin_quote": null,
       "french_translation": "un miroir.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 34,
       "latin_quote": "AB IMMUNDO QUID MUNDABITUR ?",
       "french_translation": "Comment ce qui est impur, peut-il rendre pur ? Et comment la vérité peut-elle sortir du mensonge ?",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 34,
       "latin_quote": "DIVINATIO ERRORIS, ET AUGURIA, ETC.",
       "french_translation": "Les divinations fausses, les augures trompeurs, et les songes des méchants ne sont que vanité.",
@@ -55,19 +55,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Τύπω καὶ τύπω, ἔἴσοις ἀνωπίω, κατέναντι προσώπε ἐνοπίω προσώπε."
+      "text": "Τύπω καὶ τύπω, ἴσοις ἀνωπίω, κατέναντι προσώπου ἐνοπίω προσώπου.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Jacques 1:23."
+      "text": "Jacques 1:23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "August. in Psalm. x. n. 6. et in Psalm. CXLV. n. 9. et lib. 2. contra Epist. Petiliani, et alibi passim."
+      "text": "August. in Psalm. x. n. 6. et in Psalm. CXLV. n. 9. et lib. 2. contra Epist. Petiliani, et alibi passim.",
+      "tags": [
+        "fathers",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Μαντεία, καὶ οἰωνισμοὶ, καὶ ἐνύπνια μάταια ἐστί."
+      "text": "Μαντεία, καὶ οἰωνισμοὶ, καὶ ἐνύπνια μάταια ἐστί.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

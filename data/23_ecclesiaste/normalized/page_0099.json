@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 8,
       "latin_quote": "OMNI NEGOTIO TEMPUS EST, ET OPPORTUNITAS ; ET MULTA HOMINIS AFFLICTIO.",
       "french_translation": "Toutes choses ont leur temps, et leurs moments favorables ; et c'est une grande affliction à l'homme.",
@@ -34,7 +34,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 8,
       "latin_quote": "QUIA IGNORAT PRÆTERITA, ET FUTURA NULLO SCIRE POTEST NUNTIO.",
       "french_translation": "De ce qu'il ignore le passé, et qu'il ne peut avoir aucune nouvelle de l'avenir.",
@@ -44,15 +44,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "כי לכל חפץ יש עת ומשפט כי רעת האדם רבה עליו"
+      "text": "כי לכל חפץ יש עת ומשפט כי רעת האדם רבה עליו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ὅτι παντὶ πράγματι ἐςι καιρὸς, καὶ κρίσις, ὅτι γνῶσις τοῦ ἀνθρώπου πολλὴ ἐπ’ αὐτον. Ils ont lû דעת, Daath, au lieu de Raah, רעה. Symmaque."
+      "text": "Ὅτι παντὶ πράγματι ἐςι καιρὸς, καὶ κρίσις, ὅτι γνῶσις τοῦ ἀνθρώπου πολλὴ ἐπ’ αὐτον. Ils ont lû דעת, Daath, au lieu de Raah, רעה. Symmaque.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "explanation"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Η' γὰρ κάκωσις τẽ ἀνθρώπε πολλὴ ἐπ' αὐτῶ. Theodot. a lû de même que les Septante : _Scientia = hominis multa super eum._ Ieron. hic. כי איננו ידע מה שיהיה כי כאשר יהיה מי יגיד לו"
+      "text": "Ἠ γὰρ κάκωσις τe͂ ἀνθρώπου πολλὴ ἐπ' αὐτῶ. Theodot. a lû de même que les Septante : _Scientia = hominis multa super eum._ Ieron. hic. כי איננו ידע מה שיהיה כי כאשר יהיה מי יגיד לו",
+      "tags": [
+        "hebrew",
+        "greek",
+        "fathers",
+        "versions",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

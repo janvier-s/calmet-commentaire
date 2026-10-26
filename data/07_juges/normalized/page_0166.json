@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 8,
       "latin_quote": "ABSQUE ORNAMENTIS, ET MONILIBUS, ET VESTE PURPUREA, QUIBUS REGES MADIAN UTI SOLITI ERANT.",
       "french_translation": "Sans les ornements, les colliers, et les habits de pourpre dont les Rois de Madian avaient accoutumé d'user.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 8,
       "latin_quote": "FECIT EX EO GEDEON EPHOD.",
       "french_translation": "Gédéon en fit un Éphod.",
@@ -33,23 +33,42 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "לבר מן השהרונים והנטפות. _Manß. Menoc. Bonfr. Serar. ro. dpaξ. τῆς ἀπαρτίας. Alior. τὰς ἀρτίνας ἢ τ᾽ ἀρτίσκων._"
+      "text": "לבד מן השהרונים והנטפות. _Manß. Menoc. Bonfr. Serar. ro. dpaξ. τῆς ἀπαρτίας. Alior. τὰς ἀρτίνας ἢ τ᾽ ἀρτίσκων._",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Isaïe 3:18-19."
+      "text": "Isaïe 3:18-19.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Munster ;\nVatable ;\nGrotius ;\nJunius ;\nDrusius ;\nRabbi David ;\nCaist."
+      "text": "Munster ;\nVatable ;\nGrotius ;\nJunius ;\nDrusius ;\nRabbi David ;\nCaist.",
+      "tags": [
+        "rabbis",
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "2 Rois 6:14 ; 1 Paralipomènes 15:27."
+      "text": "2 Rois 6:14 ; 1 Paralipomènes 15:27.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Diodore de Sicile_, livre 2, chapitre 3 ; et _Élien_, livre 14, chapitre 34."
+      "text": "_Diodore de Sicile_, livre 2, chapitre 3 ; et _Élien_, livre 14, chapitre 34.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 19,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 19,
       "latin_quote": "QUÆ RELIQUIT EUM.",
       "french_translation": "Sa femme le quitta.",
@@ -33,27 +33,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ainsi Josèphe ; Nicolas de Lyre ; Tostat ; Génébrard ; l'Hébreu dans Seder Olam ; Serarius, question 6."
+      "text": "Ainsi Josèphe ; Nicolas de Lyre ; Tostat ; Génébrard ; l'Hébreu dans Seder Olam ; Serarius, question 6.",
+      "tags": [
+        "rabbis",
+        "versions",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Seder Olam",
+          "original": "Seder Olam"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "ותזנה עליו פלגשו"
+      "text": "ותזנה עליו פלגשו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "ובסרת עלוהי לחיתיה"
+      "text": "ובסרת עלוהי לחיתיה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ὠργίσθη ἀυτῷ. ou ἐπορεύθη ἀπ' αὐτõ."
+      "text": "ὠργίσθη ἀυτῷ. ou ἐπορεύθη ἀπ' αὐτõ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Α' Μετέιας ἐιχε."
+      "text": "Ἀ Μετέιας εἶχε.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Deutéronome 24:2-4. Voyez aussi Jérémie 3:1 ; et Proverbes 18:22."
+      "text": "Deutéronome 24:2-4. Voyez aussi Jérémie 3:1 ; et Proverbes 18:22.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

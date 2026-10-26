@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 1,
       "latin_quote": "MORTUIS, ATQUE OCCISIS SEPULTURAM SOLLICITUS EXHIBEBAT.",
       "french_translation": "Avait grand soin d'ensevelir ceux qui étaient morts, ou qui avaient été tués.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 1,
       "latin_quote": "CUM REVERSUS ESSET SENNACHERIB, FUGIENS A JUDÆA,… ET IRATUS MULTOS OCCIDERET,… TO-",
       "french_translation": null,
@@ -41,15 +41,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ἐπιρρίψαντες ὀπίσω τõ τείχους Νινυΐ. Τέλλέ με ἐξ ἀγέλης ψυχὰς εἰδάλων καμόντων. Vide et Virgil. Æneid 7."
+      "text": "Ἐπιρρίψαντες ὀπίσω τõ τείχους Νινυΐ. Τέλλέ με ἐξ ἀγέλης ψυχὰς εἰδάλων καμόντων. Voyez aussi Virgile, Énéide 7.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Homer Iliad 23. Θάλαττι μὲ ἐπὶ ῥηγμῖνι, πόδας αἰθέρος περιφῶσαι."
+      "text": "Homer Iliad 23. Θάλαττι μὲ ἐπὶ ῥηγμῖνι, πόδας αἰθέρος περιφῶσαι.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Ambroise, De Tobie, chapitre 1."
+      "text": "Saint Ambroise, De Tobie, chapitre 1.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De Tobie",
+          "original": "De Tobia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

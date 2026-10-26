@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 34,
       "latin_quote": "SI CUCURRERIT CUM EO.",
       "french_translation": "Car il a dit : L'homme ne sera point agréable à Dieu, quand même il aurait couru dans sa voie.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 34,
       "latin_quote": "ABSIT A DEO IMPIETAS.",
       "french_translation": "L'impiété est infiniment éloignée de Dieu.",
@@ -40,23 +40,42 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Job 9:22, 29 ; 10:15 ; 30:26."
+      "text": "Job 9:22, 29 ; 10:15 ; 30:26.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "[UNCERTAIN HEBREW] כי אמר לא יסכן גבר ברצתו עם אלהים"
+      "text": "[UNCERTAIN HEBREW] כי אמר לא יסכן גבר ברצתו עם אלהים",
+      "tags": [
+        "hebrew",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "[UNCERTAIN GREEK] Μὴ γὰρ εἴπῃς, ὅτι ἐκ ἔςαι ἐπισκοπὴ ἀνδρὸς, ἡ ἐπισκοπὴ αὐτῷ ἐν ὀργῇ."
+      "text": "[UNCERTAIN GREEK] Μὴ γὰρ εἴπῃς, ὅτι οὐκ ἔσται ἐπισκοπὴ ἀνδρὸς, ἡ ἐπισκοπὴ αὐτῷ ἐν ὀργῇ.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "[UNCERTAIN GREEK] Ὅτι εἶπεν, ἐκ ἀκινδύνευτον ἀνὴρ ἐν τῷ εὐδοκιμῆσαι αὐτὸν μετὰ Θεῦ."
+      "text": "[UNCERTAIN GREEK] Ὅτι εἶπεν, ἐκ ἀκινδύνευτον ἀνὴρ ἐν τῷ εὐδοκιμῆσαι αὐτὸν μετὰ Θεοῦ.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "[UNCERTAIN GREEK] Ὁ μὴ σωθήσεται ἀνήρ."
+      "text": "[UNCERTAIN GREEK] Ὁ μὴ σωθήσεται ἀνήρ.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     }
   ]
 }

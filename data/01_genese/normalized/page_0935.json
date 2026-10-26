@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 50,
       "latin_quote": null,
       "french_translation": "de l'embaumer.",
@@ -17,35 +17,84 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ποιεῖν ἀυτῷ τὰς ἐνταφιάσεις, ἐνταφιάσαι τὸν πατέρα ἀυτὸν, καὶ ἐνταφίασαν δι ἐνταφιαςαὶ τὸν Ἰσραὴλ."
+      "text": "Ποιεῖν αὐτῷ τὰς ἐνταφιάσεις, ἐνταφιάσαι τὸν πατέρα αὐτὸν, καὶ ἐνταφίασαν δῑ ἐνταφιασταὶ τὸν Ἰσραὴλ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "רופאים"
+      "text": "רופאים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Hérodote, livre 2, chapitre 84."
+      "text": "Hérodote, livre 2, chapitre 84.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Odyssée, Δ. Ἰητρὸς δ᾽ ἕκαστος, ἐπιστάμενος περὶ πάντων ἀνθρώπων."
+      "text": "Odyssée, Δ. Ἰητρὸς δ᾽ ἕκαστος, ἐπιστάμενος περὶ πάντων ἀνθρώπων.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Diodore de Sicile, livre 2, chapitre 3, à la fin."
+      "text": "Diodore de Sicile, livre 2, chapitre 3, à la fin.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Livre 16, page 508."
+      "text": "Livre 16, page 508.",
+      "tags": []
     },
     {
       "marker": "(g)",
-      "text": "Manéthon, dans Eusèbe, Préparation évangélique, livre 2. Τὸ τῆς Ἀθανασίας φάρμακον. Saint Clément d'Alexandrie, Stromates, livre 1, donne cette invention à Apis avant l'arrivée d'Io en Égypte. Esculape perfectiona cet art."
+      "text": "Manéthon, dans Eusèbe, Préparation évangélique, livre 2. Τὸ τῆς Ἀθανασίας φάρμακον. Saint Clément d'Alexandrie, Stromates, livre 1, donne cette invention à Apis avant l'arrivée d'Io en Égypte. Esculape perfectiona cet art.",
+      "tags": [
+        "greek",
+        "fathers",
+        "classical",
+        "title",
+        "explanation"
+      ],
+      "titles": [
+        {
+          "fr": "Préparation évangélique",
+          "original": "Praeparatio evangelica"
+        },
+        {
+          "fr": "Stromates",
+          "original": "Stromata"
+        }
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Cassien, Conférences 15, chapitre 3 ; et Cicéron, Tusculanes, livre 1."
+      "text": "Cassien, Conférences 15, chapitre 3 ; et Cicéron, Tusculanes, livre 1.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Conférences",
+          "original": "Collationes"
+        },
+        {
+          "fr": "Tusculanes",
+          "original": "Tusculanae disputationes"
+        }
+      ]
     }
   ],
   "book_end_marker": null

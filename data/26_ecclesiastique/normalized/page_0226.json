@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 10,
       "latin_quote": "JUDEX SAPIENS JUDICABIT POPULUM SUUM.",
       "french_translation": "Le Juge sage jugera son peuple ; et le gouvernement d'un homme sensé demeurera stable.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 10,
       "latin_quote": "SECUNDUM JUDICEM POPULI, SIC ET MINISTRI EJUS.",
       "french_translation": "Tel qu'est le Juge du peuple, tels sont ses Ministres, etc.",
@@ -40,15 +40,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Κριτὴς σοφὸς παιδεύσει τὸν λαὸν ἀυτõ, καὶ ἡγεμονία συνετõ τεταγμένη ἔςαι. Latin. legis. Στηριχθήσεται."
+      "text": "Κριτὴς σοφὸς παιδεύσει τὸν λαὸν αὐτõ, καὶ ἡγεμονία συνετõ τεταγμένη ἔσται. Latin. legis. Στηριχθήσεται.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 29:14."
+      "text": "Proverbes 29:14.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Claudianus"
+      "text": "Claudianus",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

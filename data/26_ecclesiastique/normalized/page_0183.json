@@ -40,7 +40,7 @@
       "verse_ref": 36,
       "chapter": 6,
       "latin_quote": "EVIGILA AD EUM.",
-      "french_translation": "Allez le trouver dès le point du jour.",
+      "french_translation": "Allez le trouver dès le point du jour.^{(c)}",
       "french_commentary": "Cette expression, qui est commune dans toute l'Écriture, marque une diligence, un soin, une application particulière, et extraordinaire. La seule présence des hommes sages, est toujours très utile. ^{(d)} _Occursus ipse sapientium juvat, et est aliquid, quod ex magno viro, vel tacente, proficias._"
     },
     {
@@ -55,19 +55,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ecclésiastique 39:1, 3."
+      "text": "Ecclésiastique 39:1, 3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Matthieu 24:34."
+      "text": "Matthieu 24:34.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ὄρθριζε πρὸς Κυρίον,"
+      "text": "Ὄρθριζε πρὸς Κυρίον,",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Sénèque, Lettre 94."
+      "text": "Sénèque, Lettre 94.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

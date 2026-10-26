@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 6,
       "latin_quote": "FAC SICUT LOCUTUS ES MARDOCHÆO JUDÆO.",
       "french_translation": "Faites tout ce que vous avez dit à Mardochée Juif, qui est devant la porte du Palais.",
@@ -33,35 +33,70 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Jacques 4:6 ; Proverbes 3:34 ; 1 Pierre 5:5."
+      "text": "Jacques 4:6 ; Proverbes 3:34 ; 1 Pierre 5:5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Genèse 41:41."
+      "text": "Genèse 41:41.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Le Grec, édition d'Origène, et l'autre édition. Sed hæc paulò brevior. Desunt in editione Complutensi."
+      "text": "Le Grec, édition d'Origène, et l'autre édition. Sed hæc paulò brevior. Desunt in editione Complutensi.",
+      "tags": [
+        "fathers",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Édit. Rom. Καθὼς ἐλάλησας, οὕτως ποιησον τῷ Μαρδοχαίῳ τῷ διηγελκότι ce τῇ αυλῇ. Vous avez bien dit : faites ainsi à Mardochée le Juif, qui sert dans la cour. Édit. Origen. Ως ἐλάλησας. Alter. Édit. ὡς εἴρηκας."
+      "text": "Édit. Rom. Καθὼς ἐλάλησας, οὕτως ποίησον τῷ Μαρδοχαίῳ τῷ διηγελκότι ce τῇ αὐλῇ. Vous avez bien dit : faites ainsi à Mardochée le Juif, qui sert dans la cour. Édit. Origen. Ὡς ἐλάλησας. Alter. Édit. ὡς εἴρηκας.",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "explanation"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Autre édition Τῷ καθημένῳ ἐν τῇ πύλῃ. Qui est assis à la porte."
+      "text": "Autre édition Τῷ καθημένῳ ἐν τῇ πύλῃ. Qui est assis à la porte.",
+      "tags": [
+        "greek",
+        "versions",
+        "explanation"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Édition d'Origène Ὅτι ἐκ ἦν δυνατὸν ὁ διάβολος, ἀλλ᾽ ὅτι Μαρδοχαῖος ἐστι. Melius l'autre édition Ὅτι ἐκ ἦν αὐτὸς ὁ δοξαζόμενος."
+      "text": "Édition d'Origène Ὅτι ἐκ ἦν δυνατὸν ὁ διάβολος, ἀλλ᾽ ὅτι Μαρδοχαῖος ἐστι. Melius l'autre édition Ὅτι ἐκ ἦν αὐτὸς ὁ δοξαζόμενος.",
+      "tags": [
+        "greek",
+        "fathers"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Μετέβαλε τὸ χρῶμα αὐτοῦ εἰς ὠχρότητα, ἢ ὠχρίασεν. Autre édition Μετέβαλε τὸ πτῶμα αὐτοῦ εἰς ὠχρότητα."
+      "text": "Μετέβαλε τὸ χρῶμα αὐτοῦ εἰς ὠχρότητα, ἢ ὠχρίασεν. Autre édition Μετέβαλε τὸ πτῶμα αὐτοῦ εἰς ὠχρότητα.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Καὶ ἰδὼν Μαρδοχαῖος εἶχεν δειλίαν. Je lis, ἰδὼν. il lui semblait. En suivant la lettre on peut traduire : _Alors Mardochée se vit voir une chose prodigieuse._ Εδωκε διαφανῆ τίζας. Il donna un spectacle auquel on ne s'attendait guère."
+      "text": "Καὶ ἰδὼν Μαρδοχαῖος εἶχεν δειλίαν. Je lis, ἰδὼν. il lui semblait. En suivant la lettre on peut traduire : _Alors Mardochée se vit voir une chose prodigieuse._ Ἔδωκε διαφανῆ τίζας. Il donna un spectacle auquel on ne s'attendait guère.",
+      "tags": [
+        "greek",
+        "versions",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

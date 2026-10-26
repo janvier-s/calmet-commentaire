@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 5,
       "latin_quote": "OFFERET PRO DELICTO SUO ARIETEM IMMACULATUM DE GREGIBUS, QUI EMI POTEST DUOBUS SICLIS.",
       "french_translation": "Il offrira pour sa faute un bélier sans défaut, pris des troupeaux, qui peut valoir deux sicles.",
@@ -25,19 +25,33 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Εὰν λάθῃ λυτῶν… ὴ ἀμέλειᾳ ἀμελέσῃ ἀπὸ τῶν ἁγίων Κυρίυ."
+      "text": "Ἐὰν λάθῃ λυτῶν… ὴ ἀμέλει ἀμελούσῃ ἀπὸ τῶν ἁγίων Κυρίυ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "בערכך כסף שקלים"
+      "text": "בערכך כסף שקלים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Τιμῆς ἀργυρίου σίκλων. Alius : Σταθμῶν ὡς σταθμῶ ἁγίων. Pondus in pondere sanctorum."
+      "text": "Τιμῆς ἀργυρίου σίκλων. Alius : Σταθμῶν ὡς σταθμῶ ἁγίων. Pondus in pondere sanctorum.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Rabbi Aben Ezra ; Rabbi Lévi, etc."
+      "text": "Rabbi Aben Ezra ; Rabbi Lévi, etc.",
+      "tags": [
+        "rabbis"
+      ]
     }
   ],
   "book_end_marker": null

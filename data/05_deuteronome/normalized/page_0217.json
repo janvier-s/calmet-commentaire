@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 15,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 15,
       "latin_quote": "NEC AGES QUIDPIAM CALLIDE IN EJUS NECESSITATIBUS… UT BENEDICAT TIBI DOMINUS.",
       "french_translation": "Vous n'userez d'aucune finesse, lorsqu'il s'agit de le soulager dans sa nécessité, afin que le Seigneur vous bénisse.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 15,
       "latin_quote": "IN OMNI TEMPORE, ET IN CUNCTIS AD QUÆ MANUM MISERIS.",
       "french_translation": "En tout temps, et dans tout ce que vous entreprendrez.",
@@ -48,11 +48,18 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Rendus isoταυλοι. Hesiod."
+      "text": "Rendus isoταυλοι. Hésiode.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "לא ירע לבבך בתתך לו כי בגלל הדבר הזה יברכך יהוה"
+      "text": "לא ירע לבבך בתתך לו כי בגלל הדבר הזה יברכך יהוה",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

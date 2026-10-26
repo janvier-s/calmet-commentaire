@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 20,
       "latin_quote": "CONVERTIT INSIDIAS EORUM IN SEMETIPSOS.",
       "french_translation": "Il tourna les desseins des ennemis contre eux-mêmes.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 20,
       "latin_quote": "AD SPECLAM QUÆ RESPICIT SOLITUDINEM.",
       "french_translation": null,
@@ -55,23 +55,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez 2 Paralipomènes 5:13."
+      "text": "Voyez 2 Paralipomènes 5:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ci-après ℣. 28."
+      "text": "Ci-après ℣. 28.",
+      "tags": []
     },
     {
       "marker": "(c)",
-      "text": "Voyez ci-après ℣. 28."
+      "text": "Voyez ci-après ℣. 28.",
+      "tags": []
     },
     {
       "marker": "(d)",
-      "text": "והיו מהרבים על בני עמון ומואב שעיר"
+      "text": "והיו מהרבים על בני עמון ומואב שעיר",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "καὶ Μωὰβ ὴ ὄρος Σηὶρ… ὴ ἐγερσάθησαν, ὴ ἀνέστησαν οἱ υἱοὶ Αμμὼν ὴ Μωὰβ ἐπὶ τὰς κατοικῦντας ὄρος Σηὶρ, ἐξολοθρεῦσαι ὴ ἐκτρῖψαι αὐτὲς; ὴ ὡς συντελέσαι τῆς κατοικίας Σηὶρ, ἀνέστησαν εἰς ἀμύλως."
+      "text": "καὶ Μωὰβ ὴ ὄρος Σηὶρ… ὴ ἐγερσάθησαν, ὴ ἀνέστησαν οἱ υἱοὶ Αμμὼν ὴ Μωὰβ ἐπὶ τὰς κατοικοῦντας ὄρος Σηὶρ, ἐξολοθρεῦσαι ὴ ἐκτρῖψαι αὐτοὺς; ὴ ὡς συντελέσαι τῆς κατοικίας Σηὶρ, ἀνέστησαν εἰς ἀμύλους.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

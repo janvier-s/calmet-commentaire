@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 24,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 24,
       "latin_quote": "IN ECCLESIIS ALTISSIMI APERIET OS SUUM.",
       "french_translation": "Elle ouvrira sa bouche dans les assemblées du Très-Haut.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 24,
       "latin_quote": "EGO EX ORE ALTISSIMI PRODII.",
       "french_translation": "Je suis sortie de la bouche du Très-Haut, je suis née avant toute créature, etc.",
@@ -48,27 +48,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "ΚΙΝΕΣΙΣ ΣΟΦΙΑΣ."
+      "text": "ΚΙΝΕΣΙΣ Σοφίας.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εν εκκλησία υψίςυ, … κ' εναντι δυναμεως αυτῦ."
+      "text": "Ἐν ἐκκλησία υψίςυ, … κ' ἔναντι δυνάμεως αυτῦ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Εγω ἀπὸ σόματος υψίςυ ἐξῆλθον, κ' ὡς ὁμίχλη κατεκάλυψα γῆν."
+      "text": "Ἐγὼ ἀπὸ σόματος υψίςυ ἐξῆλθον, κ' ὡς ὁμίχλη κατεκάλυψα γῆν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Genèse 1:2. Vide et Job 38:9."
+      "text": "Genèse 1:2. Vide et Job 38:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Raban ; Nicolas de Lyre ; Palacios ; Cornelius a Lapide. Voyez et saint Ambroise, De la foi, livre 1, chapitre 7 ; et livre 4, chapitre 4."
+      "text": "Raban ; Nicolas de Lyre ; Palacios ; Cornelius a Lapide. Voyez et saint Ambroise, De la foi, livre 1, chapitre 7 ; et livre 4, chapitre 4.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la foi",
+          "original": "De fide"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Voyez Cornelius a Lapide, sur ce passage ; et Maxime, dans Ecclésiastique 1:4."
+      "text": "Voyez Cornelius a Lapide, sur ce passage ; et Maxime, dans Ecclésiastique 1:4.",
+      "tags": [
+        "verse",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

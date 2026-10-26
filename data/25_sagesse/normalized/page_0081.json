@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 5,
       "latin_quote": "PUGNABIT CUM ILLO ORBIS TERRARUM.",
       "french_translation": "Tout l'univers combattra avec lui contre les insensés.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 5,
       "latin_quote": "EMISSIONES FULGURUM, ET TAMQUAM A BENE CURVATO ARCU NUBIUM.",
       "french_translation": "Les foudres seront lancés des nuées contre eux, comme les flèches d'un arc bandé avec force.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 5,
       "latin_quote": "ET A PETROSA IRA PLENÆ MITTENTUR GRANDINES.",
       "french_translation": "La colère de Dieu, semblable à une machine qui jette des pierres, fera pleuvoir sur eux des grêles.",
@@ -55,19 +55,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Συναπολεμήσει ἀυτῷ ὁ κόσμῳ ἐπὶ τὸς παράφρονας."
+      "text": "Συναπολεμήσει αὐτῷ ὁ κόσμῳ ἐπὶ τὸς παράφρονας.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Grégoire le Grand, Homélie 35 sur les Évangiles."
+      "text": "Saint Grégoire le Grand, Homélie 35 sur les Évangiles.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Deutéronome 32:23 ; 2 Rois 22:15 ; Psaumes 7:14 ; Psaumes 17:15 ; 76:18, etc."
+      "text": "Deutéronome 32:23 ; 2 Rois 22:15 ; Psaumes 7:14 ; Psaumes 17:15 ; 76:18, etc.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Virgilius."
+      "text": "Virgilius.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

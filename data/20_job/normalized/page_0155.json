@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -25,31 +25,75 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Job 38:31."
+      "text": "Job 38:31.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "_Homer. Odyss._ ι. _idem Iliad._ τ. Πληϊάδας τ᾽ ὑάδας τε, τό τε σθέν@ ὠρίων@. Κρείονθ᾽ ὃς ἀμείβει ἰσόπλευρ@ ἀκτίνοσι."
+      "text": "_Homer. Odyss._ ι. _idem Iliad._ τ. Πληγάδας τ᾽ ὑάδας τε, τό τε σθέν@ ὠρίων@. Κρείονθ᾽ ὃς ἀμείβει ἰσόπλευρ@ ἀκτίνοσι.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Odyss",
+          "original": "Odyssea"
+        },
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "_Virgile, Énéide_ livre 3, vers 51. _Arcturum, pluviasque Hyadas, Geminosque Triones ; Armatúmque auro circumspicis Oriona._"
+      "text": "_Virgile, Énéide_ livre 3, vers 51. _Arcturum, pluviasque Hyadas, Geminosque Triones ; Armatúmque auro circumspicis Oriona._",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "_saint Jérôme, sur Amos_ 5:8. _Quando autem audimus Arcturum et Oriona, non debemus sequi fabulas Poëtarum, ridiculas ac portentosas mendacia, quibus etiam Cœlum infamare co…_ Voyez aussi _saint Jérôme, sur_ Isaïe 24."
+      "text": "_saint Jérôme, sur Amos_ 5:8. _Quando autem audimus Arcturum et Oriona, non debemus sequi fabulas Poëtarum, ridiculas ac portentosas mendacia, quibus etiam Cœlum infamare co…_ Voyez aussi _saint Jérôme, sur_ Isaïe 24.",
+      "tags": [
+        "verse",
+        "fathers",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Hebr._ עש 70. _Hasideus._"
+      "text": "_Hebr._ עש 70. _Hasideus._",
+      "tags": [
+        "hebrew",
+        "versions"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "_Bochart, De animalibus sacris, tome_ 2, _livre_ 1, _chapitre_ 18, _page_ 95."
+      "text": "_Bochart, De animalibus sacris, tome_ 2, _livre_ 1, _chapitre_ 18, _page_ 95.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De animalibus sacris",
+          "original": "De animalibus sacris"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "כסיל _Chesil._"
+      "text": "כסיל _Chesil._",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "metadata": {

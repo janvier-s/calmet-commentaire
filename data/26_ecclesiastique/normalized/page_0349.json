@@ -48,19 +48,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ελεγχον φιλον, μηπως ου γινηται διαβολη."
+      "text": "Ἔλεγχον φίλον, μήπως οὐ γίνηται διαβολη.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Cicero de Amicitiâ."
+      "text": "Cicero de Amicitiâ.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Ambroise, Des devoirs, livre 3, chapitre 16."
+      "text": "Saint Ambroise, Des devoirs, livre 3, chapitre 16.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des devoirs",
+          "original": "De officiis"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Bern. serm. in Nativ. Saint Joannis."
+      "text": "Bern. serm. in Nativ. Saint Joannis.",
+      "tags": [
+        "fathers",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": "Ii"

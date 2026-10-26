@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 2,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 2,
       "latin_quote": "AD LOCUM FLENTIUM.",
       "french_translation": "Au lieu des Pleurants.",
@@ -25,43 +25,87 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "הבכים אל תו ἐπὶ τὸν κλαυθμῶνα."
+      "text": "הבכים אל תו ἐπὶ τὸν κλαυθμῶνα.",
+      "tags": [
+        "hebrew",
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "2 Rois 5:23. παρέσει ἀυτῆς πλησίον τῆ κλαυθμῶνος."
+      "text": "2 Rois 5:23. παρέσει ἀυτῆς πλησίον τῆ κλαυθμῶνος.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Joseph. Antiq. l. 7. c. 4. προφητέυει ὁ ἀρχιερεὺς ὡς τοῖς ἄλλοσι τοῖς καλεμένοις κλαυθμῶσι κατέσχη τῶ ρεγίαν τῶ κλαυθμῶνος. Vide Bonfr. ad hunc locum."
+      "text": "Joseph. Antiq. l. 7. c. 4. προφητέυει ὁ ἀρχιερεὺς ὡς τοῖς ἄλλοσι τοῖς καλουμένοις κλαυθμῶσι κατέσχη τῶ ρεγίαν τῶ κλαυθμῶνος. Vide Bonfr. ad hunc locum.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "commentators",
+        "title",
+        "latin",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. l",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Psaumes 83:7. בעמק הבכא עין."
+      "text": "Psaumes 83:7. בעמק הבכא עין.",
+      "tags": [
+        "hebrew",
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "2 Rois 5:23."
+      "text": "2 Rois 5:23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Juges 6:20, 26."
+      "text": "Juges 6:20, 26.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Juges 13:19."
+      "text": "Juges 13:19.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "1 Rois 16:2."
+      "text": "1 Rois 16:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "1 Rois 13:9."
+      "text": "1 Rois 13:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "2 Rois 24:25."
+      "text": "2 Rois 24:25.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

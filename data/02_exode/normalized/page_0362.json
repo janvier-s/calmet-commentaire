@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 22,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 22,
       "latin_quote": "QUOD SI ORTO SOLE HOC FECERIT, HOMICIDIUM PERPETRAVIT, ET IPSE MORIETUR.",
       "french_translation": "S'il le fait après le lever du soleil, il est homicide.",
@@ -33,11 +33,37 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Cyprien, livre 1, lettre 1 ; Lactance, Institutions divines, livre 6, chapitre 20 ; saint Cyrille d'Alexandrie, livre 1 sur Jean, chapitre 12 ; saint Augustin, Lettre à Publicola ; saint Ambroise, livre 3, chapitre 4 ; Primasius, sur l'Épître aux Romains, chapitre 12 ; saint Basile, Lettre canonique, chapitre 55 ; Canones Isaaci Lingonensis, chapitre 13 ; Hildebert du Mans ; Yves de Chartres, lettre 6 ; saint Bernard, De præcepto et dispensatione, chapitre 7 ; et plusieurs conciles, etc."
+      "text": "Saint Cyprien, livre 1, lettre 1 ; Lactance, Institutions divines, livre 6, chapitre 20 ; saint Cyrille d'Alexandrie, livre 1 sur Jean, chapitre 12 ; saint Augustin, Lettre à Publicola ; saint Ambroise, livre 3, chapitre 4 ; Primasius, sur l'Épître aux Romains, chapitre 12 ; saint Basile, Lettre canonique, chapitre 55 ; Canones Isaaci Lingonensis, chapitre 13 ; Hildebert du Mans ; Yves de Chartres, lettre 6 ; saint Bernard, De præcepto et dispensatione, chapitre 7 ; et plusieurs conciles, etc.",
+      "tags": [
+        "verse",
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Institutions divines",
+          "original": "Divinae institutiones"
+        },
+        {
+          "fr": "Canones Isaaci Lingonensis",
+          "original": "Canones Isaaci Lingonensis"
+        },
+        {
+          "fr": "De præcepto et dispensatione",
+          "original": "De praecepto et dispensatione"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Apud Démosthène oratione contra Timocrat. Εἰ τις νύκτωρ ὁτιεν κλέπτοι, τέτον ἐξεῖναι καὶ ἀποκτινναι, καὶ τρωθέντα διώκοντα. Ita et Plato l. 9 de legibus. Νύκτωρ φῶρα εἰς οἰκίαν εἰσίοντα ἐπὶ κλόπῃ χρήμα- των τὸν ἑλόντα ἀναιτίως τις, κτείναγγε ἔσω. La Loi Furem, sur la Loi Cornelia, ne permet pas de tuer les voleurs nocturnes, s'ils ne nous mettent en danger de perdre la vie : Nisi mortis periculum inferant ; c'est-à-dire, s'ils ne sont armés, et s'ils n'attaquent, ou s'ils ne se mettent en défense."
+      "text": "Apud Démosthène oratione contra Timocrat. Εἰ τίς νύκτωρ ὁτιεν κλέπτοι, τέτον ἐξεῖναι καὶ ἀποκτινναι, καὶ τρωθέντα διώκοντα. Ita et Plato l. 9 de legibus. Νύκτωρ φῶρα εἰς οἰκίαν εἰσαίοντα ἐπὶ κλόπῃ χρήμα- τῶν τὸν ἑλόντα ἀναιτίως τίς, κτείναγγε ἔσω. La Loi Furem, sur la Loi Cornelia, ne permet pas de tuer les voleurs nocturnes, s'ils ne nous mettent en danger de perdre la vie : Nisi mortis periculum inferant ; c'est-à-dire, s'ils ne sont armés, et s'ils n'attaquent, ou s'ils ne se mettent en défense.",
+      "tags": [
+        "greek",
+        "classical",
+        "latin",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

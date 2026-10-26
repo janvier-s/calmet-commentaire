@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 25,
       "latin_quote": "TIMOR DOMINI INITIUM DILECTIONIS EJUS, ETC.",
       "french_translation": "La crainte du Seigneur est le principe de son amour, et on y doit joindre inséparablement un commencement de la foi.",
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 25,
       "latin_quote": "OMNIS PLAGA, TRISTITIA CORDIS.",
       "french_translation": "La tristesse du cœur est une plaie universelle.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 25,
       "latin_quote": "OMNEM PLAGAM, ET NON PLAGAM VIDEBIT CORDIS, ETC.",
       "french_translation": "Toute plaie est supportable, plutôt que la plaie du cœur.",
@@ -62,19 +62,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "1 Jean 4:18."
+      "text": "1 Jean 4:18.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "1 Timothée 1:5."
+      "text": "1 Timothée 1:5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Φόβος Κυρίου ἀρχὴ ἀγαπήσεως ἀυτῦ, πίσις δὲ ἀρχὴ προσκολλήσεως ἀυτῷ."
+      "text": "Φόβος Κυρίου ἀρχὴ ἀγαπήσεως αὐτοῦ, πίσις δὲ ἀρχὴ προσκολλήσεως αὐτῷ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Proverbes 17:22."
+      "text": "Proverbes 17:22.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

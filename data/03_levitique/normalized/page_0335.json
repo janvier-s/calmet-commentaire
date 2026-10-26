@@ -32,7 +32,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 26,
       "latin_quote": null,
       "french_translation": null,
@@ -40,7 +40,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 26,
       "latin_quote": "VISITABO VOS VELOCITER IN EGESTATE ET ARDORE, QUI CONFICIAT OCULOS VESTROS, ET CONSUMAT ANIMAS VESTRAS.",
       "french_translation": "Je vous punirai par une prompte indigence, et par une ardeur qui vous desséchera les yeux, et vous consumera.",
@@ -50,15 +50,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "הפקדתי עליכם בהלה את השחפת ואת הקדחת מכלות עינים ומדבת נפש"
+      "text": "הפקדתי עליכם בהלה את השחפת ואת הקדחת מכלות עינים ומדבת נפש",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "70. Επισκεψομαι εφ' ὑμᾶς σπεδῳ, τησιν ἀποριαν, τησιν ψύξιν ην ικτερον, σφακελιζοντας τοὺς οφθαλμους ὑμῶν, καὶ τηλω ψυχὴν ὑμῶν εὐτηκυσαν."
+      "text": "70. Ἐπισκέψομαι εφ' ὑμᾶς σπεδῳ, τησιν ἀπορίαν, τησιν ψύξιν ην ἴκτερον, σφακελίζοντας τοὺς οφθαλμους ὑμῶν, καὶ τηλω ψυχὴν ὑμῶν εὐτηκυσαν.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Quid. Gr. Επισκεψομαι ὑμᾶς σπεδῇ τὴν ἀπομορφωσιν, καὶ τὸν συμφυρμὸν συλιלῆσαι ὀφθαλμὺς."
+      "text": "Quid. Gr. Ἐπισκέψομαι ὑμᾶς σπουδῇ τὴν ἀπομορφωσιν, καὶ τὸν συμφυρμὸν συλιלἧσαι ὀφθαλμοὺς.",
+      "tags": [
+        "hebrew",
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

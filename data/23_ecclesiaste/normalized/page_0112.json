@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 9,
       "latin_quote": "OLEUM DE CAPITE TUO NON DEFICIAT.",
       "french_translation": "Ayez toujours la tête chargée d'huile de parfums.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 9,
       "latin_quote": "PERFRUERE VITA CUM UXORE QUAM DILIGIS, ETC.",
       "french_translation": "Jouissez de la vie avec la femme que vous aimez.",
@@ -41,23 +41,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Proverbes 31:23."
+      "text": "Proverbes 31:23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "_Homer Odyss._ VI. Καὶ δὴ οἱ ἀδελφοὶ ἐμοὶ\nμετὰ πρώτοισιν ἐόντες,\nΒαλὰς βουλὰς καὶ δαμὰ χρεὶ ἵμεν᾽ ἐς χορόν,\nΟἱ δ᾽ (ἵνις) ἀεὶ ἐθέλουσι νεόπλυτα εἵματ᾽ ἔχοντες,"
+      "text": "_Homer Odyss._ VI. Καὶ δὴ οἱ ἀδελφοὶ ἐμοὶ\nμετὰ πρώτοισιν ἐόντες,\nΒαλὰς βουλὰς καὶ δαμὰ χρεὶ ἴμεν ἐς χορόν,\nΟἱ δ᾽ (ἵνις) ἀεὶ ἐθέλουσι νεόπλυτα εἵματ᾽ ἔχοντες,",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Odyss",
+          "original": "Odyssea"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Εἰς χορόν ἔρχεσθαι… [UNCERTAIN HEBREW] _Vide Eccle._ X. 17."
+      "text": "Εἰς χορόν ἔρχεσθαι… [UNCERTAIN HEBREW] _Vide Eccle._ X. 17.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Proverbes 27:9 ; Amos 6:6."
+      "text": "Proverbes 27:9 ; Amos 6:6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Luc 7:45-46."
+      "text": "Luc 7:45-46.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 1,
       "latin_quote": "PULCHRÆ SUNT GENÆ TUÆ SICUT TURTURIS ; COLLUM TUUM SICUT MONILIA.",
       "french_translation": null,
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 1,
       "latin_quote": "MURENULAS AUREAS FACIEMUS TIBI, VERMICULATAS ARGENTO.",
       "french_translation": null,
@@ -48,27 +48,53 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Theocrit Idyll. 18. Epithalam. Helenæ. _Η᾿ ὤφελες διωκυλος ἱππῳ._"
+      "text": "Theocrit Idyll. 18. Epithalam. Helenæ. _Ἠ ὤφελες διωκυλος ἵππῳ._",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "לאור לחייך בתורים צוארך בחרוזים Les Septante : _Ὡς τρυγόνος σιαγόνες σου ὡς τρύγου, τράχηλός σου ὡς ὁρμίσκοι._ Ils ont lû de même que la Vulgate בתורים, et בחרוזים"
+      "text": "לאור לחייך בתורים צוארך בחרוזים Les Septante : _Ὡς τρυγόνος σιαγόνες σου ὡς τρύγου, τράχηλός σου ὡς ὁρμίσκοι._ Ils ont lû de même que la Vulgate בתורים, et בחרוזים",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "explanation"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Tavernier, Voyage de Perse, livre 2, chapitre 7."
+      "text": "Tavernier, Voyage de Perse, livre 2, chapitre 7.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Origène ; Théodoret ; Cassiodore ; saint Grégoire le Grand ; saint Grégoire de Nysse ; Bède ; saint Bernard ; Rupert ; Apponius ; et d'autres passim."
+      "text": "Origène ; Théodoret ; Cassiodore ; saint Grégoire le Grand ; saint Grégoire de Nysse ; Bède ; saint Bernard ; Rupert ; Apponius ; et d'autres passim.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "1 Jean 3:8. _Spiritus ubi vult spirat._"
+      "text": "1 Jean 3:8. _Spiritus ubi vult spirat._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "1 Corinthiens 12:4, 7. et seqn."
+      "text": "1 Corinthiens 12:4, 7. et seqn.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

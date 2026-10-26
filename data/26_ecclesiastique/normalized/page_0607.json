@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 40,
       "latin_quote": "AB EO QUI UTITUR HYACINTHO, ETC.",
       "french_translation": "Depuis celui qui est vêtu d'hyacinthe, et qui porte la couronne, jusqu'à celui qui est vêtu de toile crue.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 40,
       "latin_quote": "IRACUNDIA PERSEVERANS, ETC.",
       "french_translation": "La colère opiniâtre, et les querelles.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 40,
       "latin_quote": "IN TEMPORE REFECTIONIS IN CUBILI, ETC.",
       "french_translation": "Tout cela trouble ses pensées dans le lit même, etc.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 40,
       "latin_quote": "MODICUM TANQUAM NIHIL IN REQUIE.",
       "french_translation": "Il se repose",
@@ -63,23 +63,43 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Proverbes 31:21."
+      "text": "Proverbes 31:21.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Jérémie 10:9 ; Baruch 6:61."
+      "text": "Jérémie 10:9 ; Baruch 6:61.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Daniel 5:7."
+      "text": "Daniel 5:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "1 Machabées 10:20."
+      "text": "1 Machabées 10:20.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Complut. Μίμημα, κὶ ἔχις. Rom. et Ald. μίμημα, κὶ ἰχίς. Alii, μανία, ou μίσημα, ou μίμημα. Est autem idem quod, μῆνις, Hometo. id est χόλ@ ἰμπλυσ@. Didym."
+      "text": "Complut. Μίμημα, καὶ ἔχις. Rom. et Ald. μίμημα, καὶ ἰρίς. Alii, μανία, ou μίσημα, ou μίμημα. Est autem idem quod, μῆνις, Hometo. id est χόλ@ ἰμπλυσ@. Didym.",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "classical",
+        "latin",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

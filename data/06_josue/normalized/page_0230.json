@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 11,
       "latin_quote": "GAZA, ou HASA,",
       "french_translation": null,
@@ -33,31 +33,63 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "1 Rois 17:4."
+      "text": "1 Rois 17:4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Antiquités judaïques, livre 5, chapitre 2."
+      "text": "Antiquités judaïques, livre 5, chapitre 2.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "πλὴν Haza, ou Gaza."
+      "text": "πλὴν Haza, ou Gaza.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Steph. μητρὶ τῶν φύρων Κέζαν ἐστὶς μαλίτα."
+      "text": "Steph. μητρὶ τῶν φύρων Πέζαν ἐστὶς μαλία.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Arrien, De expeditione Alexandri, livre 2."
+      "text": "Arrien, De expeditione Alexandri, livre 2.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De expeditione Alexandri",
+          "original": "De expeditione Alexandri"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Strabon, livre 16."
+      "text": "Strabon, livre 16.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "1 Maccabées 11:61 ; 13:43-44 ; Josèphe, Antiquités judaïques, livre 13, chapitre 21. Voyez Cellarius, livre 3, chapitre 13, page 369."
+      "text": "1 Maccabées 11:61 ; 13:43-44 ; Josèphe, Antiquités judaïques, livre 13, chapitre 21. Voyez Cellarius, livre 3, chapitre 13, page 369.",
+      "tags": [
+        "verse",
+        "rabbis",
+        "classical",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

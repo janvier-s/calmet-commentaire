@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 6,
       "latin_quote": "DESCENDI IN HORTUM NUCUM, UT VIDEREM POMA CONVALLIUM, ETC.",
       "french_translation": "Je suis descendu dans le jardin des noyers, pour voir les fruits des vallées, etc.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 6,
       "latin_quote": "NESCIVI : ANIMA MEA CONTURBAVIT ME, PROPTER QUADRIGAS AMINADAB.",
       "french_translation": "Je n'ai plus su où j'étais ;",
@@ -48,19 +48,43 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Theocrit. Idyl. XVIII. 1.\nΑ'ὡς ἀντέλλοισα καλὸν διέφαινε πρόσωπον\nΠότνι' ἀνὴξ ἅτε λευκὸν ἔαρ χειμῶν' ἀνιέντ."
+      "text": "Theocrit. Idyl. XVIII. 1.\nὩς ἀντέλλοισα καλὸν διέφαινε πρόσωπον\nΠότνι' ἀνὴρ ἅτε λευκὸν ἔαρ χειμῶν' ἀνιέντ.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Idyl",
+          "original": "Idyllia"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Catul. de Roscio.\nAspiteram exorientem auroram forte salutans,\nCum subito à læva Roscius exoritur."
+      "text": "Catul. de Roscio.\nAspiteram exorientem auroram forte salutans,\nCum subito à læva Roscius exoritur.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Théodoret ; saint Grégoire ; Bède ; Cassiodore."
+      "text": "Théodoret ; saint Grégoire ; Bède ; Cassiodore.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "אל גנת אגוז ירדתי לראות באבי הנחל\n70. Idivit ut viderem in germine vallis."
+      "text": "אל גנת אגוז ירדתי לראות באבי הנחל\n70. Idivit ut viderem in germine vallis.",
+      "tags": [
+        "hebrew",
+        "verse",
+        "versions",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

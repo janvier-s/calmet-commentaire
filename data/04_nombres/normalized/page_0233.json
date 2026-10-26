@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 19,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 19,
       "latin_quote": "EXPIATUS DIE SEPTIMO, LAVABIT SE ET VESTIMENTA SUA.",
       "french_translation": "Celui qui aura été purifié le septième jour, se lavera et ses vêtements.",
@@ -40,23 +40,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Virgile. Énéide. 4."
+      "text": "Virgile. Énéide. 4.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Le même, Énéide. 6 verset 228."
+      "text": "Le même, Énéide. 6 verset 228.",
+      "tags": [
+        "classical",
+        "ibid"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Théocrite. Idyl. 24. Πρώτα δ' ἀιθάςαι καθαρῷ δόμον ἀμφιπόλευε, Θειώ, ἔπειτα δ' ἄλειψον ἁλὸς μεμιγμένον ὕδωρ."
+      "text": "Théocrite. Idyl. 24. Πρώτα δ' ἀιθάςαι καθαρῷ δόμον ἀμφιπόλευε, Θεώ, ἔπειτα δ' ἄλειψον ἁλὸς μεμιγμένον ὕδωρ.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Idyl",
+          "original": "Idyllia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ovide, Fastes 4."
+      "text": "Ovide, Fastes 4.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Athénée, livre 9, chapitre 18."
+      "text": "Athénée, livre 9, chapitre 18.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

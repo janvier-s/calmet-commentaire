@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": "offerte.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 7,
       "latin_quote": "PRÆVARICATIONIS REA ERIT.",
       "french_translation": "Il sera coupable du violemment de la Loi.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 7,
       "latin_quote": "CARO QUÆ TETIGERIT ALIQUID IMMUNDUM, NON COMEDETUR.",
       "french_translation": "La chair qui aura touché quelque chose d'impur, ne se mangera point.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 7,
       "latin_quote": "QUI FUERIT MUNDUS, VESCETUR EX EA.",
       "french_translation": "Quiconque sera pur, pourra en manger.",
@@ -56,23 +56,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "פגול יהיה"
+      "text": "פגול יהיה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "מרחק יהי"
+      "text": "מרחק יהי",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ἀπόβλητον. Lévitique 19:7."
+      "text": "Ἀπόβλητον. Lévitique 19:7.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "70. Μίασμα ἐςι Theodot. Θυσγμὸς ἐςι; Aq."
+      "text": "70. Μίασμα ἐστι Theodot. Θυσγμὸς ἐστι; Aq.",
+      "tags": [
+        "greek",
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "עונה תשא"
+      "text": "עונה תשא",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

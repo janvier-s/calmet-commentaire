@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 40,
       "latin_quote": "FORTITUDO EJUS IN LUMBIS EJUS, ET VIRTUS ILLIUS IN UMBILICO VENTRIS EJUS.",
       "french_translation": "Sa force est dans ses reins ; sa vertu est dans le nombril de son ventre.",
@@ -33,39 +33,90 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "1 Machabées 6:37."
+      "text": "1 Machabées 6:37.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "_Plin._ VIII. _cap._ 10. _Vide_ et _Solin._"
+      "text": "_Plin._ VIII. _cap._ 10. _Vide_ et _Solin._",
+      "tags": []
     },
     {
       "marker": "(c)",
-      "text": "1 Maccabées 6:45 46."
+      "text": "1 Maccabées 6:45 46.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "כחו במתניו ואונו בשרירי בטנו"
+      "text": "כחו במתניו ואונו בשרירי בטנו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Voyez Aristote, Histoire des animaux, livre_ 6, _chapitre_ 27. _Élien, De la nature des animaux, livre_ 17, _chapitre_ 44. _Pline, Histoire naturelle, livre_ 8, _chapitre_ 10."
+      "text": "_Voyez Aristote, Histoire des animaux, livre_ 6, _chapitre_ 27. _Élien, De la nature des animaux, livre_ 17, _chapitre_ 44. _Pline, Histoire naturelle, livre_ 8, _chapitre_ 10.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire des animaux",
+          "original": "Historia animalium"
+        },
+        {
+          "fr": "De la nature des animaux",
+          "original": "De natura animalium"
+        },
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "_Arist. lib._ 5. _cap._ 2. _Histor. Anim._ [UNCERTAIN GREEK] Οχεύεται μὲν ἡ θήλεια, συγκαμπτουσα, τῇ διαβαίνειν. Ο᷒ δὲ δι᾽ ἣν ἐπικαταβαίνειν ὀχέια."
+      "text": "_Arist. lib._ 5. _cap._ 2. _Histor. Anim._ [UNCERTAIN GREEK] Ὀχεύεται μὲν ἡ θήλεια, συγκάμπτουσα, τῇ διαβαίνειν. Ὁ᷒ δὲ δι᾽ ἣν ἐπικαταβαίνειν ὀχέα.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "_Arist. Histor. Animal. lib._ 2. _cap._ 1. [UNCERTAIN GREEK] Ἔχει δὲ ὁ ὄνθας τὸ αιδοῖον, ὁμοίον μὲν ἵππω, μικρὸν δὲ, καὶ κατὰ λόγον τῷ σωματῷ. Τους δὲ ὄρχεις ἐν τῷ θαρακι, ἀλλὰ ἐντὸς περὶ τὰς νεφους. _Vide Plin._ XI. 39."
+      "text": "_Arist. Histor. Animal. lib._ 2. _cap._ 1. [UNCERTAIN GREEK] Ἔχει δὲ ὁ ὄνθας τὸ αἰδοῖον, ὁμοίον μὲν ἵππω, μικρὸν δὲ, καὶ κατὰ λόγον τῷ σωματῷ. Τοὺς δὲ ὄρχεις ἐν τῷ θώρακι, ἀλλὰ ἐντὸς περὶ τὰς νέφους. _Vide Plin._ XI. 39.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "uncertain"
+      ],
+      "titles": [
+        {
+          "fr": "Histor",
+          "original": "Historia animalium"
+        }
+      ]
     },
     {
       "marker": "(h)",
-      "text": "_Voyez Genèse_ 49:3 ; Deutéronome 21:17 ; Psaumes 72:52 ; Psaumes 104:36. etc."
+      "text": "_Voyez Genèse_ 49:3 ;\nDeutéronome 21:17 ;\nPsaumes 72:52 ;\nPsaumes 104:36. etc.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "_Vide Sanct._ et _Male. hic. Et Genes._ XLIX. 3."
+      "text": "_Vide Sanct._ et _Male. hic. Et Genes._ XLIX. 3.",
+      "tags": [
+        "commentators"
+      ]
     }
   ]
 }

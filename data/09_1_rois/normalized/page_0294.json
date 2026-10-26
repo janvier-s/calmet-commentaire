@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 16,
       "latin_quote": null,
       "french_translation": null,
@@ -17,19 +17,48 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Theophrast. apud Apollon. in Hist. de Mirabilib. cap. 48. Τὴν μανίαν πολλοὶ δι' ὠδῆς ἰάσαντο, ὥσπερ καὶ τὸ σῶμα γιγνομένων πολλῶν ἰατρόν ἐστιν ; καὶ Τάλητι λιμοθυμῶντας, φόβους κὶ τὰς ἐπὶ μακρῷ γινομένας τῆς διανοίας εκςάσεις. ἴαται δὲ φόβος ἡ καταύλησις κὶ ἰχιάδα, κὶ ἐπιληψίαν."
+      "text": "Theophrast. apud Apollon. in Hist. de Mirabilib. cap. 48. Τὴν μανίαν πολλοὶ δι' ᾠδῆς ἰάσαντο, ὥσπερ καὶ τὸ σῶμα γιγνομένων πολλῶν ἰατρόν ἐστιν ; καὶ Τάλητι λιμοθυμῶντας, φόβους καὶ τὰς ἐπὶ μακρῷ γινομένας τῆς διανοίας εκςάσεις. ἴαται δὲ φόβος ἡ καταύλησις καὶ ἰσχιάδα, καὶ ἐπιληψίαν.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καταυλῶν τὰ τραύματα."
+      "text": "Καταυλῶν τὰ τραύματα.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Præfatio in Poëtas Principes, dans Théodore Jansson van Almeloveen, De vitis Stephanorum, page 65."
+      "text": "Voyez Præfatio in Poëtas Principes, dans Théodore Jansson van Almeloveen, De vitis Stephanorum, page 65.",
+      "tags": [
+        "commentators",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "De vitis Stephanorum",
+          "original": "De vitis Stephanorum"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Bochart, De animalibus sacris, partie 1, livre 2, chapitre 44."
+      "text": "Bochart, De animalibus sacris, partie 1, livre 2, chapitre 44.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De animalibus sacris",
+          "original": "De animalibus sacris"
+        }
+      ]
     }
   ],
   "book_end_marker": null

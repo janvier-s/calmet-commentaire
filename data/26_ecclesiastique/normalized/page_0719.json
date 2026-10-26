@@ -15,15 +15,23 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
+      "chapter": 50,
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "Roi Philopator vint rendre à Jérusalem, toute la description que nous fait l'Auteur avec tant de pompe, du Souverain Pontife Simon, qui monte à l'Autel revêtu de ses ornements les plus magnifiques, et accompagné des Prêtres. C'est ce système que nous suivrons dans tout le Chapitre."
+    },
+    {
+      "commentary_id": 2,
+      "verse_ref": 1,
       "chapter": 50,
       "latin_quote": "QUI IN VITA SUA SUFFULSIT DOMUM, ET IN DIEBUS SUIS CORROBORAVIT TEMPLUM.",
       "french_translation": "Qui durant sa vie a soutenu la maison du Seigneur, et a fortifié le Temple.",
       "french_commentary": "Le texte Grec ^{(a)} montre qu'il ne s'agit point ici de soutenir les intérêts, ou la dignité, ou le bon ordre de la maison du Seigneur : mais d'en réparer les bâtiments, d'en rétablir les murs, d'en augmenter les édifices. Simon second fut pendant vingt ans à la tête de la nation ; il employa ce temps à orner, et à réparer le Temple du Seigneur. Quelques exemplaires lisent : ^{(b)} _il a affermi le peuple_, au lieu de, _il a fortifié le Temple_ ; mais cette dernière leçon est la meilleure."
     },
     {
-      "commentary_id": 2,
-      "verse_ref": "2",
+      "commentary_id": 3,
+      "verse_ref": 2,
       "chapter": 50,
       "latin_quote": "TEMPEI ETIAM ALTITUDO AB IPSO FUNDATA EST, ETC.",
       "french_translation": "C'est lui qui a fait faire les fondements profonds du Temple, le double bâtiment, et les hauts murs.",
@@ -33,27 +41,48 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "O's ἐν τῇ ζωῇ αὐτῶ ἐςέρεωσεν ἶκον, καὶ ὁ ἐν ταῖς ἡμέραις αὐτῶ ἰσχύρωσεν ναὸν."
+      "text": "O's ἐν τῇ ζωῇ αὐτῶ ἐςέρεωσεν ἷκον, καὶ ὁ ἐν ταῖς ἡμέραις αὐτῶ ἰσχύρωσεν ναὸν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Complut. Καὶ ὁ ἐν ταῖς ἡμέραις αὐτῶ ἐςέρισε λαὸν."
+      "text": "Complut. Καὶ ὁ ἐν ταῖς ἡμέραις αὐτῶ ἐςέρισε λαὸν.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Καὶ ἐν᾽ αὐτῷ ἐθεμελιώθη ὕψ@ διπλῶν ἀνάλημμα, ὕψλῶν τειχέων ἱερῶ. Édit. Rom."
+      "text": "Καὶ ἐν᾽ αὐτῷ ἐθεμελιώθη ὕψ@ διπλῶν ἀνάλημμα, ὕψλῶν τειχέων ἱερῶ. Édit. Rom.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ézéchiel 40:5."
+      "text": "Ézéchiel 40:5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "A'νάλημμα. Hesych. Suid."
+      "text": "A'νάλημμα. Hesych. Suid.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "2 Paralipomènes 26:5. Τὸ ἀνάλημμα τῆς πόλεως."
+      "text": "2 Paralipomènes 26:5. Τὸ ἀνάλημμα τῆς πόλεως.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

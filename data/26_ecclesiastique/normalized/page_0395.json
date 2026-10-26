@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 23,
       "latin_quote": "QUIS SUPERPONET IN COGITATU MEO FLAGELLA, ETC.",
       "french_translation": "Qui fera ressentir à mon esprit une verge qui le frappe, afin qu'elle ne m'épargne pas dans les manquements d'ignorance, que ma langue me fera faire. ^{(a)}",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 23,
       "latin_quote": "NE ADINCRESCANT IGNORANTIÆ MEÆ.",
       "french_translation": "De peur que mes ignorances ne viennent à croître.",
@@ -40,19 +40,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ινα ἐπὶ τοῖς ἀγνοήμασι μὴ φείσωνται. Afin qu'ils ne m'épargnent pas dans mes ignorances. _Alii._ Μὴ φείσηται, Κύριε. _Ita Rom. Complut. mali,_ Κύριε."
+      "text": "Ἵνα ἐπὶ τοῖς ἀγνοήμασι μὴ φείσωνται. Afin qu'ils ne m'épargnent pas dans mes ignorances. _Alii._ Μὴ φείσηται, Κύριε. _Ita Rom. Complut. mali,_ Κύριε.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 18:21."
+      "text": "Proverbes 18:21.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Jacques 3:8."
+      "text": "Jacques 3:8.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Τοῖς δὲ ὕβρεως καὶ ἐν ἀσελγείᾳ ἁμαρτάνουσιν μὴ ἁφῆς."
+      "text": "Τοῖς δὲ ὕβρεως καὶ ἐν ἀσελγείᾳ ἁμαρτάνουσιν μὴ ἁφῆς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

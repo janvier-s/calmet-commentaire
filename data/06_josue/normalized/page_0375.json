@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 22,
       "latin_quote": "RA CHANAAN, ÆDIFICAVERUNT JUXTA JORDANEM ALTARE INFINITÆ MAGNITUDINIS.",
       "french_translation": "Et étant arrivés aux hauteurs du Jourdain dans la terre de Canaan, ils bâtirent auprès du Jourdain un autel d'une grandeur immense.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 22,
       "latin_quote": "ALTARE INFINITÆ MAGNITUDINIS.",
       "french_translation": "Un autel d'une grandeur immense.",
@@ -33,31 +33,71 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph. Antiq. l. V. c. 1. Διάβδον ῦν τόν Ἰόρδανον, ᾤκισαν βωμὸν ὑψηλὸν… Βῶμον ὑπὲρ τῆς ὄχθης Ἰορδάνου."
+      "text": "Joseph. Antiq. l. V. c. 1. Διάβδον ῦν τόν Ἰάρδανον, ᾤκισαν βωμὸν ὑψηλὸν… Βῶμον ὑπὲρ τῆς ὄχθης Ἰαρδάνου.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. l",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Judai in Sederholam, dans Serarius."
+      "text": "Judai in Sederholam, dans Serarius.",
+      "tags": [
+        "commentators",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "אל מול ארץ כנען אל גלילות הירדן אל עבר בני ישראל"
+      "text": "אל מול ארץ כנען אל גלילות הירדן אל עבר בני ישראל",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Hic sed ℣. 14."
+      "text": "Hic sed ℣. 14.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "אל גלילות Vide Josué 13:2."
+      "text": "אל גלילות Vide Josué 13:2.",
+      "tags": [
+        "hebrew",
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "מזבח גדול למראה"
+      "text": "מזבח גדול למראה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Pline, Histoire naturelle, livre 6, chapitres 16 et 17 ; et Philostrate, Vie d'Apollonius, livre 2, à la fin."
+      "text": "Pline, Histoire naturelle, livre 6, chapitres 16 et 17 ; et Philostrate, Vie d'Apollonius, livre 2, à la fin.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 3,
       "latin_quote": "COR SAPIENTIS INTELLIGITUR IN SAPIENTIA, ETC.",
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "33",
+      "verse_ref": 33,
       "chapter": 3,
       "latin_quote": "IGNEM ARDENTEM EXTINGUIT AQUA, ETC.",
       "french_translation": "L'eau éteint le feu, lorsqu'il est le plus ardent ; et l'aumône résiste au péché.",
@@ -47,31 +47,67 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Καρδία συνετῦ διανοήσεται παραβολὰς, καὶ ὦς ἀκροατῦ ἐπιθυμία σοφῦ."
+      "text": "Καρδία συνετοῦ διανοήσεται παραβολὰς, καὶ ὦς ἀκροατοῦ ἐπιθυμία σοφοῦ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Daniel 4:24."
+      "text": "Daniel 4:24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Luc 11:41."
+      "text": "Luc 11:41.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Cyprien, Des œuvres et des aumônes."
+      "text": "Saint Cyprien, Des œuvres et des aumônes.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des œuvres et des aumônes",
+          "original": "De opere et eleemosynis"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_saint Ambroise ou saint Maxime, sermon 1, sermon 2_ et 42 ; et _saint Augustin, homélie 39 entre les 50. Voyez dans la nouvelle édition 311, Appendice ; et saint Gaudence, Du jour de Noël, traité 13._"
+      "text": "_saint Ambroise ou saint Maxime, sermon 1, sermon 2_ et 42 ; et _saint Augustin, homélie 39 entre les 50. Voyez dans la nouvelle édition 311, Appendice ; et saint Gaudence, Du jour de Noël, traité 13._",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Saint Ambroise, sermon 2, tome 2, édition romaine, ou plutôt saint Maxime. Voyez dans la Bibliothèque des Pères."
+      "text": "Saint Ambroise, sermon 2, tome 2, édition romaine, ou plutôt saint Maxime. Voyez dans la Bibliothèque des Pères.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Bibliothèque des Pères",
+          "original": "Bibliotheca Patrum"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Saint Jérôme, sur le Psaume 123."
+      "text": "Saint Jérôme, sur le Psaume 123.",
+      "tags": [
+        "verse",
+        "fathers"
+      ]
     }
   ],
   "book_end_marker": null

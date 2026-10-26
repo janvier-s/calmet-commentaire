@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 18,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 18,
       "latin_quote": "DEORSUM RADICES EJUS SICCENTUR ; SURSUM AUTEM ATTERATUR MESSIS EJUS.",
       "french_translation": "Ses racines, qui tendaient en bas, se sécheront ; et ses branches, qui montaient en haut, seront retranchées.",
@@ -33,23 +33,60 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Pline, Histoire naturelle, livre 35, chapitre 15. Voyez Alexander ab Alexandro, Genialium dierum, livre 5, chapitre 27 ; et Annotationes in Pl n"
+      "text": "Pline, Histoire naturelle, livre 35, chapitre 15. Voyez Alexander ab Alexandro, Genialium dierum, livre 5, chapitre 27 ; et Annotationes in Pl n",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        },
+        {
+          "fr": "Genialium dierum",
+          "original": "Genialium dierum libri sex"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ovide, L'Art d'aimer. Voyez aussi Claudien, Du sixième consulat d'Honorius ; et Apulée, livre 11, Les Métamorphoses, etc."
+      "text": "Ovide, L'Art d'aimer. Voyez aussi Claudien, Du sixième consulat d'Honorius ; et Apulée, livre 11, Les Métamorphoses, etc.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "L'Art d'aimer",
+          "original": "Ars amatoria"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "באהלו תסכן לו יזרה על נוהו גפרית"
+      "text": "באהלו תסכן לו יזרה על נוהו גפרית",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ὁ ἴβησιος κατασκηνώσει ἐν σκηναῖς ἐκ ἐνοῦ. Il demeurera dans des tentes qui ne sont pas à lui."
+      "text": "Ὁ ἴβησιος κατασκηνώσει ἐν σκηναῖς ἐκ ἐνοῦ. Il demeurera dans des tentes qui ne sont pas à lui.",
+      "tags": [
+        "greek",
+        "explanation"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Καλασκηνώσει δὲ τῇ σκηνῇ ἀυλῶ ἐν νυκτὶ ἀυτῶ, καταστραφήσονται δὲ ὡραιότηι ἀυλῶ θεῖον. Theodot. Κατασκηνώσει δὲ τῇ σκηνῇ ἀυλῶ ἀναψυξις, λιμωὴ δέκατῃ ἑαυτῷ ἀγιάσθητι ἀυλῶ."
+      "text": "Κατασκηνώσει δὲ τῇ σκηνῇ αὐλῶ ἐν νυκτὶ ἀυτῶ, καταστραφήσονται δὲ ὡραιότηι αὐλῶ θεῖον. Theodot. Κατασκηνώσει δὲ τῇ σκηνῇ αὐλῶ ἀνάψυξις, λιμωὴ δέκατῃ ἑαυτῷ ἀγιάσθητι αὐλῶ.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "metadata": {

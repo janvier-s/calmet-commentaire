@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 11,
       "latin_quote": "STETERUNT A PARTE TEMPLI DEXTERA, USQUE AD PARTEM SINISTRAM.",
       "french_translation": "Ils se tinrent rangés auprès du Roi, depuis le côté droit du Temple, jusqu'au côté gauche.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 11,
       "latin_quote": "PRODUXITQUE FILIUM REGIS, ET POSUIT SUPER EUM DIADEMA ET TESTIMONUM.",
       "french_translation": "Le grand Prêtre mit ensuite le diadème et le livre de la Loi sur la tête du fils du Roi, qu'il avait amené.",
@@ -33,19 +33,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Deutéronome 17:18."
+      "text": "Deutéronome 17:18.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Exode 13:9. Erit quasi monumentum ante oculos tuos. Ita Grotius, d'après les rabbins."
+      "text": "Exode 13:9. Erit quasi monumentum ante oculos tuos. Ita Grotius, d'après les rabbins.",
+      "tags": [
+        "verse",
+        "rabbis",
+        "commentators",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Pagnin ; Vatable."
+      "text": "Pagnin ; Vatable.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Joseph. loco cit. ἐπιθεὶς ἀυτῷ τὸν στέφανον τὸν βασιλικὸν, τῇ τῆς ἐλαίῳ χείσας l' ἀπέδειξε βασιλέα."
+      "text": "Joseph. loco cit. ἐπιθεὶς αὐτῷ τὸν στέφανον τὸν βασιλικὸν, τῇ τῆς ἐλαίῳ χείσας l' ἀπέδειξε βασιλέα.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

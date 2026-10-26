@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 5,
       "latin_quote": "GENÆ ILLIUS SICUT AREOLÆ AROMATUM CONSITÆ A PIGMENTARIIS.",
       "french_translation": "Ses joues sont comme de petits parterres de plantes aromatiques, qui ont été plantées par les parfumeurs.",
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 5,
       "latin_quote": "LABIA EJUS DISTILLANTIA MYRRHAM PRIMAM.",
       "french_translation": "Ses lèvres sont comme des lys, qui distillent la plus pure myrrhe.",
@@ -25,39 +25,67 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Virgile, Énéide 8."
+      "text": "Virgile, Énéide 8.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "לחיו כערוגת הבשם מגדלות מרקחים"
+      "text": "לחיו כערוגת הבשם מגדלות מרקחים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Σιαγόνες ἀυτ[ILLEGIBLE] ὡς φιάλαι τ[ILLEGIBLE] ἀρώματ[ILLEGIBLE] φύεσαι μυρεψικαί."
+      "text": "Σιαγόνες αὐτ[ILLEGIBLE] ὡς φιάλαι τ[ILLEGIBLE] ἀρώματ[ILLEGIBLE] φύουσαι μυρεψικά.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "מר עבר 70. Σμύρναν πλήρη."
+      "text": "מר עבר 70. Σμύρναν πλήρη.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Genèse 23:16, sur l'Épître aux Hébreux."
+      "text": "Genèse 23:16, sur l'Épître aux Hébreux.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Matthieu 11:29."
+      "text": "Matthieu 11:29.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Lamentations 3:30."
+      "text": "Lamentations 3:30.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Lamentations, au même endroit."
+      "text": "Lamentations, au même endroit.",
+      "tags": []
     },
     {
       "marker": "(i)",
-      "text": "1 Pierre 2:21."
+      "text": "1 Pierre 2:21.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

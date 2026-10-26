@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -39,31 +39,55 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Deutéronome 8:7."
+      "text": "Deutéronome 8:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Deutéronome 32:13."
+      "text": "Deutéronome 32:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "4 Rois 18:32."
+      "text": "4 Rois 18:32.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Iliade I. Εἰ δέ κεν Ἄργος ἱκοίμεθ᾽ Ἀχαικὸν, οὖθαρ ἀρούρης."
+      "text": "Iliade I. Εἰ δέ κεν Ἄργος ἱκοίμεθ᾽ Ἀχαικὸν, οὖθαρ ἀρούρης.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Énéide III."
+      "text": "Énéide III.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Eurip. Bacchis, Ρ᾽εῖ δ᾽ ὅπου, ῥεῖ δὲ γάλακτι / Νήσος. / Philostrat. Eicon. in Semele, de Baccho. Η᾽ γῆ γὰρ συμφαχχεύουσα αὐτῷ κᾀκείνην ἀνίησιν ἐκ τῶν ναμάτων γάλα, γάλακτι δ᾽εῖν αὐτῇ μιαζὸν ἕλκειν, τὸ μὲν οἴνου βάθος, τὸ δὲ ἐκ τυροῦ."
+      "text": "Eurip. Bacchis, Ρ᾽εῖ δ᾽ ὅπου, ῥεῖ δὲ γάλακτι / Νήσος. / Philostrat. Eicon. in Semele, de Baccho. Η᾽ γῆ γὰρ συμφαχχεύουσα αὐτῷ κᾀκείνην ἀνίησιν ἐκ τῶν ναμάτων γάλα, γάλακτι δεῖν αὐτῇ μιαζὸν ἕλκειν, τὸ μὲν οἴνου βάθος, τὸ δὲ ἐκ τυροῦ.",
+      "tags": [
+        "greek",
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Eugène Roger, livre 1, chapitre 2."
+      "text": "Eugène Roger, livre 1, chapitre 2.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

@@ -37,7 +37,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 77,
       "latin_quote": null,
       "french_translation": null,
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 77,
       "latin_quote": "QUANTA AUDIVIMUS ET COGNOVIMUS EA. (4) NON SUNT OCCULTATA A FILIIS EORUM.",
       "french_translation": "De ce que nous avons entendu et connu, et que nos pères n'ont point caché à leurs enfants, etc.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 77,
       "latin_quote": "NARRANTES LAUDES DOMINI.",
       "french_translation": "Ils ont publié les louanges du Seigneur.",
@@ -61,37 +61,60 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 77,
       "latin_quote": "SUSCITAVIT TESTIMONIUM IN JACOB ; ET LEGEM POSUIT IN ISRAEL.",
-      "french_translation": "et il a fait une Loi dans Israël.",
+      "french_translation": "Il a fait une ordonnance dans Jacob, et il a fait une Loi dans Israël.",
       "french_commentary": "Testimonium, et Lex en cet endroit, signi-fient"
     }
   ],
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Job 27:1. 29:1."
+      "text": "Job 27:1. 29:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 1:1, 6. 25:1."
+      "text": "Proverbes 1:1, 6. 25:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Nombres 23:7, 18. 24:3, 15, 20-21, 23."
+      "text": "Nombres 23:7, 18. 24:3, 15, 20-21, 23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "מני קדם 70. Φθέγξομαι προβλήματα ἀπ' ἀρχῆς. Sym. Αἰνίγματα προβλήματα."
+      "text": "מני קדם 70. Φθέγξομαι προβλήματα ἀπ' ἀρχῆς. Sym. Αἰνίγματα προβλήματα.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Aqu. Αἰνίγματα."
+      "text": "Aqu. Αἰνίγματα.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Matthieu 13:35. Ἐξεύξομαι κεκρυμμένα ἀπὸ καταβολῆς."
+      "text": "Matthieu 13:35. Ἐξεύξομαι κεκρυμμένα ἀπὸ καταβολῆς.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 5,
       "latin_quote": "IN REGIONE MEROME.",
       "french_translation": "Dans le pays de Méromé.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 5,
       "latin_quote": "PUGNAVERUNT REGES CHANAAN IN THANAC,",
       "french_translation": null,
@@ -41,19 +41,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Λ'ακρ' παρόλκισι παρ' ἀιγιαλὸν θαλασσῶν ὶν ταῖς διακοπαῖς ἀυτῶ κατεσκήνωσεν.\nA l'une, διαλύσεις. Ses séparations. Un autre, διεξόδοις. Ses sorties."
+      "text": "Λ'ακρ' παρόλκισι παρ' αἰγιαλὸν θαλασσῶν ὶν ταῖς διακοπαῖς ἀυτῶ κατεσκήνωσεν.\nA l'une, διαλύσεις. Ses séparations. Un autre, διεξόδοις. Ses sorties.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "על מרמי שדה"
+      "text": "על מרמי שדה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "ἐπὶ ὕδατι ἀρῶτ. Aq. υψω χεδὲς. Sym. ὑψηλῶν χεδρ."
+      "text": "ἐπὶ ὕδατι ἀρῶτ. Aq. ὑψῶ χεδὲς. Sym. ὑψηλῶν χεδρ.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Josué 11:5."
+      "text": "Josué 11:5.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 25,
       "latin_quote": null,
       "french_translation": null,
@@ -17,43 +17,90 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "1 Paralipomènes 15:27."
+      "text": "1 Paralipomènes 15:27.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Pollux, livre 7, chapitre 17. Η βύσσος λίνου τί ἕδος τῷ λίνω μᾶλλον οὐ τίς Φαίη ταριχοπώλιον."
+      "text": "Pollux, livre 7, chapitre 17. Η βύσσος λίνου τί ἕδος τῷ λίνω μᾶλλον οὐ τίς Φαίη ταριχοπώλιον.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Pline, Histoire naturelle, livre 19, chapitre 1."
+      "text": "Pline, Histoire naturelle, livre 19, chapitre 1.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Théophraste, Histoire des plantes, livre 4, chapitre 9."
+      "text": "Théophraste, Histoire des plantes, livre 4, chapitre 9.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire des plantes",
+          "original": "Historia plantarum"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Pollux, onomast l. 7 c. 17. Ηδύ δε και το Αιγυπτίους ἀπὸ ξύλου τις γένεσθαι ἐσθῆτα ἰσοθύσσω."
+      "text": "Pollux, onomast l. 7 c. 17. Ἡδύ δὲ καὶ τὸ Αἰγυπτίους ἀπὸ ξύλου τίς γένεσθαι ἐσθῆτα ἰσοθύσσω.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "1 Paralipomènes 15:27. ודויד מכרבל במעיל בוץ"
+      "text": "1 Paralipomènes 15:27. ודויד מכרבל במעיל בוץ",
+      "tags": [
+        "hebrew",
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Jérémie Lamentations 4:7."
+      "text": "Jérémie Lamentations 4:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "בד bad."
+      "text": "בד bad.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "בוץ bus."
+      "text": "בוץ bus.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "שש schesch."
+      "text": "שש schesch.",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

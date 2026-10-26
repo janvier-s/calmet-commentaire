@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 23,
       "latin_quote": "NEC JUNGES MANUM TUAM, UT PRO IMPIO DICAS FALSUM TESTIMONIUM.",
       "french_translation": "Et vous ne donnerez point la main à l'impie, pour porter un faux témoignage en sa faveur.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 23,
       "latin_quote": "NON SEQUERIS TURBAM AD FACIENDUM MALUM.",
       "french_translation": "Vous ne suivrez point la foule pour faire le mal.",
@@ -39,7 +39,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 23,
       "latin_quote": "NEC IN JUDICIO PLURIMORUM ACQUIESCES SENTENTIÆ.",
       "french_translation": "Vous ne vous rendrez pas à l'avis du plus grand nombre.",
@@ -49,19 +49,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Digeste, livre 47, titre 10, loi 15."
+      "text": "Digeste, livre 47, titre 10, loi 15.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Digeste",
+          "original": "Digesta"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "אל תשת ידך עם רשע להיות עד חמס"
+      "text": "אל תשת ידך עם רשע להיות עד חמס",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Οὐ συγκαθήσῃ μετὰ τοῦ πλήθους."
+      "text": "Οὐ συγκαθήσῃ μετὰ τοῦ πλήθους.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Οὐ συµαθήσῃ µετ' ἀδίκου γένεσθαι µάρτυς."
+      "text": "Οὐ σὺµαθήσῃ µετ' ἀδίκου γένεσθαι µμάρτυς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null,

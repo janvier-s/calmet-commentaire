@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 32,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 32,
       "latin_quote": "VIR CONSILII NON DISPERDET INTELLIGENTIAM.",
       "french_translation": "L'homme considéré n'en perdra point le vrai sens, et la vraie intelligence de la Loi.",
@@ -54,11 +54,20 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Σύνκϱιμα est mis pour decretum, judicium, condemnatio. 1 Maccabées 1:6. Καὶ τὸ σύνκϱιμα τῆς βασιλείας ἐξέπεσεν αυτοῖς. Et Daniel 11:24. Διὰ συνκϱιμάτων ^{[ILLEGIBLE]} ὡς ὁ λόγος. Et ℣. 14, etc."
+      "text": "Σύγκριμα est mis pour decretum, judicium, condemnatio. 1 Maccabées 1:6. Καὶ τὸ σύγκριμα τῆς βασιλείας ἐξέπεσεν αὐτοῖς. Et Daniel 11:24. Διὰ συγκριμάτων ^{[ILLEGIBLE]} ὡς ὁ λόγος. Et ℣. 14, etc.",
+      "tags": [
+        "greek",
+        "verse",
+        "latin",
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ανηϱ βουλῆς ὁ μὴ παϱείδη διανόημα, ἀλλότϱιος δὲ καὶ ὑπεϱήφανος ὁ μὴ φοβεῖται φόβον. 23. Καὶ μετὰ τὸ ποιῆσαι μετ' ἑαυτῶ ἀβούλως."
+      "text": "Ἀνὴρ βουλῆς ὁ μὴ παρείδη διανόημα, ἀλλότριος δὲ καὶ ὑπερήφανος ὁ μὴ φοβεῖται φόβον. 23. Καὶ μετὰ τὸ ποιῆσαι μετ' ἑαυτῶ ἀβούλως.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

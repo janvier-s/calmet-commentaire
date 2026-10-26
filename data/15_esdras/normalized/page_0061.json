@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 2,
       "latin_quote": "DUCENTI VIGINTI-TRES.",
       "french_translation": "Deux cents vingt-trois.",
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 2,
       "latin_quote": "FILII NEBO, QUINQUAGINTA DUO.",
       "french_translation": "Les enfants de Nébo, cinquante-deux.",
@@ -59,7 +59,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 2,
       "latin_quote": "FILII MEGBIS, ETC.",
       "french_translation": "Les enfants de Megbis, etc.",
@@ -67,7 +67,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 2,
       "latin_quote": "FILII ÆLAM ALTERIUS, MILLE DUCENTI QUINQUAGINTA-QUATUOR.",
       "french_translation": "Les enfants de l'autre Elam, mille deux cents cinquante-quatre.",
@@ -77,27 +77,51 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "2 Esdras 7:31."
+      "text": "2 Esdras 7:31.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "2 Esdras 7:32."
+      "text": "2 Esdras 7:32.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ita legunt Bible de Venise, an 1478. Et une autre, an 1489. et une autre gothique, d'année incertaine ; Robert Estienne, an 1546 ; et Jean Benoît, 1565 ; et Sébastien Nivelle, 1572 ; et la Bible polyglotte d'Anvers, etc."
+      "text": "Ita legunt Bible de Venise, an 1478. Et une autre, an 1489. et une autre gothique, d'année incertaine ; Robert Estienne, an 1546 ; et Jean Benoît, 1565 ; et Sébastien Nivelle, 1572 ; et la Bible polyglotte d'Anvers, etc.",
+      "tags": [
+        "versions",
+        "commentators",
+        "explanation"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "אחד נבו נכו אחד 70. Ἀνδρες ναβια : Ils n'ont pas lû אחד et au ℣. 30 ils portent : Ἀνδρες ῥααμα, κγ Γαβαα."
+      "text": "אחד נבו נכו אחד 70. Ἄνδρες ναβια : Ils n'ont pas lû אחד et au ℣. 30 ils portent : Ἄνδρες ῥααμα, κγ Γαβαα.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "verse",
+        "versions",
+        "explanation"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "1 Esdras 2:31."
+      "text": "1 Esdras 2:31.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "2 Esdras 7:32-33."
+      "text": "2 Esdras 7:32-33.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

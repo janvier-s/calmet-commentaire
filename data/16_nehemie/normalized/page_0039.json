@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 4,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 5,
       "latin_quote": "FILII NOSTRI, ET FILIÆ NOSTRÆ MULTÆ SUNT.",
       "french_translation": "Nous avons trop de fils, et de filles.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 5,
       "latin_quote": "ACCIPIAMUS PRO PRETIO EORUM, FRUMENTUM.",
       "french_translation": "Vendons-les, et en achetons du blé.",
@@ -55,27 +55,53 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "70. Complut. _Kmp_, κὴ ἴκασον ἀυτῶ iis τὸ ὕδωρ. Malv."
+      "text": "70. Complut. _Kmp_, καὶ ἴκασον ἀυτῶ iis τὸ ὕδωρ. Malv.",
+      "tags": [
+        "greek",
+        "verse",
+        "versions",
+        "commentators",
+        "latin",
+        "old-ref",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Junius ;\nPiscator ;\nGall. Belg."
+      "text": "Junius ;\nPiscator ;\nGall. Belg.",
+      "tags": [
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "בנינו ובנתינו אנחנו רבים"
+      "text": "בנינו ובנתינו אנחנו רבים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Il a lû אחנו, au lieu de אנחנו"
+      "text": "Il a lû אחנו, au lieu de אנחנו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Exode 21:7. _Si quis vendiderit filiam suam in famulam_, etc."
+      "text": "Exode 21:7. _Si quis vendiderit filiam suam in famulam_, etc.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "ונקחה דגן ונאכלה ונחיה"
+      "text": "ונקחה דגן ונאכלה ונחיה",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 3,
       "latin_quote": "OMNES CIVITATES QUÆ SITÆ SUNT IN PLANITIE.",
       "french_translation": "Toutes les villes qui sont situées dans la plaine.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 3,
       "latin_quote": "SOLUS OG … RESTITERAT DE STIRPE GIGANTUM.",
       "french_translation": "Og était resté seul de la race des Géants.",
@@ -48,35 +48,63 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Juges 3:3."
+      "text": "Juges 3:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Deutéronome 4:48."
+      "text": "Deutéronome 4:48.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Psaumes 41:7."
+      "text": "Psaumes 41:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "1 Paralipomènes 5:23."
+      "text": "1 Paralipomènes 5:23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "כל ערי המישר על ערי המישר"
+      "text": "כל ערי המישר על ערי המישר",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "כי רק עוג מלך הבשן נשאר מיתר הרפאים"
+      "text": "כי רק עוג מלך הבשן נשאר מיתר הרפאים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Josué 13:12 Fuit de reliquiis Rephaim."
+      "text": "Josué 13:12 Fuit de reliquiis Rephaim.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "L'Hébreu Ipse residuus fuit de reliquiis Rephaim. Voyez Josué 17:15, 2 Rois 21:16, 18, 20, 1 Paralipomènes 20, etc."
+      "text": "L'Hébreu : Ipse residuus fuit de reliquiis Rephaim. Voyez Josué 17:15 ; 1 Rois 21:16, 18, 20 ; 1 Paralipomènes 20, etc.",
+      "tags": [
+        "verse",
+        "versions",
+        "latin",
+        "bad-ref"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 3,
       "latin_quote": "AB AROER… USQUE AD MEDIAM PARTEM MONTIS GALAAD.",
       "french_translation": "Depuis Aroër, jusqu'au milieu de la montagne de Galaad.",
@@ -40,19 +40,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Thersites poeta, dans Athénée, livre 13, chapitre 1."
+      "text": "Thersites poeta, dans Athénée, livre 13, chapitre 1.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Tite 54:50. 39."
+      "text": "Tite 54:39, 50.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Augustin, La Cité de Dieu, livre 3, chapitre 21."
+      "text": "Saint Augustin, La Cité de Dieu, livre 3, chapitre 21.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "2 Rois 22:30."
+      "text": "2 Rois 22:30.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

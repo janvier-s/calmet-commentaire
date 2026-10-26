@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 22,
       "latin_quote": null,
       "french_translation": "Vous m'offrirez aussi les prémices de vos bœufs et de vos brebis.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 22,
       "latin_quote": "SEPTEM DIEBUS SIT CUM MATRE SUA, DIE OCTAVA REDDES ILLUM MIHI.",
       "french_translation": "Vous les laisserez sept jours avec la mère, et vous me les offrirez le huitième.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 22,
       "latin_quote": "CARNEM QUÆ A BESTIIS FUERIT PRÆGUSTATA, NON COMEDETIS.",
       "french_translation": "Vous ne mangerez point de la chair d'un animal qui aura été goûté par une autre bête.",
@@ -41,19 +41,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Pline, Histoire naturelle, livre 8, 51. Pecoris fœtus die octavo purus est ; bovis, trigefimo."
+      "text": "Voyez Pline, Histoire naturelle, livre 8, 51. Pecoris fœtus die octavo purus est ; bovis, trigefimo.",
+      "tags": [
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Apud Laertium, lib. 8. Κωχίδας ἀρετῶν, δωδιέμεναι κρέας."
+      "text": "Apud Laertium, lib. 8. Κωρίδας ἀρετῶν, δωδιέμεναι κρέας.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Genèse 9:4."
+      "text": "Voyez Genèse 9:4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Lévitique 17:13."
+      "text": "Voyez Lévitique 17:13.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

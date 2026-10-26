@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 25,
       "latin_quote": "DE GENERE CALEB.",
       "french_translation": "De la race de Caleb.",
@@ -61,15 +61,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Καὶ ἀνθρώπῳ Κυνικὸς. Joseph. Ε᾿ις Κυνικὸς ἀνθρώπους πιμπάνδρῳ τῷ βίον."
+      "text": "Καὶ ἀνθρώπῳ Κυνικὸς. Joseph. Εἰς Κυνικὸς ἀνθρώπους πιμπάνδρῳ τῷ βίον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "ואמרתם כה לחיוהי שלום וביתך שלום וכל אשר לך שלום"
+      "text": "ואמרתם כה לחיוהי שלום וביתך שלום וכל אשר לך שלום",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Εἰς ὥρας, καὶ σὺ ὑγιαίνων, καὶ ὁ οἶκός σου ὑγιαίνων. L'Auteur de la Vulgate a lû לאחיו au lieu de לחיי."
+      "text": "Εἰς ὥρας, καὶ σὺ ὑγιαίνων, καὶ ὁ οἶκός σου ὑγιαίνων. L'Auteur de la Vulgate a lû לאחיו au lieu de לחיי.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

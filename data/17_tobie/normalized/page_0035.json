@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 1,
       "latin_quote": "POST DIES VERO QUADRAGINTA-QUINQUE, OCCIDERUNT REGEM FILII IPSIUS.",
       "french_translation": "Quarante-cinq jours après, le Roi fut tué par deux de ses fils.",
@@ -40,27 +40,57 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "4 Rois 19:37 ; Isaïe 37:38."
+      "text": "4 Rois 19:37 ; Isaïe 37:38.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Drusius. Le Grec de l'Édition Romaine lit que cinquante jours, de même que le Syriaque. L'Arabe vingt-cinq jours."
+      "text": "Voyez Drusius. Le Grec de l'Édition Romaine lit que cinquante jours, de même que le Syriaque. L'Arabe vingt-cinq jours.",
+      "tags": [
+        "versions",
+        "commentators",
+        "explanation"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "De même saint Ambroise, De Tobiæ, chapitre 1, numéro 3."
+      "text": "De même saint Ambroise, De Tobiæ, chapitre 1, numéro 3.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De Tobiæ",
+          "original": "De Tobia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Οἰνοχόῳ, manuscrit d'Alexandrie Οἰνοδόχῳ."
+      "text": "Οἰνοχόῳ, manuscrit d'Alexandrie Οἰνοδόχῳ.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ἐπὶ τῡ δακτυλίκ, κὶ διοικητῄς, κὶ οἰκονομοῡντι, κὶ κατίςησεν ἀυτὸν Σαχερδονὶς ἐκ δευτέρας."
+      "text": "Ἐπὶ τῡ δακτυλίκ, καὶ διοικητάς, καὶ οἰκονομοῡντι, καὶ κατίςησεν αὐτὸν Σαχερδονὶς ἐκ δευτέρας.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Et l'Hébreu de Munster, ומושל בכל ארץ אשור"
+      "text": "Et l'Hébreu de Munster, ומושל בכל ארץ אשור",
+      "tags": [
+        "hebrew",
+        "versions",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

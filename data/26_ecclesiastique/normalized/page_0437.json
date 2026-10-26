@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 25,
       "latin_quote": "SICUT ASCENSUS ARENOSUS IN PEDIBUS VETERANI.",
       "french_translation": "La méchante langue d'une femme est à un homme paisible, ce qu'est une montée sablonneuse aux pieds d'un vieillard.",
@@ -34,7 +34,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 25,
       "latin_quote": "NON CONCUPISCAS MULIEREM IN SPECIE.",
       "french_translation": "Ne considérez point la beauté d'une femme, et ne la désirez point, parce qu'elle est agréable.",
@@ -42,7 +42,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 25,
       "latin_quote": "MULIERIS IRA, ET IRREVERENTIA, ETC.",
       "french_translation": "La colère de la femme, son audace, et la confusion qui la suit, sont grandes.",
@@ -52,23 +52,45 @@
   "footnotes": [
     {
       "marker": "a",
-      "text": "Ovide, De Arte, livre 2."
+      "text": "Ovide, De Arte, livre 2.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De Arte",
+          "original": "Ars amatoria"
+        }
+      ]
     },
     {
       "marker": "b",
-      "text": "Juvénal, satire 6."
+      "text": "Juvénal, satire 6.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "c",
-      "text": "Μὴ προσέχσης ἐπὶ κάλλει γυναικὸς, ὴ γυναικῶν μὴ ἐπιθυμήσης."
+      "text": "Μὴ προσέχσης ἐπὶ κάλλει γυναικὸς, ὴ γυναικῶν μὴ ἐπιθυμήσῃς.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "d",
-      "text": "Voyez Grotius, sur ce passage."
+      "text": "Voyez Grotius, sur ce passage.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "e",
-      "text": "Ὀργὴ, καὶ ἀναίδεια, καὶ αἰσχύνη μεγάλη γυνὴ, ἐὰν ἐπιχορηγῇ τῷ ἀνδρὶ ἀυτῆς."
+      "text": "Ὀργὴ, καὶ ἀναίδεια, καὶ αἰσχύνη μεγάλη γυνὴ, ἐὰν ἐπιχορηγῇ τῷ ἀνδρὶ ἀυτῆς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

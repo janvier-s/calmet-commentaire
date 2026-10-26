@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 25,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 25,
       "latin_quote": "POSUIT THRONUM EJUS SUPER THRONUM REGUM, QUI ERANT CUM EO.",
       "french_translation": "Il mit son trône au-dessus des trônes des Rois, qui étaient auprès de lui.",
@@ -40,27 +40,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Jérémie 52:31. _Duodecimo mense, vigesimâ-quintâ mensis, elevavit Evilmerodach, etc._"
+      "text": "Jérémie 52:31. _Duodecimo mense, vigesimâ-quintâ mensis, elevavit Evilmerodach, etc._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "4 Rois 25:27. _Mense duodecimo, vigesimâ-septimâ die mensis._"
+      "text": "4 Rois 25:27. _Mense duodecimo, vigesimâ-septimâ die mensis._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Beros. apud Joseph. contra Apion. l. 1. et apud Euseb. Præpar. l. 9. c. 40. Ε’ουιλμαρυδοχὸς, etc. ὅτις πραξας τὰ πραγγμάτων ἀνόμως ϰ, ἀσελγῶς, ἐπιβυλευθεὶς ὑπὸ τῆς ἀδελφῆς ἰζοντος ἀυτῶ Νηριγλισοσορῳ ἐκ τῆς ἀνηρέθη, βασιλεύσας ἔτη δύο."
+      "text": "Beros. apud Joseph. contra Apion. l. 1. et apud Euseb. Præpar. l. 9. c. 40. Ἐουιλμαρυδοχὸς, etc. ὅτις πράξας τὰ πραγμάτων ἀνόμως ϰ, ἀσελγῶς, ἐπιβουλευθεὶς ὑπὸ τῆς ἀδελφῆς ἰζοντος ἀυτῶ Νηριγλισοσορῳ ἐκ τῆς ἀνῃρέθη, βασιλεύσας ἔτη δύο.",
+      "tags": [
+        "greek",
+        "fathers",
+        "rabbis",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Megasthen. apud Euseb. Præpar. l. 9. c. 41. Ε’υιλμαλάδυχος."
+      "text": "Megasthen. apud Euseb. Præpar. l. 9. c. 41. Ἐυιλμαλάδυχος.",
+      "tags": [
+        "greek",
+        "fathers",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Daniel 5:1, pages 627, 628."
+      "text": "Daniel 5:1, pages 627, 628.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Juges 1:7."
+      "text": "Juges 1:7.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

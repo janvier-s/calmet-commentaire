@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 12,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 12,
       "latin_quote": "ET SI HUMILIATUS VADAT CURVUS, ETC.",
       "french_translation": "Quoiqu'il s'humilie, et aille tout courbé ; donnez-vous de garde de lui.",
@@ -40,15 +40,23 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Prou. XXVI. 25."
+      "text": "Prou. XXVI. 25.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "Καὶ ἴσῃ ἀυτῷ ὡς σπόγγος ἐκμαχὼν ἐσώπλερον."
+      "text": "Καὶ ἴσῃ αὐτῷ ὡς σπόγγος ἐκμαχὼν ἐσώπλερον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Exode 38:8 ; Pline ; et d'autres."
+      "text": "Voyez Exode 38:8 ; Pline ; et d'autres.",
+      "tags": [
+        "verse",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

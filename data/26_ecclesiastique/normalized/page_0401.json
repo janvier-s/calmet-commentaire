@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 23,
       "latin_quote": "ETENIM A MISERICORDIBUS OMNIA HÆC AUFERENTUR.",
       "french_translation": "Ceux qui servent Dieu, sont éloignés de tous ces vices.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 23,
       "latin_quote": "INDISCIPLINATÆ LOQUELÆ NON ASSUESCAT OS TUUM.",
       "french_translation": "Que votre bouche ne s'accoutume point à des paroles indiscretes ; car il s'y trouvera toujours du péché.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 23,
       "latin_quote": "MEMENTO PATRIS, ET MATRIS, ETC.",
       "french_translation": "N'oubliez pas",
@@ -63,19 +63,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Deutéronome 13:1, 6."
+      "text": "Deutéronome 13:1, 6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "[UNCERTAIN HEBREW] _Euriscès._"
+      "text": "[UNCERTAIN HEBREW] _Euriscès._",
+      "tags": [
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "_Vide Psal._ XXX 24. XXXI. 6. XLIX. 5. LI. 11 LXXVIII. 2. LXXXIV. 9. CXLV. 10. etc. _Vide et 1. Maccab._ II. 42. _Synagoga Assidæorum._ VII. 17. et 2 Maccabées 14:6. etc."
+      "text": "Voyez Psaumes 30:24 ; 31:6 ; 49:5 ; 51:11 ; 78:2 ; 84:9 ; 145:10, etc. Voyez et 1 Machabées 2:42, Synagoga Assidæorum ; 7:17 ; et 2 Machabées 14:6, etc.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Αἰσχρόλογον ἀκομψον μὴ συνέθιζε τὸ σόμα σου, ἐςὶ γὰρ ἐν αὐτῷ λόγος ἁμαρτίας _Complut. Ακοπίαν ἔχεις μὴ ἐθίζης, etc._"
+      "text": "Αἰσχρόλογον ἄκομψον μὴ συνέθιζε τὸ σόμα σου, ἐστὶ γὰρ ἐν αὐτῷ λόγος ἁμαρτίας _Complut. Ακοπίαν ἔχεις μὴ ἐθίζης, etc._",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

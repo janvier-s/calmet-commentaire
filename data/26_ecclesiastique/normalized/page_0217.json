@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 9,
       "latin_quote": "NE RESPICIAS MULIEREM MULTIVOLAM.",
       "french_translation": "Ne regardez point une femme volage, de peur que vous ne tombiez dans ses filets.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 9,
       "latin_quote": "CUM SALTATRICE NE ASSIDUUS SIS.",
       "french_translation": "Ne vous trouvez pas souvent avec une femme qui danse.",
@@ -48,23 +48,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Genèse 3:16."
+      "text": "Genèse 3:16.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Μὴ ἐνάντα γυναικὶ πλατεαζομένη, μὴ ποτε ἐμπέσῃς εἰς τὰς παγίδας αὐτῆς. ἀλλὰ δὲ τοῖς ἐνιχρήμασι; ou, ἐπιτεδεύμασιν αὐτῆς. Vulgat. legis, plg. ἀπάταις. Cum saltatrice."
+      "text": "Μὴ ἐνάντα γυναικὶ πλατεαζομένη, μὴ ποτε ἐμπέσῃς εἰς τὰς παγίδας αὐτῆς. ἀλλὰ δὲ τοῖς ἐνιχρήμασι; ou, ἐπιτηδεύμασιν αὐτῆς. Vulgat. legis, plg. ἀπάταις. Cum saltatrice.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Proverbes 7:10…22."
+      "text": "Proverbes 7:10…22.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Μετὰ Ψαλτρίας μὴ ἐνδελεχίζει, μήποτε"
+      "text": "Μετὰ Ψαλτρίας μὴ ἐνδελεχίζει, μήποτε",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Matthieu 14:6 et suivants."
+      "text": "Matthieu 14:6 et suivants.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

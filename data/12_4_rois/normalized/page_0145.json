@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 10,
       "latin_quote": "PERCUSSIT JEHU… UNIVERSOS OPTIMATES EJUS, ET NOTOS, ET SACERDOTES.",
       "french_translation": "Jéhu fit mourir tous les grands de la Cour d'Achab, ses amis, et les Prêtres qui étaient à lui.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 10,
       "latin_quote": "CUMQUE VENISSET AD CAMERAM PASTORUM.",
       "french_translation": "Et lorsqu'il était près d'une cabane de pasteurs.",
@@ -40,31 +40,56 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Grotius ; Sanctius."
+      "text": "Grotius ; Sanctius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "2 Rois 8:18. Filii autem David Sacerdotes erant."
+      "text": "2 Rois 8:18. Filii autem David Sacerdotes erant.",
+      "tags": [
+        "verse",
+        "rabbis",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "των γ νώ ς ων; τῆς μήτρας, τῆς οἰκμίας αὐτῆς τῆ ἐν μέσῳ, dit Theodoret, qu. 32."
+      "text": "τῶν γ νώ ς ὧν; τῆς μήτρας, τῆς οἰκμίας αὐτῆς τῆ ἐν μέσῳ, dit Theodoret, qu. 32.",
+      "tags": [
+        "greek",
+        "fathers"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Lévitique 19:31 ידענים au lieu de ידעני אל הידענים"
+      "text": "Lévitique 19:31 ידענים au lieu de ידעני אל הידענים",
+      "tags": [
+        "hebrew",
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "בית עקד הרעים"
+      "text": "בית עקד הרעים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "ἀυτὸς δὲ Βαιθακὰδ τῶν ποιμένων."
+      "text": "ἀυτὸς δὲ Βαιθακὰδ τῶν ποιμένων.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Voyez, si l'on veut, Drusius."
+      "text": "Voyez, si l'on veut, Drusius.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

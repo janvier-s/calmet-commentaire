@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 16,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 16,
       "latin_quote": "SUNTQUE EGRESSUS EJUS AD MARE SALSISSIMUM.",
       "french_translation": "Il se termine à la mer salée.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 16,
       "latin_quote": "URBESQUE SEPARATÆ SUNT FILIIS EPHRAIM, IN MEDIO POSSESSIONIS FILIORUM MANASSE.",
       "french_translation": "Et il y eut des villes que l'on sépara du milieu de l'héritage des enfants de Manassé, pour les donner aux enfants d'Éphraïm.",
@@ -56,15 +56,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "נחל קנה χαρραφὼν Κανὰ."
+      "text": "נחל קנה χαρραφὼν Κἀνὰ.",
+      "tags": [
+        "hebrew",
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "היו תוצאותיו ימה"
+      "text": "היו תוצאותיו ימה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Masius ;\nBonfrère ;\nVatable ;\nMénochius ;\nMalvenda."
+      "text": "Masius ;\nBonfrère ;\nVatable ;\nMénochius ;\nMalvenda.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

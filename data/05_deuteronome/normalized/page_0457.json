@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 34,
       "latin_quote": null,
       "french_translation": null,
@@ -17,35 +17,82 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Dans Josèphe, Contre Apion, livre 1."
+      "text": "Dans Josèphe, Contre Apion, livre 1.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Origène, Contre Celse, livre 1."
+      "text": "Origène, Contre Celse, livre 1.",
+      "tags": [
+        "fathers",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voir Théodoret, livre 1, Thérapeutique ; et Clément d'Alexandrie, livre 1, Stromates."
+      "text": "Voir Théodoret, livre 1, Thérapeutique ; et Clément d'Alexandrie, livre 1, Stromates.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Thérapeutique",
+          "original": "Graecarum affectionum curatio"
+        },
+        {
+          "fr": "Stromates",
+          "original": "Stromata"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Τί γάρ ἐστι πλάτων, ἢ μωϋσῆς ἀττικίζων."
+      "text": "Τί γάρ ἐστι πλάτων, ἢ μωϋσῆς ἀττικίζων.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Exode 34:29."
+      "text": "Exode 34:29.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Clément d'Alexandrie, livre 1, Stromates."
+      "text": "Clément d'Alexandrie, livre 1, Stromates.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Stromates",
+          "original": "Stromata"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Voir Tulle, livre 3, De natura Deorum."
+      "text": "Voir Tulle, livre 3, De natura Deorum.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Diodore de Sicile apud Justinien, Martyre, Parænesis ad Græcos. παρὰ μὲν τοῖς Ινδαίοις ᾄδεσθαι τὸν θεὸν, ὅτις θαυμαςὴν καὶ ϑέαν ὅλος ἐποίησε χείμαρρον τῆς μέλισσαι ἀφίλετο αἰθέριον πῶμα, etc."
+      "text": "Diodore de Sicile apud Justinien, Martyre, Parænesis ad Græcos. παρὰ μὲν τοῖς Ινδαίοις ᾄδεσθαι τὸν θεὸν, ὅτις θαυμαστὴν καὶ θέαν ὅλος ἐποίησε χείμαρρον τῆς μέλισσαι ἀφίλετο αἰθέριον πῶμα, etc.",
+      "tags": [
+        "greek",
+        "fathers",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

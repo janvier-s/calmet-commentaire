@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 12,
       "latin_quote": "PES, ET EOS QUI OPPRESSI FUERANT RELEVANS.",
       "french_translation": "Il fait tomber les Princes dans le mépris, et il relève ceux qui avaient été opprimés.",
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 12,
       "latin_quote": "PRODUCIT IN LUCEM UMBRAM MORTIS.",
       "french_translation": "Il produit au jour l'ombre de la mort. Il change en clarté les plus horribles ténèbres.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 12,
       "latin_quote": "QUI MULTIPLICAT GENTES, ET PERDIT EAS, ET SUBVERSAS IN INTEGRUM RESTITUIT.",
       "french_translation": "Il multiplie les Nations, et les perd ensuite, et les rétablit après leur ruine.",
@@ -62,15 +62,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "שופך בוז על נדיבים ומתעה אפיקים"
+      "text": "שופך בוז על נדיבים ומתעה אפיקים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εκχέων ἀτιμίαν ἐπ᾽ ἄρχοντας, καὶ ἰάσατο ἰδεατο."
+      "text": "Ἐκχέων ἀτιμίαν ἐπ᾽ ἄρχοντας, καὶ ἰάσατο ἰδεατο.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "צלמות l'Éthiopien צלם, Obnubilari, l'Arabe טלם obscurari. צלמות Legi potest Zalemoth, non Zal-maveth."
+      "text": "צלמות l'Éthiopien צלם, Obnubilari, l'Arabe טלם obscurari. צלמות Legi potest Zalemoth, non Zal-maveth.",
+      "tags": [
+        "hebrew",
+        "versions",
+        "latin",
+        "explanation"
+      ]
     }
   ],
   "metadata": {

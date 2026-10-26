@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 59,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 59,
       "latin_quote": "RUGIEMUS QUASI URSI OMNES.",
       "french_translation": "Nous rugissons tous comme des ours.",
@@ -38,15 +38,15 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 59,
       "latin_quote": "EXPECTAVIMUS JUDICIUM, ETC.",
-      "french_translation": "et il n'est point venu. Nous espérions que Dieu s'armerait, pour venger nos injures sur nos ennemis.",
-      "french_commentary": "Voyez le ℣. 9."
+      "french_translation": "Nous attendions le jugement, et il n'est point venu.",
+      "french_commentary": "Nous espérions que Dieu s'armerait, pour venger nos injures sur nos ennemis. Voyez le ℣. 9."
     },
     {
       "commentary_id": 4,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 59,
       "latin_quote": "PECCATA NOSTRA RESPONDERUNT NOBIS.",
       "french_translation": "Nos péchés portent témoignage contre nous.",
@@ -56,19 +56,45 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "נהם ודבים Vide Psaumes 58:7, 15. Jérémie 31:20. Psaumes 45:4. Cantique des cantiques 5:4. Isaïe 17:12. 51:15."
+      "text": "נהם ודבים Vide Psaumes 58:7, 15. Jérémie 31:20. Psaumes 45:4. Cantique des cantiques 5:4. Isaïe 17:12. 51:15.",
+      "tags": [
+        "hebrew",
+        "verse",
+        "old-ref"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Virgile, Énéide, livre 7. _Atque in præsepibus ursi sævire, etc._ Appien, sur l'ourse, Σμερδαλέον βρυχᾶται. Horace, Odes, ode 16. _Nec vespertinus circumgemit ursus ovile._"
+      "text": "Virgile, Énéide, livre 7. _Atque in præsepibus ursi sævire, etc._ Appien, sur l'ourse, Σμερδαλέον βρυχᾶται. Horace, Odes, ode 16. _Nec vespertinus circumgemit ursus ovile._",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Odes",
+          "original": "Carmina"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Isaïe 3:9. _Agnitio vultûs eorum respondit eis._ Vide et Jérémie 14:7. _Si iniquitates nostræ responderint nobis._"
+      "text": "Isaïe 3:9. _Agnitio vultûs eorum respondit eis._ Vide et Jérémie 14:7. _Si iniquitates nostræ responderint nobis._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ענו בנו ואנחנו יודעים 70. Αἱ ἁμαρτίαι ἡμῶν ἀντέστησαν ἡμῖν."
+      "text": "ענו בנו ואנחנו יודעים 70. Αἱ ἁμαρτίαι ἡμῶν ἀντέστησαν ἡμῖν.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

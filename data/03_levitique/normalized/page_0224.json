@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 18,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 18,
       "latin_quote": "SORORIS TUÆ, QUÆ DOMI, VEL FORIS GENITA EST.",
       "french_translation": "De votre sœur, qui est née ou dans la maison, ou hors de la maison.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 18,
       "latin_quote": "TURPITUDO TUA EST.",
       "french_translation": "Ce serait découvrir votre propre honte.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 18,
       "latin_quote": "TURPITUDINEM FILIÆ UXORIS PATRIS TUI NON DISCOOPERIES.",
       "french_translation": "Vous ne découvrirez point ce qui doit être caché dans la fille de la femme de votre père.",
@@ -56,11 +56,18 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Τοιοῦτον μὲν τὸ βάρβαρον γένος. Πατήρ τε θυγατρὶ παῖς τε μητρὶ, μίγνυται. Κόρη τ᾽ ἀδελφῷ…"
+      "text": "Τοιοῦτον μὲν τὸ βάρβαρον γένος. Πατήρ τε θυγατρὶ παῖς τε μητρὶ, μίγνυται. Κόρη τ᾽ ἀδελφῷ…",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καί τὴν δ᾽ ἴδια ἐξέλιγεν τιμῷ. Ὁμοπατρείαν ἀδελφὴν. מולדת אבוך"
+      "text": "Καί τὴν δ᾽ ἴδια ἐξέλιγεν τιμῷ. Ὁμοπατρίαν ἀδελφὴν. מולדת אבוך",
+      "tags": [
+        "hebrew",
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

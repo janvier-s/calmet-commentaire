@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 1,
       "latin_quote": "LECTULUS NOSTER FLORIDUS.",
       "french_translation": "Notre lit est couvert de fleurs ;",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 1,
       "latin_quote": "LAQUEARIA NOSTRA CYPRESSINA.",
       "french_translation": "Nos lambris sont de cyprès.",
@@ -41,31 +41,65 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "ערשנו רעננה _vestibulo horti, et nemoris, etc._"
+      "text": "ערשנו רעננה _vestibulo horti, et nemoris, etc._",
+      "tags": [
+        "hebrew",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ο'εσκι-ω-μενη κλίνη ἡμῶν σδασυς. _Aqu. Euθαλης. Origen. Lectus noster umbrosus. Ita Ambros. in Psal. 118._"
+      "text": "Ὀεσκι-ω-μένη κλίνη ἡμῶν σδασυς. _Aqu. Euθαλης. Origen. Lectus noster umbrosus. Ita Ambros. in Psal. 118._",
+      "tags": [
+        "greek",
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Esther 1:5. Jussit convivium præparari in"
+      "text": "Esther 1:5. Jussit convivium præparari in",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "ברושים ותדהר"
+      "text": "ברושים ותדהר",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Pline, Histoire naturelle, livre 12, chapitre 17."
+      "text": "Pline, Histoire naturelle, livre 12, chapitre 17.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Théodoret ; Ghislerius."
+      "text": "Théodoret ; Ghislerius.",
+      "tags": [
+        "fathers",
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Saint Grégoire ; Bède ; Apponius ; saint Anselme ; et d'autres."
+      "text": "Saint Grégoire ; Bède ; Apponius ; saint Anselme ; et d'autres.",
+      "tags": [
+        "fathers"
+      ]
     }
   ],
   "book_end_marker": null

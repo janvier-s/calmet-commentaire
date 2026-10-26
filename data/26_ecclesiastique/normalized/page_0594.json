@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 39,
       "latin_quote": null,
       "french_translation": "ses conseils, et ses instructions, et méditera les secrets de Dieu.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 39,
       "latin_quote": "NON RECEDET MEMORIA EJUS, ETC.",
       "french_translation": "Sa mémoire ne s'effacera point de l'esprit des hommes.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 39,
       "latin_quote": "SI PERMANSERIT, NOMEN DERELINQUET PLUS QUAM MILLE.",
       "french_translation": "S'il vit, il s'acquerera plus de réputation que mille autres ; et quand il se reposera, il sera plus heureux.",
@@ -55,11 +55,17 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Κυρίς καταθήσει διαλόγος, τῇ ἐπισήμῳ, ἐν τοῖς ἀποκρύφοις αυτᾶ διανοηθήσεται."
+      "text": "Κουρίς καταθήσει διαλόγος, τῇ ἐπισήμῳ, ἐν τοῖς ἀποκρύφοις αυτᾶ διανοηθήσεται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἀποσήσεται τὸ μνημόσυνον ἀυτῦ, καὶ τὸ ὄνομα ἀυτῦ ζήσεται εἰς γενεὰς γενεῶν."
+      "text": "Ἀποσήσεται τὸ μνημόσυνον αὐτοῦ, καὶ τὸ ὄνομα αὐτοῦ ζήσεται εἰς γενεὰς γενεῶν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

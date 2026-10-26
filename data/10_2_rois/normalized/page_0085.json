@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 8,
       "latin_quote": "PERCUSSIT MOAB, ET MENSUS EST EOS FUNICULO, COÆQUANS TERRÆ ; MENSUS EST AUTEM DUOS FUNICULOS ; UNAM AD OCCIDENDUM, ET UNUM AD VIVIFICANDUM.",
       "french_translation": "Il défit les Moabites, et les ayant fait coucher par terre, il les fit tirer au sort, et les divisa en deux parts, dont il destina l'une à la mort, et l'autre à la vie.",
@@ -33,23 +33,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Grotius, Du droit de la guerre et de la paix, livre 3, chapitre 4, article 10."
+      "text": "Voyez Grotius, Du droit de la guerre et de la paix, livre 3, chapitre 4, article 10.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Du droit de la guerre et de la paix",
+          "original": "De iure belli ac pacis"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Vide Sym. Epistpres δι δυὸ χοιλα sic ὠνομάσθη. Ει δὲ οὐ τὰ ασελγεσάτα."
+      "text": "Vide Sym. Epistpres δῑ δυὸ χοιλα sic ὠνομάσθη. Ει δὲ οὐ τὰ ασελγεσάτα.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Sidet. Troad."
+      "text": "Sidet. Troad.",
+      "tags": []
     },
     {
       "marker": "(d)",
-      "text": "70. Σύλλον et δύο σχοινίσματα νῦ θανατῶσαι, καὶ τὰ δύο σχοινίσματα ἐζώγρησεν."
+      "text": "70. Σύλλον et δύο σχοινίσματα νῦ θανατῶσαι, καὶ τὰ δύο σχοινίσματα ἐζώγρησεν.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "ויך את מואב וימדדם בחבל השכב אותם ארצה וימדד שני חבלים להמית ומלא החבל להחיות."
+      "text": "ויך את מואב וימדדם בחבל השכב אותם ארצה וימדד שני חבלים להמית ומלא החבל להחיות.",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

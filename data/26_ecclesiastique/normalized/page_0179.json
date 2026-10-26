@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -30,15 +30,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 6,
       "latin_quote": "QUIBUS AUTEM COGNITA EST, PERMANET USQUE AD CONSPECTUM DEI.",
-      "french_translation": "Mais dans ceux à qui elle est connue, elle subsiste jusqu'à ce qu'ils soient devant Dieu. Elle ne les quitte jamais, elle les conduit jusqu'au trône de Dieu, jusqu'à l'éternité. Ce passage n'est pas dans le Grec.",
-      "french_commentary": null
+      "french_translation": "Mais dans ceux à qui elle est connue, elle subsiste jusqu'à ce qu'ils soient devant Dieu.",
+      "french_commentary": "Elle ne les quitte jamais, elle les conduit jusqu'au trône de Dieu, jusqu'à l'éternité. Ce passage n'est pas dans le Grec."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 6,
       "latin_quote": "INJICE PEDEM TUUM IN COMPEDES ILLIUS.",
       "french_translation": "Mettez vos pieds dans ses fers.",
@@ -48,19 +48,35 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "צפניה _Absconsa_, du verbe צפן _abscondo, tego, operio_."
+      "text": "צפניה _Absconsa_, du verbe צפן _abscondo, tego, operio_.",
+      "tags": [
+        "hebrew",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Σοφία, _Sapientia_. Ζόφος, _caligo_."
+      "text": "Σοφία, _Sapientia_. Ζόφος, _caligo_.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "On peut voir Cornelius à Lapide, qui est le meilleur Commentateur qui ait écrit sur ce Livre."
+      "text": "On peut voir Cornelius à Lapide, qui est le meilleur Commentateur qui ait écrit sur ce Livre.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Isai. LXV. II. הערכים לַגַד וְהַמְמַלְאִים לַמְנִי מִמְסָךְ"
+      "text": "Voyez Isai. LXV. II. הערכים לַגַד וְהַמְמַלְאִים לַמְנִי מִמְסָךְ",
+      "tags": [
+        "hebrew",
+        "verse",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

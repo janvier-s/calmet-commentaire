@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "53",
+      "verse_ref": 53,
       "chapter": 33,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "54",
+      "verse_ref": 54,
       "chapter": 33,
       "latin_quote": "QUAM DIVIDETIS SORTE.",
       "french_translation": "Vous la partagerez par le sort.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "55",
+      "verse_ref": 55,
       "chapter": 33,
       "latin_quote": "ERUNT VOBIS QUASI CLAVI IN OCULIS, ET LANCEÆ IN LATERIBUS.",
       "french_translation": "Ils vous deviendront comme des clous dans les yeux, et comme des lances dans les côtés.",
@@ -48,27 +48,45 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Σπολᾶιτε τὰς κατοικῦντας τὴυ γῆυ, etc."
+      "text": "Σπολᾶιτε τὰς κατοικοῦντας τὴυ γῆυ, etc.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "שכים"
+      "text": "שכים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "צנינים"
+      "text": "צנינים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Σκόλοπες ἐν τοῖς ὀφθαλμοῖς, et βολίδες ἐν τοῖς πλευροῖς ὑμῶν."
+      "text": "Σκόλοπες ἐν τοῖς ὀφθαλμοῖς, et βολίδες ἐν τοῖς πλευροῖς ὑμῶν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Grotius ;\nVatable ;\nFagius ;\nDelrio."
+      "text": "Grotius ;\nVatable ;\nFagius ;\nDelrio.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ménochius ;\nTirin ;\nBonfrère ;\nJansénius."
+      "text": "Ménochius ;\nTirin ;\nBonfrère ;\nJansénius.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

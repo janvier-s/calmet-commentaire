@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 43,
       "latin_quote": "VOX TONITRUI EJUS VERBERABIT TERRAM.",
       "french_translation": "Il frappe la terre par le bruit de son tonnerre, etc. Il l'effraye, il la fait trembler, il la brise.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 43,
       "latin_quote": "SICUT AVIS DEPONENS AD SEDENDUM, ETC.",
       "french_translation": "Il répand la neige comme une multitude d'oiseaux qui vient s'asseoir sur la terre, et comme une nuée de sauterelles qui fond à bas.",
@@ -40,23 +40,48 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "φωνὴ βροντῆς ἀυτᾶ ὠδίνησε γῆν Ita Complus. Rom."
+      "text": "φωνὴ βροντῆς αὐτοῦ ὠδίνησε γῆν Ita Complus. Rom.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ως εἴδοιεν γλῶ. Ita nonnulli apud Drus. et Haschel."
+      "text": "Ὡς εἴδοιεν γλῶ. Ita nonnulli apud Drus. et Haschel.",
+      "tags": [
+        "greek",
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Comparez Psaumes 28:4-5. Vox Domini in virtute, vox Domini in magnificentia ; vox Domini confringentis cedros, etc."
+      "text": "Comparez Psaumes 28:4-5. Vox Domini in virtute, vox Domini in magnificentia ; vox Domini confringentis cedros, etc.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Pline, Histoire naturelle, livre 11, chapitre 29."
+      "text": "Pline, Histoire naturelle, livre 11, chapitre 29.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ως πετεινα καθιζάνδρα πᾶσαν χλόην, ὡς δὲ ἀκρὶς καταλύεσα ἢ καθίζεσα ἀυτῆς."
+      "text": "Ὡς πετεινὰ καθιζάνδρα πᾶσαν χλόην, ὡς δὲ ἀκρὶς καταλύουσα ἢ καθίζουσα ἀυτῆς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

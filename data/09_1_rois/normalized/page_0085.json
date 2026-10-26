@@ -15,15 +15,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 2,
       "latin_quote": null,
       "french_translation": null,
-      "french_commentary": "de plus, celle qui était stérile a enfanté sept enfants. Le nombre de sept est souvent mis pour un nombre indéfini : Par exemple, ^{(a)} _Le Juste tombe sept fois_ ; c'est-à-dire plusieurs fois. Anne qui relève ici la fécondité qu'elle avait reçue de Dieu, n'eut que six enfants. ^{(b)} Les Septante traduisent : ^{(c)} _Les faméliques sont passés dans une terre étrangère_, ou selon l'Interprète d'Origène ; _ils ont été conduits en captivité_, et parce que celle qui était stérile a eu sept enfants."
+      "french_commentary": "_de plus, celle qui était stérile a enfanté sept enfants_. Le nombre de sept est souvent mis pour un nombre indéfini : Par exemple, ^{(a)} _Le Juste tombe sept fois_ ; c'est-à-dire plusieurs fois. Anne qui relève ici la fécondité qu'elle avait reçue de Dieu, n'eut que six enfants. ^{(b)} Les Septante traduisent : ^{(c)} _Les faméliques sont passés dans une terre étrangère_, ou selon l'Interprète d'Origène ; _ils ont été conduits en captivité_, et parce que celle qui était stérile a eu sept enfants."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 2,
       "latin_quote": "QUÆ MULTOS HABEBAT FILIOS, INFIRMATA EST.",
       "french_translation": "Celle qui avait beaucoup d'enfants, est tombée dans l'impuissance d'en avoir.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 2,
       "latin_quote": "DOMINUS MORTIFICAT ET VIVIFICAT ; DEDUCIT AD INFERNOS, ET REDUCIT.",
       "french_translation": "C'est le Seigneur qui ôte et qui donne la vie, qui conduit aux enfers, et qui en retire.",
@@ -41,31 +41,66 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Proverbes 24:16. Voyez aussi Psaumes 118:164 ;\nLévitique 26:18, etc. l'auteur des Traditions hébraïques sur les livres des Rois ;\nNicolas de Lyre ;\nTostat ;\nMendoza."
+      "text": "Proverbes 24:16. Voyez aussi Psaumes 118:164 ;\nLévitique 26:18, etc. l'auteur des Traditions hébraïques sur les livres des Rois ;\nNicolas de Lyre ;\nTostat ;\nMendoza.",
+      "tags": [
+        "verse",
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Traditions hébraïques",
+          "original": "Traditiones hebraicae in Genesim"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Vide ℣. 21."
+      "text": "Vide ℣. 21.",
+      "tags": []
     },
     {
       "marker": "(c)",
-      "text": "Οἱ πληροῦντες παρῆκαν γῆν. etc."
+      "text": "Οἱ πληροῦντες παρῆκαν γῆν. etc.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Origène, Homélie unique sur les livres des Rois."
+      "text": "Voyez Origène, Homélie unique sur les livres des Rois.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Voyez saint Augustin, La Cité de Dieu, livre 17, chapitre 4."
+      "text": "Voyez saint Augustin, La Cité de Dieu, livre 17, chapitre 4.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Drusius ; Grotius ; etc."
+      "text": "Drusius ; Grotius ; etc.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Sénèque, Tragédies."
+      "text": "Sénèque, Tragédies.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

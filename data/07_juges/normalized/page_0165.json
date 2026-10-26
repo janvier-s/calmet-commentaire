@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 8,
       "latin_quote": "INAURES ENIM AUREAS ISMAELITÆ HABERE CONSUEVERANT.",
       "french_translation": "Car les Ismaélites avaient coutume de porter des pendants d'oreilles d'or.",
@@ -40,27 +40,48 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ita _Grot. Mont._"
+      "text": "Ita _Grot. Mont._",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "_Vide Genèse._ 36:22."
+      "text": "_Vide Genèse._ 36:22.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Exode 32:2 ; 35:22."
+      "text": "Exode 32:2 ; 35:22.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Arrien, livre 7."
+      "text": "Arrien, livre 7.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Procope de Gaza_, livre 1, _Guerre des Perses_."
+      "text": "_Procope de Gaza_, livre 1, _Guerre des Perses_.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "_Xénophon_ l. 3. _Anabas._ [UNCERTAIN GREEK] Σκυθῶν ἀμφίτρητα τὰ ὦτα τετρυπημένα. _Vide et Macrob._ l. 7. c. 3. _Saturn. Cum Ostavius Ciceroni recitanti dixisset ; non audio quæ dicis ; ille respondit, certè solebas bene foratas habere aures._"
+      "text": "_Xénophon_ l. 3. _Anabas._ [UNCERTAIN GREEK] Σκυθῶν ἀμφιτρίτα τὰ ὦτα τετρυπημένα. _Vide et Macrob._ l. 7. c. 3. _Saturn. Cum Ostavius Ciceroni recitanti dixisset ; non audio quæ dicis ; ille respondit, certè solebas bene foratas habere aures._",
+      "tags": [
+        "greek",
+        "classical",
+        "latin",
+        "uncertain"
+      ]
     }
   ],
   "book_end_marker": null

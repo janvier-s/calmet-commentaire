@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 5,
       "latin_quote": "PHARPHAR FLUVII DAMASCI, OMNIBUS AQUIS ISRAEL ?",
       "french_translation": "N'avons-nous pas à Damas les fleuves d'Abana et de Pharphar, qui sont meilleurs que tous ceux d'Israël ?",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 5,
       "latin_quote": "PATER, ET SI REM GRANDEM DIXISSET TIBI",
       "french_translation": null,
@@ -33,23 +33,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Benjamin, Itinéraire, page 53."
+      "text": "Benjamin, Itinéraire, page 53.",
+      "tags": [
+        "rabbis",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Itinéraire",
+          "original": "Itinerarium"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Gabriel Sionite, Arabie, chapitre 4."
+      "text": "Gabriel Sionite, Arabie, chapitre 4.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Daviti Syrie."
+      "text": "Voyez Daviti Syrie.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Strabo lib. 17. c. 716. ὁ μὲν χρυσοῤῥόας ἐςέγανθε ἀπὸ τῆς Δαμασκηνῶν πόλεως ἡ χώρα, εἰς τὰς ὀχετείας ἀναλίσκεται χαὐτόθι."
+      "text": "Strabo lib. 17. c. 716. ὁ μὲν χρυσορόας ἐςέγανθε ἀπὸ τῆς Δαμασκηνῶν πόλεως ἡ χώρα, εἰς τὰς ὀχετείας ἀναλίσκεται χαὐτόθι.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Maundrel voyage de Jérusalem."
+      "text": "Maundrel voyage de Jérusalem.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

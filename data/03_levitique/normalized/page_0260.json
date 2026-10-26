@@ -32,7 +32,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 20,
       "latin_quote": null,
       "french_translation": null,
@@ -40,7 +40,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 20,
       "latin_quote": "QUIA EGO DOMINUS DEUS VESTER.",
       "french_translation": "Parce que je suis le Seigneur votre Dieu.",
@@ -48,7 +48,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 20,
       "latin_quote": "EGO DOMINUS QUI SANCTIFICO VOS.",
       "french_translation": "Je suis le Seigneur qui vous sanctifie ;",
@@ -56,7 +56,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 20,
       "latin_quote": "MORTE MORIATUR.",
       "french_translation": "Qu'il soit puni de mort.",
@@ -64,7 +64,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 20,
       "latin_quote": "SANGUIS EJUS SIT SUPER EUM.",
       "french_translation": "Son sang retombera sur lui.",
@@ -74,15 +74,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Εαν δὲ ὑπερίδῃ λαὸς δέης ἐν ἀνθρώποις τοῖς γῆς τοῖς ἐκδιδαχθεῖσι αὐτὸν ἐπὶ τὸ ἐκδιδόναι σπέρμα."
+      "text": "Ἐὰν δὲ ὑπερίδῃ λαὸς δέης ἐν ἀνθρώποις τοῖς γῆς τοῖς ἐκδιδαχθεῖσι αὐτὸν ἐπὶ τὸ ἐκδιδόναι σπέρμα.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἔνοχός ἐστιν."
+      "text": "Ἔνοχός ἐστιν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Matthieu 27:25."
+      "text": "Voyez Matthieu 27:25.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

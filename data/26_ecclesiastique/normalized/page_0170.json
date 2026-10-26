@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 6,
       "latin_quote": "MULTI PACIFICI SIT TIBI, ET CONSILIARIUS UNUS DE MILLE.",
       "french_translation": "Ayez beaucoup d'amis ; mais choisissez pour conseil un homme entre mille.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 6,
       "latin_quote": "SI POSSIDES AMICUM, IN TENTATIONE POSSIDE EUM.",
       "french_translation": "Si vous voulez faire un ami, prenez-le après l'avoir éprouvé, et ne",
@@ -48,23 +48,42 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Cicero de Officiis."
+      "text": "Cicero de Officiis.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Romains 12:18."
+      "text": "Romains 12:18.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Hesiod. apud Aristot. lib. 9. Ethic. cap. 10. Μήτε πολύξεινον εἶναι, μητ' αὖ μονόξεινον μηδ' ἄφιλον εἶναι. Addit Aristot. Καὶ ἐπὶ τῆς φιλίας ἀρμόσει τὸ, μήτε ἄφιλον εἶναι, μήτε δὲ πολύφιλον."
+      "text": "Hesiod. apud Aristot. lib. 9. Ethic. cap. 10. Μήτε πολύξεινον εἶναι, μητ' αὖ μονόξεινον μηδ' ἄφιλον εἶναι. Addit Aristot. Καὶ ἐπὶ τῆς φιλίας ἁρμόσει τὸ, μήτε ἄφιλον εἶναι, μήτε δὲ πολύφιλον.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Lucien, dans Toxaris."
+      "text": "Lucien, dans Toxaris.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Isocrat. ad Damonic. Η[UNCERTAIN GREEK] μὲν πρὸς ἅπαντας, χρῶ δὲ τοῖς βελτίστοις. ὅυτω γὰρ τοῖς μὲν οὐκ ἀπεχθὴς ἔσῃ, τοῖς δὲ φίλος γένησῃ."
+      "text": "Isocrat. ad Damonic. Η[UNCERTAIN GREEK] μὲν πρὸς ἅπαντας, χρῶ δὲ τοῖς βελτίστοις. ὅυτω γὰρ τοῖς μὲν οὐκ ἀπεχθὴς ἔσῃ, τοῖς δὲ φίλος γένησῃ.",
+      "tags": [
+        "greek",
+        "classical",
+        "uncertain"
+      ]
     }
   ],
   "book_end_marker": null

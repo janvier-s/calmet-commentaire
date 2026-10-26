@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 41,
       "latin_quote": "DUM MÆRE, ET PONET QUASI CUM UNGUENTA BULLIUNT.",
       "french_translation": "Il fera bouillir le fond de la mer comme l'eau d'un pot, et il la fera paraître comme un vaisseau plein d'onguent, etc.",
@@ -17,27 +17,65 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Isaïe 5:1, 15. Et au'ores à Bochart citatos, De animalibus sacris, partie 2, livre 5."
+      "text": "Voyez Isaïe 5:1, 15. Et au'ores à Bochart citatos, De animalibus sacris, partie 2, livre 5.",
+      "tags": [
+        "verse",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De animalibus sacris",
+          "original": "De animalibus sacris"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Hérodote, livre 2, chapitre 69 ;\nStrato, livres 16 et 17 ;\nÉlien, De la nature des animaux, livre 10, chapitre 21, et livre 17, chapitre 16."
+      "text": "Hérodote, livre 2, chapitre 69 ;\nStrato, livres 16 et 17 ;\nÉlien, De la nature des animaux, livre 10, chapitre 21, et livre 17, chapitre 16.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la nature des animaux",
+          "original": "De natura animalium"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "ירתיח כסיר מצולה ים ישים כמרקחה"
+      "text": "ירתיח כסיר מצולה ים ישים כמרקחה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "[UNCERTAIN GREEK] Ἀναζεῖ τὸν ἄβυσσον ὥσπερ χαλκεῖον, ὣς"
+      "text": "[UNCERTAIN GREEK] Ἀναζεῖ τὸν ἄβυσσον ὥσπερ χαλκεῖον, ὣς",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Sym. Ω' ἀναβρασμολὺν ἄρτυσιν. Aquil. ὡς μυρεψικὸν. Vas unguentarium."
+      "text": "Sym. Ὠ ἀναβρασμολὺν ἄρτυσιν. Aquil. ὡς μυρεψικὸν. Vas unguentarium.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Vincent le Blanc ;\nJean de Laët ;\nSamuel Purcher ;\nDamir ;\nAlhaquin. Pierre Martyr et dans Bochart à l'endroit cité plus haut."
+      "text": "Vincent le Blanc ;\nJean de Laët ;\nSamuel Purcher ;\nDamir ;\nAlhaquin. Pierre Martyr et dans Bochart à l'endroit cité plus haut.",
+      "tags": [
+        "fathers",
+        "commentators"
+      ]
     }
   ]
 }

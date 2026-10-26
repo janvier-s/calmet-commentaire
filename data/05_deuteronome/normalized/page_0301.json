@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -17,27 +17,58 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "L'Hébreu, dans Munster ;\nFagius ;\nGrotius."
+      "text": "L'Hébreu, dans Munster ;\nFagius ;\nGrotius.",
+      "tags": [
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Apud Jérôme, in Épître ad Galates 3:13."
+      "text": "Apud Jérôme, in Épître ad Galates 3:13.",
+      "tags": [
+        "verse",
+        "fathers"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Estius ;\nBonfrère ;\nMunster ;\nJansénius."
+      "text": "Estius ;\nBonfrère ;\nMunster ;\nJansénius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Tostat. Menoch. Saint Jérôme dans son Commentaire sur l'Épître aux Galates, dit qu'Ebion traduisait ce passage par, ὅτι ὕβρις θεῦ ὁ κρεμάμενος. et qu'on lisait dans la dispute de Jason et de Papisque, λυδρεῖν θεὸν ὁ κρεμάμενος. C'est une injure faite à Dieu, qu'un homme pendu."
+      "text": "Tostat. Menoch. Saint Jérôme dans son Commentaire sur l'Épître aux Galates, dit qu'Ebion traduisait ce passage par, ὅτι ὕβρις θεοῦ ὁ κρεμάμενος. et qu'on lisait dans la dispute de Jason et de Papisque, λυδρεῖν θεὸν ὁ κρεμάμενος. C'est une injure faite à Dieu, qu'un homme pendu.",
+      "tags": [
+        "greek",
+        "fathers",
+        "commentators",
+        "explanation"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Homer. Iliad. 24. τὸν γὰρ δὴ γαῖαν ἀεικέα μωρίανεν."
+      "text": "Homer. Iliad. 24. τὸν γὰρ δὴ γαῖαν ἀεικέα μωρίανεν.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Vas. ;\nMalvenda ;\nGrotius ;\nNicolas de Lyre."
+      "text": "Vas. ;\nMalvenda ;\nGrotius ;\nNicolas de Lyre.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

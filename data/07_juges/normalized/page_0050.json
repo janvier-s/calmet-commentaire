@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "35",
+      "verse_ref": 35,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "36",
+      "verse_ref": 36,
       "chapter": 1,
       "latin_quote": "FUIT AUTEM TERMINUS AMORRHÆI AB ASCENSU SCORPIONIS, ET SUPERIORA LOCA.",
       "french_translation": "Et le pays des Amorrhéens eut pour limites la montée du Scorpion, Pétra et les lieux plus avancés.",
@@ -33,27 +33,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "ἐν τῷ ὄρει τῷ ὀσραχώδει, ᾧ οἱ ἄρκτοι ἦσαν καὶ αἱ ἀλώπεκες ἐν τῷ μυρσινῶνι, ἐν τῷ Σαλυβίν."
+      "text": "ἐν τῷ ὄρει τῷ ὀσραχώδει, ᾧ οἱ ἄρκτοι ἦσαν καὶ αἱ ἀλώπεκες ἐν τῷ μυρσινῶνι, ἐν τῷ Σαλυβίν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Josué 10:12."
+      "text": "Josué 10:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Josué 19:42."
+      "text": "Josué 19:42.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "3 Rois 4:9."
+      "text": "3 Rois 4:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "סלע"
+      "text": "סלע",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Joseph lib. 3. c. 2. Antiq. ὁι τῆς Γοβολίτιδος τὴν πέτραν κατοικῦντες ὡι καλέιται μὲν Ἀμαληκῖται."
+      "text": "Joseph lib. 3. c. 2. Antiq. οἱ τῆς Γοβολίτιδος τὴν πέτραν κατοικοῦντες ὡι καλέεται μὲν Ἀμαληκῖται.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     }
   ],
   "book_end_marker": null

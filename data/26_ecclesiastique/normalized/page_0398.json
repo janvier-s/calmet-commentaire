@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 23,
       "latin_quote": "JURATIONI NON ASSUESCAT OS TUUM.",
       "french_translation": "Que votre bouche ne s'accoutume point au serment.",
@@ -40,23 +40,44 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ἀμαρτωλὸς, καὶ λοίδορῷ καὶ ὑπερήφανῷ σκανδαλισθήσεται ἐν χείλεσιν."
+      "text": "Ἁμαρτωλὸς, καὶ λοίδορῷ καὶ ὑπερήφανῷ σκανδαλισθήσεται ἐν χείλεσιν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ὅρκῳ μὴ ἐθίσῃς τὸ σόμα σου, καὶ ὀνομασίᾳ τῷ ἁγίῳ μὴ συνειθισθῇς."
+      "text": "Ὅρκῳ μὴ ἐθίσῃς τὸ σόμα σου, καὶ ὀνομασίᾳ τῷ ἁγίῳ μὴ συνεθισθῇς.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Le nom de Saint, est mis pour Dieu, ici, comme Isaïe 30:12, 15. Ézéchiel 39:7."
+      "text": "Le nom de Saint, est mis pour Dieu, ici, comme Isaïe 30:12, 15. Ézéchiel 39:7.",
+      "tags": [
+        "verse",
+        "explanation"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Author Operis imperfecti in Matth homil. 12. Nisi juramentum interdicatur, non possunt amputari perjuria."
+      "text": "Author Operis imperfecti in Matth homil. 12. Nisi juramentum interdicatur, non possunt amputari perjuria.",
+      "tags": [
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "August. de Verbis Apostoli, olim. serm. 28. nunc serm. 80. de Verbis Apost. Jacques 5:4."
+      "text": "August. de Verbis Apostoli, olim. serm. 28. nunc serm. 80. de Verbis Apost. Jacques 5:4.",
+      "tags": [
+        "verse",
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

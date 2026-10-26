@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -25,19 +25,58 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Josèphe, Guerre des Juifs, livre 1, chapitre 4."
+      "text": "Josèphe, Guerre des Juifs, livre 1, chapitre 4.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Sanctius, sur ce passage ;\nSaint Augustin, La Cité de Dieu, livre 1, chapitre 17 ;\nCicéron, Songe de Scipion ;\nMacrobe, sur le même ;\nPlaton, Des lois, livre 9 ;\nAristote, Éthique, livre 5."
+      "text": "Voyez Sanctius, sur ce passage ;\nSaint Augustin, La Cité de Dieu, livre 1, chapitre 17 ;\nCicéron, Songe de Scipion ;\nMacrobe, sur le même ;\nPlaton, Des lois, livre 9 ;\nAristote, Éthique, livre 5.",
+      "tags": [
+        "fathers",
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        },
+        {
+          "fr": "Scipion",
+          "original": "Somnium Scipionis"
+        },
+        {
+          "fr": "Des lois",
+          "original": "De Legibus"
+        },
+        {
+          "fr": "Éthique",
+          "original": "Ethica Nicomachea"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Idem lib. 3. de Bello cap. 25. Τὸς γὰρ ἀναιρέντας ἑαυτὸς, παρὰ μὲν ἡμῖν μέχρι ἡλίου δύσεως οἴας ἀδίκους κρίνεται ἱκεσίαν."
+      "text": "Idem lib. 3. de Bello cap. 25. Τὸς γὰρ ἀναιρέτας ἑαυτὸς, παρὰ μὲν ἡμῖν μέχρι ἡλίου δύσεως οἴας ἀδίκους κρίνεται ἱκεσίαν.",
+      "tags": [
+        "greek",
+        "fathers",
+        "classical",
+        "commentators",
+        "abbrev",
+        "ibid"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "1 Paralipomènes 10:13."
+      "text": "1 Paralipomènes 10:13.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

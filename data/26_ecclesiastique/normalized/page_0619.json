@@ -36,31 +36,39 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
+      "chapter": 41,
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "la méditant souvent, et la regardant comme inévitable, et comme prochaine."
+    },
+    {
+      "commentary_id": 2,
+      "verse_ref": 1,
       "chapter": 41,
       "latin_quote": "HOMINI PACEM HABENTI.",
       "french_translation": "A un homme qui vit en paix.",
       "french_commentary": "C'est-à-dire, qui est dans la prospérité ; car sous le nom de paix, les Hébreux comprennent toute sorte de biens."
     },
     {
-      "commentary_id": 2,
-      "verse_ref": "2",
+      "commentary_id": 3,
+      "verse_ref": 2,
       "chapter": 41,
       "latin_quote": "VIRO QUIETO, ET CUJUS VIÆ DIRECTÆ SUNT.",
       "french_translation": "A un homme tranquille, à qui tout réussit heureusement, et qui est encore en état de goûter de la nourriture.",
       "french_commentary": "Le Grec : ^{(a)} _A un homme qui vit sans inquiétude, qui n'a rien qui le distraie, qui est en bon chemin en toutes choses, à qui tout vient à souhait, et qui mange encore bien, qui a encore bon appétit._"
     },
     {
-      "commentary_id": 3,
-      "verse_ref": "3",
+      "commentary_id": 4,
+      "verse_ref": 3,
       "chapter": 41,
       "latin_quote": "O MORS, BONUM EST JUDICIUM TUUM, ETC :",
       "french_translation": "O mort, que ta sentence est douce à un homme pauvre !",
       "french_commentary": "Le terme de _judicium_, en cet endroit, peut marquer la sentence de mort, prononcée contre tous les hommes dans la personne d'Adam, ou la nécessité inévitable de mourir ; ou enfin la Loi, et l'ordre qui assujettissent tous les hommes à la mort."
     },
     {
-      "commentary_id": 4,
-      "verse_ref": "4",
+      "commentary_id": 5,
+      "verse_ref": 4,
       "chapter": 41,
       "latin_quote": "DEFECTO ÆTATE, CUI DE OMNIBUS CURA EST ET INCREDIBILI, QUI PERDIT PATIENTIAM.",
       "french_translation": "Qui est dans la défaillance de l'âge, accablé de soins, sans espérance, et qui perd patience.",
@@ -70,11 +78,17 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ἀνδρὶ ἀπερισπάστῳ, καὶ εὐοδουμένῳ ἐν πᾶσι, καὶ ἔτι ἰσχύοντι ἐπιδέξασθαι τροφήν."
+      "text": "Ἀνδρὶ ἀπερισπάστῳ, καὶ εὐοδουμένῳ ἐν πᾶσι, καὶ ἔτι ἰσχύοντι ἐπιδέξασθαι τροφήν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἐσχατογήρῳ, καὶ πεπιστευμένῳ περὶ πάντων, καὶ ἀπολωλεκότι τὴν ὑπομονήν."
+      "text": "Ἐσχατογήρῳ, καὶ πεπιστευμένῳ περὶ πάντων, καὶ ἀπολωλεκότι τὴν ὑπομονήν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

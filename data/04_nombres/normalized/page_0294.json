@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 23,
       "latin_quote": "AUDI FILI SEPHOR.",
       "french_translation": "Écoutez, fils de Séphor.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 23,
       "latin_quote": "NON EST DEUS QUASI HOMO, UT MENTIATUR, NEC UT FILIUS HOMINIS, UT MUTETUR.",
       "french_translation": "Dieu n'est point comme l'homme, pour mentir, ni comme le fils de l'homme, pour être sujet au changement.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 23,
       "latin_quote": "AD BENEDICTIONEM ADDUCTUS SUM, BENEDICTIONEM PROHIBERE NON VALEO.",
       "french_translation": "J'ai été amené pour bénir, je ne puis m'empêcher de le bénir.",
@@ -63,23 +63,43 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Isaïe 21:11 ; Jérémie 6:1 ; 10:1 etc."
+      "text": "Isaïe 21:11 ; Jérémie 6:1 ; 10:1 etc.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἰδόντες υἱέτες υἱὸς Σιπφὼρ. Ils ont lu bed, au lieu de, my adai."
+      "text": "Ἰδόντες υἱέες υἱὸς Σιπφὼρ. Ils ont lu bed, au lieu de, my adai.",
+      "tags": [
+        "greek",
+        "explanation"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Διενθῦμειται."
+      "text": "Διενθῦμειται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Origène, homélie 16 sur les Nombres. Non sicut homo Deus frustratur, nec sicut filius hominis terretur ipse, ou selon quelques exemplaires, terret ipse."
+      "text": "Origène, homélie 16 sur les Nombres. Non sicut homo Deus frustratur, nec sicut filius hominis terretur ipse, ou selon quelques exemplaires, terret ipse.",
+      "tags": [
+        "verse",
+        "fathers",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Οὐχ ὡς δι' ἀπειλῆς ὁ θεὸς ἀπειλεῖται, οὐδ' ὡς υἱὸς ἀνθρώπου διατάσσεται. Judith 8:15."
+      "text": "Οὐχ ὡς δι' ἀπειλῆς ὁ θεὸς ἀπειλεῖται, οὐδ' ὡς υἱὸς ἀνθρώπου διατάσσεται. Judith 8:15.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

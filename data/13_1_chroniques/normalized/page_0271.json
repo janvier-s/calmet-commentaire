@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 24,
       "latin_quote": "JAHAT, FILIUSQUE EJUS JERIAU PRIMUS.",
       "french_translation": "Le fils aîné de Jahat fut Jériau.",
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 24,
       "latin_quote": "FILIUS OZIAU, BENNO.",
       "french_translation": "Oziaü eut un fils, nommé Benno.",
@@ -59,7 +59,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 24,
       "latin_quote": "FILIUS QUOQUE MERARI, OZIAU, ET SOAM, ET ZACHUR, ET HEBRI.",
       "french_translation": "Mérari eut encore Oziaü, Soam, Zachur, et Hébri.",
@@ -69,23 +69,43 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "ובני יריהו אמריהו השני"
+      "text": "ובני יריהו אמריהו השני",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "vid Exod. A'μασία ὁ δεύτερ[UNCERTAIN GREEK]."
+      "text": "vid Exod. A'μασία ὁ δεύτερ[UNCERTAIN GREEK].",
+      "tags": [
+        "greek",
+        "abbrev",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "1 Paralipomènes 23:19 ; 26:31."
+      "text": "1 Paralipomènes 23:19 ; 26:31.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "לועזיהו בנו"
+      "text": "לועזיהו בנו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "υἱοὶ Οζία τῆ Μισαεὶ τῆ Οζία, υἱοὶ αὐτ[UNCERTAIN GREEK] Ισοὰμ, καὶ Ζακχὺρ, καὶ Α'βαί. In Editio Romana."
+      "text": "υἱοὶ Οζία τῆ Μισαεὶ τῆ Οζία, υἱοὶ αὐτ[UNCERTAIN GREEK] Ισοὰμ, καὶ Ζακχὺρ, καὶ Ἀβαί. In Editio Romana.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "uncertain"
+      ]
     }
   ],
   "book_end_marker": "I. Livre des Paralip."

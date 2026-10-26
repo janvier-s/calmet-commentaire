@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 23,
       "latin_quote": "QUI NATI FUERINT EX EIS, TERTIA GENERATIONE INTRABUNT IN ECCLESIAM DOMINI.",
       "french_translation": "Ceux qui seront nés (des Iduméens et des Égyptiens) pourront entrer à la troisième génération, dans l'assemblée du Seigneur.",
@@ -33,15 +33,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Grotius, Du droit de la guerre et de la paix, livre 2, chapitre 15, article 9."
+      "text": "Voyez Grotius, Du droit de la guerre et de la paix, livre 2, chapitre 15, article 9.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Du droit de la guerre et de la paix",
+          "original": "De iure belli ac pacis"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἐι σαταγορεύσεις ἀυτοῖς ἐιρήνην, ἐυωμφί-"
+      "text": "Εἰ καταγορεύσεις αὐτοῖς εἰρήνην, ἐυωμφί-",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "לא תדרש שלמם וטובתם"
+      "text": "לא תדרש שלמם וטובתם",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

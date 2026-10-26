@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 1,
       "latin_quote": "QUÆ RENUIT.",
       "french_translation": "Elle refusa de venir.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 1,
       "latin_quote": "INTERROGAVIT SAPIENTES, QUI EX MORE REGIO SEMPER EI ADERANT.",
       "french_translation": "Il consulta les Sages, qui étaient toujours auprès de lui, selon la coutume ordinaire des Rois.",
@@ -40,11 +40,22 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide Plutarch. Themistocl. et lib. I. Symposiac. cap. 1. et Joseph lib. XI cap. 6 Antiquit. H' δι φυλακῆ ται γυναικεῖαι Πέρσαις νόμων δι mis. ἀλλορίοις βλέπεσθαι ὑπὸ γυναῖκας, ἀνδρῶν ἀνδράσι. Justin lib. 41. Fœminis non convivia tantùm, sed et virorum conspectum interdicunt."
+      "text": "Vide Plutarch. Themistocl. et lib. I. Symposiac. cap. 1. et Joseph lib. XI cap. 6 Antiquit. H' δῑ φυλακῆ ται γυναικεῖαι Πέρσαις νόμων δῑ mis. ἀλλορίοις βλέπεσθαι ὑπὸ γυναῖκας, ἀνδρῶν ἀνδράσι. Justin lib. 41. Fœminis non convivia tantùm, sed et virorum conspectum interdicunt.",
+      "tags": [
+        "greek",
+        "fathers",
+        "rabbis",
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "לחכמים ידעי העתים"
+      "text": "לחכמים ידעי העתים",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

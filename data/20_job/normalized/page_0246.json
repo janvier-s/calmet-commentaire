@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 18,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 19,
       "latin_quote": "USQUEQUO AFFLIGITIS ANIMAM MEAM ?",
       "french_translation": "Jusqu'à quand affligerez-vous mon âme ?",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 19,
       "latin_quote": "EN DECIES CONFUNDITIS ME, ET NON ERU-",
       "french_translation": null,
@@ -48,15 +48,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "[UNCERTAIN HEBREW] על יוםו ישמו אחרונים וקדמונים אחזו שער"
+      "text": "[UNCERTAIN HEBREW] על יומו ישמו אחרונים וקדמונים אחזו שער",
+      "tags": [
+        "hebrew",
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Psaumes 136:7 ;\nÉzéchiel 21:15 ;\nAbdias 1:12."
+      "text": "Voyez Psaumes 136:7 ;\nÉzéchiel 21:15 ;\nAbdias 1:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "[UNCERTAIN GREEK] Εν τοῖς αὐτῷ ζήσονται ἔτεροι, ἰδ᾽ αὐτὸ ἐξεπλάγησαν ἔσχατοι, πρῶτοι δὲ ἔχε θαῦμα, Aquil. Εἰς τὴν ἡμέραν αὐτῷ ἐθαυμάσθησαν ἔσχατοι."
+      "text": "[UNCERTAIN GREEK] Ἐν τοῖς αὐτῷ ζήσονται ἕτεροι, ἰδ᾽ αὐτὸ ἐξεπλάγησαν ἔσχατοι, πρῶτοι δὲ ἔχε θαῦμα, Aquil. Εἰς τὴν ἡμέραν αὐτῷ ἐθαυμάσθησαν ἔσχατοι.",
+      "tags": [
+        "greek",
+        "versions",
+        "uncertain"
+      ]
     }
   ],
   "metadata": {

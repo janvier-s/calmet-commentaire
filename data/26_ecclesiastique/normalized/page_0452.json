@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 27,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 27,
       "latin_quote": "SICUT RUSTICATIO DE LIGNO OSTENDIT FRUCTUM ILLIUS.",
       "french_translation": "Comme le soin qu'on prend de l'arbre paraît dans son fruit ; ainsi l'homme se fait connaître par sa pensée, et par sa parole.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 27,
       "latin_quote": "SI SEQUARIS IUSTITIAM, APPREHENDES ILLAM.",
       "french_translation": "Si vous suivez la justice, vous l'acquérerez.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 27,
       "latin_quote": "VOLATILIA AD SIBI SIMILIA CONVENIUNT.",
       "french_translation": "Les oiseaux se joignent avec leurs semblables ; et la vérité retourne à ceux",
@@ -70,19 +70,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Apud Cicéron."
+      "text": "Apud Cicéron.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Γεώργιον ξύλε ἐκφαίνει ὁ καρπὸς ἀυτ. ὅυτως ἐν λογισμῷ καρδίας ἀνθρώπε."
+      "text": "Γεώργιον ξύλου ἐκφαίνει ὁ καρπὸς αὐτ. ὅυτως ἐν λογισμῷ καρδίας ἀνθρώπου.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Dans Stobée, sermon 1. Voyez Cornelius a Lapide sur Ecclésiastique 27:8."
+      "text": "Dans Stobée, sermon 1. Voyez Cornelius a Lapide sur Ecclésiastique 27:8.",
+      "tags": [
+        "verse",
+        "classical",
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Cicéron, Tusculanes, dans Cornelius a Lapide sur ce passage."
+      "text": "Cicéron, Tusculanes, dans Cornelius a Lapide sur ce passage.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Tusculanes",
+          "original": "Tusculanae disputationes"
+        }
+      ]
     }
   ],
   "book_end_marker": null

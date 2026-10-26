@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 13,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 13,
       "latin_quote": "AUFERENS MALUM DE MEDIO TUI.",
       "french_translation": "Vous ôterez de mal du milieu de vous.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 13,
       "latin_quote": "UXOR QUÆ EST IN SINU TUO.",
       "french_translation": "Votre femme qui vous est si chère.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 13,
       "latin_quote": "NEQUE PARCAT EI OCULUS TUUS.",
       "french_translation": "Que la compassion ne vous porte point à l'épargner.",
@@ -70,31 +70,55 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Philo. _de victimas offerentibus._ ἀνοσιώτατο καὶ ταῖς κατ᾽ ἀνδρὸς ἀπονεμητέαις τιμωρίαις, κολαστέος εὐχρὲς καὶ κατ᾽ ἀυτὸ φονᾷν."
+      "text": "Philo. _de victimas offerentibus._ ἀνοσιώτατο καὶ ταῖς κατ᾽ ἀνδρὸς ἀπονεμητέοις τιμωρίαις, κολαστέος εὐχρὲς καὶ κατ᾽ αὐτὸ φονᾷν.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "בעבר הרעע רעע"
+      "text": "בעבר הרעע רעע",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ἐξαρεῖς τὸ πονηρὸν."
+      "text": "Ἐξαρεῖς τὸ πονηρὸν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "1 Corinthiens 5:13."
+      "text": "1 Corinthiens 5:13.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "אשר בחיקך Uxor sinus tui."
+      "text": "אשר בחיקך Uxor sinus tui.",
+      "tags": [
+        "hebrew",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Delrio, _Adag._ 125."
+      "text": "Delrio, _Adag._ 125.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Deutéronome 28:54 ; 2 Rois 12:18 ; Ecclésiastique 9:1 ; Michée 7:5."
+      "text": "Deutéronome 28:54 ; 2 Rois 12:18 ; Ecclésiastique 9:1 ; Michée 7:5.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

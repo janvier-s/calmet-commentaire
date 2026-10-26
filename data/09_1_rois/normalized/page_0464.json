@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 31,
       "latin_quote": "SEPELIERUNT SUB NEMORE.",
       "french_translation": "Ils les ensevelirent dans le bois.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 31,
       "latin_quote": "JEJUNAVERUNT SEPTEM DIEBUS.",
       "french_translation": "Ils jeûnèrent pendant sept jours.",
@@ -41,39 +41,85 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Amos 6:10."
+      "text": "Amos 6:10.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez le Commentaire sur la Genèse 50:3."
+      "text": "Voyez le Commentaire sur la Genèse 50:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Vide Iliad. ψ. Καὶφάτις δ᾽ ἱερὸν ἀνὰ ἄςυ λευκὰ δ᾽ ὀςέα λᾶσαν εἰς χρυσέην φιάλην."
+      "text": "Vide Iliad. ψ. Καὶφάτις δ᾽ ἱερὸν ἀνὰ ἄστυ λευκὰ δ᾽ ὀστέα λοῦσαν εἰς χρυσέην φιάλην.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Persius Satyr. 6…, Sed canam funeris hæres Negliget, iratus quod rem curtaveris ; urnæ Ossa inodora dabit."
+      "text": "Persius Satyr. 6…, Sed canam funeris hæres Negliget, iratus quod rem curtaveris ; urnæ Ossa inodora dabit.",
+      "tags": [
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Satyr",
+          "original": "Satyricon"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "תחת האשל"
+      "text": "תחת האשל",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "1 Paralipomènes 10:12. תחת האלה"
+      "text": "1 Paralipomènes 10:12. תחת האלה",
+      "tags": [
+        "hebrew",
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Ecclésiastique 22:13. Luctus mortui septem dies."
+      "text": "Ecclésiastique 22:13. Luctus mortui septem dies.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "2 Rois 1:12. Planxerunt et fleverunt, et jejunaverunt usque ad vesperam super Saül."
+      "text": "2 Rois 1:12. Planxerunt et fleverunt, et jejunaverunt usque ad vesperam super Saül.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Voyez Jérémie 34:5 ; 2 Paralipomènes 35:25."
+      "text": "Voyez Jérémie 34:5 ; 2 Paralipomènes 35:25.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": "Fin du I. Livre des Rois."

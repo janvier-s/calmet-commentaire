@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 10,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 10,
       "latin_quote": "CUM ENIM MORIETUR HOMO, HÆREDITABIT SERPENTES, ETC.",
       "french_translation": "Lorsque l'homme sera mort, il aura pour partage les serpents, les bêtes, et les vers.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 10,
       "latin_quote": "INITIUM SUPERBIÆ HOMINIS, APOSTATARE A DEO.",
       "french_translation": "Le commencement de l'orgueil de l'homme, est de commettre une",
@@ -55,19 +55,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Μακρὰν ἀρρώστημα σκώπτει ἰατρός."
+      "text": "Μακρὰν ἀρρώστημα σκώπτει ἰατρός.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "_Senec. Thyaste._\n_Quem dies vidit veniens superbum,_\n_Hunc dies vidit fugiens jacentem._\n_Res Deus nostras celeri rotatas_\n_Turbine versat._"
+      "text": "_Senec. Thyaste._\n_Quem dies vidit veniens superbum,_\n_Hunc dies vidit fugiens jacentem._\n_Res Deus nostras celeri rotatas_\n_Turbine versat._",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Plin. lib. x cap. 66. Anguim ex medulla hominis spinæ gigni accepimus à multis. Origen. lib. 4. contra Celf. Εξ ἀνθρώπε νεκρῶ μάλιςα πρῶτον ὄφις, ὡς φᾶσι πολλοὶ, γίγνεθαι ἀπο τῶ νωτιαίω μυελῶ."
+      "text": "Plin. lib. x cap. 66. Anguim ex medulla hominis spinæ gigni accepimus à multis. Origen. lib. 4. contra Celf. Ἐξ ἀνθρώπου νεκρῶ μάλιστα πρῶτον ὄφις, ὡς φᾶσι πολλοὶ, γίγνεθαι ἀπο τῶ νωτιαίου μυελῶ.",
+      "tags": [
+        "greek",
+        "fathers",
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Isaïe 11:14."
+      "text": "Isaïe 11:14.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

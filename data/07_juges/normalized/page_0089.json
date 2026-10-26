@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 4,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 4,
       "latin_quote": "SED IN HAC VICE VICTORIA NON REPUTABITUR TIBI.",
       "french_translation": "Mais pour cette fois la victoire ne vous sera point attribuée.",
@@ -40,19 +40,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Hébreux 11:32."
+      "text": "Hébreux 11:32.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "In Jx διδα διὰ ἀμέλειαν et ἐκ ἐυοδοῖ κυριος τὸν ἄγγελον μετ᾽ ἐμᾶ."
+      "text": "In Jx διδα διὰ ἀμέλειαν et ἐκ εὐοδοῖ κύριος τὸν ἄγγελον μετ᾽ ἐμοῦ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Augustin, Questions sur les Juges, question 26. _Quia nescio diem in qua prosperat Dominus Angelum meum._"
+      "text": "Saint Augustin, Questions sur les Juges, question 26. _Quia nescio diem in qua prosperat Dominus Angelum meum._",
+      "tags": [
+        "fathers",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Ambroise, Des veuves. _Quia non novi diem in qua dirigit Dominus Angelum suum mecum._"
+      "text": "Saint Ambroise, Des veuves. _Quia non novi diem in qua dirigit Dominus Angelum suum mecum._",
+      "tags": [
+        "fathers",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Des veuves",
+          "original": "De viduis"
+        }
+      ]
     }
   ],
   "book_end_marker": null

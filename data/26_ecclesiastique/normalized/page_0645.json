@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 43,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 43,
       "latin_quote": "CRESCENS MIRABILITER IN CONSUMMATIONE.",
       "french_translation": "Sa lumière croît d'une manière admirable, jusqu'à ce qu'elle soit parfaite.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 43,
       "latin_quote": "VAS CASTRORUM IN EXCELSIS, ETC.",
       "french_translation": "Un camp militaire luit au haut du Ciel, et jette une splendeur, etc.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 43,
       "latin_quote": "SPECIES COELI, GLORIA STELLARUM, ETC.",
       "french_translation": "L'éclat des étoiles est la beauté du Ciel ; c'est le Seigneur qui éclaire le monde des",
@@ -56,23 +56,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Κυϰλοειδὴς [UNCERTAIN GREEK] ἀνίσου. Ita Complut alii ; Κυϰλοτερὴς δυναμὸς; vel δαψιλὴς ἐν ἀλλοιώσει. Alii, cœli decorem."
+      "text": "Κυκλοειδὴς [UNCERTAIN GREEK] ἀνίσου. Ita Complut alii ; Κυκλοτερὴς δυνατὸς; vel δαψιλὴς ἐν ἀλλοιώσει. Alii, cœli decorem.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Palac. et Jash[?] Bossuet Badvell. alii."
+      "text": "Palac. et Jash[?] Bossuet Badvell. alii.",
+      "tags": [
+        "commentators",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Σκυθῶν παρεμβόλαι, ὡς ὕψος. Q[?]asi σκυθῶν παρεμβόλαι, à verbo σκύλλω Baduell."
+      "text": "Σκυθῶν παρεμβόλαι, ὡς ὕψος. Q[?]asi σκυθῶν παρεμβόλαι, à verbo σκύλλω Baduell.",
+      "tags": [
+        "greek",
+        "commentators",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Grotius ; Cornelius a Lapide ; Drusius ; Camerarius, Variae lectiones ; et d'autres."
+      "text": "Grotius ; Cornelius a Lapide ; Drusius ; Camerarius, Variae lectiones ; et d'autres.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ald. Basil. apud Drus. et Camer. Σκυθῶν παρεμβόλαι."
+      "text": "Ald. Basil. apud Drus. et Camer. Σκυθῶν παρεμβόλαι.",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 13,
       "latin_quote": "DIVITI DECEPTO MULTI RECUPERATORES.",
       "french_translation": "Si le riche a été trompé, plusieurs l'assistent ; et s'il parle insolemment, on le justifie.",
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 13,
       "latin_quote": "DIVES LOCUTUS EST, ET OMNES TACUERUNT.",
       "french_translation": "Que le riche parle, tous se taisent.",
@@ -54,23 +54,56 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Πλουσίῳ σφαλέντι, πολλοὶ ἀντιλήπτορες. Ἐλάλησεν ἀπόρρητα, καὶ ἐδικαίωσαν αὐτόν."
+      "text": "Πλουσίῳ σφαλέντι, πολλοὶ ἀντιλήπτορες. Ἐλάλησεν ἀπόρρητα, καὶ ἐδικαίωσαν αὐτόν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Grégoire le Grand, Morales sur Job, livre 4, chapitre 29."
+      "text": "Saint Grégoire le Grand, Morales sur Job, livre 4, chapitre 29.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Morales sur Job",
+          "original": "Moralia in Job"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "_Pindar. Pyth. Ode 8._\nΕἰ γάρ τις ἔχει πλοῦτον\nΜιξὺν ψυχᾷ τε καὶ μορφᾷ καθαροῖς ἔργοις."
+      "text": "_Pindar. Pyth. Ode 8._\nΕἰ γάρ τίς ἔχει πλοῦτον\nΜιξὺν ψυχᾷ τε καὶ μορφᾷ καθαροῖς ἔργοις.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Pyth",
+          "original": "Pythionicae"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Horat. Epist. lib. 1. Ep. 1."
+      "text": "Horat. Epist. lib. 1. Ep. 1.",
+      "tags": [
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Idem satyr. 3. lib. 2. Vide Theognid._\nΠᾶς τις πλούσιον ἄνδρα τίει, ἀτίει δὲ πενιχρόν.\nΠάντων δ' ἀνθρώπων αὐτὸς ἐπεῖχε νόος."
+      "text": "_Idem satyr. 3. lib. 2. Vide Theognid._\nΠᾶς τίς πλούσιον ἄνδρα τίει, ἀτίει δὲ πενιχρόν.\nΠάντων δ' ἀνθρώπων αὐτὸς ἐπεῖχε νόος.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

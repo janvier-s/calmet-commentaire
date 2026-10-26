@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 8,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 8,
       "latin_quote": "UT OSTENDERET TIBI QUOD NON IN SOLO PANE VIVAT HOMO, SED IN OMNI VERBO QUOD PROCEDIT DE ORE DEI.",
       "french_translation": "Pour vous faire voir que l'homme ne vit pas seulement de pain, mais de toute parole, qui sort de la bouche de Dieu.",
@@ -33,23 +33,49 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vatable."
+      "text": "Vatable.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "כי לא על הלחם לבדו יחיה האדם כי על כל מוצא פי יהוה יחיה האדם"
+      "text": "כי לא על הלחם לבדו יחיה האדם כי על כל מוצא פי יהוה יחיה האדם",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Matthieu 4 ; Saint Augustin, De la vraie religion, chapitre 38."
+      "text": "Matthieu 4 ; Saint Augustin, De la vraie religion, chapitre 38.",
+      "tags": [
+        "verse",
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la vraie religion",
+          "original": "De vera religione"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Ambroise, sur Luc 4 ;\nSaint Grégoire le Grand, sur le chapitre 9 du livre 1 des Rois ;\nOrigène, Homélie 29 sur Luc ;\nSaint Léon le Grand, Sermon 2 sur le Carême ;\nSaint Bernard, Sermon 3 sur la dédicace de l'église ;\nSaint Jean Chrysostome, sur"
+      "text": "Saint Ambroise, sur Luc 4 ;\nSaint Grégoire le Grand, sur le chapitre 9 du livre 1 des Rois ;\nOrigène, Homélie 29 sur Luc ;\nSaint Léon le Grand, Sermon 2 sur le Carême ;\nSaint Bernard, Sermon 3 sur la dédicace de l'église ;\nSaint Jean Chrysostome, sur",
+      "tags": [
+        "verse",
+        "fathers"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Lib. 2 legis allegor. Διάτρεφει γὰρ ἡμᾶς τὸ ῥευματώτερον αὐτοῦ λόγον, ὃ γὰρ μάννα ἐρμηνεύεται, τί ἐστι, τὸ γενικώτατον πάντων ἐστι, ὃ λόγος δὲ τὸ θεῖον ὑπερέχει τὸ γένους, et ἀνωτάτω δὲ βέβηκεν ἐξ ἑαυτοῦ γένεσις. Voyez et Bar-rad. in hunc locum."
+      "text": "Lib. 2 legis allegor. Διάτρεφε γὰρ ἡμᾶς τὸ ῥευματώτερον αὐτοῦ λόγον, ὃ γὰρ μάννα ἑρμηνεύεται, τί ἐστι, τὸ γενικώτατον πάντων ἐστι, ὃ λόγος δὲ τὸ θεῖον ὑπερέχει τὸ γένους, et ἀνωτάτω δὲ βέβηκεν ἐξ ἑαυτοῦ γένεσις. Voyez et Bar-rad. in hunc locum.",
+      "tags": [
+        "greek",
+        "latin",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

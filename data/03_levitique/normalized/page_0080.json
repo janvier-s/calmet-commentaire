@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -17,19 +17,37 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Lévitique 5:1."
+      "text": "Lévitique 5:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Παριδὼν παρίδῃ τὰς ἐντολάς. Alius : Ἀδικήσῃ ἀδίκημα Injuste egerit injustitiam."
+      "text": "Παριδὼν παρίδῃ τὰς ἐντολάς. Alius : Ἀδικήσῃ ἀδίκημα Injuste egerit injustitiam.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "L'Hébreu כחש בַעֲמִיתוֹ. Mentitus fuerit. Alius : Ἀρνήσηται. Negaverit."
+      "text": "L'Hébreu כחש בַעֲמִיתוֹ. Mentitus fuerit. Alius : Ἀρνήσηται. Negaverit.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "D) Περὶ κοινωνίας Alius : Εἰ δώῃτις χεῖρα In positione manus. Alius : Εν πίστει χεῖρος. In probatione manus."
+      "text": "D) Περὶ κοινωνίας Alius : Εἰ δώῃτις χεῖρα In positione manus. Alius : Ἐν πίστει χεῖρος. In probatione manus.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

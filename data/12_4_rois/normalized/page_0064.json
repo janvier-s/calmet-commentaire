@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 4,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 4,
       "latin_quote": "CREDITOR VENIT UT TOLLAT DUOS FILIOS MEOS AD SERVIENDUM SIBI.",
       "french_translation": "Son créancier vient pour prendre mes deux fils, et les faire esclaves.",
@@ -25,23 +25,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Exode 21:7 ; Lévitique 25:39."
+      "text": "Exode 21:7 ; Lévitique 25:39.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Exode 22:3. Si non habuerit quod pro furto reddat, ipse venundabitur."
+      "text": "Exode 22:3. Si non habuerit quod pro furto reddat, ipse venundabitur.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Isaïe 50:1."
+      "text": "Isaïe 50:1.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Matthieu 18:25."
+      "text": "Matthieu 18:25.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Dionys. Halycarn. l. 2. p. 96. 97. et Ῥωμαίοις νομοθέτης ἔδωκεν, ἐπὶ ὑιεῖ, ἅπασαν ἐξεσίαν πατρὶ ἐπὶ υἱῷ, καὶ καθ᾽ ὅλ. τὸν τοῦ βίου χρόνον, ἐάντε μασιγῶν, ἐάντε δέσμιον ἐν ἀγροίκοις ἔργοις κατέχειν, ἐάντε ἀποκτιννύναι προαιρῆται… Α´λλα καὶ πωλῖν ἐφῆκε τὸν ψἱὸν τῷ πατρὶ etc. ἤγ τετο συνχωρήσας τῷ πατρὶ μεχρὶ τῆς τρίτης πράσεως ἀφ᾽ οὗ χρηματισάμενοι. μείζονα δὴ ἐξεσίαν πατρὶ κατὰ παιδὸς ἡ νομοθέτη κατεσήσατο."
+      "text": "Dionys. Halycarn. l. 2. p. 96. 97. et Ῥωμαίοις νομοθέτης ἔδωκεν, ἐπὶ ὑιεῖ, ἅπασαν ἐξουσίαν πατρὶ ἐπὶ υἱῷ, καὶ καθ᾽ ὅλ. τὸν τοῦ βίου χρόνον, ἐάντε μαστιγῶν, ἐάντε δέσμιον ἐν ἀγροίκοις ἔργοις κατέχειν, ἐάντε ἀποκτιννύναι προαιρῆται… Ἃ´λλα καὶ πωλῖν ἐφῆκε τὸν υἱὸν τῷ πατρὶ etc. ἤγ τετο συνχωρήσας τῷ πατρὶ μερὶ τῆς τρίτης πράσεως ἀφ᾽ οὗ χρηματισάμενοι. μείζονα δὴ ἐξουσίαν πατρὶ κατὰ παιδὸς ἡ νομοθέτῃ κατεσήσατο.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

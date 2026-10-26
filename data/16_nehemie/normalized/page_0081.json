@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 10,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 10,
       "latin_quote": "DIMITTEMUS ANNUM SEPTIMUM, ET EXACTIONEM UNIVERSÆ MANUS.",
       "french_translation": "Nous laisserons la terre sans la cultiver la septième année, et nous n'y exigerons aucune dette.",
@@ -47,23 +47,42 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez plus haut 9:38."
+      "text": "Voyez plus haut 9:38.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "כל יודע מבין על אחיהם qui facit intelligere."
+      "text": "כל יודע מבין על אחיהם qui facit intelligere.",
+      "tags": [
+        "hebrew",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez plus haut 8:9 ; 1 Paralipomènes 19:10 ; 2 Paralipomènes 26:5. Ubi מבין significat. qui docet,"
+      "text": "Voyez plus haut 8:9 ; 1 Paralipomènes 19:10 ; 2 Paralipomènes 26:5. Ubi מבין significat. qui docet,",
+      "tags": [
+        "hebrew",
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Πᾶς ὁ εἰδὼς καὶ συνιὼν ἐπιχόμ ἐπὶ τὰς ἀδελφὰς αὐτῶν. Vide Est."
+      "text": "Πᾶς ὁ εἰδὼς καὶ συνιὼν ἐπιχόμ ἐπὶ τὰς ἀδελφὰς αὐτῶν. Voyez Estius.",
+      "tags": [
+        "greek",
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Voyez Exode 23:10-11 ;\nLévitique 25:2 et suivants ;\nDeutéronome 15:1."
+      "text": "Voyez Exode 23:10-11 ;\nLévitique 25:2 et suivants ;\nDeutéronome 15:1.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

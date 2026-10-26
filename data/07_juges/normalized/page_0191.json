@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "37",
+      "verse_ref": 37,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "37",
+      "verse_ref": 37,
       "chapter": 9,
       "latin_quote": "PER VIAM QUÆ RESPICIT QUERCUM.",
       "french_translation": "Par le chemin qui regarde le chêne.",
@@ -59,7 +59,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "41",
+      "verse_ref": 41,
       "chapter": 9,
       "latin_quote": "ABIMELECH SEDIT IN RUMA.",
       "french_translation": "Abimélech s'arrêta à Ruma ;",
@@ -69,31 +69,63 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ézéchiel 38:12. Vide et Joseph. l. 3. de Bello c. 2. παρ᾽ ᾧ κὶ τῆς γῆς ἐκείνης ὁ ὀμφαλὸς ἐν ἔθει τοῖς χέρεσι ἐκάλειτο."
+      "text": "Ézéchiel 38:12. Vide et Joseph. l. 3. de Bello c. 2. παρ᾽ ᾧ καὶ τῆς γῆς ἐκείνης ὁ ὀμφαλὸς ἐν ἔθει τοῖς χέρεσι ἐκάλειτο.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Pline, Histoire naturelle, livre 3, chapitre 12. In agro Reatino Cutiliæ lacum… Italiæ umbilicum esse Varron tradit."
+      "text": "Pline, Histoire naturelle, livre 3, chapitre 12. In agro Reatino Cutiliæ lacum… Italiæ umbilicum esse Varron tradit.",
+      "tags": [
+        "classical",
+        "title",
+        "latin",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Cicero in Verrem. 6."
+      "text": "Cicero in Verrem. 6.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Tite-Live, dans Bonfrère, sur ce passage."
+      "text": "Tite-Live, dans Bonfrère, sur ce passage.",
+      "tags": [
+        "classical",
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "מדרך אלון מעוננים"
+      "text": "מדרך אלון מעוננים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ἀπὸ ὁδοῦ ἀποβλεπόντων."
+      "text": "Ἀπὸ ὁδοῦ ἀποβλεπόντων.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Juges 9:31."
+      "text": "Juges 9:31.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 7,
       "latin_quote": "NOLI DISCEDE RE A MULIERE SENSATA, ET BONA.",
       "french_translation": "Ne vous séparez point d'une femme sensée et vertueuse.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 7,
       "latin_quote": "NON LÆDAS SERVUM IN VERITATE OPERANTEM.",
       "french_translation": "Ne traitez point mal le serviteur qui travaille fidèlement, ni le mercenaire, qui se donne tout pour vous.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 7,
       "latin_quote": "SERVUS SENSATUS SIT TIBI DILECTUS QUASI ANIMA TUA : ^{(d)} NON DEFRAUDES ILLUM LIBERTATE.",
       "french_translation": null,
@@ -48,19 +48,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ecclésiastique 26:3. _Pars bona mulier bona ; in parte timentium Deum dabitur viro pro factis bonis._"
+      "text": "Ecclésiastique 26:3. _Pars bona mulier bona ; in parte timentium Deum dabitur viro pro factis bonis._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez notre Dissertation sur le Divorce."
+      "text": "Voyez notre Dissertation sur le Divorce.",
+      "tags": []
     },
     {
       "marker": "(c)",
-      "text": "à la tête des Nombres. Éphésiens 6:9."
+      "text": "à la tête des Nombres. Éphésiens 6:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Græc. Ο'ικέτω σννετῶ ἀγαπάτω σε ὡς ψυχή. Que votre âme aime un serviteur prudent."
+      "text": "Græc. Οἰκέτου σννετῶ ἀγαπάτω σε ὡς ψυχή. Que votre âme aime un serviteur prudent.",
+      "tags": [
+        "greek",
+        "versions",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

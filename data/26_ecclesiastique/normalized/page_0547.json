@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 35,
       "latin_quote": "QUI ADORAT DEUM IN OBLECTATIONE.",
       "french_translation": "Celui qui l'adore avec joie sera bien reçu de lui.",
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 35,
       "latin_quote": "DONEC PROPINQUET NON CONSOLABITUR.",
       "french_translation": "Elle ne se consolera point, qu'elle n'ait été jusqu'à Dieu.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 35,
       "latin_quote": "DOMINUS NON ELONGABIT, SED JUDICABIT JUSTOS, ETC.",
       "french_translation": "Le Seigneur ne différera pas long-temps, mais il prendra la défense du pauvre.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 35,
       "latin_quote": "GENTIBUS REDDET VINDICTAM.",
       "french_translation": "Il exercera sa vengeance contre les nations, jusqu'à ce qu'il ait détruit toute l'assemblée des",
@@ -70,15 +70,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Θεραπεύων ἐν εὐδοκίᾳ, δεχθήσεται."
+      "text": "Θεραπεύων ἐν εὐδοκίᾳ, δεχθήσεται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καὶ ἕως συνελθῇ ἐις παρακλησῆ."
+      "text": "Καὶ ἕως συνελθῇ εἰς παρακλησῆ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Καὶ ὁ Κύριος ἐ μὴ βραδύνῃ, ἐδὲ μὴ μακροθυμήσῃ ἐπ᾽ ἀυτοῖς ὁ κραταιὸς, ἕως ἂν συνθλάσῃ νῶτον ἀνελεημόνων."
+      "text": "Καὶ ὁ Κύριος ἐ μὴ βραδύνῃ, ἐδὲ μὴ μακροθυμήσῃ ἐπ᾽ αὐτοῖς ὁ κραταιὸς, ἕως ἂν συνθλάσῃ νῶτον ἀνελεημόνων.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

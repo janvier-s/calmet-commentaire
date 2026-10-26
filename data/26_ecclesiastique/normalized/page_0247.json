@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 11,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 11,
       "latin_quote": "NE IN MULTIS SINT ACTUS TUI.",
       "french_translation": "Ne vous engagez pas dans une multiplicité d'actions ; car si vous êtes riche, vous ne serez point exempt de fautes.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 11,
       "latin_quote": "SI ENIM SECUTUS FUERIS, NON APPREHENDES.",
       "french_translation": "Si vous suivez toutes vos affaires, vous ne pouvez y suffire ; et lorsque vous voudrez les fuir, elles vous retiendront malgré vous.",
@@ -41,15 +41,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Proverbes 28:20."
+      "text": "Proverbes 28:20.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Mὴ πλήθυνε ἐν πράγμασι σου. κ'αὶ γὰρ πληθύνας, ἐν πληθύνη."
+      "text": "Mὴ πλήθυνε ἐν πράγμασι σου. κ'αὶ γὰρ πληθύνας, ἐν πληθύνῃ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ecclésiastique 38:25."
+      "text": "Ecclésiastique 38:25.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

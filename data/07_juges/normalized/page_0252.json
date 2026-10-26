@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 14,
       "latin_quote": "DESCENDIT ITAQUE PATER EJUS AD MULIEREM, ET FECIT FILIO SUO SAMSON CONVIVIUM.",
       "french_translation": "Son père vint donc chez cette femme, et il fit un festin à son fils Samson.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 14,
       "latin_quote": "DEDERUNT EI SODALES TRIGINTA, QUI ESSENT CUM EO.",
       "french_translation": "Ils lui donnèrent trente jeunes hommes pour l'accompagner.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 14,
       "latin_quote": "PROPONAM VOBIS PROBLEMA.",
       "french_translation": "Je vais vous proposer une énigme.",
@@ -48,27 +48,53 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "ויעש שם שמשון משתה Cùm viderem."
+      "text": "ויעש שם שמשון משתה Cùm viderem.",
+      "tags": [
+        "hebrew",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καὶ ἐποίησεν ἐκεῖ Σαμψὼν πότον."
+      "text": "Καὶ ἐποίησεν ἐκεῖ Σαμψὼν πότον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Joseph. lib. 5. c. 10. Menoah. Jun : Pisc. Grot. Cejet. Ita et Interpres Græcus ; τῷ τὲ φό-βῳ διὰ τὴν ἀρετὴν ἀνατρέψασθαι ἀυτῷ ἐταίρες τριάκοντα. Il a lû ביראתם Cùm timerem, au lieu de :"
+      "text": "Joseph. lib. 5. c. 10. Menoah. Jun : Pisc. Grot. Cejet. Ita et Interpres Græcus ; τῷ τὲ φό-βῳ διὰ τὴν ἀρετὴν ἀνατρέψασθαι αὐτῷ ἐταίρες τριάκοντα. Il a lû ביראתם Cùm timerem, au lieu de :",
+      "tags": [
+        "hebrew",
+        "greek",
+        "rabbis",
+        "versions",
+        "commentators",
+        "latin",
+        "explanation",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Matthieu 9:15 ; 2:19 ; Jean 3:29."
+      "text": "Voyez Matthieu 9:15 ; 2:19 ; Jean 3:29.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Arias Montanus."
+      "text": "Arias Montanus.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "אחודה נא לכם חידה"
+      "text": "אחודה נא לכם חידה",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

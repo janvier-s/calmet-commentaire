@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 3,
       "latin_quote": "QUI UTRAQUE MANU PRO DEXTERA UTEBATUR.",
       "french_translation": "Qui se servait de la main gauche comme de la droite.",
@@ -25,63 +25,135 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Genes xLvi. 21."
+      "text": "Genes xLvi. 21.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "Voyez Bonfrère, sur ce passage."
+      "text": "Voyez Bonfrère, sur ce passage.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "1 Rois 9:21."
+      "text": "1 Rois 9:21.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Juges 19:14, 16."
+      "text": "Juges 19:14, 16.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ainsi l'entendent Jonathan ; le Syriaque ; l'Arabe ; Munster ; Arias Montanus ; Pagnin ; Tirin ; Vatable ; Piscator ; Drusius ; les rabbins ; et beaucoup d'autres. Josèphe, Antiquités judaïques ; Le Clerc, sur ce passage."
+      "text": "Ainsi l'entendent Jonathan ; le Syriaque ; l'Arabe ; Munster ; Arias Montanus ; Pagnin ; Tirin ; Vatable ; Piscator ; Drusius ; les rabbins ; et beaucoup d'autres. Josèphe, Antiquités judaïques ; Le Clerc, sur ce passage.",
+      "tags": [
+        "rabbis",
+        "versions",
+        "classical",
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "איש יטר יד ימינו"
+      "text": "איש יטר יד ימינו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Malvenda."
+      "text": "Malvenda.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Drusius."
+      "text": "Drusius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "ἄνδρα ἀμφοτεροδέξιον."
+      "text": "ἄνδρα ἀμφοτεροδέξιον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(k)",
-      "text": "Bonfrère ; Cornelius a Lapide."
+      "text": "Bonfrère ; Cornelius a Lapide.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(l)",
-      "text": "Homère, Iliade, H. Αὐταί ἐγὼν οἶδ' ἐπὶ δεξιὰ, οἶδ' ἐπ' ἀριστερὰ νωμῆσαι βῶν."
+      "text": "Homère, Iliade, H. Αὐταί ἐγὼν οἶδ' ἐπὶ δεξιὰ, οἶδ' ἐπ' ἀριστερὰ νωμῆσαι βῶν.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(m)",
-      "text": "Homer. Iliad. Φ. … ὁ δ' ὁμόρθη Νεστορος ἀμφὶς Αςεροπαῖος, ἐπεὶ περιδέξιος ἦε."
+      "text": "Homer. Iliad. Φ. … ὁ δ' ὁμόρθη Νέστορος ἀμφὶς Αςεροπαῖος, ἐπεὶ περιδέξιος ἦε.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(n)",
-      "text": "Aristote, Politique, livre 2, chapitre 12, sur Platon : Καὶ διὰ τὸ τὰς πολεμικὰς ἄσκησιν, ὅπως ἀμφιδέξιοι γίνωνται κατὰ διὰ μελέτην."
+      "text": "Aristote, Politique, livre 2, chapitre 12, sur Platon : Καὶ διὰ τὸ τὰς πολεμικὰς ἄσκησιν, ὅπως ἀμφιδέξιοι γίνωνται κατὰ διὰ μελέτην.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Politique",
+          "original": "Politica"
+        }
+      ]
     },
     {
       "marker": "(o)",
-      "text": "Aristote, Éthique à Nicomaque, livre 5, chapitre 7. φύσει μὲν ἡ δεξιὰ κρείττων, οὐδὲν δ' κωλύει πάντας ἀμφιδεξίους γενέσθαι."
+      "text": "Aristote, Éthique à Nicomaque, livre 5, chapitre 7. φύσει μὲν ἡ δεξιὰ κρείττων, οὐδὲν δ' κωλύει πάντας ἀμφιδεξίους γενέσθαι.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Éthique à Nicomaque",
+          "original": "Ethica Nicomachea"
+        }
+      ]
     },
     {
       "marker": "(p)",
-      "text": "γυνὴ ἀμφιδέξιος οὐ γίνεται. Hipocr. Aphor. 71"
+      "text": "γυνὴ ἀμφιδέξιος οὐ γίνεται. Hipocr. Aphor. 71",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 44,
       "latin_quote": null,
       "french_translation": "versé sur lui ses bénédictions.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 44,
       "latin_quote": "CONSERVAVIT ILLI HOMINES MISERICORDIÆ.",
       "french_translation": "Il lui a conservé des hommes pleins de bonté.",
@@ -40,11 +40,18 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Επέγνω αυτὸν ἐν ἐυλογίαις αυτῦ."
+      "text": "Ἐπέγνω αὐτὸν ἐν εὐλογίαις αυτῦ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καὶ ἐξήγαγεν ἐξ αυτῦ ἄνδρα ἐλέυς, ἐυρὸντα χάριν ἐν ὀφθαλμοῖς πάσης σαρκός, (Chap. XLV. 1.) Η’γαπημένον ὑπὸ Θεῦ, καὶ ἀνθρώπων Μωϋσῆν."
+      "text": "Καὶ ἐξήγαγεν ἐξ αυτῦ ἄνδρα ἐλέυς, ἐυρὸντα χάριν ἐν ὀφθαλμοῖς πάσης σαρκός, (Chap. XLV. 1.) Ἠγαπημένον ὑπὸ Θεοῦ, καὶ ἀνθρώπων Μωϋσῆν.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

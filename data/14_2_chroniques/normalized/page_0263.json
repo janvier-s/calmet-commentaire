@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 36,
       "latin_quote": "QUI ADJURAVERAT EUM PER DEUM.",
       "french_translation": "À qui il avait juré fidélité, en interposant le nom de Dieu.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 36,
       "latin_quote": "DE NOCTE CONSURGENS, ET QUOTIDIE COMMONENS.",
       "french_translation": "Il ne cessait de leur donner, soit de nuit, soit de jour, des avertissements.",
@@ -47,19 +47,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "’Εποίησεν Σαδακίαν ἀδελφὸν τῷ πατρὸς ἀυτῶ."
+      "text": "’Ἐποίησεν Σαδακίαν ἀδελφὸν τῷ πατρὸς ἀυτῶ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Grotius, Du droit de la guerre et de la paix, livre 2, chapitre 13, articles 15, 16."
+      "text": "Voyez Grotius, Du droit de la guerre et de la paix, livre 2, chapitre 13, articles 15, 16.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Du droit de la guerre et de la paix",
+          "original": "De iure belli ac pacis"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "וישלח והיה עליהם ביד מלאכיו השכם ושלוח"
+      "text": "וישלח והיה עליהם ביד מלאכיו השכם ושלוח",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Jérémie 11:7 ; 25:3-4 ; 35:14 ; Matthieu 21:1."
+      "text": "Voyez Jérémie 11:7 ; 25:3-4 ; 35:14 ; Matthieu 21:1.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

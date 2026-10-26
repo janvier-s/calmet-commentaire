@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 3,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 3,
       "latin_quote": "VIDIT IGITUR MULIER QUOD BONUM ESSET LIGNUM AD VESCENDUM, ET PULCHRUM OCULIS, ASPECTUQUE DELECTABILE.",
       "french_translation": "Elle vit que le fruit de cet arbre était bon à manger, etc.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 3,
       "latin_quote": "ET TULIT DE FRUCTU ILLIUS, ET COMEDIT, DEDITQUE VIRO SUO, QUI COMEDIT.",
       "french_translation": "Elle prit du fruit de l'arbre, elle en mangea ; et en donna à manger à son mari, qui en mangea comme elle.",
@@ -48,23 +48,55 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Genèse 2:9 ; 24:50 ; 31:24."
+      "text": "Genèse 2:9 ; 24:50 ; 31:24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Homère, Odyssée, 1 et Σ ; et Hésiode, Théogonie, vers 873. Ὡς δ' οἱ φράσσαιτο θεὰ ἀγαθόντε, κακόντε."
+      "text": "Homère, Odyssée, 1 et Σ ; et Hésiode, Théogonie, vers 873. Ὡς δ' οἱ φράσσαιτο θεὰ ἀγαγόντε, κακόντε.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Théogonie",
+          "original": "Theogonia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "עמה DEDIT, REDDIDIT."
+      "text": "עמה DEDIT, REDDIDIT.",
+      "tags": [
+        "hebrew",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Fagius ;\nPiscator ;\nOleaster."
+      "text": "Fagius ;\nPiscator ;\nOleaster.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Saint Ambroise, Du paradis, chapitre 6."
+      "text": "Saint Ambroise, Du paradis, chapitre 6.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Du paradis",
+          "original": "De paradiso"
+        }
+      ]
     }
   ],
   "book_end_marker": null

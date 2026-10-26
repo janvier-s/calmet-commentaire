@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 5,
       "latin_quote": "ACCARON",
       "french_translation": null,
@@ -47,19 +47,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "_Odyss. A._ Η´μενοι ες ῥινοῖσι βοῶν ἐς ἱέρευσαν αὐτοί."
+      "text": "_Odyss. A._ Η´μένοι ες ῥινοῖσι βοῶν ἐς ἱέρευσαν αὐτοί.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "_Odyss. Γ._.. … Καὶ ἴδρησεν παρὰ δαγτὶ Κέεσσι ἐπὶ μαλακοῖσιν, ἐπὶ ψαμαθοῖσιν ἀπείροις."
+      "text": "_Odyss. Γ._.. … Καὶ ἴδρησεν παρὰ δαιτὶ Νέεσσι ἐπὶ μαλακοῖσιν, ἐπὶ ψαμαθοῖσιν ἀπείροις.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Odyssée 1."
+      "text": "Odyssée 1.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Α´ζωτος δ᾽ εἰς θάλασσαν ἄγει, καὶ λίμνα συνάπτει. ουτ Καλὸν, δαιδάλεον.. … _Édit. Rom. E´λεγαν_ Theodor. Ε´λεγε γράφεται."
+      "text": "Ἃ´ζωτος δ᾽ εἰς θάλασσαν ἄγει, καὶ λίμνα συνάπτει. ουτ Καλὸν, δαιδάλεον.. … _Édit. Rom. E´λέγαν_ Theodor. Ε´λέγε γράφεται.",
+      "tags": [
+        "greek",
+        "fathers"
+      ]
     }
   ],
   "book_end_marker": null

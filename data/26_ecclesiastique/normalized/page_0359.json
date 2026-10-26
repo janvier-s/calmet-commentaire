@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 20,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 20,
       "latin_quote": "QUI MULTIS UTITUR VERBIS, LÆDET ANIMAM SUAM.",
       "french_translation": "Celui qui se répand en paroles, blessera son âme.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 20,
       "latin_quote": "EST PROCESSIO IN MALIS VIRO INDISCIPLINATO.",
       "french_translation": "L'homme sans conscience réussit dans le mal ; mais tout ce qu'il invente, tournera à sa ruine.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 20,
       "latin_quote": "EST DATUM, QUOD NON EST UTILE.",
       "french_translation": "Il y a un don, qui est inutile, et il y a un don, qui est doublement récompensé.",
@@ -56,23 +56,45 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Prover. X. 19."
+      "text": "Prover. X. 19.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Cicéron, Des devoirs, livre 1."
+      "text": "Cicéron, Des devoirs, livre 1.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des devoirs",
+          "original": "De officiis"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Psaumes 36:1, 7-8."
+      "text": "Psaumes 36:1, 7-8.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Εστιν εὐδοκία ἐν κακοῖς ἀνδρὶ ἁμαρτωλῷ,"
+      "text": "Εστιν εὐδοκία ἐν κακοῖς ἀνδρὶ ἁμαρτωλῷ,",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Εστιν ορμημα εις απωλειαν. _Édit. Rom. Εστιν ευοδια εν κακοis ανδρι, et εστιν ορμημα εις απωλειαν._"
+      "text": "Εστιν ὅρμημα εἰς ἀπώλειαν. _Édit. Rom. Εστιν εὐοδία ἐν κακοis ἀνδρὶ, et εστιν ὅρμημα εἰς ἀπώλειαν._",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

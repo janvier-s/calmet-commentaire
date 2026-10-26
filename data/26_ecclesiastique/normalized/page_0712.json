@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 49,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 49,
       "latin_quote": "ELECTAM SANCTITATIS CIVITATEM.",
       "french_translation": "Les Caldéens ont brûlé la Ville choisie, la Ville Sainte.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 49,
       "latin_quote": "DESERTAS FECERUNT VIAS IPSIUS, IN MANU JEREMIÆ.",
       "french_translation": "Ils ont rendu ses chemins déserts, suivant la prédiction de Jérémie, qui dit dans ses Lamentations : ^{(a)}",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 49,
       "latin_quote": "MALE TRACTAVERUNT ILLUM, QUI A VENTRE MATRIS CONSECRATUS EST PROPHETA.",
       "french_translation": "Ils ont maltraité celui qui avait été déclaré Prophète dès le ventre de sa mère, et destiné pour renverser, etc.",
@@ -54,7 +54,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 49,
       "latin_quote": "EZECHIEL QUI VIDIT CONSPECTUM GLORIÆ.",
       "french_translation": "Ézéchiel vit la gloire du Seigneur, assis dans un char porté par les Chérubins.",
@@ -64,15 +64,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Jérémie, Lamentations 1:4."
+      "text": "Jérémie, Lamentations 1:4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "H'ρημωσεν ο'δου`ς αυ'τη~ς ω'ς ε'ν πενθει."
+      "text": "H'ρημωσεν ὅδου`ς αυ'τη~ς ω'ς ε'ν πένθει.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Jérémie 1:5, 10."
+      "text": "Jérémie 1:5, 10.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

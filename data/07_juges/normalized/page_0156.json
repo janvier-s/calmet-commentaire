@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 8,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 8,
       "latin_quote": "CONTERAM CARNES VESTRAS CUM SPINIS TRIBULISQUE DESERTI.",
       "french_translation": "Je vous ferai briser le corps avec les épines et les ronces du désert.",
@@ -40,27 +40,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "1 Rois 25:10-11."
+      "text": "2 Rois 25:10-11.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Vatable ;\nMénochius ;\nCornelius a Lapide ;\nJunius."
+      "text": "Vatable ;\nMénochius ;\nCornelius a Lapide ;\nJunius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Drusius."
+      "text": "Drusius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "דשתי את בשרכם את קוצי המדבר ואת הברקנים"
+      "text": "דשתי את בשרכם את קוצי המדבר ואת הברקנים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "2 Rois 12 :ult. et 1 Paralipomènes 20:3."
+      "text": "2 Rois 12 :ult. et 1 Paralipomènes 20:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Dissertation sur les supplices des Hébreux."
+      "text": "Dissertation sur les supplices des Hébreux.",
+      "tags": [
+        "commentators",
+        "title"
+      ]
     }
   ],
   "book_end_marker": null

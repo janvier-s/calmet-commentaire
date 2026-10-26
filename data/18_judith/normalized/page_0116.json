@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 10,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 10,
       "latin_quote": "IMPOSUIT ABRÆ SUÆ ASCOPERAM VINI.",
       "french_translation": "Elle donna à sa servante un vaisseau où il y avait du vin.",
@@ -40,27 +40,61 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Nombres 20:10-12."
+      "text": "Nombres 20:10-12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Juges 16:5 et suivants."
+      "text": "Juges 16:5 et suivants.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Luc 10:16-17."
+      "text": "Luc 10:16-17.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Matthieu 7:21."
+      "text": "Matthieu 7:21.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ;\nSaint Clément de Rome, Première lettre aux Corinthiens ;\nOrigène, Homélie 19 sur Jérémie ;\nTertullien, livre De la monogamie, chapitre 17 ;\nSaint Ambroise, Des devoirs, livre 3, chapitre 13 ;\nSaint Jérôme, Lettre à Furia ;\nSaint Fulgence, Lettre 2, à Galla, etc."
+      "text": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ;\nSaint Clément de Rome, Première lettre aux Corinthiens ;\nOrigène, Homélie 19 sur Jérémie ;\nTertullien, livre De la monogamie, chapitre 17 ;\nSaint Ambroise, Des devoirs, livre 3, chapitre 13 ;\nSaint Jérôme, Lettre à Furia ;\nSaint Fulgence, Lettre 2, à Galla, etc.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Stromates",
+          "original": "Stromata"
+        },
+        {
+          "fr": "De la monogamie",
+          "original": "De monogamia"
+        },
+        {
+          "fr": "Des devoirs",
+          "original": "De officiis"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Κεμος, Uter, un outre, αϰος, un sac, une poche."
+      "text": "Κεμος, Uter, un outre, ἄκος, un sac, une poche.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

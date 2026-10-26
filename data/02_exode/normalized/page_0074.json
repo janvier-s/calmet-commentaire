@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": "leur insultant.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 1,
       "latin_quote": "OPERIBUS DURIS LUTI ET LATERIS.",
       "french_translation": "Par des ouvrages pénibles, à faire du mortier et de la brique.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 1,
       "latin_quote": "OMNIQUE FAMULATU QUO IN TERRÆ OPERIBUS PREMEBANTUR.",
       "french_translation": "Par tous les ouvrages dont ils étaient accablés en travaillant à la terre.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 1,
       "latin_quote": "DIXIT REX ÆGYPTI OBSTETRICIBUS HEBRÆORUM.",
       "french_translation": "Le Roi dit aux Sages-femmes des Hébreux, etc.",
@@ -56,31 +56,56 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "וימררו. בעבדה קשה"
+      "text": "וימררו. בעבדה קשה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Κατεδυνάςευον… Βίᾳ. Aqu. Ἐν ἀποψίμᾳτι. Sym. Th. Ἐμπαιγμῷ, illusione, vel derisione."
+      "text": "Κατεδυνάστευον… Βίᾳ. Aqu. Ἐν ἀποψίμᾳτι. Sym. Th. Ἐμπαιγμῷ, illusione, vel derisione.",
+      "tags": [
+        "greek",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Hérodote, livre 2, chapitre 36 ; Strabon, livre 17."
+      "text": "Hérodote, livre 2, chapitre 36 ; Strabon, livre 17.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "בכל עבדתם אשר עבדו בהם בפרך"
+      "text": "בכל עבדתם אשר עבדו בהם בפרך",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Diodore de Sicile, livre 1, chapitre 3."
+      "text": "Diodore de Sicile, livre 1, chapitre 3.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Hérodote, livre 2, chapitre 14."
+      "text": "Hérodote, livre 2, chapitre 14.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Antiquités judaïques, livre 2, chapitre 5. Le Chartreux ; Tostat ; Nicolas de Lyre ; et d'autres."
+      "text": "Antiquités judaïques, livre 2, chapitre 5. Le Chartreux ; Tostat ; Nicolas de Lyre ; et d'autres.",
+      "tags": [
+        "rabbis",
+        "classical",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

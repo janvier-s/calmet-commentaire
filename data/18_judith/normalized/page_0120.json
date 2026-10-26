@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 10,
       "latin_quote": null,
       "french_translation": null,
@@ -46,15 +46,42 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Xénophon, Cyropédie, livre 8 ;\nQuinte-Curce, livre 3 ;\nProcope de Gaza, Guerre des Perses, livre 2 ;\nAmmien Marcellin, livre 23."
+      "text": "Voyez Xénophon, Cyropédie, livre 8 ;\nQuinte-Curce, livre 3 ;\nProcope de Gaza, Guerre des Perses, livre 2 ;\nAmmien Marcellin, livre 23.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Guerre des Perses",
+          "original": "De bello Persico"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Hérodien, livre 1, Ubi de Lucio Vero et Comodo, et livre 2, Ubi de Pertinace, et livre 7, Ubi de Alexandri nece ; Tiraquel, sur le livre 1, Genialium dierum."
+      "text": "Hérodien, livre 1, Ubi de Lucio Vero et Comodo, et livre 2, Ubi de Pertinace, et livre 7, Ubi de Alexandri nece ; Tiraquel, sur le livre 1, Genialium dierum.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Genialium dierum",
+          "original": "Genialium dierum libri sex"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Le Grec ℣. 3. et 4. suppose qu'il faisait encore nuit ; Ουκ αναγελωψιδος τῷ Κοσμῳ ην νυνι εωργ."
+      "text": "Le Grec ℣. 3. et 4. suppose qu'il faisait encore nuit ; Οὐκ αναγελωψιδος τῷ Κόσμῳ ην νυνὶ εωργ.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

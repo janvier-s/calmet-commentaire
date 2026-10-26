@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "41",
+      "verse_ref": 41,
       "chapter": 15,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "41",
+      "verse_ref": 41,
       "chapter": 15,
       "latin_quote": "MACEDA.",
       "french_translation": null,
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "42",
+      "verse_ref": 42,
       "chapter": 15,
       "latin_quote": "LABANA.",
       "french_translation": null,
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "42",
+      "verse_ref": 42,
       "chapter": 15,
       "latin_quote": "ETHER, ou ATHAR.",
       "french_translation": null,
@@ -68,7 +68,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "42",
+      "verse_ref": 42,
       "chapter": 15,
       "latin_quote": "ASAN.",
       "french_translation": null,
@@ -76,7 +76,7 @@
     },
     {
       "commentary_id": 6,
-      "verse_ref": "43",
+      "verse_ref": 43,
       "chapter": 15,
       "latin_quote": "JEPHTA, ESNA, NESIB.",
       "french_translation": null,
@@ -84,7 +84,7 @@
     },
     {
       "commentary_id": 7,
-      "verse_ref": "44",
+      "verse_ref": 44,
       "chapter": 15,
       "latin_quote": "CEILA, ACSIB, MAREZA.",
       "french_translation": null,
@@ -92,7 +92,7 @@
     },
     {
       "commentary_id": 8,
-      "verse_ref": "44",
+      "verse_ref": 44,
       "chapter": 15,
       "latin_quote": "CEILA.",
       "french_translation": null,
@@ -102,19 +102,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Josué 19:27."
+      "text": "Josué 19:27.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Josué 19:7."
+      "text": "Josué 19:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez nouvelle édition ; les Hexaples."
+      "text": "Voyez nouvelle édition ; les Hexaples.",
+      "tags": [
+        "versions"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Vide 3. Reg. XXX.315."
+      "text": "Voyez 3 Rois 30:315.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     }
   ],
   "book_end_marker": null

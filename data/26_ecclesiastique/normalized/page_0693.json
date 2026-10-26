@@ -28,7 +28,7 @@
   ],
   "commentary": [
     {
-      "verse_ref": 15,
+      "verse_ref": 16,
       "chapter": 47,
       "latin_quote": "IMPLETUS ES QUASI FLUMEN SAPIENTIA.",
       "french_translation": "Vous avez été rempli de sagesse, comme un fleuve.",
@@ -36,7 +36,7 @@
       "commentary_id": 1
     },
     {
-      "verse_ref": 15,
+      "verse_ref": 16,
       "chapter": 47,
       "latin_quote": "TERRAM RETEXIT ANIMA TUA.",
       "french_translation": "Toute la terre a été découverte à votre âme.",
@@ -55,15 +55,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Petron. Arbit. Satyr."
+      "text": "Petron. Arbit. Satyr.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Satyr",
+          "original": "Satyricon"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "3 Rois 4:29."
+      "text": "3 Rois 4:29.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Γῆν ἐκάλυψεν ἡ ψυχή σου ἐν πᾶσιν."
+      "text": "Γῆν ἐκάλυψεν ἡ ψυχή σου ἐν πᾶσιν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": "Efff."

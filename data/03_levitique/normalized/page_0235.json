@@ -50,7 +50,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 19,
       "latin_quote": "NOLITE CONVERTI AD IDOLA.",
       "french_translation": "Ne vous tournez point vers les Idoles ;",
@@ -58,7 +58,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 19,
       "latin_quote": "SI IMMOLAVERITIS HOSTIAM PACIFICORUM DOMINO, UT SIT PLACABILIS.",
       "french_translation": "Si vous immolez une hostie pacifique au Seigneur, afin qu'il vous soit favorable.",
@@ -66,7 +66,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 19,
       "latin_quote": "PROFANUS ERIT, ET IMPIETATIS REUS.",
       "french_translation": "Il sera profane, et coupable d'impiété.",
@@ -74,7 +74,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 19,
       "latin_quote": "NON TONDEBIS USQUE AD SOLUM SUPERFICIEM TERRÆ.",
       "french_translation": "Vous ne couperez point jusqu'au pied ce qui sera cru sur la terre.",
@@ -84,23 +84,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "אל האלילים."
+      "text": "אל האלילים.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "כי תזבחו זבח שלמים ליהוה לרצנכם תזבחהו."
+      "text": "כי תזבחו זבח שלמים ליהוה לרצנכם תזבחהו.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "גאל הוא לא ירצה."
+      "text": "גאל הוא לא ירצה.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Αποβλητον, ιερον ὦ διηχθρισμενον."
+      "text": "Ἀπόβλητον, ἱερὸν ὦ διηχθρισμενον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Aquila. Κατάβρωμα."
+      "text": "Aquila. Κατάβρωμα.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

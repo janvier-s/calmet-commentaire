@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "54",
+      "verse_ref": 54,
       "chapter": 17,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "54",
+      "verse_ref": 54,
       "chapter": 17,
       "latin_quote": "ARMA VERO EJUS POSUIT IN TABERNACULO SUO.",
       "french_translation": "Il mit ses armes dans sa tente, ou dans la tente de ses frères, ou dans le Tabernacle du Seigneur à Jérusalem.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "55",
+      "verse_ref": 55,
       "chapter": 17,
       "latin_quote": "DE QUA STIRPE DESCENDIT HIC ADOLESCENS ?",
       "french_translation": "De quelle famille est ce jeune homme ?",
@@ -62,15 +62,33 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Junius ; Piscator ; aliàs rectè Maldonat."
+      "text": "Junius ; Piscator ; aliàs rectè Maldonat.",
+      "tags": [
+        "commentators",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Homer. Iliad. H. Καὶ κρητῆρα νεον κ'ετ' Αμύμονος εἵλετο κειμήλιον."
+      "text": "Homer. Iliad. H. Καὶ κρητῆρα νέον κ'ετ' Ἀμύμονος εἵλετο κειμήλιον.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez Hérodote, livre 2, chapitre 159."
+      "text": "Voyez Hérodote, livre 2, chapitre 159.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 31,
       "latin_quote": "IGNIS PROBAT FERRUM DURUM, SIC VINUM CORDA SUPERBORUM.",
       "french_translation": "Le feu éprouve les métaux les plus durs, et le vin bû avec excèz fait reconnaître les cœurs des superbes.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 31,
       "latin_quote": "ÆQUA VITA HOMINIBUS VINUM IN SOBRIETATE.",
       "french_translation": "Le vin pris avec tempérance est une seconde vie : si vous en prenez modérément, vous serez sobre.",
@@ -55,19 +55,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Κάμινος δοκιμάζει σόμωμα ἐν βαφῆ· Οὕτως οἶνος ἐν καρδία ὑπερηφάνων ἐν μέθη. Édit. Rom. Εν μέχῃ ὑπερηφάνων."
+      "text": "Κάμινος δοκιμάζει σόμωμα ἐν βαφῆ· Οὕτως οἶνος ἐν καρδία ὑπερηφάνων ἐν μέθη. Édit. Rom. Ἐν μέχῃ ὑπερηφάνων.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Horace, livre 3, ode 21."
+      "text": "Horace, livre 3, ode 21.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Theognis."
+      "text": "Theognis.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ἐπίσης ζωῆς οἶνος ἀνθρώποις, ἐὰν πίνῃς αὐτὸν ἐν μέτρῳ αὐτῷ."
+      "text": "Ἐπίσης ζωῆς οἶνος ἀνθρώποις, ἐὰν πίνῃς αὐτὸν ἐν μέτρῳ αὐτῷ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

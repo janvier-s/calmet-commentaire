@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 48,
       "latin_quote": "ET GLORIOSOS DE LECTO SUO.",
       "french_translation": "Vous les avez fait descendre de leur lit dans le tombeau.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 48,
       "latin_quote": "QUI AUDIS IN SINA JUDICIUM.",
       "french_translation": "Qui entendez sur le Mont-Sina le jugement du Seigneur, etc.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 48,
       "latin_quote": "QUI UNGIS REGES AD POENITENTIAM.",
       "french_translation": "Qui sacrés les Rois d'Israël pour la pénitence.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 48,
       "latin_quote": "PROPHETAS FACIS SUCCESSORES POST TE.",
       "french_translation": "Qui prenez des Prophètes, pour les laisser pour vos successeurs après vous.",
@@ -56,23 +56,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "4 Rois 1:16-17."
+      "text": "4 Rois 1:16-17.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "1 Paralipomènes 21:15."
+      "text": "1 Paralipomènes 21:15.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "3 Rois 19:12, 15."
+      "text": "3 Rois 19:12, 15.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "O' ακύων ἐν Σινᾷ ἐλεγμὸν Κυρίυ, καὶ ἐν χωρὴβ κρίματα ἐκδικήσεως."
+      "text": "O' κύων ἐν Σινᾷ ἐλεγμὸν Κυρίυ, καὶ ἐν χωρὴβ κρίματα ἐκδικήσεως.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "O' χρίων βασιλέας εἰς μετάθεμα."
+      "text": "O' χρίων βασιλέας εἰς μετάθεμα.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

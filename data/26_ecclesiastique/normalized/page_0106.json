@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 1,
       "latin_quote": "OMNIS SAPIENTIA A DOMINO DEO EST, ET CUM ILLO FUIT SEMPER, ET EST ANTE ÆVUM.",
       "french_translation": "Toute sagesse vient de Dieu le souverain Seigneur : elle a toujours été avec lui, et elle y est avant tous les siècles.",
@@ -34,7 +34,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 1,
       "latin_quote": "ARENAM MARIS, … QUIS DINUMERAVIT ? (3.) SAPIENTIAM DEI PRÆCEDENTEM OMNIA, QUIS INVESTIGAVIT ?",
       "french_translation": "Qui a compté le sable de la mer ? … (3.) Qui a pénétré la",
@@ -44,11 +44,17 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Πᾶσα σοφία παρὰ Κυρίυ, καὶ μετ' αὐτῦ ἐστιν εἰς τὸν αἰῶνα."
+      "text": "Πᾶσα σοφία παρὰ Κυρίυ, καὶ μετ' αὐτοῦ ἐστιν εἰς τὸν αἰῶνα.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Cornelius a Lapide ; et Grotius, sur ce passage."
+      "text": "Voyez Cornelius a Lapide ; et Grotius, sur ce passage.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

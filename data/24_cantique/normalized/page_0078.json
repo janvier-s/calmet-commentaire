@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 4,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 4,
       "latin_quote": "HORTUS CONCLUSUS, SOROR MEA, FONS SIGNATUS.",
       "french_translation": "Mon Épouse est un jardin fermé, et une fontaine scellée.",
@@ -40,31 +40,74 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Psaumes 44:9."
+      "text": "Psaumes 44:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Homer. Iliad. Z. Α’νδρὰ δ’ ἰδὲ Σιδονίων πολυδαιδάλων ἔργα γυναικῶν. Εν δ’ ἦσαν οι πεπλοι παμποικιλοι, ἔργα γυναικῶν Σιδονιων."
+      "text": "Homer. Iliad. Z. Ἀνδρὰ δ’ ἰδὲ Σιδονίων πολυδαιδάλῳ ἔργα γυναικῶν. Ἐν δ’ ἦσαν οἱ πέπλοι παμποίκιλοι, ἔργα γυναικῶν Σιδονίων.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Corinthiens 5:3."
+      "text": "2 Corinthiens 5:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Romains 13:14. Colossiens 3:9. _Expoliantes vos veterem hominem._"
+      "text": "Romains 13:14. Colossiens 3:9. _Expoliantes vos veterem hominem._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Proverbes 5:14. _Bibe aquam de cisterna tua, et 17. Habeto illas solus._"
+      "text": "Proverbes 5:14. _Bibe aquam de cisterna tua, et 17. Habeto illas solus._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Doubdan, chapitre 20 ; Adrichomius ; et d'autres."
+      "text": "Doubdan, chapitre 20 ; Adrichomius ; et d'autres.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Voyez saint Ambroise, Des vierges, livre 2 ; saint Augustin, Du baptême contre les donatistes, livre 2, chapitre 27 ; saint Anselme ; Théodoret ; Carpathius."
+      "text": "Voyez saint Ambroise, Des vierges, livre 2 ; saint Augustin, Du baptême contre les donatistes, livre 2, chapitre 27 ; saint Anselme ; Théodoret ; Carpathius.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des vierges",
+          "original": "De virginibus"
+        },
+        {
+          "fr": "Du baptême contre les donatistes",
+          "original": "De baptismo contra Donatistas"
+        }
+      ]
     }
   ],
   "book_end_marker": null

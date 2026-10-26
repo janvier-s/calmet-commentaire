@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 50,
       "latin_quote": null,
       "french_translation": "de lumière.",
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 50,
       "latin_quote": "QUASI IGNIS EFFULGENS, ET THUS ARDENS IN IGNE.",
       "french_translation": "Comme une flamme qui étincelle, et comme l'encens qui s'évapore dans le feu.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 50,
       "latin_quote": "QUASI OLIVA PULLULANS, ET CYPRESSUS, ETC.",
       "french_translation": "Comme un olivier, qui pousse ses rejetons ; et comme un cyprès, qui s'élève en haut.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 50,
       "latin_quote": "IN ACCIPIENDO IPSUM STOLAM GLORIÆ, ET VESTIRI EUM IN CONSUMMATIONEM VIRTUTIS.",
       "french_translation": "Lorsqu'il a pris",
@@ -70,19 +70,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ως ἥλιος ἀναλάμπων ἐπὶ ναὸν ὑψίςου. Ως ἴρις ἀνακλᾶσα πυρσώδει ἀκτῖνα ἐν ἀχλύι."
+      "text": "Ὡς ἥλιος ἀναλάμπων ἐπὶ ναὸν ὑψίστου. Ὡς ἴρις ἀνακλᾶσα πυρώδει ἀκτῖνα ἐν ἀχλύι.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Joseph. lib. 6. de Bello Judaic. cap. 6. pag. 918. Το δε ἱερεῖον αυτὸ περιέκειτο πᾶν εἰς λυχνῆς, ὅθεν εἰς ἐμπέδων ἵππαζεν ἀκτῖνας. Πληξάντων χρυσῷ εἴβαλεν κικκαλυμμένῳ πάντων, ὑπὸ"
+      "text": "Joseph. lib. 6. de Bello Judaic. cap. 6. pag. 918. Τὸ δὲ ἱερεῖον αὐτὸ περιέκειτο πᾶν εἰς λυχνῆς, ὅθεν εἰς ἐμπέδων ἵππαζεν ἀκτῖνας. Πληξάντων χρυσῷ εἴβαλεν κικκαλυμμένῳ πάντων, ὑπὸ",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ὡς πῦρ καὶ λίβανος ἐπὶ πυρὸς. Gr."
+      "text": "Ὡς πῦρ καὶ λίβανος ἐπὶ πυρὸς. Gr.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ὡς ἐλαία ἀναθάλλουσα καρπὸς, ἢ ὡς κυπάρισσος ὑψουμένη νεφέλαις."
+      "text": "Ὡς ἐλαία ἀναθάλλουσα καρπὸς, ἢ ὡς κυπάρισσος ὑψουμένη νεφέλαις.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 30,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 30,
       "latin_quote": "FACTUM EST HOC EX ILLA DIE, ET DEINCEPS… QUASI LEX IN ISRAEL, USQUE AD HUNC DIEM.",
       "french_translation": "C'est ce qui s'est pratiqué depuis ce temps-là comme une loi, qui dure encore aujourd'hui.",
@@ -33,27 +33,70 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Iliad. 9. Α'εν µεν ιφα φθισοντι, η` ει µαλα τις πολεµιζοι. Εν δ' ιsy τιµh h` µh` κακος, hde kai ε`σθλος."
+      "text": "Iliad. 9. Ἄεν µἐν ιφα φθισοντί, η` ει µἅλα τίς πολεµἵζοι. Ἐν δ' ιsy τιµh h` µh` κακὸς, hde kai ε`σθλος.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Juste Lipse, De la milice romaine, livre 5, Dialogue 15."
+      "text": "Voyez Juste Lipse, De la milice romaine, livre 5, Dialogue 15.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la milice romaine",
+          "original": "De militia Romana"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Denys, livre 76"
+      "text": "Denys, livre 76",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Polybe, De la milice romaine, livre 10. Voyez le même, Du siège de Carthage."
+      "text": "Voyez Polybe, De la milice romaine, livre 10. Voyez le même, Du siège de Carthage.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la milice romaine",
+          "original": "De militia Romana"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Nombres 31:27."
+      "text": "Nombres 31:27.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Josué 22:8. _In multa substantia atque divitiis revertimini ad sedes vestras… Dividite prædam hostium cum fratribus vestris._"
+      "text": "Josué 22:8. _In multa substantia atque divitiis revertimini ad sedes vestras… Dividite prædam hostium cum fratribus vestris._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

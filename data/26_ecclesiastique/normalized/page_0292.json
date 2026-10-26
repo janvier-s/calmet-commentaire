@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 14,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 14,
       "latin_quote": "QUI RESPICIT PER FENESTRAS ILLIUS.",
       "french_translation": "Qui regarde par ses fenêtres, et qui écoute à sa porte.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 14,
       "latin_quote": "QUI REQUIESCIT JUXTA DOMUM ILLIUS.",
       "french_translation": "Qui se tient auprès de sa maison, et qui enfonçant un piquet dans ses murailles, se bâtit une petite cabane auprès d'elle.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 14,
       "latin_quote": "IN GLORIA EJUS REQUIESCET.",
       "french_translation": "Il se reposera dans sa gloire.",
@@ -70,15 +70,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ο' διανοέμ[ILLEGIBLE]ος τὰς ἰδίας ἀυτῶ ἐν καρδίᾳ ἀυτῶ, κ, τὰ τοῖς ἀποκρύφοις ἀυτῆς ἐνθυμήσεται. ἰξίλθε ὀπίσω ἀυτῆς ὡς ἰχνευτὴς, et ἐν ταῖς ὁδοῖς ἀυτῆς ἐνέδρευσον."
+      "text": "Ὀ διανοέμ[ILLEGIBLE]ὃς τὰς ἰδίας ἀυτῶ ἐν καρδίᾳ ἀυτῶ, κ, τὰ τοῖς ἀποκρύφοις ἀυτῆς ἐνθυμήσεται. ἰξίλθε ὀπίσω ἀυτῆς ὡς ἰχνευτὴς, et ἐν ταῖς ὁδοῖς ἀυτῆς ἐνέδρευσον.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Cantique des cantiques 2:9."
+      "text": "Cantique des cantiques 2:9.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Proverbes 8:34."
+      "text": "Proverbes 8:34.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

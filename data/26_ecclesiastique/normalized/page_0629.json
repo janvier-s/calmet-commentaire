@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 42,
       "latin_quote": "NON DUPLICES SERMONEM AUDITUS.",
       "french_translation": "Ne redites point ce que vous avez entendu dire ; et ne révélez point ce qui est secret.",
@@ -25,19 +25,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Αἰχύνθητι … καὶ ἀπὸ δαληθείας, καὶ λόγου ἀκοῆς, καὶ ἀποκρύψεως περὶ λόγου κρυφίου."
+      "text": "Αἰσχύνθητι … καὶ ἀπὸ δαληθείας, καὶ λόγου ἀκοῆς, καὶ ἀποκρύψεως περὶ λόγου κρυφίου.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ecclésiastique 7:15."
+      "text": "Ecclésiastique 7:15.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ecclésiastique 19:7."
+      "text": "Ecclésiastique 19:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ibidem ℣. 13."
+      "text": "Ibidem ℣. 13.",
+      "tags": [
+        "ibid"
+      ]
     }
   ],
   "book_end_marker": null

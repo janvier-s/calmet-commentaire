@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 9,
       "latin_quote": "UT HABERENT PACEM, ET SUSCIPERENT VERITATEM.",
       "french_translation": "Afin qu'ils eussent la paix, et qu'ils reçussent la vérité.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 9,
       "latin_quote": "JEJUNIA, ET CLAMORES, ET SORTIUM DIES.",
       "french_translation": "D'observer les jeûnes, les cris, et la Fête des Sorts.",
@@ -55,15 +55,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "l'Hébreu Abichaïl. Voyez ci-devant chapitre 2, verset 7."
+      "text": "l'Hébreu Abichaïl. Voyez ci-devant chapitre 2, verset 7.",
+      "tags": [
+        "verse",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Purim, ou Phurim des sorts."
+      "text": "Purim, ou Phurim des sorts.",
+      "tags": []
     },
     {
       "marker": "(c)",
-      "text": "Καὶ τόν τόπον τἑαυτοῖς καὶ τῆς ἁγισίας αὐτῶν. Ε. δίρ. λόγον ἔγραψεν εἰς τὸ αἰῶνα. Græc. Cela est assez obscur. Le Manuscrit Alexandrin lit : Καὶ εστησαν, au lieu de καὶ τὸν τόπον, et τῆς ἁγισίας, ce qui n'est guère plus clair."
+      "text": "Καὶ τόν τόπον ἑαυτοῖς καὶ τῆς ἁγισίας αὐτῶν. Ε. δίρ. λόγον ἔγραψεν εἰς τὸ αἰῶνα. Græc. Cela est assez obscur. Le Manuscrit Alexandrin lit : Καὶ ἔστησαν, au lieu de καὶ τὸν τόπον, et τῆς ἁγισίας, ce qui n'est guère plus clair.",
+      "tags": [
+        "greek",
+        "versions",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

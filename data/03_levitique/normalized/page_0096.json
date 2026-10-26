@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 7,
       "latin_quote": "SI VOTO, VEL SPONTE QUISPIAM OBTULERIT HOSTIAM…",
       "french_translation": "Si quelqu'un, après avoir fait un vœu, ou par simple dévotion, offre une hostie.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 7,
       "latin_quote": "QUICQUID TERTIUS DIES INVENERIT, IGNIS ABSUMET.",
       "french_translation": "Tout ce qui s'en trouvera de reste au troisième jour, sera consumé par le feu.",
@@ -39,7 +39,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 7,
       "latin_quote": "IRRITA FIET OBLATIO, NEC PRODERIT OFFERENTI.",
       "french_translation": "L'oblation deviendra inutile, et ne servira de rien à celui qui l'aura",
@@ -49,15 +49,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Philo de victimis."
+      "text": "Philo de victimis.",
+      "tags": [
+        "rabbis",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Infra Lévitique 22:23."
+      "text": "Infra Lévitique 22:23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Philo de victimis, p. 842. Τὰς θυσίας ἀναμιμνήσκειν εἶναι παρορίσκει, κὶ πᾶσιν εἰς μέσον προτεθῆναι τοῖς δεηθεῖσιν. Εἰσὶ γὰρ ὑκέται τῆ συνεσίας, ἀλλ᾽ ἐκ τιθέναι τὸ ἱερεῖον, etc."
+      "text": "Philo de victimis, p. 842. Τὰς θυσίας ἀναμιμνήσκειν εἶναι παρορίσκει, καὶ πᾶσιν εἰς μέσον προτεθῆναι τοῖς δεηθεῖσιν. Εἰσὶ γὰρ ἱκέται τῆ συνουσίας, ἀλλ᾽ ἐκ τιθέναι τὸ ἱερεῖον, etc.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

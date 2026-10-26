@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 1,
       "latin_quote": "PRÆCESSI OMNES SAPIENTIA.",
       "french_translation": "J'ai surpassé en sagesse, tous ceux qui ont été avant moi à Jérusalem.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 1,
       "latin_quote": "UT SCIREM PRUDENTIAM, ATQUE DOCTRINAM, ERRORESQUE, ET STULTITIAM.",
       "french_translation": "Pour connaître la prudence, et la doctrine, les erreurs, et l'imprudence.",
@@ -48,19 +48,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "3 Rois 3:12."
+      "text": "3 Rois 3:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "1 Corinthiens 3:10."
+      "text": "1 Corinthiens 3:10.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "לדעת חכמה ודעת הוללות ושכלות"
+      "text": "לדעת חכמה ודעת הוללות ושכלות",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Σοφίαν καὶ γνῶσιν, παραβολὰς καὶ ἐπισήμην. Aquil. Πλάνην. Les erreurs. Th. Παραφορὰν. Les égarements de l'esprit."
+      "text": "Σοφίαν καὶ γνῶσιν, παραβολὰς καὶ ἐπιστήμην. Aquil. Πλάνην. Les erreurs. Th. Παραφορὰν. Les égarements de l'esprit.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null

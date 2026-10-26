@@ -43,7 +43,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 34,
       "latin_quote": null,
       "french_translation": null,
@@ -51,7 +51,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 34,
       "latin_quote": "TRIGINTA DIEBUS.",
       "french_translation": "Trente jours.",
@@ -59,7 +59,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 34,
       "latin_quote": "NON SURREXIT PROPHETA ULTRA IN ISRÆL, SICUT MOYSES.",
       "french_translation": "Il ne s'éleva plus dans Israël de Prophète semblable à Moïse.",
@@ -69,7 +69,10 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ν'δὲ ἐφδάρησαν ταὶ χελύναι ἀυτ."
+      "text": "Ν'δὲ ἐφδάρησαν ταὶ χελύναι αὐτ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

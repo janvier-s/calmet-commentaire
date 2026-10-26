@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 24,
       "latin_quote": "QUASI PLATANUS JUXTA AQUAM IN PLATEIS.",
       "french_translation": "Comme le plane planté dans les places publiques, le long des eaux.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 24,
       "latin_quote": "SICUT CINNAMOMUM.",
       "french_translation": "J'ai répandu une odeur de parfum, comme le cinnamome.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 24,
       "latin_quote": "SICUT BALSAMUM AROMATIZANS.",
       "french_translation": "Comme le baume le plus précieux, ou le plus aromatique, le plus odorant.",
@@ -48,15 +48,34 @@
   "footnotes": [
     {
       "marker": "^{(a)}",
-      "text": "Joseph Antiquit. lib. 8. cap. 2. Aïγυσι δὲ ἴδιον τῆ ἱεροσολύμων ῥίζαν, ἐν τῆ σὺν ἱρῶδι ἃ λαβὼν φέρει, δένδρον ἀυτῆς τῆς γυναικὸς ἐχώρη."
+      "text": "Joseph Antiquit. lib. 8. cap. 2. Aïγυσι δὲ ἴδιον τῆ ἱεροσολύμων ῥίζαν, ἐν τῆ σὺν ἱρῶι ἃ λαβὼν φέρει, δένδρον ἀυτῆς τῆς γυναικὸς ἐχώρη.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "^{(b)}",
-      "text": "Cantique des cantiques 1:14."
+      "text": "Cantique des cantiques 1:14.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     },
     {
       "marker": "^{(c)}",
-      "text": "Pline, Histoire naturelle, livre 12, chapitre 25."
+      "text": "Pline, Histoire naturelle, livre 12, chapitre 25.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

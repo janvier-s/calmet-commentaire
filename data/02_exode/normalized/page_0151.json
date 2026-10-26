@@ -38,7 +38,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 9,
       "latin_quote": null,
       "french_translation": null,
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 9,
       "latin_quote": "DOMINUS DEDIT TONITRUA ET GRANDINEM, ET DISCURRENTIA FULGURA SUPER TERRAM.",
       "french_translation": "Le Seigneur fit fondre la grêle, au milieu des tonnerres et des éclairs qui brillaient de toutes parts.",
@@ -56,15 +56,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Sagesse 16:16-17. Quod enim mirabile erat, in aqua, quæ omnia extinguit, plus ignis valebat."
+      "text": "Sagesse 16:16-17. Quod enim mirabile erat, in aqua, quæ omnia extinguit, plus ignis valebat.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "קולות וברד voces, Alius, ἀστραπὰς, ἤχες, ventorum sonitus. Alius, βεβλάς, sonitus, sonitum."
+      "text": "קולות וברד voces, Alius, ἀστραπὰς, ἤχους, ventorum sonitus. Alius, βεβλάς, sonitus, sonitum.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Psaumes 77:48 ; 104:32."
+      "text": "Psaumes 77:48 ; 104:32.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

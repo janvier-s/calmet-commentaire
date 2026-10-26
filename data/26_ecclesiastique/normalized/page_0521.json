@@ -22,6 +22,14 @@
   "commentary": [
     {
       "commentary_id": 1,
+      "verse_ref": 4,
+      "chapter": 33,
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "préceptes sont connus, mais ils n'en sont pas moins importants."
+    },
+    {
+      "commentary_id": 2,
       "verse_ref": 5,
       "chapter": 33,
       "latin_quote": "PRÆCORDIA FATUI, QUASI ROTA CARRI.",
@@ -29,7 +37,7 @@
       "french_commentary": "Il est toujours flottant, in-constant, indéterminé, comme la roue d'un chariot. ^{(a)} Ou, en le joignant à ce qui précède : Préparez ce que vous avez à dire, et à répondre, et n'imitez pas l'insensé, qui est comme une roue de chariot mal graissée, qui ne fait ce qu'il dit, et écorche les oreilles. ^{(b)} Le premier sens est meilleur."
     },
     {
-      "commentary_id": 2,
+      "commentary_id": 3,
       "verse_ref": 6,
       "chapter": 33,
       "latin_quote": "EQUUS EMISSARIUS, ^{(c)} SIC ET AMICUS SUBSANNATOR.",
@@ -37,7 +45,7 @@
       "french_commentary": "Un railleur est comme une monture indomptée, et dangereuse. On s'expose à tout en s'en servant. Lorsqu'on y pense le moins, votre cheval prendra le frein aux dents, et vous renversera. Ainsi un railleur n'épargnera ni ami, ni ennemi ; et lorsque sa verve le saisira, malheur à celui qui se rencontrera devant lui. ^{(d)}\n_Qui captat risus hominum, famamque dicacis ;\nFingere qui non visa potest, commissa tacere\nQui nequis ; hic niger est ; hunc tu, Romane, caveto._\nIl se joue de tout, il est toujours prêt à mordre ; il aimera mieux perdre son ami qu'un bon mot. ^{(e)}\n… _Dummodò risum\nExcutiat sibi, non hic cuiquam parcet amico._"
     },
     {
-      "commentary_id": 3,
+      "commentary_id": 4,
       "verse_ref": 7,
       "chapter": 33,
       "latin_quote": "QUARE DIEM DIES SEPARAT ?",
@@ -48,23 +56,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Grotius ;\nCornelius a Lapide ;\nVatable."
+      "text": "Grotius ;\nCornelius a Lapide ;\nVatable.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Castalion."
+      "text": "Castalion.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ἵππος εἰς ὀχείαν. Equus admissarius."
+      "text": "Ἵππος εἰς ὀχείαν. Equus admissarius.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Horace, livre 1, satire 4."
+      "text": "Horace, livre 1, satire 4.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Idem ibidem."
+      "text": "Idem ibidem.",
+      "tags": [
+        "classical",
+        "ibid"
+      ]
     }
   ],
   "book_end_marker": null

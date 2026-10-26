@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 6,
       "latin_quote": null,
       "french_translation": null,
@@ -25,23 +25,66 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Eutychius d'Alexandrie, Chronique, page 213 ;\nGrotius, sur ce passage ;\nSanctius ;\nCornelius a Lapide."
+      "text": "Voyez Eutychius d'Alexandrie, Chronique, page 213 ;\nGrotius, sur ce passage ;\nSanctius ;\nCornelius a Lapide.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Chronique",
+          "original": "Chronicon"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Isaïe 36:12. Ut comedant stercora sua, et bibant urinam pedum suorum vobiscum."
+      "text": "Isaïe 36:12. Ut comedant stercora sua, et bibant urinam pedum suorum vobiscum.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Varron, De re rustica, livre 1, chapitre 38 ; et Pline, Histoire naturelle, livre 17, chapitre 9."
+      "text": "Varron, De re rustica, livre 1, chapitre 38 ; et Pline, Histoire naturelle, livre 17, chapitre 9.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De re rustica",
+          "original": "De re rustica"
+        },
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Joseph. de bello, l. 6. c. 20. ut est in Græco. Ζωστήρων γὰρ ἠνασθήμενον τὸ τιλμάτιον ἐπὶ πολὺ ἀντεῖχεν, τῷ δὲ δέρματα τῶν θυρεῶν ἀποξέοντες ἐσιθοῦντο. παρῆν δὲ δὴ ἐν τῇ χώρᾳ καὶ παλαιὸν σπαρτίον, ὡς δὴ καὶ ταῦτ᾽ ἐπὶ σιτίων ὀλίγοις τινος ἐλάχιστον σταθμὸν ἐώνηντο."
+      "text": "Joseph. de bello, l. 6. c. 20. ut est in Græco. Ζωστήρων γὰρ ἠνασθήμενον τὸ τιλμάτιον ἐπὶ πολὺ ἀντεῖχεν, τῷ δὲ δέρματα τῶν θυρεῶν ἀποξέοντες ἐσιθοῦντο. παρῆν δὲ δὴ ἐν τῇ χώρᾳ καὶ παλαιὸν σπαρτίον, ὡς δὴ καὶ ταῦτ᾽ ἐπὶ σιτίων ὀλίγοις τίνος ἐλάχιστον σταθμὸν ἐώνητο.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Suétone, Tibère, chapitre 54."
+      "text": "Suétone, Tibère, chapitre 54.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Tibère",
+          "original": "De vita Caesarum"
+        }
+      ]
     }
   ],
   "book_end_marker": null

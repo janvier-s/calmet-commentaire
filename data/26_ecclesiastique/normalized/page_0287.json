@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 14,
       "latin_quote": "MEMOR ESTO QUONIAM MORS NON TARDAT, ETC.",
       "french_translation": "Souvenez-vous de la mort, qui ne tarde point ; et de cet arrêt, qui vous a été prononcé, que vous devez aller au tombeau. Car cet arrêt porte : Tout homme doit mourir.^{(a)}",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 14,
       "latin_quote": "ANTE MORTEM BENEFAC AMICO TUO.",
       "french_translation": "Faites du bien à votre ami avant la mort ; et donnez l'aumône au pauvre, félon que vous le pouvez.",
@@ -40,27 +40,51 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Cette fin du verset n'est pas dans le Grec en cet endroit, mais seulement au ℣. 18. H^{~} γὰρ διαθήκη ἡ ἐξ᾽ ᾅδου· Θανάτῳ ἀποθανῇ."
+      "text": "Cette fin du verset n'est pas dans le Grec en cet endroit, mais seulement au ℣. 18. H^{~} γὰρ διαθήκη ἡ ἐξ᾽ ᾅδου· Θανάτῳ ἀποθανῇ.",
+      "tags": [
+        "greek",
+        "verse",
+        "versions",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Μνήσθητι ὅτι θάνατ© ἐκ χρονιεῖ, καὶ διαθήκη ᾅδου ἐκ ὑπεδείχθη σοι."
+      "text": "Μνήσθητι ὅτι θάνατ© ἐκ χρονιεῖ, καὶ διαθήκη ᾅδου ἐκ ὑπεδείχθη σοι.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Senec. Hercul. fur."
+      "text": "Senec. Hercul. fur.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "_Synes. Ep. 31. Τὸ γὰρ δὴ μάλιςα τὸ τῶν μέσον καινὸν ἐργον ὡς Θεῷ._ v. _Orat._"
+      "text": "_Synes. Ep. 31. Τὸ γὰρ δὴ μάλιστα τὸ τῶν μέσον καινὸν ἔργον ὡς Θεῷ._ v. _Orat._",
+      "tags": [
+        "greek",
+        "fathers",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Bis τὸ μὴ κριθεὶς, οὐδεὶς καθ᾽ ἡμέραν._ Saint Grégoire de Nazianze."
+      "text": "_Bis τὸ μὴ κριθεὶς, οὐδεὶς καθ᾽ ἡμέραν._ Saint Grégoire de Nazianze.",
+      "tags": [
+        "greek",
+        "fathers"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Πρὶν σε τελευτῆσαι, εὖ ποιῆσαι φίλον, καὶ κατὰ τὴν ἰσχύν σου ἐκτείνας, καὶ δὸς αὐτῷ."
+      "text": "Πρὶν σε τελευτῆσαι, εὖ ποιῆσαι φίλον, καὶ κατὰ τὴν ἰσχύν σου ἐκτείνας, καὶ δὸς αὐτῷ.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": "A a ij"

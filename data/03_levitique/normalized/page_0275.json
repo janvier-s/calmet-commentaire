@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -28,7 +28,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 21,
       "latin_quote": "VIRGINEM DUCET UXOREM.",
       "french_translation": "Il prendra pour femme une vierge ;",
@@ -38,35 +38,82 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph. Antiq. l. 3. c. 10. Μήτε δὲ ἀποδεδιδακτ γαμεῖν μαξήτιον, κὴ ταύτω φυλάτλειν."
+      "text": "Joseph. Antiq. l. 3. c. 10. Μήτε δὲ ἀποδεδιδακτ γαμεῖν μαξήτιον, καὶ ταύτω φυλάττειν.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. l",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Gémare de Babylone ; Maïmonide, Halachot Ischot, § 14 ; Tertullien, livre De l'exhortation à la chasteté, page 568 ; et De la monogamie, page 649 ; et l'auteur des Questions sur l'Ancien Testament, question 46."
+      "text": "Gémare de Babylone ; Maïmonide, Halachot Ischot, § 14 ; Tertullien, livre De l'exhortation à la chasteté, page 568 ; et De la monogamie, page 649 ; et l'auteur des Questions sur l'Ancien Testament, question 46.",
+      "tags": [
+        "fathers",
+        "rabbis",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De l'exhortation à la chasteté",
+          "original": "De exhortatione castitatis"
+        },
+        {
+          "fr": "De la monogamie",
+          "original": "De monogamia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Paralipomènes 24:3."
+      "text": "2 Paralipomènes 24:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Philon, livre 2, De Monarchia. ἱέρειαν ἐξ ἱερέων. Voyez et Origène, Homélie 12 sur le Lévitique"
+      "text": "Philon, livre 2, De Monarchia. ἱέρειαν ἐξ ἱερέων. Voyez et Origène, Homélie 12 sur le Lévitique",
+      "tags": [
+        "greek",
+        "fathers",
+        "rabbis"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ex τῆ γένος αὐλῶ."
+      "text": "Ex τῆ γένος αὐλῶ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Ex τῶ λαοῦ αὐλῶ."
+      "text": "Ex τῶ λαοῦ αὐλῶ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Voyez Selden, De la succession au pontificat, livre 2, chapitre 4 ; et De l'épouse hébraïque, livre 1, chapitre 7."
+      "text": "Voyez Selden, De la succession au pontificat, livre 2, chapitre 4 ; et De l'épouse hébraïque, livre 1, chapitre 7.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Καὶω ὦ ἄνδρες γέμειν."
+      "text": "Καὶω ὦ ἄνδρες γέμειν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

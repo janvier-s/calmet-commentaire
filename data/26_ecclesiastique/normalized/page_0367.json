@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 20,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 20,
       "latin_quote": "MORES HOMINUM MENDACIUM, SINE HONORE.",
       "french_translation": "La vie des menteurs, est une vie sans honneur.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 20,
       "latin_quote": "QUI OPERATUR TERRAM SUAM, INALTABIT ACERVUM FRUGUM.",
       "french_translation": "Celui qui cultive sa terre, amassera des monceaux de blé.",
@@ -60,7 +60,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 20,
       "latin_quote": "XENIA ET DONA EXCÆCANT OCULOS JUDICUM.",
       "french_translation": "Les présents, et les dons aveuglent les yeux des Juges : ils sont dans leur bouche comme un mords, qui les rend muets.",
@@ -70,15 +70,25 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "H^cθos ἀνθρώπων ψευδῶν, ἀτιμία. Συνήθεια ἀνθρώπων ψευδῶν ἀτιμίαν."
+      "text": "H^cθos ἀνθρώπων ψευδῶν, ἀτιμία. Συνήθεια ἀνθρώπων ψευδῶν ἀτιμίαν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Grec. O' iργαζόμενος γῆν, ἀνυψώσει θημωνίαν."
+      "text": "Grec. O' iἐργαζόμενος γῆν, ἀνυψώσει θημωνίαν.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Exode 23:8."
+      "text": "Exode 23:8.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

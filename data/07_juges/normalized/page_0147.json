@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 7,
       "latin_quote": "QUASI SUBCINERICIUS PANIS EX HORDEO VOLVI, ET IN CASTRA MADIANITARUM DESCENDERE.",
       "french_translation": "Comme un pain d'orge cuit sous la cendre, qui roulait en bas, et descendait dans le camp des Madianites.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 7,
       "latin_quote": "NON EST HOC ALIUD NISI GLADIUS GEDEONIS.",
       "french_translation": "Tout cela n'est autre chose que l'épée de Gédéon.",
@@ -48,19 +48,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Juges 8:10."
+      "text": "Juges 8:10.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "חנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μαχλη Αρτε τ8 κριθινε κυλιομ[ILLEGIBLE] εις τ[ILLEGIBLE] παρεμβολην, etc."
+      "text": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μάχλη Ἄρτε τ8 κρίθινε κυλιομ[ILLEGIBLE] εἰς τ[ILLEGIBLE] παρεμβολῶν, etc.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "לחם _panis, et bellum gerere._ Dans la langue Grecque on dit souvent Ἄρτον ἐσθίειν, manger du pain, pour marquer dîner, ou se préparer à dîner, quoique ἐσθίειν signifie, s'armer."
+      "text": "לחם _panis, et bellum gerere._ Dans la langue Grecque on dit souvent Ἄρτον ἐσθίειν, manger du pain, pour marquer dîner, ou se préparer à dîner, quoique ἐσθίειν signifie, s'armer.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Nombres 14:9. _Sicut panem ita possumus eos devorare._"
+      "text": "Nombres 14:9. _Sicut panem ita possumus eos devorare._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

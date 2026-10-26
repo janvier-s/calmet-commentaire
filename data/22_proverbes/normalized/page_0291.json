@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 24,
       "latin_quote": "NE INSIDIERIS, ET QUÆRAS IMPIETATEM IN DOMO JUSTI.",
       "french_translation": "Ne dressez point d'embûche au juste, et ne cherchez point l'impiété dans sa maison.",
@@ -28,25 +28,50 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 24,
-      "latin_quote": "SEPTIES ENIM CADET ^{(a)} JUSTUS, ET RESURGET,",
-      "french_translation": "etc. Car le juste tombera sept fois, et se relèvera ; mais les méchants seront abattus dans le mal, et ils ne se relèveront point.",
-      "french_commentary": "On donne deux sens à ce passage. Premièrement : ^{(b)} Le juste tombera sept fois dans le péché, et il se relèvera de ses chutes ; mais l'impie tombera dans le crime, et y demeurera. Le juste n'est point impeccable ; il n'est point d'homme, quelque saint qu'il soit, qui ne fasse quelque faux pas ; mais s'il tombe, ses chutes ne sont pas mortelles ; il se relèvera, et n'en sera que plus vigilant, et que plus humble. Il n'en sera pas ainsi de l'impie ; ses chutes sont presque sans espérance de se relever. Il tombe jusqu'au fond du précipice, il s'égare, et ne revient point. La seconde manière d'expliquer, est celle-ci : ^{(c)} Le juste tombera dans des malheurs, Dieu l'éprouvera par des disgrâces, et des contre-temps fâcheux ; mais il ne permettra pas qu'il y succombe, ni qu'il y demeure pour toujours. Il l'élèvera en gloire, et en honneur, autant qu'il l'a humilié par l'affliction. Le méchant au contraire sera peut-être quelque temps dans la prospérité ; mais dés qu'il tombera, il ne se relèvera point. Plusieurs préfèrent cette seconde explication comme plus littérale. Mais l'une, et l'autre s'accordent fort bien avec ce qui précède Ne soyez point trop curieux observateurs des démarches du juste. Il n'est personne qui"
+      "latin_quote": "SEPTIES ENIM CADET ^{(a)} JUSTUS, ET RESURGET, ETC.",
+      "french_translation": "Car le juste tombera sept fois, et se relèvera ; mais les méchants seront abattus dans le mal,",
+      "french_commentary": "et ils ne se relèveront point. On donne deux sens à ce passage. Premièrement : ^{(b)} Le juste tombera sept fois dans le péché, et il se relèvera de ses chutes ; mais l'impie tombera dans le crime, et y demeurera. Le juste n'est point impeccable ; il n'est point d'homme, quelque saint qu'il soit, qui ne fasse quelque faux pas ; mais s'il tombe, ses chutes ne sont pas mortelles ; il se relèvera, et n'en sera que plus vigilant, et que plus humble. Il n'en sera pas ainsi de l'impie ; ses chutes sont presque sans espérance de se relever. Il tombe jusqu'au fond du précipice, il s'égare, et ne revient point. La seconde manière d'expliquer, est celle-ci : ^{(c)} Le juste tombera dans des malheurs, Dieu l'éprouvera par des disgrâces, et des contre-temps fâcheux ; mais il ne permettra pas qu'il y succombe, ni qu'il y demeure pour toujours. Il l'élèvera en gloire, et en honneur, autant qu'il l'a humilié par l'affliction. Le méchant au contraire sera peut-être quelque temps dans la prospérité ; mais dés qu'il tombera, il ne se relèvera point. Plusieurs préfèrent cette seconde explication comme plus littérale. Mais l'une, et l'autre s'accordent fort bien avec ce qui précède Ne soyez point trop curieux observateurs des démarches du juste. Il n'est personne qui"
     }
   ],
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Plusieurs Exemplaires lisent : _Cadit_. Édit. Complut. et Sixt. V. etc. Drus. Piscat. alii. Ils prétendent que [UNCERTAIN HEBREW], tomber, lorsqu'il est opposé à [UNCERTAIN HEBREW], se relever, ne signifie jamais tomber dans le péché, mais dans la disgrâce. Voyez Isaïe 24:20. Jérémie 25:27. Amos 8:14. Michée 7:8. Psalme XXXVI, 24."
+      "text": "Plusieurs Exemplaires lisent : _Cadit_. Édit. Complut. et Sixt. V. etc. Drus. Piscat. alii. Ils prétendent que [UNCERTAIN HEBREW], tomber, lorsqu'il est opposé à [UNCERTAIN HEBREW], se relever, ne signifie jamais tomber dans le péché, mais dans la disgrâce. Voyez Isaïe 24:20. Jérémie 25:27. Amos 8:14. Michée 7:8. Psalme XXXVI, 24.",
+      "tags": [
+        "verse",
+        "versions",
+        "commentators",
+        "latin",
+        "explanation",
+        "abbrev",
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Nicolas de Lyre ; Ménochius ; Tirin ; Cornelius a Lapide ; Bossuet. Voyez saint Grégoire le Grand, livre 6 sur 2 Rois 15 ; saint Bernard, Sermon 1 sur le Cantique des cantiques ; saint Jérôme, à Rustique ; et d'autres Pères passim."
+      "text": "Nicolas de Lyre ; Ménochius ; Tirin ; Cornelius a Lapide ; Bossuet. Voyez saint Grégoire le Grand, livre 6 sur 2 Rois 15 ; saint Bernard, Sermon 1 sur le Cantique des cantiques ; saint Jérôme, à Rustique ; et d'autres Pères passim.",
+      "tags": [
+        "verse",
+        "fathers",
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Augustin, La Cité de Dieu, livre 11, chapitre 31 ; Vatable ; Salazar ; Clarius ; Jansénius ; Geier ; Tarnovius ; Valois."
+      "text": "Saint Augustin, La Cité de Dieu, livre 11, chapitre 31 ; Vatable ; Salazar ; Clarius ; Jansénius ; Geier ; Tarnovius ; Valois.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        }
+      ]
     }
   ],
   "book_end_marker": null

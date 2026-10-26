@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 21,
       "latin_quote": "IGNITOS SERPENTES.",
       "french_translation": "Des Serpents séraphins, ou, des Serpents brûlants.",
@@ -40,23 +40,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "נפשנו קצרה בלחם הקלוקל"
+      "text": "נפשנו קצרה בלחם הקלוקל",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εν τω αρτω διακενω τωτω."
+      "text": "Ἐν τῷ ἄρτῳ διακένῳ τωτω.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "הנחשים השרפים"
+      "text": "הנחשים השרפים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Deutéronome 8:15. צמאון"
+      "text": "Deutéronome 8:15. צמאון",
+      "tags": [
+        "hebrew",
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Lucain, livre 9.\nNasidium Marsi cultorem torridus agri\nPercussit Præster : illi rubor igneus ora\nSuccendit, tenditque cutem, percussa figura,\nMíscens cuncta tumor, toto jam corpore major. Humanúmque egressa modum, super omnia membra\nEfflatur sanies, latè tollente venena."
+      "text": "Lucain, livre 9.\nNasidium Marsi cultorem torridus agri\nPercussit Præster : illi rubor igneus ora\nSuccendit, tenditque cutem, percussa figura,\nMíscens cuncta tumor, toto jam corpore major. Humanúmque egressa modum, super omnia membra\nEfflatur sanies, latè tollente venena.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

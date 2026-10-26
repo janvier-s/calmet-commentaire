@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 7,
       "latin_quote": "GROSSITUDO LUTERIS TRIUM UNCIARUM ERAT.",
       "french_translation": "Le bassin avait quatre doigts d'épaisseur.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 7,
       "latin_quote": "QUASI LABIUM CALICIS, ET FOLIUM REPANDI LILII.",
       "french_translation": "Comme le bord d'une coupe, et comme la feuille d'un lys, qui est épanoui.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 7,
       "latin_quote": "FECIT DECEM BASES ÆNEAS.",
       "french_translation": "Il fit dix socles d'airain.",
@@ -56,15 +56,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Joseph. Antiq. lib. 8. c. 2. Περὶ τέτων δὴ ἁμαρτὼν αὐτὸς ἔτυχεν ἐκβεβλημένος καὶ τῆς Φυλακῆς τῶ νομίμων, ἅτε τὰς χαλκᾶς βοῦς ἐπιμεμψαμένος καὶ πιστεύσας τῶ Θεῶ τὰ διάφορίν ἀναθήματι. Ita et Hebræi, et Grot. in 1 Paralipomènes 28:17."
+      "text": "Joseph. Antiq. lib. 8. c. 2. Περὶ τούτων δὴ ἁμαρτὼν αὐτὸς ἔτυχεν ἐκβεβλημένος καὶ τῆς Φυλακῆς τῶ νομίμων, ἅτε τὰς χαλκᾶς βοῦς ἐπιμεμψαμένος καὶ πιστεύσας τῶ Θεῶ τὰ διάφορίν ἀναθήματι. Ita et Hebræi, et Grot. in 1 Paralipomènes 28:17.",
+      "tags": [
+        "greek",
+        "verse",
+        "classical",
+        "commentators",
+        "title",
+        "latin",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Antiq. lib",
+          "original": "Antiquitates Judaicae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "טפח"
+      "text": "טפח",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "שפתו כמעשה שפת כוס פרח שושנה"
+      "text": "שפתו כמעשה שפת כוס פרח שושנה",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": "III. Livre des Rois."

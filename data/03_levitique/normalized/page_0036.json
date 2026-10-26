@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 1,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 1,
       "latin_quote": "PONETQUE MANUM SUPER CAPUT HOSTIÆ.",
       "french_translation": "Il mettra la main sur la tête de l'hostie.",
@@ -33,35 +33,91 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Pollux Onom l. 1. c. 1. Τὰ δὲ προσοράδια θύματα, ἱερὰ, ἀρτια, ἀ-ὅμα ὁλοκλήρα, ὑγιῆ, εὐ, παμελῆ, ἀρτίμελη, μὴ κόλοβα, μηδὲ ἐμπι μηδὲ ἀκροτεριάσθαι, μηδὲ διά. ῤῥοφα, οὔλων δὲ καὶ ἐμπέπω, κὴ ἀφιλῆ θνήμασι."
+      "text": "Pollux Onom l. 1. c. 1. Τὰ δὲ προσοράδια θύματα, ἱερὰ, ἀρτια, ἀ-ὅμα ὁλοκλήρῳ, ὑγιῆ, εὐ, παμελῆ, ἀρτίμελη, μὴ κόλοβα, μηδὲ ἐμπι μηδὲ ἀκροτεριάσθαι, μηδὲ διά. ῤῥοφα, οὔλων δὲ καὶ ἐμπέπω, καὶ ἀφελῆ θνήμασι.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Porphyre, De l'abstinence, livre 2. Γεγῶτας ζώοισι."
+      "text": "Porphyre, De l'abstinence, livre 2. Γεγῶτας ζώοισι.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De l'abstinence",
+          "original": "De abstinentia ab esu animalium"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Bochart, De animalibus sacris, partie 1, livre 2, chapitre 46 ; et Pline, Histoire naturelle, livre 8, chapitre 45."
+      "text": "Bochart, De animalibus sacris, partie 1, livre 2, chapitre 46 ; et Pline, Histoire naturelle, livre 8, chapitre 45.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De animalibus sacris",
+          "original": "De animalibus sacris"
+        },
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Jacob Bensidi Ali de Ceremon. et Oriental. morib. apud Gab. Sionit."
+      "text": "Jacob Bensidi Ali de Ceremon. et Oriental. morib. apud Gab. Sionit.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ita Jonathan."
+      "text": "Ita Jonathan.",
+      "tags": [
+        "versions"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Eusèbe, Démonstration évangélique, livre 1, chapitre 10."
+      "text": "Eusèbe, Démonstration évangélique, livre 1, chapitre 10.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Démonstration évangélique",
+          "original": "Demonstratio evangelica"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Ainsi l'entendent saint Jérôme, l'Hébreu, Vatable, etc. Voyez Lévitique 16:21 ; 24:14."
+      "text": "Ainsi l'entendent saint Jérôme, l'Hébreu, Vatable, etc. Voyez Lévitique 16:21 ; 24:14.",
+      "tags": [
+        "verse",
+        "fathers",
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Nicolas de Lyre ; Ménochius ; Bochart ; etc."
+      "text": "Nicolas de Lyre ; Ménochius ; Bochart ; etc.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

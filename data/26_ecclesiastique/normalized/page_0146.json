@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 4,
       "latin_quote": "EXAUDIET AUTEM EUM, QUI FECIT ILLUM.",
       "french_translation": "Il sera exaucé par celui qui l'a créé.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 4,
       "latin_quote": "CONGREGATIONI PAUPERUM AFFABILEM TE FACITO.",
       "french_translation": "Rendez-vous affables à l'assemblée des pauvres, humiliez votre âme devant les anciens.",
@@ -47,31 +47,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Proverbes 14:31."
+      "text": "Proverbes 14:31.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Matthieu 25:40."
+      "text": "Matthieu 25:40.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Proverbes 17:5."
+      "text": "Proverbes 17:5.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Proverbes 22:2. _Dives et pauper obviaverunt sibi : utriusque operator est Dominus._"
+      "text": "Proverbes 22:2. _Dives et pauper obviaverunt sibi : utriusque operator est Dominus._",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "1 Corinthiens 4:7."
+      "text": "1 Corinthiens 4:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Lévitique 23:11. Psaumes 9:10. 10:1, 9-10, 14. 21:15. 68:33. 71:2, 4, 12. etc."
+      "text": "Lévitique 23:11 ; Psaumes 9:10 ; 10:1, 9-10, 14 ; 21:15 ; 68:33 ; 71:2, 4, 12, etc.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Προσφιλὴς σαυτὸν ποιοῦ συναγωγῇ. καὶ μεγισᾶσι Θεοῦ τῶ κεφαλώ σου."
+      "text": "Προσφιλὴς σαυτὸν ποιοῦ συναγωγῇ. καὶ μεγιστᾶσι Θεοῦ τῶ κεφαλώ σου.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

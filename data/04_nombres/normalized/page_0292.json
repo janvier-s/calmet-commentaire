@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 23,
       "latin_quote": "QUIS DINUMERARE POSSIT PULVEREM JACOB, ET NOSSE NUMERUM STIRPIS ISRAEL ?",
       "french_translation": "Qui pourra compter la poussière de Jacob, et qui pourra connaître le nombre de la postérité d'Israël ?",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 23,
       "latin_quote": "MORIATUR ANIMA MEA MORTE JUSTORUM, ET FIANT NOVISSIMA MEA HORUM SIMILIA.",
       "french_translation": "Que je puisse mourir de la mort des justes, et que la fin de ma vie ressemble à la leur.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 23,
       "latin_quote": "VENI MECUM IN ALTERUM LOCUM, UNDE PARTEM ISRAEL VIDEAS, ET TOTUM VIDERE NON POSSIS.",
       "french_translation": "Venez avec moi en un autre",
@@ -55,23 +55,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Genèse 13:16."
+      "text": "Genèse 13:16.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Nombres 2."
+      "text": "Voyez Nombres 2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Τὸ γένυς τ' Caïgua μν, ὡς τ' Caïgua."
+      "text": "Τὸ γένους τ' Caïgua μν, ὡς τ' Caïgua.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "מה ישרים תמות נפשי ותהי אחריתי כמוהו"
+      "text": "מה ישרים תמות נפשי ותהי אחריתי כמוהו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Voyez saint Bernard, Sermon 22 sur le Cantique des cantiques."
+      "text": "Voyez saint Bernard, Sermon 22 sur le Cantique des cantiques.",
+      "tags": [
+        "fathers"
+      ]
     }
   ],
   "book_end_marker": null

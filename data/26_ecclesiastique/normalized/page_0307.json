@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 16,
       "latin_quote": null,
       "french_translation": null,
@@ -44,15 +44,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 16,
       "latin_quote": "MISERICORDIA ENIM, ET IRA EST CUM ILLO.",
-      "french_translation": "Car la miséricorde, et l'indignation l'accompagnent toujours ; il est également puissant pour pardonner, et pour punir.",
-      "french_commentary": "Le Grec : ^{(a)} _La miséricorde, et la colère lui appartiennent ; c'est à lui proprement à exercer l'une et l'autre. C'est un dominateur de clémence, et qui répand la colère._ C'est un Dieu tout-puissant, qui fait miséricorde à qui il veut, et qui fait punir avec une rigueur infinie, quand on irrite sa colère."
+      "french_translation": "Car la miséricorde, et l'indignation l'accompagnent toujours ;",
+      "french_commentary": "il est également puissant pour pardonner, et pour punir. Le Grec : ^{(a)} _La miséricorde, et la colère lui appartiennent ; c'est à lui proprement à exercer l'une et l'autre. C'est un dominateur de clémence, et qui répand la colère._ C'est un Dieu tout-puissant, qui fait miséricorde à qui il veut, et qui fait punir avec une rigueur infinie, quand on irrite sa colère."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 16,
       "latin_quote": "NON EFFUGIET IN RAPINA PECCATOR.",
       "french_translation": "Le méchant n'échappera pas dans ses rapines ; et la patience de celui qui attriste le pauvre, ne sera pas long-temps sans être récompensée.",
@@ -62,15 +62,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ἔλεος καὶ ὀργὴ παρ᾽ ἀυτῶ, δυνάστης ἰλασμῶν, καὶ ἐκχέων ὀργήν. Complut. Διὰ τᾶυτα δυνάστης, etc. _Ciso potens propitiationum, et fundens iram._"
+      "text": "Ἔλεος καὶ ὀργὴ παρ᾽ ἀυτῶ, δυνάστης ἱλασμῶν, καὶ ἐκχέων ὀργήν. Complut. Διὰ τᾶυτα δυνάστης, etc. _Ciso potens propitiationum, et fundens iram._",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Romains 11:6."
+      "text": "Romains 11:6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Οὐκ ἐκφεύξεται ἐν ἁρπάγματι ἁμαρτωλὸς, καὶ ἐκδικία μακροθύμου ἀνδρὸς."
+      "text": "Οὐκ ἐκφεύξεται ἐν ἁρπάγματι ἁμαρτωλὸς, καὶ ἐκδικία μακροθύμου ἀνδρὸς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

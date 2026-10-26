@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 128,
       "latin_quote": "FIANT SICUT FOENUM TECTORUM :^{(a)} QUOD PRIUSQUAM EVELLATUR EXARUIT.",
       "french_translation": "Qu'ils deviennent comme l'herbe qui est sur les toits, qui se sèche avant qu'on l'arrache.",
@@ -23,41 +23,73 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 128,
-      "latin_quote": "DE QUO NON IMPLEVIT MANUM SUAM QUI METIT.",
-      "french_translation": "{ (g)} Celui qui moissonne, n'en remplit pas sa main.",
+      "latin_quote": "DE QUO NON IMPLEVIT MANUM SUAM QUI METIT.^{(g)}",
+      "french_translation": "Celui qui moissonne, n'en remplit pas sa main.",
       "french_commentary": "En suivant le texte à la lettre, il faut dire que l'herbe des toits, dont on vient de parler, était du froment en herbe ; ou plutôt il faut suppléer ici quelque chose au texte : Qu'ils soient comme ces moissons jetées dans des terrains secs, et ingrats ; qu'ils ressemblent aux herbes des toits, qui sont bien-tôt flétries"
     }
   ],
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Hilar. Psalt. Rom. Mediol. Saint Germ. Carnut. Fiant sicut fœnum ædificiorum. 70. Ὡσεὶ χόρτος δωμάτων."
+      "text": "Hilar. Psalt. Rom. Mediol. Saint Germ. Carnut. Fiant sicut fœnum ædificiorum. 70. Ὡσεὶ χόρτος δωμάτων.",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "[UNCERTAIN HEBREW] ויהי כחציר גגות שקדמת שלף יבש"
+      "text": "[UNCERTAIN HEBREW] ויהי כחציר גגות שקדמת שלף יבש",
+      "tags": [
+        "hebrew",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Aqu. Ὃ πρὸ τοῦ ἀνιδεῖν ἐξηράνθη. Ieron. _Quod statim ut viruerit arescit._"
+      "text": "Aqu. Ὃ πρὸ τοῦ ἀνιδεῖν ἐξηράνθη. Ieron. _Quod statim ut viruerit arescit._",
+      "tags": [
+        "greek",
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Sym. Πρὸ τοῦ ἐκκαυλῆσαι."
+      "text": "Sym. Πρὸ τοῦ ἐκκαυλῆσαι.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "6. Édit. Πρὸ τοῦ ἑδρασθῆναι."
+      "text": "6. Édit. Πρὸ τοῦ ἑδρασθῆναι.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "70. In quibusd. codd. Πρὸ τοῦ ἐξανθῆσαι. In aliis vulgò, πρὶν ἐξανθῆσαι."
+      "text": "70. In quibusd. codd. Πρὸ τοῦ ἐξανθῆσαι. In aliis vulgò, πρὶν ἐξανθῆσαι.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Hilar. et Psalt. Rom. et aliis non paucis ; non implebit… qui metet…, qui colliget."
+      "text": "Hilar. et Psalt. Rom. et aliis non paucis ; non implebit… qui metet…, qui colliget.",
+      "tags": [
+        "fathers",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

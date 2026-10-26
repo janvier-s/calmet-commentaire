@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "33",
+      "verse_ref": 33,
       "chapter": 2,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "34",
+      "verse_ref": 34,
       "chapter": 2,
       "latin_quote": "IN DIE UNO MORIENTUR AMBO.",
       "french_translation": "Ils mourront tous deux dans un seul jour.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "35",
+      "verse_ref": 35,
       "chapter": 2,
       "latin_quote": "SUSCITABO MIHI SACERDOTEM FIDELEM.",
       "french_translation": "Je susciterai pour mon service un Prêtre fidèle.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "35",
+      "verse_ref": 35,
       "chapter": 2,
       "latin_quote": "AMBULABIT CORAM CHRISTO MEO CUNCTIS DIEBUS.",
       "french_translation": "Il marchera toujours devant mon Christ.",
@@ -54,7 +54,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "36",
+      "verse_ref": 36,
       "chapter": 2,
       "latin_quote": "VENIET UT ORETUR PRO EO, ET OFFERET NUMMUM ARGENTEUM, ET TORTAM PANIS.",
       "french_translation": null,
@@ -64,19 +64,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Πᾶν τὸ μεγαλυνθὲν ἐν οἴκῳ σου μαχαίρᾳ ἀνδρῶν ἀποθανεῖται."
+      "text": "Πᾶν τὸ μεγαλυνθὲν ἐν οἴκῳ σου μαχαίρᾳ ἀνδρῶν ἀποθανεῖται.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "1 Rois 4:11."
+      "text": "1 Rois 4:11.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "כהן נאמן."
+      "text": "כהן נאמן.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Isaïe 33:16. Voyez aussi Isaïe 5:21. 17:17. _Plantationem fidelem_ XXI. 23. _In loco fideli_. LV. 3. _Misericordias David fidèles_, etc."
+      "text": "Isaïe 33:16. Voyez aussi Isaïe 5:21 ; 17:17. _Plantationem fidelem_ ; 21:23. _In loco fideli_ ; 55:3. _Misericordias David fidèles_, etc.",
+      "tags": [
+        "verse",
+        "rabbis",
+        "latin",
+        "bad-ref"
+      ]
     }
   ],
   "book_end_marker": null

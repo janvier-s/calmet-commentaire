@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 33,
       "latin_quote": null,
       "french_translation": null,
@@ -17,23 +17,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Théodoret, Question 68 sur l'Exode"
+      "text": "Théodoret, Question 68 sur l'Exode",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Augustin, Question 154 sur l'Exode."
+      "text": "Saint Augustin, Question 154 sur l'Exode.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Origène, Homélie 11 sur l'Exode."
+      "text": "Origène, Homélie 11 sur l'Exode.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Homère, Iliade, N."
+      "text": "Homère, Iliade, N.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Γνῶμα γὰρ μετωπίδι μᾶλλον ἢ δι' αυχένων. Γνῶσις ἐγγυτάτω, ἀπαγγελία δι' ὀπισθίων. Nombres 12. 6. 7. 8."
+      "text": "Γνῶμα γὰρ μετωπίδι μᾶλλον ἢ δι' αὐχένων. Γνῶσις ἐγγυτάτω, ἀπαγγελία δι' ὀπισθίων. Nombres 12. 6. 7. 8.",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

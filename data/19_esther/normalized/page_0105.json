@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 5,
       "latin_quote": "JUBE PARARI EXCELSA M TRABEM.",
       "french_translation": "Commandez qu'on dresse une potence fort élevée.",
@@ -40,15 +40,46 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Athen. Dipnosoph. lib. 1. Τὸν Κρῆτα τιμησαι, η τινι των γερύντων, ὡς φησι Φανίας ὁ πρεσβυτικος, Εντυμον,… Αρταξέρξης ἐπὶ τῷ αυτῷ δειπνῳ εκαλειτο, ὥπερ ηδη πρότερον των Ελλήνων ἐφίλειτο, ἀλλ᾽ ουδ᾽ ὑπερευ. etc."
+      "text": "Athen. Dipnosoph. lib. 1. Τὸν Κρῆτα τιμῆσαι, η τίνι τῶν γερύντων, ὡς φησι Φανίας ὁ πρεσβυτικος, Εντυμον,… Ἀρταξέρξης ἐπὶ τῷ αὐτῷ δείπνῳ ἐκαλεῖτο, ὥπερ ἤδη πρότερον τῶν Ἑλλήνων ἐφίλειτο, ἀλλ᾽ ουδ᾽ ὑπερευ. etc.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Suétone, Galba, chapitre 9. Imploranti leges et civem se Romanum testificanti, quasi solatio et honore aliquo pœnam levaturus, mutari, multoque super ceteras altiorem, et dealbatam statui crucem jussit. Voyez Juste Lipse, De la croix, livre 3, chapitre 13."
+      "text": "Suétone, Galba, chapitre 9. Imploranti leges et civem se Romanum testificanti, quasi solatio et honore aliquo pœnam levaturus, mutari, multoque super ceteras altiorem, et dealbatam statui crucem jussit. Voyez Juste Lipse, De la croix, livre 3, chapitre 13.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Galba",
+          "original": "De vita Caesarum"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Code de Justinien, Des Juifs et des Célicoles ; et Code théodosien, livre 16, titre 8."
+      "text": "Code de Justinien, Des Juifs et des Célicoles ; et Code théodosien, livre 16, titre 8.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Code",
+          "original": "Codex Iustinianus"
+        },
+        {
+          "fr": "Code théodosien",
+          "original": "Codex Theodosianus"
+        }
+      ]
     }
   ],
   "book_end_marker": null

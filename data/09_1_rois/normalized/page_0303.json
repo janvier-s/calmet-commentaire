@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 17,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 17,
       "latin_quote": "FERRUM HASTÆ EJUS SEXCENTOS SICLOS HABEBAT FERRI.",
       "french_translation": "Le fer de sa lance pesait six cents sicles, c'est-à-dire, près de vingt livres.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 17,
       "latin_quote": "ET ARMIGER EJUS ANTECEDEBAT EUM.",
       "french_translation": "Et son Écuyer marchait devant lui.",
@@ -33,31 +33,65 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Symmaque : ὡς ἱστός."
+      "text": "Symmaque : ὡς ἱστός.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "ולהבת חניתו שש מאות שקלים"
+      "text": "ולהבת חניתו שש מאות שקלים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Hostus, Historia Monomachiæ, chapitre 5."
+      "text": "Hostus, Historia Monomachiæ, chapitre 5.",
+      "tags": [
+        "commentators",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Historia Monomachiæ",
+          "original": "Historia Monomachiae"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Plutarch. in Demetrio. Κλιμῳὁπλισμένῳ, ἀνὴρ ῥωμαλεώτατος, ος μόνῳ ἴσχυσε δίταλάντον πανοπλίαν, ἣν δῶρον κεχρῆσθαι ταλαντιαίαν."
+      "text": "Plutarch. in Demetrio. Κλιμῳὁπλισμένῳ, ἀνὴρ ῥωμαλεώτατος, ὃς μόνῳ ἴσχυσε δίταλάντον πανοπλίαν, ἣν δῶρον κεχρῆσθαι ταλαντιαίαν.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "ונשא צנה הלך לפניו. Καὶ ὁ αἴρων τὰ ὅπλα αὐτοῦ."
+      "text": "ונשא צנה הלך לפניו. Καὶ ὁ αἴρων τὰ ὅπλα αὐτοῦ.",
+      "tags": [
+        "hebrew",
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Psaumes 5:13. כצנה רצון תעטרנו"
+      "text": "Psaumes 5:13. כצנה רצון תעטרנו",
+      "tags": [
+        "hebrew",
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Voyez Homère, Iliade, Z. Αἴας δ᾽ ἐγγύθεν ἦλθε, φέρων σάκος ἠΰτε πύργον Χάλκεον, ἑπταβόειον."
+      "text": "Voyez Homère, Iliade, Z. Αἴας δ᾽ ἐγγύθεν ἦλθε, φέρων σάκος ἠΰτε πύργον Χάλκεον, ἑπταβόειον.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

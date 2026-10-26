@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 33,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 33,
       "latin_quote": "VIVAT RUBEN, ET NON MORIATUR, ET SIT PARVUS IN NUMERO.",
       "french_translation": "Que Ruben vive, et qu'il ne meure pas ; mais qu'il soit en petit nombre.",
@@ -33,31 +33,55 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "יְשׁוּרוּן"
+      "text": "יְשׁוּרוּן",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ὁ τὸ ἀγαπημένῳ λέγω."
+      "text": "Ὁ τὸ ἀγαπημένῳ λέγω.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Genèse 49:4."
+      "text": "Genèse 49:4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Le Syriaque ; l'Arabe ; Théodoret, Question 42 sur le Deutéronome ; Vatable ; Oleaster ; Piscator ; Ainsworth ; Junius ; etc."
+      "text": "Le Syriaque ; l'Arabe ; Théodoret, Question 42 sur le Deutéronome ; Vatable ; Oleaster ; Piscator ; Ainsworth ; Junius ; etc.",
+      "tags": [
+        "fathers",
+        "versions",
+        "commentators"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ἔστω πολὺς ἐν ἀριθμῷ."
+      "text": "Ἔστω πολὺς ἐν ἀριθμῷ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Voir Genèse 2:6, Psaume 1:5, 9:19, 43:19, 49:8 et 91, Proverbes 31:1, Isaïe 22:4, 12:28 et 28:27."
+      "text": "Voyez Genèse 2:6 ; Psaumes 1:5 ; 9:19 ; 43:19 ; 49:8, 91 ; Proverbes 31:1 ; Isaïe 22:4 ; 12:28 ; 28:27.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Nombres 1:21 ; 2:11."
+      "text": "Nombres 1:21 ; 2:11.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null,

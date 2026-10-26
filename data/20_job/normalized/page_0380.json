@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 31,
       "latin_quote": "SI GAVISUS SUM AD RUINAM EJUS QUI ME ODERAT.",
       "french_translation": "Si je me suis réjoui de la ruine de celui qui me haïssait.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 31,
       "latin_quote": "SI NON DIXERUNT VIRI TABERNACULI MEI ; QUIS DET DE CARNIBUS EJUS, UT SATUREMUR ?",
       "french_translation": "Si les gens de ma maison n'ont pas dit de moi : Qui nous donnera de sa chair, afin que nous en mangions ?",
@@ -55,15 +55,23 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vie de Mr. de Chateuil."
+      "text": "Vie de Mr. de Chateuil.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "H' ουκ ἠπατήθη ἡλίου του ἐπιφαύσκοντος, οὐδὲ λήγοντος δι' ἀφάνισιν; ὴ γὰρ ἐπ' ἀυτοῖς ἐςι."
+      "text": "H' οὐκ ἠπατήθη ἡλίου τοῦ ἐπιφαύσκοντος, οὐδὲ λήγοντος δι' ἀφάνισιν; ὴ γὰρ ἐπ' αὐτοῖς ἐστι.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Philippe ;\nBède ;\nVatable ;\nMercier ;\nJunius ;\nPiscator ;\nMénochius."
+      "text": "Philippe ;\nBède ;\nVatable ;\nMercier ;\nJunius ;\nPiscator ;\nMénochius.",
+      "tags": [
+        "fathers",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

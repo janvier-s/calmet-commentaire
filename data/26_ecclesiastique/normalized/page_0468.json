@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 28,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "29",
+      "verse_ref": 29,
       "chapter": 28,
       "latin_quote": "AURUM TUUM, ET ARGENTUM TUUM CONFLA, ETC.",
       "french_translation": "Fondez votre or et votre argent, et faites une balance pour peser vos paroles.",
@@ -40,31 +40,72 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Psaumes 140:3."
+      "text": "Psaumes 140:3.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Theognid.\nΠολλοῖς ἀνθρώποισι γλῶσσα θύραι ἐπίκεινται\nΚοὐδὲν, κ᾽ οὐκ ἐπὶ πᾶσι᾽ ἀράμεναι ἀμφὶς ἐῖσαι."
+      "text": "Theognid.\nΠολλοῖς ἀνθρώποισι γλῶσσα θύραι ἐπίκεινται\nΚοὐδὲν, κ᾽ οὐκ ἐπὶ πᾶσι᾽ ἀράμεναι ἀμφὶς ἐῖσαι.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Τὸ ἀργύριον συ, κ᾽ τὸ χρυσίον καίδεσμον,\nκ᾽ τοῖς λόγοις συ ποιῆσον ζυγὸν, κ᾽ σταθμὸν."
+      "text": "Τὸ ἀργύριον σὺ, κ᾽ τὸ χρυσίον καίδεσμον,\nκ᾽ τοῖς λόγοις σὺ ποιῆσον ζυγὸν, κ᾽ σταθμὸν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Deutéronome 14:25 ; 4 Rois 5:23."
+      "text": "Deutéronome 14:25 ; 4 Rois 5:23.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Genèse 42:35. צרור הכסף בסקו Ligamen argenti in sacco suo. Proverbes 7:20."
+      "text": "Genèse 42:35. צרור הכסף בסקו Ligamen argenti in sacco suo. Proverbes 7:20.",
+      "tags": [
+        "hebrew",
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Plutarque, dans Lysandre."
+      "text": "Plutarque, dans Lysandre.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Lysandre",
+          "original": "Lysander"
+        }
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Saint Ambroise, Des devoirs, livre 1, chapitre 3 ; et sur le Psaume 118 ; saint Hilaire, sur le Psaume 140 ; saint Grégoire le Grand, sur le 4e Psaume de la pénitence ; mais saint Jérôme, 14 sur Ézéchiel. Sermonibus tuis facito stateram et appendiculum."
+      "text": "Saint Ambroise, Des devoirs, livre 1, chapitre 3 ; et sur le Psaume 118 ; saint Hilaire, sur le Psaume 140 ; saint Grégoire le Grand, sur le 4e Psaume de la pénitence ; mais saint Jérôme, 14 sur Ézéchiel. Sermonibus tuis facito stateram et appendiculum.",
+      "tags": [
+        "verse",
+        "fathers",
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Des devoirs",
+          "original": "De officiis"
+        }
+      ]
     }
   ],
   "book_end_marker": null

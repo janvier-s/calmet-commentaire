@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -17,35 +17,84 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Deutéronome 32:35."
+      "text": "Deutéronome 32:35.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Augustin, Contre Fauste, livre 19, chapitre 25."
+      "text": "Saint Augustin, Contre Fauste, livre 19, chapitre 25.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Contre Fauste",
+          "original": "Contra Faustum Manichaeum"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Livre 2, lettre 133. Voyez aussi saint Jean Chrysostome, Homélie 18 sur saint Matthieu."
+      "text": "Livre 2, lettre 133. Voyez aussi saint Jean Chrysostome, Homélie 18 sur saint Matthieu.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Livre 2, Contre Marcion, chapitre 18."
+      "text": "Livre 2, Contre Marcion, chapitre 18.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Contre Marcion",
+          "original": "Adversus Marcionem"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Saint Augustin, sur le Psaume 108."
+      "text": "Saint Augustin, sur le Psaume 108.",
+      "tags": [
+        "verse",
+        "fathers"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Diogène Laërce, Solon."
+      "text": "Diogène Laërce, Solon.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Aristot. mag. moral. l. 1 c 34. Ου γὰρ, δίκαιον εἶναι τὸν ὀφθαλμὸν ἐξικύψε τινὸς, ἀντικαταπῆσαι μόνον, ἀλλὰ πλείονα παθεῖν."
+      "text": "Aristot. mag. moral. l. 1 c 34. Οὐ γὰρ, δίκαιον εἶναι τὸν ὀφθαλμὸν ἐξικύψε τινὸς, ἀντικαταπῆσαι μόνον, ἀλλὰ πλείονα παθεῖν.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Si membrum rupit, ni cum eo pacit, talio esto. Lois des Douze Tables. Voyez Aulu-Gelle, livre 20, chapitre 1, Nuits Attiques."
+      "text": "Si membrum rupit, ni cum eo pacit, talio esto. Lois des Douze Tables. Voyez Aulu-Gelle, livre 20, chapitre 1, Nuits Attiques.",
+      "tags": [
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Nuits Attiques",
+          "original": "Noctes Atticae"
+        }
+      ]
     }
   ],
   "book_end_marker": null

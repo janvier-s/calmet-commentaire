@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 19,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 19,
       "latin_quote": "EST QUIS NIMIUM SUBMITTIT.",
       "french_translation": "Tel se soumet jusqu'à l'excès avec une profonde humiliation : et tel baisse le visage, et fait semblant de n'avoir pas vu ce qui est fort secret.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 19,
       "latin_quote": "ET SI AB IMBECILLITATE VIRIUM, ETC.",
       "french_translation": "Si la faiblesse l'empêche de faire mal, il le fera, lorsqu'il en aura trouvé l'occasion.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 19,
       "latin_quote": "EX VISU COGNOSCITUR VIR.",
       "french_translation": "On connaît une personne à la vue, et on discerne à l'air du visage l'homme de bon sens.",
@@ -56,23 +56,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Bernard, De Considerat, livre 4."
+      "text": "Saint Bernard, De Considerat, livre 4.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De Considerat",
+          "original": "De consideratione"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Idem de Gradib. humilit. cap. 18."
+      "text": "Idem de Gradib. humilit. cap. 18.",
+      "tags": [
+        "fathers",
+        "ibid"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Εσι πονηρευόμεν@ συγκεκυφὼς μελανίᾳ, κὶ τὰ σπλάγχνα ἀυτῶ πλήρη δόλυ. _Grot. legit_ : Σογκεκυφὼς μελανίᾳ."
+      "text": "Εσι πονηρευόμεν@ συγκεκυφὼς μελανίᾳ, καὶ τὰ σπλάγχνα ἀυτῶ πλήρη δόλου. _Grot. legit_ : Συγκεκυφὼς μελανίᾳ.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Συγκύφων πρόσωπον, κὶ ἠθεληκωφῶν. ὅταν ἐπιγνωσθῇ προφθάση σε κακοποιῆσαι."
+      "text": "Συγκρύφων πρόσωπον, καὶ ἠθεληκωφῶν. ὅταν ἐπιγνωσθῇ προφθάσῃ σε κακοποιῆσαι.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Συγκύφων πρόσωπον, κὶ ὑποκρυπῶν, ἕως ἀν ἐπιγνωσθῇ προφθάση σε."
+      "text": "Συγκρύφων πρόσωπον, καὶ ὑποκρυπῶν, ἕως ἀν ἐπιγνωσθῇ προφθάσῃ σε.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

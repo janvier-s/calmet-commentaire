@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 18,
       "latin_quote": "QUAM MORIEBATUR, CAUSAM DEMONSTRABAT MORTIS.",
       "french_translation": "L'un étant jeté d'un côté à demi mort, et l'autre de l'autre, ils déclaraient le sujet qui les avait fait mourir.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 18,
       "latin_quote": "TETIGIT AUTEM TUNC ^{(a)} ET JUSTOS TENTATIO MORTIS.",
       "french_translation": "Il est vrai que les justes furent aussi éprouvés par une atteinte de mort.",
@@ -47,11 +47,20 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Græc. Ηψατο δὲ τότε καὶ δικαίων πεῖρα θανατου. Tetigit autem aliquando et justos periculum mortis. L'Édition Rom. le lit ainsi, n'ayant pas luss. culummortis."
+      "text": "Græc. Ἥψατο δὲ τότε καὶ δικαίων πεῖρα θανάτου. Tetigit autem aliquando et justos periculum mortis. L'Édition Rom. le lit ainsi, n'ayant pas luss. culummortis.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Nombres 16:47-48."
+      "text": "Nombres 16:47-48.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

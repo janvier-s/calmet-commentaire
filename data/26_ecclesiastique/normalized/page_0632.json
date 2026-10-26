@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 42,
       "latin_quote": "DE AEQUITATE STATERAE, ET PONDERUM.",
       "french_translation": "Ne rougissez point d'user d'un juste poids, et d'une juste balance ; ni d'être équitable dans les petits, comme dans les grands gains.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 42,
       "latin_quote": "DE CORRUPTIONE EMPTIONIS ET NEGOTIATORUM.",
       "french_translation": "Ni de corriger le désordre qui règne dans le commerce entre les marchands.",
@@ -40,15 +40,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Περὶ διαφόρου πωλήσεως ἐμπόρων. λήσεως Οὐδὲν ἕτερον ἐστὶν ἀδιαφόρως. Ετ XXVII. 1. Ιδὲν ἀδιαφόρως πωλοῖ ἐμπορία."
+      "text": "Περὶ διαφόρου πωλήσεως ἐμπόρων. λήσεως Οὐδὲν ἕτερον ἐστὶν ἀδιαφόρως. Ετ XXVII. 1. Ἰδὲν ἀδιαφόρως πωλοῖ ἐμπορία.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Διαφόρου se met pour l'argent. 2 Maccabées 1:35. 3:6. Ἀδιαφόρως, ou même ἀδιαφορία a la même signification. Ecclésiastique 7:19. Μὴ ἀ-"
+      "text": "Διαφόρου se met pour l'argent. 2 Maccabées 1:35. 3:6. Ἀδιαφόρως, ou même ἀδιαφορία a la même signification. Ecclésiastique 7:19. Μὴ ἀ-",
+      "tags": [
+        "greek",
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Περὶ ἀδιαφορίας, πωλήσεως, ἢ ἐμπόρων. Vide Sup."
+      "text": "Περὶ ἀδιαφορίας, πωλήσεως, ἢ ἐμπόρων. Vide Sup.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

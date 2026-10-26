@@ -36,7 +36,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 4,
       "latin_quote": null,
       "french_translation": null,
@@ -44,7 +44,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 4,
       "latin_quote": "TETIGIT TE, ET CONTURBATUS ES.",
       "french_translation": "Dieu vous frappe, et vous êtes dans le trouble.",
@@ -52,7 +52,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 4,
       "latin_quote": "UBI EST TIMOR TUUS, FORTITUDO TUA, ET PERFECTIO VIARUM TUARUM ?",
       "french_translation": "Où est cette crainte de Dieu ? Où est cette force, cette patience, et cette perfection, qui a paru dans toutes vos voies ?",
@@ -62,19 +62,35 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Μὴ πολλάκις σεὶ λόγῳ ἐλάλησας, ἰσχυροὺς δὲ ἠρκέσω εἰς τὸν ἴδιον. Theodot. Εἰ λαλῶν δὲ ἐλαλήσω πρὸς σε κινδύνοις. Ita Sym Eav δὲ λάβοι σε λόγος, μοχθησους. Aquil Μήτι ἰναφθῇ λόγος σε. πρὸς σε. Chrysost. Εἰσευθύνης."
+      "text": "Μὴ πολλάκις σεὶ λόγῳ ἐλάλησας, ἰσχυροὺς δὲ ἀρκέσω εἰς τὸν ἴδιον. Theodot. Εἰ λαλῶν δὲ ἐλαλήσω πρὸς σε κινδύνοις. Ita Sym Eav δὲ λάβοι σε λόγος, μοχθησους. Aquil Μήτι ἀναφθῇ λόγος σε. πρὸς σε. Chrysost. Εἰσευθύνης.",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "H'ψάτω σε, συ δὲ ἐσπόυδασας. Scolion."
+      "text": "H'ψάτω σε, σὺ δὲ ἐσπόυδασας. Scolion.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "[UNCERTAIN HEBREW] חתת תחת חתה"
+      "text": "[UNCERTAIN HEBREW] חתת תחת חתה",
+      "tags": [
+        "hebrew",
+        "uncertain"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Terent. _Facile omnes cùm valemus, recta consilia ægrotis damus : Tu si hic sis, aliter sentias._"
+      "text": "Terent. _Facile omnes cùm valemus, recta consilia ægrotis damus : Tu si hic sis, aliter sentias._",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     }
   ],
   "metadata": {

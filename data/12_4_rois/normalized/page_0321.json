@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 23,
       "latin_quote": "DELEVIT ARUSPICES.",
       "french_translation": "Il extermina les augures.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 23,
       "latin_quote": "QUI ADOLEBANT INCENSUM BAAL, ET SOLI, ET LUNÆ, ET DUODECIM SIGNIS.",
       "french_translation": "Qui offraient de l'encens à",
@@ -41,35 +41,72 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ibid. XIX. 14."
+      "text": "2 Paralipomènes 19:14.",
+      "tags": [
+        "verse",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "והשבית את הכמרים"
+      "text": "והשבית את הכמרים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Servius, sur Virgile, Énéide, livre 11 ; Varron, livre 6, De la langue latine, etc."
+      "text": "Servius, sur Virgile, Énéide, livre 11 ; Varron, livre 6, De la langue latine, etc.",
+      "tags": [
+        "classical",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la langue latine",
+          "original": "De lingua Latina"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Osée 10:5. Editui ejus."
+      "text": "Osée 10:5. Editui ejus.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Sophonie 1:4. Disperdam de loco hoc reliquias Baal, et nomina ædituorum."
+      "text": "Sophonie 1:4. Disperdam de loco hoc reliquias Baal, et nomina ædituorum.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "μελανηφόροι. Voyez Gruter, Inscriptions grecques."
+      "text": "μελανηφόροι. Voyez Gruter, Inscriptions grecques.",
+      "tags": [
+        "greek",
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Plutarch. de Iside. τοις δι μελανοφόροις ἐμβαλων ἑαυτον ἐις πομπην κ, ταις μελανοφόροις ἐις Δημαι ποθειν τον Ἠλιον."
+      "text": "Plutarch. de Iside. τοῖς δῑ μελανοφόρος ἐμβαλων ἑαυτον εἰς πομπην κ, ταῖς μελανοφόρος εἰς Δημαι ποθεῖν τὸν Ἤλιον.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Apulée, livre 11, Miles."
+      "text": "Apulée, livre 11, Miles.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

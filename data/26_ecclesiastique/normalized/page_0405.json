@@ -33,7 +33,7 @@
       "chapter": 23,
       "latin_quote": null,
       "french_translation": null,
-      "french_commentary": "dultére était puni de mort. (4) Voyez ci-devant IX. 13."
+      "french_commentary": "dultére était puni de mort. ^{(a)} Voyez ci-devant IX. 13."
     },
     {
       "commentary_id": 2,
@@ -55,19 +55,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Lévitique 20:10."
+      "text": "Lévitique 20:10.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καὶ ἐφ᾽ αἰσχύνη ἀνθρώπων ἡ φόβος αὐτῷ."
+      "text": "Καὶ ἐφ᾽ αἰσχύνη ἀνθρώπων ἡ φόβος αὐτῷ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Psaumes 138:11."
+      "text": "Psaumes 138:11.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "O' ἥλιος ὃς πάντ' ἐφορᾷ, καὶ πάντ' ἐπακούει."
+      "text": "O' ἥλιος ὃς πάντ' ἐφορᾷ, καὶ πάντ' ἐπακούει.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

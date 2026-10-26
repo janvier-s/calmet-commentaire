@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 19,
       "latin_quote": "TUUM.",
       "french_translation": "Ne dites point vos pensées à votre ami, ni à votre ennemi, et si vous avez commis une faute, ne la leur découvrez point.",
@@ -25,15 +25,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ecclésiastique 12:14. Isaïe 7:20. 9:14. 22:26-27. 27:17, 24."
+      "text": "Ecclésiastique 12:14. Isaïe 7:20. 9:14. 22:26-27. 27:17, 24.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ambros. Orat. in obitu satyri fratris."
+      "text": "Ambros. Orat. in obitu satyri fratris.",
+      "tags": [
+        "fathers",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Εν οἴκῳ εχθρῶν μὴ διηγῆ βίον ἀπολέσης, ὡς μὴ ἴδῃ σοι ἁμαρτία, ἀποκάλυψιν."
+      "text": "Ἐν οἴκῳ ἐχθρῶν μὴ διηγῆ βίον ἀπολούσης, ὡς μὴ ἴδῃ σοι ἁμαρτία, ἀποκάλυψιν.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

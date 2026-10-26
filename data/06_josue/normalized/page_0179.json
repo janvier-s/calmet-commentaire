@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 8,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 8,
       "latin_quote": "SCRIPSIT SUPER LAPIDES DEUTERONOMIUM LEGIS MOYSI.",
       "french_translation": "Il écrivit sur les pierres, le Deutéronome de la loi de Moïse.",
@@ -33,19 +33,36 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Demosth. orat. contra Neæram. τὰ δὲ ἄῤῥητα ἱερὰ ὁ βασιλεὺς ἔθυε, et τὰς παρεδρους ἐφῄρει, et γυνὴ δαρεῖα ἐκείνῳ βασίλισσα ἦν."
+      "text": "Demosth. orat. contra Neæram. τὰ δὲ ἄρρητα ἱερὰ ὁ βασιλεὺς ἔθυε, et τὰς παρέδρους ἐφῄρει, et γυνὴ δαρεῖα ἐκείνῳ βασίλισσα ἦν.",
+      "tags": [
+        "greek",
+        "classical",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Josèphe, Antiquités judaïques, livre 5, chapitre 2 ; Origène, Homélie 9."
+      "text": "Josèphe, Antiquités judaïques, livre 5, chapitre 2 ; Origène, Homélie 9.",
+      "tags": [
+        "fathers",
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Tostat ; bit. ; Drusius ; Masius ; Serarius ; Cajetan."
+      "text": "Tostat ; bit. ; Drusius ; Masius ; Serarius ; Cajetan.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Deutéronome 27:3."
+      "text": "Deutéronome 27:3.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 13,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 13,
       "latin_quote": "ADVOCATUS A POTENTIORE DISCEDE.",
       "french_translation": "Si un Grand vous appelle, retirez-vous ; car il en sera plus porté à vous appeler.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 13,
       "latin_quote": "NE IMPROBUS SIS, NE IMPINGARIS.",
       "french_translation": "Ne soyez pas importun, de peur qu'il ne se dégoûte de vous ; et ne vous éloignez pas trop, de peur qu'il ne vous oublie.",
@@ -53,7 +53,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 13,
       "latin_quote": "NE RETINEAS EX ÆQUO LOQUI CUM ILLO.",
       "french_translation": "Ne l'entretenez pas long-temps, comme si vous étiez son égal ; et ne vous fiez point à ses longs entretiens.",
@@ -63,19 +63,35 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Lacides Cyranus apud Laërt. lib. 4."
+      "text": "Lacides Cyranus apud Laërt. lib. 4.",
+      "tags": [
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 25:17."
+      "text": "Proverbes 25:17.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Μὴ ἱμπίπλῃς ἵνα μὴ ἀπωσθῇς ἀμελέτως."
+      "text": "Μὴ ἱμπίπλῃς ἵνα μὴ ἀπωσθῇς ἀμελέως.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "_Μὴ ἔπεχε συναναστράφθαι μετ' ἀυτῶ, μὴ πιμις ἀλογος τοις πλείσοι λόγοις ἀυτῶ._ Voyez Grotius, il montre que ἐπέχειν se prend pour περιέχειν. Ci-après XVI. 1. _Luc 14:7. et I. Timor. IV. 16._"
+      "text": "_Μὴ ἔπεχε συνανεστράφθαι μετ' ἀυτῶ, μὴ πιμις ἄλογος τοῖς πείσοι λόγοις ἀυτῶ._ Voyez Grotius, il montre que ἐπέχειν se prend pour περιέχειν. Ci-après XVI. 1. _Luc 14:7. et I. Timor. IV. 16._",
+      "tags": [
+        "greek",
+        "verse",
+        "commentators",
+        "explanation"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 31,
       "latin_quote": "QUI PROBATUS EST IN ILLO, ET PERFECTUS EST, ETC.",
       "french_translation": "Il a été éprouvé par l'or, et trouvé parfait ; sa gloire sera éternelle.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 31,
       "latin_quote": "IDEO STABILITA SUNT BONA ILLIUS IN DOMINO.",
       "french_translation": "C'est pourquoi ses biens ont été affermis dans le Seigneur ; et toute l'assemblée des Saints publiera les aumônes qu'il a faites.",
@@ -48,15 +48,33 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Augustin, sermon 5 de Verbis Domini, maintenant 61, chapitre 9, numéro 10."
+      "text": "Saint Augustin, sermon 5 de Verbis Domini, maintenant 61, chapitre 9, numéro 10.",
+      "tags": [
+        "fathers",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Bernard, De conversione ad clericos, chapitre 30."
+      "text": "Saint Bernard, De conversione ad clericos, chapitre 30.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De conversione ad clericos",
+          "original": "De conversione ad clericos"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Διὰ τῦτο εςηρίχθη τὰ ἀγαθὰ ἀυτῦ, et τὰς ἐλεημοσύνας ἀυτῦ ἐκδιηγήσεται ἐκκλησία."
+      "text": "Διὰ τοῦτο εςηρίχθη τὰ ἀγαθὰ αὐτοῦ, et τὰς ἐλεημοσύνας αὐτοῦ ἐκδιηγήσεται ἐκκλησία.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

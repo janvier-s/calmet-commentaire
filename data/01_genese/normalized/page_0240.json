@@ -16,7 +16,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -26,23 +26,44 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Livre De la fragilité humaine, Section XII, article 7."
+      "text": "Livre De la fragilité humaine, Section XII, article 7.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "3 Rois 19:4 ;\nPsaumes 48:16 ;\nJob 31:22."
+      "text": "3 Rois 19:4 ;\nPsaumes 48:16 ;\nJob 31:22.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Question 85."
+      "text": "Question 85.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Philon, D'Abraham, page 276."
+      "text": "Philon, D'Abraham, page 276.",
+      "tags": [
+        "fathers",
+        "rabbis",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "D'Abraham",
+          "original": "De Abraham"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Genèse 6:9 ; Genèse 17:1 ; 3 Rois 9:4 ; etc."
+      "text": "Voyez Genèse 6:9 ; Genèse 17:1 ; 3 Rois 9:4 ; etc.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

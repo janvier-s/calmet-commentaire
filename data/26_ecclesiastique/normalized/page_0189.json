@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 7,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 7,
       "latin_quote": "NON IRRIDEAS HOMINEM IN AMARITUDINE ANIMÆ.",
       "french_translation": "Ne vous moquez point d'un homme, dont l'âme est dans l'amertume ; car il y a un Dieu qui voit tout, et c'est lui qui élève, et qui humilie.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 7,
       "latin_quote": "NOLI ARARE MENDACIUM ADVERSUS FRATREM.",
       "french_translation": "Ne travaillez pas à inventer des mensonges contre votre frère, ni contre votre ami.",
@@ -48,23 +48,43 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "1 Corinthiens 10:12."
+      "text": "1 Corinthiens 10:12.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 18:14."
+      "text": "Proverbes 18:14.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "1 Corinthiens 4:7."
+      "text": "1 Corinthiens 4:7.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Isocrat. ad Damon. _Μηδενὶ συμφοραῖς ὀνειδίσῃς. κοινὴ γὰρ ἡ τύχη, καὶ τὸ μέλλον ἀόρατον._"
+      "text": "Isocrat. ad Damon. _Μηδενὶ συμφοραῖς ὀνειδίσῃς. κοινὴ γὰρ ἡ τύχη, καὶ τὸ μέλλον ἀόρατον._",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "_Μὴ ἀροτρία ψεῦδος ἐπ' ἀδελφῷ σου, μηδὲ ἐπὶ φίλον τὸ αὐτὸ ποίει._ Grotius lit : _λμητὸν ποίει._ Ne _messem facias._ חרש אל, comme Job. ואחרי חרשו Et Proverbes 3:29. אל תחרש על רעך רעה etc. et 1 Rois 19:19. חורש שנים עשר צמדים"
+      "text": "_Μὴ ἀροτρία ψεῦδος ἐπ’ ἀδελφῷ σου, μηδὲ ἐπὶ φίλον τὸ αὐτὸ ποίει._ Grotius lit : _λμητὸν ποίει._ Ne _messem facias._ חרש אל, comme Job. ואחרי חרשו Et Proverbes 3:29. אל תחרש על רעך רעה etc. et 1 Rois 19:19. חורש שנים עשר צמדים",
+      "tags": [
+        "hebrew",
+        "greek",
+        "verse",
+        "commentators",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

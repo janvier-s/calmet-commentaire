@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 2,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 2,
       "latin_quote": "NAM CUM ALIUS LABORET IN SAPIENTIA, ET DOCTRINA, ET SOLLICITUDINE, ETC.",
       "french_translation": "Car après qu'un homme a bien travaillé à acquérir la sagesse, et la science, et qu'il s'est donné bien de la peine, il laisse tout ce qu'il a acquis à une personne qui n'aime que l'oisiveté.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 2,
       "latin_quote": "CUNCTI DIES EJUS DOLORIBUS PLENI SUNT.",
       "french_translation": "Tous ses jours sont pleins de douleurs et de misères.",
@@ -48,15 +48,29 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ieron hic. ad ℣. 20. Diebus ac noctibus vir sapiens in scripturis laboret et componat libros, ut memoriam sui posteris derelinquat, et nihilominus in manus stultorum veniant, qui frequenter secundum perversitatem cordis sui semina inde hæreseôn capiant, et alienos labores calumnientur."
+      "text": "Ieron hic. ad ℣. 20. Diebus ac noctibus vir sapiens in scripturis laboret et componat libros, ut memoriam sui posteris derelinquat, et nihilominus in manus stultorum veniant, qui frequenter secundum perversitatem cordis sui semina inde hæreseôn capiant, et alienos labores calumnientur.",
+      "tags": [
+        "verse",
+        "fathers",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "כי יש אדם שעמלו בחכמה ובדעת ובכשרון ולאדם שלא עמל בו יתננו חלקו"
+      "text": "כי יש אדם שעמלו בחכמה ובדעת ובכשרון ולאדם שלא עמל בו יתננו חלקו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "70. Εν ανδρεια. Scoliast, εν ισχυρογνωμη. In agilitate. Heb. בכשרון."
+      "text": "70. Ἐν ἀνδρεία. Scoliast, ἐν ισχυρογνωμη. In agilitate. Heb. בכשרון.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": null

@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "18",
+      "verse_ref": 18,
       "chapter": 31,
       "latin_quote": "INTELLIGE QUÆ SUNT PROXIMI TUI, EX TE IPSO, ETC.",
       "french_translation": "Jugez de la disposition de votre prochain par la vôtre.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 31,
       "latin_quote": "UTERE QUASI HOMO FRUGI, ETC.",
       "french_translation": "Usez comme un homme tempérant de ce qui vous est servi, de peur que vous ne vous rendiez odieux en mangeant trop.",
@@ -48,23 +48,48 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ου ἱω ἐπιβάλης, μὴ ἐκτείνης χεῖρα σὺ 37. Καὶ μὴ συνθλίβου αυτῷ ἐν τρυβλίῳ."
+      "text": "Οὐ ἱω ἐπιβάλῃς, μὴ ἐκτείνῃς χεῖρα σὺ 37. Καὶ μὴ συνθλίβου αὐτῷ ἐν τρυβλίῳ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Athen. lib. 4. cap. 13. Τεμὼν δι' ἑαυτὸν ὁ διάκονος μεμον ἴακεν, τεμνίζω πρὸς ὃν κακυνδιδομένον αἴτιον. δι πιεριφερόμενον."
+      "text": "Athen. lib. 4. cap. 13. Τεμὼν δι' ἑαυτὸν ὁ διάκονος μέμον ἴακεν, τεμνίζω πρὸς ὃν κακυνδιδομένον αἴτιον. δῑ περιφερόμενον.",
+      "tags": [
+        "greek",
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Καὶ ἐν παντὸς ἐν ρεαυτῷ, ἢ ἐπὶ ῥέματι διανοῦ."
+      "text": "Καὶ ἐν παντὸς ἐν σεαυτῷ, ἢ ἐπὶ ῥέματι διανοοῦ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Horace, Satires, livre 1, satire 1. Aut positum ante mea quæ sit nullum in parte catini Sustulit esuriens, minùs hoc jucundus amicus, Sit mihi ?"
+      "text": "Horace, Satires, livre 1, satire 1. Aut positum ante mea quæ sit nullum in parte catini Sustulit esuriens, minùs hoc jucundus amicus, Sit mihi ?",
+      "tags": [
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Satires",
+          "original": "Satirae"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Φάγε ὡς ἄνθρωπος τὰ παρεχείμενα σοι, καὶ μὴ διαμασῶ μὴ μισηθῇς."
+      "text": "Φάγε ὡς ἄνθρωπος τὰ παρεχείμενα σοι, καὶ μὴ διαμασῶ μὴ μισηθῇς.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

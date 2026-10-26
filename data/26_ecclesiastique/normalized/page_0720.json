@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 50,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 50,
       "latin_quote": "IN DIEBUS IPSIUS EMANAVERUNT PUTEI AQUARUM, ETC.",
       "french_translation": "De son temps on a fait venir des eaux dans des réservoirs publics, et ils se sont remplis comme une mer.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 50,
       "latin_quote": "QUI CURAVIT GENTEM SUAM, ET LIBERAVIT EAM A PERDITIONE.",
       "french_translation": "Il a eu un soin particulier de son peuple, et il l'a délivré de la perdition.",
@@ -48,31 +48,55 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ecclésiastique 48:19."
+      "text": "Ecclésiastique 48:19.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Εν ἡμέραις ἀυτᾶ ἐλαττώθη ἀποδοχὴ ὕδατος, Χαλκὸς ὡς ὀυ Σαλαμὼνς τὸ πλείμιτρον. Complut. Εν ἡμέραις ἀυτᾶ ἐλαττώθη δοχεῖον ὕδατος, ὡς ἀυτὸ Σαλαμὼνς τὸ πλείμιτρον."
+      "text": "Ἐν ἡμέραις αὐτοῦ ἐλαττώθη ἀποδοχὴ ὕδατος, Χαλκὸς ὡς οὐ Σαλαμὼνς τὸ πλείμιτρον. Complut. Ἐν ἡμέραις αὐτοῦ ἐλαττώθη δοχεῖον ὕδατος, ὡς αὐτὸ Σαλαμὼνς τὸ πλείμιτρον.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Ελακκώθη ἀποδοχέα ὕδατων."
+      "text": "Ελακκώθη ἀποδοτέα ὕδατων.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ωσθὴ Σαλαμὼνς τὸ πλείμιτρον."
+      "text": "Ωσθὴ Σαλαμὼνς τὸ πλείμιτρον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "3 Rois 7:23 ; 1 Paralipomènes 18:8 ; 2 Paralipomènes 4:2 etc."
+      "text": "3 Rois 7:23 ; 1 Paralipomènes 18:8 ; 2 Paralipomènes 4:2 etc.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Εν ἡμέραις ἀυτᾶ ἐλακκώθη ἀποδοχεῖον ὕδατος, λίμνη ὡς ἀυτὸς Σαλαμὼνς τὸ πλείμιτρον. Vide Heschel. Annot. hic."
+      "text": "Ἐν ἡμέραις αὐτοῦ ἐλακκώθη ἀποδοχεῖον ὕδατος, λίμνη ὡς αὐτὸς Σαλαμὼνς τὸ πλείμιτρον. Vide Heschel. Annot. hic.",
+      "tags": [
+        "greek",
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Jean 9:7 verset. Voyez, au besoin, Isaïe 7:3 ; 22:9, 11 et 36:2."
+      "text": "Jean 9:7 verset. Voyez, au besoin, Isaïe 7:3 ; 22:9, 11 et 36:2.",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     }
   ],
   "book_end_marker": null

@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 21,
       "latin_quote": "ET APPLICABIT EUM AD OSTIUM, ET AD POSTES.",
       "french_translation": "Il le fera approcher de la porte.",
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 21,
       "latin_quote": "PERFORABITQUE AUREM EIUS SUBULA.",
       "french_translation": "Il lui percera l'oreille avec une alène.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 21,
       "latin_quote": "ERIT SERVUS IN SÆCULUM.",
       "french_translation": "Il demeurera en servitude pour toujours.",
@@ -41,43 +41,98 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Πρὸς τὸ κριτήριον τῶ Θεῦ. Aqu. Sym. Πρὸς τὰς κριτὰς."
+      "text": "Πρὸς τὸ κριτήριον τῶ Θεοῦ. Aqu. Sym. Πρὸς τὰς κριτὰς.",
+      "tags": [
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Les rabbins, dans Selden, à l'endroit cité."
+      "text": "Les rabbins, dans Selden, à l'endroit cité.",
+      "tags": [
+        "rabbis",
+        "commentators"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "הגישו אל הדלת או אל המזוזה"
+      "text": "הגישו אל הדלת או אל המזוזה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Deutéronome 15:17. In janua domus tuæ."
+      "text": "Deutéronome 15:17. In janua domus tuæ.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Cajetan ;\nLipoman ;\nTirin ;\nMénochius ;\nBonfrère ;\nMalvenda ;\nRivet."
+      "text": "Cajetan ;\nLipoman ;\nTirin ;\nMénochius ;\nBonfrère ;\nMalvenda ;\nRivet.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Théodoret, Question 45 ;\nRupert ;\nLipoman, sur l'Exode."
+      "text": "Théodoret, Question 45 ;\nRupert ;\nLipoman, sur l'Exode.",
+      "tags": [
+        "fathers",
+        "commentators"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "Satyr. 1 verset 102."
+      "text": "Satyr. 1 verset 102.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Satyr",
+          "original": "Satyricon"
+        }
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Satyricon, chapitre 63."
+      "text": "Satyricon, chapitre 63.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Satyricon",
+          "original": "Satyricon"
+        }
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Plutarque, Apophtegmes."
+      "text": "Plutarque, Apophtegmes.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Apophtegmes",
+          "original": "Apophthegmata"
+        }
+      ]
     },
     {
       "marker": "(k)",
-      "text": "Drusius ;\nFagius ;\nGrotius ;\nVatable ;\nTirin."
+      "text": "Drusius ;\nFagius ;\nGrotius ;\nVatable ;\nTirin.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

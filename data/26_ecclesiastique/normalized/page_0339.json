@@ -29,15 +29,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 18,
       "latin_quote": "A MANE USQUE AD VESPERAM IMMUTABITUR TEMPUS.",
-      "french_translation": "Du matin au soir le temps se change ; de même la fortune peut changer dans un moment ; c'est une roue qui tourne continuellement ; tel est au haut, qui bientôt sera au bas :^{(a)} Rotam volubili orbe versamus, infima summis, summa infimis mutare gaudemus.",
-      "french_commentary": "Souvenez vous de la fortune d'Aman et de Mardochée, et de celle du Patriarche Joseph, et du saint homme Job. Tel s'est levé Roi, qui s'est couché particulier. Tel a paru le matin avec éclat, qui le soir est conduit au supplice.^{(b)}\n_Quem dies vidit veniens superbum,\nHunc dies vidit fugiens jacentem._"
+      "french_translation": "Du matin au soir le temps se change ;",
+      "french_commentary": "de même la fortune peut changer dans un moment ; c'est une roue qui tourne continuellement ; tel est au haut, qui bientôt sera au bas :^{(a)} Rotam volubili orbe versamus, infima summis, summa infimis mutare gaudemus. Souvenez vous de la fortune d'Aman et de Mardochée, et de celle du Patriarche Joseph, et du saint homme Job. Tel s'est levé Roi, qui s'est couché particulier. Tel a paru le matin avec éclat, qui le soir est conduit au supplice.^{(b)}\n_Quem dies vidit veniens superbum,\nHunc dies vidit fugiens jacentem._"
     },
     {
       "commentary_id": 2,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 18,
       "latin_quote": "HOMO SAPIENS IN OMNIBUS METUET.",
       "french_translation": "L'homme sage sera toujours dans la crainte : et pendant les jours du péché, il se gardera de la paresse.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 18,
       "latin_quote": "OMNIS ASTUTUS AGNOSCIT SAPIENTIAM.",
       "french_translation": "Tout homme habile reconnaît la sagesse, et il rend honneur à celui qui l'a trouvée.",
@@ -55,23 +55,46 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Boet. lib. 2. de Consol. Philosoph."
+      "text": "Boet. lib. 2. de Consol. Philosoph.",
+      "tags": [
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Senec. Thyeste."
+      "text": "Senec. Thyeste.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Thyeste",
+          "original": "Thyestes"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Καὶ ἄφρων ὐ συντηρήσει καιρὸν."
+      "text": "Καὶ ἄφρων ὐ συντηρήσει καιρὸν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Proverbes 28:14."
+      "text": "Proverbes 28:14.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ecclésiastique 11:30."
+      "text": "Ecclésiastique 11:30.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 46,
       "latin_quote": "EGO INDE ADDUCAM TE REVERTENTEM.",
       "french_translation": "Je vous en ramènerai.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 46,
       "latin_quote": "JOSEPH PONET MANUS SUAS SUPER OCULOS TUOS.",
       "french_translation": "Il vous fermera les yeux.",
@@ -47,27 +47,68 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Εἰς τέλος."
+      "text": "Εἰς τέλος.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Diis precor hoc jubeant, ut euntibus ordine fatis,\nIlle meos oculos comprimat, ille tuos."
+      "text": "Diis precor hoc jubeant, ut euntibus ordine fatis,\nIlle meos oculos comprimat, ille tuos.",
+      "tags": [
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Homère Iliad. Λ.\nΑ᷐ δειλ᾽, ὀυ μὲν σοί γε πατὴρ, ἐμὸς ὥρια μήτηρ\nΦόρσε καθαιρήσουσι, θανόντι περ ὡς θέμις ἐςι."
+      "text": "Homère Iliad. Λ.\nἋ᷐ δειλ᾽, οὐ μὲν σοί γε πατὴρ, ἐμὸς ὥρια μήτηρ\nΦόρησε καθαιρήσουσι, θανόντι περ ὡς θέμις ἐστι.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ab miser ! haud illi genitor, venerandaque Mater,\nCompressere oculos…..\nVirgile, Énéide, livre 9."
+      "text": "Ab miser ! haud illi genitor, venerandaque Mater,\nCompressere oculos…..\nVirgile, Énéide, livre 9.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Lucain, Pharsale, livre 5."
+      "text": "Lucain, Pharsale, livre 5.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Pharsale",
+          "original": "Pharsalia"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Pline, Histoire naturelle, livre 11, chapitre 37."
+      "text": "Pline, Histoire naturelle, livre 11, chapitre 37.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

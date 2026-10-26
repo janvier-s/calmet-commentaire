@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 25,
       "latin_quote": "IN TRIBUS PLACITUM EST SPIRITUI MEO.",
       "french_translation": "Il y a trois choses qui plaisent à mon esprit.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 25,
       "latin_quote": "CONCORDIA FRATRUM.",
       "french_translation": "L'union des frères.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 25,
       "latin_quote": "VIR ET MULIER BENÈ SIBI CONSENTIENTES.",
       "french_translation": "Un mari, et une femme qui s'accordent bien.",
@@ -48,15 +48,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Proverbes 30:15. Tria sunt insaturabilia. 18. Tria sunt difficilia mihi. 21. Per tria movetur terra. 29. Tria sunt quæ bene gradiuntur. 24. Quatuor sunt minima terræ."
+      "text": "Proverbes 30:15. Tria sunt insaturabilia. 18. Tria sunt difficilia mihi. 21. Per tria movetur terra. 29. Tria sunt quæ bene gradiuntur. 24. Quatuor sunt minima terræ.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 18:19."
+      "text": "Proverbes 18:19.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Homer. Odyss. VI. ℣. 182. Οὐ μὲν γὰρ τῦγε κρεῖσσον καὶ ἄρειον, ἢ ὅθ᾽ ὁμοφρονέοντε νοήμασιν οἶκον ἔχητον, ἀνὴρ ἠδὲ γυνή."
+      "text": "Homer. Odyss. VI. ℣. 182. Οὐ μὲν γὰρ τῦφε κρεῖσσον καὶ ἄρειον, ἢ ὅθ᾽ ὁμοφρονέοντε νοήμασιν οἶκον ἔχητον, ἀνὴρ ἠδὲ γυνή.",
+      "tags": [
+        "greek",
+        "classical",
+        "title",
+        "abbrev"
+      ],
+      "titles": [
+        {
+          "fr": "Odyss",
+          "original": "Odyssea"
+        }
+      ]
     }
   ],
   "book_end_marker": null

@@ -14,7 +14,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 15,
       "latin_quote": null,
       "french_translation": null,
@@ -22,7 +22,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 15,
       "latin_quote": "ARIARATHI.",
       "french_translation": "A Ariarathes, Roi de Cappadoce. ^{(a)}",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 15,
       "latin_quote": "ARSACI.",
       "french_translation": "A Arsace, Roi des Parthes ;",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 15,
       "latin_quote": "LAMPSACO.",
       "french_translation": "A Lampsaque, célèbre dans la Mysie sur l'Hellespont, alors ville libre. ^{(b)}",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 15,
       "latin_quote": "DELOS.",
       "french_translation": "Île célèbre de la mer Égée, connue par son Temple d'Apollon, et par le commerce qui y devint très grand, après la ruine de Cartage.",
@@ -54,7 +54,7 @@
     },
     {
       "commentary_id": 6,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 15,
       "latin_quote": "MYNDOS.",
       "french_translation": "Ville de Carie, avec un bon port.",
@@ -62,15 +62,15 @@
     },
     {
       "commentary_id": 7,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 15,
       "latin_quote": "SICIONE.",
-      "french_translation": "ville très ancienne dans l'Achaïe, avec un port fameux.",
-      "french_commentary": null
+      "french_translation": "",
+      "french_commentary": "ville très ancienne dans l'Achaïe, avec un port fameux."
     },
     {
       "commentary_id": 8,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 15,
       "latin_quote": "IN CARIAM.",
       "french_translation": "En Carie.",
@@ -78,7 +78,7 @@
     },
     {
       "commentary_id": 9,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 15,
       "latin_quote": "SAMOS.",
       "french_translation": "Île très puissante alors, et libre, près des côtes de l'Asie mineure.",
@@ -86,7 +86,7 @@
     },
     {
       "commentary_id": 10,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 15,
       "latin_quote": "PAMPHILIE.",
       "french_translation": "Il y a plusieurs villes de ce nom.",
@@ -94,29 +94,45 @@
     },
     {
       "commentary_id": 11,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 15,
       "latin_quote": "LA LYCIE",
-      "french_translation": "est voisine de la Pamphylie ;",
-      "french_commentary": "les Romains l'ôtèrent aux Rhodiens, et lui rendirent sa liberté. ^{(d)}"
+      "french_translation": "",
+      "french_commentary": "est voisine de la Pamphylie ; les Romains l'ôtèrent aux Rhodiens, et lui rendirent sa liberté. ^{(d)}"
     }
   ],
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide Justin. l. 35."
+      "text": "Vide Justin. l. 35.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Vide Liv. l. 33. et 43. Elle avait favorisé les Romains contre Antiochus le Grand."
+      "text": "Vide Liv. l. 33. et 43. Elle avait favorisé les Romains contre Antiochus le Grand.",
+      "tags": [
+        "classical",
+        "explanation"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Σαμψάμη, vel Σαμψάκην. Syr. Samsane."
+      "text": "Σαμψάμη, vel Σαμψάκην. Syr. Samsane.",
+      "tags": [
+        "greek",
+        "versions",
+        "latin",
+        "abbrev"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Tite-Live, livre 44."
+      "text": "Tite-Live, livre 44.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

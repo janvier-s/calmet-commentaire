@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "14",
+      "verse_ref": 14,
       "chapter": 30,
       "latin_quote": null,
       "french_translation": null,
@@ -17,27 +17,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Lévitique 23:40."
+      "text": "Lévitique 23:40.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "פרי עץ הדר"
+      "text": "פרי עץ הדר",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "פרי עץ הדר"
+      "text": "פרי עץ הדר",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Athénée, Dipnosophistes, livre 3, chapitre 7."
+      "text": "Athénée, Dipnosophistes, livre 3, chapitre 7.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Dipnosophistes",
+          "original": "Deipnosophistae"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Idem. ibid. Ως τι μιξα κομιζλλοι ἀπιχθεσιν ἐν ταῖς κιβοτοῖς μετὰ τῶν ἱματίων."
+      "text": "Idem. ibid. Ὡς τί μιξα κομιζλλοι ἀπιχθεσιν ἐν ταῖς κιβωτοῖς μετὰ τῶν ἱματίων.",
+      "tags": [
+        "greek",
+        "classical",
+        "ibid"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "פרי עץ"
+      "text": "פרי עץ",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

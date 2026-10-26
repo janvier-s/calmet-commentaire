@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 23,
       "latin_quote": "NON SUSCIPIES VOCEM MENDACII.",
       "french_translation": "Vous n'écouterez point la parole du mensonge.",
@@ -25,27 +25,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ἀκοὴν ματαίαν."
+      "text": "Ἀκοὴν ματαίαν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Philo de Judice. Παρ' ἐκείνῳ ἴσως τινὶ νομοθέτῃ τῶν μεταγενεστέρων ἐκ τῶν Ιερωτάτων μοσίως εἴρηται, ὦ δικασταὶ, ἀκοὴν δοκῦσι, μὴ μαρτυρῶν ἀκοὴν: ὡς οὐδὲν οἶδε τις, πλὴν ἀκοὴν, οὐδὲ ἕτερον μὴ πάντως βέβαια."
+      "text": "Philo de Judice. Παρ' ἐκείνῳ ἴσως τινὶ νομοθέτῃ τῶν μεταγενεστέρων ἐκ τῶν Ἱερωτάτων μοσίως εἴρηται, ὦ δικασταὶ, ἀκοὴν δοκοῦσι, μὴ μαρτυρῶν ἀκοὴν: ὡς οὐδὲν οἶδε τίς, πλὴν ἀκοὴν, οὐδὲ ἕτερον μὴ πάντως βέβαια.",
+      "tags": [
+        "greek",
+        "rabbis"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Leges Atticæ, dans Démosthène, Contre Eubulide."
+      "text": "Leges Atticæ, dans Démosthène, Contre Eubulide.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "לא תשא שמע שוא"
+      "text": "לא תשא שמע שוא",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Vatable ;\nOleaster ;\nMalvenda ;\nMunster ;\nJunius."
+      "text": "Vatable ;\nOleaster ;\nMalvenda ;\nMunster ;\nJunius.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Cicéron, dans saint Augustin, La Cité de Dieu, livre 2, chapitre 9."
+      "text": "Cicéron, dans saint Augustin, La Cité de Dieu, livre 2, chapitre 9.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        }
+      ]
     }
   ],
   "book_end_marker": null

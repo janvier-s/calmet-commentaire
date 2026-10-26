@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 38,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 38,
       "latin_quote": "FILI, IN TUA INFIRMITATE NE DESPICIAS.",
       "french_translation": "Mon fils, ne vous méprisez point vous-même dans votre infirmité, mais priez le Seigneur.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 38,
       "latin_quote": "AVERTE A DELICTO, ET DIRIGE MANUS.",
       "french_translation": "Détournez-vous du péché, et redressez vos mains.",
@@ -55,15 +55,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Μυρεψὸς οὐ τένις ποιῶν μίγμα, καὶ μὴ συντελέσῃ τὰ ἔργα ἀυτῦ, τῇ ἐιρήνῃ παρ᾽ ἀυτῦ ἐπὶ προσώπου γῆς. Grotius lit : ἐυωδία, la bonne odeur s'en répandra par tout, au lieu de εἰρήνη, la paix."
+      "text": "Μυρεψὸς οὐ τένις ποιῶν μίγμα, καὶ μὴ συντελέσῃ τὰ ἔργα αὐτοῦ, τῇ εἰρήνῃ παρ᾽ αὐτοῦ ἐπὶ προσώπου γῆς. Grotius lit : εὐωδία, la bonne odeur s'en répandra par tout, au lieu de εἰρήνη, la paix.",
+      "tags": [
+        "greek",
+        "versions",
+        "commentators",
+        "explanation"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἐν ἀρρωστήματι οὐ μὴ παραλήγει."
+      "text": "Ἐν ἀρρωστήματι οὐ μὴ παραλήγει.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Paralipomènes 16:12."
+      "text": "2 Paralipomènes 16:12.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

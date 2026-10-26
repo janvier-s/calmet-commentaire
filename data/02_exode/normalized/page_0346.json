@@ -15,7 +15,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 21,
       "latin_quote": null,
       "french_translation": null,
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 21,
       "latin_quote": "QUI FURATUS FUERIT HOMINEM, CONVICTUS NOXÆ, MORTE MORIATUR.",
       "french_translation": "Celui qui aura dérobé un homme libre, et l'aura vendu pour esclave, sera puni de mort.",
@@ -31,7 +31,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "17",
+      "verse_ref": 17,
       "chapter": 21,
       "latin_quote": "QUI MALEDIXERIT PATRI SUO, VEL MATRI, MORTE MORIATUR.",
       "french_translation": "Celui qui aura maudit son père ou sa mère, sera puni de mort.",
@@ -41,39 +41,77 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Plutar. in Romulo."
+      "text": "Plutar. in Romulo.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "גנב איש ומכרו ונמצא בידו"
+      "text": "גנב איש ומכרו ונמצא בידו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Grotius ; Vatable."
+      "text": "Grotius ; Vatable.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Xénophon, livre 1, Commentaires."
+      "text": "Xénophon, livre 1, Commentaires.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Commentaires",
+          "original": "Commentarii"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Digest. 48. Tite 15"
+      "text": "Digest. 48. Tite 15",
+      "tags": [
+        "verse",
+        "classical",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "מקלל אביו ואמו"
+      "text": "מקלל אביו ואמו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "70. Ὁ κακολογῶν πατέρα."
+      "text": "70. Ὁ κακολογῶν πατέρα.",
+      "tags": [
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(h)",
-      "text": "Lévitique 20:9."
+      "text": "Lévitique 20:9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(i)",
-      "text": "Demosthen. in Timocrat. Εάν τις ἀλῶς τῶν γονέων τιν γλύσας, ὡς τῷ ἀγορᾷ ἐράσθαι δεδέσθαι."
+      "text": "Demosthen. in Timocrat. Ἐάν τίς ἀλοῦς τῶν γονέων τιν γλύσας, ὡς τῷ ἀγορᾷ ἐράσθαι δεδέσθαι.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

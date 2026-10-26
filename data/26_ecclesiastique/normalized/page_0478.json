@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 29,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 29,
       "latin_quote": "PECCATOR INCIDET IN PROMISSIONEM NEQUAM.",
       "french_translation": "Le pécheur s'engagera à répondre indiscrettement pour un autre, et celui qui entreprend beaucoup d'affaires, sera exposé à la rigueur des jugements.",
@@ -38,15 +38,15 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "25",
+      "verse_ref": 25,
       "chapter": 29,
       "latin_quote": "RECUPERA PROXIMUM, SECUNDUM VIRTUTEM TUAM.",
       "french_translation": "Tirez d'embarras votre prochain, selon votre pouvoir ; mais prenez garde de ne pas tomber vous-même.",
-      "french_commentary": "C'est la conclusion de tout ce qu'il a dit jusqu'ici du cautionnement. Il est bon de répondre pour votre prochain, et de le tirer de peine, mais que ce soit avec discrétion, et sagesse, en sorte que vous ne vous ruiniez pas, en voulant obliger un autre. Considérez ce que vous pouvez faire, et répondez comme devant un jour payer : _Non spondeas super virtutem tuam, quasi resistuens cogita._ Ayez soin de réveiller l'indolence de celui dont vous êtes garant, de peur qu'au temps assigné le débiteur ne se trouvant pas en état de payer, on ne se prenne à vous. ^{(b)}"
+      "french_commentary": "C'est la conclusion de tout ce qu'il a dit jusqu'ici du cautionnement. Il est bon de répondre pour votre prochain, et de le tirer de peine, mais que ce soit avec discrétion, et sagesse, en sorte que vous ne vous ruiniez pas, en voulant obliger un autre. Considérez ce que vous pouvez faire, et répondez comme devant un jour payer : _Non spondeas super virtutem tuam_, dit-il ailleurs : ^{(a)}_si enim spoponderis quasi resistuens cogita._ Ayez soin de réveiller l'indolence de celui dont vous êtes garant, de peur qu'au temps assigné le débiteur ne se trouvant pas en état de payer, on ne se prenne à vous. ^{(b)}"
     },
     {
       "commentary_id": 4,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 29,
       "latin_quote": "INITIUM VITÆ HOMINIS, AQUA ET PANIS.",
       "french_translation": "Les principales choses pour la vie de l'homme, sont l'eau, le pain, le vêtement, et une maison.",
@@ -56,15 +56,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ecclésiastique 8:16."
+      "text": "Ecclésiastique 8:16.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Proverbes 6:1-3 ; Saint Ambroise, De Tobie, chapitre 23."
+      "text": "Proverbes 6:1-3 ; Saint Ambroise, De Tobie, chapitre 23.",
+      "tags": [
+        "verse",
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De Tobie",
+          "original": "De Tobia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Josèphe, Contre Apion, livre 2. Πῦρ καὶ ὕδωρ καὶ τροφῆς μεταδιδόναι τοῖς δεομένοις. Καὶ ὁδὸν, ἔφησεν, ἀδικοῦντας μὴ παριέναι."
+      "text": "Josèphe, Contre Apion, livre 2. Πῦρ καὶ ὕδωρ καὶ τροφῆς μεταδιδόναι τοῖς δεομένοις. Καὶ ὁδὸν, ἔφησεν, ἀδικοῦντας μὴ παριέναι.",
+      "tags": [
+        "greek",
+        "rabbis",
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

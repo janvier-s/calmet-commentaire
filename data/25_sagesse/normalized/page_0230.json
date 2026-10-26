@@ -7,7 +7,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 19,
       "latin_quote": "NEC DISSOLVEBANT ILLAM, QUÆ DISSOLVEBATUR SICUT GLACIES, BONAM ESCAM.",
       "french_translation": null,
@@ -15,7 +15,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 19,
       "latin_quote": "IN OMNIBUS ENIM MAGNIFICASTI POPULUM TUUM.",
       "french_translation": "Car vous avez relevé votre peuple en toutes choses.",
@@ -25,31 +25,58 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide Cornel. hic et notas nostras in Sagesse 16:18."
+      "text": "Vide Cornel. hic et notas nostras in Sagesse 16:18.",
+      "tags": [
+        "verse",
+        "commentators",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Oudi τηκτὸν πυραλθουδὲς ἰσχυεν γένος ἀμβροσιας τροφῆς."
+      "text": "Oudi τηκτὸν πυραλθουδὲς ἴσχυεν γένος ἀμβροσίας τροφῆς.",
+      "tags": [
+        "greek",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Sagesse 16:22. Nix autem et glacies sustinebant vim ignis."
+      "text": "Sagesse 16:22. Nix autem et glacies sustinebant vim ignis.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Sagesse 16:10."
+      "text": "Sagesse 16:10.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Ovid. de Ponto. lib. I. Eleg. II."
+      "text": "Ovid. de Ponto. lib. I. Eleg. II.",
+      "tags": [
+        "classical",
+        "abbrev"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Nombres 11:7-9."
+      "text": "Nombres 11:7-9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(g)",
-      "text": "3 Rois 9:2-3. et seq."
+      "text": "3 Rois 9:2-3. et seq.",
+      "tags": [
+        "verse",
+        "abbrev"
+      ]
     }
   ],
   "book_end_marker": "Fin du Livre de la Sagesse."

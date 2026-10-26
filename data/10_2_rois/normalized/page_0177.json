@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 16,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 16,
       "latin_quote": "INGRESSUS EST AD CONCUBINAS PATRIS SUI CORAM UNIVERSO ISRAEL.",
       "french_translation": "Il abusa devant tout Israël des concubines de son père.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 16,
       "latin_quote": "QUASI SI QUIS CONSULERET DEUM.",
       "french_translation": "Comme des oracles de Dieu même.",
@@ -48,19 +48,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Iliad. I. Πολλῶν κατεπρην, συγόνυς δ᾽ ἐπιπλήσσει ἱερηᾶς."
+      "text": "Iliad. I. Πολλῶν κατεπρην, συγόνυς δ᾽ ἐπιπλήσσει ἱερᾶς.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Dans Josèphe, Contre Apion, livre 1."
+      "text": "Dans Josèphe, Contre Apion, livre 1.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Rois 12:11."
+      "text": "2 Rois 12:11.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Hérodote, livre 3, chapitre 68 et 88."
+      "text": "Hérodote, livre 3, chapitre 68 et 88.",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

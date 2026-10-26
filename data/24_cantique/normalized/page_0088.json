@@ -22,7 +22,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 5,
       "latin_quote": null,
       "french_translation": null,
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 5,
       "latin_quote": "INVENERUNT ME CUSTODES,… PERCUSSERUNT ME,… TULERUNT PALLIUM MEUM.",
       "french_translation": "Les gardes de la ville m'ont rencontrée ; ils m'ont frappée, et m'ont ôté mon manteau.",
@@ -40,15 +40,26 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Juvénal, satire 6 ; et d'autres, passim."
+      "text": "Juvénal, satire 6 ; et d'autres, passim.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Athénée, livre 15, chapitre 3."
+      "text": "Athénée, livre 15, chapitre 3.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "קמתי אני לפתוח לדודי וידי נטפו מור ואצבעותי מור עבר על כפות המנעול. [UNCERTAIN HEBREW] ἐγὼ ἀνέστην τ. ἀδελφιδῷ μου ; χεῖρές μου ἔσταξαν σμύρναν. Δάκτυλοί μου σμύρνης πλήρεις ἐπὶ χεῖρας τῆ κλήθρας. θεου ἤνοιξα ἐγώ."
+      "text": "קמתי אני לפתוח לדודי וידי נטפו מור ואצבעותי מור עבר על כפות המנעול. [UNCERTAIN HEBREW] ἐγὼ ἀνέστην τ. ἀδελφιδῷ μου ; χεῖρές μου ἔσταξαν σμύρναν. Δάκτυλοί μου σμύρνης πλήρεις ἐπὶ χεῖρας τῆ κλήθρας. θεοῦ ἤνοιξα ἐγώ.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "uncertain"
+      ]
     }
   ],
   "book_end_marker": null

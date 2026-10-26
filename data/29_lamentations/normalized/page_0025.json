@@ -14,7 +14,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 2,
       "latin_quote": null,
       "french_translation": null,
@@ -22,7 +22,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 2,
       "latin_quote": "Terendit arcum suum quasi inimicus.",
       "french_translation": "Il a appesanti sur nous sa main vengeresse, comme un ennemi redoutable :",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 2,
       "latin_quote": "PRÆCIPITAVIT OMNIA MOENIA EJUS.",
       "french_translation": "Il a fait tomber toutes ses murailles.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 2,
       "latin_quote": "REPLEVIT IN FILIA SION HUMILIATUM, ET HUMILIATAM.",
       "french_translation": "Il a rempli d'humiliation les hommes, et les femmes.",
@@ -46,37 +46,58 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 2,
       "latin_quote": "DISSIPAVIT QUASI HORTUM TENTORIUM SUUM.",
-      "french_translation": "il a renversé son Tabernacle, comme un jardin qu'on détruit.",
+      "french_translation": "Il a renversé son Tabernacle, comme un jardin qu'on détruit.",
       "french_commentary": "Il a ruiné son propre Temple ; il a permis que les Caldéens le profanassent, et y missent"
     }
   ],
   "footnotes": [
     {
       "footnote_id": 1,
-      "text": "בִּלַּע כָּל־אַרְמְנוֹתֶיהָ."
+      "text": "בִּלַּע כָּל־אַרְמְנוֹתֶיהָ.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "footnote_id": 2,
-      "text": "κατέπιεν πάσας τὰς βάρεις αὐτῆς."
+      "text": "κατέπιεν πάσας τὰς βάρεις αὐτῆς.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "footnote_id": 3,
-      "text": "וַיֶּרֶב בְּבַת־יְהוּדָה תַּאֲנִיָּה וַאֲנִיָּה."
+      "text": "וַיֶּרֶב בְּבַת־יְהוּדָה תַּאֲנִיָּה וַאֲנִיָּה.",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "footnote_id": 4,
-      "text": "καὶ ἐπλήθυνεν τῇ θυγατρὶ Ἰούδα ταπεινὸν καὶ ταπεινήν. Compl. Ταπεινώσει, καὶ ταπεινώσει. ταπεινωμένην. Ut Vulg. Ita et Theodoret. et Alexandri."
+      "text": "καὶ ἐπλήθυνεν τῇ θυγατρὶ Ἰούδα ταπεινὸν καὶ ταπεινήν. Compl. Ταπεινώσει, καὶ ταπεινώσει. ταπεινωμένην. Ut Vulg. Ita et Theodoret. et Alexandri.",
+      "tags": [
+        "greek",
+        "fathers",
+        "versions",
+        "latin"
+      ]
     },
     {
       "footnote_id": 5,
-      "text": "Lamentations 5:11."
+      "text": "Lamentations 5:11.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "footnote_id": 6,
-      "text": "Ibid. ℣. 13."
+      "text": "Ibid. ℣. 13.",
+      "tags": [
+        "ibid"
+      ]
     }
   ],
   "book_end_marker": null

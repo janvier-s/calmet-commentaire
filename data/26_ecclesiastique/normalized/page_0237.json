@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 10,
       "latin_quote": null,
       "french_translation": "nations.",
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 10,
       "latin_quote": "NON EST CREATA HOMINIBUS SUPERBIA.",
       "french_translation": "L'orgueil n'a point été créé avec l'homme, ni la colère avec les femmes.",
@@ -45,7 +45,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 10,
       "latin_quote": "SEMEN HOMINUM HONORABITUR HOC, QUOD TIMET DEUM.",
       "french_translation": "La race de ceux qui craignent Dieu, sera en honneur.",
@@ -55,15 +55,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide Sagesse 11:24. Invidia Diaboli mors intravit in orbem terrarum. Et 1. 13. Mortem Deus non fecit, nec lætatur in perditione vivorum. Vide Gloß. Jans. Dionys. Hugon. hic."
+      "text": "Vide Sagesse 11:24. Invidia Diaboli mors intravit in orbem terrarum. Et 1. 13. Mortem Deus non fecit, nec lætatur in perditione vivorum. Vide Gloß. Jans. Dionys. Hugon. hic.",
+      "tags": [
+        "verse",
+        "classical",
+        "commentators",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "O'υχ ἔϰτισαι ἀνθρώποις ὑπερηφανία, ἰδὲ ὀργὴ θυμὸς γυναικῶν."
+      "text": "O'υχ ἔκτισαι ἀνθρώποις ὑπερηφανία, ἰδὲ ὀργὴ θυμὸς γυναικῶν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Augustin, De Peccato, livre 2 ; Origène, chapitre 4."
+      "text": "Saint Augustin, De Peccato, livre 2 ; Origène, chapitre 4.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De Peccato",
+          "original": "De peccato originali"
+        }
+      ]
     }
   ],
   "book_end_marker": "S"

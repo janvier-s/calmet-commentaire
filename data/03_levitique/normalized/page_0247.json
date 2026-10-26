@@ -29,7 +29,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 19,
       "latin_quote": null,
       "french_translation": null,
@@ -37,7 +37,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "22",
+      "verse_ref": 22,
       "chapter": 19,
       "latin_quote": "ORABITQUE PRO EO SACERDOS, ET PRO PECCATO EIUS.",
       "french_translation": "Le Prêtre priera pour lui, et pour son péché.",
@@ -47,27 +47,46 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "נחרפת"
+      "text": "נחרפת",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Πεφυλαγμένη ἀνδρὶ."
+      "text": "Πεφυλαγμένη ἀνδρὶ.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "בקורת תהיה"
+      "text": "בקורת תהיה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "בקורת תהיה לא יומתו כי לא חפשה au lieu de לא D'autres lisent לה"
+      "text": "בקורת תהיה לא יומתו כי לא חפשה au lieu de לא D'autres lisent לה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Επισκοπὴ ἔςαι αὐτοῖς, ὐκ ἀποθανῦνται. Alii : Επισκόπισις. Investigatio."
+      "text": "Ἐπισκοπὴ ἔσται αὐτοῖς, οὐκ ἀποθανοῦνται. Alii : Επισκόπισις. Investigatio.",
+      "tags": [
+        "greek",
+        "latin"
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Voyez Psaumes 72:4 ; Sagesse 2:20 ; 3:6 ; 19:4 ; Ecclésiastique 40:6 etc."
+      "text": "Voyez Psaumes 72:4 ; Sagesse 2:20 ; 3:6 ; 19:4 ; Ecclésiastique 40:6 etc.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null
