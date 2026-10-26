@@ -123,7 +123,8 @@ def _lemma_added_all():
                     (k.split("/")[:2] for k, v in done.items() if "/no_lemma/" in k and v == "resolved")})
     if not paths:
         return {}
-    log = subprocess.run(["git", "-C", str(STUDIUM), "log", "--format=@%H", "--name-only", "--", *paths],
+    # data/ is a folder of the repository: --relative and ./ keep paths as they are here
+    log = subprocess.run(["git", "-C", str(STUDIUM), "log", "--format=@%H", "--name-only", "--relative", "--", *paths],
                          capture_output=True, text=True).stdout
     wanted, h = [], None
     for line in log.splitlines():
@@ -132,7 +133,7 @@ def _lemma_added_all():
         elif line.strip() in paths:
             wanted.append((h, line.strip()))
     cat = subprocess.run(["git", "-C", str(STUDIUM), "cat-file", "--batch"], capture_output=True,
-                         input="".join(f"{h}:{p}\n" for h, p in wanted).encode()).stdout
+                         input="".join(f"{h}:./{p}\n" for h, p in wanted).encode()).stdout
     out, pos = defaultdict(set), 0
     for h, p in wanted:
         end = cat.index(b"\n", pos)
@@ -823,7 +824,7 @@ def main():
     # Footnote Hebrew that footnotes.py's scan corrected but still couldn't find in the Hebrew Bible
     for fn_file in sorted((DOCS / "footnotes").glob("*.json")):
         vol = fn_file.stem
-        if vol == "held":  # footnotes.py held: every volume's held notes, not a volume
+        if not (STUDIUM / vol).is_dir():  # held.json, tags_auto.json: not a volume's report
             continue
         for n in json.loads(fn_file.read_text())["notes"]:
             if "hebrew-recheck" in n["flags"]:

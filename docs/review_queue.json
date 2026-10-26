@@ -858,45 +858,6 @@
   }
  },
  {
-  "id": "22_proverbes/0236/chapter_field/26a8fd7a",
-  "book_dir": "22_proverbes",
-  "page": 236,
-  "kind": "chapter_field",
-  "msg": "verses: chapter goes from 20 to 19 at verse_number 29",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "chapter"
-  }
- },
- {
-  "id": "22_proverbes/0239/chapter_field/2380b9cd",
-  "book_dir": "22_proverbes",
-  "page": 239,
-  "kind": "chapter_field",
-  "msg": "verses: chapter goes from 20 to 19 at verse_number 26",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "chapter"
-  }
- },
- {
-  "id": "22_proverbes/0252/chapter_field/36408592",
-  "book_dir": "22_proverbes",
-  "page": 252,
-  "kind": "chapter_field",
-  "msg": "commentary: chapter goes from 21 to 20 at verse_ref 30",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "chapter"
-  }
- },
- {
   "id": "26_ecclesiastique/0183/chapter_field/7b399238",
   "book_dir": "26_ecclesiastique",
   "page": 183,
@@ -1082,6 +1043,30 @@
   "optional": false
  },
  {
+  "id": "22_proverbes/0235/chapter_vulgate/f7cd23cc",
+  "book_dir": "22_proverbes",
+  "page": 235,
+  "kind": "chapter_vulgate",
+  "msg": "verse 26 “Qui affligit patrem, et fugat matrem, ig” is 19:26 in the Vulgate, but follows chapter 20's heading (misplaced heading?)",
+  "optional": false
+ },
+ {
+  "id": "22_proverbes/0235/chapter_vulgate/5bf26874",
+  "book_dir": "22_proverbes",
+  "page": 235,
+  "kind": "chapter_vulgate",
+  "msg": "verse 27 “Non cesses, fili, audire doctrinam, nec ” is 19:27 in the Vulgate, but follows chapter 20's heading (misplaced heading?)",
+  "optional": false
+ },
+ {
+  "id": "22_proverbes/0235/chapter_vulgate/a07a4a72",
+  "book_dir": "22_proverbes",
+  "page": 235,
+  "kind": "chapter_vulgate",
+  "msg": "verse 28 “Testis iniquus deridet judicium : et os ” is 19:28 in the Vulgate, but follows chapter 20's heading (misplaced heading?)",
+  "optional": false
+ },
+ {
   "id": "22_proverbes/0237/chapter_vulgate/ec31adcd",
   "book_dir": "22_proverbes",
   "page": 237,
@@ -1095,30 +1080,6 @@
   "page": 238,
   "kind": "chapter_vulgate",
   "msg": "verse 25 “Pestilente flagellato, stultus sapientio” is 19:25 in the Vulgate, but follows chapter 20's heading (misplaced heading?)",
-  "optional": false
- },
- {
-  "id": "22_proverbes/0239/chapter_vulgate/f7cd23cc",
-  "book_dir": "22_proverbes",
-  "page": 239,
-  "kind": "chapter_vulgate",
-  "msg": "verse 26 “Qui affligit patrem, et fugat matrem, ig” is 19:26 in the Vulgate, but follows chapter 20's heading (misplaced heading?)",
-  "optional": false
- },
- {
-  "id": "22_proverbes/0239/chapter_vulgate/5bf26874",
-  "book_dir": "22_proverbes",
-  "page": 239,
-  "kind": "chapter_vulgate",
-  "msg": "verse 27 “Non cesses, fili, audire doctrinam, nec ” is 19:27 in the Vulgate, but follows chapter 20's heading (misplaced heading?)",
-  "optional": false
- },
- {
-  "id": "22_proverbes/0239/chapter_vulgate/a07a4a72",
-  "book_dir": "22_proverbes",
-  "page": 239,
-  "kind": "chapter_vulgate",
-  "msg": "verse 28 “Testis iniquus deridet judicium : et os ” is 19:28 in the Vulgate, but follows chapter 20's heading (misplaced heading?)",
   "optional": false
  },
  {
@@ -5441,37 +5402,11 @@
   }
  },
  {
-  "id": "22_proverbes/0235/ref_order/f62009d2",
-  "book_dir": "22_proverbes",
-  "page": 235,
-  "kind": "ref_order",
-  "msg": "verse_ref goes back from 25 to 3 (… 24, 24, 25, 3, 5 …) in chapter 20: misread number, or Calmet returning to a verse?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "22_proverbes/0237/ref_order/fa309bf8",
+  "id": "22_proverbes/0237/ref_order/ab94ea0f",
   "book_dir": "22_proverbes",
   "page": 237,
   "kind": "ref_order",
-  "msg": "verse_ref goes back from 29 to 1 (… 5, 27, 29, 1, 1 …) in chapter 20: misread number, or Calmet returning to a verse?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "22_proverbes/0240/ref_order/f8f99a06",
-  "book_dir": "22_proverbes",
-  "page": 240,
-  "kind": "ref_order",
-  "msg": "verse_ref goes back from 27 to 5 (… 25, 26, 27, 5, 6 …) in chapter 20: misread number, or Calmet returning to a verse?",
+  "msg": "verse_ref goes back from 29 to 1 (… 27, 27, 29, 1, 1 …) in chapter 20: misread number, or Calmet returning to a verse?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -7963,19 +7898,6 @@
   }
  },
  {
-  "id": "21b_psaumes/0537/leading_call/f751c874",
-  "book_dir": "21b_psaumes",
-  "page": 537,
-  "kind": "leading_call",
-  "msg": "french_translation of note 2 (℣ 27) starts with the footnote call “^{(b)}”: “^{(b)} je l'établirai le premier-né, et je l'élèverai au-des…”: move it after the word it belongs to (end of the previous field or page?)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "21b_psaumes/0542/leading_call/3865ce27",
   "book_dir": "21b_psaumes",
   "page": 542,
@@ -8626,11 +8548,11 @@
   }
  },
  {
-  "id": "22_proverbes/0256/hyphen_cut/7a1bd38d",
+  "id": "22_proverbes/0254/hyphen_cut/5318461a",
   "book_dir": "22_proverbes",
-  "page": 256,
+  "page": 254,
   "kind": "hyphen_cut",
-  "msg": "latin_quote ends “…ULCTATO PESTILENTE, SAPIENTIOR ERIT PAR-” but the next page's first note has no latin_quote (it starts “même. ^{(a)} Il est à remarquer qu'Hésiode, et Hom…”): put the rest of the latin_quote back together",
+  "msg": "latin_quote ends “…ULCTATO PESTILENTE, SAPIENTIOR ERIT PAR-” but the next page's first note has no latin_quote (it starts “L'homme contagieux est celui dont la vie est aux a…”): put the rest of the latin_quote back together",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -9155,32 +9077,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "09_1_rois/0084/italic_seam/6e642d35",
-  "book_dir": "09_1_rois",
-  "page": 84,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“… lettre : ^{(d)} _Et les faméliques ont cessé, et_”) but the sentence goes on in roman overleaf (“de plus, celle qui était stérile a enfanté sept en…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "10_2_rois/0125/italic_seam/07e667ee",
-  "book_dir": "10_2_rois",
-  "page": 125,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…u composées : _Sculptilia eorum igne combures, et_”) but the sentence goes on in roman overleaf (“non concupisces aurum et argentum de quibus facta …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
    "field": "french_commentary"
   }
  },
@@ -10368,9 +10264,9 @@
   }
  },
  {
-  "id": "22_proverbes/0255/italic_seam/9bba7b79",
+  "id": "22_proverbes/0253/italic_seam/9bba7b79",
   "book_dir": "22_proverbes",
-  "page": 255,
+  "page": 253,
   "kind": "italic_seam",
   "msg": "Italics closed at the very foot of the page (“…r envoie des voies perverses aux pervers, car les_”) but the sentence goes on in roman overleaf (“œuvres du Seigneur sont pures. Il permet que ceux …”): carry the italics over to where the quotation ends",
   "optional": false,
@@ -13527,11 +13423,24 @@
   }
  },
  {
-  "id": "22_proverbes/0251/period_seam/e5dd18f5",
+  "id": "22_proverbes/0249/period_seam/750dfa6b",
   "book_dir": "22_proverbes",
-  "page": 251,
+  "page": 249,
   "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…V. II. Les Poètes parlent à peu près de même.”) but the next page goes on in lower case (“et qui se moquent des peines et des exhortati…”): stray full stop, or a capital to restore?",
+  "msg": "Full stop at the foot of the page (“…vers ceux qui ne sont pas capables de raison.”) but the next page goes on in lower case (“et qui se moquent des peines et des exhortati…”): stray full stop, or a capital to restore?",
+  "optional": false,
+  "where": {
+   "section": "commentary",
+   "index": 3,
+   "field": "french_commentary"
+  }
+ },
+ {
+  "id": "22_proverbes/0256/period_seam/8b019c9b",
+  "book_dir": "22_proverbes",
+  "page": 256,
+  "kind": "period_seam",
+  "msg": "Full stop at the foot of the page (“…V. II. Les Poètes parlent à peu près de même.”) but the next page goes on in lower case (“même. ^{(a)} Il est à remarquer qu'Hésiode, e…”): stray full stop, or a capital to restore?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -13549,19 +13458,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "26_ecclesiastique/0383/period_seam/afeeac26",
-  "book_dir": "26_ecclesiastique",
-  "page": 383,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…ner la sagesse. On ne doit jamais se rebuter.”) but the next page goes on in lower case (“lâcher du soin de leur instruction, et de leu…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_commentary"
   }
  },
@@ -14957,9 +14853,9 @@
   }
  },
  {
-  "id": "22_proverbes/0253/etc_for_et/c3a5e287",
+  "id": "22_proverbes/0251/etc_for_et/c3a5e287",
   "book_dir": "22_proverbes",
-  "page": 253,
+  "page": 251,
   "kind": "etc_for_et",
   "msg": "Last commentary ends with “etc._”: “…. D'autres traduisent : _La fierté des yeux, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
   "optional": false,
@@ -17245,19 +17141,6 @@
   }
  },
  {
-  "id": "21c_psaumes/0381/long_translation/54dc3987",
-  "book_dir": "21c_psaumes",
-  "page": 381,
-  "kind": "long_translation",
-  "msg": "Translation of 131 characters for a lemma of 38 “BEATUM DIXERUNT POPULUM, CUI HÆC SUNT.”: “etc. Ils ont appelé heureux le peuple qui possède tous ces biens : mais plutôt, heureux le…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "21c_psaumes/0385/long_translation/9c52bac9",
   "book_dir": "21c_psaumes",
   "page": 385,
@@ -17423,19 +17306,6 @@
   "where": {
    "section": "commentary",
    "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "22_proverbes/0291/long_translation/34fb3434",
-  "book_dir": "22_proverbes",
-  "page": 291,
-  "kind": "long_translation",
-  "msg": "Translation of 130 characters for a lemma of 40 “SEPTIES ENIM CADET ^{(a)} JUSTUS, ET RES”: “etc. Car le juste tombera sept fois, et se relèvera ; mais les méchants seront abattus dan…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
    "field": "french_translation"
   }
  },
@@ -17687,50 +17557,11 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0130/long_translation/a10ae8fb",
+  "id": "26_ecclesiastique/0164/long_translation/05731fb7",
   "book_dir": "26_ecclesiastique",
-  "page": 130,
+  "page": 164,
   "kind": "long_translation",
-  "msg": "Translation of 115 characters for a lemma of 36 (with the next page) “BENEDICTIO PATRIS FIRMAT DOMOS, ETC.”: “La bénédiction du père affermit la maison des enfants ; et la malédiction de la mère la dé…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0158/long_translation/2933e35d",
-  "book_dir": "26_ecclesiastique",
-  "page": 158,
-  "kind": "long_translation",
-  "msg": "Translation of 160 characters for a lemma of 39 “NOLI ATTENDERE AD POSSESSIONES INIQUAS,”: “Ne vous appuyez point sur les richesses injustes, et ne dites point, j'ai suffisamment de …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0162/long_translation/b63d0e1b",
-  "book_dir": "26_ecclesiastique",
-  "page": 162,
-  "kind": "long_translation",
-  "msg": "Translation of 139 characters for a lemma of 38 “NOLI ANXIUS ESSE IN DIVITIIS INJUSTIS.”: “Ne vous embarassez point pour les richesses injustes, car elles ne vous serviront de rien …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0173/long_translation/90623c1a",
-  "book_dir": "26_ecclesiastique",
-  "page": 173,
-  "kind": "long_translation",
-  "msg": "Translation of 120 characters for a lemma of 34 “SI HUMILIAVERIT SE CONTRA TE, ETC.”: “S'il s'humilie en votre présence, et qu'il se retire par respect de devant vous, votre ami…”: commentary run into the translation?",
+  "msg": "Translation of 130 characters for a lemma of 35 “ESTO MANSUETUS AD AUDIENDUM VERBUM.”: “Écoutez avec douceur ce que l'on vous dit, afin d'acquérir l'intelligence, et de rendre av…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -17739,336 +17570,11 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0179/long_translation/93c4b272",
-  "book_dir": "26_ecclesiastique",
-  "page": 179,
-  "kind": "long_translation",
-  "msg": "Translation of 212 characters for a lemma of 59 “QUIBUS AUTEM COGNITA EST, PERMANET USQUE”: “Mais dans ceux à qui elle est connue, elle subsiste jusqu'à ce qu'ils soient devant Dieu. …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0181/long_translation/8874324d",
-  "book_dir": "26_ecclesiastique",
-  "page": 181,
-  "kind": "long_translation",
-  "msg": "Translation of 112 characters for a lemma of 30 “STOLAM GLORIÆ INDUES EAM, ETC.”: “Vous vous revêtirez d'elle, comme d'un habit de gloire, et vous la mettrez sur vous, comme…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0184/long_translation/2fb7dbe4",
-  "book_dir": "26_ecclesiastique",
-  "page": 184,
-  "kind": "long_translation",
-  "msg": "Translation of 59 characters for a lemma of 18 “DISCEDE AB INIQUO.”: “Retirez-vous de l'injuste, et le péché se retirera de vous.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0186/long_translation/5c12f8fc",
-  "book_dir": "26_ecclesiastique",
-  "page": 186,
-  "kind": "long_translation",
-  "msg": "Translation of 103 characters for a lemma of 30 “NOLI QUÆRERE FIERI JUDEX, ETC.”: “Ne cherchez point à devenir Juge, si vous n'avez assez de force, pour rompre les efforts d…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0189/long_translation/f04cfdc2",
-  "book_dir": "26_ecclesiastique",
-  "page": 189,
-  "kind": "long_translation",
-  "msg": "Translation of 139 characters for a lemma of 42 “NON IRRIDEAS HOMINEM IN AMARITUDINE ANIM”: “Ne vous moquez point d'un homme, dont l'âme est dans l'amertume ; car il y a un Dieu qui v…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0192/long_translation/dc25a814",
-  "book_dir": "26_ecclesiastique",
-  "page": 192,
-  "kind": "long_translation",
-  "msg": "Translation of 102 characters for a lemma of 27 “NON ODERIS LABORIOSA OPERA.”: “Ne fuyez point les ouvrages laborieux, ni le travail de la campagne, qui a été créé par le…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0199/long_translation/43ceeb2b",
-  "book_dir": "26_ecclesiastique",
-  "page": 199,
-  "kind": "long_translation",
-  "msg": "Translation of 128 characters for a lemma of 37 “TRADE FILIAM, ET GRANDE OPUS FECERIS.”: “Mariez votre fille, et vous aurez fait une grande affaire : mais donnez-la à un homme de b…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0203/long_translation/3bf6069d",
-  "book_dir": "26_ecclesiastique",
-  "page": 203,
-  "kind": "long_translation",
-  "msg": "Translation of 114 characters for a lemma of 30 “ET PAUPERI PORRIGE MANUM TUAM.”: “Ouvrez votre main au pauvre, afin que votre sacrifice d'expiation, et votre offrande soien…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0211/long_translation/63f41077",
-  "book_dir": "26_ecclesiastique",
-  "page": 211,
-  "kind": "long_translation",
-  "msg": "Translation of 109 characters for a lemma of 35 “NE CONTRA FACIEM STES CONTUMELIOSI.”: “Ne résistez point en face à un homme insolent, de peur qu'il ne s'applique à rendre des pi…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0211/long_translation/442f7636",
-  "book_dir": "26_ecclesiastique",
-  "page": 211,
-  "kind": "long_translation",
-  "msg": "Translation of 107 characters for a lemma of 34 “NOLI FOENERARI HOMINI FORTIORI TE.”: “Ne prêtez point d'argent à un homme plus puissant que vous ; que si vous lui en avez prêté…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0212/long_translation/8fd1dd72",
-  "book_dir": "26_ecclesiastique",
-  "page": 212,
-  "kind": "long_translation",
-  "msg": "Translation of 83 characters for a lemma of 27 “NON JUDICES CONTRA JUDICEM.”: “Ne jugez point au désavantage du Juge, parce qu'il prononce selon ce qui est juste.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0212/long_translation/228a3495",
-  "book_dir": "26_ecclesiastique",
-  "page": 212,
-  "kind": "long_translation",
-  "msg": "Translation of 116 characters for a lemma of 26 (with the next page) “CUM AUDACE NON EAS IN VIA.”: “Ne vous mettez point en voyage avec un homme audacieux ; de peur qu'il ne sasse retomber s…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0213/long_translation/7bc48ece",
-  "book_dir": "26_ecclesiastique",
-  "page": 213,
-  "kind": "long_translation",
-  "msg": "Translation of 101 characters for a lemma of 32 (with the next page) “CUM FATUIS CONSILIUM NON HABEAS.”: “Ne délibé- rez point de vos affaires avec des fols ; car ils ne pourront aimer que ce qui …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0214/long_translation/aa51b4e8",
-  "book_dir": "26_ecclesiastique",
-  "page": 214,
-  "kind": "long_translation",
-  "msg": "Translation of 156 characters for a lemma of 36 “NON OMNI HOMINI COR TUUM MANIFESTES.”: “Ne découvrez point votre cœur à toutes sortes de personnes, de peur que celui à qui vous v…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0215/long_translation/330531e9",
-  "book_dir": "26_ecclesiastique",
-  "page": 215,
-  "kind": "long_translation",
-  "msg": "Translation of 128 characters for a lemma of 33 “ON ZELES MULIEREM SINUS TUI, ETC.”: “Ne soyez point jaloux de la femme qui vous est unie, de peur qu'elle n'emploie contre vous…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0216/long_translation/17d9fc0e",
-  "book_dir": "26_ecclesiastique",
-  "page": 216,
-  "kind": "long_translation",
-  "msg": "Translation of 223 characters for a lemma of 37 “NON DES MULIERI POTESTATEM ANIMÆ TUÆ.”: “Ne rendez point la femme maîtresse de votre propre esprit, de peur qu'elle ne prenne trop …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0224/long_translation/447e0951",
-  "book_dir": "26_ecclesiastique",
-  "page": 224,
-  "kind": "long_translation",
-  "msg": "Translation of 114 characters for a lemma of 35 “ET IN SENSU SIT TIBI COGITATUS DEI.”: “Que la pensée de Dieu occupe tout votre esprit ; et que tous vos entretiens soient des com…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0224/long_translation/eef21947",
-  "book_dir": "26_ecclesiastique",
-  "page": 224,
-  "kind": "long_translation",
-  "msg": "Translation of 159 characters for a lemma of 41 “IN MANU ARTIFICUM OPERA LAUDABUNTUR, ETC”: “Les ouvriers s'acquièrent de l'estime par l'ouvrage de leurs mains ; le Prince par la sage…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0233/long_translation/515b87e4",
-  "book_dir": "26_ecclesiastique",
-  "page": 233,
-  "kind": "long_translation",
-  "msg": "Translation of 166 characters for a lemma of 29 “OMNIS POTENTATUS BREVIS VITA.”: “Toute puissance subsistera peu ; la maladie longue fatigue le médecin, le médecin coupe pa…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0241/long_translation/3eabec24",
-  "book_dir": "26_ecclesiastique",
-  "page": 241,
-  "kind": "long_translation",
-  "msg": "Translation of 131 characters for a lemma of 38 (with the next page) “PAUPER GLORIATUR PER DISCIPLINAM, ETC.”: “Le pauvre trouve sa gloire dans le règlement de sa vie, et dans la crainte de Dieu : D'aut…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0243/long_translation/8c3dc1d8",
-  "book_dir": "26_ecclesiastique",
-  "page": 243,
-  "kind": "long_translation",
-  "msg": "Translation of 100 characters for a lemma of 30 “NE LAUDES VIRUM IN SPECIE SUA.”: “Ne louez point un homme pour sa mine avantageuse ; Et ne le méprisez point pour son peu d'…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0244/long_translation/1759d42b",
-  "book_dir": "26_ecclesiastique",
-  "page": 244,
-  "kind": "long_translation",
-  "msg": "Translation of 113 characters for a lemma of 36 “IN VESTITU NE GLORIERIS UNQUAM, ETC.”: “Ne vous glorifiez jamais de vos vêtements ; car les œuvres du Très-Haut sont admirables, e…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0245/long_translation/eeb2b229",
-  "book_dir": "26_ecclesiastique",
-  "page": 245,
-  "kind": "long_translation",
-  "msg": "Translation of 102 characters for a lemma of 33 “MULTI TYRANNI SEDERUNT IN THRONO.”: “Beaucoup de Princes ont été sur le trône ; et tel a porté le diadème, auquel on n'aurait j…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0247/long_translation/e9093efa",
-  "book_dir": "26_ecclesiastique",
-  "page": 247,
-  "kind": "long_translation",
-  "msg": "Translation of 115 characters for a lemma of 28 “NE IN MULTIS SINT ACTUS TUI.”: “Ne vous engagez pas dans une multiplicité d'actions ; car si vous êtes riche, vous ne sere…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0247/long_translation/3ba9bff3",
-  "book_dir": "26_ecclesiastique",
-  "page": 247,
-  "kind": "long_translation",
-  "msg": "Translation of 132 characters for a lemma of 40 “SI ENIM SECUTUS FUERIS, NON APPREHENDES.”: “Si vous suivez toutes vos affaires, vous ne pouvez y suffire ; et lorsque vous voudrez les…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0249/long_translation/f37c6a9b",
+  "id": "26_ecclesiastique/0249/long_translation/97091554",
   "book_dir": "26_ecclesiastique",
   "page": 249,
   "kind": "long_translation",
-  "msg": "Translation of 225 characters for a lemma of 30 “SAPIENTIA, ET DISCIPLINA, ETC.”: “C'est de Dieu que vient la sagesse, le règlement de la vie, la science de la loi, la chari…”: commentary run into the translation?",
+  "msg": "Translation of 115 characters for a lemma of 30 “SAPIENTIA, ET DISCIPLINA, ETC.”: “C'est de Dieu que vient la sagesse, le règlement de la vie, la science de la loi, la chari…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -18077,258 +17583,11 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0254/long_translation/986a11dd",
-  "book_dir": "26_ecclesiastique",
-  "page": 254,
-  "kind": "long_translation",
-  "msg": "Translation of 97 characters for a lemma of 31 “NE DICAS : QUID EST MIHI OPUS ?”: “Ne dites point : Qu'ai-je à faire de me mettre en peine ? qu'ai-je à espérer de biens déso…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0260/long_translation/d323c596",
-  "book_dir": "26_ecclesiastique",
-  "page": 260,
-  "kind": "long_translation",
-  "msg": "Translation of 92 characters for a lemma of 30 “ATTENDE TIBI A PESTIFERO, ETC.”: “Gardez-vous de l'homme malicieux, de peur qu'il ne vous rende pour jamais la fable du mond…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0261/long_translation/48209315",
-  "book_dir": "26_ecclesiastique",
-  "page": 261,
-  "kind": "long_translation",
-  "msg": "Translation of 130 characters for a lemma of 35 “SI BENE FECERIS, SCITO CUI FECERIS.”: “Si vous faites du bien, sachez à qui vous le ferez ; et on vous en saura beaucoup de gré ;…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0263/long_translation/9f25dfef",
-  "book_dir": "26_ecclesiastique",
-  "page": 263,
-  "kind": "long_translation",
-  "msg": "Translation of 92 characters for a lemma of 24 “PROHIBE PANES ILLI DARI.”: “Empêchez qu'on ne lui donne du pain, de peur qu'il ne devienne ainsi plus puissant que vou…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0267/long_translation/b8d4444a",
-  "book_dir": "26_ecclesiastique",
-  "page": 267,
-  "kind": "long_translation",
-  "msg": "Translation of 121 characters for a lemma of 27 “NON STATUAS ILLUM PENES TE.”: “Ne l'établissez point auprès de vous, et ne le placez point à votre droite, de peur qu'il …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0268/long_translation/f4eeb20b",
-  "book_dir": "26_ecclesiastique",
-  "page": 268,
-  "kind": "long_translation",
-  "msg": "Translation of 104 characters for a lemma of 26 “UNA HORA TECUM PERMANEBIT.”: “Il demeurera avec vous quelque temps, et s'il vous voit pencher tant soit peu, il n'y pour…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0272/long_translation/36ce0286",
-  "book_dir": "26_ecclesiastique",
-  "page": 272,
-  "kind": "long_translation",
-  "msg": "Translation of 104 characters for a lemma of 30 “DIVES INJUSTE EGIT, ET FREMET.”: “Le riche fait injustice, et il crie avec menaces ; le pauvre est offensé, et il demeure da…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0273/long_translation/8b29014c",
-  "book_dir": "26_ecclesiastique",
-  "page": 273,
-  "kind": "long_translation",
-  "msg": "Translation of 91 characters for a lemma of 27 “CONFUNDET TE IN CIBIS SUIS.”: “Il vous comblera d'honnêtetés, et vous donnera à manger, pour vous engager à faire le même…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0274/long_translation/e5accacc",
-  "book_dir": "26_ecclesiastique",
-  "page": 274,
-  "kind": "long_translation",
-  "msg": "Translation of 122 characters for a lemma of 35 “NOLI ESSE HUMILIS IN SAPIENTIA TUA.”: “Ne vous humiliez pas dans votre sagesse, de peur qu'étant humilié, vous ne vous laissiez s…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0275/long_translation/2017e9f6",
-  "book_dir": "26_ecclesiastique",
-  "page": 275,
-  "kind": "long_translation",
-  "msg": "Translation of 120 characters for a lemma of 31 “NE IMPROBUS SIS, NE IMPINGARIS.”: “Ne soyez pas importun, de peur qu'il ne se dégoûte de vous ; et ne vous éloignez pas trop,…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0275/long_translation/790455ec",
-  "book_dir": "26_ecclesiastique",
-  "page": 275,
-  "kind": "long_translation",
-  "msg": "Translation of 108 characters for a lemma of 35 “NE RETINEAS EX ÆQUO LOQUI CUM ILLO.”: “Ne l'entretenez pas long-temps, comme si vous étiez son égal ; et ne vous fiez point à ses…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0277/long_translation/e6ac943e",
-  "book_dir": "26_ecclesiastique",
-  "page": 277,
-  "kind": "long_translation",
-  "msg": "Translation of 101 characters for a lemma of 32 “SI COMMUNICABIT LUPUS AGNO, ETC.”: “Comme le loup n'a point de communication avec l'agneau ; ainsi le pécheur n'en a point ave…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0283/long_translation/993d3803",
-  "book_dir": "26_ecclesiastique",
-  "page": 283,
-  "kind": "long_translation",
-  "msg": "Translation of 114 characters for a lemma of 37 “BEATUS VIR, QUI NON EST LAPSUS VERBO.”: “Heureux l'homme, qui n'est point tombé par ses paroles ; et qui n'est point piqué par les …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0286/long_translation/20c3782b",
-  "book_dir": "26_ecclesiastique",
-  "page": 286,
-  "kind": "long_translation",
-  "msg": "Translation of 111 characters for a lemma of 35 “FILI, SI HABES, BENEFAC TECUM, ETC.”: “Mon fils, si vous avez quelque chose, faites-vous-en du bien à vous-même, et offrez à Dieu…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0287/long_translation/e9b65b9b",
-  "book_dir": "26_ecclesiastique",
-  "page": 287,
-  "kind": "long_translation",
-  "msg": "Translation of 173 characters for a lemma of 40 “MEMOR ESTO QUONIAM MORS NON TARDAT, ETC.”: “Souvenez-vous de la mort, qui ne tarde point ; et de cet arrêt, qui vous a été prononcé, q…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0287/long_translation/938b1078",
-  "book_dir": "26_ecclesiastique",
-  "page": 287,
-  "kind": "long_translation",
-  "msg": "Translation of 98 characters for a lemma of 30 “ANTE MORTEM BENEFAC AMICO TUO.”: “Faites du bien à votre ami avant la mort ; et donnez l'aumône au pauvre, félon que vous le…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0288/long_translation/de944d29",
-  "book_dir": "26_ecclesiastique",
-  "page": 288,
-  "kind": "long_translation",
-  "msg": "Translation of 113 characters for a lemma of 32 “NON DEFRAUDERIS A DIE BONO, ETC.”: “Ne vous privez pas des avantages du jour heureux, et ne laissez perdre aucune partie du bi…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0289/long_translation/55d3bc44",
-  "book_dir": "26_ecclesiastique",
-  "page": 289,
-  "kind": "long_translation",
-  "msg": "Translation of 111 characters for a lemma of 35 “ANTE OBITUM TUUM OPERARE JUSTITIAM.”: “Faites des œuvres de justice avant votre mort ; parce qu'on ne trouve point de quoi se nou…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0292/long_translation/f8524cda",
-  "book_dir": "26_ecclesiastique",
-  "page": 292,
-  "kind": "long_translation",
-  "msg": "Translation of 122 characters for a lemma of 34 “QUI REQUIESCIT JUXTA DOMUM ILLIUS.”: “Qui se tient auprès de sa maison, et qui enfonçant un piquet dans ses murailles, se bâtit …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0297/long_translation/10e75b77",
+  "id": "26_ecclesiastique/0297/long_translation/42426c46",
   "book_dir": "26_ecclesiastique",
   "page": 297,
   "kind": "long_translation",
-  "msg": "Translation of 112 characters for a lemma of 29 “NON DIXERIS : PER DEUM ABEST.”: “Ne dites point : Dieu est cause que je n'ai point la sagesse : car c'est à vous à ne pas f…”: commentary run into the translation?",
+  "msg": "Translation of 112 characters for a lemma of 29 “NON DIXERIS : PER DEUM ABEST.^{(d)}”: “Ne dites point : Dieu est cause que je n'ai point la sagesse : car c'est à vous à ne pas f…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -18337,193 +17596,11 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0297/long_translation/061726d2",
-  "book_dir": "26_ecclesiastique",
-  "page": 297,
-  "kind": "long_translation",
-  "msg": "Translation of 106 characters for a lemma of 31 “NON DICAS : ILLE ME IMPLANAVIT.”: “Ne dites point : C'est lui qui m'a jeté dans l'égarement ; car les méchants ne lui sont po…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0300/long_translation/129f75cd",
-  "book_dir": "26_ecclesiastique",
-  "page": 300,
-  "kind": "long_translation",
-  "msg": "Translation of 95 characters for a lemma of 29 “APPOSUIT TIBI AQUAM ET IGNEM.”: “Il a mis devant vous l'eau, et le feu ; afin que vous portiez la main du côté que vous vou…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0301/long_translation/24fd574a",
-  "book_dir": "26_ecclesiastique",
-  "page": 301,
-  "kind": "long_translation",
-  "msg": "Translation of 99 characters for a lemma of 27 “ANTE HOMINEM VITA, ET MORS.”: “La vie, et la mort ; le bien, et le mal, sont devant l'homme ; ce qu'il aura choisi lui se…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0301/long_translation/6d707fbc",
-  "book_dir": "26_ecclesiastique",
-  "page": 301,
-  "kind": "long_translation",
-  "msg": "Translation of 89 characters for a lemma of 29 (with the next page) “OCULI DOMINI AD TIMENTES EUM.”: “Les yeux du Seigneur sont sur ceux qui le craignent, et il connaît les œuvres des hommes.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0302/long_translation/c98f30ee",
-  "book_dir": "26_ecclesiastique",
-  "page": 302,
-  "kind": "long_translation",
-  "msg": "Translation of 96 characters for a lemma of 28 “NEMINI MANDAVIT IMPIE AGERE.”: “Il n'a commandé à personne de faire le mal ; et il n'a donné à personne la permission de p…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0303/long_translation/49017ff4",
-  "book_dir": "26_ecclesiastique",
-  "page": 303,
-  "kind": "long_translation",
-  "msg": "Translation of 82 characters for a lemma of 26 “NON ENIM CONCUPISCIT, ETC.”: “Car il ne se plaît point d'avoir un grand nombre d'enfants infidèles, et inutiles.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0304/long_translation/4aa8eeed",
-  "book_dir": "26_ecclesiastique",
-  "page": 304,
-  "kind": "long_translation",
-  "msg": "Translation of 79 characters for a lemma of 24 “NON CREDAS VITÆ ILLORUM.”: “Ne vous appuyez point sur leur vie, et ne vous prévalez point de leurs travaux.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0306/long_translation/41807279",
-  "book_dir": "26_ecclesiastique",
-  "page": 306,
-  "kind": "long_translation",
-  "msg": "Translation of 112 characters for a lemma of 35 “SICUT SEXCENTA MILLIA PEDITUM, ETC.”: “Il a perdu de même les six cens mille hommes de pied, qui avaient conspiré ensemble dans l…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0307/long_translation/ff66c603",
-  "book_dir": "26_ecclesiastique",
-  "page": 307,
-  "kind": "long_translation",
-  "msg": "Translation of 119 characters for a lemma of 39 “MISERICORDIA ENIM, ET IRA EST CUM ILLO.”: “Car la miséricorde, et l'indignation l'accompagnent toujours ; il est également puissant p…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0307/long_translation/faa1c2f0",
-  "book_dir": "26_ecclesiastique",
-  "page": 307,
-  "kind": "long_translation",
-  "msg": "Translation of 139 characters for a lemma of 32 “NON EFFUGIET IN RAPINA PECCATOR.”: “Le méchant n'échappera pas dans ses rapines ; et la patience de celui qui attriste le pauv…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0312/long_translation/19cd76c1",
-  "book_dir": "26_ecclesiastique",
-  "page": 312,
-  "kind": "long_translation",
-  "msg": "Translation of 100 characters for a lemma of 25 “DISCE DISCIPLINAM SENSUS.”: “Apprenez à bien régler votre esprit, à vous former le jugement, et devenir un homme sage e…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0313/long_translation/f1eeb1f0",
-  "book_dir": "26_ecclesiastique",
-  "page": 313,
-  "kind": "long_translation",
-  "msg": "Translation of 421 characters for a lemma of 33 “ET DICAM IN ÆQUITATE DISCIPLINAM.”: “Je vous donnerai des instructions très exactes. Voici tout le verset suivant du Grec :^{(a…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0313/long_translation/20795adf",
-  "book_dir": "26_ecclesiastique",
-  "page": 313,
-  "kind": "long_translation",
-  "msg": "Translation of 253 characters for a lemma of 36 “IN JUDICIO DEI OPERA EJUS AB INITIO.”: “Dieu dans sa sagesse a formé d'abord ses ouvrages. Voici le sens que l'on peut donner au G…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0322/long_translation/71b65563",
-  "book_dir": "26_ecclesiastique",
-  "page": 322,
-  "kind": "long_translation",
-  "msg": "Translation of 138 characters for a lemma of 30 “OMNIA OPERA ILLORUM VELUT SOL.”: “Toutes leurs œuvres ont paru aussi clairement devant lui que le soleil, et ses yeux se son…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0325/long_translation/37723197",
+  "id": "26_ecclesiastique/0325/long_translation/5c337d90",
   "book_dir": "26_ecclesiastique",
   "page": 325,
   "kind": "long_translation",
-  "msg": "Translation of 304 characters for a lemma of 40 “POENITENTIBUS AUTEM DEDIT VIAM JUSTITIÆ.”: “Mais il donne aux pénitents un retour dans la voie de la justice. Il affermit ceux qui son…”: commentary run into the translation?",
+  "msg": "Translation of 161 characters for a lemma of 40 “POENITENTIBUS AUTEM DEDIT VIAM JUSTITIÆ.”: “Mais il donne aux pénitents un retour dans la voie de la justice. Il affermit ceux qui son…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -18532,37 +17609,11 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0326/long_translation/cf14d3ab",
-  "book_dir": "26_ecclesiastique",
-  "page": 326,
-  "kind": "long_translation",
-  "msg": "Translation of 156 characters for a lemma of 37 (with the next page) “QUID LUCIDIUS SOLE ? ET HIC DEFICIET.”: “Qu'y a a-t-il de plus lumineux que le soleil ? et néanmoins il souffre des défaillances. Q…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0331/long_translation/51fd0722",
-  "book_dir": "26_ecclesiastique",
-  "page": 331,
-  "kind": "long_translation",
-  "msg": "Translation of 164 characters for a lemma of 52 (with the next page) “NUMERUS DIERUM HOMINUM, UT MULTUM, CENTU”: “La vie de l'homme, même la plus longue, n'est au plus que de cent ans. Ce peu de jours com…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0333/long_translation/27c13fa8",
+  "id": "26_ecclesiastique/0333/long_translation/4024a50f",
   "book_dir": "26_ecclesiastique",
   "page": 333,
   "kind": "long_translation",
-  "msg": "Translation of 101 characters for a lemma of 29 “QUI MISERICORDIAM HABET, ETC.”: “Étant plein de compassion, il enseigne, et châtie les hommes, comme un pasteur fait ses br…”: commentary run into the translation?",
+  "msg": "Translation of 163 characters for a lemma of 29 “QUI MISERICORDIAM HABET, ETC.”: “Étant plein de compassion, il enseigne, et châtie les hommes, comme un pasteur fait ses br…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -18571,340 +17622,15 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0336/long_translation/d3bc6d6a",
-  "book_dir": "26_ecclesiastique",
-  "page": 336,
-  "kind": "long_translation",
-  "msg": "Translation of 116 characters for a lemma of 25 “ANTE LANGUOREM HUMILIATE.”: “Humiliez-vous avant que de tomber dans l'infirmité ; et faites voir le règlement de votre …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0336/long_translation/f3f27c56",
-  "book_dir": "26_ecclesiastique",
-  "page": 336,
-  "kind": "long_translation",
-  "msg": "Translation of 111 characters for a lemma of 28 “NON IMPEDIARIS ORARE SEMPER.”: “Que rien ne vous empêche de prier toujours, et ne cessez point de vous avancer dans la jus…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0338/long_translation/a93c81f3",
-  "book_dir": "26_ecclesiastique",
-  "page": 338,
-  "kind": "long_translation",
-  "msg": "Translation of 109 characters for a lemma of 34 “MEMENTO IRÆ IN DIE CONSUMMATIONIS.”: “Souvenez-vous de la colère du dernier jour, de ce jour terrible auquel Dieu rendra à chacu…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0339/long_translation/1267a586",
-  "book_dir": "26_ecclesiastique",
-  "page": 339,
-  "kind": "long_translation",
-  "msg": "Translation of 255 characters for a lemma of 44 “A MANE USQUE AD VESPERAM IMMUTABITUR TEM”: “Du matin au soir le temps se change ; de même la fortune peut changer dans un moment ; c'e…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0339/long_translation/f3e5c408",
-  "book_dir": "26_ecclesiastique",
-  "page": 339,
-  "kind": "long_translation",
-  "msg": "Translation of 104 characters for a lemma of 31 “HOMO SAPIENS IN OMNIBUS METUET.”: “L'homme sage sera toujours dans la crainte : et pendant les jours du péché, il se gardera …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0341/long_translation/ee123e13",
-  "book_dir": "26_ecclesiastique",
-  "page": 341,
-  "kind": "long_translation",
-  "msg": "Translation of 124 characters for a lemma of 24 “NE OBLECTERIS IN TURBIS.”: “Ne vous plaisez point dans les assemblées pleines de tumulte, non pas même ce qu'on s'y co…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0344/long_translation/c35dac27",
-  "book_dir": "26_ecclesiastique",
-  "page": 344,
-  "kind": "long_translation",
-  "msg": "Translation of 108 characters for a lemma of 33 “QUI CREDIT CITO, LEVIS EST CORDE.”: “Celui qui est trop crédule, est léger de cœur ; et celui qui péche contre son âme, sera re…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0347/long_translation/abddb98e",
+  "id": "26_ecclesiastique/0347/long_translation/732ee184",
   "book_dir": "26_ecclesiastique",
   "page": 347,
   "kind": "long_translation",
-  "msg": "Translation of 237 characters for a lemma of 16 “AUDISTI ENIM TE.”: “Car celui à qui vous le direz, vous écoutera, et vous observera, et faisant semblant d'exc…”: commentary run into the translation?",
+  "msg": "Translation of 122 characters for a lemma of 16 “AUDISTI ENIM TE.”: “Car celui à qui vous le direz, vous écoutera, et vous observera, et faisant semblant d'exc…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0347/long_translation/f665e699",
-  "book_dir": "26_ecclesiastique",
-  "page": 347,
-  "kind": "long_translation",
-  "msg": "Translation of 131 characters for a lemma of 39 “AUDISTI VERBUM ADVERSUS PROXIMUM TUUM ?”: “Avez-vous entendu une parole contre votre prochain ? faites-la mourir dans vous, et assure…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0348/long_translation/cca4f6c3",
-  "book_dir": "26_ecclesiastique",
-  "page": 348,
-  "kind": "long_translation",
-  "msg": "Translation of 95 characters for a lemma of 30 “A FACIE VERBI PARTURIT FATUUS.”: “L'insensé se presse d'enfanter une parole qu'il a entendue, comme une femme qui est en tra…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0352/long_translation/f34b8f33",
-  "book_dir": "26_ecclesiastique",
-  "page": 352,
-  "kind": "long_translation",
-  "msg": "Translation of 109 characters for a lemma of 35 “EST NEQUITIA, ET IN IPSA EXECRATIO.”: “Il y a une malice ingénieuse, qui est exécrable : et il y a une stupidité, qui n'est qu'un…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0354/long_translation/362acf4e",
-  "book_dir": "26_ecclesiastique",
-  "page": 354,
-  "kind": "long_translation",
-  "msg": "Translation of 145 characters for a lemma of 26 “EST QUIS NIMIUM SUBMITTIT.”: “Tel se soumet jusqu'à l'excès avec une profonde humiliation : et tel baisse le visage, et …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0354/long_translation/44dfb563",
-  "book_dir": "26_ecclesiastique",
-  "page": 354,
-  "kind": "long_translation",
-  "msg": "Translation of 87 characters for a lemma of 24 “EX VISU COGNOSCITUR VIR.”: “On connaît une personne à la vue, et on discerne à l'air du visage l'homme de bon sens.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0355/long_translation/5cbfc663",
-  "book_dir": "26_ecclesiastique",
-  "page": 355,
-  "kind": "long_translation",
-  "msg": "Translation of 150 characters for a lemma of 21 “EST CORREPTIO MENDAX.”: “Il y a une fausse répréhension, qui naît de la colère ; il y a un jugement, qui se trouve …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0356/long_translation/7330cde4",
-  "book_dir": "26_ecclesiastique",
-  "page": 356,
-  "kind": "long_translation",
-  "msg": "Translation of 122 characters for a lemma of 37 “QUAM BONUM EST ARGUERE, QUAM IRASCI ?”: “Ne vaut-il pas mieux reprendre un homme, et lui donner lieu par là d'avouer sa faute, que …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0357/long_translation/15855538",
-  "book_dir": "26_ecclesiastique",
-  "page": 357,
-  "kind": "long_translation",
-  "msg": "Translation of 131 characters for a lemma of 34 (with the next page) “EST TACENS, QUI INVENITUR SAPIENS.”: “Il y en a qui se taisent, qui sont reconnus pour sages : Et il y en a qui se rendent odieu…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0358/long_translation/f34c9647",
-  "book_dir": "26_ecclesiastique",
-  "page": 358,
-  "kind": "long_translation",
-  "msg": "Translation of 169 characters for a lemma of 43 “EST TACENS, NON HABENS SENSUM LOQUELÆ, E”: “Il y en a qui se taisent, parce qu'ils n'ont pas assez de sens pour parler : et il y en a …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0362/long_translation/bf66ef42",
-  "book_dir": "26_ecclesiastique",
-  "page": 362,
-  "kind": "long_translation",
-  "msg": "Translation of 112 characters for a lemma of 36 “EXIGUA DABIT, ET MULTA IMPROPERABIT.”: “Il donnera peu, et il le reprochera souvent : et quand il ouvre la bouche, c'est comme une…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0364/long_translation/2385c95b",
-  "book_dir": "26_ecclesiastique",
-  "page": 364,
-  "kind": "long_translation",
-  "msg": "Translation of 116 characters for a lemma of 32 “HOMO ACHARIS, QUASI FABULA VANA.”: “L'homme qui ne se rend point aimable, est comme un méchant conte en la bouche des gens, qu…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0367/long_translation/01061295",
-  "book_dir": "26_ecclesiastique",
-  "page": 367,
-  "kind": "long_translation",
-  "msg": "Translation of 118 characters for a lemma of 38 “XENIA ET DONA EXCÆCANT OCULOS JUDICUM.”: “Les présents, et les dons aveuglent les yeux des Juges : ils sont dans leur bouche comme u…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0371/long_translation/3536ce1a",
-  "book_dir": "26_ecclesiastique",
-  "page": 371,
-  "kind": "long_translation",
-  "msg": "Translation of 118 characters for a lemma of 36 “NOTUS A LONGE, POTENS LINGUA AUDACI.”: “L'homme puissant et audacieux en paroles, se fera connaître de loin : et le sage sait la m…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0377/long_translation/397301ef",
-  "book_dir": "26_ecclesiastique",
-  "page": 377,
-  "kind": "long_translation",
-  "msg": "Translation of 114 characters for a lemma of 37 “COMPEDES IN PEDIBUS, DOCTRINA STULTO.”: “L'instruction est à l'imprudent, comme des fers aux pieds : et comme des chaînes, qui lui …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0378/long_translation/e171a69a",
-  "book_dir": "26_ecclesiastique",
-  "page": 378,
-  "kind": "long_translation",
-  "msg": "Translation of 141 characters for a lemma of 33 “PES FATUI VELOX IN DOMUM PROXIMI.”: “L'insensé met aisément le pied dans la maison de son voisin ; mais l'homme qui sait vivre,…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0379/long_translation/5f5c6ca4",
-  "book_dir": "26_ecclesiastique",
-  "page": 379,
-  "kind": "long_translation",
-  "msg": "Translation of 88 characters for a lemma of 29 “IN ORE FATUORUM, COR ILLORUM.”: “Le cœur des insensés, est dans leur bouche : et la bouche des sages, est dans leur cœur.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0382/long_translation/ef860288",
-  "book_dir": "26_ecclesiastique",
-  "page": 382,
-  "kind": "long_translation",
-  "msg": "Translation of 147 characters for a lemma of 44 “CONFUSIO PATRIS EST DE FILIO INDISCIPLIN”: “Le fils mal instruit, est la honte de son père, et la fille immodeste sera peu estimée. Ou…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0382/long_translation/8a32df25",
-  "book_dir": "26_ecclesiastique",
-  "page": 382,
-  "kind": "long_translation",
-  "msg": "Translation of 121 characters for a lemma of 33 (with the next page) “PATREM, ET VIRUM CONFUNDIT AUDAX.”: “La femme hardie, impudente, immodeste, couvre de honte son père, et son mari : elle sera m…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -19151,7 +17877,7 @@
   "optional": false,
   "where": {
    "section": "commentary",
-   "index": 0,
+   "index": 1,
    "field": "french_translation"
   }
  },
@@ -19424,7 +18150,7 @@
   "optional": false,
   "where": {
    "section": "commentary",
-   "index": 2,
+   "index": 3,
    "field": "french_translation"
   }
  },
@@ -19970,7 +18696,7 @@
   "optional": false,
   "where": {
    "section": "commentary",
-   "index": 1,
+   "index": 2,
    "field": "french_translation"
   }
  },
@@ -19983,7 +18709,7 @@
   "optional": false,
   "where": {
    "section": "commentary",
-   "index": 2,
+   "index": 3,
    "field": "french_translation"
   }
  },
@@ -20243,7 +18969,7 @@
   "optional": false,
   "where": {
    "section": "commentary",
-   "index": 0,
+   "index": 1,
    "field": "french_translation"
   }
  },
@@ -20256,7 +18982,7 @@
   "optional": false,
   "where": {
    "section": "commentary",
-   "index": 2,
+   "index": 3,
    "field": "french_translation"
   }
  },
@@ -21171,19 +19897,6 @@
   }
  },
  {
-  "id": "27_isaie/0743/long_translation/f8ed8b84",
-  "book_dir": "27_isaie",
-  "page": 743,
-  "kind": "long_translation",
-  "msg": "Translation of 100 characters for a lemma of 27 “EXPECTAVIMUS JUDICIUM, ETC.”: “et il n'est point venu. Nous espérions que Dieu s'armerait, pour venger nos injures sur no…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
   "id": "27_isaie/0748/long_translation/bff18cde",
   "book_dir": "27_isaie",
   "page": 748,
@@ -21241,19 +19954,6 @@
   "page": 784,
   "kind": "long_translation",
   "msg": "Translation of 434 characters for a lemma of 54 “UBI EST QUI POSUIT IN MEDIO EIUS SPIRITU”: “Où est celui qui a mis au milieu d'eux l'Esprit de son Saint ? Qui a établi sur leur tête …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0792/long_translation/7e00975f",
-  "book_dir": "27_isaie",
-  "page": 792,
-  "kind": "long_translation",
-  "msg": "Translation of 232 characters for a lemma of 42 “OCCURRISTI LÆTANTI, ET FACIENTI JUSTITIA”: “vous êtes allé au-devant de ceux qui étaient dans la joie, et qui vivaient dans la justice…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -25903,19 +24603,6 @@
   }
  },
  {
-  "id": "45_1_maccabees/0286/long_translation/248fe756",
-  "book_dir": "45_1_maccabees",
-  "page": 286,
-  "kind": "long_translation",
-  "msg": "Translation of 55 characters for a lemma of 8 “SICIONE.”: “ville très ancienne dans l'Achaïe, avec un port fameux.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 6,
-   "field": "french_translation"
-  }
- },
- {
   "id": "45_1_maccabees/0286/long_translation/30b39ed5",
   "book_dir": "45_1_maccabees",
   "page": 286,
@@ -26592,32 +25279,6 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0255/translation_no_punct/e4fef994",
-  "book_dir": "26_ecclesiastique",
-  "page": 255,
-  "kind": "translation_no_punct",
-  "msg": "Note 2 (℣ 27): french_translation does not end with punctuation: “eux : ni le souvenir du bien au jour malheureux. }”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0727/translation_no_punct/8ff4cb64",
-  "book_dir": "26_ecclesiastique",
-  "page": 727,
-  "kind": "translation_no_punct",
-  "msg": "Note 2 (℣ 19): french_translation does not end with punctuation: “Tout le peuple”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "28_jeremie/0139/translation_no_punct/cc471bd4",
   "book_dir": "28_jeremie",
   "page": 139,
@@ -26653,279 +25314,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "21a_psaumes/0500/lowercase_translation/9b9d816a",
-  "book_dir": "21a_psaumes",
-  "page": 500,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 9): french_translation missing initial capital: starts with “e” in “etc. Seigneur, tout mon désir est exposé à vos yeu…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "21b_psaumes/0409/lowercase_translation/2b21c860",
-  "book_dir": "21b_psaumes",
-  "page": 409,
-  "kind": "lowercase_translation",
-  "msg": "Note 4 (℣ 6): french_translation missing initial capital: starts with “e” in “et il a fait une Loi dans Israël.…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "21b_psaumes/0428/lowercase_translation/5a57242f",
-  "book_dir": "21b_psaumes",
-  "page": 428,
-  "kind": "lowercase_translation",
-  "msg": "Note 3 (℣ 58): french_translation missing initial capital: starts with “i” in “il les fit sortir pleins d'espérance ; et leur ôta…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "21b_psaumes/0537/lowercase_translation/ab23993e",
-  "book_dir": "21b_psaumes",
-  "page": 537,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 27): french_translation missing initial capital: starts with “j” in “^{(b)} je l'établirai le premier-né, et je l'élève…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "21c_psaumes/0060/lowercase_translation/550323f2",
-  "book_dir": "21c_psaumes",
-  "page": 60,
-  "kind": "lowercase_translation",
-  "msg": "Note 3 (℣ 10): french_translation missing initial capital: starts with “e” in “et il la mit à sec.…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "21c_psaumes/0072/lowercase_translation/70ab346f",
-  "book_dir": "21c_psaumes",
-  "page": 72,
-  "kind": "lowercase_translation",
-  "msg": "Note 3 (℣ 38): french_translation missing initial capital: starts with “m” in “mit en colère. ^{(c)}…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "21c_psaumes/0279/lowercase_translation/7d9f079f",
-  "book_dir": "21c_psaumes",
-  "page": 279,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 5): french_translation missing initial capital: starts with “g” in “{ (g)} Celui qui moissonne, n'en remplit pas sa ma…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "21c_psaumes/0381/lowercase_translation/a111d44a",
-  "book_dir": "21c_psaumes",
-  "page": 381,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 18): french_translation missing initial capital: starts with “e” in “etc. Ils ont appelé heureux le peuple qui possède …”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "22_proverbes/0174/lowercase_translation/d90b5c3e",
-  "book_dir": "22_proverbes",
-  "page": 174,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 30): french_translation missing initial capital: starts with “l” in “la bonne réputation engraisse les os.…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "22_proverbes/0291/lowercase_translation/6596a04d",
-  "book_dir": "22_proverbes",
-  "page": 291,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 16): french_translation missing initial capital: starts with “e” in “etc. Car le juste tombera sept fois, et se relèver…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "24_cantique/0109/lowercase_translation/495dfcee",
-  "book_dir": "24_cantique",
-  "page": 109,
-  "kind": "lowercase_translation",
-  "msg": "Note 3 (℣ 4): french_translation missing initial capital: starts with “o” in “otre cou est comme une tour d'ivoire, à cause de s…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0396/lowercase_translation/6d8e273a",
-  "book_dir": "27_isaie",
-  "page": 396,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 14): french_translation missing initial capital: starts with “l” in “lorsque le Seigneur sera entré dans sa gloire.…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0461/lowercase_translation/709bad8f",
-  "book_dir": "27_isaie",
-  "page": 461,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 6): french_translation missing initial capital: starts with “d” in “dans une terre de tribulation, et de misère, d'où …”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0555/lowercase_translation/d765c2b5",
-  "book_dir": "27_isaie",
-  "page": 555,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 31): french_translation missing initial capital: starts with “i” in “ils prendront des forces toujours nouvelles ; ils …”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0649/lowercase_translation/2cf6079a",
-  "book_dir": "27_isaie",
-  "page": 649,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 1): french_translation missing initial capital: starts with “o” in “ou quel est le créancier, à qui je vous ai vendus …”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0743/lowercase_translation/f2985fe2",
-  "book_dir": "27_isaie",
-  "page": 743,
-  "kind": "lowercase_translation",
-  "msg": "Note 3 (℣ 11): french_translation missing initial capital: starts with “e” in “et il n'est point venu. Nous espérions que Dieu s'…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0792/lowercase_translation/6fe43638",
-  "book_dir": "27_isaie",
-  "page": 792,
-  "kind": "lowercase_translation",
-  "msg": "Note 2 (℣ 5): french_translation missing initial capital: starts with “v” in “vous êtes allé au-devant de ceux qui étaient dans …”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "29_lamentations/0025/lowercase_translation/d7d85d5b",
-  "book_dir": "29_lamentations",
-  "page": 25,
-  "kind": "lowercase_translation",
-  "msg": "Note 5 (℣ 6): french_translation missing initial capital: starts with “i” in “il a renversé son Tabernacle, comme un jardin qu'o…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "45_1_maccabees/0274/lowercase_translation/e81c0062",
-  "book_dir": "45_1_maccabees",
-  "page": 274,
-  "kind": "lowercase_translation",
-  "msg": "Note 4 (℣ 27): french_translation missing initial capital: starts with “d” in “du mois d'Elul.…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "45_1_maccabees/0286/lowercase_translation/d2d6002a",
-  "book_dir": "45_1_maccabees",
-  "page": 286,
-  "kind": "lowercase_translation",
-  "msg": "Note 7 (℣ 23): french_translation missing initial capital: starts with “v” in “ville très ancienne dans l'Achaïe, avec un port fa…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 6,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "45_1_maccabees/0286/lowercase_translation/b39a913e",
-  "book_dir": "45_1_maccabees",
-  "page": 286,
-  "kind": "lowercase_translation",
-  "msg": "Note 11 (℣ 23): french_translation missing initial capital: starts with “e” in “est voisine de la Pamphylie ;…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 10,
    "field": "french_translation"
   }
  },
@@ -27169,19 +25557,6 @@
   "page": 327,
   "kind": "hebrew_in_translation",
   "msg": "“L'Hébreu” in the translation of “QUÆ EST TRANS FLUMINA ÆTHIOPIÆ.”: “Qui est au-delà des fleuves d'Éthiopie ; ou suivant l'Hébreu, des fleuves de Chus.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0396/hebrew_in_translation/253a3a00",
-  "book_dir": "27_isaie",
-  "page": 396,
-  "kind": "hebrew_in_translation",
-  "msg": "“L'Hébreu” in the translation of “PROPTER HOC IN DOCTRINIS GLORIFICATE DOM”: “On peut traduire l'Hébreu : ^{(e)} Louez le Seigneur par des illuminations, par des feux, et par des…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -32311,32 +30686,6 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0693/verse_mismatch/249f922a",
-  "book_dir": "26_ecclesiastique",
-  "page": 693,
-  "kind": "verse_mismatch",
-  "msg": "Note 1 “IMPLETUS ES QUASI FLUMEN SAPIENTIA.” is under chapter 47, ℣ 15, but its words are in ℣ 16 (100% against 0%): wrong verse_ref, or the verse misnumbered?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "26_ecclesiastique/0693/verse_mismatch/582bff34",
-  "book_dir": "26_ecclesiastique",
-  "page": 693,
-  "kind": "verse_mismatch",
-  "msg": "Note 2 “TERRAM RETEXIT ANIMA TUA.” is under chapter 47, ℣ 15, but its words are in ℣ 16 (100% against 25%): wrong verse_ref, or the verse misnumbered?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "verse_ref"
-  }
- },
- {
   "id": "27_isaie/0122/verse_mismatch/b0ce1d11",
   "book_dir": "27_isaie",
   "page": 122,
@@ -35500,32 +33849,6 @@
   "page": 384,
   "kind": "lowercase_lemma",
   "msg": "Lower case in latin_quote “Joseph”: French or commentary in the lemma field?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0396/lowercase_lemma/cd6e65ee",
-  "book_dir": "27_isaie",
-  "page": 396,
-  "kind": "lowercase_lemma",
-  "msg": "Lower case in latin_quote “CUM GLORIFICATUS FUERIT DOMINUS, HINNIENT DE MARI. Ils jetteront de gr”: French or commentary in the lemma field?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0396/lowercase_lemma/78c6cfb5",
-  "book_dir": "27_isaie",
-  "page": 396,
-  "kind": "lowercase_lemma",
-  "msg": "Lower case in latin_quote “PROPTER HOC IN DOCTRINIS GLORIFICATE DOMINUM ; IN INSULIS MARIS NOMEN ”: French or commentary in the lemma field?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -57283,9 +55606,9 @@
   }
  },
  {
-  "id": "22_proverbes/0255/lemma_unknown_word/812abf69",
+  "id": "22_proverbes/0253/lemma_unknown_word/812abf69",
   "book_dir": "22_proverbes",
-  "page": 255,
+  "page": 253,
   "kind": "lemma_unknown_word",
   "msg": "Not in the Vulgate: RAPINÆ, IMPIORRM in “RAPINÆ IMPIORRM DETRAHENT EOS.”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
   "optional": true,
@@ -57296,9 +55619,9 @@
   }
  },
  {
-  "id": "22_proverbes/0256/lemma_unknown_word/cd94c3c5",
+  "id": "22_proverbes/0254/lemma_unknown_word/cd94c3c5",
   "book_dir": "22_proverbes",
-  "page": 256,
+  "page": 254,
   "kind": "lemma_unknown_word",
   "msg": "Not in the Vulgate: MULCTATO in “MULCTATO PESTILENTE, SAPIENTIOR ERIT PAR-”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
   "optional": true,
@@ -59371,7 +57694,7 @@
   "optional": true,
   "where": {
    "section": "commentary",
-   "index": 3,
+   "index": 4,
    "field": "latin_quote"
   }
  },
@@ -59475,7 +57798,7 @@
   "optional": true,
   "where": {
    "section": "commentary",
-   "index": 0,
+   "index": 1,
    "field": "latin_quote"
   }
  },
@@ -59488,7 +57811,7 @@
   "optional": true,
   "where": {
    "section": "commentary",
-   "index": 2,
+   "index": 3,
    "field": "latin_quote"
   }
  },
@@ -59579,7 +57902,7 @@
   "optional": true,
   "where": {
    "section": "commentary",
-   "index": 1,
+   "index": 2,
    "field": "latin_quote"
   }
  },
@@ -60269,32 +58592,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0396/lemma_unknown_word/113017be",
-  "book_dir": "27_isaie",
-  "page": 396,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: Ils, jetteront, grands, cris, dessus, mer in “CUM GLORIFICATUS FUERIT DOMINUS, HINNIENT DE MARI. Ils jette”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0396/lemma_unknown_word/3afc3ccf",
-  "book_dir": "27_isaie",
-  "page": 396,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: pourquoi, rendez, gloire, Seigneur, une, doctrine, pure, célébrez, nom, Seigneur, les, isles, mer in “PROPTER HOC IN DOCTRINIS GLORIFICATE DOMINUM ; IN INSULIS MA”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "latin_quote"
   }
  },
@@ -67916,14 +66213,6 @@
   "optional": false
  },
  {
-  "id": "21c_psaumes/0279/extra_footnotes/a2263f6f",
-  "book_dir": "21c_psaumes",
-  "page": 279,
-  "kind": "extra_footnotes",
-  "msg": "7 footnotes for 6 calls in the text: nothing calls (g) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
   "id": "21c_psaumes/0295/extra_footnotes/ed1adb35",
   "book_dir": "21c_psaumes",
   "page": 295,
@@ -68225,198 +66514,6 @@
   "page": 217,
   "kind": "extra_footnotes",
   "msg": "5 footnotes for 4 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0145/extra_footnotes/32db9250",
-  "book_dir": "26_ecclesiastique",
-  "page": 145,
-  "kind": "extra_footnotes",
-  "msg": "8 footnotes for 7 calls in the text: nothing calls (d), (d) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0164/extra_footnotes/7f124cb1",
-  "book_dir": "26_ecclesiastique",
-  "page": 164,
-  "kind": "extra_footnotes",
-  "msg": "8 footnotes for 7 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0171/extra_footnotes/a2263f6f",
-  "book_dir": "26_ecclesiastique",
-  "page": 171,
-  "kind": "extra_footnotes",
-  "msg": "7 footnotes for 6 calls in the text: nothing calls (g) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0183/extra_footnotes/ddf2cd3f",
-  "book_dir": "26_ecclesiastique",
-  "page": 183,
-  "kind": "extra_footnotes",
-  "msg": "4 footnotes for 3 calls in the text: nothing calls (c) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0208/extra_footnotes/2b8871b3",
-  "book_dir": "26_ecclesiastique",
-  "page": 208,
-  "kind": "extra_footnotes",
-  "msg": "2 footnotes for 1 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0215/extra_footnotes/3dac4d83",
-  "book_dir": "26_ecclesiastique",
-  "page": 215,
-  "kind": "extra_footnotes",
-  "msg": "4 footnotes for 3 calls in the text: nothing calls 6. (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0246/extra_footnotes/53c53ef0",
-  "book_dir": "26_ecclesiastique",
-  "page": 246,
-  "kind": "extra_footnotes",
-  "msg": "6 footnotes for 5 calls in the text: nothing calls (e) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0253/extra_footnotes/bf11c6d4",
-  "book_dir": "26_ecclesiastique",
-  "page": 253,
-  "kind": "extra_footnotes",
-  "msg": "5 footnotes for 4 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0255/extra_footnotes/97cdbea9",
-  "book_dir": "26_ecclesiastique",
-  "page": 255,
-  "kind": "extra_footnotes",
-  "msg": "7 footnotes for 6 calls in the text: nothing calls (f) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0265/extra_footnotes/10dd749c",
-  "book_dir": "26_ecclesiastique",
-  "page": 265,
-  "kind": "extra_footnotes",
-  "msg": "7 footnotes for 6 calls in the text: nothing calls None (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0288/extra_footnotes/21717e45",
-  "book_dir": "26_ecclesiastique",
-  "page": 288,
-  "kind": "extra_footnotes",
-  "msg": "2 footnotes for 1 calls in the text: nothing calls (b) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0291/extra_footnotes/85fbfd07",
-  "book_dir": "26_ecclesiastique",
-  "page": 291,
-  "kind": "extra_footnotes",
-  "msg": "3 footnotes for 2 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0297/extra_footnotes/fcf0f1b2",
-  "book_dir": "26_ecclesiastique",
-  "page": 297,
-  "kind": "extra_footnotes",
-  "msg": "5 footnotes for 3 calls in the text: nothing calls (d), None (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0335/extra_footnotes/c30fd1a8",
-  "book_dir": "26_ecclesiastique",
-  "page": 335,
-  "kind": "extra_footnotes",
-  "msg": "1 footnotes for 0 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0381/extra_footnotes/d0e9611d",
-  "book_dir": "26_ecclesiastique",
-  "page": 381,
-  "kind": "extra_footnotes",
-  "msg": "4 footnotes for 3 calls in the text: nothing calls (b) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0405/extra_footnotes/42580f6f",
-  "book_dir": "26_ecclesiastique",
-  "page": 405,
-  "kind": "extra_footnotes",
-  "msg": "4 footnotes for 3 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0469/extra_footnotes/7ad774d0",
-  "book_dir": "26_ecclesiastique",
-  "page": 469,
-  "kind": "extra_footnotes",
-  "msg": "6 footnotes for 5 calls in the text: nothing calls (f) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0478/extra_footnotes/85fbfd07",
-  "book_dir": "26_ecclesiastique",
-  "page": 478,
-  "kind": "extra_footnotes",
-  "msg": "3 footnotes for 2 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0514/extra_footnotes/21717e45",
-  "book_dir": "26_ecclesiastique",
-  "page": 514,
-  "kind": "extra_footnotes",
-  "msg": "2 footnotes for 1 calls in the text: nothing calls (b) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0570/extra_footnotes/21717e45",
-  "book_dir": "26_ecclesiastique",
-  "page": 570,
-  "kind": "extra_footnotes",
-  "msg": "2 footnotes for 1 calls in the text: nothing calls (b) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0618/extra_footnotes/049ac7c8",
-  "book_dir": "26_ecclesiastique",
-  "page": 618,
-  "kind": "extra_footnotes",
-  "msg": "3 footnotes for 2 calls in the text: nothing calls I . . . . . (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0637/extra_footnotes/bf11c6d4",
-  "book_dir": "26_ecclesiastique",
-  "page": 637,
-  "kind": "extra_footnotes",
-  "msg": "5 footnotes for 4 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0678/extra_footnotes/42580f6f",
-  "book_dir": "26_ecclesiastique",
-  "page": 678,
-  "kind": "extra_footnotes",
-  "msg": "4 footnotes for 3 calls in the text: nothing calls (a) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0704/extra_footnotes/cf8fcecf",
-  "book_dir": "26_ecclesiastique",
-  "page": 704,
-  "kind": "extra_footnotes",
-  "msg": "6 footnotes for 5 calls in the text: nothing calls Psal. cxxxviii. 6. (footnote from another page, a call lost, or a duplicate?)",
   "optional": false
  },
  {
@@ -71477,19 +69574,6 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0285/caps_in_commentary/49221c53",
-  "book_dir": "26_ecclesiastique",
-  "page": 285,
-  "kind": "caps_in_commentary",
-  "msg": "Capitals inside the comment: “…ce que je suis bon_, dit JESUS-CHRIST dans l'Évangil…”: a lemma that should start its own note, or a word to put in lower case?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
   "id": "27_isaie/0162/caps_in_commentary/946d302d",
   "book_dir": "27_isaie",
   "page": 162,
@@ -72262,19 +70346,6 @@
   "page": 84,
   "kind": "broken_marker",
   "msg": "Footnote call “^{ (23.)}” in french_commentary: “…aisse lier,_ et comme un cerf ^{ (23.)} qui est p…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "26_ecclesiastique/0255/broken_marker/1b60eb81",
-  "book_dir": "26_ecclesiastique",
-  "page": 255,
-  "kind": "broken_marker",
-  "msg": "Footnote call “^{(f)\n_Nemo confidat nimium secundis,\nNemo desperet meliora lapsis ;\nRes Deus nostras celeri citatas\nTurbine versat._\nLe sage est toujours préparé à tout événement. S'il lui arrive une disgrâce, elle ne le surprend pas ; il s'y est préparé de longue main ; si quelque bonne fortune le tire de l'obscurité et de la poussière, il ne s'en élève point, persuadé qu'il est du néant, et de l'inconstance des choses de ce monde.^{(g)}” in french_commentary: “…is du retour de la prospérité.^{(f)\n_Nemo confidat nimium secundis,\nNemo desperet meliora lapsis ;\nRes Deus nostras celeri citatas\nTurbine versat._\nLe sage est toujours préparé à tout événement. S'il lui arrive une disgrâce, elle ne le surprend pas ; il s'y est préparé de longue main ; si quelque bonne fortune le tire de l'obscurité et de la poussière, il ne s'en élève point, persuadé qu'il est du néant, et de l'inconstance des choses de ce monde.^{(g)} L'insensé…”",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -73697,78 +71768,6 @@
   "optional": false
  },
  {
-  "id": "26_ecclesiastique/0122/possible_gap/188c5384",
-  "book_dir": "26_ecclesiastique",
-  "page": 122,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “…perficielle. Les Auteurs sacrés,^{(b)} et les” ‖ “Prosanes même,^{(a)} emploient assez souvent …”",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0394/possible_gap/6d88cc00",
-  "book_dir": "26_ecclesiastique",
-  "page": 394,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “… et sans y penser, par ma langue ? On peut se” ‖ “Il faut prendre de la fin du chapitre précéde…”",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0443/possible_gap/71360ff4",
-  "book_dir": "26_ecclesiastique",
-  "page": 443,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “…uo speciosiùs ingrediantur sublimes… ac minùs” ‖ “Ou plutôt : une femme adonnée au vin, et vaga…”",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0451/possible_gap/a789e34a",
-  "book_dir": "26_ecclesiastique",
-  "page": 451,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “…tice, et attireront sur leur maison la colère” ‖ “Au lieu de la poussière, le Grec porte, ^{(a)…”",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0521/possible_gap/492a4a93",
-  "book_dir": "26_ecclesiastique",
-  "page": 521,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “…out ce que vous savez, et alors répondez. Ces” ‖ “Il est toujours flottant, in-constant, indéte…”",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0619/possible_gap/4ee9947a",
-  "book_dir": "26_ecclesiastique",
-  "page": 619,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “…se familiariser avec la pensée de la mort, en” ‖ “C'est-à-dire, qui est dans la prospérité ; ca…”",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0623/possible_gap/7723187d",
-  "book_dir": "26_ecclesiastique",
-  "page": 623,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “…. XL. II. _Omnia quæ de terrâ sunt, in terram” ‖ “Il y a certains devoirs que l'on ne refuse à …”",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0670/possible_gap/edf46670",
-  "book_dir": "26_ecclesiastique",
-  "page": 670,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “…e par des ornements précieux. Ou bien, il l'a” ‖ “Le Grand-Prêtre était revêtu d'une robbe traî…”",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0719/possible_gap/82059c3b",
-  "book_dir": "26_ecclesiastique",
-  "page": 719,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “…ue aux sacrifices d'actions de grâces, quelle” ‖ “Le texte Grec ^{(a)} montre qu'il ne s'agit p…”",
-  "optional": false
- },
- {
   "id": "27_isaie/0125/possible_gap/b361b462",
   "book_dir": "27_isaie",
   "page": 125,
@@ -74358,46 +72357,6 @@
   "page": 111,
   "kind": "missing_footnote",
   "msg": "Footnote marker (i) has no footnote text on this page",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0145/missing_footnote/0d3bbe68",
-  "book_dir": "26_ecclesiastique",
-  "page": 145,
-  "kind": "missing_footnote",
-  "msg": "Footnote marker (e) has no footnote text on this page",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0351/missing_footnote/28176d55",
-  "book_dir": "26_ecclesiastique",
-  "page": 351,
-  "kind": "missing_footnote",
-  "msg": "Footnote marker (a) has no footnote text on this page",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0365/missing_footnote/575243f0",
-  "book_dir": "26_ecclesiastique",
-  "page": 365,
-  "kind": "missing_footnote",
-  "msg": "Footnote marker (b) has no footnote text on this page",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0392/missing_footnote/f0c68a41",
-  "book_dir": "26_ecclesiastique",
-  "page": 392,
-  "kind": "missing_footnote",
-  "msg": "Footnote marker (g) has no footnote text on this page",
-  "optional": false
- },
- {
-  "id": "26_ecclesiastique/0459/missing_footnote/575243f0",
-  "book_dir": "26_ecclesiastique",
-  "page": 459,
-  "kind": "missing_footnote",
-  "msg": "Footnote marker (b) has no footnote text on this page",
   "optional": false
  },
  {
@@ -85617,35 +83576,27 @@
   "optional": true
  },
  {
-  "id": "22_proverbes/0235/seam_artifact/c8c8c0d3",
+  "id": "22_proverbes/0250/seam_artifact/daee9cb5",
   "book_dir": "22_proverbes",
-  "page": 235,
+  "page": 250,
   "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…outes explications morales, et figurées.” ‖ “breu ^{(a)} est plus court, mais il revi…”",
+  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ceux qui ne sont pas capables de raison.” ‖ “et qui se moquent des peines et des exho…”",
   "optional": true
  },
  {
-  "id": "22_proverbes/0252/seam_artifact/a124c0a9",
+  "id": "22_proverbes/0252/seam_artifact/a1bf6b79",
   "book_dir": "22_proverbes",
   "page": 252,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…. Les Poètes parlent à peu près de même.” ‖ “et qui se moquent des peines et des exho…”",
-  "optional": true
- },
- {
-  "id": "22_proverbes/0254/seam_artifact/a1bf6b79",
-  "book_dir": "22_proverbes",
-  "page": 254,
   "kind": "seam_artifact",
   "msg": "Page-turn glitch (stray full stop / repeated syllable): “…s traduisent : _La fierté des yeux, etc.” ‖ “l'enflure du cœur, sont le labour des mé…”",
   "optional": true
  },
  {
-  "id": "22_proverbes/0257/seam_artifact/2bcb8c8a",
+  "id": "22_proverbes/0257/seam_artifact/fe6254b5",
   "book_dir": "22_proverbes",
   "page": 257,
   "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…d'entre les hommes n'aura pitié de lui_.” ‖ “même. ^{(a)} Il est à remarquer qu'Hésio…”",
+  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…. Les Poètes parlent à peu près de même.” ‖ “même. ^{(a)} Il est à remarquer qu'Hésio…”",
   "optional": true
  },
  {
@@ -85969,6 +83920,14 @@
   "optional": true
  },
  {
+  "id": "26_ecclesiastique/0261/seam_artifact/0e74ea4b",
+  "book_dir": "26_ecclesiastique",
+  "page": 261,
+  "kind": "seam_artifact",
+  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…errible entre les Grecs, et les Troyens.” ‖ “on en aura une parfaite reconnaissance. …”",
+  "optional": true
+ },
+ {
   "id": "26_ecclesiastique/0320/seam_artifact/5f696f6b",
   "book_dir": "26_ecclesiastique",
   "page": 320,
@@ -85977,19 +83936,27 @@
   "optional": true
  },
  {
+  "id": "26_ecclesiastique/0338/seam_artifact/352d0cae",
+  "book_dir": "26_ecclesiastique",
+  "page": 338,
+  "kind": "seam_artifact",
+  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ne du poids à cette dernière exposition.” ‖ “de ce jour terrible auquel Dieu rendra à…”",
+  "optional": true
+ },
+ {
+  "id": "26_ecclesiastique/0339/seam_artifact/7779fb53",
+  "book_dir": "26_ecclesiastique",
+  "page": 339,
+  "kind": "seam_artifact",
+  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…rsùs in adversis meliùs sperare memento.” ‖ “de même la fortune peut changer dans un …”",
+  "optional": true
+ },
+ {
   "id": "26_ecclesiastique/0379/seam_artifact/7fc53976",
   "book_dir": "26_ecclesiastique",
   "page": 379,
   "kind": "seam_artifact",
   "msg": "Page-turn glitch (stray full stop / repeated syllable): “… Le premier est une marque d'imprudence.” ‖ “ce, d'impolitesse, d'impatience. Le seco…”",
-  "optional": true
- },
- {
-  "id": "26_ecclesiastique/0384/seam_artifact/466c8cad",
-  "book_dir": "26_ecclesiastique",
-  "page": 384,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…a sagesse. On ne doit jamais se rebuter.” ‖ “lâcher du soin de leur instruction, et d…”",
   "optional": true
  },
  {
