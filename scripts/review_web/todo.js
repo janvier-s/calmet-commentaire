@@ -71,7 +71,7 @@ $("sections").insertBefore(btn, $("sections").querySelector(".grow"));
 btn.onclick = () => show(!on);
 show(on);
 hooks.afterRender.push((root) => {
-  for (const f of root.querySelectorAll(".f[data-path]")) {
+  for (const f of root.querySelectorAll(".f[data-path]:not(.short)")) {  // text fields, not the numbers
     const b = el("button", { className: "todo-add", title: "Add a to-do about this field",
                              onclick: (e) => { e.stopPropagation(); prompt(whereOf(f.dataset.path)); } }, icon("plus", 11));
     b.addEventListener("mousedown", (e) => e.preventDefault());
