@@ -640,22 +640,6 @@
   "optional": false
  },
  {
-  "id": "21b_psaumes/0424/psalm_number/1250d7ed",
-  "book_dir": "21b_psaumes",
-  "page": 424,
-  "kind": "psalm_number",
-  "msg": "Ps 77: verse numbered 30 follows 49 (“Misit in eos cœnomyiam, et comedit eos :”, Vulgate 77:45): misread number?",
-  "optional": false
- },
- {
-  "id": "21b_psaumes/0425/psalm_number/7bef0253",
-  "book_dir": "21b_psaumes",
-  "page": 425,
-  "kind": "psalm_number",
-  "msg": "Ps 77: verse numbered 53 follows 32 (“Et tradidit grandini jumenta eorum, et p”, Vulgate 77:48): misread number?",
-  "optional": false
- },
- {
   "id": "21b_psaumes/0556/psalm_number/b89b2c64",
   "book_dir": "21b_psaumes",
   "page": 556,
@@ -726,19 +710,6 @@
   "kind": "psalm_missing_title",
   "msg": "Ps 70:1 (Vulgate) is not in the transcription: “Psalmus David, filiorum Jonadab, et priorum captivorum. In te, Domine,…”",
   "optional": false
- },
- {
-  "id": "05_deuteronome/0100/chapter_field/05bf2354",
-  "book_dir": "05_deuteronome",
-  "page": 100,
-  "kind": "chapter_field",
-  "msg": "verses: chapter goes from 4 to 3 at verse_number 12",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "chapter"
-  }
  },
  {
   "id": "10_2_rois/0244/chapter_field/cb1a759e",
@@ -5454,71 +5425,6 @@
   }
  },
  {
-  "id": "27_isaie/0200/ref_order/bb4f8646",
-  "book_dir": "27_isaie",
-  "page": 200,
-  "kind": "ref_order",
-  "msg": "verse_ref goes back from 9 to 6 (… 9, 9, 9, 6, 6 …) in chapter 7: misread number, or Calmet returning to a verse?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "27_isaie/0272/ref_order/11354cf7",
-  "book_dir": "27_isaie",
-  "page": 272,
-  "kind": "ref_order",
-  "msg": "verse_ref goes back from 4 to 3 (… 2, 2, 4, 3, 3 …) in chapter 13: misread number, or Calmet returning to a verse?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "27_isaie/0493/ref_order/b6144141",
-  "book_dir": "27_isaie",
-  "page": 493,
-  "kind": "ref_order",
-  "msg": "verse_ref goes back from 5 to 4 (… 3, 4, 5, 4, 6 …) in chapter 33: misread number, or Calmet returning to a verse?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "27_isaie/0619/ref_order/d789dc3e",
-  "book_dir": "27_isaie",
-  "page": 619,
-  "kind": "ref_order",
-  "msg": "verse_ref goes back from 13 to 2 (… 13, 13, 13, 2, 2 …) in chapter 47: misread number, or Calmet returning to a verse?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "27_isaie/0782/ref_order/d11d896a",
-  "book_dir": "27_isaie",
-  "page": 782,
-  "kind": "ref_order",
-  "msg": "verse_ref goes back from 9 to 8 (… 7, 8, 9, 8, 10 …) in chapter 63: misread number, or Calmet returning to a verse?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "verse_ref"
-  }
- },
- {
   "id": "28_jeremie/0105/ref_order/d36d39a5",
   "book_dir": "28_jeremie",
   "page": 105,
@@ -6728,102 +6634,11 @@
   }
  },
  {
-  "id": "27_isaie/0189/no_lemma/7e07740c",
+  "id": "27_isaie/0282/no_lemma/83fcb635",
   "book_dir": "27_isaie",
-  "page": 189,
+  "page": 282,
   "kind": "no_lemma",
-  "msg": "Note 2 (℣ 5) has no latin_quote: “Les Septante : ^{(c)} _Malheureux que je suis, parce que je suis dans …”: one note split in two, or a lemma lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0239/no_lemma/c818de32",
-  "book_dir": "27_isaie",
-  "page": 239,
-  "kind": "no_lemma",
-  "msg": "Note 2 (℣ 1) has no latin_quote: “Lorsque vous verrez des armées nombreuses, et venues de si loin, pour …”: one note split in two, or a lemma lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0330/no_lemma/9b4db2a6",
-  "book_dir": "27_isaie",
-  "page": 330,
-  "kind": "no_lemma",
-  "msg": "Note 2 (℣ 2) has no latin_quote: “Un peuple le plus terrible de tous.…”: one note split in two, or a lemma lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0330/no_lemma/2a633e01",
-  "book_dir": "27_isaie",
-  "page": 330,
-  "kind": "no_lemma",
-  "msg": "Note 3 (℣ 2) has no latin_quote: “Un peuple qui attend, et qui est foulé aux pieds.…”: one note split in two, or a lemma lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0456/no_lemma/a5b55e03",
-  "book_dir": "27_isaie",
-  "page": 456,
-  "kind": "no_lemma",
-  "msg": "Note 2 (℣ 20) has no latin_quote: “Ou, il parle des faux Prophètes, qui conduisaient les hommes dans l'er…”: one note split in two, or a lemma lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0568/no_lemma/7dd60c70",
-  "book_dir": "27_isaie",
-  "page": 568,
-  "kind": "no_lemma",
-  "msg": "Note 2 (℣ 1) has no latin_quote: “Jacob est mon fils, je le prendrai sous ma protection ; Israël est mon…”: one note split in two, or a lemma lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0568/no_lemma/6574f1f9",
-  "book_dir": "27_isaie",
-  "page": 568,
-  "kind": "no_lemma",
-  "msg": "Note 3 (℣ 2) has no latin_quote: “Il ne criera point, et ne pardonnera point ; (ou, il ne se relâchera p…”: one note split in two, or a lemma lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0614/no_lemma/f740352e",
-  "book_dir": "27_isaie",
-  "page": 614,
-  "kind": "no_lemma",
-  "msg": "Note 2 (℣ 1) has no latin_quote: “On peut traduire l'Hébreu : ^{(c)} _Leurs abominations ont été traitée…”: one note split in two, or a lemma lost?",
+  "msg": "Note 2 (℣ 21) has no latin_quote: “…”: one note split in two, or a lemma lost?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -8288,71 +8103,6 @@
   }
  },
  {
-  "id": "22_proverbes/0312/leading_call/dea6aa4a",
-  "book_dir": "22_proverbes",
-  "page": 312,
-  "kind": "leading_call",
-  "msg": "french_commentary of note 1 (℣ 23) starts with the footnote call “^{(a)}”: “^{(a)} De même que le vent du nord dissipe la pluie, ainsi u…”: move it after the word it belongs to (end of the previous field or page?)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0125/leading_call/0d6a7289",
-  "book_dir": "27_isaie",
-  "page": 125,
-  "kind": "leading_call",
-  "msg": "french_translation of note 1 (℣ 14) starts with the footnote call “^{(a)}”: “^{(a)} Vos solennités me fatiguent ; je suis las de pardonne…”: move it after the word it belongs to (end of the previous field or page?)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0205/leading_call/8f06df0f",
-  "book_dir": "27_isaie",
-  "page": 205,
-  "kind": "leading_call",
-  "msg": "french_commentary of note 1 (℣ 16) starts with the footnote call “^{(a)}”: “^{(a)} Tout cela arriva en l'an 3264. un an après la prédict…”: move it after the word it belongs to (end of the previous field or page?)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0384/leading_call/ba0ec0e8",
-  "book_dir": "27_isaie",
-  "page": 384,
-  "kind": "leading_call",
-  "msg": "french_translation of note 2 (℣ 4) starts with the footnote call “^{(a)}”: “^{(a)} Rougissez de honte, ô Sidon, a dit la mer : mais la f…”: move it after the word it belongs to (end of the previous field or page?)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0479/leading_call/290505ef",
-  "book_dir": "27_isaie",
-  "page": 479,
-  "kind": "leading_call",
-  "msg": "french_translation of note 1 (℣ 8) starts with the footnote call “^{(a)}”: “^{(a)} Il fuira, sans être poursuivi par l'épée.…”: move it after the word it belongs to (end of the previous field or page?)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
   "id": "28_jeremie/0363/leading_call/0fe5ca9a",
   "book_dir": "28_jeremie",
   "page": 363,
@@ -8587,37 +8337,11 @@
   }
  },
  {
-  "id": "27_isaie/0187/hyphen_cut/e0abf0b7",
-  "book_dir": "27_isaie",
-  "page": 187,
-  "kind": "hyphen_cut",
-  "msg": "french_translation ends “…Et le Temple fut rempli de fumée ;” with no full stop but the next page's first note has no french_translation (it starts “d'une nuée ténébreuse, qui dérobait aux yeux du Pr…”): put the rest of the french_translation back together (or add the missing full stop)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0303/hyphen_cut/10c4d8bd",
-  "book_dir": "27_isaie",
-  "page": 303,
-  "kind": "hyphen_cut",
-  "msg": "french_translation ends “…Ils iront” with no full stop but the next page's first note has no french_translation (it starts “dans les rues revêtus de sacs, comme il se pratiqu…”): put the rest of the french_translation back together (or add the missing full stop)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0463/hyphen_cut/352f870b",
+  "id": "27_isaie/0463/hyphen_cut/3f09d92f",
   "book_dir": "27_isaie",
   "page": 463,
   "kind": "hyphen_cut",
-  "msg": "latin_quote ends “…QUI DICUNT VIDENTIBUS : NOLITE VIDERE ;” with no full stop but the next page's first note has no latin_quote (it starts “Qui disent aux voyans : Ne voyez point. Ne vous mê…”): put the rest of the latin_quote back together (or add the missing full stop)",
+  "msg": "latin_quote ends “…QUI DICUNT VIDENTIBUS : NOLITE VIDERE ;” with no full stop but the next page's first note has no latin_quote (it starts “Ne vous mêlez point de nous prophetifer, si vous n…”): put the rest of the latin_quote back together (or add the missing full stop)",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -8626,37 +8350,11 @@
   }
  },
  {
-  "id": "27_isaie/0616/hyphen_cut/b2f3efe7",
-  "book_dir": "27_isaie",
-  "page": 616,
-  "kind": "hyphen_cut",
-  "msg": "latin_quote ends “…MEMENTOTE ISTUD, ET CONFUNDAMINI,” with no full stop but the next page's first note has no latin_quote (it starts “vous de ces choses, et rougissez-en. L'Hébreu : ^{…”): put the rest of the latin_quote back together (or add the missing full stop)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0701/hyphen_cut/a30aeef9",
-  "book_dir": "27_isaie",
-  "page": 701,
-  "kind": "hyphen_cut",
-  "msg": "french_translation ends “…ne, et vous arriverez heureusement à Jé-” but the next page's first note has no french_translation (it starts “rusalem : _Et cum pace ducemini._ Je vous servirai…”): put the rest of the french_translation back together",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0800/hyphen_cut/16ce57a1",
+  "id": "27_isaie/0800/hyphen_cut/05bc4c62",
   "book_dir": "27_isaie",
   "page": 800,
   "kind": "hyphen_cut",
-  "msg": "latin_quote ends “…ECCE SCRIPTUM EST CORAM ME ; NON TACEBO,” with no full stop but the next page's first note has no latin_quote (it starts “Leur péché est écrit devant mes yeux ; je ne me ta…”): put the rest of the latin_quote back together (or add the missing full stop)",
+  "msg": "latin_quote ends “…ECCE SCRIPTUM EST CORAM ME ; NON TACEBO,” with no full stop but the next page's first note has no latin_quote (it starts “Tout cela est écrit dans mes mémoires ; j'en tiens…”): put the rest of the latin_quote back together (or add the missing full stop)",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -10394,466 +10092,11 @@
   }
  },
  {
-  "id": "27_isaie/0119/italic_seam/cf60fc37",
-  "book_dir": "27_isaie",
-  "page": 119,
+  "id": "26_ecclesiastique/0515/italic_seam/ecb2bf19",
+  "book_dir": "26_ecclesiastique",
+  "page": 515,
   "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…péché ; accablé du poids de ses crimes, et qui ne_”) but the sentence goes on in roman overleaf (“peut se relever de ses chutes. Ou-bien : Pesant, i…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0133/italic_seam/90b62d23",
-  "book_dir": "27_isaie",
-  "page": 133,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…a magie, comme les Philistins._ Enfin : _Ils sont_”) but the sentence goes on in roman overleaf (“pleins, riches, dans l'abondance plus que les Orie…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0139/italic_seam/2dacbc5b",
-  "book_dir": "27_isaie",
-  "page": 139,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…s. Le Caldéen : Ne vous soumettez point à un hom-_”) but the sentence goes on in roman overleaf (“me, qui veut se rendre redoutable, et qui est plei…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0172/italic_seam/12d63810",
-  "book_dir": "27_isaie",
-  "page": 172,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…possédiez tout._ Les Septante : ^{(h)} _Malheur à_”) but the sentence goes on in roman overleaf (“was qui joignez héritage à héritage, pour enlever …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0188/italic_seam/41144c50",
-  "book_dir": "27_isaie",
-  "page": 188,
-  "kind": "italic_seam",
-  "msg": "Italics still open at the foot of the page (“…au milieu d'un peuple corrompu, et je suis moi-même un homme”) but not closed overleaf (“homme dont la langue est souillée, et incapable de…”): close them here, or a “_” is missing or extra",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0189/italic_seam/dc8c3a0e",
-  "book_dir": "27_isaie",
-  "page": 189,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…es ; nous sommes l'un à l'égard de l'autre, comme_”) but the sentence goes on in roman overleaf (“me des gens d'un langage inconnu, et barbare. Je n…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0190/italic_seam/372bb531",
-  "book_dir": "27_isaie",
-  "page": 190,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…e le péché de cet homme, ou celui de ses parents,_”) but the sentence goes on in roman overleaf (“qui est cause qu'il est né aveugle ? Et la Loi de …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0191/italic_seam/6e633ce0",
-  "book_dir": "27_isaie",
-  "page": 191,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“… dont ils annoncent la destruction. Ils fouillent_”) but the sentence goes on in roman overleaf (“lent ^{(a)} ce qu'ils déclarent souillé. Ils sanct…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0215/italic_seam/d21d49ae",
-  "book_dir": "27_isaie",
-  "page": 215,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“… dans notre Langue. Les Septante : ^{(d)} _Et son_”) but the sentence goes on in roman overleaf (“camp remplira toute l'étendue de votre terre. _Die…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0235/italic_seam/b14f8193",
-  "book_dir": "27_isaie",
-  "page": 235,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…tante : ^{(d)} _Ceux qui appellent ce peuple heur_”) but the sentence goes on in roman overleaf (“reux, seront des séducteurs ; ils ne séduisent que…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0251/italic_seam/65ddaa96",
-  "book_dir": "27_isaie",
-  "page": 251,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“… Le Caldéen : _Les peuples seront détruits devant_”) but the sentence goes on in roman overleaf (“le Christ. En considération des mérites d'Ézéchias…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0257/italic_seam/ec9fe84e",
-  "book_dir": "27_isaie",
-  "page": 257,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…us attendais dans tous les Prophètes, pour me re-_”) but the sentence goes on in roman overleaf (“poser en vous ; car vous êtes mon lieu de repos, v…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0261/italic_seam/05ca4858",
-  "book_dir": "27_isaie",
-  "page": 261,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…t les anciens Interprètes^{(b)} portent : _Et son_”) but the sentence goes on in roman overleaf (“repos sera glorieux, ou, _sa mort sera glorieuse_ …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0274/italic_seam/7f4c5ef5",
-  "book_dir": "27_isaie",
-  "page": 274,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…ages de flammes._ Quelques Rabbins : _Leurs faces_”) but the sentence goes on in roman overleaf (“sont comme celles des Léhabim, peuples de la Libye…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0282/italic_seam/da04fecb",
-  "book_dir": "27_isaie",
-  "page": 282,
-  "kind": "italic_seam",
-  "msg": "Italics still open at the foot of the page (“…ts, et si long-temps, qu'ils se donnent la mort. Ce qui sem-”) but not closed overleaf (“blé avoir donné lieu à la fable, qui veut qu'ils m…”): close them here, or a “_” is missing or extra",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0293/italic_seam/5298d4ba",
-  "book_dir": "27_isaie",
-  "page": 293,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“… ;^{(h)} et comme les habits des hommes tués à la_”) but the sentence goes on in roman overleaf (“guerre, et percez de coups, et ensanglantez, dont …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0302/italic_seam/02574245",
-  "book_dir": "27_isaie",
-  "page": 302,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…de Moab est péri dans une nuit ; dans une nuit le_”) but the sentence goes on in roman overleaf (“mar du pays de Moab est péri ; affligez-vous de so…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0310/italic_seam/a96cb701",
-  "book_dir": "27_isaie",
-  "page": 310,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…ias le tribut qu'ils avaient payé autrefois à ses_”) but the sentence goes on in roman overleaf (“prédécesseurs. Cette explication insinue que c'éta…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0315/italic_seam/264f14a5",
-  "book_dir": "27_isaie",
-  "page": 315,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…Hesebon, et Eléalé, parce que la voix de ceux qui_”) but the sentence goes on in roman overleaf (“foulent le raisin est tombée sur vos moissons, et …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0344/italic_seam/d8f14a3d",
-  "book_dir": "27_isaie",
-  "page": 344,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…arler semblable. Les Septante : ^{(g)} _Les Egyp-_”) but the sentence goes on in roman overleaf (“tiens ne sauront que faire, _la tête, ou la queue,…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0364/italic_seam/94688053",
-  "book_dir": "27_isaie",
-  "page": 364,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…fait sentinelle la nuit, et le jour. Si vous vou-_”) but the sentence goes on in roman overleaf (“lez savoir ce qu'il y a, venez-y vous-même. Autrem…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0376/italic_seam/283ca14f",
-  "book_dir": "27_isaie",
-  "page": 376,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…ie._ Les Septante : ^{(d)} _Voilà le Seigneur qui_”) but the sentence goes on in roman overleaf (“va chasser, et briser l'homme, et il vous dépouill…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0384/italic_seam/7489b247",
-  "book_dir": "27_isaie",
-  "page": 384,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…nte navires, que les Phéniciens eux-mêmes avaient_”) but the sentence goes on in roman overleaf (“équippée, et fournie de matelots de leur nation. C…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0397/italic_seam/f28c1276",
-  "book_dir": "27_isaie",
-  "page": 397,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…diges des extrémités de la terre : Que les hommes_”) but the sentence goes on in roman overleaf (“pieux espèrent bien. Malheur aux prévaricateurs, q…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0408/italic_seam/95681cfc",
-  "book_dir": "27_isaie",
-  "page": 408,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…ville forte, qui est notre salut ; elle mettra un_”) but the sentence goes on in roman overleaf (“mur, et un avant-mur ; elle se rétablira. L'avant-…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0412/italic_seam/2bd0538a",
-  "book_dir": "27_isaie",
-  "page": 412,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…^{(b)} _Le méchant n'a pas voulu prendre la peine_”) but the sentence goes on in roman overleaf (“peine d'apprendre la justice ; il a commis la prév…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0417/italic_seam/2639ee35",
-  "book_dir": "27_isaie",
-  "page": 417,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…nous avez procuré sur la terre. Nous ne tomberons_”) but the sentence goes on in roman overleaf (“point ; mais ceux qui habitent sur la terre, périr…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0428/italic_seam/bca8ab19",
-  "book_dir": "27_isaie",
-  "page": 428,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…_Comme une inondation d'eaux rapides, il reposera_”) but the sentence goes on in roman overleaf (“par le pays avec la main. Salmanasar s'arrêtera su…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0432/italic_seam/2a87b2b4",
-  "book_dir": "27_isaie",
-  "page": 432,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…e, précepte par précepte ; ligne par ligne, ligne_”) but the sentence goes on in roman overleaf (“par ligne ; un peu ici, un peu ici ; comme si nous…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0437/italic_seam/b581ed99",
-  "book_dir": "27_isaie",
-  "page": 437,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…jugement en règle, ou au niveau, et la justice en_”) but the sentence goes on in roman overleaf (“poids, en balance. La justice, et l'équité s'exerc…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0450/italic_seam/f67e39d7",
-  "book_dir": "27_isaie",
-  "page": 450,
-  "kind": "italic_seam",
-  "msg": "Italics still open at the foot of the page (“…ous envyvrera alors ; il vous présentera un calice d'une li-”) but not closed overleaf (“queueur soporifique, et étourdissante : _Miscuit v…”): close them here, or a “_” is missing or extra",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0462/italic_seam/a5f8de15",
-  "book_dir": "27_isaie",
-  "page": 462,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…eptante : ^{(h)} _Les Égyptiens ne vous donneront_”) but the sentence goes on in roman overleaf (“qu'un secours vain, et inutile. Annoncez-leur que …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0465/italic_seam/49a7ef97",
-  "book_dir": "27_isaie",
-  "page": 465,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…orsque vous vous serez convertis, et que vous au-_”) but the sentence goes on in roman overleaf (“rez gémi, vous ferez sauvez. Si vous retournez sér…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0471/italic_seam/e22d20be",
-  "book_dir": "27_isaie",
-  "page": 471,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…in d'erreur qui serrait les mâchoires de tous les_”) but the sentence goes on in roman overleaf (“peuples. Ce frein d'erreur exprime l'injustice de …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0474/italic_seam/d62e7c10",
-  "book_dir": "27_isaie",
-  "page": 474,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…e avec le tympanum, et la cythare, comme avec des_”) but the sentence goes on in roman overleaf (“instruments de guerre. Le tonnerre, la foudre, la …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0488/italic_seam/acd803cf",
-  "book_dir": "27_isaie",
-  "page": 488,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…paix, le repos, la tranquillité, seront l'ouvrage_”) but the sentence goes on in roman overleaf (“de la justice ; l'équité produira un repos heureux…”): carry the italics over to where the quotation ends",
+  "msg": "Italics closed at the very foot of the page (“…Le Grec : ^{(c)} _Il trouvera un mélange,_”) but the sentence goes on in roman overleaf (“un assemblage, un concert, _selon sa volonté_. On …”): carry the italics over to where the quotation ends",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -10862,353 +10105,28 @@
   }
  },
  {
-  "id": "27_isaie/0496/italic_seam/d953788a",
+  "id": "27_isaie/0127/italic_seam/d81671e4",
   "book_dir": "27_isaie",
-  "page": 496,
+  "page": 127,
   "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…us enfanterez de la paille ; votre esprit, le feu_”) but the sentence goes on in roman overleaf (“vous consumera. Les Septante ^{(a)} s'éloignent si…”): carry the italics over to where the quotation ends",
+  "msg": "Italics still open at the foot of the page (“… jusqu'à vous rendre pur. Je perdrai tous les incrédules, et”) but not closed overleaf (“j'exterminerai tous les méchants du milieu de vous…”): close them here, or a “_” is missing or extra",
+  "optional": false,
+  "where": {
+   "section": "commentary",
+   "index": 2,
+   "field": "french_commentary"
+  }
+ },
+ {
+  "id": "27_isaie/0757/italic_seam/51181152",
+  "book_dir": "27_isaie",
+  "page": 757,
+  "kind": "italic_seam",
+  "msg": "Italics still open at the foot of the page (“…_Les Rois seront vos nourriciers, et”) but not closed overleaf (“les Reines vos nourrices. Vous ferez nourri avec l…”): close them here, or a “_” is missing or extra",
   "optional": false,
   "where": {
    "section": "commentary",
    "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0504/italic_seam/892f1739",
-  "book_dir": "27_isaie",
-  "page": 504,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…L'Hébreu : ^{(e)} _Sa fureur_”) but the sentence goes on in roman overleaf (“va tomber sur leur armée, ou sur leur beauté ; il …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0522/italic_seam/6db9e85c",
-  "book_dir": "27_isaie",
-  "page": 522,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…vous devant un Gouverneur des moindres serviteurs_”) but the sentence goes on in roman overleaf (“de mon Maître ? Saint Jérôme traduit _Pachas_ par …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0534/italic_seam/3d2d5e82",
-  "book_dir": "27_isaie",
-  "page": 534,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…etranché le fil de ma vie ; ou plutôt, c'est Dieu_”) but the sentence goes on in roman overleaf (“lui-même qui en a tranché les fils si déliés, et s…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0537/italic_seam/54e6d2f4",
-  "book_dir": "27_isaie",
-  "page": 537,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“… _Je repasserai tous les jours de ma vie la grâce_”) but the sentence goes on in roman overleaf (“qu'il m'a faite. Mais comment peuvent-ils ajouter,…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0544/italic_seam/f4ea2f43",
-  "book_dir": "27_isaie",
-  "page": 544,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…ur, par un double châtiment : Duplici contritione_”) but the sentence goes on in roman overleaf (“contere eos. Et dans l'Apocalypse : ^{(a)} _Duplic…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0549/italic_seam/60feb219",
-  "book_dir": "27_isaie",
-  "page": 549,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…(g)} _Qui a disposé, établi, connu, fixé l'Esprit_”) but the sentence goes on in roman overleaf (“du Seigneur ? Les Septante : ^{(a)} _Qui a connu l…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0554/italic_seam/bb228fa5",
-  "book_dir": "27_isaie",
-  "page": 554,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…a défaillance) et qui envoie de la douleur à ceux_”) but the sentence goes on in roman overleaf (“qui n'en ont point. On peut fort bien donner ce mê…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0557/italic_seam/50984408",
-  "book_dir": "27_isaie",
-  "page": 557,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…poussière, et son arc comme la paille que le vent_”) but the sentence goes on in roman overleaf (“emporte. Ce qui peut marquer le nombre prodigieux …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0581/italic_seam/460a79a7",
-  "book_dir": "27_isaie",
-  "page": 581,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…isseaux._ Les Septante : ^{(b)} _A cause de vous,_”) but the sentence goes on in roman overleaf (“j'enverrai contre Babylone, et je les ferai tous f…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0586/italic_seam/bde694d1",
-  "book_dir": "27_isaie",
-  "page": 586,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…À la lettre : _Je les ai souillés ; je_”) but the sentence goes on in roman overleaf (“les ai traités comme impurs ; je les ai punis dans…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0595/italic_seam/9a9e6179",
-  "book_dir": "27_isaie",
-  "page": 595,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…L'Hébreu : ^{(b)} _Qui les rends insensés ; qui_”) but the sentence goes on in roman overleaf (“leur trouble l'esprit, et qui permet qu'ils tomben…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0603/italic_seam/47b0a27f",
-  "book_dir": "27_isaie",
-  "page": 603,
-  "kind": "italic_seam",
-  "msg": "Italics still open at the foot of the page (“… la terre pendant tout le jour ? L'argile dira-t'elle au po-”) but not closed overleaf (“_tier : Que faites-vous ? Pourquoi ne travaillez-v…”): close them here, or a “_” is missing or extra",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0614/italic_seam/3709a68d",
-  "book_dir": "27_isaie",
-  "page": 614,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…'ennemi. À la lettre, ^{(i)} _Ils n'ont pu sauver_”) but the sentence goes on in roman overleaf (“celui qui les portait ; et leur âme a été emmenée …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0625/italic_seam/af328008",
-  "book_dir": "27_isaie",
-  "page": 625,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…L'Hébreu à la lettre : ^{(e)} _Ils seront ap-_”) but the sentence goes on in roman overleaf (“pellez de la ville sainte ; ils porteront le nom d…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0629/italic_seam/8205baae",
-  "book_dir": "27_isaie",
-  "page": 629,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…fureur, et je vous forcerai de me louer, afin que_”) but the sentence goes on in roman overleaf (“vous ne périssiez point. À la lettre : ^{(a)} _Je …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0639/italic_seam/790f9402",
-  "book_dir": "27_isaie",
-  "page": 639,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…? _Les Rois vous verront, et se lèveront en vôtre_”) but the sentence goes on in roman overleaf (“présente. Bien-tôt vous ferez rétabli en honneur, …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0677/italic_seam/06509a8b",
-  "book_dir": "27_isaie",
-  "page": 677,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…t été charmés de sa beauté. Nous ne l'avons point_”) but the sentence goes on in roman overleaf (“désiré. Ils suppléent la négation qui est au premi…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0681/italic_seam/04b54993",
-  "book_dir": "27_isaie",
-  "page": 681,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…Seigneur l'a livré à nos iniquités ; comme si nos_”) but the sentence goes on in roman overleaf (“crimes étaient autant de bourreaux auxquels le Sau…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0682/italic_seam/469e9f07",
-  "book_dir": "27_isaie",
-  "page": 682,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…mme par un exacteur, on ne lui a rien remis de sa_”) but the sentence goes on in roman overleaf (“dette, et il a été affligé, ou humilié. Les Septan…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0696/italic_seam/1f543a3d",
-  "book_dir": "27_isaie",
-  "page": 696,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…fle le charbon, et qui fait des armes par son ou-_”) but the sentence goes on in roman overleaf (“vrage ; et c'est moi qui ai créé le destructeur, p…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0734/italic_seam/f4263278",
-  "book_dir": "27_isaie",
-  "page": 734,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…abstenez, et que vous preniez une autre voie, une_”) but the sentence goes on in roman overleaf (“autre coutume. Sous le nom de Sabbat, on entend to…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0735/italic_seam/87357573",
-  "book_dir": "27_isaie",
-  "page": 735,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…rs. Ou, selon Grotius : _Mais appliquez-vous à la_”) but the sentence goes on in roman overleaf (“parole, à la Loi de Dieu. C'était un des premiers …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0772/italic_seam/dabca4f3",
-  "book_dir": "27_isaie",
-  "page": 772,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“… terre sera à un maître, ou à un mari ; elle sera_”) but the sentence goes on in roman overleaf (“sera mariée ; elle ne sera plus comme une Épouse r…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0791/italic_seam/91358885",
-  "book_dir": "27_isaie",
-  "page": 791,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…ment du monde, nous n'avons point entendu, et nos_”) but the sentence goes on in roman overleaf (“yeux n'ont point vu d'autre Dieu que vous, et que …”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0822/italic_seam/736aadcd",
-  "book_dir": "27_isaie",
-  "page": 822,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“… crème._ Et ailleurs : ^{(b)} _Venez acheter sans_”) but the sentence goes on in roman overleaf (“échange du vin, et du lait ; ^{(a)} et vous sucere…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0823/italic_seam/edc5aa34",
-  "book_dir": "27_isaie",
-  "page": 823,
-  "kind": "italic_seam",
-  "msg": "Italics closed at the very foot of the page (“…sant aux Corinthiens : ^{(d)} _Je vous ai nourris_”) but the sentence goes on in roman overleaf (“de lait, et non de viandes solides ; car vous n'en…”): carry the italics over to where the quotation ends",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_commentary"
   }
  },
@@ -13475,370 +12393,6 @@
   }
  },
  {
-  "id": "27_isaie/0155/period_seam/92c08406",
-  "book_dir": "27_isaie",
-  "page": 155,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…s femmes de qualité portent encore à présent.”) but the next page goes on in lower case (“dans le Levant. ^{(a)} C'est d'ordinaire une …”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0160/period_seam/4433ccc4",
-  "book_dir": "27_isaie",
-  "page": 160,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…Nous avons déjà dit un mot de ces rubans.”) but the next page goes on in lower case (“qui pendaient des deux côtés des épaules, à p…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0161/period_seam/f1139be1",
-  "book_dir": "27_isaie",
-  "page": 161,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…ure qu'on représente les Provinces affligées.”) but the next page goes on in lower case (“jetties. Les médailles frappées après la guer…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0171/period_seam/7c2a2d2f",
-  "book_dir": "27_isaie",
-  "page": 171,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…litude, elle ne sera ni habitée, ni cultivée.”) but the next page goes on in lower case (“pendant tout le temps de la captivité de Baby…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0209/period_seam/c7ac61f0",
-  "book_dir": "27_isaie",
-  "page": 209,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…son pays fut tranquille, mais presque désert.”) but the next page goes on in lower case (“pauvre, et peu habité, à cause de l'épuisemen…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0272/period_seam/9c449ba6",
-  "book_dir": "27_isaie",
-  "page": 272,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…reur ; ils se réjouissent, et se glorifient_.”) but the next page goes on in lower case (“peut traduire l'Hébreu : ^{(a)} _J'ai appelé …”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0314/period_seam/54ae135e",
-  "book_dir": "27_isaie",
-  "page": 314,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…ésebon. ^{(h)} Elles étaient toutes deux ces.”) but the next page goes on in lower case (“lêbres par leurs belles vignes. Les Princes, …”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0396/period_seam/0511db9d",
-  "book_dir": "27_isaie",
-  "page": 396,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…e l'Hébreu _or_, ^{(h)} se prend quelquefois.”) but the next page goes on in lower case (“en ce sens. Les Septante : ^{(a)} _C'est pour…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0399/period_seam/39cd8557",
-  "book_dir": "27_isaie",
-  "page": 399,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…sèbe ^{(f)} entend ceci des Anges que Dieu a.”) but the next page goes on in lower case (“établis sur les Royaumes de la terre, lesquel…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0426/period_seam/c8232486",
-  "book_dir": "27_isaie",
-  "page": 426,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…uda de sa captivité, dont il a parlé au long.”) but the next page goes on in lower case (“dans le Chapitre xxvi. de celui des dix tribu…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0429/period_seam/ca4f5d2d",
-  "book_dir": "27_isaie",
-  "page": 429,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…d'orgueil, et fondaient de vaines espérances.”) but the next page goes on in lower case (“fur la force de leur ville de Samarie. Quelqu…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0511/period_seam/fedbd889",
-  "book_dir": "27_isaie",
-  "page": 511,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“… les Rabbins, ^{(f)} était la première femme.”) but the next page goes on in lower case (“d'Adam, laquelle s'étant d'abord prise de que…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0512/period_seam/7f024708",
-  "book_dir": "27_isaie",
-  "page": 512,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…t un serpent, nommé _le dard_, et _acontias_.”) but the next page goes on in lower case (“par les Grecs, et Kipphasa par les Arabes. L'…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0520/period_seam/92f7a92e",
-  "book_dir": "27_isaie",
-  "page": 520,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…, et d'arracher l'or qui couvrait les portes.”) but the next page goes on in lower case (“tes du Temple. ^{(a)} Toutes circonstances qu…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0521/period_seam/69bf2e95",
-  "book_dir": "27_isaie",
-  "page": 521,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…n qui vous confiez-vous, pour vous révolter_.”) but the next page goes on in lower case (“contre moi ? Les Septante : (_a_) _Met-on une…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0535/period_seam/22341298",
-  "book_dir": "27_isaie",
-  "page": 535,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…)} où ils signifient deux oiseaux différents.”) but the next page goes on in lower case (“rens. Mais on dispute quels oiseaux c'étaient…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0546/period_seam/de84156a",
-  "book_dir": "27_isaie",
-  "page": 546,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“… du monde : Toute chair n'est que de l'herbe.”) but the next page goes on in lower case (“de l'herbe, et toute sa gloire n'est que comm…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0567/period_seam/3a03d189",
-  "book_dir": "27_isaie",
-  "page": 567,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“… discours ne le regarde directement, et à la.”) but the next page goes on in lower case (“lettre. ^{(a)} Il faut pourtant convenir qu'i…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0579/period_seam/b432d4e2",
-  "book_dir": "27_isaie",
-  "page": 579,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…lontaires, qui ont des yeux, et des oreilles.”) but the next page goes on in lower case (“dont ils ne sont point d'usage ; et qu'ils ré…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0612/period_seam/e3bec2bb",
-  "book_dir": "27_isaie",
-  "page": 612,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…me les peuples de qui ils avaient été adorés.”) but the next page goes on in lower case (“adorez. Le métal de leurs statues, et les ric…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0642/period_seam/d81d5e36",
-  "book_dir": "27_isaie",
-  "page": 642,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“… du mont Sinaï, situé dans l'Arabie, au midi.”) but the next page goes on in lower case (“de la Judée. ^{(a)} Les Septante ^{(b)} l'ont…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0658/period_seam/e929b62d",
-  "book_dir": "27_isaie",
-  "page": 658,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…'en iront en fumée, comme le sel se dissout_.”) but the next page goes on in lower case (“dans l'eau. ^{(a)} Les Septante : ^{(b)} Le C…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0764/period_seam/fe9c8d81",
-  "book_dir": "27_isaie",
-  "page": 764,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…Vous ferez.”) but the next page goes on in lower case (“dans l'honneur, dans l'abondance, dans un heu…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0767/period_seam/c82cfc3c",
-  "book_dir": "27_isaie",
-  "page": 767,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…ernelle regarde principalement les Chrétiens.”) but the next page goes on in lower case (“riens. Jésus-Christ, Auteur de la nouvelle al…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0774/period_seam/74cce900",
-  "book_dir": "27_isaie",
-  "page": 774,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…représenter à Dieu les besoins de son peuple.”) but the next page goes on in lower case (“et de lui en rafraîchir la mémoire, n'interro…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0803/period_seam/a0a977d7",
-  "book_dir": "27_isaie",
-  "page": 803,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…vallée d'Achor servira de retraite aux bœufs.”) but the next page goes on in lower case (“cette vallée plusieurs étables de bœufs. La v…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0817/period_seam/59dee946",
-  "book_dir": "27_isaie",
-  "page": 817,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…imulations, et je leur rendrai leurs péchés_.”) but the next page goes on in lower case (“moi à mon tour je choisirai ce qui peut les c…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0834/period_seam/426d4c52",
-  "book_dir": "27_isaie",
-  "page": 834,
-  "kind": "period_seam",
-  "msg": "Full stop at the foot of the page (“…ées._ Grotius l'explique des peuples Gentils.”) but the next page goes on in lower case (“qui après le retour de la captivité, devaient…”): stray full stop, or a capital to restore?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
   "id": "28_jeremie/0118/period_seam/11b270b6",
   "book_dir": "28_jeremie",
   "page": 118,
@@ -14936,188 +13490,6 @@
   "page": 402,
   "kind": "etc_for_et",
   "msg": "Last commentary ends with “etc._”: “…{(d)} _Elle apporte ses bras utiles, et elle etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0127/etc_for_et/b18756f5",
-  "book_dir": "27_isaie",
-  "page": 127,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc._”: “… rendre pur. Je perdrai tous les incrédules, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0176/etc_for_et/df50383a",
-  "book_dir": "27_isaie",
-  "page": 176,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc.”: “… y ameneront. Les lieux auparavant cultivez, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0249/etc_for_et/cdb86a0a",
-  "book_dir": "27_isaie",
-  "page": 249,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc.”: “…ce, ce ne sera que pour porter la confusion, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0262/etc_for_et/98bfd312",
-  "book_dir": "27_isaie",
-  "page": 262,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc._”: “…ante : _Adjiciet Dominus secundò manum suam, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0284/etc_for_et/b27abfa9",
-  "book_dir": "27_isaie",
-  "page": 284,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc._”: “… de son peuple : _Miserebitur Dominus Jacob, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0338/etc_for_et/d9a94916",
-  "book_dir": "27_isaie",
-  "page": 338,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc._”: “…^{(d)} _L'Esprit des Égyptiens sera troublé, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0400/etc_for_et/89aebabd",
-  "book_dir": "27_isaie",
-  "page": 400,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc.”: “… alors le soleil, et la lune s'obscurciront, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0565/etc_for_et/412371fa",
-  "book_dir": "27_isaie",
-  "page": 565,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc.”: “… au commencement sous le nom de juste,^{(d)} etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0589/etc_for_et/00194f40",
-  "book_dir": "27_isaie",
-  "page": 589,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc.”: “…s, qui sont l'ouvrage de la main des hommes, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0611/etc_for_et/52339f81",
-  "book_dir": "27_isaie",
-  "page": 611,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc._”: “…tir un Temple à Jérusalem, qui est en Judée, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0627/etc_for_et/23781786",
-  "book_dir": "27_isaie",
-  "page": 627,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc.”: “…ême savoir. Rendez donc justice à ma vérité, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0660/etc_for_et/c20d5a99",
-  "book_dir": "27_isaie",
-  "page": 660,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc.”: “…nt dans l'oppression, commencent à respirer, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0757/etc_for_et/5dfe2c1e",
-  "book_dir": "27_isaie",
-  "page": 757,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc._”: “…t : ^{(e)} _Les Rois seront vos nourriciers, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "27_isaie/0829/etc_for_et/8afb3a5b",
-  "book_dir": "27_isaie",
-  "page": 829,
-  "kind": "etc_for_et",
-  "msg": "Last commentary ends with “etc.”: “…nt par tout l'Évangile du Royaume des Cieux, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -17557,180 +15929,11 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0164/long_translation/05731fb7",
-  "book_dir": "26_ecclesiastique",
-  "page": 164,
-  "kind": "long_translation",
-  "msg": "Translation of 130 characters for a lemma of 35 “ESTO MANSUETUS AD AUDIENDUM VERBUM.”: “Écoutez avec douceur ce que l'on vous dit, afin d'acquérir l'intelligence, et de rendre av…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0249/long_translation/97091554",
-  "book_dir": "26_ecclesiastique",
-  "page": 249,
-  "kind": "long_translation",
-  "msg": "Translation of 115 characters for a lemma of 30 “SAPIENTIA, ET DISCIPLINA, ETC.”: “C'est de Dieu que vient la sagesse, le règlement de la vie, la science de la loi, la chari…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0297/long_translation/42426c46",
-  "book_dir": "26_ecclesiastique",
-  "page": 297,
-  "kind": "long_translation",
-  "msg": "Translation of 112 characters for a lemma of 29 “NON DIXERIS : PER DEUM ABEST.^{(d)}”: “Ne dites point : Dieu est cause que je n'ai point la sagesse : car c'est à vous à ne pas f…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0325/long_translation/5c337d90",
-  "book_dir": "26_ecclesiastique",
-  "page": 325,
-  "kind": "long_translation",
-  "msg": "Translation of 161 characters for a lemma of 40 “POENITENTIBUS AUTEM DEDIT VIAM JUSTITIÆ.”: “Mais il donne aux pénitents un retour dans la voie de la justice. Il affermit ceux qui son…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0333/long_translation/4024a50f",
-  "book_dir": "26_ecclesiastique",
-  "page": 333,
-  "kind": "long_translation",
-  "msg": "Translation of 163 characters for a lemma of 29 “QUI MISERICORDIAM HABET, ETC.”: “Étant plein de compassion, il enseigne, et châtie les hommes, comme un pasteur fait ses br…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0347/long_translation/732ee184",
-  "book_dir": "26_ecclesiastique",
-  "page": 347,
-  "kind": "long_translation",
-  "msg": "Translation of 122 characters for a lemma of 16 “AUDISTI ENIM TE.”: “Car celui à qui vous le direz, vous écoutera, et vous observera, et faisant semblant d'exc…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "26_ecclesiastique/0385/long_translation/b1bfc6ea",
   "book_dir": "26_ecclesiastique",
   "page": 385,
   "kind": "long_translation",
   "msg": "Translation of 105 characters for a lemma of 26 “LUCTUS MORTUI SEPTEM DIES.”: “On pleure un mort pendant sept jours : mais l'insensé, et le méchant doivent être pleurés …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0388/long_translation/13cc7b73",
-  "book_dir": "26_ecclesiastique",
-  "page": 388,
-  "kind": "long_translation",
-  "msg": "Translation of 83 characters for a lemma of 23 “COGITATUS SENSATI, ETC.”: “La résolution d'un homme sensé ne s'affoiblira point, en quelque temps que ce soit.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0392/long_translation/57875b15",
-  "book_dir": "26_ecclesiastique",
-  "page": 392,
-  "kind": "long_translation",
-  "msg": "Translation of 113 characters for a lemma of 24 “ANTE IGNEM CAMINI VAPOR.”: “La vapeur sort de la fournaise, et la fumée s'élève en haut avec le feu ; ainsi les injure…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0395/long_translation/fd92422a",
-  "book_dir": "26_ecclesiastique",
-  "page": 395,
-  "kind": "long_translation",
-  "msg": "Translation of 156 characters for a lemma of 46 “QUIS SUPERPONET IN COGITATU MEO FLAGELLA”: “Qui fera ressentir à mon esprit une verge qui le frappe, afin qu'elle ne m'épargne pas dan…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0399/long_translation/467f5e2a",
-  "book_dir": "26_ecclesiastique",
-  "page": 399,
-  "kind": "long_translation",
-  "msg": "Translation of 148 characters for a lemma of 40 “SICUT ENIM SERVUS INTERROGATUS ^{(b)} AS”: “Car comme un esclave qu'on met sans cesse à la torture, en porte toujours les marques : ai…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0406/long_translation/bf2912bb",
-  "book_dir": "26_ecclesiastique",
-  "page": 406,
-  "kind": "long_translation",
-  "msg": "Translation of 114 characters for a lemma of 37 “SIC ET MULIER OMNIS RELINQUENS VIRUM.”: “Ainsi périra toute femme qui abandonne son mari, et qui lui donne pour héritier, le fruit …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0411/long_translation/ae933415",
-  "book_dir": "26_ecclesiastique",
-  "page": 411,
-  "kind": "long_translation",
-  "msg": "Translation of 217 characters for a lemma of 26 “GYRUM COELI CIRCUIVI SOLA.”: “J'ai fait seule tout le tour du Ciel ; j'ai pénétré la profondeur des abîmes. J'ai disposé…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0411/long_translation/bdbd5d67",
-  "book_dir": "26_ecclesiastique",
-  "page": 411,
-  "kind": "long_translation",
-  "msg": "Translation of 217 characters for a lemma of 47 “ET IN OMNI TERRA STETI, ET IN OMNI POPUL”: “(10.) J'ai eu l'empire sur tous les peuples. Le Grec est plus court. ^{(b)} J'ai marché su…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -17752,123 +15955,6 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0416/long_translation/7b7a01d9",
-  "book_dir": "26_ecclesiastique",
-  "page": 416,
-  "kind": "long_translation",
-  "msg": "Translation of 68 characters for a lemma of 20 “SICUT MYRRHA ELECTA.”: “J'ai répandu une odeur, comme celle de la myrrhe la plus excellente.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0419/long_translation/694ac598",
-  "book_dir": "26_ecclesiastique",
-  "page": 419,
-  "kind": "long_translation",
-  "msg": "Translation of 113 characters for a lemma of 36 “SPIRITUS ENIM MEUS SUPER MEL DULCIS.”: “Car mon esprit est plus doux que le miel, et mon héritage surpasse en douceur le raïon de …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0428/long_translation/1428d878",
-  "book_dir": "26_ecclesiastique",
-  "page": 428,
-  "kind": "long_translation",
-  "msg": "Translation of 118 characters for a lemma of 30 “TRES SPECIES ODIVIT ANIMA MEA.”: “Il y a trois sortes de personnes que mon âme hait : Savoir, un pauvre superbe, un riche me…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0429/long_translation/d6def430",
-  "book_dir": "26_ecclesiastique",
-  "page": 429,
-  "kind": "long_translation",
-  "msg": "Translation of 126 characters for a lemma of 34 “QUAM SPECIOSUM CANITIEI JUDICIUM !”: “Qu'il est beau à la vieillesse de bien juger ! Ou plutôt : Que le bon sens, et la prudence…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0438/long_translation/fb432701",
-  "book_dir": "26_ecclesiastique",
-  "page": 438,
-  "kind": "long_translation",
-  "msg": "Translation of 127 characters for a lemma of 24 “NON DES AQUÆ TUÆ EXITUM.”: “Ne donnez point à l'eau d'ouverture, quelque petite qu'elle soit ; ni à une méchante femme…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0440/long_translation/da31ad78",
-  "book_dir": "26_ecclesiastique",
-  "page": 440,
-  "kind": "long_translation",
-  "msg": "Translation of 98 characters for a lemma of 26 “MULIERIS BONÆ, BEATUS VIR.”: “Le mari d'une femme qui est bonne, est heureux ; le nombre de ses années se multipliera au…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0440/long_translation/d208a3b0",
-  "book_dir": "26_ecclesiastique",
-  "page": 440,
-  "kind": "long_translation",
-  "msg": "Translation of 89 characters for a lemma of 23 “PARS BONA, MULIER BONA.”: “La femme vertueuse est un excellent partage, c'est le partage de ceux qui craignent Dieu.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0441/long_translation/b6209a11",
-  "book_dir": "26_ecclesiastique",
-  "page": 441,
-  "kind": "long_translation",
-  "msg": "Translation of 214 characters for a lemma of 25 “A TRIBUS TIMUIT COR MEUM.”: “Mon cœur a appréhendé trois choses, qui sont, 1°. La haine de toute une ville. 2°. L'émoti…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0447/long_translation/0b0174e5",
-  "book_dir": "26_ecclesiastique",
-  "page": 447,
-  "kind": "long_translation",
-  "msg": "Translation of 81 characters for a lemma of 24 “VIR SENSATUS CONTEMPTUS.”: “Un homme sage, qui est dans le mépris, sans biens, sans emploi, sans distinction.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
   "id": "26_ecclesiastique/0451/long_translation/0fbad093",
   "book_dir": "26_ecclesiastique",
   "page": 451,
@@ -17882,778 +15968,11 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0453/long_translation/f15d53bc",
-  "book_dir": "26_ecclesiastique",
-  "page": 453,
-  "kind": "long_translation",
-  "msg": "Translation of 120 characters for a lemma of 37 “LEO VENATIONI INSIDIATUR SEMPER, ETC.”: “Le lion est toujours au guet pour surprendre sa proie ; ainsi le péché tend des pièges à c…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0454/long_translation/9b868781",
-  "book_dir": "26_ecclesiastique",
-  "page": 454,
-  "kind": "long_translation",
-  "msg": "Translation of 88 characters for a lemma of 28 “NARRATIO PECCANTIUM, ODIOSA.”: “Les entretiens des pécheurs sont insupportables, parce qu'ils font un jeu du péché même.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0455/long_translation/708529cd",
-  "book_dir": "26_ecclesiastique",
-  "page": 455,
-  "kind": "long_translation",
-  "msg": "Translation of 88 characters for a lemma of 29 (with the next page) “SICUT QUI DIMITTIT AVEM, ETC.”: “Vous avez abandon- né votre prochain, comme celui qui tenant un oiseau, le laisse aller.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0456/long_translation/090af52d",
-  "book_dir": "26_ecclesiastique",
-  "page": 456,
-  "kind": "long_translation",
-  "msg": "Translation of 109 characters for a lemma of 31 “ANNUENS OCULO, FABRICAT INIQUA.”: “Celui dont l'œil est complaisant et flatteur, a de noirs desseins dans l'âme, et nul ne s'…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0457/long_translation/c42cd52f",
-  "book_dir": "26_ecclesiastique",
-  "page": 457,
-  "kind": "long_translation",
-  "msg": "Translation of 125 characters for a lemma of 33 “QUI IN ALTUM MITTIT LAPIDEM, ETC.”: “Si un homme jette une pierre en haut, elle retombera sur sa tête ; et la blessure que fait…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0460/long_translation/65aacc26",
-  "book_dir": "26_ecclesiastique",
-  "page": 460,
-  "kind": "long_translation",
-  "msg": "Translation of 121 characters for a lemma of 32 “RELINQUE PROXIMO TUO NOCENTI TE.”: “Pardonnez à votre prochain le mal qu'il vous a fait, et vos péchés vous seront remis, quan…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0464/long_translation/8475d508",
-  "book_dir": "26_ecclesiastique",
-  "page": 464,
-  "kind": "long_translation",
-  "msg": "Translation of 89 characters for a lemma of 24 “MULIERES VIRATAS EJECIT.”: “Elle a fait répudier des femmes mariées, et elle les a privées du fruit de leurs travaux.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0466/long_translation/ba93bee6",
-  "book_dir": "26_ecclesiastique",
-  "page": 466,
-  "kind": "long_translation",
-  "msg": "Translation of 141 characters for a lemma of 36 “PERSEVERANTIA ILLIUS NON PERMANEBIT.”: “Elle durera quelque temps, mais non pas toujours ; elle régnera dans les voies des injuste…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0476/long_translation/6c05f05c",
-  "book_dir": "26_ecclesiastique",
-  "page": 476,
-  "kind": "long_translation",
-  "msg": "Translation of 113 characters for a lemma of 37 “GRATIAM FIDEJUSSORIS NE OBLIVISCARIS.”: “N'oubliez jamais la grâce que vous a fait celui qui répond pour vous, car il a exposé son …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0478/long_translation/e2cd346c",
-  "book_dir": "26_ecclesiastique",
-  "page": 478,
-  "kind": "long_translation",
-  "msg": "Translation of 148 characters for a lemma of 40 “PECCATOR INCIDET IN PROMISSIONEM NEQUAM.”: “Le pécheur s'engagera à répondre indiscrettement pour un autre, et celui qui entreprend be…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0481/long_translation/8f2af005",
-  "book_dir": "26_ecclesiastique",
-  "page": 481,
-  "kind": "long_translation",
-  "msg": "Translation of 137 characters for a lemma of 36 “GRAVIA SUNT HÆC HABENTI SENSUM, ETC.”: “Ces deux choses sont pénibles à un homme qui a du sens. Les reproches de celui qui nous a …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0491/long_translation/1f45a913",
-  "book_dir": "26_ecclesiastique",
-  "page": 491,
-  "kind": "long_translation",
-  "msg": "Translation of 117 characters for a lemma of 32 “ZELUS ET IRACUNDIA MINUUNT DIES.”: “L'envie, et la colère abrègent les jours ; et l'inquiétude, les soins, les peines d'esprit…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0497/long_translation/0bcdec24",
-  "book_dir": "26_ecclesiastique",
-  "page": 497,
-  "kind": "long_translation",
-  "msg": "Translation of 129 characters for a lemma of 42 “IDEO STABILITA SUNT BONA ILLIUS IN DOMIN”: “C'est pourquoi ses biens ont été affermis dans le Seigneur ; et toute l'assemblée des Sain…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0498/long_translation/f486e4bb",
-  "book_dir": "26_ecclesiastique",
-  "page": 498,
-  "kind": "long_translation",
-  "msg": "Translation of 131 characters for a lemma of 34 “SUPRA MENSAM MAGNAM SEDISTI ? ETC.”: “Si vous êtes assis à une grande table ; n'ouvrez pas le premier la bouche pour parler. 13.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0500/long_translation/29518f5f",
-  "book_dir": "26_ecclesiastique",
-  "page": 500,
-  "kind": "long_translation",
-  "msg": "Translation of 113 characters for a lemma of 28 “UTERE QUASI HOMO FRUGI, ETC.”: “Usez comme un homme tempérant de ce qui vous est servi, de peur que vous ne vous rendiez o…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0506/long_translation/a46a0ef3",
-  "book_dir": "26_ecclesiastique",
-  "page": 506,
-  "kind": "long_translation",
-  "msg": "Translation of 84 characters for a lemma of 27 “EBRIETATIS ANIMOSITAS, ETC.”: “L'ivrognerie inspire l'audace, elle fait tomber l'insensé ; elle est la source, etc.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0510/long_translation/6c0d3ec2",
-  "book_dir": "26_ecclesiastique",
-  "page": 510,
-  "kind": "long_translation",
-  "msg": "Translation of 98 characters for a lemma of 24 “LOQUERE MAJOR NATU, ETC.”: “Parlez, si vous êtes le plus âgé ; (5.) Mais parlez avec sagesse, et ne troublez point l'h…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0511/long_translation/9e9dfb57",
-  "book_dir": "26_ecclesiastique",
-  "page": 511,
-  "kind": "long_translation",
-  "msg": "Translation of 104 characters for a lemma of 24 “GEMMULA CARBUNCULI, ETC.”: “Un concert de Musiciens dans un festin où l'on boit du vin, est comme l'escarboucle enchâs…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0513/long_translation/f0ec230a",
-  "book_dir": "26_ecclesiastique",
-  "page": 513,
-  "kind": "long_translation",
-  "msg": "Translation of 142 characters for a lemma of 40 “ANTE GRANDINEM PRÆIBIT CORRUSCATIO, ETC.”: “On voit l'éclair avant la grêle : et avant la retenue qui empêche de parler, on voit une c…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0514/long_translation/2ddb8284",
-  "book_dir": "26_ecclesiastique",
-  "page": 514,
-  "kind": "long_translation",
-  "msg": "Translation of 125 characters for a lemma of 28 “HORA SURGENDI NON TE TRICES.^{(a)}”: “Quand l'heure de se lever sera venue, ne vous embarrassez point : mais courez le premier à…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0521/long_translation/b1f17c16",
-  "book_dir": "26_ecclesiastique",
-  "page": 521,
-  "kind": "long_translation",
-  "msg": "Translation of 90 characters for a lemma of 25 “QUARE DIEM DIES SEPARAT ?”: “D'où vient qu'un jour est préféré à un autre, puisque c'est le même Soleil qui les forme ?…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0523/long_translation/19b88d02",
-  "book_dir": "26_ecclesiastique",
-  "page": 523,
-  "kind": "long_translation",
-  "msg": "Translation of 103 characters for a lemma of 34 “QUASI LUTUM FIGULI IN MANU IPSIUS.”: “Comme l'argile est dans la main du potier …(14.) Ainsi l'homme est dans la main de celui, …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0532/long_translation/27e23cea",
-  "book_dir": "26_ecclesiastique",
-  "page": 532,
-  "kind": "long_translation",
-  "msg": "Translation of 98 characters for a lemma of 28 “AB IMMUNDO QUID MUNDABITUR ?”: “Comment ce qui est impur, peut-il rendre pur ? Et comment la vérité peut-elle sortir du me…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0533/long_translation/2b2b8bef",
-  "book_dir": "26_ecclesiastique",
-  "page": 533,
-  "kind": "long_translation",
-  "msg": "Translation of 225 characters for a lemma of 47 “SICUT PARTURIENTIS COR TUUM PHANTASIAS P”: “Ce ne sont que des effets de votre imagination, semblables aux fantaisies des femmes gross…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0536/long_translation/d53dad93",
-  "book_dir": "26_ecclesiastique",
-  "page": 536,
-  "kind": "long_translation",
-  "msg": "Translation of 89 characters for a lemma of 25 “MULTA VIDI ^{(e)} ERRANDO, ETC.”: “J'ai bien vu des choses dans mes voyages, et j'ai remarqué bien des coutumes différentes.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0538/long_translation/c8677914",
-  "book_dir": "26_ecclesiastique",
-  "page": 538,
-  "kind": "long_translation",
-  "msg": "Translation of 87 characters for a lemma of 28 “DEPRECATIO OFFENSIONIS, ETC.”: “Il les soutiens, afin qu'ils ne tombent pas ; et il les assiste, quand ils sont tombés.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0538/long_translation/f4663aa4",
-  "book_dir": "26_ecclesiastique",
-  "page": 538,
-  "kind": "long_translation",
-  "msg": "Translation of 131 characters for a lemma of 42 “IMMOLANTIS EX INIQUO OBLATIO EST MACULAT”: “L'oblation de celui qui sacrifie d'un bien d'iniquité, est souillée ; et les insultes des …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0544/long_translation/b063944c",
-  "book_dir": "26_ecclesiastique",
-  "page": 544,
-  "kind": "long_translation",
-  "msg": "Translation of 96 characters for a lemma of 31 “OBLATIO JUSTI IMPINGUAT ALTARE.”: “L'oblation du juste engraisse l'autel, et monte devant le Très-Haut, comme une excellente …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0544/long_translation/2a005045",
-  "book_dir": "26_ecclesiastique",
-  "page": 544,
-  "kind": "long_translation",
-  "msg": "Translation of 91 characters for a lemma of 29 “BONO ANIMO GLORIAM REDDE DEO.”: “Rendez gloire à Dieu de bon cœur, et ne retranchez rien des prémices du fruit de vos mains…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0545/long_translation/86fc4a2e",
-  "book_dir": "26_ecclesiastique",
-  "page": 545,
-  "kind": "long_translation",
-  "msg": "Translation of 134 characters for a lemma of 33 “DA ALTISSIMO SECUNDUM DATUM EJUS.”: “Donnez au Très-Haut, félon qu'il vous a donné, et faites votre offrande de bon cœur, à pro…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0547/long_translation/1c21c27a",
-  "book_dir": "26_ecclesiastique",
-  "page": 547,
-  "kind": "long_translation",
-  "msg": "Translation of 105 characters for a lemma of 26 (with the next page) “GENTIBUS REDDET VINDICTAM.”: “Il exercera sa vengeance contre les nations, jusqu'à ce qu'il ait détruit toute l'assemblé…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0551/long_translation/34eae730",
-  "book_dir": "26_ecclesiastique",
-  "page": 551,
-  "kind": "long_translation",
-  "msg": "Translation of 60 characters for a lemma of 18 “TOLLE ADVERSARIUM.”: “Détruisez l'ennemi, et brisez celui qui nous fait la guerre.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0551/long_translation/34749089",
-  "book_dir": "26_ecclesiastique",
-  "page": 551,
-  "kind": "long_translation",
-  "msg": "Translation of 144 characters for a lemma of 38 (with the next page) “IN IRA FLAMMÆ DEVORETUR, QUI SALVATUR.”: “Que celui qui sera échappé à l'épée, soit dévoré par l'ardeur des flammes ; et que ceux qu…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 5,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0552/long_translation/be1b1398",
-  "book_dir": "26_ecclesiastique",
-  "page": 552,
-  "kind": "long_translation",
-  "msg": "Translation of 114 characters for a lemma of 28 (with the next page) “CONGREGA OMNES TRIBUS JACOB.”: “Rassemblez toutes les tribus de Jacob ; qu'ils deviennent votre héritage, comme ils l'ont …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0556/long_translation/f9448819",
-  "book_dir": "26_ecclesiastique",
-  "page": 556,
-  "kind": "long_translation",
-  "msg": "Translation of 104 characters for a lemma of 30 “OMNEM ESCAM MANDUCABIT VENTER.”: “L'estomac reçoit toutes sortes de viandes ; mais entre les nourritures, l'une est meilleur…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0557/long_translation/94aaa6f4",
-  "book_dir": "26_ecclesiastique",
-  "page": 557,
-  "kind": "long_translation",
-  "msg": "Translation of 101 characters for a lemma of 31 “OMNEM MASCULUM EXCIPIET MULIER.”: “La femme peut épouser toutes fortes d'hommes ; mais entre les filles l'une est meilleure q…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0557/long_translation/6e34bddb",
-  "book_dir": "26_ecclesiastique",
-  "page": 557,
-  "kind": "long_translation",
-  "msg": "Translation of 187 characters for a lemma of 55 (with the next page) “QUI POSSIDET MULIEREM BONAM, INCHOAT”: “Celui qui a une femme vertueuse, commence à établir sa maison ; il a un secours qui lui es…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0561/long_translation/194e3a00",
-  "book_dir": "26_ecclesiastique",
-  "page": 561,
-  "kind": "long_translation",
-  "msg": "Translation of 107 characters for a lemma of 35 “NE OBLIVISCARIS AMICI IN ANIMO TUO.”: “Conservez dans votre cœur le souvenir de votre ami, et ne l'oubliez point, lorsque vous fe…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0561/long_translation/88abebae",
-  "book_dir": "26_ecclesiastique",
-  "page": 561,
-  "kind": "long_translation",
-  "msg": "Translation of 119 characters for a lemma of 36 (with the next page) “OMNIS CONSILIARIUS PRODIT CONSILIUM.”: “Tout homme qu'on consulte, donne son conseil ; mais il y en a qui ne regardent qu'eux-même…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0564/long_translation/469a8993",
-  "book_dir": "26_ecclesiastique",
-  "page": 564,
-  "kind": "long_translation",
-  "msg": "Translation of 68 characters for a lemma of 21 “CUM OPERARIO AGRARIO.”: “L'ouvrier qui travaillera aux champs, sur ce qui regarde le travail.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0565/long_translation/637fa97c",
-  "book_dir": "26_ecclesiastique",
-  "page": 565,
-  "kind": "long_translation",
-  "msg": "Translation of 114 characters for a lemma of 31 “COR BONI CONSILII STATUE TECUM.”: “Affermissez votre cœur dans la droiture d'une bonne conscience ; car vous n'aurez point de…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0567/long_translation/7b514269",
-  "book_dir": "26_ecclesiastique",
-  "page": 567,
-  "kind": "long_translation",
-  "msg": "Translation of 136 characters for a lemma of 36 “EX QUO QUATUOR PARTES ORIUNTUR, ETC.”: “C'est du cœur que naissent ces quatre choses ; le bien, et le mal ; la vie, et la mort ; e…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0569/long_translation/126c74e4",
-  "book_dir": "26_ecclesiastique",
-  "page": 569,
-  "kind": "long_translation",
-  "msg": "Translation of 101 characters for a lemma of 32 “VITA VIRI IN NUMERO DIERUM, ETC.”: “Les jours de la vie d'un homme n'ont qu'un certain nombre, mais les jours d'Israël sont in…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0570/long_translation/a4fe356b",
-  "book_dir": "26_ecclesiastique",
-  "page": 570,
-  "kind": "long_translation",
-  "msg": "Translation of 169 characters for a lemma of 36 “FILI, IN VITA TUA TENTA ANIMAM TUAM.”: “Mon fils, éprouvez votre âme durant votre vie. Étudiez-vous, et voyez de quoi vous êtes ca…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0577/long_translation/c62f618b",
-  "book_dir": "26_ecclesiastique",
-  "page": 577,
-  "kind": "long_translation",
-  "msg": "Translation of 309 characters for a lemma of 38 “DA SUAVITATEM ET MEMORIAM SIMILAGINIS.”: “Offrez au Seigneur un encens de bonne odeur, et de la fleur de farine, en mémoire des bien…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0591/long_translation/327137eb",
-  "book_dir": "26_ecclesiastique",
-  "page": 591,
-  "kind": "long_translation",
-  "msg": "Translation of 97 characters for a lemma of 24 “ET IN PROPHETIS VACABIT.”: “Il fera son étude des Prophètes ; ou, selon le Grec : ^{(b)} il vaquera à l'étude des prop…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0596/long_translation/e3d361bc",
-  "book_dir": "26_ecclesiastique",
-  "page": 596,
-  "kind": "long_translation",
-  "msg": "Translation of 87 characters for a lemma of 20 “FRONDETE IN GRATIAM.”: “Chargez-vous de feuilles qui augmentent votre beauté, d'une belle, et agréable verdure.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0597/long_translation/53f75e0d",
-  "book_dir": "26_ecclesiastique",
-  "page": 597,
-  "kind": "long_translation",
-  "msg": "Translation of 113 characters for a lemma of 33 “OPERA DOMINI UNIVERSA BONA VALDE.”: “Les ouvrages du Seigneur sont tous souverainement bons, ou beaux ; ^{(a)} sont très excell…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0598/long_translation/b1159eaf",
-  "book_dir": "26_ecclesiastique",
-  "page": 598,
-  "kind": "long_translation",
-  "msg": "Translation of 123 characters for a lemma of 36 “NON EST DICERE : QUID EST HOC, ETC ?”: “Il n'est point dans la nécessité de dire : Qu'est-ce que ceci, ou qu'est-ce que cela ? Car…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0602/long_translation/f286123f",
-  "book_dir": "26_ecclesiastique",
-  "page": 602,
-  "kind": "long_translation",
-  "msg": "Translation of 180 characters for a lemma of 45 “IN TEMPORE CONSUMMATIONIS EFFUNDENT VIRT”: “Ils se répandront dans toute leur violence, au temps que la mesure de la justice de Dieu s…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0605/long_translation/6ed4b8cf",
-  "book_dir": "26_ecclesiastique",
-  "page": 605,
-  "kind": "long_translation",
-  "msg": "Translation of 161 characters for a lemma of 45 “OCCUPATIO MAGNA CREATA EST OMNIBUS HOMIN”: “Une pénible occupation est imposée à tous les hommes, et un joug pesant accable les enfant…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0607/long_translation/0c0951a5",
-  "book_dir": "26_ecclesiastique",
-  "page": 607,
-  "kind": "long_translation",
-  "msg": "Translation of 106 characters for a lemma of 32 “AB EO QUI UTITUR HYACINTHO, ETC.”: “Depuis celui qui est vêtu d'hyacinthe, et qui porte la couronne, jusqu'à celui qui est vêt…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0607/long_translation/8874fed3",
-  "book_dir": "26_ecclesiastique",
-  "page": 607,
-  "kind": "long_translation",
-  "msg": "Translation of 106 characters for a lemma of 32 (with the next page) “MODICUM TANQUAM NIHIL IN REQUIE.”: “Il se repose peu, et presque point ; il est enfuie dans son sommeil, comme une sentinelle …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0608/long_translation/da194707",
-  "book_dir": "26_ecclesiastique",
-  "page": 608,
-  "kind": "long_translation",
-  "msg": "Translation of 165 characters for a lemma of 35 “CONTURBATUS EST IN VISU CORDIS SUI.”: “Les phantômes qu'il voit en son âme, l'inquiètent, comme un homme qui se sauve du combat. …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0609/long_translation/d13a76c0",
-  "book_dir": "26_ecclesiastique",
-  "page": 609,
-  "kind": "long_translation",
-  "msg": "Translation of 121 characters for a lemma of 37 “AD HÆC MORS, SANGUIS, CONTENTIO, ETC.”: “De plus, la mort, le sang, les querelles ont été créés pour accabler les méchants, et le d…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0610/long_translation/589b2137",
-  "book_dir": "26_ecclesiastique",
-  "page": 610,
-  "kind": "long_translation",
-  "msg": "Translation of 106 characters for a lemma of 34 “IN APERIENDO MANUS SUAS LÆTABITUR.”: “L'injuste se réjouira en ouvrant la main pour recevoir : ainsi les pécheurs seront extermi…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0611/long_translation/1ccd7f22",
-  "book_dir": "26_ecclesiastique",
-  "page": 611,
-  "kind": "long_translation",
-  "msg": "Translation of 150 characters for a lemma of 43 “RADICES IMMUNDÆ SUPER CACUMEN PETRÆ SONA”: “La postérité des méchants ne multipliera point ses branches : ils seront comme de mauvaise…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0611/long_translation/10dedcbd",
-  "book_dir": "26_ecclesiastique",
-  "page": 611,
-  "kind": "long_translation",
-  "msg": "Translation of 119 characters for a lemma of 28 “SUPER OMNEM AQUAM VIRIDITAS.”: “L'herbe verte croît promisement sur les eaux, et au bord d'un fleuve ; mais elle sera arra…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0613/long_translation/01a26fda",
+  "id": "26_ecclesiastique/0613/long_translation/04ec1e2f",
   "book_dir": "26_ecclesiastique",
   "page": 613,
   "kind": "long_translation",
-  "msg": "Translation of 110 characters for a lemma of 16 “VINUM ET MUSICA.”: “Le vin, et la musique réjouissent le cœur ; mais l'amour de la sagesse, la Philosophie, pa…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0616/long_translation/8e195fd8",
-  "book_dir": "26_ecclesiastique",
-  "page": 616,
-  "kind": "long_translation",
-  "msg": "Translation of 115 characters for a lemma of 33 “VIR RESPICIENS IN MENSAM ALIENAM.”: “La vie de celui qui s'attend à la table d'autrui, n'est pas une vie, parce qu'il se nourri…”: commentary run into the translation?",
+  "msg": "Translation of 71 characters for a lemma of 16 “VINUM ET MUSICA.”: “Le vin, et la musique réjouissent le cœur ; mais l'amour de la sagesse,…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -18671,617 +15990,6 @@
   "where": {
    "section": "commentary",
    "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0621/long_translation/0d59cc50",
-  "book_dir": "26_ecclesiastique",
-  "page": 621,
-  "kind": "long_translation",
-  "msg": "Translation of 105 characters for a lemma of 31 “DE PATRE IMPIO QUERUNTUR FILII.”: “Les enfants d'un méchant homme se plaindront de leur père, parce qu'il est cause qu'ils so…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0623/long_translation/6f5734f7",
-  "book_dir": "26_ecclesiastique",
-  "page": 623,
-  "kind": "long_translation",
-  "msg": "Translation of 103 characters for a lemma of 26 “CURAM HABE DE BONO NOMINE.”: “Ayez soin d'acquérir une bonne réputation ; car c'est un bien plus stable, que les plus ri…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0623/long_translation/083a0d6d",
-  "book_dir": "26_ecclesiastique",
-  "page": 623,
-  "kind": "long_translation",
-  "msg": "Translation of 96 characters for a lemma of 31 “BONÆ VITÆ, NUMERUS DIERUM, ETC.”: “La bonne vie n'a qu'un certain nombre de jours ; mais la bonne réputation demeure éternell…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0630/long_translation/50e58fa8",
-  "book_dir": "26_ecclesiastique",
-  "page": 630,
-  "kind": "long_translation",
-  "msg": "Translation of 128 characters for a lemma of 31 “NE PRO HIS OMNIBUS CONFUNDARIS.”: “Ne rougissez point de tout ce que je vais vous dire, et n'ayez point d'égard à la qualité …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0632/long_translation/ec8674b1",
-  "book_dir": "26_ecclesiastique",
-  "page": 632,
-  "kind": "long_translation",
-  "msg": "Translation of 134 characters for a lemma of 35 “DE AEQUITATE STATERAE, ET PONDERUM.”: “Ne rougissez point d'user d'un juste poids, et d'une juste balance ; ni d'être équitable d…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0633/long_translation/c2a4f4a5",
-  "book_dir": "26_ecclesiastique",
-  "page": 633,
-  "kind": "long_translation",
-  "msg": "Translation of 126 characters for a lemma of 34 “UBI MANUS MULTÆ SUNT, CLAUDE, ETC.”: “Où il y a beaucoup de mains, tenez tout fermé. Donnez tout compté, et pesé ; et écrivez to…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0634/long_translation/e802f185",
-  "book_dir": "26_ecclesiastique",
-  "page": 634,
-  "kind": "long_translation",
-  "msg": "Translation of 124 characters for a lemma of 29 “DE DISCIPLINA INSENSATI, ETC.”: “Ne rougissez point de corriger l'insensé, et l'imprudent, ni de condamner les vieillards, …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0635/long_translation/e1eadcdb",
-  "book_dir": "26_ecclesiastique",
-  "page": 635,
-  "kind": "long_translation",
-  "msg": "Translation of 180 characters for a lemma of 38 “NEQUANDO POLLUATUR IN VIRGINITATE SUA.”: “Il craint qu'elle ne se corrompe pendant qu'elle est vierge, et qu'elle ne fasse quelque c…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0636/long_translation/e884d18f",
-  "book_dir": "26_ecclesiastique",
-  "page": 636,
-  "kind": "long_translation",
-  "msg": "Translation of 210 characters for a lemma of 40 “SUPER FILIAM LUXURIOSAM FIRMA CUSTODIAM.”: “Gardez étroitement une fille libertine, de peur qu'elle ne vous charge de honte, et de con…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0636/long_translation/98923429",
-  "book_dir": "26_ecclesiastique",
-  "page": 636,
-  "kind": "long_translation",
-  "msg": "Translation of 93 characters for a lemma of 30 “DE VESTIMENTIS PROCEDIT TINEA.”: “De même que le ver s'engendre dans les habits, ainsi l'iniquité de l'homme vient de la fem…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0638/long_translation/f92beb66",
-  "book_dir": "26_ecclesiastique",
-  "page": 638,
-  "kind": "long_translation",
-  "msg": "Translation of 87 characters for a lemma of 25 “SOL ILLUMINANS PER OMNIA.”: “Le soleil voit tout, et éclaire tout ; et la gloire du Seigneur éclate dans ses œuvres.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0640/long_translation/2eedae2f",
-  "book_dir": "26_ecclesiastique",
-  "page": 640,
-  "kind": "long_translation",
-  "msg": "Translation of 163 characters for a lemma of 39 “TAMQUAM SCINTILLA, QUÆ EST CONSIDERARE.”: “Tout ce que nous en pouvons considérer, n'est que comme une étincelle, comparée à un grand…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0640/long_translation/1103fa5d",
-  "book_dir": "26_ecclesiastique",
-  "page": 640,
-  "kind": "long_translation",
-  "msg": "Translation of 108 characters for a lemma of 35 “OMNIA DUPLICIA ; UNUM, CONTRA UNUM.”: “Chaque chose a son contraire. L'une est opposée à l'autre, et rien n'est défectueux dans l…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0644/long_translation/48bbd45a",
-  "book_dir": "26_ecclesiastique",
-  "page": 644,
-  "kind": "long_translation",
-  "msg": "Translation of 126 characters for a lemma of 30 “A LUNA SIGNUM DIEI FESTI, ETC.”: “C'est la lune qui fixe les jours de fêtes ; c'est un corps de lumière qui diminuë, jusqu'à…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0649/long_translation/962826a4",
-  "book_dir": "26_ecclesiastique",
-  "page": 649,
-  "kind": "long_translation",
-  "msg": "Translation of 131 characters for a lemma of 37 “SICUT AVIS DEPONENS AD SEDENDUM, ETC.”: “Il répand la neige comme une multitude d'oiseaux qui vient s'asseoir sur la terre, et comm…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0650/long_translation/ebbddeef",
-  "book_dir": "26_ecclesiastique",
-  "page": 650,
-  "kind": "long_translation",
-  "msg": "Translation of 115 characters for a lemma of 37 (with the next page) “DEVORABIT MONTES, ET EXURET DESERTUM.”: “Elle dévore les montagnes, elle brûle le désert, et desséche tout ce qui était vert, comme…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0654/long_translation/5c203139",
-  "book_dir": "26_ecclesiastique",
-  "page": 654,
-  "kind": "long_translation",
-  "msg": "Translation of 103 characters for a lemma of 33 “MULTA ABSCONDITA SUNT MAJORA HIS.”: “Beaucoup de ses ouvrages nous sont cachés, qui sont beaucoup plus grands que ceux que nous…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0656/long_translation/2097ee3c",
-  "book_dir": "26_ecclesiastique",
-  "page": 656,
-  "kind": "long_translation",
-  "msg": "Translation of 120 characters for a lemma of 35 (with the next page) “IMPERANTES IN PRÆSENTI POPULO, ETC.”: “Ils ont commandé au peuple qui vivait de leur temps, et les peuples ont reçu de leur sages…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 5,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0657/long_translation/707573d4",
-  "book_dir": "26_ecclesiastique",
-  "page": 657,
-  "kind": "long_translation",
-  "msg": "Translation of 103 characters for a lemma of 27 “HOMINES DIVITES IN VIRTUTE.”: “Des hommes riches en vertu, qui ont aimé la véritable beauté, et ont gouverné leur maison …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0661/long_translation/f825714b",
-  "book_dir": "26_ecclesiastique",
-  "page": 661,
-  "kind": "long_translation",
-  "msg": "Translation of 105 characters for a lemma of 27 “NOE INVENTUS EST PERFECTUS.”: “Noé a été trouvé juste, et parfait, et il est devenu au temps de la colère, la réconciliat…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0671/long_translation/aa7f55bb",
-  "book_dir": "26_ecclesiastique",
-  "page": 671,
-  "kind": "long_translation",
-  "msg": "Translation of 122 characters for a lemma of 38 “STOLAM SANCTAM AURO ET HYACINTHO, ETC.”: “Il lui donna un vêtement saint, tissu d'or, d'hyacinthe, et de pourpre par un homme sage, …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0674/long_translation/756ad335",
-  "book_dir": "26_ecclesiastique",
-  "page": 674,
-  "kind": "long_translation",
-  "msg": "Translation of 126 characters for a lemma of 40 “FUNGI SACERDOTIO, ET HABERE LAUDEM, ETC.”: “Pour exercer les fonctions du sacerdoce, pour chanter les louanges du Seigneur, et annonce…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0678/long_translation/f8100b83",
-  "book_dir": "26_ecclesiastique",
-  "page": 678,
-  "kind": "long_translation",
-  "msg": "Translation of 102 characters for a lemma of 27 “STARE IN REVERENTIA GENTIS.”: “Il demeura ferme durant la chute honteuse de son peuple, et il apaisa la colère de Dieu co…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0678/long_translation/ba669102",
-  "book_dir": "26_ecclesiastique",
-  "page": 678,
-  "kind": "long_translation",
-  "msg": "Translation of 185 characters for a lemma of 58 “ET TESTAMENTUM DAVID REGI… HÆREDITAS IPS”: “Et telle que fut l'alliance que le Seigneur jura avec David de donner le Royaume pour touj…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0682/long_translation/93d74e0c",
-  "book_dir": "26_ecclesiastique",
-  "page": 682,
-  "kind": "long_translation",
-  "msg": "Translation of 129 characters for a lemma of 36 “UT COGNOSCANT GENTES POTENTIAM EJUS,”: “Afin que les nations connussent la puissance du Seigneur, et qu'elles apprissent qu'il n'e…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0687/long_translation/a13123b7",
-  "book_dir": "26_ecclesiastique",
-  "page": 687,
-  "kind": "long_translation",
-  "msg": "Translation of 111 characters for a lemma of 32 “ANTE TEMPUS FINIS VITÆ SUÆ, ETC.”: “Avant la fin de sa vie il prit à témoin le Seigneur, et son Christ, qu'il n'avait jamais r…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0695/long_translation/c175676a",
-  "book_dir": "26_ecclesiastique",
-  "page": 695,
-  "kind": "long_translation",
-  "msg": "Translation of 99 characters for a lemma of 31 “UT FACERES IMPERIUM BIPARTITUM.”: “En formant un schisme dans le Royaume, et faisant sortir d'Éphraïm une domination dure, et…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0696/long_translation/52ef6307",
-  "book_dir": "26_ecclesiastique",
-  "page": 696,
-  "kind": "long_translation",
-  "msg": "Translation of 116 characters for a lemma of 38 (with the next page) “DERELIQUIT POST SE… GENTIS STULTITIAM.”: “Il a laissé après lui Roboam, qui a été le plus insensé de sa nation,^{(a)} Un des plus im…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0706/long_translation/f2559a7c",
-  "book_dir": "26_ecclesiastique",
-  "page": 706,
-  "kind": "long_translation",
-  "msg": "Translation of 121 characters for a lemma of 37 “EZECHIAS MUNIVIT CIVITATEM SUAM, ETC.”: “Ézéchias a fortifié sa ville, et y a fait venir de l'eau ; et il a fait creuser le roc ave…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0708/long_translation/7d96beac",
-  "book_dir": "26_ecclesiastique",
-  "page": 708,
-  "kind": "long_translation",
-  "msg": "Translation of 96 characters for a lemma of 27 “SPIRITU MAGNO VIDIT ULTIMA.”: “Il vit la fin des temps par un grand don de l'Esprit, et il consola ceux qui pleuraient en…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0726/long_translation/3388f3dd",
-  "book_dir": "26_ecclesiastique",
-  "page": 726,
-  "kind": "long_translation",
-  "msg": "Translation of 99 characters for a lemma of 30 “EFFUDIT IN FUNDAMENTO ALTARIS.”: “Il a répandu au pied de l'autel le sang, dont l'odeur divine est montée devant le Prince T…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0738/long_translation/da5ffdd6",
-  "book_dir": "26_ecclesiastique",
-  "page": 738,
-  "kind": "long_translation",
-  "msg": "Translation of 97 characters for a lemma of 31 “POSSEDI CUM IPSA COR AB INITIO.”: “J'ai dès le commencement possédé mon cœur avec elle ; c'est pourquoi je ne serai point aba…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0739/long_translation/ec2f09a1",
-  "book_dir": "26_ecclesiastique",
-  "page": 739,
-  "kind": "long_translation",
-  "msg": "Translation of 99 characters for a lemma of 28 “QUID ADHUC RETARDATIS ? ETC.”: “Pourquoi tardez-vous encore ? Et que dites-vous à ceci ? Vos âmes sont pressées d'une extr…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0125/long_translation/74717954",
-  "book_dir": "27_isaie",
-  "page": 125,
-  "kind": "long_translation",
-  "msg": "Translation of 79 characters for a lemma of 10 “L'Hébreu :”: “^{(a)} Vos solennités me fatiguent ; je suis las de pardonner, ou de supporter.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0133/long_translation/64faa885",
-  "book_dir": "27_isaie",
-  "page": 133,
-  "kind": "long_translation",
-  "msg": "Translation of 64 characters for a lemma of 20 “DOMUS JACOB, VENITE.”: “Venez, ô maison de Jacob ; marchons dans la lumière du Seigneur.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0145/long_translation/9f053bc4",
-  "book_dir": "27_isaie",
-  "page": 145,
-  "kind": "long_translation",
-  "msg": "Translation of 277 characters for a lemma of 74 “ADINVENTIONES EORUM CONTRA DOMINUM, UT P”: “Juda est renversé ; parce que ses œuvres se sont élevées contre le Seigneur, pour irriter …”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0153/long_translation/fba13b98",
-  "book_dir": "27_isaie",
-  "page": 153,
-  "kind": "long_translation",
-  "msg": "Translation of 84 characters for a lemma of 14 “DISCRIMINALIA.”: “Leurs rubans de cheveux, ou leurs rubans qui entretenaient leurs cheveux en tresses.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0166/long_translation/ee809466",
-  "book_dir": "27_isaie",
-  "page": 166,
-  "kind": "long_translation",
-  "msg": "Translation of 115 characters for a lemma of 35 “SUPER OMNEM ENIM GLORIAM PROTECTIO.”: “Car il protégera de toute part le lieu de sa gloire. Tout le lieu saint, tout le Temple se…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0176/long_translation/d3bed942",
-  "book_dir": "27_isaie",
-  "page": 176,
-  "kind": "long_translation",
-  "msg": "Translation of 134 characters for a lemma of 31 “DILATAVIT INFERNUS ANIMAM SUAM.”: “L'enfer a étendu ses entrailles, pour recevoir ce grand nombre d'impies, qui y sont descen…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0218/long_translation/3cea3836",
-  "book_dir": "27_isaie",
-  "page": 218,
-  "kind": "long_translation",
-  "msg": "Translation of 208 characters for a lemma of 50 “LIGA TESTIMONIUM ; SIGNA LEGEM IN DISCIP”: “Que ce que je vous déclare, demeure secret ; tenez ma Loi scellée, et comme cachetée parmi…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0228/long_translation/ae9e7de4",
-  "book_dir": "27_isaie",
-  "page": 228,
-  "kind": "long_translation",
-  "msg": "Translation of 383 characters for a lemma of 42 “FACTUS EST PRINCIPATUS SUPER HUMERUM EJU”: “Il porte sur son épaule la marque de sa Principauté ; ou plus simplement : il a pris sur l…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0234/long_translation/f5ce8a98",
-  "book_dir": "27_isaie",
-  "page": 234,
-  "kind": "long_translation",
-  "msg": "Translation of 255 characters for a lemma of 83 “DISPERDET DOMINUS AB ISRAËL CAPUT, ET CA”: “Le Seigneur retranchera dans un même jour la tête et la queue ; celui qui plie, et celui q…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0245/long_translation/5f690ca8",
-  "book_dir": "27_isaie",
-  "page": 245,
-  "kind": "long_translation",
-  "msg": "Translation of 209 characters for a lemma of 56 “NUMQUID GLORIABITUR SECURIS CONTRA EUM Q”: “La coignée se glorifiera-t-elle contre celui qui s'en sert ? Les Septante : ^{(a)} La coig…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0245/long_translation/9d5d9d0c",
-  "book_dir": "27_isaie",
-  "page": 245,
-  "kind": "long_translation",
-  "msg": "Translation of 235 characters for a lemma of 36 “MITTET IN PINGUIBUS EJUS TENUITATEM.”: “Il sera sécher de maigreur les forts, ou les gras d'Assyrie. Il les dépouillera de leurs r…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0246/long_translation/7d58d0ad",
-  "book_dir": "27_isaie",
-  "page": 246,
-  "kind": "long_translation",
-  "msg": "Translation of 61 characters for a lemma of 17 “PUER SCRIBET EOS.”: “Un enfant en ferait le dénombrement ; tant il en restera peu.…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0254/long_translation/56821323",
-  "book_dir": "27_isaie",
-  "page": 254,
-  "kind": "long_translation",
-  "msg": "Translation of 247 characters for a lemma of 44 “AGITABIT MANUM SUAM SUPER MONTEM FILIÆ S”: “Il menacera de la main la montagne de la fille de Sion. Il lèvera la main d'un air menaçan…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0257/long_translation/d331700f",
-  "book_dir": "27_isaie",
-  "page": 257,
-  "kind": "long_translation",
-  "msg": "Translation of 303 characters for a lemma of 37 “REQUIESCET SUPER EUM SPIRITUS DOMINI.”: “L'Esprit du Seigneur se reposera sur lui ; il y demeurera d'une manière stable, et permane…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
    "field": "french_translation"
   }
  },
@@ -19434,19 +16142,6 @@
   "page": 379,
   "kind": "long_translation",
   "msg": "Translation of 147 characters for a lemma of 36 “FIGAM ILLUM PAXILLUM IN LOCO FIDELI.”: “Je le mettrai comme un clou qu'on attache en un lieu ferme, qu'on fait entrer dans une mur…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0384/long_translation/f38129de",
-  "book_dir": "27_isaie",
-  "page": 384,
-  "kind": "long_translation",
-  "msg": "Translation of 142 characters for a lemma of 14 “Les Septante :”: “^{(a)} Rougissez de honte, ô Sidon, a dit la mer : mais la force de la mer a dit : Je n'ai…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -19824,19 +16519,6 @@
   "page": 694,
   "kind": "long_translation",
   "msg": "Translation of 103 characters for a lemma of 32 “PORTAS TUAS IN LAPIDES SCULPTOS.”: “Vos portes de pierres cizelées, ou de pierres travaillées, et chargées d'ornements de scul…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0701/long_translation/bbd3cec2",
-  "book_dir": "27_isaie",
-  "page": 701,
-  "kind": "long_translation",
-  "msg": "Translation of 96 characters for a lemma of 23 (with the next page) “IN LÆTITIA EGREDIEMINI.”: “Vous sortirez avec joie, et comme en triomphe, de Babylone, et vous arriverez heureusement…”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -40489,19 +37171,6 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0384/no_translation/50e73ca8",
-  "book_dir": "26_ecclesiastique",
-  "page": 384,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 7): latin_quote “QUI DOCET FATUUM, QUASI QUI CONGLUTINAT TESTAM.” has no french_translation; the comment starts “Celui qui instruit l'imprudent, est comme celui qui veut rej…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "26_ecclesiastique/0384/no_translation/cbbf0f33",
   "book_dir": "26_ecclesiastique",
   "page": 384,
@@ -40697,32 +37366,6 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0441/no_translation/69668224",
-  "book_dir": "26_ecclesiastique",
-  "page": 441,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 6): latin_quote “DELATURAM CIVITATIS.” has no french_translation; the comment starts “La haine injuste de toute une ville. Le Grec porte : ^{(a)} …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "26_ecclesiastique/0441/no_translation/3f6db92f",
-  "book_dir": "26_ecclesiastique",
-  "page": 441,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 8): latin_quote “DOLOR CORDIS, MULIER ZELOTYPA. 8. IN MULIERE ZELOT” has no french_translation; the comment starts “La femme jalouse est l'affliction du cœur. 8. _La langue de …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
   "id": "26_ecclesiastique/0483/no_translation/6884f7d0",
   "book_dir": "26_ecclesiastique",
   "page": 483,
@@ -40788,19 +37431,6 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0601/no_translation/909c215c",
-  "book_dir": "26_ecclesiastique",
-  "page": 601,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 33): latin_quote “SUNT SPIRITUS, QUI AD VINDICTAM CREATI” has no french_translation; the next page starts “Il y a des esprits qui ont été créés pour la vengeance, et q…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
   "id": "26_ecclesiastique/0603/no_translation/ac118977",
   "book_dir": "26_ecclesiastique",
   "page": 603,
@@ -40853,15 +37483,15 @@
   }
  },
  {
-  "id": "26_ecclesiastique/0654/no_translation/c4935fad",
+  "id": "26_ecclesiastique/0654/no_translation/a4557787",
   "book_dir": "26_ecclesiastique",
   "page": 654,
   "kind": "no_translation",
-  "msg": "Note 1 (℣ 34): latin_quote “EXALTANTES EUM REPLEMINI VIRTUTE.” has no french_translation; the comment starts “de tous ses ouvrages. Nous ne le voyons que dans ses ouvrage…”: the translation run into the commentary?",
+  "msg": "Note 2 (℣ 34): latin_quote “EXALTANTES EUM REPLEMINI VIRTUTE.” has no french_translation; the comment starts “Employez toutes vos forces à le louer. Ne vous lassez point …”: the translation run into the commentary?",
   "optional": false,
   "where": {
    "section": "commentary",
-   "index": 0,
+   "index": 1,
    "field": "french_translation"
   }
  },
@@ -40944,19 +37574,6 @@
   }
  },
  {
-  "id": "27_isaie/0200/no_translation/ecd92d47",
-  "book_dir": "27_isaie",
-  "page": 200,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 6): latin_quote “SI NON CREDIDERITIS, NON PERMANEBITIS.” has no french_translation; the comment starts “Si…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
   "id": "27_isaie/0248/no_translation/3ca662ef",
   "book_dir": "27_isaie",
   "page": 248,
@@ -40996,19 +37613,6 @@
   }
  },
  {
-  "id": "27_isaie/0282/no_translation/80c2b775",
-  "book_dir": "27_isaie",
-  "page": 282,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 21): latin_quote “1°. Les” has no french_translation; the comment starts “filles de la Jaanah_ sont des oiseaux, et apparemment des oi…”: a name Calmet leaves untranslated?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "27_isaie/0301/no_translation/50f74128",
   "book_dir": "27_isaie",
   "page": 301,
@@ -41031,19 +37635,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0384/no_translation/c0d6cf72",
-  "book_dir": "27_isaie",
-  "page": 384,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 4): latin_quote “Joseph” has no french_translation; the comment starts “nous apprend une particularité tirée des Annales des Tyriens…”: French in the lemma?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -41083,19 +37674,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0463/no_translation/8f31580c",
-  "book_dir": "27_isaie",
-  "page": 463,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 10): latin_quote “QUI DICUNT VIDENTIBUS : NOLITE VIDERE ;” has no french_translation; the next page starts “Qui disent aux voyans : Ne voyez point. Ne vous mêlez point …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
    "field": "french_translation"
   }
  },
@@ -41183,19 +37761,6 @@
   "page": 607,
   "kind": "no_translation",
   "msg": "Note 3 (℣ 16): latin_quote “CONFUSI SUNT… FABRICATORES ERRORUM.” has no french_translation; the comment starts “Les fabricateurs de l'erreur ont été tous confondus. L'Hébre…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0616/no_translation/48d23662",
-  "book_dir": "27_isaie",
-  "page": 616,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 8): latin_quote “MEMENTOTE ISTUD, ET CONFUNDAMINI,” has no french_translation; the next page starts “vous de ces choses, et rougissez-en. L'Hébreu : ^{(a)} _Souv…”: the translation run into the commentary?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -41308,11 +37873,11 @@
   }
  },
  {
-  "id": "27_isaie/0772/no_translation/3e98a211",
+  "id": "27_isaie/0772/no_translation/da9a5b47",
   "book_dir": "27_isaie",
   "page": 772,
   "kind": "no_translation",
-  "msg": "Note 3 (℣ 4): latin_quote “ET TERRA TUA INHABITABITUR.” has no french_translation; the comment starts “L'Hébreu : ^{(e)} _Et votre terre sera à un maître, ou à un …”: a translation lost?",
+  "msg": "Note 3 (℣ 4): latin_quote “ET TERRA TUA INHABITABITUR.” has no french_translation; the comment starts “L'Hébreu : ^{(e)} _Et votre terre sera à un maître_, ou à un…”: a translation lost?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -41330,19 +37895,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0800/no_translation/a5c74033",
-  "book_dir": "27_isaie",
-  "page": 800,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 6): latin_quote “ECCE SCRIPTUM EST CORAM ME ; NON TACEBO,” has no french_translation; the next page starts “Leur péché est écrit devant mes yeux ; je ne me tairai plus.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
    "field": "french_translation"
   }
  },
@@ -44862,19 +41414,6 @@
   "page": 216,
   "kind": "hebrew_in_translation",
   "msg": "“L'Hébreu” in the translation of “Inite consilium, et dissipabitur ; loqui”: “Tout cela, parce que le Seigneur est avec nous, et que nous avons Emmanuel : Quia nobiscum Deus ; ou…”: commentary run into the translation?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "27_isaie/0245/hebrew_in_translation/8d92e2ee",
-  "book_dir": "27_isaie",
-  "page": 245,
-  "kind": "hebrew_in_translation",
-  "msg": "“L'Hébreu” in the translation of “MITTET IN PINGUIBUS EJUS TENUITATEM.”: “Il sera sécher de maigreur les forts, ou les gras d'Assyrie. Il les dépouillera de leurs richesses, …”: commentary run into the translation?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -49289,6 +45828,58 @@
   }
  },
  {
+  "id": "27_isaie/0239/lemma_verse/de5d7a2c",
+  "book_dir": "27_isaie",
+  "page": 239,
+  "kind": "lemma_verse",
+  "msg": "Note 2 had no latin_quote; now “QUID FACIETIS IN DIE VISITATIONIS, ET CALAMITATIS DE LONGE V” at chapter 10, ℣ 3: check the verse number: its words fit ℣ 3",
+  "optional": true,
+  "where": {
+   "section": "commentary",
+   "index": 1,
+   "field": "verse_ref"
+  }
+ },
+ {
+  "id": "27_isaie/0456/lemma_verse/41eb6666",
+  "book_dir": "27_isaie",
+  "page": 456,
+  "kind": "lemma_verse",
+  "msg": "Note 2 had no latin_quote; now “QUI PECCARE FACIEBANT HOMINES IN VERBO,” at chapter 29, ℣ 20: check the verse number: its words fit ℣ 21 better (100% against 20%)",
+  "optional": false,
+  "where": {
+   "section": "commentary",
+   "index": 1,
+   "field": "verse_ref"
+  }
+ },
+ {
+  "id": "27_isaie/0614/lemma_verse/45b18144",
+  "book_dir": "27_isaie",
+  "page": 614,
+  "kind": "lemma_verse",
+  "msg": "Note 2 had no latin_quote; now “FACTA SUNT SIMULACHRA EORUM BESTIIS, ET JUMENTIS.” at chapter 46, ℣ 1: check the verse number: its words fit ℣ 1",
+  "optional": true,
+  "where": {
+   "section": "commentary",
+   "index": 1,
+   "field": "verse_ref"
+  }
+ },
+ {
+  "id": "27_isaie/0614/lemma_verse/e8fccfaf",
+  "book_dir": "27_isaie",
+  "page": 614,
+  "kind": "lemma_verse",
+  "msg": "Note 3 had no latin_quote; now “ONERA VESTRA GRAVI PONDERE, USQUE AD LASSITUDINEM.” at chapter 46, ℣ 1: check the verse number: its words fit ℣ 1",
+  "optional": true,
+  "where": {
+   "section": "commentary",
+   "index": 2,
+   "field": "verse_ref"
+  }
+ },
+ {
   "id": "01_genese/0179/verse_mismatch/67e1a830",
   "book_dir": "01_genese",
   "page": 179,
@@ -49571,6 +46162,45 @@
   "where": {
    "section": "commentary",
    "index": 2,
+   "field": "verse_ref"
+  }
+ },
+ {
+  "id": "21b_psaumes/0424/verse_mismatch/d3db6e30",
+  "book_dir": "21b_psaumes",
+  "page": 424,
+  "kind": "verse_mismatch",
+  "msg": "Note 2 “MISIT IN EOS CŒNOMYIAM, ET COMEDIT EOS.” is under chapter 77, ℣ 30, but its words are in ℣ 50 (100% against 0%): wrong verse_ref, or the verse misnumbered?",
+  "optional": false,
+  "where": {
+   "section": "commentary",
+   "index": 1,
+   "field": "verse_ref"
+  }
+ },
+ {
+  "id": "21b_psaumes/0424/verse_mismatch/3c55c52d",
+  "book_dir": "21b_psaumes",
+  "page": 424,
+  "kind": "verse_mismatch",
+  "msg": "Note 3 “ET DEDIT ÆRUGINI FRUCTUS EORUM, ET LABORES EORUM LOCUSTÆ.” is under chapter 77, ℣ 31, but its words are in ℣ 51 (100% against 0%): wrong verse_ref, or the verse misnumbered?",
+  "optional": false,
+  "where": {
+   "section": "commentary",
+   "index": 2,
+   "field": "verse_ref"
+  }
+ },
+ {
+  "id": "21b_psaumes/0424/verse_mismatch/67f72cf9",
+  "book_dir": "21b_psaumes",
+  "page": 424,
+  "kind": "verse_mismatch",
+  "msg": "Note 4 “OCCIDIT IN GRANDINE VINEAS, ET MOROS EORUM IN PRUINA.” is under chapter 77, ℣ 32, but its words are in ℣ 52 (100% against 17%): wrong verse_ref, or the verse misnumbered?",
+  "optional": false,
+  "where": {
+   "section": "commentary",
+   "index": 3,
    "field": "verse_ref"
   }
  },
@@ -50030,58 +46660,6 @@
   }
  },
  {
-  "id": "27_isaie/0199/verse_mismatch/de8a1745",
-  "book_dir": "27_isaie",
-  "page": 199,
-  "kind": "verse_mismatch",
-  "msg": "Note 5 “Adhuc sexaginta et quinque anni, et definet Ephraïm esse pop” is under chapter 7, ℣ 9, but its words are in ℣ 8 (88% against 12%): wrong verse_ref, or the verse misnumbered?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "27_isaie/0200/verse_mismatch/4c65d089",
-  "book_dir": "27_isaie",
-  "page": 200,
-  "kind": "verse_mismatch",
-  "msg": "Note 2 “ADHUC SEXAGINTA ET QUINQUE ANNI, ET DESINET EPHRAIM ESSE POP” is under chapter 7, ℣ 9, but its words are in ℣ 8 (100% against 12%): wrong verse_ref, or the verse misnumbered?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "27_isaie/0200/verse_mismatch/b86a6453",
-  "book_dir": "27_isaie",
-  "page": 200,
-  "kind": "verse_mismatch",
-  "msg": "Note 3 “SI NON CREDIDERITIS, NON PERMANEBITIS.” is under chapter 7, ℣ 6, but its words are in ℣ 9 (100% against 0%): wrong verse_ref, or the verse misnumbered?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "27_isaie/0239/verse_mismatch/27b3d450",
-  "book_dir": "27_isaie",
-  "page": 239,
-  "kind": "verse_mismatch",
-  "msg": "Note 3 “AD CUJUS CONFUGIETIS AUXILIUM, ET UBI DERELINQUETIS GLORIAM ” is under chapter 10, ℣ 1, but its words are in ℣ 3 (100% against 0%): wrong verse_ref, or the verse misnumbered?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "verse_ref"
-  }
- },
- {
   "id": "27_isaie/0246/verse_mismatch/2cb9ea01",
   "book_dir": "27_isaie",
   "page": 246,
@@ -50173,24 +46751,24 @@
   }
  },
  {
+  "id": "27_isaie/0492/verse_mismatch/037c39c9",
+  "book_dir": "27_isaie",
+  "page": 492,
+  "kind": "verse_mismatch",
+  "msg": "Note 1 “Magnificatus est Dominus, quoniam habitavit in excelso : imp” is under chapter 33, ℣ 4, but its words are in ℣ 5 (100% against 0%): wrong verse_ref, or the verse misnumbered?",
+  "optional": false,
+  "where": {
+   "section": "commentary",
+   "index": 0,
+   "field": "verse_ref"
+  }
+ },
+ {
   "id": "27_isaie/0584/verse_mismatch/183061ce",
   "book_dir": "27_isaie",
   "page": 584,
   "kind": "verse_mismatch",
   "msg": "Note 3 “Ego sum ipse qui deleo iniquitates tuas propter me.” is under chapter 43, ℣ 24, but its words are in ℣ 25 (100% against 0%): wrong verse_ref, or the verse misnumbered?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "verse_ref"
-  }
- },
- {
-  "id": "27_isaie/0618/verse_mismatch/8d1e9037",
-  "book_dir": "27_isaie",
-  "page": 618,
-  "kind": "verse_mismatch",
-  "msg": "Note 3 “DESCENDE, SEDE IN PULVERE, VIRGO FILIA BABYLON.” is under chapter 47, ℣ 13, but its words are in ℣ 1 (100% against 0%): wrong verse_ref, or the verse misnumbered?",
   "optional": false,
   "where": {
    "section": "commentary",
@@ -53032,19 +49610,6 @@
   }
  },
  {
-  "id": "27_isaie/0125/lowercase_lemma/dfbd6125",
-  "book_dir": "27_isaie",
-  "page": 125,
-  "kind": "lowercase_lemma",
-  "msg": "Lower case in latin_quote “L'Hébreu :”: French or commentary in the lemma field?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "latin_quote"
-  }
- },
- {
   "id": "27_isaie/0154/lowercase_lemma/05799f57",
   "book_dir": "27_isaie",
   "page": 154,
@@ -53054,19 +49619,6 @@
   "where": {
    "section": "commentary",
    "index": 0,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0199/lowercase_lemma/929042f5",
-  "book_dir": "27_isaie",
-  "page": 199,
-  "kind": "lowercase_lemma",
-  "msg": "Lower case in latin_quote “Adhuc sexaginta et quinque anni, et definet Ephraïm esse populus.”: French or commentary in the lemma field?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
    "field": "latin_quote"
   }
  },
@@ -53123,19 +49675,6 @@
   }
  },
  {
-  "id": "27_isaie/0282/lowercase_lemma/7b21738d",
-  "book_dir": "27_isaie",
-  "page": 282,
-  "kind": "lowercase_lemma",
-  "msg": "Lower case in latin_quote “1°. Les”: French or commentary in the lemma field?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
   "id": "27_isaie/0327/lowercase_lemma/efb67289",
   "book_dir": "27_isaie",
   "page": 327,
@@ -53158,32 +49697,6 @@
   "where": {
    "section": "commentary",
    "index": 0,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0384/lowercase_lemma/86dd15a4",
-  "book_dir": "27_isaie",
-  "page": 384,
-  "kind": "lowercase_lemma",
-  "msg": "Lower case in latin_quote “Les Septante :”: French or commentary in the lemma field?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0384/lowercase_lemma/48689284",
-  "book_dir": "27_isaie",
-  "page": 384,
-  "kind": "lowercase_lemma",
-  "msg": "Lower case in latin_quote “Joseph”: French or commentary in the lemma field?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "latin_quote"
   }
  },
@@ -60450,7 +56963,7 @@
   "optional": true,
   "where": {
    "section": "commentary",
-   "index": 0,
+   "index": 1,
    "field": "latin_quote"
   }
  },
@@ -77116,7 +73629,7 @@
   "optional": true,
   "where": {
    "section": "commentary",
-   "index": 0,
+   "index": 1,
    "field": "latin_quote"
   }
  },
@@ -77316,19 +73829,6 @@
   }
  },
  {
-  "id": "27_isaie/0125/lemma_unknown_word/5338841e",
-  "book_dir": "27_isaie",
-  "page": 125,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: Hébreu in “L'Hébreu :”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "latin_quote"
-  }
- },
- {
   "id": "27_isaie/0125/lemma_unknown_word/f7299c8f",
   "book_dir": "27_isaie",
   "page": 125,
@@ -77459,19 +73959,6 @@
   }
  },
  {
-  "id": "27_isaie/0199/lemma_unknown_word/38640497",
-  "book_dir": "27_isaie",
-  "page": 199,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: definet in “Adhuc sexaginta et quinque anni, et definet Ephraïm esse pop”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "latin_quote"
-  }
- },
- {
   "id": "27_isaie/0210/lemma_unknown_word/d9cdb79c",
   "book_dir": "27_isaie",
   "page": 210,
@@ -77511,6 +73998,19 @@
   }
  },
  {
+  "id": "27_isaie/0228/lemma_unknown_word/31ab3725",
+  "book_dir": "27_isaie",
+  "page": 228,
+  "kind": "lemma_unknown_word",
+  "msg": "Not in the Vulgate: CONSI in “VOCABITUR NOMEN EJUS ADMIRABILIS, CONSI-”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
+  "optional": true,
+  "where": {
+   "section": "commentary",
+   "index": 2,
+   "field": "latin_quote"
+  }
+ },
+ {
   "id": "27_isaie/0229/lemma_unknown_word/aa485132",
   "book_dir": "27_isaie",
   "page": 229,
@@ -77545,7 +74045,7 @@
   "optional": true,
   "where": {
    "section": "commentary",
-   "index": 2,
+   "index": 3,
    "field": "latin_quote"
   }
  },
@@ -77633,19 +74133,6 @@
   "page": 280,
   "kind": "lemma_unknown_word",
   "msg": "Not in the Vulgate: REQVIESCENT in “SED, REQVIESCENT IBI BESTIÆ ; ET REPLEBUNTUR DOMUS EORUM DRA”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0282/lemma_unknown_word/f6282bb0",
-  "book_dir": "27_isaie",
-  "page": 282,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: Les in “1°. Les”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
   "optional": true,
   "where": {
    "section": "commentary",
@@ -77910,19 +74397,6 @@
   "where": {
    "section": "commentary",
    "index": 0,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "27_isaie/0384/lemma_unknown_word/c851095c",
-  "book_dir": "27_isaie",
-  "page": 384,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: Les, Septante in “Les Septante :”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 1,
    "field": "latin_quote"
   }
  },
@@ -78534,6 +75008,19 @@
   "where": {
    "section": "commentary",
    "index": 2,
+   "field": "latin_quote"
+  }
+ },
+ {
+  "id": "27_isaie/0614/lemma_unknown_word/102d20ae",
+  "book_dir": "27_isaie",
+  "page": 614,
+  "kind": "lemma_unknown_word",
+  "msg": "Not in the Vulgate: SIMULACHRA in “FACTA SUNT SIMULACHRA EORUM BESTIIS, ET JUMENTIS.”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
+  "optional": true,
+  "where": {
+   "section": "commentary",
+   "index": 1,
    "field": "latin_quote"
   }
  },
@@ -85912,14 +82399,6 @@
   "optional": false
  },
  {
-  "id": "27_isaie/0384/extra_footnotes/d0c1047a",
-  "book_dir": "27_isaie",
-  "page": 384,
-  "kind": "extra_footnotes",
-  "msg": "5 footnotes for 4 calls in the text: nothing calls (d) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
   "id": "27_isaie/0439/extra_footnotes/53c53ef0",
   "book_dir": "27_isaie",
   "page": 439,
@@ -85973,14 +82452,6 @@
   "page": 593,
   "kind": "extra_footnotes",
   "msg": "5 footnotes for 4 calls in the text: nothing calls (e) (footnote from another page, a call lost, or a duplicate?)",
-  "optional": false
- },
- {
-  "id": "27_isaie/0614/extra_footnotes/770924c4",
-  "book_dir": "27_isaie",
-  "page": 614,
-  "kind": "extra_footnotes",
-  "msg": "9 footnotes for 8 calls in the text: nothing calls (b) (footnote from another page, a call lost, or a duplicate?)",
   "optional": false
  },
  {
@@ -89711,19 +86182,6 @@
   }
  },
  {
-  "id": "27_isaie/0201/broken_marker/3dff95a1",
-  "book_dir": "27_isaie",
-  "page": 201,
-  "kind": "broken_marker",
-  "msg": "Footnote call “^{(℣. 10.)}” in french_commentary: “… bien vous donner des signes. ^{(℣. 10.)} Et le Sei…”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_commentary"
-  }
- },
- {
   "id": "27_isaie/0202/broken_marker/6aff6bf0",
   "book_dir": "27_isaie",
   "page": 202,
@@ -91096,14 +87554,6 @@
   "page": 306,
   "kind": "possible_gap",
   "msg": "Possible lost text at the page turn: “…cause un messager sage, et fidèle, à celui de” ‖ “L'homme qui n'exécute pas ses promesses, est …”",
-  "optional": false
- },
- {
-  "id": "27_isaie/0125/possible_gap/b361b462",
-  "book_dir": "27_isaie",
-  "page": 125,
-  "kind": "possible_gap",
-  "msg": "Possible lost text at the page turn: “…orreur. J'ai trop pardonné._ On peut traduire” ‖ “Il ne demande point une lotion, ni une purifi…”",
   "optional": false
  },
  {
@@ -103419,38 +99869,6 @@
   "optional": true
  },
  {
-  "id": "27_isaie/0128/seam_artifact/61679982",
-  "book_dir": "27_isaie",
-  "page": 128,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ur. Je perdrai tous les incrédules, etc.” ‖ “j'exterminerai tous les méchants du mili…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0156/seam_artifact/63e9f6b9",
-  "book_dir": "27_isaie",
-  "page": 156,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…mes de qualité portent encore à présent.” ‖ “dans le Levant. ^{(a)} C'est d'ordinaire…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0161/seam_artifact/14511afa",
-  "book_dir": "27_isaie",
-  "page": 161,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ous avons déjà dit un mot de ces rubans.” ‖ “qui pendaient des deux côtés des épaules…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0162/seam_artifact/e5eb33d5",
-  "book_dir": "27_isaie",
-  "page": 162,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…u'on représente les Provinces affligées.” ‖ “jetties. Les médailles frappées après la…”",
-  "optional": true
- },
- {
   "id": "27_isaie/0171/seam_artifact/6d72af7f",
   "book_dir": "27_isaie",
   "page": 171,
@@ -103459,19 +99877,11 @@
   "optional": true
  },
  {
-  "id": "27_isaie/0172/seam_artifact/d3c7f74e",
+  "id": "27_isaie/0176/seam_artifact/ebb4a3f7",
   "book_dir": "27_isaie",
-  "page": 172,
+  "page": 176,
   "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…e, elle ne sera ni habitée, ni cultivée.” ‖ “pendant tout le temps de la captivité de…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0177/seam_artifact/73a02d23",
-  "book_dir": "27_isaie",
-  "page": 177,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ont. Les lieux auparavant cultivez, etc.” ‖ “habitez feront en friche, et fourniront …”",
+  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ce qu'ils n'ont point connu le Seigneur.” ‖ “pour recevoir ce grand nombre d'impies, …”",
   "optional": true
  },
  {
@@ -103483,35 +99893,11 @@
   "optional": true
  },
  {
-  "id": "27_isaie/0210/seam_artifact/f0657a18",
-  "book_dir": "27_isaie",
-  "page": 210,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ays fut tranquille, mais presque désert.” ‖ “pauvre, et peu habité, à cause de l'épui…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0250/seam_artifact/2275201f",
-  "book_dir": "27_isaie",
-  "page": 250,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “… sera que pour porter la confusion, etc.” ‖ “la douleur. Mais j'aime mieux entendre l…”",
-  "optional": true
- },
- {
   "id": "27_isaie/0251/seam_artifact/6efa3927",
   "book_dir": "27_isaie",
   "page": 251,
   "kind": "seam_artifact",
   "msg": "Page-turn glitch (stray full stop / repeated syllable): “…achérib fut défaite dans ce même voyage.” ‖ “pour le frapper, comme il frappa autrefo…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0273/seam_artifact/64085543",
-  "book_dir": "27_isaie",
-  "page": 273,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…; ils se réjouissent, et se glorifient_.” ‖ “peut traduire l'Hébreu : ^{(a)} _J'ai ap…”",
   "optional": true
  },
  {
@@ -103536,14 +99922,6 @@
   "page": 305,
   "kind": "seam_artifact",
   "msg": "Page-turn glitch (stray full stop / repeated syllable): “… et armés dans Moab, jetteront des cris.” ‖ “l'âme de chacun d'eux criera dans lui-mê…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0315/seam_artifact/e5759aea",
-  "book_dir": "27_isaie",
-  "page": 315,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…n. ^{(h)} Elles étaient toutes deux ces.” ‖ “lêbres par leurs belles vignes. Les Prin…”",
   "optional": true
  },
  {
@@ -103579,70 +99957,6 @@
   "optional": true
  },
  {
-  "id": "27_isaie/0397/seam_artifact/f8c56cd9",
-  "book_dir": "27_isaie",
-  "page": 397,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ébreu _or_, ^{(h)} se prend quelquefois.” ‖ “en ce sens. Les Septante : ^{(a)} _C'est…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0400/seam_artifact/60aee63d",
-  "book_dir": "27_isaie",
-  "page": 400,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…^{(f)} entend ceci des Anges que Dieu a.” ‖ “établis sur les Royaumes de la terre, le…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0427/seam_artifact/200e0780",
-  "book_dir": "27_isaie",
-  "page": 427,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…e sa captivité, dont il a parlé au long.” ‖ “dans le Chapitre xxvi. de celui des dix …”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0430/seam_artifact/a0e2d6bb",
-  "book_dir": "27_isaie",
-  "page": 430,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ueil, et fondaient de vaines espérances.” ‖ “fur la force de leur ville de Samarie. Q…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0512/seam_artifact/082dc4e1",
-  "book_dir": "27_isaie",
-  "page": 512,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…Rabbins, ^{(f)} était la première femme.” ‖ “d'Adam, laquelle s'étant d'abord prise d…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0513/seam_artifact/81ad4e6d",
-  "book_dir": "27_isaie",
-  "page": 513,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…serpent, nommé _le dard_, et _acontias_.” ‖ “par les Grecs, et Kipphasa par les Arabe…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0521/seam_artifact/7d569d45",
-  "book_dir": "27_isaie",
-  "page": 521,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…d'arracher l'or qui couvrait les portes.” ‖ “tes du Temple. ^{(a)} Toutes circonstanc…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0522/seam_artifact/30589977",
-  "book_dir": "27_isaie",
-  "page": 522,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “… vous confiez-vous, pour vous révolter_.” ‖ “contre moi ? Les Septante : (_a_) _Met-o…”",
-  "optional": true
- },
- {
   "id": "27_isaie/0525/seam_artifact/85ac91f1",
   "book_dir": "27_isaie",
   "page": 525,
@@ -103651,27 +99965,11 @@
   "optional": true
  },
  {
-  "id": "27_isaie/0536/seam_artifact/450538b3",
-  "book_dir": "27_isaie",
-  "page": 536,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “… ils signifient deux oiseaux différents.” ‖ “rens. Mais on dispute quels oiseaux c'ét…”",
-  "optional": true
- },
- {
   "id": "27_isaie/0541/seam_artifact/1c2e419a",
   "book_dir": "27_isaie",
   "page": 541,
   "kind": "seam_artifact",
   "msg": "Page-turn glitch (stray full stop / repeated syllable): “…r que comme d'assez mauvaises remarques.” ‖ “remarques, tirées peut-être des Juifs, o…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0547/seam_artifact/e0375a30",
-  "book_dir": "27_isaie",
-  "page": 547,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…onde : Toute chair n'est que de l'herbe.” ‖ “de l'herbe, et toute sa gloire n'est que…”",
   "optional": true
  },
  {
@@ -103699,99 +99997,11 @@
   "optional": true
  },
  {
-  "id": "27_isaie/0566/seam_artifact/1b423192",
-  "book_dir": "27_isaie",
-  "page": 566,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ncement sous le nom de juste,^{(d)} etc.” ‖ “qu'il marque encore au verset suivant so…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0568/seam_artifact/ece5d394",
-  "book_dir": "27_isaie",
-  "page": 568,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ours ne le regarde directement, et à la.” ‖ “lettre. ^{(a)} Il faut pourtant convenir…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0569/seam_artifact/4e12aa01",
-  "book_dir": "27_isaie",
-  "page": 569,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…; il prononcera le jugement aux nations.” ‖ “les autres Interprètes lisaient, en sa L…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0580/seam_artifact/c8881242",
-  "book_dir": "27_isaie",
-  "page": 580,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ires, qui ont des yeux, et des oreilles.” ‖ “dont ils ne sont point d'usage ; et qu'i…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0590/seam_artifact/1a72082d",
-  "book_dir": "27_isaie",
-  "page": 590,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…nt l'ouvrage de la main des hommes, etc.” ‖ “sujettes à périr comme ceux qui les ont …”",
-  "optional": true
- },
- {
   "id": "27_isaie/0606/seam_artifact/011d89d4",
   "book_dir": "27_isaie",
   "page": 606,
   "kind": "seam_artifact",
   "msg": "Page-turn glitch (stray full stop / repeated syllable): “… pour votre rachat l'Égypte, l'Éthiopie.” ‖ “pie, et le pays de Saba. Ces peuples vie…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0613/seam_artifact/273be641",
-  "book_dir": "27_isaie",
-  "page": 613,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…s peuples de qui ils avaient été adorés.” ‖ “adorez. Le métal de leurs statues, et le…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0617/seam_artifact/256ad006",
-  "book_dir": "27_isaie",
-  "page": 617,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…e pesait ordinairement dans le commerce.” ‖ “vous de ces choses, et rougissez-en. L'H…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0628/seam_artifact/de1bca5e",
-  "book_dir": "27_isaie",
-  "page": 628,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…r. Rendez donc justice à ma vérité, etc.” ‖ “avouez que la prophétie n'est venue que …”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0643/seam_artifact/cc4e876f",
-  "book_dir": "27_isaie",
-  "page": 643,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ont Sinaï, situé dans l'Arabie, au midi.” ‖ “de la Judée. ^{(a)} Les Septante ^{(b)} …”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0659/seam_artifact/f3fb51a9",
-  "book_dir": "27_isaie",
-  "page": 659,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…ront en fumée, comme le sel se dissout_.” ‖ “dans l'eau. ^{(a)} Les Septante : ^{(b)}…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0661/seam_artifact/0c356ce1",
-  "book_dir": "27_isaie",
-  "page": 661,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…'oppression, commencent à respirer, etc.” ‖ “et ceux qui dominaient avec empire, ceux…”",
   "optional": true
  },
  {
@@ -103808,14 +100018,6 @@
   "page": 699,
   "kind": "seam_artifact",
   "msg": "Page-turn glitch (stray full stop / repeated syllable): “… encore monnoyé, comme il le fut depuis.” ‖ “bien : Je ferai avec vous une alliance é…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0702/seam_artifact/4b96cb49",
-  "book_dir": "27_isaie",
-  "page": 702,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…e ma parole ne demeurera sans exécution.” ‖ “rusalem : _Et cum pace ducemini._ Je vou…”",
   "optional": true
  },
  {
@@ -103843,38 +100045,6 @@
   "optional": true
  },
  {
-  "id": "27_isaie/0758/seam_artifact/d029ba8f",
-  "book_dir": "27_isaie",
-  "page": 758,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…} _Les Rois seront vos nourriciers, etc.” ‖ “les Reines vos nourrices. Vous ferez nou…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0765/seam_artifact/eb3fdb9b",
-  "book_dir": "27_isaie",
-  "page": 765,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…Vous ferez.” ‖ “dans l'honneur, dans l'abondance, dans u…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0768/seam_artifact/43cde72f",
-  "book_dir": "27_isaie",
-  "page": 768,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…le regarde principalement les Chrétiens.” ‖ “riens. Jésus-Christ, Auteur de la nouvel…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0775/seam_artifact/3b7a975d",
-  "book_dir": "27_isaie",
-  "page": 775,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…senter à Dieu les besoins de son peuple.” ‖ “et de lui en rafraîchir la mémoire, n'in…”",
-  "optional": true
- },
- {
   "id": "27_isaie/0779/seam_artifact/d08f6e30",
   "book_dir": "27_isaie",
   "page": 779,
@@ -103883,35 +100053,11 @@
   "optional": true
  },
  {
-  "id": "27_isaie/0804/seam_artifact/b226ed1e",
-  "book_dir": "27_isaie",
-  "page": 804,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…e d'Achor servira de retraite aux bœufs.” ‖ “cette vallée plusieurs étables de bœufs.…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0818/seam_artifact/e52679ac",
-  "book_dir": "27_isaie",
-  "page": 818,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “…tions, et je leur rendrai leurs péchés_.” ‖ “moi à mon tour je choisirai ce qui peut …”",
-  "optional": true
- },
- {
   "id": "27_isaie/0834/seam_artifact/efd4a039",
   "book_dir": "27_isaie",
   "page": 834,
   "kind": "seam_artifact",
   "msg": "Page-turn glitch (stray full stop / repeated syllable): “…et qu'il tire ces Prêtres dont il parle.” ‖ “éternellement. Le nom de Chrétiens, l'Ég…”",
-  "optional": true
- },
- {
-  "id": "27_isaie/0835/seam_artifact/36604d8b",
-  "book_dir": "27_isaie",
-  "page": 835,
-  "kind": "seam_artifact",
-  "msg": "Page-turn glitch (stray full stop / repeated syllable): “… Grotius l'explique des peuples Gentils.” ‖ “qui après le retour de la captivité, dev…”",
   "optional": true
  },
  {
