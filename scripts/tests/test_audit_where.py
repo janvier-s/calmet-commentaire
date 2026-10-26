@@ -10,7 +10,7 @@ from paths import DATA
 
 pytestmark = pytest.mark.skipif(not (DATA / "22_proverbes" / "normalized").is_dir(), reason="no real data")
 
-MUST = {"lowercase_lemma", "long_translation", "caps_in_commentary", "hyphen_cut", "period_seam"}
+MUST = {"lowercase_lemma", "long_translation", "no_translation", "caps_in_commentary", "hyphen_cut", "period_seam"}
 
 
 @pytest.fixture(scope="module")
@@ -52,3 +52,12 @@ def test_where_points_at_the_quoted_entry(queue):
 def test_ids_hash_the_message_only(queue):
     for it in queue:
         assert it["id"].endswith(hashlib.md5(it["msg"].encode()).hexdigest()[:8])
+
+
+def test_no_translation_points_at_a_lemma_without_one(queue):
+    items = [it for it in queue if it["kind"] == "no_translation"]
+    assert items
+    for it in items:
+        d = json.loads((DATA / it["book_dir"] / "normalized" / f"page_{it['page']:04d}.json").read_text(encoding="utf-8"))
+        c = d["commentary"][it["where"]["index"]]
+        assert (c.get("latin_quote") or "").strip() and not (c.get("french_translation") or "").strip(), it

@@ -76,6 +76,7 @@ export function setDirty(on) {
   const d = $("dirty");
   d.textContent = on ? "● unsaved changes" : "";
   d.classList.toggle("unsaved", on);
+  $("save").classList.toggle("unsaved", on);
 }
 
 /** The page as typed: S.data with every field's value written in. */
@@ -186,29 +187,51 @@ document.addEventListener("keydown", (e) => {
 });
 addEventListener("beforeunload", (e) => { if (S.dirty) e.preventDefault(); });
 
-// --- a little italics button over a selection in a field ---
-const floatBtn = Object.assign(document.createElement("button"), { id: "float-italic", title: "Italics (⌘I)", hidden: true });
-floatBtn.innerHTML = "<i>I</i>";
-document.body.append(floatBtn);
+// --- a little menu over a selection in a field: italics, copy, cut, paste ---
+const selMenu = Object.assign(document.createElement("div"), { id: "sel-menu", hidden: true });
+document.body.append(selMenu);
 const fieldAt = (node) => (S.fields.find((x) => x.field.el.contains(node)) || {}).field
   || (extra.list ? extra.list().find((f) => f.el.contains(node)) : null) || null;
-floatBtn.addEventListener("mousedown", (e) => e.preventDefault());  // keep the selection
-floatBtn.onclick = () => {
+/** The field the selection is in, and the selection in it. */
+const selected = () => {
   const s = getSelection();
   const f = s.rangeCount ? fieldAt(s.anchorNode) : null;
-  if (f) f.toggleItalic();
+  const sel = f && f.selection();
+  return sel ? [f, sel] : [null, null];
 };
+const copySel = async (f, [a, b]) => {
+  try { await navigator.clipboard.writeText(f.text.slice(a, b)); return true; } catch (e) { toast("Could not copy"); return false; }
+};
+const SEL_TOOLS = [
+  ["I", "Italics (⌘I)", (f) => f.toggleItalic(), "it-btn"],
+  ["Copy", "Copy the selection", async (f, sel) => { if (await copySel(f, sel)) toast("Copied"); }],
+  ["Cut", "Cut the selection", async (f, sel) => { if (await copySel(f, sel)) f.edit(sel[0], sel[1], ""); }],
+  // pasted over the selection, with a space after it unless one follows already
+  ["Paste", "Paste over the selection, with a space after it", async (f, [a, b]) => {
+    let t;
+    try { t = await navigator.clipboard.readText(); } catch (e) { toast("Could not read the clipboard"); return; }
+    if (!t) return;
+    f.edit(a, b, /^\s/.test(f.text.slice(b)) || /\s$/.test(t) ? t : t + " ");
+  }],
+];
+for (const [text, title, act, cls] of SEL_TOOLS) {
+  const b = Object.assign(document.createElement("button"), { textContent: text, title, className: cls || "" });
+  b.addEventListener("mousedown", (e) => e.preventDefault());  // keep the selection
+  b.onclick = () => { const [f, sel] = selected(); if (f) act(f, sel); };
+  selMenu.append(b);
+}
 document.addEventListener("selectionchange", () => {
   const s = getSelection();
   const f = !s.isCollapsed && s.rangeCount ? fieldAt(s.anchorNode) : null;
-  if (!f || !f.el.contains(s.focusNode)) { floatBtn.hidden = true; return; }
+  if (!f || !f.el.contains(s.focusNode)) { selMenu.hidden = true; return; }
   const r = s.getRangeAt(0).getBoundingClientRect();
-  floatBtn.hidden = false;
-  floatBtn.style.left = `${Math.max(4, r.left + r.width / 2 - 14)}px`;
-  floatBtn.style.top = `${Math.max(4, r.top - 34)}px`;
+  selMenu.hidden = false;
+  const w = selMenu.offsetWidth;
+  selMenu.style.left = `${Math.min(innerWidth - w - 4, Math.max(4, r.left + r.width / 2 - w / 2))}px`;
+  selMenu.style.top = `${Math.max(4, r.top - 34)}px`;
 });
-document.getElementById("text-pane").addEventListener("scroll", () => { floatBtn.hidden = true; });
-document.getElementById("turn").addEventListener("scroll", () => { floatBtn.hidden = true; }, true);
+document.getElementById("text-pane").addEventListener("scroll", () => { selMenu.hidden = true; });
+document.getElementById("turn").addEventListener("scroll", () => { selMenu.hidden = true; }, true);
 
 // --- the shelf: one click puts a symbol at the cursor (or copies it) ---
 const SHELF = ["℣", "^{(a)}", "^{(b)}", "^{(c)}", "^{(d)}", "^{(e)}", "^{(f)}", "«", "»"];

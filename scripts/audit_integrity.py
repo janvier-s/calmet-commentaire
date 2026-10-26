@@ -487,6 +487,21 @@ def audit_book(key, info, slug, published=True):
                      f"Translation of {len(fr)} characters for a lemma of {len(la)}{cut} “{lemma[:40]}”: "
                      f"“{fr[:90]}…”: commentary run into the translation?",
                      where=dict(section="commentary", index=j, field="french_translation"))
+            if la.strip() and not fr:
+                fc, where = c.get("french_commentary") or "", "the comment starts"
+                overleaf = (j == len(cs) - 1 and not fc.strip() and i + 1 < len(pages) and pages[i + 1][0] == vol
+                            and (pages[i + 1][2].get("commentary") or [None])[0])
+                if overleaf:  # the last note of the page, its comment overleaf
+                    fc, where = overleaf.get("french_commentary") or "", "the next page starts"
+                one_word = len(re.findall(r"[^\W\d_]+", la)) == 1
+                why = ("French in the lemma?" if re.search(r"[a-zàâçéèêëîïôûùüÿœæ]{3}", la) else
+                       "the translation run into the commentary?" if re.match(r"\s*_[^_]{3,}_", fc)
+                       or re.match(rf"\s*[^.;:,]{{{len(la) // 2},{len(la) * 3}}}[.;:,]", fc) else
+                       "a name Calmet leaves untranslated?" if one_word else "a translation lost?")
+                item("no_translation", vol, int(n[5:9]),
+                     f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}): latin_quote “{lemma[:50]}” has no "
+                     f"french_translation; {where} “{fc[:60]}…”: {why}", optional=one_word,
+                     where=dict(section="commentary", index=j, field="french_translation"))
             if re.search(r"\bl['’]\s?h[ée]breu", tr, re.I):
                 item("hebrew_in_translation", vol, int(n[5:9]),
                      f"“L'Hébreu” in the translation of “{lemma[:40]}”: “{tr[:100]}…”: commentary run into the translation?",
@@ -797,7 +812,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "latin_long_s", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "translation_no_punct", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "latin_long_s", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "no_translation", "translation_no_punct", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's

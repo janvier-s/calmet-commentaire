@@ -36,18 +36,15 @@ function fillFilters() {
   $("f-status").replaceChildren(...S.config.statuses.map((s) => opt(s, `${STATUS_LABELS[s]} (${c.status[s]})`)));
   $("f-cat").replaceChildren(...["all", ...S.config.categories].map((k) => opt(k === "all" ? "" : k, `${CAT_LABELS[k]} (${c.cat[k]})`)));
   const kinds = Object.keys(c.kind);
-  if (Q.kind && !kinds.includes(Q.kind)) kinds.push(Q.kind);
+  if (Q.kind && !kinds.includes(Q.kind)) kinds.unshift(Q.kind);  // done to the last: on top, not at the bottom
   const kindTotal = Object.values(c.kind).reduce((a, b) => a + b, 0);
   $("f-kind").replaceChildren(opt("", `🔎 All types (${kindTotal})`),
     ...kinds.map((k) => opt(k, `${CAT_EMOJI[CAT_OF[k]] || "💬"} ${sentence(label(k))} (${c.kind[k] || 0})`)));
-  const books = Object.keys(c.book).sort();
-  if (Q.book && !books.includes(Q.book)) books.push(Q.book);
-  const bookTotal = Object.values(c.book).reduce((a, b) => a + b, 0);
-  $("f-book").replaceChildren(opt("", `📚 All books (${bookTotal})`), ...books.map((b) => opt(b, `${b} (${c.book[b] || 0})`)));
+  // the book chosen at the top is the book filter: each book with how many issues it has of this list
+  for (const o of $("vol").options) o.textContent = c.book[o.value] ? `${o.value} (${c.book[o.value]})` : o.value;
   $("f-status").value = Q.status;
   $("f-cat").value = Q.cat || "";
   $("f-kind").value = Q.kind || "";
-  $("f-book").value = Q.book || "";
 }
 
 async function refreshCounts() {
@@ -71,8 +68,7 @@ async function applyFilters(f) {
 }
 
 function readFilters(reset) {
-  const f = { status: $("f-status").value, cat: $("f-cat").value || null, kind: $("f-kind").value || null,
-              book: $("f-book").value || null };
+  const f = { status: $("f-status").value, cat: $("f-cat").value || null, kind: $("f-kind").value || null, book: Q.book };
   if (reset) f.kind = null;
   return f;
 }
@@ -98,17 +94,24 @@ async function goItem(i) {
   return r;
 }
 
+/** The next issue of the list (past the last: the first again, and back from the first: the last). */
 function step(dir) {
-  for (let i = Q.idx + dir; i >= 0 && i < Q.items.length; i += dir) {
+  const n = Q.items.length;
+  for (let k = 1; k <= n; k++) {
+    const i = (((Q.idx + dir * k) % n) + n) % n;
     if (Q.status === "open" && !isOpen(Q.items[i])) continue;  // marked during this session
+    if (i === Q.idx) break;
+    if ((dir > 0 && i < Q.idx) || (dir < 0 && i > Q.idx)) toast(dir > 0 ? "Back to the first issue" : "On to the last issue");
     return goItem(i);
   }
-  toast(dir > 0 ? `No more issues after this one (${STATUS_LABELS[Q.status]})` : `No earlier issues (${STATUS_LABELS[Q.status]})`);
+  toast(`No other issue (${STATUS_LABELS[Q.status]})`);
 }
 
 function currentItem() {
   return Q.items.find((it) => it.id === Q.current) || S.issues.find((it) => it.id === Q.current) || null;
 }
+
+const marked = [];  // issues marked during this session, the last one last: Reopen takes them back
 
 async function mark(status) {
   const it = currentItem();
@@ -118,9 +121,24 @@ async function mark(status) {
   const r = await api("/api/mark", { id: it.id, status });
   if (r.status !== 200) { toast(r.body.error || "Could not mark the issue"); return; }
   for (const x of [...Q.items, ...S.issues]) if (x.id === it.id) x.status = status;
+  if (status) marked.push(it);
   await refreshCounts();
   renderIssues();
   if (status) step(1);
+}
+
+/** Reopen: the issue last marked resolved, false positive or skipped is open again, and shown. */
+async function reopen() {
+  const it = marked.pop();
+  if (!it) { toast("Nothing marked yet in this session"); return; }
+  const r = await api("/api/mark", { id: it.id, status: null });
+  if (r.status !== 200) { marked.push(it); toast(r.body.error || "Could not reopen the issue"); return; }
+  for (const x of [...Q.items, ...S.issues]) if (x.id === it.id) x.status = null;
+  await refreshCounts();
+  const i = Q.items.findIndex((x) => x.id === it.id);
+  if (i >= 0) await goItem(i);
+  else if (await go(it.book_dir, it.page)) select(it);
+  toast(`Reopened: ${sentence(label(it.kind))}`);
 }
 
 // --- the issue bar: the current issue, the page's issues as pills, all of them in a panel ---
@@ -285,13 +303,12 @@ export { currentItem, renderIssues, refreshCounts, step };
 $("f-status").onchange = () => applyFilters(readFilters(true));
 $("f-cat").onchange = () => applyFilters(readFilters(true));
 $("f-kind").onchange = () => applyFilters(readFilters(false));
-$("f-book").onchange = () => applyFilters(readFilters(false));
 $("issue-prev").onclick = () => step(-1);
 $("issue-next").onclick = () => step(1);
 $("mark-resolved").onclick = () => mark("resolved");
 $("mark-fp").onclick = () => mark("false_positive");
 $("mark-skip").onclick = () => mark("skipped");
-$("mark-reopen").onclick = () => mark(null);
+$("mark-reopen").onclick = reopen;
 document.addEventListener("keydown", (e) => {
   if (!(e.metaKey || e.ctrlKey)) return;
   const k = e.key;

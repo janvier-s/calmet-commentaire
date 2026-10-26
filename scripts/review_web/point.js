@@ -47,3 +47,18 @@ export function point(item) {
     b.classList.add("flash");
   }
 }
+
+// "Highlights": the marked words, the outlined field and the flash, shown or not (kept per browser)
+let shown = true;
+try { shown = localStorage.getItem("rw-highlights") !== "0"; } catch (e) {}
+const hiBtn = Object.assign(document.createElement("button"), {
+  id: "hi-btn", textContent: "Highlights", title: "Show or hide the issue's marked words and outlined field" });
+const showHighlights = (on) => {
+  shown = on;
+  hiBtn.classList.toggle("on", on);
+  document.body.classList.toggle("no-hi", !on);
+  try { localStorage.setItem("rw-highlights", on ? "1" : "0"); } catch (e) {}
+};
+$("sections").insertBefore(hiBtn, $("sections").querySelector(".grow"));
+hiBtn.onclick = () => showHighlights(!shown);
+showHighlights(shown);

@@ -295,6 +295,7 @@ KIND_LABELS = {
     "etc_for_et": "“ETC.” WHERE “&” (ET) WAS MEANT?",
     "hyphen_cut": "LEMMA / TRANSLATION CUT AT PAGE TURN (hyphen or no full stop)",
     "long_translation": "TRANSLATION MUCH LONGER THAN THE LEMMA",
+    "no_translation": "LEMMA WITHOUT FRENCH_TRANSLATION",
     "hebrew_in_translation": "“L'HÉBREU” IN THE TRANSLATION",
     "hebrew_recheck": "FOOTNOTE HEBREW UNCERTAIN: CHECK AGAINST THE SCAN",
     "lemma_verse": "LATIN_QUOTE FILLED IN BY HAND: RIGHT VERSE NUMBER?",
