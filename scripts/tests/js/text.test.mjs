@@ -79,3 +79,12 @@ test("wordDiff gives back both texts", () => {
     assert.equal(d.filter(([op]) => op !== "-").map(([, t]) => t).join(""), b);
   }
 });
+
+test("snippets: a lemma without translation marks the comment up to its first full stop", () => {
+  const msg = "Note 2 (℣ 9): latin_quote “MELIUS EST SEDERE IN ANGULO DOMATIS.” has no french_translation; " +
+    "the comment starts “Il vaudrait mieux habiter dans un coin. Sur le haut de la mai…”: the translation run into the commentary?";
+  assert.deepEqual(snippets(msg, "no_translation"), ["MELIUS EST SEDERE IN ANGULO DOMATIS.", "Il vaudrait mieux habiter dans un coin."]);
+  // no full stop in the quotation: all of it, as before
+  assert.deepEqual(snippets("latin_quote “AB CD EF.” … starts “Le peuple demeura à Cadés, et…”: x", "no_translation"),
+                   ["AB CD EF.", "Le peuple demeura à Cadés, et"]);
+});

@@ -54,6 +54,10 @@ export function parseRef(s) {
 
 /** The words an issue message quotes (“…”), to look for in the page: each quotation split at its
  *  ellipses into pieces of 6+ characters; a footnote call for the footnote kinds. */
+// kinds whose second quotation is the start of a text the translation may have run into: marked up
+// to its first full stop, the likely end of the translation
+const TO_STOP = new Set(["no_translation", "long_translation"]);
+
 export function snippets(msg, kind) {
   const out = [];
   if (kind === "missing_footnote") {
@@ -63,9 +67,12 @@ export function snippets(msg, kind) {
   let first = true;
   for (const m of msg.matchAll(/“([^”]*)”/g)) {
     if (kind === "broken_marker" && first) { out.push(m[1].trim()); first = false; continue; }  // the call itself
+    const toStop = TO_STOP.has(kind) && !first;
     first = false;
     for (const piece of m[1].split("…")) {
-      const p = piece.trim();
+      let p = piece.trim();
+      const stop = toStop ? p.indexOf(".") : -1;
+      if (stop >= 0) p = p.slice(0, stop + 1);
       if (p.length >= 6) out.push(p);
     }
   }
