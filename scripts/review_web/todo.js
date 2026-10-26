@@ -3,7 +3,7 @@
 // They are issues of the type To-do: Resolved ticks one off, ✕ on its card deletes it.
 import { S, api, ask, hooks, toast } from "./app.js";
 import { icon } from "./icons.js";
-import { listAdd, listRemove, refreshCounts, renderIssues } from "./queue.js";
+import { currentItem, listAdd, listRemove, refreshCounts, renderIssues, setStatus } from "./queue.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => {
@@ -18,14 +18,21 @@ function whereOf(path) {
   return p.length === 3 ? { section: p[0], index: +p[1], field: p[2] } : { section: "heading", index: 0, field: p[0] };
 }
 
-async function add(msg, where) {
-  const r = await api("/api/todo", { vol: S.vol, page: S.page, msg, where });
+/** The issue a to-do added now would put on hold: the one open on this page, if it is not a to-do. */
+function holdable() {
+  const it = currentItem();
+  return it && it.book_dir === S.vol && it.page === S.page && it.kind !== "todo" && !it.status ? it : null;
+}
+
+async function add(msg, where, holds) {
+  const r = await api("/api/todo", { vol: S.vol, page: S.page, msg, where, holds: holds && holds.id });
   if (r.status !== 200) { toast(r.body.error || "Could not add the to-do"); return; }
   S.issues = r.body.issues;
   listAdd(r.body.item);
+  if (r.body.held) setStatus(r.body.held, "on_hold");
   renderIssues();
   await refreshCounts();
-  toast(`To-do added: ${msg}`);
+  toast(r.body.held ? `To-do added; the issue is on hold until it is done` : `To-do added: ${msg}`);
 }
 
 /** The presets as buttons, then a line for anything else. */
@@ -34,12 +41,16 @@ async function prompt(where) {
   let chosen = null;
   const presets = el("div", { className: "todo-presets" }, ...(S.config.todo_presets || []).map((p) =>
     el("button", { type: "button", textContent: p, onclick: () => { chosen = p; $("dialog").close("add"); } })));
-  const body = el("div", {}, presets, input);
+  const held = holdable();
+  const hold = held ? el("label", { className: "todo-hold" }, el("input", { type: "checkbox", checked: true }),
+                         ` Put the open issue on hold until this is done (${S.config.labels[held.kind] || held.kind})`) : null;
+  const body = el("div", {}, presets, input, hold);
   input.onkeydown = (e) => { if (e.key === "Enter") { e.preventDefault(); $("dialog").close("add"); } };
   const what = where ? `${where.field.replace(/_/g, " ")}${where.section !== "heading" ? ` (${where.section} ${where.index + 1})` : ""}` : "this page";
   const r = await ask(`To-do for ${what}, p.${S.page}:`, [["cancel", "Cancel"], ["add", "Add", "ok"]], body);
   const msg = (chosen || input.value).trim();
-  if (r === "add" && msg) await add(chosen ? (where ? `${chosen} (${what})` : chosen) : msg, where);
+  const holds = hold && hold.querySelector("input").checked ? held : null;
+  if (r === "add" && msg) await add(chosen ? (where ? `${chosen} (${what})` : chosen) : msg, where, holds);
 }
 
 hooks.deleteTodo = async (it) => {
@@ -47,6 +58,7 @@ hooks.deleteTodo = async (it) => {
   const r = await api("/api/todo/delete", { id: it.id });
   if (r.status !== 200) { toast(r.body.error || "Could not delete the to-do"); return; }
   if (it.book_dir === S.vol && it.page === S.page) S.issues = r.body.issues;
+  if (r.body.reopened) setStatus(r.body.reopened, null);
   listRemove(it.id);
   renderIssues();
   await refreshCounts();

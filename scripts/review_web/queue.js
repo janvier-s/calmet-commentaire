@@ -11,7 +11,7 @@ const el = (tag, props = {}, ...kids) => {
   return e;
 };
 const DONE = new Set(["resolved", "false_positive"]);
-const STATUS_LABELS = { open: "🟠 Open", false_positive: "🚩 False positives", skipped: "⏭️ Skipped", resolved: "✅ Resolved", all: "📋 All statuses" };
+const STATUS_LABELS = { open: "🟠 Open", on_hold: "⏸️ On hold", false_positive: "🚩 False positives", skipped: "⏭️ Skipped", resolved: "✅ Resolved", all: "📋 All statuses" };
 const CAT_LABELS = { all: "🗂️ All categories", verses: "📖 Verses", commentary: "💬 Commentary", footnotes: "📝 Footnotes" };
 const CAT_EMOJI = { verses: "📖", commentary: "💬", footnotes: "📝" };
 
@@ -22,7 +22,7 @@ const Q = { items: [], idx: 0, status: "open", cat: null, kind: null, book: null
 const label = (k) => S.config.labels[k] || k;
 const sentence = (t) => t.charAt(0) + t.slice(1).toLowerCase();  // "MISSING VERSE" -> "Missing verse"
 const statusOf = (it) => it.status || null;
-const isOpen = (it) => !statusOf(it) || !["resolved", "false_positive", "skipped"].includes(statusOf(it));
+const isOpen = (it) => !statusOf(it) || !["resolved", "false_positive", "skipped", "on_hold"].includes(statusOf(it));
 
 function query(f) {
   const q = new URLSearchParams({ status: f.status });
@@ -91,7 +91,7 @@ function updateCounter() {
   const c = Q.counts && Q.counts.status;
   $("counter").textContent = Q.items.length
     ? `${Q.idx + 1}/${Q.items.length}` + (c ? ` · ${c.open} open` : "") : "no issues";
-  $("counter").title = c ? `${c.open} open · ${c.skipped} skipped · ${c.false_positive} false positives · ${c.resolved} resolved` : "";
+  $("counter").title = c ? `${c.open} open · ${c.on_hold} on hold · ${c.skipped} skipped · ${c.false_positive} false positives · ${c.resolved} resolved` : "";
 }
 
 /** Remember where the session is (page, filters, issue): the next start resumes there. */
@@ -141,13 +141,17 @@ async function mark(status) {
   const r = await api("/api/mark", { id: it.id, status });
   if (r.status !== 200) { toast(r.body.error || "Could not mark the issue"); return; }
   for (const x of [...Q.items, ...S.issues]) if (x.id === it.id) x.status = status;
+  if (r.body.reopened) {  // a to-do done: the issue it held is open again
+    setStatus(r.body.reopened, null);
+    toast("The issue this to-do held is open again");
+  }
   if (status) marked.push(it);
   await refreshCounts();
   renderIssues();
   if (status) step(1);
 }
 
-/** Reopen: the issue last marked resolved, false positive or skipped is open again, and shown. */
+/** Reopen: the issue last marked resolved, false positive, skipped or on hold is open again, and shown. */
 async function reopen() {
   const it = marked.pop();
   if (!it) { toast("Nothing marked yet in this session"); return; }
@@ -354,6 +358,7 @@ $("issue-next").onclick = () => step(1);
 $("mark-resolved").onclick = () => mark("resolved");
 $("mark-fp").onclick = () => mark("false_positive");
 $("mark-skip").onclick = () => mark("skipped");
+$("mark-hold").onclick = () => mark("on_hold");
 $("mark-reopen").onclick = reopen;
 document.addEventListener("keydown", (e) => {
   if (!(e.metaKey || e.ctrlKey)) return;

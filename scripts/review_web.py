@@ -138,28 +138,42 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         with lock:
             progress.set(it["id"], body.get("status"),
                          {k: it.get(k) for k in ("book_dir", "page", "kind", "msg")})
-        return {"ok": True}
+            reopened = release(it) if body.get("status") == "resolved" else None
+        return {"ok": True, "reopened": reopened}
+
+    def release(todo):
+        """A to-do done (or deleted): the issue it held is open again, to be finished."""
+        held = todo.get("holds")
+        if todo["kind"] != "todo" or not held or progress.status(held) != "on_hold":
+            return None
+        progress.set(held, None)
+        return held
 
     def add_todo(body):
         vol, page = vol_page(body)
         msg = (body.get("msg") or "").strip()
         if not msg:
             raise ApiError(400, {"error": "an empty to-do"})
+        held = by_id.get(body.get("holds"))
         with lock:
-            it = rs.todo_item(vol, progress.add_todo(vol, page, msg, body.get("where")))
+            it = rs.todo_item(vol, progress.add_todo(vol, page, msg, body.get("where"), held and held["id"]))
             items.append(it)
             by_id[it["id"]] = it
-        return {"item": dict(it, status=None), "issues": rs.page_issues(items, progress, vol, page)}
+            if held:  # the issue waits for the to-do
+                progress.set(held["id"], "on_hold")
+        return {"item": dict(it, status=None), "issues": rs.page_issues(items, progress, vol, page),
+                "held": held and held["id"]}
 
     def delete_todo(body):
         it = by_id.get(body.get("id"))
         if not it or it["kind"] != "todo":
             raise ApiError(404, {"error": "no such to-do"})
         with lock:
+            reopened = release(it)
             progress.delete_todo(it["id"])
             items.remove(it)
             del by_id[it["id"]]
-        return {"issues": rs.page_issues(items, progress, it["book_dir"], it["page"])}
+        return {"issues": rs.page_issues(items, progress, it["book_dir"], it["page"]), "reopened": reopened}
 
     def flag(body):
         vol, page = vol_page(body)

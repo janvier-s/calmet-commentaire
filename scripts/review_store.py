@@ -346,7 +346,7 @@ def kind_category(k):
     return "commentary"
 
 
-STATUSES = ("open", "false_positive", "skipped", "resolved", "all")
+STATUSES = ("open", "on_hold", "false_positive", "skipped", "resolved", "all")
 CATEGORIES = ("verses", "commentary", "footnotes")
 
 
@@ -361,7 +361,7 @@ REVIEW_FILE = "review.json"  # data/<book>/review.json: one book's review, so th
 
 class Progress:
     """The review of every book, one file per book (data/<book>/review.json): each item's status
-    (resolved, false_positive, skipped), the false positives with what they said (they outlive the
+    (resolved, false_positive, skipped, on_hold), the false positives with what they said (they outlive the
     queue), and the page to-dos."""
 
     def __init__(self, data_dir: Path):
@@ -419,12 +419,13 @@ class Progress:
                     d["false_positives"].pop(item_id, None)
             self._write(vol, d)
 
-    def add_todo(self, vol, page, msg, where=None):
-        """A page to-do (something to do that no check finds: a rescan, an abbreviation…)."""
+    def add_todo(self, vol, page, msg, where=None, holds=None):
+        """A page to-do (something to do that no check finds: a rescan, an abbreviation…); `holds`: the
+        issue it puts on hold until it is done."""
         d = self._read(vol)
         stamp = f"{msg}\n{where}\n{len(d['todos'])}\n{time.time()}"
         td = {"id": f"{vol}/{page:04d}/todo/{hashlib.md5(stamp.encode()).hexdigest()[:8]}", "page": page,
-              "msg": msg, "where": where or None}
+              "msg": msg, "where": where or None, **({"holds": holds} if holds else {})}
         d["todos"].append(td)
         self._write(vol, d)
         self.todos.setdefault(vol, []).append(td)
@@ -477,7 +478,8 @@ def absorb_legacy(data_dir, docs_dir):
 def todo_item(vol, td):
     """A page to-do as a queue item."""
     return dict({"id": td["id"], "book_dir": vol, "page": td["page"], "kind": "todo", "msg": td["msg"],
-                 "optional": False}, **({"where": td["where"]} if td.get("where") else {}))
+                 "optional": False}, **({"where": td["where"]} if td.get("where") else {}),
+                **({"holds": td["holds"]} if td.get("holds") else {}))
 
 
 def load_queue(queue_path, progress, include_optional=False):
@@ -500,7 +502,7 @@ def load_queue(queue_path, progress, include_optional=False):
 def in_status(item, progress, status):
     s = progress.status(item["id"])
     if status == "open":
-        return s not in ("resolved", "false_positive", "skipped")
+        return s not in ("resolved", "false_positive", "skipped", "on_hold")
     return status == "all" or s == status
 
 

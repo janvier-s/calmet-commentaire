@@ -99,7 +99,7 @@ def test_counts_facets(docs, progress):
     its = items(docs)
     progress.set(its[0]["id"], "resolved")
     c = counts(its, progress, "open", None, None, None)
-    assert c["status"] == {"open": 2, "false_positive": 0, "skipped": 0, "resolved": 1, "all": 3}
+    assert c["status"] == {"open": 2, "on_hold": 0, "false_positive": 0, "skipped": 0, "resolved": 1, "all": 3}
     assert c["cat"] == {"all": 2, "verses": 0, "commentary": 1, "footnotes": 1}
     assert c["kind"] == {"missing_footnote": 1, "missing_page": 1}
     assert c["book"] == {VOL: 2}

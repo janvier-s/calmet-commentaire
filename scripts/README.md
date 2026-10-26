@@ -95,7 +95,9 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   copy, cut, paste (with a space after); a click in a field gets Paste alone; page to-dos, for what
   no check finds: "+ To-do" in the issue bar for the page, or "To-do" on and the "+" of a field,
   with one-click presets from `todo_presets.txt` ("Needs rescan"); they are issues of the type
-  To-do, Resolved ticks one off, ✕ on its card deletes it). Same filters as before (`--all`, `--kind`, `--category`, `--type`, `--book`,
+  To-do, Resolved ticks one off, ✕ on its card deletes it; a to-do added while an issue of the page is
+  open puts that issue On hold, a status of its own (neither resolved nor a false positive, with its
+  button and filter), and opens it again once the to-do is done or deleted). Same filters as before (`--all`, `--kind`, `--category`, `--type`, `--book`,
   `--skipped`, `--resolved`, `--false-positive`, `--all-status`, `--list-fp`); it serves on
   127.0.0.1 only and the printed link carries the session key. Opening an issue marks the words it
   quotes and outlines the field it names (`where` in the queue, from `audit_integrity.py`). Saving a

@@ -162,3 +162,15 @@ def test_todo_add_and_delete(web):
     assert web("/api/todo", {"vol": VOL, "page": 194, "msg": "  "})[0] == 400
     assert web("/api/todo/delete", {"id": r["item"]["id"]})[0] == 200
     assert web("/api/queue?kind=todo&status=all")[1]["items"] == []
+
+
+def test_todo_holds_the_issue_until_done(web):
+    issue = web("/api/queue?status=open")[1]["items"][0]["id"]
+    r = web("/api/todo", {"vol": VOL, "page": 194, "msg": "Needs rescan", "holds": issue})[1]
+    assert r["held"] == issue and web("/api/queue?status=on_hold")[1]["items"][0]["id"] == issue
+    assert all(i["id"] != issue for i in web("/api/queue?status=open")[1]["items"])
+    assert web("/api/mark", {"id": r["item"]["id"], "status": "resolved"})[1]["reopened"] == issue
+    assert any(i["id"] == issue for i in web("/api/queue?status=open")[1]["items"])
+    # deleting a to-do frees its issue too
+    r = web("/api/todo", {"vol": VOL, "page": 194, "msg": "Unexpanded", "holds": issue})[1]
+    assert web("/api/todo/delete", {"id": r["item"]["id"]})[1]["reopened"] == issue

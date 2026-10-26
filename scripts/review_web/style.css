@@ -335,3 +335,4 @@ body.todo-on .block.fn .block-head > .todo-add { align-self: center; }
 .todo-presets button { border-color: var(--c-fn); color: var(--c-fn); }
 .todo-del { margin-left: 4px; padding: 0 2px; }
 .todo-del:hover { color: var(--danger); }
+.todo-hold { display: block; margin-top: 8px; font-size: 12px; color: var(--muted); }
