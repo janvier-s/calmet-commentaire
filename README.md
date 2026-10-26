@@ -1,60 +1,63 @@
 # Calmet, *Commentaire littéral*
 
-A modernized transcription of Dom Augustin Calmet's *Commentaire littéral sur tous les livres de
-l'Ancien et du Nouveau Testament* (1707–1716): the Latin and French text of every verse, Calmet's
-commentary and his footnotes, page by page, checked against the scans and the Vulgate. It feeds the
-website [dom-calmet-web](https://github.com/janvier-s/dom-calmet-web).
+Une transcription modernisée du *Commentaire littéral sur tous les livres de l'Ancien et du Nouveau
+Testament* de dom Augustin Calmet (1707-1716) : le texte latin et français de chaque verset, le
+commentaire de Calmet et ses notes, page par page, vérifiés sur les scans et sur la Vulgate. Elle
+alimente le site [dom-calmet-web](https://github.com/janvier-s/dom-calmet-web).
 
-Everything here is dedicated to the public domain ([CC0 1.0](LICENSE)): use it for anything, no
-permission or credit needed.
+Tout le contenu est versé dans le domaine public ([CC0 1.0](LICENSE)) : chacun peut en faire ce
+qu'il veut, sans autorisation ni mention.
 
-## What is where
+## Ce que contient le dépôt
 
 | | |
 |---|---|
-| `data/<volume>/normalized/page_NNNN.json` | **the text**: one file per printed page (verses, commentary, footnotes) |
-| `data/.review_queue_progress.json` | which review issues are resolved, skipped or false positives |
-| `docs/review_queue.json` | the review queue: every place a check found something to look at |
-| `docs/*_check.json`, `docs/footnotes/` | the reports the queue is built from |
-| `scripts/` | the pipeline, the checks and the review editor ([scripts/README.md](scripts/README.md)) |
-| `scripts/vulgate/` | the Clementine Vulgate the checks compare against |
-| `scripts/footnote_names.txt` | works and authors named in the footnotes, with their original titles |
+| `data/<volume>/normalized/page_NNNN.json` | **le texte** : un fichier par page imprimée (versets, commentaire, notes) |
+| `data/.review_queue_progress.json` | l'état de la relecture : points résolus, passés ou faux positifs |
+| `docs/review_queue.json` | la file de relecture : chaque endroit où une vérification a trouvé quelque chose à revoir |
+| `docs/*_check.json`, `docs/footnotes/` | les rapports dont la file est tirée |
+| `scripts/` | la chaîne de traitement, les vérifications et l'éditeur de relecture ([scripts/README.md](scripts/README.md), en anglais) |
+| `scripts/vulgate/` | la Vulgate clémentine, à laquelle les vérifications comparent le texte |
+| `scripts/footnote_names.txt` | les œuvres et les auteurs cités dans les notes, avec leur titre original |
 
-Not in the repository: the scans (`data/<volume>/source_images/`), the raw OCR
-(`data/<volume>/raw_json/`) and the model cache (`scripts/cache/`; the answers already paid for are
-attached to the [releases](https://github.com/janvier-s/calmet-commentaire/releases) — unpack the
-archive into `scripts/cache/` and re-runs cost nothing).
+Ne sont pas dans le dépôt : les scans (`data/<volume>/source_images/`), l'OCR brut
+(`data/<volume>/raw_json/`) et le cache des modèles (`scripts/cache/`). Les réponses déjà payées sont
+jointes aux [publications](https://github.com/janvier-s/calmet-commentaire/releases) : décompressez
+l'archive dans `scripts/cache/` (`tar xzf calmet-model-cache.tar.gz -C scripts/cache`) et les
+scripts les réutilisent au lieu de redemander.
 
-## Getting started
+## Pour commencer
 
-You need Python 3.12+ and [uv](https://docs.astral.sh/uv/) (for the tests and a few tools).
+Il faut Python 3.12 ou plus et [uv](https://docs.astral.sh/uv/) (pour les tests et quelques outils).
 
 ```sh
 git clone https://github.com/janvier-s/calmet-commentaire
 cd calmet-commentaire/scripts
-python3 review_web.py 01_genese 120      # the review editor, in your browser
+python3 review_web.py 01_genese 120      # l'éditeur de relecture, dans votre navigateur
 uv run --no-project --with pytest --with pillow python -m pytest tests -q
 ```
 
-The editor works without the scans (it says "No scan for this page"); ask for the scans of the
-volume you work on. Some checks need more:
+L'éditeur fonctionne sans les scans (il affiche « No scan for this page ») ; demandez les scans du
+volume sur lequel vous travaillez. Certaines vérifications demandent davantage :
 
-- Hebrew and Greek in the footnotes: the Hebrew Bible (Open Scriptures, `scripts/cache/refs/hebrew_oshb.json`)
-  and the Septuagint (getbible, `scripts/cache/refs/lxx/`).
-- The French spellcheck: hunspell (`brew install hunspell`) and a French dictionary in `~/Library/Spelling/fr_FR`.
-- Writing out footnotes and other model passes: [Claude Code](https://claude.com/claude-code) (`claude`) or agy.
-- Exporting to the website: `dom-calmet-web` cloned beside this repository (or `CALMET_WEB=<its src/lib/data>`).
+- l'hébreu et le grec des notes : la Bible hébraïque (Open Scriptures, `scripts/cache/refs/hebrew_oshb.json`)
+  et la Septante (getbible, `scripts/cache/refs/lxx/`) ;
+- le correcteur orthographique : hunspell (`brew install hunspell`) et un dictionnaire français dans `~/Library/Spelling/fr_FR` ;
+- le développement des abréviations des notes et les autres passes par modèle : [Claude Code](https://claude.com/claude-code) (`claude`) ou agy ;
+- l'export vers le site : `dom-calmet-web` cloné à côté de ce dépôt (ou `CALMET_WEB=<son src/lib/data>`).
 
-## Contributing
+## Participer
 
-1. Pick a book (say which in an issue, so two people don't work on the same pages).
-2. Make a branch, open the editor on that book, and work through its queue: compare the text with
-   the scan, correct it, mark each issue resolved or a false positive.
-3. Commit the pages you changed with `data/.review_queue_progress.json`, and open a pull request.
+1. Choisissez un livre parmi les [tickets « livre »](https://github.com/janvier-s/calmet-commentaire/issues?q=is%3Aissue+is%3Aopen+label%3Alivre)
+   et dites-le en commentaire, pour que deux personnes ne travaillent pas sur les mêmes pages.
+2. Créez une branche, ouvrez l'éditeur sur ce livre et parcourez sa file : comparez le texte au scan,
+   corrigez-le, marquez chaque point résolu ou faux positif.
+3. Validez (commit) les pages modifiées avec `data/.review_queue_progress.json`, puis ouvrez une
+   demande de fusion (pull request).
 
-The conventions — what to modernize and what to keep as Calmet wrote it — are in
-[scripts/README.md](scripts/README.md) and [scripts/NEXT_VOLUMES.md](scripts/NEXT_VOLUMES.md). In
-short: modern French spelling, and modern forms of names (Maccabées, Israélites, Samuel), but
-Calmet's Latin as he printed it (cœli, terrâ, cùm), and Latin inside French fields is never
-"corrected" as French. Footnote abbreviations are written out following
-`scripts/footnote_glossary.txt`.
+Les conventions — ce qu'on modernise et ce qu'on garde tel que Calmet l'a écrit — sont dans
+[scripts/README.md](scripts/README.md) et [scripts/NEXT_VOLUMES.md](scripts/NEXT_VOLUMES.md). En
+bref : orthographe française moderne, formes modernes des noms (Maccabées, Israélites, Samuel), mais
+le latin de Calmet tel qu'il l'a imprimé (cœli, terrâ, cùm), et le latin cité dans les champs
+français n'est jamais « corrigé » comme du français. Les abréviations des notes sont développées
+selon `scripts/footnote_glossary.txt`.
