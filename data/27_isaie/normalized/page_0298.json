@@ -41,27 +41,59 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "[UNCERTAIN HEBREW]"
+      "text": "[UNCERTAIN HEBREW]",
+      "tags": [
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Élien, livre 2, chapitres 5 et 7 ; Pline, Histoire naturelle, livre 8, chapitre 21."
+      "text": "Voyez Élien, livre 2, chapitres 5 et 7 ; Pline, Histoire naturelle, livre 8, chapitre 21.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "4 Rois 18:8."
+      "text": "4 Rois 18:8.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "[UNCERTAIN HEBREW]"
+      "text": "[UNCERTAIN HEBREW]",
+      "tags": [
+        "uncertain"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Cicéron, De la nature des dieux, livre 1 ; Lucain, livre 6 ; Pomponius Mela, livre 3, chapitre 9 ; Élien, livre 2, chapitre 38."
+      "text": "Cicéron, De la nature des dieux, livre 1 ; Lucain, livre 6 ; Pomponius Mela, livre 3, chapitre 9 ; Élien, livre 2, chapitre 38.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la nature des dieux",
+          "original": "De natura deorum"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Nombres 21:9."
+      "text": "Nombres 21:9.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

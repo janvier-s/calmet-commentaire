@@ -63,15 +63,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "שם אישה גדולה"
+      "text": "שם אישה גדולה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "נעשה נא עליית קיר קטנה"
+      "text": "נעשה נא עליית קיר קטנה",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Vitruve, De l'architecture, livre 6, chapitre 10."
+      "text": "Vitruve, De l'architecture, livre 6, chapitre 10.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De l'architecture",
+          "original": "De architectura"
+        }
+      ]
     }
   ],
   "book_end_marker": null

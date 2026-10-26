@@ -39,11 +39,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Liv. lib. 2, j."
+      "text": "Liv. lib. 2, j.",
+      "tags": [
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Sallust. in trist. Conjur. Catilinæ."
+      "text": "Sallust. in trist. Conjur. Catilinæ.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Conjur",
+          "original": "De coniuratione Catilinae"
+        }
+      ]
     }
   ],
   "book_end_marker": null

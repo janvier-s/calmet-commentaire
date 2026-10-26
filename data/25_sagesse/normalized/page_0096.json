@@ -55,27 +55,82 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Nicolas de Lyre ; Holkot ; Lorin ; Pineda ; Cornelius a Lapide ; et d'autres."
+      "text": "Nicolas de Lyre ; Holkot ; Lorin ; Pineda ; Cornelius a Lapide ; et d'autres.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Aristote, Histoire des animaux, livre 7, chapitre 10 ; et Politique, livre 7, chapitre 17."
+      "text": "Aristote, Histoire des animaux, livre 7, chapitre 10 ; et Politique, livre 7, chapitre 17.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire des animaux",
+          "original": "Historia animalium"
+        },
+        {
+          "fr": "Politique",
+          "original": "Politica"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Augustin, La Cité de Dieu, livre 4 ; Aulu-Gelle, Nuits attiques, livre 16, chapitre 17."
+      "text": "Saint Augustin, La Cité de Dieu, livre 4 ; Aulu-Gelle, Nuits attiques, livre 16, chapitre 17.",
+      "tags": [
+        "fathers",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        },
+        {
+          "fr": "Nuits attiques",
+          "original": "Noctes Atticae"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Voyez Alexandre ab Alexandro, Jours géniaux, livre 2, chapitre 25."
+      "text": "Voyez Alexandre ab Alexandro, Jours géniaux, livre 2, chapitre 25.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Jours géniaux",
+          "original": "Genialium dierum"
+        }
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Solin, Des merveilles du monde, livre 1."
+      "text": "Solin, Des merveilles du monde, livre 1.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des merveilles du monde",
+          "original": "De mirabilibus mundi"
+        }
+      ]
     },
     {
       "marker": "(f)",
-      "text": "Cardan, De la variété des choses."
+      "text": "Cardan, De la variété des choses.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

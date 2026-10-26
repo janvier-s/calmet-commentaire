@@ -48,23 +48,45 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Στύρακα."
+      "text": "Στύρακα.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "לוט"
+      "text": "לוט",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Théophraste, Histoire des plantes, livre 8"
+      "text": "Théophraste, Histoire des plantes, livre 8",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire des plantes",
+          "original": "Historia plantarum"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "בטנים"
+      "text": "בטנים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Pline, livre 15, Chapitre 22"
+      "text": "Pline, livre 15, Chapitre 22",
+      "tags": [
+        "classical"
+      ]
     }
   ],
   "book_end_marker": null

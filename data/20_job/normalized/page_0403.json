@@ -69,11 +69,27 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "L'Hébreu : לחיך יטעם־לאכל. _Kaì λάρυγξ γεύεται βρῶσιν._"
+      "text": "L'Hébreu : לחיך יטעם־לאכל. _Kaì λάρυγξ γεύεται βρῶσιν._",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Pline, Histoire naturelle, livre 11, chapitre 37. _Intellectus saporum, ceteris est in prima lingua, homini et in palato._"
+      "text": "Pline, Histoire naturelle, livre 11, chapitre 37. _Intellectus saporum, ceteris est in prima lingua, homini et in palato._",
+      "tags": [
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

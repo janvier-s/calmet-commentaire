@@ -41,15 +41,37 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Hérodote, livre 3, chapitre 113."
+      "text": "Hérodote, livre 3, chapitre 113.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Aristophane, dans La Paix ; et Les Acharniens, acte 3, scène pau."
+      "text": "Aristophane, dans La Paix ; et Les Acharniens, acte 3, scène pau.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Paix",
+          "original": "Pax"
+        },
+        {
+          "fr": "Les Acharniens",
+          "original": "Acharnenses"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "L'Hébreu פיגול 70. Βέβηλον. D'autres : Τὸ μάσμα."
+      "text": "L'Hébreu פיגול 70. Βέβηλον. D'autres : Τὸ μάσμα.",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     }
   ],
   "book_end_marker": null,

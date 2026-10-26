@@ -55,11 +55,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "אנוכי שלמי אמוני ישראל"
+      "text": "אנוכי שלמי אמוני ישראל",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "L'auteur des Traditions hébraïques sur les livres des Rois."
+      "text": "L'auteur des Traditions hébraïques sur les livres des Rois.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Traditions hébraïques",
+          "original": "Traditiones hebraicae in Genesim"
+        }
+      ]
     }
   ],
   "book_end_marker": null

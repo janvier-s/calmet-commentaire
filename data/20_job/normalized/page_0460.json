@@ -33,19 +33,49 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Bibl. Sixti V."
+      "text": "Bibl. Sixti V.",
+      "tags": [
+        "versions",
+        "abbrev"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez Aristote, Histoire des animaux, livre 9, chapitre 31 ;\nÉlien, De la nature des animaux, livre 2, chapitre 49 ;\nPline, Histoire naturelle, livre 10, chapitre 12."
+      "text": "Voyez Aristote, Histoire des animaux, livre 9, chapitre 31 ;\nÉlien, De la nature des animaux, livre 2, chapitre 49 ;\nPline, Histoire naturelle, livre 10, chapitre 12.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire des animaux",
+          "original": "Historia animalium"
+        },
+        {
+          "fr": "De la nature des animaux",
+          "original": "De natura animalium"
+        },
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Psal : CXLVI. 9."
+      "text": "Psal : CXLVI. 9.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "saint Grégoire le Grand et saint Jean Chrysostome, sur ce passage ; Cassiodore, sur le Psaume 146 ; Saint Jérôme seu alius, au même endroit ; et d'autres."
+      "text": "saint Grégoire le Grand et saint Jean Chrysostome, sur ce passage ; Cassiodore, sur le Psaume 146 ; Saint Jérôme seu alius, au même endroit ; et d'autres.",
+      "tags": [
+        "verse",
+        "fathers",
+        "latin"
+      ]
     }
   ]
 }

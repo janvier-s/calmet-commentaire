@@ -55,15 +55,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "עיני לאה רכות"
+      "text": "עיני לאה רכות",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Ἀσθενεῖς."
+      "text": "Ἀσθενεῖς.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Justin, Dialogue avec Tryphon ; Saint Jérôme, lettre à Agéruchie."
+      "text": "Saint Justin, Dialogue avec Tryphon ; Saint Jérôme, lettre à Agéruchie.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Dialogue avec Tryphon",
+          "original": "Dialogus cum Tryphone"
+        }
+      ]
     }
   ],
   "book_end_marker": null

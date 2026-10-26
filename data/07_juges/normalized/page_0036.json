@@ -48,15 +48,37 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Les Septante : κατέλαβον. L'Hébreu : וימצאו"
+      "text": "Les Septante : κατέλαβον. L'Hébreu : וימצאו",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "ויקצצו את בהנות ידיו ורגליו"
+      "text": "ויקצצו את בהנות ידיו ורגליו",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Élien, Histoires variées, livre 2, chapitre 9 ; Cicéron, Des devoirs, livre 3."
+      "text": "Élien, Histoires variées, livre 2, chapitre 9 ; Cicéron, Des devoirs, livre 3.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoires variées",
+          "original": "Varia historia"
+        },
+        {
+          "fr": "Des devoirs",
+          "original": "De officiis"
+        }
+      ]
     }
   ],
   "book_end_marker": null

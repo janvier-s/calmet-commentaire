@@ -55,15 +55,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ita et l'ancienne version latine. Sepeli illam circa me uno sepulchro."
+      "text": "Ita et l'ancienne version latine. Sepeli illam circa me uno sepulchro.",
+      "tags": [
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Lex Papa in Décret. titul. de Sepult. in principio."
+      "text": "Lex Papa in Décret. titul. de Sepult. in principio.",
+      "tags": [
+        "commentators",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Décret",
+          "original": "Decretum Gratiani"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Cyprien, Testimoniorum ad Quirinum, livre 3, chapitre 1 ; et le livre De Opere et Eleemosynis."
+      "text": "Saint Cyprien, Testimoniorum ad Quirinum, livre 3, chapitre 1 ; et le livre De Opere et Eleemosynis.",
+      "tags": [
+        "fathers",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Testimoniorum ad Quirinum",
+          "original": "Testimonia ad Quirinum"
+        }
+      ]
     }
   ],
   "book_end_marker": null

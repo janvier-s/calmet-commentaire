@@ -55,19 +55,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Nombres 33:6."
+      "text": "Nombres 33:6.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Pline, Histoire naturelle, livre 6, chapitre 29."
+      "text": "Pline, Histoire naturelle, livre 6, chapitre 29.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Josèphe, Antiquités judaïques, livre 2, chapitre 5."
+      "text": "Josèphe, Antiquités judaïques, livre 2, chapitre 5.",
+      "tags": [
+        "rabbis",
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Nicolas de Lyre, d'après l'Hébreu."
+      "text": "Nicolas de Lyre, d'après l'Hébreu.",
+      "tags": [
+        "versions",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

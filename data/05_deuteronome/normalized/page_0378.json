@@ -62,19 +62,54 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "לב רגז"
+      "text": "לב רגז",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Καρδίαν ἀθυμοῦσαν."
+      "text": "Καρδίαν ἀθυμοῦσαν.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Καρδίαν ἑτέραν ἢ ἀμείλικτον."
+      "text": "Καρδίαν ἑτέραν ἢ ἀμείλικτον.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Irénée, livre 4 ;\nTertullien, Contre les Juifs, chapitre 11 ;\nSaint Cyprien, De la vanité des idoles ;\nLactance, livre 4, chapitre 18 ;\nSaint Cyrille, Catéchèses 13 ;\nSaint Athanase, livre 1, De l'incarnation J. ;\nSaint Léon le Grand ;\nSaint Augustin, Contre Fauste, livre 16, chapitre 22."
+      "text": "Saint Irénée, livre 4 ;\nTertullien, Contre les Juifs, chapitre 11 ;\nSaint Cyprien, De la vanité des idoles ;\nLactance, livre 4, chapitre 18 ;\nSaint Cyrille, Catéchèses 13 ;\nSaint Athanase, livre 1, De l'incarnation J. ;\nSaint Léon le Grand ;\nSaint Augustin, Contre Fauste, livre 16, chapitre 22.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Contre les Juifs",
+          "original": "Adversus Judaeos"
+        },
+        {
+          "fr": "De la vanité des idoles",
+          "original": "De idolorum vanitate"
+        },
+        {
+          "fr": "Catéchèses",
+          "original": "Catecheses"
+        },
+        {
+          "fr": "De l'incarnation",
+          "original": "De incarnatione et gratia"
+        },
+        {
+          "fr": "Contre Fauste",
+          "original": "Contra Faustum Manichaeum"
+        }
+      ]
     }
   ],
   "book_end_marker": null

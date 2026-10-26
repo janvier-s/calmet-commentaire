@@ -60,11 +60,18 @@
   "footnotes": [
     {
       "ref": "a",
-      "text": "[UNCERTAIN HEBREW]"
+      "text": "[UNCERTAIN HEBREW]",
+      "tags": [
+        "uncertain"
+      ]
     },
     {
       "ref": "b",
-      "text": "[UNCERTAIN GREEK] Sym. _Defecimus_."
+      "text": "[UNCERTAIN GREEK] Sym. _Defecimus_.",
+      "tags": [
+        "abbrev",
+        "uncertain"
+      ]
     }
   ],
   "book_end_marker": null

@@ -41,19 +41,44 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "As. II. 3."
+      "text": "As. II. 3.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "Horace, Satires, livre 1, Satire 5."
+      "text": "Horace, Satires, livre 1, Satire 5.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Satires",
+          "original": "Satirae"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Virgile, Énéide 2."
+      "text": "Virgile, Énéide 2.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "César, Guerre des Gaules, livre 2. Cæsari uno tempore omnia erant agenda, vexillum proponendum : quod erat insigne, cùm ad arma concurri oporteret. Virgile, _Ut belli signum Laurenti Turnus ab urbe Extulit._"
+      "text": "César, Guerre des Gaules, livre 2. Cæsari uno tempore omnia erant agenda, vexillum proponendum : quod erat insigne, cùm ad arma concurri oporteret. Virgile, _Ut belli signum Laurenti Turnus ab urbe Extulit._",
+      "tags": [
+        "classical",
+        "title",
+        "latin"
+      ],
+      "titles": [
+        {
+          "fr": "Guerre des Gaules",
+          "original": "De bello Gallico"
+        }
+      ]
     }
   ],
   "book_end_marker": null

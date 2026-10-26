@@ -40,15 +40,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Valère Maxime, livre 6, chapitre 8, exemple 2."
+      "text": "Valère Maxime, livre 6, chapitre 8, exemple 2.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Pausanias, livre 2."
+      "text": "Pausanias, livre 2.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Sénèque, Hercule sur l'Œta."
+      "text": "Sénèque, Hercule sur l'Œta.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Hercule sur l'Œta",
+          "original": "Hercules Oetaeus"
+        }
+      ]
     }
   ],
   "book_end_marker": null

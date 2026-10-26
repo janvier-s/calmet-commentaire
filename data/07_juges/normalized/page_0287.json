@@ -33,15 +33,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Par exemple Juges 11:27. Virgile, vers 11, Énéide, livre 1… Hoc illi curia Templum, Hæc sacris sedes epulis."
+      "text": "Par exemple Juges 11:27. Virgile, vers 11, Énéide, livre 1… Hoc illi curia Templum, Hæc sacris sedes epulis.",
+      "tags": [
+        "verse",
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Porphyre, De l'abstinence, livre 2, page 46."
+      "text": "Porphyre, De l'abstinence, livre 2, page 46.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De l'abstinence",
+          "original": "De abstinentia ab esu animalium"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Pline, Histoire naturelle, livre 36, chapitre 15."
+      "text": "Pline, Histoire naturelle, livre 36, chapitre 15.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     }
   ],
   "book_end_marker": null

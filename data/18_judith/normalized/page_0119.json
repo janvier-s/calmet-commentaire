@@ -47,15 +47,40 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Denys le Chartreux."
+      "text": "Denys le Chartreux.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Rabban ;\nHugues de Saint-Cher ;\nGlossa."
+      "text": "Rabban ;\nHugues de Saint-Cher ;\nGlossa.",
+      "tags": [
+        "rabbis",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Glossa",
+          "original": "Glossa ordinaria"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Homer. Iliad. χ. Οὓς τέκεν ἠΰκομος Θέτις ἀργυρόπεζα θεάων, Τοὺς δ᾽ ἄμφι τρητοῖσι γυναικῶν παῖδες Ἀχαιῶν."
+      "text": "Homer. Iliad. χ. Οὓς τέκεν ἠΰκομος Θέτις ἀργυρόπεζα θεάων, Τοὺς δ᾽ ἄμφι τρητοῖσι γυναικῶν παῖδες Ἀχαιῶν.",
+      "tags": [
+        "greek",
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Iliad",
+          "original": "Ilias"
+        }
+      ]
     }
   ],
   "book_end_marker": null

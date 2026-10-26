@@ -55,23 +55,53 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Textus."
+      "text": "Textus.",
+      "tags": [
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Saint Ambroise, D'Abraham, livre 2, chapitre 9."
+      "text": "Saint Ambroise, D'Abraham, livre 2, chapitre 9.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "D'Abraham",
+          "original": "De Abraham"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Augustin, La Cité de Dieu, livre 16, chapitre 24."
+      "text": "Saint Augustin, La Cité de Dieu, livre 16, chapitre 24.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Ταφείς."
+      "text": "Ταφείς.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "תקבר"
+      "text": "תקבר",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null,

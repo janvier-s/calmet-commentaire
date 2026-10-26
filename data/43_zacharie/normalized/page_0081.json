@@ -40,15 +40,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Tacite, Histoires, livre 5."
+      "text": "Tacite, Histoires, livre 5.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoires",
+          "original": "Historiae"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Κατακλαύσῃ ἡ δρυμὸς ὁ συμφυλ. Heb. יֵילֵל הַיַּעַר הַבָּצוּר"
+      "text": "Κατακλαύσῃ ἡ δρυμὸς ὁ συμφυλ. Heb. יֵילֵל הַיַּעַר הַבָּצוּר",
+      "tags": [
+        "hebrew",
+        "greek",
+        "abbrev"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Jérémie 50:44. Ecce quasi leo ascendit de superbia Jordanis ad pulchritudinem robustam."
+      "text": "Jérémie 50:44. Ecce quasi leo ascendit de superbia Jordanis ad pulchritudinem robustam.",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

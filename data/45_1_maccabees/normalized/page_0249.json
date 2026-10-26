@@ -60,19 +60,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Strabon, livre 16, page 518."
+      "text": "Strabon, livre 16, page 518.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Pline, Histoire naturelle, livre 5, chapitre 20."
+      "text": "Pline, Histoire naturelle, livre 5, chapitre 20.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Josèphe, livre 14, chapitres 7 et 8."
+      "text": "Josèphe, livre 14, chapitres 7 et 8.",
+      "tags": [
+        "rabbis"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "1 Machabées 5:25 ; 9:35."
+      "text": "1 Machabées 5:25 ; 9:35.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

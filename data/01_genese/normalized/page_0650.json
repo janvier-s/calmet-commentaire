@@ -55,19 +55,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "תירוש"
+      "text": "תירוש",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Pline, Histoire naturelle, livre 14, chapitres 19 et 20."
+      "text": "Pline, Histoire naturelle, livre 14, chapitres 19 et 20.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire naturelle",
+          "original": "Naturalis historia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "עמים"
+      "text": "עמים",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "לאמים"
+      "text": "לאמים",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

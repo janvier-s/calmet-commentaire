@@ -75,23 +75,47 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "[UNCERTAIN HEBREW] 70. K'ai [ILLEGIBLE] vi."
+      "text": "[UNCERTAIN HEBREW] 70. K'ai [ILLEGIBLE] vi.",
+      "tags": [
+        "versions",
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Tacite, Vie d'Agricola."
+      "text": "Tacite, Vie d'Agricola.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Vie d'Agricola",
+          "original": "De vita Iulii Agricolae"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Nombres 16:30."
+      "text": "Nombres 16:30.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Psaumes 54:16."
+      "text": "Psaumes 54:16.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(e)",
-      "text": "Job 31:31. _Quis det de carnibus ejus, ut saturemur ?_"
+      "text": "Job 31:31. _Quis det de carnibus ejus, ut saturemur ?_",
+      "tags": [
+        "verse",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

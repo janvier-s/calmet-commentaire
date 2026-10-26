@@ -48,15 +48,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "[UNCERTAIN HEBREW] יתנבא."
+      "text": "[UNCERTAIN HEBREW] יתנבא.",
+      "tags": [
+        "hebrew",
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Sénèque, Médée."
+      "text": "Sénèque, Médée.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Médée",
+          "original": "Medea"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "1 Rois 20:31."
+      "text": "1 Rois 20:31.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

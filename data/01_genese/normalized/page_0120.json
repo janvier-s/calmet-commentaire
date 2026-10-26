@@ -25,19 +25,49 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Saint Basile, Homélie 6 sur l'Hexaméron, 4 ;\nSaint Augustin, Confessions, livre 4, chapitre 3 ;\nLa Cité de Dieu, livre 5, chapitres 1, 2 et 3 ;\nThéodoret, Question 15 sur la Genèse, etc."
+      "text": "Saint Basile, Homélie 6 sur l'Hexaméron, 4 ;\nSaint Augustin, Confessions, livre 4, chapitre 3 ;\nLa Cité de Dieu, livre 5, chapitres 1, 2 et 3 ;\nThéodoret, Question 15 sur la Genèse, etc.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Hexaméron",
+          "original": "Hexaemeron"
+        },
+        {
+          "fr": "Confessions",
+          "original": "Confessiones"
+        },
+        {
+          "fr": "La Cité de Dieu",
+          "original": "De civitate Dei"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "מועד"
+      "text": "מועד",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Plato de anima mundi ὄργανα χρόνου."
+      "text": "Plato de anima mundi ὄργανα χρόνου.",
+      "tags": [
+        "greek",
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "-- Qui res hominum ac Deorum, Qui mare et terras, variisque mundum Temperat horis. Horace, livre 1, Ode 12."
+      "text": "-- Qui res hominum ac Deorum, Qui mare et terras, variisque mundum Temperat horis. Horace, livre 1, Ode 12.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     }
   ],
   "book_end_marker": null

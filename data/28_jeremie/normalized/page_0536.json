@@ -64,22 +64,46 @@
     {
       "footnote_ref": "^{(a)}",
       "text": "2 Rois 19:37.",
-      "marker": "^{(a)}"
+      "marker": "^{(a)}",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "footnote_ref": "^{(b)}",
       "text": "בגרות כמהם אשר אצל בית לחם",
-      "marker": "^{(b)}"
+      "marker": "^{(b)}",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "footnote_ref": "^{(c)}",
       "text": "Eusèbe, Démonstration évangélique, livre 7, chapitre 4 ; saint Justin, Dialogue avec Tryphon, page 304.",
-      "marker": "^{(c)}"
+      "marker": "^{(c)}",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Démonstration évangélique",
+          "original": "Demonstratio evangelica"
+        },
+        {
+          "fr": "Dialogue avec Tryphon",
+          "original": "Dialogus cum Tryphone"
+        }
+      ]
     },
     {
       "footnote_ref": "^{(d)}",
       "text": "ἐκάθισαν ἐν γῇ Βηρὸθ Χαμαὰμ. Édit. Rom. ἐν Γαβηρ-χαμάα.",
-      "marker": "^{(d)}"
+      "marker": "^{(d)}",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

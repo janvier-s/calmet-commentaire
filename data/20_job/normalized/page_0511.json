@@ -48,19 +48,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "פוך"
+      "text": "פוך",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Κέρας Ἀμαλθείας."
+      "text": "Κέρας Ἀμαλθείας.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Isaïe 54:11 ; 1 Paralipomènes 29:2."
+      "text": "Isaïe 54:11 ; 1 Paralipomènes 29:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Nombres 27:8 et Selden, De successionibus in bona, livre 1, chapitre 1."
+      "text": "Nombres 27:8 et Selden, De successionibus in bona, livre 1, chapitre 1.",
+      "tags": [
+        "verse",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De successionibus in bona",
+          "original": "De successionibus in bona defuncti ad leges Ebraeorum"
+        }
+      ]
     }
   ]
 }

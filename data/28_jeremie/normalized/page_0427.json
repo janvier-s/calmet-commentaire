@@ -52,15 +52,26 @@
   "footnotes": [
     {
       "id": "a",
-      "text": "[UNCERTAIN HEBREW]"
+      "text": "[UNCERTAIN HEBREW]",
+      "tags": [
+        "uncertain"
+      ]
     },
     {
       "id": "b",
-      "text": "Hieron. hic. Non mea voluntate, sed medicina ratione cogente."
+      "text": "Hieron. hic. Non mea voluntate, sed medicina ratione cogente.",
+      "tags": [
+        "fathers",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "id": "c",
-      "text": "Vide Jérémie 25:14. Isaïe 14:2. 19:19. Zacharie 2:8. Sophonie 2:11."
+      "text": "Vide Jérémie 25:14. Isaïe 14:2. 19:19. Zacharie 2:8. Sophonie 2:11.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

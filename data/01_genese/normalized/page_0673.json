@@ -63,11 +63,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Paul Vénitien, livre 1, chapitre 17."
+      "text": "Paul Vénitien, livre 1, chapitre 17.",
+      "tags": [
+        "commentators"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Belon, Observations, livre 3, chapitre 17."
+      "text": "Belon, Observations, livre 3, chapitre 17.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Observations",
+          "original": "Les observations de plusieurs singularitez et choses mémorables"
+        }
+      ]
     }
   ],
   "book_end_marker": null,

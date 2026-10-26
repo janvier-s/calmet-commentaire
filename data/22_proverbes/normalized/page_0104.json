@@ -48,19 +48,34 @@
   "footnotes": [
     {
       "marker": "(a",
-      "text": "[UNCERTAIN HEBREW]"
+      "text": "[UNCERTAIN HEBREW]",
+      "tags": [
+        "uncertain"
+      ]
     },
     {
       "marker": "(b,",
-      "text": "[UNCERTAIN GREEK], _id est vitam impiorum._"
+      "text": "[UNCERTAIN GREEK], _id est vitam impiorum._",
+      "tags": [
+        "latin",
+        "uncertain"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "[UNCERTAIN HEBREW] רמיה כף עשה ראש"
+      "text": "[UNCERTAIN HEBREW] רמיה כף עשה ראש",
+      "tags": [
+        "hebrew",
+        "uncertain"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "[UNCERTAIN GREEK] πενία ἄνδρα ταπεινοῖ."
+      "text": "[UNCERTAIN GREEK] πενία ἄνδρα ταπεινοῖ.",
+      "tags": [
+        "greek",
+        "uncertain"
+      ]
     }
   ],
   "book_end_marker": null

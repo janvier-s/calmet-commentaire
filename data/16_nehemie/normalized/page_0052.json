@@ -39,11 +39,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Jules César, Guerre des Gaules, livre 7."
+      "text": "Voyez Jules César, Guerre des Gaules, livre 7.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Guerre des Gaules",
+          "original": "De bello Gallico"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Le même, Guerre des Gaules, livre 1."
+      "text": "Le même, Guerre des Gaules, livre 1.",
+      "tags": [
+        "classical",
+        "title",
+        "ibid"
+      ],
+      "titles": [
+        {
+          "fr": "Guerre des Gaules",
+          "original": "De bello Gallico"
+        }
+      ]
     }
   ],
   "book_end_marker": null

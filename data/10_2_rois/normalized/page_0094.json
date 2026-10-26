@@ -40,19 +40,38 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Simb."
+      "text": "Simb.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "Bertram, De la république des Juifs, 8, 10."
+      "text": "Bertram, De la république des Juifs, 8, 10.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la république des Juifs",
+          "original": "De republica Judaeorum"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "2 Rois 20:26."
+      "text": "2 Rois 20:26.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Jonathan ;\nPat. ;\nTostat ;\nMénochius."
+      "text": "Jonathan ;\nPat. ;\nTostat ;\nMénochius.",
+      "tags": [
+        "rabbis",
+        "versions",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

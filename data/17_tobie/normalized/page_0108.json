@@ -48,19 +48,34 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Syrus hic."
+      "text": "Syrus hic.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "_Vide ad Cap._ VII. ℣. 19. _in Græco._"
+      "text": "_Vide ad Cap._ VII. ℣. 19. _in Græco._",
+      "tags": [
+        "verse",
+        "versions",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Οὓτως τίκτοι μισθὸν τῷ ἀνθρώπῳ τῷ συνελθόντι σοι, καὶ προσθεῖναι αὐτῷ δεῖ. _Ita l'Hébreu, Munster et Syrus._"
+      "text": "Οὓτως τίκτοι μισθὸν τῷ ἀνθρώπῳ τῷ συνελθόντι σοι, καὶ προσθεῖναι αὐτῷ δεῖ. _Ita l'Hébreu, Munster et Syrus._",
+      "tags": [
+        "greek",
+        "versions",
+        "commentators",
+        "latin"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Οὐ βλάπτομαι δοὺς αὐτῷ τὸ ἥμισυ, etc."
+      "text": "Οὐ βλάπτομαι δοὺς αὐτῷ τὸ ἥμισυ, etc.",
+      "tags": [
+        "greek"
+      ]
     }
   ],
   "book_end_marker": null

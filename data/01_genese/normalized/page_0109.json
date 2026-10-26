@@ -55,15 +55,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "טוב"
+      "text": "טוב",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Origène, Des principes, livre 4, chapitre 2."
+      "text": "Origène, Des principes, livre 4, chapitre 2.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Des principes",
+          "original": "De principiis"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Hugues de Saint-Victor ; Nicolas de Lyre ; Ménochius ; etc."
+      "text": "Hugues de Saint-Victor ; Nicolas de Lyre ; Ménochius ; etc.",
+      "tags": [
+        "fathers",
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null,

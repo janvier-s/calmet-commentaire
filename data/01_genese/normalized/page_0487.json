@@ -54,15 +54,32 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "אב רם המון"
+      "text": "אב רם המון",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Romains 4:11-12 et 9:7-8 Voyez Galates 3:14 et suivants"
+      "text": "Romains 4:11-12 et 9:7-8 Voyez Galates 3:14 et suivants",
+      "tags": [
+        "verse",
+        "old-ref"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Saint Justin, Dialogue avec Tryphon, etc."
+      "text": "Saint Justin, Dialogue avec Tryphon, etc.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Dialogue avec Tryphon",
+          "original": "Dialogus cum Tryphone"
+        }
+      ]
     }
   ],
   "book_end_marker": null,

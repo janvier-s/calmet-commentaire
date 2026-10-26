@@ -47,11 +47,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "אני הולך בדרך כל הארץ"
+      "text": "אני הולך בדרך כל הארץ",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Petron. Satyr."
+      "text": "Petron. Satyr.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Satyr",
+          "original": "Satyricon"
+        }
+      ]
     }
   ],
   "book_end_marker": null

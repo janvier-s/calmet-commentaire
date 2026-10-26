@@ -49,15 +49,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "עובל"
+      "text": "עובל",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Histoire des plantes, livre 9, chapitre 4."
+      "text": "Histoire des plantes, livre 9, chapitre 4.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Histoire des plantes",
+          "original": "Historia plantarum"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "שבא"
+      "text": "שבא",
+      "tags": [
+        "hebrew"
+      ]
     }
   ],
   "book_end_marker": null

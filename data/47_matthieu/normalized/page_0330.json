@@ -54,19 +54,41 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Voyez Matthieu 23:4."
+      "text": "Voyez Matthieu 23:4.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Κάρφ©, κερμάτιον ξύλε. Hesych. alias, φρύγανον. Sarmenta."
+      "text": "Κάρφ©, κερμάτιον ξύλε. Hesych. alias, φρύγανον. Sarmenta.",
+      "tags": [
+        "greek",
+        "classical",
+        "latin",
+        "explanation"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Horace, livre 1, satire 3."
+      "text": "Horace, livre 1, satire 3.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Jean Chrysostome, Homélie 24 ; saint Augustin, De Sermone Domini, livre 2, etc."
+      "text": "Saint Jean Chrysostome, Homélie 24 ; saint Augustin, De Sermone Domini, livre 2, etc.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De Sermone Domini",
+          "original": "De sermone Domini in monte"
+        }
+      ]
     }
   ],
   "book_end_marker": null

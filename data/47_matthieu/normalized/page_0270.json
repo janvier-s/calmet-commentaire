@@ -32,19 +32,37 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Jod."
+      "text": "Jod.",
+      "tags": []
     },
     {
       "marker": "(b)",
-      "text": "Mia κεραία."
+      "text": "Mia κεραία.",
+      "tags": [
+        "greek"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Voyez saint Jean Chrysostome et saint Hilaire sur le verset précédent."
+      "text": "Voyez saint Jean Chrysostome et saint Hilaire sur le verset précédent.",
+      "tags": [
+        "fathers"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Saint Jean Chrysostome ; Théophile d'Antioche ; saint Augustin, livre 1, Du sermon du Seigneur ; l'auteur de l'Ouvrage imparfait, sur ce passage, homélie 11, au commencement ; Grotius ; Maldonat ; Hammond ; Lucas Brugensis ; et d'autres."
+      "text": "Saint Jean Chrysostome ; Théophile d'Antioche ; saint Augustin, livre 1, Du sermon du Seigneur ; l'auteur de l'Ouvrage imparfait, sur ce passage, homélie 11, au commencement ; Grotius ; Maldonat ; Hammond ; Lucas Brugensis ; et d'autres.",
+      "tags": [
+        "fathers",
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Du sermon du Seigneur",
+          "original": "De sermone Domini in monte"
+        }
+      ]
     }
   ],
   "book_end_marker": null

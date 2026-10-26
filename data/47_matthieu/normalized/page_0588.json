@@ -54,15 +54,35 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Vide 1. Cor. xv. 27. Ephes. v. 13. Hebr. 1. 17. etc."
+      "text": "Vide 1. Cor. xv. 27. Ephes. v. 13. Hebr. 1. 17. etc.",
+      "tags": [
+        "verse",
+        "abbrev",
+        "old-ref",
+        "bad-ref"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Voyez saint Augustin, De la Genèse à la lettre, livre 9, chapitre 19."
+      "text": "Voyez saint Augustin, De la Genèse à la lettre, livre 9, chapitre 19.",
+      "tags": [
+        "fathers",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la Genèse à la lettre",
+          "original": "De Genesi ad litteram"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Théophylacte ;\nEuthyme, sur ce passage ;\nMarc 9:4-5."
+      "text": "Théophylacte ;\nEuthyme, sur ce passage ;\nMarc 9:4-5.",
+      "tags": [
+        "verse",
+        "fathers"
+      ]
     }
   ],
   "book_end_marker": null

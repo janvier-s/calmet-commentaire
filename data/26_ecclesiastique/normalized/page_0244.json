@@ -48,19 +48,45 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Ovide, De Arte, livre 2."
+      "text": "Ovide, De Arte, livre 2.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De Arte",
+          "original": "Ars amatoria"
+        }
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Virgil. 4. Georgic."
+      "text": "Virgil. 4. Georgic.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Georgic",
+          "original": "Georgica"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Horace."
+      "text": "Horace.",
+      "tags": [
+        "classical"
+      ]
     },
     {
       "marker": "(d)",
-      "text": "Actes 12:23."
+      "text": "Actes 12:23.",
+      "tags": [
+        "verse"
+      ]
     }
   ],
   "book_end_marker": null

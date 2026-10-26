@@ -32,15 +32,31 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "קטר"
+      "text": "קטר",
+      "tags": [
+        "hebrew"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Macrobe, livre 3, chapitre 19, Saturnales. Dub."
+      "text": "Macrobe, livre 3, chapitre 19, Saturnales. Dub.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Saturnales",
+          "original": "Saturnalia"
+        }
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Guise."
+      "text": "Guise.",
+      "tags": [
+        "commentators"
+      ]
     }
   ],
   "book_end_marker": null

@@ -25,11 +25,24 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "Marc 1:2."
+      "text": "Marc 1:2.",
+      "tags": [
+        "verse"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "Schickard, Du droit royal, chapitre 3, Théorème 9."
+      "text": "Schickard, Du droit royal, chapitre 3, Théorème 9.",
+      "tags": [
+        "commentators",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "Du droit royal",
+          "original": "Jus regium Hebraeorum"
+        }
+      ]
     }
   ],
   "book_end_marker": null,

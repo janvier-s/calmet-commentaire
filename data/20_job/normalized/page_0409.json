@@ -40,19 +40,39 @@
   "footnotes": [
     {
       "marker": "(a)",
-      "text": "[UNCERTAIN GREEK]"
+      "text": "[UNCERTAIN GREEK]",
+      "tags": [
+        "uncertain"
+      ]
     },
     {
       "marker": "(b)",
-      "text": "_Silius de Ierone, Rege Siculo_ : Vos etiam tandem Siculis contra arma Tyrannis Juvisse egregium, etc."
+      "text": "_Silius de Ierone, Rege Siculo_ : Vos etiam tandem Siculis contra arma Tyrannis Juvisse egregium, etc.",
+      "tags": [
+        "classical",
+        "latin"
+      ]
     },
     {
       "marker": "(c)",
-      "text": "Sénèque, De la clémence, chapitre 11."
+      "text": "Sénèque, De la clémence, chapitre 11.",
+      "tags": [
+        "classical",
+        "title"
+      ],
+      "titles": [
+        {
+          "fr": "De la clémence",
+          "original": "De clementia"
+        }
+      ]
     },
     {
       "marker": "(d)",
-      "text": "[UNCERTAIN HEBREW]"
+      "text": "[UNCERTAIN HEBREW]",
+      "tags": [
+        "uncertain"
+      ]
     }
   ]
 }
