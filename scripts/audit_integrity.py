@@ -17,6 +17,28 @@ ORDER_OK = json.loads((STUDIUM / "verse_ref_order_ok.json").read_text(encoding="
     if (STUDIUM / "verse_ref_order_ok.json").exists() else {}  # fix_verse_refs.py: out of order on purpose
 WHICH_BOOK = re.compile(r"\b(?:Rois|Paralipomènes|Machabées|Esdras),?\s+chapitres?\s+\d+(?::\d+(?:(?:-|, )\d+)*)?")
 
+def stray_underscore(text):
+    """The first "_" of `text` out of place, as (its index, what is wrong), or None. Each "_" opens
+    italics (a word follows it, after a space, a bracket or "…") or closes them (straight after a word
+    or a stop); one that opens while they are open, or closes while they are closed, is out of place,
+    and italics still open at the end are the last opener's."""
+    opened = None
+    for m in re.finditer("_", text):
+        i = m.start()
+        prev = text[i - 1] if i else " "
+        nxt = text[i + 1] if i + 1 < len(text) else " "
+        opener = i == 0 or prev.isspace() or prev in "([«\"“‘'’…"
+        if opened is None:
+            if not opener:
+                return i, "“_” closing italics that were not opened"
+            opened = i
+        elif not opener or nxt.isspace() or nxt in ".,;:!?)»”":
+            opened = None
+        else:
+            return i, "“_” opening italics while they are open (a closing “_” missing before it?)"
+    return None if opened is None else (opened, "italics opened here and never closed")
+
+
 def reviews():
     """Every book's review (data/<book>/review.json, review_store.Progress): statuses and false positives."""
     out = []
@@ -672,11 +694,15 @@ def audit_book(key, info, slug, published=True):
         for sec, i, e, k in fields:
             text = str(e.get(k) or "")
             # a comment's italics may run over the page turn (italic_seam checks those)
-            if text.count("_") % 2 and not (sec == "commentary" and k == "french_commentary" and i in (0, len(cs) - 1)):
-                pos = [m.start() for m in re.finditer("_", text)]
-                item("stray_underscore", vol, int(n[5:9]),
-                     f"{len(pos)} “_” in {k} ({sec} {i + 1}), one without its pair: italics left open or closed twice? "
-                     f"“{text[max(0, pos[-1] - 40):pos[-1] + 20]}”", where=dict(section=sec, index=i, field=k))
+            if "_" not in text or (sec == "commentary" and k == "french_commentary" and i in (0, len(cs) - 1)):
+                continue
+            bad = stray_underscore(text)
+            if bad is None:
+                continue
+            at, why = bad
+            item("stray_underscore", vol, int(n[5:9]),
+                 f"Italics in {k} ({sec} {i + 1}): {why}: “{text[max(0, at - 40):at + 25]}”",
+                 where=dict(section=sec, index=i, field=k))
     r["empty_commentary"], r["caps_in_commentary"], r["broken_markers"] = empty_notes, caps_runs, odd_marks
 
     # ---------- assembled chapters & notes (from normalized/) ----------
