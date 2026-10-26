@@ -41,11 +41,25 @@ function fillFilters() {
   $("f-kind").replaceChildren(opt("", `🔎 All types (${kindTotal})`),
     ...kinds.map((k) => opt(k, `${CAT_EMOJI[CAT_OF[k]] || "💬"} ${sentence(label(k))} (${c.kind[k] || 0})`)));
   // the book chosen at the top is the book filter: each book with how many issues it has of this list
-  for (const o of $("vol").options) o.textContent = c.book[o.value] ? `${o.value} (${c.book[o.value]})` : o.value;
+  for (const o of $("vol").options) if (o.value) o.textContent = c.book[o.value] ? `${o.value} (${c.book[o.value]})` : o.value;
+  volShown();
   $("f-status").value = Q.status;
   $("f-cat").value = Q.cat || "";
   $("f-kind").value = Q.kind || "";
 }
+
+/** The book menu: "All books" on top (chosen while the list spans every book, with the book of the page
+ *  shown beside it), else the page's book. */
+function volShown() {
+  let all = $("vol").querySelector('option[value=""]');
+  if (!all) $("vol").prepend(all = el("option", { value: "" }));
+  const total = Q.counts ? Object.values(Q.counts.book).reduce((a, b) => a + b, 0) : 0;
+  all.textContent = `📚 All books (${total})` + (Q.book || !S.vol ? "" : ` · ${S.vol}`);
+  const v = Q.book ? S.vol : "";
+  $("vol").value = v;
+  return v;
+}
+hooks.volShown = volShown;
 
 async function refreshCounts() {
   const r = await query(Q);
@@ -291,6 +305,16 @@ export function openItem(id) {
 /** Another book chosen at the top: its issues (same status and category; the type kept if it has
  *  any there), from the first; a book without any opens at its first page. */
 hooks.switchBook = async (vol) => {
+  if (!vol) {  // "All books": the same filters over every book, staying on this page
+    const r = await query({ status: Q.status, cat: Q.cat, kind: Q.kind, book: null });
+    Object.assign(Q, { book: null, items: r.body.items, counts: r.body.counts });
+    Q.idx = Math.max(0, Q.items.findIndex((x) => x.id === Q.current));
+    fillFilters();
+    updateCounter();
+    renderIssues();
+    remember();
+    return true;
+  }
   const f = { status: Q.status, cat: Q.cat, kind: Q.kind, book: vol };
   let r = await query(f);
   if (!r.body.items.length && f.kind) { f.kind = null; r = await query(f); }

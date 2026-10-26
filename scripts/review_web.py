@@ -488,7 +488,7 @@ def main(argv):
     elif "--fresh" not in argv:
         # where the last session stopped: its page, and with no filters asked for, its filters and issue
         saved = read_state(data / ".page_editor_state.json")
-        if saved.get("book"):
+        if saved.get("book") and start.get("book") in (None, saved["book"]):  # a --book elsewhere starts there
             start["vol"], start["page"] = saved["book"], saved.get("page")
             if not FILTER_FLAGS & set(argv) and isinstance(saved.get("filters"), dict):
                 f = saved["filters"]

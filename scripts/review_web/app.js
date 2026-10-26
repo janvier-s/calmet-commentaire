@@ -73,7 +73,7 @@ export async function loadPage(vol, page) {
 }
 
 export function updateTop() {
-  $("vol").value = S.vol;
+  $("vol").value = hooks.volShown ? hooks.volShown() : S.vol;
   $("page-num").value = S.page;
   const i = S.pages.indexOf(S.page);
   $("page-prev").disabled = !(i > 0);
@@ -183,7 +183,7 @@ const TAGS = { chapter: "ch", verse_number: "v", commentary_id: "#", verse_ref: 
  *  text as typed. */
 export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [], valueAt: null, afterSave: null,
                        blockTools: null, addTop: null, addBelow: null, addEnd: null, footnoteTags: null,
-                       remember: null };
+                       remember: null, volShown: null };
 
 S.reveal = new Set();  // empty optional fields the user asked to see ("+ annotations")
 const key = (path) => path.join("/");
@@ -407,7 +407,7 @@ function setupTop() {
   for (const v of S.config.volumes) $("vol").append(el("option", { value: v, textContent: v }));
   $("vol").onchange = async () => {
     const vol = $("vol").value;
-    $("vol").value = S.vol;  // until the change is through (it may be cancelled)
+    $("vol").value = hooks.volShown ? hooks.volShown() : S.vol;  // until the change is through (it may be cancelled)
     if (hooks.switchBook) hooks.switchBook(vol); else go(vol, null);
   };
   $("page-num").onkeydown = (e) => { if (e.key === "Enter") go(S.vol, parseInt($("page-num").value, 10)); };
