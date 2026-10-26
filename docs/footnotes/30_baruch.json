@@ -1,0 +1,939 @@
+{
+ "summary": {
+  "notes": 192,
+  "changed": 58,
+  "flags": {
+   "hebrew": 1,
+   "scan-unread": 31,
+   "greek": 29,
+   "expand-changed-numbers": 1,
+   "reference-not-in-vulgate": 1,
+   "uncertain": 1
+  }
+ },
+ "notes": [
+  {
+   "id": "0008(d)",
+   "page": "page_0008",
+   "marker": "(d)",
+   "text": "Theodoret. hic. Hugo Liran. Sixtus. Castro. Emm. Sa. Cornel. Sanst. Torniel. etc.",
+   "proposed": "Théodoret, sur ce passage ; Hugues de Saint-Cher ; Nicolas de Lyre ; Sixtus ; Castro ; Emmanuel Sa ; Cornelius a Lapide ; Sanctius ; Torniel, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0008(e)",
+   "page": "page_0008",
+   "marker": "(e)",
+   "text": "Maldon. Usser. ad an. 3409. Jun. Grot.",
+   "proposed": "Maldonat ; Ussérius, ad an. 3409 ; Junius ; Grotius.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0009(a)",
+   "page": "page_0009",
+   "marker": "(a)",
+   "text": "La préposition heb. ב se prend souvent pour מן Vide Lévitique 8:32. Exode 12:43* et 2 Paralipomènes 16:6.",
+   "proposed": "La préposition heb. ב se prend souvent pour מן Vide Lévitique 8:32. Exode 12:43* et 2 Paralipomènes 16:6.",
+   "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+   ],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0009(b)",
+   "page": "page_0009",
+   "marker": "(b)",
+   "text": "Jun Usser. Anglo-Duacens.",
+   "proposed": "Junius ; Ussérius ; Anglo-Douaisiens.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0009(f)",
+   "page": "page_0009",
+   "marker": "(f)",
+   "text": "Boch. Phaleg. lib. I. c. 8 Vide si placet, Cellar. Geog. lib. 3. c.16. p. 460.",
+   "proposed": "Bochart, Phaleg, livre 1, chapitre 8. Voyez au besoin, Cellarius, Geographia, livre 3, chapitre 16, page 460.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0010(b)",
+   "page": "page_0010",
+   "marker": "(b)",
+   "text": "4 Rois 22:4 et 23:4, 24. Par. XXXIV. 9.",
+   "proposed": "4 Rois 22:4 et 23:4, 24 ; 2 Paralipomènes 34:9.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0011(b)",
+   "page": "page_0011",
+   "marker": "(b)",
+   "text": "Σκεύη ἀργυρᾶ ἃ ἐποίησε Σεδεκίας υἱὸς Ἰωσία βασιλεὺς Ἰύδα, (℣. 9.) Μετὰ τὸ ἀποικίσαι Ναβυχοδονόσορ † Ἰεχονίαν. Je retranche simplement le relatif ἃ qui est entre ἀργυρᾶ, et où il a pu très aisément se glisser.",
+   "proposed": "Σκεύη ἀργυρᾶ ἃ ἐποίησε Σεδεκίας υἱὸς Ἰωσία βασιλεὺς Ἰούδα, (℣. 9.) Μετὰ τὸ ἀποικίσαι Ναβυχοδονόσορ † Ἰεχονίαν. Je retranche simplement le relatif ἃ qui est entre ἀργυρᾶ, et où il a pu très aisément se glisser.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Ἰύδα -> Ἰούδα",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0012(c)",
+   "page": "page_0012",
+   "marker": "(c)",
+   "text": "Vide Liran. in uit. Jerem. cfa Abul. in Reg. xxv. 9. 37. ex tradit. Hebræorum. Sanft. hic. et nos in Dan. Præfat.",
+   "proposed": "Voyez Nicolas de Lyre, in uit. Jerem. ; comparez Tostat, in Reg. 25:9, 37, d'après les traditions hébraïques ; Sanctius, sur ce passage ; et nous, Préface sur Daniel.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0012(f)",
+   "page": "page_0012",
+   "marker": "(f)",
+   "text": "Baduell. hic. Grot. Vide Isaïe 62:1.",
+   "proposed": "Baduellus, sur ce passage ; Grotius. Voyez Isaïe 62:1.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0013(b)",
+   "page": "page_0013",
+   "marker": "(b)",
+   "text": "Α'νδράσιν Ι'υδα. Ita et infra cap. 2.",
+   "proposed": "Ἀνδράσιν Ἰυδα. Ita et infra cap. 2.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Α'νδράσιν -> Ἀνδράσιν, Ι'υδα -> Ἰυδα"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0013(c)",
+   "page": "page_0013",
+   "marker": "(c)",
+   "text": "℣. I. Ε' σκεδάσθημεν πρὸς τὸ μὴ ἀκέειν. Grot. hic. Σχεδιάζειν inconsultè aliquid agere.",
+   "proposed": "Verset 1. Ἐ ἐσκεδάσθημεν πρὸς τὸ μὴ ἀκούειν. Grotius, sur ce passage. Σχεδιάζειν inconsultè aliquid agere.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Ε' -> Ἐ, ἀκέειν -> ἀκούειν, σκεδάσθημεν -> ἐσκεδάσθημεν",
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0014(a)",
+   "page": "page_0014",
+   "marker": "(a)",
+   "text": "_Voyez_ Dan. III. _insra_.",
+   "proposed": "Voyez Daniel 3 ci-dessous.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": [
+    "expand-changed-italics"
+   ]
+  },
+  {
+   "id": "0014(b)",
+   "page": "page_0014",
+   "marker": "(b)",
+   "text": "_Vide_ Sanct. hic. Ribull. Tunc operata Deo quibus discumbeo in herba.",
+   "proposed": "Voyez Sanctius, sur ce passage ; Ribera. Tunc operata Deo quibus discumbeo in herba.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": [
+    "expand-changed-italics"
+   ]
+  },
+  {
+   "id": "0014(c)",
+   "page": "page_0014",
+   "marker": "(c)",
+   "text": "עבד _habad_. Ministrare, operari. Il se prend très souvent pour le culte qu'on rend au Seigneur. Exode 10:26. 2:9. 4:12, 25. etc.",
+   "proposed": "עבד habad. Ministrare, operari. Il se prend très souvent pour le culte qu'on rend au Seigneur. Exode 10:26 ; 2:9 ; 4:12, 25, etc.",
+   "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "abbreviations written out"
+   ],
+   "flags": [
+    "expand-changed-italics"
+   ]
+  },
+  {
+   "id": "0016(c)",
+   "page": "page_0016",
+   "marker": "(c)",
+   "text": "Daniel 9:4… 12. 13. et sequ.",
+   "proposed": "Daniel 9:4… 12-13 et suivants.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0017(b)",
+   "page": "page_0017",
+   "marker": "(b)",
+   "text": "Theodor. hic. Ἐγρήγορεν Θεὸς τιμωρίαν καλὴν. Τῆς δὲ μακαριότητος αἰτία, ὅτι ὅσα τῆς θείας χάριτος κατῆρξεν. Vide Ierem. I. II. XXXI. 28. XLIV. 29. Lamentations 1:14. Daniel 9:14.",
+   "proposed": "Theodor. hic. Ἐγρήγορεν Θεὸς τιμωρίαν καλὴν. Τῆς δὲ μακαριότητος αἰτία, ὅτι ὅσα τῆς θείας χάριτος κατῆρξεν. Vide Ierem. I. II. XXXI. 28. XLIV. 29. Lamentations 1:14. Daniel 9:14.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "written out, but a number changed or added: Théodoret, sur ce passage. Ἐγρήγορεν Θεὸς τιμωρίαν καλὴν. Τῆς δὲ μακαριότητος αἰτία, ὅτι ὅσα τῆς θείας χάριτος κατῆρξεν. Voyez Jérémie 1:11 ; 31:28 ; 44:29 ; Lamentations 1:14 ; Daniel 9:14."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
+  },
+  {
+   "id": "0018(a)",
+   "page": "page_0018",
+   "marker": "(a)",
+   "text": "Theod. Hugo.",
+   "proposed": "Théodoret ; Hugues de Saint-Cher.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0018(b)",
+   "page": "page_0018",
+   "marker": "(b)",
+   "text": "Liran. Dionys.",
+   "proposed": "Nicolas de Lyre ; Denys le Chartreux.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0019(b)",
+   "page": "page_0019",
+   "marker": "(b)",
+   "text": "Theodoret. hic : Ψυχὴ γὰρ ἡ λυπεμένη ἐπὶ τὸ μέγεθος βαδίζει. Πνεῦμα κύπτον, καὶ ἀσθενὲς, ὀφθαλμοὶ ἐκλείποντες, καὶ ψυχὴ πεινῶσα.",
+   "proposed": "Théodoret, sur ce passage : Ψυχὴ γὰρ ἡ λυπουμένη ἐπὶ τὸ μέγεθος βαδίζει. Πνεῦμα κύπτον, καὶ ἀσθενὲς, ὀφθαλμοὶ ἐκλείποντες, καὶ ψυχὴ πεινῶσα.",
+   "why": [
+    "Greek checked against the Septuagint, Baruch 2:18: λυπεμένη -> λυπουμένη",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0020(a)",
+   "page": "page_0020",
+   "marker": "(a)",
+   "text": "Οὔτε ταῖς ἡμετέραις δικαιοσύναις, ὐτε ταῖς τῶν πατέρων ἡμετέρων θαῤῥοῦντες, οὕτω τινὸς ἀξιοῦμεν τυχεῖν.",
+   "proposed": "Οὔτε ταῖς ἡμετέραις δικαιοσύναις, ὐτε ταῖς τῶν πατέρων ἡμετέρων θαρροῦντες, οὕτω τινὸς ἀξιοῦμεν τυχεῖν.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: θαῤῥοῦντες -> θαρροῦντες"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0020(b)",
+   "page": "page_0020",
+   "marker": "(b)",
+   "text": "Græci Codd. κλίνετε τ. νόμον. Lege τὸν ἄμενον.",
+   "proposed": "Græci Codd. κλίνετε τ. νόμον. Lege τὸν ἄμενον.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0021(c)",
+   "page": "page_0021",
+   "marker": "(c)",
+   "text": "Εν ἀποτολῇ. Syr. et Theodoret. _in captivitate._ Grot. _in pestidentia à Deo immissa._ Confer Jérémie 32:36.",
+   "proposed": "Ἐν ἀποτολῇ. Syr. et Theodoret. _in captivitate._ Grot. _in pestidentia à Deo immissa._ Confer Jérémie 32:36.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Εν -> Ἐν"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0022(b)",
+   "page": "page_0022",
+   "marker": "(b)",
+   "text": "H Βομβῦσις ἡ μέγαλη, ἡ ἐκτείνεῖ ἀυτὸν.",
+   "proposed": "H Βομβῦσις ἡ μέγαλη, ἡ ἐκτενεῖ αὐτὸν.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ἀυτὸν -> αὐτὸν, ἐκτείνεῖ -> ἐκτενεῖ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0022(d)",
+   "page": "page_0022",
+   "marker": "(d)",
+   "text": "Aq. Jérémie 35:7. 32:39. Δ' ἀποτρέψουσι ἀπὸ τῆς ῥαχῆς τῆς σκληρᾶς.",
+   "proposed": "Aq. Jérémie 35:7. 32:39. Δ' ἀποτρέψουσι ἀπὸ τῆς ῥαχῆς τῆς σκληρᾶς.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0023(a)",
+   "page": "page_0023",
+   "marker": "(a)",
+   "text": "Dionys. Hug. Lyr. Mald. Castr. Sanct. et Jérémie 31:31-32.",
+   "proposed": "Denys le Chartreux ; Hugues de Saint-Cher ; Nicolas de Lyre ; Maldonat ; Castro ; Sanctius ; et Jérémie 31:31-32.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0025(a)",
+   "page": "page_0025",
+   "marker": "(a)",
+   "text": "Vide infrà ℣. 11. Ezech. XXXVII. 5. Dan. 3. XXIV. 31. Isaiæ. 26. LXXVIII. 9. CXII. 1. 2. Lamentations 3:6.",
+   "proposed": "Voyez ci-dessous verset 11 ; Ézéchiel 37:5 ; Daniel 3 ; Matthieu 24:31 ; Isaïe 26 ; Psaumes 78:9 ; 112:1-2 ; Lamentations 3:6.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0025(d)",
+   "page": "page_0025",
+   "marker": "(d)",
+   "text": "Οὓτι ἀπεστρέψαμεν ἐπὶ καρδίαν ἡμῶν πᾶσαν ἀδικίαν πατέρων ἡμῶν.",
+   "proposed": "Οὓτι ἀπεστρέψαμεν ἐπὶ καρδίαν ἡμῶν πᾶσαν ἀδικίαν πατέρων ἡμῶν.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0026(a)",
+   "page": "page_0026",
+   "marker": "(a)",
+   "text": "Εἰς ἀρὰν, et εἰς ὀφλεισιν.",
+   "proposed": "Εἰς ἀρὰν, et εἰς ὀφλεισιν.",
+   "why": [
+    "Greek checked against the Septuagint, Baruch 3:8"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0027(a)",
+   "page": "page_0027",
+   "marker": "(a)",
+   "text": "Πᾶ ἐςὶ μακρ-βιωσις καὶ ζωὴ.",
+   "proposed": "Πᾶ ἐστὶ μακρ-βίωσις καὶ ζωὴ.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ἐςὶ -> ἐστὶ",
+    "Greek spelling checked against a Greek dictionary: βιωσις -> βίωσις"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0031(a)",
+   "page": "page_0031",
+   "marker": "(a)",
+   "text": "ὁ καταςησας την γῆν, εἰς τὸν αἰῶνα χρόνον.",
+   "proposed": "ὁ καταςησας τὴν γῆν, εἰς τὸν αἰῶνα χρόνον.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: την -> τὴν"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0032(c)",
+   "page": "page_0032",
+   "marker": "(c)",
+   "text": "Vide Tertull. contra Praxeam. c. 6. Cyprian. contra Jud. lib. 2. c. 5. Euseb. Demonstrat. lib. 5. c. 19. Ambros. lib. 1. de fide c. 2. Hilar. de Trinit. l. 5. Nazianz. orat. 40. de Theolog. Basil. l. 4. contra Eunom. Cyrill. Alex. lib. x. contra Julian.",
+   "proposed": "Voyez Tertullien, Contre Praxéas, chapitre 6 ; saint Cyprien, Contre les Juifs, livre 2, chapitre 5 ; Eusèbe, Démonstration évangélique, livre 5, chapitre 19 ; saint Ambroise, livre 1, De la foi, chapitre 2 ; saint Hilaire, De la Trinité, livre 5 ; saint Grégoire de Nazianze, Discours 40, De la théologie ; saint Basile, livre 4, Contre Eunome ; saint Cyrille d'Alexandrie, livre 10, Contre Julien.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0032(d)",
+   "page": "page_0032",
+   "marker": "(d)",
+   "text": "Aug. lib. 18. de Civit. c. 33. Bernard. serm. 13. in Cantic. et alii. Hugo. Lyr. Dionys. Cornel. Sanst. Badvel. etc.",
+   "proposed": "Saint Augustin, livre 18, La Cité de Dieu, chapitre 33 ; saint Bernard, Sermon 13 sur le Cantique des cantiques ; et d'autres ; Hugues de Saint-Cher ; Nicolas de Lyre ; Denys le Chartreux ; Cornelius a Lapide ; Sanctius ; Baduellus, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0032(e)",
+   "page": "page_0032",
+   "marker": "(e)",
+   "text": "Græc. Μετὰ τοῦτο ἐπὶ τῆς γῆς ὤφθη, καὶ ἐν τοῖς ἀνθρώποις συνανεστράφη.",
+   "proposed": "Le Grec : Μετὰ τοῦτο ἐπὶ τῆς γῆς ὤφθη, καὶ ἐν τοῖς ἀνθρώποις συνανεστράφη.",
+   "why": [
+    "Greek checked against the Septuagint, Baruch 3:38",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0036(e)",
+   "page": "page_0036",
+   "marker": "(e)",
+   "text": "Καὶ ἀπὸ τῆι θυγατρῶν τῆς μονόπαιδος ἀφείλαντο.",
+   "proposed": "Καὶ ἀπὸ τῆι θυγατρῶν τῆς μονόπαιδος ἀφείλαντο.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0037(a)",
+   "page": "page_0037",
+   "marker": "(a)",
+   "text": "Μετὰ δόξης μεγάλης, καὶ λαμπρότητος τῆς αἰωνίυ.",
+   "proposed": "Μετὰ δόξης μεγάλης, καὶ λαμπρότητος τῆς αἰωνίυ.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0038(b)",
+   "page": "page_0038",
+   "marker": "(b)",
+   "text": "Και παρὰ τῷ ἐπαγόντι ἐφ᾽ ὑμᾶς τὰ κακὰ.",
+   "proposed": "Καὶ παρὰ τῷ ἐπαγόντι ἐφ᾽ ὑμᾶς τὰ κακὰ.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Και -> Καὶ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0039(c)",
+   "page": "page_0039",
+   "marker": "(c)",
+   "text": "καὶ τὸ γαυρίαμα αὐτῆς ἰςαι εἰς πένθος.",
+   "proposed": "καὶ τὸ γαυρίαμα αὐτῆς ἰςαι εἰς πένθος.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0041(a)",
+   "page": "page_0041",
+   "marker": "(a)",
+   "text": "Περιβαλῆι τὴν διπλοΐδα etc. παρὰ τοῦ Θεοῦ δικαιοσύνην.",
+   "proposed": "Περιβολῆι τὴν διπλοΐδα etc. παρὰ τοῦ Θεοῦ δικαιοσύνην.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Περιβαλῆι -> Περιβολῆι",
+    "Greek checked against the Septuagint, Baruch 4:9"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0041(b)",
+   "page": "page_0041",
+   "marker": "(b)",
+   "text": "מעיל Passim. Vide Sanct. Hiec.",
+   "proposed": "מעיל Passim. Voyez Sanctius, sur ce passage.",
+   "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0043(b)",
+   "page": "page_0043",
+   "marker": "(b)",
+   "text": "Isaï. XLVI. 20.",
+   "proposed": "Isaïe 46:20.",
+   "why": [
+    "Isaïe 46:20 does not exist in the Vulgate"
+   ],
+   "flags": [
+    "reference-not-in-vulgate"
+   ]
+  },
+  {
+   "id": "0043(e)",
+   "page": "page_0043",
+   "marker": "(e)",
+   "text": "3. Esdr. V. 2. Voyez aussi Joseph. Antiq. lib. XI. c. 4.",
+   "proposed": "1 Esdras 5:2. Voyez aussi Josèphe, Antiquités judaïques, livre 11, chapitre 4.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0044(c)",
+   "page": "page_0044",
+   "marker": "(c)",
+   "text": "Ovid. Amor. lib. 2. Eleg. 16.",
+   "proposed": "Ovide, Amours, livre 2, Élégie 16.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0045(a)",
+   "page": "page_0045",
+   "marker": "(a)",
+   "text": "Édit. Complut. et Polyglott. Paris. et Huet. Liran. Non est in Édit. Rom. nec apud Theodoret.",
+   "proposed": "Édition de Complute et Polyglotte de Paris ; et Huet ; Nicolas de Lyre. Ce n'est pas dans l'édition romaine, ni dans Théodoret.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0046(b)",
+   "page": "page_0046",
+   "marker": "(b)",
+   "text": "Vide Cornel. et Sanct. hic, et si lubet, Not. Menag. in Laërt. p. 375.",
+   "proposed": "Voyez Cornelius a Lapide et Sanctius, sur ce passage ; et au besoin, Ménage, Notes sur Diogène Laërce, page 375.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0046(d)",
+   "page": "page_0046",
+   "marker": "(d)",
+   "text": "Vide Amos 5:26. Isaïe 46:1. Jérémie 10:5. Clem. Alex. Protrep. p. 49. Apul. lib. XI. etc.",
+   "proposed": "Voyez Amos 5:26 ; Isaïe 46:1 ; Jérémie 10:5 ; saint Clément d'Alexandrie, Protreptique, page 49 ; Apulée, livre 11, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0047(a)",
+   "page": "page_0047",
+   "marker": "(a)",
+   "text": "Menand. in Auriga apud Clem. Alex. in Protrept. Ουδείς μ' ἀρέσκει περιπατῶν ἔξω Θεὸς Οτις Μηδὲ γέρας, εἴτ' οἰκίας παριοντων· Εἰς τὰ ταυτῆς μυστηρίων.",
+   "proposed": "Ménandre, dans L'Aurige, dans saint Clément d'Alexandrie, Protreptique. Οὐδείς μ' ἀρέσκει περιπατῶν ἔξω Θεὸς Ὅτις Μηδὲ γέρας, εἴτ' οἰκίας παριόντων· Εἰς τὰ ταὐτῆς μυστηρίων.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: παριοντων -> παριόντων, Ουδείς -> Οὐδείς, Οτις -> Ὅτις, ταυτῆς -> ταὐτῆς",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0047(d)",
+   "page": "page_0047",
+   "marker": "(d)",
+   "text": "Θεοῖς παρθένο φιλοκόσμω λαμβάνοντες χρυσίον κατασκευάζουσι. (9.) Στεφάνους ἐπὶ τὰς κεφαλὰς τῶ Θεῶν ἀυτῶν.",
+   "proposed": "Θεοῖς παρθένο φιλοκόσμου λαμβάνοντες χρυσίον κατασκευάζουσι. (9.) Στεφάνους ἐπὶ τὰς κεφαλὰς τῶ Θεῶν ἀυτῶν.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: φιλοκόσμω -> φιλοκόσμου",
+    "Greek checked against the Septuagint, 84 1:8"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0048(a)",
+   "page": "page_0048",
+   "marker": "(a)",
+   "text": "Δίδωσιν δ᾽ ἀπ᾽ αὐτῶν καὶ ταῖς δμωσὶ, καὶ τοῖς ἀγύρταις, καὶ χρυσοῖς, καὶ ἐναλλοῖς γὰρ, πόρναις, κοσμῶσι τ᾽ αὐτὰς ὡς ἀνθρώπες.",
+   "proposed": "Δίδωσιν δ᾽ ἀπ᾽ αὐτῶν καὶ ταῖς δμωσὶ, καὶ τοῖς ἀγύρταις, καὶ χρυσοῖς, καὶ ἐναλλοῖς γὰρ, πόρναις, κοσμῶσι τ᾽ αὐτὰς ὡς ἀνθρώπους.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ἀνθρώπες -> ἀνθρώπους"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0049(a)",
+   "page": "page_0049",
+   "marker": "(a)",
+   "text": "Eustat. in Iliad. 1.",
+   "proposed": "Eustathe, sur l'Iliade, 1.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0049(b)",
+   "page": "page_0049",
+   "marker": "(b)",
+   "text": "Justin. lib. XLIII. Perea adhuc tempora Reges, hastas pro diademate habebant.",
+   "proposed": "Justin, livre 43. Perea adhuc tempora Reges, hastas pro diademate habebant.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0049(c)",
+   "page": "page_0049",
+   "marker": "(c)",
+   "text": "quas Græci Σκεύεα dixêre. Quod [ILLEGIBLE] de armis [ILLEGIBLE]",
+   "proposed": "quas Græci Σκεύεα dixêre. Quod [ILLEGIBLE] de armis [ILLEGIBLE]",
+   "why": [
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "uncertain",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0050(a)",
+   "page": "page_0050",
+   "marker": "(a)",
+   "text": "Καὶ ὥσπερ τῷ ἠδικηκότι βασιλέα, περικλείονται αἱ ἀυλαι, ὡς ἐπὶ θανάτῳ ἀπαγόμενον, τῆς δίκης ἀυτῷ ἐχούσης ἐπ ἱερεῖς θυρώματι.",
+   "proposed": "Καὶ ὥσπερ τῷ ἠδικηκότι βασιλέα, περικλείονται αἱ ἀυλαι, ὡς ἐπὶ θανάτῳ ἀπαγόμενον, τῆς δίκης αὐτῷ ἐχούσης ἐπ ἱερεῖς θυρώματι.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ἀυτῷ -> αὐτῷ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0050(c)",
+   "page": "page_0050",
+   "marker": "(c)",
+   "text": "Herodot. lib. 2. c. 62. Καὶ τῇ ἑορτῇ ὄνομα κέεται λυχνικαίη.",
+   "proposed": "Hérodote, livre 2, chapitre 62. Καὶ τῇ ἑορτῇ ὄνομα κέεται λυχνοκαίη.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: λυχνικαίη -> λυχνοκαίη",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0051(b)",
+   "page": "page_0051",
+   "marker": "(b)",
+   "text": "Dan. cap. XIV.",
+   "proposed": "Daniel, chapitre 14.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0051(c)",
+   "page": "page_0051",
+   "marker": "(c)",
+   "text": "Varro Meleagr. apud Non. Marcell. ad sepulchrum antiquo more silicernium confecimus, id est, δειπνοῦν, quo pransi discedentes dicimus alius alii : Vale.",
+   "proposed": "Varro Meleagr. apud Non. Marcell. ad sepulchrum antiquo more silicernium confecimus, id est, δειπνοῦν, quo pransi discedentes dicimus alius alii : Vale.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0051(d)",
+   "page": "page_0051",
+   "marker": "(d)",
+   "text": "Ovid. Fast. Vide Sophocl. in Oreste.",
+   "proposed": "Ovide, Fastes. Voyez Sophocle, dans Oreste.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0052(a)",
+   "page": "page_0052",
+   "marker": "(a)",
+   "text": "Vide Aug. ep. 22. et 29. nov. edit. et Not. in easdem.",
+   "proposed": "Voyez saint Augustin, Lettres 22 et 29, nouvelle édition, et Notes sur ces mêmes lettres.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0052(b)",
+   "page": "page_0052",
+   "marker": "(b)",
+   "text": "Édit. Polyglott. Complut. et Paris. etc.",
+   "proposed": "Éditions polyglottes de Complute et de Paris, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0052(c)",
+   "page": "page_0052",
+   "marker": "(c)",
+   "text": "C'est une rubrique tirée de Suidas. Vide Hesych. in ἀναφ. et Cornel. hic.",
+   "proposed": "C'est une rubrique tirée de Suidas. Voyez Hésychius, au mot ἀναφῆ ; et Cornelius a Lapide, sur ce passage.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ἀναφ -> ἀναφῆ",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0052(d)",
+   "page": "page_0052",
+   "marker": "(d)",
+   "text": "Σιτίζοντες δὲ αἱ γυναῖκες ἀφ' ἑαυλῶν ταριχεύουσι.",
+   "proposed": "Σιτίζοντες δὲ αἱ γυναῖκες ἀφ' ἑαυλῶν ταριχεύουσι.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0052(e)",
+   "page": "page_0052",
+   "marker": "(e)",
+   "text": "Servius in Æneid. 1. Sciendum est etiam fœtam dici, et gravidam, et partu liberatam. Ut fœcerat, et viridi fœtam Mavortis in antro.",
+   "proposed": "Servius, sur l'Énéide, 1. Sciendum est etiam fœtam dici, et gravidam, et partu liberatam. Ut fœcerat, et viridi fœtam Mavortis in antro.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0054(b)",
+   "page": "page_0054",
+   "marker": "(b)",
+   "text": "Lucian. de Dea Syr.",
+   "proposed": "Lucien, De Dea Syria.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0054(d)",
+   "page": "page_0054",
+   "marker": "(d)",
+   "text": "Roger lib. 2. c. 14.",
+   "proposed": "Roger, livre 2, chapitre 14.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0054(e)",
+   "page": "page_0054",
+   "marker": "(e)",
+   "text": "Tavernier tom. 1. voyage de Perse liv. 2. ch. 7. p. 193.",
+   "proposed": "Tavernier, tome 1, Les Six Voyages en Perse, livre 2, chapitre 7, page 193.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0055(a)",
+   "page": "page_0055",
+   "marker": "(a)",
+   "text": "O'UN χαλκὸν ὴ μὴδώσειν διδόναι.",
+   "proposed": "O'UN χαλκὸν ὴ μὴδώσειν διδόναι.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0055(b)",
+   "page": "page_0055",
+   "marker": "(b)",
+   "text": "Aug. lib. 4. de Civit. c. 26. Zzzz iij",
+   "proposed": "Saint Augustin, livre 4, La Cité de Dieu, chapitre 26. Zzzz iij",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0056(a)",
+   "page": "page_0056",
+   "marker": "(a)",
+   "text": "Α᾿ξίωσιν φαῖσαι ὡς δυνατὸς ὄντος ἀκούειν. Καὶ ἐ δυνάνται ἀυτοὶ νοίσαντες καταλιπεῖν αυτὰ, αἴσθησιν γὰρ ἐκ ἔχεσι.",
+   "proposed": "Ἀξίωσιν φαῖσαι ὡς δυνατὸς ὄντος ἀκούειν. Καὶ ἐ δυνάνται αὐτοὶ νοίσαντες καταλιπεῖν αὐτὰ, αἴσθησιν γὰρ ἐκ ἔχεσι.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Α᾿ξίωσιν -> Ἀξίωσιν, ἀυτοὶ -> αὐτοὶ, αυτὰ -> αὐτὰ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0056(b)",
+   "page": "page_0056",
+   "marker": "(b)",
+   "text": "Herodot. lib. I. c. 199. Δεῖ πᾶσαν γυναῖκα ἐπιχωρίην ἰζομένην εἰς ἱρὸν Ἀφροδίτης… συγμῖχθῆναι τῷ ξένῳ μιχθῆναι ἀνδρὶ ξένῳ… πλείονας καταλιτίεται σίβασιν περὶ τῶν κεφαλὰς ἔχεσαι Στέφανον θώμεαι γυναικῶν. Αἱ μὲν ὦν ἀπερχονται, αἱ δὲ ἔρχονται. Σχοινοτενέες δὲ διέξοδοι πάντα τρόπον ὁδῶν ἔχεσι διὰ τῶν γυναικῶν, δι᾽ ὧν οἱ ξεῖνοι διεξίοντες ἐκλέγονται. Vide et Strabo. lib. 16. p. 513.",
+   "proposed": "Herodot. lib. I. c. 199. Δεῖ πᾶσαν γυναῖκα ἐπιχωρίην ἱζομένην εἰς ἱρὸν Ἀφροδίτης… συμμιχθῆναι τῷ ξένῳ μιχθῆναι ἀνδρὶ ξένῳ… πλείονας καταλιτίεται σίβασιν περὶ τῶν κεφαλὰς ἔχουσαι Στέφανον θώμεαι γυναικῶν. Αἱ μὲν ὦν ἀπέρχονται, αἱ δὲ ἔρχονται. Σχοινοτενέες δὲ διέξοδοι πάντα τρόπον ὁδῶν ἔχεσι διὰ τῶν γυναικῶν, δι᾽ ὧν οἱ ξεῖνοι διεξίοντες ἐκλέγονται. Vide et Strabo. lib. 16. p. 513.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ἰζομένην -> ἱζομένην",
+    "Greek spelling checked against a Greek dictionary: συγμῖχθῆναι -> συμμιχθῆναι",
+    "Greek spelling checked against a Greek dictionary: ἔχεσαι -> ἔχουσαι, ἀπερχονται -> ἀπέρχονται"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0057(a)",
+   "page": "page_0057",
+   "marker": "(a)",
+   "text": "Aristoph. Ἐκκλησίαζ. Act. 1. init. Χορδω-μένα σώματα. On les appelle aussi. Σχοινοτε-νεῖς.",
+   "proposed": "Aristoph. Ἐκκλησίαζ. Act. 1. init. Χορδω-μένα σώματα. On les appelle aussi. Σχοινοτε-νεῖς.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0057(d)",
+   "page": "page_0057",
+   "marker": "(d)",
+   "text": "Theocrit. _Pharmac_. Eutr. Ἰυγξ ἕλκε τὺ τῆνον ἐμὸν ποτὶ δῶμα τ' ἄνδρα. Νυν δυτῶ τὰ φίτυρα.",
+   "proposed": "Theocrit. _Pharmac_. Eutr. Ἴυγξ ἕλκε τὺ τῆνον ἐμὸν ποτὶ δῶμα τ' ἄνδρα. Νῦν δυτῶ τὰ φίτυρα.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Νυν -> Νῦν, Ἰυγξ -> Ἴυγξ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0057(e)",
+   "page": "page_0057",
+   "marker": "(e)",
+   "text": "Θυμιῶσαι τ' ἀντερα.",
+   "proposed": "Θυμιῶσαι τ' ἀντερα.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0058(c)",
+   "page": "page_0058",
+   "marker": "(c)",
+   "text": "Horat. lib. 1. Sat. 8.\nOlim truncus eram ficulnus, inutile lignum,\nCum faber incertus scamnum faceretne Priapum ;\nMaluit esse Deum. Deus inde ego furum aviumque\nmaxima formido.",
+   "proposed": "Horace, livre 1, Satires, 8.\nOlim truncus eram ficulnus, inutile lignum,\nCum faber incertus scamnum faceretne Priapum ;\nMaluit esse Deum. Deus inde ego furum aviumque\nmaxima formido.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0058(d)",
+   "page": "page_0058",
+   "marker": "(d)",
+   "text": "Τίνι ἂν γνοτὸν ἐςὶν ὅτι οὐκ εἰσὶν Θεοὶ.",
+   "proposed": "Τίνι ἂν γνοτὸν ἐστὶν ὅτι οὐκ εἰσὶν Θεοὶ.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ἐςὶν -> ἐστὶν"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0059(a)",
+   "page": "page_0059",
+   "marker": "(a)",
+   "text": "Εφ’ ᾧ καὶ κέκτηται ὁ κεκτημένος.",
+   "proposed": "Εφ’ ᾧ καὶ κέκτηται ὁ κεκτημένος.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0061(c)",
+   "page": "page_0061",
+   "marker": "(c)",
+   "text": "Ω σῶφρ, χρ ὦ σιωπῶντα φθεσκάνια φανδσον.",
+   "proposed": "Ω σῶφρ, χρ ὦ σιωπῶντα φθεσκάνια φανδσον.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  }
+ ]
+}

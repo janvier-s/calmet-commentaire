@@ -1,0 +1,320 @@
+{
+ "summary": {
+  "notes": 84,
+  "changed": 24,
+  "flags": {
+   "uncertain": 2,
+   "scan-unread": 4,
+   "expand-changed-numbers": 2,
+   "greek": 3
+  }
+ },
+ "notes": [
+  {
+   "id": "0004(a)",
+   "page": "page_0004",
+   "marker": "(a)",
+   "text": "Vide 1 Esdras 4:5. et Usser. ad an. 3470.",
+   "proposed": "Voyez 1 Esdras 4:5 ; et Ussérius, à l'an 3470.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0004(b)",
+   "page": "page_0004",
+   "marker": "(b)",
+   "text": "[UNCERTAIN HEBREW] Aqu. Sym. Theod. Ηγέμων Iudæ.",
+   "proposed": "[UNCERTAIN HEBREW] Aqu. Sym. Theod. Ἡγέμων Iudæ.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Ηγέμων -> Ἡγέμων"
+   ],
+   "flags": [
+    "uncertain",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0004(f)",
+   "page": "page_0004",
+   "marker": "(f)",
+   "text": "Zach. VI. II. 12. 13.",
+   "proposed": "Zach. VI. II. 12. 13.",
+   "why": [
+    "written out, but a number changed or added: Zacharie 6:11-13."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
+  },
+  {
+   "id": "0004(k)",
+   "page": "page_0004",
+   "marker": "(k)",
+   "text": "Προς Ζοροβάβελ τὸν τῶ Σαλαθιὴλ ἐκ φυλῆς Iύδα.",
+   "proposed": "Πρὸς Ζοροβάβελ τὸν τοῦ Σαλαθιὴλ ἐκ φυλῆς Iύδα.",
+   "why": [
+    "Greek checked against the Septuagint, Aggée 1:1: Προς -> Πρὸς, τῶ -> τοῦ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0005(c)",
+   "page": "page_0005",
+   "marker": "(c)",
+   "text": "Vide Vat. hic. et Ierom. Præfat. in Agg.",
+   "proposed": "Voyez Vatable, sur ce passage ; et saint Jérôme, Préface sur Aggée.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0005(d)",
+   "page": "page_0005",
+   "marker": "(d)",
+   "text": "Vide Usser. ad an. M. 3485.",
+   "proposed": "Voyez Ussérius, à l'an du monde 3485.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0009(a)",
+   "page": "page_0009",
+   "marker": "(a)",
+   "text": "[UNCERTAIN HEBREW] Alius : Et ἀγγελος το̃ Κυρίου. 70. Kaì ἀπήγγειλεν Αγγαιος ὁ ἀγγελος Κυρίου.",
+   "proposed": "[UNCERTAIN HEBREW] Alius : Et ἄγγελος το͂ Κυρίου. 70. Kaì ἀπήγγειλεν Αγγαιος ὁ ἀγγελος Κυρίου.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: το̃ -> το͂, ἀγγελος -> ἄγγελος",
+    "Greek checked against the Septuagint, Aggée 1:13"
+   ],
+   "flags": [
+    "uncertain",
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0011(b)",
+   "page": "page_0011",
+   "marker": "(b)",
+   "text": "70. Ετι απας, _i.q._ ετι μια, _etc. Ludov. Tigur. T.tt ij._",
+   "proposed": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. Tigur. T.tt ij._",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Ετι -> Ἔτι, απας -> ἅπας",
+    "Greek spelling checked against a Greek dictionary: ετι -> ἔτι, μια -> μία",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0012(f)",
+   "page": "page_0012",
+   "marker": "(f)",
+   "text": "Tull. lib. 14. Ep. 2. Ad uxorem, et filiam.",
+   "proposed": "Cicéron, livre 14, lettre 2, À son épouse et à sa fille.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0013(a)",
+   "page": "page_0013",
+   "marker": "(a)",
+   "text": "Vide Psaumes 49:10. Cyrill. in hunc loc. Grot. Sanƈt.",
+   "proposed": "Voyez Psaumes 49:10 ; saint Cyrille, sur ce passage ; Grotius ; Sanctius.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0014(d)",
+   "page": "page_0014",
+   "marker": "(d)",
+   "text": "Vide Ierom. hic. et Chrysost. t. 5. Dèmonstr. quòd Christus sit Deus, et homil. 34. in 1. Cor. Vide Kimchi, et alios Rabb. apud Menasse Ben-Israel. lib. de termino vitæ.",
+   "proposed": "Voyez saint Jérôme, sur ce passage ; et saint Jean Chrysostome, tome 5, Démonstration que le Christ est Dieu, et homélie 34 sur 1 Corinthiens. Voyez Kimhi, et d'autres rabbins dans Menasseh Ben-Israël, livre De termino vitæ.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0014(f)",
+   "page": "page_0014",
+   "marker": "(f)",
+   "text": "Vide Joseph. Antiq. lib. XV. c. 14. et de Bello. lib. VI. c. 6. in Lat.",
+   "proposed": "Voyez Josèphe, Antiquités judaïques, livre 15, chapitre 14 ; et Guerre des Juifs, livre 6, chapitre 6, en latin.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0014(g)",
+   "page": "page_0014",
+   "marker": "(g)",
+   "text": "Vide Usser. ad an. M. 3988.",
+   "proposed": "Voyez Ussérius, à l'an du monde 3988.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0014(h)",
+   "page": "page_0014",
+   "marker": "(h)",
+   "text": "Vide si lubet, Tract. Middot. et Not. Constant. Imperat. et Munst. hic.",
+   "proposed": "Voyez au besoin, Traité Middot ; et notes de Constantin l'Empereur ; et Munster, sur ce passage.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0014(i)",
+   "page": "page_0014",
+   "marker": "(i)",
+   "text": "Joseph. Antiq. lib. XV. c. 14. Εγένετο δὲ τὸ τυχὸν ἐπίπεδον Ἡρώδης νῦν μὲν τῷ Οὓς δι αὐτῆς κατεσκευάσας, μείζονι τὸν περίβολον, καὶ μείζονος ὕψεος ἀξιοπρεπέσατον ἐγείρων… ἀνελῶν δὲ τὰς ἀρχαίας θεμελίας, τῇ κατεβάλλετο λίθος, ἐπ᾽ αὐτῶν τὸν ναὸν ἤγειρε, μέχρι μὲν ῥογῶν τριχῶν, τὸ δὲ ὕψος ἀπερίοπτον. Vide eundem lib. VI. c. 6. de Bello.",
+   "proposed": "Joseph. Antiq. lib. XV. c. 14. Ἐγένετο δὲ τὸ τυχὸν ἐπίπεδον Ἡρώδης νῦν μὲν τῷ Οὓς δῑ αὐτῆς κατασκευάσας, μείζονι τὸν περίβολον, καὶ μείζονος ὕψεος ἀξιοπρεπέστατον ἐγείρων… ἀνελῶν δὲ τὰς ἀρχαίας θεμελίας, τῇ κατεβάλλετο λίθος, ἐπ᾽ αὐτῶν τὸν ναὸν ἤγειρε, μέχρι μὲν ῥογῶν τριχῶν, τὸ δὲ ὕψος ἀπερίοπτον. Vide eundem lib. VI. c. 6. de Bello.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: δι -> δῑ, Εγένετο -> Ἐγένετο, κατεσκευάσας -> κατασκευάσας, ἀξιοπρεπέσατον -> ἀξιοπρεπέστατον"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0015(a)",
+   "page": "page_0015",
+   "marker": "(a)",
+   "text": "Joseph. Antiq. lib. x. c. 11. Disp. 4. c. 68. Salian. t. 6. Annal. an. 4051",
+   "proposed": "Josèphe, Antiquités judaïques, livre 10, chapitre 11, Dispute 4, chapitre 68 ; Salian, tome 6, Annales, an 4051",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0015(b)",
+   "page": "page_0015",
+   "marker": "(b)",
+   "text": "Idem lib. 7. de Bello. c. 10. Spond. an. 4032. Sandt. hic. Alii recentes, nec panci, nec contemnendi.",
+   "proposed": "Le même, livre 7 de la Guerre des Juifs, chapitre 10 ; Sponde, an 4032 ; Sanctius, sur ce passage ; et d'autres récents, ni peu nombreux, ni méprisables.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0015(c)",
+   "page": "page_0015",
+   "marker": "(c)",
+   "text": "Vide Villalpand. in Ezech. t. 2. p.2. lib. 5.",
+   "proposed": "Voyez Villalpand, sur Ézéchiel, tome 2, partie 2, livre 5.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0019(d)",
+   "page": "page_0019",
+   "marker": "(d)",
+   "text": "Aristophan. Pace et Scholiast.",
+   "proposed": "Aristophane, La Paix, et le Scholiaste.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0020(d)",
+   "page": "page_0020",
+   "marker": "(d)",
+   "text": "Chald. An adhuc in area ? 70. Kær.",
+   "proposed": "Le Chaldéen : An adhuc in area ? Les Septante : Kær.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0021(a)",
+   "page": "page_0021",
+   "marker": "(a)",
+   "text": "Agg. II. II. et 19.",
+   "proposed": "Agg. II. II. et 19.",
+   "why": [
+    "written out, but a number changed or added: Aggée 2:11 et 19."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
+  },
+  {
+   "id": "0021(b)",
+   "page": "page_0021",
+   "marker": "(b)",
+   "text": "Plin. lib. XVIII. cap 7. _In Ægypto hordeum sexto à satu mense ; frumenta septimo metuntur._",
+   "proposed": "Pline, livre 18, chapitre 7. _In Ægypto hordeum sexto à satu mense ; frumenta septimo metuntur._",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0021(d)",
+   "page": "page_0021",
+   "marker": "(d)",
+   "text": "Vide Ieron. ad Amos 4:7. et 1 Rois 12:17.",
+   "proposed": "Voyez saint Jérôme, sur Amos 4:7 ; et 1 Rois 12:17.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0022(b)",
+   "page": "page_0022",
+   "marker": "(b)",
+   "text": "Ezech. XXXVIII. XXXIX.",
+   "proposed": "Ézéchiel 38 ; 39.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0022(c)",
+   "page": "page_0022",
+   "marker": "(c)",
+   "text": "Cyrill. Lir. Remig. Dionys. Vat. Riber.",
+   "proposed": "Saint Cyrille ; Nicolas de Lyre ; saint Remi ; Denys les Chartreux ; Vatable ; Ribera.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0022(d)",
+   "page": "page_0022",
+   "marker": "(d)",
+   "text": "Ieronym. Hugo. Haimo etc.",
+   "proposed": "Saint Jérôme ; Hugues de Saint-Cher ; Haymon etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  }
+ ]
+}

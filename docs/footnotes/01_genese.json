@@ -1,0 +1,919 @@
+{
+ "summary": {
+  "notes": 3376,
+  "changed": 25,
+  "flags": {
+   "greek": 46,
+   "scan-unread": 59,
+   "ambiguous-name": 7,
+   "reference-not-in-vulgate": 1,
+   "hebrew": 11,
+   "uncertain": 2
+  }
+ },
+ "notes": [
+  {
+   "id": "0190(b)",
+   "page": "page_0190",
+   "marker": "(b)",
+   "text": "Homère, Odyssée, 1 et Σ ; et Hésiode, Théogonie, vers 873. Ὡς δ' οἱ φράσσαιτο θεὰ ἀγαθόντε, κακόντε.",
+   "proposed": "Homère, Odyssée, 1 et Σ ; et Hésiode, Théogonie, vers 873. Ὡς δ' οἱ φράσσαιτο θεὰ ἀγαγόντε, κακόντε.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary: ἀγαθόντε -> ἀγαγόντε"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0214(d)",
+   "page": "page_0214",
+   "marker": "(d)",
+   "text": "Lévitique 9:24 ; 1 Paralipomènes 21:26 ; 2 Paralipomènes 7:1 ; 3 Rois 18:38.",
+   "proposed": "Lévitique 9:24 ; 1 Paralipomènes 21:26 ; 2 Paralipomènes 7:1 ; 3 Rois 18:38.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0240(e)",
+   "page": "page_0240",
+   "marker": "(e)",
+   "text": "Genèse 6:9 ; Genèse 17:1 ; 3 Rois 9:4 ; etc.",
+   "proposed": "Voyez Genèse 6:9 ; Genèse 17:1 ; 3 Rois 9:4 ; etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0365(c)",
+   "page": "page_0365",
+   "marker": "(c)",
+   "text": "Étienne de Byzance, sur μαγδώλος, et sur τακόμψος.",
+   "proposed": "Étienne de Byzance, sur μαγδώλου, et sur τακόμψος.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: μαγδώλος -> μαγδώλου"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0371(d)",
+   "page": "page_0371",
+   "marker": "(d)",
+   "text": "Κύπρος, κρύπτῃ, Κέραστις",
+   "proposed": "Κύπρος, κρύπτῃ, Κέραστις",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0383(b)",
+   "page": "page_0383",
+   "marker": "(b)",
+   "text": "Deutéronome 1:44 ; 2:22, 32 ; 8:1 ; 1 Rois 11:7 ; 8:29 ; 2 Rois 2:12.",
+   "proposed": "Deutéronome 1:44 ; 2:22, 32 ; 8:1 ; 1 Rois 11:7 ; 8:29 ; 2 Rois 2:12.",
+   "why": [
+    "1 Rois 8:29 does not exist in the Vulgate"
+   ],
+   "flags": [
+    "reference-not-in-vulgate"
+   ]
+  },
+  {
+   "id": "0404(b)",
+   "page": "page_0404",
+   "marker": "(b)",
+   "text": "Ἀπὸ Κηφῆνος ποταμοῦ, ἕως τῆς ἰνδικῆς. Καὶ τῆς πρὸς αὐτοῦ σηρίας. Saint Jérôme a lu ierias, au lieu de serias, Bochart croit qu'il faut lire arias.",
+   "proposed": "Ἀπὸ Κηφῆνος ποταμοῦ, ἕως τῆς ἰνδικῆς. Καὶ τῆς πρὸς αὐτοῦ σηρίας. Saint Jérôme a lu ierias, au lieu de serias, Bochart croit qu'il faut lire arias.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0405(d)",
+   "page": "page_0405",
+   "marker": "(d)",
+   "text": "Ἀλιλαῖοι.",
+   "proposed": "Ἀλιλαῖοι.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0464(b)",
+   "page": "page_0464",
+   "marker": "(b)",
+   "text": "2 Rois 17:27.",
+   "proposed": "2 Rois 17:27.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0469(a)",
+   "page": "page_0469",
+   "marker": "(a)",
+   "text": "Υἱὸς μέσεκ τῆς οἰκογενῆς μου οὗτος Δαμασκὸς Ἐλιέζερ.",
+   "proposed": "Υἱὸς μέσεα τῆς οἰκογενῆς μου οὗτος Δαμασκὸς Ἐλιέζερ.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: μέσεκ -> μέσεα"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0503(k)",
+   "page": "page_0503",
+   "marker": "(k)",
+   "text": "Job 10:10 ; 1 Rois 17:18.",
+   "proposed": "Job 10:10 ; 1 Rois 17:18.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0516(d)",
+   "page": "page_0516",
+   "marker": "(d)",
+   "text": "Voyez Lévitique 23:14 ; Ruth 2:14 ; Josué 5:11 ; 1 Rois 17:17 etc.",
+   "proposed": "Voyez Lévitique 23:14 ; Ruth 2:14 ; Josué 5:11 ; 1 Rois 17:17 etc.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0521(c)",
+   "page": "page_0521",
+   "marker": "(c)",
+   "text": "Ἐμαλάκιζε.",
+   "proposed": "Ἐμαλάκιζε.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0524(b)",
+   "page": "page_0524",
+   "marker": "(b)",
+   "text": "Ο᾿ ἐφ᾿ ὅτι ἐνδυσωπήθην τὸ πρόσωπόν σου.",
+   "proposed": "Ὀ ἐφ᾿ ὅτι ἐδυσωπήθην τὸ πρόσωπόν σου.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Ο᾿ -> Ὀ, ἐνδυσωπήθην -> ἐδυσωπήθην"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0527(b)",
+   "page": "page_0527",
+   "marker": "(b)",
+   "text": "Ἐγγάδα κώμη μεγάλη πλησίον Σοδόμων Ἀραβίας.",
+   "proposed": "Ἐγγάδα κώμη μεγάλη πλησίον Σοδόμων Ἀραβίας.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0569(e)",
+   "page": "page_0569",
+   "marker": "(e)",
+   "text": "1 Rois 17:51 ; 2 Rois 20:8.",
+   "proposed": "1 Rois 17:51 ; 2 Rois 20:8.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0571(d)",
+   "page": "page_0571",
+   "marker": "(d)",
+   "text": "2 Rois 17",
+   "proposed": "2 Rois 17",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0573(c)",
+   "page": "page_0573",
+   "marker": "(c)",
+   "text": "Saint Augustin, Questions 57 et 58 sur la Genèse. Voyez etiam De la Genèse à la lettre, chapitre 9, et La Cité de Dieu, livre 16, chapitre 32 ; Saint Ambroise ; Saint Hilaire ; et d'autres.",
+   "proposed": "Saint Augustin, Questions 57 et 58 sur la Genèse. Voyez aussi De la Genèse à la lettre, chapitre 9, et La Cité de Dieu, livre 16, chapitre 32 ; Saint Ambroise ; Saint Hilaire ; et d'autres.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0589(b)",
+   "page": "page_0589",
+   "marker": "(b)",
+   "text": "Uterque Chaldæus et Judæi dans saint Jérôme, Questions hébraïques. Voyez et Théodoret, Question 74 sur la Genèse.",
+   "proposed": "Uterque Chaldæus et Judæi dans saint Jérôme, Questions hébraïques. Voyez aussi Théodoret, Question 74 sur la Genèse.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0603(b)",
+   "page": "page_0603",
+   "marker": "(b)",
+   "text": "Hieros versio Hebr.",
+   "proposed": "Hieros, version de l'Hébreu.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0683(i)",
+   "page": "page_0683",
+   "marker": "(i)",
+   "text": "Κλῆροι τῆς τύχης et τῦ δαίμονος σημανθὲς ἡλίου et σέληνης.",
+   "proposed": "Κλῆροι τῆς τύχης et τοῦ δαίμονος σημανθὲς ἡλίου et σέληνης.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary: τῦ -> τοῦ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0684(f)",
+   "page": "page_0684",
+   "marker": "(f)",
+   "text": "Dioscor. lib. 4. c. 76. Κιρκαία καὶ λοῦσι ἐπιάλη δόξα ἧ εἴτε φιλτρῶν ὄντα ποιήτικα.",
+   "proposed": "Dioscor. lib. 4. c. 76. Κιρκαία καὶ λοῦσι ἐπιάλης δόξα ἧ εἴτε φιτρῶν ὄντα ποιήτικα.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ἐπιάλη -> ἐπιάλης, φιλτρῶν -> φιτρῶν"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0685(c)",
+   "page": "page_0685",
+   "marker": "(c)",
+   "text": "Dioscor. lib. 4. c. 18. Μῆλα ἰυδαϊκὰ, Englis duæ",
+   "proposed": "Dioscor. lib. 4. c. 18. Μῆλα ἰυδαϊκὰ, Englis duæ",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0689(e)",
+   "page": "page_0689",
+   "marker": "(e)",
+   "text": "Idem. ibid. Ως τι μιξα κομιζλλοι ἀπιχθεσιν ἐν ταῖς κιβοτοῖς μετὰ τῶν ἱματίων.",
+   "proposed": "Idem. ibid. Ὡς τί μιξα κομιζλλοι ἀπιχθεσιν ἐν ταῖς κιβωτοῖς μετὰ τῶν ἱματίων.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Ως -> Ὡς, τι -> τί, κιβοτοῖς -> κιβωτοῖς"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0693(c)",
+   "page": "page_0693",
+   "marker": "(c)",
+   "text": "Ἐι'ς τυχο'ν χάριν ἐυα'ντιον σῦ, οἰωνισμῷ οἰωνισάμην γὰρ μὲ ὁ θεος 'επι τῆ εἰσοδῷ.",
+   "proposed": "Εἰ'ς τυχο'ν χάριν ἐυα'ντιον σοῦ, οἰωνισμῷ οἰωνισάμην γὰρ μὲ ὁ θεος 'ἐπὶ τῆ εἰσοδῷ.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Ἐι'ς -> Εἰ'ς, σῦ -> σοῦ",
+    "Greek spelling checked against a Greek dictionary: επι -> ἐπὶ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0695(a)",
+   "page": "page_0695",
+   "marker": "(a)",
+   "text": "Esti. τᾶς δικαιοσύνης, καὶ ἐφόνεν ἐν ταῖς δίξαι, ἱςῶσι μὲν μίσθον.",
+   "proposed": "Esti. τᾶς δικαιοσύνης, καὶ ἐφόνων ἐν ταῖς δίξαι, ἱστῶσι μὲν μίσθον.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ἱςῶσι -> ἱστῶσι, ἐφόνεν -> ἐφόνων"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0696(c)",
+   "page": "page_0696",
+   "marker": "(c)",
+   "text": "טלוא",
+   "proposed": "טלוא",
+   "why": [],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0697(a)",
+   "page": "page_0697",
+   "marker": "(a)",
+   "text": "Καὶ ἐπακούσεταί μου ἡ δικαιοσύνη μου… ἐπ ἰσὶν ἡ μισθὸς με ἐπάντιον σου.",
+   "proposed": "Καὶ ἐπακούσεταί μου ἡ δικαιοσύνη μου… ἐπ ἰσὶν ἡ μισθὸς με ἐπάντιον σου.",
+   "why": [
+    "Greek checked against the Septuagint, Genèse 30:33"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0698(a)",
+   "page": "page_0698",
+   "marker": "(a)",
+   "text": "טָלוּא",
+   "proposed": "טָלוּא",
+   "why": [],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0708(d)",
+   "page": "page_0708",
+   "marker": "(d)",
+   "text": "70. ἐκαρπολόγησεν δέκα ἀμνῶν.",
+   "proposed": "70. ἐκαρπολόγησεν δέκα ἀμνῶν.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0726(a)",
+   "page": "page_0726",
+   "marker": "(a)",
+   "text": "Ἱκανοῦμαι.",
+   "proposed": "Ἱκανοῦμαι.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0726(b)",
+   "page": "page_0726",
+   "marker": "(b)",
+   "text": "Ἱκανοῦσαι.",
+   "proposed": "Ἱκανοῦσαι.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0729(b)",
+   "page": "page_0729",
+   "marker": "(b)",
+   "text": "Ἐκονλίνετο.",
+   "proposed": "Ἐκονλίνετο.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0737(b)",
+   "page": "page_0737",
+   "marker": "(b)",
+   "text": "Le terme Tireƶeni תרצני est, je pense, synonyme à jaat יאת, que l'on trouve souvent employé pour signifier accorder une grâce, quoiqu'ordinairement il signifie complaire, aussi-bien que Raƶab רצה Voyez Genèse 34:15, 22. etc.",
+   "proposed": "Le terme Tireƶeni תרצני est, je pense, synonyme à jaat יאת, que l'on trouve souvent employé pour signifier accorder une grâce, quoiqu'ordinairement il signifie complaire, aussi-bien que Raƶab רצה Voyez Genèse 34:15, 22. etc.",
+   "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+   ],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0739(b)",
+   "page": "page_0739",
+   "marker": "(b)",
+   "text": "Δεχονται ιπ' εμε.",
+   "proposed": "Δέχονται ιπ' εμε.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Δεχονται -> Δέχονται"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0739(d)",
+   "page": "page_0739",
+   "marker": "(d)",
+   "text": "1 Rois 6:10. πρωτοτοκοῦσαι.",
+   "proposed": "1 Rois 6:10. πρωτοτοκοῦσαι.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0742(b)",
+   "page": "page_0742",
+   "marker": "(b)",
+   "text": "Le Chaldéen : דרפא ; les Septante : ἀμνάδας ; la Vulgate : Novellas oves.",
+   "proposed": "Le Chaldéen : דרפא ; les Septante : ἀμνάδας ; la Vulgate : Novellas oves.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0743(f)",
+   "page": "page_0743",
+   "marker": "(f)",
+   "text": "Saint Épiphane, De Ponderibus. Argenteis nummus jam tum olim signatus est, et ab Assyriis cusus. Il croit qu'on doit lire, ἐκ τῶν ἀσσυρίων τινὲς ἐφεῦρόν, et non pas ἀσσεύειν, comme on lit dans l'Édition du Père Petau.",
+   "proposed": "Saint Épiphane, De Ponderibus. Argenteis nummus jam tum olim signatus est, et ab Assyriis cusus. Il croit qu'on doit lire, ἐκ τῶν ἀσσυρίων τινὲς ἐφεῦρόν, et non pas ἀσσεύειν, comme on lit dans l'Édition du Père Petau.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0763(c)",
+   "page": "page_0763",
+   "marker": "(c)",
+   "text": "En le dérivant de הרב cibus, et sicut ב",
+   "proposed": "En le dérivant de הרב cibus, et sicut ב",
+   "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+   ],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0763(e)",
+   "page": "page_0763",
+   "marker": "(e)",
+   "text": "Iliad. K. Αλλ' ὅτε δὴ ἀπετην ὅσον τ' ἐπὶ νεῖος οὐρῆον Ημίονοι [ αἳ γάρ τε βοῶν προφερέστεραι εἰσὶν Ελκέμεναι νειοῖο βαθείης πηκτὸν ἄροτρον.] Τὸ μὲν ἐδέγμενον. Voyez et Odyss. Θ. Οσσον τ' ἐν νειῷ οὖρον πέλει ἡμιόνοιν. etc.",
+   "proposed": "Iliad. K. Αλλ' ὅτε δὴ ἀπετην ὅσον τ' ἐπὶ νεῖος οὐρῆος Ἡμίονοι [ αἳ γάρ τε βοῶν προφερέστεραι εἰσὶν Ἑλκέμεναι νειοῖο βαθείης πηκτὸν ἄροτρον.] Τὸ μὲν δέγμενον. Voyez et Odyss. Θ. Ὅσσον τ' ἐν νειῷ οὖρον πέλει ἡμιόνοιν. etc.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: οὐρῆον -> οὐρῆος, Ημίονοι -> Ἡμίονοι",
+    "Greek spelling checked against a Greek dictionary: Ελκέμεναι -> Ἑλκέμεναι",
+    "Greek spelling checked against a Greek dictionary: ἐδέγμενον -> δέγμενον",
+    "Greek spelling checked against a Greek dictionary: Οσσον -> Ὅσσον"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0765(d)",
+   "page": "page_0765",
+   "marker": "(d)",
+   "text": "Iliade, Λ. 371.",
+   "proposed": "Iliade, Λ. 371.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0765(e)",
+   "page": "page_0765",
+   "marker": "(e)",
+   "text": "Στήλην κοιλόμενος ἀνδροκμῆτα ἐπὶ τύμβῳ. Voyez etiam Iliad. P. 434. Mich. 4:8.",
+   "proposed": "Στήλην κοιλόμενος ἀνδροκμῆτα ἐπὶ τύμβῳ. Voyez etiam Iliad. P. 434. Mich. 4:8.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0777(a)",
+   "page": "page_0777",
+   "marker": "(a)",
+   "text": "O'υἱοι εδομ ἐκ υἱοι Ε'δαμ.",
+   "proposed": "O'υἱοι εδομ ἐκ υἱοι Ἐδαμ.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Ε'δαμ -> Ἐδαμ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0786(g)",
+   "page": "page_0786",
+   "marker": "(g)",
+   "text": "Καρπῶτον.",
+   "proposed": "Καρπῶτον.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0787(g)",
+   "page": "page_0787",
+   "marker": "(g)",
+   "text": "Diodor. de Gallis. Σάγα jaculata πλείονα διακοσμήματα. ἃ ποικίλοις διαληφθέντα.",
+   "proposed": "Diodor. de Gallis. Σάγα jaculata πλείονα διακοσμήματα. ἃ ποικίλοις διαληφθέντα.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0796(b)",
+   "page": "page_0796",
+   "marker": "(b)",
+   "text": "Σπάδοντα.",
+   "proposed": "Σπάδοντα.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0797(a)",
+   "page": "page_0797",
+   "marker": "(a)",
+   "text": "Ἀρχιμάγειροι. Μάγειρος, chez les Grecs signifie souvent celui, qui tue les victimes pour les sacrifices. Aristophane, Les Cavaliers, acte 1, scène 2",
+   "proposed": "Ἀρχιμάγειροι. Μάγειρος, chez les Grecs signifie souvent celui, qui tue les victimes pour les sacrifices. Aristophane, Les Cavaliers, acte 1, scène 2",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0797(c)",
+   "page": "page_0797",
+   "marker": "(c)",
+   "text": "Ἀρχιδεσμώτου.",
+   "proposed": "Ἀρχιδεσμώτου.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0804(c)",
+   "page": "page_0804",
+   "marker": "(c)",
+   "text": "Ἐκαλλωπίσατο πρὸς ταῖς πύλαις Ἐνὰν ἥ ἐστιν ἐν παρόδῳ Θαμνᾶς.",
+   "proposed": "Ἐκαλλωπίσατο πρὸς ταῖς πύλαις Ἐνὰν ἥ ἐστιν ἐν παρόδῳ Θαμνᾶς.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0828(d)",
+   "page": "page_0828",
+   "marker": "(d)",
+   "text": "Κρυφιαςας.",
+   "proposed": "Κρυφιαςας.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0832(a)",
+   "page": "page_0832",
+   "marker": "(a)",
+   "text": "Achmet, Chapitre 239. Τὰ βοίδια δήλοια εις χρόνους ; καὶ εἰ μὲν εῖσι πίοια, χρόνους δελῶσι, εἰ δὲ πτωχρα καὶ λιτὰ : χρόνους δύσφορους.",
+   "proposed": "Achmet, Chapitre 239. Τὰ βοίδια δήλοια εἰς χρόνους ; καὶ εἰ μὲν εἶσι πίοια, χρόνους δουλοῦσι, εἰ δὲ πτωχρα καὶ λιτὰ : χρόνους δύσφορος.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: εις -> εἰς, δελῶσι -> δουλοῦσι, εῖσι -> εἶσι, δύσφορους -> δύσφορος"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0836(b)",
+   "page": "page_0836",
+   "marker": "(b)",
+   "text": "[UNCERTAIN HEBREW] Discurrere.",
+   "proposed": "[UNCERTAIN HEBREW] Discurrere.",
+   "why": [],
+   "flags": [
+    "uncertain",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0837(d)",
+   "page": "page_0837",
+   "marker": "(d)",
+   "text": "Rabbi Salomon, dans Drusius : רובא.",
+   "proposed": "Rabbi Salomon, dans Drusius : רובא.",
+   "why": [],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0844(c)",
+   "page": "page_0844",
+   "marker": "(c)",
+   "text": "Ἐφοδευταί.",
+   "proposed": "Ἐφοδευταί.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0855(c)",
+   "page": "page_0855",
+   "marker": "(c)",
+   "text": "Apud Athenæum. Χιλιοσφάγια τῆς ἡμέρας ἑκάστης ἐγίνετο.",
+   "proposed": "Apud Athenæum. Χιλιοσφάγια τῆς ἡμέρας ἑκάστης ἐγίνετο.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0858(a)",
+   "page": "page_0858",
+   "marker": "(a)",
+   "text": "Herodot. lib. II. cap. 41. Et Cheremon. apud Porphyr. de Abstin. lib. IV. | Τὰς ἑτέρινας τῆς Αἰγυπτίων ὕβριν νομίζεσι.",
+   "proposed": "Herodot. lib. II. cap. 41. Et Cheremon. apud Porphyr. de Abstin. lib. IV. | Τὰς ἑτέρινας τῆς Αἰγυπτίων ὕβριν νομίζουσι.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: νομίζεσι -> νομίζουσι"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0876(c)",
+   "page": "page_0876",
+   "marker": "(c)",
+   "text": "Homère Iliad. Λ.\nΑ᷐ δειλ᾽, ὀυ μὲν σοί γε πατὴρ, ἐμὸς ὥρια μήτηρ\nΦόρσε καθαιρήσουσι, θανόντι περ ὡς θέμις ἐςι.",
+   "proposed": "Homère Iliad. Λ.\nἋ᷐ δειλ᾽, οὐ μὲν σοί γε πατὴρ, ἐμὸς ὥρια μήτηρ\nΦόρησε καθαιρήσουσι, θανόντι περ ὡς θέμις ἐστι.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Α -> Ἃ",
+    "Greek spelling checked against a Greek dictionary: ὀυ -> οὐ, ἐςι -> ἐστι, Φόρσε -> Φόρησε"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0886(a)",
+   "page": "page_0886",
+   "marker": "(a)",
+   "text": "Porphyr. de Abstin. lib. IV. §. 22. Ουτος Κρητων ἀγαπᾶν. ζῶα μὴ σινεσθαι.",
+   "proposed": "Porphyr. de Abstin. lib. IV. §. 22. Οὗτος Κρητῶν ἀγαπᾶν. ζῶα μὴ σίνεσθαι.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: Ουτος -> Οὗτος, Κρητων -> Κρητῶν, σινεσθαι -> σίνεσθαι"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0899(g)",
+   "page": "page_0899",
+   "marker": "(g)",
+   "text": "אחכמינון",
+   "proposed": "אחכמינון",
+   "why": [],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0905(e)",
+   "page": "page_0905",
+   "marker": "(e)",
+   "text": "Symm. αρχη ιδυνος.",
+   "proposed": "Symm. ὔρχη ιδυνος.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: αρχη -> ὔρχη"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0906(e)",
+   "page": "page_0906",
+   "marker": "(e)",
+   "text": "Ἐθαμβήθης ὡς ὕδωρ, μὴ πλεονάσῃς.",
+   "proposed": "Ἐθαμβήθης ὡς ὕδωρ, μὴ πλεονάσῃς.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0906(f)",
+   "page": "page_0906",
+   "marker": "(f)",
+   "text": "Υπεζεζας ὡς ὑδωρ, ἑνεκεν πλεονεξιας.",
+   "proposed": "Υπεζεζας ὡς ὕδωρ, ἕνεκέν πλεονεξίας.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: πλεονεξιας -> πλεονεξίας, ὑδωρ -> ὕδωρ, ἑνεκεν -> ἕνεκέν"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0908(e)",
+   "page": "page_0908",
+   "marker": "(e)",
+   "text": "Εἰς τὴ συσκευὴν αὐτῶν μὴ ἐιέλθοι, μὴ ἐπέλθοι ψυχή μου.",
+   "proposed": "Εἰς τὴ συσκευὴν αὐτῶν μὴ ἐιέλθοι, μὴ ἐπέλθοι ψυχή μου.",
+   "why": [],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0910(f)",
+   "page": "page_0910",
+   "marker": "(f)",
+   "text": "הודה",
+   "proposed": "הודה",
+   "why": [],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0922(b)",
+   "page": "page_0922",
+   "marker": "(b)",
+   "text": "ירכתו עד צידון",
+   "proposed": "ירכתו עד צידון",
+   "why": [],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0929(d)",
+   "page": "page_0929",
+   "marker": "(d)",
+   "text": "70. E'ξελύθη τὰ νῦρα βραχιόνων etc.",
+   "proposed": "70. E'ἐξελύθη τὰ νῦρα βραχιόνων etc.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: ξελύθη -> ἐξελύθη"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0935(a)",
+   "page": "page_0935",
+   "marker": "(a)",
+   "text": "Ποιεῖν ἀυτῷ τὰς ἐνταφιάσεις, ἐνταφιάσαι τὸν πατέρα ἀυτὸν, καὶ ἐνταφίασαν δι ἐνταφιαςαὶ τὸν Ἰσραὴλ.",
+   "proposed": "Ποιεῖν αὐτῷ τὰς ἐνταφιάσεις, ἐνταφιάσαι τὸν πατέρα αὐτὸν, καὶ ἐνταφίασαν δῑ ἐνταφιασταὶ τὸν Ἰσραὴλ.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary: δι -> δῑ, ἀυτῷ -> αὐτῷ, ἀυτὸν -> αὐτὸν, ἐνταφιαςαὶ -> ἐνταφιασταὶ"
+   ],
+   "flags": [
+    "greek",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0935(b)",
+   "page": "page_0935",
+   "marker": "(b)",
+   "text": "רופאים",
+   "proposed": "רופאים",
+   "why": [],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0945(b)",
+   "page": "page_0945",
+   "marker": "(b)",
+   "text": "[UNCERTAIN HEBREW] le verbe כרה signifie acheter. Deutéronome 2:6. et Osée 3:2.",
+   "proposed": "[UNCERTAIN HEBREW] le verbe כרה signifie acheter. Deutéronome 2:6. et Osée 3:2.",
+   "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+   ],
+   "flags": [
+    "uncertain",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0952(a)",
+   "page": "page_0952",
+   "marker": "(a)",
+   "text": "אצרי",
+   "proposed": "אצרי",
+   "why": [],
+   "flags": [
+    "hebrew",
+    "scan-unread"
+   ]
+  },
+  {
+   "id": "0952(d)",
+   "page": "page_0952",
+   "marker": "(d)",
+   "text": "Voyez Plutarque, D'Isis et d'Osiris ; Saint Clément d'Alexandrie, Protreptique, etc.",
+   "proposed": "Voyez Plutarque, D'Isis et d'Osiris ; saint Clément d'Alexandrie, Protreptique, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  }
+ ]
+}

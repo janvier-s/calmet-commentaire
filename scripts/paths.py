@@ -1,5 +1,6 @@
 """Every location the Calmet pipeline reads or writes, in one place."""
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -7,8 +8,10 @@ SCRIPTS = Path(__file__).resolve().parent
 STUDIUM = SCRIPTS.parent
 DATA = STUDIUM / "data"                      # DATA/<volume>/normalized/page_NNNN.json: the definitive text
 DOCS = STUDIUM / "docs"
-WEB = Path("/Users/Janvier/Documents/Bible n stuff/Websites/dom-calmet-web/src/lib/data")
-VUL = Path("/Users/Janvier/Library/Mobile Documents/com~apple~CloudDocs/for-the-kingdom/douayrheimsbible/static/data/vul")
+# the website's data (export.py writes it): CALMET_WEB, else dom-calmet-web cloned beside this repository
+WEB = Path(os.environ.get("CALMET_WEB") or STUDIUM.parent / "dom-calmet-web" / "src" / "lib" / "data")
+# the Clementine Vulgate, one JSON per book (from janvier-s/douayrheimsbible): CALMET_VULGATE, else scripts/vulgate
+VUL = Path(os.environ.get("CALMET_VULGATE") or SCRIPTS / "vulgate")
 LLM_CACHE = SCRIPTS / "cache" / "llm_cache.json"
 SEAM_CACHE = SCRIPTS / "cache" / "seam_cache.json"
 HUNSPELL_CACHE = SCRIPTS / "cache" / "hunspell_cache.json"

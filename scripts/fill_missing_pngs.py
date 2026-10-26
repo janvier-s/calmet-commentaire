@@ -16,8 +16,8 @@ from pathlib import Path
 from PIL import Image
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-DATA_DIR = Path("/Users/Janvier/Library/Mobile Documents/com~apple~CloudDocs/for-the-kingdom/STUDIUM/data")
-SOURCES_DIR = Path("/Users/Janvier/Library/Mobile Documents/com~apple~CloudDocs/for-the-kingdom/STUDIUM/sources/calmet")
+DATA_DIR = SCRIPT_DIR.parent / "data"
+SOURCES_DIR = SCRIPT_DIR.parent / "sources" / "calmet"  # the scanned volumes (not in the repository)
 
 
 def get_pdf_page_count(pdf_path: Path) -> int:

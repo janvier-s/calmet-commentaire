@@ -117,6 +117,7 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
 
 ## Other folders
 
-- `cache/`: LLM and seam caches (large; not in git).
+- `cache/`: LLM and seam caches (large; not in git: the answers are attached to the GitHub releases).
+- `vulgate/`: the Clementine Vulgate, one JSON per book (a copy of janvier-s/douayrheimsbible's `static/data/vul`; `CALMET_VULGATE` points elsewhere).
 - `legacy/studium_v1/`: the earlier raw → normalized scripts.
 - `legacy/agy/`: one-off fixes from the agy sessions, kept for reference.

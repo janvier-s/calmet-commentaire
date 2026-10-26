@@ -1,0 +1,15 @@
+.DS_Store
+# docs/: only the review files are shared (the queue, the checks it is built from, the footnote reports)
+/docs/*
+!/docs/review_queue.json
+!/docs/false_positives.json
+!/docs/manual_issues.json
+!/docs/chapter_check.json
+!/docs/ref_check.json
+!/docs/vulgate_check.json
+!/docs/seam_check.json
+!/docs/seam_join.json
+!/docs/psalms_check.json
+!/docs/footnotes/
+/docs/footnotes/*
+!/docs/footnotes/*.json

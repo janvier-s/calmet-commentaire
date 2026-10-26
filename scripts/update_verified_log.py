@@ -3,7 +3,7 @@ import hashlib
 import os
 import datetime
 
-vol_dir = "/Users/Janvier/Library/Mobile Documents/com~apple~CloudDocs/for-the-kingdom/STUDIUM/data/47_matthieu"
+vol_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "47_matthieu")
 norm_dir = os.path.join(vol_dir, "normalized")
 scan_dir = os.path.join(vol_dir, "source_images", "commentaire")
 

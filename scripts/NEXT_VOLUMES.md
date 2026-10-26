@@ -35,9 +35,9 @@ this is the full spec.
   - `modernization_error/`: pages the user flagged in the editor (raw JSON + PNG).
 - `books.json`: book key → `{number, fr, vul, studium: [volume folders], site}`. Every book is
   already listed, Psalms with three volumes.
-- The Vulgate: `douayrheimsbible/static/data/vul/<vul>.json` (all books present). In the Psalms
+- The Vulgate: `scripts/vulgate/<vul>.json` (a copy of douayrheimsbible/static/data/vul; all books present). In the Psalms
   its title is verse 1; Calmet leaves the title unnumbered.
-- Website: `/Users/Janvier/Documents/Bible n stuff/Websites/dom-calmet-web` (SvelteKit on
+- Website: `dom-calmet-web` (github.com/janvier-s/dom-calmet-web, cloned beside this repository or set with CALMET_WEB; SvelteKit on
   Cloudflare Workers, https://dom-calmet-web.janvier-sabates.workers.dev).
 - Reports: `STUDIUM/docs/` (`review_queue.json`, `seam_check.json`, `psalms_check.json`,
   `chapter_check.json`, `manual_issues.json` for issues the user reports by hand);
