@@ -84,7 +84,9 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
 - `audit_integrity.py ../docs/integrity_audit_<date>.json` → that report plus
   `docs/review_queue.json` (missing verses, page breaks, verse_ref order, notes without
   commentary, lemmas without translation, capitals, broken footnote calls, …).
-- Work through the queue in the browser: `python3 review_web.py [VOLUME [PAGE]] [--resume] [filters]`
+- Work through the queue in the browser: `python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters]`
+  (with no book given it resumes where you stopped: the page, and without filters the same filters and
+  issue; `--fresh` starts from the first open issue)
   opens the review editor (scan beside text, the page's issues on the left, chapter:verse jump box,
   three themes; anything else typed in that box searches the book's text, accents and case aside, with
   an All books switch: `review_search.py`; the book menu doubles as the book filter, each book with how many issues of the list it

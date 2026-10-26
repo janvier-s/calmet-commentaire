@@ -80,6 +80,11 @@ function updateCounter() {
   $("counter").title = c ? `${c.open} open · ${c.skipped} skipped · ${c.false_positive} false positives · ${c.resolved} resolved` : "";
 }
 
+/** Remember where the session is (page, filters, issue): the next start resumes there. */
+function remember() {
+  if (S.vol && S.page != null) api("/api/state", { vol: S.vol, page: S.page, filters: filters(), issue: Q.current });
+}
+
 async function goItem(i) {
   if (!Q.items.length) return;
   Q.idx = Math.max(0, Math.min(i, Q.items.length - 1));
@@ -89,6 +94,7 @@ async function goItem(i) {
   const r = await go(it.book_dir, it.page);
   if (r) {
     point(it);
+    remember();
     if (hooks.showTurn) await hooks.showTurn(it);
   }
   return r;
@@ -173,6 +179,7 @@ function select(it) {
   updateCounter();
   renderIssues();
   point(it);
+  remember();
   if (hooks.showTurn) hooks.showTurn(it);
 }
 
@@ -237,6 +244,7 @@ nav.go = async (vol, page) => {
       if (first) Q.current = first.id;
     }
     renderIssues();
+    remember();
   }
   return r;
 };
@@ -267,6 +275,7 @@ export async function recheck(vol = S.vol, page = S.page, also = []) {
   return r.body;
 }
 hooks.afterSave = () => recheck();
+hooks.remember = remember;
 /** An issue's status changed elsewhere (a proposal accepted or rejected): the lists follow. */
 export function setStatus(id, status) {
   for (const x of [...Q.items, ...S.issues]) if (x.id === id) x.status = status;
@@ -324,7 +333,13 @@ boot.start = async () => {
   const r = await query(f);
   Object.assign(Q, f, { items: r.body.items, counts: r.body.counts });
   fillFilters();
-  if (st.vol) return go(st.vol, st.page ?? null);  // a page asked for: open it, the queue alongside
+  if (st.vol) {  // a page asked for, or where the last session stopped: open it, the queue alongside
+    const i = st.issue ? Q.items.findIndex((x) => x.id === st.issue && x.book_dir === st.vol && x.page === st.page) : -1;
+    if (i >= 0) return goItem(i);  // the very issue it was on
+    const here = Q.items.findIndex((x) => x.book_dir === st.vol && x.page === st.page);
+    if (here >= 0) Q.idx = here;  // Issue › goes on from this page
+    return go(st.vol, st.page ?? null);
+  }
   if (Q.items.length) return goItem(0);
   const s = (await api("/api/state")).body;
   return go(s.vol || S.config.volumes[0], s.page);

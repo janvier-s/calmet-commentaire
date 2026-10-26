@@ -126,7 +126,12 @@ def test_flag(web):
 
 def test_state(web):
     assert web("/api/state", {"vol": VOL, "page": 195})[0] == 200
-    assert web("/api/state")[1] == {"vol": VOL, "page": 195}
+    assert web("/api/state")[1] == {"vol": VOL, "page": 195, "filters": None, "issue": None}
+    # the queue's filters and issue are kept, and a page alone does not drop them
+    f = {"status": "open", "cat": None, "kind": "no_translation", "book": VOL}
+    web("/api/state", {"vol": VOL, "page": 196, "filters": f, "issue": "x/0196/k/1"})
+    web("/api/state", {"vol": VOL, "page": 197})
+    assert web("/api/state")[1] == {"vol": VOL, "page": 197, "filters": f, "issue": "x/0196/k/1"}
 
 
 def test_page_defaults_to_first(web):

@@ -3,7 +3,9 @@
 The review editor in the browser: the integrity-audit queue (docs/review_queue.json) and every page,
 scan beside text. Replaces review_editor.py and page_editor.py; works on the same files.
 
-Usage: python3 review_web.py [VOLUME [PAGE]] [--resume] [filters] [--port N] [--no-open]
+Usage: python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters] [--port N] [--no-open]
+  with neither VOLUME nor --fresh it resumes where the last session stopped: its page, and (no filters
+  given) its filters and issue; --fresh starts at the first open issue (--resume: the default, kept)
   filters  --all (optional items too), --kind K, --category C, --type T, --book B,
            --skipped | --resolved | --false-positive | --all-status (the view to start in)
   --queue PATH, --data DIR, --docs DIR   other files (a copy for testing)
@@ -27,7 +29,7 @@ from pathlib import Path
 import review_proposals as rp
 import review_store as rs
 import review_turns as rt
-from page_text import load_state, save_state, toggle_italics
+from page_text import toggle_italics
 from review_search import Searcher
 
 STATIC = Path(__file__).resolve().parent / "review_web"
@@ -174,10 +176,17 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return r and {"text": r[0], "start": r[1], "end": r[2]}
 
     def state(body):
+        """Where the session is: book and page (also the Tk editors'), and the queue's filters and issue."""
+        saved = read_state(state_file)
         if body is None:
-            vol, page = load_state(state_file)
-            return {"vol": vol, "page": page}
-        save_state(body["vol"], int(body["page"]), state_file)
+            return {"vol": saved.get("book"), "page": saved.get("page"),
+                    "filters": saved.get("filters"), "issue": saved.get("issue")}
+        saved.update(book=body["vol"], page=int(body["page"]))
+        saved.update({k: body[k] for k in ("filters", "issue") if k in body})
+        try:
+            state_file.write_text(json.dumps(saved, ensure_ascii=False))
+        except OSError:
+            pass
         return {"ok": True}
 
     def run_recheck(body):
@@ -435,6 +444,18 @@ def list_fp(docs):
             print(f"  • {item_id}\n")
 
 
+def read_state(state_file):
+    try:
+        d = json.loads(state_file.read_text())
+        return d if isinstance(d, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+FILTER_FLAGS = {"--kind", "--category", "--type", "--book", "--skipped", "--resolved", "--false-positive",
+                "--false-positives", "--all-status", "--all-statuses"}
+
+
 def main(argv):
     def opt(name, default=None):
         return argv[argv.index(name) + 1] if name in argv else default
@@ -464,10 +485,17 @@ def main(argv):
     if positional:
         start["vol"] = positional[0]
         start["page"] = int(positional[1]) if len(positional) > 1 else None
-    elif "--resume" in argv:
-        vol, page = load_state(data / ".page_editor_state.json")
-        if vol:
-            start["vol"], start["page"] = vol, page
+    elif "--fresh" not in argv:
+        # where the last session stopped: its page, and with no filters asked for, its filters and issue
+        saved = read_state(data / ".page_editor_state.json")
+        if saved.get("book"):
+            start["vol"], start["page"] = saved["book"], saved.get("page")
+            if not FILTER_FLAGS & set(argv) and isinstance(saved.get("filters"), dict):
+                f = saved["filters"]
+                start.update(status=f.get("status") or "open", cat=f.get("cat"), kind=f.get("kind"), book=f.get("book"))
+                start["issue"] = saved.get("issue")
+            print(f"Resuming at {start['vol']} p.{start['page']}"
+                  + (f" ({start['kind']})" if start.get("kind") else "") + " (--fresh: from the first open issue)")
     server, token = make_server(store, queue_path, int(opt("--port", 0)), None, "--all" in argv, start)
     url = f"http://127.0.0.1:{server.server_address[1]}/?key={token}"
     print(f"Review editor: {url}\n(Ctrl+C to stop)")

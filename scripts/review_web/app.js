@@ -64,7 +64,7 @@ export async function loadPage(vol, page) {
   S.opened = { vol, page, data: structuredClone(r.body.data) };  // for Undo all
   Object.assign(S, { vol, page, data: r.body.data, version: r.body.version, ctx: r.body.context,
                      pages: r.body.pages, issues: r.body.issues, around: r.body.around });
-  api("/api/state", { vol, page });
+  if (!hooks.remember) api("/api/state", { vol, page });  // the queue saves it with its filters and issue
   showScan(r.body.scan);
   renderPage();
   updateTop();
@@ -182,7 +182,8 @@ const TAGS = { chapter: "ch", verse_number: "v", commentary_id: "#", verse_ref: 
 /** `makeField` turns a field into an editor (set by the editing module); `valueAt(path)` reads the
  *  text as typed. */
 export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [], valueAt: null, afterSave: null,
-                       blockTools: null, addTop: null, addBelow: null, addEnd: null, footnoteTags: null };
+                       blockTools: null, addTop: null, addBelow: null, addEnd: null, footnoteTags: null,
+                       remember: null };
 
 S.reveal = new Set();  // empty optional fields the user asked to see ("+ annotations")
 const key = (path) => path.join("/");
