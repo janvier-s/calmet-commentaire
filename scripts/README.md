@@ -90,7 +90,7 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   an All books switch: `review_search.py`; the book menu doubles as the book filter, each book with how many issues of the list it
   has; Issue ‹ › wraps round the list; Reopen takes back the last issue marked resolved, false positive or
   skipped; "Highlights" hides the marks an issue puts on the page; selected text gets a small menu: italics,
-  copy, cut, paste (with a space after)). Same filters as before (`--all`, `--kind`, `--category`, `--type`, `--book`,
+  copy, cut, paste (with a space after); a click in a field gets Paste alone). Same filters as before (`--all`, `--kind`, `--category`, `--type`, `--book`,
   `--skipped`, `--resolved`, `--false-positive`, `--all-status`, `--list-fp`); it serves on
   127.0.0.1 only and the printed link carries the session key. Opening an issue marks the words it
   quotes and outlines the field it names (`where` in the queue, from `audit_integrity.py`). Saving a

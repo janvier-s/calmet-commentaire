@@ -217,19 +217,37 @@ const SEL_TOOLS = [
 for (const [text, title, act, cls] of SEL_TOOLS) {
   const b = Object.assign(document.createElement("button"), { textContent: text, title, className: cls || "" });
   b.addEventListener("mousedown", (e) => e.preventDefault());  // keep the selection
-  b.onclick = () => { const [f, sel] = selected(); if (f) act(f, sel); };
+  b.onclick = () => { const [f, sel] = selected(); clicked = null; selMenu.hidden = true; if (f) act(f, sel); };
   selMenu.append(b);
 }
-document.addEventListener("selectionchange", () => {
-  const s = getSelection();
-  const f = !s.isCollapsed && s.rangeCount ? fieldAt(s.anchorNode) : null;
-  if (!f || !f.el.contains(s.focusNode)) { selMenu.hidden = true; return; }
-  const r = s.getRangeAt(0).getBoundingClientRect();
+/** Show the menu centred on x, above y; with no selection (a click in a field) only Paste. */
+function showMenu(x, y, caret) {
+  for (const b of selMenu.children) b.hidden = caret && b.textContent !== "Paste";
   selMenu.hidden = false;
   const w = selMenu.offsetWidth;
-  selMenu.style.left = `${Math.min(innerWidth - w - 4, Math.max(4, r.left + r.width / 2 - w / 2))}px`;
-  selMenu.style.top = `${Math.max(4, r.top - 34)}px`;
+  selMenu.style.left = `${Math.min(innerWidth - w - 4, Math.max(4, x - w / 2))}px`;
+  selMenu.style.top = `${Math.max(4, y - 34)}px`;
+}
+// a selection: the whole menu over it; a click in a field: Paste where it was clicked (the cursor
+// the click put there reports its change after the click, so the click, not that change, decides);
+// the cursor moved by typing or the arrows: none
+let clicked = null;  // where the last click in a field was, until a key is pressed
+document.addEventListener("selectionchange", () => {
+  const s = getSelection();
+  const f = s.rangeCount ? fieldAt(s.anchorNode) : null;
+  if (f && s.isCollapsed && clicked) { showMenu(clicked.x, clicked.y, true); return; }
+  if (!f || s.isCollapsed || !f.el.contains(s.focusNode)) { selMenu.hidden = true; return; }
+  const r = s.getRangeAt(0).getBoundingClientRect();
+  showMenu(r.left + r.width / 2, r.top, false);
 });
+document.addEventListener("pointerdown", (e) => {
+  if (!selMenu.contains(e.target)) clicked = fieldAt(e.target) ? { x: e.clientX, y: e.clientY - 6 } : null;
+});
+document.addEventListener("pointerup", () => {
+  const s = getSelection();
+  if (clicked && s.isCollapsed && s.rangeCount && fieldAt(s.anchorNode)) showMenu(clicked.x, clicked.y, true);
+});
+document.addEventListener("keydown", () => { clicked = null; selMenu.hidden = true; }, true);
 document.getElementById("text-pane").addEventListener("scroll", () => { selMenu.hidden = true; });
 document.getElementById("turn").addEventListener("scroll", () => { selMenu.hidden = true; }, true);
 
