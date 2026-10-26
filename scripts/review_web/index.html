@@ -41,19 +41,23 @@
     <span id="counter" class="muted"></span>
     <button id="issue-next" class="icon-after" data-icon="fwd" title="Next issue (⌘])">Issue</button>
   </div>
-  <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to next (⌘⏎)">Resolved</button>
-  <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
-  <button id="mark-skip" data-icon="skip" title="Skip">Skip</button>
-  <button id="mark-reopen" data-icon="reopen" title="Reopen the issue you last marked resolved, false positive or skipped, and go back to it">Reopen</button>
-  <div class="menu">
-    <button id="menu-btn" class="icon" data-icon="more" title="More"></button>
-    <div id="menu" hidden>
-      <label>Theme <select id="theme"><option value="paper">Paper</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
-      <label><input type="checkbox" id="show-marks" checked> Show _ marks</label>
-      <label><input type="checkbox" id="renumber" checked> Renumber commentary_id when moving</label>
-      <button data-tool="flag">Flag for review</button>
-      <button data-tool="json">Open JSON</button>
-      <button data-tool="png">Reveal PNG in Finder</button>
+  <div id="marks">
+    <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to next (⌘⏎)">Resolved</button>
+    <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
+    <div class="group">
+      <button id="mark-skip" data-icon="skip" title="Skip">Skip</button>
+      <button id="mark-reopen" data-icon="reopen" title="Reopen the issue you last marked resolved, false positive or skipped, and go back to it">Reopen</button>
+      <div class="menu">
+        <button id="menu-btn" class="icon" data-icon="more" title="More"></button>
+        <div id="menu" hidden>
+          <label>Theme <select id="theme"><option value="paper">Paper</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
+          <label><input type="checkbox" id="show-marks" checked> Show _ marks</label>
+          <label><input type="checkbox" id="renumber" checked> Renumber commentary_id when moving</label>
+          <button data-tool="flag">Flag for review</button>
+          <button data-tool="json">Open JSON</button>
+          <button data-tool="png">Reveal PNG in Finder</button>
+        </div>
+      </div>
     </div>
   </div>
 </header>

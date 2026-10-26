@@ -313,3 +313,10 @@ body.no-hi .block.flash { animation: none; }
 #save { background: var(--save); color: #fff; border-color: transparent; font-weight: 600; }
 #save:hover { filter: brightness(1.1); }
 #save.unsaved { background: var(--warn); box-shadow: 0 0 0 2px color-mix(in srgb, var(--warn) 35%, transparent); }
+
+/* the marking buttons: one block on the right; short of room, Skip, Reopen and … go under Resolved, together */
+#marks { flex: 1 1 230px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 5px; }
+#marks button { padding: 3px 7px; }
+#marks .group { gap: 5px; }
+#mark-reopen { color: var(--c-fn); border-color: var(--c-fn); background: color-mix(in srgb, var(--c-fn) 14%, var(--surface)); }
+#mark-reopen:hover { background: color-mix(in srgb, var(--c-fn) 24%, var(--surface)); }
