@@ -1,10 +1,46 @@
 {
  "false_positives": {
+  "09_1_rois/0089/no_translation/a9ce2a9d": {
+   "book_dir": "09_1_rois",
+   "kind": "no_translation",
+   "msg": "Note 3 (℣ 12): latin_quote “FILII BELIAL.” has no french_translation; the comment starts “Voyez ce qu'on a dit sur le ℣. 16. du premier Chapitre.…”: the translation run into the commentary?",
+   "page": 89
+  },
+  "09_1_rois/0105/no_translation/91859533": {
+   "book_dir": "09_1_rois",
+   "kind": "no_translation",
+   "msg": "Note 2 (℣ 36): latin_quote “TORTAM PANIS.” has no french_translation; the comment starts “Voyez l'Exode chap. xxvi. 28. L'Hébreu,^{(d)} un morceau de …”: the translation run into the commentary?",
+   "page": 105
+  },
+  "09_1_rois/0133/no_translation/2d282f41": {
+   "book_dir": "09_1_rois",
+   "kind": "no_translation",
+   "msg": "Note 3 (℣ 5): latin_quote “PROPTER HANC CAUSAM NON CALCANT SACERDOTES DAGON… ” has no french_translation; the next page starts “du C'est pour cette raison que les Prêtres de Dagon, ne pose…”: the translation run into the commentary?",
+   "page": 133
+  },
+  "09_1_rois/0226/no_translation/5ef26baa": {
+   "book_dir": "09_1_rois",
+   "kind": "no_translation",
+   "msg": "Note 2 (℣ 11): latin_quote “ET SAMUEL.” has no french_translation; the comment starts “Samuel parle de lui-même comme il ferait d'un autre ; il ne …”: a translation lost?",
+   "page": 226
+  },
+  "09_1_rois/0246/no_translation/e30305fb": {
+   "book_dir": "09_1_rois",
+   "kind": "no_translation",
+   "msg": "Note 3 (℣ 18): latin_quote “BETH-HORON.” has no french_translation; the comment starts “On croit que c'est _Beth-horon la basse_, au couchant et au …”: a translation lost?",
+   "page": 246
+  },
   "09_1_rois/0311/etc_for_et/00c588c0": {
    "book_dir": "09_1_rois",
    "kind": "etc_for_et",
    "msg": "Last commentary ends with “etc._”: “…_Il se fatigua en marchant une et deux fois, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
    "page": 311
+  },
+  "09_1_rois/0437/no_translation/f3595813": {
+   "book_dir": "09_1_rois",
+   "kind": "no_translation",
+   "msg": "Note 2 (℣ 1): latin_quote “IN APHEC.” has no french_translation; the comment starts “Aphec, dont il est parlé ici, est fort différente de la fame…”: the translation run into the commentary?",
+   "page": 437
   }
  },
  "status": {
@@ -25,6 +61,7 @@
   "09_1_rois/0087/long_translation/dd7978c2": "resolved",
   "09_1_rois/0087/period_seam/f935f0cf": "resolved",
   "09_1_rois/0088/lowercase_lemma/13217321": "resolved",
+  "09_1_rois/0089/no_translation/a9ce2a9d": "false_positive",
   "09_1_rois/0090/empty_commentary/f15d0e94": "resolved",
   "09_1_rois/0090/hyphen_cut/077c56a3": "resolved",
   "09_1_rois/0091/footnote_writeout/6a49c665": "resolved",
@@ -39,12 +76,14 @@
   "09_1_rois/0104/footnote_writeout/1e122a19": "resolved",
   "09_1_rois/0105/hebrew_in_translation/5c0daef8": "resolved",
   "09_1_rois/0105/long_translation/5bdcff9c": "resolved",
+  "09_1_rois/0105/no_translation/91859533": "false_positive",
   "09_1_rois/0107/extra_footnotes/85fbfd07": "resolved",
   "09_1_rois/0110/italic_seam/ef09fc93": "resolved",
   "09_1_rois/0112/footnote_writeout/48f3cb74": "resolved",
   "09_1_rois/0112/long_translation/eb906d97": "resolved",
   "09_1_rois/0113/period_seam/f89ab054": "resolved",
   "09_1_rois/0117/chapter_vulgate/63979509": "resolved",
+  "09_1_rois/0117/no_translation/82786476": "resolved",
   "09_1_rois/0117/ref_order/32c7de5e": "resolved",
   "09_1_rois/0117/seam_repeat/0116": "resolved",
   "09_1_rois/0118/chapter_heading/e1b0faca": "resolved",
@@ -53,6 +92,7 @@
   "09_1_rois/0128/period_seam/e82ec262": "resolved",
   "09_1_rois/0129/footnote_asterisk/a32765e0": "resolved",
   "09_1_rois/0132/hyphen_cut/192d6b17": "resolved",
+  "09_1_rois/0133/no_translation/2d282f41": "false_positive",
   "09_1_rois/0135/footnote_writeout/9456332b": "resolved",
   "09_1_rois/0135/footnote_writeout/dee72707": "resolved",
   "09_1_rois/0135/period_seam/c26f36b3": "resolved",
@@ -80,6 +120,7 @@
   "09_1_rois/0163/lowercase_lemma/16ca3609": "resolved",
   "09_1_rois/0164/seam_missing/0163": "resolved",
   "09_1_rois/0166/leading_call/674d5b08": "resolved",
+  "09_1_rois/0166/no_translation/cc136bf6": "resolved",
   "09_1_rois/0168/footnote_writeout/84d5f64b": "resolved",
   "09_1_rois/0169/period_seam/245b5b79": "resolved",
   "09_1_rois/0169/seam_repeat/0168": "resolved",
@@ -122,12 +163,14 @@
   "09_1_rois/0208/lowercase_lemma/cba52bc7": "resolved",
   "09_1_rois/0210/long_translation/6a903a64": "resolved",
   "09_1_rois/0210/no_lemma/5a1b571a": "resolved",
+  "09_1_rois/0214/no_translation/adaac6d1": "resolved",
   "09_1_rois/0217/long_translation/c8908d23": "resolved",
   "09_1_rois/0217/seam_repeat/0216": "resolved",
   "09_1_rois/0218/hyphen_cut/00a90494": "resolved",
   "09_1_rois/0222/footnote_writeout/1099a917": "resolved",
   "09_1_rois/0222/long_translation/ed3337e9": "resolved",
   "09_1_rois/0226/caps_in_commentary/39fef04b": "resolved",
+  "09_1_rois/0226/no_translation/5ef26baa": "false_positive",
   "09_1_rois/0232/footnote_writeout/99f4837e": "resolved",
   "09_1_rois/0235/footnote_asterisk/a32765e0": "resolved",
   "09_1_rois/0236/footnote_asterisk/b78ad7d9": "resolved",
@@ -138,6 +181,7 @@
   "09_1_rois/0241/seam_missing/0240": "resolved",
   "09_1_rois/0243/ref_order/c7a4fccb": "resolved",
   "09_1_rois/0244/footnote_writeout/31256a87": "resolved",
+  "09_1_rois/0246/no_translation/e30305fb": "false_positive",
   "09_1_rois/0246/seam_repeat/0245": "resolved",
   "09_1_rois/0247/seam_missing/0246": "resolved",
   "09_1_rois/0248/footnote_writeout/9f890a9c": "resolved",
@@ -158,6 +202,9 @@
   "09_1_rois/0259/seam_unclear/0258": "resolved",
   "09_1_rois/0262/extra_footnotes/df11bc17": "resolved",
   "09_1_rois/0262/no_lemma/efd24622": "resolved",
+  "09_1_rois/0263/no_translation/8abd6474": "resolved",
+  "09_1_rois/0263/no_translation/95cce05f": "resolved",
+  "09_1_rois/0264/no_translation/ab465715": "resolved",
   "09_1_rois/0268/footnote_writeout/a6d511a9": "resolved",
   "09_1_rois/0268/seam_unclear/0267": "resolved",
   "09_1_rois/0269/chapter_ref/0eec324d": "resolved",
@@ -167,6 +214,7 @@
   "09_1_rois/0275/italic_seam/70aa20f1": "resolved",
   "09_1_rois/0278/italic_seam/e9f99943": "resolved",
   "09_1_rois/0279/footnote_writeout/e928fc85": "resolved",
+  "09_1_rois/0280/no_translation/d4da4b31": "resolved",
   "09_1_rois/0281/footnote_writeout/417e3f33": "resolved",
   "09_1_rois/0281/footnote_writeout/6e4f468b": "resolved",
   "09_1_rois/0281/seam_repeat/0280": "resolved",
@@ -212,6 +260,7 @@
   "09_1_rois/0332/hyphen_cut/fb40ebc0": "resolved",
   "09_1_rois/0336/footnote_asterisk/b78ad7d9": "resolved",
   "09_1_rois/0342/italic_seam/53903c22": "resolved",
+  "09_1_rois/0342/no_translation/d493ab27": "resolved",
   "09_1_rois/0343/hyphen_cut/eb14be5f": "resolved",
   "09_1_rois/0345/period_seam/f3c2f710": "resolved",
   "09_1_rois/0348/footnote_writeout/8ec86592": "resolved",
@@ -223,6 +272,7 @@
   "09_1_rois/0355/footnote_writeout/d8d1626d": "resolved",
   "09_1_rois/0355/long_translation/e4f73bf2": "resolved",
   "09_1_rois/0356/no_lemma/8f87dc2a": "resolved",
+  "09_1_rois/0356/no_translation/712e83be": "resolved",
   "09_1_rois/0357/period_seam/d088cb68": "resolved",
   "09_1_rois/0359/long_translation/214ca88c": "resolved",
   "09_1_rois/0361/leading_call/c0252abb": "resolved",
@@ -257,6 +307,7 @@
   "09_1_rois/0409/period_seam/abe10cb4": "resolved",
   "09_1_rois/0410/footnote_writeout/c92a6900": "resolved",
   "09_1_rois/0411/hyphen_cut/b1839cbe": "resolved",
+  "09_1_rois/0411/no_translation/3d9f0ffb": "resolved",
   "09_1_rois/0412/period_seam/6fd6af93": "resolved",
   "09_1_rois/0417/etc_for_et/334d787e": "resolved",
   "09_1_rois/0418/missing_footnote/28176d55": "resolved",
@@ -270,6 +321,7 @@
   "09_1_rois/0433/etc_for_et/c058600f": "resolved",
   "09_1_rois/0437/footnote_writeout/d1236fec": "resolved",
   "09_1_rois/0437/long_translation/e8d818e3": "resolved",
+  "09_1_rois/0437/no_translation/f3595813": "false_positive",
   "09_1_rois/0438/italic_seam/404cedc1": "resolved",
   "09_1_rois/0441/guessed_ref/bb7a0c90": "resolved",
   "09_1_rois/0443/chapter_vulgate/4eb8e699": "resolved",
