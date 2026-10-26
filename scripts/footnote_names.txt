@@ -1,0 +1,2601 @@
+# Works and authors named in the footnotes (footnote_tags.py names; correct by hand: lines here are kept).
+# title: French title = original title | author | tag      author: name | tag      other: not a name
+# Titles the harvest left out (they start like a place in a work): make them title: lines if they are works
+# CHECK: missing? title: Lettre à Fabiola =  |  |   (13 notes)
+# CHECK: missing? title: Questions aux orthodoxes =  |  |   (9 notes)
+# CHECK: missing? title: Lettre à Principia =  |  |   (8 notes)
+# CHECK: missing? title: Lettre à Sunia et Fretela =  |  |   (6 notes)
+# CHECK: missing? title: Lettre à Paulin =  |  |   (5 notes)
+# CHECK: missing? title: Questions sur la Genèse =  |  |   (4 notes)
+# CHECK: missing? title: Lettre aux Galates =  |  |   (4 notes)
+# CHECK: missing? title: Lettre à Marcelle =  |  |   (4 notes)
+# CHECK: missing? title: Lettre à Marcella =  |  |   (4 notes)
+# CHECK: missing? title: Lettre à Damase =  |  |   (3 notes)
+# CHECK: missing? title: Lettre à Évangélus =  |  |   (3 notes)
+# CHECK: missing? title: Questions sur l'Ancien Testament =  |  |   (3 notes)
+# CHECK: missing? title: Questions à Antiochus =  |  |   (3 notes)
+# CHECK: missing? title: Lettre à Furia =  |  |   (3 notes)
+# CHECK: missing? title: Homélie sur la génération humaine du Christ =  |  |   (3 notes)
+title: Questions hébraïques = Quaestiones Hebraicae in Genesim | Jérôme | fathers
+title: Histoire naturelle = Naturalis historia | Pline | classical
+title: De animalibus sacris = De animalibus sacris | Bochart | commentators
+title: La Cité de Dieu = De civitate Dei | Augustin | fathers
+title: Préparation évangélique = Praeparatio evangelica | Eusèbe de Césarée | fathers
+title: Du droit naturel et des gens = De iure naturali et gentium iuxta disciplinam Ebraeorum libri septem | Selden | commentators
+title: Stromates = Stromata | Clément d'Alexandrie | fathers
+title: Contre Marcion = Adversus Marcionem | Tertullien | fathers
+title: Des lieux hébreux = De locis Hebraicis | Eusèbe de Césarée | fathers
+title: Du droit de la guerre et de la paix = De iure belli ac pacis | Grotius | commentators
+title: Morales sur Job = Moralia in Job | Grégoire le Grand | fathers
+title: Vie de Moïse = De vita Mosis | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Contre Fauste = Contra Faustum Manichaeum | Augustin | fathers
+title: Des Sanhédrins = De synedriis et praefecturis iuridicis veterum Ebraeorum | Selden | commentators
+title: Histoires = Historiae | Tacite | classical
+title: De la Genèse à la lettre = De Genesi ad litteram | Augustin | fathers
+title: Phaleg = Phaleg | Bochart | commentators
+title: Contre les Juifs = Adversus Judaeos | Tertullien | fathers
+title: Dialogue avec Tryphon = Dialogus cum Tryphone | Justin | fathers
+title: Des devoirs = De officiis | Cicéron | classical
+title: Contre Celse = Contra Celsum | Origène | fathers
+title: Observations = Les observations de plusieurs singularitez et choses mémorables | Belon | commentators
+title: Démonstration évangélique = Demonstratio evangelica | Huet | commentators
+title: Histoire des animaux = Historia animalium | Aristote | classical
+title: Histoire ecclésiastique = Historia ecclesiastica | Eusèbe de Césarée | fathers
+title: Synagogue judaïque = Synagoga Judaica | Buxtorf | commentators
+title: D'Abraham = De Abraham | Ambroise | fathers
+title: De l'abstinence = De abstinentia ab esu animalium | Porphyre | classical
+title: Confessions = Confessiones | Augustin | fathers
+title: Bibliothèque historique = Bibliotheca historica | Diodore de Sicile | classical
+title: Saturnales = Saturnalia | Macrobe | classical
+title: Iliad = Ilias | Homère | classical
+title: De la république des Hébreux = De republica Hebraeorum | Cunæus | commentators
+title: Du royaume des Perses = De regio Persarum principatu | Brisson | commentators
+title: De la Trinité = De sancta Trinitate et operibus eius | Rupert de Deutz | commentators
+title: Contre Jovinien = Adversus Jovinianum | Jérôme | fathers
+title: Satires = Satirae | Horace | classical
+title: Annales = Annales | Tacite | classical
+title: Voyage de Perse = Voyages du chevalier Chardin en Perse et autres lieux de l'Orient | Chardin | commentators
+title: Antiq. lib = Antiquitates Judaicae | Flavius Josèphe | classical
+title: Contre Julien = Contra Julianum | Cyrille d'Alexandrie | fathers
+title: De re rustica = De re rustica | Columelle | classical
+title: Des sacrifices = De sacrificiis | Lucien | classical
+title: Contre les hérésies = Adversus haereses | Irénée | fathers
+title: Apologétique = Apologeticum | Tertullien | fathers
+title: Antiq. l = Antiquitates Judaicae | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Du sermon du Seigneur sur la montagne = De sermone Domini in monte | Augustin | fathers
+title: Du vêtement des prêtres hébreux = De vestitu sacerdotum Hebraeorum | Braun | commentators
+title: Odyss = Odyssea | Homère | classical
+title: Des principes = De principiis | Origène | fathers
+title: Des lois = De Legibus | Platon | classical
+title: De l'agriculture = De re rustica | Varron | classical
+title: L'auteur de l'Ouvrage imparfait = Opus imperfectum in Matthaeum |  | fathers
+title: Hexaméron = Hexaemeron | Ambroise | fathers
+title: De Tobie = De Tobia | Ambroise | fathers
+title: Histoire = Historiae | Tacite | classical
+title: Chronique = Chronicon | Eusèbe de Césarée | fathers
+title: Rétractations = Retractationes | Augustin | fathers
+title: De la doctrine chrétienne = De doctrina christiana | Augustin | fathers
+title: Politique = Politica | Aristote | classical
+title: Digeste = Digesta | Justinien | classical
+title: Histoire des Juifs = Histoire des Juifs depuis Jésus-Christ jusqu'à présent | Basnage | commentators
+title: D'Isis et d'Osiris = De Iside et Osiride | Plutarque | classical
+title: De la nature des animaux = De natura animalium | Élien | classical
+title: Des hérésies = De haeresibus | Augustin | fathers
+title: Pharsale = Pharsalia | Lucain | classical
+title: Dialogues = Dialogorum libri quatuor | Grégoire le Grand | fathers
+title: Des dieux syriens = De diis Syris | Selden | commentators
+title: Géographie = Geographia | Ptolémée | classical
+title: Épîtres = Epistulae | Horace | classical
+title: De la nature des dieux = De natura deorum | Cicéron | classical
+title: Les Travaux et les Jours = Opera et dies | Hésiode | classical
+title: Institutions divines = Divinae institutiones | Lactance | fathers
+title: Histoire des plantes = Historia plantarum | Théophraste | classical
+title: De l'accord des évangélistes = De consensu evangelistarum | Augustin | fathers
+title: Des lois spéciales = De specialibus legibus | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Deipnosophistes = Deipnosophistae | Athénée | classical
+title: De la Genèse contre les manichéens = De Genesi contra Manichaeos | Augustin | fathers
+title: Des lois rituelles des Hébreux = De legibus Hebraeorum ritualibus | Spencer | commentators
+title: Anabase = Anabasis | Xénophon | classical
+title: De la déesse syrienne = De Dea Syria | Lucien | classical
+title: Guerre des Gaules = De bello Gallico | Jules César | classical
+title: Histoire sacrée = Historia sacra | Cappel | commentators
+title: Polyhistor = Collectanea rerum memorabilium | Solin | classical
+title: Canon Ægyptiacus = Canon chronicus Aegyptiacus, Ebraicus, Graecus et disquisitiones | Marsham | commentators
+title: Propos de table = Quaestiones convivales | Plutarque | classical
+title: Tusculanes = Tusculanae disputationes | Cicéron | classical
+title: De successionibus in bona = De successionibus in bona defuncti ad leges Ebraeorum | Selden | commentators
+title: De la monarchie = De monarchia | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Apologie de David = Apologia prophetae David | Ambroise | fathers
+title: Onomasticon = Onomasticon | Eusèbe | fathers
+title: Antiq = Antiquitates Judaicae | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: De rebus Salomonis = De rebus Salomonis | Pineda | commentators
+title: De rebus Syriacis = Syriaca | Appien | classical
+title: De sermone Domini in monte = De sermone Domini in monte | Augustin | fathers
+title: Les Oiseaux = Aves | Aristophane | classical
+title: Contre les Gentils = Summa contra gentiles | Thomas d'Aquin | commentators
+title: Chronologie de l'Ancien Testament = Chronologia veteris Testamenti | Hardouin | commentators
+title: De l'âme = De anima | Tertullien | fathers
+title: De Noé et de l'arche = De Noe et arca | Ambroise | fathers
+title: Contre le mensonge = Contra mendacium | Augustin | fathers
+title: Description de la Terre sainte = Descriptio Terrae Sanctae | Brocard | commentators
+title: Des sacrements = De sacramentis | Ambroise | fathers
+title: Pédagogue = Paedagogus | Clément d'Alexandrie | fathers
+title: Uxor Hebraica = De uxore Hebraica | Selden | commentators
+title: Des bénédictions des patriarches = De benedictionibus patriarcharum | Ambroise | fathers
+title: Chronologie = Chronographia | Génébrard | commentators
+title: Des bienfaits = De beneficiis | Sénèque | classical
+title: Histoire variée = Varia Historia | Élien | classical
+title: Stratagèmes = Strategemata | Polyen | classical
+title: De la pénitence = De paenitentia | Ambroise | fathers
+title: Horae Hebraicae = Horae hebraicae et talmudicae | Lightfoot | commentators
+title: De Consensu = De consensu evangelistarum | Augustin | fathers
+title: Traditions hébraïques = Traditiones hebraicae in Genesim | Jérôme | fathers
+title: Du paradis = De paradiso | Ambroise | fathers
+title: Code = Codex Iustinianus | Justinien | classical
+title: De l'idolâtrie = De idololatria | Tertullien | fathers
+title: Histoires variées = Varia historia | Élien | classical
+title: De tempore = Sermones de tempore | Augustin | fathers
+title: Origines = Etymologiae sive Origines | Isidore de Séville | fathers
+title: Satyr = Satyricon | Pétrone | classical
+title: Nuits attiques = Noctes Atticae | Aulu-Gelle | classical
+title: De animalibus = De animalibus sacris | Bochart | commentators
+title: Joseph. de Bello = De bello Judaico | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Miscellanea = Miscellanea Sacra | Fuller | commentators
+title: De la foi = De fide | Ambroise | fathers
+title: Genialium dierum = Genialium dierum libri sex | Alexandre d'Alexandre | commentators
+title: Contre Eunome = Contra Eunomium | Grégoire de Nysse | fathers
+title: Guerre des Perses = De bello Persico | Procope de Césarée | classical
+title: Géographie ancienne = Geographia antiqua | Cellarius | commentators
+title: Théogonie = Theogonia | Hésiode | classical
+title: Épigrammes =  |  | classical  # CHECK: no original title
+title: Des lieux théologiques = De locis theologicis | Melchior Cano | commentators
+title: Somme théologique = Summa theologiae | Thomas d'Aquin | commentators
+title: De servis = De servis et eorum apud veteres ministeriis | Pignorius | commentators
+title: Seconde Apologie = Apologia secunda | Justin | fathers
+title: Tibère = De vita Caesarum | Suétone | classical
+title: Des lieux = De situ et nominibus locorum Hebraicorum | Eusèbe de Césarée | fathers
+title: Contre Praxéas = Adversus Praxeam | Tertullien | fathers
+title: Auguste = De vita Caesarum | Suétone | classical
+title: Histoire de l'Ancien Testament = Historia Veteris Testamenti | Noël Alexandre | commentators
+title: Constitutions apostoliques = Constitutiones apostolicae | Clément de Rome | fathers
+title: Dialog. cum Tryphone = Dialogus cum Tryphone | Justin | fathers
+title: Histoire des rois de Syrie = Historia regum Syriae | Vaillant | commentators
+title: De l'Oraison dominicale = De oratione | Tertullien | fathers
+title: De la création du monde = De opificio mundi | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Hiéroglyphes = Hieroglyphica | Horapollon | classical
+title: Contre Helvidius = Adversus Helvidium | Jérôme | fathers
+title: Économie rurale = De re rustica | Varron | classical
+title: De la divination = De divinatione | Cicéron | classical
+title: Enchiridion = Enchiridion de fide, spe et caritate | Augustin | fathers
+title: Commentaires = Commentarii | César | classical
+title: Scorpiace = Scorpiace | Tertullien | fathers
+title: Vie d'Alexandre = Vita Alexandri | Plutarque | classical
+title: Art poétique = Ars poetica | Horace | classical
+title: Eusèbe. in locis = De locis Hebraicis | Eusèbe de Césarée | fathers
+title: Contre Parménien = Contra Parmenianum | Optat de Milève | fathers
+title: Mare clausum = Mare clausum | Selden | commentators
+title: Contre Eutrope = In Eutropium | Claudien | classical
+title: De la philosophie sacrée = De sacra philosophia | François Valès | commentators
+title: Pastoral = Regula pastoralis | Grégoire le Grand | fathers
+title: Vie d'Agricola = De vita Iulii Agricolae | Tacite | classical
+title: De sacra philosophia = De sacra philosophia | François Valles | commentators
+title: Servius sur l'Énéide = Commentarii in Vergilii Aeneidem | Servius | classical  # CHECK: the glossary has Servius under commentators, not classical
+title: Jerosol = Talmud Hierosolymitanum |  | rabbis
+title: Histoire de Job = Historia Iobi | Spanheim | commentators
+title: Règle pastorale = Regula pastoralis | Grégoire le Grand | fathers
+title: Guerres de Syrie = Syriaca | Appien | classical
+title: Histoire des Rois d'Égypte = Historia Ptolemaeorum Aegyptiorum regum | Vaillant | commentators
+title: Harmonie =  | Toinard | commentators  # CHECK: no original title
+title: Du baptême = De baptismo | Tertullien | fathers
+title: De la chair du Christ = De carne Christi | Tertullien | fathers
+title: Des mérites et de la rémission des péchés = De peccatorum meritis et remissione | Augustin | fathers
+title: Des vierges = De virginibus | Ambroise | fathers
+title: Alexandre = Anabasis Alexandri | Arrien | classical
+title: De la doctrine des temps = De doctrina temporum | Petau | commentators
+title: Reconnaissances = Recognitiones | Clément de Rome | fathers
+title: De la république des Juifs = De republica Judaeorum | Bertram | commentators
+title: Contre Maximin = Contra Maximinum | Augustin | fathers
+title: Les Cavaliers = Equites | Aristophane | classical
+title: Contre Pélage = Dialogi contra Pelagianos | Jérôme | fathers
+title: De la virginité = De virginitate | Grégoire de Nysse | fathers
+title: Histoire scolastique = Historia scholastica | Pierre Comestor | commentators
+title: Amours = Amores | Ovide | classical
+title: Navigation =  | Cadamosto | commentators  # CHECK: no original title
+title: Éthique à Nicomaque = Ethica Nicomachea | Aristote | classical
+title: Odes = Carmina | Horace | classical
+title: In locis = De locis Hebraicis | Eusèbe de Césarée | fathers
+title: Voyage =  | Morizon | commentators  # CHECK: no original title
+title: De successione in bona = De successione in bona defuncti secundum leges Ebraeorum | Selden | commentators
+title: Canaan = Geographia sacra seu Phaleg et Canaan | Bochart | commentators
+title: Jus regium = Jus regium Hebraeorum | Schickard | commentators
+title: De la pudicité = De pudicitia | Tertullien | fathers
+title: Pythiques = Pythionicae | Pindare | classical
+title: Cérémonies des Juifs = Riti degli Hebrei | Léon de Modène | rabbis
+title: Épitaphe de Paule = Epitaphium Paulae | Jérôme | fathers
+title: Vie d'Apollonius = Vita Apollonii | Philostrate | classical
+title: Chanaan = Geographia sacra seu Phaleg et Chanaan | Bochart | commentators
+title: Du Saint-Esprit = De Spiritu Sancto | Ambroise | fathers
+title: Contre Gaudence = Contra Gaudentium | Augustin | fathers
+title: Contre les psychiques = Adversus Psychicos | Tertullien | fathers
+title: De la fortune d'Alexandre = De Alexandri Magni fortuna aut virtute | Plutarque | classical
+title: Panégyrique de Trajan = Panegyricus Traiano dictus | Pline le Jeune | classical
+title: Contre Verrès = In Verrem | Cicéron | classical
+title: Itinéraire = Itinerarium | Benjamin de Tudèle | rabbis
+title: Æneid._ VII = Aeneis | Virgile | classical
+title: Traité Middot = מִדּוֹת | Mishna | rabbis
+title: Synopsis =  |  | fathers  # CHECK: no original title
+title: Glossa = Glossa ordinaria |  | commentators
+title: De Arte = Ars amatoria | Ovide | classical
+title: Règle = Regula sancti Benedicti | Saint Benoît | fathers
+title: Relation d'Égypte = Nouvelle relation, en forme de journal, d'un voyage fait en Égypte | Vansleb | commentators
+title: Histor = Historia animalium | Aristote | classical
+title: De la République = De re publica | Platon | classical
+title: Prologue sur les Psaumes = Prologus in Psalmos | Hilaire | fathers
+title: Constit = Constitutiones Apostolicae |  | fathers
+title: De la considération = De consideratione | Bernard | fathers
+title: Uxor Ebraica = De uxore Hebraica | Selden | commentators
+title: De Ira = De ira | Sénèque | classical
+title: Gloss = Glossa ordinaria |  | commentators
+title: De Isaac = De Isaac vel anima | Ambroise | fathers
+title: Concord = Concordia evangelica | Jansénius | commentators
+title: Ambassades = Legationes | Polybe | classical
+title: De Sermone Domini = De sermone Domini in monte | Augustin | fathers
+title: Chrysost. in Matt = Homiliae in Matthaeum | Jean Chrysostome | fathers
+title: Origeniana = Origeniana | Huet | commentators
+title: De la foi orthodoxe = De fide orthodoxa | Jean Damascène | fathers
+title: De la prescription = De praescriptione haereticorum | Tertullien | fathers
+title: De præcepto et dispensatione = De praecepto et dispensatione | Bernard | commentators  # CHECK: the glossary has Bernard under fathers, not commentators
+title: De la monogamie = De monogamia | Tertullien | fathers
+title: Vie de Numa = Vita Numae | Plutarque | classical
+title: Ouvrage inachevé contre Julien = Opus imperfectum contra Julianum | Augustin | fathers
+title: Le Pédagogue = Paedagogus | Clément d'Alexandrie | fathers
+title: De la justice = De iustitia et iure | Soto | commentators
+title: Contre les païens = Adversus nationes | Arnobe | fathers
+title: Contre les lucifériens = Contra Luciferianos | Jérôme | fathers
+title: De Dea Syria = De Dea Syria | Lucien | classical
+title: Expédition d'Alexandre = Anabasis Alexandri | Arrien | classical
+title: Voyage de Jérusalem = Itinerarium Hierosolymitanum et Syriacum | Jean Cotovic | commentators
+title: De l'orateur = De oratore | Cicéron | classical
+title: Bibliothèque des Pères = Bibliotheca Patrum |  | fathers
+title: Des mœurs des Germains = De moribus Germanorum | Tacite | classical
+title: Dipnosophistes = Deipnosophistae | Athénée | classical
+title: Problèmes = Problemata | Aristote | classical
+title: De Joseph = De Ioseph patriarcha | Ambroise | fathers
+title: Testimonia = Ad Quirinum testimoniorum libri tres | Cyprien | fathers
+title: Protreptique = Protrepticus | Clément d'Alexandrie | fathers
+title: Histoire d'Éthiopie = Historia Aethiopica | Ludolf | commentators
+title: De medicina Ægyptiorum = De medicina Aegyptiorum | Prosper Alpin | classical
+title: Institutions = De institutis coenobiorum | Cassien | fathers
+title: De Caïn et Abel = De Cain et Abel | Ambroise | fathers
+title: Philo de decem præceptis = De decalogo | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Halac =  | Maïmonide | rabbis  # CHECK: no original title
+title: Satyricon = Satyricon | Pétrone | classical
+title: Apophtegmes = Apophthegmata | Plutarque | classical
+title: Des pierres = De lapidibus | Théophraste | classical
+title: Du voile des vierges = De virginibus velandis | Tertullien | fathers
+title: De l'incarnation du Verbe = De incarnatione Verbi | Augustin | fathers
+title: La Paix = Pax | Aristophane | classical
+title: Casaubon sur Athénée = Animadversiones in Athenaeum | Casaubon | commentators
+title: Élégies = Elegiae |  | classical
+title: De la légation à Caïus = Legatio ad Gaium | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Moré Nebochim = Dalālat al-ḥāʾirīn | Maïmonide | rabbis
+title: Gemara de Babylone = Talmud Bavli | rabbins | rabbis
+title: Seder Olam = Seder Olam | Les rabbins | rabbis
+title: Code de Justinien = Codex Iustinianus | Justinien | classical
+title: Les Troyennes = Troades | Sénèque | classical
+title: Synag = Synagoga Judaica | Buxtorf | commentators
+title: Uxor hebraïca = De uxore Ebraica | Selden | commentators
+title: More Nebochim = Moreh Nevukhim | Maïmonide | rabbis
+title: De la vanité des idoles = De idolorum vanitate | Cyprien | fathers
+title: Contre Flaccus = In Flaccum | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: De vita et morte sanctorum = De vita et morte sanctorum | Isidore | fathers
+title: La République = De republica | Platon | classical
+title: De vita sua = De vita sua | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Épodes = Epodon liber | Horace | classical
+title: Code théodosien = Codex Theodosianus | Théodose II | classical
+title: Extraits de Valois = Excerpta Valesiana | Henri de Valois | commentators
+title: Contre les détracteurs de la vie monastique = Adversus oppugnatores vitae monasticae | Jean Chrysostome | fathers
+title: Critique sacrée = Critica sacra | Louis Cappel | commentators
+title: Néméennes = Nemeonicae | Pindare | classical
+title: De compositione medicamentorum = De compositione medicamentorum secundum locos | Galien | classical
+title: De la milice romaine = De militia Romana | Juste Lipse | commentators  # CHECK: the glossary has Juste Lipse under classical, not commentators
+title: Controverses = Controversiae | Sénèque | classical
+title: Satyric = Satyricon | Pétrone | classical
+title: Claude = Divus Claudius | Suétone | classical
+title: De locis theologicis = De locis theologicis | Melchior Cano | commentators
+title: De Cruce = De sancta cruce | Gretser | commentators
+title: Histoire ecclésiastique de l'Ancien Testament = Historia ecclesiastica Veteris Testamenti | Noël Alexandre | commentators
+title: De la clémence = De clementia | Sénèque | classical
+title: Grammaire = Grammatica sacra | Glassius | commentators
+title: De la résurrection de la chair = De resurrectione carnis | Tertullien | fathers
+title: À Pammaque = Ad Pammachium | Jérôme | fathers
+title: Vie de Thémistocle = Vita Themistoclis | Plutarque | classical
+title: Olympiques = Olympia | Pindare | classical
+title: Des parties des animaux = De partibus animalium | Aristote | classical
+title: Des spectacles = De spectaculis | Tertullien | fathers
+title: De la prédestination des saints = De praedestinatione sanctorum | Augustin | fathers
+title: D'Élie et du jeûne = De Elia et ieiunio | Ambroise | fathers
+title: De Considerat = De consideratione | Bernard | fathers
+title: De la correction et de la grâce = De correptione et gratia | Augustin | fathers
+title: Contre les avares = Homilia in avaros | Basile | fathers
+title: Vales. sacr = De sacra philosophia | Vallès | commentators
+title: Georgic = Georgica | Virgile | classical
+title: Vie d'Auguste = Vita Augusti | Suétone | classical
+title: Pyth = Pythionicae | Pindare | classical
+title: Diarium Italicum = Diarium Italicum | Montfaucon | commentators
+title: Les Deipnosophistes = Deipnosophistae | Athénée | classical
+title: De Vita sua = De Vita sua | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Épitomé de Tite-Live = Epitome Livii | Tite-Live | classical
+title: Histoire des guerres de Syrie = Syriaca | Appien | classical
+title: Vaillant hist = Historia regum Syriae | Vaillant | commentators
+title: Harmonie évangélique = Harmonia evangelica | Toinard | commentators
+title: Du sermon du Seigneur = De sermone Domini in monte | Augustin | fathers
+title: Origène sur saint Matthieu = Commentarii in Matthaeum | Origène | fathers
+title: Métaphysique = Metaphysica | Aristote | classical
+title: Aux nations = Ad nationes | Tertullien | fathers
+title: Allégories = Legum allegoriae | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: À Autolycus = Ad Autolycum | Théophile d'Antioche | fathers
+title: De l'expédition de Cyrus le Jeune = De expeditione Cyri Junioris | Xénophon | classical
+title: De peccato = De peccato originali | Augustin | fathers
+title: Des plantes = De plantis | Théophraste | classical
+title: Mœurs des Israélites = Mœurs des Israélites | Fleury | commentators
+title: Des écrivains ecclésiastiques = De scriptoribus ecclesiasticis | Jérôme | fathers
+title: De l'ornement des femmes = De cultu feminarum | Tertullien | fathers
+title: Saint Jérôme sur Isaïe = Commentarii in Isaiam | Jérôme | fathers
+title: Première Apologie = Apologia prima pro christianis | Justin | fathers
+title: Bereschit Rabba = Bereshit Rabba |  | rabbis
+title: De Venatione = De venatione | Xénophon | classical
+title: Météorologiques = Meteorologica | Aristote | classical
+title: Conférences = Collationes | Cassien | fathers
+title: Argonautiques = Argonautica | Apollonius de Rhodes | classical
+title: Achille = Achilles | Ennius | classical
+title: Sophiste = Sophista | Platon | classical
+title: Commentaire sur la Genèse = Commentarius in Genesim | Jean Le Clerc | commentators
+title: Pontiques = Epistulae ex Ponto | Ovide | classical
+title: Canon chronologique = Canon chronicus Aegyptiacus, Ebraicus, Graecus et disquisitiones | Marsham | commentators
+title: Expédition de Cyrus le Jeune = Anabasis | Xénophon | classical
+title: Apologie contre Rufin = Apologia adversus libros Rufini | Jérôme | fathers
+title: Lysandre = Lysander | Plutarque | classical
+title: De l'âme et de son origine = De anima et eius origine | Augustin | fathers
+title: Guide des égarés = Dux seu director dubitantium aut perplexorum | Maïmonide | rabbis
+title: Histoire des Sarrasins = Historia Saracenica | Elmacin | commentators
+title: Trésor = Thesaurus de sancta Trinitate | Cyrille d'Alexandrie | fathers
+title: De locis = De situ et nominibus locorum Hebraicorum | Jérôme | fathers
+title: De Trinitate = De Trinitate | Augustin | fathers
+title: Du jeûne = De ieiunio adversus psychicos | Tertullien | fathers
+title: Stromata = Stromata | Clément d'Alexandrie | fathers
+title: De la grâce et du libre arbitre = De gratia et libero arbitrio | Augustin | fathers
+title: De la vie de Moïse = De vita Mosis | Philon d'Alexandrie | classical
+title: De la médecine des Égyptiens = De medicina Aegyptiorum | Prosper Alpin | classical
+title: Histoire de la haute Éthiopie = Historia de Ethiopia a alta | Manuel d'Almeida | classical
+title: Philologia sacra = Philologia sacra | Mayer | commentators
+title: De Spiritu sancto = De Spiritu sancto | Ambroise | fathers
+title: Philocalie = Philocalia | Origène | fathers
+title: Iphigénie en Tauride = Iphigenia in Tauris | Euripide | classical
+title: Du Décalogue = De Decalogo | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Contre Adimante = Contra Adimantum | Augustin | fathers
+title: Du libre arbitre = De libero arbitrio | Augustin | fathers
+title: Théodose = Codex Theodosianus | Théodose | classical
+title: De jure Hebræorum = De jure Hebraeorum | Hottinger | commentators
+title: De victimas offerentibus = De victimis offerentibus | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Nuits Attiques = Noctes Atticae | Aulu-Gelle | classical
+title: Gemara de Jérusalem = Talmud Hierosolymitanum | rabbins | rabbis
+title: Traité des contrats et des usures = Tractatus contractuum et usurarum | Charles Du Moulin | commentators
+title: Hercule sur l'Œta = Hercules Oetaeus | Sénèque | classical
+title: Martinii Lexicon = Lexicon philologicum | Martinius | commentators
+title: De la vie du peuple romain = De vita populi Romani | Varron | classical
+title: De la langue latine = De lingua Latina | Varron | classical
+title: Rational = Rationale divinorum officiorum | Durand | commentators
+title: Rerum memorabilium = Rerum memorabilium iam olim deperditarum libri duo | Pancirole | commentators
+title: Othon = Vita Othonis | Suétone | classical
+title: Des mœurs des Orientaux = De moribus Orientalium | Gabriel Sionite | commentators
+title: De la succession dans le pontificat = De successionibus in pontificatum Ebraeorum | Selden | commentators
+title: De Victimis = De victimis | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Les Acharniens = Acharnenses | Aristophane | classical
+title: De moribus Orientalium = De moribus Orientalium | Gabriel Sionite | commentators
+title: Des dix commandements = De Decalogo | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Vie de Sylla = Vita Sullae | Plutarque | classical
+title: De la correction des temps = De emendatione temporum | Scaliger | commentators
+title: De adoratione = De adoratione in spiritu et veritate | Cyrille d'Alexandrie | fathers
+title: Terre Sainte = La Terre Sainte | Eugène Roger | commentators
+title: Canon = Canon chronicus | Marsham | commentators
+title: De la migration d'Abraham = De migratione Abrahami | Philon | fathers  # CHECK: Philon counts as rabbis here, not fathers
+title: Vie de Lycurgue = Vitae parallelae | Plutarque | classical
+title: Code Justinien = Codex Iustinianus | Justinien | classical
+title: De la vraie religion = De vera religione | Augustin | fathers
+title: Vie de Thésée = Vita Thesei | Plutarque | classical
+title: Hieroglyphica = Hieroglyphica | Horapollon | classical
+title: Vie de Constantin = De vita Constantini | Eusèbe de Césarée | fathers
+title: Contre les ariens = Orationes contra Arianos | Athanase | fathers
+title: Idyl = Idyllia | Théocrite | classical
+title: Thérapeutique = Graecarum affectionum curatio | Théodoret | fathers
+title: Plutus = Plutus | Aristophane | classical
+title: Caractères = Characteres | Théophraste | classical
+title: Animadversiones =  | Boot | commentators  # CHECK: no original title
+title: Des paroles de l'Apôtre = De verbis Apostoli | Augustin | fathers
+title: Constitutions = Constitutiones apostolicae | Clément de Rome | fathers
+title: Florides = Florida | Apulée | classical
+title: Hécube = Hecuba | Euripide | classical
+title: Vie d'Artaxerxès = Vita Artaxerxis | Plutarque | classical
+title: Chronique grecque = Chronicon | Eusèbe de Césarée | fathers
+title: Préface sur Jonas = Praefatio in Jonam | Jérôme | fathers
+title: Canon égyptien = Canon chronicus Aegyptiacus | Marsham | commentators
+title: Des veuves = De viduis | Ambroise | fathers
+title: Homer Iliad = Ilias | Homère | classical
+title: De l'unité de l'Église = De unitate Ecclesiae | Cyprien | fathers
+title: Dissertation sur les supplices des Hébreux =  | Calmet | commentators  # CHECK: no original title
+title: Voyage d'Égypte = Nouvelle relation en forme de journal d'un voyage fait en Égypte | Wansleben | commentators
+title: Expédition de Cyrus = Anabasis Cyri | Xénophon | classical
+title: Eliaca = Eliaca | Pausanias | classical
+title: Domitien = De vita Caesarum | Suétone | classical
+title: De la vie contemplative = De vita contemplativa | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Autor operis imperfecti sur Matthieu = Opus imperfectum in Matthaeum | Auteur anonyme | fathers
+title: De la nature et de la grâce = De natura et gratia | Augustin | fathers
+title: De la vieillesse = De senectute | Cicéron | classical
+title: Analecta ad Militiam Romanam = Analecta ad Militiam Romanam | Juste Lipse | commentators  # CHECK: the glossary has Juste Lipse under classical, not commentators
+title: Médée = Medea | Sénèque | classical
+title: De Urim = De Urim et Thummim | Spencer | commentators
+title: De re militari = De re militari | Végèce | classical
+title: Polyglotte = Biblia Polyglotta | Benito Arias Montano | versions
+title: Eclog = Eclogae | Virgile | classical
+title: De la couronne du soldat = De corona militis | Tertullien | fathers
+title: Chronologia veteris et novi Testamenti = Chronologia veteris et novi Testamenti | Hardouin | commentators
+title: Préface sur les Psaumes = Praefatio in Psalterium | Cassiodore | fathers
+title: Des villes = De urbibus | Étienne de Byzance | classical
+title: Vie des prophètes = De vita prophetarum | Pseudo-Épiphane | fathers
+title: De Verbo Dei = De verbo Dei | Bellarmin | commentators
+title: Chronique d'Alexandrie = Chronicon Paschale | Anonyme | classical
+title: De Naboth = De Nabuthae Iezraelita | Ambroise | fathers
+title: L'auteur de l'Histoire scolastique = Historia scholastica | Pierre le Mangeur | commentators
+title: De la gloire des martyrs = De gloria martyrum | Grégoire de Tours | fathers
+title: Alcibiade = Vita Alcibiadis | Plutarque | classical
+title: De cultu feminarum = De cultu feminarum | Tertullien | fathers
+title: De opere et eleemosynis = De opere et eleemosynis | Cyprien | fathers
+title: Voyage du Levant =  | Thévenot | commentators  # CHECK: no original title
+title: Persiques = Persica | Ctésias | classical
+title: Basnage Histoire des Juifs =  | Basnage | commentators  # CHECK: no original title
+title: De Jacob = De Iacob et vita beata | Ambroise | fathers
+title: Traditions hébraïques sur la Genèse = Hebraicae quaestiones in libro Geneseos | Jérôme | fathers
+title: Étymologies = Etymologiarum sive Originum libri XX | Isidore de Séville | fathers
+title: Joseph Antiq. lib = Antiquitates Judaicae | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Scolast = Historia scholastica | Pierre le Mangeur | commentators
+title: Testimoniorum = Testimonia ad Quirinum | Cyprien | fathers
+title: Disquisitiones magicæ = Disquisitionum magicarum libri sex | Delrio | commentators
+title: Sentences = Sententiarum libri tres | Isidore de Séville | fathers
+title: De la mortalité = De mortalitate | Cyprien | fathers
+title: Thesaurus = Thesaurus geographicus | Ortelius | commentators
+title: De Justitia = De iustitia et iure | Soto | commentators
+title: L'Eunuque = Eunuchus | Térence | classical
+title: L'Art d'aimer = Ars amatoria | Ovide | classical
+title: Brisson. de Reg = De regno Persarum | Brisson | classical  # CHECK: the glossary has Brisson under commentators, not classical
+title: Les Perses = Persae | Eschyle | classical
+title: Antiquit. lib = Antiquitates Iudaicae | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Annotations sur Job = Annotationes in Iob | Augustin | fathers
+title: De la semence = De semine | Galien | classical
+title: Juvénal Satyr = Saturae | Juvénal | classical
+title: Æneid._ VI = Aeneis | Virgile | classical
+title: Des pierres précieuses = De duodecim gemmis | Épiphane | fathers
+title: Scipion = Somnium Scipionis | Cicéron | classical
+title: Thébaïde = Thebais | Stace | classical
+title: De Patientia = De patientia | Tertullien | fathers
+title: Contre Rufin = Contra Rufinum | Jérôme | fathers
+title: Ad Suniam et Fretellam = Ad Sunniam et Fretellam | Jérôme | fathers
+title: Opera et dies = Opera et dies | Hésiode | classical
+title: De l'adoration en esprit et en vérité = De adoratione in spiritu et veritate | Cyrille d'Alexandrie | fathers
+title: À Sunia et Fretela = Epistula ad Suniam et Fretelam | Jérôme | fathers
+title: Hierozoicon = De animalibus sacris | Bochart | commentators
+title: Ambr. apolog = Apologia David altera | Ambroise | fathers
+title: Epist. ad Eust =  | Eusèbe de Césarée | fathers  # CHECK: no original title
+title: Vide Ieronym. in locis Hebr = Liber de situ et nominibus locorum Hebraicorum | Jérôme | fathers
+title: Témoignages = Testimoniorum libri tres ad Quirinum | Cyprien | fathers
+title: Registre = Registrum epistularum | Grégoire le Grand | fathers
+title: Grandes Règles = Regulae fusius tractatae | Basile | fathers
+title: L'Auteur de l'Ouvrage imparfait sur saint Matthieu = Opus imperfectum in Matthaeum |  | fathers
+title: Guerre de Jugurtha = Bellum Iugurthinum | Salluste | classical
+title: Tristes = Tristia | Ovide | classical
+title: De la brièveté de la vie = De brevitate vitae | Sénèque | classical
+title: Hercule furieux = Hercules furens | Sénèque | classical
+title: Conjur = De coniuratione Catilinae | Salluste | classical
+title: De conversione ad clericos = De conversione ad clericos | Bernard | commentators  # CHECK: the glossary has Bernard under fathers, not commentators
+title: De virginibus velandis = De virginibus velandis | Tertullien | fathers
+title: Vie de Néron = De vita Caesarum | Suétone | classical
+title: Idylles = Idyllia | Théocrite | classical
+title: Du baptême contre les donatistes = De baptismo contra Donatistas | Augustin | fathers
+title: De la Providence = De providentia | Sénèque | classical
+title: Plaut. in Sticho = Stichus | Plaute | classical
+title: Du mariage et de la concupiscence = De nuptiis et concupiscentia | Augustin | fathers
+title: Les Nuées = Nubes | Aristophane | classical
+title: Des œuvres et des aumônes = De opere et eleemosynis | Cyprien | fathers
+title: De la justification = De justificatione | Bellarmin | commentators
+title: De l'amitié = De amicitia | Cicéron | classical
+title: Thyeste = Thyestes | Sénèque | classical
+title: Cicero de Amicitia = De amicitia | Cicéron | classical
+title: August. in Psal = Enarrationes in Psalmos | Augustin | fathers
+title: Plato lib = De Legibus | Platon | classical
+title: De Beneficiis = De Beneficiis | Sénèque | classical
+title: Horat. de Arte Poëtica = Ars poetica | Horace | classical
+title: Du soin des morts = De cura pro mortuis gerenda | Augustin | fathers
+title: De originibus gentium Americanarum = De originibus gentium Americanarum | Hornius | commentators
+title: Le Bouclier d'Hercule = Scutum Herculis | Hésiode | classical
+title: Epodon = Epodon liber | Horace | classical
+title: Éthiopiques = Aethiopica | Héliodore | classical
+title: Concorde évangélique = Concordia evangelica | Jansénius | commentators
+title: Apologie = Apologia David | Ambroise | fathers
+title: IIa-IIæ = Summa theologiae | Thomas d'Aquin | commentators
+title: Plato in Phædro = Phaedrus | Platon | classical
+title: De bello Persico = De bello Persico | Procope de Gaza | classical  # CHECK: the glossary has Procope de Gaza under fathers, not classical
+title: Grammatica sacra = Grammatica sacra | Glassius | commentators
+title: Canon Chronicus Ægyptiacus = Canon chronicus Aegyptiacus, Ebraicus, Graecus et disquisitiones | Marsham | commentators
+title: Catéchèses = Catecheses | Cyrille de Jérusalem | fathers
+title: Contre Maximin l'arien = Contra Maximinum Arianum | Augustin | fathers
+title: De l'Âne d'or = Asinus aureus | Apulée | classical
+title: Préface sur Amos = Praefatio in Amos | Jérôme | fathers
+title: Exposit =  | Jérôme | fathers  # CHECK: no original title
+title: Stratagem = Strategemata | Frontin | classical
+title: Plutarch. in Alex = Vita Alexandri | Plutarque | classical
+title: Préface sur Malachie = Praefatio in Malachiam | Jérôme | fathers
+title: De l'Antéchrist = De Antichristo | Hippolyte | fathers
+title: Bibliothèque sainte = Bibliotheca sancta | Sixte de Sienne | commentators
+title: Poliorcétique = Poliorcetica | Lipse | commentators
+title: Des affaires de Syrie = Syriaca | Appien | classical
+title: Les Jours géniaux = Genialium dierum libri | Alexandre ab Alexandro | commentators
+title: Joseph Antiq = Antiquitates Judaicae | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Antiq l = Antiquitates Judaicae | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Livret des Machabées = Liber Machabaeorum |  | versions
+title: De natali Christi = De natali Christi | Bynæus | commentators
+title: Histoire critique du Nouveau Testament = Histoire critique du Nouveau Testament | Simon | commentators
+title: L'Ouvrage imparfait sur ce passage = Opus imperfectum in Matthaeum |  | fathers
+title: Exercices sur Baronius = De rebus sacris et ecclesiasticis exercitationes XVI | Casaubon | commentators
+title: Variantes = Variae lectiones | Mill | commentators
+title: De la fuite pendant la persécution = De fuga in persecutione | Tertullien | fathers
+title: Règles brèves = Regulae brevius tractatae | Basile | fathers
+title: Strom = Stromata | Clément d'Alexandrie | fathers
+title: Philo de Specialib = De specialibus legibus | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: De Sermone Domini in monte = De sermone Domini in monte | Augustin | fathers
+title: Oper. imperf = Opus imperfectum in Matthaeum | Pseudo-Chrysostome | fathers
+title: Hilar. in Matt = Commentarius in Matthaeum | Hilaire de Poitiers | fathers
+title: Ambros. in Psalm = Expositiones in Psalmos | Ambroise | fathers
+title: Author Oper. imperfect = Opus imperfectum in Matthaeum | Pseudo-Chrysostome | fathers
+title: Contre les adversaires de la Loi et des Prophètes = Contra adversarium legis et prophetarum | Augustin | fathers
+title: Ambros. in Psal = Enarrationes in Psalmos | Ambroise | fathers
+title: Saint Ambroise sur saint Luc = Expositio Evangelii secundum Lucam | Ambroise | fathers
+title: Philo de Spécial = De specialibus legibus | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Harmonie des Évangiles = Harmonia evangelica | Gerard Joan Vossius | commentators
+title: Contre Hermogène = Adversus Hermogenem | Tertullien | fathers
+title: Contre les adversaires de la Loi et des prophètes = Contra adversarium legis et prophetarum | Augustin | fathers
+title: Contre les mathématiciens = Adversus mathematicos | Sextus Empiricus | classical
+title: Contre Arius = Adversus Arium | Victorin | fathers
+title: De Animalibus sacris = De animalibus sacris | Bochart | commentators
+title: Vitæ Mosis = De vita Mosis | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: De l'origine du sabbat = De origine sabbati | Gomar | commentators
+title: Du jour natal = De die natali | Censorin | classical
+title: Cosmographie = Cosmographia | Æthicus | classical
+title: Expédition de Lucullus =  | Rufus | classical  # CHECK: no original title
+title: Des Tartares =  |  | commentators  # CHECK: no original title
+title: De Peccatorum meritis = De peccatorum meritis et remissione | Augustin | fathers
+title: De fuga sæculi = De fuga saeculi | Cyprien | fathers
+title: Antiquitates convivales = Antiquitatum convivalium libri tres | Stuck | commentators
+title: Solin Polyhistor = Collectanea rerum memorabilium | Solin | classical
+title: De l'exhortation à la chasteté = De exhortatione castitatis | Tertullien | fathers
+title: Du bien conjugal = De bono coniugali | Augustin | fathers
+title: De peccato originali = De peccato originali | Augustin | fathers
+title: Dialogue contre les calomnies des Grecs = Dialogus contra calumnias Graecorum | Humbert | commentators
+title: Saint Jérôme sur Ézéchiel = Commentarii in Ezechielem | Jérôme | fathers
+title: Hypotyposes pyrrhoniennes = Pyrrhoniae hypotyposes | Sextus Empiricus | classical
+title: De Jejunio = De ieiunio | Basile | fathers
+title: De la fausse religion = De falsa religione | Lactance | fathers
+title: De la foi à Gratien = De fide ad Gratianum Augustum | Ambroise | fathers
+title: Adversus = Adversus haereses | Irénée | fathers
+title: Indique = Indica | Arrien | classical
+title: Sentiments de quelques Théologiens de Hollande = Sentimens de quelques théologiens de Hollande sur l'Histoire critique du Vieux Testament | Théologiens de Hollande | commentators
+title: Histoire critique du Vieux Testament = Histoire critique du Vieux Testament | Richard Simon | commentators
+title: Des huit questions de Dulcitius = De octo Dulcitii quaestionibus | Augustin | fathers
+title: Fables hérétiques = Haereticarum fabularum compendium | Théodoret | fathers
+title: Contre les adversaires de la loi et des prophètes = Contra adversarium legis et prophetarum | Augustin | fathers
+title: Contre Pélage et Célestius =  | Augustin | fathers  # CHECK: no original title
+title: Des noces et de la concupiscence = De nuptiis et concupiscentia | Augustin | fathers
+title: Du péché originel = De peccato originali | Augustin | fathers
+title: De l'incarnation = De incarnatione et gratia | Fulgence | fathers
+title: De la circoncision = De circumcisione | Maïmonide | rabbis
+title: Contre les pélagiens = Contra Pelagianos | Jérôme | fathers
+title: De la résurrection = De resurrectione | Augustin | fathers
+title: Locutions sur la Genèse = Locutionum in Heptateuchum libri septem | Augustin | fathers
+title: Hipparchique = Hipparchicus | Xénophon | classical
+title: Du sacerdoce = De sacerdotio | Jean Chrysostome | fathers
+title: Des mœurs des manichéens = De moribus Manichaeorum | Augustin | fathers
+title: Locutions = Locutionum in Heptateuchum libri septem | Augustin | fathers
+title: Dissert. sur la Chronologie = Dissertation sur la chronologie | Calmet | commentators
+title: Dissertation de l'existence de Dieu = Dissertation sur l'existence de Dieu | Jaquelot | commentators
+title: Gemara Babylone ad titulum Sanhédrin = Gemara Babylonica ad titulum Sanhedrin | Gémara de Babylone | rabbis
+title: Author operis de Prædestinatione et Gratia = De praedestinatione et gratia | auteur anonyme | fathers
+title: Dissertation de nomine Jéhovah = Dissertatio de nomine Jehovah | Dorschaus | commentators
+title: Observations sacrées = Observationes sacrae | Colomiès | commentators
+title: Histoire des dynasties = Historia dynastiarum | Abulfarag | commentators
+title: Histoire lausiaque = Historia Lausiaca | Pallade | fathers
+title: De Natura Deorum = De natura deorum | Cicéron | classical
+title: Vansleb voyage d'Égypte = Nouvelle relation en forme de journal d'un voyage fait en Égypte en 1672 et 1673 | Vansleb | classical  # CHECK: the glossary has Vansleb under commentators, not classical
+title: Réflexions =  | Ferrand | commentators  # CHECK: no original title
+title: Itinéraire de Constantinople = Itinerarium Constantinopolitanum | Busbec | classical
+title: More Nevochim = Moreh Nevukhim | Maïmonide | rabbis
+title: Philosophia sacra = Philosophia sacra | Valois | commentators
+title: De notis Ecclesiæ = De notis Ecclesiæ | Thomas Bosius | commentators
+title: Variæ historiæ = Varia historia | Élien | classical
+title: Du Temple = De templo Hierosolymitano | Ribera | commentators
+title: Ouvrage imparfait contre Julien = Opus imperfectum contra Iulianum | Augustin | fathers
+title: Symposium =  | Plutarque | classical  # CHECK: no original title
+title: De jure naturali = De jure naturali et gentium juxta disciplinam Ebraeorum | Selden | commentators
+title: Memarim =  | Maïmonide | rabbis  # CHECK: no original title
+title: De legibus ritualibus = De legibus Hebraeorum ritualibus | Spencer | commentators
+title: Middoth = Middoth | rabbins | rabbis
+title: Les Amours = Amores | Ovide | classical
+title: Décret = Decretum Gratiani | Gratien | commentators
+title: Des passions de l'âme = De propriorum animi cuiuslibet affectuum dignotione et curatione | Galien | classical
+title: Canones Isaaci Lingonensis = Canones Isaaci Lingonensis | Isaac de Langres | commentators  # CHECK: the glossary has Isaac de Langres under fathers, not commentators
+title: Des lois rituelles = De legibus Hebraeorum ritualibus | Spencer | commentators
+title: De l'origine des nations américaines = De origine gentium Americanarum | Hornius | commentators
+title: Du pontife romain = De Romano Pontifice | Bellarmin | commentators
+title: Des promesses de Dieu = De promissionibus et praedictionibus Dei | Prosper | fathers
+title: Maasé Corban =  | Maïmonide | rabbis  # CHECK: no original title
+title: Massachet Berachot =  | Talmud | rabbis  # CHECK: no original title
+title: Kelei Hammikdash =  | Maïmonide | rabbis  # CHECK: no original title
+title: Malagam =  |  | classical  # CHECK: no original title
+title: De antidotis = De antidotis | Galien | classical
+title: De legibus Hebræorum ritualibus = De legibus Hebræorum ritualibus | Spencer | commentators
+title: Ægyptiaca = Aegyptiaca et Hibernica | Witsius | commentators
+title: Aaron purgatus = Aaron purgatus | Moncaus | commentators
+title: Syntagma = De diis Syris Syntagmata | Selden | commentators
+title: Glaphyra = Glaphyra | Cyrille d'Alexandrie | fathers
+title: Navigationes = Navigationes | Patrizi | commentators
+title: Halacha Sabbat = Halacha Sabbath | Moïse l'Égyptien | rabbis
+title: Économiques = Oeconomica | Aristote | classical
+title: De homonymis hyles jatricæ = De homonymis hyles iatricae | Galien | classical
+title: Des Sanhédrins des anciens Hébreux = De synedriis et praefecturis iuridicis veterum Ebraeorum | Selden | commentators
+title: De prædictionibus = De promissionibus et praedictionibus Dei | Prosper d'Aquitaine | fathers
+title: Itinéraire d'Israël =  | Barradius | commentators  # CHECK: no original title
+title: Des cérémonies des Juifs = De caeremoniis Judaeorum | Léon de Modène | rabbis
+title: Chronicon = Chronographia | Génébrard | commentators
+title: De Virginitate = De virginitate | Grégoire de Nysse | fathers
+title: Iter Israël = Iter Israël | Barradius | commentators
+title: De adoratione in spiritu et veritate = De adoratione in spiritu et veritate | Cyrille d'Alexandrie | fathers
+title: À Simplicien sur diverses questions = De diversis quaestionibus ad Simplicianum | Augustin | fathers
+title: Nouvelle collection des Pères =  | Jorno | fathers  # CHECK: no original title; the glossary has Jorno under commentators, not fathers
+title: À Quirinus = Ad Quirinum testimoniorum libri tres | Cyprien | fathers
+title: De Synedriis = De synedriis et praefecturis juridicis veterum Ebraeorum libri tres | Selden | commentators
+title: Codex Babatra = Baba Bathra | Les rabbins | rabbis
+title: Moreh Nebukim = Dux perplexorum | Maïmonide | rabbis
+title: Jérôme sur Jérémie = In Hieremiam prophetam libri sex | Jérôme | fathers
+title: Centuria Miscellanea = Centuria miscellanea | Drusius | commentators
+title: Traité Sanhédrin = Tractatus Sanhedrin | Maïmonide | rabbis
+title: Halachoth Melachim = Halachoth Melachim | Maïmonide | rabbis
+title: De jure regis = De jure regis Hebraeorum | Schickard | commentators
+title: De sacris unctionibus = De sacris unctionibus | Henri Motus | commentators
+title: De institutione regis = De regis institutione et disciplina | Osorius | commentators
+title: Halachoth Malachim = Halachoth Melachim | Maïmonide | rabbis
+title: Histoire de la Chine = Sinicae historiae decas prima | Martini | commentators
+title: Chronique de Louis XI =  |  | commentators  # CHECK: no original title
+title: De l'invention = De inventione | Cicéron | classical
+title: Description de l'Afrique = Descriptio Africae | Jean Léon | commentators
+title: Canon chronicus Ægyptiacus = Canon chronicus Ægyptiacus, Ebraicus, Graecus et disquisitiones | Marsham | commentators
+title: Du droit royal = Jus regium Hebraeorum | Schickard | commentators
+title: Des esclaves = De servis et eorum apud veteres ministeriis | Pignorius | commentators
+title: Halach Sanhédrin = Hilkhot Sanhedrin | Maïmonide | rabbis
+title: Onirocritique = Oneirocritica | Achmet | commentators  # CHECK: the glossary has Achmet under classical, not commentators
+title: De excidio Hierosolymitano = De excidio Hierosolymitano | Hégésippe | classical  # CHECK: the glossary has Hégésippe under fathers, not classical
+title: Vie d'Empédocle = Vitae philosophorum | Diogène Laërce | classical
+title: Caïn et Abel = De Cain et Abel | Ambroise | fathers
+title: Compendium historiæ = Compendium historiarum | Cédrène | classical
+title: Du mensonge = De mendacio | Augustin | fathers
+title: Vie des Pères = Vitae Patrum | Jean Moschus | fathers
+title: Navigation au Brésil = Histoire d'un voyage faict en la terre du Brésil | Jean de Léry | commentators
+title: À Monime = Ad Monimum | Fulgence | fathers
+title: De l'abstinence des animaux = De abstinentia ab esu animalium | Porphyre | classical
+title: Vitas Patrum = Vitae Patrum |  | fathers
+title: De expeditione Alexandri = De expeditione Alexandri | Arrien | classical
+title: Histoire de saint Louis = Histoire de saint Louis | Joinville | commentators
+title: De la vie de Constantin = De vita Constantini | Eusèbe de Césarée | fathers
+title: De la Préparation évangélique = Praeparatio evangelica | Eusèbe de Césarée | fathers
+title: Histoire_ des Juifs = Histoire des Juifs depuis Jésus-Christ jusqu'à présent | Basnage | commentators
+title: Arboretum biblicum = Arboretum biblicum | Jean Henri Ursinus | commentators
+title: Dionysiaques = Dionysiaca | Nonnus | classical
+title: Du royaume d'Italie = De regno Italiae | Sigonius | commentators
+title: De justitia = De iustitia et iure | Lessius | commentators
+title: De militia romana = De militia Romana | Juste Lipse | classical
+title: Thérapeutique des maladies helléniques = Graecarum affectionum curatio | Théodoret | fathers
+title: Des animaux sacrés = De animalibus sacris | Bochart | commentators
+title: Aux Grecs = Cohortatio ad Graecos | Justin | fathers
+title: Anabase de Cyrus le Jeune = Anabasis Cyri | Xénophon | classical
+title: De vitis Stephanorum = De vitis Stephanorum | Théodore Jansson van Almeloveen | commentators
+title: Historia Monomachiæ = Historia Monomachiae | Hostus | commentators
+title: Diogène Laërce et notes de Ménage = De vitis philosophorum | Diogène Laërce | classical
+title: Code Théodosien = Codex Theodosianus | Théodose II | classical
+title: Auteur des Quæstiones in Vetus et Novum Testamentum = Quaestiones in Vetus et Novum Testamentum | Augustin | fathers
+title: Antiquarum lectionum = Lectionum antiquarum libri XXX | Célius Rhodiginus | commentators
+title: Éthique = Ethica Nicomachea | Aristote | classical
+title: Réponses aux questions de Simplicien = De diversis quaestionibus ad Simplicianum | Augustin | fathers
+title: Institutes = Institutiones | Justinien | classical
+title: Concordance des particules = Concordantiae particularum | Nold | commentators
+title: L'Enlèvement de Proserpine = De raptu Proserpinae | Claudien | classical
+title: De cruce = De cruce libri tres | Juste Lipse | commentators  # CHECK: the glossary has Juste Lipse under classical, not commentators
+title: Méthode thérapeutique = Methodus medendi | Galien | classical
+title: De uxore Hebraica = De uxore Hebraica | Selden | commentators
+title: De Archisectura =  | Serlio | commentators  # CHECK: no original title
+title: De herbis Bibliæ = De herbis Bibliæ | Levinus Lemnius | commentators
+title: Chronologia sacra = Chronologia sacra | Ussérius | commentators
+title: Guerres civiles = Bella civilia | Appien | classical
+title: Monsieur Le Pelletier dans les Mélanges d'Histoires =  | Le Pelletier | commentators  # CHECK: no original title
+title: De Salomone = De rebus Salomonis | Pineda | commentators
+title: Convivium = Septem sapientium convivium | Plutarque | classical
+title: De Lingua Latina = De lingua Latina | Varron | classical
+title: Adversaria = Adversariorum libri triginta | Turnèbe | commentators
+title: Syntagme = De diis Syris syntagmata | Selden | commentators
+title: De virginibus = De virginibus libri tres | Ambroise | fathers
+title: De falsa religione = Divinarum institutionum libri VII | Lactance | fathers
+title: Aux orthodoxes = Quaestiones et responsiones ad Orthodoxos | Justin | fathers
+title: Contre les gentils = Summa contra gentiles | Thomas d'Aquin | commentators
+title: Contre les adversaires de la vie monastique = Adversus oppugnatores vitae monasticae | Jean Chrysostome | fathers
+title: De l'architecture = De architectura | Vitruve | classical
+title: À Boniface = Epistulae ad Bonifacium | Augustin | fathers
+title: Traité Megilla = Tractatus Megilla | Les rabbins | rabbis
+title: Science des Perses =  | Chardin | commentators  # CHECK: no original title
+title: Punica = Punica | Silius Italicus | classical
+title: Événement des États du Mogol =  | Bernier | commentators  # CHECK: no original title
+title: Au Livre second contre Apion = Contra Apionem | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: De legibus connubialibus = De legibus connubialibus | Tiraqueau | commentators
+title: Glose sur la Somme =  |  | commentators  # CHECK: no original title
+title: De amphitheatro = De amphitheatro | Juste Lipse | classical
+title: Dissertation sur l'existance de Dieu =  | Jaquelot | commentators  # CHECK: no original title
+title: Antiquité des temps détruite =  | Le Quien | commentators  # CHECK: no original title
+title: De arboribus = Dendrologiae naturalis, scilicet arborum historiae libri duo | Aldrovande | commentators
+title: Almageste = Syntaxis mathematica | Ptolémée | classical
+title: Du traité de la patience = De patientia | Tertullien | fathers
+title: Seder-Olam = Seder Olam Rabbah | José ben Halafta | rabbis
+title: Josèphe a cru ainsi. _Antiquités judaïques = Antiquitates Judaicae | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Traité Middoth = Middoth | les rabbins | rabbis
+title: Canon Chronicus = Canon chronicus Aegyptiacus, Ebraicus, Graecus et disquisitiones | Marsham | commentators
+title: Traité théologico-politique = Tractatus theologico-politicus | Spinoza | commentators
+title: De Tobiæ = De Tobia | Ambroise | fathers
+title: Ornithologie = Ornithologia | Aldrovandi | commentators
+title: Ennéades = Enneades | Plotin | classical
+title: Testimoniorum ad Quirinum = Testimonia ad Quirinum | Cyprien | fathers
+title: Contre Edmond Campian = Contra Edmundum Campianum | Whitaker | commentators
+title: De idololatria = De idololatria | Tertullien | fathers
+title: De morbis curandis =  | Rhazès | commentators  # CHECK: no original title
+title: Helléniques = Hellenica | Xénophon | classical
+title: De Bono conjugali = De bono coniugali | Augustin | fathers
+title: Banquet = Symposium | Platon | classical
+title: De occulta philosophia = De occulta philosophia | Agrippa | commentators
+title: Histoire de saint Boniface de Mayence =  |  | fathers  # CHECK: no original title
+title: Capitulaires de Charlemagne = Capitularia Caroli Magni | Charlemagne | commentators
+title: De Vita et Morte Moysis = De vita et morte Mosis | Gaulmin | commentators
+title: Isagoge = Isagoge | Tenam | commentators
+title: Du Verbe de Dieu = De Verbo Dei | Bellarmin | commentators
+title: Vie de Jules César = De vita Caesarum | Suétone | classical
+title: Vie de Tibère = De vita Caesarum | Suétone | classical
+title: De l'administration domestique = Oeconomicus | Xénophon | classical
+title: Des gestes d'Alexandre = Anabasis Alexandri | Arrien | classical
+title: Galba = De vita Caesarum | Suétone | classical
+title: Des fins = De finibus bonorum et malorum | Cicéron | classical
+title: Mythologie = Mythologiae sive explicationum fabularum libri decem | Natalis Comes | commentators
+title: Des animaux = De animalibus sacris | Bochart | commentators
+title: Des médicaments simples = De simplicium medicamentorum facultatibus | Galien | classical
+title: Halieutiques = Halieutica | Oppien | classical
+title: Sacræ animadversiones = Sacræ animadversiones | Bochart | commentators
+title: Histoire des Francs = Historia Francorum | Grégoire de Tours | fathers
+title: Suca = Sukka | Talmud | rabbis
+title: Mellisic = Mellificium Mosaicum | Cartwright | commentators
+title: Midrasch Coheleth = מדרש קהלת |  | rabbis
+title: De la nature et de la grâce contre Pélage = De natura et gratia contra Pelagium | Augustin | fathers
+title: Du ciel = De caelo | Théophraste | classical
+title: Des songes = De somniis | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: De l'image du monde = De opificio mundi | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Contre Secundinus le manichéen = Contra Secundinum Manichaeum | Augustin | fathers
+title: Melakim = Hilkhot Melakhim | Maïmonide | rabbis
+title: Astronomiques = Astronomica | Manilius | classical
+title: Consolation à Helvia = Consolatio ad Helviam | Sénèque | classical
+title: Rhétorique = Rhetorica | Aristote | classical
+title: Physiologue = Physiologus | Épiphane | fathers
+title: G. sur l'Épître aux Romains =  | Grotius | commentators  # CHECK: no original title
+title: Annales de l'Ancien et du Nouveau Testament = Annales Veteris et Novi Testamenti | Bécan | commentators
+title: Annales d'Alexandrie =  | Eutychius | fathers  # CHECK: no original title; the glossary has Eutychius under commentators, not fathers
+title: Réponses aux questions = Quaestiones et responsiones ad Orthodoxos | Justin | fathers
+title: De fide = De fide | Ambroise | fathers
+title: De la consolation de la philosophie = De consolatione philosophiae | Boèce | classical
+title: Vie d'Aristote = De vitis philosophorum | Diogène Laërce | classical
+title: Registre des lettres = Registrum epistularum | Grégoire le Grand | fathers
+title: Contre les deux lettres des pélagiens = Contra duas epistulas Pelagianorum | Augustin | fathers
+title: Règle pour les serviteurs de Dieu = Regula ad servos Dei | Augustin | fathers
+title: Hilkhot Guirouchin = Hilkhot Gerushin | Maïmonide | rabbis
+title: Le Pasteur = Pastor | Hermas | fathers
+title: Décrétales = Decretales | Grégoire IX | commentators
+title: Des noces adultérines = De adulterinis coniugiis | Augustin | fathers
+title: De l'art militaire = De re militari | Végèce | classical
+title: Nouveau voyage de l'Arabie heureuse = Nouveau voyage de l'Arabie heureuse | Tavernier | commentators
+title: Sacra Philosophia = Sacra philosophia | Valois | commentators
+title: Speculum historiale = Speculum historiale | Vincent de Beauvais | commentators
+title: Voyage du Mont Liban = Viaggio al Monte Libano | Dandini | commentators
+title: Ainsi l'auteur de l'ouvrage imparfait sur saint Matthieu = Opus imperfectum in Matthaeum |  | commentators
+title: De bono conjugali = De bono coniugali | Augustin | fathers
+title: Du bien de la viduité = De bono viduitatis | Augustin | fathers
+title: De institutione virginis = De institutione virginis | Ambroise | fathers
+title: De nonnullis Orientalium urbibus = De nonnullis Orientalium urbibus | Gabriel Sionita | commentators
+title: D'Isaac = De Isaac vel anima | Ambroise | fathers
+title: De la Genèse à la lettre contre les manichéens = De Genesi contra Manichaeos | Augustin | fathers
+title: Du mérite de la prédestination des saints = De praedestinatione sanctorum | Augustin | fathers
+title: Philosophie sacrée = Philosophia sacra | François Valles | commentators
+title: Du souffle = De spiritu | Aristote | classical
+title: Le Songe de Scipion = Somnium Scipionis | Cicéron | classical
+title: Jours géniaux = Genialium dierum | Alexandre ab Alexandro | commentators
+title: Des merveilles du monde = De mirabilibus mundi | Solin | classical
+title: De l'excellence de la Vierge = De excellentia Virginis | Anselme | fathers
+title: Contre le Conférencier = Contra Collatorem | Prosper | fathers
+title: Droit civil = Corpus juris civilis | Justinien | classical
+title: Pastorale = Regula pastoralis | Grégoire le Grand | fathers
+title: De la guerre de Macédoine = De bello Macedonico | Tite-Live | classical
+title: De la foi et des œuvres = De fide et operibus | Augustin | fathers
+title: De Peccato = De peccato originali | Augustin | fathers
+title: De Oratore = De Oratore | Cicéron | classical
+title: Le Miroir = Speculum | Augustin | fathers
+title: De Magistro = De Magistro | Augustin | fathers
+title: De la résurrection du Seigneur = De resurrectione Domini | Isidore | fathers
+title: Des mœurs de l'Église = De moribus Ecclesiae catholicae | Augustin | fathers
+title: Les anciens rabbins dans le Guide des égarés = מורה נבוכים | Maïmonide | rabbis
+title: Asclépiade sur l'Exode =  | Asclépiade | commentators  # CHECK: no original title
+title: De Asse = De Asse et partibus eius | Budé | commentators
+title: De Origine Gentium Americanarum = De originibus americanis | Hornius | commentators
+title: De Medicina Ægyptiorum = De Medicina Aegyptiorum | Prosper Alpin | commentators  # CHECK: the glossary has Prosper Alpin under classical, not commentators
+title: De promissionibus = De promissionibus et praedictionibus Dei | Prosper | fathers
+title: De la fierté = De superbia | Jean Chrysostome | fathers
+title: Heptaplus = Heptaplus | Pic de la Mirandole | commentators
+title: De l'astrologie = Disputationes adversus astrologiam divinatricem | Pic de la Mirandole | commentators
+title: Synagoga Judaica = Synagoga Judaica | Buxtorf | commentators
+title: Épître catholique = Epistula Barnabae | Barnabé | fathers
+title: De testimoniis =  | Cyprien | fathers  # CHECK: no original title
+title: Philosophia Chaldaica = Philosophia Chaldaica | Stanley | commentators
+title: Voyage de Jérusalem et de Syrie =  | Kootwyck | commentators  # CHECK: no original title
+title: De l'utilité des voyages = De l'utilité des voyages | Baudelot | commentators
+title: Météores = Meteora | Cléomède | classical
+title: De la philosophie = De philosophia | Aristote | classical
+title: Des mages = De magis | Hermippe | classical
+title: Opus imperfectum contra Julianum = Opus imperfectum contra Julianum | Augustin | fathers
+title: Dissertatio singularis de herba Borith = Dissertatio singularis de herba Borith | Michaël Lang | commentators
+title: Théâtre de botanique = Theatrum botanicum | Bauhin | commentators
+title: De calceis Hebræorum = De calceis Hebræorum | Bynæus | commentators
+title: De gestis Alexandri =  | Arrien | classical  # CHECK: no original title
+title: De benedictionibus patriarcharum = De benedictionibus patriarcharum | Ambroise | fathers
+title: In Flaccum = In Flaccum | Philon | classical  # CHECK: Philon counts as rabbis here, not classical
+title: Achilléide = Achilleis | Stace | classical
+title: De raptu Proserpinae = De raptu Proserpinae | Claudien | classical
+title: Geographia = Geographia antiqua | Cellarius | commentators
+title: Les Six Voyages en Perse = Les Six Voyages de Jean-Baptiste Tavernier en Turquie, en Perse et aux Indes | Tavernier | commentators
+title: De Partibus = De partibus animalium | Aristote | classical
+title: Bibliotheca Sancta = Bibliotheca sancta | Sixte de Sienne | commentators
+title: De sanitate tuenda = De sanitate tuenda | Galien | classical
+title: De rebus Salomonis prævio =  | Pineda | commentators  # CHECK: no original title
+title: Histoire chaldéenne = Babyloniaca | Bérose | classical
+title: De la foi en la résurrection =  |  | fathers  # CHECK: no original title
+title: Histoire d'Espagne = Historia general de España | Mariana | commentators
+title: De Ritibus Ecclesiæ = De ritibus ecclesiae catholicae | Durand | commentators
+title: Hilkhot Biat Ha-Mikdash = Hilkhot Biat Ha-Mikdash | Maïmonide | rabbis
+title: Tables =  | Ptolémée | classical  # CHECK: no original title
+title: Commentaire sur les Nombres =  |  | commentators  # CHECK: no original title
+title: Histoire chaldaïque = Babyloniaca | Bérose | classical
+title: Histoire de la philosophie = The History of Philosophy | Stanley | commentators
+title: Terre-Sainte = La Terre Sainte, ou Description topographique très particulière des Saints Lieux | Eugène Roger | commentators
+title: De la victoire du Verbe de Dieu = De victoria Verbi Dei | Rupert | commentators  # CHECK: the glossary has Rupert under fathers, not commentators
+title: Des hommes illustres = De viris illustribus | Aurelius Victor | classical
+title: Des Machabées = De Maccabaeis | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: Hymne au Soleil dans Julien = Hymnus in Solem regem | Julien | classical  # CHECK: the glossary has Julien under fathers, not classical
+title: Rhétorique sacrée = Rhetorica sacra | Glassius | commentators
+title: Journal d'Italie = Diarium Italicum | Montfaucon | commentators
+title: Histoire romaine = Historia Romana | Dion Cassius | classical
+title: De la divine sagesse =  | Lactance | fathers  # CHECK: no original title
+title: Cynégétique = Cynegetica | Oppien | classical
+title: Géoponiques = Geoponica | Didyme | classical  # CHECK: the glossary has Didyme under fathers, not classical
+title: Yoma = Yoma | Juda le Patriarche | rabbis
+title: De l'Afrique = Descripción general de África | Marmol | commentators
+title: À Scapula = Ad Scapulam | Tertullien | fathers
+title: Disputationes ad libros Machabaeorum = Disputationes ad libros Machabaeorum | Albéric Gentilis | commentators
+title: Extraits de la Bibliothèque de Valois = Excerpta è Bibliotheca Valesiana | Polybe | classical
+title: De doctrina temporum = De doctrina temporum | Pétau | commentators
+title: De Jacob et de la vie bienheureuse = De Iacob et vita beata | Ambroise | fathers
+title: Bibliothèque rabbinique = Bibliotheca magna rabbinica | Bartolocci | rabbis
+title: Contre la lettre de Gaudence = Contra epistulam Gaudentii | Augustin | fathers
+title: Des institutions = Divinae institutiones | Lactance | fathers
+title: Des miracles = De miraculis | Grégoire de Tours | fathers
+title: Des merveilles =  | Aristote | classical  # CHECK: no original title
+title: Histoire de l'Éthiopie = Historia Aethiopica | Ludolf | commentators
+title: Vie de saint Bernard = Vita sancti Bernardi |  | fathers
+title: Histoire de Jérusalem = Historia Hierosolymitana | Jacques de Vitry | commentators
+title: Contre les donatistes = De baptismo contra Donatistas | Augustin | fathers
+title: Des Pontiques = Epistulae ex Ponto | Ovide | classical
+title: Institutions cénobitiques = De institutis coenobiorum | Cassien | fathers
+title: Mellificium hebraicum = Mellificium hebraicum | Cartwright | commentators
+title: Contre Boniface = Contra Bonifacium | Augustin | fathers
+title: Du mérite et de la rémission des péchés = De peccatorum meritis et remissione | Augustin | fathers
+title: Du précepte et de la dispense = De praecepto et dispensatione | Bernard | fathers
+title: De Bono mortis = De bono mortis | Ambroise | fathers
+title: De l'utilité de croire = De utilitate credendi | Augustin | fathers
+title: De Consensu Evangelistarum = De consensu evangelistarum | Augustin | fathers
+title: De functionum laesionibus = De functionum laesionibus | Platter | commentators
+title: Contre l'adversaire de la Loi et des Prophètes = Contra adversarium legis et prophetarum | Augustin | fathers
+title: Institutiones Theologicae = Institutiones theologicae | Episcopius | commentators
+title: Du don de persévérance = De dono perseverantiae | Augustin | fathers
+title: Du sabbat = Hilchot Shabbat | Maïmonide | rabbis
+title: Des mystères = De mysteriis Aegyptiorum | Jamblique | classical
+title: Contre les lettres de Pétilien = Contra litteras Petiliani | Augustin | fathers
+title: Talmud de Jérusalem = Talmud Yerushalmi |  | rabbis
+title: Talmud de Babylone = Talmud Bavli |  | rabbis
+title: Sanhédrin = Sanhedrin |  | rabbis
+title: Josèphe à l'endroit cité et De sa vie = Vita Iosephi | Josèphe | classical  # CHECK: Josèphe counts as rabbis here, not classical
+title: De animal = De animalibus sacris | Bochart | commentators
+title: Contre deux lettres des pélagiens = Contra duas epistulas Pelagianorum | Augustin | fathers
+title: Diatribæ = Diatribae | Mède | commentators
+title: Des fables hérétiques = Haereticarum fabularum compendium | Théodoret | fathers
+title: Variæ Lectiones = Variae lectiones | Petit | commentators
+title: Maïmonide dans Hilchoth = Mishneh Torah | Maïmonide | rabbis
+title: Contre l'hérésie des Nazaréens = Panarium | Épiphane | fathers
+title: Teynard Harmonie =  | Teynard | commentators  # CHECK: no original title
+title: Révélations = Revelationes | Brigitte de Suède | fathers
+title: Méditations sur la vie du Christ = Meditationes vitae Christi | Pseudo-Bonaventure | fathers
+author: Les Septante | versions
+author: Ferrand | commentators
+author: L'Hébreu | versions
+author: Maldonat | commentators
+author: Bossuet | commentators
+author: Le Chaldéen | versions
+author: Joseph | classical  # CHECK: ambiguous name (several people, or a Bible book): left out of the rules
+author: Hugues de Saint-Cher | commentators
+author: Pierre Martyr | commentators
+author: Les rabbins | rabbis
+author: Le Psautier romain | versions
+author: Muis | commentators
+author: Denys le Chartreux | commentators
+author: Denys | classical  # CHECK: ambiguous name (several people, or a Bible book): left out of the rules
+author: Tite-Live | classical
+author: Ainsworth | commentators
+author: Suétone | classical
+author: Ieronym | fathers
+author: Cellarius | commentators
+author: Marc | classical  # CHECK: ambiguous name (several people, or a Bible book): left out of the rules
+author: Clarius | commentators
+author: De Muis | commentators
+author: Ribera | commentators
+author: Hugues | commentators  # CHECK: ambiguous name (several people, or a Bible book): left out of the rules
+author: Arrien | classical
+author: Le Syriaque | versions
+author: Mendoza | commentators
+author: Macrobe | classical
+author: Belon | commentators
+author: Columelle | classical
+author: Dionys | classical
+author: Haymon | commentators
+author: Olympiodore | commentators
+author: Héracléote | commentators
+author: Scultet | commentators
+author: Pererius | commentators
+author: Raban | commentators
+author: Hugo | commentators
+author: Maldon | commentators
+author: Valère Maxime | classical
+author: Varron | classical
+author: Apulée | classical
+author: Appien | classical
+author: Moller | commentators
+author: Arnobe | fathers
+author: Saint Grégoire | fathers
+author: Brisson | commentators
+author: Martial | classical
+author: Servius | commentators
+author: Pisc | commentators
+author: Didyme | fathers
+author: Aristophane | classical
+author: Le Grec | versions
+author: Lucien | classical
+author: Chardin | commentators
+author: Saint Jérôme sur ce passage | fathers
+author: Casaubon | commentators
+author: Forerius | commentators
+author: Brug | commentators
+author: Bérose | classical
+author: Torniel | commentators
+author: Marsham | commentators
+author: Scaliger | commentators
+author: Albert | commentators
+author: Spencer | commentators
+author: Cappel | commentators
+author: Eusèbe de Césarée | fathers
+author: Tavernier | commentators
+author: Clem | fathers
+author: Grot. hic | commentators
+author: Athan | fathers
+author: Érasme | commentators
+author: Brugensis | commentators
+author: Le Psautier de Saint-Germain | versions
+author: Pomponius Mela | classical
+author: Cassien | fathers
+author: Galien | classical
+author: Raban Maur | commentators
+author: Ieron. hic | fathers
+author: Justinien | classical
+author: Cunæus | commentators
+author: Codurcus | commentators
+author: Prado | commentators
+author: Caton | classical
+author: Spanheim | commentators
+author: Braun | commentators
+author: Outram | commentators
+author: Menochius | commentators
+author: Basnage | commentators
+author: Mont | commentators
+author: Sanct | commentators
+author: Ambr | fathers
+author: Brocard | commentators
+author: Aulu-Gelle | classical
+author: Pindare | classical
+author: Dioscoride | classical
+author: Alex | versions
+author: Remi | commentators
+author: Bayne | commentators
+author: Adam | commentators
+author: Mald | commentators
+author: Lucas de Bruges | commentators
+author: La Vulgate | versions
+author: Théocrite | classical
+author: Thévenot | commentators
+author: Jean Le Clerc | commentators
+author: Ligfoot | commentators
+author: Geneb | commentators
+author: Apollinaire | fathers
+author: Jans | commentators
+author: Haimo | commentators
+author: Vaillant | commentators
+author: Mill | commentators
+author: Valois | commentators
+author: Vitruve | classical
+author: Villalpand | commentators
+author: Plaut | classical
+author: Ainsi Théodoret | fathers
+author: Greg | fathers
+author: Bèze | commentators
+author: Castro | commentators
+author: Noël Alexandre | commentators
+author: Nonnus | classical
+author: Ludov. de Dieu | commentators
+author: Démosthène | classical
+author: Osorius | commentators
+author: Toinard | commentators
+author: Liveley | commentators
+author: Eustathe | commentators
+author: Pollux | classical
+author: Tibulle | classical
+author: Delrio | commentators
+author: Végèce | classical
+author: Adrichomius | commentators
+author: Gataker | commentators
+author: Lucrèce | classical
+author: Schickard | commentators
+author: Grotius hic | commentators
+author: Philippe | commentators
+author: Jansénius de Gand | commentators
+author: Calovius | commentators
+author: Heracleot | fathers
+author: Tarnovius | commentators
+author: Cornelius a Lapide sur ce passage | commentators
+author: Theophylact | commentators
+author: Manéthon | classical
+author: L'Arabe | versions
+author: Eugène Roger | commentators
+author: Albert le Grand | commentators
+author: Claudien | classical
+author: Philostrate | classical
+author: Petron | classical
+author: Titelman | commentators
+author: Æthiop | versions
+author: Le Psautier de Milan | versions
+author: Gregor | fathers
+author: Rufin | fathers
+author: Polanus | commentators
+author: Hardouin | commentators
+author: Denys d'Halicarnasse | classical
+author: Alcuin | commentators
+author: Pers | classical
+author: Euripide | classical
+author: Busbecq | commentators
+author: Doubdan | commentators
+author: Ctésias | classical
+author: Baronius | commentators
+author: La Bible de Zurich | versions
+author: Ainsi l'entendent Vatable | commentators
+author: Corderius | commentators
+author: Ezra | rabbis
+author: Théodoret sur ce passage | fathers
+author: Bynæus | commentators
+author: Catulle | classical
+author: Genebrard | commentators
+author: Lipoman | commentators
+author: Castalio | versions
+author: Thucydide | classical
+author: Pignorius | commentators
+author: Silius Italicus | classical
+author: Theod | fathers
+author: Juste Lipse | classical
+author: Salmeron | commentators
+author: Theodoret. hic | fathers
+author: Sym. [UNCERTAIN GREEK] | versions
+author: Ierom | fathers
+author: Tigurina | versions
+author: Vulg. legit | versions
+author: Aponius | fathers
+author: Holkot | commentators
+author: Palacios | commentators
+author: Remig | commentators
+author: Cameron | commentators
+author: Nicolas de Damas | classical
+author: Eupolème | classical
+author: Sozomène | fathers
+author: Plaute | classical
+author: Prosper Alpin | classical
+author: Léon de Modène | rabbis
+author: Morizon | commentators
+author: Perse | classical
+author: Abarbanel | rabbis
+author: Pist | commentators
+author: César | classical
+author: Syriac | versions
+author: Térence | classical
+author: Abenexra | rabbis
+author: Frontin | classical
+author: Euripid | classical
+author: Stace | classical
+author: De même le Syriaque | versions
+author: Ainsi Pagnin | versions
+author: La Vulgate lit | versions
+author: Vide Ieronym | fathers
+author: Sixt | versions
+author: Lorin | commentators
+author: Carpathius | commentators
+author: Palac | commentators
+author: Polus | commentators
+author: Erasm | commentators
+author: Juvencus | fathers
+author: Gerhard | commentators
+author: Jules César | classical
+author: Abydène | classical
+author: Burgensis | commentators
+author: Bertram | commentators
+author: Properce | classical
+author: Hiscuni | rabbis
+author: Palladius | classical
+author: Sixte de Sienne | commentators
+author: Forster | versions
+author: Gérard | commentators
+author: Natal | classical
+author: Sigonius | commentators
+author: Roger | commentators
+author: Bernier | commentators
+author: Socrate | classical
+author: Florus | classical
+author: Junius et Tremellius | versions
+author: Emmanuel Sa | commentators
+author: Cast | versions
+author: Eschyle | classical
+author: Codurc | commentators
+author: Sculter | commentators
+author: Polychronius | fathers
+author: Olympiodor | fathers
+author: Theocrit | classical
+author: Du Pin | commentators
+author: Bruno d'Asti | commentators
+author: Ita Chrysost | fathers
+author: Sixte V | versions
+author: Rom. et Carnut | versions
+author: Bedam | fathers
+author: Plin. lib | classical
+author: Bonav | commentators
+author: Juste d'Urgel | fathers
+author: Palacio | commentators
+author: Castr | commentators
+author: Appian | classical
+author: Martianay | commentators
+author: Lucas Brugensis | commentators
+author: Beza | commentators
+author: Millii | commentators
+author: Saint Cyrille de Jérusalem | fathers
+author: Diodore | classical
+author: Festus | classical
+author: Arias | commentators
+author: Petau | commentators
+author: Melchior Cano | commentators
+author: David | rabbis
+author: Benjamin | rabbis
+author: Ludolf | commentators
+author: Canus | commentators
+author: L'Empereur | commentators
+author: Willet | commentators
+author: Solon | classical
+author: Ainsi les Septante | versions
+author: Aquila et Théodotion | versions
+author: Gabriel Sionite | commentators
+author: Schindler | commentators
+author: Pétrone | classical
+author: Victor | classical
+author: Barradius | commentators
+author: Barradas | commentators
+author: Damir | commentators
+author: Ovidius | classical
+author: Theognid | classical
+author: Schmid | commentators
+author: Compl | versions
+author: Nobilius | commentators
+author: Strigel | commentators
+author: Matthiole | commentators
+author: Alexander ab Alexandro | commentators
+author: Bède sur ce passage | fathers
+author: Ulpien | classical
+author: Aristée | classical
+author: Gesner | commentators
+author: Olympiod | fathers
+author: Théodoret sur cet endroit | fathers
+author: Le Psautier de Chartres | versions
+author: Choisy | commentators
+author: Ita Ieron | fathers
+author: Saadias | rabbis
+author: Petr | fathers
+author: De même saint Jérôme | fathers
+author: Pindar | classical
+author: Cartwright | commentators
+author: Clar | commentators
+author: Philon de Carpathos | commentators
+author: Apponius | fathers
+author: Alexandre ab Alexandro | commentators
+author: Grotius lit | commentators
+author: Camerarius | commentators
+author: Forer | commentators
+author: Maldonado | commentators
+author: Prad | commentators
+author: Aristophan | classical
+author: Simon | commentators
+author: Toynard | commentators
+author: Chrysost. hic | fathers
+author: Jansenius de Gand | commentators
+author: Hilar. hic | fathers
+author: Vide Maldon | commentators
+author: Camero | commentators
+author: Thalès | classical
+author: Victorin | fathers
+author: Nicétas | fathers
+author: Durand | commentators
+author: Théophile d'Antioche | fathers
+author: Polyen | classical
+author: Apollonius | classical
+author: Saint Clément de Rome | fathers
+author: Hégésippe | fathers
+author: Cantacuzène | commentators
+author: Hornius | commentators
+author: Quintilien | classical
+author: Dion Cassius | classical
+author: Villet | commentators
+author: Plutar | classical
+author: Dion Chrysostome | classical
+author: Ennius | classical
+author: Dupin | commentators
+author: Aristoph | classical
+author: Louis Cappel | commentators
+author: Strabus | commentators
+author: Salazar | commentators
+author: Jacques Cappel | commentators
+author: Strigelius | commentators
+author: Agatharchide | classical
+author: Ainsi l'entendent saint Athanase | fathers
+author: Lyre | commentators
+author: Ita Grotius | commentators
+author: Paul Lucas | commentators
+author: Usserius | commentators
+author: Salluste | classical
+author: Saint Benoît | fathers
+author: Cédrénus | commentators
+author: Athen. lib | classical
+author: Titelmans | commentators
+author: Sixti V | versions
+author: Vansleb | commentators
+author: Saint Aug | fathers
+author: Gandav | commentators
+author: Gand | commentators
+author: Montan | commentators
+author: Sacy | commentators
+author: Saint Hilaire et saint Augustin | fathers
+author: Hammon | commentators
+author: Aug. et Psalt | fathers
+author: Euseb. hic | fathers
+author: Grier | commentators
+author: Théodore d'Héraclée | fathers
+author: Saint Germ. et Carnut | versions
+author: Martyr | fathers
+author: Heinsius | commentators
+author: Theophil | fathers
+author: Philon de Carpasia | fathers
+author: Baduel | commentators
+author: Cicero | classical
+author: Grot. legit | commentators
+author: Vide Drus | commentators
+author: Anglic | versions
+author: Procope | commentators
+author: Riber | commentators
+author: Verhorst | commentators
+author: Lipse | commentators
+author: Hammond. hic | commentators
+author: Tertullien et saint Cyprien | fathers
+author: Brugens | commentators
+author: Euthym. hic | commentators
+author: Maldon. hic | commentators
+author: Maldonat sur ce passage | commentators
+author: Gomar | commentators
+author: Denys le Périégète | classical
+author: Hécatée | classical
+author: Soto | commentators
+author: Saumaise | commentators
+author: Pezron | commentators
+author: Apollodore | classical
+author: Horapollon | classical
+author: Valesius | commentators
+author: Dion | classical
+author: Lessius | commentators
+author: Perer | commentators
+author: François Georges | commentators
+author: Papias | commentators
+author: Achmet | classical
+author: Julius Firmicus | classical
+author: Barrad | commentators
+author: Grégoire | fathers  # CHECK: ambiguous name (several people, or a Bible book): left out of the rules
+author: Eurip | classical
+author: Busbec | classical
+author: Gross | commentators
+author: Montanus | commentators
+author: Photius | fathers
+author: Pythagore | classical
+author: Paraphrase | versions
+author: Hottinger | commentators
+author: Ludovic. de Dieu | commentators
+author: Casal | commentators
+author: Alting | commentators
+author: Vossius | commentators
+author: Tirinus | commentators
+author: Rabbi David Kimhi | rabbis
+author: Rabbi Moïse | rabbis
+author: Guillaume de Paris | commentators
+author: Vulgat | versions
+author: Haymo | commentators
+author: Druthmar | commentators
+author: Sanx | commentators
+author: Rasi | rabbis
+author: Sophocle | classical
+author: Zosime | classical
+author: Glycas | classical
+author: Saint Pierre Damien | fathers
+author: Cornel. à Lapide | commentators
+author: Rabbi David | rabbis
+author: Prudence | fathers
+author: Strat | commentators
+author: Castell | commentators
+author: Interp | versions
+author: Italic | versions
+author: Menot | commentators
+author: David Kimhi | rabbis
+author: Angelome | commentators
+author: Angelomus | commentators
+author: SanA | commentators
+author: Maim | rabbis
+author: Sanƈt | commentators
+author: Mars | commentators
+author: Sand | commentators
+author: Hebrai | rabbis
+author: Arbit | classical
+author: Græt | versions
+author: Patab | commentators
+author: Cano | commentators
+author: Sanchez | commentators
+author: De même l'Arabe | versions
+author: Grot hic | commentators
+author: Jean de Jérusalem | fathers
+author: Denis le Chartreux | commentators
+author: Harduin | commentators
+author: Belg | versions
+author: Bible de Tigur | versions
+author: Aldrovandi | commentators
+author: Nonius Marcellus | classical
+author: Ménandre | classical
+author: Quint | classical
+author: Aqu. [UNCERTAIN GREEK] | versions
+author: Oppien | classical
+author: Stunica | commentators
+author: Gaudence | fathers
+author: Julien | fathers
+author: Symmaque et Théodotion | versions
+author: Polychron | fathers
+author: Le Blanc | commentators
+author: Theodoret. alii | fathers
+author: Mediolan | versions
+author: Ainsi saint Athanase | fathers
+author: Aquil. [UNCERTAIN GREEK] | versions
+author: Trem | versions
+author: Ainsi lit Symmaque | versions
+author: Ita Aquila | versions
+author: L'Édition de Complute | versions
+author: Agellius | commentators
+author: Astérius | fathers
+author: Théodore de Mopsueste | fathers
+author: Manilius | classical
+author: Hermas | fathers
+author: Theodorus | fathers
+author: Le Psautier de Milan et le Psautier de Saint-Germain | versions
+author: Moler | commentators
+author: Théodore | fathers  # CHECK: ambiguous name (several people, or a Bible book): left out of the rules
+author: Apollinar | fathers
+author: Pise | commentators
+author: Mari | commentators
+author: Rom. et Mediol | versions
+author: Ita Sym | versions
+author: Rom. et saint Germ | versions
+author: Terent | classical
+author: Nicol | classical
+author: Damian | fathers
+author: Ieronym hic | fathers
+author: Heracleota | fathers
+author: Vide Theodoret | fathers
+author: Caietan | commentators
+author: Athen. l | classical
+author: Grégoire le Thaumaturge | fathers
+author: Valer | classical
+author: Mart | fathers
+author: Titalm | commentators
+author: Honorius | commentators
+author: Psellus | commentators
+author: Just d'Urgell | fathers
+author: Budé | commentators
+author: Menander | classical
+author: Theognis | classical
+author: Alexand | fathers
+author: Alde | versions
+author: Baduellus | commentators
+author: Ludov | commentators
+author: Mede | commentators
+author: Héliodore | classical
+author: Villalpando | commentators
+author: Tarnov. etc | commentators
+author: Tarnov | commentators
+author: Plut | classical
+author: Vide Usser. ad an | commentators
+author: Grot. alii | commentators
+author: Théophylacte sur ce passage | commentators
+author: L'Auteur de l'Ouvrage imparfait | commentators
+author: Theophyl. hic | commentators
+author: Capell | commentators
+author: Euthyme sur ce passage | commentators
+author: Baron | commentators
+author: Saint Eucher de Lyon | fathers
+author: Rufus | classical
+author: Pythagor | classical
+author: Elias | rabbis
+author: Hellanicus | classical
+author: Éphore | classical
+author: Basile de Séleucie | fathers
+author: François Victoria | commentators
+author: Athénagore | fathers
+author: Paul Vénitien | commentators
+author: Héraclide | classical
+author: Callimaque | classical
+author: Medus | commentators
+author: Castor | classical
+author: Isidore de Charax | classical
+author: Aratus | classical
+author: Biel | commentators
+author: Maimonides | rabbis
+author: Jean Cotovic | commentators
+author: Spon | commentators
+author: Morin | commentators
+author: Abraham Zacut | rabbis
+author: Gerson | rabbis
+author: Jaquelot | commentators
+author: Minucius Felix | fathers
+author: Philon d'Alexandrie | classical
+author: Léon l'Africain | classical
+author: Le Samaritain | versions
+author: Piso | commentators
+author: Rabbi Kimhi | rabbis
+author: Amama | commentators
+author: Pfeiffer | commentators
+author: Gaulmin | commentators
+author: Lyra | commentators
+author: Barnabé | fathers
+author: Pierre Comestor | commentators
+author: Celse | classical
+author: Mikotzi | rabbis
+author: Apud Lyram | commentators
+author: Saadias Gaon | rabbis
+author: Charles Du Moulin | commentators
+author: Bechaï | rabbis
+author: Martinius | commentators
+author: Alcazar | commentators
+author: Pancirole | commentators
+author: Aloysius Cadamosto | commentators
+author: Obadias | rabbis
+author: Cène | commentators
+author: Episcopius | commentators
+author: Saint Optat de Milève | fathers
+author: Sanchoniaton | classical
+author: Nauclerus | commentators
+author: Petrus Comestor | commentators
+author: Dandini | commentators
+author: Lyranus | commentators
+author: Strabo | classical
+author: Mercator | commentators
+author: Abrabanel | rabbis
+author: Davity | commentators
+author: Fonseca | commentators
+author: Persa | versions
+author: Dalechamps | commentators
+author: Baradius | commentators
+author: Oleastrus | commentators
+author: Bonfrerius | commentators
+author: Eschyl | classical
+author: Ainsi Malvenda | commentators
+author: Abinexra | rabbis
+author: Akiba | rabbis
+author: Sophocles | classical
+author: Baal Aruch | rabbis
+author: Moïse de Coucy | rabbis
+author: Jean Léon | commentators
+author: Cédrène | classical
+author: Le Caldéen | versions
+author: Majus | commentators
+author: Vasquez | commentators
+author: Soter | commentators
+author: Lucifer | fathers
+author: Dius | classical
+author: Codex romain | versions
+author: Grat | commentators
+author: Codex Regius | versions
+author: Tatien | fathers
+author: Salvien | fathers
+author: Phavorinus | classical
+author: Cornelius à Lapide | commentators
+author: Prudent | fathers
+author: Varro | classical
+author: Mendez | commentators
+author: Sanz | commentators
+author: Hippocrate | classical
+author: Quintilian | classical
+author: Henri Estienne | commentators
+author: Cornelius a Lapide et Sanctius | commentators
+author: Euripides | classical
+author: Pelus | fathers
+author: Isid | fathers
+author: Vincent de Beauvais | commentators
+author: Medina | commentators
+author: Turnèbe | commentators
+author: Pseudo-Épiphane | fathers
+author: Sandius | commentators
+author: Ménandre d'Éphèse | classical
+author: Apud Joseph | classical
+author: Sédulius | fathers
+author: Oscand | versions
+author: Mabillon | commentators
+author: Ita Piscator | commentators
+author: Caius | classical
+author: Ita Tostat | commentators
+author: Jules Africain | fathers
+author: Tiraqueau | commentators
+author: Ita Ussérius | commentators
+author: La Haye | commentators
+author: Vide Diodor | classical
+author: Ammon | commentators
+author: Suid | classical
+author: Robert Estienne | versions
+author: Jean Benoît | commentators
+author: Gall | versions
+author: Beda Venerab | fathers
+author: Lampride | classical
+author: Ælian. lib | classical
+author: Sallust | classical
+author: Henrici Stephani | commentators
+author: Ortelius | commentators
+author: Feuardent | commentators
+author: Origen. ab Usser | versions
+author: Xenoph. lib | classical
+author: Philippus Presbyter | commentators
+author: Sculset | commentators
+author: Scult | commentators
+author: Rabbi Abraham | rabbis
+author: Philipp | commentators
+author: Symmac | versions
+author: Theodotion | versions
+author: Étienne | versions
+author: François Lucas | commentators
+author: Castellion | versions
+author: Pseudo-Jérôme | fathers
+author: Auson | classical
+author: François Valles | commentators
+author: Arist | classical
+author: Cardan | commentators
+author: Heliodor | classical
+author: Le Manuscrit Alexandrin | versions
+author: Manuscrit Alexandrin | versions
+author: Rabbi Moïse Hadarsan | rabbis
+author: Théodoret d'Antioche | fathers
+author: Spartien | classical
+author: Ainsi Euthyme | commentators
+author: Syr. alii | versions
+author: Pisc. alii | commentators
+author: Chald. alii | versions
+author: Le Psautier gallican | versions
+author: Ainsi saint Jean Chrysostome | fathers
+author: Aquil. et Sym | versions
+author: Ita et Vatab | commentators
+author: Bias | classical
+author: Euthymius | commentators
+author: Chal | versions
+author: Théodore d'Antioche | fathers
+author: Isidore Clarius | commentators
+author: Cordier | commentators
+author: Saint Grégoire le Thaumaturge | fathers
+author: Daniel Barbaro | commentators
+author: Barbari | commentators
+author: Cinquième édition | versions
+author: Theod. [UNCERTAIN GREEK] | versions
+author: Nicandre | classical
+author: Saint Ildefonse | fathers
+author: Césaire | fathers
+author: Cloppenburg | commentators
+author: Le Psautier romain et le Psautier de Chartres | versions
+author: Théodotion et la cinquième édition | versions
+author: L'édition romaine | versions
+author: Estius sur ce passage | commentators
+author: Tolet | commentators
+author: Carthus | commentators
+author: Kabuenaki | rabbis
+author: Ainsu | commentators
+author: Ita Aqu. et Theodot | versions
+author: Apollodor | classical
+author: Ita Psalt | versions
+author: Bossuet hic | commentators
+author: De même Symmaque | versions
+author: Les rabbins Salomon | rabbis
+author: Ita Muis | commentators
+author: Corder | commentators
+author: Saint Augustin et les anciens Psautiers | fathers
+author: Heracl | fathers
+author: Theodotio | versions
+author: Abnezra | rabbis
+author: Ibn Ezra | rabbis
+author: Geter | commentators
+author: Didym | fathers
+author: Ferrand sur ce passage | commentators
+author: Saint Ambroise lit | fathers
+author: Saint Bened | fathers
+author: Vide Ierom | fathers
+author: Paraphr | versions
+author: Paraphrast | versions
+author: Gallic | versions
+author: Flamm | commentators
+author: Mosch | classical
+author: Grot. etc | commentators
+author: Salonius | fathers
+author: Boèce | classical
+author: Ut Vulg | versions
+author: Gratien | commentators
+author: Cassian | fathers
+author: Anastase le Sinaïte | fathers
+author: Stobée | classical
+author: Diogène | classical
+author: Hugon | commentators
+author: Franc | commentators
+author: Vales | commentators
+author: Merc | commentators
+author: Thaumat | fathers
+author: Horatius | classical
+author: Aurelius Victor | classical
+author: Ians | commentators
+author: Albin | commentators
+author: Titelm | commentators
+author: Orgellitanus | fathers
+author: Lucas | commentators
+author: Gabriel Sionita | commentators
+author: Honorius d'Autun | commentators
+author: Lucifer de Cagliari | fathers
+author: Pierre de Blois | commentators
+author: Maître des Sentences | commentators
+author: Richard | commentators
+author: Hoeschel | commentators
+author: Theophrast | classical
+author: Sophocl | classical
+author: Emmanuel Sá | commentators
+author: Synes | classical
+author: Complut. addit | versions
+author: Vulgat legit | versions
+author: Vide Palac | commentators
+author: Grot. alii passim | commentators
+author: Vide Lyr | commentators
+author: Vide Gregor | fathers
+author: Vide Grot. hic | commentators
+author: Osor | commentators
+author: Anglis | versions
+author: Velleius Paterculus | classical
+author: Pintus | commentators
+author: Them | commentators
+author: Stanley | commentators
+author: Galatin | commentators
+author: Symmachus | versions
+author: Villalp | commentators
+author: Bern. de Montfaucon | commentators
+author: Paul de Burgos | commentators
+author: Théodoret et saint Jérôme | fathers
+author: Sicul | classical
+author: Joseph Mede | commentators
+author: L'Emper | commentators
+author: Clitarque | classical
+author: Africanus | fathers
+author: Figueroa | commentators
+author: Hugo Dionys | commentators
+author: Mela | classical
+author: Vide Grot | commentators
+author: Strabo. lib | classical
+author: Oppian | classical
+author: Guevar | commentators
+author: Scalig | commentators
+author: François de Vitoria | commentators
+author: Gorionide | rabbis
+author: Badwell | commentators
+author: Xiphilin | classical
+author: Baillet | commentators
+author: Jovinien | fathers
+author: François de Bruges | commentators
+author: Le Clerc. hic | commentators
+author: L'auteur de l'Opus imperfectum | commentators
+author: Vide Hammond. hic | commentators
+author: Tillemont | commentators
+author: Maldon. alii | commentators
+author: Iren. hic | fathers
+author: Vide et Origen | fathers
+author: Le Roux | commentators
+author: Aug. l | fathers
+author: Euthym. in hunc loc | commentators
+author: Teynard | commentators
+author: Huët | commentators
+author: Schikard | commentators
+author: Léon de Modéne | rabbis
+author: Ligfoot sur cet endroit | commentators
+author: Hammond sur ce passage | commentators
+author: Brugen | commentators
+author: Le Maître des Sentences | commentators
+author: Joseph Albo | rabbis
+author: Philon le Juif | classical
+author: Cluvier | commentators
+author: Quintus Julius Hilarion | fathers
+author: Orose | fathers
+author: Palæphatus | classical
+author: Ératosthène | classical
+author: Sedulius et Claudius Victor | fathers
+author: Pierre Crinitus | commentators
+author: Valentia | commentators
+author: Yves de Chartres | commentators
+author: Anselme Boetius | commentators
+author: Aétius | classical
+author: Radulphe | commentators
+author: Pierre Della Valle | commentators
+author: Polémon | classical
+author: Achille Tatius | classical
+author: Radzvill | commentators
+author: Jorno | commentators
+author: Agatharcides | classical
+author: Dictys | classical
+author: Cosmas Monachus | fathers
+author: Panormitain | commentators
+author: Tulle | classical
+author: Don Jean de Palafox | commentators
+author: Villalpandus | commentators
+author: Jean Comnène | classical
+author: Nicéphore Calliste | classical
+author: Anastase de Nicée | fathers
+author: Abulensis | commentators
+author: Héron | classical
+author: Sotarius | commentators
+author: Velleius | classical
+author: Quintus de Smyrne | classical
+author: Catarin | commentators
+author: Freinshem | commentators
+author: Velléius Paterculus | classical
+author: Aulugelle | classical
+author: Salomon Pravio | commentators
+author: Voyez_ Théodoret | fathers
+author: Martin de Roa | commentators
+author: Lovinus Lemnius | commentators
+author: Cœsarium | fathers
+author: Petro della Valle | commentators
+author: Trogue Pompée | classical
+author: Vittaker | commentators
+author: Zacharie lui-même | commentators
+author: Henschen | commentators
+author: Hérodien | classical
+author: Calius Aurelianus | classical
+author: Martianus | classical
+author: Canisius | commentators
+author: Anselme Boèce de Boodt | commentators
+author: Isaac de Langres | fathers
+author: Pierre Lombard | commentators
+author: Grégoire IX | commentators
+author: Avicenne | commentators
+author: Bonfinius | commentators
+author: Synésios | fathers
+author: Nicanor | fathers
+author: Pietro Della Valle | commentators
+author: Fortunat | fathers
+author: Otton de Frisingue | commentators
+author: Doubtan | commentators
+author: Villehardouin | commentators
+author: Lucius Florus | classical
+author: Sidoine Apollinaire | classical
+author: Eutychius | commentators
+author: Sérapion | classical
+author: Marco Polo le Vénitien | commentators
+author: Manuce | commentators
+author: L'abbé Rupert | commentators
+author: Adrevald | commentators
+author: Julien Pomère | fathers
+author: Marc Antonin | classical
+author: Maïmonide au même endroit | rabbis
+author: Georges Syncelle | fathers
+other: Édit
+other: Ieronym. hic
+other: Psalt
+other: Alius
+other: L'édition de Complute
+other: Alii
+other: Ainsi le Chaldéen
+other: Jérémie
+other: Eusèbe et saint Jérôme
+other: Domine
+other: Grotius sur ce passage
+other: Les Hébreux
+other: D'autres
+other: Jerem
+other: Matthieu
+other: Ainsi lisent les Septante
+other: Sanctius sur ce passage
+other: Matt
+other: Ézéchiel
+other: Deus
+other: Isaïe
+other: Ainsi le Syriaque
+other: VIII
+other: Ainsi Vatable
+other: Ainsi l'entendent le Chaldéen
+other: Vide Ieronym. hic
+other: Ils ont lû
+other: Ezech
+other: Joan
+other: Ainsi l'entendent les Septante
+other: Ainsi l'entendent Théodoret
+other: Vide Chrysost
+other: Psal
+other: Ainsi saint Jérôme
+other: XIII
+other: Lect
+other: C'est-à-dire
+other: Genes
+other: Matth
+other: Prov
+other: Ainsi l'entendent saint Jérôme
+other: Ainsi Grotius
+other: Deut
+other: Vide Var
+other: Concil
+other: Hist
+other: Supra
+other: Vide
+other: Esdr
+other: Vide Muis
+other: Aquila et Symmaque
+other: Ierom. hic
+other: Ioan
+other: Macc
+other: XVII
+other: Hebræi
+other: XVIII
+other: Ainsi Junius
+other: Levit
+other: Commentaire
+other: Isaï
+other: Ita Grot
+other: Chap
+other: Josué
+other: Uxor hebraica
+other: Mishna
+other: Ita le Syriaque
+other: Jean
+other: Ainsi l'Hébreu
+other: Néron
+other: Ci-dessus
+other: Codd
+other: Herodot. lib
+other: Appendice
+other: Un autre
+other: Ita Jonathan
+other: L'auteur des Traditions hébraïques sur les livres des Rois
+other: Ita Junius
+other: Ainsi Josèphe
+other: Caligula
+other: Ainsi Jonathan
+other: Maundrell
+other: Ainsi l'entendent Grotius
+other: Ainsi l'entendent Junius
+other: Comme la Vulgate
+other: Ita le Chaldéen
+other: Artaxerxès
+other: Daniel
+other: Ainsi l'entendent saint Augustin
+other: Vide sup
+other: XXVI
+other: XLIX
+other: XLVIII
+other: XXVII
+other: Ainsi l'entendent saint Ambroise
+other: Le Talmud
+other: Vie de Solon
+other: Ainsi l'entend saint Jérôme
+other: Aliis
+other: Ainsi les rabbins
+other: Alias
+other: Ita Chald
+other: XXIII
+other: Osée
+other: Plin. l
+other: Concile de Trente
+other: Legatio Babylonica
+other: À la lettre
+other: Aliàs
+other: Latin
+other: Ainsi l'entendent les Pères
+other: Ita Édit
+other: Ainsi l'entendent saint Jean Chrysostome
+other: XXXIII
+other: Apud Ieronym. hic
+other: Prou
+other: XXVIII
+other: Joseph. l
+other: Eccles
+other: Johan
+other: Quidam
+other: Ita Vatable
+other: Ainsi les Hébreux
+other: L'Hébreu à la lettre
+other: Ibidem
+other: Lévitique
+other: D'autres lisent
+other: De même Grotius
+other: Item
+other: Michée
+other: Ainsi l'entendent les rabbins
+other: Genis
+other: Hebr. [UNCERTAIN HEBREW]
+other: Plus haut
+other: XXII
+other: Seigneur
+other: Grotius sur cet endroit
+other: Magn
+other: Theodoret hic
+other: Ita les Septante
+other: Le Psautier romain et le Psautier de Saint-Germain
+other: Saint Augustin lit
+other: Ieron. in Comment
+other: Ainsi l'entendent Origène
+other: Psalm
+other: Ainsi lit le Syriaque
+other: Homil
+other: Vide si lubet
+other: Justin. lib
+other: Auth
+other: Exod
+other: De morte Christi
+other: De Passione
+other: Scholiast
+other: Par exemple
+other: Voyages
+other: Ils lisaient
+other: Ita Onkelos
+other: Dissertation sur la Chronologie
+other: Paul
+other: Ainsi l'entendent l'Hébreu
+other: Éliaques
+other: De emendatione temporum
+other: Quid
+other: Ils ont lu
+other: Loco citato
+other: Scoliast
+other: Amos
+other: Ainsi Nicolas de Lyre
+other: Ainsi Ménochius
+other: Pietro della Valle
+other: Il faut lire
+other: Ainsi Arias Montanus
+other: Ainsi l'entend Josèphe
+other: Joban
+other: Sanctius sur cet endroit
+other: Ainsi l'Arabe
+other: Alii libri
+other: Judic
+other: Ainsi l'entendent les Hébreux
+other: Ainsi lisent le Syriaque
+other: L'ancienne Vulgate lit
+other: Ainsi l'entendent Munster
+other: Bibl
+other: XXXI
+other: Ainsi de Muis
+other: Eusèbe sur cet endroit
+other: Ainsi l'entendent Eusèbe
+other: Ainsi lisent le Psautier romain
+other: Regii et Colbert
+other: Græci
+other: Fiat
+other: Abacuc
+other: Heb. [UNCERTAIN HEBREW]
+other: Plusieurs Exemplaires lisent
+other: De même le Chaldéen
+other: Ainsi lit le Chaldéen
+other: L'édition de Complute et de Sixte V
+other: Iohan
+other: Ieron hic
+other: Ainsi l'entendent Jansénius
+other: Ainsi lit l'édition de Complute
+other: Ieronym. in hunc locum
+other: Ainsi l'entendent Maldonat
+other: Vide Mill
+other: Domini in monte
+other: Jerosolym
+other: Vide Maldon. hic
+other: Apud Fagium
+other: Afrique
+other: Europe
+other: Asie
+other: Bibliothèque universelle
+other: Apud Munster
+other: Ainsi Bonfrère
+other: Ægypt
+other: Sophonie
+other: Ainsi l'entendent Tostat
+other: Gemara
+other: De même Pagnin
+other: M. le Clerc sur cet endroit
+other: Malachie
+other: Ita Nicolas de Lyre
+other: De même les Septante
+other: Drusius sur ce passage
+other: Ainsi l'entendent Jonathan
+other: Ita Pagnin
+other: Ainsi l'entendent Josèphe
+other: Ita Hebræi
+other: Ita Interpp. passim
+other: Voyage en Perse
+other: Dissertation sur la Milice des anciens Hébreux
+other: Jonas
+other: Ainsi lit l'Hébreu
+other: Tostat sur ce passage
+other: Ita l'Arabe
+other: Joseph. de bello
+other: Filii autem David Sacerdotes erant
+other: Proverbes
+other: Ainsi le Grec
+other: L'Hébreu de Fagius
+other: Ita versio antiqua Latina
+other: Ita Syrus
+other: Ita et Syr
+other: Je lis
+other: Autre ancienne édition
+other: Vide Sup
+other: Autrement
+other: XXXII
+other: Ita l'édition de Complute
+other: Ita Patres passim
+other: Comme s'il y avait
+other: Alii codices
+other: Ainsi l'entendent les Pères passim
+other: Ainsi l'entend saint Augustin
+other: Ita Kimchi
+other: Thren
+other: Ainsi lisent le Chaldéen
+other: Theodoret. et Édit
+other: CXVIII
+other: Quia
+other: Interpp
+other: Ita saint Augustin
+other: Ita Euseb
+other: Leuit
+other: Deus meus
+other: Inimici mei
+other: Apocalyp
+other: Saint Hilaire lit
+other: Gaier
+other: Domini
+other: Le Syriaque a lû de même
+other: Sion
+other: LIII
+other: Vide Euseb
+other: Cant
+other: XXXVI
+other: Geier. alii
+other: Alii passim
+other: Apud Theodoret
+other: Mich
+other: Hilar. et Psalt
+other: Interpp. passim
+other: Timor
+other: Ierem
+other: L'édition de Sixte V
+other: Plures legunt
+other: Qui tenet adulteram
+other: Ainsi l'entendent Nicolas de Lyre
+other: Vide Ierom. hic
+other: Origène sur ce passage
+other: Ainsi l'édition de Complute
+other: Cornel. alii passim
+other: I. et seq
+other: Sanct. hic
+other: Sup. c
+other: Certains dans Théodoret
+other: Ita Theodoret
+other: Ita et Theodoret
+other: Vide Joseph
+other: Vide Sanct. hic
+other: Zach
+other: Apoc
+other: Cantabrig
+other: Ainsi l'entendent saint Hilaire
+other: Harmon
+other: L'auteur des Questions aux orthodoxes
+other: Idola
+other: Ainsi l'entendent Cornelius a Lapide
+other: Manah
+other: Adagialia sacra
+other: Secrets de l'Abbé Rousseau
+other: Quæstiones hebraicæ in Genesim
+other: Panarion
+other: Africa
+other: Si humiliores sunt
+other: De Pascha
+other: Ainsi Piscator
+other: Laconica
+other: IIa IIæ
+other: Malignus vel sævus ante Dominum
+other: Genèse
+other: Ainsi
+other: De même Théodotion
+other: Ainsi l'entendent saint Irénée
+other: Omne animal quod immundum est
+other: Ils traduisent
+other: Codex
+other: Augenda multitudini consulitur
+other: Si non habuerit quod pro furto reddat
+other: Auditus
+other: Imper
+other: De manu alienigenæ non offeretis panes Deo vestro
+other: Quod si altare lapideum feceris mihi
+other: Préface
+other: Baruch
+other: Non ascendes per gradus ad altare meum
+other: Ainsi l'entendent les anciens rabbins
+other: Quicquid obtuleris sacrificii
+other: Aristophane et le Scholiaste
+other: Oriens totus
+other: De ira
+other: Non deficiet de stirpe vestra ligna cædens
+other: Acetum vini
+other: Égypte
+other: Ils ont lu apparemment
+other: Porrò filius Manasse
+other: Badan
+other: Syrie
+other: Voyage d'Orient
+other: Je pense qu'il faut lire
+other: Terre sainte
+other: Quid. l'Hébreu
+other: Non erit meretrix de filiabus Israël
+other: Ieronym. in locis
+other: Vide Maf. hic
+other: Indic
+other: Sidon
+other: Ainsi Masius
+other: Omnia flumina intrant in mare
+other: Ædes Levitarum quæ in urbibus sunt
+other: Itiner
+other: Attiques
+other: Ainsi Cajetan
+other: Menoah
+other: Ainsi la Vulgate
+other: Existimantes quæstum esse pietatem
+other: Ita Ald
+other: Oxon
+other: Sanh
+other: Mendoza sur ce passage
+other: Vide Cornel. à Lapid. hic
+other: Le Clerc sur ce passage
+other: Jus Regum
+other: Recognitiones
+other: D'après l'Hébreu
+other: Kai [UNCERTAIN GREEK]
+other: Un autre Interprète
+other: Les autres Éditions
+other: Ita Codd
+other: Test
+other: Luctus mortui septem dies
+other: Ita Estius
+other: Vide Ludovic. de Dieu hic
+other: Contre son âme
+other: Auteur des Traditions hébraïques
+other: Estius hic
+other: Proème
+other: Quelques rabbins
+other: De même Vatable
+other: Mélanges d'Histoires
+other: Ahia
+other: Vespasien
+other: Ita Syr
+other: Secunda Secundæ
+other: De sacra Philosophia
+other: Cicero pro Dejotaro
+other: De patribus qui filios distraxerunt
+other: Interpretes plerique
+other: SanB
+other: Ezechiam
+other: Josiam
+other: Vide Joseph. lib
+other: Josias nomine
+other: Saint Jérôme a lû
+other: Ci-devant
+other: Domine Deus noster
+other: Premier livre des Paralipomènes
+other: Joël
+other: Videntem David
+other: Var. etc
+other: Dominus videt
+other: Interpretes communiter dans Nicolas de Lyre
+other: L'auteur des Traditions hébraïques
+other: La Glose hébraïque
+other: Verè Deus vester Deus Deorum est
+other: Dominus Regum
+other: Le Syriaque lit
+other: Acheeneth
+other: L'Auteur de la Vulgate a lû
+other: Ainsi l'entendent Arias Montanus
+other: De même saint Ambroise
+other: Lexic
+other: Ita et antiqua versio Latina
+other: Latin. antiq
+other: Ita vers
+other: Fragment
+other: Latina
+other: Lexique
+other: Vide Plutarch
+other: Ita ferè le Chaldéen
+other: Thémistocle
+other: Purim
+other: Miséricorde
+other: Tobie
+other: Psaumes
+other: Ainsi l'entendent Mercier
+other: Reliqui
+other: Sym. _[UNCERTAIN GREEK]
+other: Ainsi l'entendent saint Cyprien
+other: Manuscrits de Colbert
+other: Ainsi l'entendent Pagnin
+other: Pineda sur ce passage
+other: Ita plerique recentiores
+other: Complut. et alii
+other: L'édition de Complute et d'autres
+other: C'est à peu près ainsi que lisent les Septante
+other: Ainsi l'entendent saint Grégoire
+other: Cateri
+other: Mazuroth signifie
+other: Lexicon
+other: De même Pline
+other: Humiliasti sicut vulneratum superbum
+other: Omnes videntes me deriserunt me
+other: De même Théodoret
+other: Ita legit
+other: Mar. etc
+other: Geler
+other: Pro ignoratione David
+other: Ainsi saint Basile
+other: Fodit in ea torcular
+other: Ils ont lû [UNCERTAIN HEBREW]
+other: Gentibus autem stultitiam
+other: Vade
+other: Ita edit
+other: Vide et August
+other: Vide et Muis
+other: Fames et mora bilem in nasum concitant
+other: Préface sur ce Psaume
+other: Confer
+other: Ita et Chald
+other: Ainsi saint Augustin
+other: Ita saint Jérôme
+other: LXIII
+other: In finem Psalmus David
+other: In æternum
+other: Deus Israël
+other: C'est à peu près ainsi que l'entendent le Chaldéen
+other: Divisit aquas quæ erant sub firmamento
+other: Ainsi l'entendent saint Basile
+other: Le Psautier de Chartres et le Psautier de Saint-Germain
+other: Prologue
+other: Legit
+other: Ita Psalter
+other: Ainsi le Psautier romain
+other: Sed l'édition de Complute
+other: Certains
+other: Plenus sum
+other: Patah
+other: Vide Hammond
+other: Mane
+other: Il faudrait lire dans la Vulgate
+other: XXXIX
+other: Fortis
+other: De même saint Jean Chrysostome
+other: Vide Chrysost. hic
+other: Il lisait
+other: Vide Chald
+other: Saint Hilaire et le Psautier de Milan
+other: Exaltare
+other: Laqueos
+other: Priúsquam producat spinas vestras rhamnus
+other: Canticum Jeremiæ
+other: Ainsi l'entend Apollinaire
+other: Filii alieni mentiti sunt mihi
+other: Saint Augustin et l'ancien Psautier
+other: Alii legunt
+other: De diversis quæstionibus ad Simplicianum
+other: Alleluia
+other: In tua justitia
+other: Pauperis non misereberis in judicio
+other: Mais l'édition de Complute
+other: Ainsi lit le Psautier de Milan
+other: Ambros. in Ps
+other: XXXVII
+other: Ita Arab
+other: Psals
+other: Bossuet. alios
+other: Vide Ieron
+other: H'Dionot
+other: Non est hoc tuum
+other: Vide Theodoret hic
+other: LXVI
+other: Vide Drus. hic
+other: Ainsi l'entendent les Juifs dans saint Jérôme
+other: Muis hic
+other: Ainsi l'entendent Kimhi
+other: Ædificabit
+other: Fiant luminaria in firmamento Cœli
+other: Vide Aug. hic
+other: Aug. hic
+other: Vide Philon
+other: Justin. l
+other: XLII
+other: A tribulatione malorum
+other: Vide Geier
+other: Mea est ultio
+other: XVIII. ult
+other: Zachariæ
+other: Iniqui
+other: In humiliatione mea
+other: Quære
+other: Saint Hilar. et Psalt
+other: Psalr
+other: Sicut in principio lætitiæ meæ
+other: III. ult
+other: Ainsi lit l'édition de Sixte V
+other: Saint Jean Chrysostome sur ce passage
+other: L'auteur de la Chaîne grecque
+other: Latini
+other: Vide nov
+other: Vide Ludov. de Dieu
+other: Non offeres mercedem prostibuli
+other: Ita Vatab
+other: Ce qui ne fait aucun sens
+other: Paschali
+other: Ita Origen
+other: Thaumaturg. hic
+other: Ainsi l'entendent Olympiodore
+other: Apocalypse
+other: Lamentations
+other: Plures Codd. legunt
+other: C'est une faute
+other: Sans
+other: Complut. et Sixti V
+other: Melius
+other: Ainsi lit saint Augustin
+other: Aristotel. in Ethicis
+other: Ainsi l'entendent Raban Maur
+other: Ita et D
+other: Maccab
+other: Infra
+other: Vide infr
+other: Israël
+other: Interpp. plerique
+other: Ainsi l'entendent Hugues de Saint-Cher
+other: Foreir
+other: Gros
+other: Cornel. alii
+other: Ainsi l'entendent saint Thomas
+other: Deber
+other: Le Chaldéen sur ce passage
+other: Ainsi Aquila
+other: Beros. apud Joseph
+other: Nabajoth unus est filiorum Ismaël
+other: SanEt
+other: Si les dix Tribus sont revenues de leur captivité
+other: Ieronym. hic. et alii
+other: Vide si placet
+other: Memor ero Rahab
+other: Babylonis
+other: Libane
+other: Ecce positus est hic in ruinam
+other: Ainsi lit Théodotion
+other: Le Grec sur ce passage
+other: Ainsi l'entendent saint Cyrille
+other: Cumque egressa alterum maritum duxerit
+other: Cæcitas ex parte contigit in Israël
+other: Apud Ieron
+other: Append
+other: Ainsi l'entendent les interprètes passim
+other: Malach
+other: Quelques Exemplaires portent
+other: Judæus est
+other: Victima Domini in Bozra
+other: Préface sur Daniel
+other: Mais saint Jérôme
+other: Ainsi Symmaque
+other: XXIV
+other: Vatab. etc
+other: Si ascenderit vulpes
+other: Ita Interpp. plerique
+other: Hebræi apud Ieronym
+other: Ainsi lit l'Édition Romaine
+other: En hébreu
+other: Théodoret et saint Jérôme sur ce passage
+other: XLIII
+other: Saint Jérôme et Théodoret sur ce passage
+other: Quelques Exemplaires lisent
+other: Jacchides
+other: Ainsi l'entend Maldonat
+other: XLVI
+other: Periisti
+other: Vide Aet
+other: Un chariot
+other: Patres
+other: Vide Levit
+other: XII. ad finem
+other: Vide Jerem
+other: Ioël
+other: Vide Maldonat. hic
+other: Evang
+other: Talmud. tract
+other: Author Operis imperf
+other: In eâ oratione omnis hominis natalis est
+other: Itaque in hunc locum
+other: Dominica
+other: XI. in Evangel
+other: Galat
+other: Ephes
+other: Coloss
+other: Timot
+other: Vide et in Psalm
+other: Gemar
+other: Ainsi lit le manuscrit de Cambridge
+other: Trimalcion
+other: Ita Cantabrig
+other: Legib
+other: Ambros. lib. x. in Luc
+other: Athanas. serm. de Passione Domini
+other: Salmas. de Cruce
+other: E'loï
+other: Videsis Huet
+other: De gestis Francorum
+other: Bède ne
+other: De homonymis Hyles jatricæ
+other: Première partie
+other: Saint Augustin réfute cette objection
+other: Pascal de la pesanteur de l'air
+other: Il parle des richesses de ce Pays
+other: De Translatione septuaginta interpretum
+other: Sarak
+other: Codex Sanhédrin
+other: De conjunctione
+other: On peut voir Spencer livre II
+other: De Generatione animalium
+other: Terra sancta descriptio
+other: Théophraste dans Athénée
+other: Manéthon chez Josèphe
+other: Adversus Miscellanea
+other: Habacuc
+other: Pesachim
+other: Traité Pesachim
+other: De Decimis
+other: De successione in pontificatum
+other: De vero cultu
+other: Ia-IIæ
+other: Voyage d'Athènes
+other: Nahum
+other: Père Eugène Roger
+other: Casaubon dans Athénée
+other: Serarius sur ce passage
+other: De même Monca
+other: Italicæ
+other: Quidam Hebræi_ dans Vasquez
+other: Servius sur ce passage des Géorgiques
+other: De même
+other: Ainsi Cellarius
+other: Cana
+other: De la sévérité
+other: Munster et Serarius
+other: Rélacion de la nouvelle Espagne
+other: Moyses de Vondo Auteo
+other: Relation de la haute Ethopie
+other: De Sacra Philosophia
+other: Chronologia Sacra
+other: Gouvernement des Perses
+other: Concile d'Orange II
+other: Vie de monsieur de Chasteüil
+other: Schickard sur Rois
+other: Histoire de Juifs
+other: Le Père Eugène Roger
+other: Mélanges d'Histoire
+other: Observation
+other: Saint Jean Chrysostome sive quis alius Autor
+other: Sanctius sur ce passage et sur les Actes
+other: Prima Secunda
+other: Secunda Secunda
+other: L'auteur
+other: Pingues spatiatur ad aras._ Pline
+other: Métaphraste et Surius
+other: Sanctius et Tostat sur ce passage
+other: Opus paschale
+other: Arabie
+other: Iter Italicum
+other: Dernier voyage de Cachemire
+other: De moribus Mahometanorum
+other: Extat eadem sub nomine Basile d'Émèse
+other: Pomponius Mela de his ritibus in toto Orbe
+other: Molinæus dicto Tractatu
+other: L'auteur du livre De paratu facilibus
+other: Troisième concile de Carthage
+other: De même Auctor
+other: De la croix
+other: Comparez ce verset à celui-ci
+other: Conspuitúsque sinus… Horace
+other: Strato
+other: Arcadie
+other: Ainsi l'entend saint Grégoire
+other: Ligemus justum._ Tertullien
+other: Ainsi l'entend saint Bernard
+other: Bion dans Diogène Laërce
+other: Pythagore chez le même
+other: Bias dans Diogène Laërce
+other: Arcadica
+other: Au quatrième des Rois
+other: Daniel et sur Isaïe
+other: Massekhet Zevahim
+other: Comparez Hérodote
+other: L'Auteur de l'Ecclésiastique
+other: Opera
+other: Ainsi lit la nouvelle édition de saint Jérôme
+other: Mesopotamia
+other: Machabaeorum
+other: On peut voir aussi Strabon
+other: Ancien Testament
+other: Journal des savants
+other: Seder Tephilot
+other: Aggée
+other: Au titre Siklim
+other: Taanith
+other: De cruciatibus martyrum
+other: Maïmonide dans Hilcoth Sanhedrin
+other: Halachah Sanhedrin
+other: Observationes sacræ

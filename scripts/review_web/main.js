@@ -8,6 +8,7 @@ import "./turn.js";
 import "./proposal.js";
 import "./batch.js";
 import "./search.js";
+import "./tags.js";
 import "./watch.js";
 import { decorate } from "./icons.js";
 

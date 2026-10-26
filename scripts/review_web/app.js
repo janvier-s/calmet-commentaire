@@ -182,7 +182,7 @@ const TAGS = { chapter: "ch", verse_number: "v", commentary_id: "#", verse_ref: 
 /** `makeField` turns a field into an editor (set by the editing module); `valueAt(path)` reads the
  *  text as typed. */
 export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [], valueAt: null, afterSave: null,
-                       blockTools: null, addTop: null, addBelow: null, addEnd: null };
+                       blockTools: null, addTop: null, addBelow: null, addEnd: null, footnoteTags: null };
 
 S.reveal = new Set();  // empty optional fields the user asked to see ("+ annotations")
 const key = (path) => path.join("/");
@@ -331,6 +331,7 @@ function footnoteBlock(n, i) {
   const { f } = fields(n, ["marker", "text"], ["footnotes", i], NONE);
   const b = block("footnotes", i, blockHead(null, "footnotes", i, f.marker, f.text));
   b.classList.add("fn");
+  if (hooks.footnoteTags) b.append(hooks.footnoteTags(i) || "");
   return b;
 }
 

@@ -37,6 +37,17 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   `FOOTNOTE_BACKEND=agy` (and `AGY_MODEL` to pick a model) the abbreviations are written out by agy
   instead; the scans stay with Claude, and answers Claude already gave are reused.
 
+- `footnote_tags.py run <volume|book|all> … [--local] [--model agy|haiku|both]`: tags each footnote
+  (`"tags"` in normalized/: hebrew, greek, verse, fathers, rabbis, versions, classical, commentators,
+  title, latin, explanation, abbrev, old-ref, bad-ref, ibid, uncertain) and gives the original title of
+  the works it names (`"titles"`). Rules first (the glossary, `footnote_names.txt`); the notes still
+  unclear go to agy, then Haiku (cached by text in `cache/footnote_tags_cache.json`). Tags changed by
+  hand in the editor are kept on every run (the tagger's own result: `docs/footnotes/tags_auto.json`).
+  `footnote_tags.py names` adds the works and authors not yet in `footnote_names.txt` (Haiku, from the
+  notes as Calmet printed them beside their written-out form); correct that file by hand.
+  `footnote_tags.py stats …` counts the tags. In the editor, "Tags" shows them under each footnote
+  (click to add or remove); search `tag:fathers`, `tag:fathers Basile` or `tag:none`.
+
 - `seam_check.py <volume> …`: reads every page break for lost or repeated lines
   (Claude, cached in `cache/seam_cache.json`) → `docs/seam_check.json`.
 - `spellcheck.py scan <volume|book> …`: hunspell (`brew install hunspell`, French dictionary

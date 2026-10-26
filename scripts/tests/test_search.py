@@ -67,3 +67,42 @@ def test_sees_a_page_saved_since(data_dir):
     st = p.stat()
     os.utime(p, ns=(st.st_atime_ns, st.st_mtime_ns + 10**9))
     assert s.search("zorglub", [VOL])["total"] == 1
+
+
+def tag_page(data_dir, notes):
+    p = data_dir / VOL / "normalized" / "page_0194.json"
+    d = json.loads(p.read_text())
+    d["footnotes"] = notes
+    p.write_text(json.dumps(d, ensure_ascii=False))
+
+
+def test_tag_alone_lists_the_footnotes_with_it(data_dir):
+    tag_page(data_dir, [{"marker": "(a)", "text": "Saint Basile, Homélie 6.", "tags": ["fathers"]},
+                        {"marker": "(b)", "text": "Pline, livre 2.", "tags": ["classical"]},
+                        {"marker": "(c)", "text": "Ibid.", "tags": []},
+                        {"marker": "(d)", "text": "Saint Jérôme.", "tags": ["fathers"]}])
+    r = hits(data_dir, "tag:fathers")
+    assert [h["path"][1] for h in r["hits"]] == [0, 3]
+    assert r["hits"][0]["match"] == "Saint Basile, Homélie 6."
+    assert [h["path"][1] for h in hits(data_dir, "tag:none")["hits"]] == [2]
+
+
+def test_tag_with_words(data_dir):
+    tag_page(data_dir, [{"marker": "(a)", "text": "Saint Basile, Homélie 6.", "tags": ["fathers"]},
+                        {"marker": "(b)", "text": "Saint Jérôme, homélie 2.", "tags": ["fathers"]},
+                        {"marker": "(c)", "text": "Pline, homélie.", "tags": ["classical"]}])
+    r = hits(data_dir, "tag:fathers homelie")
+    assert [h["path"][1] for h in r["hits"]] == [0, 1] and r["hits"][1]["match"] == "homélie"
+
+
+def test_untagged_footnotes_are_not_tag_none(data_dir):
+    # no "tags" key at all: not tagged yet, so neither found by a tag nor by tag:none
+    assert hits(data_dir, "tag:none")["total"] == 0
+
+
+def test_save_keeps_tags(data_dir):
+    s = Store(data_dir, data_dir.parent / "docs")
+    d, v = s.read(VOL, 194)
+    d["footnotes"][0]["tags"] = ["verse", "fathers"]
+    saved, _ = s.save(VOL, 194, d, v)
+    assert saved["footnotes"][0]["tags"] == ["verse", "fathers"]
