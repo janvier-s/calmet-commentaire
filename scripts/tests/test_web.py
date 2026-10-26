@@ -151,3 +151,14 @@ def test_post_needs_a_page(web):
     _, p = web(f"/api/page?vol={VOL}&page=193")
     assert web("/api/page", {"vol": VOL, "data": p["data"], "version": p["version"]})[0] == 400
     assert web("/api/page", {"vol": VOL, "page": -1, "data": p["data"], "version": p["version"]})[0] == 400
+
+
+def test_todo_add_and_delete(web):
+    code, r = web("/api/todo", {"vol": VOL, "page": 194, "msg": "Needs rescan",
+                                "where": {"section": "footnotes", "index": 0, "field": "text"}})
+    assert code == 200 and r["item"]["kind"] == "todo" and r["item"]["where"]["field"] == "text"
+    assert any(i["id"] == r["item"]["id"] for i in r["issues"])
+    assert web("/api/queue?kind=todo&status=open")[1]["items"][0]["msg"] == "Needs rescan"
+    assert web("/api/todo", {"vol": VOL, "page": 194, "msg": "  "})[0] == 400
+    assert web("/api/todo/delete", {"id": r["item"]["id"]})[0] == 200
+    assert web("/api/queue?kind=todo&status=all")[1]["items"] == []

@@ -140,6 +140,27 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                          {k: it.get(k) for k in ("book_dir", "page", "kind", "msg")})
         return {"ok": True}
 
+    def add_todo(body):
+        vol, page = vol_page(body)
+        msg = (body.get("msg") or "").strip()
+        if not msg:
+            raise ApiError(400, {"error": "an empty to-do"})
+        with lock:
+            it = rs.todo_item(vol, progress.add_todo(vol, page, msg, body.get("where")))
+            items.append(it)
+            by_id[it["id"]] = it
+        return {"item": dict(it, status=None), "issues": rs.page_issues(items, progress, vol, page)}
+
+    def delete_todo(body):
+        it = by_id.get(body.get("id"))
+        if not it or it["kind"] != "todo":
+            raise ApiError(404, {"error": "no such to-do"})
+        with lock:
+            progress.delete_todo(it["id"])
+            items.remove(it)
+            del by_id[it["id"]]
+        return {"issues": rs.page_issues(items, progress, it["book_dir"], it["page"])}
+
     def flag(body):
         vol, page = vol_page(body)
         raw = store.data / vol / "raw_json" / "commentaire" / f"page_{page:04d}.json"
@@ -340,13 +361,14 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     config = {"token": token, "labels": rs.KIND_LABELS,
               "kind_category": {k: rs.kind_category(k) for k in rs.KIND_LABELS}, "categories": list(rs.CATEGORIES),
               "statuses": list(rs.STATUSES), "volumes": store.volumes(), "start": start or {},
-              "turn_kinds": sorted(rt.TURN_KINDS)}
+              "turn_kinds": sorted(rt.TURN_KINDS), "todo_presets": todo_presets()}
     GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
            "/api/proposal": get_proposal, "/api/batch": batch, "/api/search": search, "/api/versions": versions}
     POST = {"/api/page": lambda b: (lambda r: {"data": r[0], "version": r[1]})(save(*vol_page(b), b)),
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
+            "/api/todo": add_todo, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept}
 
     class Handler(BaseHTTPRequestHandler):
@@ -438,6 +460,15 @@ def list_fp(data):
             print(f"    {info.get('msg', '')}\n")
         else:
             print(f"  • {item_id}\n")
+
+
+def todo_presets():
+    """The one-click to-dos (scripts/todo_presets.txt, one a line)."""
+    f = Path(__file__).with_name("todo_presets.txt")
+    try:
+        return [ln.strip() for ln in f.read_text(encoding="utf-8").splitlines() if ln.strip() and not ln.startswith("#")]
+    except OSError:
+        return []
 
 
 def read_state(state_file):

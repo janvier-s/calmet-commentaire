@@ -171,6 +171,10 @@ function card(it, big) {
     el("small", {}, icon(cat, 12), " ", label(it.kind),
        st || it.fixed ? el("span", { className: "st", textContent: it.fixed ? "fixed on save" : st.replace("_", " ") }) : null),
     el("span", { className: "msg", textContent: it.msg }));
+  if (it.kind === "todo" && hooks.deleteTodo) {
+    c.querySelector("small").append(el("button", { className: "link todo-del", title: "Delete this to-do",
+      onclick: (e) => { e.stopPropagation(); hooks.deleteTodo(it); } }, icon("x", 11)));
+  }
   if (!big) c.onclick = () => select(it);
   return c;
 }
@@ -219,7 +223,7 @@ function renderIssues() {
                                 disabled: !n, onclick: () => { panelOpen = !panelOpen; renderIssues(); } });
   const other = hidden ? el("span", { className: "muted small", title: "Issues of this page the category or type filter leaves out",
                                        textContent: ` +${hidden} of other type${hidden > 1 ? "s" : ""}` }) : null;
-  $("pills").replaceChildren(el("span", { className: "muted small", textContent: "This page: " }), ...pills, toggle, other);
+  $("pills").replaceChildren(el("span", { className: "muted small", textContent: "This page: " }), ...pills, toggle, ...(other ? [other] : []));
   $("page-issues").hidden = !(panelOpen && n);
   $("page-issues").replaceChildren(...here_.map((it) => card(it, false)));
   const a = around();
@@ -330,6 +334,15 @@ hooks.switchBook = async (vol) => {
   }
   return ok;
 };
+/** A to-do added on the page joins the list (if the filters take it); one deleted leaves it. */
+export function listAdd(it) {
+  if (inFilters(it) && (!Q.book || Q.book === it.book_dir) && ["open", "all"].includes(Q.status)) Q.items.push(it);
+}
+export function listRemove(id) {
+  Q.items = Q.items.filter((x) => x.id !== id);
+  if (Q.current === id) Q.current = null;
+  Q.idx = Math.min(Q.idx, Math.max(0, Q.items.length - 1));
+}
 export { currentItem, renderIssues, refreshCounts, step };
 
 // --- wiring ---

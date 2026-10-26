@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import re
+import time
 from pathlib import Path
 
 from page_text import LRM, find_source_image, trim
@@ -417,6 +418,26 @@ class Progress:
                     self.fps.pop(item_id, None)
                     d["false_positives"].pop(item_id, None)
             self._write(vol, d)
+
+    def add_todo(self, vol, page, msg, where=None):
+        """A page to-do (something to do that no check finds: a rescan, an abbreviation…)."""
+        d = self._read(vol)
+        stamp = f"{msg}\n{where}\n{len(d['todos'])}\n{time.time()}"
+        td = {"id": f"{vol}/{page:04d}/todo/{hashlib.md5(stamp.encode()).hexdigest()[:8]}", "page": page,
+              "msg": msg, "where": where or None}
+        d["todos"].append(td)
+        self._write(vol, d)
+        self.todos.setdefault(vol, []).append(td)
+        return td
+
+    def delete_todo(self, todo_id):
+        vol = self.book_of(todo_id)
+        d = self._read(vol)
+        d["todos"] = [td for td in d["todos"] if td["id"] != todo_id]
+        d["status"].pop(todo_id, None)
+        self._write(vol, d)
+        self.todos[vol] = [td for td in self.todos.get(vol, []) if td["id"] != todo_id]
+        self.data.pop(todo_id, None)
 
 
 def absorb_legacy(data_dir, docs_dir):
