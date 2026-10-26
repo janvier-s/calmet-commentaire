@@ -1,6 +1,7 @@
 // Editing: the fields, saving (with the on-disk check), Tab between fields, unsaved changes.
 import { S, api, ask, hooks, nav, renderPage, toast, loadPage } from "./app.js";
 import { Field } from "./field.js";
+import { icon } from "./icons.js";
 
 const $ = (id) => document.getElementById(id);
 export const INT_FIELDS = new Set(["verse_number", "commentary_id", "verse_ref", "chapter_number", "chapter"]);
@@ -203,26 +204,28 @@ const copySel = async (f, [a, b]) => {
   try { await navigator.clipboard.writeText(f.text.slice(a, b)); return true; } catch (e) { toast("Could not copy"); return false; }
 };
 const SEL_TOOLS = [
-  ["I", "Italics (⌘I)", (f) => f.toggleItalic(), "it-btn"],
-  ["Copy", "Copy the selection", async (f, sel) => { if (await copySel(f, sel)) toast("Copied"); }],
-  ["Cut", "Cut the selection", async (f, sel) => { if (await copySel(f, sel)) f.edit(sel[0], sel[1], ""); }],
+  ["I", "Italics (⌘I)", (f) => f.toggleItalic(), "it-btn", null],
+  ["Cut", "Cut the selection", async (f, sel) => { if (await copySel(f, sel)) f.edit(sel[0], sel[1], ""); }, "", "cut"],
+  ["Copy", "Copy the selection", async (f, sel) => { if (await copySel(f, sel)) toast("Copied"); }, "", "copy"],
   // pasted over the selection, with a space after it unless one follows already
   ["Paste", "Paste over the selection, with a space after it", async (f, [a, b]) => {
     let t;
     try { t = await navigator.clipboard.readText(); } catch (e) { toast("Could not read the clipboard"); return; }
     if (!t) return;
     f.edit(a, b, /^\s/.test(f.text.slice(b)) || /\s$/.test(t) ? t : t + " ");
-  }],
+  }, "", "paste"],
 ];
-for (const [text, title, act, cls] of SEL_TOOLS) {
+for (const [text, title, act, cls, ic] of SEL_TOOLS) {
   const b = Object.assign(document.createElement("button"), { textContent: text, title, className: cls || "" });
+  b.dataset.tool = text;
+  if (ic) b.prepend(icon(ic, 13));
   b.addEventListener("mousedown", (e) => e.preventDefault());  // keep the selection
   b.onclick = () => { const [f, sel] = selected(); clicked = null; selMenu.hidden = true; if (f) act(f, sel); };
   selMenu.append(b);
 }
 /** Show the menu centred on x, above y; with no selection (a click in a field) only Paste. */
 function showMenu(x, y, caret) {
-  for (const b of selMenu.children) b.hidden = caret && b.textContent !== "Paste";
+  for (const b of selMenu.children) b.hidden = caret && b.dataset.tool !== "Paste";
   selMenu.hidden = false;
   const w = selMenu.offsetWidth;
   selMenu.style.left = `${Math.min(innerWidth - w - 4, Math.max(4, x - w / 2))}px`;

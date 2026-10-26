@@ -29,6 +29,8 @@ const P = {
   pencil: "M4 20l4-1 11-11-3-3L5 16zM14 7l3 3",
   x: "M6 6l12 12M18 6L6 18",
   table: "M4 5h16v14H4zM4 10h16M4 15h16M10 5v14",
+  cut: "M6 20a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 20a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 15.5L17 4M16 15.5L7 4",
+  paste: "M8 4H6v17h12V4h-2M9 3h6v3H9zM9 11h6M9 15h4",
 };
 
 export function icon(name, size = 15) {

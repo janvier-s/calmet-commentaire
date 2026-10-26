@@ -215,6 +215,7 @@ button.icon-after { flex-direction: row-reverse; }
 #sel-menu button { height: 24px; padding: 0 8px; font-size: 12px; background: none; color: var(--bg); border: none; border-radius: 4px; }
 #sel-menu button:hover { background: color-mix(in srgb, var(--bg) 22%, transparent); }
 #sel-menu .it-btn { font: italic 600 15px Georgia, serif; }
+#sel-menu button { display: inline-flex; align-items: center; gap: 4px; }
 #sections { align-items: center; }
 #shelf { display: flex; flex-wrap: wrap; gap: 2px; }
 .shelf-item { padding: 1px 6px; font-size: 12.5px; min-width: 24px; background: var(--field); }
