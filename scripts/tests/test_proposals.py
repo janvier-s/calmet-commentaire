@@ -28,7 +28,7 @@ def store(data_dir):
 
 @pytest.fixture
 def progress(data_dir):
-    return Progress(data_dir / ".review_queue_progress.json", data_dir.parent / "docs" / "false_positives.json")
+    return Progress(data_dir)
 
 
 def by_kind(items, kind):

@@ -1,29 +1,5 @@
 [
  {
-  "id": "09_1_rois/0181/reported/36c8113a",
-  "book_dir": "09_1_rois",
-  "page": 181,
-  "kind": "reported",
-  "msg": "Chapter IX opens here: type in its summary and the start of its commentary from the scan (chapter title and verse order already fixed)",
-  "optional": false
- },
- {
-  "id": "10_2_rois/0194/reported/75fae54e",
-  "book_dir": "10_2_rois",
-  "page": 194,
-  "kind": "reported",
-  "msg": "This page is a copy of page 195: retranscribe it from its scan",
-  "optional": false
- },
- {
-  "id": "22_proverbes/0238/reported/5647e94d",
-  "book_dir": "22_proverbes",
-  "page": 238,
-  "kind": "reported",
-  "msg": "Page break 238 → 239: page 238 ends on “L'Hé-” and page 239 begins “Le sage n'a pas besoin de”: the end of the sentence (and maybe a line or more) is missing; read it on the scan",
-  "optional": false
- },
- {
   "id": "26_ecclesiastique/0481/missing_verse/17fb6196",
   "book_dir": "26_ecclesiastique",
   "page": 481,
@@ -23092,84 +23068,6 @@
   }
  },
  {
-  "id": "02_exode/0165/no_translation/fb144529",
-  "book_dir": "02_exode",
-  "page": 165,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 4): latin_quote “ET AIT. IL DIT À PHARAON.” has no french_translation; the comment starts “Tout la suite de ce récit montre que Moïse dit ceci à Pharao…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "02_exode/0268/no_translation/f047f5d1",
-  "book_dir": "02_exode",
-  "page": 268,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 12): latin_quote “AARON ET HUR.” has no french_translation; the comment starts “Aaron est assez connu. Hur était fils de Caleb, fils d'Esron…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "02_exode/0364/no_translation/dc251998",
-  "book_dir": "02_exode",
-  "page": 364,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 5): latin_quote “QUIDQUID OPTIMUM HABUERIT, ETC.” has no french_translation; the comment starts “Ce qu'il a de meilleur, etc. La Vulgate a parfaitement rendu…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "02_exode/0371/no_translation/4d0f55d9",
-  "book_dir": "02_exode",
-  "page": 371,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 19): latin_quote “QUI COIERIT CUM IUMENTO, MORTE MORIATUR.” has no french_translation; the comment starts “Voyez le Lévitique 20:15-16.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "02_exode/0371/no_translation/8333aa61",
-  "book_dir": "02_exode",
-  "page": 371,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 20): latin_quote “QUI IMMOLABIT DIIS, OCCIDETUR.” has no french_translation; the comment starts “Celui qui sacrifiera à d'autres Dieux qu'au seul Seigneur, s…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "02_exode/0385/no_translation/436afa34",
-  "book_dir": "02_exode",
-  "page": 385,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 10-11): latin_quote “SEX ANNIS SEMINABIS TERRAM TUAM. AN-” has no french_translation; the next page starts “C'est une grande question parmi les Commentateurs, de savoir…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "02_exode/0463/no_translation/e13be1e5",
   "book_dir": "02_exode",
   "page": 463,
@@ -23313,32 +23211,6 @@
   }
  },
  {
-  "id": "02_exode/0512/no_translation/6d5d0bee",
-  "book_dir": "02_exode",
-  "page": 512,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 18): latin_quote “OBLATIO EST DOMINO, ODOR SUAVISSIMUS VICTIMÆ DOMIN” has no french_translation; the comment starts “Car c'est le sacrifice du Seigneur, qui lui est d'une odeur …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "02_exode/0524/no_translation/ab32a039",
-  "book_dir": "02_exode",
-  "page": 524,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 6): latin_quote “PONESQUE ALTARE CONTRA VELUM, ETC.” has no french_translation; the comment starts “Cet Autel sera placé vis-à-vis du voile, qui sépare le Saint…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
   "id": "02_exode/0591/no_translation/ee8f4831",
   "book_dir": "02_exode",
   "page": 591,
@@ -23348,19 +23220,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "03_levitique/0074/no_translation/827f1720",
-  "book_dir": "03_levitique",
-  "page": 74,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 8): latin_quote “RETORQUEBIT CAPUT EJUS AD PENNULAS.” has no french_translation; the comment starts “Voyez le Chapitre 1:15.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -23417,19 +23276,6 @@
   }
  },
  {
-  "id": "03_levitique/0142/no_translation/2e7ec222",
-  "book_dir": "03_levitique",
-  "page": 142,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 23): latin_quote “QUIDQUID EX VOLUCRIBUS QUATUOR TANTUM HABET PEDES,” has no french_translation; the comment starts “Voyez le verset 20.…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "03_levitique/0144/no_translation/dbc140a3",
   "book_dir": "03_levitique",
   "page": 144,
@@ -23452,45 +23298,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "03_levitique/0282/no_translation/d3976b11",
-  "book_dir": "03_levitique",
-  "page": 282,
-  "kind": "no_translation",
-  "msg": "Note 1 (℣ 8): latin_quote “MORTICINUM ET CAPTUM A BESTIA.” has no french_translation; the comment starts “Voyez le Commentaire sur le Lévitique 17:15…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "03_levitique/0295/no_translation/50ae6aac",
-  "book_dir": "03_levitique",
-  "page": 295,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 11): latin_quote “ALTERO DIE SABBATHI.” has no french_translation; the comment starts “Le second jour du Sabbat, ou de la fête ; le second jour de …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0085/no_translation/4e0b96c9",
-  "book_dir": "04_nombres",
-  "page": 85,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 18): latin_quote “AQUAS AMARISSIMAS.” has no french_translation; the comment starts “L'Hébreu^{(e)} et le Chaldéen : _Les eaux amères et maudites…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
    "field": "french_translation"
   }
  },
@@ -23543,45 +23350,6 @@
   "where": {
    "section": "commentary",
    "index": 5,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0176/no_translation/0c738567",
-  "book_dir": "04_nombres",
-  "page": 176,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 18): latin_quote “PATIENS ET MULTÆ MISERICORDIÆ.” has no french_translation; the comment starts “On peut consulter sur le sens de ce verset, le chapitre 34:6…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0236/no_translation/872f1956",
-  "book_dir": "04_nombres",
-  "page": 236,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 1): latin_quote “MANSIT POPULUS IN CADES.” has no french_translation; the comment starts “Le peuple demeura à Cadés. Les Hébreux croient que le peuple…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0236/no_translation/946f7dfb",
-  "book_dir": "04_nombres",
-  "page": 236,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 1): latin_quote “MORTUAQUE EST IBI MARIA.” has no french_translation; the comment starts “Marie y mourut. On croit qu'elle était âgée de cent trente a…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -23833,32 +23601,6 @@
   }
  },
  {
-  "id": "04_nombres/0331/no_translation/51022821",
-  "book_dir": "04_nombres",
-  "page": 331,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 47): latin_quote “QUINQUAGINTA TRIA MILLIA QUADRINGENTI.” has no french_translation; the comment starts “Cinquan-…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0352/no_translation/ae278ed6",
-  "book_dir": "04_nombres",
-  "page": 352,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 7): latin_quote “DECIMA DIES MENSIS SEPTIMI.” has no french_translation; the comment starts “Le dixième jour du septième mois. On a parlé au long, de la …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "04_nombres/0365/no_translation/8a92dd26",
   "book_dir": "04_nombres",
   "page": 365,
@@ -24015,103 +23757,12 @@
   }
  },
  {
-  "id": "04_nombres/0383/no_translation/a7d105f0",
-  "book_dir": "04_nombres",
-  "page": 383,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 35): latin_quote “ET ROTH, ET SOPHAN.” has no french_translation; the comment starts “On peut voir ce qu'on a dit plus-haut sur _Atharot_, verset …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
   "id": "04_nombres/0383/no_translation/9879f5d0",
   "book_dir": "04_nombres",
   "page": 383,
   "kind": "no_translation",
   "msg": "Note 5 (℣ 35): latin_quote “JEGBAA.” has no french_translation; the comment starts “Les Septante n'ont point parlé de cette ville, ni par conséq…”: a name Calmet leaves untranslated?",
   "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0384/no_translation/24c936da",
-  "book_dir": "04_nombres",
-  "page": 384,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 36): latin_quote “BET-NEMRA.” has no french_translation; the comment starts “C'est la même que _Nemra_. Voyez ci-devant le verset 3.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0384/no_translation/1141515e",
-  "book_dir": "04_nombres",
-  "page": 384,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 36): latin_quote “BET-ARAN.” has no french_translation; the comment starts “Eusèbe, ^{(a)} et Saint Jérôme, nous apprennent, que ce lieu…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0384/no_translation/305d86bc",
-  "book_dir": "04_nombres",
-  "page": 384,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 37): latin_quote “ESEBON, ET ELEALE, ET CARIATHAÏM.” has no french_translation; the comment starts “Nous avons déjà parlé d'Hesebon et d'Elealé. Pour _Cariathaï…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0389/no_translation/db50e52f",
-  "book_dir": "04_nombres",
-  "page": 389,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 6): latin_quote “SOCOTH, ET ETHAM.” has no french_translation; the comment starts “On a parlé de ces deux lieux, sur l'Exode 13:20. Les Septant…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0389/no_translation/ddf6fcb5",
-  "book_dir": "04_nombres",
-  "page": 389,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 7): latin_quote “BEEL-SEPHON.” has no french_translation; the comment starts “Nous croyons que c'est la ville de Clysm, ou Colzan, près de…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0389/no_translation/6e4579cf",
-  "book_dir": "04_nombres",
-  "page": 389,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 8): latin_quote “DESERTUM ETHAM.” has no french_translation; the comment starts “Le désert d'Etham, est nommé désert de Sur, dans l'Exode 15:…”: the translation run into the commentary?",
-  "optional": false,
   "where": {
    "section": "commentary",
    "index": 4,
@@ -24171,19 +23822,6 @@
   }
  },
  {
-  "id": "04_nombres/0390/no_translation/5484cfc1",
-  "book_dir": "04_nombres",
-  "page": 390,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 15): latin_quote “RAPHIDIM ET SINAÏ.” has no french_translation; the comment starts “On peut voir ce qu'on a dit sur ces deux campements dans l'E…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
   "id": "04_nombres/0391/no_translation/f344fe9f",
   "book_dir": "04_nombres",
   "page": 391,
@@ -24206,19 +23844,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0391/no_translation/5ea91689",
-  "book_dir": "04_nombres",
-  "page": 391,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 19): latin_quote “REMNOM-PHARES.” has no french_translation; the comment starts “Ce lieu est inconnu, aussi-bien que le précédent.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -24258,19 +23883,6 @@
   "where": {
    "section": "commentary",
    "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0392/no_translation/ee82966a",
-  "book_dir": "04_nombres",
-  "page": 392,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 23): latin_quote “LE MONT SEPHER.” has no french_translation; the comment starts “Nous ne connaissons point cette montagne, l'Écriture n'en pa…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
    "field": "french_translation"
   }
  },
@@ -24353,19 +23965,6 @@
   }
  },
  {
-  "id": "04_nombres/0393/no_translation/b79d1d08",
-  "book_dir": "04_nombres",
-  "page": 393,
-  "kind": "no_translation",
-  "msg": "Note 7 (℣ 30): latin_quote “MOSEROT, BENE-JAACAN, GADGAD.” has no french_translation; the comment starts “Nous ne savons pas la situation de ces lieux, et nous les tr…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 6,
-   "field": "french_translation"
-  }
- },
- {
   "id": "04_nombres/0394/no_translation/157fd9ec",
   "book_dir": "04_nombres",
   "page": 394,
@@ -24401,32 +24000,6 @@
   "where": {
    "section": "commentary",
    "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0394/no_translation/e931b57c",
-  "book_dir": "04_nombres",
-  "page": 394,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 34): latin_quote “HASION-GABER.” has no french_translation; the comment starts “Il est important de fixer ce lieu, dont il est souvent parlé…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0396/no_translation/0994590a",
-  "book_dir": "04_nombres",
-  "page": 396,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 37): latin_quote “LE MONT DE HOR,” has no french_translation; the comment starts “devait être dans l'Idumée, et à peu près vers le passage de …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
    "field": "french_translation"
   }
  },
@@ -24470,32 +24043,6 @@
   }
  },
  {
-  "id": "04_nombres/0397/no_translation/ced832df",
-  "book_dir": "04_nombres",
-  "page": 397,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 44): latin_quote “JIE-ABARIM.” has no french_translation; the comment starts “On s'est aussi expliqué sur cet endroit, Nombres 21:11.…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0397/no_translation/2572d99e",
-  "book_dir": "04_nombres",
-  "page": 397,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 45): latin_quote “DIBON-GAD.” has no french_translation; the comment starts “Cette ville se trouve souvent appelée _Dibon_. On ne lui don…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
   "id": "04_nombres/0397/no_translation/90e2d963",
   "book_dir": "04_nombres",
   "page": 397,
@@ -24518,32 +24065,6 @@
   "where": {
    "section": "commentary",
    "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0402/no_translation/ee2898fc",
-  "book_dir": "04_nombres",
-  "page": 402,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 5): latin_quote “LE TORRENT D'EGYPTE,” has no french_translation; the comment starts “ou, comme il est appelé ailleurs : ^{(h)} _Le fleuve d'Égypt…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "04_nombres/0403/no_translation/a9e31b5b",
-  "book_dir": "04_nombres",
-  "page": 403,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 5): latin_quote “LA GRANDE MER.” has no french_translation; the comment starts “est la Mer Méditerranée, du consentement de tous les Interpr…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
    "field": "french_translation"
   }
  },
@@ -24600,19 +24121,6 @@
   }
  },
  {
-  "id": "04_nombres/0408/no_translation/f9a13269",
-  "book_dir": "04_nombres",
-  "page": 408,
-  "kind": "no_translation",
-  "msg": "Note 1 (℣ 11): latin_quote “LA FONTAINE DE DAPHNIS.” has no french_translation; the comment starts “L'hébreu porte simplement : _Hain_, qui signifie une fontain…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
   "id": "05_deuteronome/0074/no_translation/422be31a",
   "book_dir": "05_deuteronome",
   "page": 74,
@@ -24635,58 +24143,6 @@
   "where": {
    "section": "commentary",
    "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "05_deuteronome/0113/no_translation/6dc12c87",
-  "book_dir": "05_deuteronome",
-  "page": 113,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 26): latin_quote “TESTES INVOCO HODIE COELUM ET TERRAM.” has no french_translation; the comment starts “_J'atteste auj-_…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "05_deuteronome/0125/no_translation/83f7c1f8",
-  "book_dir": "05_deuteronome",
-  "page": 125,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 22): latin_quote “HÆC VERBA, ETC.” has no french_translation; the comment starts “Avant ce verset, le Samaritain met ici une longue addition, …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "05_deuteronome/0163/no_translation/16f44e00",
-  "book_dir": "05_deuteronome",
-  "page": 163,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 6): latin_quote “IN MOSERA, UBI AARON MORTUUS EST.” has no french_translation; the comment starts “Nous lisons dans le Livre des Nombres, qu'Aaron mourut sur l…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "05_deuteronome/0190/no_translation/4d8eb273",
-  "book_dir": "05_deuteronome",
-  "page": 190,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 17): latin_quote “PRIMITIAS MANUUM TUARUM.” has no french_translation; the comment starts “Voyez le verset 6.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
    "field": "french_translation"
   }
  },
@@ -24743,97 +24199,6 @@
   }
  },
  {
-  "id": "05_deuteronome/0364/no_translation/bfdd4e07",
-  "book_dir": "05_deuteronome",
-  "page": 364,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 7): latin_quote “CORRUENTES. RENVERSEZ.” has no french_translation; the comment starts “On peut traduire l'Hébreu, par : ^{(c)} _Frappés à mort, acc…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "05_deuteronome/0377/no_translation/5580070e",
-  "book_dir": "05_deuteronome",
-  "page": 377,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 60): latin_quote “AFFLICTIONES ÆGYPTI.” has no french_translation; the comment starts “Voyez le verset 27.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0065/no_translation/5f92f6dd",
-  "book_dir": "06_josue",
-  "page": 65,
-  "kind": "no_translation",
-  "msg": "Note 1 (℣ 1): latin_quote “ET FACTUM EST POST MORTEM MOYSI.” has no french_translation; the comment starts “Et après la mort de _Moïse_. La conjonction _et_, marque la …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0092/no_translation/7eea1146",
-  "book_dir": "06_josue",
-  "page": 92,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 15): latin_quote “DEMISIT EOS PER FUNEM.” has no french_translation; the comment starts “Elle les descendit par une corde. Ce ne fut qu'après tout ce…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0092/no_translation/93ca92ed",
-  "book_dir": "06_josue",
-  "page": 92,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 16): latin_quote “AD MONTANA CONSCENDITE.” has no french_translation; the comment starts “Allez du côté des montagnes, qui sont au midi de Jéricho. C'…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0092/no_translation/beebe0b0",
-  "book_dir": "06_josue",
-  "page": 92,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 18): latin_quote “FUNICULUS ISTE COCCINEUS.” has no french_translation; the comment starts “Ce cordon d'écarlate,^{(a)} ou ce ruban, ce fil, cette bordu…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0193/no_translation/1e01278e",
-  "book_dir": "06_josue",
-  "page": 193,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 21): latin_quote “SIC VIVANT, UT IN USUS UNIVERSÆ MULTITUDI-” has no french_translation; the next page starts “Mais on ne leur conservera la vie qu'à cette condition, qu'i…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0214/no_translation/9257de23",
   "book_dir": "06_josue",
   "page": 214,
@@ -24860,77 +24225,12 @@
   }
  },
  {
-  "id": "06_josue/0225/no_translation/05cc45f2",
-  "book_dir": "06_josue",
-  "page": 225,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 16): latin_quote “CEPIT JOSUE OMNEM TERRAM MONTANAM ET” has no french_translation; the next page starts “Josué prit tout le pays des montagnes et du midi. Ce verset …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0226/no_translation/bb92a0ad",
-  "book_dir": "06_josue",
-  "page": 226,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 16): latin_quote “TERRAM GOSEN.” has no french_translation; the comment starts “La terre de Gosen. Voyez ci-devant le chapitre x. ℣. 14.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0226/no_translation/06f383ac",
-  "book_dir": "06_josue",
-  "page": 226,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 16): latin_quote “ET PLANITIEM.” has no french_translation; the comment starts “La plaine qui est au-dessous des montagnes de Juda, tirant v…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0226/no_translation/20c31d12",
-  "book_dir": "06_josue",
-  "page": 226,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 16): latin_quote “MONTEMQUE ISRAEL ET CAMPESTRIA EJUS.” has no french_translation; the comment starts “La montagne d'Israël et ses campagnes. On voit par la compar…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0229/no_translation/36fdd385",
   "book_dir": "06_josue",
   "page": 229,
   "kind": "no_translation",
   "msg": "Note 2 (℣ 21): latin_quote “ANAB.” has no french_translation; the comment starts “Cette ville était à quatre milles de Diospolis, selon saint …”: a name Calmet leaves untranslated?",
   "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0230/no_translation/49458f0b",
-  "book_dir": "06_josue",
-  "page": 230,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 22): latin_quote “GAZA, ou HASA,” has no french_translation; the comment starts “comme elle est écrite dans la langue originale, ^{(c)} et co…”: a translation lost?",
-  "optional": false,
   "where": {
    "section": "commentary",
    "index": 1,
@@ -24947,19 +24247,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0231/no_translation/1a3ff667",
-  "book_dir": "06_josue",
-  "page": 231,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 22): latin_quote “AZOT, ou ASDOD,” has no french_translation; the comment starts “comme l'écrivent les Hébreux, était entre Ascalon et Jamnia,…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -25120,19 +24407,6 @@
   }
  },
  {
-  "id": "06_josue/0239/no_translation/7f0c489f",
-  "book_dir": "06_josue",
-  "page": 239,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 22): latin_quote “REX JACHANAN CARMELI.” has no french_translation; the comment starts “Le Roi de _Jachanan du Carmel_. On a déjà pu remarquer sur l…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0241/no_translation/f7b7a334",
   "book_dir": "06_josue",
   "page": 241,
@@ -25155,32 +24429,6 @@
   "where": {
    "section": "commentary",
    "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0251/no_translation/0ff624a1",
-  "book_dir": "06_josue",
-  "page": 251,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 17): latin_quote “BAMOT-BAAL.” has no french_translation; the comment starts “C'est peut-être la même que Bamot-Arnon, sur le fleuve de mê…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0251/no_translation/e38e8faa",
-  "book_dir": "06_josue",
-  "page": 251,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 17): latin_quote “BAAL-MAON,” has no french_translation; the comment starts “ou _Beel meon_, à neuf mille d'Hésebon, selon Eusèbe ; il y …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
    "field": "french_translation"
   }
  },
@@ -25263,19 +24511,6 @@
   }
  },
  {
-  "id": "06_josue/0255/no_translation/a4465403",
-  "book_dir": "06_josue",
-  "page": 255,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 26): latin_quote “RAMOTH, OU RAMOT DE GALAAD,” has no french_translation; the comment starts “était à quinze milles de Philadelphie en tirant vers l'orien…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0255/no_translation/0cdf549c",
   "book_dir": "06_josue",
   "page": 255,
@@ -25354,45 +24589,6 @@
   }
  },
  {
-  "id": "06_josue/0276/no_translation/8752de35",
-  "book_dir": "06_josue",
-  "page": 276,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 13): latin_quote “CARIAT-ARBE PATRIS ENAC.” has no french_translation; the comment starts “Voyez ce qu'on a dit ci-devant chapitre 14:15.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0276/no_translation/75b381c1",
-  "book_dir": "06_josue",
-  "page": 276,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 14): latin_quote “SESAI, AHIMAN, THOLMAI.” has no french_translation; the comment starts “Ces trois Géants étaient déjà à Hébron trente-huit ans aupar…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0276/no_translation/dad5be05",
-  "book_dir": "06_josue",
-  "page": 276,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 15): latin_quote “DABIR, QUÆ ANTEA VOCABATUR CIVITAS SEPHER.” has no french_translation; the comment starts “Dabir, qui s'appelait auparavant _Cariat-Sépher_. On a parlé…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0281/no_translation/e5e10f9f",
   "book_dir": "06_josue",
   "page": 281,
@@ -25454,19 +24650,6 @@
   "where": {
    "section": "commentary",
    "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0282/no_translation/81ae1380",
-  "book_dir": "06_josue",
-  "page": 282,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 28): latin_quote “ASER-SUAL ;” has no french_translation; the comment starts “C'est-à-dire, _le Parvis de Sual_, ou la demeure du Renard. …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
    "field": "french_translation"
   }
  },
@@ -25562,19 +24745,6 @@
   }
  },
  {
-  "id": "06_josue/0284/no_translation/2497bbba",
-  "book_dir": "06_josue",
-  "page": 284,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 32): latin_quote “ÆNET REMON.” has no french_translation; the comment starts “Ces deux villes sont jointes dans quelques Exemplaires Latin…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0285/no_translation/4db5fad1",
   "book_dir": "06_josue",
   "page": 285,
@@ -25653,19 +24823,6 @@
   }
  },
  {
-  "id": "06_josue/0285/no_translation/3dbb2732",
-  "book_dir": "06_josue",
-  "page": 285,
-  "kind": "no_translation",
-  "msg": "Note 8 (℣ 35): latin_quote “SOCHO, & AZECA,” has no french_translation; the comment starts “sur le chemin de Jérusalem à Eleutéropolis. C'est auprès de …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 7,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0286/no_translation/84319bc7",
   "book_dir": "06_josue",
   "page": 286,
@@ -25688,19 +24845,6 @@
   "where": {
    "section": "commentary",
    "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0286/no_translation/d0d1b843",
-  "book_dir": "06_josue",
-  "page": 286,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 36): latin_quote “GEDERA, GEDEROTHAIM,” has no french_translation; the comment starts “ou _Gador_ et _Gaderot_, et _Gader_, ou _Gaddera._ On a parl…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
    "field": "french_translation"
   }
  },
@@ -25757,32 +24901,6 @@
   }
  },
  {
-  "id": "06_josue/0286/no_translation/521c9442",
-  "book_dir": "06_josue",
-  "page": 286,
-  "kind": "no_translation",
-  "msg": "Note 10 (℣ 40): latin_quote “CHEBBON, LEHEMAN, CETHLIS.” has no french_translation; the comment starts “Les Septante : _Chabra, Maches, Machos_. Un autre interprète…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 9,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0286/no_translation/0d1722c0",
-  "book_dir": "06_josue",
-  "page": 286,
-  "kind": "no_translation",
-  "msg": "Note 11 (℣ 41): latin_quote “BETH-DAGON.” has no french_translation; the comment starts “C'est-à-dire, le temple, ou la maison de Dagon. On sait que …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 10,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0287/no_translation/c4824130",
   "book_dir": "06_josue",
   "page": 287,
@@ -25809,19 +24927,6 @@
   }
  },
  {
-  "id": "06_josue/0287/no_translation/ba2626a7",
-  "book_dir": "06_josue",
-  "page": 287,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 42): latin_quote “ETHER, ou ATHAR.” has no french_translation; the comment starts “Elle fut d'abord à la tribu de Juda, puis elle passa à celle…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0287/no_translation/da9bcd6c",
   "book_dir": "06_josue",
   "page": 287,
@@ -25831,32 +24936,6 @@
   "where": {
    "section": "commentary",
    "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0287/no_translation/3c778c10",
-  "book_dir": "06_josue",
-  "page": 287,
-  "kind": "no_translation",
-  "msg": "Note 6 (℣ 43): latin_quote “JEPHTA, ESNA, NESIB.” has no french_translation; the comment starts “Les Septante, _Jana, et Nasib_. Un autre Interprète Grec ; _…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 5,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0287/no_translation/3864d9b3",
-  "book_dir": "06_josue",
-  "page": 287,
-  "kind": "no_translation",
-  "msg": "Note 7 (℣ 44): latin_quote “CEILA, ACSIB, MAREZA.” has no french_translation; the comment starts “Les Septante : _Ceila, Aciezi, Cesib, Bathesan, Alem_. Un au…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 6,
    "field": "french_translation"
   }
  },
@@ -25952,19 +25031,6 @@
   }
  },
  {
-  "id": "06_josue/0288/no_translation/bc2236fc",
-  "book_dir": "06_josue",
-  "page": 288,
-  "kind": "no_translation",
-  "msg": "Note 7 (℣ 48): latin_quote “CARIAT-SENNA,” has no french_translation; the comment starts “ou Dabir. Voyez le ℣. 15.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 6,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0289/no_translation/f67b6ad9",
   "book_dir": "06_josue",
   "page": 289,
@@ -26013,32 +25079,6 @@
   "where": {
    "section": "commentary",
    "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0289/no_translation/5c6642d4",
-  "book_dir": "06_josue",
-  "page": 289,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 51): latin_quote “GILO, ou GILON ;” has no french_translation; the comment starts “c'est la patrie du traître Achitophel, qui est pour cela sur…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0289/no_translation/5a533319",
-  "book_dir": "06_josue",
-  "page": 289,
-  "kind": "no_translation",
-  "msg": "Note 6 (℣ 53): latin_quote “BETH-THAPHUA.” has no french_translation; the comment starts “Eusèbe dit que Beth-thaphua, ou comme il l'appelle _Bethaphu…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 5,
    "field": "french_translation"
   }
  },
@@ -26173,19 +25213,6 @@
   }
  },
  {
-  "id": "06_josue/0291/no_translation/a7d8aa6e",
-  "book_dir": "06_josue",
-  "page": 291,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 60): latin_quote “CARIAT-BAAL.” has no french_translation; the comment starts “Voyez ci-devant, _Cariath-iarim_, ℣. 9.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0291/no_translation/a5ed1cca",
   "book_dir": "06_josue",
   "page": 291,
@@ -26195,19 +25222,6 @@
   "where": {
    "section": "commentary",
    "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0292/no_translation/a94873e6",
-  "book_dir": "06_josue",
-  "page": 292,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 62): latin_quote “EN-GADDI,” has no french_translation; the comment starts “lieux fameux dans l'Écriture, et même dans les profanes. Eus…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -26303,19 +25317,6 @@
   }
  },
  {
-  "id": "06_josue/0322/no_translation/3c5537b7",
-  "book_dir": "06_josue",
-  "page": 322,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 16): latin_quote “IN PARTEM MONTIS.” has no french_translation; the comment starts “Dans cette partie de la montagne. On peut traduire le Texte^…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0323/no_translation/b7aff915",
   "book_dir": "06_josue",
   "page": 323,
@@ -26325,19 +25326,6 @@
   "where": {
    "section": "commentary",
    "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0323/no_translation/e2dc9d2c",
-  "book_dir": "06_josue",
-  "page": 323,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 21): latin_quote “BETH-HAGLA.” has no french_translation; the comment starts “Chap. xv. 6.…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
    "field": "french_translation"
   }
  },
@@ -26355,32 +25343,6 @@
   }
  },
  {
-  "id": "06_josue/0323/no_translation/058735cc",
-  "book_dir": "06_josue",
-  "page": 323,
-  "kind": "no_translation",
-  "msg": "Note 8 (℣ 23): latin_quote “AVIM.” has no french_translation; the next page starts “Saint Jérôme dit qu'on voyait un village de ce nom à cinq mi…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 7,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0324/no_translation/bd6ac66a",
-  "book_dir": "06_josue",
-  "page": 324,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 23): latin_quote “OPHERA, EMONA.” has no french_translation; the comment starts “On ne connaît point ces villes.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0324/no_translation/0ea386bf",
   "book_dir": "06_josue",
   "page": 324,
@@ -26394,12 +25356,12 @@
   }
  },
  {
-  "id": "06_josue/0324/no_translation/61ca371f",
+  "id": "06_josue/0324/no_translation/10376abe",
   "book_dir": "06_josue",
   "page": 324,
   "kind": "no_translation",
-  "msg": "Note 4 (℣ 23): latin_quote “GABE'E ;” has no french_translation; the comment starts “ou _Gabé_, ou _Gabaa_, ou _Géba_, ou _Gibea_. C'est la ville…”: the translation run into the commentary?",
-  "optional": false,
+  "msg": "Note 4 (℣ 23): latin_quote “GABÉE ;” has no french_translation; the comment starts “ou _Gabé_, ou _Gabaa_, ou _Géba_, ou _Gibea_. C'est la ville…”: the translation run into the commentary?",
+  "optional": true,
   "where": {
    "section": "commentary",
    "index": 3,
@@ -26511,12 +25473,12 @@
   }
  },
  {
-  "id": "06_josue/0328/no_translation/28fa2b0c",
+  "id": "06_josue/0328/no_translation/74d787ca",
   "book_dir": "06_josue",
   "page": 328,
   "kind": "no_translation",
-  "msg": "Note 2 (℣ 1): latin_quote “BERSABE'E.” has no french_translation; the comment starts “Voyez ci-devant chap. xv. 27. C'est la même qui est nommée _…”: the translation run into the commentary?",
-  "optional": false,
+  "msg": "Note 2 (℣ 1): latin_quote “BERSABÉE.” has no french_translation; the comment starts “Voyez ci-devant chap. xv. 27. C'est la même qui est nommée _…”: the translation run into the commentary?",
+  "optional": true,
   "where": {
    "section": "commentary",
    "index": 1,
@@ -26533,19 +25495,6 @@
   "where": {
    "section": "commentary",
    "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0328/no_translation/e0043841",
-  "book_dir": "06_josue",
-  "page": 328,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 3): latin_quote “HASER SUAL.” has no french_translation; the comment starts “Josué 15:28. Baala. Josué 15:29.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
    "field": "french_translation"
   }
  },
@@ -26615,58 +25564,6 @@
   }
  },
  {
-  "id": "06_josue/0329/no_translation/2d1d038e",
-  "book_dir": "06_josue",
-  "page": 329,
-  "kind": "no_translation",
-  "msg": "Note 6 (℣ 5): latin_quote “BETH-MARCHABOTH.” has no french_translation; the comment starts “Ou plutôt _Beth-hammarchaboth_, la ville des Chariots ; on n…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 5,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0329/no_translation/9ec1dd1e",
-  "book_dir": "06_josue",
-  "page": 329,
-  "kind": "no_translation",
-  "msg": "Note 7 (℣ 5): latin_quote “ASER-SUSA.” has no french_translation; the comment starts “Elle est nommée dans les Paralipomènes, ^{(c)} _Hasersusim_,…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 6,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0329/no_translation/8ae34d16",
-  "book_dir": "06_josue",
-  "page": 329,
-  "kind": "no_translation",
-  "msg": "Note 8 (℣ 6): latin_quote “BETH-LEBAOTH.” has no french_translation; the comment starts “C'est-à-dire, _la maison des lionnes_. C'est apparemment _Be…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 7,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0329/no_translation/9cc873df",
-  "book_dir": "06_josue",
-  "page": 329,
-  "kind": "no_translation",
-  "msg": "Note 9 (℣ 7): latin_quote “AIN et REMMON.” has no french_translation; the comment starts “L'Hébreu, _Ain-Remmon_. Voyez ce qu'on a dit ci-devant. ^{(f…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 8,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0329/no_translation/5502fc5a",
   "book_dir": "06_josue",
   "page": 329,
@@ -26689,19 +25586,6 @@
   "where": {
    "section": "commentary",
    "index": 10,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0330/no_translation/5bacc692",
-  "book_dir": "06_josue",
-  "page": 330,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 8): latin_quote “BAALATH-BEER-RAMATH.” has no french_translation; the comment starts “Elle est simplement nommée Baloth dans Josué, ^{(c)} et Baal…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -26732,19 +25616,6 @@
   }
  },
  {
-  "id": "06_josue/0331/no_translation/68be3b55",
-  "book_dir": "06_josue",
-  "page": 331,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 13): latin_quote “GETH-EPHER.” has no french_translation; the comment starts “C'est la patrie du Prophète Jonas ; _Il était_, dit l'Écritu…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0331/no_translation/f685d135",
   "book_dir": "06_josue",
   "page": 331,
@@ -26754,19 +25625,6 @@
   "where": {
    "section": "commentary",
    "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0331/no_translation/7678d7be",
-  "book_dir": "06_josue",
-  "page": 331,
-  "kind": "no_translation",
-  "msg": "Note 6 (℣ 13): latin_quote “REMMON, AMTHAR, NOA,” has no french_translation; the comment starts “ou _Anoa_, comme lisent les Sep-…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 5,
    "field": "french_translation"
   }
  },
@@ -26862,19 +25720,6 @@
   }
  },
  {
-  "id": "06_josue/0333/no_translation/390666f9",
-  "book_dir": "06_josue",
-  "page": 333,
-  "kind": "no_translation",
-  "msg": "Note 7 (℣ 19): latin_quote “ANAHARATH, RABBOTH, CESION, ABES.” has no french_translation; the comment starts “On n'en sait autre chose, sinon qu'elles sont de la tribu d'…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 6,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0333/no_translation/ca48fc32",
   "book_dir": "06_josue",
   "page": 333,
@@ -26884,32 +25729,6 @@
   "where": {
    "section": "commentary",
    "index": 7,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0333/no_translation/272590b9",
-  "book_dir": "06_josue",
-  "page": 333,
-  "kind": "no_translation",
-  "msg": "Note 9 (℣ 21): latin_quote “EN-GANNIM.” has no french_translation; the comment starts “Ville destinée aux Lévites dans la tribu d'Issachar. ^{(d)} …”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 8,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0333/no_translation/db9e7dac",
-  "book_dir": "06_josue",
-  "page": 333,
-  "kind": "no_translation",
-  "msg": "Note 10 (℣ 21): latin_quote “EN-ADDA.” has no french_translation; the comment starts “Ce ne peut être la ville de ce nom entre Jérusalem et Éleuth…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 9,
    "field": "french_translation"
   }
  },
@@ -26966,32 +25785,6 @@
   }
  },
  {
-  "id": "06_josue/0335/no_translation/35cc9a5e",
-  "book_dir": "06_josue",
-  "page": 335,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 26): latin_quote “SIHOR ET LABANATH.” has no french_translation; the comment starts “Quelques-uns croient que ce n'est qu'un même lieu, ou qu'un …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0335/no_translation/76bca1d3",
-  "book_dir": "06_josue",
-  "page": 335,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 27): latin_quote “BETH-DAGON.” has no french_translation; the comment starts “Elle est différente d'un autre lieu de même…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0336/no_translation/a5acbfcf",
   "book_dir": "06_josue",
   "page": 336,
@@ -27001,19 +25794,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0336/no_translation/9312cd76",
-  "book_dir": "06_josue",
-  "page": 336,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 27): latin_quote “VALLEM JEPHTAEL.” has no french_translation; the comment starts “La ville de Jephtael était entre les tribus de Zabulon et d'…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -27109,38 +25889,12 @@
   }
  },
  {
-  "id": "06_josue/0343/no_translation/59e3c3f3",
-  "book_dir": "06_josue",
-  "page": 343,
-  "kind": "no_translation",
-  "msg": "Note 6 (℣ 34): latin_quote “AZANOTH-THABOR,” has no french_translation; the comment starts “ou simplement _Azanoth_. C'était une ville dans la campagne …”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 5,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0344/no_translation/bb97c3db",
-  "book_dir": "06_josue",
-  "page": 344,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 36): latin_quote “EDEMA, HARAMA, ASOR.” has no french_translation; the comment starts “On pourrait traduire, _Adama_,…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0345/no_translation/b1bfd0a0",
+  "id": "06_josue/0345/no_translation/791e8f8d",
   "book_dir": "06_josue",
   "page": 345,
   "kind": "no_translation",
-  "msg": "Note 2 (℣ 36): latin_quote “CEDE'S.” has no french_translation; the comment starts “Elle est nommée Cédès de Nephtali dans quelques endroits de …”: a translation lost?",
-  "optional": false,
+  "msg": "Note 2 (℣ 36): latin_quote “CEDÉS.” has no french_translation; the comment starts “Elle est nommée Cédès de Nephtali dans quelques endroits de …”: a name Calmet leaves untranslated?",
+  "optional": true,
   "where": {
    "section": "commentary",
    "index": 1,
@@ -27161,32 +25915,6 @@
   }
  },
  {
-  "id": "06_josue/0345/no_translation/b254dd51",
-  "book_dir": "06_josue",
-  "page": 345,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 36): latin_quote “EN-HASOR,” has no french_translation; the comment starts “ou _la fontaine d'Asor_. C'est apparemment la fontaine de Da…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0345/no_translation/f399d489",
-  "book_dir": "06_josue",
-  "page": 345,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 38): latin_quote “BETH-ANATH.” has no french_translation; the comment starts “Ou la maison de la pauvreté ; Eusèbe et Saint Jérôme croient…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0345/no_translation/eff80cd8",
   "book_dir": "06_josue",
   "page": 345,
@@ -27196,32 +25924,6 @@
   "where": {
    "section": "commentary",
    "index": 5,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0346/no_translation/4c86c8ae",
-  "book_dir": "06_josue",
-  "page": 346,
-  "kind": "no_translation",
-  "msg": "Note 1 (℣ 41): latin_quote “SARAA, ESTHAOL.” has no french_translation; the comment starts “On a parlé de ces villes ailleurs.^{(a)}…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0346/no_translation/b066f375",
-  "book_dir": "06_josue",
-  "page": 346,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 41): latin_quote “HIR-SEMES,” has no french_translation; the comment starts “ou la ville du soleil. Il y en a qui croient que c'est la mê…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
    "field": "french_translation"
   }
  },
@@ -27252,25 +25954,12 @@
   }
  },
  {
-  "id": "06_josue/0346/no_translation/3ec239a8",
+  "id": "06_josue/0346/no_translation/d1d45c9e",
   "book_dir": "06_josue",
   "page": 346,
   "kind": "no_translation",
-  "msg": "Note 5 (℣ 43): latin_quote “JETHELA, ELON.” has no french_translation; the comment starts “On ne connaît pas leur situation.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0346/no_translation/64110a67",
-  "book_dir": "06_josue",
-  "page": 346,
-  "kind": "no_translation",
-  "msg": "Note 6 (℣ 43): latin_quote “THEMNA, ou Thamna.” has no french_translation; the comment starts “On en a parlé dans le dénombrement des villes de Juda.^{(b)}…”: French in the lemma?",
-  "optional": false,
+  "msg": "Note 6 (℣ 43): latin_quote “THEMNA,” has no french_translation; the comment starts “ou _Thamna_. On en a parlé dans le dénombrement des villes d…”: the translation run into the commentary?",
+  "optional": true,
   "where": {
    "section": "commentary",
    "index": 5,
@@ -27330,58 +26019,6 @@
   }
  },
  {
-  "id": "06_josue/0347/no_translation/5cdacffa",
-  "book_dir": "06_josue",
-  "page": 347,
-  "kind": "no_translation",
-  "msg": "Note 1 (℣ 45): latin_quote “JUD, BANE, BARAC.” has no french_translation; the comment starts “Il vaut mieux traduire, Jéhud des enfants de Barac. On ne sa…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0347/no_translation/74f9eb62",
-  "book_dir": "06_josue",
-  "page": 347,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 45): latin_quote “GETH-REMMON.” has no french_translation; the comment starts “Il y a une ville de ce nom dans la tribu de Manassé.^{(a)} C…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0347/no_translation/265865b5",
-  "book_dir": "06_josue",
-  "page": 347,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 46): latin_quote “ME-JARCON,” has no french_translation; the comment starts “ou les eaux de _Jarcon_, et _Arecon_ : ces lieux étaient prè…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0348/no_translation/48d7643a",
-  "book_dir": "06_josue",
-  "page": 348,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 47): latin_quote “VOCANTES NOMEN EIUS, LESEM-DAN.” has no french_translation; the comment starts “L'hébreu :^{(e)} _Ils donnèrent le nom de Dan à la ville de …”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0354/no_translation/38b1b608",
   "book_dir": "06_josue",
   "page": 354,
@@ -27404,19 +26041,6 @@
   "where": {
    "section": "commentary",
    "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0354/no_translation/cfe05959",
-  "book_dir": "06_josue",
-  "page": 354,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 8): latin_quote “RAMOT DE GALAAD,” has no french_translation; the comment starts “était presque au milieu de la longueur du même pays, vers le…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
    "field": "french_translation"
   }
  },
@@ -27456,19 +26080,6 @@
   "where": {
    "section": "commentary",
    "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0361/no_translation/b8f96de7",
-  "book_dir": "06_josue",
-  "page": 361,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 16): latin_quote “AIN ET JETA.” has no french_translation; the comment starts “La première devait être dans la partie la plus méridionale d…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
    "field": "french_translation"
   }
  },
@@ -27525,45 +26136,6 @@
   }
  },
  {
-  "id": "06_josue/0363/no_translation/afee4492",
-  "book_dir": "06_josue",
-  "page": 363,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 22): latin_quote “BETH-HORON,” has no french_translation; the comment starts “L'Écriture ne dit pas si c'était la basse, ou la haute Betho…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0363/no_translation/e3f2a2a0",
-  "book_dir": "06_josue",
-  "page": 363,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 23): latin_quote “DE TRIBU DAN, ELTHECO ET GABATHON.” has no french_translation; the comment starts “De la tribu de Dan, ils eurent Eltheco et Gabathon. Ce Verse…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0364/no_translation/c1fb670a",
-  "book_dir": "06_josue",
-  "page": 364,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 24): latin_quote “AIALON ET GETH-REMMON.” has no french_translation; the comment starts “Voyez Josué 10:12 et 19:42, 45. Il y a une ville de Geth-rem…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "06_josue/0364/no_translation/c79bbdc0",
   "book_dir": "06_josue",
   "page": 364,
@@ -27573,84 +26145,6 @@
   "where": {
    "section": "commentary",
    "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0364/no_translation/eff5a6d5",
-  "book_dir": "06_josue",
-  "page": 364,
-  "kind": "no_translation",
-  "msg": "Note 5 (℣ 28): latin_quote “CESION, ET DABERETH.” has no french_translation; the comment starts “Les Paralipomènes : ^{(d)} _Cadés_ et _Daberet_.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0364/no_translation/3b276506",
-  "book_dir": "06_josue",
-  "page": 364,
-  "kind": "no_translation",
-  "msg": "Note 6 (℣ 29): latin_quote “JARAMOTH, EN-GANNIM.” has no french_translation; the comment starts “Autrement, _Ramos_, et _Anem_. ^{(e)} Voyez Josué 19:21. où …”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 5,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0364/no_translation/fa729ff4",
-  "book_dir": "06_josue",
-  "page": 364,
-  "kind": "no_translation",
-  "msg": "Note 7 (℣ 30): latin_quote “MASAL, ABDON.” has no french_translation; the comment starts “La première était, dit-on, ^{(f)} près du Carmel sur la mer.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 6,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0364/no_translation/edebb98b",
-  "book_dir": "06_josue",
-  "page": 364,
-  "kind": "no_translation",
-  "msg": "Note 8 (℣ 31): latin_quote “HELCATH, ROHOB.” has no french_translation; the comment starts “Les Paralipomènes : ^{(g)} _Hucuc, Ro-_…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 7,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0365/no_translation/68b195d6",
-  "book_dir": "06_josue",
-  "page": 365,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 34): latin_quote “JECNAM, ET CARTHA, ET DAMNA ET NAALOL.” has no french_translation; the comment starts “Les Paralipomènes^{(d)} ne mettent que deux villes, _Remmono…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "06_josue/0365/no_translation/3fbcb89b",
-  "book_dir": "06_josue",
-  "page": 365,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 36): latin_quote “DE TRIBU RUBEN ULTRA JORDANEM, ETC.” has no french_translation; the comment starts “Ce ℣. ne se lisait point dans les anciens exemplaires Hébreu…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
    "field": "french_translation"
   }
  },
@@ -27707,45 +26201,6 @@
   }
  },
  {
-  "id": "07_juges/0035/no_translation/ee599bb2",
-  "book_dir": "07_juges",
-  "page": 35,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 3): latin_quote “AIT JUDAS SIMEONI FRATRI SUO.” has no french_translation; the comment starts “Les deux tribus de Juda et de Siméon étaient toutes voisines…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0042/no_translation/31132ccf",
-  "book_dir": "07_juges",
-  "page": 42,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 18): latin_quote “GAZA, ASCALON, ACCARON.” has no french_translation; the comment starts “Trois villes des Philistins, dont on a parlé ailleurs ; elle…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0046/no_translation/4623c70c",
-  "book_dir": "07_juges",
-  "page": 46,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 27): latin_quote “BETH-SAN, THANAC, DOR, JEBLAAM, MAGEDDO, ETC.” has no french_translation; the comment starts “On peut voir ce qu'on a dit sur Josué de la situation de ces…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
   "id": "07_juges/0047/no_translation/232ae035",
   "book_dir": "07_juges",
   "page": 47,
@@ -27781,19 +26236,6 @@
   "where": {
    "section": "commentary",
    "index": 4,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0048/no_translation/5b0ddf72",
-  "book_dir": "07_juges",
-  "page": 48,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 31): latin_quote “BELUS, ou BELEUS,” has no french_translation; the comment starts “fameux par son sable dont on fait le verre. Josèphe ^{(b)} d…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
    "field": "french_translation"
   }
  },
@@ -27876,84 +26318,6 @@
   }
  },
  {
-  "id": "07_juges/0049/no_translation/d0bd4ae0",
-  "book_dir": "07_juges",
-  "page": 49,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 33): latin_quote “BETH-ANATH.” has no french_translation; the comment starts “Voyez Josué 19:38.…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0058/no_translation/d321b6de",
-  "book_dir": "07_juges",
-  "page": 58,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 9): latin_quote “THAMNAT-SARE.” has no french_translation; the comment starts “L'Héb. ^{(a)} _Thamnat-harez_. Voyez ci-devant Josué 24:30.…”: a translation lost?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0058/no_translation/c0905865",
-  "book_dir": "07_juges",
-  "page": 58,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 10): latin_quote “OMNIS ILLA GENERATIO CONGREGATA EST AD PATRES SUOS” has no french_translation; the comment starts “Toute cette race ayant été réunie à ses pères. Tout ce qu'il…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0078/no_translation/973af058",
-  "book_dir": "07_juges",
-  "page": 78,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 24): latin_quote “FORSITAN PURGAT ALVUM.” has no french_translation; the comment starts “Peut-être qu'il a quelques besoins naturels. L'Hébreu à la l…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0172/no_translation/6d42ff68",
-  "book_dir": "07_juges",
-  "page": 172,
-  "kind": "no_translation",
-  "msg": "Note 1 (℣ 1): latin_quote “BIIT ABIMELEC FILIUS JEROBAAL IN SICHEM.” has no french_translation; the comment starts “Abimélec fils de Jérobaal s'en alla à Sichem ; aussitôt aprè…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0172/no_translation/41514adb",
-  "book_dir": "07_juges",
-  "page": 172,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 2): latin_quote “LOQUIMINI AD OMNES VIROS SICHEM.” has no french_translation; the comment starts “Représentez ceci à tous les habitants de Sichem. L'Hébreu, ^…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "07_juges/0200/no_translation/a792a805",
   "book_dir": "07_juges",
   "page": 200,
@@ -27963,32 +26327,6 @@
   "where": {
    "section": "commentary",
    "index": 1,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0221/no_translation/163dc173",
-  "book_dir": "07_juges",
-  "page": 221,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 35): latin_quote “FILIA MI,” has no french_translation; the comment starts “est mis pour _filia mea_, de même que dans de bons auteurs l…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0245/no_translation/e0463690",
-  "book_dir": "07_juges",
-  "page": 245,
-  "kind": "no_translation",
-  "msg": "Note 3 (℣ 25): latin_quote “SARAA ET ESTHAOL.” has no french_translation; the comment starts “On a vu ci-devant au ℣. 2. la situation de Saraa ; Esthaol e…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
    "field": "french_translation"
   }
  },
@@ -28006,51 +26344,12 @@
   }
  },
  {
-  "id": "07_juges/0327/no_translation/34211ccf",
-  "book_dir": "07_juges",
-  "page": 327,
-  "kind": "no_translation",
-  "msg": "Note 2 (℣ 2): latin_quote “OMNES ANGULI POPULORUM.” has no french_translation; the comment starts “À la lettre : _Les angles, ou les coins du peuple_, les pier…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_translation"
-  }
- },
- {
   "id": "07_juges/0334/no_translation/a175ea19",
   "book_dir": "07_juges",
   "page": 334,
   "kind": "no_translation",
   "msg": "Note 4 (℣ 28): latin_quote “PHINEES.” has no french_translation; the comment starts “C'est le fameux Phinées fils du grand Prêtre Eléa-…”: a name Calmet leaves untranslated?",
   "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0336/no_translation/1cd30579",
-  "book_dir": "07_juges",
-  "page": 336,
-  "kind": "no_translation",
-  "msg": "Note 1 (℣ 33): latin_quote “BAAL-THAMAR.” has no french_translation; the comment starts “C'est-à-dire, _le maître des palmiers_. Le paraphraste chald…”: the translation run into the commentary?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 0,
-   "field": "french_translation"
-  }
- },
- {
-  "id": "07_juges/0338/no_translation/1d8789d7",
-  "book_dir": "07_juges",
-  "page": 338,
-  "kind": "no_translation",
-  "msg": "Note 4 (℣ 42): latin_quote “QUI URBEM SUCCENDERANT, OCCURRERUNT EIS.” has no french_translation; the comment starts “Ceux qui avaient mis le feu à la ville, vinrent au-devant d'…”: the translation run into the commentary?",
-  "optional": false,
   "where": {
    "section": "commentary",
    "index": 3,
@@ -40304,253 +38603,6 @@
   }
  },
  {
-  "id": "02_exode/0544/verse_no_punct/f4462c37",
-  "book_dir": "02_exode",
-  "page": 544,
-  "kind": "verse_no_punct",
-  "msg": "Verse 31:16: latin does not end with punctuation: “…lud in generationibus suis. Pactum est sempiternum” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 3,
-   "field": "latin"
-  }
- },
- {
-  "id": "02_exode/0594/verse_no_punct/60f6d75c",
-  "book_dir": "02_exode",
-  "page": 594,
-  "kind": "verse_no_punct",
-  "msg": "Verse 36:4: french does not end with punctuation: “…C'est pourquoi les ouvriers furent obligés” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 3,
-   "field": "french"
-  }
- },
- {
-  "id": "03_levitique/0309/verse_no_punct/e5774c36",
-  "book_dir": "03_levitique",
-  "page": 309,
-  "kind": "verse_no_punct",
-  "msg": "Verse 24:11: french does not end with punctuation: “…th, et était fille de Dabri, de la tribu de Daniel” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "french"
-  }
- },
- {
-  "id": "04_nombres/0056/verse_no_punct/25303107",
-  "book_dir": "04_nombres",
-  "page": 56,
-  "kind": "verse_no_punct",
-  "msg": "Verse 3:9: latin does not end with punctuation: “…Dabisque dono Levitas” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "latin"
-  }
- },
- {
-  "id": "04_nombres/0056/verse_no_punct/f81374d1",
-  "book_dir": "04_nombres",
-  "page": 56,
-  "kind": "verse_no_punct",
-  "msg": "Verse 3:9: french does not end with punctuation: “…Et vous donnerez les Lévites” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "french"
-  }
- },
- {
-  "id": "04_nombres/0087/verse_no_punct/5967f9dd",
-  "book_dir": "04_nombres",
-  "page": 87,
-  "kind": "verse_no_punct",
-  "msg": "Verse 5:25: latin does not end with punctuation: “…onetque illud super altare : ita duntaxat ut prius” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "latin"
-  }
- },
- {
-  "id": "04_nombres/0087/verse_no_punct/1678d0a3",
-  "book_dir": "04_nombres",
-  "page": 87,
-  "kind": "verse_no_punct",
-  "msg": "Verse 5:25: french does not end with punctuation: “…tra sur l'Autel ; en sorte néanmoins qu'auparavant” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "french"
-  }
- },
- {
-  "id": "04_nombres/0185/verse_no_punct/2aa97bcd",
-  "book_dir": "04_nombres",
-  "page": 185,
-  "kind": "verse_no_punct",
-  "msg": "Verse 15:11: latin does not end with punctuation: “…Sic facies” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 2,
-   "field": "latin"
-  }
- },
- {
-  "id": "04_nombres/0185/verse_no_punct/4c2dfc03",
-  "book_dir": "04_nombres",
-  "page": 185,
-  "kind": "verse_no_punct",
-  "msg": "Verse 15:11: french does not end with punctuation: “…Vous en userez de même” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 2,
-   "field": "french"
-  }
- },
- {
-  "id": "04_nombres/0203/verse_no_punct/9359ef62",
-  "book_dir": "04_nombres",
-  "page": 203,
-  "kind": "verse_no_punct",
-  "msg": "Verse 16:25: latin does not end with punctuation: “…, et Abiron : et sequentibus eum senioribus Israël” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 6,
-   "field": "latin"
-  }
- },
- {
-  "id": "04_nombres/0280/verse_no_punct/c3fdf25c",
-  "book_dir": "04_nombres",
-  "page": 280,
-  "kind": "verse_no_punct",
-  "msg": "Verse 22:10: french does not end with punctuation: “…t : Balak, fils de Séphor, Roi de Moab, m'a envoyé” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 2,
-   "field": "french"
-  }
- },
- {
-  "id": "04_nombres/0324/verse_no_punct/cb63023a",
-  "book_dir": "04_nombres",
-  "page": 324,
-  "kind": "verse_no_punct",
-  "msg": "Verse 26:3: french does not end with punctuation: “…vis-à-vis de Jéricho, parlèrent à ceux qui avaient” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "french"
-  }
- },
- {
-  "id": "04_nombres/0342/verse_no_punct/8e2f37cf",
-  "book_dir": "04_nombres",
-  "page": 342,
-  "kind": "verse_no_punct",
-  "msg": "Verse 27:20: latin does not end with punctuation: “…uæ, ut audiat eum * omnis synagoga filiorum Israel” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "latin"
-  }
- },
- {
-  "id": "04_nombres/0409/verse_no_punct/0bd50b38",
-  "book_dir": "04_nombres",
-  "page": 409,
-  "kind": "verse_no_punct",
-  "msg": "Verse 35:2: latin does not end with punctuation: “…iis Israël, ut dent Levitis de possessionibus suis” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "latin"
-  }
- },
- {
-  "id": "04_nombres/0409/verse_no_punct/d9c9f150",
-  "book_dir": "04_nombres",
-  "page": 409,
-  "kind": "verse_no_punct",
-  "msg": "Verse 35:2: french does not end with punctuation: “…terres qu'ils posséderont, ils donnent aux lévites” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "french"
-  }
- },
- {
-  "id": "04_nombres/0424/verse_no_punct/cab27e96",
-  "book_dir": "04_nombres",
-  "page": 424,
-  "kind": "verse_no_punct",
-  "msg": "Verse 36:9: french does not end with punctuation: “… les unes avec les autres, mais qu'elles demeurent” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "french"
-  }
- },
- {
-  "id": "05_deuteronome/0076/verse_no_punct/717c9554",
-  "book_dir": "05_deuteronome",
-  "page": 76,
-  "kind": "verse_no_punct",
-  "msg": "Verse 1:5: french does not end with punctuation: “…l commença à leur expliquer la Loi, et à leur dire” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "french"
-  }
- },
- {
-  "id": "05_deuteronome/0185/verse_no_punct/241f3beb",
-  "book_dir": "05_deuteronome",
-  "page": 185,
-  "kind": "verse_no_punct",
-  "msg": "Verse 12:10: latin does not end with punctuation: “…bus per circuitum, et absque ullo timore habitetis” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "latin"
-  }
- },
- {
-  "id": "05_deuteronome/0425/verse_no_punct/3f13b6c8",
-  "book_dir": "05_deuteronome",
-  "page": 425,
-  "kind": "verse_no_punct",
-  "msg": "Verse 33:1: latin does not end with punctuation: “…t Moyses, homo Dei, filiis Israël ante mortem suam” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 5,
-   "field": "latin"
-  }
- },
- {
   "id": "06_josue/0110/verse_no_punct/0aa4906e",
   "book_dir": "06_josue",
   "page": 110,
@@ -40560,201 +38612,6 @@
   "where": {
    "section": "verses",
    "index": 3,
-   "field": "latin"
-  }
- },
- {
-  "id": "06_josue/0122/verse_no_punct/97d51c7c",
-  "book_dir": "06_josue",
-  "page": 122,
-  "kind": "verse_no_punct",
-  "msg": "Verse 5:5: latin does not end with punctuation: “…cisi erant. Populus autem qui natus est in deserto” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 2,
-   "field": "latin"
-  }
- },
- {
-  "id": "06_josue/0122/verse_no_punct/defe7ce7",
-  "book_dir": "06_josue",
-  "page": 122,
-  "kind": "verse_no_punct",
-  "msg": "Verse 5:5: french does not end with punctuation: “…irconcis. Mais le peuple qui naquit dans le désert” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 2,
-   "field": "french"
-  }
- },
- {
-  "id": "06_josue/0127/verse_no_punct/3efd103c",
-  "book_dir": "06_josue",
-  "page": 127,
-  "kind": "verse_no_punct",
-  "msg": "Verse 5:12: latin does not end with punctuation: “…ostquam comederunt de frugibus Terræ, nec usi sunt” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "latin"
-  }
- },
- {
-  "id": "06_josue/0127/verse_no_punct/94f0500f",
-  "book_dir": "06_josue",
-  "page": 127,
-  "kind": "verse_no_punct",
-  "msg": "Verse 5:12: french does not end with punctuation: “…de la terre, la manne cessa, et les enfants” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "french"
-  }
- },
- {
-  "id": "06_josue/0130/verse_no_punct/6385be06",
-  "book_dir": "06_josue",
-  "page": 130,
-  "kind": "verse_no_punct",
-  "msg": "Verse 5:16: latin does not end with punctuation: “…Solve, inquit, calceamentum tuum” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "latin"
-  }
- },
- {
-  "id": "06_josue/0158/verse_no_punct/c8e752a3",
-  "book_dir": "06_josue",
-  "page": 158,
-  "kind": "verse_no_punct",
-  "msg": "Verse 7:21: french does not end with punctuation: “…t les ayant pris, je les cachai en terre au milieu” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "french"
-  }
- },
- {
-  "id": "06_josue/0159/verse_no_punct/077b6a62",
-  "book_dir": "06_josue",
-  "page": 159,
-  "kind": "verse_no_punct",
-  "msg": "Verse 7:24: latin does not end with punctuation: “…e Achan filium Zare, argentumque et pallium et au-” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "latin"
-  }
- },
- {
-  "id": "06_josue/0173/verse_no_punct/97ea7c81",
-  "book_dir": "06_josue",
-  "page": 173,
-  "kind": "verse_no_punct",
-  "msg": "Verse 8:20: latin does not end with punctuation: “…persequebantur Josué, respicientes et videntes fu-” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "latin"
-  }
- },
- {
-  "id": "06_josue/0173/verse_no_punct/381d8870",
-  "book_dir": "06_josue",
-  "page": 173,
-  "kind": "verse_no_punct",
-  "msg": "Verse 8:20: french does not end with punctuation: “…ui poursuivaient Josué, regardant derrière eux, et” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 1,
-   "field": "french"
-  }
- },
- {
-  "id": "06_josue/0175/verse_no_punct/4aecc646",
-  "book_dir": "06_josue",
-  "page": 175,
-  "kind": "verse_no_punct",
-  "msg": "Verse 8:29: latin does not end with punctuation: “…endit in patibulo usque ad vesperam et solis occa-” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 6,
-   "field": "latin"
-  }
- },
- {
-  "id": "06_josue/0175/verse_no_punct/ba9ed38e",
-  "book_dir": "06_josue",
-  "page": 175,
-  "kind": "verse_no_punct",
-  "msg": "Verse 8:29: french does not end with punctuation: “…e Roi de Haï, qui y demeura jusqu'au soir, et jus-” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 6,
-   "field": "french"
-  }
- },
- {
-  "id": "06_josue/0235/verse_no_punct/815ec25c",
-  "book_dir": "06_josue",
-  "page": 235,
-  "kind": "verse_no_punct",
-  "msg": "Verse 12:4: french does not end with punctuation: “…ait tout le territoire de Basan, jusqu'aux confins” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "french"
-  }
- },
- {
-  "id": "06_josue/0237/verse_no_punct/54681f2e",
-  "book_dir": "06_josue",
-  "page": 237,
-  "kind": "verse_no_punct",
-  "msg": "Verse 12:13: french does not end with punctuation: “…Un Roi de Dabir, un Roi de Gader” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "french"
-  }
- },
- {
-  "id": "06_josue/0285/verse_no_punct/67250820",
-  "book_dir": "06_josue",
-  "page": 285,
-  "kind": "verse_no_punct",
-  "msg": "Verse 15:34: french does not end with punctuation: “…Zanoé, et Engannim, Taphua” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
-   "field": "french"
-  }
- },
- {
-  "id": "06_josue/0327/verse_no_punct/ab30b6ca",
-  "book_dir": "06_josue",
-  "page": 327,
-  "kind": "verse_no_punct",
-  "msg": "Verse 19:1: latin does not end with punctuation: “…um Simeon per cognationes suas ; fuitque hæreditas” (a word lost, or the verse runs on overleaf?)",
-  "optional": false,
-  "where": {
-   "section": "verses",
-   "index": 0,
    "field": "latin"
   }
  },
@@ -42150,32 +40007,6 @@
   }
  },
  {
-  "id": "02_exode/0088/footnote_no_period/9f10ed39",
-  "book_dir": "02_exode",
-  "page": 88,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (c) does not end with a full stop: “…חתן choten”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 2,
-   "field": "text"
-  }
- },
- {
-  "id": "02_exode/0089/footnote_no_period/c62a33db",
-  "book_dir": "02_exode",
-  "page": 89,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (a) does not end with a full stop: “…ויאל me dérive de אלה Juravit”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 0,
-   "field": "text"
-  }
- },
- {
   "id": "02_exode/0092/footnote_no_period/58380914",
   "book_dir": "02_exode",
   "page": 92,
@@ -42813,97 +40644,6 @@
   }
  },
  {
-  "id": "03_levitique/0038/footnote_no_period/a1c3d9ca",
-  "book_dir": "03_levitique",
-  "page": 38,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (c) does not end with a full stop: “…acerdos qui offers holocausti victimam, habebit pellem ejus,”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 2,
-   "field": "text"
-  }
- },
- {
-  "id": "03_levitique/0043/footnote_no_period/d1c33485",
-  "book_dir": "03_levitique",
-  "page": 43,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (f) does not end with a full stop: “…℣. 2. Fundet super eam oleum, et ponet thus,”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 5,
-   "field": "text"
-  }
- },
- {
-  "id": "03_levitique/0048/footnote_no_period/52bbe531",
-  "book_dir": "03_levitique",
-  "page": 48,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (d) does not end with a full stop: “…traité Berakhot, chapitre 8 ;\nKimhi sur 2 Paralipomènes 35:5”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 3,
-   "field": "text"
-  }
- },
- {
-  "id": "03_levitique/0053/footnote_no_period/ece87800",
-  "book_dir": "03_levitique",
-  "page": 53,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (a) does not end with a full stop: “…Chapitre 1:3”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 0,
-   "field": "text"
-  }
- },
- {
-  "id": "03_levitique/0055/footnote_no_period/85680a1f",
-  "book_dir": "03_levitique",
-  "page": 55,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (e) does not end with a full stop: “…Chapitre 1:3, 5 et Chapitre 3:2”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 4,
-   "field": "text"
-  }
- },
- {
-  "id": "03_levitique/0061/footnote_no_period/174d4c7a",
-  "book_dir": "03_levitique",
-  "page": 61,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…1 Épître Chapitre 3:4 et 5:17”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "03_levitique/0124/footnote_no_period/6934aa4e",
-  "book_dir": "03_levitique",
-  "page": 124,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (c) does not end with a full stop: “…io in aquæ congiis tribus macerato, exprimit sugus. Voyez et”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 2,
-   "field": "text"
-  }
- },
- {
   "id": "03_levitique/0144/footnote_no_period/944f797c",
   "book_dir": "03_levitique",
   "page": 144,
@@ -43151,110 +40891,6 @@
   }
  },
  {
-  "id": "04_nombres/0050/footnote_no_period/7c59092f",
-  "book_dir": "04_nombres",
-  "page": 50,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (c) does not end with a full stop: “…:4. Sitque inter vos et arcem spatium cubitorum duum millium”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 2,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0068/footnote_no_period/9cf2fd63",
-  "book_dir": "04_nombres",
-  "page": 68,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…tificatum, livre 2, chapitre 4 ; et Outram, à l'endroit cité”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0091/footnote_no_period/dc2fbaef",
-  "book_dir": "04_nombres",
-  "page": 91,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (a) does not end with a full stop: “…Saint Cyrille, De adoratione, livre 16”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 0,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0091/footnote_no_period/eca27f41",
-  "book_dir": "04_nombres",
-  "page": 91,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…us Hebræorum ritualibus, dissertation 1, livre 3, Chapitre 6”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0165/footnote_no_period/2c6d63a2",
-  "book_dir": "04_nombres",
-  "page": 165,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (c) does not end with a full stop: “…Doubdan, chapitre 21. Voyage de la Terre”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 2,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0210/footnote_no_period/498c0343",
-  "book_dir": "04_nombres",
-  "page": 210,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Philon, Vie de Moïse. Ira et saint Grégoire de Nysse, in”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0230/footnote_no_period/cc78c5a9",
-  "book_dir": "04_nombres",
-  "page": 230,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (a) does not end with a full stop: “…Voir verset 13”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 0,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0230/footnote_no_period/e9e7faea",
-  "book_dir": "04_nombres",
-  "page": 230,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Philon, Des victimes à offrir”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
   "id": "04_nombres/0236/footnote_no_period/5d07cc85",
   "book_dir": "04_nombres",
   "page": 236,
@@ -43281,19 +40917,6 @@
   }
  },
  {
-  "id": "04_nombres/0265/footnote_no_period/b37b4c69",
-  "book_dir": "04_nombres",
-  "page": 265,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Ézéchiel 25:9. Inclytas terræ, Betjesimoth,”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
   "id": "04_nombres/0305/footnote_no_period/58cff9a7",
   "book_dir": "04_nombres",
   "page": 305,
@@ -43307,340 +40930,15 @@
   }
  },
  {
-  "id": "04_nombres/0310/footnote_no_period/9994f4bf",
-  "book_dir": "04_nombres",
-  "page": 310,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Versets 18-19”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0316/footnote_no_period/f386eb23",
-  "book_dir": "04_nombres",
-  "page": 316,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Voir chez Selden, De Synedriis, livre 2, Chapitre 1, page 49”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0316/footnote_no_period/73906468",
-  "book_dir": "04_nombres",
-  "page": 316,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (c) does not end with a full stop: “…Gemara Babylonica, ad titulum Sanhédrin, Chapitre 4”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 2,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0316/footnote_no_period/93c4eb11",
-  "book_dir": "04_nombres",
-  "page": 316,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (d) does not end with a full stop: “…Jansenius ici”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 3,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0316/footnote_no_period/1c36eb12",
-  "book_dir": "04_nombres",
-  "page": 316,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (e) does not end with a full stop: “…Voir Casaubon, Adversus Baronium, exercitation 16, page 537”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 4,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0316/footnote_no_period/1e014032",
-  "book_dir": "04_nombres",
-  "page": 316,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (g) does not end with a full stop: “…Philon, De specialibus legibus”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 6,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0347/footnote_no_period/9d5d5006",
-  "book_dir": "04_nombres",
-  "page": 347,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (e) does not end with a full stop: “…lum.\nLe même, livre 3, ode 23.\nCœlo supina si tuleris manus,”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 4,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0368/footnote_no_period/caa5568f",
-  "book_dir": "04_nombres",
-  "page": 368,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “… 19:14. Hæc est lex hominis, qui moritur in tabernaculo. Om-”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0387/footnote_no_period/052d0571",
-  "book_dir": "04_nombres",
-  "page": 387,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (c) does not end with a full stop: “…Bochart, De animalibus sacris, partie 1, livre 2, chapitre”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 2,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0402/footnote_no_period/65c106cd",
+  "id": "04_nombres/0402/footnote_no_period/885b479b",
   "book_dir": "04_nombres",
   "page": 402,
   "kind": "footnote_no_period",
-  "msg": "Footnote (e) does not end with a full stop: “…Josèphe, Guerre des Juifs, livre 2, chapitre 2”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 4,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0402/footnote_no_period/d47f96d1",
-  "book_dir": "04_nombres",
-  "page": 402,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (f) does not end with a full stop: “…Eusèbe, Onomasticon”",
+  "msg": "Footnote (f) does not end with a full stop: “….Eusèbe, Onomasticon”",
   "optional": false,
   "where": {
    "section": "footnotes",
    "index": 5,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0402/footnote_no_period/22a7b84e",
-  "book_dir": "04_nombres",
-  "page": 402,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (l) does not end with a full stop: “…r Josué, au même endroit, et Targum sur 1 Paralipomènes 13:5”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 10,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0407/footnote_no_period/5c904365",
-  "book_dir": "04_nombres",
-  "page": 407,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (a) does not end with a full stop: “…Jérôme sur Isaïe 13:1 et sur Amos 6:2”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 0,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0411/footnote_no_period/c9ec84d2",
-  "book_dir": "04_nombres",
-  "page": 411,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Bonfrère”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0411/footnote_no_period/94a2b4b3",
-  "book_dir": "04_nombres",
-  "page": 411,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (c) does not end with a full stop: “…Josèphe, Antiquités judaïques, livre 4, Chapitre 4”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 2,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0411/footnote_no_period/4a843473",
-  "book_dir": "04_nombres",
-  "page": 411,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (d) does not end with a full stop: “…Philon, De sacerdotum honoribus”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 3,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0411/footnote_no_period/d01ddccb",
-  "book_dir": "04_nombres",
-  "page": 411,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (e) does not end with a full stop: “…Voir Drusius”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 4,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0419/footnote_no_period/b03ca1c6",
-  "book_dir": "04_nombres",
-  "page": 419,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (a) does not end with a full stop: “…odoret de Cyr, Questions sur les Nombres, questions 50 et 51”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 0,
-   "field": "text"
-  }
- },
- {
-  "id": "04_nombres/0421/footnote_no_period/b27d16db",
-  "book_dir": "04_nombres",
-  "page": 421,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (a) does not end with a full stop: “…Ainsi Hugo Grotius, Jérôme Oléaster, Jacques Bonfrère”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 0,
-   "field": "text"
-  }
- },
- {
-  "id": "05_deuteronome/0117/footnote_no_period/69a67a07",
-  "book_dir": "05_deuteronome",
-  "page": 117,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…MDO”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "05_deuteronome/0134/footnote_no_period/e67371c9",
-  "book_dir": "05_deuteronome",
-  "page": 134,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (a) does not end with a full stop: “…--”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 0,
-   "field": "text"
-  }
- },
- {
-  "id": "05_deuteronome/0134/footnote_no_period/d85486c8",
-  "book_dir": "05_deuteronome",
-  "page": 134,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (e) does not end with a full stop: “…Là-même. verset 11 :”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 4,
-   "field": "text"
-  }
- },
- {
-  "id": "05_deuteronome/0144/footnote_no_period/a402bc9c",
-  "book_dir": "05_deuteronome",
-  "page": 144,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (d) does not end with a full stop: “… 3 sur la dédicace de l'église ;\nSaint Jean Chrysostome, sur”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 3,
-   "field": "text"
-  }
- },
- {
-  "id": "05_deuteronome/0146/footnote_no_period/4b2276a0",
-  "book_dir": "05_deuteronome",
-  "page": 146,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Exode 36:5 Plus offert populus quam”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "05_deuteronome/0225/footnote_no_period/7e7a2b6f",
-  "book_dir": "05_deuteronome",
-  "page": 225,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (g) does not end with a full stop: “…ochart, De animalibus sacris, partie 2, livre 2, chapitre 50”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 6,
-   "field": "text"
-  }
- },
- {
-  "id": "05_deuteronome/0270/footnote_no_period/10b77154",
-  "book_dir": "05_deuteronome",
-  "page": 270,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (e) does not end with a full stop: “…כי יקום עד חמס באיש לענות בו סרה de”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 4,
    "field": "text"
   }
  },
@@ -43658,110 +40956,6 @@
   }
  },
  {
-  "id": "05_deuteronome/0309/footnote_no_period/e8aa1f68",
-  "book_dir": "05_deuteronome",
-  "page": 309,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (d) does not end with a full stop: “…Théodoret, question 23 ; et Jansénius, etc. ad”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 3,
-   "field": "text"
-  }
- },
- {
-  "id": "05_deuteronome/0405/footnote_no_period/eaebe8a4",
-  "book_dir": "05_deuteronome",
-  "page": 405,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Il a lu, יערב au lieu de יערף aussi-”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "05_deuteronome/0438/footnote_no_period/1876c4ed",
-  "book_dir": "05_deuteronome",
-  "page": 438,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (d) does not end with a full stop: “…t Augustin, dernière question sur le Deutéronome ;\nSidoniens”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 3,
-   "field": "text"
-  }
- },
- {
-  "id": "06_josue/0081/footnote_no_period/4e5526be",
-  "book_dir": "06_josue",
-  "page": 81,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (d) does not end with a full stop: “…Flavius Josèphe, Antiquités judaïques, livre 5, chapitre 1”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 3,
-   "field": "text"
-  }
- },
- {
-  "id": "06_josue/0100/footnote_no_period/cfdcea16",
-  "book_dir": "06_josue",
-  "page": 100,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…nan tws”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "06_josue/0158/footnote_no_period/3859b839",
-  "book_dir": "06_josue",
-  "page": 158,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (f) does not end with a full stop: “…Jona III. 6”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 5,
-   "field": "text"
-  }
- },
- {
-  "id": "06_josue/0158/footnote_no_period/b731da49",
-  "book_dir": "06_josue",
-  "page": 158,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (i) does not end with a full stop: “…Silius Italicus, livre 14”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 8,
-   "field": "text"
-  }
- },
- {
-  "id": "06_josue/0173/footnote_no_period/be4190ec",
-  "book_dir": "06_josue",
-  "page": 173,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (g) does not end with a full stop: “…Jérémie 6:23. _Sagittam et scutum arri-”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 6,
-   "field": "text"
-  }
- },
- {
   "id": "06_josue/0184/footnote_no_period/e4f7d325",
   "book_dir": "06_josue",
   "page": 184,
@@ -43775,67 +40969,15 @@
   }
  },
  {
-  "id": "06_josue/0199/footnote_no_period/e03f230e",
+  "id": "06_josue/0199/footnote_no_period/059e737b",
   "book_dir": "06_josue",
   "page": 199,
   "kind": "footnote_no_period",
-  "msg": "Footnote (e) does not end with a full stop: “…ux 32. milles. Voyez Cellarius, livre 3, chapitre 17, page 1”",
+  "msg": "Footnote (e) does not end with a full stop: “… Voyez Cellarius, livre 3, chapitre 17, page 347 et Bonfrère”",
   "optional": false,
   "where": {
    "section": "footnotes",
    "index": 4,
-   "field": "text"
-  }
- },
- {
-  "id": "06_josue/0268/footnote_no_period/7b427514",
-  "book_dir": "06_josue",
-  "page": 268,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (a) does not end with a full stop: “…Voyez Masius et Serarius bin”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 0,
-   "field": "text"
-  }
- },
- {
-  "id": "06_josue/0334/footnote_no_period/71078cb1",
-  "book_dir": "06_josue",
-  "page": 334,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (h) does not end with a full stop: “…17. Promontorium Carmelum, et in monte oppidum eodem nomine,”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 7,
-   "field": "text"
-  }
- },
- {
-  "id": "06_josue/0405/footnote_no_period/44c33dd1",
-  "book_dir": "06_josue",
-  "page": 405,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Abraham Zachin in Jochasim, et Rabbi Go-”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
-   "field": "text"
-  }
- },
- {
-  "id": "07_juges/0047/footnote_no_period/c3c7fa57",
-  "book_dir": "07_juges",
-  "page": 47,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (d) does not end with a full stop: “…137”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 3,
    "field": "text"
   }
  },
@@ -44135,19 +41277,6 @@
   "where": {
    "section": "footnotes",
    "index": 0,
-   "field": "text"
-  }
- },
- {
-  "id": "08_ruth/0031/footnote_no_period/97bd5fa0",
-  "book_dir": "08_ruth",
-  "page": 31,
-  "kind": "footnote_no_period",
-  "msg": "Footnote (b) does not end with a full stop: “…Selden, De successionibus in bona, chapitre 15. Ita”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 1,
    "field": "text"
   }
  },
@@ -49612,45 +46741,6 @@
   }
  },
  {
-  "id": "05_deuteronome/0366/stray_underscore/206a06cc",
-  "book_dir": "05_deuteronome",
-  "page": 366,
-  "kind": "stray_underscore",
-  "msg": "3 “_” in french_commentary (commentary 2), one without its pair: italics left open or closed twice? “ce, la famine, et la peste._ D'autres : _La malédiction, le ”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "05_deuteronome/0447/stray_underscore/cda652d9",
-  "book_dir": "05_deuteronome",
-  "page": 447,
-  "kind": "stray_underscore",
-  "msg": "5 “_” in french_commentary (commentary 3), one without its pair: italics left open or closed twice? “ assez souvent dans l'Écriture_, ^{(d)} _dans le sens que no”",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "french_commentary"
-  }
- },
- {
-  "id": "06_josue/0173/stray_underscore/d3394681",
-  "book_dir": "06_josue",
-  "page": 173,
-  "kind": "stray_underscore",
-  "msg": "1 “_” in text (footnotes 7), one without its pair: italics left open or closed twice? “Jérémie 6:23. _Sagittam et scutum ”",
-  "optional": false,
-  "where": {
-   "section": "footnotes",
-   "index": 6,
-   "field": "text"
-  }
- },
- {
   "id": "12_4_rois/0331/stray_underscore/fe496d5b",
   "book_dir": "12_4_rois",
   "page": 331,
@@ -54564,19 +51654,6 @@
   }
  },
  {
-  "id": "05_deuteronome/0351/verse_mismatch/6cebf4aa",
-  "book_dir": "05_deuteronome",
-  "page": 351,
-  "kind": "verse_mismatch",
-  "msg": "Note 3 “SYRUS PERSEQUEBATUR PATREM MEUM.” is under chapter 26, ℣ 2, but its words are in ℣ 5 (100% against 0%): wrong verse_ref, or the verse misnumbered?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "verse_ref"
-  }
- },
- {
   "id": "21a_psaumes/0111/verse_mismatch/bc8b631a",
   "book_dir": "21a_psaumes",
   "page": 111,
@@ -56746,6 +53823,14 @@
   "optional": false
  },
  {
+  "id": "06_josue/0199/footnote_asterisk/a2b05bbb",
+  "book_dir": "06_josue",
+  "page": 199,
+  "kind": "footnote_asterisk",
+  "msg": "Footnote (e): words marked * were guessed: check them against the scan, then remove the asterisks",
+  "optional": false
+ },
+ {
   "id": "06_josue/0247/footnote_asterisk/7ab504db",
   "book_dir": "06_josue",
   "page": 247,
@@ -57410,19 +54495,6 @@
   "optional": false
  },
  {
-  "id": "06_josue/0230/lowercase_lemma/9d4e9e4a",
-  "book_dir": "06_josue",
-  "page": 230,
-  "kind": "lowercase_lemma",
-  "msg": "Lower case in latin_quote “GAZA, ou HASA,”: French or commentary in the lemma field?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
   "id": "06_josue/0231/lowercase_lemma/36742aa5",
   "book_dir": "06_josue",
   "page": 231,
@@ -57471,19 +54543,6 @@
   "where": {
    "section": "commentary",
    "index": 8,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "06_josue/0346/lowercase_lemma/09f3ee19",
-  "book_dir": "06_josue",
-  "page": 346,
-  "kind": "lowercase_lemma",
-  "msg": "Lower case in latin_quote “THEMNA, ou Thamna.”: French or commentary in the lemma field?",
-  "optional": false,
-  "where": {
-   "section": "commentary",
-   "index": 5,
    "field": "latin_quote"
   }
  },
@@ -62753,19 +59812,6 @@
   }
  },
  {
-  "id": "02_exode/0165/lemma_unknown_word/d7774687",
-  "book_dir": "02_exode",
-  "page": 165,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: DIT, PHARAON in “ET AIT. IL DIT À PHARAON.”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 2,
-   "field": "latin_quote"
-  }
- },
- {
   "id": "02_exode/0197/lemma_unknown_word/40ea365c",
   "book_dir": "02_exode",
   "page": 197,
@@ -66003,19 +63049,6 @@
   }
  },
  {
-  "id": "05_deuteronome/0364/lemma_unknown_word/4031f055",
-  "book_dir": "05_deuteronome",
-  "page": 364,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: RENVERSEZ in “CORRUENTES. RENVERSEZ.”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "latin_quote"
-  }
- },
- {
   "id": "05_deuteronome/0405/lemma_unknown_word/7fabb54d",
   "book_dir": "05_deuteronome",
   "page": 405,
@@ -66718,11 +63751,11 @@
   }
  },
  {
-  "id": "06_josue/0255/lemma_unknown_word/5fbd38dd",
+  "id": "06_josue/0255/lemma_unknown_word/d0204562",
   "book_dir": "06_josue",
   "page": 255,
   "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: RAMOT in “RAMOTH, OU RAMOT DE GALAAD,”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
+  "msg": "Not in the Vulgate: RAMOT in “RAMOTH, ou RAMOT DE GALAAD,”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
   "optional": true,
   "where": {
    "section": "commentary",
@@ -67225,37 +64258,11 @@
   }
  },
  {
-  "id": "06_josue/0324/lemma_unknown_word/f7883714",
-  "book_dir": "06_josue",
-  "page": 324,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: GABE in “GABE'E ;”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 3,
-   "field": "latin_quote"
-  }
- },
- {
   "id": "06_josue/0326/lemma_unknown_word/c2611aea",
   "book_dir": "06_josue",
   "page": 326,
   "kind": "lemma_unknown_word",
   "msg": "Not in the Vulgate: GABAAT in “GABAAT.”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 1,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "06_josue/0328/lemma_unknown_word/f6d7cc16",
-  "book_dir": "06_josue",
-  "page": 328,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: BERSABE in “BERSABE'E.”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
   "optional": true,
   "where": {
    "section": "commentary",
@@ -67429,19 +64436,6 @@
   "where": {
    "section": "commentary",
    "index": 2,
-   "field": "latin_quote"
-  }
- },
- {
-  "id": "06_josue/0345/lemma_unknown_word/ab2a1362",
-  "book_dir": "06_josue",
-  "page": 345,
-  "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: CEDE in “CEDE'S.”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-  "optional": true,
-  "where": {
-   "section": "commentary",
-   "index": 1,
    "field": "latin_quote"
   }
  },
@@ -68148,11 +65142,11 @@
   }
  },
  {
-  "id": "07_juges/0172/lemma_unknown_word/1d6ce3cc",
+  "id": "07_juges/0172/lemma_unknown_word/25c569c0",
   "book_dir": "07_juges",
   "page": 172,
   "kind": "lemma_unknown_word",
-  "msg": "Not in the Vulgate: BIIT, ABIMELEC in “BIIT ABIMELEC FILIUS JEROBAAL IN SICHEM.”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
+  "msg": "Not in the Vulgate: ABIMELEC in “ABIIT ABIMELEC FILIUS JEROBAAL IN SICHEM.”: a name (add it to scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
   "optional": true,
   "where": {
    "section": "commentary",

@@ -13,7 +13,7 @@ qu'il veut, sans autorisation ni mention.
 | | |
 |---|---|
 | `data/<volume>/normalized/page_NNNN.json` | **le texte** : un fichier par page imprimée (versets, commentaire, notes) |
-| `data/.review_queue_progress.json` | l'état de la relecture : points résolus, passés ou faux positifs |
+| `data/<volume>/review.json` | la relecture du livre : points résolus, passés ou faux positifs, et les choses à faire relevées page par page |
 | `docs/review_queue.json` | la file de relecture : chaque endroit où une vérification a trouvé quelque chose à revoir |
 | `docs/*_check.json`, `docs/footnotes/` | les rapports dont la file est tirée |
 | `scripts/` | la chaîne de traitement, les vérifications et l'éditeur de relecture ([scripts/README.md](scripts/README.md), en anglais) |
@@ -52,7 +52,7 @@ volume sur lequel vous travaillez. Certaines vérifications demandent davantage 
    et dites-le en commentaire, pour que deux personnes ne travaillent pas sur les mêmes pages.
 2. Créez une branche, ouvrez l'éditeur sur ce livre et parcourez sa file : comparez le texte au scan,
    corrigez-le, marquez chaque point résolu ou faux positif.
-3. Validez (commit) les pages modifiées avec `data/.review_queue_progress.json`, puis ouvrez une
+3. Validez (commit) les pages modifiées avec le `review.json` du livre, puis ouvrez une
    demande de fusion (pull request).
 
 Les conventions — ce qu'on modernise et ce qu'on garde tel que Calmet l'a écrit — sont dans

@@ -40,13 +40,13 @@ this is the full spec.
 - Website: `dom-calmet-web` (github.com/janvier-s/dom-calmet-web, cloned beside this repository or set with CALMET_WEB; SvelteKit on
   Cloudflare Workers, https://dom-calmet-web.janvier-sabates.workers.dev).
 - Reports: `STUDIUM/docs/` (`review_queue.json`, `seam_check.json`, `psalms_check.json`,
-  `chapter_check.json`, `manual_issues.json` for issues the user reports by hand);
+  `chapter_check.json`);
   `docs/footnotes/<vol>.json` (the footnote report of each volume) and
   `docs/footnotes/held.json` (every footnote still held, §10).
 - `scripts/cache/` is not in git (`.gitignore`): Claude's caches and the downloaded sources
   in `cache/refs/` (§10) live only on this disk.
-- Review progress: `data/.review_queue_progress.json`. Item ids are hashes of the message, so
-  progress survives a re-audit as long as the message doesn't change.
+- Review progress: `data/<book>/review.json` (statuses, false positives, page to-dos). Item ids are
+  hashes of the message, so progress survives a re-audit as long as the message doesn't change.
 
 ## 3. The page format (normalized)
 
@@ -129,7 +129,7 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
     (**foreground**, cached in `cache/seam_cache.json`). Results → `docs/seam_check.json`.
 13. `python3 audit_integrity.py ../docs/integrity_audit_<date>.json` → `docs/review_queue.json`.
     Report the counts by kind to the user.
-14. **The user reviews** in `review_editor.py` (§7). Commit `data/` when they say.
+14. **The user reviews** in `review_web.py` (§7). Commit `data/` when they say.
 15. **Footnotes** (§10): references and authors written out in French, Hebrew and Greek
     checked, doubtful notes settled from context; what is left waits for the scans.
 16. `python3 modernize_refs.py <vol>`, then with `--apply`: Bible references left in the old
@@ -177,13 +177,10 @@ refs stored as strings weren't read.
 
 ## 7. The review editor
 
-`uv run --no-project --with pillow python review_editor.py` (flags `--kind`, `--book`,
-`--skipped`, `--resolved`, `--all`). It shows the scan beside the page's fields. Features the
-user relies on: type and book selectors, skip/resolve/reopen, ✕ delete on each verse and
-block, Reorder dialog, add verse/commentary (takes the neighbour's chapter), "Flag for Review"
-(copies raw JSON + PNG to `modernization_error/`). It saves `verse_number`, `verse_ref`,
-`chapter` as ints. When adding a field to the page format, add it to the field lists in
-`page_editor.py` (`_build_json_editor`, `_save`) and to new entries in `review_editor.py`.
+`python3 review_web.py` (the browser editor; scripts/README.md, "Work through the queue"). It
+resumes where the last session stopped; flags `--kind`, `--book`, `--skipped`, `--resolved`,
+`--all`, `--fresh`. It saves `verse_number`, `verse_ref`, `chapter` as ints. When adding a field to
+the page format, add it to the field lists in `review_web/app.js` and `review_store.py`.
 
 ## 8. Publishing
 
@@ -413,7 +410,7 @@ Over 16,600 replacements applied across all 46 Old Testament volumes in two stag
     and `python3 footnotes.py apply <vol>`.
 - **Remaining Tasks before New Testament**:
   - Run and apply local footnotes for remaining OT volumes (`27_isaie` through `46_2_maccabees`).
-  - Review queue audit resolution with the editor (`review_editor.py`).
+  - Review queue audit resolution with the editor (`review_web.py`).
   - Check with user on source directory for seeding the New Testament (`47_matthieu` onward).
   - Website adjustments for Psalms (`src/routes/[book]/[id]/+page.server.ts` chapter bounds & verse 0
     title display) and deployment.

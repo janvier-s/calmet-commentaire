@@ -14,12 +14,12 @@ def docs(data_dir):
 
 
 @pytest.fixture
-def progress(data_dir, docs):
-    return Progress(data_dir / ".review_queue_progress.json", docs / "false_positives.json")
+def progress(data_dir):
+    return Progress(data_dir)
 
 
 def items(docs, optional=False):
-    return load_queue(docs / "review_queue.json", docs / "false_positives.json", include_optional=optional)
+    return load_queue(docs / "review_queue.json", Progress(docs.parent / "data"), include_optional=optional)
 
 
 def test_labels_and_categories():
@@ -35,25 +35,54 @@ def test_load_queue_optional(docs):
 
 
 def test_fp_added_back(docs):
-    (docs / "false_positives.json").write_text(json.dumps(
+    (docs.parent / "data" / VOL / "review.json").write_text(json.dumps({"false_positives":
         {"22_proverbes/0190/caps_in_commentary/eeee": {"book_dir": VOL, "page": 190, "kind": "caps_in_commentary",
-                                                       "msg": "old"}}), encoding="utf-8")
+                                                       "msg": "old"}}}), encoding="utf-8")
     added = [i for i in items(docs) if i["page"] == 190]
     assert added and added[0]["kind"] == "caps_in_commentary" and added[0]["msg"] == "old"
 
 
-def test_progress_fp_sync(progress, docs, data_dir):
-    fp = docs / "false_positives.json"
+def test_progress_fp_sync(progress, data_dir):
+    book = lambda: json.loads((data_dir / VOL / "review.json").read_text(encoding="utf-8"))
     i = "22_proverbes/0194/hyphen_cut/aaaa"
     progress.set(i, "false_positive", {"book_dir": VOL, "page": 194, "kind": "hyphen_cut", "msg": "m"})
-    assert i in json.loads(fp.read_text(encoding="utf-8"))
-    assert json.loads((data_dir / ".review_queue_progress.json").read_text())[i] == "false_positive"
+    assert i in book()["false_positives"] and book()["status"][i] == "false_positive"
     progress.set(i, None)
-    assert i not in json.loads(fp.read_text(encoding="utf-8"))
-    assert progress.status(i) is None
+    assert i not in book()["false_positives"] and progress.status(i) is None
     # a later Progress picks up false positives from the file
     progress.set(i, "false_positive", {})
-    assert Progress(data_dir / "other.json", fp).status(i) == "false_positive"
+    assert Progress(data_dir).status(i) == "false_positive"
+
+
+def test_statuses_go_to_their_book(progress, data_dir):
+    (data_dir / "27_isaie").mkdir()
+    progress.update({f"{VOL}/0194/hyphen_cut/aaaa": "resolved", "27_isaie/0010/caps_in_commentary/bbbb": "skipped",
+                     f"proposal:seam/{VOL}/0193>0194/cccc": "rejected"})
+    mine = json.loads((data_dir / VOL / "review.json").read_text())["status"]
+    assert set(mine) == {f"{VOL}/0194/hyphen_cut/aaaa", f"proposal:seam/{VOL}/0193>0194/cccc"}
+    assert json.loads((data_dir / "27_isaie" / "review.json").read_text())["status"] == {
+        "27_isaie/0010/caps_in_commentary/bbbb": "skipped"}
+
+
+def test_todos_join_the_queue(docs, data_dir):
+    td = {"id": f"{VOL}/0194/todo/dddd", "page": 194, "msg": "needs rescan", "where": None}
+    (data_dir / VOL / "review.json").write_text(json.dumps({"todos": [td]}), encoding="utf-8")
+    t = [i for i in items(docs) if i["kind"] == "todo"]
+    assert t == [{"id": td["id"], "book_dir": VOL, "page": 194, "kind": "todo", "msg": "needs rescan", "optional": False}]
+
+
+def test_absorb_legacy(data_dir, docs):
+    from review_store import absorb_legacy
+    (data_dir / ".review_queue_progress.json").write_text(json.dumps(
+        {f"{VOL}/0194/hyphen_cut/aaaa": "resolved", f"{VOL}/0193/reported/5d41402a": "resolved"}))
+    (docs / "false_positives.json").write_text(json.dumps({f"{VOL}/0195/caps_in_commentary/eeee": True}))
+    (docs / "manual_issues.json").write_text(json.dumps([{"book_dir": VOL, "page": 193, "msg": "hello"}]))
+    assert absorb_legacy(data_dir, docs)
+    p = Progress(data_dir)
+    assert p.status(f"{VOL}/0194/hyphen_cut/aaaa") == "resolved"
+    assert p.status(f"{VOL}/0195/caps_in_commentary/eeee") == "false_positive"
+    assert p.todos[VOL][0]["msg"] == "hello" and p.status(f"{VOL}/0193/todo/5d41402a") == "resolved"
+    assert not (data_dir / ".review_queue_progress.json").exists() and not (docs / "manual_issues.json").exists()
 
 
 def test_select_open_excludes_skipped(docs, progress):

@@ -43,6 +43,14 @@ def dump(path, obj):
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def reviews(data, part="status"):
+    """One part (status, false_positives) of every book's data/<book>/review.json, merged."""
+    out = {}
+    for f in data.glob("*/review.json"):
+        out.update(json.loads(f.read_text(encoding="utf-8"))[part])
+    return out
+
+
 @pytest.fixture
 def data_dir(tmp_path):
     """A small data/ (Proverbes pages 193-195, a scan for 194 and 196, a conflict copy) and docs/."""
@@ -57,6 +65,4 @@ def data_dir(tmp_path):
         (scans / f"page_{n:04d}.png").write_bytes(b"\x89PNG\r\n\x1a\n")
     docs = tmp_path / "docs"
     dump(docs / "review_queue.json", QUEUE)
-    dump(docs / "false_positives.json", {})
-    dump(docs / "manual_issues.json", [])
     return data

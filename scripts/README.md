@@ -108,9 +108,11 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   as they are; the held write-outs of `docs/footnotes/<volume>.json` and the candidates of
   `docs/ref_check.json`, which become issues of their own types ("Footnote write-out to check",
   "Verse reference to check"; Reject makes them false positives). Batch: every issue of the type
-  chosen in the filters in a table, tick and accept many at once. The Tk editors
-  (`uv run --no-project --with pillow python review_editor.py`, `page_editor.py`) still work on the
-  same files during the switch. Commit in `data/` after a session.
+  chosen in the filters in a table, tick and accept many at once. The review is kept per book in
+  `data/<book>/review.json` (statuses, false positives with what they said, the page to-dos), so
+  that volunteers working on different books never touch the same file; the editor folds the old
+  shared files (`data/.review_queue_progress.json`, `docs/false_positives.json`,
+  `docs/manual_issues.json`) into them when it starts. Commit in `data/` after a session.
   Tests: `uv run --no-project --with pytest python -m pytest tests -q` and `node --test tests/js`.
 
 ## Publish

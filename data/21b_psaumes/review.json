@@ -1,0 +1,35 @@
+{
+ "false_positives": {
+  "21b_psaumes/0471/etc_for_et/764509b8": {
+   "book_dir": "21b_psaumes",
+   "kind": "etc_for_et",
+   "msg": "Last commentary ends with “etc._”: “… je vous donnerai les Nations pour héritage, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
+   "page": 471
+  },
+  "21b_psaumes/0494/etc_for_et/ac087f19": {
+   "book_dir": "21b_psaumes",
+   "kind": "etc_for_et",
+   "msg": "Last commentary ends with “etc.”: “…Seigneur dit, parce qu'il annoncera la paix, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
+   "page": 494
+  },
+  "21b_psaumes/0533/etc_for_et/54ee4c43": {
+   "book_dir": "21b_psaumes",
+   "kind": "etc_for_et",
+   "msg": "Last commentary ends with “etc.”: “…5. et 1 Paralipomènes 11:2-3 et 17:3, 10-11. etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
+   "page": 533
+  }
+ },
+ "status": {
+  "21b_psaumes/0357/psalm_missing_verse/dc9d766e": "resolved",
+  "21b_psaumes/0409/lowercase_translation/2b21c860": "resolved",
+  "21b_psaumes/0428/lowercase_translation/5a57242f": "resolved",
+  "21b_psaumes/0471/etc_for_et/764509b8": "false_positive",
+  "21b_psaumes/0494/etc_for_et/ac087f19": "false_positive",
+  "21b_psaumes/0533/etc_for_et/54ee4c43": "false_positive",
+  "21b_psaumes/0535/etc_for_et/406306c3": "resolved",
+  "21b_psaumes/0537/leading_call/f751c874": "resolved",
+  "21b_psaumes/0537/lowercase_translation/ab23993e": "resolved",
+  "21b_psaumes/0545/etc_for_et/f4f72db6": "resolved"
+ },
+ "todos": []
+}

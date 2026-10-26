@@ -17,22 +17,23 @@ ORDER_OK = json.loads((STUDIUM / "verse_ref_order_ok.json").read_text(encoding="
     if (STUDIUM / "verse_ref_order_ok.json").exists() else {}  # fix_verse_refs.py: out of order on purpose
 WHICH_BOOK = re.compile(r"\b(?:Rois|Paralipomènes|Machabées|Esdras),?\s+chapitres?\s+\d+(?::\d+(?:(?:-|, )\d+)*)?")
 
+def reviews():
+    """Every book's review (data/<book>/review.json, review_store.Progress): statuses and false positives."""
+    out = []
+    for f in sorted(STUDIUM.glob("*/review.json")):
+        try:
+            out.append(json.loads(f.read_text(encoding="utf-8")))
+        except (OSError, ValueError):
+            pass
+    return out
+
+
 # False positives tagged in the review editor: permanently excluded from review queue on every audit run
 def load_false_positives():
-    fp_file = DOCS / "false_positives.json"
-    prog_file = STUDIUM / ".review_queue_progress.json"
     fp_ids = set()
-    if fp_file.exists():
-        try:
-            fp_ids.update(json.loads(fp_file.read_text(encoding="utf-8")).keys())
-        except Exception:
-            pass
-    if prog_file.exists():
-        try:
-            prog = json.loads(prog_file.read_text(encoding="utf-8"))
-            fp_ids.update(k for k, v in prog.items() if v in ("false_positive", "resolved_false_positive"))
-        except Exception:
-            pass
+    for d in reviews():
+        fp_ids.update(d.get("false_positives") or {})
+        fp_ids.update(k for k, v in (d.get("status") or {}).items() if v == "false_positive")
     return fp_ids
 
 FP_IDS = load_false_positives()
@@ -117,8 +118,7 @@ def _lemma_added_all():
     """lemma_added for every page with a resolved no_lemma issue at once: one git log for their
     history, one git cat-file for all the old versions (a git process per version took half a minute)."""
     import subprocess
-    prog = STUDIUM / ".review_queue_progress.json"
-    done = json.loads(prog.read_text(encoding="utf-8")) if prog.exists() else {}
+    done = {k: v for d in reviews() for k, v in (d.get("status") or {}).items()}
     paths = sorted({f"{vol}/normalized/page_{no}.json" for vol, no in
                     (k.split("/")[:2] for k, v in done.items() if "/no_lemma/" in k and v == "resolved")})
     if not paths:
@@ -801,8 +801,6 @@ def audit_book(key, info, slug, published=True):
 
 # Left out of the audit and the review queue
 EXCLUDED = set()
-# Problems reported by hand: [{book_dir, page, msg}], kept in the queue on every rebuild
-MANUAL = DOCS / "manual_issues.json"
 
 
 def latin_long_s():
@@ -841,8 +839,8 @@ def main():
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else DOCS / "integrity_audit.json"
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
-    # Worklist for review_editor.py, most serious kinds first, then in page order
-    order = ["reported", "duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "latin_long_s", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "no_translation", "translation_no_punct", "verse_no_punct", "footnote_no_period", "stray_underscore", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    # Worklist for the review editor (review_web.py), most serious kinds first, then in page order
+    order = ["duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "latin_long_s", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "no_translation", "translation_no_punct", "verse_no_punct", "footnote_no_period", "stray_underscore", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's
@@ -878,10 +876,6 @@ def main():
                                   msg=f"footnote {n['marker']}: was {n['text'][:80]} → now {n['proposed'][:80]}. "
                                       + " ".join(n["why"])))
     queue += latin_long_s()
-    if MANUAL.exists():
-        for m in json.loads(MANUAL.read_text()):
-            queue.append(dict(id=f"{m['book_dir']}/{m['page']:04d}/reported/{hashlib.md5(m['msg'].encode()).hexdigest()[:8]}",
-                              book_dir=m["book_dir"], page=m["page"], kind="reported", msg=m["msg"], optional=False))
     # Page breaks read by seam_check.py replace the punctuation guesses for those books
     seam_file = DOCS / "seam_check.json"
     if seam_file.exists():

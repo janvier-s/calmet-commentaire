@@ -3,6 +3,7 @@
 No Tk and no HTTP here; review_web.py serves it.
 """
 import copy
+import hashlib
 import json
 import os
 import re
@@ -262,7 +263,7 @@ def apply_op(page, op, prev_page):
 
 # --- The queue (docs/review_queue.json, written by audit_integrity.py) ---
 KIND_LABELS = {
-    "reported": "REPORTED BY YOU",
+    "todo": "TO-DO",
     "duplicate_page": "PAGE COPIED FROM ANOTHER",
     "malformed_page": "MALFORMED PAGE",
     "missing_page": "MISSING PAGE",
@@ -354,24 +355,42 @@ def _atomic_write(path, text):
     os.replace(tmp, path)
 
 
-class Progress:
-    """Each item's status (resolved, false_positive, skipped) in data/.review_queue_progress.json;
-    false positives are kept in docs/false_positives.json as well, which outlives the queue."""
+REVIEW_FILE = "review.json"  # data/<book>/review.json: one book's review, so that volunteers' commits don't collide
 
-    def __init__(self, path: Path, fp_path: Path):
-        self.path, self.fp_path = Path(path), Path(fp_path)
-        try:
-            self.data = json.loads(self.path.read_text())
-        except (OSError, ValueError):
-            self.data = {}
-        for k in self._fps():
+
+class Progress:
+    """The review of every book, one file per book (data/<book>/review.json): each item's status
+    (resolved, false_positive, skipped), the false positives with what they said (they outlive the
+    queue), and the page to-dos."""
+
+    def __init__(self, data_dir: Path):
+        self.dir = Path(data_dir)
+        self.data, self.fps, self.todos = {}, {}, {}
+        for f in sorted(self.dir.glob(f"*/{REVIEW_FILE}")):
+            d = self._read(f.parent.name)
+            self.data.update(d["status"])
+            self.fps.update(d["false_positives"])
+            self.todos[f.parent.name] = d["todos"]
+        for k in self.fps:
             self.data[k] = "false_positive"
 
-    def _fps(self):
+    def _read(self, vol):
         try:
-            return json.loads(self.fp_path.read_text(encoding="utf-8"))
+            d = json.loads((self.dir / vol / REVIEW_FILE).read_text(encoding="utf-8"))
         except (OSError, ValueError):
-            return {}
+            d = {}
+        return {"status": d.get("status") or {}, "false_positives": d.get("false_positives") or {},
+                "todos": d.get("todos") or []}
+
+    def _write(self, vol, d):
+        _atomic_write(self.dir / vol / REVIEW_FILE, json.dumps(d, ensure_ascii=False, indent=1, sort_keys=True) + "\n")
+
+    def book_of(self, item_id):
+        """The book an id belongs to: its first part that is a book ("proposal:seam/<book>/…" too)."""
+        for part in item_id.removeprefix("proposal:").split("/"):
+            if (self.dir / part).is_dir():
+                return part
+        raise ValueError(f"no book in {item_id}")
 
     def status(self, item_id):
         return self.data.get(item_id)
@@ -380,33 +399,71 @@ class Progress:
         self.update({item_id: status}, {item_id: info} if info else None)
 
     def update(self, changes, infos=None):
-        """Several statuses at once (None clears one), each file written once, atomically."""
+        """Several statuses at once (None clears one), each book's file written once, atomically."""
+        by_book = {}
         for item_id, status in changes.items():
-            if status:
-                self.data[item_id] = status
-            else:
-                self.data.pop(item_id, None)
-        _atomic_write(self.path, json.dumps(self.data, indent=1))
-        fps = self._fps()
-        new = dict(fps)
-        for item_id, status in changes.items():
-            if status == "false_positive":
-                new[item_id] = (infos or {}).get(item_id) or True
-            else:
-                new.pop(item_id, None)
-        if new != fps:
-            _atomic_write(self.fp_path, json.dumps(new, ensure_ascii=False, indent=2))
+            by_book.setdefault(self.book_of(item_id), {})[item_id] = status
+        for vol, ch in by_book.items():
+            d = self._read(vol)
+            for item_id, status in ch.items():
+                if status:
+                    self.data[item_id] = d["status"][item_id] = status
+                else:
+                    self.data.pop(item_id, None)
+                    d["status"].pop(item_id, None)
+                if status == "false_positive":
+                    self.fps[item_id] = d["false_positives"][item_id] = (infos or {}).get(item_id) or True
+                else:
+                    self.fps.pop(item_id, None)
+                    d["false_positives"].pop(item_id, None)
+            self._write(vol, d)
 
 
-def load_queue(queue_path, fp_path, include_optional=False):
+def absorb_legacy(data_dir, docs_dir):
+    """Fold the review files of before the split (data/.review_queue_progress.json,
+    docs/false_positives.json, docs/manual_issues.json, which an editor started earlier may still
+    write) into each book's review.json, then remove them. Their statuses win: they are the newer."""
+    data_dir, docs_dir = Path(data_dir), Path(docs_dir)
+    files = [data_dir / ".review_queue_progress.json", docs_dir / "false_positives.json", docs_dir / "manual_issues.json"]
+    if not any(f.exists() for f in files):
+        return 0
+    read = lambda f, empty: json.loads(f.read_text(encoding="utf-8")) if f.exists() else empty
+    status, fps, manual = read(files[0], {}), read(files[1], {}), read(files[2], [])
+    p = Progress(data_dir)
+    books = {}
+    def book(k):
+        vol = p.book_of(k)
+        return books.setdefault(vol, p._read(vol))
+    for m in manual:  # issues reported by hand: the page's to-dos
+        h = hashlib.md5(m["msg"].encode()).hexdigest()[:8]
+        tid, old = f"{m['book_dir']}/{m['page']:04d}/todo/{h}", f"{m['book_dir']}/{m['page']:04d}/reported/{h}"
+        d = book(tid)
+        if all(td["id"] != tid for td in d["todos"]):
+            d["todos"].append({"id": tid, "page": m["page"], "msg": m["msg"], "where": None})
+        if old in status:
+            status[tid] = status.pop(old)
+    for k, v in status.items():
+        book(k)["status"][k] = v
+    for k, v in fps.items():
+        book(k)["false_positives"][k] = v
+    for vol, d in books.items():
+        p._write(vol, d)
+    for f in files:
+        f.unlink(missing_ok=True)
+    return len(status) + len(fps) + len(manual)
+
+
+def todo_item(vol, td):
+    """A page to-do as a queue item."""
+    return dict({"id": td["id"], "book_dir": vol, "page": td["page"], "kind": "todo", "msg": td["msg"],
+                 "optional": False}, **({"where": td["where"]} if td.get("where") else {}))
+
+
+def load_queue(queue_path, progress, include_optional=False):
     """The queue, plus the false positives it no longer lists (so they stay visible)."""
     items = json.loads(Path(queue_path).read_text(encoding="utf-8"))
-    try:
-        fps = json.loads(Path(fp_path).read_text(encoding="utf-8"))
-    except (OSError, ValueError):
-        fps = {}
     known = {it["id"] for it in items}
-    for fp_id, val in fps.items():
+    for fp_id, val in progress.fps.items():
         if fp_id in known:
             continue
         parts = fp_id.split("/")
@@ -414,6 +471,8 @@ def load_queue(queue_path, fp_path, include_optional=False):
         items.append({"id": fp_id, "book_dir": val.get("book_dir", parts[0]),
                       "page": val.get("page", int(parts[1])), "kind": val.get("kind", parts[2]),
                       "msg": val.get("msg", "Marked false positive"), "optional": False})
+    for vol, todos in progress.todos.items():  # the page to-dos added in the editor
+        items += [todo_item(vol, td) for td in todos if td["id"] not in known]
     return items if include_optional else [it for it in items if not it.get("optional")]
 
 
@@ -467,7 +526,7 @@ def neighbour_issue_pages(items, progress, vol, page):
 # Kinds audit_integrity.audit_book produces; the others come from other scripts and are left alone.
 # duplicate_verse is also psalms_check.py's, so a re-check never closes it.
 AUDIT_KINDS = frozenset(KIND_LABELS) - {
-    "reported", "psalm_missing_verse", "psalm_missing_title", "psalm_number", "psalm_wrong_psalm",
+    "todo", "psalm_missing_verse", "psalm_missing_title", "psalm_number", "psalm_wrong_psalm",
     "psalm_unmatched", "chapter_vulgate", "chapter_heading", "hebrew_recheck", "latin_long_s",
     "seam_missing", "seam_repeat", "seam_unclear", "duplicate_verse", "footnote_writeout", "ref_candidate"}
 

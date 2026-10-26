@@ -7,7 +7,7 @@ import urllib.request
 
 import pytest
 
-from conftest import QUEUE
+from conftest import QUEUE, reviews
 from paths import DATA as REAL_DATA
 from review_store import AUDIT_KINDS, Progress, Store, merge_recheck
 from review_web import make_server
@@ -17,7 +17,7 @@ VOL = "22_proverbes"
 
 @pytest.fixture
 def progress(data_dir):
-    return Progress(data_dir / ".review_queue_progress.json", data_dir.parent / "docs" / "false_positives.json")
+    return Progress(data_dir)
 
 
 def test_audit_kinds():
@@ -100,8 +100,7 @@ def test_recheck_endpoint(data_dir):
         assert r["fixed"] == 1 and r["added"] == 0
         on_page = {i["kind"]: i for i in r["issues"]}
         assert on_page["missing_footnote"]["fixed"] is True
-        prog = json.loads((data_dir / ".review_queue_progress.json").read_text())
-        assert prog["22_proverbes/0194/missing_footnote/bbbb"] == "resolved"
+        assert reviews(data_dir)["22_proverbes/0194/missing_footnote/bbbb"] == "resolved"
     finally:
         srv.shutdown()
 
@@ -151,7 +150,7 @@ def test_recheck_sees_fresh_page(tmp_path, monkeypatch):
 # --- from the branch review ---
 
 def test_merge_optional_still_produced_is_not_fixed(progress):
-    item = dict(QUEUE[2], optional=False)  # an optional kind, loaded from false_positives.json as required
+    item = dict(QUEUE[2], optional=False)  # an optional kind, loaded from the false positives as required
     items = [item]
     r = merge_recheck(items, progress, [VOL], [QUEUE[2]], include_optional=False)
     assert r["fixed"] == [] and progress.status(item["id"]) is None
@@ -172,9 +171,10 @@ def test_progress_update_writes_once_and_atomically(progress, data_dir, monkeypa
     import review_store
     real = review_store.os.replace
     monkeypatch.setattr(review_store.os, "replace", lambda a, b: (writes.append(str(b)), real(a, b)))
-    progress.update({"a": "resolved", "b": "resolved", "c": None})
-    assert sum(w.endswith(".review_queue_progress.json") for w in writes) == 1
-    assert json.loads((data_dir / ".review_queue_progress.json").read_text()) == {"a": "resolved", "b": "resolved"}
+    a, b, c = (f"{VOL}/0194/hyphen_cut/{x}" for x in "abc")
+    progress.update({a: "resolved", b: "resolved", c: None})
+    assert sum(w.endswith("review.json") for w in writes) == 1
+    assert reviews(data_dir) == {a: "resolved", b: "resolved"}
 
 
 def test_mark_waits_for_a_running_recheck(data_dir):
@@ -203,8 +203,7 @@ def test_recheck_not_audited_changes_nothing(data_dir):
     try:
         r = post("/api/recheck", {"vol": VOL, "page": 194})
         assert r["fixed"] == 0 and r["added"] == 0
-        assert not (data_dir / ".review_queue_progress.json").exists() or \
-            "resolved" not in (data_dir / ".review_queue_progress.json").read_text()
+        assert "resolved" not in reviews(data_dir).values()
     finally:
         srv.shutdown()
 

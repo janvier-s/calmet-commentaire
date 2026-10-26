@@ -5,7 +5,7 @@ import urllib.request
 
 import pytest
 
-from conftest import QUEUE, dump
+from conftest import QUEUE, dump, reviews
 from review_store import Store
 from review_web import make_server
 
@@ -55,8 +55,7 @@ def footnote_item(web, page):
 
 
 def progress(web):
-    p = web.data / ".review_queue_progress.json"
-    return json.loads(p.read_text()) if p.exists() else {}
+    return reviews(web.data)
 
 
 def test_config_turn_kinds(web):
@@ -113,8 +112,7 @@ def test_reject_generated_is_false_positive(web):
     p = web(f"/api/proposal?id={it['id']}")[1]["proposal"]
     assert web("/api/proposal/reject", {"id": it["id"], "proposal_id": p["id"]})[0] == 200
     assert progress(web)[it["id"]] == "false_positive"
-    fps = json.loads((web.data.parent / "docs" / "false_positives.json").read_text())
-    assert it["id"] in fps
+    assert it["id"] in reviews(web.data, "false_positives")
 
 
 def test_reject_seam_hides_proposal(web):
@@ -178,8 +176,7 @@ def test_stale_repeat_closes_at_start(data_dir):
     dump(docs / "review_queue.json", QUEUE + [rep])
     server, _ = make_server(Store(data_dir, docs), docs / "review_queue.json", port=0)
     server.server_close()
-    prog = json.loads((data_dir / ".review_queue_progress.json").read_text())
-    assert prog[rep["id"]] == "resolved"
+    assert reviews(data_dir)[rep["id"]] == "resolved"
 
 
 def test_search_route(web):

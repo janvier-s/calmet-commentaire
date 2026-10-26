@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 The review editor in the browser: the integrity-audit queue (docs/review_queue.json) and every page,
-scan beside text. Replaces review_editor.py and page_editor.py; works on the same files.
+scan beside text. The review itself (statuses, false positives, to-dos) is in data/<book>/review.json.
 
 Usage: python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters] [--port N] [--no-open]
   with neither VOLUME nor --fresh it resumes where the last session stopped: its page, and (no filters
@@ -45,15 +45,14 @@ class ApiError(Exception):
 def make_server(store, queue_path, port=0, token=None, include_optional=False, start=None, recheck=None):
     """The HTTP server over `store` and the queue at `queue_path`, not yet serving."""
     token = token or secrets.token_hex(16)
-    fp_path = store.docs / "false_positives.json"
-    items = rs.load_queue(queue_path, fp_path, include_optional)
+    progress = rs.Progress(store.data)
+    items = rs.load_queue(queue_path, progress, include_optional)
     at = {it["id"]: i for i, it in enumerate(items)}
     for g in rp.generated_items(store):  # write-outs and reference candidates, after the audit's
         if g["id"] in at:
             items[at[g["id"]]] = g  # a false positive kept from an earlier session
         else:
             items.append(g)
-    progress = rs.Progress(store.data / ".review_queue_progress.json", fp_path)
     state_file = store.data / ".page_editor_state.json"
     by_id = {it["id"]: it for it in items}
 
@@ -426,11 +425,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     return ThreadingHTTPServer(("127.0.0.1", port), Handler), token
 
 
-def list_fp(docs):
-    try:
-        fps = json.loads((docs / "false_positives.json").read_text(encoding="utf-8"))
-    except (OSError, ValueError):
-        fps = {}
+def list_fp(data):
+    fps = rs.Progress(data).fps
     if not fps:
         print("No issues currently marked as false positives.")
         return
@@ -463,8 +459,10 @@ def main(argv):
     data = Path(opt("--data", rs.Path(__file__).resolve().parent.parent / "data"))
     docs = Path(opt("--docs", data.parent / "docs"))
     if "--list-fp" in argv or "--list-false-positives" in argv:
-        return list_fp(docs)
+        return list_fp(data)
     store = rs.Store(data, docs)
+    if n := rs.absorb_legacy(data, docs):
+        print(f"Moved {n} review entries from the old shared files into each book's review.json")
     queue_path = Path(opt("--queue", docs / "review_queue.json"))
     if not queue_path.exists():
         sys.exit(f"No queue found at {queue_path}. Run audit_integrity.py first.")
