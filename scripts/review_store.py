@@ -10,6 +10,7 @@ import re
 import time
 from pathlib import Path
 
+from continuations import carry_refs
 from page_text import LRM, find_source_image, trim
 from punctuation import clean_page
 
@@ -289,6 +290,8 @@ KIND_LABELS = {
     "ref_order": "VERSE REFERENCE OUT OF ORDER",
     "no_verse_ref": "NOTE WITHOUT VERSE_REF",
     "no_lemma": "NOTE WITHOUT LATIN_QUOTE",
+    "missing_start": "COMMENT OPENS MID-SENTENCE, NO COMMENT BEFORE IT: START MISSING?",
+    "first_no_lemma": "FIRST NOTE WITHOUT LATIN AND FRENCH: A NEW NOTE?",
     "spaced_letters": "L E T T E R - S P A C E D WORD",
     "leading_punctuation": "COMMENT STARTS WITH PUNCTUATION",
     "leading_call": "FIELD STARTS WITH A FOOTNOTE CALL",

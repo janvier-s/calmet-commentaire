@@ -290,6 +290,8 @@ ins { background: color-mix(in srgb, var(--ok) 20%, transparent); color: var(--o
 #batch td.bctx:hover { background: var(--accent-weak); }
 #batch td.bctx .msg { font-size: 12px; color: var(--muted); }
 #batch tr.done { opacity: .5; }
+#batch textarea.bedit { width: 100%; box-sizing: border-box; font: inherit; resize: vertical; }
+#batch tr.edited textarea.bedit { border-color: var(--warn); }
 #batch tr.done td.st { color: var(--ok); }
 #batch tr.failed td.st { color: var(--danger); }
 #batch .join-mark { height: .9em; }

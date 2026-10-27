@@ -174,3 +174,26 @@ def test_todo_holds_the_issue_until_done(web):
     # deleting a to-do frees its issue too
     r = web("/api/todo", {"vol": VOL, "page": 194, "msg": "Unexpanded", "holds": issue})[1]
     assert web("/api/todo/delete", {"id": r["item"]["id"]})[1]["reopened"] == issue
+
+
+def test_save_carries_chapter_and_verse_to_continuations(web):
+    code, a = web(f"/api/page?vol={VOL}&page=193")
+    code, b = web(f"/api/page?vol={VOL}&page=194")
+    last, first = a["data"]["commentary"][-1], b["data"]["commentary"][0]
+    # make page 194 open with the rest of page 193's last note
+    first.update(latin_quote=None, french_translation=None, french_commentary="et la suite de la note",
+                 verse_ref=last["verse_ref"], chapter=last["chapter"])
+    code, b = web("/api/page", {"vol": VOL, "page": 194, "data": b["data"], "version": b["version"]})
+    assert code == 200
+    data = a["data"]
+    data["commentary"][-1]["verse_ref"] = 99
+    code, saved = web("/api/page", {"vol": VOL, "page": 193, "data": data, "version": a["version"], "carry": True})
+    assert code == 200
+    code, b2 = web(f"/api/page?vol={VOL}&page=194")
+    assert b2["data"]["commentary"][0]["verse_ref"] == 99
+    assert saved.get("carried") == 194
+    # without `carry` the next page stays as it is (the page-turn editor saves both sides itself)
+    data["commentary"][-1]["verse_ref"] = 98
+    code, saved = web("/api/page", {"vol": VOL, "page": 193, "data": data, "version": saved["version"]})
+    assert "carried" not in saved
+    assert web(f"/api/page?vol={VOL}&page=194")[1]["data"]["commentary"][0]["verse_ref"] == 99

@@ -48,6 +48,24 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   `footnote_tags.py stats …` counts the tags. In the editor, "Tags" shows them under each footnote
   (click to add or remove); search `tag:fathers`, `tag:fathers Basile` or `tag:none`.
 
+- `audit_integrity.py` (`first_no_lemma`): the first note of a page with neither `latin_quote` nor
+  `french_translation` is normally the end of the page before's note. Flagged when it opens with its
+  lemma in capitals (the lemma went into the commentary: a normal issue), or, as optional (`--all`),
+  when the page before ended a sentence and it opens a new one that does not start with a name (the
+  first word is capitalised mid-sentence more often than not in lower case across the commentary:
+  Ézéchiel, Hérodote). Hyphen-cut words at the page turn are `hyphen_cut`'s.
+
+- `sync_continuations.py <volume|book|all> … [--apply] [--verbose]`: a note split over a page turn (or in
+  two on the page) is several blocks, each with its own `chapter` and `verse_ref` copied when it was made.
+  A block with no lemma and no translation takes those of the block before it, in page order (rule in
+  `continuations.py`). Blocks that may open a note of their own (a capital after a full stop) are left
+  alone and counted. The editor does the same when you save: a changed chapter or verse_ref goes to the
+  blocks that go on from that note, and from the page's last note to the next page's (page editor only).
+
+- `audit_integrity.py` (`missing_start`): the first note of a page opens in lower case, with no lemma, but
+  the page before ends on a lemma or translation with no comment (or has no notes): a comment does not
+  begin mid-sentence, so its start is missing. Shown in the page-turn editor (page after the turn).
+
 - `seam_check.py <volume> …`: reads every page break for lost or repeated lines
   (Claude, cached in `cache/seam_cache.json`) → `docs/seam_check.json`.
 - `spellcheck.py scan <volume|book> …`: hunspell (`brew install hunspell`, French dictionary
@@ -113,7 +131,9 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   as they are; the held write-outs of `docs/footnotes/<volume>.json` and the candidates of
   `docs/ref_check.json`, which become issues of their own types ("Footnote write-out to check",
   "Verse reference to check"; Reject makes them false positives). Batch: every issue of the type
-  chosen in the filters in a table, tick and accept many at once. The review is kept per book in
+  chosen in the filters in a table: tick and accept the proposals, or tick any rows (proposal or not) and
+  mark them Resolved or False positive; the field an issue points at is a text box in its row (Save n edits
+  writes them, one write per page; Resolve saves a ticked row's typed text first). The review is kept per book in
   `data/<book>/review.json` (statuses, false positives with what they said, the page to-dos), so
   that volunteers working on different books never touch the same file; the editor folds the old
   shared files (`data/.review_queue_progress.json`, `docs/false_positives.json`,

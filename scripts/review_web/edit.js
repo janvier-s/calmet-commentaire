@@ -98,7 +98,7 @@ export async function save({ redraw = true } = {}) {
   if (!S.data) return true;
   const data = typedData();
   const edits = S.edits;
-  let r = await api("/api/page", { vol: S.vol, page: S.page, data, version: S.version });
+  let r = await api("/api/page", { vol: S.vol, page: S.page, data, version: S.version, carry: true });
   if (r.status === 409) {
     const choice = await ask(
       "This page was changed on disk since you opened it (a script, or another editor).\n\n" +
@@ -106,9 +106,10 @@ export async function save({ redraw = true } = {}) {
       [["cancel", "Cancel"], ["theirs", "Reload theirs"], ["mine", "Keep mine", "warn"]]);
     if (choice === "theirs") { setDirty(false); await loadPage(S.vol, S.page); return false; }
     if (choice !== "mine") return false;
-    r = await api("/api/page", { vol: S.vol, page: S.page, data, version: S.version, force: true });
+    r = await api("/api/page", { vol: S.vol, page: S.page, data, version: S.version, force: true, carry: true });
   }
   if (r.status !== 200) { toast(r.body.error || "Save failed"); return false; }
+  if (r.body.carried) toast(`Chapter and verse carried to the continuation on p.${r.body.carried}`);
   const changed = JSON.stringify(r.body.data) !== JSON.stringify(data);
   S.data = r.body.data;
   S.version = r.body.version;

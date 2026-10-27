@@ -138,6 +138,7 @@ async function mark(status) {
   if (!it) { toast("No issue selected: click one in the left column"); return; }
   if (S.dirty && !(await save({ redraw: false }))) return;  // a failed save stays put
   if (hooks.beforeMark && !(await hooks.beforeMark())) return;
+  await rechecked();  // the re-check the save started finishes before the next page loads
   const r = await api("/api/mark", { id: it.id, status });
   if (r.status !== 200) { toast(r.body.error || "Could not mark the issue"); return; }
   for (const x of [...Q.items, ...S.issues]) if (x.id === it.id) x.status = status;
@@ -273,8 +274,19 @@ nav.go = async (vol, page) => {
 
 // --- re-check on save: the audit of the book runs again on the server ---
 let running = 0;
+const pending = new Set();
+/** Resolves once every re-check under way has finished (a save starts one without waiting for it). */
+export const rechecked = () => Promise.all([...pending]);
 /** Run the audit of the book again; `also`: other pages whose issues to bring back (a page turn). */
-export async function recheck(vol = S.vol, page = S.page, also = []) {
+export function recheck(vol = S.vol, page = S.page, also = []) {
+  const p = runRecheck(vol, page, also);
+  pending.add(p);
+  const done = () => pending.delete(p);
+  p.then(done, done);
+  return p;
+}
+
+async function runRecheck(vol, page, also) {
   running++;
   $("rechecking").textContent = "re-checking…";
   let r;

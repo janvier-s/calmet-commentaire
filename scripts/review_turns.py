@@ -8,7 +8,7 @@ from calmet import infer_join, join_seam
 
 # where the audit puts a page-turn issue: on the page before the turn, or on the page after it
 FOOT_KINDS = frozenset({"hyphen_cut", "italic_seam", "period_seam"})
-HEAD_KINDS = frozenset({"possible_gap", "seam_artifact", "seam_missing", "seam_repeat", "seam_unclear"})
+HEAD_KINDS = frozenset({"missing_start", "possible_gap", "seam_artifact", "seam_missing", "seam_repeat", "seam_unclear"})
 TURN_KINDS = FOOT_KINDS | HEAD_KINDS
 
 

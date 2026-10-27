@@ -9,6 +9,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from chapter_refs import REF as CH_REF, write as chapter_write
+from continuations import ABBREV, LEMMA_START, opens_with_capital, sentence_ended, start_missing, strip_calls
 from calmet import STRAY, _fold, notes as calmet_notes, vulgate_words
 from export import chapter_of, verses_by_chapter
 from modernize_refs import MANUAL as REF_MANUAL
@@ -109,6 +110,51 @@ def flat(s):
     """Text reduced for cross-file matching: no markers, italics or spacing."""
     s = re.sub(r"\^\{[^}]*\}|\[\d+\]|[_*]", "", s or "")
     return re.sub(r"[^a-zà-ÿœæç]", "", s.lower())
+
+
+@functools.cache
+def word_case_counts():
+    """{word: [times in lower case, times capitalised mid-sentence]} over all the commentary, to tell
+    a name (Ézéchiel, Hérodote: only ever capitalised) from a common word (Si, On: capitalised only
+    because a sentence starts with it)."""
+    counts = defaultdict(lambda: [0, 0])
+    for f in STUDIUM.glob("*/normalized/page_[0-9][0-9][0-9][0-9].json"):
+        d, err = load(f)
+        for c in (d or {}).get("commentary") or []:
+            text = re.sub(r"\^\{[^}]*\}|[_*]", "", c.get("french_commentary") or "")
+            for m in re.finditer(r"[^\W\d_]+", text):
+                w = m.group()
+                before = text[:m.start()].rstrip(" «\"“‘'’(")
+                if w[0].islower():
+                    counts[w][0] += 1
+                elif before and before[-1] not in ".!?:;»" and not w.isupper():
+                    counts[w.lower()][1] += 1
+    return counts
+
+
+def proper_noun_start(text):
+    """Does `text` open with a name? Its first word is capitalised mid-sentence more often than not
+    in lower case ("L'Homme" is read as "L": the article, a common word)."""
+    m = re.match(r"[\s_«\"“(]*([^\W\d_]+)", re.sub(r"^\s*\^\{[^}]*\}", "", text or ""))
+    if not m:
+        return False
+    lower, cap_mid = word_case_counts().get(m.group(1).lower(), (0, 0))
+    return cap_mid > lower
+
+
+def first_note_without_lemma(tail, fc):
+    """The first note of a page with neither latin_quote nor french_translation, `tail` being the end
+    of the previous page's last comment: "lemma" if it opens with the lemma in capitals, "sentence" if
+    the page before ended a sentence and this opens a new one that is not a name (a new note, or the
+    next sentence of the same one: only a reader can tell), else None (it goes on from the page before,
+    or the word is broken at the page turn, hyphen_cut's)."""
+    if not fc.strip() or strip_calls(tail).endswith("-"):
+        return None
+    if LEMMA_START.match(fc):
+        return "lemma"
+    if sentence_ended(tail) and opens_with_capital(fc) and not proper_noun_start(fc):
+        return "sentence"
+    return None
 
 
 def load(p):
@@ -347,8 +393,6 @@ def audit_book(key, info, slug, published=True):
     # Notes with no commentary. Fine when the comment opens the next page, or when
     # Calmet gives only the translation; suspicious when nothing follows the lemma.
     CAPS = re.compile(r"\b[A-ZÀ-ÝŒÆ]{2,}(?:[\s,;:'’.-]+[A-ZÀ-ÝŒÆ]{2,})+\b")
-    ABBREV = re.compile(r"\b(etc|v|ch|c|chap|[Ii]bid|S|St|M|p|l|liv|[Ll]ib|cap|Ps|Gen|Reg|Exod|Num|Deut|Jos|Judic|"
-                        r"Isai|Jerem|Ezech|Matt|Luc|Joan|Rom|Cor|Hebr?|vers|n|An)\.$|\b[IVXLC]+\.$|\d\.$")
     ODD_MARK = re.compile(r"\^[^{]|\^\{(?!\([a-z]\)\})[^}]*\}")
     empty_notes = caps_runs = odd_marks = 0
 
@@ -471,6 +515,30 @@ def audit_book(key, info, slug, published=True):
                          f"Full stop at the foot of the page (“…{tail[-45:]}”) but the next page goes on in "
                          f"lower case (“{nfc[:45]}…”): stray full stop, or a capital to restore?",
                          where=dict(section="commentary", index=j, field="french_commentary"))
+            # a comment opening mid-sentence on a page whose predecessor has nothing for it to go on from
+            if j == 0 and fc.strip() and i and pages[i - 1][0] == vol and int(pages[i - 1][1][5:9]) == int(n[5:9]) - 1:
+                before = (pages[i - 1][2].get("commentary") or [None])[-1]
+                if start_missing(before, c):
+                    item("missing_start", vol, int(n[5:9]),
+                         f"The first note opens in the middle of a sentence (“{fc[:50]}…”) but "
+                         + (f"the last note of the page before (“{(before.get('latin_quote') or before.get('french_translation') or '')[:40]}…”) has no comment"
+                            if before else "the page before has no notes")
+                         + ": the start of the comment is missing (typed on the page before, or lost at the page turn)",
+                         where=dict(section="commentary", index=0, field="french_commentary"))
+            # the first note of a page with no lemma at all: the end of the note before, or a note whose lemma was lost
+            if j == 0 and not lemma and not tr and fc.strip():
+                before = next((cc[-1].get("french_commentary") or "" for vv, _, dd in reversed(pages[max(0, i - 20):i])
+                               if vv == vol and (cc := dd.get("commentary") or []) and (cc[-1].get("french_commentary") or "").strip()),
+                              None)
+                why = first_note_without_lemma(before, fc) if before else None
+                if why:
+                    item("first_no_lemma", vol, int(n[5:9]),
+                         (f"The first note opens with what looks like its lemma in capitals (“{fc[:60]}…”): "
+                          f"move it to latin_quote" if why == "lemma" else
+                          f"The first note (“{fc[:50]}…”) has no latin_quote or french_translation, but the page "
+                          f"before ends a sentence (…{before.rstrip()[-40:]}): a new note whose lemma was lost, "
+                          f"or the next sentence of the same note?"),
+                         optional=why == "sentence", where=dict(section="commentary", index=0, field="latin_quote"))
             # only the first block of a page may lack a lemma (it continues the page before)
             if not lemma and c.get("commentary_id") != 1:
                 why = ("the lemma is at the start of the comment: move it to latin_quote"
@@ -866,7 +934,7 @@ def main():
     out.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", out)
     # Worklist for the review editor (review_web.py), most serious kinds first, then in page order
-    order = ["duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "latin_long_s", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "no_translation", "translation_no_punct", "verse_no_punct", "footnote_no_period", "stray_underscore", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
+    order = ["duplicate_page", "malformed_page", "missing_page", "missing_verse", "psalm_missing_verse", "missing_french", "vulgate_filled", "psalm_wrong_psalm", "psalm_unmatched", "duplicate_verse", "psalm_number", "psalm_missing_title", "latin_long_s", "chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading", "dropped_commentary", "seam_missing", "seam_repeat", "seam_unclear", "ref_order", "no_verse_ref", "no_lemma", "first_no_lemma", "missing_start", "spaced_letters", "leading_punctuation", "leading_call", "hyphen_cut", "italic_seam", "period_seam", "etc_for_et", "long_translation", "no_translation", "translation_no_punct", "verse_no_punct", "footnote_no_period", "stray_underscore", "lowercase_translation", "hebrew_in_translation", "hebrew_recheck", "guessed_ref", "chapter_ref", "lemma_verse", "verse_mismatch", "footnote_asterisk", "lowercase_lemma", "lemma_no_punct", "lemma_unknown_word", "extra_footnotes", "empty_commentary", "caps_in_commentary", "broken_marker", "possible_gap",
              "missing_footnote", "empty_page", "seam_artifact"]
     queue = [q for r in results for q in r.get("queue", [])]
     # Psalms: verses checked against the Vulgate text (psalms_check.py), since Calmet's

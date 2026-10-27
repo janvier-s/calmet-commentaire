@@ -94,6 +94,21 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         except rs.Conflict as c:
             raise ApiError(409, {"error": "changed on disk", "disk": c.disk, "version": c.version})
 
+    def save_page(b):
+        """Save a page; a note whose chapter or verse_ref changed takes the blocks that go on from it along
+        (continuations.carry_refs), and with `carry` the next page's too, written beside it."""
+        vol, page = vol_page(b)
+        old = store._load(vol, page)
+        later = [p for p in store.pages(vol) if p > page] if b.get("carry") else []
+        following = store._load(vol, later[0]) if later else None
+        data, nxt = rs.carry_refs(b["data"], old, following) if old else (b["data"], None)
+        data, version = save(vol, page, dict(b, data=data))
+        out = {"data": data, "version": version}
+        if nxt:
+            store.save(vol, later[0], nxt, None)
+            out["carried"] = later[0]
+        return out
+
     def get_page(q):
         if q.get("page") in (None, "", "null") and q.get("vol") in store.volumes() and store.pages(q["vol"]):
             q = dict(q, page=store.pages(q["vol"])[0])  # a book opens at its first page
@@ -136,10 +151,13 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if not it:
             raise ApiError(404, {"error": "no such item"})
         with lock:
-            progress.set(it["id"], body.get("status"),
-                         {k: it.get(k) for k in ("book_dir", "page", "kind", "msg")})
-            reopened = release(it) if body.get("status") == "resolved" else None
+            reopened = mark_one(it, body.get("status"))
         return {"ok": True, "reopened": reopened}
+
+    def mark_one(it, status):
+        """Set an item's status (the caller holds the lock); a to-do done reopens the issue it held."""
+        progress.set(it["id"], status, {k: it.get(k) for k in ("book_dir", "page", "kind", "msg")})
+        return release(it) if status == "resolved" else None
 
     def release(todo):
         """A to-do done (or deleted): the issue it held is open again, to be finished."""
@@ -323,8 +341,76 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 ctx = entries[i].get(w.get("field")) if isinstance(i, int) and i < len(entries) else None
             rows.append({"id": it["id"], "book_dir": it["book_dir"], "page": it["page"], "kind": it["kind"],
                          "msg": it["msg"], "status": progress.status(it["id"]), "context": ctx,
+                         "editable": editable_field(it) and (ctx is None or isinstance(ctx, str)),
                          "proposal": rp.proposal_for(store, progress, it)})
         return {"rows": rows}
+
+    def editable_field(it):
+        """Does the item point at one text field of one entry (and is it no page-turn issue)?"""
+        w = it.get("where")
+        return bool(w and it["kind"] not in rt.TURN_KINDS and w.get("section") and w.get("field")
+                    and isinstance(w.get("index"), int))
+
+    def batch_mark(body):
+        """A status for many items at once, no page touched: validating without a proposal."""
+        status = body.get("status")
+        if status not in ("resolved", "false_positive", "skipped", None):
+            raise ApiError(400, {"error": "bad status"})
+        done, reopened = [], []
+        with lock:
+            for iid in body.get("ids") or []:
+                it = by_id.get(iid)
+                if not it:
+                    continue
+                if r := mark_one(it, status):
+                    reopened.append(r)
+                done.append(iid)
+        return {"done": done, "reopened": reopened}
+
+    def batch_edit(body):
+        """New text for the field of many issues: {id, was, text} each, `was` being the text the table
+        showed, so a field that changed since is refused. One write per page; back: the text as saved."""
+        done, failed, texts, groups = [], [], {}, {}
+        for e in body.get("edits") or []:
+            it = by_id.get(e.get("id"))
+            if not it or not editable_field(it) or not isinstance(e.get("text"), str):
+                failed.append({"id": e.get("id"), "error": "this issue has no field to edit"})
+            else:
+                groups.setdefault((it["book_dir"], it["page"]), []).append((it, e))
+        with lock:
+            for (vol, page), group in groups.items():
+                try:
+                    data, version = store.read(vol, page)
+                    applied, cells = [], {}
+                    for it, e in group:
+                        w = it["where"]
+                        entries = data.get(w["section"]) or []
+                        cell = (w["section"], w["index"], w["field"])
+                        if w["index"] >= len(entries):
+                            failed.append({"id": it["id"], "error": "the entry is gone: reload"})
+                        elif cell in cells:  # two issues on one field: the first edit stands
+                            if cells[cell] == e["text"]:
+                                applied.append(it["id"])
+                            else:
+                                failed.append({"id": it["id"], "error": "another issue edited this field differently"})
+                        elif (entries[w["index"]].get(w["field"]) or "") != (e.get("was") or ""):
+                            failed.append({"id": it["id"], "error": "the text changed since the table was loaded: reload"})
+                        else:
+                            entries[w["index"]][w["field"]] = e["text"]
+                            cells[cell] = e["text"]
+                            applied.append(it["id"])
+                    if cells:
+                        saved, _ = store.save(vol, page, data, version)
+                        for it, e in group:
+                            if it["id"] in applied:
+                                w = it["where"]
+                                texts[it["id"]] = (saved.get(w["section"])[w["index"]].get(w["field"])) or ""
+                    done += applied
+                except rs.Conflict:
+                    failed += [{"id": it["id"], "error": "the page changed on disk: reload"} for it, _ in group]
+                except OSError as err:
+                    failed += [{"id": it["id"], "error": f"{type(err).__name__}: {err}"} for it, _ in group]
+        return {"done": done, "failed": failed, "texts": texts}
 
     def batch_accept(body):
         done, failed = [], []
@@ -379,11 +465,12 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
            "/api/proposal": get_proposal, "/api/batch": batch, "/api/search": search, "/api/versions": versions}
-    POST = {"/api/page": lambda b: (lambda r: {"data": r[0], "version": r[1]})(save(*vol_page(b), b)),
+    POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
             "/api/todo": add_todo, "/api/todo/delete": delete_todo,
-            "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept}
+            "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
+            "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit}
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *a):
