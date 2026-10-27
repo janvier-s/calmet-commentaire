@@ -138,6 +138,12 @@
    "msg": "Note 2 (℣ 22): french_translation does not end with punctuation: “ la violence du feu ; afin que vos enfants sussent”",
    "page": 198
   },
+  "25_sagesse/0205/no_translation/c34bcaa1": {
+   "book_dir": "25_sagesse",
+   "kind": "no_translation",
+   "msg": "Note 4 (℣ 9): latin_quote “FREQUENTER ENIM PRÆOCCUPANT PESSIMA REDARGUENTE CO” has no french_translation; the comment starts “Ces paroles ne sont ni dans le Grec, ni dans la Vulgate ; ma…”: the translation run into the commentary?",
+   "page": 205
+  },
   "25_sagesse/0207/long_translation/6df8cf9f": {
    "book_dir": "25_sagesse",
    "kind": "long_translation",
@@ -210,6 +216,7 @@
   "25_sagesse/0084/caps_in_commentary/19e8aa53": "resolved",
   "25_sagesse/0084/extra_footnotes/cbb1a3e1": "resolved",
   "25_sagesse/0084/period_seam/e1515833": "resolved",
+  "25_sagesse/0088/footnote_no_period/bed5d72d": "resolved",
   "25_sagesse/0088/period_seam/b5495945": "resolved",
   "25_sagesse/0091/long_translation/f86c1c81": "resolved",
   "25_sagesse/0092/footnote_writeout/9b18c342": "resolved",
@@ -256,6 +263,7 @@
   "25_sagesse/0113/caps_in_commentary/0824ed22": "resolved",
   "25_sagesse/0113/no_lemma/50617c21": "resolved",
   "25_sagesse/0113/no_lemma/c90b4dfe": "resolved",
+  "25_sagesse/0114/footnote_no_period/6e147861": "resolved",
   "25_sagesse/0114/footnote_writeout/378d6e72": "resolved",
   "25_sagesse/0114/missing_verse/79b0f25e": "resolved",
   "25_sagesse/0115/chapter_field/10d30428": "resolved",
@@ -319,6 +327,7 @@
   "25_sagesse/0147/lowercase_lemma/7ecaee10": "resolved",
   "25_sagesse/0147/possible_gap/21d22b0a": "resolved",
   "25_sagesse/0147/verse_mismatch/a39ddefe": "resolved",
+  "25_sagesse/0147/verse_no_punct/e524598f": "resolved",
   "25_sagesse/0148/long_translation/351e0146": "resolved",
   "25_sagesse/0149/long_translation/175edf66": "false_positive",
   "25_sagesse/0149/long_translation/5527d41f": "false_positive",
@@ -349,6 +358,7 @@
   "25_sagesse/0162/no_lemma/fa800a97": "resolved",
   "25_sagesse/0162/period_seam/115471b7": "resolved",
   "25_sagesse/0163/verse_mismatch/369a432c": "resolved",
+  "25_sagesse/0164/extra_footnotes/cbb1a3e1": "resolved",
   "25_sagesse/0164/leading_call/9a742c5d": "resolved",
   "25_sagesse/0164/leading_call/d8f13e38": "false_positive",
   "25_sagesse/0166/no_translation/1f12aab0": "resolved",
@@ -360,6 +370,7 @@
   "25_sagesse/0168/missing_footnote/28176d55": "resolved",
   "25_sagesse/0168/period_seam/60421043": "resolved",
   "25_sagesse/0169/extra_footnotes/2b8871b3": "resolved",
+  "25_sagesse/0169/footnote_no_period/1d9acf28": "resolved",
   "25_sagesse/0169/footnote_writeout/f550bd90": "resolved",
   "25_sagesse/0169/no_translation/7effc71f": "resolved",
   "25_sagesse/0170/caps_in_commentary/7d4d2533": "resolved",
@@ -383,6 +394,9 @@
   "25_sagesse/0179/long_translation/fa2d5ef8": "resolved",
   "25_sagesse/0181/no_translation/0eed896c": "resolved",
   "25_sagesse/0181/no_translation/ba63e824": "resolved",
+  "25_sagesse/0182/empty_commentary/ccc5a4a7": "resolved",
+  "25_sagesse/0182/possible_gap/bc56bb70": "resolved",
+  "25_sagesse/0182/possible_gap/f3d9f510": "resolved",
   "25_sagesse/0183/extra_footnotes/42580f6f": "resolved",
   "25_sagesse/0183/lowercase_translation/26afe505": "resolved",
   "25_sagesse/0184/extra_footnotes/85fbfd07": "resolved",
@@ -408,6 +422,8 @@
   "25_sagesse/0193/footnote_writeout/78ada253": "resolved",
   "25_sagesse/0193/long_translation/55709053": "false_positive",
   "25_sagesse/0193/period_seam/28516431": "resolved",
+  "25_sagesse/0195/footnote_no_period/0405ecbf": "resolved",
+  "25_sagesse/0195/footnote_no_period/9b80f9d7": "resolved",
   "25_sagesse/0196/period_seam/25336616": "resolved",
   "25_sagesse/0197/extra_footnotes/bd67a4ef": "resolved",
   "25_sagesse/0197/footnote_writeout/5c7d196f": "resolved",
@@ -432,6 +448,7 @@
   "25_sagesse/0204/verse_mismatch/b9d5feb5": "resolved",
   "25_sagesse/0205/footnote_writeout/e21f34b8": "resolved",
   "25_sagesse/0205/no_lemma/24f102c0": "resolved",
+  "25_sagesse/0205/no_translation/c34bcaa1": "false_positive",
   "25_sagesse/0205/verse_mismatch/cd48b8df": "resolved",
   "25_sagesse/0207/extra_footnotes/bf11c6d4": "resolved",
   "25_sagesse/0207/footnote_writeout/3652b64c": "resolved",
@@ -450,6 +467,7 @@
   "25_sagesse/0214/footnote_writeout/98531d9c": "resolved",
   "25_sagesse/0214/footnote_writeout/cd974553": "resolved",
   "25_sagesse/0214/lemma_no_punct/ad2fc08d": "resolved",
+  "25_sagesse/0217/extra_footnotes/bf11c6d4": "resolved",
   "25_sagesse/0217/footnote_writeout/d1d8e1dd": "resolved",
   "25_sagesse/0217/leading_call/71e5118c": "resolved",
   "25_sagesse/0218/footnote_writeout/70bfd713": "resolved",
@@ -480,7 +498,26 @@
   "25_sagesse/0226/no_lemma/76aab88f": "resolved",
   "25_sagesse/0227/footnote_writeout/4d202713": "resolved",
   "25_sagesse/0228/footnote_writeout/5dac5ae4": "resolved",
-  "25_sagesse/0230/footnote_writeout/a4ba8268": "resolved"
+  "25_sagesse/0229/no_translation/19ee39f7": "resolved",
+  "25_sagesse/0229/no_translation/2e44e52e": "resolved",
+  "25_sagesse/0229/no_translation/6eb522bc": "resolved",
+  "25_sagesse/0230/empty_commentary/bbb7b605": "resolved",
+  "25_sagesse/0230/extra_footnotes/cbb1a3e1": "resolved",
+  "25_sagesse/0230/footnote_writeout/a4ba8268": "resolved",
+  "25_sagesse/0230/no_translation/72ab030b": "resolved",
+  "25_sagesse/0230/no_translation/ff80be71": "resolved",
+  "25_sagesse/0230/possible_gap/6d2388f5": "resolved"
  },
- "todos": []
+ "todos": [
+  {
+   "id": "25_sagesse/0114/todo/d3bba5cb",
+   "msg": "Needs rescan (text (footnotes 2))",
+   "page": 114,
+   "where": {
+    "field": "text",
+    "index": 1,
+    "section": "footnotes"
+   }
+  }
+ ]
 }

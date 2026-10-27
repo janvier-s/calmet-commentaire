@@ -42,6 +42,12 @@
    "msg": "Last commentary ends with “etc.”: “…térieurs de la piété, l'aumône, la modestie, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
    "page": 76
   },
+  "24_cantique/0077/long_translation/c8474b65": {
+   "book_dir": "24_cantique",
+   "kind": "long_translation",
+   "msg": "Translation of 96 characters for a lemma of 27 “FAVUS DISTILLANS LABIA TUA.”: “Vos lèvres sont comme un rayon qui distille le miel ; le miel et le lait sont sous votre l…”: commentary run into the translation?",
+   "page": 77
+  },
   "24_cantique/0082/empty_summary/d476ea71": {
    "book_dir": "24_cantique",
    "kind": "empty_summary",
@@ -52,6 +58,12 @@
    "book_dir": "24_cantique",
    "kind": "leading_call",
    "msg": "french_commentary of note 1 (℣ 7) starts with the footnote call “^{(a)}”: “^{(a)} et sans lequel les femmes d'Orient ne fortent pas en …”: move it after the word it belongs to (end of the previous field or page?)",
+   "page": 89
+  },
+  "24_cantique/0089/leading_call/9c871a31": {
+   "book_dir": "24_cantique",
+   "kind": "leading_call",
+   "msg": "french_commentary of note 1 (℣ 7) starts with the footnote call “^{(a)}”: “^{(a)} et sans lequel les femmes d'Orient ne sortent pas en …”: move it after the word it belongs to (end of the previous field or page?)",
    "page": 89
   },
   "24_cantique/0089/long_translation/44bd8cb1": {
@@ -99,10 +111,12 @@
  },
  "status": {
   "24_cantique/0023/empty_summary/1d571abc": "false_positive",
+  "24_cantique/0023/verse_no_punct/dfb8dfdc": "resolved",
   "24_cantique/0025/no_lemma/e08ae84f": "resolved",
   "24_cantique/0025/verse_mismatch/07652feb": "resolved",
   "24_cantique/0025/verse_mismatch/95b21492": "resolved",
   "24_cantique/0026/extra_footnotes/7f124cb1": "resolved",
+  "24_cantique/0026/extra_footnotes/c10212fb": "resolved",
   "24_cantique/0026/guessed_ref/905395d6": "resolved",
   "24_cantique/0026/lowercase_lemma/c5428f3a": "resolved",
   "24_cantique/0027/ref_order/8fa824a3": "resolved",
@@ -110,7 +124,9 @@
   "24_cantique/0027/verse_mismatch/a10091b1": "resolved",
   "24_cantique/0030/hyphen_cut/fbcf6a8f": "resolved",
   "24_cantique/0031/footnote_writeout/85292083": "resolved",
+  "24_cantique/0031/missing_footnote/f0c68a41": "resolved",
   "24_cantique/0031/period_seam/93b01dd5": "resolved",
+  "24_cantique/0032/footnote_no_period/aa8404a5": "resolved",
   "24_cantique/0033/missing_verse/e28ab3af": "resolved",
   "24_cantique/0033/spaced_letters/a19b478a": "resolved",
   "24_cantique/0034/chapter_field/f3291537": "resolved",
@@ -118,9 +134,11 @@
   "24_cantique/0034/footnote_writeout/f8873387": "resolved",
   "24_cantique/0035/footnote_writeout/12ef880d": "resolved",
   "24_cantique/0035/missing_verse/1cb9ea74": "resolved",
+  "24_cantique/0035/no_translation/f4aabda4": "resolved",
   "24_cantique/0036/footnote_writeout/b2696c1b": "resolved",
   "24_cantique/0039/footnote_writeout/865a549e": "resolved",
   "24_cantique/0039/period_seam/a2c00e1a": "resolved",
+  "24_cantique/0040/footnote_no_period/e6fa64d6": "resolved",
   "24_cantique/0040/footnote_writeout/b67d46f9": "resolved",
   "24_cantique/0041/empty_summary/00e21a9c": "false_positive",
   "24_cantique/0041/footnote_writeout/b97c8694": "resolved",
@@ -153,6 +171,7 @@
   "24_cantique/0063/footnote_writeout/e4268a57": "resolved",
   "24_cantique/0063/guessed_ref/ae90b137": "resolved",
   "24_cantique/0063/period_seam/6be6f40a": "resolved",
+  "24_cantique/0064/extra_footnotes/97cdbea9": "resolved",
   "24_cantique/0065/empty_summary/0e6cc481": "false_positive",
   "24_cantique/0066/footnote_writeout/004f8ec7": "resolved",
   "24_cantique/0066/footnote_writeout/76496196": "resolved",
@@ -170,6 +189,10 @@
   "24_cantique/0073/period_seam/9a88c4ac": "resolved",
   "24_cantique/0076/etc_for_et/417cfcda": "false_positive",
   "24_cantique/0076/footnote_writeout/05c0c914": "resolved",
+  "24_cantique/0077/long_translation/c8474b65": "false_positive",
+  "24_cantique/0077/no_translation/b6966c42": "resolved",
+  "24_cantique/0077/no_translation/bf76b632": "resolved",
+  "24_cantique/0077/no_translation/ff56c758": "resolved",
   "24_cantique/0078/footnote_writeout/6c7a5598": "resolved",
   "24_cantique/0079/missing_verse/badd7522": "resolved",
   "24_cantique/0080/chapter_field/665e958e": "resolved",
@@ -190,7 +213,9 @@
   "24_cantique/0085/missing_verse/4e86bdf8": "resolved",
   "24_cantique/0086/chapter_field/aa66482e": "resolved",
   "24_cantique/0088/footnote_writeout/591a3c9a": "resolved",
+  "24_cantique/0089/extra_footnotes/42580f6f": "resolved",
   "24_cantique/0089/leading_call/46aba7b5": "false_positive",
+  "24_cantique/0089/leading_call/9c871a31": "false_positive",
   "24_cantique/0089/long_translation/44bd8cb1": "false_positive",
   "24_cantique/0089/long_translation/eb429ddf": "false_positive",
   "24_cantique/0089/period_seam/1918c216": "resolved",
@@ -206,6 +231,7 @@
   "24_cantique/0095/no_lemma/29c8a730": "resolved",
   "24_cantique/0095/no_lemma/be72565b": "resolved",
   "24_cantique/0095/spaced_letters/4a09500a": "resolved",
+  "24_cantique/0096/no_translation/837b0962": "resolved",
   "24_cantique/0097/empty_summary/57443ee7": "false_positive",
   "24_cantique/0098/guessed_ref/161854c5": "resolved",
   "24_cantique/0098/hebrew_in_translation/4019f4a2": "resolved",
@@ -225,6 +251,7 @@
   "24_cantique/0107/guessed_ref/9ef90b23": "resolved",
   "24_cantique/0107/ref_order/53421539": "resolved",
   "24_cantique/0109/caps_in_commentary/c11e0984": "resolved",
+  "24_cantique/0109/lemma_no_punct/4495f369": "resolved",
   "24_cantique/0109/lemma_verse/4fcf4d38": "resolved",
   "24_cantique/0109/lowercase_translation/495dfcee": "resolved",
   "24_cantique/0109/missing_verse/1eb3b8a1": "resolved",
@@ -240,12 +267,15 @@
   "24_cantique/0111/extra_footnotes/d49aa738": "resolved",
   "24_cantique/0111/footnote_writeout/8d257abd": "resolved",
   "24_cantique/0111/footnote_writeout/fceedba9": "resolved",
+  "24_cantique/0111/missing_footnote/cacaedd3": "resolved",
   "24_cantique/0117/empty_summary/8511c281": "false_positive",
   "24_cantique/0117/long_translation/906e63e7": "resolved",
   "24_cantique/0118/long_translation/95cee344": "resolved",
   "24_cantique/0119/footnote_writeout/b6bd299f": "resolved",
   "24_cantique/0119/missing_verse/227127de": "resolved",
   "24_cantique/0120/footnote_writeout/5633b922": "resolved",
+  "24_cantique/0120/no_translation/23f927c6": "resolved",
+  "24_cantique/0121/footnote_no_period/ae9f3899": "resolved",
   "24_cantique/0122/italic_seam/ff5b8725": "resolved",
   "24_cantique/0123/footnote_writeout/aa8a51ac": "resolved",
   "24_cantique/0123/lowercase_lemma/0427ac85": "resolved",
@@ -254,5 +284,16 @@
   "24_cantique/0126/no_lemma/5281de4f": "resolved",
   "24_cantique/0126/no_lemma/68e129e3": "resolved"
  },
- "todos": []
+ "todos": [
+  {
+   "id": "24_cantique/0032/todo/0767ab17",
+   "msg": "Needs rescan (text (footnotes 3))",
+   "page": 32,
+   "where": {
+    "field": "text",
+    "index": 2,
+    "section": "footnotes"
+   }
+  }
+ ]
 }

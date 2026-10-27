@@ -18,11 +18,23 @@
    "msg": "Translation of 100 characters for a lemma of 29 “FECI HORTOS, ET POMARIA, ETC.”: “J'ai fait des jardins, et des clos plantés d'arbres fruitiers, et j'y ai mis toutes sortes…”: commentary run into the translation?",
    "page": 25
   },
+  "23_ecclesiaste/0025/verse_no_punct/27f67ac6": {
+   "book_dir": "23_ecclesiaste",
+   "kind": "verse_no_punct",
+   "msg": "Verse 2:7: french does not end with punctuation: “…n ont jamais eu ceux qui m'ont précédé à Jérusalem” (a word lost, or the verse runs on overleaf?)",
+   "page": 25
+  },
   "23_ecclesiaste/0026/long_translation/f05f5a56": {
    "book_dir": "23_ecclesiaste",
    "kind": "long_translation",
    "msg": "Translation of 77 characters for a lemma of 25 “ARMENTA, ET OVIUM GREGES.”: “J'ai eu un plus grand nombre de bœufs, et de plus grands troupeaux de brebis.…”: commentary run into the translation?",
    "page": 26
+  },
+  "23_ecclesiaste/0033/long_translation/c30f0fa7": {
+   "book_dir": "23_ecclesiaste",
+   "kind": "long_translation",
+   "msg": "Translation of 107 characters for a lemma of 26 “IDCIRO TÆDUIT ME VITÆ MEÆ.”: “C'est pourquoi la vie m'est devenue ennuyeuse, en considérant qu'il n'y avait que des maux…”: commentary run into the translation?",
+   "page": 33
   },
   "23_ecclesiaste/0099/italic_seam/840f05f4": {
    "book_dir": "23_ecclesiaste",
@@ -100,12 +112,17 @@
   "23_ecclesiaste/0020/footnote_writeout/7124630c": "resolved",
   "23_ecclesiaste/0025/long_translation/1e2c6907": "false_positive",
   "23_ecclesiaste/0025/long_translation/4a05049d": "false_positive",
+  "23_ecclesiaste/0025/verse_no_punct/27f67ac6": "false_positive",
   "23_ecclesiaste/0026/caps_in_commentary/f8e2ccfe": "resolved",
   "23_ecclesiaste/0026/lemma_verse/cf1e55ca": "resolved",
   "23_ecclesiaste/0026/lemma_verse/eb307ddc": "resolved",
   "23_ecclesiaste/0026/long_translation/f05f5a56": "false_positive",
   "23_ecclesiaste/0026/no_lemma/33b04584": "resolved",
   "23_ecclesiaste/0026/no_lemma/c7689590": "resolved",
+  "23_ecclesiaste/0030/no_translation/820bf8b6": "resolved",
+  "23_ecclesiaste/0033/long_translation/c30f0fa7": "false_positive",
+  "23_ecclesiaste/0033/no_translation/370db1ab": "resolved",
+  "23_ecclesiaste/0033/no_translation/8ffa07c2": "resolved",
   "23_ecclesiaste/0034/italic_seam/e49d7e2b": "resolved",
   "23_ecclesiaste/0035/footnote_writeout/014e45a9": "resolved",
   "23_ecclesiaste/0036/extra_footnotes/85fbfd07": "resolved",
@@ -116,6 +133,7 @@
   "23_ecclesiaste/0038/no_lemma/35c2a028": "resolved",
   "23_ecclesiaste/0040/caps_in_commentary/5a89160f": "resolved",
   "23_ecclesiaste/0040/no_lemma/1c9b6a08": "resolved",
+  "23_ecclesiaste/0042/footnote_no_period/beda1ccf": "resolved",
   "23_ecclesiaste/0042/lowercase_lemma/8d2a06b3": "resolved",
   "23_ecclesiaste/0044/lemma_verse/a36a0838": "resolved",
   "23_ecclesiaste/0044/no_lemma/ae54d5df": "resolved",
@@ -129,6 +147,7 @@
   "23_ecclesiaste/0051/missing_footnote/2288af94": "resolved",
   "23_ecclesiaste/0057/italic_seam/5e865c0e": "resolved",
   "23_ecclesiaste/0058/footnote_writeout/5364e10c": "resolved",
+  "23_ecclesiaste/0059/footnote_no_period/55b9e898": "resolved",
   "23_ecclesiaste/0060/footnote_writeout/38434fa0": "resolved",
   "23_ecclesiaste/0061/caps_in_commentary/8fd86dbe": "resolved",
   "23_ecclesiaste/0061/missing_footnote/c9cf01f1": "resolved",
@@ -140,8 +159,10 @@
   "23_ecclesiaste/0065/lemma_verse/189f720a": "resolved",
   "23_ecclesiaste/0065/no_lemma/e5f005a4": "resolved",
   "23_ecclesiaste/0067/lowercase_translation/ffd2499a": "resolved",
+  "23_ecclesiaste/0070/footnote_no_period/ab50b646": "resolved",
   "23_ecclesiaste/0070/period_seam/07939b8c": "resolved",
   "23_ecclesiaste/0071/hyphen_cut/ae989cc4": "resolved",
+  "23_ecclesiaste/0072/footnote_no_period/7b5e73fd": "resolved",
   "23_ecclesiaste/0072/footnote_writeout/ce653afb": "resolved",
   "23_ecclesiaste/0072/period_seam/b9afdba6": "resolved",
   "23_ecclesiaste/0075/caps_in_commentary/bcfbee03": "resolved",
@@ -155,7 +176,10 @@
   "23_ecclesiaste/0078/guessed_ref/6c6ea5d7": "resolved",
   "23_ecclesiaste/0078/leading_call/6abfc634": "resolved",
   "23_ecclesiaste/0080/missing_verse/a1126c29": "resolved",
+  "23_ecclesiaste/0083/footnote_no_period/a277572b": "resolved",
   "23_ecclesiaste/0086/missing_verse/43c89c58": "resolved",
+  "23_ecclesiaste/0086/no_translation/1ff495c2": "resolved",
+  "23_ecclesiaste/0086/no_translation/c02e1c6f": "resolved",
   "23_ecclesiaste/0089/footnote_writeout/727277ad": "resolved",
   "23_ecclesiaste/0090/empty_commentary/b9b1dfc5": "resolved",
   "23_ecclesiaste/0092/lowercase_lemma/f72daaa4": "resolved",
@@ -165,6 +189,7 @@
   "23_ecclesiaste/0099/footnote_writeout/dd03f554": "resolved",
   "23_ecclesiaste/0099/italic_seam/840f05f4": "false_positive",
   "23_ecclesiaste/0100/footnote_writeout/fe3b7c65": "resolved",
+  "23_ecclesiaste/0101/footnote_no_period/c8e66b48": "resolved",
   "23_ecclesiaste/0102/hyphen_cut/0159138d": "skipped",
   "23_ecclesiaste/0102/missing_verse/c1c2b3a9": "resolved",
   "23_ecclesiaste/0104/leading_call/bf5595ba": "resolved",
@@ -173,9 +198,12 @@
   "23_ecclesiaste/0105/hyphen_cut/1d975ed5": "resolved",
   "23_ecclesiaste/0106/caps_in_commentary/8301b8c9": "resolved",
   "23_ecclesiaste/0107/footnote_writeout/7e955064": "resolved",
+  "23_ecclesiaste/0108/hyphen_cut/60d32c21": "resolved",
+  "23_ecclesiaste/0108/no_translation/e34325a9": "resolved",
   "23_ecclesiaste/0112/footnote_writeout/2eec02fa": "resolved",
   "23_ecclesiaste/0113/period_seam/d928bdaf": "resolved",
   "23_ecclesiaste/0115/long_translation/0900647c": "resolved",
+  "23_ecclesiaste/0118/footnote_no_period/6c8ef2a9": "resolved",
   "23_ecclesiaste/0120/lemma_no_punct/c1e44de3": "resolved",
   "23_ecclesiaste/0121/italic_seam/974c14b9": "resolved",
   "23_ecclesiaste/0123/caps_in_commentary/4c1918e3": "resolved",
@@ -199,6 +227,7 @@
   "23_ecclesiaste/0131/period_seam/c9ecff63": "resolved",
   "23_ecclesiaste/0132/period_seam/e7f0f1fc": "resolved",
   "23_ecclesiaste/0133/missing_verse/77bbd635": "resolved",
+  "23_ecclesiaste/0134/no_translation/d86479d5": "resolved",
   "23_ecclesiaste/0135/footnote_writeout/11483aa6": "resolved",
   "23_ecclesiaste/0136/extra_footnotes/ac801385": "resolved",
   "23_ecclesiaste/0137/extra_footnotes/a2263f6f": "resolved",
@@ -218,6 +247,7 @@
   "23_ecclesiaste/0143/verse_mismatch/be9d74fd": "resolved",
   "23_ecclesiaste/0144/etc_for_et/5caed829": "resolved",
   "23_ecclesiaste/0144/extra_footnotes/fcf4ac9b": "resolved",
+  "23_ecclesiaste/0144/footnote_no_period/53e473e1": "resolved",
   "23_ecclesiaste/0144/leading_call/5eaff108": "false_positive",
   "23_ecclesiaste/0144/leading_call/a6a8818a": "false_positive",
   "23_ecclesiaste/0145/footnote_writeout/d6fbbe53": "resolved",
@@ -235,5 +265,26 @@
   "23_ecclesiaste/0152/footnote_writeout/906ac13a": "resolved",
   "23_ecclesiaste/0153/long_translation/f1cbd80a": "resolved"
  },
- "todos": []
+ "todos": [
+  {
+   "id": "23_ecclesiaste/0118/todo/0e872673",
+   "msg": "Unexpanded",
+   "page": 118,
+   "where": {
+    "field": "text",
+    "index": 3,
+    "section": "footnotes"
+   }
+  },
+  {
+   "id": "23_ecclesiaste/0144/todo/2338ae77",
+   "msg": "Needs rescan (text (footnotes 1))",
+   "page": 144,
+   "where": {
+    "field": "text",
+    "index": 0,
+    "section": "footnotes"
+   }
+  }
+ ]
 }

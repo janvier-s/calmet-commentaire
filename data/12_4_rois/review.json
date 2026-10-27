@@ -1,8 +1,22 @@
 {
- "false_positives": {},
+ "false_positives": {
+  "12_4_rois/0070/verse_no_punct/39001043": {
+   "book_dir": "12_4_rois",
+   "kind": "verse_no_punct",
+   "msg": "Verse 4:21: latin does not end with punctuation: “…ctulum hominis Dei, et clausit ostium : et egressa” (a word lost, or the verse runs on overleaf?)",
+   "page": 70
+  },
+  "12_4_rois/0078/no_translation/1bec6f32": {
+   "book_dir": "12_4_rois",
+   "kind": "no_translation",
+   "msg": "Note 2 (℣ 42): latin_quote “BAAL-SALISA.” has no french_translation; the comment starts “C'est une ville située dans les confins de Diospolis, à quin…”: a translation lost?",
+   "page": 78
+  }
+ },
  "status": {
   "12_4_rois/0031/long_translation/20196056": "resolved",
   "12_4_rois/0033/hyphen_cut/d6808f0e": "resolved",
+  "12_4_rois/0033/no_translation/ecc845a1": "resolved",
   "12_4_rois/0035/broken_marker/56f583e5": "resolved",
   "12_4_rois/0035/seam_missing/0034": "resolved",
   "12_4_rois/0038/hyphen_cut/bab2a2c8": "resolved",
@@ -11,6 +25,7 @@
   "12_4_rois/0045/italic_seam/3cec1da2": "resolved",
   "12_4_rois/0045/seam_missing/0044": "resolved",
   "12_4_rois/0050/extra_footnotes/2b8871b3": "resolved",
+  "12_4_rois/0050/no_translation/2028986e": "resolved",
   "12_4_rois/0053/long_translation/e40a58a3": "resolved",
   "12_4_rois/0054/missing_footnote/575243f0": "resolved",
   "12_4_rois/0055/hebrew_in_translation/187df153": "resolved",
@@ -27,6 +42,9 @@
   "12_4_rois/0068/lowercase_translation/2cf97aff": "resolved",
   "12_4_rois/0070/long_translation/1f8562f1": "resolved",
   "12_4_rois/0070/lowercase_lemma/1daea295": "resolved",
+  "12_4_rois/0070/verse_no_punct/39001043": "false_positive",
+  "12_4_rois/0071/no_translation/83d615b1": "resolved",
+  "12_4_rois/0072/no_translation/7da366bb": "resolved",
   "12_4_rois/0072/period_seam/76d5ac71": "resolved",
   "12_4_rois/0072/seam_unclear/0071": "resolved",
   "12_4_rois/0074/duplicate_page/e1c0fecd": "resolved",
@@ -45,6 +63,7 @@
   "12_4_rois/0077/no_lemma/cfc906e5": "resolved",
   "12_4_rois/0077/translation_no_punct/5c9d4244": "resolved",
   "12_4_rois/0078/long_translation/4186a927": "resolved",
+  "12_4_rois/0078/no_translation/1bec6f32": "false_positive",
   "12_4_rois/0082/footnote_writeout/137000ba": "resolved",
   "12_4_rois/0083/long_translation/14a7a114": "resolved",
   "12_4_rois/0084/long_translation/0f6a6e38": "resolved",
@@ -202,9 +221,11 @@
   "12_4_rois/0329/seam_missing/0328": "resolved",
   "12_4_rois/0331/missing_footnote/2288af94": "resolved",
   "12_4_rois/0331/seam_missing/0330": "resolved",
+  "12_4_rois/0331/stray_underscore/8340c1a9": "resolved",
   "12_4_rois/0335/footnote_writeout/5c14bfb3": "resolved",
   "12_4_rois/0335/seam_repeat/0334": "resolved",
   "12_4_rois/0336/lowercase_lemma/dbd5a3dd": "resolved",
+  "12_4_rois/0341/no_translation/50dc1c75": "resolved",
   "12_4_rois/0344/seam_repeat/0343": "resolved",
   "12_4_rois/0348/italic_seam/c2a07837": "resolved",
   "12_4_rois/0349/long_translation/7d142493": "resolved",

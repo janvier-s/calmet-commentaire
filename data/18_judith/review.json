@@ -11,9 +11,11 @@
   "18_judith/0048/footnote_writeout/1c69daa2": "resolved",
   "18_judith/0048/italic_seam/c3138db8": "resolved",
   "18_judith/0049/period_seam/0a6fa4a5": "resolved",
+  "18_judith/0050/no_translation/f7e0d551": "resolved",
   "18_judith/0053/footnote_asterisk/662559ec": "resolved",
   "18_judith/0053/period_seam/ce317d15": "resolved",
   "18_judith/0055/no_lemma/ca5880c4": "resolved",
+  "18_judith/0055/no_translation/974b6317": "resolved",
   "18_judith/0055/ref_order/9d5caf92": "resolved",
   "18_judith/0056/ref_order/1ced6eda": "resolved",
   "18_judith/0062/extra_footnotes/a2263f6f": "resolved",
@@ -26,9 +28,11 @@
   "18_judith/0073/footnote_writeout/9b4372d1": "resolved",
   "18_judith/0073/seam_repeat/0072": "resolved",
   "18_judith/0075/period_seam/f227017f": "resolved",
+  "18_judith/0076/footnote_no_period/93a8eb51": "resolved",
   "18_judith/0076/seam_repeat/0075": "resolved",
   "18_judith/0079/seam_repeat/0078": "resolved",
   "18_judith/0082/italic_seam/52001c12": "resolved",
+  "18_judith/0083/footnote_no_period/bda6f9a7": "resolved",
   "18_judith/0083/italic_seam/2e760ea5": "resolved",
   "18_judith/0084/italic_seam/a1eb719f": "resolved",
   "18_judith/0084/seam_repeat/0083": "resolved",
@@ -36,8 +40,11 @@
   "18_judith/0087/italic_seam/08f8ce71": "resolved",
   "18_judith/0087/italic_seam/66dbaa2d": "resolved",
   "18_judith/0087/seam_repeat/0086": "resolved",
+  "18_judith/0090/footnote_no_period/b20766b6": "resolved",
   "18_judith/0090/italic_seam/6234cf43": "resolved",
+  "18_judith/0092/no_translation/b3fb16af": "resolved",
   "18_judith/0093/italic_seam/baa4e883": "resolved",
+  "18_judith/0094/italic_seam/c45368ec": "resolved",
   "18_judith/0097/seam_repeat/0096": "resolved",
   "18_judith/0099/hyphen_cut/edcb6e38": "resolved",
   "18_judith/0099/long_translation/0e82ed94": "resolved",
@@ -45,6 +52,7 @@
   "18_judith/0099/lowercase_lemma/4e2aecba": "resolved",
   "18_judith/0099/seam_missing/0098": "resolved",
   "18_judith/0102/leading_punctuation/3ad2a685": "resolved",
+  "18_judith/0103/footnote_no_period/cd88ee67": "resolved",
   "18_judith/0103/seam_repeat/0102": "resolved",
   "18_judith/0107/hyphen_cut/0e4e03d6": "resolved",
   "18_judith/0107/seam_repeat/0106": "resolved",
@@ -79,6 +87,7 @@
   "18_judith/0136/footnote_writeout/0fd61c2c": "resolved",
   "18_judith/0139/footnote_asterisk/662559ec": "resolved",
   "18_judith/0139/long_translation/138d0640": "resolved",
+  "18_judith/0140/footnote_no_period/51c3ce02": "resolved",
   "18_judith/0142/footnote_writeout/0203b060": "resolved",
   "18_judith/0142/italic_seam/d82b1bd0": "resolved",
   "18_judith/0142/missing_footnote/575243f0": "resolved",
@@ -97,5 +106,16 @@
   "18_judith/0159/seam_repeat/0158": "resolved",
   "18_judith/0163/footnote_asterisk/97b82b71": "resolved"
  },
- "todos": []
+ "todos": [
+  {
+   "id": "18_judith/0047/todo/eee2e707",
+   "msg": "Needs rescan (text (footnotes 6))",
+   "page": 47,
+   "where": {
+    "field": "text",
+    "index": 5,
+    "section": "footnotes"
+   }
+  }
+ ]
 }

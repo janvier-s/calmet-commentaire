@@ -12,6 +12,12 @@
    "msg": "Last commentary ends with “etc.”: “…ardait sa colère contre lui depuis le jour_, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
    "page": 138
   },
+  "10_2_rois/0139/verse_no_punct/c6913a0d": {
+   "book_dir": "10_2_rois",
+   "kind": "verse_no_punct",
+   "msg": "Verse 13:37: french does not end with punctuation: “… ; et David pleurait son fils Amnon tous les jours” (a word lost, or the verse runs on overleaf?)",
+   "page": 139
+  },
   "10_2_rois/0202/etc_for_et/9c7bcb7c": {
    "book_dir": "10_2_rois",
    "kind": "etc_for_et",
@@ -23,6 +29,12 @@
    "kind": "no_translation",
    "msg": "Note 2 (℣ 15): latin_quote “OMNIS AUTEM TURBA MOLIEBATUR DESTRUERE MUROS.” has no french_translation; the comment starts “Saint Jérôme croit que Joab la faisait battre à coups de bél…”: the translation run into the commentary?",
    "page": 225
+  },
+  "10_2_rois/0260/no_translation/f06d22ca": {
+   "book_dir": "10_2_rois",
+   "kind": "no_translation",
+   "msg": "Note 3 (℣ 25): latin_quote “SEMMA DE HARODI.” has no french_translation; the comment starts “Je pense que c'est le même que _Semma d'Arari_, le troisième…”: the translation run into the commentary?",
+   "page": 260
   },
   "10_2_rois/0261/no_translation/3cce01af": {
    "book_dir": "10_2_rois",
@@ -58,6 +70,7 @@
  "status": {
   "10_2_rois/0001/period_seam/6526a6a9": "resolved",
   "10_2_rois/0005/seam_missing/0004": "resolved",
+  "10_2_rois/0006/empty_commentary/6c9b39da": "resolved",
   "10_2_rois/0006/no_translation/8b00505c": "resolved",
   "10_2_rois/0007/footnote_writeout/20c959c6": "resolved",
   "10_2_rois/0007/footnote_writeout/46cd5405": "resolved",
@@ -68,6 +81,7 @@
   "10_2_rois/0010/seam_repeat/0009": "resolved",
   "10_2_rois/0012/footnote_writeout/9dc94876": "resolved",
   "10_2_rois/0016/caps_in_commentary/81097cfa": "resolved",
+  "10_2_rois/0016/verse_no_punct/75a606dc": "resolved",
   "10_2_rois/0017/seam_repeat/0016": "resolved",
   "10_2_rois/0019/footnote_asterisk/2160dcbc": "resolved",
   "10_2_rois/0022/seam_missing/0021": "resolved",
@@ -156,6 +170,7 @@
   "10_2_rois/0137/seam_repeat/0136": "resolved",
   "10_2_rois/0138/etc_for_et/12b278b0": "false_positive",
   "10_2_rois/0138/footnote_writeout/f7eccba4": "resolved",
+  "10_2_rois/0139/verse_no_punct/c6913a0d": "false_positive",
   "10_2_rois/0143/footnote_writeout/cbc3c930": "resolved",
   "10_2_rois/0143/missing_footnote/575243f0": "skipped",
   "10_2_rois/0145/seam_unclear/0144": "resolved",
@@ -248,6 +263,7 @@
   "10_2_rois/0259/guessed_ref/9ea3c630": "resolved",
   "10_2_rois/0259/period_seam/eb9840ed": "resolved",
   "10_2_rois/0260/no_translation/04d8a819": "resolved",
+  "10_2_rois/0260/no_translation/f06d22ca": "false_positive",
   "10_2_rois/0261/hebrew_in_translation/30a63063": "resolved",
   "10_2_rois/0261/hebrew_in_translation/32167fb4": "resolved",
   "10_2_rois/0261/no_translation/3cce01af": "false_positive",
@@ -265,6 +281,7 @@
   "10_2_rois/0262/seam_missing/0261": "resolved",
   "10_2_rois/0263/long_translation/55e58e37": "resolved",
   "10_2_rois/0268/period_seam/c55d2de2": "resolved",
+  "10_2_rois/0270/leading_call/52e2a821": "resolved",
   "10_2_rois/0270/no_translation/13c904e3": "resolved",
   "10_2_rois/0270/no_translation/567b2013": "resolved",
   "10_2_rois/0273/seam_repeat/0272": "resolved",

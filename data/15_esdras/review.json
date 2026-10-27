@@ -1,5 +1,23 @@
 {
  "false_positives": {
+  "15_esdras/0062/no_translation/a278513e": {
+   "book_dir": "15_esdras",
+   "kind": "no_translation",
+   "msg": "Note 1 (℣ 33): latin_quote “LOD, HADID, ET ONO.” has no french_translation; the comment starts “Ce sont des noms de villes ^{(a)} de la tribu de Benjamin.…”: the translation run into the commentary?",
+   "page": 62
+  },
+  "15_esdras/0063/no_translation/d914fe4e": {
+   "book_dir": "15_esdras",
+   "kind": "no_translation",
+   "msg": "Note 3 (℣ 45): latin_quote “HAGABA, ACCUB, HAGAB, SEMLAI, HANAN.” has no french_translation; the comment starts “Dans le second d'Esdras, on lit simplement, _Hagaba, Selmaï,…”: the translation run into the commentary?",
+   "page": 63
+  },
+  "15_esdras/0104/etc_for_et/3de4ef3f": {
+   "book_dir": "15_esdras",
+   "kind": "etc_for_et",
+   "msg": "Last commentary ends with “etc.”: “…z promptement avec cet argent_ des victimes, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
+   "page": 104
+  },
   "15_esdras/0104/etc_for_et/d8265b06": {
    "book_dir": "15_esdras",
    "kind": "etc_for_et",
@@ -9,10 +27,14 @@
  },
  "status": {
   "15_esdras/0049/missing_footnote/28176d55": "resolved",
+  "15_esdras/0049/no_translation/651734bd": "resolved",
   "15_esdras/0050/seam_missing/0049": "resolved",
   "15_esdras/0052/hebrew_in_translation/ebe7f2b4": "resolved",
   "15_esdras/0052/hyphen_cut/5ff23816": "resolved",
+  "15_esdras/0053/footnote_no_period/8d002560": "resolved",
+  "15_esdras/0053/footnote_no_period/d5b80210": "resolved",
   "15_esdras/0053/footnote_writeout/aaaf030e": "resolved",
+  "15_esdras/0055/no_translation/f0c44fc0": "resolved",
   "15_esdras/0055/seam_missing/0054": "resolved",
   "15_esdras/0056/chapter_ref/4b119062": "resolved",
   "15_esdras/0056/period_seam/8fdeca91": "resolved",
@@ -26,6 +48,9 @@
   "15_esdras/0062/footnote_asterisk/b78ad7d9": "resolved",
   "15_esdras/0062/lowercase_lemma/07efe93d": "resolved",
   "15_esdras/0062/lowercase_lemma/6878ca65": "resolved",
+  "15_esdras/0062/no_translation/a278513e": "false_positive",
+  "15_esdras/0063/no_translation/d914fe4e": "false_positive",
+  "15_esdras/0065/footnote_no_period/e0011460": "resolved",
   "15_esdras/0065/seam_repeat/0064": "resolved",
   "15_esdras/0067/long_translation/284bfb45": "resolved",
   "15_esdras/0069/long_translation/5c3b8631": "resolved",
@@ -63,8 +88,17 @@
   "15_esdras/0100/long_translation/ac14d00b": "resolved",
   "15_esdras/0102/no_lemma/f0b62261": "resolved",
   "15_esdras/0102/ref_order/3e182451": "resolved",
+  "15_esdras/0104/etc_for_et/3de4ef3f": "false_positive",
   "15_esdras/0104/etc_for_et/d8265b06": "false_positive",
+  "15_esdras/0105/no_translation/4ab7fe54": "resolved",
+  "15_esdras/0105/no_translation/55e8a0db": "resolved",
+  "15_esdras/0105/no_translation/5b583a93": "resolved",
   "15_esdras/0107/no_lemma/f9da1e11": "resolved",
+  "15_esdras/0108/no_translation/2ba747db": "resolved",
+  "15_esdras/0108/no_translation/6f41dd49": "resolved",
+  "15_esdras/0108/no_translation/b3d16910": "resolved",
+  "15_esdras/0108/no_translation/d7669f89": "resolved",
+  "15_esdras/0109/footnote_no_period/8cd383c1": "resolved",
   "15_esdras/0109/footnote_writeout/61099a5c": "resolved",
   "15_esdras/0109/hebrew_in_translation/4e55bf11": "resolved",
   "15_esdras/0109/long_translation/348d5d3a": "resolved",

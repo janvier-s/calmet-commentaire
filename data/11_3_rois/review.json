@@ -1,16 +1,82 @@
 {
  "false_positives": {
+  "11_3_rois/0117/no_translation/095a95f5": {
+   "book_dir": "11_3_rois",
+   "kind": "no_translation",
+   "msg": "Note 2 (℣ 8): latin_quote “BEN-HUR,” has no french_translation; the comment starts “c'est-à-dire, _fils de Hur_ ; de même que ci-après, _Ben-Dec…”: the translation run into the commentary?",
+   "page": 117
+  },
+  "11_3_rois/0118/no_translation/5c5189d8": {
+   "book_dir": "11_3_rois",
+   "kind": "no_translation",
+   "msg": "Note 1 (℣ 11): latin_quote “NEPHATH-DOR.” has no french_translation; the comment starts “Le canton des environs de Dor. Voyez ce qu'on a dit sur Josu…”: the translation run into the commentary?",
+   "page": 118
+  },
+  "11_3_rois/0118/no_translation/63734d44": {
+   "book_dir": "11_3_rois",
+   "kind": "no_translation",
+   "msg": "Note 2 (℣ 12): latin_quote “THANAC ET MAGEDDO, ETC.” has no french_translation; the comment starts “On peut voir Josué 21:25. et Juges 1:27.…”: the translation run into the commentary?",
+   "page": 118
+  },
+  "11_3_rois/0162/translation_no_punct/93de5f3f": {
+   "book_dir": "11_3_rois",
+   "kind": "translation_no_punct",
+   "msg": "Note 2 (℣ 38): french_translation does not end with punctuation: “Salomon fut sept ans”",
+   "page": 162
+  },
+  "11_3_rois/0205/no_translation/5b374829": {
+   "book_dir": "11_3_rois",
+   "kind": "no_translation",
+   "msg": "Note 3 (℣ 31): latin_quote “SI PECCAVERIT HOMO IN PROXIMUM SUUM, ET HABUERIT A” has no french_translation; the next page starts “Il y a certains cas, où la Loi veut qu'on exige le serment d…”: a translation lost?",
+   "page": 205
+  },
+  "11_3_rois/0206/long_translation/e75259d1": {
+   "book_dir": "11_3_rois",
+   "kind": "long_translation",
+   "msg": "Translation of 269 characters for a lemma of 63 “(32.) TU EXAUDIES, ET JUDICABIS SERVOS T”: “Lorsqu'un homme aura péché contre son prochain, n'ayant pas gardé le serment par lequel il…”: commentary run into the translation?",
+   "page": 206
+  },
   "11_3_rois/0220/etc_for_et/222ef1dc": {
    "book_dir": "11_3_rois",
    "kind": "etc_for_et",
    "msg": "Last commentary ends with “etc._”: “…rès-Haut, quiconque passera, en sera étonné, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
    "page": 220
   },
+  "11_3_rois/0225/no_translation/0f5feb8b": {
+   "book_dir": "11_3_rois",
+   "kind": "no_translation",
+   "msg": "Note 2 (℣ 15): latin_quote “ET MELLO.” has no french_translation; the comment starts “On a déjà ci-devant ^{(d)} parlé de Mello. C'était une vallé…”: a translation lost?",
+   "page": 225
+  },
+  "11_3_rois/0241/verse_no_punct/d381b509": {
+   "book_dir": "11_3_rois",
+   "kind": "verse_no_punct",
+   "msg": "Verse 10:6: french does not end with punctuation: “…u Roi : Ce qu'on m'avait rapporté dans mon Royaume” (a word lost, or the verse runs on overleaf?)",
+   "page": 241
+  },
   "11_3_rois/0278/etc_for_et/ead79b04": {
    "book_dir": "11_3_rois",
    "kind": "etc_for_et",
    "msg": "Last commentary ends with “etc.”: “…du monde 3029. L'usage déréglé des plaisirs, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
    "page": 278
+  },
+  "11_3_rois/0353/no_translation/2fa836a4": {
+   "book_dir": "11_3_rois",
+   "kind": "no_translation",
+   "msg": "Note 2 (℣ 25): latin_quote “OPERATUS EST NEQUITER SUPER OMNES QUI” has no french_translation; the next page starts “Il ne se contenta pas de porter ses sujets à l'idolâtrie par…”: the translation run into the commentary?",
+   "page": 353
+  },
+  "11_3_rois/0362/verse_no_punct/4a972c61": {
+   "book_dir": "11_3_rois",
+   "kind": "verse_no_punct",
+   "msg": "Verse 17:15: french does not end with punctuation: “…t elle aussi avec sa maison ; et depuis ce jour-là” (a word lost, or the verse runs on overleaf?)",
+   "page": 362
+  },
+  "11_3_rois/0362/verse_no_punct/77b7cf8b": {
+   "book_dir": "11_3_rois",
+   "kind": "verse_no_punct",
+   "msg": "Verse 17:15: latin does not end with punctuation: “…edit ipse, et illa, et domus ejus : et ex illa die” (a word lost, or the verse runs on overleaf?)",
+   "page": 362
   }
  },
  "status": {
@@ -38,12 +104,20 @@
   "11_3_rois/0103/etc_for_et/09313600": "resolved",
   "11_3_rois/0106/italic_seam/a0e8b5f8": "resolved",
   "11_3_rois/0106/lowercase_lemma/e7756f44": "resolved",
+  "11_3_rois/0107/hyphen_cut/ee380167": "resolved",
+  "11_3_rois/0107/no_translation/d62131e1": "resolved",
   "11_3_rois/0107/seam_repeat/0106": "resolved",
   "11_3_rois/0116/leading_call/c1b05f93": "resolved",
   "11_3_rois/0117/lemma_no_punct/649772f3": "resolved",
   "11_3_rois/0117/lemma_no_punct/a1c04e71": "resolved",
+  "11_3_rois/0117/no_translation/095a95f5": "false_positive",
+  "11_3_rois/0117/no_translation/a275bf9f": "resolved",
+  "11_3_rois/0117/no_translation/a9102036": "resolved",
   "11_3_rois/0117/verse_mismatch/d8fdbee5": "resolved",
   "11_3_rois/0118/leading_call/239fdbd3": "resolved",
+  "11_3_rois/0118/no_translation/5c5189d8": "false_positive",
+  "11_3_rois/0118/no_translation/63734d44": "false_positive",
+  "11_3_rois/0118/no_translation/8135e77c": "resolved",
   "11_3_rois/0119/italic_seam/889cd972": "resolved",
   "11_3_rois/0120/footnote_writeout/5c3f81fd": "resolved",
   "11_3_rois/0121/hebrew_in_translation/a1632918": "resolved",
@@ -58,6 +132,7 @@
   "11_3_rois/0134/footnote_asterisk/662559ec": "resolved",
   "11_3_rois/0136/italic_seam/8c298875": "resolved",
   "11_3_rois/0136/leading_call/57586282": "resolved",
+  "11_3_rois/0136/no_translation/5c8d79df": "resolved",
   "11_3_rois/0138/italic_seam/eb6e292a": "resolved",
   "11_3_rois/0139/seam_repeat/0138": "resolved",
   "11_3_rois/0142/hyphen_cut/8ebf9e00": "resolved",
@@ -75,6 +150,8 @@
   "11_3_rois/0160/footnote_writeout/cc136d55": "resolved",
   "11_3_rois/0162/footnote_asterisk/b6d8c2be": "resolved",
   "11_3_rois/0162/guessed_ref/e31d09ff": "resolved",
+  "11_3_rois/0162/no_translation/d08222f6": "resolved",
+  "11_3_rois/0162/translation_no_punct/93de5f3f": "false_positive",
   "11_3_rois/0164/period_seam/c68f8f12": "resolved",
   "11_3_rois/0168/long_translation/9028cacb": "resolved",
   "11_3_rois/0169/period_seam/058280c5": "resolved",
@@ -103,11 +180,16 @@
   "11_3_rois/0203/extra_footnotes/908386ee": "resolved",
   "11_3_rois/0203/seam_repeat/0202": "resolved",
   "11_3_rois/0205/etc_for_et/2e59e3fc": "resolved",
+  "11_3_rois/0205/no_translation/5b374829": "false_positive",
+  "11_3_rois/0205/no_translation/a84df909": "resolved",
+  "11_3_rois/0205/no_translation/fc418ce8": "resolved",
+  "11_3_rois/0206/long_translation/e75259d1": "false_positive",
   "11_3_rois/0207/long_translation/6ccf1ffc": "resolved",
   "11_3_rois/0213/leading_call/00eac502": "resolved",
   "11_3_rois/0219/lemma_no_punct/101ec2b5": "resolved",
   "11_3_rois/0220/etc_for_et/222ef1dc": "false_positive",
   "11_3_rois/0225/extra_footnotes/b3f5b825": "resolved",
+  "11_3_rois/0225/no_translation/0f5feb8b": "false_positive",
   "11_3_rois/0225/period_seam/58ca88cf": "resolved",
   "11_3_rois/0226/lowercase_lemma/940173dd": "resolved",
   "11_3_rois/0226/missing_footnote/36bbd30f": "resolved",
@@ -124,11 +206,13 @@
   "11_3_rois/0238/no_lemma/403498ab": "resolved",
   "11_3_rois/0239/italic_seam/22a2713e": "resolved",
   "11_3_rois/0241/footnote_writeout/8da0a57d": "resolved",
+  "11_3_rois/0241/verse_no_punct/d381b509": "false_positive",
   "11_3_rois/0242/footnote_writeout/16a47380": "resolved",
   "11_3_rois/0246/hyphen_cut/c0a498a7": "resolved",
   "11_3_rois/0251/footnote_writeout/0e10debb": "resolved",
   "11_3_rois/0257/broken_marker/9d141ce8": "resolved",
   "11_3_rois/0262/period_seam/581a1935": "resolved",
+  "11_3_rois/0263/no_translation/ed5f29c7": "resolved",
   "11_3_rois/0264/hyphen_cut/c1c2af6e": "resolved",
   "11_3_rois/0265/italic_seam/9086c46c": "resolved",
   "11_3_rois/0266/italic_seam/b76b4350": "resolved",
@@ -145,7 +229,9 @@
   "11_3_rois/0298/etc_for_et/ecf1f2fd": "resolved",
   "11_3_rois/0301/long_translation/eba0f1eb": "resolved",
   "11_3_rois/0304/seam_unclear/0303": "resolved",
+  "11_3_rois/0306/no_translation/a594fed3": "resolved",
   "11_3_rois/0307/period_seam/a141f50d": "resolved",
+  "11_3_rois/0308/no_translation/449ff23d": "resolved",
   "11_3_rois/0315/caps_in_commentary/82f3d5cf": "resolved",
   "11_3_rois/0315/lemma_verse/7f766f80": "resolved",
   "11_3_rois/0315/no_lemma/e8972d50": "resolved",
@@ -171,15 +257,19 @@
   "11_3_rois/0343/hyphen_cut/88579ae7": "resolved",
   "11_3_rois/0343/lowercase_lemma/4eef0e45": "resolved",
   "11_3_rois/0344/footnote_writeout/d09c9038": "resolved",
+  "11_3_rois/0345/no_translation/4165d3c2": "resolved",
   "11_3_rois/0346/etc_for_et/1964c888": "resolved",
   "11_3_rois/0346/etc_for_et/6455d210": "resolved",
   "11_3_rois/0347/seam_repeat/0346": "resolved",
   "11_3_rois/0349/hyphen_cut/b81e2095": "resolved",
   "11_3_rois/0349/seam_repeat/0348": "resolved",
   "11_3_rois/0351/hyphen_cut/3e202fe0": "resolved",
+  "11_3_rois/0353/no_translation/2fa836a4": "false_positive",
   "11_3_rois/0354/long_translation/d523211e": "resolved",
   "11_3_rois/0358/footnote_writeout/9ad3efcc": "resolved",
   "11_3_rois/0358/footnote_writeout/b687431a": "resolved",
+  "11_3_rois/0362/verse_no_punct/4a972c61": "false_positive",
+  "11_3_rois/0362/verse_no_punct/77b7cf8b": "false_positive",
   "11_3_rois/0363/extra_footnotes/85fbfd07": "resolved",
   "11_3_rois/0363/leading_call/ff44ebfa": "resolved",
   "11_3_rois/0368/seam_repeat/0367": "resolved",
@@ -202,6 +292,7 @@
   "11_3_rois/0403/missing_footnote/28176d55": "resolved",
   "11_3_rois/0403/missing_footnote/575243f0": "resolved",
   "11_3_rois/0403/missing_footnote/c97fe82f": "resolved",
+  "11_3_rois/0403/no_translation/8599a981": "resolved",
   "11_3_rois/0404/footnote_asterisk/b6d8c2be": "resolved",
   "11_3_rois/0406/long_translation/c8d33a09": "resolved",
   "11_3_rois/0408/footnote_asterisk/662559ec": "resolved",
