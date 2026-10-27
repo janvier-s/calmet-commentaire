@@ -119,3 +119,9 @@ def test_neighbour_issue_pages(docs, progress):
     assert neighbour_issue_pages(its, progress, VOL, 195) == {"prev": 194, "next": 196, "open_in_book": 4}
     progress.set(its[3]["id"], "resolved")
     assert neighbour_issue_pages(its, progress, VOL, 195)["next"] is None
+
+
+def test_every_kind_is_in_exactly_one_theme():
+    from review_store import KIND_LABELS, KIND_THEMES
+    listed = [k for _, kinds in KIND_THEMES for k in kinds]
+    assert sorted(listed) == sorted(KIND_LABELS), (set(KIND_LABELS) ^ set(listed), [k for k in listed if listed.count(k) > 1])

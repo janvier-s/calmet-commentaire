@@ -341,6 +341,31 @@ FOOTNOTE_KINDS = {
     "footnote_asterisk", "footnote_writeout", "footnote_no_period",
 }
 
+# The type menu's groups, in the order shown (the book's structure outwards, to-dos last); within a group, the order of the list. Every kind of
+# KIND_LABELS belongs to exactly one (tests/test_queue.py); a kind left out would fall under "Other".
+KIND_THEMES = [
+    ("Pages", ["duplicate_page", "malformed_page", "missing_page", "empty_page"]),
+    ("Chapters", ["chapter_field", "empty_summary", "chapter_vulgate", "chapter_heading"]),
+    ("Verses", ["missing_verse", "duplicate_verse", "missing_french", "vulgate_filled", "latin_long_s",
+                "verse_no_punct"]),
+    ("Psalms", ["psalm_missing_verse", "psalm_missing_title", "psalm_number", "psalm_wrong_psalm",
+                "psalm_unmatched"]),
+    ("Page turns", ["seam_missing", "seam_repeat", "seam_unclear", "seam_artifact", "hyphen_cut",
+                    "italic_seam", "period_seam", "possible_gap", "missing_start"]),
+    ("Notes: structure", ["dropped_commentary", "empty_commentary", "no_lemma", "first_no_lemma"]),
+    ("Notes: lemma and translation", ["no_translation", "long_translation", "lowercase_lemma", "lemma_no_punct",
+                                      "lemma_unknown_word", "lowercase_translation", "translation_no_punct",
+                                      "hebrew_in_translation"]),
+    ("Verse numbers and references", ["no_verse_ref", "ref_order", "lemma_verse", "verse_mismatch", "chapter_ref",
+                                      "guessed_ref", "ref_candidate"]),
+    ("Footnotes", ["missing_footnote", "extra_footnotes", "broken_marker", "footnote_no_period",
+                   "footnote_asterisk", "footnote_writeout", "hebrew_recheck"]),
+    ("Typography", ["spaced_letters", "leading_punctuation", "leading_call", "etc_for_et", "stray_underscore",
+                    "caps_in_commentary"]),
+    ("To-dos", ["todo"]),
+]
+
+
 def kind_category(k):
     if k in VERSE_KINDS:
         return "verses"

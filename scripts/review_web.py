@@ -145,6 +145,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return {"data": data, "version": version}
 
     lock = threading.Lock()  # every change to the progress and the queue: marks and re-checks
+    audit_lock = threading.Lock()  # the re-checks' audits, one at a time; `lock` is held only to merge their result
 
     def mark(body):
         it = by_id.get(body.get("id"))
@@ -247,12 +248,13 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if audit is None:
             from page_audit import recheck_book
             audit = lambda v: recheck_book(v, store.data)
-        with lock:  # one at a time: a second save waits and audits the later file
-            new = audit(vol)
-            r = rs.merge_recheck(items, progress, rs.book_volumes(vol), new, include_optional) \
-                if new is not None else {"fixed": [], "added": []}  # a book the full audit leaves out
-            by_id.update({it["id"]: it for it in items})
-            r["fixed"] = r["fixed"] + close_stale_repeats(set(rs.book_volumes(vol)))
+        with audit_lock:  # one audit at a time: a second save waits and audits the later file
+            new = audit(vol)  # slow, and reads files only: marks and edits go on meanwhile
+            with lock:
+                r = rs.merge_recheck(items, progress, rs.book_volumes(vol), new, include_optional) \
+                    if new is not None else {"fixed": [], "added": []}  # a book the full audit leaves out
+                by_id.update({it["id"]: it for it in items})
+                r["fixed"] = r["fixed"] + close_stale_repeats(set(rs.book_volumes(vol)))
         also = [int(p) for p in body.get("also") or [] if str(p).isdigit() and int(p) != page]
         return {"fixed": len(r["fixed"]), "added": len(r["added"]),
                 "issues": [i for p in [page, *also] for i in rs.page_issues(items, progress, vol, p)],
@@ -459,7 +461,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return searcher.search(q.get("q") or "", [vol] if vol else store.volumes())
 
     config = {"token": token, "labels": rs.KIND_LABELS,
-              "kind_category": {k: rs.kind_category(k) for k in rs.KIND_LABELS}, "categories": list(rs.CATEGORIES),
+              "kind_category": {k: rs.kind_category(k) for k in rs.KIND_LABELS}, "themes": rs.KIND_THEMES, "categories": list(rs.CATEGORIES),
               "statuses": list(rs.STATUSES), "volumes": store.volumes(), "start": start or {},
               "turn_kinds": sorted(rt.TURN_KINDS), "todo_presets": todo_presets()}
     GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,

@@ -18,6 +18,7 @@
 <script type="module" src="/static/main.js"></script>
 </head>
 <body>
+<div id="loadbar" hidden><i></i></div>
 <header id="top">
   <select id="vol" title="Book (with how many issues of the list it has)"></select>
   <div class="group">
@@ -60,7 +61,8 @@
     </div>
     <div class="group">
       <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
-      <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to next (⌘⏎)">Resolved</button>
+      <button id="mark-resolved-recheck" class="ok recheck" data-icon="check" title="Resolved after the page's re-check has finished, so the issues your edits fixed are already closed in the list (Alt+⏎)">Resolved + re-check</button>
+      <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to the next issue at once; the re-check runs in the background (⌘⏎ / Ctrl+⏎)">Resolved</button>
     </div>
   </div>
 </header>

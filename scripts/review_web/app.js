@@ -30,11 +30,16 @@ export async function api(path, body) {
   }
 }
 
-export function toast(msg) {
+/** A message that slides up and away. `tone`: "ok" (green stripe), "warn" (orange), else read from the words. */
+export function toast(msg, tone) {
   document.querySelectorAll(".toast").forEach((t) => t.remove());  // one at a time
+  tone ??= /could not|couldn't|failed|not marked|no issue|refused|error|cannot|no other|nothing/i.test(msg) ? "warn"
+    : /saved|resolved|marked|accepted|copied|carried|fixed|reopened|written|reloaded|opened again/i.test(msg) ? "ok" : "";
   const t = el("div", { className: "toast", textContent: msg });
+  if (tone) t.dataset.tone = tone;
   document.body.append(t);
-  setTimeout(() => t.remove(), 2600);
+  setTimeout(() => t.classList.add("out"), 2400);
+  setTimeout(() => t.remove(), 2650);
 }
 
 /** A modal: message, optional body element, buttons [[value, label, className]]. Resolves to the

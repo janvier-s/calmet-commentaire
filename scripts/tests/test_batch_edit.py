@@ -98,3 +98,4 @@ def test_edit_refuses_a_field_changed_since_the_table(web):
 def test_edit_refuses_an_issue_with_no_field(web):
     code, r = web("/api/batch/edit", {"edits": [{"id": QUEUE[3]["id"], "was": "", "text": "x"}]})
     assert r["done"] == [] and [f["id"] for f in r["failed"]] == [QUEUE[3]["id"]]
+

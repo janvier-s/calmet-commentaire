@@ -38,8 +38,19 @@ function fillFilters() {
   const kinds = Object.keys(c.kind);
   if (Q.kind && !kinds.includes(Q.kind)) kinds.unshift(Q.kind);  // done to the last: on top, not at the bottom
   const kindTotal = Object.values(c.kind).reduce((a, b) => a + b, 0);
-  $("f-kind").replaceChildren(opt("", `🔎 All types (${kindTotal})`),
-    ...kinds.map((k) => opt(k, `${CAT_EMOJI[CAT_OF[k]] || "💬"} ${sentence(label(k))} (${c.kind[k] || 0})`)));
+  const kindOpt = (k) => opt(k, `${CAT_EMOJI[CAT_OF[k]] || "💬"} ${sentence(label(k))} (${c.kind[k] || 0})`);
+  // grouped by theme, in the server's order; a kind it does not list goes last, under "Other"
+  const themes = [...(S.config.themes || [])];
+  const listed = new Set(themes.flatMap(([, ks]) => ks));
+  const other = kinds.filter((k) => !listed.has(k));
+  if (other.length) themes.push(["Other", other]);
+  const groups = themes.map(([name, ks]) => {
+    const here = ks.filter((k) => kinds.includes(k));
+    const g = el("optgroup", { label: `${name} (${here.reduce((n, k) => n + (c.kind[k] || 0), 0)})` });
+    g.append(...here.map(kindOpt));
+    return here.length ? g : null;
+  }).filter(Boolean);
+  $("f-kind").replaceChildren(opt("", `🔎 All types (${kindTotal})`), ...groups);
   // the book chosen at the top is the book filter: each book with how many issues it has of this list
   for (const o of $("vol").options) if (o.value) o.textContent = c.book[o.value] ? `${o.value} (${c.book[o.value]})` : o.value;
   volShown();
@@ -89,8 +100,13 @@ function readFilters(reset) {
 
 function updateCounter() {
   const c = Q.counts && Q.counts.status;
-  $("counter").textContent = Q.items.length
-    ? `${Q.idx + 1}/${Q.items.length}` + (c ? ` · ${c.open} open` : "") : "no issues";
+  const text = Q.items.length ? `${Q.idx + 1}/${Q.items.length}` + (c ? ` · ${c.open} open` : "") : "no issues";
+  if (text !== $("counter").textContent) {  // a change ticks in
+    $("counter").classList.remove("tick");
+    void $("counter").offsetWidth;
+    $("counter").classList.add("tick");
+  }
+  $("counter").textContent = text;
   $("counter").title = c ? `${c.open} open · ${c.on_hold} on hold · ${c.skipped} skipped · ${c.false_positive} false positives · ${c.resolved} resolved` : "";
 }
 
@@ -131,24 +147,44 @@ function currentItem() {
   return Q.items.find((it) => it.id === Q.current) || S.issues.find((it) => it.id === Q.current) || null;
 }
 
+const justMarked = new Map();  // issue id -> when it was marked, for a moment: its pill pops once, however often the list is redrawn
 const marked = [];  // issues marked during this session, the last one last: Reopen takes them back
 
-async function mark(status) {
+let sending = Promise.resolve();  // the marks on their way to the server, in the order they were made
+
+/** Mark the current issue and go on. Quick: the list moves at once and the re-check a save started runs in the
+ *  background. `thorough`: wait for the re-check first, so the issues the edits fixed are closed in the list. */
+async function mark(status, { thorough = false } = {}) {
   const it = currentItem();
   if (!it) { toast("No issue selected: click one in the left column"); return; }
   if (S.dirty && !(await save({ redraw: false }))) return;  // a failed save stays put
   if (hooks.beforeMark && !(await hooks.beforeMark())) return;
-  await rechecked();  // the re-check the save started finishes before the next page loads
-  const r = await api("/api/mark", { id: it.id, status });
-  if (r.status !== 200) { toast(r.body.error || "Could not mark the issue"); return; }
-  for (const x of [...Q.items, ...S.issues]) if (x.id === it.id) x.status = status;
-  if (r.body.reopened) {  // a to-do done: the issue it held is open again
-    setStatus(r.body.reopened, null);
-    toast("The issue this to-do held is open again");
+  if (thorough && pending.size) {  // only here does the bar show
+    const vol = S.vol;
+    barStart(vol);
+    await rechecked();
+    barEnd();
   }
+  // the list moves on at once; the server hears of it meanwhile, and a refusal puts the status back
+  const was = statusOf(it);
+  setStatus(it.id, status);
   if (status) marked.push(it);
-  await refreshCounts();
+  if (DONE.has(status)) { justMarked.set(it.id, performance.now()); setTimeout(() => justMarked.delete(it.id), 600); }
   renderIssues();
+  sending = sending.then(() => api("/api/mark", { id: it.id, status })).then(async (r) => {
+    if (r.status !== 200) {
+      setStatus(it.id, was);
+      const k = marked.lastIndexOf(it);
+      if (k >= 0) marked.splice(k, 1);
+      renderIssues();
+      toast(r.body.error || "Could not mark the issue");
+    } else if (r.body.reopened) {  // a to-do done: the issue it held is open again
+      setStatus(r.body.reopened, null);
+      toast("The issue this to-do held is open again");
+    }
+    await refreshCounts();
+    renderIssues();
+  }, () => { setStatus(it.id, was); renderIssues(); toast("Could not reach the server: the issue was not marked"); });
   if (status) step(1);
 }
 
@@ -156,6 +192,7 @@ async function mark(status) {
 async function reopen() {
   const it = marked.pop();
   if (!it) { toast("Nothing marked yet in this session"); return; }
+  await sending;
   const r = await api("/api/mark", { id: it.id, status: null });
   if (r.status !== 200) { marked.push(it); toast(r.body.error || "Could not reopen the issue"); return; }
   for (const x of [...Q.items, ...S.issues]) if (x.id === it.id) x.status = null;
@@ -220,8 +257,10 @@ function renderIssues() {
   const pills = here_.map((it, k) => {
     const cat = CAT_OF[it.kind] || "commentary";
     const st = statusOf(it);
-    const p = el("button", { className: `pill ${KIND[cat]}` + (DONE.has(st) || it.fixed ? " done" : "") + (it.id === Q.current ? " cur" : ""),
+    const p = el("button", { className: `pill ${KIND[cat]}` + (DONE.has(st) || it.fixed ? " done" : "") + (it.id === Q.current ? " cur" : "")
+                               + (justMarked.has(it.id) ? " pop" : ""),
                              title: `${label(it.kind)}: ${it.msg}`, onclick: () => select(it) }, icon(cat, 11), String(k + 1));
+    if (justMarked.has(it.id)) p.style.animationDelay = `-${Math.round(performance.now() - justMarked.get(it.id))}ms`;  // carry on, not restart
     return p;
   });
   const toggle = el("button", { className: "link", textContent: n ? `${panelOpen ? "▴ hide" : "▾ show"} all ${n}` : "no issues on this page",
@@ -274,10 +313,33 @@ nav.go = async (vol, page) => {
 
 // --- re-check on save: the audit of the book runs again on the server ---
 let running = 0;
-const pending = new Set();
-/** Resolves once every re-check under way has finished (a save starts one without waiting for it). */
-export const rechecked = () => Promise.all([...pending]);
 /** Run the audit of the book again; `also`: other pages whose issues to bring back (a page turn). */
+const pending = new Set();
+const recheckMs = new Map();  // book -> how long its last re-check took: the bar fills over that long
+let barHide = 0;
+
+/** The bar along the top, for Resolved + re-check only: fills (fast, then slower) over the time the book's last
+ *  re-check took, holds near the end if this one is slower, and completes when the re-check is done. */
+function barStart(vol) {
+  const bar = $("loadbar"), fill = bar.firstElementChild;
+  clearTimeout(barHide);
+  fill.style.transition = "none";
+  fill.style.width = "0";
+  bar.hidden = false;
+  void fill.offsetWidth;
+  fill.style.transition = `width ${recheckMs.get(vol) || 4000}ms cubic-bezier(.1, .7, .3, 1)`;
+  fill.style.width = "92%";
+}
+
+function barEnd() {
+  const bar = $("loadbar"), fill = bar.firstElementChild;
+  fill.style.transition = "width .15s";
+  fill.style.width = "100%";
+  barHide = setTimeout(() => { bar.hidden = true; }, 350);
+}
+
+/** Resolves once every re-check under way has finished (a save starts one without waiting for it). */
+const rechecked = () => Promise.all([...pending]);
 export function recheck(vol = S.vol, page = S.page, also = []) {
   const p = runRecheck(vol, page, also);
   pending.add(p);
@@ -289,9 +351,11 @@ export function recheck(vol = S.vol, page = S.page, also = []) {
 async function runRecheck(vol, page, also) {
   running++;
   $("rechecking").textContent = "re-checking…";
+  const t0 = performance.now();
   let r;
   try { r = await api("/api/recheck", { vol, page, also }); } catch (e) { r = { status: 0, body: {} }; }
   if (--running === 0) $("rechecking").textContent = "";
+  if (r.status === 200) recheckMs.set(vol, Math.max(600, Math.round(performance.now() - t0)));  // what the bar fills over next time
   if (r.status !== 200) { toast(`Re-check failed: ${r.body.error || "no answer"}`); return; }
   const byId = new Map(r.body.issues.map((it) => [it.id, it]));
   for (const it of Q.items) {
@@ -368,11 +432,13 @@ $("f-kind").onchange = () => applyFilters(readFilters(false));
 $("issue-prev").onclick = () => step(-1);
 $("issue-next").onclick = () => step(1);
 $("mark-resolved").onclick = () => mark("resolved");
+$("mark-resolved-recheck").onclick = () => mark("resolved", { thorough: true });
 $("mark-fp").onclick = () => mark("false_positive");
 $("mark-skip").onclick = () => mark("skipped");
 $("mark-hold").onclick = () => mark("on_hold");
 $("mark-reopen").onclick = reopen;
 document.addEventListener("keydown", (e) => {
+  if (e.altKey && !e.metaKey && !e.ctrlKey && e.key === "Enter") { e.preventDefault(); mark("resolved", { thorough: true }); return; }
   if (!(e.metaKey || e.ctrlKey)) return;
   const k = e.key;
   const act = k === "Enter" ? () => mark("resolved") : k.toLowerCase() === "p" ? () => mark("false_positive")

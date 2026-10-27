@@ -177,23 +177,27 @@ def test_progress_update_writes_once_and_atomically(progress, data_dir, monkeypa
     assert reviews(data_dir) == {a: "resolved", b: "resolved"}
 
 
-def test_mark_waits_for_a_running_recheck(data_dir):
+def test_mark_does_not_wait_for_a_running_audit(data_dir):
+    """The audit runs outside the lock marks take; its merge, under the lock, respects what was marked meanwhile."""
     order = []
 
     def slow(vol):
         order.append("audit start")
         time.sleep(0.3)
         order.append("audit end")
-        return list(QUEUE)
+        return [q for q in QUEUE if q["id"] != QUEUE[1]["id"]]  # the audit no longer finds the second issue
     srv, post = server(data_dir, slow)
     try:
         t = threading.Thread(target=post, args=("/api/recheck", {"vol": VOL, "page": 194}))
         t.start()
         time.sleep(0.1)
         post("/api/mark", {"id": QUEUE[0]["id"], "status": "resolved"})
+        post("/api/mark", {"id": QUEUE[1]["id"], "status": "false_positive"})
         order.append("marked")
         t.join()
-        assert order == ["audit start", "audit end", "marked"]
+        assert order == ["audit start", "marked", "audit end"]
+        assert reviews(data_dir)[QUEUE[0]["id"]] == "resolved"
+        assert reviews(data_dir)[QUEUE[1]["id"]] == "false_positive"  # not turned into "fixed" by the merge
     finally:
         srv.shutdown()
 

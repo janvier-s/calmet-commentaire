@@ -12,11 +12,23 @@
    "msg": "Verse 29:11: french does not end with punctuation: “…l qui me voyait me rendait témoignage, en publiant” (a word lost, or the verse runs on overleaf?)",
    "page": 356
   },
+  "20_job/0374/missing_start/d60aa758": {
+   "book_dir": "20_job",
+   "kind": "missing_start",
+   "msg": "The first note opens in the middle of a sentence (“ou plutôt, ma droiture, mon innocence, ma justice.…”) but the last note of the page before (“SIMPLICITATEM MEAM.…”) has no comment: the start of the comment is missing (typed on the page before, or lost at the page turn)",
+   "page": 374
+  },
   "20_job/0410/long_translation/43081283": {
    "book_dir": "20_job",
    "kind": "long_translation",
    "msg": "Translation of 163 characters for a lemma of 53 “SUBITO MORIENTUR, ET IN MEDIA NOCTE TURB”: “Ils mourront tout d'un coup ; et au milieu de la nuit, les peuples se soulèveront ; ils pa…”: commentary run into the translation?",
    "page": 410
+  },
+  "20_job/0514/caps_in_commentary/26feb510": {
+   "book_dir": "20_job",
+   "kind": "caps_in_commentary",
+   "msg": "Capitals inside the comment: “…ABRAHAM.\nISAAC.\nJACOB. — ESAU.\nLEVI. RAHUEL.\nAMRAM. ZARÉ.\nMOYSES. JOBAB. _Voyez 1 Para…”: a lemma that should start its own note, or a word to put in lower case?",
+   "page": 514
   }
  },
  "status": {
@@ -44,6 +56,7 @@
   "20_job/0078/footnote_asterisk/b78ad7d9": "resolved",
   "20_job/0080/leading_call/7beaff32": "resolved",
   "20_job/0082/footnote_writeout/78692b4c": "resolved",
+  "20_job/0083/missing_start/6522822d": "resolved",
   "20_job/0084/no_lemma/766de3ee": "resolved",
   "20_job/0085/period_seam/01fed50f": "resolved",
   "20_job/0086/no_lemma/b64ab8bd": "resolved",
@@ -338,6 +351,7 @@
   "20_job/0369/lowercase_lemma/f4c6fd0e": "resolved",
   "20_job/0370/footnote_writeout/1aa5d51c": "resolved",
   "20_job/0373/long_translation/5624e036": "resolved",
+  "20_job/0374/missing_start/d60aa758": "false_positive",
   "20_job/0374/no_lemma/9d8dd90b": "resolved",
   "20_job/0375/leading_call/8a37fb0d": "resolved",
   "20_job/0375/long_translation/76296864": "resolved",
@@ -477,6 +491,7 @@
   "20_job/0511/hyphen_cut/518e8c55": "resolved",
   "20_job/0514/caps_in_commentary/0abaa753": "resolved",
   "20_job/0514/caps_in_commentary/0f44c061": "resolved",
+  "20_job/0514/caps_in_commentary/26feb510": "false_positive",
   "20_job/0514/caps_in_commentary/3856c153": "resolved",
   "20_job/0514/caps_in_commentary/49c02e6f": "resolved",
   "20_job/0514/caps_in_commentary/511dde06": "resolved",

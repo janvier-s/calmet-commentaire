@@ -327,7 +327,7 @@ async function stepTurn(dir) {
 }
 
 /** Write each changed side; true when everything is saved. */
-export async function saveTurn() {
+export async function saveTurn({ wait = true } = {}) {
   let wrote = false;
   for (const s of sides().filter((x) => x.dirty)) {
     const data = typed(s);
@@ -345,14 +345,17 @@ export async function saveTurn() {
     Object.assign(s, { data: r.body.data, version: r.body.version, dirty: false });
     wrote = true;
   }
-  await refresh(wrote);
+  await refresh(wrote, wait);
   return true;
 }
 
 /** Load the turn again (after a save or an accepted proposal), re-checking the book first. */
-export async function refresh(recheckFirst = true) {
+export async function refresh(recheckFirst = true, wait = true) {
   const a = T.a ? T.a.page : null;
-  if (recheckFirst && a != null) await recheck(T.vol, a, T.b ? [T.b.page] : []);
+  if (recheckFirst && a != null) {
+    const done = recheck(T.vol, a, T.b ? [T.b.page] : []);
+    if (wait) await done;  // not when moving on: Resolved + re-check waits for it on its own
+  }
   if (a != null && (await fetchTurn({ vol: T.vol, a }))) render();
   $("dirty").textContent = "saved";
   setTimeout(() => { if (!dirty()) showDirty(); }, 1500);
@@ -383,7 +386,7 @@ hooks.showTurn = async (it) => {
   if (S.config.turn_kinds.includes(it.kind)) return openTurn({ id: it.id });
   if (T.open) return closeTurn();
 };
-hooks.beforeMark = async () => !T.open || !dirty() || saveTurn();
+hooks.beforeMark = async () => !T.open || !dirty() || saveTurn({ wait: false });  // the re-check runs on; only Resolved + re-check waits
 
 // going to another page (or issue) leaves the view; the issue's own turn opens again after
 const innerGo = nav.go;
