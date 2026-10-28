@@ -85,6 +85,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     def page_payload(vol, page, data, version):
         return {"page": page, "data": data, "version": version, "scan": store.scan(vol, page) is not None,
                 "context": store.context(vol, page), "pages": store.pages(vol),
+                "chapters": store.chapters(vol),
                 "issues": rs.page_issues(items, progress, vol, page),
                 "around": rs.neighbour_issue_pages(items, progress, vol, page),
                 "reviewed": {k: sorted(progress.reviewed.get(vol, {}).get(k, ())) for k in rs.REVIEW_SECTIONS}}

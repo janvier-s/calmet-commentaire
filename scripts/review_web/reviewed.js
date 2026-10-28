@@ -53,6 +53,25 @@ function setHidden(v) {
   draw();
 }
 
+/** A bar for the chapter(s) on this page, filled by the share of their pages read through in `sec`.
+ *  It sits at the left of the bar and follows the review as pages are marked. */
+function chapterProgress(sec, have) {
+  const onPage = (S.chapters || []).filter((ch) => ch.pages.includes(S.page));
+  if (!onPage.length) return null;
+  const rows = onPage.map((ch) => {
+    const total = ch.pages.length;
+    const n = ch.pages.reduce((k, p) => k + (have.has(p) ? 1 : 0), 0);
+    const pct = total ? Math.round((100 * n) / total) : 0;
+    const fill = el("i");
+    fill.style.width = "0%";  // drawn after insertion, so it fills to the count as the bar appears
+    const bar = el("span", { className: "chapter-bar", title: `Ch. ${ch.chapter}: ${n}/${total} ${sec} pages reviewed (${pct}%)` }, fill);
+    requestAnimationFrame(() => { fill.style.width = `${pct}%`; });
+    return el("span", { className: "chapter-row", title: `Ch. ${ch.chapter}: ${n}/${total} ${sec} pages reviewed (${pct}%)` },
+      el("span", { className: "chapter-label", textContent: `Ch. ${ch.chapter} ${n}/${total}` }), bar);
+  });
+  return el("div", { className: "chapter-progress", title: "Pages reviewed in this chapter (follows the review)" }, ...rows);
+}
+
 function draw() {
   if (!S.reviewed.commentary) return;
   $("reviewed").hidden = false;
@@ -65,7 +84,8 @@ function draw() {
   const sec = focus(), have = done(sec);
   const nextUn = S.pages.find((p) => p > S.page && !have.has(p));
   const firstUn = S.pages.find((p) => !have.has(p));
-  $("reviewed").replaceChildren(
+  $("reviewed").replaceChildren(...[
+    chapterProgress(sec, have),
     ...SECTIONS.map(([k, label]) => el("button", {
       className: (done(k).has(S.page) ? "on" : "") + (k === sec ? " cur" : ""),
       title: `${label} of this page read through (independent of the issues)`, onclick: () => toggle(k),
@@ -77,7 +97,7 @@ function draw() {
                          icon("fwd", 12), `Resume p.${firstUn}`) : null,
     nextUn != null && nextUn !== firstUn ? el("button", { className: "link", title: `The next page after this one whose ${sec} is not reviewed`, onclick: () => go(S.vol, nextUn) }, `next p.${nextUn}`, icon("next", 12)) : null,
     el("button", { className: "link", title: "Hide this bar", textContent: "Hide ▾", onclick: () => setHidden(true) }),
-  );
+  ].filter(Boolean));
 }
 
 hooks.afterRender.push(draw);

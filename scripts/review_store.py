@@ -54,6 +54,7 @@ class Store:
     def __init__(self, data: Path, docs: Path):
         self.data, self.docs = Path(data), Path(docs)
         self._index = {}  # volume -> chapter:verse index, see locate()
+        self._chapters = {}  # volume -> [{"chapter": n, "pages": [...]}], see chapters()
 
     def volumes(self):
         return sorted(p.name for p in self.data.iterdir() if (p / "normalized").is_dir())
@@ -64,6 +65,39 @@ class Store:
     def pages(self, vol):
         return sorted(int(m.group(1)) for f in (self.data / vol / "normalized").iterdir()
                       if (m := PAGE_FILE.fullmatch(f.name)))
+
+    def chapters(self, vol):
+        """Every chapter with its pages: a page that ends one chapter and starts the next counts in
+        both; a page with no verse or note goes with the chapter it opens (a title page), else with
+        the chapter before it."""
+        if vol in self._chapters:
+            return self._chapters[vol]
+        seq = []
+        for p in self.pages(vol):
+            d = self._load(vol, p) or {}
+            chapters = []
+            for e in (d.get("verses") or []) + (d.get("commentary") or []):
+                ch = e.get("chapter")
+                if isinstance(ch, int) and ch not in chapters:
+                    chapters.append(ch)
+            if not chapters and isinstance(d.get("chapter_number"), int):
+                chapters.append(d["chapter_number"])
+            titled = bool((d.get("chapter_title") or "").strip() or (d.get("chapter_summary") or "").strip())
+            seq.append((p, chapters, titled))
+        known = [i for i, (_, chapters, _) in enumerate(seq) if chapters]
+        for i, (p, chapters, titled) in enumerate(seq):
+            if chapters:
+                continue
+            before = next((seq[j][1] for j in reversed(known) if j < i), None)
+            after = next((seq[j][1] for j in known if j > i), None)
+            seq[i] = (p, after if titled and after else before or after or [], titled)
+        by = {}
+        for p, chapters, _ in seq:
+            for ch in chapters:
+                by.setdefault(ch, []).append(p)
+        out = [dict(chapter=ch, pages=pages) for ch, pages in sorted(by.items())]
+        self._chapters[vol] = out
+        return out
 
     @staticmethod
     def _version(p):
@@ -104,6 +138,7 @@ class Store:
     def changed(self, vol):
         """Drop what was built from the volume's pages."""
         self._index.pop(vol, None)
+        self._chapters.pop(vol, None)
 
     def scan(self, vol, page):
         return find_source_image(self.data / vol, page)

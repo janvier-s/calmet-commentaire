@@ -52,6 +52,7 @@ def test_get_page(web):
     assert p["context"]["prev"]["page"] == 193 and p["scan"] is True
     assert [i["kind"] for i in p["issues"]] == ["hyphen_cut", "missing_footnote"]
     assert p["around"]["open_in_book"] == 3 and p["pages"] == [193, 194, 195]
+    assert p["chapters"] == [{"chapter": 17, "pages": [193, 194, 195]}]
 
 
 def test_missing_page_then_create(web):

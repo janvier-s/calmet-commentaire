@@ -134,7 +134,9 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   "Verse reference to check"; Reject makes them false positives). Batch: every issue of the type
   chosen in the filters in a table: tick and accept the proposals, or tick any rows (proposal or not) and
   mark them Resolved or False positive; the field an issue points at is a text box in its row (Save n edits
-  writes them, one write per page; Resolve saves a ticked row's typed text first). The review is kept per book in
+  writes them, one write per page; Resolve saves a ticked row's typed text first). The foot bar marks
+  the pages read through, and a chapter bar at its left fills with the share of the current chapter's
+  pages reviewed, following the review as you go. The review is kept per book in
   `data/<book>/review.json` (statuses, false positives with what they said, the page to-dos), so
   that volunteers working on different books never touch the same file; the editor folds the old
   shared files (`data/.review_queue_progress.json`, `docs/false_positives.json`,

@@ -397,11 +397,20 @@ button.ok:hover, button.warn:hover { filter: brightness(1.1); }
 #reviewed[hidden] { display: none; }
 #reviewed.min { background: none; border-top: 0; pointer-events: none; }
 #reviewed.min > * { pointer-events: auto; }
-body.rev-on { padding-bottom: 36px; box-sizing: border-box; }
+body.rev-on { padding-bottom: 42px; box-sizing: border-box; }
 #reviewed button { font-size: 12px; display: inline-flex; align-items: center; gap: 4px; }
 #reviewed button.on { border-color: var(--ok); color: var(--ok); font-weight: 600;
   background: color-mix(in srgb, var(--ok) 14%, transparent); }
 #reviewed button.cur { text-decoration: underline; text-underline-offset: 3px; }
+/* chapter progress: the chapter on this page, left of the buttons, filled by the share of its
+   pages read through in the section shown (it follows the review) */
+#reviewed .chapter-progress { flex: 0 1 auto; display: flex; align-items: center; gap: 10px; margin-right: auto; min-width: 0; }
+#reviewed .chapter-row { display: flex; align-items: center; gap: 6px; min-width: 0; }
+#reviewed .chapter-label { white-space: nowrap; font-size: 11px; line-height: 1; color: var(--muted);
+  font-variant-numeric: tabular-nums; }
+#reviewed .chapter-bar { display: block; width: 110px; max-width: 16vw; height: 8px; border-radius: 4px;
+  overflow: hidden; background: color-mix(in srgb, var(--ok) 16%, var(--border)); }
+#reviewed .chapter-bar i { display: block; height: 100%; background: var(--ok); border-radius: 4px; transition: width .25s ease; }
 body.turn-open #reviewed, body.batch-open #reviewed { display: none; }
 
 /* italics in the commentary also underlined, to spot them at a glance */
