@@ -6,6 +6,12 @@
    "msg": "Chapter 1 opens here but chapter_summary is empty: type it from the scan (or the heading is a running head and chapter_number/chapter_title should go)",
    "page": 23
   },
+  "24_cantique/0037/hebrew_in_translation/7d5141eb": {
+   "book_dir": "24_cantique",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “FASCICULUS MYRRHÆ DILECTUS MEUS MIHI ; I”: “Mon bien-aimé est pour moi comme un bouquet de myrrhe, ou comme un paquet de myrrhe ; il demeurera e…”: commentary or a variant run into the translation?",
+   "page": 37
+  },
   "24_cantique/0041/empty_summary/00e21a9c": {
    "book_dir": "24_cantique",
    "kind": "empty_summary",
@@ -109,6 +115,11 @@
    "page": 126
   }
  },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
+ },
  "status": {
   "24_cantique/0023/empty_summary/1d571abc": "false_positive",
   "24_cantique/0023/verse_no_punct/dfb8dfdc": "resolved",
@@ -136,6 +147,7 @@
   "24_cantique/0035/missing_verse/1cb9ea74": "resolved",
   "24_cantique/0035/no_translation/f4aabda4": "resolved",
   "24_cantique/0036/footnote_writeout/b2696c1b": "resolved",
+  "24_cantique/0037/hebrew_in_translation/7d5141eb": "false_positive",
   "24_cantique/0039/footnote_writeout/865a549e": "resolved",
   "24_cantique/0039/period_seam/a2c00e1a": "resolved",
   "24_cantique/0040/footnote_no_period/e6fa64d6": "resolved",
@@ -147,6 +159,8 @@
   "24_cantique/0045/footnote_writeout/d07c1a3e": "resolved",
   "24_cantique/0045/period_seam/066c5abc": "resolved",
   "24_cantique/0046/footnote_writeout/077556c1": "resolved",
+  "24_cantique/0046/italic_seam/ff831597": "resolved",
+  "24_cantique/0047/seam_missing/0046": "resolved",
   "24_cantique/0051/lemma_verse/b99a7639": "resolved",
   "24_cantique/0051/no_lemma/5350ba1f": "resolved",
   "24_cantique/0051/verse_mismatch/54c3d17b": "resolved",
@@ -155,10 +169,13 @@
   "24_cantique/0053/footnote_writeout/47d639ab": "resolved",
   "24_cantique/0053/footnote_writeout/f2f55d6a": "resolved",
   "24_cantique/0053/no_lemma/f5b75405": "resolved",
+  "24_cantique/0053/seam_repeat/0052": "resolved",
   "24_cantique/0054/guessed_ref/e300a0dd": "resolved",
   "24_cantique/0054/ref_order/1ea3f35e": "resolved",
   "24_cantique/0054/verse_mismatch/62058a58": "resolved",
+  "24_cantique/0055/empty_commentary/816cf899": "resolved",
   "24_cantique/0055/footnote_writeout/86df2db9": "resolved",
+  "24_cantique/0055/seam_missing/0054": "resolved",
   "24_cantique/0056/footnote_writeout/d61c8e4c": "resolved",
   "24_cantique/0058/empty_summary/22f187b5": "false_positive",
   "24_cantique/0059/guessed_ref/44fbe923": "resolved",
@@ -175,7 +192,10 @@
   "24_cantique/0065/empty_summary/0e6cc481": "false_positive",
   "24_cantique/0066/footnote_writeout/004f8ec7": "resolved",
   "24_cantique/0066/footnote_writeout/76496196": "resolved",
+  "24_cantique/0067/empty_commentary/27ea3587": "resolved",
+  "24_cantique/0067/hebrew_in_translation/c6e3060a": "resolved",
   "24_cantique/0067/period_seam/9ac7fb7a": "resolved",
+  "24_cantique/0067/seam_missing/0066": "resolved",
   "24_cantique/0070/caps_in_commentary/d54f743e": "resolved",
   "24_cantique/0070/italic_seam/7df2782d": "resolved",
   "24_cantique/0070/lemma_verse/4abcd6c9": "resolved",
@@ -251,6 +271,7 @@
   "24_cantique/0107/footnote_writeout/a8998644": "resolved",
   "24_cantique/0107/guessed_ref/9ef90b23": "resolved",
   "24_cantique/0107/ref_order/53421539": "resolved",
+  "24_cantique/0108/seam_missing/0107": "resolved",
   "24_cantique/0109/caps_in_commentary/c11e0984": "resolved",
   "24_cantique/0109/lemma_no_punct/4495f369": "resolved",
   "24_cantique/0109/lemma_verse/4fcf4d38": "resolved",

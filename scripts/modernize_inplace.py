@@ -1721,6 +1721,949 @@ RX_SPACE_COLON = re.compile(r"(?<=[a-zA-ZÀ-ÿ0-9_\)»”]):(?=[A-Za-zÀ-ÿ«“
 RX_SPACE_EXCL_QUEST = re.compile(r"(?<=[a-zA-ZÀ-ÿ0-9_\)»”])([!\?])(?=[A-Za-zÀ-ÿ«“])")
 RX_SPACE_PERIOD = re.compile(r"(?<=[a-zA-ZÀ-ÿ]{2})\.(?=[A-ZÀ-ÿ«“])")
 
+# 4. Contextual OCR Long-S and Typographical Confusions
+RX_FORTE_ADV1 = re.compile(r"\b([Ee]n|[Dd]e)\s+forte\s+(que\b|qu['\b])", re.I)
+RX_FORTE_ADV2 = re.compile(r"\b([Ee]n|[Dd]e)\s+(quelque|cette|même|telle)\s+forte\b", re.I)
+RX_FORTE_LA = re.compile(r"\b([Dd]e)\s+la\s+forte\b", re.I)
+RX_FAIRE_EN_FORTE = re.compile(r"\b([Ff]aire|[Ff]ait|[Ff]aisant|[Ff]it|[Ff]irent)\s+en\s+forte\b", re.I)
+RX_FORTE_DET = re.compile(r"\b([Cc]ette|[Uu]ne|[Aa]utre|[Tt]oute|[Nn]ouvelle)\s+forte\s+(de\b|d')", re.I)
+RX_FORTES_DET = re.compile(r"\b([Cc]es|[Pp]lusieurs|[Tt]outes|[Dd]ifférentes|[Dd]iverses|[Nn]ouvelles|deux|trois|quatre|cinq|six|sept|huit|neuf|dix)\s+fortes\s+(de\b|d')", re.I)
+
+RX_ON_FAIT_QUE = re.compile(r"(?<!-t')(?<!-t-)(?<!-)\b([Oo]n|l'on|L'on)\s+fait(\s+(?:que\b|qu'))")
+RX_NE_FAIT_ON = re.compile(r"\b(Ne\s+)fait(-on\s+pas\s+(?:que\b|qu'))", re.I)
+RX_QUI_FAIT_SI = re.compile(r"\b(Qui\s+)fait(\s+si\b)", re.I)
+RX_NUL_NE_FAIT = re.compile(r"\b(Nul\s+ne\s+)fait(\s+(?:ce\s+qui|ce\s+que|si\b|que\b|qu'))", re.I)
+RX_ON_NE_FAIT = re.compile(r"\b((?:[Oo]n|[Ii]l|[Ee]lle)\s+ne\s+)fait(\s+(?:que\s+trop|pas\s+précisément|point\b|ni\s+le\b|comment\b|quel\b|quelle\b|quels\b|quelles\b))")
+RX_ON_FAIT_ADV = re.compile(r"(?<!-t')(?<!-t-)(?<!-)\b([Oo]n|l'on|L'on)\s+fait(\s+(?:d'ailleurs\b|certainement\b|indubitablement\b|pourtant\b|très\s+peu\b|par\s+l'Histoire\b|par\s+Joseph\b))")
+
+RX_O_TARGETS = re.compile(r"\bO\s+(Dieu|Seigneur|Jésus|Christ|Sauveur|Père|Roi|Monarque|Créateur|Maître|Prince|Pontife|Pasteur|Soleil|Terre|Ciel|Cieux|Mort|Mortels|Hommes|Génération|Vierge|Marie|Patrie|Jérusalem|Sion|Béthel|Israël|Jacob|Juda|Éphraïm|Rome|Tyre|Babel|Babylone|Monsieur|Monseigneur|Chrétien|Chrétiens|Âme|mon\s+Dieu|mon\s+Seigneur|mon\s+âme|mon\s+cher|mon\s+frère|mon\s+fils|mon\s+peuple|ma\s+patrie|notre\s+Dieu|mes\s+frères|mes\s+enfants|vous\b|toi\b|homme\b|femme\b|prince\b|roi\b|peuple\b|pasteur\b|mort\b|mortel\b|mortels\b|malheureux\b|aveugle\b|insensé\b|insensés\b|race\b|si\b|combien\b|qu\'il\b|qu\'elle\b|qu\'ils\b|qu\'elles\b)", re.I)
+RX_O_PUNCT = re.compile(r"\bO\s*([!\?])")
+
+# 5. Obsolete Diaeresis (¨) Cleanup
+PROTECTED_UE = {
+    'aiguë', 'aiguës', 'ciguë', 'ciguës', 'contiguë', 'contiguës', 'ambiguë', 'ambiguës',
+    'exiguë', 'exiguës', 'suraiguë', 'suraiguës',
+    'manuë', 'suë', 'thécuë', 'elisuë', 'abisuë', 'bouterouë',
+}
+RX_UE = re.compile(r"\b([A-Za-zÀ-ÿ]+)uë(s?)\b")
+
+EXACT_TREMA_MAP = {
+    'enÿvrée': 'enivrée', 'paÿs': 'pays', 'martianaÿ': 'martianay',
+    'tÿrin': 'tyrin', 'ieronÿm': 'ieronym',
+    'nöces': 'noces', 'médäilles': 'médailles', 'bäton': 'bâton', 'bätons': 'bâtons',
+    'considéröit': 'considérait', 'moäb': 'moab', 'canaän': 'canaan',
+    'naäman': 'naaman', 'önkélos': 'onkélos',
+    'désobéïssante': 'désobéissante', 'désobéïssantes': 'désobéissantes',
+    'désobéïssance': 'désobéissance', 'désobéïssances': 'désobéissances', 'désobéïssances_': 'désobéissances_',
+    'obéïssions': 'obéissions', 'obéïffez': 'obéissez',
+    'boëte': 'boîte', 'boëtes': 'boîtes', 'emboëttaient': 'emboîtaient',
+    'coëffure': 'coiffure', 'coëffures': 'coiffures', 'coëffe': 'coiffe', 'coëffes': 'coiffes',
+    'moëlle': 'moelle', 'moëlles': 'moelles', 'moëlleux': 'moelleux', 'moëlleuse': 'moelleuse', 'moëlleuses': 'moelleuses',
+    'recoëilli': 'recueilli',
+    'moüelleuse': 'moelleuse', 'moüelleuses': 'moelleuses',
+    'secoüaient': 'secouaient', 'secoüez': 'secouez', 'secoüons': 'secouons',
+    'joüions': 'jouions', 'joüoient': 'jouaient',
+    'foüillera': 'fouillera', 'foüetteront': 'fouetteront', 'foüettèrent': 'fouettèrent',
+    'soüetté': 'fouetté', 'soüettez': 'fouettez', 'doüane': 'douane', 'broüillars': 'brouillards',
+    'recüilli': 'recueilli', 'recüeiilir': 'recueillir', 'cüeuillette': 'cueillette',
+    'orgüeisleux': 'orgueilleux', 'orgüeuilleuse': 'orgueilleuse', 'enorgüeilleront': 'enorgueilliront',
+    'réüniffez': 'réunissez', 'réüffit': 'réussit', 'réüsfira': 'réussira',
+    'réjoüissont': 'réjouissent', 'réjoüies': 'réjouies', 'éüeillex': 'éveillez',
+    'dépoüilloit': 'dépouillait', 'poüilla': 'dépouilla', 'concliüera': 'conclura',
+    'ponctüent': 'ponctuent', 'tüiez': 'tuiez', 'salüé': 'salué', 'salüssent': 'saluent',
+    'infinüent': 'insinuent', 'remüement': 'remuement', 'remüa': 'remua',
+    'prostitüait': 'prostituait', 'exténüera': 'exténuera',
+    'baudoüin': 'baudouin', 'hardoüin': 'hardouin', 'hardüin': 'hardouin', 'chasteüil': 'chasteuil',
+    'ouëst': 'ouest', 'eduëens': 'éduens', 'elymëens': 'élyméens', 'elyméëns': 'élyméens',
+    'suëves': 'suèves', 'aëriens': 'aériens', 'ifraëlites': 'israëlites',
+    'infinuë': 'insinue', 'insinuëra': 'insinuera', 'in-sinuë': 'in-sinue',
+    'diminuëront': 'diminueront', 'perpetuë': 'perpétue', 'reftituë': 'restitue', 'fouvenuë': 'souvenue',
+    'abbatuë': 'abattue', 'abbatuës': 'abattues', 'abbattuës': 'abattues', 'acruë': 'accrue',
+    'charrouës': 'charrues', 'perluë': 'perdue', 'deffenduës': 'défendues', 'devennës': 'devenues',
+    'prévûë': 'prévue', 'prévûës': 'prévues', 'pourvûës': 'pourvues',
+    'résoluëment': 'résolument', 'cruëment': 'crûment', 'hochequeuë': 'hochequeue',
+    'continuëraient': 'continueraient', 'avouëront': 'avoueront', 'excluëra': 'exclura',
+    'concluëra': 'conclura', 'prostituëront': 'prostitueront', 'entretuërent': 'entretuèrent',
+}
+
+# 6. Obsolete & Broken Hyphens Normalization
+EXACT_HYPHEN_MAP = {
+    # 18th century compound adverbs / words -> single word
+    "long-temps": "longtemps",
+    "Long-temps": "Longtemps",
+    "bien-tôt": "bientôt",
+    "Bien-tôt": "Bientôt",
+    "aussi-tôt": "aussitôt",
+    "Aussi-tôt": "Aussitôt",
+    "si-tôt": "sitôt",
+    "Si-tôt": "Sitôt",
+    "sur-tout": "surtout",
+    "Sur-tout": "Surtout",
+    "par-tout": "partout",
+    "Par-tout": "Partout",
+    "mal-aisé": "malaisé",
+    "Mal-aisé": "Malaisé",
+    "mal-aisée": "malaisée",
+    "Mal-aisée": "Malaisée",
+    "mal-aisés": "malaisés",
+    "Mal-aisés": "Malaisés",
+    "mal-aisées": "malaisées",
+    "Mal-aisées": "Malaisées",
+    "marche-pied": "marchepied",
+    "Marche-pied": "Marchepied",
+    "marche-pieds": "marchepieds",
+    "Marche-pieds": "Marchepieds",
+    "vrai-semblable": "vraisemblable",
+    "Vrai-semblable": "Vraisemblable",
+    "vrai-semblables": "vraisemblables",
+    "Vrai-semblables": "Vraisemblables",
+    "vrai-semblance": "vraisemblance",
+    "Vrai-semblance": "Vraisemblance",
+    "vrai-semblablement": "vraisemblablement",
+    "Vrai-semblablement": "Vraisemblablement",
+    "contre-temps": "contretemps",
+    "Contre-temps": "Contretemps",
+    "contre-sens": "contresens",
+    "Contre-sens": "Contresens",
+    "haut-bois": "hautbois",
+    "Haut-bois": "Hautbois",
+    "bien-faisant": "bienfaisant",
+    "Bien-faisant": "Bienfaisant",
+    "bien-faisante": "bienfaisante",
+    "Bien-faisante": "Bienfaisante",
+    "bien-faisants": "bienfaisants",
+    "Bien-faisants": "Bienfaisants",
+    "bien-faisantes": "bienfaisantes",
+    "Bien-faisantes": "Bienfaisantes",
+    "bien-heureux": "bienheureux",
+    "Bien-heureux": "Bienheureux",
+    "bien-heureuse": "bienheureuse",
+    "Bien-heureuse": "Bienheureuse",
+    "bien-heureuses": "bienheureuses",
+    "Bien-heureuses": "Bienheureuses",
+    "bien-séant": "bienséant",
+    "Bien-séant": "Bienséant",
+    "bien-séante": "bienséante",
+    "Bien-séante": "Bienséante",
+    "bien-séants": "bienséants",
+    "Bien-séants": "Bienséants",
+    "bien-séantes": "bienséantes",
+    "Bien-séantes": "Bienséantes",
+    "mal-habile": "malhabile",
+    "Mal-habile": "Malhabile",
+    "mal-habiles": "malhabiles",
+    "Mal-habiles": "Malhabiles",
+    "mal-propre": "malpropre",
+    "Mal-propre": "Malpropre",
+    "mal-propres": "malpropres",
+    "Mal-propres": "Malpropres",
+    "mal-propreté": "malpropreté",
+    "Mal-propreté": "Malpropreté",
+    "mal-faire": "malfaire",
+    "Mal-faire": "Malfaire",
+    "mal-avisé": "malavisé",
+    "Mal-avisé": "Malavisé",
+    "mal-avisée": "malavisée",
+    "Mal-avisée": "Malavisée",
+    "mal-avisés": "malavisés",
+    "Mal-avisés": "Malavisés",
+    "mal-heur": "malheur",
+    "Mal-heur": "Malheur",
+    "non-obstant": "nonobstant",
+    "Non-obstant": "Nonobstant",
+    "quelque-fois": "quelquefois",
+    "Quelque-fois": "Quelquefois",
+    "clair-voyant": "clairvoyant",
+    "Clair-voyant": "Clairvoyant",
+    "clair-voyante": "clairvoyante",
+    "Clair-voyante": "Clairvoyante",
+    "clair-voyants": "clairvoyants",
+    "Clair-voyants": "Clairvoyants",
+
+    # 18th century compound adverbs / phrases -> spaced words
+    "même-temps": "même temps",
+    "Même-temps": "Même temps",
+    "aussi-bien": "aussi bien",
+    "Aussi-bien": "Aussi bien",
+    "non-seulement": "non seulement",
+    "Non-seulement": "Non seulement",
+    "non-feulement": "non seulement",
+    "Non-feulement": "Non seulement",
+    "dès-lors": "dès lors",
+    "Dès-lors": "Dès lors",
+    "dés-lors": "dès lors",
+    "Dés-lors": "Dès lors",
+    "bonne-heure": "bonne heure",
+    "Bonne-heure": "Bonne heure",
+    "bonne-chère": "bonne chère",
+    "Bonne-chère": "Bonne chère",
+    "peu-près": "peu près",
+    "Peu-près": "Peu près",
+    "mal-à-propos": "mal à propos",
+    "Mal-à-propos": "Mal à propos",
+    "tout-à-fait": "tout à fait",
+    "Tout-à-fait": "Tout à fait",
+    "petit-à-petit": "petit à petit",
+    "Petit-à-petit": "Petit à petit",
+    "bien-aise": "bien aise",
+    "Bien-aise": "Bien aise",
+    "bien-fait": "bien fait",
+    "Bien-fait": "Bien fait",
+    "bien-faits": "bien faits",
+    "Bien-faits": "Bien faits",
+    "au-long": "au long",
+    "Au-long": "Au long",
+    "au-travers": "au travers",
+    "Au-travers": "Au travers",
+    "à-cause": "à cause",
+    "À-cause": "À cause",
+    "au-de-là": "au-delà",
+    "Au-de-là": "Au-delà",
+    "en-bas": "en bas",
+    "En-bas": "En bas",
+    "d'en-bas": "d'en bas",
+    "D'en-bas": "D'en bas",
+    "en-haut": "en haut",
+    "En-haut": "En haut",
+    "d'en-haut": "d'en haut",
+    "D'en-haut": "D'en haut",
+
+    # OCR broken words mid-word line hyphenations
+    "com-me": "comme",
+    "di-sant": "disant",
+    "afflic-tion": "affliction",
+    "de-vant": "devant",
+    "cui-vre": "cuivre",
+    "in-constant": "inconstant",
+    "in-constants": "inconstants",
+    "in-constante": "inconstante",
+    "in-constantes": "inconstantes",
+    "recueil-lez": "recueillez",
+    "englou-tit": "engloutit",
+    "signi-fient": "signifient",
+    "ce-la": "cela",
+    "Ce-la": "Cela",
+    "Ben-jamin": "Benjamin",
+    "Jo-seph": "Joseph",
+    "Crain-dre": "Craindre",
+    "crain-dre": "craindre",
+    "re-cherchaient": "recherchaient",
+    "nom-mé": "nommé",
+    "en-droit": "endroit",
+    "triom-phé": "triomphé",
+    "entre-voir": "entrevoir",
+    "lâ-che": "lâche",
+    "lâ-ches": "lâches",
+    "res-semble": "ressemble",
+    "res-semblance": "ressemblance",
+    "Gar-dez": "Gardez",
+    "gar-dez": "gardez",
+    "sai-sons": "saisons",
+    "sai-son": "saison",
+    "Offi-ciers": "Officiers",
+    "offi-ciers": "officiers",
+    "ter-re": "terre",
+    "ter-res": "terres",
+    "el-le": "elle",
+    "el-les": "elles",
+    "e-lle": "elle",
+    "e-lles": "elles",
+    "menson-ges": "mensonges",
+    "vi-sions": "visions",
+    "voya-ges": "voyages",
+    "dé-laissée": "délaissée",
+    "re-connaître": "reconnaître",
+    "abat-tement": "abattement",
+    "éga-lât": "égalât",
+    "de-çà": "deçà",
+    "principale-ment": "principalement",
+    "de-mander": "demander",
+    "déchire-ra": "déchirera",
+    "hiron-delle": "hirondelle",
+    "accom-plira": "accomplira",
+    "régulière-ment": "régulièrement",
+    "Prê-tres": "Prêtres",
+    "prê-tres": "prêtres",
+    "quel-ques": "quelques",
+    "ven-dre": "vendre",
+    "pré-diction": "prédiction",
+    "dé-sert": "désert",
+    "pré-cisément": "précisément",
+    "re-garde": "regarde",
+    "pré-cédentes": "précédentes",
+    "ex-pressément": "expressément",
+    "Commenta-teurs": "Commentateurs",
+    "commenta-teurs": "commentateurs",
+    "ren-versement": "renversement",
+    "ap-prenant": "apprenant",
+    "riches-ses": "richesses",
+    "obscu-rité": "obscurité",
+    "dis-persées": "dispersées",
+    "compa-rables": "comparables",
+    "de-hors": "dehors",
+    "demeure-rez": "demeurerez",
+    "em-menée": "emmenée",
+    "cein-te": "ceinte",
+    "veu-lent": "veulent",
+    "épouvante-ront": "épouvanteront",
+    "bâti-ment": "bâtiment",
+    "ex-cessivement": "excessivement",
+    "pro-fondeur": "profondeur",
+    "cherche-rait": "chercherait",
+    "ré-pudiée": "répudiée",
+    "dénomina-tion": "dénomination",
+    "ef-frayée": "effrayée",
+    "rejette-ra": "rejettera",
+    "qui-conque": "quiconque",
+    "pre-mier": "premier",
+    "pre-miers": "premiers",
+    "pre-mière": "première",
+    "pre-mières": "premières",
+    "car-nages": "carnages",
+    "ti-ra": "tira",
+    "sou-haitait": "souhaitait",
+    "ap-parut": "apparut",
+    "pro-pre": "propre",
+    "pro-pres": "propres",
+    "de-puis": "depuis",
+    "au-tres": "autres",
+    "cer-tain": "certain",
+    "cer-tains": "certains",
+    "cer-taine": "certaine",
+    "cer-taines": "certaines",
+    "in-fructueux": "infructueux",
+    "in-fructueuse": "infructueuse",
+    "in-fructueuses": "infructueuses",
+    "originai-rement": "originairement",
+    "in-sinue": "insinue",
+    "ef-frayer": "effrayer",
+    "cueil-lettes": "cueillettes",
+    "quel-que": "quelque",
+    "Pour-quoi": "Pourquoi",
+    "pour-quoi": "pourquoi",
+    "plu-sieurs": "plusieurs",
+    "ancê-tre": "ancêtre",
+    "ancê-tres": "ancêtres",
+    "com-parent": "comparent",
+    "Tradi-tion": "Tradition",
+    "tradi-tion": "tradition",
+    "morale-ment": "moralement",
+    "cou-tume": "coutume",
+    "cou-tumes": "coutumes",
+    "pro-fanaient": "profanaient",
+    "Sau-veur": "Sauveur",
+    "sau-veur": "sauveur",
+    "co-héritier": "cohéritier",
+    "co-héritiers": "cohéritiers",
+    "co-héritière": "cohéritière",
+    "co-héritières": "cohéritières",
+    "gran-de": "grande",
+    "gran-des": "grandes",
+    "don-ne": "donne",
+    "rafraî-chir": "rafraîchir",
+    "défail-lance": "défaillance",
+    "Ro-mains": "Romains",
+    "ro-mains": "romains",
+    "per-mit": "permit",
+    "vinai-gre": "vinaigre",
+    "Biblio-thécaires": "Bibliothécaires",
+    "biblio-thécaires": "bibliothécaires",
+    "Baby-lonie": "Babylonie",
+    "Is-raël": "Israël",
+    "Jé-rusalem": "Jérusalem",
+    "Jérusa-lem": "Jérusalem",
+    "Zacha-rie": "Zacharie",
+    "Za-charie": "Zacharie",
+    "Na-zareth": "Nazareth",
+    "Eusè-be": "Eusèbe",
+    "Jérô-me": "Jérôme",
+    "reste-s": "restes",
+    "usur-pant": "usurpant",
+    "a-lors": "alors",
+    "a-vant": "avant",
+    "a-près": "après",
+    "Qui-dam": "Quidam",
+    "qui-dam": "quidam",
+    "les-ennemis": "les ennemis",
+    "nous-prévienne": "nous prévienne",
+    "la-grenade": "la grenade",
+    "Jean-Bapriste": "Jean-Baptiste",
+}
+
+RX_HYPHEN_DELA = re.compile(r"(?<!\b[Aa]u-)(?<!\b[Pp]ar-)(?<!\b[Ee]n-)(?<!\b[Jj]usque-)\b([Dd])e-là\b")
+RX_HYPHEN_AUTOUR = re.compile(r"\b([Aa])u-tour\b(?=\s+(?:de|du|des|d['’]))")
+RX_HYPHEN_AUPRES = re.compile(r"\b([Aa])u-près\b(?=\s+(?:de|du|des|d['’]))")
+
+_HYPHEN_ESCAPED = sorted(EXACT_HYPHEN_MAP.keys(), key=len, reverse=True)
+RX_HYPHEN_EXACT = re.compile(r"(?<![\w\-])(" + "|".join(re.escape(k) for k in _HYPHEN_ESCAPED) + r")(?![\w\-])")
+
+# 7. Obsolete & Incorrect Circumflex (^) Cleanup
+EXACT_CIRC_MAP = {
+    # Past participles in -û
+    "lû": "lu",
+    "bû": "bu",
+    "tû": "tu",
+    "eû": "eu",
+    "foû": "fou",
+    "soû": "fou",
+    "fû": "su",
+    "brû": "bru",
+    "deçû": "déçu",
+    "dépoûrû": "dépourvu",
+
+    # Winged (ailés)
+    "aîlez": "ailés",
+    "aîlées": "ailées",
+    "aîle": "aile",
+    "aîles": "ailes",
+    "aîlé": "ailé",
+    "aîlée": "ailée",
+    "aîlés": "ailés",
+
+    # Asûre / assûre / affûre
+    "asûre": "assure",
+    "asûrent": "assurent",
+    "asûrer": "assurer",
+    "affûre": "assure",
+    "affûré": "assuré",
+    "affûrément": "assurément",
+    "assûr": "assuré",
+    "assûre": "assure",
+    "assûrent": "assurent",
+    "assûrera": "assurera",
+    "assûreront": "assureront",
+    "assûrait": "assurait",
+    "assûraient": "assuraient",
+    "assûrant": "assurant",
+
+    # Flâme / Phantôme
+    "flâme": "flamme",
+    "flâmes": "flammes",
+    "enflâme": "enflamme",
+    "enflâmes": "enflammes",
+    "phantôme": "fantôme",
+    "phantômes": "fantômes",
+
+    # Paîtrir / pétrir
+    "paîtri": "pétri",
+    "paîtris": "pétris",
+    "pâtris": "pétris",
+    "paîtrit": "pétrit",
+    "paîtrir": "pétrir",
+    "paîtrissent": "pétrissent",
+    "paîtrirez": "pétrirez",
+    "paîtrin": "pétrin",
+    "repaîssez": "repaissez",
+
+    # Archaic û words
+    "piquûre": "piqûre",
+    "piquûres": "piqûres",
+    "meurtriffûres": "meurtrissures",
+    "accoûtumance": "accoutumance",
+    "accoûtumera": "accoutumera",
+    "accoûtumerai": "accoutumerai",
+    "plustôt": "plutôt",
+    "dégoûtans": "dégoûtants",
+    "foûtient": "soutient",
+    "foûterraine": "souterraine",
+    "soûlié": "soulier",
+    "soûrire": "sourire",
+    "sciûre": "sciure",
+    "pâtiffier": "pâtissier",
+
+    # Miscellaneous archaic circumflex words
+    "nîtreuses": "nitreuses",
+    "trême": "trame",
+    "pêles": "pelles",
+    "pître": "pitre",
+    "rébêle": "rebelle",
+    "rebêle": "rebelle",
+    "aprêtées": "apprêtées",
+    "trôn": "trône",
+    "accraître": "accroître",
+    "décraître": "décroître",
+    "craîtrez": "croîtrez",
+    "regîtres": "registres",
+    "blaspêmes": "blasphèmes",
+    "jarêts": "jarrets",
+    "fâcherent": "fâchèrent",
+    "dêtre": "d'être",
+    "lâne": "l'âne",
+    "aîne": "aine",
+    "scellôit": "scellait",
+    "confessoîs": "confessais",
+
+    # Proper names with unnecessary circumflex
+    "ierôme": "Jérôme",
+    "iérôme": "Jérôme",
+    "mathâthias": "Mathathias",
+    "lasthêne": "Lasthène",
+    "hérodiâs": "Hérodias",
+    "eupolême": "Eupolème",
+    "pamphîlie": "Pamphylie",
+    "sennachêrib": "Sennachérib",
+
+    # Verbs in -oître future / conditional
+    "connoîtra": "connaîtra",
+    "connoîtront": "connaîtront",
+    "connoîtrai": "connaîtrai",
+    "connoîtras": "connaîtras",
+    "connoîtrait": "connaîtrait",
+    "connoîtraient": "connaîtraient",
+    "connoîtriez": "connaîtriez",
+    "connoîtrions": "connaîtrions",
+    "connoîtrons": "connaîtrons",
+    "reconnoîtra": "reconnaîtra",
+    "reconnoîtront": "reconnaîtront",
+    "reconnoîtrai": "reconnaîtrai",
+    "reconnoîtrons": "reconnaîtrons",
+    "reconnoîtrait": "reconnaîtrait",
+    "reconnoîtraient": "reconnaîtraient",
+    "disparoît": "disparaît",
+    "disparoîtra": "disparaîtra",
+    "disparoîtront": "disparaîtront",
+    "disparoîtrait": "disparaîtrait",
+    "apparoît": "apparaît",
+    "apparoîtra": "apparaîtra",
+    "apparoîtront": "apparaîtront",
+    "reparoît": "reparaît",
+    "reparoîtra": "reparaîtra",
+    "reparoîtront": "reparaîtront",
+    "comparoîtront": "comparaîtront",
+    "ellemême": "elle-même",
+}
+
+_CIRC_ESCAPED = sorted(EXACT_CIRC_MAP.keys(), key=len, reverse=True)
+RX_CIRC_EXACT = re.compile(r"(?<![A-Za-zÀ-ÿ0-9])(" + "|".join(re.escape(k) for k in _CIRC_ESCAPED) + r")(?![A-Za-zÀ-ÿ0-9])", re.I)
+RX_ME_NE = re.compile(r"\b([Mm])ê\s+ne\b")
+
+# 7. Obsolete Y -> I / Î / AIE / OI Normalization
+EXACT_Y_MAP = {
+    # Abîme (y -> î)
+    "abyme": "abîme",
+    "abymes": "abîmes",
+    "abysme": "abîme",
+    "abysmes": "abîmes",
+    # Enivrer / envier
+    "envyrez": "enivrés",
+    "envyre": "enivre",
+    "envyvre": "enivre",
+    "envyvrera": "enivrera",
+    "enyvrait": "enivrait",
+    "s'enyvrait": "s'enivrait",
+    # Avoir (participle / subjunctive / auxiliary)
+    "aye": "aie",
+    "ay": "ai",
+    # Ancestors (ayeul -> aïeul)
+    "ayeul": "aïeul",
+    "ayeuls": "aïeuls",
+    "ayeule": "aïeule",
+    "ayeules": "aïeules",
+    "ayeux": "aïeux",
+    "bisayeul": "bisaïeul",
+    "bifayeul": "bisaïeul",
+    # Asile
+    "asyle": "asile",
+    "asyles": "asiles",
+    # Haie
+    "haye": "haie",
+    "hayes": "haies",
+    # Nouns in -aye -> -aie
+    "futaye": "futaie",
+    "futayes": "futaies",
+    "clayes": "claies",
+    "brayes": "braies",
+    "chênaye": "chênaie",
+    "craye": "craie",
+    "taye": "taie",
+    "tayes": "taies",
+    # Gaieté & gai
+    "gayeté": "gaieté",
+    "gayetés": "gaietés",
+    "gayement": "gaiement",
+    "gay": "gai",
+    # Days & time
+    "lundy": "lundi",
+    "mardy": "mardi",
+    "mercredy": "mercredi",
+    "jeudy": "jeudi",
+    "vendredy": "vendredi",
+    "samedy": "samedi",
+    "midy": "midi",
+    # Cy
+    "voicy": "voici",
+    "celle-cy": "celle-ci",
+    "gens-cy": "gens-ci",
+    # Monosyllables
+    "loy": "loi",
+    "loys": "lois",
+    "foy": "foi",
+    "moy": "moi",
+    # Common words with y -> i
+    "hyrondelle": "hirondelle",
+    "hyrondelles": "hirondelles",
+    "éclypse": "éclipse",
+    "éclypses": "éclipses",
+    "tymbale": "timbale",
+    "tymbales": "timbales",
+    "cythare": "cithare",
+    "cythares": "cithares",
+    "crystal": "cristal",
+    "chymérique": "chimérique",
+    "acrostyche": "acrostiche",
+    "phtysie": "phtisie",
+    "hydeux": "hideux",
+    "vrayment": "vraiment",
+    "quoyque": "quoique",
+    "aujourd'huy": "aujourd'hui",
+    "doyvent": "doivent",
+    "suye": "suie",
+    "truyes": "truies",
+    "enfuye": "enfuie",
+    "buys": "buis",
+    "luy": "lui",
+    "courroyes": "courroies",
+    "tygre": "tigre",
+    "tygres": "tigres",
+    "sphynx": "sphinx",
+    # Future tense 1st person singular in -ray -> -rai
+    "rendray": "rendrai",
+    "répandray": "répandrai",
+    "réduiray": "réduirai",
+    "traiteray": "traiterai",
+}
+
+_Y_ESCAPED = sorted(EXACT_Y_MAP.keys(), key=len, reverse=True)
+RX_Y_EXACT = re.compile(r"(?<![A-Za-zÀ-ÿ0-9_])(" + "|".join(re.escape(k) for k in _Y_ESCAPED) + r")(?!-[A-Za-zÀ-ÿ0-9_])\b", re.I)
+RX_QU_IL_N_Y_AYE = re.compile(r"\b([Qq]u'il\s+n'y\s+)aye\b")
+RX_N_ENVYEZ = re.compile(r"\b([Nn])'envyez\b")
+RX_CY_APRES = re.compile(r"\b([Cc]y)[- ](après\b)")
+RX_RUGISSEMENT_LYON = re.compile(r"\b([Rr]ugissement\s+du\s+)Lyon\b")
+RX_NY_PAS = re.compile(r"\b([Nn])y\s+(tout\s+à\s+fait)\b")
+RX_NY_A_T_IL = re.compile(r"\bNy\s+(a-t-il\b)")
+RX_QU_AY = re.compile(r"\b([Qq]u)'ay(-je\b)")
+
+# 5m. Missing Apostrophes and Elisions
+EXACT_APOSTROPHE_MAP = {
+    # Glued words without apostrophe
+    "dautres": "d'autres",
+    "quil": "qu'il",
+    "quils": "qu'ils",
+    "quon": "qu'on",
+    "dun": "d'un",
+    "dune": "d'une",
+    "sentendre": "s'entendre",
+    "lopposition": "l'opposition",
+    "noffrirez": "n'offrirez",
+    "lchangeait": "l'échangeait",
+
+    # Missing apostrophe with space (pair elisions)
+    "d orient": "d'Orient",
+    "d airain": "d'airain",
+    "d une": "d'une",
+    "d un": "d'un",
+    "d adam": "d'Adam",
+    "d endroit": "d'endroit",
+    "d elle": "d'elle",
+    "d officier": "d'Officier",
+    "d habits": "d'habits",
+    "d autres": "d'autres",
+
+    "l animal": "l'animal",
+    "l évangile": "l'Évangile",
+    "l homme": "l'homme",
+    "l on": "l'on",
+    "l entendre": "l'entendre",
+    "l entendons": "l'entendons",
+    "l absence": "l'absence",
+    "l écriture": "l'Écriture",
+    "l âme": "l'âme",
+    "l équinoxe": "l'équinoxe",
+    "l hébreu": "l'Hébreu",
+
+    "qu il": "qu'il",
+    "qu elle": "qu'elle",
+    "qu est": "qu'est",
+
+    "c étaient": "c'étaient",
+    "c est": "c'est",
+
+    "n y": "n'y",
+    "n ait": "n'ait",
+    "n en": "n'en",
+
+    "s y": "s'y",
+
+    "quelqu un": "quelqu'un",
+    "quelqu une": "quelqu'une",
+
+    "jusque au": "jusqu'au",
+    "jusque aux": "jusqu'aux",
+
+    "lorsque il": "lorsqu'il",
+    "lorsque elle": "lorsqu'elle",
+}
+
+_APOS_ESCAPED = sorted(EXACT_APOSTROPHE_MAP.keys(), key=len, reverse=True)
+RX_APOS_EXACT = re.compile(r"(?<![A-Za-zÀ-ÿ0-9_])(" + "|".join(re.escape(k) for k in _APOS_ESCAPED) + r")(?!-[A-Za-zÀ-ÿ0-9_])\b", re.I)
+
+RX_L_A_MORDU = re.compile(r"\b([Ll])\s+a\s+(mordu\b)")
+RX_L_HONNEUR = re.compile(r"\b([Ll])['’]\s+(honneur\b)")
+RX_L_ABANDONNE = re.compile(r"\b([Ll])['’]\s*\n\s*(abandonné\b)")
+RX_QUE_IL = re.compile(r"\b([Qq]u)e[\s\n]+(il\b)")
+RX_LON_ELIDED = re.compile(r"\b(que|si|où|et|ou)\s+lon\b", re.I)
+RX_QUON_NEN = re.compile(r"\b(qu'on)\s+nen\b", re.I)
+RX_LORSQUE_LA_NUIT = re.compile(r"\blorsque\s+il\s+nuit\s+approche\b", re.I)
+RX_IS_ONT_LU = re.compile(r"\bI's\s+ont\s+lu\b")
+RX_SIS_ECOUTEZ = re.compile(r"\bsi's,\s*écoutez\b")
+RX_LUI_N_EME = re.compile(r"\blui-n\.ême\b")
+RX_Y_A_T_IL = re.compile(r"\bY\s+a-t\s+il\b")
+RX_MAS_EMPORTE = re.compile(r"\bma's\s+emporté\b")
+RX_S_AINT = re.compile(r"\b([Ss])\s+(aint\s+Matthieu\b)")
+RX_S_OUVENT = re.compile(r"\b([Ss])\s+(ouvent\b)")
+RX_S_E_PREND = re.compile(r"\b([Ss])\s+e\s+(prend\b)")
+RX_CES_LA = re.compile(r"\bC'es\s+-\s*là\b")
+RX_HISTOIRE = re.compile(r"\bl'His\s+toire\b")
+
+# 5n. Miscellaneous Archaic Spellings and Pattern Families
+EXACT_MISC_ARCHAIC_MAP = {
+    # 1. éthimologies -> étymologies
+    "éthimologies": "étymologies",
+    "éthimologie": "étymologie",
+
+    # 2. monstrer family
+    "monstrer": "montrer",
+    "monstrèrent": "montrèrent",
+    "monstrée": "montrée",
+    "monstrées": "montrées",
+    "monstrerait": "montrerait",
+    "monstrera": "montrera",
+    "monstreront": "montreront",
+    "monstrez": "montrez",
+    "monstrant": "montrant",
+
+    # 3. croissans family (-ans / -ens plurals)
+    "croissans": "croissants",
+    "fréquens": "fréquents",
+    "mécontens": "mécontents",
+    "équivalens": "équivalents",
+    "menaçans": "menaçants",
+    "inconvéniens": "inconvénients",
+    "permanens": "permanents",
+    "fainéans": "fainéants",
+    "turbulens": "turbulents",
+    "glissans": "glissants",
+    "coulans": "coulants",
+    "indifférens": "indifférents",
+    "apparens": "apparents",
+    "commençans": "commençants",
+    "contractans": "contractants",
+    "étonnans": "étonnants",
+    "suffocans": "suffocants",
+    "défians": "défiants",
+    "arpens": "arpents",
+    "accens": "accents",
+    "règlemens": "règlements",
+    "entablemens": "entablements",
+    "battemens": "battements",
+    "relâchemens": "relâchements",
+    "assoupissemens": "assoupissements",
+    "abaissemens": "abaissements",
+    "vomissemens": "vomissements",
+    "vomiſsemens": "vomissements",
+    "applaudissemens": "applaudissements",
+    "applaudiffemens": "applaudissements",
+    "puiffans": "puissants",
+    "mésdisans": "médisants",
+    "judaïzans": "judaïsants",
+    "impénitens": "impénitents",
+    "déficiens": "déficients",
+    "palpitans": "palpitants",
+    "quadrans": "quadrants",
+    "ingrédiens": "ingrédients",
+    "opulens": "opulents",
+    "insinuans": "insinuants",
+    "communians": "communiants",
+    "fermans": "fermants",
+    "volans": "volants",
+    "clairvoyans": "clairvoyants",
+    "concurrens": "concurrents",
+    "tempéramens": "tempéraments",
+    "truchemens": "truchements",
+    "rassasiemens": "rassasiements",
+    # Specific phrases for homographs that have Latin occurrences
+    "vos agens": "vos agents",
+    "les continens": "les continents",
+
+    # 4. brasselets family (ss -> c)
+    "brasselet": "bracelet",
+    "brasselets": "bracelets",
+    "sausse": "sauce",
+    "sausses": "sauces",
+    "nasselle": "nacelle",
+    "nasselles": "nacelles",
+    "entrelassé": "entrelacé",
+    "entrelassée": "entrelacée",
+    "entrelassés": "entrelacés",
+    "entrelassées": "entrelacées",
+    "entrelassent": "entrelacent",
+    "entrelassez": "entrelacez",
+    "enlassez": "enlacez",
+
+    # 5. Genéfe OCR long-s
+    "genéfe": "Genèse",
+
+    # 7. bled family
+    "bled": "blé",
+    "bleds": "blés",
+
+    # 8. gozier family (z -> s)
+    "gozier": "gosier",
+    "goziers": "gosiers",
+    "magazin": "magasin",
+    "magazins": "magasins",
+    "cizeau": "ciseau",
+    "cizeaux": "ciseaux",
+    "cizelée": "ciselée",
+    "cizelées": "ciselées",
+    "cizelé": "ciselé",
+    "cizelés": "ciselés",
+    "hazard": "hasard",
+    "hazards": "hasards",
+    "hazarder": "hasarder",
+    "hazardent": "hasardent",
+    "hazardez": "hasardez",
+    "hazardait": "hasardait",
+    "hazardaient": "hasardaient",
+    "hazardèrent": "hasardèrent",
+    "hazarderait": "hasarderait",
+    "hazarderaient": "hasarderaient",
+    "hazarderont": "hasarderont",
+    "hazardera": "hasardera",
+    "hazardée": "hasardée",
+    "hazardées": "hasardées",
+    "hazardé": "hasardé",
+    "hazardés": "hasardés",
+    "hazardant": "hasardant",
+    "nazeaux": "naseaux",
+    "azile": "asile",
+    "aziles": "asiles",
+    "ozier": "osier",
+    "oziers": "osiers",
+    "bize": "bise",
+    "sarrazin": "sarrasin",
+    "sarrazins": "sarrasins",
+
+    # 9. robbe family (consonant normalization)
+    "robbe": "robe",
+    "robbes": "robes",
+    "abbattre": "abattre",
+    "abbattu": "abattu",
+    "abbattus": "abattus",
+    "abbattue": "abattue",
+    "abbattues": "abattues",
+    "abbatu": "abattu",
+    "abbatus": "abattus",
+    "abbatue": "abattue",
+    "abbatues": "abattues",
+    "abbattement": "abattement",
+    "abbattemens": "abattements",
+    "abbatement": "abattement",
+    "abbat": "abat",
+    "abbattent": "abattent",
+    "abbattront": "abattront",
+    "abbatront": "abattront",
+    "abbattra": "abattra",
+    "abbattrai": "abattrai",
+    "abbattit": "abattit",
+    "abbatit": "abattit",
+    "abbattant": "abattant",
+    "abbattaient": "abattaient",
+    "rabbaissaient": "rabaissaient",
+    "abbaisser": "abaisser",
+    "abbaissez": "abaissez",
+    "abbaissent": "abaissent",
+    "abbaissée": "abaissée",
+    "abbaissés": "abaissés",
+    "abbaissées": "abaissées",
+    "abbaissement": "abaissement",
+    "abbaissements": "abaissements",
+    "embaras": "embarras",
+    "embarasse": "embarrasse",
+    "embarassent": "embarrassent",
+    "embarassé": "embarrassé",
+    "embarassée": "embarrassée",
+    "embarassés": "embarrassés",
+    "embarassées": "embarrassées",
+    "embarasser": "embarrasser",
+    "embarassaient": "embarrassaient",
+    "embarassant": "embarrassant",
+    "embarasseront": "embarrasseront",
+    "débarasser": "débarrasser",
+    "débarassent": "débarrassent",
+    "débarassé": "débarrassé",
+    "nouriture": "nourriture",
+    "nouritures": "nourritures",
+    "nourir": "nourrir",
+    "nourissent": "nourrissent",
+    "canelle": "cannelle",
+    "canelles": "cannelles",
+    "houpe": "houppe",
+    "houpes": "houppes",
+    "hupe": "huppe",
+    "hupes": "huppes",
+    "échaper": "échapper",
+    "échapera": "échappera",
+    "échapez": "échappez",
+    "échapent": "échappent",
+    "échapant": "échappant",
+    "bastonade": "bastonnade",
+    "bastonades": "bastonnades",
+    "fanné": "fané",
+    "fannée": "fanée",
+    "fannés": "fanés",
+    "fannées": "fanées",
+    "fannera": "fanera",
+    "floccons": "flocons",
+    "floccon": "flocon",
+    "agraffes": "agrafes",
+    "agraffe": "agrafe",
+    "applanir": "aplanir",
+    "applanira": "aplanira",
+    "applanissez": "aplanissez",
+    "applanirai": "aplanirai",
+    "applanirez": "aplanirez",
+    "applanisse": "aplanisse",
+    "applaniront": "aplaniront",
+    "applanit": "aplanit",
+    "applanissant": "aplanissant",
+    "appaiser": "apaiser",
+    "appaifer": "apaiser",
+    "appaiserons": "apaiserons",
+    "appaisions": "apaisions",
+    "appaiserait": "apaiserait",
+    "appaifa": "apaisa",
+    "appaiferai": "apaiserai",
+    "appaisé": "apaisé",
+    "appaisée": "apaisée",
+    "appaisés": "apaisés",
+    "appaisées": "appaisées",
+    "abboyeur": "aboyeur",
+    "abbreuvera": "abreuvera",
+    "abbréviateur": "abréviateur",
+    "carrouge": "carouge",
+}
+
+_MISC_ARCHAIC_ESCAPED = sorted(EXACT_MISC_ARCHAIC_MAP.keys(), key=len, reverse=True)
+RX_MISC_ARCHAIC = re.compile(r"(?<![A-Za-zÀ-ÿ0-9_])(" + "|".join(re.escape(k) for k in _MISC_ARCHAIC_ESCAPED) + r")(?!-[A-Za-zÀ-ÿ0-9_])\b", re.I)
+
+# 6. Contextual par tout -> partout
+RX_PAR_TOUT = re.compile(r"\b([Pp]ar)\s+tout\b")
+RX_PAR_TOUT_KEEP = re.compile(r"^\s+(?:le\b|ce\b|cet\b|ceci\b|cela\b|son\s+[a-zA-ZÀ-ÿ]+|un\s+[a-zA-ZÀ-ÿ]+|l[\x27\x92\u2019]|Israël\b|homme\b)", re.I)
+
+
+
+
 def modernize_text(text):
     if not text:
         return text, 0
@@ -1756,7 +2699,7 @@ def modernize_text(text):
         vowel_part = m.group(2)
         prefix = "Jusqu'" if lead[0].isupper() else "jusqu'"
         return prefix + vowel_part
-    text = re.sub(r"\b(jusques?)\s+([àaâeéèêiîoôuûy]|aujourd'hui|au-delà|alors|où)\b", jusque_elide, text, flags=re.I)
+    text = re.sub(r"\b(jusques?)\s+([àaâäeéèêëiîïoôuûüüy][a-zà-ÿ]*)\b", jusque_elide, text, flags=re.I)
 
     def jusque_hyphen(m):
         nonlocal count
@@ -1896,6 +2839,339 @@ def modernize_text(text):
     text, n = RX_SPACE_COLON.subn(": ", text); count += n
     text, n = RX_SPACE_EXCL_QUEST.subn(r"\1 ", text); count += n
     text, n = RX_SPACE_PERIOD.subn(". ", text); count += n
+
+    # 5h. Contextual OCR Long-S and Typographical Confusions
+    # 5h.1 çç -> ç, contextual disait & conçoit
+    if "diççait" in text:
+        text, n = re.subn(r"\bdiççait\b", "disait", text); count += n
+    if "conççait" in text:
+        text, n = re.subn(r"\bconççait\b", "conçoit", text); count += n
+    if "conçait" in text:
+        text, n = re.subn(r"\bconçait\b", "conçoit", text); count += n
+    if "çç" in text:
+        text, n = re.subn(r"çç", "ç", text); count += n
+
+    # 5h.2 forte(s) -> sorte(s)
+    def sub_forte1(m):
+        nonlocal count; count += 1
+        return m.group(1) + " " + ("sorte" if "forte" in m.group(0) else "Sorte") + " " + m.group(2)
+    text = RX_FORTE_ADV1.sub(sub_forte1, text)
+
+    def sub_forte2(m):
+        nonlocal count; count += 1
+        return m.group(1) + " " + m.group(2) + " " + ("sorte" if "forte" in m.group(0) else "Sorte")
+    text = RX_FORTE_ADV2.sub(sub_forte2, text)
+
+    def sub_forte_la(m):
+        nonlocal count; count += 1
+        return m.group(1) + " la " + ("sorte" if "forte" in m.group(0) else "Sorte")
+    text = RX_FORTE_LA.sub(sub_forte_la, text)
+
+    def sub_faire_forte(m):
+        nonlocal count; count += 1
+        return m.group(1) + " en " + ("sorte" if "forte" in m.group(0) else "Sorte")
+    text = RX_FAIRE_EN_FORTE.sub(sub_faire_forte, text)
+
+    def sub_forte_det(m):
+        nonlocal count; count += 1
+        sep = " " if m.group(2) == "de" else ""
+        return m.group(1) + " " + ("sorte" if "forte" in m.group(0) else "Sorte") + " " + m.group(2)
+    text = RX_FORTE_DET.sub(sub_forte_det, text)
+
+    def sub_fortes_det(m):
+        nonlocal count; count += 1
+        sep = " " if m.group(2) == "de" else ""
+        return m.group(1) + " " + ("sortes" if "fortes" in m.group(0) else "Sortes") + " " + m.group(2)
+    text = RX_FORTES_DET.sub(sub_fortes_det, text)
+
+    # 5h.3 fait -> sait
+    def sub_fait_que(m):
+        nonlocal count; count += 1
+        return m.group(1) + " " + ("sait" if m.group(0).split()[1] == "fait" else "Sait") + m.group(2)
+    text = RX_ON_FAIT_QUE.sub(sub_fait_que, text)
+
+    def sub_ne_fait_on(m):
+        nonlocal count; count += 1
+        return m.group(1) + "sait" + m.group(2)
+    text = RX_NE_FAIT_ON.sub(sub_ne_fait_on, text)
+
+    def sub_qui_fait_si(m):
+        nonlocal count; count += 1
+        return m.group(1) + "sait" + m.group(2)
+    text = RX_QUI_FAIT_SI.sub(sub_qui_fait_si, text)
+
+    def sub_nul_ne_fait(m):
+        nonlocal count; count += 1
+        return m.group(1) + "sait" + m.group(2)
+    text = RX_NUL_NE_FAIT.sub(sub_nul_ne_fait, text)
+
+    def sub_on_ne_fait(m):
+        if "cuisine" in m.string[m.end():m.end() + 20]:
+            return m.group(0)
+        nonlocal count; count += 1
+        return m.group(1) + "sait" + m.group(2)
+    text = RX_ON_NE_FAIT.sub(sub_on_ne_fait, text)
+
+    def sub_on_fait_adv(m):
+        nonlocal count; count += 1
+        return m.group(1) + " " + ("sait" if m.group(0).split()[1] == "fait" else "Sait") + m.group(2)
+    text = RX_ON_FAIT_ADV.sub(sub_on_fait_adv, text)
+
+    # 5h.4 Vocative O -> Ô
+    def sub_o_vocative(m):
+        nonlocal count; count += 1
+        return "Ô " + m.group(1)
+    text = RX_O_TARGETS.sub(sub_o_vocative, text)
+
+    def sub_o_punct(m):
+        nonlocal count; count += 1
+        return "Ô " + m.group(1)
+    text = RX_O_PUNCT.sub(sub_o_punct, text)
+
+    # 5i. Obsolete Diaeresis (¨) Cleanup
+    if "Nathanäel" in text:
+        text, n = re.subn(r"\bNathanäel\b", "Nathanaël", text); count += n
+
+    def sub_trema_exact(m):
+        nonlocal count
+        w = m.group(0)
+        lw = w.lower()
+        if lw in EXACT_TREMA_MAP:
+            count += 1
+            return match_case(w, EXACT_TREMA_MAP[lw])
+        return w
+
+    # Apply exact map when any diaeresis exists
+    if any(c in text for c in 'ëËïÏüÜÿŸäÄöÖ'):
+        text = re.sub(r'\b[A-Za-zÀ-ÿ0-9_\'\-]+\b', sub_trema_exact, text)
+
+    # General -uë / -uës normalization
+    def sub_ue(m):
+        nonlocal count
+        full = m.group(0)
+        stem = m.group(1)
+        plural = m.group(2)
+        if full.lower() in PROTECTED_UE:
+            return full
+        count += 1
+        return stem + "ue" + plural
+    text = RX_UE.sub(sub_ue, text)
+
+    # 5j. Obsolete & Broken Hyphens Normalization
+    if "-" in text:
+        def sub_hyphen(m):
+            nonlocal count
+            count += 1
+            return EXACT_HYPHEN_MAP[m.group(1)]
+        text = RX_HYPHEN_EXACT.sub(sub_hyphen, text)
+
+        def sub_dela(m):
+            nonlocal count
+            count += 1
+            return m.group(1) + "e là"
+        text = RX_HYPHEN_DELA.sub(sub_dela, text)
+
+        def sub_autour(m):
+            nonlocal count
+            count += 1
+            return m.group(1) + "utour"
+        text = RX_HYPHEN_AUTOUR.sub(sub_autour, text)
+
+        def sub_aupres(m):
+            nonlocal count
+            count += 1
+            return m.group(1) + "uprès"
+        text = RX_HYPHEN_AUPRES.sub(sub_aupres, text)
+
+    # 5k. Obsolete Circumflex (^) Cleanup
+    if any(c in text for c in 'âêîôûÂÊÎÔÛ'):
+        def sub_circ(m):
+            nonlocal count
+            w = m.group(1)
+            lw = w.lower()
+            if lw in EXACT_CIRC_MAP:
+                tgt = match_case(w, EXACT_CIRC_MAP[lw])
+                if tgt != w:
+                    count += 1
+                    return tgt
+            return w
+        text = RX_CIRC_EXACT.sub(sub_circ, text)
+
+        def sub_mene(m):
+            nonlocal count
+            count += 1
+            return ("Même" if m.group(1) == "M" else "même")
+        text = RX_ME_NE.sub(sub_mene, text)
+
+    # 5l. Obsolete Y -> I / Î / AIE / OI Normalization
+    if "y" in text or "Y" in text:
+        def sub_qu_il_aye(m):
+            nonlocal count; count += 1
+            return m.group(1) + "ait"
+        text = RX_QU_IL_N_Y_AYE.sub(sub_qu_il_aye, text)
+
+        def sub_n_envyez(m):
+            nonlocal count; count += 1
+            return m.group(1) + "'enviez"
+        text = RX_N_ENVYEZ.sub(sub_n_envyez, text)
+
+        def sub_cy_apres(m):
+            nonlocal count; count += 1
+            return ("Ci-après" if m.group(1) == "Cy" else "ci-après")
+        text = RX_CY_APRES.sub(sub_cy_apres, text)
+
+        def sub_rugissement_lyon(m):
+            nonlocal count; count += 1
+            return m.group(1) + "lion"
+        text = RX_RUGISSEMENT_LYON.sub(sub_rugissement_lyon, text)
+
+        def sub_ny_pas(m):
+            nonlocal count; count += 1
+            return ("Ni" if m.group(1) == "N" else "ni") + " " + m.group(2)
+        text = RX_NY_PAS.sub(sub_ny_pas, text)
+
+        def sub_ny_a_t_il(m):
+            nonlocal count; count += 1
+            return "N'y " + m.group(1)
+        text = RX_NY_A_T_IL.sub(sub_ny_a_t_il, text)
+
+        def sub_qu_ay(m):
+            nonlocal count; count += 1
+            return m.group(1) + "'ai" + m.group(2)
+        text = RX_QU_AY.sub(sub_qu_ay, text)
+
+        def sub_y_exact(m):
+            nonlocal count
+            w = m.group(1)
+            lw = w.lower()
+            if lw in EXACT_Y_MAP:
+                tgt = match_case(w, EXACT_Y_MAP[lw])
+                if tgt != w:
+                    count += 1
+                    return tgt
+            return w
+        text = RX_Y_EXACT.sub(sub_y_exact, text)
+
+    # 5m. Missing Apostrophe & Elision Cleanup
+    def sub_lorsque_la_nuit(m):
+        nonlocal count; count += 1
+        return "lorsque la nuit approche"
+    text = RX_LORSQUE_LA_NUIT.sub(sub_lorsque_la_nuit, text)
+
+    def sub_apos_exact(m):
+        nonlocal count
+        w = m.group(1)
+        lw = w.lower()
+        if lw in EXACT_APOSTROPHE_MAP:
+            tgt = match_case(w, EXACT_APOSTROPHE_MAP[lw])
+            if tgt != w:
+                count += 1
+                return tgt
+        return w
+    text = RX_APOS_EXACT.sub(sub_apos_exact, text)
+
+    def sub_l_a_mordu(m):
+        nonlocal count; count += 1
+        return m.group(1) + "'a " + m.group(2)
+    text = RX_L_A_MORDU.sub(sub_l_a_mordu, text)
+
+    def sub_l_honneur(m):
+        nonlocal count; count += 1
+        return m.group(1) + "'honneur"
+    text = RX_L_HONNEUR.sub(sub_l_honneur, text)
+
+    def sub_l_abandonne(m):
+        nonlocal count; count += 1
+        return m.group(1) + "'abandonné"
+    text = RX_L_ABANDONNE.sub(sub_l_abandonne, text)
+
+    def sub_que_il(m):
+        nonlocal count; count += 1
+        return m.group(1) + "'il"
+    text = RX_QUE_IL.sub(sub_que_il, text)
+
+    def sub_lon_elided(m):
+        nonlocal count; count += 1
+        return m.group(1) + " l'on"
+    text = RX_LON_ELIDED.sub(sub_lon_elided, text)
+
+    def sub_quon_nen(m):
+        nonlocal count; count += 1
+        return m.group(1) + " n'en"
+    text = RX_QUON_NEN.sub(sub_quon_nen, text)
+
+    def sub_is_ont_lu(m):
+        nonlocal count; count += 1
+        return "Ils ont lu"
+    text = RX_IS_ONT_LU.sub(sub_is_ont_lu, text)
+
+    def sub_sis_ecoutez(m):
+        nonlocal count; count += 1
+        return "fils, écoutez"
+    text = RX_SIS_ECOUTEZ.sub(sub_sis_ecoutez, text)
+
+    def sub_lui_n_eme(m):
+        nonlocal count; count += 1
+        return "lui-même"
+    text = RX_LUI_N_EME.sub(sub_lui_n_eme, text)
+
+    def sub_y_a_t_il(m):
+        nonlocal count; count += 1
+        return "Y a-t-il"
+    text = RX_Y_A_T_IL.sub(sub_y_a_t_il, text)
+
+    def sub_mas_emporte(m):
+        nonlocal count; count += 1
+        return "mais emporté"
+    text = RX_MAS_EMPORTE.sub(sub_mas_emporte, text)
+
+    def sub_s_aint(m):
+        nonlocal count; count += 1
+        return m.group(1) + "aint Matthieu"
+    text = RX_S_AINT.sub(sub_s_aint, text)
+
+    def sub_s_ouvent(m):
+        nonlocal count; count += 1
+        return m.group(1) + "ouvent"
+    text = RX_S_OUVENT.sub(sub_s_ouvent, text)
+
+    def sub_s_e_prend(m):
+        nonlocal count; count += 1
+        return m.group(1) + "e prend"
+    text = RX_S_E_PREND.sub(sub_s_e_prend, text)
+
+    def sub_ces_la(m):
+        nonlocal count; count += 1
+        return "C'est-là"
+    text = RX_CES_LA.sub(sub_ces_la, text)
+
+    def sub_histoire(m):
+        nonlocal count; count += 1
+        return "l'Histoire"
+    text = RX_HISTOIRE.sub(sub_histoire, text)
+
+    # 5n. Miscellaneous Archaic Spellings and Pattern Families
+    def sub_par_tout(m):
+        nonlocal count
+        after = text[m.end():]
+        if RX_PAR_TOUT_KEEP.match(after):
+            return m.group(0)
+        count += 1
+        src = m.group(1)
+        return "Partout" if src[0].isupper() else "partout"
+    text = RX_PAR_TOUT.sub(sub_par_tout, text)
+
+    def sub_misc_archaic(m):
+        nonlocal count
+        w = m.group(1)
+        lw = w.lower()
+        if lw in EXACT_MISC_ARCHAIC_MAP:
+            tgt = match_case(w, EXACT_MISC_ARCHAIC_MAP[lw])
+            if tgt != w:
+                count += 1
+                return tgt
+        return w
+    text = RX_MISC_ARCHAIC.sub(sub_misc_archaic, text)
 
     # 6. Global WORD_MAP matching
     def replacer(match):

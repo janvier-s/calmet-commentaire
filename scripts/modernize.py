@@ -48,12 +48,12 @@ def modernize_french(text):
     # Actually, the safest way is a regex with a function or lookbehind
     def replace_oit(m):
         word = m.group(0)
-        exceptions = ["droit", "soit", "doit", "voit", "croit", "reçoit", "toit", "étroit", "endroit", "froid"]
+        exceptions = ["droit", "soit", "doit", "voit", "croit", "reçoit", "conçoit", "aperçoit", "apperçoit", "déçoit", "toit", "étroit", "endroit", "froid"]
         # check if it is exactly one of the exceptions
         if word.lower() in exceptions:
             return word
-        # specific suffixes like 'çoit'
-        if word.endswith("çoit") and word.lower() not in ["reçoit"]:
+        # specific suffixes like 'çoit' for verbs in -cer (commençoit -> commençait), excluding -cevoir present forms
+        if word.endswith("çoit") and word.lower() not in exceptions:
             return word[:-3] + "çait"
         return word[:-3] + "ait"
         
