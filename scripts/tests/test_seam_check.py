@@ -1,5 +1,5 @@
 """The script-side page-break repeat detector, and which seam results may replace the older guesses."""
-from seam_check import repetition
+from seam_check import plain, repetition
 
 
 def test_three_or_more_words_repeated():
@@ -33,6 +33,17 @@ def test_a_word_split_across_the_break_is_not_a_repeat():
 def test_hyphenated_word_reprinted_is_still_a_repeat():
     # "au-jourd'hui ‖ jourd'hui" is the same word printed twice, not a split word
     assert repetition("on dit qu'au-jourd'hui", "jourd'hui en Hollande") == "jourd hui"
+
+
+def test_italics_on_one_side_do_not_hide_a_repeat():
+    # 06_josue p. 129: the quotation is italic on one page, roman on the next
+    assert repetition("Il vit un homme _devant_", "devant lui") == "devant"
+    assert repetition("Il vit un homme devant", "_devant_ lui") == "devant"
+
+
+def test_the_model_sees_the_words_without_italics_marks():
+    assert plain("_Il vit_ un homme") == "Il vit un homme"
+    assert plain(None) == ""
 
 
 def test_partial_seam_results_do_not_replace_the_older_gap_checks():

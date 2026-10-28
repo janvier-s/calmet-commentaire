@@ -49,6 +49,11 @@ def norm_words(s):
     return re.findall(r"[a-zà-ÿœæç]+", (s or "").lower().replace("ſ", "s"))
 
 
+def plain(s):
+    """The text without its italics marks, for the model: they do not change the words."""
+    return (s or "").replace("_", "")
+
+
 def repetition(tail, head):
     """Words at the end of `tail` reprinted at the start of `head`: 3+ words, or one or two when the page
     breaks mid-sentence and they are longer than a particle (un homme ‖ homme dont)."""
@@ -97,8 +102,10 @@ def seams(book):
 
 async def ask(batch, sem):
     global LIMIT_HIT
-    items = "\n".join(f'#{i}: NEW_NOTE={"yes" if s["new_note"] else "no"}\nBEFORE: …{s["tail"]}\nAFTER: {s["head"]}…\n'
-                      for i, s in batch)
+    items = "\n".join(
+        f'#{i}: NEW_NOTE={"yes" if s["new_note"] else "no"}\n'
+        f'BEFORE: …{plain(s["tail"])}\nAFTER: {plain(s["head"])}…\n'
+        for i, s in batch)
     prompt = PROMPT.format(items=items)
     async with sem:
         if LIMIT_HIT:

@@ -57,7 +57,12 @@ def unrepeat(tail, head):
             rest = head[hw[k - 1].end():]
             if re.search(r"[,;:.!?]\s*$", tail):
                 rest = re.sub(r"^\s*[,;:.!?]", "", rest)
-            return tail, rest.lstrip(), "repeat"
+            rest = rest.lstrip()
+            # a "_" that closed the repeated word is left with nothing to close: drop it, unless
+            # the page before already left italics open for it (then it is their closing mark)
+            if rest.startswith("_") and rest.count("_") % 2 and not tail.count("_") % 2:
+                rest = rest[1:].lstrip()
+            return tail, rest, "repeat"
     if tw and hw and len(tw[-1]) >= 4 and hw[0].group().lower().startswith(tw[-1].lower()) \
             and tail.rstrip().endswith(tw[-1]):
         return tail.rstrip()[:-len(tw[-1])].rstrip(), head, "repeat"
