@@ -1,5 +1,17 @@
 {
  "false_positives": {
+  "45_1_maccabees/0222/verse_no_punct/27ed0ac2": {
+   "book_dir": "45_1_maccabees",
+   "kind": "verse_no_punct",
+   "msg": "Verse 10:69: french does not end with punctuation: “…u à Jamnia, il envoya dire à Jonathas grand-Prêtre” (a word lost, or the verse runs on overleaf?)",
+   "page": 222
+  },
+  "45_1_maccabees/0273/verse_no_punct/6d7f7493": {
+   "book_dir": "45_1_maccabees",
+   "kind": "verse_no_punct",
+   "msg": "Verse 14:24: latin does not end with punctuation: “…eis societatem. Cùm autem audisset populus Romanus” (a word lost, or the verse runs on overleaf?)",
+   "page": 273
+  },
   "45_1_maccabees/0274/lowercase_translation/e81c0062": {
    "book_dir": "45_1_maccabees",
    "kind": "lowercase_translation",
@@ -8,6 +20,10 @@
   }
  },
  "status": {
+  "45_1_maccabees/0142/verse_no_punct/2a0906fc": "resolved",
+  "45_1_maccabees/0222/verse_no_punct/27ed0ac2": "false_positive",
+  "45_1_maccabees/0254/verse_no_punct/7197cdd7": "resolved",
+  "45_1_maccabees/0273/verse_no_punct/6d7f7493": "false_positive",
   "45_1_maccabees/0274/lowercase_translation/e81c0062": "false_positive",
   "45_1_maccabees/0286/long_translation/248fe756": "resolved",
   "45_1_maccabees/0286/lowercase_translation/b39a913e": "resolved",

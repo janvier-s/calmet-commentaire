@@ -12,7 +12,7 @@ const el = (tag, props = {}, ...kids) => {
 
 export const S = {
   config: null, vol: null, page: null, pages: [], data: null, version: null,
-  ctx: null, issues: [], around: null, section: "all",
+  ctx: null, issues: [], around: null, reviewed: {}, section: "all",
   zoom: 1, dim: 10, posting: 0,
 };
 
@@ -69,7 +69,8 @@ export async function loadPage(vol, page) {
   S.reveal = new Set();
   S.opened = { vol, page, data: structuredClone(r.body.data) };  // for Undo all
   Object.assign(S, { vol, page, data: r.body.data, version: r.body.version, ctx: r.body.context,
-                     pages: r.body.pages, issues: r.body.issues, around: r.body.around });
+                     pages: r.body.pages, issues: r.body.issues, around: r.body.around,
+                     reviewed: Object.fromEntries(Object.entries(r.body.reviewed).map(([k, v]) => [k, new Set(v)])) });
   if (!hooks.remember) api("/api/state", { vol, page });  // the queue saves it with its filters and issue
   showScan(r.body.scan);
   renderPage();

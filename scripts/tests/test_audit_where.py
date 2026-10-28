@@ -16,7 +16,12 @@ MUST = {"lowercase_lemma", "long_translation", "no_translation", "verse_no_punct
 @pytest.fixture(scope="module")
 def queue():
     info = A.BOOKS["proverbs"]
-    return A.audit_book("proverbs", info, info.get("site") or A.site_slugs().get(info["fr"]))["queue"]
+    orig_fp = A.FP_IDS
+    try:
+        A.FP_IDS = set()
+        return A.audit_book("proverbs", info, info.get("site") or A.site_slugs().get(info["fr"]))["queue"]
+    finally:
+        A.FP_IDS = orig_fp
 
 
 def quoted(msg):

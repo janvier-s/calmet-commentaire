@@ -1,5 +1,11 @@
 {
  "false_positives": {
+  "21b_psaumes/0441/verse_no_punct/32283c69": {
+   "book_dir": "21b_psaumes",
+   "kind": "verse_no_punct",
+   "msg": "Verse 78:10: french does not end with punctuation: “… Faites éclater contre les nations devant nos yeux” (a word lost, or the verse runs on overleaf?)",
+   "page": 441
+  },
   "21b_psaumes/0471/etc_for_et/764509b8": {
    "book_dir": "21b_psaumes",
    "kind": "etc_for_et",
@@ -23,8 +29,10 @@
   "21b_psaumes/0357/psalm_missing_verse/dc9d766e": "resolved",
   "21b_psaumes/0409/lowercase_translation/2b21c860": "resolved",
   "21b_psaumes/0428/lowercase_translation/5a57242f": "resolved",
+  "21b_psaumes/0441/verse_no_punct/32283c69": "false_positive",
   "21b_psaumes/0471/etc_for_et/764509b8": "false_positive",
   "21b_psaumes/0494/etc_for_et/ac087f19": "false_positive",
+  "21b_psaumes/0514/verse_no_punct/3f605333": "resolved",
   "21b_psaumes/0533/etc_for_et/54ee4c43": "false_positive",
   "21b_psaumes/0535/etc_for_et/406306c3": "resolved",
   "21b_psaumes/0537/leading_call/f751c874": "resolved",

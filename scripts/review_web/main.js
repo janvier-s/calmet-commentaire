@@ -10,6 +10,7 @@ import "./batch.js";
 import "./search.js";
 import "./tags.js";
 import "./todo.js";
+import "./reviewed.js";
 import "./watch.js";
 import { decorate } from "./icons.js";
 

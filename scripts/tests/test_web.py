@@ -5,6 +5,7 @@ import urllib.request
 
 import pytest
 
+from conftest import reviews
 from review_store import Store
 from review_web import make_server
 
@@ -197,3 +198,35 @@ def test_save_carries_chapter_and_verse_to_continuations(web):
     code, saved = web("/api/page", {"vol": VOL, "page": 193, "data": data, "version": saved["version"]})
     assert "carried" not in saved
     assert web(f"/api/page?vol={VOL}&page=194")[1]["data"]["commentary"][0]["verse_ref"] == 99
+
+
+def test_reviewed_pages(web, data_dir):
+    page = lambda n: web(f"/api/page?vol={VOL}&page={n}")[1]["reviewed"]
+    assert page(194) == {"commentary": [], "verses": [], "footnotes": []}
+    assert web("/api/reviewed", {"vol": VOL, "pages": [194]})[1]["reviewed"]["commentary"] == [194]
+    assert web("/api/reviewed", {"vol": VOL, "upto": 193})[1]["reviewed"]["commentary"] == [193, 194]
+    assert web("/api/reviewed", {"vol": VOL, "section": "verses", "pages": [195]})[1]["reviewed"]["verses"] == [195]
+    assert page(195) == {"commentary": [193, 194], "verses": [195], "footnotes": []}  # sections apart
+    assert web("/api/reviewed", {"vol": VOL, "pages": [194], "reviewed": False})[1]["reviewed"]["commentary"] == [193]
+    assert web("/api/reviewed", {"vol": VOL})[0] == 400
+    assert web("/api/reviewed", {"vol": VOL, "section": "nope", "pages": [1]})[0] == 400
+    assert web("/api/reviewed", {"vol": "nope", "pages": [1]})[0] == 400
+    # apart from the issues, and kept in the book's file with the rest
+    assert reviews(data_dir) == {}
+    web("/api/mark", {"id": "22_proverbes/0194/hyphen_cut/aaaa", "status": "resolved"})
+    assert json.loads((data_dir / VOL / "review.json").read_text())["reviewed"]["commentary"] == [193]
+
+
+def test_add_note(tmp_path):
+    from review_store import add_note
+    f = tmp_path / "NOTES.md"
+    f.write_text("## VERSE FIXES\n\nI. Par. 8.  \n\n## SPELLING\n\nrobbe  \n*gozier*  \n\n\n## MASS EDITS\n\nx\n", encoding="utf-8")
+    assert add_note(f, "SPELLING", "per_pe_tuë\n ") is True
+    assert add_note(f, "SPELLING", "gozier") is False
+    assert add_note(f, "SPELLING", "perpetuë") is False
+    assert f.read_text(encoding="utf-8") == ("## VERSE FIXES\n\nI. Par. 8.  \n\n## SPELLING\n\nrobbe  \n*gozier*  \nperpetuë  \n\n\n"
+                                            "## MASS EDITS\n\nx\n")
+    g = tmp_path / "new.md"
+    assert add_note(g, "SPELLING", "bled") and g.read_text(encoding="utf-8") == "\n## SPELLING\n\nbled  \n"
+    with pytest.raises(ValueError):
+        add_note(g, "SPELLING", "  ")

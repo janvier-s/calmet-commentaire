@@ -384,19 +384,21 @@ def _atomic_write(path, text):
     os.replace(tmp, path)
 
 
+REVIEW_SECTIONS = ("commentary", "verses", "footnotes")  # read through separately
 REVIEW_FILE = "review.json"  # data/<book>/review.json: one book's review, so that volunteers' commits don't collide
 
 
 class Progress:
     """The review of every book, one file per book (data/<book>/review.json): each item's status
     (resolved, false_positive, skipped, on_hold), the false positives with what they said (they outlive the
-    queue), and the page to-dos."""
+    queue), the page to-dos, and the pages read through by section ("reviewed": independent of the issues)."""
 
     def __init__(self, data_dir: Path):
         self.dir = Path(data_dir)
-        self.data, self.fps, self.todos = {}, {}, {}
+        self.data, self.fps, self.todos, self.reviewed = {}, {}, {}, {}
         for f in sorted(self.dir.glob(f"*/{REVIEW_FILE}")):
             d = self._read(f.parent.name)
+            self.reviewed[f.parent.name] = {k: set(v) for k, v in d["reviewed"].items()}
             self.data.update(d["status"])
             self.fps.update(d["false_positives"])
             self.todos[f.parent.name] = d["todos"]
@@ -409,7 +411,7 @@ class Progress:
         except (OSError, ValueError):
             d = {}
         return {"status": d.get("status") or {}, "false_positives": d.get("false_positives") or {},
-                "todos": d.get("todos") or []}
+                "todos": d.get("todos") or [], "reviewed": {k: sorted(set((d.get("reviewed") or {}).get(k) or [])) for k in REVIEW_SECTIONS}}
 
     def _write(self, vol, d):
         _atomic_write(self.dir / vol / REVIEW_FILE, json.dumps(d, ensure_ascii=False, indent=1, sort_keys=True) + "\n")
@@ -446,6 +448,17 @@ class Progress:
                     self.fps.pop(item_id, None)
                     d["false_positives"].pop(item_id, None)
             self._write(vol, d)
+
+    def set_reviewed(self, vol, section, pages, on=True):
+        """Pages of one section (commentary, verses, footnotes) read through, or taken back; the book's file
+        written once; returns the section's reviewed pages."""
+        d = self._read(vol)
+        have = set(d["reviewed"][section])
+        have = have | set(pages) if on else have - set(pages)
+        d["reviewed"][section] = sorted(have)
+        self._write(vol, d)
+        self.reviewed[vol] = {k: set(v) for k, v in d["reviewed"].items()}
+        return d["reviewed"]
 
     def add_todo(self, vol, page, msg, where=None, holds=None):
         """A page to-do (something to do that no check finds: a rescan, an abbreviation…); `holds`: the
@@ -616,3 +629,36 @@ def merge_recheck(items, progress, vols, new_items, include_optional=True):
     if changes:
         progress.update(changes)
     return {"fixed": fixed, "added": added}
+
+
+# --- the notes file: words picked in the editor, added under a heading ---
+NOTES_SECTIONS = ("SPELLING", "VERSE FIXES")
+
+
+def add_note(path, section, text):
+    """Append `text` (one line, italics marks dropped) to the end of `## <section>` in the notes file, as a
+    markdown line break; a heading not there yet is added at the end. Returns False when the line is already
+    in the section."""
+    path = Path(path)
+    text = " ".join(text.replace("_", "").split())
+    if not text:
+        raise ValueError("nothing selected")
+    lines = path.read_text(encoding="utf-8").split("\n") if path.exists() else []
+    head = f"## {section}"
+    if head in lines:
+        start = lines.index(head) + 1
+        end = next((i for i in range(start, len(lines)) if lines[i].startswith("## ")), len(lines))
+        if any(l.strip().strip("*") == text for l in lines[start:end]):
+            return False
+        at = end
+        while at > start and not lines[at - 1].strip():
+            at -= 1
+        lines.insert(at, text + "  ")
+        if at == start:  # an empty section: a blank line after the heading
+            lines.insert(start, "")
+    else:
+        while lines and not lines[-1].strip():
+            lines.pop()
+        lines += ["", head, "", text + "  ", ""]
+    _atomic_write(path, "\n".join(lines))
+    return True

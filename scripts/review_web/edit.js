@@ -208,6 +208,11 @@ const SEL_TOOLS = [
   ["I", "Italics (⌘I)", (f) => f.toggleItalic(), "it-btn", null],
   ["Cut", "Cut the selection", async (f, sel) => { if (await copySel(f, sel)) f.edit(sel[0], sel[1], ""); }, "", "cut"],
   ["Copy", "Copy the selection", async (f, sel) => { if (await copySel(f, sel)) toast("Copied"); }, "", "copy"],
+  ["Spelling", "Add the selection to the SPELLING list in the notes file", async (f, [a, b]) => {
+    const r = await api("/api/note", { section: "SPELLING", text: f.text.slice(a, b) });
+    if (r.status !== 200) toast(r.body.error || "Could not add it", "error");
+    else toast(r.body.added ? "Added to SPELLING" : "Already in SPELLING", r.body.added ? "ok" : undefined);
+  }, "", "flag"],
   // pasted over the selection, with a space after it unless one follows already
   ["Paste", "Paste over the selection, with a space after it", async (f, [a, b]) => {
     let t;
@@ -268,4 +273,17 @@ for (const t of SHELF) {
     try { await navigator.clipboard.writeText(t); toast(`Copied ${t}`); } catch (e) { toast("Could not copy"); }
   };
   $("shelf").append(b);
+}
+
+// italics underlined in the commentary (the menu's choice is kept)
+{
+  let on = true;
+  try { on = localStorage.getItem("rw-underline") !== "0"; } catch (e) {}
+  const box = $("underline-it");
+  box.checked = on;
+  document.body.classList.toggle("no-ul", !on);
+  box.onchange = () => {
+    document.body.classList.toggle("no-ul", !box.checked);
+    try { localStorage.setItem("rw-underline", box.checked ? "1" : "0"); } catch (e) {}
+  };
 }

@@ -328,9 +328,10 @@ body.no-hi .block.flash { animation: none; }
 #save:hover { filter: brightness(1.1); }
 #save.unsaved { background: var(--unsaved); box-shadow: 0 0 0 2px color-mix(in srgb, var(--unsaved) 35%, transparent); }
 
-/* the marking buttons: one block on the right (…, Skip, Reopen, Resolved, False positive); short of room,
-   Resolved and False positive stay on top and the other three go under them */
-#marks { flex: 1 1 230px; display: flex; flex-wrap: wrap-reverse; justify-content: flex-end; align-items: center; gap: 5px; }
+/* the marking buttons: fixed two rows on the right;
+   Top: False positive, Resolved + re-check, Resolved
+   Bottom: …, Skip, On hold, Reopen */
+#marks { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 5px; flex-shrink: 0; }
 #marks button { padding: 3px 7px; }
 #marks .group { gap: 5px; }
 #mark-reopen { color: var(--c-fn); border-color: var(--c-fn); background: color-mix(in srgb, var(--c-fn) 14%, var(--surface)); }
@@ -389,3 +390,19 @@ button.ok:hover, button.warn:hover { filter: brightness(1.1); }
 .ftag { color: var(--soft); opacity: .85; }
 .ftag:hover { opacity: 1; }
 .ftitle { color: var(--soft); }
+
+/* reviewed: the page read through, apart from the issues; a bar at the foot of the text column, hideable */
+#reviewed { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+  justify-content: flex-end; padding: 4px 10px; background: var(--panel, var(--bg)); border-top: 1px solid var(--border); }
+#reviewed[hidden] { display: none; }
+#reviewed.min { background: none; border-top: 0; pointer-events: none; }
+#reviewed.min > * { pointer-events: auto; }
+body.rev-on { padding-bottom: 36px; box-sizing: border-box; }
+#reviewed button { font-size: 12px; display: inline-flex; align-items: center; gap: 4px; }
+#reviewed button.on { border-color: var(--ok); color: var(--ok); font-weight: 600;
+  background: color-mix(in srgb, var(--ok) 14%, transparent); }
+#reviewed button.cur { text-decoration: underline; text-underline-offset: 3px; }
+body.turn-open #reviewed, body.batch-open #reviewed { display: none; }
+
+/* italics in the commentary also underlined, to spot them at a glance */
+body:not(.no-ul) .f[data-name="french_commentary"] .it { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }

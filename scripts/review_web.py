@@ -15,6 +15,7 @@ Serves on 127.0.0.1 only; the printed link carries the session key.
 """
 import json
 import mimetypes
+import os
 import re
 import secrets
 import shutil
@@ -42,8 +43,9 @@ class ApiError(Exception):
         self.code, self.body = code, body
 
 
-def make_server(store, queue_path, port=0, token=None, include_optional=False, start=None, recheck=None):
+def make_server(store, queue_path, port=0, token=None, include_optional=False, start=None, recheck=None, notes=None):
     """The HTTP server over `store` and the queue at `queue_path`, not yet serving."""
+    notes_path = Path(notes or os.environ.get("CALMET_NOTES") or Path(__file__).resolve().parents[2] / "NOTES.md")
     token = token or secrets.token_hex(16)
     progress = rs.Progress(store.data)
     items = rs.load_queue(queue_path, progress, include_optional)
@@ -84,7 +86,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return {"page": page, "data": data, "version": version, "scan": store.scan(vol, page) is not None,
                 "context": store.context(vol, page), "pages": store.pages(vol),
                 "issues": rs.page_issues(items, progress, vol, page),
-                "around": rs.neighbour_issue_pages(items, progress, vol, page)}
+                "around": rs.neighbour_issue_pages(items, progress, vol, page),
+                "reviewed": {k: sorted(progress.reviewed.get(vol, {}).get(k, ())) for k in rs.REVIEW_SECTIONS}}
 
     def save(vol, page, body):
         try:
@@ -194,6 +197,19 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             del by_id[it["id"]]
         return {"issues": rs.page_issues(items, progress, it["book_dir"], it["page"]), "reopened": reopened}
 
+    def reviewed(body):
+        """Pages of a section (commentary by default) read through, or taken back (`reviewed: false`):
+        `pages`, or every page up to `upto`."""
+        vol, section = body.get("vol"), body.get("section", "commentary")
+        if vol not in store.volumes() or section not in rs.REVIEW_SECTIONS:
+            raise ApiError(400, {"error": "no such book or section"})
+        try:
+            pages = [int(p) for p in body["pages"]] if "pages" in body else [p for p in store.pages(vol) if p <= int(body["upto"])]
+        except (KeyError, TypeError, ValueError):
+            raise ApiError(400, {"error": "pages or upto"})
+        with lock:
+            return {"reviewed": progress.set_reviewed(vol, section, pages, body.get("reviewed", True) is not False)}
+
     def flag(body):
         vol, page = vol_page(body)
         raw = store.data / vol / "raw_json" / "commentaire" / f"page_{page:04d}.json"
@@ -205,6 +221,17 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         for src in sources:
             shutil.copy(src, dest / f"page_{page:04d}{src.suffix}")
         return {"copied": [f"page_{page:04d}{s.suffix}" for s in sources], "to": str(dest)}
+
+    def note(body):
+        """Add selected text to the notes file (CALMET_NOTES, by default NOTES.md beside the repo)."""
+        section = body.get("section") or "SPELLING"
+        if section not in rs.NOTES_SECTIONS:
+            raise ApiError(400, {"error": "no such section"})
+        try:
+            added = rs.add_note(notes_path, section, body.get("text") or "")
+        except ValueError as e:
+            raise ApiError(400, {"error": str(e)})
+        return {"added": added, "file": str(notes_path)}
 
     def open_file(body):
         vol, page = vol_page(body)
@@ -470,7 +497,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
-            "/api/todo": add_todo, "/api/todo/delete": delete_todo,
+            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
             "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit}
 

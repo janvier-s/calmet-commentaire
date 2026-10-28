@@ -44,11 +44,17 @@
   </div>
   <div id="marks">
     <div class="group">
+      <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
+      <button id="mark-resolved-recheck" class="ok recheck" data-icon="check" title="Resolved after the page's re-check has finished, so the issues your edits fixed are already closed in the list (Alt+⏎)">Resolved + re-check</button>
+      <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to the next issue at once; the re-check runs in the background (⌘⏎ / Ctrl+⏎)">Resolved</button>
+    </div>
+    <div class="group">
       <div class="menu">
         <button id="menu-btn" class="icon" data-icon="more" title="More"></button>
         <div id="menu" hidden>
           <label>Theme <select id="theme"><option value="paper">Paper</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
           <label><input type="checkbox" id="show-marks" checked> Show _ marks</label>
+          <label><input type="checkbox" id="underline-it" checked> Underline italics in the commentary</label>
           <label><input type="checkbox" id="renumber" checked> Renumber commentary_id when moving</label>
           <button data-tool="flag">Flag for review</button>
           <button data-tool="json">Open JSON</button>
@@ -58,11 +64,6 @@
       <button id="mark-skip" data-icon="skip" title="Skip">Skip</button>
       <button id="mark-hold" data-icon="pause" title="On hold: neither resolved nor a false positive; it waits for something done elsewhere (a to-do added while it is open puts it on hold, and frees it once done)">On hold</button>
       <button id="mark-reopen" data-icon="reopen" title="Reopen the issue you last marked resolved, false positive or skipped, and go back to it">Reopen</button>
-    </div>
-    <div class="group">
-      <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
-      <button id="mark-resolved-recheck" class="ok recheck" data-icon="check" title="Resolved after the page's re-check has finished, so the issues your edits fixed are already closed in the list (Alt+⏎)">Resolved + re-check</button>
-      <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to the next issue at once; the re-check runs in the background (⌘⏎ / Ctrl+⏎)">Resolved</button>
     </div>
   </div>
 </header>
@@ -103,6 +104,7 @@
 </main>
 <section id="turn" hidden></section>
 <section id="batch" hidden></section>
+<footer id="reviewed" hidden></footer>
 <dialog id="dialog"><form method="dialog"><p id="dialog-msg"></p><div id="dialog-body"></div><menu id="dialog-buttons"></menu></form></dialog>
 </body>
 </html>
