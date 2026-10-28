@@ -304,7 +304,7 @@ KIND_LABELS = {
     "verse_no_punct": "VERSE NOT ENDING WITH PUNCTUATION",
     "footnote_no_period": "FOOTNOTE NOT ENDING WITH A FULL STOP",
     "stray_underscore": "STRAY _ (ITALICS WITHOUT ITS PAIR)",
-    "hebrew_in_translation": "“L'HÉBREU” IN THE TRANSLATION",
+    "hebrew_in_translation": "COMMENTARY OR VARIANT IN THE TRANSLATION",
     "hebrew_recheck": "FOOTNOTE HEBREW UNCERTAIN: CHECK AGAINST THE SCAN",
     "lemma_verse": "LATIN_QUOTE FILLED IN BY HAND: RIGHT VERSE NUMBER?",
     "verse_mismatch": "LATIN_QUOTE FITS ANOTHER VERSE: WRONG VERSE NUMBER?",

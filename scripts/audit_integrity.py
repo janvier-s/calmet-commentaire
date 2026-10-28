@@ -17,6 +17,22 @@ from paths import BOOKS, DATA as STUDIUM, DOCS, VUL, WEB as SITE
 ORDER_OK = json.loads((STUDIUM / "verse_ref_order_ok.json").read_text(encoding="utf-8")) \
     if (STUDIUM / "verse_ref_order_ok.json").exists() else {}  # fix_verse_refs.py: out of order on purpose
 WHICH_BOOK = re.compile(r"\b(?:Rois|Paralipomènes|Machabées|Esdras),?\s+chapitres?\s+\d+(?::\d+(?:(?:-|, )\d+)*)?")
+# In a french_translation, these words betray commentary or a variant reading rather than the verse:
+# “l'hébreu”, “à la lettre”, “Septante”, and the alternative “ou” (but not “où”).
+TRANSLATION_COMMENTARY = re.compile(
+    r"\bl['’]\s?h[ée]breu|\bà\s+la\s+lettre\b|\bSeptante\b|(?<!\w)ou(?!\w)", re.I)
+
+
+def translation_markers(text):
+    """The commentary / variant markers in a french_translation, in reading order, without repeats."""
+    out, seen = [], set()
+    for m in TRANSLATION_COMMENTARY.finditer(text or ""):
+        low = m.group(0).lower()
+        if low not in seen:
+            seen.add(low)
+            out.append(m.group(0))
+    return out
+
 
 def stray_underscore(text):
     """The first "_" of `text` out of place, as (its index, what is wrong), or None. Each "_" opens
@@ -592,9 +608,16 @@ def audit_book(key, info, slug, published=True):
                      f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}): latin_quote “{lemma[:50]}” has no "
                      f"french_translation; {where} “{fc[:60]}…”: {why}", optional=one_word,
                      where=dict(section="commentary", index=j, field="french_translation"))
-            if re.search(r"\bl['’]\s?h[ée]breu", tr, re.I):
-                item("hebrew_in_translation", vol, int(n[5:9]),
-                     f"“L'Hébreu” in the translation of “{lemma[:40]}”: “{tr[:100]}…”: commentary run into the translation?",
+            if marks := translation_markers(tr):
+                if re.search(r"\bl['’]\s?h[ée]breu", tr, re.I):
+                    # keep the old wording (and so the old id) for items already reviewed
+                    msg = (f"“L'Hébreu” in the translation of “{lemma[:40]}”: “{tr[:100]}…”: "
+                           "commentary run into the translation?")
+                else:
+                    shown = " ".join(f"“{m}”" for m in marks)
+                    msg = (f"{shown} in the translation of “{lemma[:40]}”: “{tr[:100]}…”: "
+                           "commentary or a variant run into the translation?")
+                item("hebrew_in_translation", vol, int(n[5:9]), msg,
                      where=dict(section="commentary", index=j, field="french_translation"))
             if tr:
                 tr_bare = tr.rstrip("_* \t")
