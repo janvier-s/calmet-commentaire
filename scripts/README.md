@@ -67,7 +67,8 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   begin mid-sentence, so its start is missing. Shown in the page-turn editor (page after the turn).
 
 - `seam_check.py <volume> …`: reads every page break for lost or repeated lines
-  (Claude, cached in `cache/seam_cache.json`) → `docs/seam_check.json`.
+  (agy by default, cached in `cache/seam_cache.json`; `SEAM_BACKEND=claude`, `AGY_MODEL`,
+  `AGY_EFFORT=low` for a faster pass) → `docs/seam_check.json`.
 - `spellcheck.py scan <volume|book> …`: hunspell (`brew install hunspell`, French dictionary
   in `~/Library/Spelling/fr_FR`) over every French field (cached per word in
   `cache/hunspell_cache.json`) → `docs/hunspell/<volume>.json`. Then

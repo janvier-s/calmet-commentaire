@@ -16,7 +16,7 @@ def recheck_book(vol, data=None):
     None for a book the full audit leaves out (audit_integrity.main), so nothing is closed or added."""
     key = BY_VOLUME.get(vol)
     info = BOOKS.get(key) if key else None
-    if not info or info["number"] > 46 or key in audit_integrity.EXCLUDED:
+    if not info or key in audit_integrity.EXCLUDED:
         return None
     if data is not None:  # the audit and the export read paths.DATA and their own copy of it
         paths.DATA = audit_integrity.STUDIUM = data
@@ -25,7 +25,8 @@ def recheck_book(vol, data=None):
     calmet.pages.cache_clear()
     calmet.apparatus.cache_clear()
     queue = audit_integrity.audit_book(key, info, info.get("site") or audit_integrity.site_slugs().get(info["fr"]))["queue"]
-    # where seam_check.py has read the page breaks, its verdicts replace these guesses (as audit_integrity.main)
+    # where seam_check.py has read every page break, its verdicts replace these guesses (as audit_integrity.main)
     seam = DOCS / "seam_check.json"
     read = json.loads(seam.read_text(encoding="utf-8")) if seam.exists() else {}
-    return [q for q in queue if not (q["book_dir"] in read and q["kind"] in ("possible_gap", "seam_artifact"))]
+    done = audit_integrity.seam_fully_read(read)
+    return [q for q in queue if not (q["book_dir"] in done and q["kind"] in ("possible_gap", "seam_artifact"))]

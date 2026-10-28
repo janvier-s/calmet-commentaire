@@ -213,9 +213,9 @@ def test_recheck_not_audited_changes_nothing(data_dir):
 
 
 @pytest.mark.skipif(not (REAL_DATA / "47_matthieu" / "normalized").is_dir(), reason="no real data")
-def test_recheck_book_skips_books_the_audit_leaves_out():
+def test_recheck_book_covers_every_book():
     from page_audit import recheck_book
-    assert recheck_book("47_matthieu") is None
+    assert isinstance(recheck_book("47_matthieu"), list)
 
 
 @pytest.mark.skipif(not (REAL_DATA / VOL / "normalized").is_dir(), reason="no real data")

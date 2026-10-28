@@ -897,6 +897,13 @@ def audit_book(key, info, slug, published=True):
 EXCLUDED = set()
 
 
+def seam_fully_read(read):
+    """The books in seam_check.py's results whose every page break has been read. Only those replace
+    the punctuation guesses for a possible gap: a partial run (say, the model ran out of quota) must
+    not silently drop the checks it has not covered yet."""
+    return {book for book, res in read.items() if not res.get("unread")}
+
+
 def latin_long_s():
     """Latin verse words vulgate_check.py found with f where the Vulgate has s, but could not set
     right by itself (the word differs from the Vulgate's in more than the f): read on the scan."""
@@ -919,8 +926,6 @@ def main():
     slugs = site_slugs()
     results = []
     for key, info in BOOKS.items():
-        if info["number"] > 46:  # page_audit.recheck_book skips the same books
-            continue
         if key in EXCLUDED:
             continue
         r = audit_book(key, info, info.get("site") or slugs.get(info["fr"]))
@@ -974,7 +979,8 @@ def main():
     seam_file = DOCS / "seam_check.json"
     if seam_file.exists():
         read = json.loads(seam_file.read_text())
-        queue = [q for q in queue if not (q["book_dir"] in read and q["kind"] in ("possible_gap", "seam_artifact"))]
+        done = seam_fully_read(read)
+        queue = [q for q in queue if not (q["book_dir"] in done and q["kind"] in ("possible_gap", "seam_artifact"))]
         for book, res in read.items():
             if any(book in BOOKS[k]["studium"] for k in EXCLUDED):
                 continue

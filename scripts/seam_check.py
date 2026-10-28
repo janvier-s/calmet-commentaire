@@ -4,19 +4,27 @@ For each pair of consecutive pages, take the end of the last commentary block on
 page and the start of the first block on the next (what page_editor shows as
 "prev"/"next"), then:
   - repetition: found by script (the end of one page reprinted at the top of the next);
-  - missing text: judged by Claude, reading the two sides together.
+  - missing text: judged by a model, reading the two sides together (agy by default;
+    SEAM_BACKEND=claude for Claude Code, AGY_MODEL to pick agy's model, AGY_EFFORT=low
+    for a faster pass).
 
 Usage: python3 seam_check.py 01_genese [02_exode ...]   (foreground; results cached)
 Writes STUDIUM/docs/seam_check.json, which audit_integrity.py turns into review items.
 """
-import asyncio, hashlib, json, os, re, sys
+import asyncio, hashlib, json, os, re, sys, tempfile, time
 from pathlib import Path
 
 from paths import DOCS, SEAM_CACHE as CACHE, pages as volume_pages
 
 OUT = DOCS / "seam_check.json"
+BACKEND = os.environ.get("SEAM_BACKEND", "agy")
 MODEL = os.environ.get("CLAUDE_MODEL", "sonnet")
+AGY_MODEL = os.environ.get("AGY_MODEL", "")
+AGY_EFFORT = os.environ.get("AGY_EFFORT", "")
 BATCH, PARALLEL = 40, 4
+LIMIT_HIT = False
+AGY_PLAIN = ("Answer directly, with text only: do not use any tool, do not run commands, "
+             "do not read or write files.\n\n")
 
 PROMPT = """You are proofreading a transcription of an 18th-century French Bible commentary (Dom Calmet).
 Each item below is a PAGE BREAK: BEFORE is the end of one printed page, AFTER is the start of the next.
@@ -42,10 +50,15 @@ def norm_words(s):
 
 
 def repetition(tail, head):
-    """Words at the end of `tail` reprinted at the start of `head` (3+ words)."""
+    """Words at the end of `tail` reprinted at the start of `head`: 3+ words, or one or two when the page
+    breaks mid-sentence and they are longer than a particle (un homme ‖ homme dont)."""
     tw, hw = norm_words(tail), norm_words(head)
     for k in range(min(len(tw), len(hw), 25), 2, -1):
         if tw[-k:] == hw[:k]:
+            return " ".join(hw[:k])
+    mid_sentence = not re.search(r"[.!?;:»]\W*$", re.sub(r"\^\{\([a-z]\)\}", "", tail or "").rstrip(" _*"))
+    for k in (2, 1):
+        if mid_sentence and len(tw) >= k and len(hw) >= k and tw[-k:] == hw[:k] and len("".join(hw[:k])) >= 5:
             return " ".join(hw[:k])
     # the whole last line repeated a little further into the next page
     if len(tw) >= 6:
@@ -83,20 +96,63 @@ def seams(book):
 
 
 async def ask(batch, sem):
+    global LIMIT_HIT
     items = "\n".join(f'#{i}: NEW_NOTE={"yes" if s["new_note"] else "no"}\nBEFORE: …{s["tail"]}\nAFTER: {s["head"]}…\n'
                       for i, s in batch)
+    prompt = PROMPT.format(items=items)
     async with sem:
-        proc = await asyncio.create_subprocess_exec(
-            "claude", "-p", "--model", MODEL, "--tools", "", "--strict-mcp-config", "--disable-slash-commands",
-            stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
-        out, err = await proc.communicate(PROMPT.format(items=items).encode())
-    text = out.decode().strip()
+        if LIMIT_HIT:
+            return {}
+        if BACKEND == "agy":
+            empty = Path(tempfile.gettempdir()) / "seam_check_agy"
+            empty.mkdir(exist_ok=True)
+            # agy names its log by the second; four calls starting together collide on that file
+            log = empty / f"agy-{os.getpid()}-{time.time_ns()}.log"
+            args = ["agy", "-p", AGY_PLAIN + prompt, "--print-timeout", "600s", "--log-file", str(log),
+                    "--disable-slash-commands", "--output-format", "json"]
+            args += ["--model", AGY_MODEL] if AGY_MODEL else []
+            args += ["--effort", AGY_EFFORT] if AGY_EFFORT else []
+            proc = await asyncio.create_subprocess_exec(*args, cwd=str(empty),
+                                                        stdout=asyncio.subprocess.PIPE,
+                                                        stderr=asyncio.subprocess.PIPE)
+            try:  # agy does not always keep to --print-timeout
+                out, err = await asyncio.wait_for(proc.communicate(), 660)
+            except asyncio.TimeoutError:
+                proc.kill()
+                await proc.wait()
+                out, err = b"", b"timed out"
+            try:
+                d = json.loads(out.decode())
+            except json.JSONDecodeError:
+                d = {"status": "ERROR", "response": (err or out).decode()[:300]}
+            text = str(d.get("response") or "")
+            if d.get("status") != "SUCCESS":
+                print("  batch failed:", text[:150] or err.decode()[:150], file=sys.stderr)
+                if re.search(r"quota|limit|exhausted|429", text + err.decode(), re.I):
+                    LIMIT_HIT = True
+                return {}
+        else:
+            proc = await asyncio.create_subprocess_exec(
+                "claude", "-p", "--model", MODEL, "--tools", "", "--strict-mcp-config", "--disable-slash-commands",
+                stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
+            out, err = await proc.communicate(prompt.encode())
+            text = out.decode().strip()
     text = re.sub(r"^```(?:json)?|```$", "", text).strip()
     try:
         res = json.loads(text)
+    except Exception:
+        m = re.search(r"\[\s*\{.*\}\s*\]", text, re.S)  # a little prose around the array
+        try:
+            res = json.loads(m.group()) if m else None
+        except Exception:
+            res = None
+    if not isinstance(res, list):
+        print("  batch failed:", text[:150], file=sys.stderr)
+        return {}
+    try:
         return {int(str(r["id"]).lstrip("#")): r for r in res}
     except Exception:
-        print("  batch failed:", (err or out).decode()[:150], file=sys.stderr)
+        print("  batch failed: bad item shape:", text[:150], file=sys.stderr)
         return {}
 
 
@@ -135,6 +191,11 @@ async def main(books):
         print(f"  {dict(Counter(f['verdict'] for f in flagged))}" + (f", {unread} unread" if unread else ""), flush=True)
     OUT.write_text(json.dumps(results, ensure_ascii=False, indent=1))
     print("wrote", OUT)
+    unread_books = {b: r["unread"] for b, r in results.items() if r.get("unread")}
+    if unread_books:
+        print(f"WARNING: {sum(unread_books.values())} page breaks still unread in {len(unread_books)} book(s) — "
+              f"the model calls failed (quota?); rerun: "
+              + " ".join(f"{b} ({n})" for b, n in unread_books.items()), file=sys.stderr)
 
 
 if __name__ == "__main__":
