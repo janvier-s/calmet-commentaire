@@ -1674,6 +1674,97 @@ WORD_MAP = {
     "avouënt": "avouent",
     "dévouë": "dévoue",
     "dévouënt": "dévouent",
+
+    # 5p. Archaic oi -> ai, -oître inflections, and archaic -oit / -oient verb endings
+    # connoître / paroître family inflections and long-s variants
+    "paroissez": "paraissez",
+    "paroissoit": "paraissait",
+    "paroissoient": "paraissaient",
+    "connoissoient": "connaissaient",
+    "reconnoissoient": "reconnaissaient",
+    "apparoissoient": "apparaissaient",
+    "disparoissoient": "disparaissaient",
+    "paroissons": "paraissons",
+    "paroissions": "paraissions",
+    "disparoissions": "disparaissions",
+    "apparoissions": "apparaissions",
+    "paroissiez": "paraissiez",
+    "paroitre": "paraître",
+    "paroiffent": "paraissent",
+    "paroißent": "paraissent",
+    "disparoisse": "disparaisse",
+    "disparoiffe": "disparaisse",
+    "disparoitre": "disparaître",
+    "apparoissait": "apparaissait",
+    "apparoissaient": "apparaissaient",
+    "comparoissaient": "comparaissaient",
+    "connoiffance": "connaissance",
+    "connoiffances": "connaissances",
+    "connoiffent": "connaissent",
+    "connoiffant": "connaissant",
+    "connoisseurs": "connaisseurs",
+    "connoissables": "connaissables",
+    "reconnoissiez": "reconnaissiez",
+    "reconnoissions": "reconnaissions",
+    "reconnoiffance": "reconnaissance",
+    "reconnoiffances": "reconnaissances",
+    "reconnoiffait": "reconnaissait",
+    "reconnoiffe": "reconnaisse",
+    "reconnoissables": "reconnaissables",
+    "méconnoissez": "méconnaissez",
+    "méconnoîtront": "méconnaîtront",
+    "reconnoi-tront": "reconnaîtront",
+
+    # foible / affoiblir family
+    "affoiblissent": "affaiblissent",
+    "affoiblifsent": "affaiblissent",
+    "affoiblira": "affaiblira",
+    "affoiblirai": "affaiblirai",
+    "affoibliffe": "affaiblisse",
+    "affoiblissait": "affaiblissait",
+    "affoibliraient": "affaibliraient",
+    "assoiblis": "affaiblis",
+
+    # roide / roidir family
+    "roidissez": "raidissez",
+    "roidir": "raidir",
+    "roidi": "raidi",
+
+    # monnoie
+    "monnoie": "monnaie",
+    "monnoies": "monnaies",
+
+    # Françoise / Narbonnoise adjectives
+    "françoise": "française",
+    "françoises": "françaises",
+    "narbonnoise": "narbonnaise",
+
+    # Archaic verbs in -oit / -oient
+    "duisoit": "duisait",
+    "obsedoit": "obsédait",
+    "laveroît": "laverait",
+    "dérivoit": "dérivait",
+    "dévivoit": "dérivait",
+    "disoit": "disait",
+    "lisoient": "lisaient",
+    "liloit": "lisait",
+    "blanchissoit": "blanchissait",
+    "siffloient": "sifflaient",
+    "assiégeoint": "assiégeaient",
+    "prenoiens": "prenaient",
+    "descendroiens": "descendraient",
+    "étoiens": "étaient",
+    "croistrons": "croîtront",
+    "estoit": "était",
+    "empêcheroitelle": "empêcherait-elle",
+    "veloppoit": "enveloppait",
+
+    # Miscellaneous archaic words
+    "moïen": "moyen",
+    "cicoigne": "cigogne",
+    "refectoire": "réfectoire",
+    "resectoire": "réfectoire",
+    "dequoi": "de quoi",
 }
 
 def match_case(src, tgt):
@@ -2424,6 +2515,7 @@ RX_S_OUVENT = re.compile(r"\b([Ss])\s+(ouvent\b)")
 RX_S_E_PREND = re.compile(r"\b([Ss])\s+e\s+(prend\b)")
 RX_CES_LA = re.compile(r"\bC'es\s+-\s*là\b")
 RX_HISTOIRE = re.compile(r"\bl'His\s+toire\b")
+RX_ROID_EGYPTE = re.compile(r"\bCe Roid'Égypte\b")
 
 # 5n. Miscellaneous Archaic Spellings and Pattern Families
 EXACT_MISC_ARCHAIC_MAP = {
@@ -3169,6 +3261,11 @@ def modernize_text(text):
         nonlocal count; count += 1
         return "l'Histoire"
     text = RX_HISTOIRE.sub(sub_histoire, text)
+
+    def sub_roid_egypte(m):
+        nonlocal count; count += 1
+        return "Ce Roi d'Égypte"
+    text = RX_ROID_EGYPTE.sub(sub_roid_egypte, text)
 
     # 5n. Miscellaneous Archaic Spellings and Pattern Families
     def sub_par_tout(m):

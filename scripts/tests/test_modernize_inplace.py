@@ -569,6 +569,133 @@ def test_expand_abbreviations_heb_and_chap():
     assert "ci-après Chapitre 37:14." in text
 
 
+def test_modernize_oi_to_ai_and_archaic_verbs():
+    # 1. Connoître / paroître inflections and OCR variants
+    text, _ = modernize_text("Vous paroissez devant Dieu, et ils paroissoient autrefois.")
+    assert "Vous paraissez devant Dieu" in text
+    assert "ils paraissaient autrefois" in text
+
+    text, _ = modernize_text("Qu'ils paroissent et qu'il paroisse, afin que nous paroissions.")
+    assert "Qu'ils paraissent" in text
+    assert "qu'il paraisse" in text
+    assert "afin que nous paraissions." in text
+
+    text, _ = modernize_text("Si vous paroissez et si vous paroissiez, sans qu'ils paroiffent ou paroißent.")
+    assert "Si vous paraissez" in text
+    assert "si vous paraissiez" in text
+    assert "sans qu'ils paraissent" in text
+    assert "ou paraissent." in text
+
+    text, _ = modernize_text("Faire paroitre ou disparoitre ce prodige.")
+    assert "Faire paraître ou disparaître ce prodige." in text
+
+    text, _ = modernize_text("Que la gloire disparoisse ou qu'elle disparoiffe.")
+    assert "Que la gloire disparaisse" in text
+    assert "ou qu'elle disparaisse." in text
+
+    text, _ = modernize_text("Les anges apparoissaient et le Seigneur apparoissait.")
+    assert "Les anges apparaissaient et le Seigneur apparaissait." in text
+
+    text, _ = modernize_text("Ils comparoissaient devant le juge.")
+    assert "Ils comparaissaient devant le juge." in text
+
+    text, _ = modernize_text("La connoiffance des saints et les connoiffances humaines.")
+    assert "La connaissance des saints et les connaissances humaines." in text
+
+    text, _ = modernize_text("Ils connoiffent la loi et connoiffant la vérité.")
+    assert "Ils connaissent la loi et connaissant la vérité." in text
+
+    text, _ = modernize_text("Des connoisseurs en cette matière.")
+    assert "Des connaisseurs en cette matière." in text
+
+    text, _ = modernize_text("Des choses connoissables et reconnoissables.")
+    assert "Des choses connaissables et reconnaissables." in text
+
+    text, _ = modernize_text("Vous reconnoissiez et nous reconnoissions sa bonté.")
+    assert "Vous reconnaissiez et nous reconnaissions sa bonté." in text
+
+    text, _ = modernize_text("Une juste reconnoiffance ; il reconnoiffait son maître.")
+    assert "Une juste reconnaissance ; il reconnaissait son maître." in text
+
+    text, _ = modernize_text("Qu'il reconnoiffe ses fautes ; vous méconnoissez Dieu ; ils méconnoîtront sa loi.")
+    assert "Qu'il reconnaisse ses fautes" in text
+    assert "vous méconnaissez Dieu" in text
+    assert "ils méconnaîtront sa loi." in text
+
+    text, _ = modernize_text("Ils en reconnoi-tront un jour la fausseté.")
+    assert "Ils en reconnaîtront un jour la fausseté." in text
+
+    # 2. Foible / affoiblir family
+    text, _ = modernize_text("Les forces s'affoiblissent et s'affoiblifsent de jour en jour.")
+    assert "s'affaiblissent et s'affaiblissent de jour en jour." in text
+
+    text, _ = modernize_text("Cela affoiblira leur courage, et je l'affoiblirai.")
+    assert "Cela affaiblira leur courage, et je l'affaiblirai." in text
+
+    text, _ = modernize_text("Pourvu qu'on l'affoibliffe, quoiqu'il s'affoiblissait.")
+    assert "Pourvu qu'on l'affaiblisse, quoiqu'il s'affaiblissait." in text
+
+    text, _ = modernize_text("S'ils s'affoibliraient, ils se verraient assoiblis.")
+    assert "S'ils s'affaibliraient, ils se verraient affaiblis." in text
+
+    # 3. Roide / roidir family
+    text, _ = modernize_text("Roidissez votre bras, il voulut roidir le cou, et il s'est roidi.")
+    assert "Raidissez votre bras, il voulut raidir le cou, et il s'est raidi." in text
+
+    text, _ = modernize_text("Ce Roid'Égypte, est Pharaon Hophra.")
+    assert "Ce Roi d'Égypte, est Pharaon Hophra." in text
+
+    # Preserving legitimate French words with oi
+    text, _ = modernize_text("Le froid, la froide saison, les froids rigoureux et la froideur.")
+    assert text == "Le froid, la froide saison, les froids rigoureux et la froideur."
+
+    text, _ = modernize_text("L'eau va se refroidir et les cœurs vont refroidir.")
+    assert text == "L'eau va se refroidir et les cœurs vont refroidir."
+
+    text, _ = modernize_text("Les parois du sanctuaire étaient couvertes de bois.")
+    assert text == "Les parois du sanctuaire étaient couvertes de bois."
+
+    text, _ = modernize_text("Le marbre de Paros et saint François de Paule.")
+    assert text == "Le marbre de Paros et saint François de Paule."
+
+    # 4. Monnoie
+    text, _ = modernize_text("Battre de la monnoie et peser les monnoies.")
+    assert "Battre de la monnaie et peser les monnaies." in text
+
+    # 5. Françoise / Narbonnoise adjectives
+    text, _ = modernize_text("La Version Françoise et les traductions françoises dans la Gaule Narbonnoise.")
+    assert "La Version Française et les traductions françaises dans la Gaule Narbonnaise." in text
+
+    # 6. Archaic verb endings and contractions
+    text, _ = modernize_text("L'orge duisoit sa graine et il l'obsedoit.")
+    assert "L'orge duisait sa graine et il l'obsédait." in text
+
+    text, _ = modernize_text("Qu'on laveroît le char ; comme s'il dérivoit ou dévivoit de ce terme.")
+    assert "Qu'on laverait le char ; comme s'il dérivait ou dérivait de ce terme." in text
+
+    text, _ = modernize_text("Comme si l'argile disoit au potier : les serpents siffloient.")
+    assert "Comme si l'argile disait au potier : les serpents sifflaient." in text
+
+    text, _ = modernize_text("Origenes liloit le passage, et d'autres lisoient : on les blanchissoit.")
+    assert "Origenes lisait le passage, et d'autres lisaient : on les blanchissait." in text
+
+    text, _ = modernize_text("Ceux qui m'assiégeoint ; ils prenoiens et descendroiens.")
+    assert "Ceux qui m'assiégeaient ; ils prenaient et descendraient." in text
+
+    text, _ = modernize_text("Ceux qui étoiens là ; c'estoit la coutume, n'estoit-ce pas vrai ?")
+    assert "Ceux qui étaient là ; c'était la coutume, n'était-ce pas vrai ?" in text
+
+    text, _ = modernize_text("Les épines croistrons sur la terre ; empêcheroitelle le feu ?")
+    assert "Les épines croîtront sur la terre ; empêcherait-elle le feu ?" in text
+
+    text, _ = modernize_text("Il veloppoit les villes ; ils avaient dequoi manger.")
+    assert "Il enveloppait les villes ; ils avaient de quoi manger." in text
+
+    # 7. Misc
+    text, _ = modernize_text("Par le moïen de Moïse, la cicoigne sur les sapins, au refectoire et au resectoire.")
+    assert "Par le moyen de Moïse, la cigogne sur les sapins, au réfectoire et au réfectoire." in text
+
+
 
 
 

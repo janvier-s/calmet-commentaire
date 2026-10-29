@@ -499,7 +499,54 @@ Calmet's text frequently leaves references to the Hebrew text/original abbreviat
 
 ---
 
-## 12. How to Apply to Future Volumes
+## 12. Archaic `oi` $\rightarrow$ `ai` and Verb Endings (125 replacements)
+
+### Problem
+In 18th-century French, verbal imperfect/conditional endings (`-ois`, `-oit`, `-oient`), certain present stems (`connoître`, `paroître`, `affoiblir`, `roidir`), and related adjectives and nouns were spelled with `oi`. While most root forms were modernized in earlier passes, inflected, subjunctive, imperfect, compound, OCR long-s/eszett variants, and isolated archaic verb endings remained across the corpus.
+
+### Applied Rules (Step 5p in `modernize_inplace.py`)
+
+1. **`connoître` / `paroître` Inflections and OCR Variants (57 occurrences)**:
+   - `paroissez` $\rightarrow$ `paraissez`, `paroissoit` $\rightarrow$ `paraissait`, `paroissoient` $\rightarrow$ `paraissaient`, `paroissons` $\rightarrow$ `paraissons`, `paroissiez` $\rightarrow$ `paraissiez`, `paroissions` $\rightarrow$ `paraissions`
+   - `paroitre` $\rightarrow$ `paraître`, `disparoitre` $\rightarrow$ `disparaître`
+   - `disparoisse` / `disparoiffe` $\rightarrow$ `disparaisse`, `disparoissions` $\rightarrow$ `disparaissions`, `disparoissoient` $\rightarrow$ `disparaissaient`
+   - `apparoissait` $\rightarrow$ `apparaissait`, `apparoissaient` / `apparoissoient` $\rightarrow$ `apparaissaient`, `apparoissions` $\rightarrow$ `apparaissions`
+   - `comparoissaient` $\rightarrow$ `comparaissaient`
+   - OCR long-s and eszett: `paroiffent` / `paroißent` $\rightarrow$ `paraissent`
+   - `connoiffance(s)` $\rightarrow$ `connaissance(s)`, `connoiffent` $\rightarrow$ `connaissent`, `connoiffant` $\rightarrow$ `connaissant`, `connoissoient` $\rightarrow$ `connaissaient`
+   - `connoisseurs` $\rightarrow$ `connaisseurs`, `connoissables` $\rightarrow$ `connaissables`
+   - `reconnoissiez` $\rightarrow$ `reconnaissiez`, `reconnoissions` $\rightarrow$ `reconnaissions`, `reconnoissoient` $\rightarrow$ `reconnaissaient`, `reconnoiffance(s)` $\rightarrow$ `reconnaissance(s)`, `reconnoiffait` $\rightarrow$ `reconnaissait`, `reconnoiffe` $\rightarrow$ `reconnaisse`, `reconnoissables` $\rightarrow$ `reconnaissables`
+   - `méconnoissez` $\rightarrow$ `méconnaissez`, `méconnoîtront` $\rightarrow$ `méconnaîtront`
+   - Hyphenated OCR break: `reconnoi-tront` $\rightarrow$ `reconnaîtront`
+
+2. **`foible` / `affoiblir` Family (20 occurrences)**:
+   - `affoiblissent` / `affoiblifsent` $\rightarrow$ `affaiblissent`, `affoiblira` $\rightarrow$ `affaiblira`, `affoiblirai` $\rightarrow$ `affaiblirai`, `affoibliffe` $\rightarrow$ `affaiblisse`, `affoiblissait` $\rightarrow$ `affaiblissait`, `affoibliraient` $\rightarrow$ `affaibliraient`
+   - `assoiblis` $\rightarrow$ `affaiblis`
+
+3. **`roide` / `roidir` Family (8 occurrences)**:
+   - `roidissez` $\rightarrow$ `raidissez`, `roidir` $\rightarrow$ `raidir`, `roidi` $\rightarrow$ `raidi`
+   - Missing space: `Ce Roid'Égypte` $\rightarrow$ `Ce Roi d'Égypte`
+
+4. **`monnoie` Family (2 occurrences)**:
+   - `monnoie(s)` $\rightarrow$ `monnaie(s)`
+
+5. **`Françoise` / `Narbonnoise` Adjectives (12 occurrences)**:
+   - Adjective / language: `Françoise(s)` $\rightarrow$ `Française(s)`, `françoise(s)` $\rightarrow$ `française(s)` (*« Version Françoise »*, *« Traduction Françoise »*, *« langue Françoise »*)
+   - `Narbonnoise` $\rightarrow$ `Narbonnaise` (*« Gaule Narbonnoise »*)
+   - Proper noun strictly preserved: *François* (27 occurrences, e.g. *François de Vitoria*, *François Valois*, *saint François*)
+
+6. **Isolated Archaic `-oit` / `-oient` Verb Endings and Contractions (17 occurrences)**:
+   - `duisoit` $\rightarrow$ `duisait`, `obsedoit` $\rightarrow$ `obsédait`, `laveroît` $\rightarrow$ `laverait`, `dérivoit` / `dévivoit` $\rightarrow$ `dérivait`, `disoit` $\rightarrow$ `disait`, `lisoient` / `liloit` $\rightarrow$ `lisaient` / `lisait`, `blanchissoit` $\rightarrow$ `blanchissait`, `siffloient` $\rightarrow$ `sifflaient`, `assiégeoint` $\rightarrow$ `assiégeaient`, `prenoiens` $\rightarrow$ `prenaient`, `descendroiens` $\rightarrow$ `descendraient`, `étoiens` $\rightarrow$ `étaient`, `croistrons` $\rightarrow$ `croîtront`, `estoit` $\rightarrow$ `était` (`c'estoit` $\rightarrow$ `c'était`, `N'estoit-ce` $\rightarrow$ `N'était-ce`), `empêcheroitelle` $\rightarrow$ `empêcherait-elle`, `dequoi` $\rightarrow$ `de quoi`, `veloppoit` $\rightarrow$ `enveloppait`
+   - Miscellaneous: `moïen` $\rightarrow$ `moyen`, `cicoigne` $\rightarrow$ `cigogne`, `refectoire` / `resectoire` $\rightarrow$ `réfectoire`
+
+7. **Strict Preservations (False Positives Avoided)**:
+   - Genuine modern French words with `oi`: `froid`, `froide`, `froids`, `froides`, `froideur`, `refroidir`, `refroidi`, `refroidissement`, `refroidira`, `refroidit`, `parois` (walls of the sanctuary), `bois`, `roi`, `loi`, `moi`, `toi`, `soi`, `fois`, `mois`, `poids`, `trois`, `doit`, `droit`, `étroit`, `choix`, `croire`, `croître`, `voir`, `noir`, `soir`, `foi`, `voix`, `croix`, `noix`, `soie`, `voie`, `joie`, `proie`, `gloire`, `mémoire`, `histoire`, `victoire`, `poisson`, `toile`, `voile`, `étoile`, `moindre`, `moins`, `point`, `témoin`, `besoin`, `soin`, `coin`, `loin`, `reçoit`, `conçoit`, `aperçoit`, `déçoit`, `boire`, `boit`, `soit`, `quoique`, `pourquoi`.
+   - Proper nouns: `Paros` (the island), `Pierre de Blois`, `Valois`, `François`.
+   - First-person plural verb forms in `-ons`: `comparons`, `préparons`, `réparons`, `séparons`.
+
+---
+
+## 13. How to Apply to Future Volumes
 
 When processing a new volume (e.g. `48_marc`):
 
