@@ -2953,6 +2953,103 @@ def modernize_text(text):
         return match_case(m.group(0), "fondés")
     text = re.sub(r'\b(F|f)ondez\b(?!\s+votre\b)', fondez_replacer, text)
 
+    def contextual_ez_sub(target, replacement):
+        def _sub(m):
+            nonlocal count
+            count += 1
+            return m.group(1) + match_case(m.group(2), replacement)
+        return _sub
+
+    # Auxiliary être & reflexive compound forms
+    text = re.sub(r'(\b(?:étaient|étoient|sont|furent|fussent|seront|seraient|seroient|étant|été|s\'en\s+(?:étant|sont|étaient|étoient|furent))\s+)(allez)\b', contextual_ez_sub('allez', 'allés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:se\s+sont|s\'étaient|s\'étoient|s\'étant|s\'en\s+sont|s\'en\s+étaient|s\'en\s+étant|ont\s+été|avaient\s+été|sont|étaient|étoient)\s+(?:(?:point|pas|plus|tous|promptement)\s+)?)(retirez)\b', contextual_ez_sub('retirez', 'retirés'), text, flags=re.I)
+    def eveillez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + "éveillés"
+    text = re.sub(r'(\b(?:se\s+sont)\s+)(éveilleZ)\b', eveillez_replacer, text)
+    text = re.sub(r'(\b(?:seront|ferez|seraient|seroient)\s+(?:point\s+)?)(rassasiez)\b', contextual_ez_sub('rassasiez', 'rassasiés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:été|sont)\s+)(tirez)\b', contextual_ez_sub('tirez', 'tirés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:mille|hommes|soldats)\s+de\s+)(tuez)\b', contextual_ez_sub('tuez', 'tués'), text, flags=re.I)
+    text = re.sub(r'(\b(?:seront)\s+)(considérez)\b', contextual_ez_sub('considérez', 'considérés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:étaient|seront)\s+)(éclairez)\b', contextual_ez_sub('éclairez', 'éclairés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:Aveugles|créancier|Simples)\s+)(éclairiez|éclairez)\b', contextual_ez_sub('éclairiez', 'éclairés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:s\'y\s+étaient)\s+)(réfugiez)\b', contextual_ez_sub('réfugiez', 'réfugiés'), text, flags=re.I)
+
+    # Noun phrases & adjective modifiers
+    def souliers_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + match_case(m.group(2), "souliers")
+    text = re.sub(r'(\b[Ss]ans\s+)(souliez)\b', souliers_replacer, text)
+    text = re.sub(r'(\b(?:gens|hommes)\s+)(armez)\b', contextual_ez_sub('armez', 'armés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:grains|impudiques)\s+)(mêlez)\b', contextual_ez_sub('mêlez', 'mêlés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:boucs)\s+)(engraissez)\b', contextual_ez_sub('engraissez', 'engraissés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:hommes)\s+)(percez)\b', contextual_ez_sub('percez', 'percés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:lieux)\s+)(arrosez)\b', contextual_ez_sub('arrosez', 'arrosés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:deux)\s+)(possédez)\b', contextual_ez_sub('possédez', 'possédés'), text, flags=re.I)
+    text = re.sub(r'(\b(?:toujours)\s+)(prosternez)\b', contextual_ez_sub('prosternez', 'prosternés'), text, flags=re.I)
+    text = re.sub(r'(\bsoyons\s+)(comblez)\b', contextual_ez_sub('comblez', 'comblés'), text, flags=re.I)
+    text = re.sub(r'(\bsoyons\s+)(informez)\b', contextual_ez_sub('informez', 'informés'), text, flags=re.I)
+    text = re.sub(r'(\btous\s+)(frappez)\b', contextual_ez_sub('frappez', 'frappés'), text, flags=re.I)
+    text = re.sub(r'(\bsommes\s+)(détournez)\b', contextual_ez_sub('détournez', 'détournés'), text, flags=re.I)
+    text = re.sub(r'(\bnous-mêmes\s+)(chassez)\b', contextual_ez_sub('chassez', 'chassés'), text, flags=re.I)
+    text = re.sub(r'(\bnoirs,\s+et\s+)(défigurez)\b', contextual_ez_sub('défigurez', 'défigurés'), text, flags=re.I)
+    text = re.sub(r'(\baguerris\s+et\s+)(exercez)\b', contextual_ez_sub('exercez', 'exercés'), text, flags=re.I)
+    text = re.sub(r'(\bpeuples\s+)(éloignez)\b', contextual_ez_sub('éloignez', 'éloignés'), text, flags=re.I)
+    text = re.sub(r'(\bpeuples\s+)(assemblez)\b', contextual_ez_sub('assemblez', 'assemblés'), text, flags=re.I)
+    text = re.sub(r'(\btemps\s+)(ordonnez)\b', contextual_ez_sub('ordonnez', 'ordonnés'), text, flags=re.I)
+
+    # Chapter summaries and editorial participles
+    text = re.sub(r'(\bSonges de Pharaon\s+)(expliquez)\b', contextual_ez_sub('expliquez', 'expliqués'), text, flags=re.I)
+    def chargez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + match_case(m.group(2), "chargés") + m.group(3)
+    text = re.sub(r'(\bretournent\s+)(chargez)(\s+de présents)\b', chargez_replacer, text, flags=re.I)
+    text = re.sub(r'(\bCaptifs\s+)(assurez)\b', contextual_ez_sub('assurez', 'assurés'), text, flags=re.I)
+    text = re.sub(r'(\bSages,?\s+)(opposez)\b', contextual_ez_sub('opposez', 'opposés'), text, flags=re.I)
+    text = re.sub(r'(\bimpie,?\s+)(opposez)\b', contextual_ez_sub('opposez', 'opposés'), text, flags=re.I)
+    text = re.sub(r'(\bcœurs\s+)(éprouvez)\b', contextual_ez_sub('éprouvez', 'éprouvés'), text, flags=re.I)
+    def environnez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + match_case(m.group(2), "environnés") + m.group(3)
+    text = re.sub(r'(\bÉgyptiens\s+)(environnez)(\s+de ténèbres)\b', environnez_replacer, text, flags=re.I)
+    text = re.sub(r'(\bancienne Loi\s+)(méprisez)\b', contextual_ez_sub('méprisez', 'méprisés'), text, flags=re.I)
+    text = re.sub(r'(\bseront un jour\s+)(transportez)\b', contextual_ez_sub('transportez', 'transportés'), text, flags=re.I)
+    text = re.sub(r'(\bIsraëlites\s+)(rappelez)\b', contextual_ez_sub('rappelez', 'rappelés'), text, flags=re.I)
+    text = re.sub(r'(\bcaptifs d\'Israël\s+)(rappelez)\b', contextual_ez_sub('rappelez', 'rappelés'), text, flags=re.I)
+    text = re.sub(r'(\bSacrifices\s+)(rejetez)\b', contextual_ez_sub('rejetez', 'rejetés'), text, flags=re.I)
+    text = re.sub(r'(\bpécheurs\s+)(envoyez)\b', contextual_ez_sub('envoyez', 'envoyés'), text, flags=re.I)
+    text = re.sub(r'(\bEnnemis\s+)(envoyez)\b', contextual_ez_sub('envoyez', 'envoyés'), text, flags=re.I)
+    text = re.sub(r'(\bRogommélech\s+)(envoyez)\b', contextual_ez_sub('envoyez', 'envoyés'), text, flags=re.I)
+    text = re.sub(r'(\bJuifs\s+)(restez)\b', contextual_ez_sub('restez', 'restés'), text, flags=re.I)
+    text = re.sub(r'(\bJuifs\s+)(menez)\b', contextual_ez_sub('menez', 'menés'), text, flags=re.I)
+    text = re.sub(r'(\bJuifs\s+)(retirez)\b', contextual_ez_sub('retirez', 'retirés'), text, flags=re.I)
+    text = re.sub(r'(\bDieux\s+)(désolez)\b', contextual_ez_sub('désolez', 'désolés'), text, flags=re.I)
+    def comblez_replacer(m):
+        nonlocal count
+        count += 1
+        return match_case(m.group(1), "comblés") + m.group(2)
+    text = re.sub(r'(\bcomblez)(\s+de gloire)\b', comblez_replacer, text, flags=re.I)
+    def representez_replacer(m):
+        nonlocal count
+        count += 1
+        return match_case(m.group(1), "représentés") + m.group(2)
+    text = re.sub(r'(\breprésentez)(\s+sous l\'idée)\b', representez_replacer, text, flags=re.I)
+    text = re.sub(r'(\bLévites\s+)(souillez)\b', contextual_ez_sub('souillez', 'souillés'), text, flags=re.I)
+    text = re.sub(r'(\bDaniel\s+)(accusez)\b', contextual_ez_sub('accusez', 'accusés'), text, flags=re.I)
+    text = re.sub(r'(\bRoi\s+)(livrez)\b', contextual_ez_sub('livrez', 'livrés'), text, flags=re.I)
+    text = re.sub(r'(\bChâtiments\s+)(exercez)\b', contextual_ez_sub('exercez', 'exercés'), text, flags=re.I)
+    text = re.sub(r'(\bSages\s+)(aveuglez)\b', contextual_ez_sub('aveuglez', 'aveuglés'), text, flags=re.I)
+    text = re.sub(r'(\bEnfants\s+)(présentez)\b', contextual_ez_sub('présentez', 'présentés'), text, flags=re.I)
+    def recompensez_replacer(m):
+        nonlocal count
+        count += 1
+        return match_case(m.group(1), "récompensés") + m.group(2)
+    text = re.sub(r'(\brécompensez)(\s+également)\b', recompensez_replacer, text, flags=re.I)
+
     # 3. Contextual noun "péchés" (when preceded by determiners)
     def pechez_replacer(m):
         nonlocal count

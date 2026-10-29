@@ -550,7 +550,7 @@ In 18th-century French, verbal imperfect/conditional endings (`-ois`, `-oit`, `-
 
 In Classical pre-1740 French orthography, masculine plural past participles of 1st-conjugation verbs and adjectives ending in `-é` were written with `-ez` (`aimé` $\rightarrow$ plural `aimez`, `élevé` $\rightarrow$ `élevez`, `déchiré` $\rightarrow$ `déchirez`). Because 2nd-person plural present indicative and imperative verbs also end in `-ez` (*« Vous élevez vos mains »*, *« Sauvez-moi ! »*, *« Déchirez vos cœurs »*), normalization requires careful separation of unconditional pure participles/nouns from contextual disambiguation.
 
-**280 occurrences across 253 pages** have been normalized across all 49 volumes:
+**380 occurrences across 340+ pages** have been normalized across all 49 volumes:
 
 1. **Unconditional Plural Participles & Adjectives (103 words, 209 occurrences)**:
    - Words with 0% verbal usage across Dom Calmet's text, directly modernized in `WORD_MAP`:
@@ -560,14 +560,44 @@ In Classical pre-1740 French orthography, masculine plural past participles of 1
 2. **Unconditional Classical Nouns in `-ez` $\rightarrow$ `-ès`, `-és`, `-ers` (10 words, 16 occurrences)**:
    - `accez` $\rightarrow$ `accès`, `comoditez` $\rightarrow$ `commodités`, `damnez` $\rightarrow$ `damnés`, `déjeunez` $\rightarrow$ `déjeuners`, `démêlez` $\rightarrow$ `démêlés`, `folemnitez` $\rightarrow$ `solennités`, `incensez` $\rightarrow$ `insensés`, `necessitez` $\rightarrow$ `nécessités`, `procez` $\rightarrow$ `procès`, `sterilitez` $\rightarrow$ `stérilités`, `succcez` $\rightarrow$ `succès`.
 
-3. **Contextual Plural Participles vs Imperative / Verb Forms (55 occurrences)**:
-   - `déchirez` $\rightarrow$ `déchirés` (12 occurrences): when preceded by *habits*, *vêtements*, or *blessés, et* (*« ayant leurs vêtements déchirés »*, *« en habits sales, et déchirés »*). Imperatives preserved: *« Déchirez vos cœurs »*, *« Déchirez vos vêtements »*, *« ne déchirez point vos habits »*.
-   - `fondez` $\rightarrow$ `fondés` (13 occurrences): all non-imperative occurrences (*« attachés au Seigneur, fondés sur la pierre »*, *« n'étaient point fondés sur la vérité »*). Imperative preserved: *« Fondez votre or »* (Ecclésiastique 468).
-   - `abaissez` $\rightarrow$ `abaissés` (5 occurrences): when preceded by *seront*, *feront*, *ou*, *et*, *être* (*« les yeux des superbes seront abaissés »*, *« ceux qui sont humiliés, et abaissés »*). Imperatives preserved: *« Abaissez vos mains »*, *« Abaissez vos cieux »*, *« abaissez votre cœur »*, *« abaissez-vous »*.
-   - `avancez` $\rightarrow$ `avancés` (3 occurrences): when preceded by *aussi*, *fruits*, *beaucoup* (*« s'étaient beaucoup avancés »*, *« fruits avancés »*, *« aussi avancés l'un que l'autre »*). Verbs preserved: *« ce que vous avancez »*, *« avancez-vous »*, *« avancez hardiment »*, *« Avancez toujours »*.
-   - `appuyez` $\rightarrow$ `appuyés` (3 occurrences): when preceded by *adopté,*, *hasard,*, *conséquence* (*« adoptés, appuyés sur quelques passages »*, *« appuyés sur de simples conjectures »*). Verbs preserved: *« ne vous appuyez point »*, *« vous vous appuyez sur »*, *« sur quoi vous appuyez-vous »*.
-   - `sauvez` $\rightarrow$ `sauvés` (9 occurrences): when preceded by *nous serons*, *nombre de*, *de sauvez que* (*« et nous serons sauvés »*, *« un très petit nombre de sauvés »*, *« il n'y aura de sauvés que »*). Verbs and imperatives preserved (105 occurrences): *« Sauvez votre vie »*, *« Sauvez-moi »*, *« Sauvez-nous »*, *« sauvez-vous »*, *« vous les sauvez »*.
-   - `élevez` $\rightarrow$ `élevés` (10 occurrences): when preceded by *grands, et*, *gazons,*, *sont*, *nourris, et*, *j'ai*, *j'avais*, *vent*, *plus* (*« j'ai nourris, et élevés »*, *« autels de gazons, élevés »*, *« tuyaux à vent élevés »*, *« vous ne marcherez plus élevés »*). Verbs and imperatives preserved (125 occurrences): *« Élevez vos mains »*, *« Élevez vos voix »*, *« vous vous élevez »*, *« ne vous élevez point »*.
+3. **Contextual Plural Participles vs Imperative / Verb Forms (155 occurrences)**:
+   - **Auxiliary *Être* & Reflexive Compound Tenses (42 occurrences)**:
+     - `allez` $\rightarrow$ `allés` (11 occs: *« étaient allés »*, *« sont allés »*, *« s'en furent allés »*, *« s'en étant allés »* vs. imperative *« Allez en paix »*).
+     - `retirez` $\rightarrow$ `retirés` (21 occs: *« se sont retirés »*, *« s'étaient retirés »*, *« s'étant retirés »*, *« ont été retirés »*, *« sont retirés »* vs. imperative *« Retirez votre main »*, *« Retirez-moi »*).
+     - `tirez` $\rightarrow$ `tirés` (3 occs: *« ont tous été tirés »*, *« d'où ils sont tirés »*, *« avez été tirés »* vs. imperative *« Tirez votre épée »*).
+     - `rassasiez` $\rightarrow$ `rassasiés` (3 occs: *« seront rassasiés »*, *« ne seront point rassasiés »*, *« ferez rassasiés »*).
+     - `éclairez` $\rightarrow$ `éclairés` (3 occs: *« étaient éclairés »*, *« seront éclairés »*, *« créancier éclairés »*).
+     - `considérez` $\rightarrow$ `considérés` (1 occ: *« seront considérés »* vs. *« Considérez ces merveilles »*).
+     - `éveilleZ` $\rightarrow$ `éveillés` (1 occ: *« se sont éveillés »*).
+     - `réfugiez` $\rightarrow$ `réfugiés` (1 occ: *« s'y étaient réfugiés »*).
+   - **Editorial Chapter Summaries / Headnotes (28 occurrences)**:
+     - `Songes de Pharaon expliqués`, `retournent chargés de présents`, `Captifs assurés`, `Sages, opposés`, `impie, opposés`, `cœurs éprouvés`, `Égyptiens environnés de ténèbres`, `ancienne Loi méprisés`, `seront un jour transportés`, `Israélites rappelés`, `captifs d'Israël rappelés`, `Sacrifices rejetés`, `pécheurs envoyés`, `Ennemis envoyés`, `Rogommélech envoyés`, `Juifs restés`, `Juifs menés`, `Juifs retirés`, `Dieux désolés`, `comblés de gloire`, `représentés sous l'idée`, `Lévites souillés`, `Daniel accusés`, `Roi livrés`, `Châtiments exercés`, `Sages aveuglés`, `Simples éclairés`, `Enfants présentés`, `récompensés également`.
+   - **Syntactic Partitive & Plural Noun Modifiers (30 occurrences)**:
+     - `vingt-quatre mille hommes de tués`, `trois mille de tués`
+     - `hommes armés` / `gens armés` (4 occs)
+     - `sans souliers` (2 occs)
+     - `grains mêlés` / `impudiques mêlés` (2 occs)
+     - `boucs engraissés` (1 occ)
+     - `hommes percés de coups` (1 occ)
+     - `lieux arrosés d'eau` (1 occ)
+     - `deux possédés` (2 occs)
+     - `toujours prosternés devant lui` (1 occ)
+     - `soyons comblés` / `soyons informés` (2 occs)
+     - `tous frappés du même genre de mort` (1 occ)
+     - `sommes détournés` (1 occ)
+     - `nous-mêmes chassés de notre pays` (1 occ)
+     - `tout noirs, et défigurés` (1 occ)
+     - `aguerris et exercés au combat` (1 occ)
+     - `peuples éloignés` (2 occs), `peuples assemblés` (1 occ)
+     - `temps ordonnés` (1 occ)
+   - **Initial contextual group (Phase 1, 55 occurrences)**:
+     - `déchirez` $\rightarrow$ `déchirés` (12 occs after *habits*, *vêtements*).
+     - `fondez` $\rightarrow$ `fondés` (13 occs; preserves *« Fondez votre or »*).
+     - `abaissez` $\rightarrow$ `abaissés` (5 occs after *seront*, *humiliés*).
+     - `avancez` $\rightarrow$ `avancés` (3 occs after *aussi*, *fruits*).
+     - `appuyez` $\rightarrow$ `appuyés` (3 occs after *adopté*, *hasard*).
+     - `sauvez` $\rightarrow$ `sauvés` (9 occs after *serons*, *nombre de*).
+     - `élevez` $\rightarrow$ `élevés` (10 occs after *nourris, et*, *sont*, *j'ai*).
 
 4. **Strict Preservations (False Positives Avoided)**:
    - Proper names ending in `-ez`: *Mendez* (*Fernand Mendez Pinto*), *Sánchez*, *Séez* (*saint Martin de Séez*), *Tellez* (*PP. Lobo et Tellez*), *Cenez*, *Cénez*, *Ascénez*, *Ascenez*, *Aschenez*, *Asphenez*, *Asphénez*, *Gezez*, *Fez*, *Bez*, *Abenez*.

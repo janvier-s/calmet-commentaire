@@ -737,6 +737,32 @@ def test_modernize_ez_to_es_participles_and_preserve_verbs():
     text, _ = modernize_text("Ne suscitez point de procez, pour éviter des accez de manie et des sterilitez.")
     assert "Ne suscitez point de procès, pour éviter des accès de manie et des stérilités." in text
 
+    # 5. Contextual participles with être / reflexive compound forms vs imperatives
+    text, _ = modernize_text("Ses esclaves étaient allez à Geth, et ils s'en sont allez ; mais allez en paix et allez-vous-en.")
+    assert "Ses esclaves étaient allés à Geth, et ils s'en sont allés ; mais allez en paix et allez-vous-en." in text
+
+    text, _ = modernize_text("Ils se sont retirez d'avec le Seigneur, et les oiseaux s'étaient retirez ; mais retirez votre main et ne retirez point votre grâce.")
+    assert "Ils se sont retirés d'avec le Seigneur, et les oiseaux s'étaient retirés ; mais retirez votre main et ne retirez point votre grâce." in text
+
+    text, _ = modernize_text("Ils ont été tirez de la terre, d'où ils sont tirez ; mais tirez votre épée et tirez-la hors du camp.")
+    assert "Ils ont été tirés de la terre, d'où ils sont tirés ; mais tirez votre épée et tirez-la hors du camp." in text
+
+    text, _ = modernize_text("Il y eut trois mille de tuez, et mille hommes de tuez ; mais ne tuez point l'innocent et tuez des bêtes.")
+    assert "Il y eut trois mille de tués, et mille hommes de tués ; mais ne tuez point l'innocent et tuez des bêtes." in text
+
+    text, _ = modernize_text("Vos Saints étaient éclairez, ils seront considérez avec honneur, et ils seront rassasiez de biens.")
+    assert "Vos Saints étaient éclairés, ils seront considérés avec honneur, et ils seront rassasiés de biens." in text
+
+    # 6. Contextual noun phrases and chapter summaries
+    text, _ = modernize_text("Mille hommes armez de cottes-de-mailles, marchant sans souliez, ayant des grains mêlez.")
+    assert "Mille hommes armés de cottes-de-mailles, marchant sans souliers, ayant des grains mêlés." in text
+
+    text, _ = modernize_text("Deux possédez furieux, des peuples éloignez et des peuples assemblez.")
+    assert "Deux possédés furieux, des peuples éloignés et des peuples assemblés." in text
+
+    text, _ = modernize_text("Songes de Pharaon expliquez par Joseph ; Juifs restez dans la terre et comblez de gloire.")
+    assert "Songes de Pharaon expliqués par Joseph ; Juifs restés dans la terre et comblés de gloire." in text
+
 
 
 
