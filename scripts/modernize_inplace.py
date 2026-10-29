@@ -2887,6 +2887,62 @@ RX_CH_WORD = re.compile(r"\b(Ch|ch)\.\s*(suivant|précédent|premier)", re.IGNOR
 RX_CHAP_NODOT = re.compile(r"\b(CHAP|Chap|chap)\s+([0-9IVXLCDMivxlcdm]+)")
 RX_CHAP_GEN = re.compile(r"\b(CHAP|Chap|chap)\.(?![a-zA-ZÀ-ÿ0-9])")
 
+LATIN_BROKEN_WORDS = {
+    "AN-NORUM": "ANNORUM",
+    "CECIDERIT-QUE": "CECIDERITQUE",
+    "ANNO-RUM": "ANNORUM",
+    "CIBA-RIA": "CIBARIA",
+    "MONTE-LIBANO": "MONTE LIBANO",
+    "BETHLE-HEM": "BETHLEHEM",
+    "PLAUS-TRUM": "PLAUSTRUM",
+    "EXCELSO-RUM": "EXCELSORUM",
+    "AQUÆ-DUCTUM": "AQUÆDUCTUM",
+    "AN-NULUM": "ANNULUM",
+    "DI-NUMERAVERUNT": "DINUMERAVERUNT",
+    "AUXILIUM-TUUM": "AUXILIUM TUUM",
+    "LE-GEM": "LEGEM",
+    "ANI-MA": "ANIMA",
+    "PEC-CATORUM": "PECCATORUM",
+    "IL-LIUS": "ILLIUS",
+    "VISITA-TIO": "VISITATIO",
+    "VISI-TATIO": "VISITATIO",
+    "SUAVE-OLENTEM": "SUAVEOLENTEM",
+    "VASTA-TORES": "VASTATORES",
+    "AU-SITIDIS": "AUSITIDIS",
+    "ULTO-RI": "ULTORI",
+    "VOVE-RUNT": "VOVERUNT",
+    "NE-QUE": "NEQUE",
+    "DESER-TUROS": "DESERTUROS",
+    "IMMUNDO-RUM": "IMMUNDORUM",
+    "ADIMPLE-TUR": "ADIMPLETUR",
+}
+
+RX_LATIN_BROKEN = re.compile(
+    r"\b(" + "|".join(re.escape(k) for k in LATIN_BROKEN_WORDS.keys()) + r")\b"
+)
+
+
+def clean_latin_quote(text):
+    if not text:
+        return text, 0
+    count = 0
+
+    def sub_broken(m):
+        nonlocal count
+        count += 1
+        return LATIN_BROKEN_WORDS[m.group(1)]
+
+    text = RX_LATIN_BROKEN.sub(sub_broken, text)
+
+    if "SAVE - KARIATHAIM" in text:
+        text = text.replace("SAVE - KARIATHAIM", "SAVE-KARIATHAIM")
+        count += 1
+    if "SCRIBAM PRINCIPEM MILITUM, - QUI" in text:
+        text = text.replace("SCRIBAM PRINCIPEM MILITUM, - QUI", "SCRIBAM PRINCIPEM MILITUM, QUI")
+        count += 1
+
+    return text, count
+
 
 
 
@@ -3624,6 +3680,48 @@ def modernize_text(text):
         return cw
     text = RX_CHAP_GEN.sub(sub_chap_gen, text)
 
+    # 5b. Hyphen normalization (broken words & OCR erroneous hyphens)
+    def sub_grand_pontife(m):
+        nonlocal count
+        count += 1
+        return f"{m.group(1)}rand-{m.group(2)}ontife"
+
+    def sub_grand_pretre(m):
+        nonlocal count
+        count += 1
+        return f"{m.group(1)}rand-{m.group(2)}rêtre"
+
+    def french_hyphen_sub(repl):
+        def _sub(m):
+            nonlocal count
+            count += 1
+            if callable(repl):
+                return repl(m)
+            return repl
+        return _sub
+
+    text = re.sub(r"\bau-jourd'hui\b", french_hyphen_sub(lambda m: "aujourd'hui" if m.group(0)[0].islower() else "Aujourd'hui"), text, flags=re.I)
+    text = re.sub(r"\bHéré-mie\b", french_hyphen_sub("Jérémie"), text)
+    text = re.sub(r"\bC'est-pourquoi\b", french_hyphen_sub("C'est pourquoi"), text)
+    text = re.sub(r"\bc'est-pourquoi\b", french_hyphen_sub("c'est pourquoi"), text)
+    text = re.sub(r"\bAbel-maison-de-Maacha\b", french_hyphen_sub("Abel-maison de Maacha"), text)
+    text = re.sub(r"\bDu-fondement\b", french_hyphen_sub("Du fondement"), text)
+    text = re.sub(r"\bassez-cruel\b", french_hyphen_sub("assez cruel"), text)
+    text = re.sub(r"\bdonnez-point\b", french_hyphen_sub("donnez point"), text)
+    text = re.sub(r"\bdes-hommes\b", french_hyphen_sub("des hommes"), text)
+    text = re.sub(r"\best-dans\b", french_hyphen_sub("est dans"), text)
+    text = re.sub(r"\bla-clef\b", french_hyphen_sub("la clef"), text)
+    text = re.sub(r"\bmesura-tout\b", french_hyphen_sub("mesura tout"), text)
+    text = re.sub(r"\bfaux-Prophètes\b", french_hyphen_sub("faux Prophètes"), text)
+    text = re.sub(r"\bfaux-prophètes\b", french_hyphen_sub("faux prophètes"), text)
+    text = re.sub(r"\bgrand-Champ\b", french_hyphen_sub("grand Champ"), text)
+    text = re.sub(r"\bpoint-là\b", french_hyphen_sub("point là"), text)
+    text = re.sub(r"\bc'est-à\s+dire\b", french_hyphen_sub("c'est-à-dire"), text)
+    text = re.sub(r"\bC'est-à\s+dire\b", french_hyphen_sub("C'est-à-dire"), text)
+    text = re.sub(r"\b(G|g)rand\s+-\s+(P|p)ontife\b", sub_grand_pontife, text)
+    text = re.sub(r"\b(G|g)rand\s+-\s+(P|p)rêtre\b", sub_grand_pretre, text)
+    text = re.sub(r"\bLaissez\s+-\s+les\b", french_hyphen_sub("Laissez-les"), text)
+
     # 6. Global WORD_MAP matching
     def replacer(match):
         nonlocal count
@@ -3667,6 +3765,16 @@ def process_volume(folder_name, dry_run):
                     changed = True
                     total_replacements += c
 
+        def update_latin_field(container, key):
+            nonlocal changed, total_replacements
+            if container.get(key) and isinstance(container[key], str):
+                orig = container[key]
+                mod, c = clean_latin_quote(orig)
+                if mod != orig:
+                    container[key] = mod
+                    changed = True
+                    total_replacements += c
+
         update_field(data, "chapter_title")
         update_field(data, "chapter_summary")
         update_field(data, "chapter_intro")
@@ -3676,6 +3784,7 @@ def process_volume(folder_name, dry_run):
             update_field(verse, "french")
 
         for comm in data.get("commentary") or []:
+            update_latin_field(comm, "latin_quote")
             update_field(comm, "french_translation")
             update_field(comm, "french_commentary")
 

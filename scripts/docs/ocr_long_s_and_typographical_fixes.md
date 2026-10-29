@@ -606,7 +606,77 @@ In Classical pre-1740 French orthography, masculine plural past participles of 1
 
 ---
 
-## 14. How to Apply to Future Volumes
+## 14. Hyphen Normalization in Latin Lemmas and French Translations (73 replacements across 67 pages in 49 volumes)
+
+### Problem
+OCR line breaks in the printed 18th-century volumes frequently produced broken words (where an OCR hyphen split a single word), erroneous hyphens connecting separate French or Latin words, or stray spaces around hyphens. Conversely, legitimate French compounds, pronominal enclitics, Latin numerals/proper names, and trailing hyphens at page breaks (needed for seam audits) must be strictly protected.
+
+### Applied Rules
+
+1. **Latin Lemmas (`latin_quote`)**:
+   - Processed via dedicated `clean_latin_quote()` to prevent interference with French vocabulary mappings.
+   - **Broken Latin words healed**:
+     - `AN-NORUM` / `ANNO-RUM` $\rightarrow$ `ANNORUM`
+     - `CECIDERIT-QUE` $\rightarrow$ `CECIDERITQUE`
+     - `CIBA-RIA` $\rightarrow$ `CIBARIA`
+     - `MONTE-LIBANO` $\rightarrow$ `MONTE LIBANO`
+     - `BETHLE-HEM` $\rightarrow$ `BETHLEHEM`
+     - `PLAUS-TRUM` $\rightarrow$ `PLAUSTRUM`
+     - `EXCELSO-RUM` $\rightarrow$ `EXCELSORUM`
+     - `AQUÆ-DUCTUM` $\rightarrow$ `AQUÆDUCTUM`
+     - `AN-NULUM` $\rightarrow$ `ANNULUM`
+     - `DI-NUMERAVERUNT` $\rightarrow$ `DINUMERAVERUNT`
+     - `AUXILIUM-TUUM` $\rightarrow$ `AUXILIUM TUUM`
+     - `LE-GEM` $\rightarrow$ `LEGEM`
+     - `ANI-MA` $\rightarrow$ `ANIMA`
+     - `PEC-CATORUM` $\rightarrow$ `PECCATORUM`
+     - `IL-LIUS` $\rightarrow$ `ILLIUS`
+     - `VISITA-TIO` / `VISI-TATIO` $\rightarrow$ `VISITATIO`
+     - `SUAVE-OLENTEM` $\rightarrow$ `SUAVEOLENTEM`
+     - `VASTA-TORES` $\rightarrow$ `VASTATORES`
+     - `AU-SITIDIS` $\rightarrow$ `AUSITIDIS`
+     - `ULTO-RI` $\rightarrow$ `ULTORI`
+     - `VOVE-RUNT` $\rightarrow$ `VOVERUNT`
+     - `NE-QUE` $\rightarrow$ `NEQUE`
+     - `DESER-TUROS` $\rightarrow$ `DESERTUROS`
+     - `IMMUNDO-RUM` $\rightarrow$ `IMMUNDORUM`
+     - `ADIMPLE-TUR` $\rightarrow$ `ADIMPLETUR`
+   - **Spaced Hyphen Artifacts**:
+     - `SAVE - KARIATHAIM` $\rightarrow$ `SAVE-KARIATHAIM`
+     - `SCRIBAM PRINCIPEM MILITUM, - QUI` $\rightarrow$ `SCRIBAM PRINCIPEM MILITUM, QUI`
+   - **OCR Scramble Resolution (Daniel 10:16, page 188)**:
+     - Reconstructed interleaved columns into standard `latin_quote`, `french_translation`, and `french_commentary`.
+
+2. **French Translations (`french_translation` & general text)**:
+   - **Broken single words**: `au-jourd'hui` $\rightarrow$ `aujourd'hui`, `Héré-mie` $\rightarrow$ `Jérémie`.
+   - **Erroneous hyphens between words**:
+     - `C'est-pourquoi` / `c'est-pourquoi` $\rightarrow$ `C'est pourquoi` / `c'est pourquoi`
+     - `Abel-maison-de-Maacha` $\rightarrow$ `Abel-maison de Maacha`
+     - `Du-fondement` $\rightarrow$ `Du fondement`
+     - `assez-cruel` $\rightarrow$ `assez cruel`
+     - `donnez-point` $\rightarrow$ `donnez point`
+     - `des-hommes` $\rightarrow$ `des hommes`
+     - `est-dans` $\rightarrow$ `est dans`
+     - `la-clef` $\rightarrow$ `la clef`
+     - `mesura-tout` $\rightarrow$ `mesura tout`
+     - `faux-Prophètes` / `faux-prophètes` $\rightarrow$ `faux Prophètes` / `faux prophètes`
+     - `grand-Champ` $\rightarrow$ `grand Champ`
+     - `point-là` $\rightarrow$ `point là`
+     - `c'est-à dire` / `C'est-à dire` $\rightarrow$ `c'est-à-dire` / `C'est-à-dire`
+   - **Spaced hyphens joined**:
+     - `Grand - Pontife` / `grand - pontife` $\rightarrow$ `Grand-Pontife` / `grand-pontife`
+     - `Grand - Prêtre` / `grand - prêtre` $\rightarrow$ `Grand-Prêtre` / `grand-prêtre`
+     - `Laissez - les` $\rightarrow$ `Laissez-les`
+
+3. **Strict Preservations (False Positives Avoided)**:
+   - **Trailing hyphens at page turns**: All page-seam breaks (e.g. `TENEBRAS NOC-`, `Nem-`, `re-`, `bé-`, `Sei-`, `DE-`) strictly preserved for page continuity and seam audit checks.
+   - **Legitimate French compounds & enclitics**: `souvenez-vous`, `dit-il`, `a-t-il`, `lui-même`, `Très-Haut`, `au-dessus`, `grand-prêtre`, `dix-sept`, etc.
+   - **Biblical compound proper names**: `BETH-HORON`, `OBED-EDOM`, `CARIATH-IARIM`, `CADES-BARNE`, `Tubal-Caïn`, `Astaroth-Carnaïm`, `Ben-oni`, etc.
+   - **Latin compound numerals**: `TRIGINTA-DUOS`, `OCTAVO-DECIMO`, `VIGINTI-QUATUOR`, etc.
+
+---
+
+## 15. How to Apply to Future Volumes
 
 When processing a new volume (e.g. `48_marc`):
 

@@ -1,4 +1,4 @@
-from modernize_inplace import modernize_text
+from modernize_inplace import modernize_text, clean_latin_quote
 
 
 def test_cc_normalization():
@@ -762,6 +762,159 @@ def test_modernize_ez_to_es_participles_and_preserve_verbs():
 
     text, _ = modernize_text("Songes de Pharaon expliquez par Joseph ; Juifs restez dans la terre et comblez de gloire.")
     assert "Songes de Pharaon expliqués par Joseph ; Juifs restés dans la terre et comblés de gloire." in text
+
+
+def test_hyphen_normalization():
+    # 1. Latin broken words and spaced hyphens
+    t, n = clean_latin_quote("FODERUNT MANUS MEAS : DI-NUMERAVERUNT OMNIA OSSA MEA.")
+    assert "DINUMERAVERUNT" in t
+    assert "DI-NUMERAVERUNT" not in t
+
+    t, _ = clean_latin_quote("HABITATIO FILIORUM ISRÆL... AN-NORUM.")
+    assert "ANNORUM." in t
+
+    t, _ = clean_latin_quote("CECIDERIT-QUE BOS VEL ASINUS")
+    assert "CECIDERITQUE BOS" in t
+
+    t, _ = clean_latin_quote("CALLIDE COGITANTES, TULERUNT SIBI CIBA-RIA.")
+    assert "CIBARIA." in t
+
+    t, _ = clean_latin_quote("HEVÆUM QUI HABITABAT IN MONTE-LIBANO.")
+    assert "MONTE LIBANO." in t
+
+    t, _ = clean_latin_quote("POST HUNC JUDICAVIT ISRAEL ABESAN DE BETHLE-HEM.")
+    assert "BETHLEHEM." in t
+
+    t, _ = clean_latin_quote("HABES BOVES HOLOCAUSTUM ET PLAUS-TRUM,")
+    assert "PLAUSTRUM," in t
+
+    t, _ = clean_latin_quote("IMMOLABIT SUPER TE SACERDOTES EXCELSO-RUM.")
+    assert "EXCELSORUM." in t
+
+    t, _ = clean_latin_quote("STETERUNT JUXTA AQUÆ-DUCTUM PISCINÆ")
+    assert "AQUÆDUCTUM" in t
+
+    t, _ = clean_latin_quote("TULIT REX AN-NULUM, … ET TRADIDIT")
+    assert "ANNULUM," in t
+
+    t, _ = clean_latin_quote("DOMINE, NE ELONGAVERIS AUXILIUM-TUUM A ME")
+    assert "AUXILIUM TUUM A ME" in t
+
+    t, _ = clean_latin_quote("LE-GEM STATUIT EI... ANI-MA EJUS")
+    assert "LEGEM STATUIT" in t
+    assert "ANIMA EJUS" in t
+
+    t, _ = clean_latin_quote("VIRGAM PEC-CATORUM SUPER SORTEM")
+    assert "PECCATORUM" in t
+
+    t, _ = clean_latin_quote("DEXTERA IL-LIUS AMPLEXABITUR")
+    assert "ILLIUS" in t
+
+    t, _ = clean_latin_quote("EMISSA VISITA-TIO, NE DEDERIS")
+    assert "VISITATIO," in t
+
+    t, _ = clean_latin_quote("OPERIS, ET VISI-TATIO EORUM.")
+    assert "VISITATIO EORUM." in t
+
+    t, _ = clean_latin_quote("CALAMUM SUAVE-OLENTEM DE TERRA")
+    assert "SUAVEOLENTEM" in t
+
+    t, _ = clean_latin_quote("VENERUNT VASTA-TORES TERRÆ.")
+    assert "VASTATORES" in t
+
+    t, _ = clean_latin_quote("REGIBUS TERRÆ AU-SITIDIS.")
+    assert "AUSITIDIS." in t
+
+    t, _ = clean_latin_quote("MUNUS REGI ULTO-RI.")
+    assert "ULTORI." in t
+
+    t, _ = clean_latin_quote("IMMOLAVERUNT HOSTIAS, ET VOVE-RUNT VOTA.")
+    assert "VOVERUNT VOTA." in t
+
+    t, _ = clean_latin_quote("NEQUE PEREGRINA USUS, NE-QUE PATRIO")
+    assert "NEQUE PATRIO" in t
+
+    t, _ = clean_latin_quote("SOCIETATEM DESER-TUROS JUDÆOS.")
+    assert "DESERTUROS" in t
+
+    t, _ = clean_latin_quote("POTESTATEM SPIRITUUM IMMUNDO-RUM.")
+    assert "IMMUNDORUM." in t
+
+    t, _ = clean_latin_quote("ET ADIMPLE-TUR IN EIS PROPHETIA")
+    assert "ADIMPLETUR" in t
+
+    t, _ = clean_latin_quote("ET EMIM IN SAVE - KARIATHAIM.")
+    assert "SAVE-KARIATHAIM." in t
+
+    t, _ = clean_latin_quote("SCRIBAM PRINCIPEM MILITUM, - QUI PROBABAT TYRONES.")
+    assert "SCRIBAM PRINCIPEM MILITUM, QUI PROBABAT TYRONES." in t
+
+    # Preserve Latin trailing hyphens & valid compound names/numbers
+    t, _ = clean_latin_quote("TENEBRAS NOC-")
+    assert t == "TENEBRAS NOC-"
+
+    t, _ = clean_latin_quote("OBED-EDOM ET BETH-HORON ET TRIGINTA-DUOS")
+    assert t == "OBED-EDOM ET BETH-HORON ET TRIGINTA-DUOS"
+
+    # 2. French broken words, erroneous hyphens, and spaced hyphens
+    t, _ = modernize_text("Je commencerai au-jourd'hui à vous glorifier.")
+    assert "aujourd'hui" in t
+
+    t, _ = modernize_text("Héré-mie lui dit : Ainsi soit-il.")
+    assert "Jérémie lui dit" in t
+
+    t, _ = modernize_text("C'est-pourquoi tout le fonds que vous possédez")
+    assert "C'est pourquoi tout le fonds" in t
+
+    t, _ = modernize_text("Abel-maison-de-Maacha, ou Abel-Beth-Maacha.")
+    assert "Abel-maison de Maacha, ou Abel-Beth-Maacha." in t
+
+    t, _ = modernize_text("la porte que l'on nomme, Du-fondement.")
+    assert "Du fondement." in t
+
+    t, _ = modernize_text("Je ne serai point assez-cruel pour le susciter")
+    assert "assez cruel" in t
+
+    t, _ = modernize_text("ne nous en donnez-point la gloire")
+    assert "donnez point" in t
+
+    t, _ = modernize_text("avec les enfants des-hommes.")
+    assert "des hommes." in t
+
+    t, _ = modernize_text("se sert de sa langue pour tromper, est-dans")
+    assert "est dans" in t
+
+    t, _ = modernize_text("Je mettrai sur son épaule la-clef de la maison")
+    assert "la clef" in t
+
+    t, _ = modernize_text("Il mesura-tout le mur d'alentour")
+    assert "mesura tout" in t
+
+    t, _ = modernize_text("un grand nombre de faux-Prophètes.")
+    assert "faux Prophètes." in t
+
+    t, _ = modernize_text("la Palestine vers le grand-Champ ;")
+    assert "grand Champ" in t
+
+    t, _ = modernize_text("N'est-ce point-là le fils de David ?")
+    assert "point là" in t
+
+    t, _ = modernize_text("c'est-à dire six coudées")
+    assert "c'est-à-dire six coudées" in t
+
+    t, _ = modernize_text("Simon fils d'Onias, Grand - Pontife.")
+    assert "Grand-Pontife." in t
+
+    t, _ = modernize_text("le Roi, et le grand - Prêtre à l'opprobre.")
+    assert "grand-Prêtre" in t
+
+    t, _ = modernize_text("Laissez - les : ce sont des aveugles")
+    assert "Laissez-les :" in t
+
+    # Preserve valid French hyphens
+    t, _ = modernize_text("souvenez-vous de lui-même au-dessus du Très-Haut")
+    assert "souvenez-vous de lui-même au-dessus du Très-Haut" in t
+
 
 
 
