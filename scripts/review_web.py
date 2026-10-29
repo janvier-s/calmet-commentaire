@@ -635,8 +635,13 @@ def main(argv):
               "skipped" if "--skipped" in argv else "resolved" if "--resolved" in argv else
               "all" if {"--all-status", "--all-statuses"} & set(argv) else "open")
     typ = (opt("--type") or "").lower()
+    if typ in ("to-do", "todos", "to-dos"):
+        typ = "todo"
+    cat_arg = (opt("--category") or "").lower()
+    if cat_arg in ("to-do", "todos", "to-dos"):
+        cat_arg = "todo"
     start = {"status": status, "book": opt("--book"), "kind": opt("--kind"),
-             "cat": (opt("--category") or "").lower() or (typ if typ in rs.CATEGORIES else None)}
+             "cat": cat_arg or (typ if typ in rs.CATEGORIES else None)}
     if typ and typ not in rs.CATEGORIES:
         start["kind"] = typ
     with_value = {"--port", "--kind", "--category", "--type", "--book", "--queue", "--data", "--docs"}

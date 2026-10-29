@@ -161,6 +161,10 @@ def test_todo_add_and_delete(web):
     assert code == 200 and r["item"]["kind"] == "todo" and r["item"]["where"]["field"] == "text"
     assert any(i["id"] == r["item"]["id"] for i in r["issues"])
     assert web("/api/queue?kind=todo&status=open")[1]["items"][0]["msg"] == "Needs rescan"
+    assert web("/api/queue?cat=todo&status=open")[1]["items"][0]["msg"] == "Needs rescan"
+    assert all(i["kind"] != "todo" for i in web("/api/queue?cat=commentary&status=open")[1]["items"])
+    assert all(i["kind"] != "todo" for i in web("/api/queue?cat=verses&status=open")[1]["items"])
+    assert all(i["kind"] != "todo" for i in web("/api/queue?cat=footnotes&status=open")[1]["items"])
     assert web("/api/todo", {"vol": VOL, "page": 194, "msg": "  "})[0] == 400
     assert web("/api/todo/delete", {"id": r["item"]["id"]})[0] == 200
     assert web("/api/queue?kind=todo&status=all")[1]["items"] == []

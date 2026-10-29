@@ -191,6 +191,7 @@ button.icon-after { flex-direction: row-reverse; }
 .k-verse { --c: var(--c-verse); }
 .k-note { --c: var(--c-note); }
 .k-fn { --c: var(--c-fn); }
+.k-todo { --c: var(--teal); }
 .k-head { --c: var(--c-head); }
 .block[class*="k-"] { border-left: 3px solid var(--c); }
 .block .block-head .title, .block .block-head > .ic { color: var(--c); }

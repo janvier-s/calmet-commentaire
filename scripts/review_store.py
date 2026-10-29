@@ -402,6 +402,8 @@ KIND_THEMES = [
 
 
 def kind_category(k):
+    if k == "todo":
+        return "todo"
     if k in VERSE_KINDS:
         return "verses"
     if k in FOOTNOTE_KINDS:
@@ -410,7 +412,7 @@ def kind_category(k):
 
 
 STATUSES = ("open", "on_hold", "false_positive", "skipped", "resolved", "all")
-CATEGORIES = ("verses", "commentary", "footnotes")
+CATEGORIES = ("verses", "commentary", "footnotes", "todo")
 
 
 def _atomic_write(path, text):

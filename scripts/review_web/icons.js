@@ -3,6 +3,7 @@ const P = {
   verses: "M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5zM4 19.5A1.5 1.5 0 0 0 5.5 21H20v-3M8 7h8M8 10.5h6",
   commentary: "M4 5h16v11H9l-5 4zM8 9h8M8 12.5h5",
   footnotes: "M12 3v8M8.5 5l7 4M15.5 5l-7 4M5 15h14M5 19h9",
+  todo: "M9 11l3 3L22 4M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11",
   save: "M5 4h11l3 3v13H5zM8 4v5h7V4M8 20v-6h8v6",
   check: "M5 12.5l4.5 4.5L19 7",
   flag: "M6 21V4M6 4h11l-2 4 2 4H6",

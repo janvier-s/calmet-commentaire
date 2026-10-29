@@ -12,10 +12,10 @@ const el = (tag, props = {}, ...kids) => {
 };
 const DONE = new Set(["resolved", "false_positive"]);
 const STATUS_LABELS = { open: "🟠 Open", on_hold: "⏸️ On hold", false_positive: "🚩 False positives", skipped: "⏭️ Skipped", resolved: "✅ Resolved", all: "📋 All statuses" };
-const CAT_LABELS = { all: "🗂️ All categories", verses: "📖 Verses", commentary: "💬 Commentary", footnotes: "📝 Footnotes" };
-const CAT_EMOJI = { verses: "📖", commentary: "💬", footnotes: "📝" };
+const CAT_LABELS = { all: "🗂️ All categories", verses: "📖 Verses", commentary: "💬 Commentary", footnotes: "📝 Footnotes", todo: "📌 To-dos" };
+const CAT_EMOJI = { verses: "📖", commentary: "💬", footnotes: "📝", todo: "📌" };
 
-const KIND = { verses: "k-verse", commentary: "k-note", footnotes: "k-fn" };
+const KIND = { verses: "k-verse", commentary: "k-note", footnotes: "k-fn", todo: "k-todo" };
 let CAT_OF = {};  // kind -> category, from the server
 
 const Q = { items: [], idx: 0, status: "open", cat: null, kind: null, book: null, counts: null, current: null };

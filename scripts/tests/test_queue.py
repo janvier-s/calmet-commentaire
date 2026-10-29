@@ -27,6 +27,7 @@ def test_labels_and_categories():
     assert kind_category("missing_footnote") == "footnotes"
     assert kind_category("missing_verse") == "verses"
     assert kind_category("hyphen_cut") == "commentary"
+    assert kind_category("todo") == "todo"
 
 
 def test_load_queue_optional(docs):
@@ -100,11 +101,24 @@ def test_counts_facets(docs, progress):
     progress.set(its[0]["id"], "resolved")
     c = counts(its, progress, "open", None, None, None)
     assert c["status"] == {"open": 2, "on_hold": 0, "false_positive": 0, "skipped": 0, "resolved": 1, "all": 3}
-    assert c["cat"] == {"all": 2, "verses": 0, "commentary": 1, "footnotes": 1}
+    assert c["cat"] == {"all": 2, "verses": 0, "commentary": 1, "footnotes": 1, "todo": 0}
     assert c["kind"] == {"missing_footnote": 1, "missing_page": 1}
     assert c["book"] == {VOL: 2}
     # the other facets' filters apply: status counts within the footnotes category
     assert counts(its, progress, "open", "footnotes", None, None)["status"]["open"] == 1
+
+
+def test_todo_isolated_in_its_own_category(docs, data_dir, progress):
+    td = {"id": f"{VOL}/0194/todo/dddd", "page": 194, "msg": "needs rescan", "where": None}
+    (data_dir / VOL / "review.json").write_text(json.dumps({"todos": [td]}), encoding="utf-8")
+    its = items(docs)
+    # to-do is its own category: not in commentary, verses, or footnotes
+    assert [i["kind"] for i in select(its, progress, "open", cat="todo")] == ["todo"]
+    assert all(i["kind"] != "todo" for i in select(its, progress, "open", cat="commentary"))
+    assert all(i["kind"] != "todo" for i in select(its, progress, "open", cat="verses"))
+    assert all(i["kind"] != "todo" for i in select(its, progress, "open", cat="footnotes"))
+    c = counts(its, progress, "open", None, None, None)
+    assert c["cat"]["todo"] == 1
 
 
 def test_page_issues_status(docs, progress):
