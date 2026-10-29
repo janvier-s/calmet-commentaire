@@ -696,6 +696,39 @@ def test_modernize_oi_to_ai_and_archaic_verbs():
     assert "Par le moyen de Moïse, la cigogne sur les sapins, au réfectoire et au réfectoire." in text
 
 
+def test_modernize_ez_to_es_participles_and_preserve_verbs():
+    # 1. Unconditional participles in -ez
+    text, _ = modernize_text("Ceux qui sont passionnez pour le monde, entre amants passionnez.")
+    assert "Ceux qui sont passionnés pour le monde, entre amants passionnés." in text
+
+    text, _ = modernize_text("Percez de coups, et ensanglantez, avec des cheveux frisés, (entortillez).")
+    assert "Percez de coups, et ensanglantés, avec des cheveux frisés, (entortillés)." in text
+
+    # 2. Contextual participles vs imperatives for déchirez, abaissez, avancez
+    text, _ = modernize_text("Ayant leurs vêtements déchirez, et avec des habits sales, et déchirez ; mais déchirez vos cœurs, et ne déchirez point vos habits.")
+    assert "Ayant leurs vêtements déchirés, et avec des habits sales, et déchirés ; mais déchirez vos cœurs, et ne déchirez point vos habits." in text
+
+    text, _ = modernize_text("Les yeux des superbes seront abaissez, et ceux qui sont humiliés, et abaissez ; mais Seigneur, abaissez vos cieux et abaissez votre cœur.")
+    assert "Les yeux des superbes seront abaissés, et ceux qui sont humiliés, et abaissés ; mais Seigneur, abaissez vos cieux et abaissez votre cœur." in text
+
+    text, _ = modernize_text("Ils sont aussi avancez l'un que l'autre, et chargés de fruits avancez ; mais avancez hardiment et ne vous avancez jamais.")
+    assert "Ils sont aussi avancés l'un que l'autre, et chargés de fruits avancés ; mais avancez hardiment et ne vous avancez jamais." in text
+
+    # 3. Contextual participles vs imperatives for appuyez, sauvez, élevez, fondez
+    text, _ = modernize_text("Les nouveaux l'ont adopté, appuyez sur ce texte ; mais ne vous appuyez point sur votre prudence.")
+    assert "Les nouveaux l'ont adopté, appuyés sur ce texte ; mais ne vous appuyez point sur votre prudence." in text
+
+    text, _ = modernize_text("Un petit nombre de sauvez, et nous serons sauvez ; mais Seigneur, sauvez-moi, sauvez votre vie et sauvez-vous.")
+    assert "Un petit nombre de sauvés, et nous serons sauvés ; mais Seigneur, sauvez-moi, sauvez votre vie et sauvez-vous." in text
+
+    text, _ = modernize_text("Ceux que j'ai nourris, et élevez, ils sont élevez contre Dieu ; mais élevez vos mains et ne vous élevez point.")
+    assert "Ceux que j'ai nourris, et élevés, ils sont élevés contre Dieu ; mais élevez vos mains et ne vous élevez point." in text
+
+    text, _ = modernize_text("Ils sont fondez sur la vérité, mais fondez votre or et votre argent.")
+    assert "Ils sont fondés sur la vérité, mais fondez votre or et votre argent." in text
+
+
+
 
 
 

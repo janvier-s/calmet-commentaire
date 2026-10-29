@@ -546,7 +546,29 @@ In 18th-century French, verbal imperfect/conditional endings (`-ois`, `-oit`, `-
 
 ---
 
-## 13. How to Apply to Future Volumes
+## 13. Classical Plural Past Participles & Adjectives (`-ez` $\rightarrow$ `-és`) vs 2nd Person Plural / Imperative Preservations
+
+In Classical pre-1740 French orthography, masculine plural past participles of 1st-conjugation verbs and adjectives ending in `-é` were written with `-ez` (`aimé` $\rightarrow$ plural `aimez`, `élevé` $\rightarrow$ `élevez`, `déchiré` $\rightarrow$ `déchirez`). Because 2nd-person plural present indicative and imperative verbs also end in `-ez` (*« Vous élevez vos mains »*, *« Sauvez-moi ! »*, *« Déchirez vos cœurs »*), normalization requires contextual disambiguation.
+
+58 occurrences across 50 pages were normalized in all 49 volumes:
+
+1. **Unconditional Plural Participles (0 verb occurrences in Calmet)**:
+   - `passionnez` $\rightarrow$ `passionnés` (2 occurrences: *« entre amants passionnés »*, *« ceux qui sont passionnés »*)
+   - `ensanglantez` $\rightarrow$ `ensanglantés` (1 occurrence: *« percez de coups, et ensanglantés »*)
+   - `entortillez` $\rightarrow$ `entortillés` (1 occurrence: *« frisés, (entortillés) »*)
+
+2. **Contextual Plural Participles vs Imperative / Verb Forms**:
+   - `déchirez` $\rightarrow$ `déchirés` (12 occurrences): when preceded by *habits*, *vêtements*, or *blessés, et* (*« ayant leurs vêtements déchirés »*, *« en habits sales, et déchirés »*). Imperatives preserved: *« Déchirez vos cœurs »*, *« Déchirez vos vêtements »*, *« ne déchirez point vos habits »*.
+   - `fondez` $\rightarrow$ `fondés` (13 occurrences): all non-imperative occurrences (*« attachés au Seigneur, fondés sur la pierre »*, *« n'étaient point fondés sur la vérité »*). Imperative preserved: *« Fondez votre or »* (Ecclésiastique 468).
+   - `abaissez` $\rightarrow$ `abaissés` (5 occurrences): when preceded by *seront*, *feront*, *ou*, *et*, *être* (*« les yeux des superbes seront abaissés »*, *« ceux qui sont humiliés, et abaissés »*). Imperatives preserved: *« Abaissez vos mains »*, *« Abaissez vos cieux »*, *« abaissez votre cœur »*, *« abaissez-vous »*.
+   - `avancez` $\rightarrow$ `avancés` (3 occurrences): when preceded by *aussi*, *fruits*, *beaucoup* (*« s'étaient beaucoup avancés »*, *« fruits avancés »*, *« aussi avancés l'un que l'autre »*). Verbs preserved: *« ce que vous avancez »*, *« avancez-vous »*, *« avancez hardiment »*, *« Avancez toujours »*.
+   - `appuyez` $\rightarrow$ `appuyés` (3 occurrences): when preceded by *adopté,*, *hasard,*, *conséquence* (*« adoptés, appuyés sur quelques passages »*, *« appuyés sur de simples conjectures »*). Verbs preserved: *« ne vous appuyez point »*, *« vous vous appuyez sur »*, *« sur quoi vous appuyez-vous »*.
+   - `sauvez` $\rightarrow$ `sauvés` (9 occurrences): when preceded by *nous serons*, *nombre de*, *de sauvez que* (*« et nous serons sauvés »*, *« un très petit nombre de sauvés »*, *« il n'y aura de sauvés que »*). Verbs and imperatives preserved (105 occurrences): *« Sauvez votre vie »*, *« Sauvez-moi »*, *« Sauvez-nous »*, *« sauvez-vous »*, *« vous les sauvez »*.
+   - `élevez` $\rightarrow$ `élevés` (9 occurrences): when preceded by *grands, et*, *gazons,*, *sont*, *nourris, et*, *j'ai*, *j'avais*, *vent*, *plus* (*« j'ai nourris, et élevés »*, *« autels de gazons, élevés »*, *« tuyaux à vent élevés »*, *« vous ne marcherez plus élevés »*). Verbs and imperatives preserved (125 occurrences): *« Élevez vos mains »*, *« Élevez vos voix »*, *« vous vous élevez »*, *« ne vous élevez point »*.
+
+---
+
+## 14. How to Apply to Future Volumes
 
 When processing a new volume (e.g. `48_marc`):
 

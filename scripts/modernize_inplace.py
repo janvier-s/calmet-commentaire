@@ -1765,6 +1765,10 @@ WORD_MAP = {
     "refectoire": "réfectoire",
     "resectoire": "réfectoire",
     "dequoi": "de quoi",
+    # Plural past participles / adjectives in -ez -> -és with 0 verb occurrences
+    "passionnez": "passionnés",
+    "ensanglantez": "ensanglantés",
+    "entortillez": "entortillés",
 }
 
 def match_case(src, tgt):
@@ -2795,6 +2799,49 @@ def modernize_text(text):
         count += 1
         return m.group(1) + ' ' + (m.group(2) or '') + ('étonnés' if 'étonn' in m.group(3).lower() else 'troublés')
     text = re.sub(r'\b(sont|étaient|seront|furent|été|yeux)\s+(tout\s+)?(étonnez|troublez)\b', participles_replacer, text, flags=re.I)
+
+    # 2b. Contextual participles (-ez -> -és vs 2nd person plural / imperative)
+    def dechirez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + match_case(m.group(2), "déchirés")
+    text = re.sub(r'(\b(?:(?:habits|vêtements)(?:\s+\w+,?)?\s+et|habits|vêtements|blessés,?\s+et)\s+)(déchirez)\b', dechirez_replacer, text, flags=re.I)
+
+    def abaissez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + match_case(m.group(2), "abaissés")
+    text = re.sub(r'(\b(?:fermés[_,\s]+ou|seront|feront|humiliés,?\s+et|être)\s+)(abaissez)\b', abaissez_replacer, text, flags=re.I)
+
+    def avancez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + match_case(m.group(2), "avancés")
+    text = re.sub(r'(\b(?:aussi|fruits|beaucoup)\s+)(avancez)\b', avancez_replacer, text, flags=re.I)
+
+    def appuyez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + match_case(m.group(2), "appuyés")
+    text = re.sub(r'(\b(?:adopté|hasard|conséquence)\b[,\s]+)(appuyez)\b', appuyez_replacer, text, flags=re.I)
+
+    def sauvez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + match_case(m.group(2), "sauvés")
+    text = re.sub(r'(\b(?:serons|nombre\s+de|de)\s+)(sauvez)(\b(?!\s*-(?:moi|vous|nous|la)))', sauvez_replacer, text, flags=re.I)
+
+    def elevez_replacer(m):
+        nonlocal count
+        count += 1
+        return m.group(1) + match_case(m.group(2), "élevés")
+    text = re.sub(r'(\b(?:grands,?\s+et|gazons,|sont|nourris,?\s+et|j\'ai|j\'avais|vent|plus)\s+)(élevez)\b', elevez_replacer, text, flags=re.I)
+
+    def fondez_replacer(m):
+        nonlocal count
+        count += 1
+        return match_case(m.group(0), "fondés")
+    text = re.sub(r'\b(F|f)ondez\b(?!\s+votre\b)', fondez_replacer, text)
 
     # 3. Contextual noun "péchés" (when preceded by determiners)
     def pechez_replacer(m):
