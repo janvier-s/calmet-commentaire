@@ -492,8 +492,8 @@ def test_misc_archaic_and_pattern_families():
     assert "la sauce sur la nacelle" in text
 
     # 5. Genéfe OCR long-s
-    text, _ = modernize_text("Voyez notre Commentaire sur la Genéfe, Ch. XXIV.")
-    assert "sur la Genèse, Ch. XXIV." in text
+    text, _ = modernize_text("Voyez notre Commentaire sur la Genéfe, page 10.")
+    assert "sur la Genèse, page 10." in text
 
     # 6. Contextual par tout -> partout
     text, _ = modernize_text("Par tout où les sauterelles passent, le soldat porta par tout la mort. Mais par tout le monde, et par tout ce peuple.")
@@ -519,6 +519,54 @@ def test_misc_archaic_and_pattern_families():
     # 9. robbe family (consonant normalization)
     text, _ = modernize_text("Une robbe blanche pour abbattre cet embaras de nouriture et de canelle.")
     assert "Une robe blanche pour abattre cet embarras de nourriture et de cannelle." in text
+
+
+def test_expand_abbreviations_heb_and_chap():
+    # 1. l'Heb family
+    text, _ = modernize_text("Il faut lire dans l'Heb. gag, un toit. L'Héb. ^{(a)} _Pour bénir._")
+    assert "lire dans l'Hébreu gag" in text
+    assert "L'Hébreu ^{(a)} _Pour bénir._" in text
+
+    text, _ = modernize_text("L'Hébr. _Secourez-les_ dans l'Héb._ au lieu de")
+    assert "L'Hébreu _Secourez-les_" in text
+    assert "dans l'Hébreu_ au lieu de" in text
+
+    text, _ = modernize_text("Le texte Héb.^{(b)} et dans le texte Heb. de la Genèse.")
+    assert "Le texte Hébreu^{(b)}" in text
+    assert "dans le texte Hébreu de la Genèse." in text
+
+    text, _ = modernize_text("Samuel (Hébr. _Nééman_) était destiné")
+    assert "Samuel (Hébreu _Nééman_) était destiné" in text
+
+    # 2. Chap family in chapter_title
+    text, _ = modernize_text("SUR JOEL. CHAP. IV.")
+    assert text == "SUR JOEL. CHAPITRE IV."
+
+    text, _ = modernize_text("CHAP. III.")
+    assert text == "CHAPITRE III."
+
+    # 3. Chap family in running text
+    text, _ = modernize_text("Voyez le Chap. 11. versets 3. 4. et au Chap. xx. de Jérémie.")
+    assert "Voyez le Chapitre 11. versets 3. 4." in text
+    assert "au Chapitre xx. de Jérémie." in text
+
+    text, _ = modernize_text("avec le chap. 10:23. et au chap. xv. ℣. 34.")
+    assert "avec le chapitre 10:23." in text
+    assert "au chapitre xv. ℣. 34." in text
+
+    text, _ = modernize_text("ci-après, Ch. x. ℣. 8. et Ch. suivant, ℣. 25.")
+    assert "ci-après, Chapitre x. ℣. 8." in text
+    assert "Chapitre suivant, ℣. 25." in text
+
+    text, _ = modernize_text("comme les Chap. précédents, et aux chap. 14. et 15.")
+    assert "comme les Chapitres précédents" in text
+    assert "aux chapitres 14. et 15." in text
+
+    text, _ = modernize_text("Ce que l'on voit à la fin de ce Chap. Ensuite il parle...")
+    assert "à la fin de ce Chapitre. Ensuite il parle..." in text
+
+    text, _ = modernize_text("ci-après Chap 37:14.")
+    assert "ci-après Chapitre 37:14." in text
 
 
 

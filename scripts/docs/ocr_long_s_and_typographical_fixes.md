@@ -463,7 +463,43 @@ Applied in Step 5n of `modernize_inplace.py` across all 49 volumes (749 replacem
 
 ---
 
-## 11. How to Apply to Future Volumes
+## 11. Expansion of Abbreviations: `l'Heb.` and `Chap.` (1,339 replacements)
+
+### Problem
+Calmet's text frequently leaves references to the Hebrew text/original abbreviated as `l'Heb.`, `l'Héb.`, `l'Hébr.`, `L'Héb.`, `l'Hebr.`, and chapter headings and cross-references abbreviated as `CHAP.`, `Chap.`, `chap.`, `Ch.`, or `ch.`.
+
+### Applied Rules (Step 5o in `modernize_inplace.py`)
+
+1. **`l'Heb.` Family $\rightarrow$ `l'Hébreu` / `L'Hébreu`**:
+   - `l'Heb.`, `l'Héb.`, `l'Hebr.`, `l'Hébr.`, `l'Heb`, `l'Héb` $\rightarrow$ `l'Hébreu`
+   - `L'Heb.`, `L'Héb.`, `L'Hebr.`, `L'Hébr.` $\rightarrow$ `L'Hébreu`
+   - OCR glitches: `l'Héb.eu` $\rightarrow$ `l'Hébreu`, `l'Hébr u :` $\rightarrow$ `l'Hébreu :`
+   - Phrasal: `texte Heb.` / `texte Héb.` $\rightarrow$ `texte hébreu` / `Texte Hébreu`
+   - Parenthetical: `(Hébr. _Nééman_)` $\rightarrow$ `(Hébreu _Nééman_)`
+
+2. **`Chap.` Family $\rightarrow$ `Chapitre` / `CHAPITRE`**:
+   - **Chapter Titles (`chapter_title`)**:
+     `CHAP. IV.` $\rightarrow$ `CHAPITRE IV.` (500 chapter titles updated, unifying with the 830 existing `CHAPITRE` titles).
+   - **Singular Cross-References**:
+     - `Chap.` before numbers/words $\rightarrow$ `Chapitre` (`Chap. 11.` $\rightarrow$ `Chapitre 11.`, `Chap. premier` $\rightarrow$ `Chapitre premier`)
+     - `chap.` before numbers/words $\rightarrow$ `chapitre` (`chap. 10:23.` $\rightarrow$ `chapitre 10:23.`, `chap. xv.` $\rightarrow$ `chapitre xv.`)
+     - `Ch.` / `ch.` before numbers/words $\rightarrow$ `Chapitre` / `chapitre` (`Ch. x.` $\rightarrow$ `Chapitre x.`, `ch. 13.` $\rightarrow$ `chapitre 13.`, `Ch. suivant` $\rightarrow$ `Chapitre suivant`)
+     - Unpunctuated: `Chap 37:14` $\rightarrow$ `Chapitre 37:14`
+   - **Plural Cross-References**:
+     - Preceded by determiners/numbers (`les`, `ces`, `aux`, `des`, `deux`, `trois`, `plusieurs`): `les Chap.` $\rightarrow$ `les Chapitres`, `aux chap.` $\rightarrow$ `aux chapitres`
+     - Followed by plural adjectives: `Chap. précédents` $\rightarrow$ `Chapitres précédents`, `chap. suivants` $\rightarrow$ `chapitres suivants`
+   - **Dot Handling**:
+     - Stripped before numbers, ordinals, words, and footnote calls (`Chap. IV.` $\rightarrow$ `Chapitre IV.`, `Chap.^{(a)}` $\rightarrow$ `Chapitre ^{(a)}`).
+     - Sentence-ending period preserved at the end of a clause (`...de ce Chap.` $\rightarrow$ `...de ce Chapitre.`).
+
+3. **Strict Preservations (False Positives Avoided)**:
+   - Latin citations and critical apparatus in footnotes preserved.
+   - Verse numbers (`verses[].french`) completely untouched (0 changes).
+   - The French noun `vers` (worms / verses) strictly preserved.
+
+---
+
+## 12. How to Apply to Future Volumes
 
 When processing a new volume (e.g. `48_marc`):
 

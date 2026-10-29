@@ -2661,6 +2661,26 @@ RX_MISC_ARCHAIC = re.compile(r"(?<![A-Za-zÀ-ÿ0-9_])(" + "|".join(re.escape(k) 
 RX_PAR_TOUT = re.compile(r"\b([Pp]ar)\s+tout\b")
 RX_PAR_TOUT_KEEP = re.compile(r"^\s+(?:le\b|ce\b|cet\b|ceci\b|cela\b|son\s+[a-zA-ZÀ-ÿ]+|un\s+[a-zA-ZÀ-ÿ]+|l[\x27\x92\u2019]|Israël\b|homme\b)", re.I)
 
+# 7. Expansion of abbreviations: l'Heb. -> l'Hébreu, Chap. -> Chapitre
+RX_LHEB = re.compile(
+    r"\b([Ll][\x27\x92\u2019])([Hh][eé]br?)(?:\.eu|\s+u(?=\s*:)|(?:\.(?![a-zA-ZÀ-ÿ0-9])|\b(?![a-zA-ZÀ-ÿ0-9])))"
+)
+RX_TEXTE_HEB = re.compile(r"\b([Tt]exte)\s+([Hh][eé]br?)\.?(?=\s|$|[,\);:!?«»_\^])")
+RX_PAREN_HEB = re.compile(r"\(([Hh][eé]br?)\.\s*")
+
+RX_CHAP_PLURAL = re.compile(
+    r"\b(les|ces|aux|des|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|plusieurs)\s+(CHAP|Chap|chap)\.(?![a-zA-ZÀ-ÿ0-9])",
+    re.IGNORECASE
+)
+RX_CHAP_PLURAL_ADJ = re.compile(
+    r"\b(CHAP|Chap|chap)\.\s+(précédents|suivants)\b",
+    re.IGNORECASE
+)
+RX_CH_NUM = re.compile(r"\b(Ch|ch)\.\s*([0-9IVXLCDMivxlcdm]+)")
+RX_CH_WORD = re.compile(r"\b(Ch|ch)\.\s*(suivant|précédent|premier)", re.IGNORECASE)
+RX_CHAP_NODOT = re.compile(r"\b(CHAP|Chap|chap)\s+([0-9IVXLCDMivxlcdm]+)")
+RX_CHAP_GEN = re.compile(r"\b(CHAP|Chap|chap)\.(?![a-zA-ZÀ-ÿ0-9])")
+
 
 
 
@@ -3173,6 +3193,86 @@ def modernize_text(text):
         return w
     text = RX_MISC_ARCHAIC.sub(sub_misc_archaic, text)
 
+    # 5o. Expansion of abbreviations: l'Heb. -> l'Hébreu, Chap. -> Chapitre
+    def sub_lheb(m):
+        nonlocal count
+        count += 1
+        lead = m.group(1)
+        return "L\x27Hébreu" if lead[0] == "L" else "l\x27Hébreu"
+    text = RX_LHEB.sub(sub_lheb, text)
+
+    def sub_texte_heb(m):
+        nonlocal count
+        count += 1
+        t = m.group(1)
+        h = m.group(2)
+        hw = "Hébreu" if (h[0].isupper() or t[0].isupper()) else "hébreu"
+        return f"{t} {hw}"
+    text = RX_TEXTE_HEB.sub(sub_texte_heb, text)
+
+    def sub_paren_heb(m):
+        nonlocal count
+        count += 1
+        return "(Hébreu "
+    text = RX_PAREN_HEB.sub(sub_paren_heb, text)
+
+    def sub_chap_plural(m):
+        nonlocal count
+        count += 1
+        det = m.group(1)
+        w = m.group(2)
+        cw = "CHAPITRES" if w.isupper() else ("Chapitres" if w[0].isupper() else "chapitres")
+        return f"{det} {cw}"
+    text = RX_CHAP_PLURAL.sub(sub_chap_plural, text)
+
+    def sub_chap_plural_adj(m):
+        nonlocal count
+        count += 1
+        w = m.group(1)
+        adj = m.group(2)
+        cw = "CHAPITRES" if w.isupper() else ("Chapitres" if w[0].isupper() else "chapitres")
+        return f"{cw} {adj}"
+    text = RX_CHAP_PLURAL_ADJ.sub(sub_chap_plural_adj, text)
+
+    def sub_ch_num(m):
+        nonlocal count
+        count += 1
+        cw = "Chapitre" if m.group(1)[0].isupper() else "chapitre"
+        return f"{cw} {m.group(2)}"
+    text = RX_CH_NUM.sub(sub_ch_num, text)
+
+    def sub_ch_word(m):
+        nonlocal count
+        count += 1
+        cw = "Chapitre" if m.group(1)[0].isupper() else "chapitre"
+        return f"{cw} {m.group(2)}"
+    text = RX_CH_WORD.sub(sub_ch_word, text)
+
+    def sub_chap_nodot(m):
+        nonlocal count
+        count += 1
+        w = m.group(1)
+        cw = "CHAPITRE" if w.isupper() else ("Chapitre" if w[0].isupper() else "chapitre")
+        return f"{cw} {m.group(2)}"
+    text = RX_CHAP_NODOT.sub(sub_chap_nodot, text)
+
+    def sub_chap_gen(m):
+        nonlocal count
+        count += 1
+        w = m.group(1)
+        cw = "CHAPITRE" if w.isupper() else ("Chapitre" if w[0].isupper() else "chapitre")
+        rest = m.string[m.end():]
+        if re.match(r"^\s*$", rest):
+            return cw + "."
+        if re.match(r"^\s*(?:[0-9IVXLCDMivxlcdm]+|premier|premiers|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|treize|quatorze|quinze|seize|suiv|précéd|dernier)", rest, re.IGNORECASE):
+            return cw
+        if re.match(r"^\s*\^\{[^\}]+\}", rest):
+            return cw
+        if re.match(r"^\s*([A-ZÀ-ÿ«“]|$)", rest):
+            return cw + "."
+        return cw
+    text = RX_CHAP_GEN.sub(sub_chap_gen, text)
+
     # 6. Global WORD_MAP matching
     def replacer(match):
         nonlocal count
@@ -3216,6 +3316,7 @@ def process_volume(folder_name, dry_run):
                     changed = True
                     total_replacements += c
 
+        update_field(data, "chapter_title")
         update_field(data, "chapter_summary")
         update_field(data, "chapter_intro")
         update_field(data, "chapter_argument")
