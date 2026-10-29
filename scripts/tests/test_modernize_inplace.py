@@ -724,8 +724,18 @@ def test_modernize_ez_to_es_participles_and_preserve_verbs():
     text, _ = modernize_text("Ceux que j'ai nourris, et élevez, ils sont élevez contre Dieu ; mais élevez vos mains et ne vous élevez point.")
     assert "Ceux que j'ai nourris, et élevés, ils sont élevés contre Dieu ; mais élevez vos mains et ne vous élevez point." in text
 
-    text, _ = modernize_text("Ils sont fondez sur la vérité, mais fondez votre or et votre argent.")
-    assert "Ils sont fondés sur la vérité, mais fondez votre or et votre argent." in text
+    # 4. Expanded unconditional pure participles and nouns
+    text, _ = modernize_text("Les Babyloniens sont désignez sous ce nom, et distinguez par familles.")
+    assert "Les Babyloniens sont désignés sous ce nom, et distingués par familles." in text
+
+    text, _ = modernize_text("Des hommes enchaînez, enfermez dans leurs maisons, et des peuples subjugez.")
+    assert "Des hommes enchaînés, enfermés dans leurs maisons, et des peuples subjugués." in text
+
+    text, _ = modernize_text("Des enfants efféminez, et des blessés, échappez du danger, préordonnez à la vie.")
+    assert "Des enfants efféminés, et des blessés, échappés du danger, préordonnés à la vie." in text
+
+    text, _ = modernize_text("Ne suscitez point de procez, pour éviter des accez de manie et des sterilitez.")
+    assert "Ne suscitez point de procès, pour éviter des accès de manie et des stérilités." in text
 
 
 
