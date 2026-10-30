@@ -14,6 +14,7 @@ from calmet import STRAY, _fold, notes as calmet_notes, vulgate_words
 from export import chapter_of, verses_by_chapter
 from modernize_refs import MANUAL as REF_MANUAL
 from paths import BOOKS, DATA as STUDIUM, DOCS, VUL, WEB as SITE
+from review_store import FalsePositives, fp_sig
 ORDER_OK = json.loads((STUDIUM / "verse_ref_order_ok.json").read_text(encoding="utf-8")) \
     if (STUDIUM / "verse_ref_order_ok.json").exists() else {}  # fix_verse_refs.py: out of order on purpose
 WHICH_BOOK = re.compile(r"\b(?:Rois|Paralipomènes|Machabées|Esdras),?\s+chapitres?\s+\d+(?::\d+(?:(?:-|, )\d+)*)?")
@@ -70,10 +71,28 @@ def reviews():
 # False positives tagged in the review editor: permanently excluded from review queue on every audit run
 def load_false_positives():
     fp_ids = set()
+    fp_sigs = []
     for d in reviews():
-        fp_ids.update(d.get("false_positives") or {})
-        fp_ids.update(k for k, v in (d.get("status") or {}).items() if v == "false_positive")
-    return fp_ids
+        fps = d.get("false_positives") or {}
+        for k, v in fps.items():
+            fp_ids.add(k)
+            parts = k.split("/")
+            if len(parts) >= 3:
+                vol, pg_s, kind = parts[0], parts[1], parts[2]
+                pg = int(pg_s) if pg_s.isdigit() else 0
+                msg = v.get("msg") if isinstance(v, dict) else ""
+                where = v.get("where") if isinstance(v, dict) else None
+                fp_sigs.append(fp_sig(vol, pg, kind, msg, where))
+        for k, v in (d.get("status") or {}).items():
+            if v == "false_positive":
+                fp_ids.add(k)
+                parts = k.split("/")
+                if len(parts) >= 3:
+                    vol, pg_s, kind = parts[0], parts[1], parts[2]
+                    pg = int(pg_s) if pg_s.isdigit() else 0
+                    fp_sigs.append(fp_sig(vol, pg, kind, ""))
+    return FalsePositives(fp_ids, fp_sigs)
+
 
 FP_IDS = load_false_positives()
 
@@ -339,7 +358,7 @@ def audit_book(key, info, slug, published=True):
         # Stable across runs, so review progress survives a re-audit; `where`: the entry and field
         uid = hashlib.md5(msg.encode()).hexdigest()[:8]
         item_id = f"{vol}/{page:04d}/{kind}/{uid}"
-        if item_id in FP_IDS:
+        if FP_IDS.matches(item_id, vol, page, kind, msg, where) if hasattr(FP_IDS, "matches") else item_id in FP_IDS:
             return
         queue.append(dict(id=item_id, book_dir=vol, page=page,
                           kind=kind, msg=msg, optional=optional, **({"where": where} if where else {})))
@@ -839,7 +858,8 @@ def audit_book(key, info, slug, published=True):
                 if vol:
                     msg = f"{info['fr']} {ch}:{n} is missing (page shown holds the nearest verse)"
                     uid = hashlib.md5(msg.encode()).hexdigest()[:8]
-                    if f"{vol}/{pg:04d}/missing_verse/{uid}" in FP_IDS:
+                    mid = f"{vol}/{pg:04d}/missing_verse/{uid}"
+                    if FP_IDS.matches(mid, vol, pg, "missing_verse", msg) if hasattr(FP_IDS, "matches") else mid in FP_IDS:
                         continue
                     item("missing_verse", vol, pg, msg)
                 (kept_missing if n in missing else kept_tail).append(n)
@@ -1016,7 +1036,7 @@ def main():
                    key=lambda q: (order.index(q["kind"]), q["book_dir"], q["page"]))
     if FP_IDS:
         before_len = len(queue)
-        queue = [q for q in queue if q["id"] not in FP_IDS]
+        queue = [q for q in queue if not (FP_IDS.matches(q["id"], q["book_dir"], q["page"], q["kind"], q["msg"], q.get("where")) if hasattr(FP_IDS, "matches") else q["id"] in FP_IDS)]
         filtered = before_len - len(queue)
         if filtered:
             print(f"filtered out {filtered} permanently resolved false positive(s)")

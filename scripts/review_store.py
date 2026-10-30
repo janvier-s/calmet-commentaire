@@ -3,6 +3,7 @@
 No Tk and no HTTP here; review_web.py serves it.
 """
 import copy
+import difflib
 import hashlib
 import json
 import os
@@ -424,6 +425,98 @@ def _atomic_write(path, text):
 REVIEW_SECTIONS = ("commentary", "verses", "footnotes")  # read through separately
 REVIEW_FILE = "review.json"  # data/<book>/review.json: one book's review, so that volunteers' commits don't collide
 
+NOTE_RE = re.compile(r"\bNote\s+(\d+)\b", re.I)
+FN_RE = re.compile(r"\bFootnote\s+\(([a-z0-9]+)\)", re.I)
+V_RE = re.compile(r"(?:℣|Verse|v\.)\s*(\d+(?::\d+)?)", re.I)
+
+
+def fp_sig(vol, page, kind, msg, where=None):
+    msg = msg or ""
+    where = where or {}
+    note_m = NOTE_RE.search(msg)
+    fn_m = FN_RE.search(msg)
+    v_m = V_RE.search(msg)
+    quotes = re.findall(r"[“\"]([^“”\"]+)[”\"]", msg)
+    upper_quotes = [q for q in quotes if any(c.isupper() for c in q)]
+    target_quote = max(upper_quotes, key=len) if upper_quotes else (quotes[0] if quotes else "")
+    field = where.get("field")
+    if not field:
+        if "latin" in msg.lower():
+            field = "latin"
+        elif "french" in msg.lower():
+            field = "french"
+    return {
+        "vol": vol,
+        "page": page,
+        "kind": kind,
+        "note": note_m.group(1) if note_m else None,
+        "fn": fn_m.group(1) if fn_m else None,
+        "v": v_m.group(1) if v_m else None,
+        "quote": re.sub(r"[^\w\s]", "", target_quote).strip().upper(),
+        "field": field,
+        "msg": msg
+    }
+
+
+def match_fp_sigs(s1, s2):
+    if s1["vol"] != s2["vol"] or s1["page"] != s2["page"] or s1["kind"] != s2["kind"]:
+        return False
+    if s1["note"] and s2["note"] and s1["note"] != s2["note"]:
+        return False
+    if s1["fn"] and s2["fn"] and s1["fn"] != s2["fn"]:
+        return False
+    if s1["v"] and s2["v"] and s1["v"] != s2["v"]:
+        return False
+    if s1["field"] and s2["field"] and s1["field"] != s2["field"]:
+        return False
+    q1, q2 = s1["quote"], s2["quote"]
+    if q1 and q2:
+        if q1 == q2 or q1 in q2 or q2 in q1:
+            return True
+        if difflib.SequenceMatcher(None, q1, q2).ratio() >= 0.6:
+            return True
+        return False
+    return difflib.SequenceMatcher(None, s1["msg"], s2["msg"]).ratio() >= 0.5
+
+
+class FalsePositives:
+    """Set of known false positive IDs with resilient matching against text modifications."""
+
+    def __init__(self, fp_ids=None, fp_sigs=None):
+        self.ids = set(fp_ids or ())
+        self.by_page = {}
+        if fp_sigs:
+            for s in fp_sigs:
+                self.by_page.setdefault((s["vol"], s["page"], s["kind"]), []).append(s)
+
+    def __contains__(self, item_id):
+        return item_id in self.ids
+
+    def __bool__(self):
+        return bool(self.ids)
+
+    def __len__(self):
+        return len(self.ids)
+
+    def __iter__(self):
+        return iter(self.ids)
+
+    def add(self, item_id):
+        self.ids.add(item_id)
+
+    def matches(self, item_id, vol, page, kind, msg, where=None):
+        if item_id in self.ids:
+            return True
+        cands = self.by_page.get((vol, page, kind))
+        if not cands:
+            return False
+        sig = fp_sig(vol, page, kind, msg, where)
+        for c in cands:
+            if match_fp_sigs(sig, c):
+                self.ids.add(item_id)
+                return True
+        return False
+
 
 class Progress:
     """The review of every book, one file per book (data/<book>/review.json): each item's status
@@ -441,6 +534,19 @@ class Progress:
             self.todos[f.parent.name] = d["todos"]
         for k in self.fps:
             self.data[k] = "false_positive"
+        self._build_fp_sigs()
+
+    def _build_fp_sigs(self):
+        self._fps_by_page = {}
+        for k, v in self.fps.items():
+            parts = k.split("/")
+            if len(parts) >= 3:
+                vol, pg_s, kind = parts[0], parts[1], parts[2]
+                pg = int(pg_s) if pg_s.isdigit() else 0
+                msg = v.get("msg") if isinstance(v, dict) else ""
+                where = v.get("where") if isinstance(v, dict) else None
+                sig = fp_sig(vol, pg, kind, msg, where)
+                self._fps_by_page.setdefault((vol, pg, kind), []).append((k, sig))
 
     def _read(self, vol):
         try:
@@ -460,8 +566,30 @@ class Progress:
                 return part
         raise ValueError(f"no book in {item_id}")
 
+    def status_of(self, item):
+        if not item:
+            return None
+        item_id = item.get("id") if isinstance(item, dict) else item
+        s = self.data.get(item_id)
+        if s is not None:
+            return s
+        if isinstance(item, dict) and hasattr(self, "_fps_by_page"):
+            vol = item.get("book_dir")
+            pg = item.get("page")
+            kind = item.get("kind")
+            msg = item.get("msg")
+            where = item.get("where")
+            cands = self._fps_by_page.get((vol, pg, kind))
+            if cands:
+                sig = fp_sig(vol, pg, kind, msg, where)
+                for old_id, old_sig in cands:
+                    if match_fp_sigs(sig, old_sig):
+                        self.data[item_id] = "false_positive"
+                        return "false_positive"
+        return None
+
     def status(self, item_id):
-        return self.data.get(item_id)
+        return self.status_of(item_id)
 
     def set(self, item_id, status, info=None):
         self.update({item_id: status}, {item_id: info} if info else None)
@@ -485,6 +613,7 @@ class Progress:
                     self.fps.pop(item_id, None)
                     d["false_positives"].pop(item_id, None)
             self._write(vol, d)
+        self._build_fp_sigs()
 
     def set_reviewed(self, vol, section, pages, on=True):
         """Pages of one section (commentary, verses, footnotes) read through, or taken back; the book's file
@@ -578,7 +707,7 @@ def load_queue(queue_path, progress, include_optional=False):
 
 
 def in_status(item, progress, status):
-    s = progress.status(item["id"])
+    s = progress.status_of(item) if hasattr(progress, "status_of") else progress.status(item["id"])
     if status == "open":
         return s not in ("resolved", "false_positive", "skipped", "on_hold")
     return status == "all" or s == status
