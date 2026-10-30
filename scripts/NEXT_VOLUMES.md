@@ -95,7 +95,8 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
    Cached in `cache/llm_cache.json` by md5 of the text; a usage limit just means re-running
    later (the cache keeps what was done). Don't run other cache writers at the same time.
 4. `python3 modernize_inplace.py <vol>`: rule-based modernization of the archaic spellings the
-   LLM pass leaves, in every French field (§12).
+   LLM pass leaves, in every French field: each page gets `clean_mechanical.py`'s rules, then
+   its own (§12). `--dry-run` first.
 5. `python3 fix_typography.py <vol>`: ſ → s, `&c.` → etc., `&` → et.
 6. `python3 normalize_refs.py <key>`: verse numbers and refs to ints, no numbers in the verse
    text, single capital on verse 1. One-off mislabels go in its `MANUAL` dict.
@@ -375,8 +376,19 @@ volume needs from them:
 
 ### What runs by itself
 
-- `modernize_inplace.py` (step 4) holds every spelling rule with its exceptions, and
-  `tests/test_modernize_inplace.py` pins them. The families: core vocabulary (`ame`, `foible*`,
+- Step 4 runs two rule sets on every page, in this order, and `tests/test_modernize_inplace.py`
+  pins both:
+  - `clean_mechanical.py` (`clean_page`): word-for-word repairs (OCR slips, old spellings,
+    `J E S U S`), a lemma run into `french_commentary` moved to its fields, a leading footnote
+    call moved onto the translation (kept where there is none);
+  - `modernize_inplace.py` (`modernize_page`): the rules that read the words around them.
+
+  The order matters: on raw New Testament transcriptions the other order left `charue`,
+  `abrégez`, `revétue`, `ferai assise` in 76 fields, because the context rules look for words
+  `clean_mechanical` has already repaired. On the finished corpus neither ever undoes the
+  other. A new rule goes in `clean_mechanical.fix_spelling` when it is a word for a word, in
+  `modernize_inplace.py` when it needs context, with a test either way.
+- `modernize_inplace.py`'s families: core vocabulary (`ame`, `foible*`,
   `jusques`, `vray`, `grace`, `mesme`…), `-uë` and `-yent` endings, accents and trémas,
   obsolete hyphens (`long-temps` → `longtemps`, `tout-à-fait` → `tout à fait`, contextual
   `de-là`), obsolete circumflexes (`lû` → `lu`), `y` → `i` (`loy`, `abyme`, `aye`), `oi` → `ai`
@@ -415,9 +427,19 @@ volume needs from them:
 - `-ez` becomes `-és` only for a participle or adjective; imperatives and second-person verbs
   stay (`Allez en paix`, `Sauvez-moi`, `vous possédez`).
 - Vocative `O` becomes `Ô` in French only; Latin and the Hebrew letter headings are left.
-- The French rules never touch `latin`, `latin_quote`, Greek or Hebrew.
+- The French rules never touch `latin`, `latin_quote`, Greek or Hebrew, nor Latin quoted in a
+  French field: an italic span with two Latin words, or a word with two Latin words among the
+  three on either side (`clean_mechanical.keep_printed`).
 - A hyphen at the foot of a page stays (`NOC-`, `re-`); a word modernized across a page break
-  keeps it (`pa-`‖`rents`).
+  keeps it (`pa-`‖`rents`). The halves themselves are left as printed: the first word of a page's
+  first verse or block when it is lower case (`vaient` of `de-vaient` is no misread `voient`),
+  and the last word of a field that ends in a hyphen (`forti-`).
+- `Machabées`, Calmet's name, everywhere (the user's choice, Oct 31): `footnotes.py` and
+  `bible_refs` write it, and `clean_mechanical` turns the LLM pass's `Maccabées` back into it.
+  Latin forms (`Machabæorum`, `Maccabæus`) are left as printed.
+- `ferai` stays where it is *faire*: after `que` (`l'alliance que je ferai avec vous`), before an
+  alliance or a pact, and in `à l'égard de`, `comme un vent`, which read either way and wait
+  for the scan.
 
 ## 13. Current status & remaining work (as of Oct 30, 2026)
 
@@ -440,6 +462,10 @@ The only place for status: when a step is done, update it here, not in the secti
   - `27_isaie` through `46_2_maccabees`: ready to run with `uv run --no-project --with pillow python footnotes.py run <vol> --local`
     and `python3 footnotes.py apply <vol>`.
 - **Remaining Tasks before New Testament**:
+  - Two to-dos in the review editor (`faire` or `être`?): `28_jeremie` p. 305 *Je ferai comme
+    un vent brûlant*, `27_isaie` p. 333 *Je ferai à l'égard de Sennachérib*.
+  - `books.json` still names the books `1 Maccabées` / `2 Maccabées` for the site (and the
+    website's own book list): ask whether the site should say `Machabées` too.
   - Run and apply local footnotes for remaining OT volumes (`27_isaie` through `46_2_maccabees`).
   - Review queue audit resolution with the editor (`review_web.py`).
   - Check with user on source directory for seeding the rest of the New Testament (`48_marc` onward).

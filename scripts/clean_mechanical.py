@@ -6,6 +6,7 @@
 
 Usage: python3 clean_mechanical.py [--dry-run] [volume ...]
 """
+import difflib
 import json
 import re
 import re._constants as _c
@@ -103,6 +104,80 @@ def _word_table():
 
 WORD_TABLE = _word_table()
 TABLE_WORD = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿœŒæÆ]+")
+
+
+# Text the French rules must leave as printed:
+#   * a page that opens mid-word starts its first verse or commentary block with the second half
+#     of a word broken on the page before ("vaient" of "de-vaient", "lâtrie" of "ido-lâtrie");
+#     read as a word of its own, a rule rewrites it (voient, latrie);
+#   * a field that ends in a hyphen ends with the first half of a word finished overleaf
+#     ("vallée forti-", not "sorti-");
+#   * Latin quoted in italics (`_Consultatorem Dei fortis._`), where `fortis` is no misread
+#     `sortis`. A span counts as Latin when at least two of its words are (LATIN_WORD).
+FRAGMENT = re.compile(r"[a-zà-öø-ÿœæ][^\s.,;:!?«»()]*")
+TOKEN = re.compile(r"[^\s.,;:!?«»()]*")
+TRAILING = re.compile(r"\S+-\s*$")
+ITALIC = re.compile(r"_[^_\n]+_")
+LATIN_WORD = re.compile(
+    r"(?i)(?<![\wÀ-ÿ])(?:ad|apud|contra|cum|super|quod|quae|eum|ejus|eius|dei|domini|dominus|deus|"
+    r"sunt|esse|ut|ex|per|sicut|enim|autem|vel|nec|quia|meus|mea|tuus|hoc|quoniam|atque|ego|"
+    r"eos|eorum|illorum|populus|populi|populum|anni|annos|annis|quinque|"
+    r"\w+(?:orum|arum|ibus|untur|tur|unt|orem|ionem|itatem|avit|ivit|erunt|abit|ebit|ibit))"
+    r"(?![\wÀ-ÿ])")
+HOLD = 0xE000   # private-use characters no rule matches, one per held Latin span
+
+
+def keep_printed(fn, s, lead=False):
+    """fn(s) (fn returns the new text), with the text above left as printed; `lead` when the
+    field may open with the end of a word broken on the page before.
+
+    Latin spans are held out by placeholders. The fragments at either end are put back after
+    the rules ran on the whole text, so the words around them keep their context."""
+    if not isinstance(s, str) or not s:
+        return fn(s)
+    spans = []
+
+    def hold(m):
+        if len(LATIN_WORD.findall(m.group())) < 2:
+            return m.group()
+        spans.append(m.group())
+        return chr(HOLD + len(spans) - 1)
+    held = ITALIC.sub(hold, s) if "_" in s else s
+    out = fn(held)
+    for k, span in enumerate(spans):
+        if out.count(chr(HOLD + k)) != 1:
+            return s                      # a rule moved a placeholder: change nothing
+        out = out.replace(chr(HOLD + k), span)
+    first = FRAGMENT.match(s) if lead else None
+    if first:
+        out = first.group() + out[TOKEN.match(out).end():]
+    last = TRAILING.search(s)
+    if last:
+        now = TRAILING.search(out)
+        if now and now.group() != last.group():
+            out = out[:now.start()] + last.group()
+    return in_latin_as_printed(s, out) if out != s else out
+
+
+WORD = re.compile(r"[\wÀ-ÿœæŒÆ']+|[^\wÀ-ÿœæŒÆ']+")
+
+
+def in_latin_as_printed(before, after):
+    """Put back any word the rules changed among Latin quoted without italics
+    (`super Jerusalem, etc. Stilla ad`): at least two Latin words within three on either side."""
+    a, b = WORD.findall(before), WORD.findall(after)
+    words = [i for i, t in enumerate(a) if t[0].isalnum() or t[0] in "À-ÿ"]
+    latin = {i for i in words if LATIN_WORD.fullmatch(a[i])}
+    out = []
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+        if tag == "replace" and i2 - i1 == j2 - j1 == 1:
+            k = words.index(i1) if i1 in words else None
+            near = words[max(0, k - 3):k] + words[k + 1:k + 4] if k is not None else []
+            if sum(1 for i in near if i in latin) >= 2:
+                out.extend(a[i1:i2])
+                continue
+        out.extend(b[j1:j2])
+    return "".join(out)
 
 
 def fix_spelling(s):
@@ -1346,8 +1421,9 @@ def fix_spelling(s):
     s = _sub(r"(?<![A-Za-zÀ-ÿ])Samuël(?![A-Za-zÀ-ÿ])", "Samuel", s)
     s = _sub(r"(?<![A-Za-zÀ-ÿ])Emmanuël(?![A-Za-zÀ-ÿ])", "Emmanuel", s)
 
-    # 224. Old forms of names
-    s = _sub(r"(?<![A-Za-zÀ-ÿ])Machabée(s?)(?![A-Za-zÀ-ÿ])", r"Maccabée\1", s)
+    # 224. Old forms of names; but the user keeps Calmet's Machabées, as footnotes.py and bible_refs
+    # write it (the LLM pass modernizes it)
+    s = _sub(r"(?<![A-Za-zÀ-ÿ])Maccabée(s?)(?![A-Za-zÀ-ÿ])", r"Machabée\1", s)
     s = _sub(r"(?<![A-Za-zÀ-ÿ])Balthasar(?![A-Za-zÀ-ÿ])", "Balthazar", s)
     s = _sub(r"(?<![A-Za-zÀ-ÿ])Caldée(?![A-Za-zÀ-ÿ])", "Chaldée", s)
     s = _sub(r"(?<![A-Za-zÀ-ÿ])Hircan(?![A-Za-zÀ-ÿ])", "Hyrcan", s)
@@ -1419,6 +1495,7 @@ def clean_page(d):
         "chapter_summary",
         "chapter_argument",
         "chapter_preface",
+        "book_end_marker",
     ):
         v = d.get(k)
         if v and isinstance(v, str):
@@ -1428,10 +1505,10 @@ def clean_page(d):
                 changed = True
 
     # Verses
-    for v in d.get("verses", []):
+    for i, v in enumerate(d.get("verses", [])):
         s = v.get("french")
         if s and isinstance(s, str):
-            s2 = fix_spelling(s)
+            s2 = keep_printed(fix_spelling, s, lead=i == 0)
             if s2 != s:
                 v["french"] = s2
                 changed = True
@@ -1440,18 +1517,18 @@ def clean_page(d):
     for fn in d.get("footnotes", []):
         t = fn.get("text")
         if t and isinstance(t, str):
-            t2 = fix_spelling(t)
+            t2 = keep_printed(fix_spelling, t)
             if t2 != t:
                 fn["text"] = t2
                 changed = True
 
-    for c in d.get("commentary", []):
+    for i, c in enumerate(d.get("commentary", [])):
         # 1. Spaced letters and spelling
         for k in ("french_translation", "french_commentary"):
             s = c.get(k)
             if s:
                 s2 = fix_spaced_letters(s)
-                s2 = fix_spelling(s2)
+                s2 = keep_printed(fix_spelling, s2, lead=i == 0)
                 if s2 != s:
                     c[k] = s2
                     changed = True
@@ -1484,7 +1561,9 @@ def clean_page(d):
         fc = c.get("french_commentary")
         if fc:
             m = re.match(r"^\s*(\^\{[^}]+\})\s*", fc)
-            if m:
+            # With no translation to carry it, the call stays: at the top of a continuation it
+            # belongs to the last word of the page before, and dropping it loses the note.
+            if m and c.get("french_translation"):
                 # If french_translation exists, move it to end of french_translation
                 call_str = m.group(1)
                 c["french_commentary"] = fc[m.end():]

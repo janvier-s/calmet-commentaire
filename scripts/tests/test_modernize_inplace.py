@@ -1005,3 +1005,102 @@ def test_hyphen_normalization():
 
 
 
+
+
+def _page(text):
+    return {"verses": [], "footnotes": [],
+            "commentary": [{"commentary_id": 1, "latin_quote": None, "french_translation": None,
+                            "french_commentary": text}]}
+
+
+def test_a_page_gets_clean_mechanical_before_the_context_rules():
+    # Raw transcriptions where modernize_text alone (or first) leaves the old form: the context
+    # rules match the words clean_mechanical has already repaired.
+    from modernize_inplace import modernize_page
+    for raw, want in [("ils ont été abregez, nul homme", "été abrégés"),
+                      ("des hommes effeminez:^{(c)} et", "hommes efféminés"),
+                      ("être revétuë des habits", "être revêtue des"),
+                      ("il dit au peuple: O Israëlites, pourquoi", "Ô Israélites")]:
+        page = _page(raw)
+        changed, _ = modernize_page(page)
+        assert changed and want in page["commentary"][0]["french_commentary"], raw
+
+
+def test_a_clean_page_is_left_alone():
+    from modernize_inplace import modernize_page
+    page = _page("Il est vrai que le Seigneur a fait toutes choses.")
+    assert modernize_page(page) == (False, 0)
+
+
+def test_the_end_of_a_word_broken_on_the_page_before_is_left_as_printed():
+    from modernize_inplace import modernize_page
+    for frag in ("vaient causer", "lâtrie. L'Écriture", "pître aux Éphésiens", "vité, comme"):
+        page = _page(frag + " dans le monde")
+        modernize_page(page)
+        assert page["commentary"][0]["french_commentary"].startswith(frag.split()[0])
+    # the rest of the block is still modernized, and so is a later block
+    page = _page("vaient causer: il est vray")
+    page["commentary"].append({"commentary_id": 2, "french_commentary": "vaient il est vray"})
+    modernize_page(page)
+    assert page["commentary"][0]["french_commentary"] == "vaient causer: il est vrai"
+    assert page["commentary"][1]["french_commentary"].endswith("vrai")
+
+
+def test_a_call_with_no_translation_to_carry_it_is_kept():
+    from modernize_inplace import modernize_page
+    page = _page("^{(a)} avaient la même opinion")
+    modernize_page(page)
+    assert page["commentary"][0]["french_commentary"].startswith("^{(a)}")
+
+
+def test_calmets_machabees_everywhere():
+    import clean_mechanical
+    assert clean_mechanical.fix_spelling("1 Machabées 2:3") == "1 Machabées 2:3"
+    assert clean_mechanical.fix_spelling("les Maccabées, et 2 Maccabée") == "les Machabées, et 2 Machabée"
+
+
+def test_the_text_after_a_fragment_is_not_read_as_the_start_of_a_field():
+    from modernize_inplace import modernize_page
+    page = _page("et saint Rupert, par le fer")
+    modernize_page(page)
+    assert page["commentary"][0]["french_commentary"] == "et saint Rupert, par le fer"
+
+
+def test_faire_stays_where_the_long_s_rules_would_misread_it():
+    for text in ("Voici le signe de l'alliance que je ferai avec vous, et avec toute âme",
+                 "La composition que je ferai avec vous, sera de vous arracher",
+                 "et je ferai avec vous une nouvelle alliance",
+                 "Je ferai à l'égard de Sennachérib comme la",
+                 "vous les possédez. Vous m'avez vu"):
+        assert modernize_text(text)[0] == text, text
+    assert modernize_text("je ferai leur Dieu")[0] == "je serai leur Dieu"
+    assert modernize_text("Je ferai avec vous jusqu'à la fin")[0] == "Je serai avec vous jusqu'à la fin"
+
+
+def test_latin_in_italics_and_a_word_cut_at_the_page_foot_are_left_as_printed():
+    from modernize_inplace import modernize_page
+    for text in ("Admirabilem, _Consultatorem Dei fortis._ On l'appellera",
+                 "_labit furor meus super Jerusalem, etc._",
+                 "Je viens à toi, ville située dans une vallée forti-"):
+        page = _page("Il dit. " + text)
+        modernize_page(page)
+        assert page["commentary"][0]["french_commentary"] == "Il dit. " + text
+
+
+def test_a_pronoun_at_the_top_of_a_page_keeps_its_circumflex():
+    from modernize_inplace import modernize_page
+    page = _page("du vôtre ; prononcez, comme si Dieu parlait")
+    modernize_page(page)
+    assert page["commentary"][0]["french_commentary"].startswith("du vôtre")
+
+
+def test_latin_quoted_without_italics_is_left_as_printed():
+    from modernize_inplace import modernize_page
+    for text in ("Jerem. xxi. 2. labit furor meus super Jerusalem, etc. Stilla ad Sanctuaria",
+                 "sexaginta et quinque anni, et definet Ephraïm esse populus. Ou bien"):
+        page = _page("Il dit. " + text)
+        modernize_page(page)
+        assert page["commentary"][0]["french_commentary"] == "Il dit. " + text
+    page = _page("Il alla à Jerusalem avec ses frères.")
+    modernize_page(page)
+    assert "Jérusalem" in page["commentary"][0]["french_commentary"]

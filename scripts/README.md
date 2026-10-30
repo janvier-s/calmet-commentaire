@@ -15,14 +15,17 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
 2. `modernize.py <volume>`: rule-based pre-pass (ſ, common OCR slips).
 3. `LLM_BACKEND=claude python3 llm_modernize.py <volume>`: modernize the French with an LLM
    (cached in `cache/llm_cache.json`; run in the foreground).
-4. `fix_typography.py <volume>`: ſ → s, `&c.` → etc., `&` → et.
-5. `normalize_refs.py <volume>`: verse numbers and `verse_ref` to digits, no numbers in verse text.
-6. `fix_markers.py <volume>`: footnote calls to `^{(a)}`, Jésus-Christ.
-7. `tidy_fields.py <volume>`: underscores, empty annotations, margin years, blank lines.
-8. `paragraph_breaks.py <volume>`: numbered points (1°. 2°.) on their own paragraph.
-9. Psalms only: `fix_psalm_verses.py`, `psalms_check.py`, `fill_psalm_verses.py`,
+4. `modernize_inplace.py <volume>`: the spelling rules the LLM pass leaves. Each page gets
+   `clean_mechanical.py`'s rules first, then its own (§12 of NEXT_VOLUMES.md says why the order
+   matters); `--dry-run` first. `clean_mechanical.py <volume>` alone runs only the first half.
+5. `fix_typography.py <volume>`: ſ → s, `&c.` → etc., `&` → et.
+6. `normalize_refs.py <volume>`: verse numbers and `verse_ref` to digits, no numbers in verse text.
+7. `fix_markers.py <volume>`: footnote calls to `^{(a)}`, Jésus-Christ.
+8. `tidy_fields.py <volume>`: underscores, empty annotations, margin years, blank lines.
+9. `paragraph_breaks.py <volume>`: numbered points (1°. 2°.) on their own paragraph.
+10. Psalms only: `fix_psalm_verses.py`, `psalms_check.py`, `fill_psalm_verses.py`,
    `add_psalm_titles.py` (see NEXT_VOLUMES.md).
-10. `assign_chapters.py <book key>`: the `chapter` field on every verse and commentary block
+11. `assign_chapters.py <book key>`: the `chapter` field on every verse and commentary block
    (export reads it; edit it in the editor). Writes `docs/chapter_check.json` with the places
    it had to decide; they go into the review queue.
 
@@ -77,7 +80,9 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   azyle, succez, appella, whose modern form is elsewhere in the text) to read it; both leave out
   Latin (words of the Vulgate), abbreviations and the names in `spellcheck_names.txt`
   (`--all` keeps them). `spellcheck.py context <volume|book> <word> …` shows where a word
-  occurs. Report only; fixes go into `clean_mechanical.py`.
+  occurs. Report only; a fix goes into `clean_mechanical.fix_spelling` when it is a word for a
+  word (an OCR slip, an old spelling), into `modernize_inplace.py` when it depends on the words
+  around it (`ferai` → `serai` only in `je ferai leur Dieu`).
 - `vulgate_check.py <volume|book|all> … [--apply]`: the Latin of every verse against the Vulgate,
   word by word, edition spellings aside (cœli/caeli, tanquam/tamquam) → `docs/vulgate_check.json`,
   sorted into long s and broken words (`--apply` writes these in, in Calmet's spelling), dropped æ

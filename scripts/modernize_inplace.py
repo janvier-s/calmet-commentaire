@@ -2,8 +2,10 @@ import json
 import re
 from pathlib import Path
 from collections import Counter
+from concurrent.futures import ProcessPoolExecutor
 import sys
 
+import clean_mechanical
 from paths import DATA
 
 WORD_MAP = {
@@ -1943,8 +1945,8 @@ RX_ON_FAIT_ADV = re.compile(r"(?<!-t')(?<!-t-)(?<!-)\b([Oo]n|l'on|L'on)\s+fait(\
 
 # 4b. Contextual OCR Long-S in Future Verb Forms (ferai -> serai, feront -> seront, etc.)
 RX_NE_VOUS_FERAI = re.compile(r"\b([Nn]e\s+vous\s+)ferai(-je\b)")
-RX_JE_FERAI_AVEC = re.compile(r"\b([Jj]e\s+)ferai(\s+avec\s+vous\b(?!\s+(?:alliance|une\s+alliance|un\s+pacte)))")
-RX_JE_FERAI_PRED = re.compile(r"\b([Jj]e\s+)ferai(\s+(?:dans\s+votre\s+bouche|leur\s+Dieu|votre\s+Dieu|bien\s+aise|agréable|fidèle|touché|assise|ta\s+mort|ta\s+ruine|à\s+l'égard|comme\s+(?:un|une)\b))")
+RX_JE_FERAI_AVEC = re.compile(r"(?<!que )(?<!qu'on )\b([Jj]e\s+)ferai(\s+avec\s+vous\b(?!(?:\s+[\w']+){0,3}?\s+(?:alliance|pacte)\b))")
+RX_JE_FERAI_PRED = re.compile(r"\b([Jj]e\s+)ferai(\s+(?:dans\s+votre\s+bouche|leur\s+Dieu|votre\s+Dieu|bien\s+aise|agréable|fidèle|touché|assise|ta\s+mort|ta\s+ruine|comme\s+(?:un|une|la|le|l')\s*(?:panthère|lion|lionne|ours|ourse|teigne|pourriture|rosée|léopard)\b))")
 RX_FERAI_PRINCE = re.compile(r"\b([Ff])erai(-je\s+votre\s+Prince\b)")
 RX_JE_NE_FERAI = re.compile(r"\b([Jj]e\s+ne\s+)ferai(\s+plus\s+votre\s+Dieu\b)")
 RX_FERONT_PRED = re.compile(r"\b([Ff])eront(\s+(?:circoncis|au\s+Seigneur|mon\s+peuple|savants|point\s+agréables|comme\s+la\b|rassemblés|enterrés|point\s+vaines|point\s+pleurés|restés|desséchés|dispersés|chassés|enveloppées|point\s+montés|toujours\s+aussi\s+chers|appelés|assis|comblés\b))")
@@ -1953,7 +1955,7 @@ RX_FERAIT_MORT = re.compile(r"\b([Ff])erait(\s+morte?\s+de\s+soif\b)")
 RX_FERAIENT_AVEC = re.compile(r"\b(qui\s+)feraient(\s+avec\s+lui\b)")
 RX_FUIS_TOMBEE = re.compile(r"\b(ce\s+que\s+je\s+)fuis(\s+tombée\b)")
 
-RX_O_TARGETS = re.compile(r"\bO\s+(Dieu|Seigneur|Jésus|Christ|Sauveur|Père|Roi|Monarque|Créateur|Maître|Prince|Pontife|Pasteur|Soleil|Terre|Ciel|Cieux|Mort|Mortels|Hommes|Génération|Vierge|Marie|Patrie|Jérusalem|Sion|Béthel|Israël|Jacob|Juda|Éphraïm|Rome|Tyre|Babel|Babylone|Monsieur|Monseigneur|Chrétien|Chrétiens|Âme|mon\s+Dieu|mon\s+Seigneur|mon\s+âme|mon\s+cher|mon\s+frère|mon\s+fils|mon\s+peuple|ma\s+patrie|notre\s+Dieu|mes\s+frères|mes\s+enfants|vous\b|toi\b|homme\b|femme\b|prince\b|roi\b|peuple\b|pasteur\b|mort\b|mortel\b|mortels\b|malheureux\b|aveugle\b|insensé\b|insensés\b|race\b|si\b|combien\b|qu\'il\b|qu\'elle\b|qu\'ils\b|qu\'elles\b)", re.I)
+RX_O_TARGETS = re.compile(r"\bO\s+(Dieu|Seigneur|Jésus|Christ|Sauveur|Père|Roi|Monarque|Créateur|Maître|Prince|Pontife|Pasteur|Soleil|Terre|Ciel|Cieux|Mort|Mortels|Hommes|Génération|Vierge|Marie|Patrie|Jérusalem|Sion|Béthel|Israélites|Israélite|Israël|Jacob|Juda|Éphraïm|Rome|Tyre|Babel|Babylone|Monsieur|Monseigneur|Chrétien|Chrétiens|Âme|mon\s+Dieu|mon\s+Seigneur|mon\s+âme|mon\s+cher|mon\s+frère|mon\s+fils|mon\s+peuple|ma\s+patrie|notre\s+Dieu|mes\s+frères|mes\s+enfants|vous\b|toi\b|homme\b|femme\b|prince\b|roi\b|peuple\b|pasteur\b|mort\b|mortel\b|mortels\b|malheureux\b|aveugle\b|insensé\b|insensés\b|race\b|si\b|combien\b|qu\'il\b|qu\'elle\b|qu\'ils\b|qu\'elles\b)", re.I)
 RX_O_PUNCT = re.compile(r"\bO\s*([!\?])")
 
 # 5. Obsolete Diaeresis (¨) Cleanup
@@ -2889,7 +2891,7 @@ RX_PAR_TOUT_ADVERBIAL_EXCEPTIONS = re.compile(
 # 6b. Possédez participle / noun -> Possédés / possédés
 RX_POSSEDEZ_PARTICIPLE = re.compile(r"\b([Oo]u|[Ee]t)\s+possédez\s+par\b")
 RX_POSSEDEZ_CAP = re.compile(r"\bPossédez\s+par\s+leur\s+affection\b")
-RX_POSSEDEZ_NOUN = re.compile(r"\b(vrais|les)\s+possédez\b", re.I)
+RX_POSSEDEZ_NOUN = re.compile(r"(?<!vous )\b(vrais|les)\s+possédez\b", re.I)
 
 # 7. Expansion of abbreviations: l'Heb. -> l'Hébreu, Chap. -> Chapitre
 RX_LHEB = re.compile(
@@ -3827,69 +3829,87 @@ def modernize_text(text):
     text = pattern.sub(replacer, text)
     return text, count
 
-def process_volume(folder_name, dry_run):
+def modernize_page(data):
+    """Modernize one page in place; returns (changed, replacements).
+
+    clean_mechanical.clean_page runs first: its spelling rules repair the words (long s, accents,
+    charuë, abregez) that the context rules below expect, and in the other order those rules miss
+    them. On the corpus the two never undo each other."""
+    changed = clean_mechanical.clean_page(data)
+    total = 0
+
+    def update(container, key, fn):
+        nonlocal changed, total
+        if container.get(key) and isinstance(container[key], str):
+            orig = container[key]
+            mod, c = fn(orig)
+            if mod != orig:
+                container[key] = mod
+                changed = True
+                total += c
+
+    def printed(lead=False):
+        # Latin in italics and the halves of words broken at a page turn are left as printed
+        def run(text):
+            n = 0
+
+            def rules(t):
+                nonlocal n
+                t, n = modernize_text(t)
+                return t
+            out = clean_mechanical.keep_printed(rules, text, lead=lead)
+            return out, (n if out != text else 0)
+        return run
+
+    for key in ("chapter_title", "chapter_summary", "chapter_intro", "chapter_argument",
+                "book_end_marker"):
+        update(data, key, printed())
+    for i, verse in enumerate(data.get("verses") or []):
+        update(verse, "french", printed(lead=i == 0))
+    for i, comm in enumerate(data.get("commentary") or []):
+        update(comm, "latin_quote", clean_latin_quote)
+        update(comm, "french_translation", printed(lead=i == 0))
+        update(comm, "french_commentary", printed(lead=i == 0))
+    for fn in data.get("footnotes") or []:
+        update(fn, "text", printed())
+        update(fn, "footnote_text", printed())
+    return changed, total
+
+
+def _page(args):
+    """(changed, replacements, error) for one page file, written unless dry_run."""
+    path, dry_run = args
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, list) and len(data) == 1 and isinstance(data[0], dict):
+            data = data[0]
+        changed, n = modernize_page(data)
+        if changed and not dry_run:
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+        return changed, n, None
+    except Exception as e:
+        return False, 0, f"{type(e).__name__}: {e}"
+
+
+def process_volume(folder_name, dry_run, executor=None):
     folder = DATA / folder_name / "normalized"
     if not folder.is_dir():
         print(f"Directory not found: {folder}")
         return 0, 0
 
-    total_replacements = 0
-    pages_updated = 0
-
-    for file_path in sorted(folder.glob("page_[0-9][0-9][0-9][0-9].json")):
-        with open(file_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-
-        if isinstance(data, list) and len(data) == 1 and isinstance(data[0], dict):
-            data = data[0]
-
-        changed = False
-
-        def update_field(container, key):
-            nonlocal changed, total_replacements
-            if container.get(key) and isinstance(container[key], str):
-                orig = container[key]
-                mod, c = modernize_text(orig)
-                if mod != orig:
-                    container[key] = mod
-                    changed = True
-                    total_replacements += c
-
-        def update_latin_field(container, key):
-            nonlocal changed, total_replacements
-            if container.get(key) and isinstance(container[key], str):
-                orig = container[key]
-                mod, c = clean_latin_quote(orig)
-                if mod != orig:
-                    container[key] = mod
-                    changed = True
-                    total_replacements += c
-
-        update_field(data, "chapter_title")
-        update_field(data, "chapter_summary")
-        update_field(data, "chapter_intro")
-        update_field(data, "chapter_argument")
-
-        for verse in data.get("verses") or []:
-            update_field(verse, "french")
-
-        for comm in data.get("commentary") or []:
-            update_latin_field(comm, "latin_quote")
-            update_field(comm, "french_translation")
-            update_field(comm, "french_commentary")
-
-        for fn in data.get("footnotes") or []:
-            update_field(fn, "text")
-            update_field(fn, "footnote_text")
-
-        if changed:
-            pages_updated += 1
-            if not dry_run:
-                with open(file_path, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
+    files = [(str(p), dry_run) for p in sorted(folder.glob("page_[0-9][0-9][0-9][0-9].json"))]
+    results = list(executor.map(_page, files, chunksize=8) if executor else map(_page, files))
+    for (path, _), (_, _, err) in zip(files, results):
+        if err:
+            print(f"  ERROR {Path(path).relative_to(DATA)}: {err}", file=sys.stderr)
+    total_replacements = sum(n for _, n, _ in results)
+    pages_updated = sum(1 for changed, _, _ in results if changed)
 
     mode = "Dry-run: would make" if dry_run else "Applied"
-    print(f"{mode} {total_replacements} in-place modernizations across {pages_updated} pages in {folder_name}.")
+    print(f"{mode} {total_replacements} in-place modernizations across {pages_updated} pages in {folder_name}.",
+          flush=True)
     return total_replacements, pages_updated
 
 def main():
@@ -3907,10 +3927,11 @@ def main():
 
     grand_replacements = 0
     grand_pages = 0
-    for vol in volumes:
-        r, p = process_volume(vol, dry_run)
-        grand_replacements += r
-        grand_pages += p
+    with ProcessPoolExecutor() as executor:
+        for vol in volumes:
+            r, p = process_volume(vol, dry_run, executor)
+            grand_replacements += r
+            grand_pages += p
 
     mode = "Dry-run total" if dry_run else "Total applied"
     print(f"\n{mode}: {grand_replacements} replacements across {grand_pages} pages in {len(volumes)} volumes.")
