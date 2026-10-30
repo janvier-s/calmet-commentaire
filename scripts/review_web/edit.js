@@ -206,6 +206,7 @@ const copySel = async (f, [a, b]) => {
 };
 const SEL_TOOLS = [
   ["I", "Italics (⌘I)", (f) => f.toggleItalic(), "it-btn", null],
+  ["TT", "Convert to uppercase", (f, sel) => f.toUpperCase(sel), "tt-btn", null],
   ["Cut", "Cut the selection", async (f, sel) => { if (await copySel(f, sel)) f.edit(sel[0], sel[1], ""); }, "", "cut"],
   ["Copy", "Copy the selection", async (f, sel) => { if (await copySel(f, sel)) toast("Copied"); }, "", "copy"],
   ["Spelling", "Add the selection to the SPELLING list in the notes file", async (f, [a, b]) => {

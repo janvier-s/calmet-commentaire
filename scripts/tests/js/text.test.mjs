@@ -1,7 +1,7 @@
 // The same cases as tests/test_page_text.py: the JS port must match page_text.py.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { italicRuns, toggleItalics, parseRef, snippets, findSpans, wordDiff } from "../../review_web/text.js";
+import { italicRuns, toggleItalics, toUpper, parseRef, snippets, findSpans, wordDiff } from "../../review_web/text.js";
 
 const TOGGLE = [
   [["a b c", 2, 3], { text: "a _b_ c", start: 3, end: 4 }],
@@ -87,4 +87,20 @@ test("snippets: a lemma without translation marks the comment up to its first fu
   // no full stop in the quotation: all of it, as before
   assert.deepEqual(snippets("latin_quote “AB CD EF.” … starts “Le peuple demeura à Cadés, et…”: x", "no_translation"),
                    ["AB CD EF.", "Le peuple demeura à Cadés, et"]);
+});
+
+test("toUpper converts selection to uppercase", () => {
+  assert.deepEqual(toUpper("in principio erat", 3, 12), { text: "in PRINCIPIO erat", start: 3, end: 12 });
+  assert.deepEqual(toUpper("créé la lumière", 0, 4), { text: "CRÉÉ la lumière", start: 0, end: 4 });
+  assert.deepEqual(toUpper("un _mot_ ici", 3, 8), { text: "un _MOT_ ici", start: 3, end: 8 });
+  assert.deepEqual(toUpper("cœur", 0, 4), { text: "CŒUR", start: 0, end: 4 });
+  assert.deepEqual(toUpper("œuvres", 0, 6), { text: "ŒUVRES", start: 0, end: 6 });
+});
+
+test("toUpper returns null when empty, invalid, or already uppercase", () => {
+  assert.equal(toUpper("ALREADY UPPER", 0, 13), null);
+  assert.equal(toUpper("hello", 2, 2), null);
+  assert.equal(toUpper("hello", 3, 1), null);
+  assert.equal(toUpper("hello", null, 3), null);
+  assert.equal(toUpper("hello", 0, null), null);
 });

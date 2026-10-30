@@ -6,6 +6,12 @@
    "msg": "Verse 6:6: latin does not end with punctuation: “…are te velis super eos Regem : propter quam causam” (a word lost, or the verse runs on overleaf?)",
    "page": 48
   },
+  "16_nehemie/0054/hyphen_cut/07753597": {
+   "book_dir": "16_nehemie",
+   "kind": "hyphen_cut",
+   "msg": "french_translation ends “…eux qui étaient venus la première fois ;” with no full stop but the next page's first note has no french_translation (it starts “c'est-à-dire, de ceux qui étaient venus avant Néhé…”): put the rest of the french_translation back together (or add the missing full stop)",
+   "page": 54
+  },
   "16_nehemie/0057/verse_no_punct/1d8f8029": {
    "book_dir": "16_nehemie",
    "kind": "verse_no_punct",
@@ -25,6 +31,11 @@
    "page": 60
   }
  },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
+ },
  "status": {
   "16_nehemie/0009/hebrew_in_translation/3d38b4d6": "resolved",
   "16_nehemie/0009/long_translation/0632403f": "resolved",
@@ -39,6 +50,7 @@
   "16_nehemie/0025/long_translation/c04bfd7b": "resolved",
   "16_nehemie/0026/no_lemma/40cf0bce": "resolved",
   "16_nehemie/0026/ref_order/26b6a1a3": "resolved",
+  "16_nehemie/0028/footnote_no_period/91f5e6b2": "resolved",
   "16_nehemie/0028/footnote_writeout/5a0b48b1": "resolved",
   "16_nehemie/0032/long_translation/3e990d82": "resolved",
   "16_nehemie/0033/seam_repeat/0032": "resolved",
@@ -56,6 +68,7 @@
   "16_nehemie/0048/verse_no_punct/689c5d4d": "false_positive",
   "16_nehemie/0051/footnote_writeout/047f6e5b": "resolved",
   "16_nehemie/0051/long_translation/00a87a61": "resolved",
+  "16_nehemie/0054/hyphen_cut/07753597": "false_positive",
   "16_nehemie/0055/italic_seam/2edc5d89": "resolved",
   "16_nehemie/0055/missing_start/569fd1e5": "resolved",
   "16_nehemie/0056/footnote_asterisk/662559ec": "resolved",
@@ -75,6 +88,7 @@
   "16_nehemie/0070/hyphen_cut/a4519d96": "resolved",
   "16_nehemie/0070/seam_unclear/0069": "resolved",
   "16_nehemie/0071/empty_commentary/020117af": "resolved",
+  "16_nehemie/0072/hebrew_in_translation/b6e94744": "resolved",
   "16_nehemie/0075/long_translation/d158541e": "resolved",
   "16_nehemie/0076/hyphen_cut/c354b484": "resolved",
   "16_nehemie/0077/seam_repeat/0076": "resolved",
@@ -98,6 +112,11 @@
   "16_nehemie/0098/footnote_asterisk/2160dcbc": "resolved",
   "16_nehemie/0099/long_translation/8a0a461e": "resolved",
   "16_nehemie/0100/footnote_writeout/08ea3d57": "resolved",
+  "16_nehemie/0101/empty_commentary/94e070f5": "resolved",
+  "16_nehemie/0101/extra_footnotes/42580f6f": "resolved",
+  "16_nehemie/0101/hebrew_in_translation/813e6802": "resolved",
+  "16_nehemie/0101/no_lemma/1ec020fd": "resolved",
+  "16_nehemie/0101/no_lemma/d2d0bd76": "resolved",
   "16_nehemie/0101/seam_repeat/0100": "resolved",
   "16_nehemie/0103/leading_call/16e43141": "resolved",
   "16_nehemie/0105/hyphen_cut/63bf3472": "resolved",

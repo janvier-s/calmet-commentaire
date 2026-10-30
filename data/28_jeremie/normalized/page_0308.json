@@ -41,26 +41,29 @@
       "chapter": 18,
       "latin_quote": null,
       "french_translation": null,
-      "french_commentary": "(a) _Vide Osée_ VII. I. Zach. v. 3. 40. Mich. v. I. | [UNCERTAIN GREEK]",
-      "commentary_id": 3
-    },
-    {
-      "verse_ref": "21",
-      "chapter": 18,
-      "latin_quote": null,
-      "french_translation": null,
       "french_commentary": "L'Hébreu : ^{(b)} _Faites dans eux, ou avec eux, ou contre eux, au jour de votre colère. Usez-en avec eux comme ils le méritent ; exercez contre eux vos vengeances dans toute l'étendue de leur sévérité._",
-      "commentary_id": 4
-    },
-    {
-      "verse_ref": "21",
-      "chapter": 18,
-      "latin_quote": null,
-      "french_translation": null,
-      "french_commentary": "(b) [UNCERTAIN HEBREW] 70. E`v [ILLEGIBLE]",
-      "commentary_id": 5
+      "commentary_id": 3
     }
   ],
-  "footnotes": [],
+  "footnotes": [
+    {
+      "marker": "(a)",
+      "text": "_Vide Osée_ VII. I. Zach. v. 3. 40. Mich. v. I. | [UNCERTAIN GREEK]",
+      "tags": [
+        "greek",
+        "abbrev",
+        "uncertain"
+      ]
+    },
+    {
+      "marker": "(b)",
+      "text": "[UNCERTAIN HEBREW] 70. E`v [ILLEGIBLE]",
+      "tags": [
+        "hebrew",
+        "versions",
+        "uncertain"
+      ]
+    }
+  ],
   "book_end_marker": null
 }

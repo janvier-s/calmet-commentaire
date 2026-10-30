@@ -26,15 +26,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 29,
       "latin_quote": null,
-      "french_translation": "m'invoquerez, et vous viendrez me prier, et je vous exaucerai.",
-      "french_commentary": "Le Caldéen : Vous me prierez, et je recevrai vos prières ; vous me ferez des demandes, et je les accorderai. Les Septante^{(a)} simplement : Priez moi, et je vous exaucerai."
+      "french_translation": "",
+      "french_commentary": "_m'invoquerez, et vous viendrez me prier, et je vous exaucerai_. Le Caldéen : Vous me prierez, et je recevrai vos prières ; vous me ferez des demandes, et je les accorderai. Les Septante^{(a)} simplement : _Priez moi, et je vous exaucerai._"
     },
     {
       "commentary_id": 2,
-      "verse_ref": "15",
+      "verse_ref": 15,
       "chapter": 29,
       "latin_quote": "SUSCITAVIT DOMINUS SUPER NOS PROPHETAS.",
       "french_translation": "Vous avez dit : Le Seigneur nous a suscité des Prophètes à Babylone.",
@@ -42,13 +42,21 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "16",
+      "verse_ref": 16,
       "chapter": 29,
       "latin_quote": "AD REGEM QUI SEDET SUPER SOLIUM DAVID.",
       "french_translation": null,
-      "french_commentary": "Προσέυξασθε πρὸς με, καὶ εἰσακέσομαι ὑμῶν."
+      "french_commentary": null
     }
   ],
-  "footnotes": [],
+  "footnotes": [
+    {
+      "marker": "(a)",
+      "text": "Προσέυξασθε πρὸς με, καὶ εἰσακέσομαι ὑμῶν.",
+      "tags": [
+        "greek"
+      ]
+    }
+  ],
   "book_end_marker": null
 }

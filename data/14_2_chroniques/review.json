@@ -12,6 +12,12 @@
    "msg": "Verse 1:2: latin does not end with punctuation: “…Præcepitque Salomon universo Is-” (a word lost, or the verse runs on overleaf?)",
    "page": 1
   },
+  "14_2_chroniques/0040/hebrew_in_translation/0027e8e4": {
+   "book_dir": "14_2_chroniques",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “PESTILENTIA, ÆRUGO, ET AURIGO.”: “Une peste, de la nielle, ou quelque autre maladie des plantes.…”: commentary or a variant run into the translation?",
+   "page": 40
+  },
   "14_2_chroniques/0083/etc_for_et/253d62d0": {
    "book_dir": "14_2_chroniques",
    "kind": "etc_for_et",
@@ -36,12 +42,29 @@
    "msg": "Verse 30:18: french does not end with punctuation: “… et dit : Le Seigneur est bon, il fera miséricorde” (a word lost, or the verse runs on overleaf?)",
    "page": 210
   },
+  "14_2_chroniques/0244/hebrew_in_translation/65fe0632": {
+   "book_dir": "14_2_chroniques",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “SAPHAN FILIUM ESELIÆ, ET MAASIAM PRINCIP”: “Il envoya Saphan fils d'Esélie, Maasias Gouverneur _(ou prince)_ de la ville, et Joha fils de Joacha…”: commentary or a variant run into the translation?",
+   "page": 244
+  },
+  "14_2_chroniques/0244/hebrew_in_translation/c5969b71": {
+   "book_dir": "14_2_chroniques",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “SAPHAN FILIUM ESELIÆ, ET MAASIAM PRINCIP”: “Il envoya Saphan fils d'Esélie, Maasias Gouverneur (ou prince) de la ville, et Joha fils de Joachas.…”: commentary or a variant run into the translation?",
+   "page": 244
+  },
   "14_2_chroniques/0256/extra_footnotes/b6c62a02": {
    "book_dir": "14_2_chroniques",
    "kind": "extra_footnotes",
    "msg": "5 footnotes for 4 calls in the text: nothing calls (e) (footnote from another page, a call lost, or a duplicate?)",
    "page": 256
   }
+ },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
  },
  "status": {
   "14_2_chroniques/0001/verse_no_punct/15913087": "false_positive",
@@ -60,6 +83,7 @@
   "14_2_chroniques/0027/lowercase_lemma/3b9cf117": "resolved",
   "14_2_chroniques/0027/lowercase_lemma/a35a20b0": "resolved",
   "14_2_chroniques/0028/italic_seam/11b043f5": "resolved",
+  "14_2_chroniques/0030/hebrew_in_translation/c9a746f3": "resolved",
   "14_2_chroniques/0031/ref_order/0efe40f1": "resolved",
   "14_2_chroniques/0031/seam_repeat/0030": "resolved",
   "14_2_chroniques/0033/hyphen_cut/7e9fdba0": "resolved",
@@ -69,6 +93,7 @@
   "14_2_chroniques/0036/long_translation/db0e9b01": "resolved",
   "14_2_chroniques/0038/seam_repeat/0037": "resolved",
   "14_2_chroniques/0039/seam_repeat/0038": "resolved",
+  "14_2_chroniques/0040/hebrew_in_translation/0027e8e4": "false_positive",
   "14_2_chroniques/0041/hyphen_cut/90cad3f5": "resolved",
   "14_2_chroniques/0043/empty_commentary/afc3286a": "resolved",
   "14_2_chroniques/0043/long_translation/652adbce": "resolved",
@@ -174,6 +199,7 @@
   "14_2_chroniques/0157/long_translation/53c75494": "resolved",
   "14_2_chroniques/0157/long_translation/939367ec": "resolved",
   "14_2_chroniques/0157/missing_footnote/575243f0": "resolved",
+  "14_2_chroniques/0161/hebrew_in_translation/13cbb6e8": "resolved",
   "14_2_chroniques/0166/leading_call/45350f2f": "resolved",
   "14_2_chroniques/0167/hyphen_cut/82791673": "resolved",
   "14_2_chroniques/0167/hyphen_cut/a3886712": "resolved",
@@ -252,6 +278,8 @@
   "14_2_chroniques/0241/footnote_asterisk/a7af8929": "resolved",
   "14_2_chroniques/0241/long_translation/62689a8c": "resolved",
   "14_2_chroniques/0243/seam_missing/0242": "resolved",
+  "14_2_chroniques/0244/hebrew_in_translation/65fe0632": "false_positive",
+  "14_2_chroniques/0244/hebrew_in_translation/c5969b71": "false_positive",
   "14_2_chroniques/0245/hyphen_cut/28a5c082": "resolved",
   "14_2_chroniques/0246/missing_footnote/28176d55": "skipped",
   "14_2_chroniques/0247/hyphen_cut/a44d32e3": "resolved",

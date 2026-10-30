@@ -44,6 +44,18 @@ export function toggleItalics(s, sa, sb) {
   return { text: s.slice(0, sa) + opening + mid + closing + s.slice(sb), start, end: start + mid.length };
 }
 
+/** Convert s[sa:sb] to uppercase; returns { text, start, end } or null if empty / unchanged. */
+export function toUpper(s, sa, sb) {
+  if (sa == null || sb == null || sa >= sb) return null;
+  sa = Math.max(0, sa);
+  sb = Math.min(sb, s.length);
+  if (sa >= sb) return null;
+  const target = s.slice(sa, sb);
+  const u = target.toUpperCase();
+  if (u === target) return null;
+  return { text: s.slice(0, sa) + u + s.slice(sb), start: sa, end: sa + u.length };
+}
+
 /** "17:2" → {chapter, verse}; "17" → {chapter, verse: null}; "p194" or "194p" → {page}. */
 export function parseRef(s) {
   let m = /^\s*(\d+)\s*(?:[:.,]\s*(\d+))?\s*$/.exec(s);

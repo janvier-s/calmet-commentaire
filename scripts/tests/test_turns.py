@@ -81,3 +81,22 @@ def test_repeat_gone(store):
     edit(store, 194, lambda d: d["commentary"][0].update(french_commentary="times. Et la suite."))
     assert repeat_gone(store, it) is False  # the end of a word comes again
     assert repeat_gone(store, item("seam_missing", 194, suffix="0193")) is False  # only repeats are judged
+
+
+def test_compound_joins():
+    from calmet import infer_join, join_seam
+    cases = [
+        ("peut-", "on le faire ?", "peut-on le faire ?"),
+        ("peut-", "être aussi", "peut-être aussi"),
+        ("au-", "dessus de tout", "au-dessus de tout"),
+        ("par-", "dessous la table", "par-dessous la table"),
+        ("ci-", "après au chapitre", "ci-après au chapitre"),
+        ("ci-", "devant mentionné", "ci-devant mentionné"),
+        ("au-", "delà du fleuve", "au-delà du fleuve"),
+        ("par-", "dedans la maison", "par-dedans la maison"),
+        ("consolez-_", "_vous de sa mort_", "consolez-vous de sa mort_"),
+    ]
+    for tail, head, expected in cases:
+        mode, stub = infer_join(tail, head)
+        assert mode == "keep", f"Expected keep for {tail} + {head}, got {mode}"
+        assert join_seam(tail, head, mode, stub) == expected

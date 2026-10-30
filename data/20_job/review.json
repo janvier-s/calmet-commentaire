@@ -1,16 +1,52 @@
 {
  "false_positives": {
+  "20_job/0099/hebrew_in_translation/2028e2c5": {
+   "book_dir": "20_job",
+   "kind": "hebrew_in_translation",
+   "msg": "“Ou” in the translation of “CUM PRINCIPIBUS, QUI POSSIDENT AURUM.”: “Ou avec les Princes, qui possèdent l'or, et qui remplissent leurs maisons d'argent.…”: commentary or a variant run into the translation?",
+   "page": 99
+  },
+  "20_job/0128/hebrew_in_translation/2543eb23": {
+   "book_dir": "20_job",
+   "kind": "hebrew_in_translation",
+   "msg": "“Ou” in the translation of “QUÆ EST ENIM FORTITUDO MEA, UT SUSTINEAM”: “Car quelle est ma force, pour supporter tout cela ? Ou quelle est ma fin, pour me conserver dans la …”: commentary or a variant run into the translation?",
+   "page": 128
+  },
+  "20_job/0140/hebrew_in_translation/410b39a4": {
+   "book_dir": "20_job",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “NUMQUID MARE EGO SUM ; AUT CETUS, QUIA C”: “Suis-je une mer, ou une baleine, pour avoir été enfermé par vous comme dans une prison ?…”: commentary or a variant run into the translation?",
+   "page": 140
+  },
+  "20_job/0147/hebrew_in_translation/2f2c513b": {
+   "book_dir": "20_job",
+   "kind": "hebrew_in_translation",
+   "msg": "“Ou” in the translation of “NUMQUID VIVERE POTEST SCIRPUS ABSQUE HUM”: “Le jonc peut-il reverdir sans humidité ? Ou l'herbe du pré peut-elle croître sans eau ?…”: commentary or a variant run into the translation?",
+   "page": 147
+  },
   "20_job/0298/etc_for_et/58dbce08": {
    "book_dir": "20_job",
    "kind": "etc_for_et",
    "msg": "Last commentary ends with “etc.”: “…tre dans la faveur, paraître avec confiance, etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
    "page": 298
   },
+  "20_job/0322/hebrew_in_translation/09fdca91": {
+   "book_dir": "20_job",
+   "kind": "hebrew_in_translation",
+   "msg": "“Ou” in the translation of “CUJUS ADJUTOR ES ? NUMQUID IMBECILLIS ? ”: “Qui prétendez-vous assister ? Est-ce un homme faible ? Ou soutenez-vous quelqu'un qui n'ait pas le b…”: commentary or a variant run into the translation?",
+   "page": 322
+  },
   "20_job/0356/verse_no_punct/729116b0": {
    "book_dir": "20_job",
    "kind": "verse_no_punct",
    "msg": "Verse 29:11: french does not end with punctuation: “…l qui me voyait me rendait témoignage, en publiant” (a word lost, or the verse runs on overleaf?)",
    "page": 356
+  },
+  "20_job/0374/missing_start/6f658e02": {
+   "book_dir": "20_job",
+   "kind": "missing_start",
+   "msg": "The first note opens in the middle of a sentence (“ou plutôt, _ma droiture_, mon innocence, ma justic…”) but the last note of the page before (“SIMPLICITATEM MEAM.…”) has no comment: the start of the comment is missing (typed on the page before, or lost at the page turn)",
+   "page": 374
   },
   "20_job/0374/missing_start/d60aa758": {
    "book_dir": "20_job",
@@ -24,6 +60,30 @@
    "msg": "Translation of 163 characters for a lemma of 53 “SUBITO MORIENTUR, ET IN MEDIA NOCTE TURB”: “Ils mourront tout d'un coup ; et au milieu de la nuit, les peuples se soulèveront ; ils pa…”: commentary run into the translation?",
    "page": 410
   },
+  "20_job/0418/hebrew_in_translation/c28aa372": {
+   "book_dir": "20_job",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “DIXISTI ENIM : NON TIBI PLACET QUOD RECT”: “Vous avez dit en parlant à Dieu : Ce qui est juste, ne vous plaît point ; ou quel avantage retirerez…”: commentary or a variant run into the translation?",
+   "page": 418
+  },
+  "20_job/0458/hebrew_in_translation/5740fdf8": {
+   "book_dir": "20_job",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “QUIS ENARRABIT COELORUM RATIONEM, ET CON”: “Qui expliquera toute la disposition des Cieux, ou qui fera cesser toute l'harmonie du Ciel ?…”: commentary or a variant run into the translation?",
+   "page": 458
+  },
+  "20_job/0470/hebrew_in_translation/3bb01462": {
+   "book_dir": "20_job",
+   "kind": "hebrew_in_translation",
+   "msg": "“Ou” in the translation of “NUMQUID SUSCITABIS EUM QUASI LOCUSTAS ?”: “Ou qui le ferez bondir comme les sauterelles ?…”: commentary or a variant run into the translation?",
+   "page": 470
+  },
+  "20_job/0488/hebrew_in_translation/be99505b": {
+   "book_dir": "20_job",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “NUMQUID PONES CIRCULUM IN NARIBUS EJUS, ”: “Lui mettrez-vous un cercle au nez, ou lui percerez-vous la mâchoire avec un anneau ?…”: commentary or a variant run into the translation?",
+   "page": 488
+  },
   "20_job/0514/caps_in_commentary/26feb510": {
    "book_dir": "20_job",
    "kind": "caps_in_commentary",
@@ -31,12 +91,18 @@
    "page": 514
   }
  },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
+ },
  "status": {
   "20_job/0059/footnote_no_period/ee7e3449": "resolved",
   "20_job/0060/footnote_asterisk/6981360c": "resolved",
   "20_job/0062/seam_repeat/0061": "resolved",
   "20_job/0064/no_lemma/d01643f4": "resolved",
   "20_job/0065/extra_footnotes/5c0c8c9b": "resolved",
+  "20_job/0065/hebrew_in_translation/4b1ae6ff": "resolved",
   "20_job/0066/footnote_writeout/33e5f189": "resolved",
   "20_job/0066/footnote_writeout/80665f20": "resolved",
   "20_job/0069/dropped_commentary/1b859097": "resolved",
@@ -80,6 +146,7 @@
   "20_job/0096/seam_missing/0095": "resolved",
   "20_job/0097/footnote_asterisk/87f95597": "resolved",
   "20_job/0098/etc_for_et/6623850f": "resolved",
+  "20_job/0099/hebrew_in_translation/2028e2c5": "false_positive",
   "20_job/0099/seam_repeat/0098": "resolved",
   "20_job/0100/hyphen_cut/54d4b5dc": "resolved",
   "20_job/0101/footnote_asterisk/662559ec": "resolved",
@@ -112,6 +179,7 @@
   "20_job/0127/extra_footnotes/42580f6f": "resolved",
   "20_job/0127/italic_seam/8b912977": "resolved",
   "20_job/0128/footnote_writeout/51002c80": "resolved",
+  "20_job/0128/hebrew_in_translation/2543eb23": "false_positive",
   "20_job/0131/extra_footnotes/fa1996d2": "resolved",
   "20_job/0131/footnote_writeout/25470d4c": "resolved",
   "20_job/0132/italic_seam/098026dc": "resolved",
@@ -123,6 +191,7 @@
   "20_job/0138/footnote_writeout/5e09bd34": "resolved",
   "20_job/0140/guessed_ref/7cb0f25a": "resolved",
   "20_job/0140/guessed_ref/e4cf19ee": "resolved",
+  "20_job/0140/hebrew_in_translation/410b39a4": "false_positive",
   "20_job/0141/footnote_writeout/91805cd5": "resolved",
   "20_job/0142/hyphen_cut/817211bb": "resolved",
   "20_job/0143/caps_in_commentary/76bc19c5": "resolved",
@@ -130,6 +199,7 @@
   "20_job/0145/no_translation/3049470e": "resolved",
   "20_job/0145/period_seam/88603f0d": "resolved",
   "20_job/0146/italic_seam/0799b94b": "resolved",
+  "20_job/0147/hebrew_in_translation/2f2c513b": "false_positive",
   "20_job/0147/no_translation/59d55627": "resolved",
   "20_job/0149/long_translation/98db4179": "resolved",
   "20_job/0150/empty_commentary/44ea5135": "resolved",
@@ -183,6 +253,7 @@
   "20_job/0196/italic_seam/a2d90382": "resolved",
   "20_job/0197/italic_seam/094360f0": "resolved",
   "20_job/0199/footnote_writeout/412e182c": "resolved",
+  "20_job/0199/hebrew_in_translation/d4f9baa2": "resolved",
   "20_job/0199/lemma_verse/77fbb740": "resolved",
   "20_job/0199/no_lemma/a9c9842a": "resolved",
   "20_job/0200/footnote_asterisk/a7af8929": "resolved",
@@ -229,6 +300,7 @@
   "20_job/0237/hyphen_cut/71871a92": "resolved",
   "20_job/0238/caps_in_commentary/3cfeb465": "resolved",
   "20_job/0241/footnote_writeout/aaa410f0": "resolved",
+  "20_job/0241/hebrew_in_translation/b699cb3e": "resolved",
   "20_job/0242/footnote_writeout/4bf204f8": "resolved",
   "20_job/0242/long_translation/fb78fcfb": "resolved",
   "20_job/0243/etc_for_et/f7e26996": "resolved",
@@ -245,6 +317,7 @@
   "20_job/0252/footnote_writeout/91beeb5e": "resolved",
   "20_job/0252/footnote_writeout/c90adace": "resolved",
   "20_job/0252/guessed_ref/a52ff44b": "resolved",
+  "20_job/0254/hebrew_in_translation/cea8a344": "resolved",
   "20_job/0254/verse_mismatch/83bb2f31": "resolved",
   "20_job/0255/caps_in_commentary/58aac652": "resolved",
   "20_job/0258/italic_seam/a68495ae": "resolved",
@@ -255,6 +328,7 @@
   "20_job/0263/footnote_writeout/67707dd7": "resolved",
   "20_job/0263/hyphen_cut/f3d43f38": "resolved",
   "20_job/0264/guessed_ref/cf1df8ac": "resolved",
+  "20_job/0264/hebrew_in_translation/e1f93d41": "resolved",
   "20_job/0265/seam_unclear/0264": "resolved",
   "20_job/0265/stray_underscore/107b9dcc": "resolved",
   "20_job/0267/footnote_writeout/ae94cac5": "resolved",
@@ -269,6 +343,7 @@
   "20_job/0271/no_lemma/c70007ae": "resolved",
   "20_job/0271/no_lemma/f6465723": "resolved",
   "20_job/0272/extra_footnotes/44aceef9": "resolved",
+  "20_job/0272/hebrew_in_translation/ee137fcd": "resolved",
   "20_job/0272/lemma_verse/bc21e077": "resolved",
   "20_job/0272/no_lemma/89463872": "resolved",
   "20_job/0274/footnote_writeout/63edc206": "resolved",
@@ -286,6 +361,7 @@
   "20_job/0283/leading_call/8c1868b5": "resolved",
   "20_job/0284/footnote_writeout/6d068238": "resolved",
   "20_job/0284/italic_seam/3c883cdb": "resolved",
+  "20_job/0285/hebrew_in_translation/b7ad7448": "resolved",
   "20_job/0285/period_seam/747a497d": "resolved",
   "20_job/0286/long_translation/ccde5b77": "resolved",
   "20_job/0286/lowercase_lemma/ade764d0": "resolved",
@@ -306,11 +382,13 @@
   "20_job/0309/etc_for_et/5e1b6378": "resolved",
   "20_job/0311/etc_for_et/981f937d": "resolved",
   "20_job/0311/hyphen_cut/1928088b": "resolved",
+  "20_job/0313/stray_underscore/a5bcec2b": "on_hold",
   "20_job/0315/footnote_asterisk/662559ec": "resolved",
   "20_job/0315/lemma_verse/51f220c5": "resolved",
   "20_job/0315/no_lemma/420e9e87": "resolved",
   "20_job/0315/no_lemma/4a03f33b": "resolved",
   "20_job/0321/leading_call/47c2f5c0": "resolved",
+  "20_job/0322/hebrew_in_translation/09fdca91": "false_positive",
   "20_job/0323/seam_repeat/0322": "resolved",
   "20_job/0324/footnote_asterisk/ac5e40bc": "resolved",
   "20_job/0324/footnote_writeout/e495f3c7": "resolved",
@@ -350,7 +428,9 @@
   "20_job/0368/hyphen_cut/d4a6900b": "resolved",
   "20_job/0369/lowercase_lemma/f4c6fd0e": "resolved",
   "20_job/0370/footnote_writeout/1aa5d51c": "resolved",
+  "20_job/0373/hyphen_cut/306aa3a9": "resolved",
   "20_job/0373/long_translation/5624e036": "resolved",
+  "20_job/0374/missing_start/6f658e02": "false_positive",
   "20_job/0374/missing_start/d60aa758": "false_positive",
   "20_job/0374/no_lemma/9d8dd90b": "resolved",
   "20_job/0375/leading_call/8a37fb0d": "resolved",
@@ -389,6 +469,7 @@
   "20_job/0410/long_translation/43081283": "false_positive",
   "20_job/0410/long_translation/a330f520": "resolved",
   "20_job/0412/long_translation/dce3a01b": "resolved",
+  "20_job/0418/hebrew_in_translation/c28aa372": "false_positive",
   "20_job/0418/hyphen_cut/a2f56e66": "resolved",
   "20_job/0422/footnote_writeout/9b17f97e": "resolved",
   "20_job/0423/long_translation/3d6e3813": "resolved",
@@ -425,6 +506,7 @@
   "20_job/0456/footnote_writeout/90850bbe": "resolved",
   "20_job/0456/footnote_writeout/a256cf4f": "resolved",
   "20_job/0457/no_lemma/bdd2a1ea": "resolved",
+  "20_job/0458/hebrew_in_translation/5740fdf8": "false_positive",
   "20_job/0458/leading_call/23fb0721": "resolved",
   "20_job/0459/footnote_writeout/95803412": "resolved",
   "20_job/0459/footnote_writeout/af7101b7": "resolved",
@@ -436,6 +518,7 @@
   "20_job/0468/no_lemma/d7702313": "resolved",
   "20_job/0469/etc_for_et/1e379557": "resolved",
   "20_job/0469/lowercase_lemma/a0189a0d": "resolved",
+  "20_job/0470/hebrew_in_translation/3bb01462": "false_positive",
   "20_job/0470/no_lemma/512805a5": "resolved",
   "20_job/0471/no_lemma/3def8cb4": "resolved",
   "20_job/0471/seam_missing/0470": "resolved",
@@ -456,6 +539,7 @@
   "20_job/0482/footnote_asterisk/662559ec": "resolved",
   "20_job/0482/no_lemma/b6dcb414": "resolved",
   "20_job/0483/leading_call/8f6bf786": "resolved",
+  "20_job/0488/hebrew_in_translation/be99505b": "false_positive",
   "20_job/0489/italic_seam/7dcc7467": "resolved",
   "20_job/0490/footnote_writeout/b0b3b477": "resolved",
   "20_job/0492/no_lemma/0894f892": "resolved",
@@ -510,6 +594,17 @@
    "where": {
     "field": "text",
     "index": 2,
+    "section": "footnotes"
+   }
+  },
+  {
+   "holds": "20_job/0313/stray_underscore/a5bcec2b",
+   "id": "20_job/0313/todo/798a2e0b",
+   "msg": "Needs rescan (text (footnotes 2))",
+   "page": 313,
+   "where": {
+    "field": "text",
+    "index": 1,
     "section": "footnotes"
    }
   }

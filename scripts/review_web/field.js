@@ -14,7 +14,7 @@
 //  - latin_quote in small caps but for the first letter and the Vulgate's proper nouns
 //  - Hebrew stays right-to-left; no U+200E reaches the file
 //  - empty french_commentary has room for four lines
-import { italicRuns, toggleItalics } from "./text.js";
+import { italicRuns, toggleItalics, toUpper } from "./text.js";
 
 export const ITALIC_FIELDS = new Set(["chapter_summary", "latin", "french_translation"]);
 const HEBREW = /[֐-׿יִ-ﭏ]+(?:[  ]+[֐-׿יִ-ﭏ]+)*/g;
@@ -214,6 +214,19 @@ export class Field {
     const sel = this.selection();
     if (!sel || sel[0] === sel[1]) return;
     const r = toggleItalics(this.text, sel[0], sel[1]);
+    if (!r) return;
+    this.undo.push({ text: this.text, sel });
+    this.redo = [];
+    this.lastKind = "other";
+    this.unmark();
+    this.text = r.text;
+    this.draw([r.start, r.end]);
+    this.onChange(this);
+  }
+
+  toUpperCase(sel = this.selection()) {
+    if (!sel || sel[0] === sel[1]) return;
+    const r = toUpper(this.text, sel[0], sel[1]);
     if (!r) return;
     this.undo.push({ text: this.text, sel });
     this.redo = [];

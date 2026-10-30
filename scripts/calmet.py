@@ -146,7 +146,11 @@ def _words(s):
 
 
 # what follows a hyphen in a compound, not the rest of a broken word
-COMPOUND = re.compile(r"(?:à|dire|Christ|là|ci|même|mêmes|il|ils|elle|elles|on|vous|nous|je|tu|t|y|en)\b")
+COMPOUND = re.compile(
+    r"(?:à|dire|Christ|là|ci|même|mêmes|il|ils|elle|elles|on|vous|nous|je|tu|t|y|en|"
+    r"être|dessus|dessous|devant|après|delà|deçà|dedans|dehors)\b",
+    re.IGNORECASE,
+)
 
 
 def join_seam(tail, txt, mode, stub):
@@ -158,8 +162,12 @@ def join_seam(tail, txt, mode, stub):
     if mode == "mend":
         return tail.rstrip()[:-1] + " " + txt
     if mode == "splice":
+        if tail.rstrip().endswith("-_") and txt.lstrip().startswith("_"):
+            return tail.rstrip()[:-2] + txt.lstrip()[1:]
         return tail.rstrip()[:-1] + txt
     if mode == "keep" or re.match(r"[,;:.!?]", txt):
+        if tail.rstrip().endswith("-_") and txt.lstrip().startswith("_"):
+            return tail.rstrip()[:-1] + txt.lstrip()[1:]
         return tail.rstrip() + txt
     if mode == "refrag":
         kept = tail.rstrip()[:-1]
@@ -179,13 +187,15 @@ def infer_join(prev, nxt):
         return "flow", None
     # The transcription sometimes keeps the printer's hyphen instead of
     # completing the word: "nulle compa-" then "raison entre ces deux choses".
-    if prev.endswith("-"):
+    if prev.endswith("-") or prev.endswith("-_"):
+        nxt_word = nxt.lstrip("_-")
         # a compound broken at its own hyphen keeps it: "c'est-" / "à-dire"
-        if COMPOUND.match(nxt):
+        if COMPOUND.match(nxt_word):
             return "keep", None
         # ...unless the next page reprints the whole word ("la con-" / "concupiscence"):
         # then the fragment is dropped instead of doubled.
-        frag, nw = _words(prev[:-1]), _words(nxt)
+        frag = _words(prev[:-1] if prev.endswith("-") else prev[:-2])
+        nw = _words(nxt_word)
         if frag and nw and len(nw[0]) > len(frag[-1]) and nw[0].lower().startswith(frag[-1].lower()):
             return "refrag", frag[-1]
         return "splice", None

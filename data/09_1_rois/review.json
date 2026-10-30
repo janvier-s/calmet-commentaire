@@ -6,10 +6,28 @@
    "msg": "Note 3 (℣ 12): latin_quote “FILII BELIAL.” has no french_translation; the comment starts “Voyez ce qu'on a dit sur le ℣. 16. du premier Chapitre.…”: the translation run into the commentary?",
    "page": 89
   },
+  "09_1_rois/0090/hebrew_in_translation/52908cee": {
+   "book_dir": "09_1_rois",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “IN LEBETEM, VEL IN CALDARIUM, AUT IN OLL”: “Dans la chaudière, ou dans le…”: commentary or a variant run into the translation?",
+   "page": 90
+  },
+  "09_1_rois/0091/hebrew_in_translation/aefe017d": {
+   "book_dir": "09_1_rois",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “”: “chaudron, dans la marmite, ou dans le pot.…”: commentary or a variant run into the translation?",
+   "page": 91
+  },
   "09_1_rois/0105/no_translation/91859533": {
    "book_dir": "09_1_rois",
    "kind": "no_translation",
    "msg": "Note 2 (℣ 36): latin_quote “TORTAM PANIS.” has no french_translation; the comment starts “Voyez l'Exode chap. xxvi. 28. L'Hébreu,^{(d)} un morceau de …”: the translation run into the commentary?",
+   "page": 105
+  },
+  "09_1_rois/0105/no_translation/f50404a3": {
+   "book_dir": "09_1_rois",
+   "kind": "no_translation",
+   "msg": "Note 2 (℣ 36): latin_quote “TORTAM PANIS.” has no french_translation; the comment starts “Voyez l'Exode chapitre xxvi. 28. L'Hébreu,^{(d)} un morceau …”: the translation run into the commentary?",
    "page": 105
   },
   "09_1_rois/0133/no_translation/2d282f41": {
@@ -30,11 +48,29 @@
    "msg": "Note 3 (℣ 18): latin_quote “BETH-HORON.” has no french_translation; the comment starts “On croit que c'est _Beth-horon la basse_, au couchant et au …”: a translation lost?",
    "page": 246
   },
+  "09_1_rois/0310/hebrew_in_translation/32cea001": {
+   "book_dir": "09_1_rois",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “VENIEBAT LEO VEL URSUS.”: “Il venait quelquefois un lion, ou un ours.…”: commentary or a variant run into the translation?",
+   "page": 310
+  },
   "09_1_rois/0311/etc_for_et/00c588c0": {
    "book_dir": "09_1_rois",
    "kind": "etc_for_et",
    "msg": "Last commentary ends with “etc._”: “…_Il se fatigua en marchant une et deux fois, etc._” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
    "page": 311
+  },
+  "09_1_rois/0332/hebrew_in_translation/f15f8aa4": {
+   "book_dir": "09_1_rois",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “DIMITTE ME, ALIOQUIN INTERFICIAM TE.”: “Laissez-moi aller, ou je vous tuerai.…”: commentary or a variant run into the translation?",
+   "page": 332
+  },
+  "09_1_rois/0342/hebrew_in_translation/ffac5638": {
+   "book_dir": "09_1_rois",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “CRASTINO VEL PERENDIE.”: “Demain, ou après demain.…”: commentary or a variant run into the translation?",
+   "page": 342
   },
   "09_1_rois/0437/no_translation/f3595813": {
    "book_dir": "09_1_rois",
@@ -42,6 +78,11 @@
    "msg": "Note 2 (℣ 1): latin_quote “IN APHEC.” has no french_translation; the comment starts “Aphec, dont il est parlé ici, est fort différente de la fame…”: the translation run into the commentary?",
    "page": 437
   }
+ },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
  },
  "status": {
   "09_1_rois/0067/lowercase_lemma/db0e3c51": "resolved",
@@ -63,10 +104,13 @@
   "09_1_rois/0088/lowercase_lemma/13217321": "resolved",
   "09_1_rois/0089/no_translation/a9ce2a9d": "false_positive",
   "09_1_rois/0090/empty_commentary/f15d0e94": "resolved",
+  "09_1_rois/0090/hebrew_in_translation/52908cee": "false_positive",
   "09_1_rois/0090/hyphen_cut/077c56a3": "resolved",
   "09_1_rois/0091/footnote_writeout/6a49c665": "resolved",
+  "09_1_rois/0091/hebrew_in_translation/aefe017d": "false_positive",
   "09_1_rois/0091/lowercase_lemma/3ab21e43": "resolved",
   "09_1_rois/0092/seam_repeat/0091": "resolved",
+  "09_1_rois/0093/hebrew_in_translation/6372ad8c": "resolved",
   "09_1_rois/0094/lemma_no_punct/a676c012": "resolved",
   "09_1_rois/0099/long_translation/1e604624": "resolved",
   "09_1_rois/0101/hyphen_cut/3cdb749c": "resolved",
@@ -77,12 +121,14 @@
   "09_1_rois/0105/hebrew_in_translation/5c0daef8": "resolved",
   "09_1_rois/0105/long_translation/5bdcff9c": "resolved",
   "09_1_rois/0105/no_translation/91859533": "false_positive",
+  "09_1_rois/0105/no_translation/f50404a3": "false_positive",
   "09_1_rois/0107/extra_footnotes/85fbfd07": "resolved",
   "09_1_rois/0110/italic_seam/ef09fc93": "resolved",
   "09_1_rois/0112/footnote_writeout/48f3cb74": "resolved",
   "09_1_rois/0112/long_translation/eb906d97": "resolved",
   "09_1_rois/0113/period_seam/f89ab054": "resolved",
   "09_1_rois/0117/chapter_vulgate/63979509": "resolved",
+  "09_1_rois/0117/hebrew_in_translation/3bd1275c": "resolved",
   "09_1_rois/0117/no_translation/82786476": "resolved",
   "09_1_rois/0117/ref_order/32c7de5e": "resolved",
   "09_1_rois/0117/seam_repeat/0116": "resolved",
@@ -113,6 +159,7 @@
   "09_1_rois/0147/italic_seam/875882d3": "resolved",
   "09_1_rois/0148/lowercase_lemma/ab1d64e4": "resolved",
   "09_1_rois/0150/period_seam/bc7229e8": "resolved",
+  "09_1_rois/0151/hebrew_in_translation/cf70e527": "resolved",
   "09_1_rois/0154/seam_repeat/0153": "resolved",
   "09_1_rois/0155/etc_for_et/dc622ed4": "resolved",
   "09_1_rois/0156/extra_footnotes/a29273ea": "resolved",
@@ -145,6 +192,7 @@
   "09_1_rois/0182/footnote_writeout/a2071f4d": "resolved",
   "09_1_rois/0182/missing_verse/ba60b054": "resolved",
   "09_1_rois/0182/seam_missing/0181": "resolved",
+  "09_1_rois/0184/hebrew_in_translation/715c2c05": "resolved",
   "09_1_rois/0185/seam_repeat/0184": "resolved",
   "09_1_rois/0187/missing_verse/27674090": "resolved",
   "09_1_rois/0190/footnote_asterisk/b78ad7d9": "resolved",
@@ -224,6 +272,7 @@
   "09_1_rois/0282/leading_call/1849f494": "resolved",
   "09_1_rois/0282/seam_missing/0281": "resolved",
   "09_1_rois/0283/extra_footnotes/b80d44e7": "resolved",
+  "09_1_rois/0288/hebrew_in_translation/15fc7eed": "resolved",
   "09_1_rois/0289/long_translation/fb1536b5": "resolved",
   "09_1_rois/0289/seam_repeat/0288": "resolved",
   "09_1_rois/0290/footnote_asterisk/b6d8c2be": "resolved",
@@ -234,6 +283,7 @@
   "09_1_rois/0291/footnote_writeout/a06f5d7e": "resolved",
   "09_1_rois/0292/seam_repeat/0291": "resolved",
   "09_1_rois/0294/footnote_writeout/705ad01d": "resolved",
+  "09_1_rois/0298/hebrew_in_translation/547a172a": "resolved",
   "09_1_rois/0300/seam_repeat/0299": "resolved",
   "09_1_rois/0302/footnote_writeout/c52194e6": "resolved",
   "09_1_rois/0302/lowercase_lemma/d0df09ef": "resolved",
@@ -242,6 +292,7 @@
   "09_1_rois/0307/long_translation/9ee1e61d": "resolved",
   "09_1_rois/0308/footnote_writeout/541fc5c8": "resolved",
   "09_1_rois/0308/lowercase_lemma/12ac96ea": "resolved",
+  "09_1_rois/0310/hebrew_in_translation/32cea001": "false_positive",
   "09_1_rois/0311/etc_for_et/00c588c0": "false_positive",
   "09_1_rois/0311/footnote_writeout/14d3654d": "resolved",
   "09_1_rois/0311/verse_mismatch/0f101f37": "resolved",
@@ -249,6 +300,7 @@
   "09_1_rois/0313/seam_repeat/0312": "resolved",
   "09_1_rois/0314/empty_commentary/b1e4d875": "resolved",
   "09_1_rois/0316/footnote_writeout/878b5fa2": "resolved",
+  "09_1_rois/0316/hebrew_in_translation/ac8445b4": "resolved",
   "09_1_rois/0317/footnote_writeout/2b68c02c": "resolved",
   "09_1_rois/0318/long_translation/872005cc": "resolved",
   "09_1_rois/0320/hebrew_in_translation/6fea78b5": "resolved",
@@ -260,9 +312,13 @@
   "09_1_rois/0326/seam_missing/0325": "resolved",
   "09_1_rois/0327/italic_seam/c1cfca2b": "resolved",
   "09_1_rois/0331/period_seam/5d9396e6": "resolved",
+  "09_1_rois/0332/hebrew_in_translation/f15f8aa4": "false_positive",
   "09_1_rois/0332/hyphen_cut/fb40ebc0": "resolved",
+  "09_1_rois/0333/hebrew_in_translation/f92ce354": "resolved",
+  "09_1_rois/0335/hebrew_in_translation/ce1247d3": "resolved",
   "09_1_rois/0336/footnote_asterisk/b78ad7d9": "resolved",
   "09_1_rois/0337/missing_start/e86c587a": "resolved",
+  "09_1_rois/0342/hebrew_in_translation/ffac5638": "false_positive",
   "09_1_rois/0342/italic_seam/53903c22": "resolved",
   "09_1_rois/0342/no_translation/d493ab27": "resolved",
   "09_1_rois/0343/hyphen_cut/eb14be5f": "resolved",
@@ -310,6 +366,7 @@
   "09_1_rois/0408/leading_call/c0fac84e": "resolved",
   "09_1_rois/0409/period_seam/abe10cb4": "resolved",
   "09_1_rois/0410/footnote_writeout/c92a6900": "resolved",
+  "09_1_rois/0410/hebrew_in_translation/7c6d5408": "resolved",
   "09_1_rois/0411/hyphen_cut/b1839cbe": "resolved",
   "09_1_rois/0411/no_translation/3d9f0ffb": "resolved",
   "09_1_rois/0412/period_seam/6fd6af93": "resolved",
@@ -320,9 +377,11 @@
   "09_1_rois/0425/extra_footnotes/0a016e29": "resolved",
   "09_1_rois/0425/extra_footnotes/6d4cdad2": "resolved",
   "09_1_rois/0425/extra_footnotes/df11bc17": "resolved",
+  "09_1_rois/0427/hebrew_in_translation/f9ca781d": "resolved",
   "09_1_rois/0430/empty_commentary/65276020": "resolved",
   "09_1_rois/0433/etc_for_et/3526d551": "resolved",
   "09_1_rois/0433/etc_for_et/c058600f": "resolved",
+  "09_1_rois/0435/hebrew_in_translation/9a4f8859": "resolved",
   "09_1_rois/0437/footnote_writeout/d1236fec": "resolved",
   "09_1_rois/0437/long_translation/e8d818e3": "resolved",
   "09_1_rois/0437/no_translation/f3595813": "false_positive",

@@ -216,7 +216,14 @@ From volumes 1–21; look for the same in new volumes:
 - misread margin years (1 for 2/3, swapped digits: 3648 for 3468);
 - OCR slips the LLM leaves (`flnem` for `finem`): fix only when certain, and say so;
 - Psalms: titles missing or misread as "PSEAUME", verses filed under the wrong psalm, a refrain
-  repeated in two psalms (don't "fix" one from the other).
+  repeated in two psalms (don't "fix" one from the other);
+- verses accidentally formatted as commentary: a lowercase lemma identical to the verse text with
+  empty commentary, or continuation notes where the verse was duplicated into `latin_quote` and
+  `french_translation`;
+- embedded lemmas in commentary: printed ALL-CAPS Latin lemmas and French translations trapped
+  inside `french_commentary` instead of in their structured fields;
+- displaced footnotes in commentary: blocks with no lemma or translation whose text consists of
+  footnote citations (e.g. `(a) [UNCERTAIN HEBREW]`), missing from the page's `footnotes` list.
 
 ## 10. Footnotes (`footnotes.py`, Oct 15–18, 2026)
 
@@ -485,14 +492,35 @@ Over 16,600 replacements applied across all 46 Old Testament volumes in two stag
     - **Latin Lemmas (`clean_latin_quote`)**: fixed 27 broken Latin words (`AN-NORUM` / `ANNO-RUM` → `ANNORUM`, `CECIDERIT-QUE` → `CECIDERITQUE`, `CIBA-RIA` → `CIBARIA`, `MONTE-LIBANO` → `MONTE LIBANO`, `BETHLE-HEM` → `BETHLEHEM`, `PLAUS-TRUM` → `PLAUSTRUM`, `EXCELSO-RUM` → `EXCELSORUM`, `AQUÆ-DUCTUM` → `AQUÆDUCTUM`, `AN-NULUM` → `ANNULUM`, `DI-NUMERAVERUNT` → `DINUMERAVERUNT`, `AUXILIUM-TUUM` → `AUXILIUM TUUM`, `LE-GEM` → `LEGEM`, `ANI-MA` → `ANIMA`, `PEC-CATORUM` → `PECCATORUM`, `IL-LIUS` → `ILLIUS`, `VISITA-TIO` / `VISI-TATIO` → `VISITATIO`, `SUAVE-OLENTEM` → `SUAVEOLENTEM`, `VASTA-TORES` → `VASTATORES`, `AU-SITIDIS` → `AUSITIDIS`, `ULTO-RI` → `ULTORI`, `VOVE-RUNT` → `VOVERUNT`, `NE-QUE` → `NEQUE`, `DESER-TUROS` → `DESERTUROS`, `IMMUNDO-RUM` → `IMMUNDORUM`, `ADIMPLE-TUR` → `ADIMPLETUR`), cleaned spaced hyphens (`SAVE - KARIATHAIM` → `SAVE-KARIATHAIM`, `SCRIBAM PRINCIPEM MILITUM, - QUI` → `SCRIBAM PRINCIPEM MILITUM, QUI`), and resolved interleaved multi-column OCR corruption on Daniel 10:16 (`32_daniel/page_0188.json`).
     - **French Translations (`modernize_text`)**: fixed broken words (`au-jourd'hui` → `aujourd'hui`, `Héré-mie` → `Jérémie`), erroneous hyphens (`C'est-pourquoi` → `C'est pourquoi`, `Abel-maison-de-Maacha` → `Abel-maison de Maacha`, `Du-fondement` → `Du fondement`, `assez-cruel` → `assez cruel`, `donnez-point` → `donnez point`, `des-hommes` → `des hommes`, `est-dans` → `est dans`, `la-clef` → `la clef`, `mesura-tout` → `mesura tout`, `faux-Prophètes` → `faux Prophètes`, `grand-Champ` → `grand Champ`, `point-là` → `point là`, `c'est-à dire` → `c'est-à-dire`), and joined spaced hyphens (`Grand - Pontife` → `Grand-Pontife`, `grand - Prêtre` → `grand-Prêtre`, `Laissez - les` → `Laissez-les`).
     - **Strict Preservations**: Trailing page-seam hyphens (`NOC-`, `Nem-`, `re-`, `bé-`, etc.), valid French pronominal enclitics and compounds (`souvenez-vous`, `lui-même`, `au-dessus`), Biblical proper names (`BETH-HORON`, `OBED-EDOM`), and Latin numerals (`TRIGINTA-DUOS`, `OCTAVO-DECIMO`) strictly preserved.
+  - **Commentary and Footnote Structural Cleanups (Oct 30, 2026)**:
+    - **Accidental Verses in Commentary (13 items across 11 files)**:
+      - Transcriptions occasionally duplicated verse text into a commentary block with a lowercase `latin_quote` (>90% lowercase, matching the verse text) and empty `french_commentary`.
+      - Resolved by removing the phantom commentary entry and renumbering remaining `commentary_id`s 1..$n$ (`28_jeremie/page_0264.json`, `page_0266.json`, `page_0272.json`, `page_0352.json`, `page_0408.json`, `page_0448.json`, `page_0496.json`, `page_0630.json`, `31_ezechiel/page_0482.json`, `21a_psaumes/page_0854.json`, `21b_psaumes/page_0444.json`).
+    - **Continuation Commentary with Erroneous Verse Lemmas (17 items across 16 files)**:
+      - **Spurious Verse Copy in Continuations (15 items)**: Continuation commentary blocks across page breaks where the previous verse text was erroneously copied into `latin_quote` and `french_translation`. Cleared `latin_quote` and `french_translation` to `null` and carried forward the active `verse_ref` from the preceding page (`28_jeremie` and `21a_psaumes`).
+      - **Embedded ALL-CAPS Lemmas in Commentary (2 items)**: Commentary blocks where genuine printed ALL-CAPS Latin lemmas and French translations were trapped at the beginning of `french_commentary`. Extracted the lemma into `latin_quote`, the translation into `french_translation`, and cleaned `french_commentary` (`21c_psaumes/page_0056.json`, `page_0204.json`).
+    - **Displaced Footnotes Trapped in Commentary (43 items across 26 files)**:
+      - **Empty Commentary Blocks (23 items across 15 files)**: Commentary blocks with `null` `latin_quote` and `french_translation` that actually contained footnote text (starting with footnote markers `(a)`, `(b)`, etc., or Hebrew/Greek citations corresponding to footnote callouts `^{(a)}`, `^{(b)}` in the page text). Resolved across `28_jeremie` (14 files) and `29_lamentations` (`page_0045.json`): extracted each footnote into `footnotes` with stripped markers and tags, deleted the displaced commentary entries, and renumbered remaining `commentary_id`s 1..$n$. On `28_jeremie/page_0291.json`, merged trailing commentary text `L'Hébreu : ^{(d)}` into the preceding commentary note before extracting footnotes `(a)` through `(d)`.
+      - **Non-Empty Commentary Blocks (20 items across 11 files)**: Footnotes accidentally appended to the end of genuine commentary paragraphs or pasted into the `french_commentary` field of an un-commented lemma block across page turns. Resolved across `28_jeremie` (8 files: `page_0245`, `page_0256`, `page_0299`, `page_0404`, `page_0413`, `page_0519`, `page_0609`, `page_0646`) and `29_lamentations` (3 files: `page_0037`, `page_0044`, `page_0053`): stripped trailing footnote text from commentary (or reset `french_commentary: null` where appropriate), added the extracted footnotes to the page's `footnotes` array with computed tags, sorted by marker, and removed empty displaced blocks (e.g. `28_jeremie/page_0646.json` cid 5) with renumbering.
+    - **Page Seam Hyphenation & Compound Normalization (Oct 30, 2026)**:
+      - **Expanded Compound Recognition in `scripts/calmet.py` (`COMPOUND`)**:
+        - `COMPOUND` identifies words that follow a hyphen in a genuine compound word broken across a page break (preventing them from being spliced and losing their hyphen on export).
+        - Added: `être` (from `peut-être`, 5 volumes: *02_exode 547*, *05_deuteronome 457*, *16_nehemie 97*, *19_esther 171*, *31_ezechiel 498*), `dessus` / `dessous` (`au-dessus`, `par-dessus`, `au-dessous`, `par-dessous`), `devant` / `après` (`ci-devant`, `ci-après`), `delà` / `deçà` (`au-delà`, `au-deçà`), `dedans` / `dehors` (`par-dedans`).
+        - Enhanced `infer_join` and `join_seam` in `calmet.py` to support italic compound turns (`_consolez-_` ‖ `_vous_` joins cleanly without doubling underscores).
+      - **Stripped Superfluous Leading Hyphens on Continuation Pages (12 items across 11 files)**:
+        - Continuation pages must transcribe the text as printed on the physical page (without an artificial leading hyphen).
+        - Fixed 3 broken-word bugs where the leading hyphen corrupted single words into spurious hyphenated forms: `12_4_rois/page_0035.json` (`-breu` → `breu`, fixing `Ni l'Hé-breu` → `Ni l'Hébreu`), `12_4_rois/page_0137.json` (`-vaient` → `vaient`, fixing `poursui-vaient` → `poursuivaient`), `21b_psaumes/page_0440.json` (`-lui` → `lui`, fixing `ce-lui` → `celui`).
+        - Cleaned redundant leading hyphens in compounds across page breaks: `07_juges/page_0249.json` (`-même` → `même`), `21b_psaumes/page_0609.json` (`- même` → `même`), `24_cantique/page_0086.json` & `page_0087.json` (`par.` → `par-`, `-dedans` → `dedans`), `26_ecclesiastique/page_0267.json` (`-là` → `là`), `26_ecclesiastique/page_0327.json` (`-t-il` → `t-il`), `26_ecclesiastique/page_0584.json` (`_-vous` → `_vous`), `27_isaie/page_0617.json` (`-vous` → `vous`), `27_isaie/page_0821.json` & `page_0822.json` (`_Conduirai-_…` → `_Conduirai-_`, `_-je` → `_je`), `28_jeremie/page_0304.json` (`-on` → `on`).
+      - Unit tests added to `scripts/tests/test_turns.py` (`test_compound_joins`). All 216 tests pass.
   - **Integrated Execution**:
     - All of these rules are now built directly into `modernize_inplace.py` (`modernize_text()`), tested in `tests/test_modernize_inplace.py`, and run automatically whenever `python3 modernize_inplace.py <vol>` is called on new books.
     - `modernize.py` has also been hardened: `reçoit`, `conçoit`, `aperçoit`, `apperçoit`, and `déçoit` are explicitly guarded in `replace_oit()` to prevent present-tense forms of *-cevoir* from being mutated to *-çait*.
 
-## 13. Current status & remaining work (as of Oct 21, 2026)
+## 13. Current status & remaining work (as of Oct 30, 2026)
 
 - **Structural Normalization**: 100% complete across all 46 Old Testament books (`01_genese` through
   `46_2_maccabees`) with **0 page gaps** in `audit_integrity.py`.
+- **Commentary & Footnote Structural Cleanups**: duplicate verse commentary entries removed, continuation lemmas cleared/re-referenced, embedded ALL-CAPS lemmas extracted, and 43 displaced footnotes moved to `footnotes` arrays with commentary renumbered.
 - **Bible References in Commentary**: 100% complete across all 46 Old Testament books with **0 items to review**.
 - **French Modernization, Typography & Footnote Calls**: 100% complete across all 46 Old Testament books (`modernize_inplace.py all`), including `Jésus-Christ` expansion, footnote punctuation repositioning, space after punctuation, and `S.` expansion.
 - **Footnotes Pipeline (`footnotes.py`)**:

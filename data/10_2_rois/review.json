@@ -24,6 +24,12 @@
    "msg": "Last commentary ends with “etc.”: “… très bien la mort d'Absalon, ℣. 19. 20. 21. etc.” — an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
    "page": 202
   },
+  "10_2_rois/0216/hebrew_in_translation/3ce895e8": {
+   "book_dir": "10_2_rois",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “NUMQUID COMEDIMUS ALIQUID EX REGE, AUT M”: “Avons-nous vécu aux dépens du Roi, ou nous a-t'on fait quelques présents ?…”: commentary or a variant run into the translation?",
+   "page": 216
+  },
   "10_2_rois/0225/no_translation/d71555d1": {
    "book_dir": "10_2_rois",
    "kind": "no_translation",
@@ -65,10 +71,22 @@
    "kind": "no_translation",
    "msg": "Note 6 (℣ 36): latin_quote “BONNI DE GADI.” has no french_translation; the comment starts “Autrement, _Mibahar, fils d'Aharai_. 1 Paralipomènes 11:38.…”: the translation run into the commentary?",
    "page": 262
+  },
+  "10_2_rois/0270/hebrew_in_translation/56937af1": {
+   "book_dir": "10_2_rois",
+   "kind": "hebrew_in_translation",
+   "msg": "“Ou” in the translation of “AUT SEPTEM ANNIS VENIET TIBI FAMES.”: “Ou votre pays sera affligé de la famine pendant sept ans.^{(c)}…”: commentary or a variant run into the translation?",
+   "page": 270
   }
+ },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
  },
  "status": {
   "10_2_rois/0001/period_seam/6526a6a9": "resolved",
+  "10_2_rois/0002/hebrew_in_translation/dc01d501": "resolved",
   "10_2_rois/0005/seam_missing/0004": "resolved",
   "10_2_rois/0006/empty_commentary/6c9b39da": "resolved",
   "10_2_rois/0006/no_translation/8b00505c": "resolved",
@@ -127,6 +145,7 @@
   "10_2_rois/0084/footnote_asterisk/662559ec": "resolved",
   "10_2_rois/0085/footnote_writeout/de48d23b": "resolved",
   "10_2_rois/0085/seam_repeat/0084": "resolved",
+  "10_2_rois/0086/hebrew_in_translation/0a06c724": "resolved",
   "10_2_rois/0087/broken_marker/06bcdf5e": "resolved",
   "10_2_rois/0087/extra_footnotes/bf11c6d4": "resolved",
   "10_2_rois/0087/leading_call/6beee1fc": "resolved",
@@ -166,6 +185,7 @@
   "10_2_rois/0129/seam_repeat/0128": "resolved",
   "10_2_rois/0130/footnote_writeout/732d536c": "resolved",
   "10_2_rois/0130/footnote_writeout/b26eb3ce": "resolved",
+  "10_2_rois/0130/hebrew_in_translation/f30a0d7d": "resolved",
   "10_2_rois/0131/footnote_writeout/e1d3285b": "resolved",
   "10_2_rois/0134/hyphen_cut/8c5444ca": "resolved",
   "10_2_rois/0136/long_translation/711b727c": "resolved",
@@ -228,10 +248,12 @@
   "10_2_rois/0205/long_translation/1d6327dd": "resolved",
   "10_2_rois/0209/period_seam/75180321": "resolved",
   "10_2_rois/0209/seam_repeat/0208": "resolved",
+  "10_2_rois/0210/hebrew_in_translation/2fd4079d": "resolved",
   "10_2_rois/0212/extra_footnotes/c1079c6b": "resolved",
   "10_2_rois/0212/footnote_writeout/3cf69f6b": "resolved",
   "10_2_rois/0212/no_lemma/69b4035c": "resolved",
   "10_2_rois/0212/no_lemma/b755d903": "resolved",
+  "10_2_rois/0216/hebrew_in_translation/3ce895e8": "false_positive",
   "10_2_rois/0217/lemma_no_punct/f314af01": "resolved",
   "10_2_rois/0217/seam_repeat/0216": "resolved",
   "10_2_rois/0218/chapter_heading/19667838": "resolved",
@@ -239,8 +261,10 @@
   "10_2_rois/0221/footnote_writeout/2079e02f": "resolved",
   "10_2_rois/0222/seam_repeat/0221": "resolved",
   "10_2_rois/0225/no_translation/d71555d1": "false_positive",
+  "10_2_rois/0227/hebrew_in_translation/12f4eafb": "resolved",
   "10_2_rois/0230/lowercase_lemma/295280ab": "resolved",
   "10_2_rois/0230/lowercase_lemma/fe97db4b": "resolved",
+  "10_2_rois/0231/hebrew_in_translation/46152f5b": "resolved",
   "10_2_rois/0233/seam_repeat/0232": "resolved",
   "10_2_rois/0235/lowercase_lemma/3c90d1fb": "resolved",
   "10_2_rois/0235/lowercase_lemma/cc7f00d8": "resolved",
@@ -266,8 +290,11 @@
   "10_2_rois/0259/period_seam/eb9840ed": "resolved",
   "10_2_rois/0260/no_translation/04d8a819": "resolved",
   "10_2_rois/0260/no_translation/f06d22ca": "false_positive",
+  "10_2_rois/0261/chapter_ref/acd77328": "resolved",
+  "10_2_rois/0261/chapter_ref/d12451de": "resolved",
   "10_2_rois/0261/hebrew_in_translation/30a63063": "resolved",
   "10_2_rois/0261/hebrew_in_translation/32167fb4": "resolved",
+  "10_2_rois/0261/hebrew_in_translation/ad43c930": "resolved",
   "10_2_rois/0261/no_translation/3cce01af": "false_positive",
   "10_2_rois/0261/no_translation/a0d3dcb0": "false_positive",
   "10_2_rois/0261/no_translation/e54cfa8c": "false_positive",
@@ -283,6 +310,7 @@
   "10_2_rois/0262/seam_missing/0261": "resolved",
   "10_2_rois/0263/long_translation/55e58e37": "resolved",
   "10_2_rois/0268/period_seam/c55d2de2": "resolved",
+  "10_2_rois/0270/hebrew_in_translation/56937af1": "false_positive",
   "10_2_rois/0270/leading_call/52e2a821": "resolved",
   "10_2_rois/0270/no_translation/13c904e3": "resolved",
   "10_2_rois/0270/no_translation/567b2013": "resolved",

@@ -1,5 +1,17 @@
 {
  "false_positives": {
+  "17_tobie/0033/hebrew_in_translation/5ee69251": {
+   "book_dir": "17_tobie",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “MORTUIS, ATQUE OCCISIS SEPULTURAM SOLLIC”: “Avait grand soin d'ensevelir ceux qui étaient morts, ou qui avaient été tués.…”: commentary or a variant run into the translation?",
+   "page": 33
+  },
+  "17_tobie/0058/hebrew_in_translation/77b6d570": {
+   "book_dir": "17_tobie",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “SUPERBIAM NUMQUAM IN TUO SENSU, AUT IN T”: “Ne souffrez jamais que l'orgueil domine dans vos pensées, ou dans vos paroles ; car c'est par l'orgu…”: commentary or a variant run into the translation?",
+   "page": 58
+  },
   "17_tobie/0062/etc_for_et/a8262771": {
    "book_dir": "17_tobie",
    "kind": "etc_for_et",
@@ -13,6 +25,11 @@
    "page": 134
   }
  },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
+ },
  "status": {
   "17_tobie/0024/seam_unclear/0023": "resolved",
   "17_tobie/0028/footnote_asterisk/a7af8929": "resolved",
@@ -24,6 +41,7 @@
   "17_tobie/0032/footnote_writeout/964aff19": "resolved",
   "17_tobie/0032/period_seam/434ec8e8": "resolved",
   "17_tobie/0033/footnote_writeout/3c9783e7": "resolved",
+  "17_tobie/0033/hebrew_in_translation/5ee69251": "false_positive",
   "17_tobie/0033/no_translation/45f10e76": "resolved",
   "17_tobie/0033/seam_repeat/0032": "resolved",
   "17_tobie/0035/footnote_writeout/84f9af88": "resolved",
@@ -46,8 +64,10 @@
   "17_tobie/0047/hyphen_cut/1874bed2": "resolved",
   "17_tobie/0047/long_translation/8902129d": "resolved",
   "17_tobie/0047/lowercase_lemma/439da677": "resolved",
+  "17_tobie/0051/hebrew_in_translation/6e50d746": "resolved",
   "17_tobie/0055/seam_repeat/0054": "resolved",
   "17_tobie/0057/period_seam/a4b44f42": "resolved",
+  "17_tobie/0058/hebrew_in_translation/77b6d570": "false_positive",
   "17_tobie/0059/seam_missing/0058": "resolved",
   "17_tobie/0060/footnote_no_period/8d345fad": "resolved",
   "17_tobie/0060/no_lemma/9a3a5635": "resolved",

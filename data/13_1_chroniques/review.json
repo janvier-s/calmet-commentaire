@@ -6,6 +6,12 @@
    "msg": "Verse 1:22: latin does not end with punctuation: “…Hebal etiam, et Abimaël, et Saba, nec non” (a word lost, or the verse runs on overleaf?)",
    "page": 66
   },
+  "13_1_chroniques/0067/no_translation/24020260": {
+   "book_dir": "13_1_chroniques",
+   "kind": "no_translation",
+   "msg": "Note 5 (℣ 32): latin_quote “FILII AUTEM DADAN, ASSURIM, ET LATUSIM, ET LAOMIM.” has no french_translation; the comment starts “Ces paroles ne sont pas dans l'Hébreu ni dans les Septante, …”: the translation run into the commentary?",
+   "page": 67
+  },
   "13_1_chroniques/0067/no_translation/54d7d645": {
    "book_dir": "13_1_chroniques",
    "kind": "no_translation",
@@ -102,11 +108,35 @@
    "msg": "Note 2 (℣ 5): latin_quote “ELIPHALET, ET NOGA,” has no french_translation; the comment starts “ne sont point nommés, 2 Rois 5:15.…”: the translation run into the commentary?",
    "page": 195
   },
+  "13_1_chroniques/0250/hebrew_in_translation/915217e6": {
+   "book_dir": "13_1_chroniques",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “FERRUM AD CLAVOS JANUARUM, ET AD JUNCTUR”: “David fit provision de fer pour les clous des portes, et pour joindre les ais ou les pierres ensembl…”: commentary or a variant run into the translation?",
+   "page": 250
+  },
   "13_1_chroniques/0261/no_translation/df1900b9": {
    "book_dir": "13_1_chroniques",
    "kind": "no_translation",
    "msg": "Note 2 (℣ 10): latin_quote “SEMEI : LEHETH.” has no french_translation; the comment starts “L'Hébreu ^{(b)} _Semeï, Jabat._ 70. Sémeï, Jéeth.…”: the translation run into the commentary?",
    "page": 261
+  },
+  "13_1_chroniques/0272/hebrew_in_translation/abc8f637": {
+   "book_dir": "13_1_chroniques",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “TAM MAJORES, QUAM MINORES, OMNES SORS ÆQ”: “Ainsi tout se jetait au sort pour diviser également les Offices, soit entre les anciens, ou les plus…”: commentary or a variant run into the translation?",
+   "page": 272
+  },
+  "13_1_chroniques/0278/hebrew_in_translation/00859e78": {
+   "book_dir": "13_1_chroniques",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “MISERUNT SORTES PER VICES SUAS, EX ÆQUO,”: “Ils jetèrent au sort pour chaque classe, sans faire acception de personnes, soit jeunes ou vieux, so…”: commentary or a variant run into the translation?",
+   "page": 278
+  },
+  "13_1_chroniques/0292/hebrew_in_translation/69a50abc": {
+   "book_dir": "13_1_chroniques",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “IN CUNCTIS OPERIBUS DOMINI, ET IN MINIST”: “Soit dans les choses qui regardaient le service du Seigneur, ou dans celles qui regardaient le servi…”: commentary or a variant run into the translation?",
+   "page": 292
   },
   "13_1_chroniques/0296/no_translation/ae1f0e00": {
    "book_dir": "13_1_chroniques",
@@ -121,12 +151,18 @@
    "page": 296
   }
  },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
+ },
  "status": {
   "13_1_chroniques/0063/extra_footnotes/4667755c": "resolved",
   "13_1_chroniques/0063/extra_footnotes/749b292e": "resolved",
   "13_1_chroniques/0066/no_lemma/782208c6": "resolved",
   "13_1_chroniques/0066/verse_no_punct/c07d035f": "false_positive",
   "13_1_chroniques/0067/leading_call/e754a8bf": "resolved",
+  "13_1_chroniques/0067/no_translation/24020260": "false_positive",
   "13_1_chroniques/0067/no_translation/54d7d645": "false_positive",
   "13_1_chroniques/0068/lowercase_lemma/6b842c83": "resolved",
   "13_1_chroniques/0068/lowercase_lemma/f91fc4f8": "resolved",
@@ -147,6 +183,7 @@
   "13_1_chroniques/0081/no_translation/ca70f5b4": "false_positive",
   "13_1_chroniques/0081/seam_repeat/0080": "resolved",
   "13_1_chroniques/0082/no_lemma/1631e5af": "resolved",
+  "13_1_chroniques/0083/hebrew_in_translation/689730a5": "resolved",
   "13_1_chroniques/0083/hyphen_cut/fbb25de0": "resolved",
   "13_1_chroniques/0084/footnote_no_period/718410fa": "resolved",
   "13_1_chroniques/0085/caps_in_commentary/50039c30": "resolved",
@@ -206,6 +243,7 @@
   "13_1_chroniques/0115/lowercase_translation/431b4374": "resolved",
   "13_1_chroniques/0115/stray_underscore/fb9dceee": "resolved",
   "13_1_chroniques/0115/translation_no_punct/43819813": "resolved",
+  "13_1_chroniques/0116/hebrew_in_translation/999bc6b7": "resolved",
   "13_1_chroniques/0117/no_lemma/be27e68c": "resolved",
   "13_1_chroniques/0118/footnote_asterisk/b78ad7d9": "resolved",
   "13_1_chroniques/0119/no_translation/ae30f224": "false_positive",
@@ -235,6 +273,7 @@
   "13_1_chroniques/0131/lowercase_lemma/f091162b": "resolved",
   "13_1_chroniques/0132/extra_footnotes/42580f6f": "resolved",
   "13_1_chroniques/0132/lowercase_lemma/633ac6c0": "resolved",
+  "13_1_chroniques/0133/hebrew_in_translation/92ac91b0": "resolved",
   "13_1_chroniques/0136/long_translation/3e2910cc": "resolved",
   "13_1_chroniques/0136/lowercase_lemma/638376a8": "resolved",
   "13_1_chroniques/0136/lowercase_lemma/a228cb0c": "resolved",
@@ -308,6 +347,7 @@
   "13_1_chroniques/0195/no_translation/6e845725": "false_positive",
   "13_1_chroniques/0196/footnote_writeout/5aa28f8d": "resolved",
   "13_1_chroniques/0197/long_translation/4ad8d629": "resolved",
+  "13_1_chroniques/0198/hebrew_in_translation/59a04149": "resolved",
   "13_1_chroniques/0201/italic_seam/171c413a": "resolved",
   "13_1_chroniques/0204/missing_footnote/0d3bbe68": "resolved",
   "13_1_chroniques/0204/missing_footnote/2288af94": "resolved",
@@ -335,6 +375,7 @@
   "13_1_chroniques/0229/footnote_asterisk/b78ad7d9": "resolved",
   "13_1_chroniques/0229/lemma_no_punct/ccf47904": "resolved",
   "13_1_chroniques/0229/ref_order/eb883759": "resolved",
+  "13_1_chroniques/0232/hebrew_in_translation/d864e6ff": "resolved",
   "13_1_chroniques/0233/missing_start/1c3abaa8": "resolved",
   "13_1_chroniques/0233/period_seam/97e79af3": "resolved",
   "13_1_chroniques/0235/long_translation/d3b60505": "resolved",
@@ -351,6 +392,7 @@
   "13_1_chroniques/0248/long_translation/aa4ad696": "resolved",
   "13_1_chroniques/0248/long_translation/c3d4cf9f": "resolved",
   "13_1_chroniques/0249/footnote_no_period/88a5966f": "resolved",
+  "13_1_chroniques/0250/hebrew_in_translation/915217e6": "false_positive",
   "13_1_chroniques/0250/italic_seam/54cdb5d9": "resolved",
   "13_1_chroniques/0252/footnote_asterisk/662559ec": "resolved",
   "13_1_chroniques/0253/footnote_no_period/65de3a4c": "resolved",
@@ -360,6 +402,7 @@
   "13_1_chroniques/0258/ref_order/68c57189": "resolved",
   "13_1_chroniques/0258/ref_order/ea70658a": "resolved",
   "13_1_chroniques/0258/seam_unclear/0257": "resolved",
+  "13_1_chroniques/0260/hebrew_in_translation/3bc01ee9": "resolved",
   "13_1_chroniques/0261/hebrew_in_translation/e551dd3d": "resolved",
   "13_1_chroniques/0261/long_translation/d4e12a6d": "resolved",
   "13_1_chroniques/0261/no_translation/df1900b9": "false_positive",
@@ -369,9 +412,11 @@
   "13_1_chroniques/0268/footnote_no_period/75920394": "resolved",
   "13_1_chroniques/0271/footnote_writeout/7d363086": "resolved",
   "13_1_chroniques/0272/footnote_no_period/c5b69173": "resolved",
+  "13_1_chroniques/0272/hebrew_in_translation/abc8f637": "false_positive",
   "13_1_chroniques/0274/leading_call/4e30c1f6": "resolved",
   "13_1_chroniques/0276/extra_footnotes/ac801385": "resolved",
   "13_1_chroniques/0277/period_seam/d29c9e2a": "resolved",
+  "13_1_chroniques/0278/hebrew_in_translation/00859e78": "false_positive",
   "13_1_chroniques/0279/seam_repeat/0278": "resolved",
   "13_1_chroniques/0284/period_seam/015ae323": "resolved",
   "13_1_chroniques/0284/seam_missing/0283": "resolved",
@@ -388,6 +433,7 @@
   "13_1_chroniques/0288/seam_missing/0287": "resolved",
   "13_1_chroniques/0289/footnote_asterisk/815261d7": "resolved",
   "13_1_chroniques/0290/period_seam/c49062b3": "resolved",
+  "13_1_chroniques/0292/hebrew_in_translation/69a50abc": "false_positive",
   "13_1_chroniques/0292/seam_missing/0291": "resolved",
   "13_1_chroniques/0295/hyphen_cut/292d92d1": "resolved",
   "13_1_chroniques/0296/long_translation/4de9ec71": "resolved",

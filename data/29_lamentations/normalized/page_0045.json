@@ -67,24 +67,29 @@
       "french_translation": null,
       "french_commentary": "Il est utile d'avoir souffert quelque chose dès sa jeunesse. Les peines, et les afflictions sont aux hommes d'une très grande utilité. Elles abaissent",
       "commentary_id": 4
-    },
-    {
-      "verse_ref": "23",
-      "chapter": 3,
-      "latin_quote": null,
-      "french_translation": null,
-      "french_commentary": "(a) [UNCERTAIN HEBREW] | sonibus : [UNCERTAIN GREEK]",
-      "commentary_id": 5
-    },
-    {
-      "verse_ref": "23",
-      "chapter": 3,
-      "latin_quote": null,
-      "french_translation": null,
-      "french_commentary": "(b) [UNCERTAIN HEBREW] | 70. [UNCERTAIN GREEK]. Édit. Rom. quædam habet admixta ex alienis ver-",
-      "commentary_id": 6
     }
   ],
-  "footnotes": [],
+  "footnotes": [
+    {
+      "marker": "(a)",
+      "text": "[UNCERTAIN HEBREW] | sonibus : [UNCERTAIN GREEK]",
+      "tags": [
+        "hebrew",
+        "greek",
+        "uncertain"
+      ]
+    },
+    {
+      "marker": "(b)",
+      "text": "[UNCERTAIN HEBREW] | 70. [UNCERTAIN GREEK]. Édit. Rom. quædam habet admixta ex alienis ver-",
+      "tags": [
+        "hebrew",
+        "greek",
+        "versions",
+        "latin",
+        "uncertain"
+      ]
+    }
+  ],
   "book_end_marker": null
 }
