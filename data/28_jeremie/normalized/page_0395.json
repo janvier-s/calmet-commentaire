@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 27,
       "latin_quote": null,
       "french_translation": null,
@@ -34,15 +34,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 27,
       "latin_quote": "MITTES EOS AD REGEM EDOM, ETC.",
-      "french_translation": "Vous les enverrez au Roi d'Édom, au Roi de Moab, et aux autres dont les Députés sont venus à Jérusalem.",
-      "french_commentary": "Jérémie exerce ici son office de Prophète des nations. ^{(a)} Ces Ambassadeurs étaient venus en apparence pour complimenter Sédécias sur son nouvel avènement à la couronne ; et dans le vrai pour faire une ligue secrète avec lui contre le Roi de Babylone. ^{(b)} C'est ce qui est insinué ici au verset 9."
+      "french_translation": "Vous les enverrez au Roi d'Édom,",
+      "french_commentary": "au Roi de Moab, et aux autres dont les Députés sont venus à Jérusalem. Jérémie exerce ici son office de Prophète des nations. ^{(a)} Ces Ambassadeurs étaient venus en apparence pour complimenter Sédécias sur son nouvel avènement à la couronne ; et dans le vrai pour faire une ligue secrète avec lui contre le Roi de Babylone. ^{(b)} C'est ce qui est insinué ici au verset 9."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 27,
       "latin_quote": "EGO FECI TERRAM, ET HOMINES,… ET DEDI EAM EI, QUI PLACUIT IN OCULIS MEIS.",
       "french_translation": "C'est moi qui ai créé la terre, et les hommes, et j'ai donné la terre à qui il m'a plu.",
@@ -50,7 +50,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 27,
       "latin_quote": "DEDI TERRAS ISTAS IN MANU NABUCHODONOSOR.",
       "french_translation": "J'ai livré toutes ces terres entre les mains de Nabuchodonosor.",
@@ -59,22 +59,21 @@
   ],
   "footnotes": [
     {
-      "ref": "(a)",
       "text": "Jérémie 1:5. Prophetam in gentibus dedi te.",
       "tags": [
         "verse",
         "latin"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "ref": "(b)",
       "text": "Grot. Menoch. Sanst.",
       "tags": [
         "commentators"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "ref": "(c)",
       "text": "Hieron. in Isai. l. v. c. 23. Legamus Græcorum historias, et maximè eorum qui Assyriorum gentis bella descripsunt, ibique reperiemus post captivitatem Jérusalem, Palæstinos, et Arabas, ac Damascenos, ac deinceps Ægyptios fuisse subversos.",
       "tags": [
         "verse",
@@ -82,7 +81,8 @@
         "latin",
         "explanation",
         "abbrev"
-      ]
+      ],
+      "marker": "(c)"
     }
   ],
   "book_end_marker": null

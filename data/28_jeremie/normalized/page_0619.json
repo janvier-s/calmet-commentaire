@@ -26,23 +26,31 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "15",
+      "verse_ref": 14,
+      "chapter": 49,
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "les laisser faire. L'expression du Prophète est une simple propopée. C'est une espèce de figure, et de fiction, assez ordinaire dans ces occasions."
+    },
+    {
+      "commentary_id": 2,
+      "verse_ref": 15,
       "chapter": 49,
       "latin_quote": "ECCE PARVULUM DEDI TE IN GENTIBUS.",
       "french_translation": "Je vous ai rendu petit parmi les peuples.",
       "french_commentary": "Les Iduméens ne furent jamais un grand peuple. Ils ne sont guère connus dans l'antiquité que par l'Histoire sacrée, et par la liaison qu'ils ont eue parmi les Juifs leurs frères. Quelques-uns traduisent ici par le futur : _Je vous rendrai petit parmi les peuples._ Je vous diminuerai, je vous affaiblirai de telle sorte, que vous ne vous relèverez jamais de votre chute, et que vous serez toujours un peuple très vil, et très méprisé. On sait que depuis la captivité, les Iduméens furent assez peu de chose ; et que depuis les Maccabées, ils furent assujettis aux Juifs, et contraints de recevoir la circoncision, et d'observer la Loi de Moïse. ^{(a)}"
     },
     {
-      "commentary_id": 2,
-      "verse_ref": "16",
+      "commentary_id": 3,
+      "verse_ref": 16,
       "chapter": 49,
       "latin_quote": "QUI HABITAS IN CAVERNIS PETRÆ, ET APPREHENDERE NITERIS ALTITUDINEM COLLIS.",
       "french_translation": "Vous qui habitez dans les creux des rochers, et qui tâchez de gagner le haut des coteaux.",
       "french_commentary": "L'Hébreu ^{(b)} est au féminin : _Idumée, votre orgueil vous a séduit ; vous qui avez votre demeure dans les creux de la roche, et qui occupez le haut de la montagne._ Vous avez cru que la situation de vos demeures vous mettrait à couvert de vos ennemis, et que personne ne pourrait parvenir à la hauteur de vos rochers, et de vos montagnes escarpées. Nous avons déjà vu par saint Jérôme, que toute l'Idumée était remplie de cavernes, où les peuples se retiraient, pour éviter les chaleurs excessives de leur pays. Il y avait aussi dans toutes les montagnes un très grand nombre d'autres, où ils se sauvaient comme dans des forts imprénables, dans les temps de guerre, et d'irruptions de l'ennemi."
     },
     {
-      "commentary_id": 3,
-      "verse_ref": "17",
+      "commentary_id": 4,
+      "verse_ref": 17,
       "chapter": 49,
       "latin_quote": "ERIT IDUMÆA DESERTA.",
       "french_translation": "L'Idumée sera déserte.",
@@ -51,7 +59,6 @@
   ],
   "footnotes": [
     {
-      "ref": "a",
       "text": "Vide Joseph. Antiq. lib. 13. c. 17.",
       "tags": [
         "classical",
@@ -63,14 +70,15 @@
           "fr": "Antiq. lib",
           "original": "Antiquitates Judaicae"
         }
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "ref": "b",
       "text": "שׁכני בחגוי הסלע תפשי מרום גבעה",
       "tags": [
         "hebrew"
-      ]
+      ],
+      "marker": "(b)"
     }
   ],
   "book_end_marker": null

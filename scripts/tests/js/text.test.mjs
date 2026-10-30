@@ -1,7 +1,7 @@
 // The same cases as tests/test_page_text.py: the JS port must match page_text.py.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { italicRuns, toggleItalics, toUpper, parseRef, snippets, findSpans, wordDiff } from "../../review_web/text.js";
+import { italicRuns, toggleItalics, toUpper, cutToNext, parseRef, snippets, findSpans, wordDiff } from "../../review_web/text.js";
 
 const TOGGLE = [
   [["a b c", 2, 3], { text: "a _b_ c", start: 3, end: 4 }],
@@ -103,4 +103,33 @@ test("toUpper returns null when empty, invalid, or already uppercase", () => {
   assert.equal(toUpper("hello", 3, 1), null);
   assert.equal(toUpper("hello", null, 3), null);
   assert.equal(toUpper("hello", 0, null), null);
+});
+
+test("cutToNext cuts selection from translation and prepends with space to commentary", () => {
+  const src = "Je les rassemblerai tous dans la ville de Jérusalem ; je les y conduirai tous ensemble comme à une boucherie générale, afin qu'aucun d'eux n'échappe à ma vengeance. ^{(a)}";
+  const dst = "D'autres prennent le verbe _rassembler_, dans le sens de _faire mourir^{(b)}_. Je les rassemblerai dans la mort, dans le tombeau ; j'en ferai un monceau de morts entassés les uns sur les autres.";
+  const selText = "tous dans la ville de Jérusalem ; je les y conduirai tous ensemble comme à une boucherie générale, afin qu'aucun d'eux n'échappe à ma vengeance. ^{(a)}";
+  const sa = src.indexOf(selText);
+  const sb = sa + selText.length;
+
+  const r = cutToNext(src, sa, sb, dst, false);
+  assert.equal(src.slice(0, r.cutStart) + src.slice(r.cutEnd), "Je les rassemblerai");
+  assert.equal(dst.slice(0, 0) + r.nextInsert + dst.slice(r.nextEnd),
+    "tous dans la ville de Jérusalem ; je les y conduirai tous ensemble comme à une boucherie générale, afin qu'aucun d'eux n'échappe à ma vengeance. ^{(a)} D'autres prennent le verbe _rassembler_, dans le sens de _faire mourir^{(b)}_. Je les rassemblerai dans la mort, dans le tombeau ; j'en ferai un monceau de morts entassés les uns sur les autres.");
+});
+
+test("cutToNext handles null or empty target field without trailing space", () => {
+  const src = "Première partie Deuxième partie";
+  const r1 = cutToNext(src, 16, src.length, "null", true);
+  assert.equal(src.slice(0, r1.cutStart) + src.slice(r1.cutEnd), "Première partie");
+  assert.equal(r1.nextInsert, "Deuxième partie");
+
+  const r2 = cutToNext(src, 0, 15, "", false);
+  assert.equal(src.slice(0, r2.cutStart) + src.slice(r2.cutEnd), "Deuxième partie");
+  assert.equal(r2.nextInsert, "Première partie");
+});
+
+test("cutToNext returns null on empty or whitespace selection", () => {
+  assert.equal(cutToNext("abc def", 3, 4, "xyz", false), null);
+  assert.equal(cutToNext("abc def", 2, 2, "xyz", false), null);
 });

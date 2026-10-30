@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 31,
       "latin_quote": null,
       "french_translation": null,
@@ -34,7 +34,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 31,
       "latin_quote": "CLAMABUNT CUSTODES IN MONTE EPHRAIM : SURGITE ; ET ASCENDAMUS IN SION.",
       "french_translation": "Les gardes crieront sur la montagne d'Éphraïm : Levez-vous, montons en Sion.",
@@ -42,28 +42,28 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 31,
       "latin_quote": "HINNITE CONTRA CAPUT GENTIUM.",
-      "french_translation": "Faites retentir des cris d'allégresse en présence des nations ; à la tête des nations ; dans Babylone, et dans tous les pays où vous avez été menés captifs.",
-      "french_commentary": "Criez à haute voix : ^{(a)} _Sauvez, Seigneur, votre peuple_ ; ou, selon les Septante : ^{(b)} _Le Seigneur a sauvé son peuple_. On lit dans l'Hébreu _hosa_, auquel on ajoute quelquefois _na_ ; _hosa-na_, sauvez, je vous prie. C'est une manière de cri de joie, ou d'exclamation fort usitée parmi les Hébreux, et qui a été reçue dans les prières de l'Église Chrétienne."
+      "french_translation": "Faites retentir des cris d'allégresse en présence des nations ;",
+      "french_commentary": "à la tête des nations ; dans Babylone, et dans tous les pays où vous avez été menés captifs. Criez à haute voix : ^{(a)} _Sauvez, Seigneur, votre peuple_ ; ou, selon les Septante : ^{(b)} _Le Seigneur a sauvé son peuple_. On lit dans l'Hébreu _hosa_, auquel on ajoute quelquefois _na_ ; _hosa-na_, sauvez, je vous prie. C'est une manière de cri de joie, ou d'exclamation fort usitée parmi les Hébreux, et qui a été reçue dans les prières de l'Église Chrétienne."
     }
   ],
   "footnotes": [
     {
-      "ref": "(a)",
       "text": "הושיעה יהוה את עמך",
       "tags": [
         "hebrew"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "ref": "(b)",
       "text": "Ἔσωσεν κύριος τόν λαόν αὑτοῦ. _Ita et Chald._",
       "tags": [
         "greek",
         "versions"
-      ]
+      ],
+      "marker": "(b)"
     }
   ],
   "book_end_marker": null

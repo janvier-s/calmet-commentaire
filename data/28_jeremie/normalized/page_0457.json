@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 32,
       "latin_quote": null,
       "french_translation": null,
@@ -28,15 +28,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 32,
       "latin_quote": "APPENDI EI ARGENTUM, SEPTEM STATERES, ET DECEM ARGENTEOS.",
-      "french_translation": "Je lui en donnai l'argent au poids, dix-sept pièces d'argent ; ou dix-sept sicles, faisant vingt-sept livres onze sols un denier.",
-      "french_commentary": "Il pèse cet argent dans la balance, parce que alors l'argent marqué au coin, n'était pas encore en usage. Le _stater_, que saint Jérôme a mis ici dans le Texte, est le même que le sicle. ^{(b)} _Sept sicles_, et _dix pièces d'argent_, est un pléonasme, au lieu de, _de dix-sept sicles d'argent_."
+      "french_translation": "Je lui en donnai l'argent au poids, dix-sept pièces d'argent ;",
+      "french_commentary": "ou dix-sept sicles, faisant vingt-sept livres onze sols un denier. Il pèse cet argent dans la balance, parce que alors l'argent marqué au coin, n'était pas encore en usage. Le _stater_, que saint Jérôme a mis ici dans le Texte, est le même que le sicle. ^{(b)} _Sept sicles_, et _dix pièces d'argent_, est un pléonasme, au lieu de, _de dix-sept sicles d'argent_."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 32,
       "latin_quote": "SCRIPSI IN LIBRO, ET SIGNAVI, ET ADHIBUI TESTES.",
       "french_translation": "J'en écrivis le contrat, et le cachetai en présence de témoins.",
@@ -45,26 +45,23 @@
   ],
   "footnotes": [
     {
-      "footnote_ref": "a",
       "text": "_Infra_ ℣. 24. _Ecce munitiones exstructæ sunt adversùs civitatem, ut capiatur._",
-      "marker": "a",
+      "marker": "(a)",
       "tags": [
         "verse",
         "latin"
       ]
     },
     {
-      "footnote_ref": "b",
       "text": "אשקלה לו את הכסף שבעה שקלים ועשרה הכסף",
-      "marker": "b",
+      "marker": "(b)",
       "tags": [
         "hebrew"
       ]
     },
     {
-      "footnote_ref": "c",
       "text": "_Demosthen. contra Phormion._ ὁ'τας ἀποδίδωσι πολλὲς παρίστανται μάρτυρες, ἵνα ὁ παρ' αὐτ. δικάιος εἶναι. Ο' συμβόλαια.",
-      "marker": "c",
+      "marker": "(c)",
       "tags": [
         "greek",
         "classical"

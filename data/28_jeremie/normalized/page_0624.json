@@ -32,7 +32,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "23",
+      "verse_ref": 23,
       "chapter": 49,
       "latin_quote": null,
       "french_translation": null,
@@ -40,15 +40,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 49,
       "latin_quote": "DAMASCUS VERSA EST IN FUGAM… (*. 25.) QUOMODO DERELIQUERUNT CIVITATEM LAUDABILEM ?",
-      "french_translation": "Damas fuit de toutes parts… Comment a-t'on abandonné cette ville si belle ? Comment les habitants de Damas ont-ils quitté une ville si belle, si délicieuse ? Pourquoi ont-ils pris la fuite devant Nabuchodonosor ? Que ne l'attendaient-ils de pied ferme ?",
-      "french_commentary": "L'Hébreu, ^{(a)} les Septante, ^{(b)} et le Caldéen lisent avec une négation : _Pourquoi ne l'a-t'on pas rétabli cette ville si célèbre ? Pourquoi ne l'a-t'on pas épargnée, et conservée en son entier ?_ Ou bien ; _Pourquoi ne l'a-t'on pas démolir ?_ Ou : _Pourquoi ne l'a-t'on pas livrée au vainqueur, sans s'opiniâtrer à la défendre, et à l'exposer par-là à souffrir tout ce que les Lois de la guerre permettent dans ces occasions ?_ La fuite favorise assez ce dernier sens."
+      "french_translation": "Damas fuit de toutes parts… Comment a-t'on abandonné cette ville si belle ?",
+      "french_commentary": "Comment les habitants de Damas ont-ils quitté une ville si belle, si délicieuse ? Pourquoi ont-ils pris la fuite devant Nabuchodonosor ? Que ne l'attendaient-ils de pied ferme ? L'Hébreu, ^{(a)} les Septante, ^{(b)} et le Caldéen lisent avec une négation : _Pourquoi ne l'a-t'on pas rétabli cette ville si célèbre ?_ Ou bien ; _Pourquoi ne l'a-t'on pas épargnée_, et conservée en son entier ? Pourquoi ne l'a-t'on pas démolir ? Ou : Pourquoi ne l'a-t'on pas livrée au vainqueur, sans s'opiniâtrer à la défendre, et à l'exposer par-là à souffrir tout ce que les Lois de la guerre permettent dans ces occasions ? La fuite favorise assez ce dernier sens."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 49,
       "latin_quote": "OMNES VIRI PRÆLII CONTICESCENT.",
       "french_translation": "Tous ses hommes de guerre seront dans un profond silence.",
@@ -56,7 +56,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "25",
+      "verse_ref": 27,
       "chapter": 49,
       "latin_quote": "SUCCENDAM IGNEM IN MURO DAMASCI, ET DE-",
       "french_translation": null,
@@ -65,19 +65,15 @@
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "footnote_ref": "a",
       "text": "איך לא עזבה עיר תהלה",
-      "marker": "a",
+      "marker": "(a)",
       "tags": [
         "hebrew"
       ]
     },
     {
-      "footnote_id": 2,
-      "footnote_ref": "b",
       "text": "l. Πῶς οὐχὶ κατέλιπεν πόλιν αἰνετήν;",
-      "marker": "b",
+      "marker": "(b)",
       "tags": [
         "greek"
       ]

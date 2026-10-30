@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 44,
       "latin_quote": null,
       "french_translation": null,
@@ -34,15 +34,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 44,
       "latin_quote": "CONFLATA EST INDIGNATIO MEA.",
-      "french_translation": "Ma colère s'est allumée. L'Hébreu : ^{(a)} Ma colère est tombée comme la pluie. Elle a coulé, et a distillé goutte à goutte. Voyez ci-devant, Chapitre XLII. 18.",
-      "french_commentary": null
+      "french_translation": "Ma colère s'est allumée.",
+      "french_commentary": "L'Hébreu : ^{(a)} _Ma colère est tombée comme la pluie_. Elle a coulé, et a distillé goutte à goutte. Voyez ci-devant, Chapitre XLII. 18."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 44,
       "latin_quote": "SACRIFICANDO DIIS ALIENIS IN TERRA ÆGYPTI.",
       "french_translation": "En sacrifiant à des Dieux étrangers dans l'Égypte.",
@@ -51,12 +51,12 @@
   ],
   "footnotes": [
     {
-      "footnote_id": "a",
       "text": "נפתה וחמתי ואפי καὶ ἐτάκη ὁ θυμός μου.",
       "tags": [
         "hebrew",
         "greek"
-      ]
+      ],
+      "marker": "(a)"
     }
   ],
   "book_end_marker": null

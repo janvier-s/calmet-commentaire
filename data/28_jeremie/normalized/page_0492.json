@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 36,
       "latin_quote": null,
       "french_translation": null,
@@ -34,7 +34,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 36,
       "latin_quote": "SI FORTE CADAT ORATIO EORUM IN CONSPECTU DOMINI.",
       "french_translation": "Pour voir s'ils prosterneront leur humble prière devant le Seigneur.",
@@ -42,25 +42,22 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 36,
       "latin_quote": "IN ANNO QUINTO IOAKIM, IN MENSE NONO PRÆDICAVERUNT JEJUNIUM.",
-      "french_translation": null,
-      "french_commentary": "La cinquième année du Roi Joakim, ^{(e)} au neuvième mois, on publia un jeûne, pour quelque cas extraordinaire ; car les jeûnes marqués par la Loi, ne se publiaient point. On ignore le motif"
+      "french_translation": "La cinquième année du Roi Joakim, ^{(e)} au neuvième mois, on publia un jeûne,",
+      "french_commentary": "pour quelque cas extraordinaire ; car les jeûnes marqués par la Loi, ne se publiaient point. On ignore le motif"
     }
   ],
   "footnotes": [
     {
-      "footnote_number": null,
-      "footnote_symbol": null,
       "text": "אולי תפל תחנתם לפני יהוה",
       "tags": [
         "hebrew"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_number": null,
-      "footnote_symbol": null,
       "text": "_Homer. Iliad. ix._\nΚαὶ γάρ τε Λιταί εἰσι Διὸς κῦραι μεγάλου\nχωλαί, ῥυσαί τε, παραβλῶπές τ’ ὀφθαλμώ.",
       "tags": [
         "greek",
@@ -72,33 +69,31 @@
           "fr": "Iliad",
           "original": "Ilias"
         }
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "footnote_number": null,
-      "footnote_symbol": null,
       "text": "70. Ἴσως ἐπιπέσῃ ἔλεος αὐτῶν ἐνώπιον Κυρίου.",
       "tags": [
         "greek",
         "versions"
-      ]
+      ],
+      "marker": "(c)"
     },
     {
-      "footnote_number": null,
-      "footnote_symbol": null,
       "text": "2 Timothée 2:9.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(d)"
     },
     {
-      "footnote_number": null,
-      "footnote_symbol": null,
       "text": "L'Édition Romaine des Septante porte la huitième année, d'autres la cinquième.",
       "tags": [
         "versions",
         "explanation"
-      ]
+      ],
+      "marker": "(e)"
     }
   ],
   "book_end_marker": null

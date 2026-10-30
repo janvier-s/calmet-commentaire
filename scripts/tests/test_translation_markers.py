@@ -14,5 +14,11 @@ def test_ou_is_a_standalone_word():
     assert A.translation_markers("Il a beaucoup marché.") == []
 
 
+def test_cest_a_dire():
+    assert A.translation_markers("Car c'est la Pâque, c'est-à-dire, le passage du Seigneur.") == ["c'est-à-dire"]
+    assert A.translation_markers("Elle appela son fils Ben-oni ; c’est-à-dire, le fils de ma douleur.") == ["c’est-à-dire"]
+    assert A.translation_markers("Abarim, c'est à dire, des passages.") == ["c'est à dire"]
+
+
 def test_markers_are_in_reading_order_without_repeats():
     assert A.translation_markers("Ou, selon l'hébreu, ou selon les Septante.") == ["Ou", "l'hébreu", "Septante"]

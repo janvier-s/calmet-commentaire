@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 39,
       "latin_quote": null,
       "french_translation": null,
@@ -34,15 +34,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 39,
       "latin_quote": "OCULOS SEDECIÆ ERUIT.",
-      "french_translation": "Il fit arracher les yeux à Sédécias, après avoir fait mourir à ses yeux tout ce qu'il avait de plus cher.",
-      "french_commentary": "Ainsi se vérifia la Prophétie d'Ezechiel, ^{(b)} qui portait qu'il serait conduit à Babylone, et qu'il ne la verrait point : _Abducam eum in Babylonem, in terram Chaldæorum, et ipsam non videbit, ibique morietur._ Les Juifs célèbrent encore à présent un jeune solennel en mémoire de ce malheur de Sédécias."
+      "french_translation": "Il fit arracher les yeux à Sédécias,",
+      "french_commentary": "après avoir fait mourir à ses yeux tout ce qu'il avait de plus cher. Ainsi se vérifia la Prophétie d'Ezechiel, ^{(b)} qui portait qu'il serait conduit à Babylone, et qu'il ne la verrait point : _Abducam eum in Babylonem, in terram Chaldæorum, et ipsam non videbit, ibique morietur._ Les Juifs célèbrent encore à présent un jeune solennel en mémoire de ce malheur de Sédécias."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 39,
       "latin_quote": "DOMUM VULGI SUCCENDERUNT.",
       "french_translation": "Ils brûlèrent les maisons de tout le peuple ; toute la ville de Jérusalem.",
@@ -50,7 +50,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 39,
       "latin_quote": "RELIQUIAS POPULI QUÆ REMANSERANT IN CIVITATE.",
       "french_translation": "Nabuzardan transféra à Babylone ceux d'entre le peuple qui étaient demeurés à Jérusalem ;",
@@ -58,7 +58,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 39,
       "latin_quote": "NABUZARDAN MAGISTER MILITUM.",
       "french_translation": "Nabuzardan Général de l'armée des Caldéens.",
@@ -67,43 +67,43 @@
   ],
   "footnotes": [
     {
-      "reference": "a",
       "text": "Daniel 6:7 et 9:17.",
       "tags": [
         "verse",
         "old-ref"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "reference": "b",
       "text": "Ézéchiel 12:13.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "reference": "c",
       "text": "את בית עם 70. _Tēs oikias tū laū._",
       "tags": [
         "hebrew",
         "versions"
-      ]
+      ],
+      "marker": "(c)"
     },
     {
-      "reference": "d",
       "text": "Sanct. Menoch. Vide Adrichom. tit. Forum sal. n. 430.",
       "tags": [
         "commentators",
         "latin",
         "abbrev"
-      ]
+      ],
+      "marker": "(d)"
     },
     {
-      "reference": "e",
       "text": "רב טבחים",
       "tags": [
         "hebrew"
-      ]
+      ],
+      "marker": "(e)"
     }
   ],
   "book_end_marker": null

@@ -7,8 +7,8 @@
     {
       "verse_number": 2,
       "chapter": 4,
-      "latin": "Filii Sion inclyti, et amicti auro primo : quomodo reputati sunt in vasa testea, opus manuum figuli !",
-      "french": "Comment les enfants de Sion qui étaient si éclatants, et couverts de l'or le plus pur, ont-ils été traités comme des vases de terre, comme l'ouvrage des mains du potier ?",
+      "latin": "Beth.\nFilii Sion inclyti, et amicti auro primo : quomodo reputati sunt in vasa testea, opus manuum figuli !",
+      "french": "Beth.\nComment les enfants de Sion qui étaient si éclatants, et couverts de l'or le plus pur, ont-ils été traités comme des vases de terre, comme l'ouvrage des mains du potier ?",
       "annotations": null
     }
   ],
@@ -23,7 +23,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 1,
       "chapter": 4,
       "latin_quote": "DISPERSI SUNT LAPIDES SANCTUARII IN CAPITE OMNIUM PLATEARUM ?",
       "french_translation": "Comment les pierres du Sanctuaire ont-elles été dispersées au coin de toutes les rues ?",
@@ -31,59 +31,65 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 4,
       "latin_quote": "FILII SION INCLYTI, ET AMICTI AURO PRIMO, QUOMODO REPUTATI SUNT IN VASA TESTEA ?",
       "french_translation": "Comment les enfants de Sion, qui étaient si éclatants, et couverts de l'or le plus pur, ont-ils été traités comme des vases de terre ?",
-      "french_commentary": "Ils ont été méprisés, cassés, dissipés comme des vases d'argile. L'Hébreu : ^{(f)} _Les fils de Sion précieux, comparables à l'or de Phaz ;_ à l'or le plus pur, et le plus exquis. Nous croyons que c'est l'or du Phase dans la Colchide. Voyez _Genèse 2:11._ Ces jeunes hommes, autrefois si superbement vêtus, qui étaient tout brillants d'or, etc."
+      "french_commentary": "Ils ont été méprisés, cassés, dissipés comme des vases d'argile. L'Hébreu : ^{(f)} _Les fils de Sion précieux, comparables à l'or de Phaz ;_ à l'or le plus pur, et le plus exquis. Nous croyons que c'est l'or du Phase dans la Colchide. Voyez _Genèse 2:11._ Ces jeunes hommes, autrefois si superbement vêtus, qui étaient tout brillants d'or, et"
     }
   ],
   "footnotes": [
     {
-      "fn_id": "(a)",
+      "fn_id": "^{(a)}",
       "text": "Ita Theodoret.",
       "tags": [
         "fathers"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "fn_id": "(b)",
+      "fn_id": "^{(b)}",
       "text": "Grot. Vat.",
       "tags": [
         "commentators",
         "abbrev"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "fn_id": "(c)",
+      "fn_id": "^{(c)}",
       "text": "Chald. Munst. Sanct. Pisc.",
       "tags": [
         "versions",
         "commentators"
-      ]
+      ],
+      "marker": "(c)"
     },
     {
-      "fn_id": "(d)",
+      "fn_id": "^{(d)}",
       "text": "מני צררו ויכוה וישנה הכתם הטוב",
       "tags": [
         "hebrew"
-      ]
+      ],
+      "marker": "(d)"
     },
     {
-      "fn_id": "(e)",
+      "fn_id": "^{(e)}",
       "text": "Πῶς ἀμαυρωθήσεται τὸ χρυσίον, ἀλλοιωθήσεται τὸ ἀργύριον τὸ ἀγαθόν.",
       "tags": [
         "greek"
-      ]
+      ],
+      "marker": "(e)"
     },
     {
-      "fn_id": "(f)",
+      "fn_id": "^{(f)}",
       "text": "בני ציון היקרים המסלאים בפז 70. Υἱοὶ Σιὼν οἱ τίμιοι οἱ ἐπηρμένοι ἐν χρυσίῳ.",
       "tags": [
         "hebrew",
         "greek",
         "versions"
-      ]
+      ],
+      "marker": "(f)"
     }
   ],
   "book_end_marker": null

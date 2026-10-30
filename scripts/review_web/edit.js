@@ -2,6 +2,7 @@
 import { S, api, ask, hooks, nav, renderPage, toast, loadPage } from "./app.js";
 import { Field } from "./field.js";
 import { icon } from "./icons.js";
+import { cutToNext } from "./text.js";
 
 const $ = (id) => document.getElementById(id);
 export const INT_FIELDS = new Set(["verse_number", "commentary_id", "verse_ref", "chapter_number", "chapter"]);
@@ -204,10 +205,31 @@ const selected = () => {
 const copySel = async (f, [a, b]) => {
   try { await navigator.clipboard.writeText(f.text.slice(a, b)); return true; } catch (e) { toast("Could not copy"); return false; }
 };
+const nextField = (f) => {
+  const list = extra.list && extra.list().includes(f) ? extra.list() : S.fields.map((x) => x.field);
+  const prose = list.filter((x) => !x.el.classList.contains("short"));
+  const i = prose.indexOf(f);
+  return i >= 0 && i + 1 < prose.length ? prose[i + 1] : null;
+};
 const SEL_TOOLS = [
   ["I", "Italics (⌘I)", (f) => f.toggleItalic(), "it-btn", null],
   ["TT", "Convert to uppercase", (f, sel) => f.toUpperCase(sel), "tt-btn", null],
   ["Cut", "Cut the selection", async (f, sel) => { if (await copySel(f, sel)) f.edit(sel[0], sel[1], ""); }, "", "cut"],
+  ["⇥", "Cut the selection and prepend it to the next field", (f, sel) => {
+    if (f.el.dataset.path === "commentary/0/latin_quote"
+        && !S.fields.some((x) => x.path.join("/") === "commentary/0/french_translation")) {
+      hooks.collect();
+      S.reveal.add("commentary/0/french_translation");
+      renderPage();
+      f = S.fields.find((x) => x.path.join("/") === "commentary/0/latin_quote").field;
+    }
+    const next = nextField(f);
+    if (!next) { toast("No next field"); return; }
+    const r = cutToNext(f.text, sel[0], sel[1], next.text, next.isNull());
+    if (!r) return;
+    f.edit(r.cutStart, r.cutEnd, "");
+    next.edit(0, r.nextEnd, r.nextInsert);
+  }, "", null],
   ["Copy", "Copy the selection", async (f, sel) => { if (await copySel(f, sel)) toast("Copied"); }, "", "copy"],
   ["Spelling", "Add the selection to the SPELLING list in the notes file", async (f, [a, b]) => {
     const r = await api("/api/note", { section: "SPELLING", text: f.text.slice(a, b) });

@@ -1941,6 +1941,18 @@ RX_NUL_NE_FAIT = re.compile(r"\b(Nul\s+ne\s+)fait(\s+(?:ce\s+qui|ce\s+que|si\b|q
 RX_ON_NE_FAIT = re.compile(r"\b((?:[Oo]n|[Ii]l|[Ee]lle)\s+ne\s+)fait(\s+(?:que\s+trop|pas\s+précisément|point\b|ni\s+le\b|comment\b|quel\b|quelle\b|quels\b|quelles\b))")
 RX_ON_FAIT_ADV = re.compile(r"(?<!-t')(?<!-t-)(?<!-)\b([Oo]n|l'on|L'on)\s+fait(\s+(?:d'ailleurs\b|certainement\b|indubitablement\b|pourtant\b|très\s+peu\b|par\s+l'Histoire\b|par\s+Joseph\b))")
 
+# 4b. Contextual OCR Long-S in Future Verb Forms (ferai -> serai, feront -> seront, etc.)
+RX_NE_VOUS_FERAI = re.compile(r"\b([Nn]e\s+vous\s+)ferai(-je\b)")
+RX_JE_FERAI_AVEC = re.compile(r"\b([Jj]e\s+)ferai(\s+avec\s+vous\b(?!\s+(?:alliance|une\s+alliance|un\s+pacte)))")
+RX_JE_FERAI_PRED = re.compile(r"\b([Jj]e\s+)ferai(\s+(?:dans\s+votre\s+bouche|leur\s+Dieu|votre\s+Dieu|bien\s+aise|agréable|fidèle|touché|assise|ta\s+mort|ta\s+ruine|à\s+l'égard|comme\s+(?:un|une)\b))")
+RX_FERAI_PRINCE = re.compile(r"\b([Ff])erai(-je\s+votre\s+Prince\b)")
+RX_JE_NE_FERAI = re.compile(r"\b([Jj]e\s+ne\s+)ferai(\s+plus\s+votre\s+Dieu\b)")
+RX_FERONT_PRED = re.compile(r"\b([Ff])eront(\s+(?:circoncis|au\s+Seigneur|mon\s+peuple|savants|point\s+agréables|comme\s+la\b|rassemblés|enterrés|point\s+vaines|point\s+pleurés|restés|desséchés|dispersés|chassés|enveloppées|point\s+montés|toujours\s+aussi\s+chers|appelés|assis|comblés\b))")
+RX_FEREZ_PRED = re.compile(r"\b([Ff])erez(\s+(?:point\s+obligé|mon\s+peuple|aplanie\b))")
+RX_FERAIT_MORT = re.compile(r"\b([Ff])erait(\s+morte?\s+de\s+soif\b)")
+RX_FERAIENT_AVEC = re.compile(r"\b(qui\s+)feraient(\s+avec\s+lui\b)")
+RX_FUIS_TOMBEE = re.compile(r"\b(ce\s+que\s+je\s+)fuis(\s+tombée\b)")
+
 RX_O_TARGETS = re.compile(r"\bO\s+(Dieu|Seigneur|Jésus|Christ|Sauveur|Père|Roi|Monarque|Créateur|Maître|Prince|Pontife|Pasteur|Soleil|Terre|Ciel|Cieux|Mort|Mortels|Hommes|Génération|Vierge|Marie|Patrie|Jérusalem|Sion|Béthel|Israël|Jacob|Juda|Éphraïm|Rome|Tyre|Babel|Babylone|Monsieur|Monseigneur|Chrétien|Chrétiens|Âme|mon\s+Dieu|mon\s+Seigneur|mon\s+âme|mon\s+cher|mon\s+frère|mon\s+fils|mon\s+peuple|ma\s+patrie|notre\s+Dieu|mes\s+frères|mes\s+enfants|vous\b|toi\b|homme\b|femme\b|prince\b|roi\b|peuple\b|pasteur\b|mort\b|mortel\b|mortels\b|malheureux\b|aveugle\b|insensé\b|insensés\b|race\b|si\b|combien\b|qu\'il\b|qu\'elle\b|qu\'ils\b|qu\'elles\b)", re.I)
 RX_O_PUNCT = re.compile(r"\bO\s*([!\?])")
 
@@ -2866,6 +2878,18 @@ RX_MISC_ARCHAIC = re.compile(r"(?<![A-Za-zÀ-ÿ0-9_])(" + "|".join(re.escape(k) 
 # 6. Contextual par tout -> partout
 RX_PAR_TOUT = re.compile(r"\b([Pp]ar)\s+tout\b")
 RX_PAR_TOUT_KEEP = re.compile(r"^\s+(?:le\b|ce\b|cet\b|ceci\b|cela\b|son\s+[a-zA-ZÀ-ÿ]+|un\s+[a-zA-ZÀ-ÿ]+|l[\x27\x92\u2019]|Israël\b|homme\b)", re.I)
+RX_PAR_TOUT_ADVERBIAL_EXCEPTIONS = re.compile(
+    r"^\s+(?:l[\x27\x92\u2019](?:Évangile|effroi|ordre|harmonie)\b|"
+    r"le\s+(?:ménage|désintéressement|feu)\b|"
+    r"son\s+(?:injustice|horreur|attachement)\b|"
+    r"un\s+(?:pain\s+entier|et\s+avant)\b)",
+    re.I
+)
+
+# 6b. Possédez participle / noun -> Possédés / possédés
+RX_POSSEDEZ_PARTICIPLE = re.compile(r"\b([Oo]u|[Ee]t)\s+possédez\s+par\b")
+RX_POSSEDEZ_CAP = re.compile(r"\bPossédez\s+par\s+leur\s+affection\b")
+RX_POSSEDEZ_NOUN = re.compile(r"\b(vrais|les)\s+possédez\b", re.I)
 
 # 7. Expansion of abbreviations: l'Heb. -> l'Hébreu, Chap. -> Chapitre
 RX_LHEB = re.compile(
@@ -3339,6 +3363,57 @@ def modernize_text(text):
         return m.group(1) + " " + ("sait" if m.group(0).split()[1] == "fait" else "Sait") + m.group(2)
     text = RX_ON_FAIT_ADV.sub(sub_on_fait_adv, text)
 
+    # 5h.3b ferai/feront/ferez/ferait -> serai/seront/serez/serait/suis
+    def sub_ne_vous_ferai(m):
+        nonlocal count; count += 1
+        return m.group(1) + "serai" + m.group(2)
+    text = RX_NE_VOUS_FERAI.sub(sub_ne_vous_ferai, text)
+
+    def sub_je_ferai_avec(m):
+        nonlocal count; count += 1
+        return m.group(1) + "serai" + m.group(2)
+    text = RX_JE_FERAI_AVEC.sub(sub_je_ferai_avec, text)
+
+    def sub_je_ferai_pred(m):
+        nonlocal count; count += 1
+        return m.group(1) + "serai" + m.group(2)
+    text = RX_JE_FERAI_PRED.sub(sub_je_ferai_pred, text)
+
+    def sub_ferai_prince(m):
+        nonlocal count; count += 1
+        return ("S" if m.group(1) == "F" else "s") + "erai" + m.group(2)
+    text = RX_FERAI_PRINCE.sub(sub_ferai_prince, text)
+
+    def sub_je_ne_ferai(m):
+        nonlocal count; count += 1
+        return m.group(1) + "serai" + m.group(2)
+    text = RX_JE_NE_FERAI.sub(sub_je_ne_ferai, text)
+
+    def sub_feront_pred(m):
+        nonlocal count; count += 1
+        return ("S" if m.group(1) == "F" else "s") + "eront" + m.group(2)
+    text = RX_FERONT_PRED.sub(sub_feront_pred, text)
+
+    def sub_ferez_pred(m):
+        nonlocal count; count += 1
+        return ("S" if m.group(1) == "F" else "s") + "erez" + m.group(2)
+    text = RX_FEREZ_PRED.sub(sub_ferez_pred, text)
+
+    def sub_ferait_mort(m):
+        nonlocal count; count += 1
+        return ("S" if m.group(1) == "F" else "s") + "erait" + m.group(2)
+    text = RX_FERAIT_MORT.sub(sub_ferait_mort, text)
+
+    def sub_feraient_avec(m):
+        nonlocal count; count += 1
+        return m.group(1) + "seraient" + m.group(2)
+    text = RX_FERAIENT_AVEC.sub(sub_feraient_avec, text)
+
+    def sub_fuis_tombee(m):
+        nonlocal count; count += 1
+        return m.group(1) + "suis" + m.group(2)
+    text = RX_FUIS_TOMBEE.sub(sub_fuis_tombee, text)
+
     # 5h.4 Vocative O -> Ô
     def sub_o_vocative(m):
         nonlocal count; count += 1
@@ -3581,12 +3656,27 @@ def modernize_text(text):
     def sub_par_tout(m):
         nonlocal count
         after = text[m.end():]
-        if RX_PAR_TOUT_KEEP.match(after):
+        if RX_PAR_TOUT_KEEP.match(after) and not RX_PAR_TOUT_ADVERBIAL_EXCEPTIONS.match(after):
             return m.group(0)
         count += 1
         src = m.group(1)
         return "Partout" if src[0].isupper() else "partout"
     text = RX_PAR_TOUT.sub(sub_par_tout, text)
+
+    def sub_possedez_part(m):
+        nonlocal count; count += 1
+        return f"{m.group(1)} possédés par"
+    text = RX_POSSEDEZ_PARTICIPLE.sub(sub_possedez_part, text)
+
+    def sub_possedez_cap(m):
+        nonlocal count; count += 1
+        return "Possédés par leur affection"
+    text = RX_POSSEDEZ_CAP.sub(sub_possedez_cap, text)
+
+    def sub_possedez_noun(m):
+        nonlocal count; count += 1
+        return f"{m.group(1)} possédés"
+    text = RX_POSSEDEZ_NOUN.sub(sub_possedez_noun, text)
 
     def sub_misc_archaic(m):
         nonlocal count

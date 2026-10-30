@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "19",
+      "verse_ref": 19,
       "chapter": 46,
       "latin_quote": "VASA TRANSMIGRATIONIS FAC TIBI.",
       "french_translation": "Ô fille de l'Égypte, préparez-vous à aller en captivité.",
@@ -28,7 +28,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "20",
+      "verse_ref": 20,
       "chapter": 46,
       "latin_quote": "VITULA ELEGANS ÆGYPTUS ;… STIMULATOR AB AQUILONE VENIET EI.",
       "french_translation": "L'Égypte est comme une belle génisse, il lui viendra du pays du nord un homme qui la piquera avec l'éguillon.",
@@ -36,27 +36,25 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "21",
+      "verse_ref": 21,
       "chapter": 46,
       "latin_quote": "MERCENARII EJUS.",
-      "french_translation": "Les soldats étrangers qu'elle entretenait, ont pris la fuite comme les autres.",
-      "french_commentary": "Apriès Roi d'Égypte, entretenait des troupes étrangères. Il avait environ trente mille Cariens, et Ioniens, qui combattirent pour lui contre Amasis, près de la ville de Memphis : ^{(b)} mais ils furent vaincus, et Apriès pris prisonnier. C'est ce que nous apprenons d'Hérodote, qui, comme on l'a déjà remarqué, ne connaissait point l'histoire de Nabuchodonosor, ni son expédition contre"
+      "french_translation": "Les soldats étrangers",
+      "french_commentary": "qu'elle entretenait, ont pris la fuite comme les autres. Apriès Roi d'Égypte, entretenait des troupes étrangères. Il avait environ trente mille Cariens, et Ioniens, qui combattirent pour lui contre Amasis, près de la ville de Memphis : ^{(b)} mais ils furent vaincus, et Apriès pris prisonnier. C'est ce que nous apprenons d'Hérodote, qui, comme on l'a déjà remarqué, ne connaissait point l'histoire de Nabuchodonosor, ni son expédition contre"
     }
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "footnote_marker": "(a)",
       "text": "(_a_) Ézéchiel 12:3-7.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": 2,
-      "footnote_marker": "(b)",
       "text": "(_b_) _Herodot. lib._ 2. _c._ 163.",
-      "tags": []
+      "tags": [],
+      "marker": "(b)"
     }
   ],
   "book_end_marker": null

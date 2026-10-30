@@ -44,7 +44,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "10",
+      "verse_ref": 10,
       "chapter": 41,
       "latin_quote": null,
       "french_translation": null,
@@ -52,15 +52,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 41,
       "latin_quote": "AUDIVIT AUTEM JOHANAN, ET OMNES PRINCIPES.",
-      "french_translation": "Johanan, et tous les autres Officiers ayant appris ce qu'avait fait Ismaël. Ces Officiers n'étaient point dans Masphath, lorsque tout cela arriva. Ils avaient avec eux quelques troupes, avec lesquelles ils poursuivirent Ismaël.",
-      "french_commentary": null
+      "french_translation": "Johanan, et tous les autres Officiers ayant appris",
+      "french_commentary": "ce qu'avait fait Ismaël. Ces Officiers n'étaient point dans Masphath, lorsque tout cela arriva. Ils avaient avec eux quelques troupes, avec lesquelles ils poursuivirent Ismaël."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "12",
+      "verse_ref": 12,
       "chapter": 41,
       "latin_quote": "AD AQUAS MULTAS QUÆ SUNT IN GABAON.",
       "french_translation": "Ils le trouvèrent auprès des grandes eaux qui sont à Gabaon.",
@@ -68,7 +68,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "12",
+      "verse_ref": 14,
       "chapter": 41,
       "latin_quote": "REVERSUS EST OMNIS POPULUS.",
       "french_translation": "Tous ceux qui avaient été",
@@ -77,13 +77,12 @@
   ],
   "footnotes": [
     {
-      "footnote_number": null,
-      "footnote_symbol": "(a)",
       "text": "2 Rois 2:13. _Occurrerunt eis juxta piscinam Gabaon._",
       "tags": [
         "verse",
         "latin"
-      ]
+      ],
+      "marker": "(a)"
     }
   ],
   "book_end_marker": null

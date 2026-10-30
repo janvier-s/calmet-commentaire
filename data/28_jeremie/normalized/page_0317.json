@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 20,
       "latin_quote": null,
       "french_translation": null,
@@ -34,15 +34,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 20,
       "latin_quote": "DABO TE IN PAVOREM.",
-      "french_translation": "Je vous ferai sortir de votre pays, suivant l'étymologie rapportée au verset précédent ; car c'est le terme Magor dans l'Hébreu ^{(a)} aux deux endroits.",
-      "french_commentary": null
+      "french_translation": "Je vous remplirai de frayeur ;",
+      "french_commentary": "ou, je vous ferai sortir de votre pays, suivant l'étymologie rapportée au verset précédent ; car c'est le terme _Magor_ dans l'Hébreu ^{(a)} aux deux endroits."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 20,
       "latin_quote": "QUIBUS PROPHETASTI MENDACIUM.",
       "french_translation": "Vos amis, à qui vous avez prophétisé le mensonge.",
@@ -50,7 +50,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 20,
       "latin_quote": "SEDUXISTI ME, DOMINE, ET SEDUCTUS SUM.",
       "french_translation": "Vous m'avez séduit, Seigneur, et j'ai été séduit.",
@@ -59,21 +59,21 @@
   ],
   "footnotes": [
     {
-      "footnote_id": "a",
-      "text": "(a) [UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]",
+      "text": "[UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]",
       "tags": [
         "versions",
         "uncertain"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": "b",
-      "text": "(b) Jérémie 1:18. Ego quippe dedi te hodie in civitatem munitam, et in columnam ferream, et in murum æreum super omnem terram. Voyez aussi Chapitre XVI. 27.",
+      "text": "Jérémie 1:18. Ego quippe dedi te hodie in civitatem munitam, et in columnam ferream, et in murum æreum super omnem terram. Voyez aussi Chapitre XVI. 27.",
       "tags": [
         "verse",
         "latin",
         "abbrev"
-      ]
+      ],
+      "marker": "(b)"
     }
   ],
   "book_end_marker": null

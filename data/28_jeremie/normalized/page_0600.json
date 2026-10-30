@@ -14,15 +14,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 48,
-      "latin_quote": "MA. O vigne de Sebama, je vous pleurerai, comme j'ai pleuré Jazer.",
-      "french_translation": null,
+      "latin_quote": "MA.",
+      "french_translation": "O vigne de Sebama, je vous pleurerai, comme j'ai pleuré Jazer.",
       "french_commentary": "Pour expliquer ces passages, il faudrait savoir exactement la situation des lieux : Ce que nous ne pouvons pas même espérer, après un si long temps. On peut traduire l'Hébreu : ^{(a)} Ô vigne de Sebama, je vous pleurerai plus que je n'ai fait celle de Jazer. Jazer était près des sources du torrent de même nom. Sebama était plus vers le midi, à la distance d'environ six lieues."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 48,
       "latin_quote": "PROPAGINES TUÆ TRANSIERUNT MARE, USQUE AD MARE JAZER PERVENERUNT.",
       "french_translation": "Vos seps ont passé la mer ; ils sont allés jusqu'à la mer de Jazer.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 48,
       "latin_quote": "SUPER VINDEMIAM TUAM PRÆDO IRRUET.",
       "french_translation": "L'ennemi a ravagé vos vignes.",
@@ -38,7 +38,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "33",
+      "verse_ref": 33,
       "chapter": 48,
       "latin_quote": "ABLATA EST LÆTITIA DE CARMELO, ET DE TERRA MOAB.",
       "french_translation": "La joie a été bannie du Carmel, et de la terre de Moab.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "33",
+      "verse_ref": 33,
       "chapter": 48,
       "latin_quote": "NEQUAQUAM CALCATOR SOLITUM CELEUMA CANTABIT.",
       "french_translation": "Ceux qui foulaient les raisins, ne chanteront plus leurs chansons ordinaires.",
@@ -55,20 +55,24 @@
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "footnote_text": "(a) יעזר אבכה לך הגפן שבמה ou _ἀπόκλυσμα seu imbr._"
+      "text": "יעזר אבכה לך הגפן שבמה ou _ἀπόκλυσμα seu imbr._",
+      "marker": "(a)",
+      "tags": []
     },
     {
-      "footnote_id": 2,
-      "footnote_text": "(b) _Isaï._ XVI. 8."
+      "text": "_Isaï._ XVI. 8.",
+      "marker": "(b)",
+      "tags": []
     },
     {
-      "footnote_id": 3,
-      "footnote_text": "(c) על בצירך שדד נפל."
+      "text": "על בצירך שדד נפל.",
+      "marker": "(c)",
+      "tags": []
     },
     {
-      "footnote_id": 4,
-      "footnote_text": "(d) Voyez plus haut le ℣. 8 de ce Chapitre _Id._ 48. 36. XXX, 26. XXV. 38. XLVI, 16. L. 26."
+      "text": "Voyez plus haut le ℣. 8 de ce Chapitre _Id._ 48. 36. XXX, 26. XXV. 38. XLVI, 16. L. 26.",
+      "marker": "(d)",
+      "tags": []
     }
   ],
   "book_end_marker": null

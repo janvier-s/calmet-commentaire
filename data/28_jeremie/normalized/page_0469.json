@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "9",
+      "verse_ref": 9,
       "chapter": 33,
       "latin_quote": "PAVEBUNT, ET TURBABUNTUR IN UNIVERSIS BONIS, ETC.",
       "french_translation": "Ils seront effrayés, et épouvantés de toutes les grâces que je leur ferai.",
@@ -34,15 +34,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "11",
+      "verse_ref": 11,
       "chapter": 33,
       "latin_quote": "PORTANTIUM VOTA IN DOMO DOMINI.",
-      "french_translation": "Qui porteront leurs oblations dans la maison du Seigneur ; leurs dons, ^{(a)} leurs présents, les sacrifices qu'ils auront voués.",
-      "french_commentary": "L'Hébreu : ^{(b)} _ils apporteront la louange dans le Temple du Seigneur._ Ils viendront lui rendre leurs hommages, y publier ses louanges, ou même y offrir leurs hosties pacifiques d'actions de grâces, de louanges, pour reconnaître son souverain domaine."
+      "french_translation": "Qui porteront leurs oblations dans la maison du Seigneur ;",
+      "french_commentary": "leurs dons, ^{(a)} leurs présents, les sacrifices qu'ils auront voués. L'Hébreu : ^{(b)} _ils apporteront la louange dans le Temple du Seigneur._ Ils viendront lui rendre leurs hommages, y publier ses louanges, ou même y offrir leurs hosties pacifiques d'actions de grâces, de louanges, pour reconnaître son souverain domaine."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 33,
       "latin_quote": "IN CIVITATIBUS MONTUOSIS.",
       "french_translation": "Dans les villes des montagnes.",
@@ -50,38 +50,37 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "13",
+      "verse_ref": 13,
       "chapter": 33,
       "latin_quote": "TRANSIBUNT GREGES AD MANUM NUMERANTIS.",
-      "french_translation": "Les troupeaux passeront sous la main de ceux qui les comptent ; sous la main du maître du troupeau, ou du berger.",
-      "french_commentary": "_Quæ transeunt sub pastoris virga_, dit Moïse. ^{(c)} On verra dans une paix profonde de nombreux troupeaux aller aux pâturages, et en revenir ; et le maître à loisir les comptera, en entrant dans la bergerie. Virgile : ^{(d)}"
+      "french_translation": "Les troupeaux passeront sous la main de ceux qui les comptent ;",
+      "french_commentary": "sous la main du maître du troupeau, ou du berger. _Quæ transeunt sub pastoris virga_, dit Moïse. ^{(c)} On verra dans une paix profonde de nombreux troupeaux aller aux pâturages, et en revenir ; et le maître à loisir les comptera, en entrant dans la bergerie. Virgile : ^{(d)}"
     }
   ],
   "footnotes": [
     {
-      "fn_number": null,
       "text": "70. Εἰσοίσουσι δῶρα εἰς οἶκον κυρίου.",
       "tags": [
         "greek",
         "versions"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "fn_number": null,
       "text": "מבאים תודת בית יהוה",
       "tags": [
         "hebrew"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "fn_number": null,
       "text": "Lévitique 27:32.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(c)"
     },
     {
-      "fn_number": null,
       "text": "Virgil. Eclog. 3. Vide et Oppian. lib. 4.",
       "tags": [
         "classical",
@@ -93,7 +92,8 @@
           "fr": "Eclog",
           "original": "Eclogae"
         }
-      ]
+      ],
+      "marker": "(d)"
     }
   ],
   "book_end_marker": null

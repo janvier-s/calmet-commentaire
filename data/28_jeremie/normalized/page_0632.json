@@ -14,15 +14,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 50,
-      "latin_quote": "EST BABYLON. Levez l'étendard, publiez parmi les nations, dites : Babylone est prise.",
-      "french_translation": null,
+      "latin_quote": "EST BABYLON.",
+      "french_translation": "Levez l'étendard, publiez parmi les nations, dites : Babylone est prise.",
       "french_commentary": "Ce début est magnifique. Peuples qui gémissez depuis longtemps sous la tyrannie de Babylone, prenez courage, rassurez-vous ; Babylone ceste superbe maîtresse des nations est renversée ; sa puissance est abattue. Que chacun s'empresse à publier cette heureuse nouvelle. Élevez des étendards, et des signaux sur vos hauteurs, afin que les plus éloignez les voient de loin, et viennent apprendre une nouvelle si consolante : on a vu dans plus d'une occasion cette pratique ^{(a)} d'élever des signaux au-dessus des montagnes, pour avertir promptement les lieux éloignés."
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 50,
       "latin_quote": "CONFUSUS EST BEL.",
       "french_translation": "Bel est confondu.",
@@ -30,7 +30,7 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 50,
       "latin_quote": "VICTUS ESS MERODACH.",
       "french_translation": "Merodach est vaincu.",
@@ -39,54 +39,48 @@
   ],
   "footnotes": [
     {
-      "footnote_number": null,
-      "footnote_symbol": "(a)",
       "text": "Isaïe 5:26. 11:12. 13:2. 18:3. 30:17. Jérémie 4:6. 51:27.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_number": null,
-      "footnote_symbol": "(b)",
       "text": "Theodoret. hic. Hieron. in Isaïe 46:1.",
       "tags": [
         "verse",
         "fathers"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "footnote_number": null,
-      "footnote_symbol": "(c)",
       "text": "Vide Herodot. lib. 1. c. 181.",
       "tags": [
         "classical",
         "abbrev"
-      ]
+      ],
+      "marker": "(c)"
     },
     {
-      "footnote_number": null,
-      "footnote_symbol": "(d)",
       "text": "Sanct. hic.",
       "tags": [
         "commentators"
-      ]
+      ],
+      "marker": "(d)"
     },
     {
-      "footnote_number": null,
-      "footnote_symbol": "(e)",
       "text": "Isaïe 39:1.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(e)"
     },
     {
-      "footnote_number": null,
-      "footnote_symbol": "(f)",
       "text": "4 Rois 25:27.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(f)"
     }
   ],
   "book_end_marker": null

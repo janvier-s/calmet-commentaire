@@ -38,15 +38,15 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 35,
       "latin_quote": "TIBULI.",
-      "french_translation": null,
-      "french_commentary": "Au-dessus de la trésorerie de Maasia, qui était garde du vestibule. On peut traduire l'Hébreu : ^{(a)} _Au-dessus de la chambre de Maasia, garde du seuil_. Maasia était un Lévite, Capitaine de ses confrères qui gardaient une des portes du Temple. Son appartement était joignant la porte, et celui des Princes était au-dessus, et plus avant ; ou même au second étage de la même galerie. Ces Capitaines des portes étaient fixes, et ne servaient point par semestres, comme les autres Lévites. ^{(b)}"
+      "french_translation": "Au-dessus de la trésorerie de Maasia, qui était garde du vestibule.",
+      "french_commentary": "On peut traduire l'Hébreu : ^{(a)} _Au-dessus de la chambre de Maasia, garde du seuil_. Maasia était un Lévite, Capitaine de ses confrères qui gardaient une des portes du Temple. Son appartement était joignant la porte, et celui des Princes était au-dessus, et plus avant ; ou même au second étage de la même galerie. Ces Capitaines des portes étaient fixes, et ne servaient point par semestres, comme les autres Lévites. ^{(b)}"
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 35,
       "latin_quote": "UT VIVATIS DIEBUS MULTIS.",
       "french_translation": "Afin que vous viviez longtemps sur la terre.",
@@ -55,26 +55,26 @@
   ],
   "footnotes": [
     {
-      "footnote_id": "a",
       "text": "מִמַּעֲלֶה לְלִשְׁכַּת מַעֲשֵׂיָהוּ שֹׁמֵר הַסַּף",
       "tags": [
         "hebrew"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": "b",
       "text": "Vide 1 Paralipomènes 9:19, 34.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "footnote_id": "c",
       "text": "Exode 20:12. _Honora patrem tuum, et matrem tuam, ut fis longævus super terram._",
       "tags": [
         "verse",
         "latin"
-      ]
+      ],
+      "marker": "(c)"
     }
   ],
   "book_end_marker": null

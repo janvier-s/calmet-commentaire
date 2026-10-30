@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 40,
       "latin_quote": null,
       "french_translation": null,
@@ -34,7 +34,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 40,
       "latin_quote": "QUANDO TULIT EUM VINCTUM CATENIS IN MEDIO OMNIUM.",
       "french_translation": "En lui faisant ôter les chaînes dont on l'avait chargé.",
@@ -42,36 +42,36 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 40,
       "latin_quote": "FECIT DOMINUS SICUT LOCUTUS EST, QUIA PECCASTIS DOMINO.",
       "french_translation": "Le Seigneur a fait ce qu'il a dit, parce que vous avez péché contre lui.",
-      "french_commentary": "Il a exécuté tout ce que tu as si souvent prédit, parce que ton peuple a irrité le Seigneur. Il est à remarquer que Nabuzardan reconnaît dans tout cela la main vengeresse de Dieu. C'est ce qui avait été si souvent annoncé par les Prophètes, que le souverain Juge ferait éclater sur les Juifs sa vengeance d'une telle manière, que les étrangers eux-mêmes en seraient frappés d'étonnement, et qu'ils diraient en passant devant Jérusalem : Voilà cette ville toujours rebelle au Seigneur (b)."
+      "french_commentary": "Il a exécuté tout ce que tu as si souvent prédit, parce que ton peuple a irrité le Seigneur. Il est à remarquer que Nabuzardan reconnaît dans tout cela la main vengeresse de Dieu. C'est ce qui avait été si souvent annoncé par les Prophètes, que le souverain Juge ferait éclater sur les Juifs sa vengeance d'une telle manière, que les étrangers eux-mêmes en seraient frappés d'étonnement, et qu'ils diraient en passant devant Jérusalem : Voilà cette ville toujours rebelle au Seigneur ^{(b)}."
     },
     {
       "commentary_id": 4,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 40,
       "latin_quote": "OMNIS TERRA IN CONSPECTU TUO EST.",
-      "french_translation": "Toute la terre est devant toi. Tu peux choisir dans tout le pays quel lieu tu voudras pour ta demeure ; je laisse cela en ta disposition ; tu es le maître là-dessus.",
-      "french_commentary": null
+      "french_translation": "Toute la terre est devant toi.",
+      "french_commentary": "Tu peux choisir dans tout le pays quel lieu tu voudras pour ta demeure ; je laisse cela en ta disposition ; tu es le maître là-dessus."
     }
   ],
   "footnotes": [
     {
-      "footnote_number": null,
       "text": "Josué 18:25. Juges 19:12-13.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_number": null,
       "text": "Jérémie 18:16. _Ut fieret terra eorum in desolationem, et in sibilum sempiternum ; omnis qui præterierit per eam obstupesscet, et movebit caput suum. Vide_ et XIX. 8. et XLIX. 13. et L. 13. et Lamentations 2:15.",
       "tags": [
         "verse",
         "latin"
-      ]
+      ],
+      "marker": "(b)"
     }
   ],
   "book_end_marker": null

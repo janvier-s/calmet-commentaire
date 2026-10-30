@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "30",
+      "verse_ref": 30,
       "chapter": 23,
       "latin_quote": "PROXIMO SUO.",
       "french_translation": "Je viens aux Prophètes, qui dérobent mes paroles chacun à leurs frères.",
@@ -28,39 +28,37 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "31",
+      "verse_ref": 31,
       "chapter": 23,
       "latin_quote": "QUI ASSUMUNT LINGUAS SUAS.",
-      "french_translation": "Qui prennent la liberté de parler en mon nom ; qui se servent de leur langue pour proférer de fausses prophéties en mon nom.",
-      "french_commentary": "C'est de ces gens dont parle David : ^{(a)} _Quare tu enarras justitias meas, et assumis testamentum meum per os tuum ?_ Pourquoi racontez-vous mes justices, et osez-vous prononcer les paroles de mon alliance ? On peut traduire l'Hébreu : ^{(b)} _Les Prophètes qui éguisent, qui polissent, qui rendent douce, et glissante leur langue_ : comme ceux qui trempent dans l'huile la pointe de l'épée, ou du poignard dont ils veulent percer. Ou plutôt : Ces Prophètes s'étudient à plaire à ceux à qui ils parlent ; ils les flattent, et les attirent dans leur parti par des discours agréables, et insinuants, conformes à leurs inclinations, et au dérèglement de leur cœur."
+      "french_translation": "Qui prennent la liberté de parler",
+      "french_commentary": "en mon nom ; qui se servent de leur langue pour proférer de fausses prophéties en mon nom. C'est de ces gens dont parle David : ^{(a)} _Quare tu enarras justitias meas, et assumis testamentum meum per os tuum ?_ Pourquoi racontez-vous mes justices, et osez-vous prononcer les paroles de mon alliance ? On peut traduire l'Hébreu : ^{(b)} _Les Prophètes qui éguisent,_ qui polissent, qui rendent douce, et glissante _leur langue_ : comme ceux qui trempent dans l'huile la pointe de l'épée, ou du poignard dont ils veulent percer. Ou plutôt : Ces Prophètes s'étudient à plaire à ceux à qui ils parlent ; ils les flattent, et les attirent dans leur parti par des discours agréables, et insinuants, conformes à leurs inclinations, et au dérèglement de leur cœur."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "32",
+      "verse_ref": 32,
       "chapter": 23,
       "latin_quote": "SEDUXERUNT POPULUM MEUM IN MIRACULIS SUIS.",
-      "french_translation": "Qui séduisent mon peuple par leurs miracles ; par de fausses merveilles, dont ils frappent la vue des ignorants ; ou par leurs enchantements, dont ils leur fascinent les yeux.",
-      "french_commentary": "L'Hébreu est traduit assez diversement"
+      "french_translation": "Qui séduisent mon peuple par leurs miracles ;",
+      "french_commentary": "par de fausses merveilles, dont ils frappent la vue des ignorants ; ou par leurs enchantements, dont ils leur fascinent les yeux. L'Hébreu est traduit assez diversement"
     }
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "reference": "(a)",
       "text": "Psaumes 49:16.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": 2,
-      "reference": "(b)",
       "text": "הנביאים הלקחים לשונם 70. Ἐκάμοντες ὀξύτητας γλώσσης.",
       "tags": [
         "hebrew",
         "greek",
         "versions"
-      ]
+      ],
+      "marker": "(b)"
     }
   ],
   "book_end_marker": null

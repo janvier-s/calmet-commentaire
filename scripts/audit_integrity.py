@@ -18,9 +18,9 @@ ORDER_OK = json.loads((STUDIUM / "verse_ref_order_ok.json").read_text(encoding="
     if (STUDIUM / "verse_ref_order_ok.json").exists() else {}  # fix_verse_refs.py: out of order on purpose
 WHICH_BOOK = re.compile(r"\b(?:Rois|Paralipomènes|Machabées|Esdras),?\s+chapitres?\s+\d+(?::\d+(?:(?:-|, )\d+)*)?")
 # In a french_translation, these words betray commentary or a variant reading rather than the verse:
-# “l'hébreu”, “à la lettre”, “Septante”, and the alternative “ou” (but not “où”).
+# “l'hébreu”, “à la lettre”, “Septante”, “c'est-à-dire”, and the alternative “ou” (but not “où”).
 TRANSLATION_COMMENTARY = re.compile(
-    r"\bl['’]\s?h[ée]breu|\bà\s+la\s+lettre\b|\bSeptante\b|(?<!\w)ou(?!\w)", re.I)
+    r"\bl['’]\s?h[ée]breu|\bà\s+la\s+lettre\b|\bSeptante\b|\bc['’]est[-\s][aà][-\s]dire\b|(?<!\w)ou(?!\w)", re.I)
 
 
 def translation_markers(text):

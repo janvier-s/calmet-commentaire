@@ -14,7 +14,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "24",
+      "verse_ref": 24,
       "chapter": 25,
       "latin_quote": null,
       "french_translation": null,
@@ -22,7 +22,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 25,
       "latin_quote": "CUNCTIS REGIBUS ZAMBRI.",
       "french_translation": "A tous les Rois de Zambri.",
@@ -30,15 +30,15 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 25,
       "latin_quote": "CUNCTIS REGIBUS ELAM.",
-      "french_translation": "A tous les Rois d'Elam, ou d'Elymaïde.",
-      "french_commentary": "Saint Jérôme croit que ces peuples furent abreurez du calice de la colère de Dieu par Alexandre le Grand, aussi bien que les Rois des Mèdes, dont parle ici Jérémie. Mais nous croyons que ce fut Cyrus qui ruina la Monarchie des Mèdes, et qui exécuta cette prophétie ; car pendant que Nabuchodonosor étendait les limites de son Empire du côté de l'occident, vers la Méditerranée, Astiagés Roi des Mèdes, possédait de grands États vers le nord, et l'orient, sur les Provinces qui avaient été aux anciens Rois d'Assyrie, dont l'Empire fut partagé entre Cyaxarés père d'Astyagés, et Nabopolassar père de Nabuchodonosor, après la prise de Ninive. Cyrus réunit les deux Empires, et forma la Monarchie des Perses."
+      "french_translation": "A tous les Rois d'Elam,",
+      "french_commentary": "ou d'Elymaïde. Saint Jérôme croit que ces peuples furent abreurez du calice de la colère de Dieu par Alexandre le Grand, aussi bien que les Rois des Mèdes, dont parle ici Jérémie. Mais nous croyons que ce fut Cyrus qui ruina la Monarchie des Mèdes, et qui exécuta cette prophétie ; car pendant que Nabuchodonosor étendait les limites de son Empire du côté de l'occident, vers la Méditerranée, Astiagés Roi des Mèdes, possédait de grands États vers le nord, et l'orient, sur les Provinces qui avaient été aux anciens Rois d'Assyrie, dont l'Empire fut partagé entre Cyaxarés père d'Astyagés, et Nabopolassar père de Nabuchodonosor, après la prise de Ninive. Cyrus réunit les deux Empires, et forma la Monarchie des Perses."
     },
     {
       "commentary_id": 4,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 25,
       "latin_quote": "CUNCTIS REGIBUS AQUILONIS.",
       "french_translation": "Tous les Rois de l'Aquilon, qui étaient soumis aux Rois des Mèdes.",
@@ -46,7 +46,7 @@
     },
     {
       "commentary_id": 5,
-      "verse_ref": "26",
+      "verse_ref": 26,
       "chapter": 25,
       "latin_quote": "UNICUIQUE CONTRA FRATREM SUUM.",
       "french_translation": "Pour les animer les uns contre les autres.",
@@ -55,49 +55,44 @@
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "reference": "(a)",
       "text": "70. Πάντας τoὺς Βασιλέας τῆς Α᾿ραβίας, καὶ πάντας τoὺς συμμίκτoυς κατoικoῦντας ἐν τῇ ἐρήμῳ.",
       "tags": [
         "greek",
         "versions"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": 2,
-      "reference": "(b)",
       "text": "Syr. et Heb. apud Theodoret. hic. Grot.",
       "tags": [
         "fathers",
         "commentators",
         "abbrev"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "footnote_id": 3,
-      "reference": "(c)",
       "text": "Genèse 25:1.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(c)"
     },
     {
-      "footnote_id": 4,
-      "reference": "(d)",
       "text": "Plin. lib. 6. c. 28.",
       "tags": [
         "classical",
         "abbrev"
-      ]
+      ],
+      "marker": "(d)"
     },
     {
-      "footnote_id": 5,
-      "reference": "(e)",
       "text": "Herodot. lib. 1. c. 96. jusqu'au 107.",
       "tags": [
         "classical",
         "abbrev"
-      ]
+      ],
+      "marker": "(e)"
     }
   ],
   "book_end_marker": null

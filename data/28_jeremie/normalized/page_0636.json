@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 50,
       "latin_quote": null,
       "french_translation": null,
@@ -28,60 +28,54 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "7",
+      "verse_ref": 7,
       "chapter": 50,
       "latin_quote": "PECCAVERUNT DOMINO DECORI JUSTITIÆ, ET EXPECTATIONI PATRUM EORUM.",
-      "french_translation": "Elles avaient offensé le Seigneur, qui est la beauté de la justice, et l'attente de leurs pères. Ou, selon l'Hébreu ; ^{(a)} Ils ont péché au Seigneur, qui est la demeure, le parc de la justice, et l'espérance de leurs pères. Ces brebis égarées ont mieux aimé s'égarer, et suivre de faux pasteurs, que de demeurer dans le parc de la justice, dans la pratique de la Loi, dans l'exercice de la Religion de leurs pères.",
-      "french_commentary": null
+      "french_translation": "Elles avaient offensé le Seigneur, qui est la beauté de la justice, et l'attente de leurs pères.",
+      "french_commentary": "Ou, selon l'Hébreu ; ^{(a)} _Ils ont péché au Seigneur, qui est la demeure_, le parc _de la justice, et l'espérance de leurs pères_. Ces brebis égarées ont mieux aimé s'égarer, et suivre de faux pasteurs, que de demeurer dans le parc de la justice, dans la pratique de la Loi, dans l'exercice de la Religion de leurs pères."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "8",
+      "verse_ref": 8,
       "chapter": 50,
       "latin_quote": "RECEDITE DE MEDIO BABYLONIS, ET ESTOTE QUASI HŒDI ANTE GREGES.",
-      "french_translation": "Fuyez du milieu de Babylone, et soyez comme les béliers qui marchent à la tête du troupeau ; à la lettre, ^{(b)} comme les boucs devant les brebis, ou les chèvres.",
-      "french_commentary": "Marchez hardiment, et sans crainte ; sortez de Babylone tête levée. La comparaison d'un bouc, ou d'un bélier à la tête d'un troupeau, n'est nullement basse dans le style des Hébreux. Les Prophètes l'emploient assez souvent. Isaïe, et Zacharie appellent les Princes, ^{(c)} les _boucs de la terre ;_ et dans les Livres des Rois, ^{(d)} on trouve des Officiers d'armée, nommez des _béliers._ Homère^{(e)} compare quelquefois ses Héros à des béliers, à des taureaux, à des boucs. Princes de Juda, qui avez autrefois séduit mon peuple, et qui l'avez égaré"
+      "french_translation": "Fuyez du milieu de Babylone, et soyez comme les béliers qui marchent à la tête du troupeau ;",
+      "french_commentary": "à la lettre, ^{(b)} _comme les boucs devant les brebis_, ou les chèvres. Marchez hardiment, et sans crainte ; sortez de Babylone tête levée. La comparaison d'un bouc, ou d'un bélier à la tête d'un troupeau, n'est nullement basse dans le style des Hébreux. Les Prophètes l'emploient assez souvent. Isaïe, et Zacharie appellent les Princes, ^{(c)} les _boucs de la terre ;_ et dans les Livres des Rois, ^{(d)} on trouve des Officiers d'armée, nommés _des béliers._ Homère^{(e)} compare quelquefois ses Héros à des béliers, à des taureaux, à des boucs. Princes de Juda, qui avez autrefois séduit mon peuple, et qui l'avez égaré"
     }
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "footnote_marker": "a",
-      "text": "(a) [UNCERTAIN HEBREW] Zacharie 9:3. [UNCERTAIN HEBREW]",
+      "text": "[UNCERTAIN HEBREW] Zacharie 9:3. [UNCERTAIN HEBREW]",
       "tags": [
         "verse",
         "uncertain"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": 2,
-      "footnote_marker": "b",
-      "text": "(b) [UNCERTAIN HEBREW]",
+      "text": "[UNCERTAIN HEBREW]",
       "tags": [
         "uncertain"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "footnote_id": 3,
-      "footnote_marker": "c",
-      "text": "(c) _Isal. x. 13. et xiv. 9._ [UNCERTAIN HEBREW]",
+      "text": "_Isal. x. 13. et xiv. 9._ [UNCERTAIN HEBREW]",
       "tags": [
         "verse",
         "uncertain"
-      ]
+      ],
+      "marker": "(c)"
     },
     {
-      "footnote_id": 4,
-      "footnote_marker": "d",
-      "text": "(d) _4. Reg. x1. 4. et 19._ [UNCERTAIN HEBREW]",
+      "text": "_4. Reg. x1. 4. et 19._ [UNCERTAIN HEBREW]",
       "tags": [
         "uncertain"
-      ]
+      ],
+      "marker": "(d)"
     },
     {
-      "footnote_id": 5,
-      "footnote_marker": "e",
-      "text": "(e) _Vide Iliad. B. etc._",
+      "text": "Vide Iliad. B. etc.",
       "tags": [
         "classical",
         "title"
@@ -91,7 +85,8 @@
           "fr": "Iliad",
           "original": "Ilias"
         }
-      ]
+      ],
+      "marker": "(e)"
     }
   ],
   "book_end_marker": null

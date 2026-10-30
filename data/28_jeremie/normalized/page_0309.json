@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 19,
       "latin_quote": "ACCIPE LAGUNCULAM FIGULI A SENIORIBUS POPULI.",
       "french_translation": "Recevez de la main des anciens du peuple un vase de terre.",
@@ -28,30 +28,30 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 19,
       "latin_quote": "EGREDERE AD VALLEM FILIORUM ENNOM, QUÆ EST JUXTA INTROITUM PORTÆ FICTILIS.",
-      "french_translation": "Allez dans la vallée des fils d'Ennom, qui est devant la porte d'argile, ou devant la porte arsish :",
-      "french_commentary": "Car c'est ainsi que l'Hébreu porte ; et les Interprètes Grecs, l'Arabe, le Syriaque, et quelques autres ont conservé ce nom. On ne trouve cette porte qu'en ce seul endroit de l'Écriture. Elle devait être vers le côte mé-"
+      "french_translation": "Allez dans la vallée des fils d'Ennom, qui est devant la porte d'argile,",
+      "french_commentary": "ou _devant la porte arsish :_ Car c'est ainsi que l'Hébreu porte ; et les Interprètes Grecs, l'Arabe, le Syriaque, et quelques autres ont conservé ce nom. On ne trouve cette porte qu'en ce seul endroit de l'Écriture. Elle devait être vers le côte mé-"
     }
   ],
   "footnotes": [
     {
-      "footnote_id": "a",
-      "text": "(a) [UNCERTAIN HEBREW] [UNCERTAIN GREEK] _Comparat ea quæ sequuntur, quæ legunt Hebræi._",
+      "text": "[UNCERTAIN HEBREW] [UNCERTAIN GREEK] _Comparat ea quæ sequuntur, quæ legunt Hebræi._",
       "tags": [
         "versions",
         "latin",
         "uncertain"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": "b",
-      "text": "(b) _Édit. Rom. Badiou_, καὶ κτήσῃ βικὸν",
+      "text": "_Édit. Rom. Badiou_, καὶ κτήσῃ βικὸν",
       "tags": [
         "greek",
         "versions"
-      ]
+      ],
+      "marker": "(b)"
     }
   ],
   "book_end_marker": null

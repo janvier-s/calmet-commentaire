@@ -56,6 +56,31 @@ export function toUpper(s, sa, sb) {
   return { text: s.slice(0, sa) + u + s.slice(sb), start: sa, end: sa + u.length };
 }
 
+/** Cut s[sa:sb] and prepend it (with a space) to `nextText` (or replace if null/empty).
+ *  Returns { cutStart, cutEnd, nextEnd, nextInsert } or null when the selection is empty. */
+export function cutToNext(s, sa, sb, nextText, nextIsNull = false) {
+  if (sa == null || sb == null || sa >= sb) return null;
+  sa = Math.max(0, sa);
+  sb = Math.min(sb, s.length);
+  const piece = s.slice(sa, sb).trim();
+  if (!piece) return null;
+  let cutStart = sa, cutEnd = sb;
+  const hSpace = (c) => c === " " || c === "\t";
+  if (s.slice(cutEnd).trim() === "") {
+    cutEnd = s.length;
+    while (cutStart > 0 && hSpace(s[cutStart - 1])) cutStart--;
+  } else if (s.slice(0, cutStart).trim() === "") {
+    cutStart = 0;
+    while (cutEnd < s.length && hSpace(s[cutEnd])) cutEnd++;
+  } else if (cutStart > 0 && cutEnd < s.length && hSpace(s[cutStart - 1]) && hSpace(s[cutEnd])) {
+    while (cutEnd < s.length && hSpace(s[cutEnd])) cutEnd++;
+  }
+  const emptyNext = nextIsNull || !nextText || !nextText.trim();
+  const nextEnd = !nextIsNull && nextText && !nextText.trim() ? nextText.length : 0;
+  const nextInsert = emptyNext ? piece : piece + (/^\s/.test(nextText) ? "" : " ");
+  return { cutStart, cutEnd, nextEnd, nextInsert };
+}
+
 /** "17:2" → {chapter, verse}; "17" → {chapter, verse: null}; "p194" or "194p" → {page}. */
 export function parseRef(s) {
   let m = /^\s*(\d+)\s*(?:[:.,]\s*(\d+))?\s*$/.exec(s);

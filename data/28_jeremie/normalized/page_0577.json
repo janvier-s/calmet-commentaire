@@ -14,7 +14,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "25",
+      "verse_ref": 26,
       "chapter": 46,
       "latin_quote": null,
       "french_translation": null,
@@ -22,15 +22,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "27",
+      "verse_ref": 27,
       "chapter": 46,
       "latin_quote": "SALVUM TE FACIAM DE LONGINQUO.",
-      "french_translation": "Quelque loin que vous soyez, je vous sauverai. Je vous tirerai de votre captivité, quelque éloigné que vous soyez de votre pays.",
-      "french_commentary": "Cela arriva la première année de Cyrus. ^{(b)} Le Seigneur à l'occasion de la promesse qu'il fait à l'Égypte de la rétablir, parle ici du rappel des Juifs, quoique le principal sujet de la prophétie soit l'Égypte, et non pas la Judée."
+      "french_translation": "Quelque loin que vous soyez, je vous sauverai.",
+      "french_commentary": "Je vous tirerai de votre captivité, quelque éloigné que vous soyez de votre pays. Cela arriva la première année de Cyrus. ^{(b)} Le Seigneur à l'occasion de la promesse qu'il fait à l'Égypte de la rétablir, parle ici du rappel des Juifs, quoique le principal sujet de la prophétie soit l'Égypte, et non pas la Judée."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "28",
+      "verse_ref": 28,
       "chapter": 46,
       "latin_quote": "CONSUMAM OMNES GENTES AD QUAS EJECI TE : TE VERO NON CONSUMAM ; SED CASTIGABO TE IN JUDICIO.",
       "french_translation": "Je perdrai tous les peuples parmi lesquels je vous ai banni : et pour vous je ne vous perdrai point ; mais je vous châtierai avec une juste modération, etc.",
@@ -39,21 +39,19 @@
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "footnote_symbol": "(a)",
-      "text": "(a) Herodot. lib. 2. c. 161. 162. et sequ.",
+      "text": "Herodot. lib. 2. c. 161. 162. et sequ.",
       "tags": [
         "classical",
         "abbrev"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": 2,
-      "footnote_symbol": "(b)",
-      "text": "(b) 1 Esdras 1:1.",
+      "text": "1 Esdras 1:1.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(b)"
     }
   ],
   "book_end_marker": null

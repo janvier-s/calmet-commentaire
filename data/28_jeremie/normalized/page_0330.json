@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 22,
       "latin_quote": null,
       "french_translation": null,
@@ -28,7 +28,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 22,
       "latin_quote": "IN MEMETIPSO JURAVI.",
       "french_translation": "Je jure par moi-même.",
@@ -36,15 +36,15 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 22,
       "latin_quote": "IN SOLITUDINEM ERIT DOMUS HÆC.",
-      "french_translation": "Ce palais sera détruit, et abandonné ; à la lettre, ^{(c)} sera réduit en solitude.",
-      "french_commentary": "On peut l'entendre du Temple. Jérémie le montrant de la main, a pu dire : Cette maison, ce Temple sera réduit en l'état d'un désert. Mais il est mieux de l'entendre du palais du Roi."
+      "french_translation": "Ce palais sera détruit, et abandonné ;",
+      "french_commentary": "à la lettre, ^{(c)} _sera réduit en solitude_. On peut l'entendre du Temple. Jérémie le montrant de la main, a pu dire : Cette maison, ce Temple sera réduit en l'état d'un désert. Mais il est mieux de l'entendre du palais du Roi."
     },
     {
       "commentary_id": 4,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 22,
       "latin_quote": "GALAAD, TU MIHI CAPUT LIBANI, SI NON POSUERO TE IN SOLITUDINEM.",
       "french_translation": "Ô Galaad, toi qui est comme la tête du Liban, je jure que je te réduirai en une affreuse solitude.",
@@ -53,27 +53,24 @@
   ],
   "footnotes": [
     {
-      "footnote_ref": "a",
       "text": "Hébreux 6:13. _Quoniam neminem habuit, per quem juraret majorem, juravit per semetipsum._",
-      "marker": "a",
+      "marker": "(a)",
       "tags": [
         "verse",
         "latin"
       ]
     },
     {
-      "footnote_ref": "b",
-      "text": "Isaïe 45:23. _In memetipso juravi._ Et _LXII. 8. Juravit Dominus in dextera sua. Et Psaumes 110:4. _Juravit Dominus, et non pœnitebit eum._",
-      "marker": "b",
+      "text": "Isaïe 45:23. _In memetipso juravi._ Et LXII. 8. _Juravit Dominus in dextera sua_. Et Psaumes 110:4. _Juravit Dominus, et non pœnitebit eum._",
+      "marker": "(b)",
       "tags": [
         "verse",
         "latin"
       ]
     },
     {
-      "footnote_ref": "c",
       "text": "כי כן לחרבן היה הבית הזה εἰς ἐρήμωσιν ἔσται ὁ οἶκος οὗτος.",
-      "marker": "c",
+      "marker": "(c)",
       "tags": [
         "hebrew",
         "greek"

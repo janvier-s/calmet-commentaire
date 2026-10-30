@@ -14,7 +14,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 49,
       "latin_quote": null,
       "french_translation": null,
@@ -22,7 +22,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 49,
       "latin_quote": "ULULA, HESEBON, QUONIAM VASTATA EST HAI.",
       "french_translation": "Poussez des cris ; ô Hésebon, parce que Haï a été détruite.",
@@ -30,23 +30,22 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 49,
       "latin_quote": "CLAMATE, FILIÆ RABBOTH ; PLANGITE, ET CIRCUITE PER SEPES.",
-      "french_translation": "Criez, filles de Rabbath, en courant autour des haies ; ou autour des murailles qui ferment les bourgades, et les villages, les jardins ; ou même les simples palissades, qui ferment les parcs où l'on tient les bestiaux.",
-      "french_commentary": "Le Caldéen : ^{(g)} _Criez habitants des maisons de campagne, ou des villages des environs de Rabbath ; assemblez-vous en tumulte, dans les troupes._ Quelques-uns le traduisent par : _Faites-vous des incisions dans les assemblées de deuil._ Mais peut-être que _Gadoroth_ est un [ILLEGIBLE]"
+      "french_translation": "Criez, filles de Rabbath, en courant autour des haies ;",
+      "french_commentary": "ou autour des murailles qui ferment les bourgades, et les villages, les jardins ; ou même les simples palissades, qui ferment les parcs où l'on tient les bestiaux. Le Caldéen : ^{(g)} _Criez habitants_ des maisons de campagne, ou _des villages des_ environs _de Rabbath ; assemblez-vous en tumulte, dans les troupes._ Quelques-uns le traduisent par : _Faites-vous des incisions dans les assemblées_ de deuil. Mais peut-être que _Gadoroth_ est un"
     }
   ],
   "footnotes": [
     {
-      "reference_id": "(a)",
       "text": "1 Maccabées 5:6, 28.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "reference_id": "(b)",
       "text": "_Joseph. Antiq. lib._ XIII. c. 27.",
       "tags": [
         "classical",
@@ -58,44 +57,45 @@
           "fr": "Antiq. lib",
           "original": "Antiquitates Judaicae"
         }
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "reference_id": "(c)",
       "text": "[UNCERTAIN HEBREW]. _Vide Grot. au lieu de_ [UNCERTAIN HEBREW].",
       "tags": [
         "commentators",
         "uncertain"
-      ]
+      ],
+      "marker": "(c)"
     },
     {
-      "reference_id": "(d)",
       "text": "70. [UNCERTAIN GREEK].",
       "tags": [
         "versions",
         "uncertain"
-      ]
+      ],
+      "marker": "(d)"
     },
     {
-      "reference_id": "(e)",
       "text": "Jerem. XLVIII. IL. 34.",
       "tags": [
         "abbrev"
-      ]
+      ],
+      "marker": "(e)"
     },
     {
-      "reference_id": "(f)",
       "text": "_Vide Num._ XXI. I.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(f)"
     },
     {
-      "reference_id": "(g)",
       "text": "[UNCERTAIN HEBREW]. _Il semble qu'il ait lu dans l'Hébreu_ [UNCERTAIN HEBREW] _au lieu de_ [UNCERTAIN HEBREW].",
       "tags": [
         "uncertain"
-      ]
+      ],
+      "marker": "(g)"
     }
   ],
   "book_end_marker": null

@@ -26,7 +26,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 33,
       "latin_quote": null,
       "french_translation": "Criez vers moi, et je vous annoncerai des choses grandes.",
@@ -34,15 +34,15 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 33,
       "latin_quote": "HÆC DICIT DOMINUS AD DOMOS HUJUS URBIS.",
-      "french_translation": "Voici ce que dit le Seigneur aux maisons de cette ville ; ou plutôt, sur les maisons de cette ville.",
-      "french_commentary": "Voici les promesses qu'il leur fait : Vous ferez rétablies ; je fermerai vos cicatrices : _Obducam eis cicatricem ; je rétablirai leurs murailles, je réparerai leurs brèches._"
+      "french_translation": "Voici ce que dit le Seigneur aux maisons de cette ville ;",
+      "french_commentary": "ou plutôt, _sur les maisons de cette ville_. Voici les promesses qu'il leur fait : Vous ferez rétablies ; je fermerai vos cicatrices : _Obducam eis cicatricem ;_ je rétablirai leurs murailles, je réparerai leurs brèches."
     },
     {
       "commentary_id": 3,
-      "verse_ref": "5",
+      "verse_ref": 5,
       "chapter": 33,
       "latin_quote": "AD GLADIUM VENIENTIUM UT DIMICENT CUM CHALDÆIS, ET IMPLEANT EAS CADAVERIBUS.",
       "french_translation": "Voici ce qu'il dit à l'épée de ceux qui viennent combattre contre les Caldéens, pour remplir cette ville de corps morts.",
@@ -50,7 +50,7 @@
     },
     {
       "commentary_id": 4,
-      "verse_ref": "6",
+      "verse_ref": 6,
       "chapter": 33,
       "latin_quote": "OBDUCAM EIS CICATRICEM.",
       "french_translation": "Je refermerai leurs plaies ;",
@@ -59,27 +59,27 @@
   ],
   "footnotes": [
     {
-      "id": "a",
-      "text": "(a) Daniel 9:2-4. 10:3. II.",
+      "text": "Daniel 9:2-4. 10:3. II.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "id": "b",
-      "text": "(b) Vide 2 Paralipomènes 24:13. 2 Esdras 4:7.",
+      "text": "Vide 2 Paralipomènes 24:13. 2 Esdras 4:7.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "id": "c",
-      "text": "(c) Λέγων αυτῷ συνέλευσιν. Heb. הנני מעלה לה ארכה",
+      "text": "Λέγων αυτῷ συνέλευσιν. Heb. הנני מעלה לה ארכה",
       "tags": [
         "hebrew",
         "greek",
         "abbrev"
-      ]
+      ],
+      "marker": "(c)"
     }
   ],
   "book_end_marker": null

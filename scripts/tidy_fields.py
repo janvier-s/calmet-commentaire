@@ -41,6 +41,7 @@ EMBEDDED_LEMMA = re.compile(
     re.DOTALL,
 )
 WRAPPED = re.compile(r"^\s*_([^_]+)_([.,;:]?)\s*$")    # the whole note one italic span
+WRAPPED_TRANSLATION = re.compile(r"^\s*([«“\(\[]?\s*)_([^_]+)_([.,;:!?»”\)\]]*)\s*$")
 
 def strip_us(s):
     return re.sub(r"[ \t]{2,}", " ", s.replace("_", "")).strip()
@@ -71,6 +72,28 @@ def tidy(d, cache, stats):
         d["chapter_summary"] = strip_us(t)
         stats["summary underscores"] += 1
         changed = True
+    ct = d.get("chapter_title")
+    if ct:
+        cs = bool((d.get("chapter_summary") or "").strip())
+        ci = bool((d.get("chapter_intro") or "").strip())
+        cn = d.get("chapter_number")
+        verses = d.get("verses") or []
+        v_nums = [v.get("verse_number") for v in verses]
+        has_v1 = any(vn in (1, "1") for vn in v_nums)
+        has_v0 = any(vn in (0, "0") for vn in v_nums)
+        is_opening = cs or has_v1 or has_v0 or cn is not None or ci
+        if not is_opening:
+            d["chapter_title"] = None
+            stats["spurious chapter_title cleared"] += 1
+            changed = True
+        elif re.search(r"SUR LE\s+PSE?A?U?ME\s+", ct, flags=re.IGNORECASE):
+            new_ct = re.sub(r"SUR LE\s+", "", ct, flags=re.IGNORECASE).strip()
+            new_ct = re.sub(r"^PSEAU\s*ME\b", "PSEAUME", new_ct, flags=re.IGNORECASE)
+            new_ct = re.sub(r"^PSEAME\b", "PSEAUME", new_ct, flags=re.IGNORECASE)
+            if new_ct != ct:
+                d["chapter_title"] = new_ct
+                stats["psalm chapter_title normalized"] += 1
+                changed = True
     for b_idx, b in enumerate(d.get("commentary") or []):
         if b_idx > 0 and not (b.get("latin_quote") or "").strip() and not (b.get("french_translation") or "").strip():
             m = EMBEDDED_LEMMA.match(b.get("french_commentary") or "")
@@ -97,10 +120,13 @@ def tidy(d, cache, stats):
                 changed = True
         t = b.get("french_translation")
         if isinstance(t, str) and "_" in t:
-            b["french_translation"] = strip_us(t)
-            cache[hashlib.md5(b["french_translation"].encode()).hexdigest()] = b["french_translation"]
-            stats["translation underscores"] += 1
-            changed = True
+            m = WRAPPED_TRANSLATION.match(t)
+            if m:
+                new_t = m.group(1) + m.group(2).strip() + m.group(3)
+                b["french_translation"] = new_t
+                cache[hashlib.md5(new_t.encode()).hexdigest()] = new_t
+                stats["translation wrapped underscores stripped"] += 1
+                changed = True
         t, tr = b.get("french_commentary"), (b.get("french_translation") or "").strip()
         m = LEAD.match(t or "")
         if m and tr:

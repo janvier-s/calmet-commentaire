@@ -20,15 +20,23 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "8",
+      "verse_ref": 7,
       "chapter": 30,
-      "latin_quote": "NON DOMINABUNTUR AMPLIUS EI ALIENI.",
-      "french_translation": "Les étrangers ne vous domineront plus.",
-      "french_commentary": "aux Hébreux la liberté de s'en retourner dans leur pays. ^{(a)}\nThéodoret sous le nom d'étrangers, entend les Idoles. Ils n'adoreront plus de Dieux inconnus, et étrangers. Les Juifs depuis la captivité, ne tombèrent plus dans l'idolâtrie, comme auparavant. La plupart l'expliquent de la liberté que Jésus-Christ nous a procurée par sa mort. ^{(b)} En effet on ne peut pas dire que depuis la captivité de Babylone, les Juifs aient été rétablis en une parfaite liberté. Ils demeurèrent assujettis aux Perses jusqu'au temps d'Alexandre le Grand. Depuis Alexandre, ils obéirent tantôt au Roi de Syrie, tantôt à ceux d'Égypte. Ils jouirent de quelque liberté depuis Jean Hyrcan, jusqu'à ce que la Judée fut subjuguée par Pompée. Tacite ^{(c)} remarque que sous les Assyriens, les Mèdes, et les Perses, cette nation fut toujours dans la servitude, et le mépris : _Dum Assyrios penes, Medosque, et Persas oriens fuit, despectissima pars servientium_ ; et que ce ne fut que pendant les troubles du Royaume de Syrie, que profitant de la faiblesse de ces Rois, ils se mirent en liberté, et se donnèrent des Princes de leur nation : _Judæi Macedonibus invalidis, Parthis nondum adultis, (et Romani procul aberant), sibi ipsis Reges imposuêre._"
+      "latin_quote": null,
+      "french_translation": null,
+      "french_commentary": "aux Hébreux la liberté de s'en retourner dans leur pays. ^{(a)}"
     },
     {
       "commentary_id": 2,
-      "verse_ref": "9",
+      "verse_ref": 8,
+      "chapter": 30,
+      "latin_quote": "NON DOMINABUNTUR AMPLIUS EI ALIENI.",
+      "french_translation": "Les étrangers ne vous domineront plus.",
+      "french_commentary": "Théodoret sous le nom d'étrangers, entend les Idoles. Ils n'adoreront plus de Dieux inconnus, et étrangers. Les Juifs depuis la captivité, ne tombèrent plus dans l'idolâtrie, comme auparavant. La plupart l'expliquent de la liberté que Jésus-Christ nous a procurée par sa mort. ^{(b)} En effet on ne peut pas dire que depuis la captivité de Babylone, les Juifs aient été rétablis en une parfaite liberté. Ils demeurèrent assujettis aux Perses jusqu'au temps d'Alexandre le Grand. Depuis Alexandre, ils obéirent tantôt au Roi de Syrie, tantôt à ceux d'Égypte. Ils jouirent de quelque liberté depuis Jean Hyrcan, jusqu'à ce que la Judée fut subjuguée par Pompée. Tacite ^{(c)} remarque que sous les Assyriens, les Mèdes, et les Perses, cette nation fut toujours dans la servitude, et le mépris : _Dum Assyrios penes, Medosque, et Persas oriens fuit, despectissima pars servientium_ ; et que ce ne fut que pendant les troubles du Royaume de Syrie, que profitant de la faiblesse de ces Rois, ils se mirent en liberté, et se donnèrent des Princes de leur nation : _Judæi Macedonibus invalidis, Parthis nondum adultis, (et Romani procul aberant), sibi ipsis Reges imposuêre._"
+    },
+    {
+      "commentary_id": 3,
+      "verse_ref": 9,
       "chapter": 30,
       "latin_quote": "SERVIENT DOMINO DEO SUO, ET DAVID REGI SUO.",
       "french_translation": "Ils serviront le Seigneur leur Dieu, et David leur Roi.",
@@ -37,33 +45,26 @@
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "text": "(a) I. Esdr. I. I.",
+      "text": "I. Esdr. I. I.",
       "tags": [
         "abbrev"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": 2,
-      "text": "(b) Jean 8:33-34. Galates 4:31.",
+      "text": "Jean 8:33-34. Galates 4:31. V. 13.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "footnote_id": 3,
-      "text": "V. 13.",
-      "tags": [
-        "abbrev"
-      ]
-    },
-    {
-      "footnote_id": 4,
-      "text": "(c) Tacit. hist. lib. 5.",
+      "text": "Tacit. hist. lib. 5.",
       "tags": [
         "classical",
         "abbrev"
-      ]
+      ],
+      "marker": "(c)"
     }
   ],
   "book_end_marker": null

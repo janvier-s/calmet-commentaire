@@ -419,8 +419,15 @@ Applied in Step 5n of `modernize_inplace.py` across all 49 volumes (749 replacem
    - Converted when used as adverbial `partout`:
      - Before punctuation (`,`, `.`, `;`, `:`, `!`, `?`): `fouillé partout,`, `régnera partout.`
      - Before adverbs and conjunctions: `partout où`, `partout ailleurs`.
-     - In general verbal/adverbial constructions: `battit partout`, `cherche partout`, `porta partout la mort`, `placez partout des sentinelles`, `Je lui déclare partout une guerre`.
-   - *Strictly preserves determiner constructions*: `par tout le...`, `par tout un...`, `par tout ce...`, `par tout cet...`, `par tout ceci...`, `par tout cela...`, `par tout son...`, `par tout Israël`, `par tout homme`, `par tout l'...` (e.g. `par tout l'Orient`, `par tout l'univers`, `par tout le monde`).
+     - In verbal/adverbial constructions: `battit partout`, `cherche partout`, `porta partout la mort`, `placez partout des sentinelles`, `Je lui déclare partout une guerre`, `publiez partout son injustice`, `portent partout l'effroi`, `prêchant partout l'Évangile`, `recommande partout le ménage / le désintéressement`, `suivre presque partout l'harmonie`, `négligeant presque partout l'ordre des temps`, `signifie partout un pain entier`.
+   - *Strictly preserves prepositional/determiner constructions*: `par tout le monde`, `par tout le peuple`, `par tout le pays`, `par tout le corps`, `par tout le camp`, `par tout ce...`, `par tout cet...`, `par tout ceci...`, `par tout cela...`, `par tout son Royaume / discours`, `par tout un peuple`, `par tout Israël`, `par tout homme`, `par tout l'Orient / l'univers / l'appareil / l'air`.
+
+6b. **`Possédez` / `possédez` Participle & Noun $\rightarrow$ `Possédés` / `possédés`**:
+   - Converted when used as a past participle or plural noun (18th-century `-ez` for `-és`):
+     - `ou/et possédez par` $\rightarrow$ `ou/et possédés par` (e.g. Sagesse 14:21: *« hommes ou possédés par leur affection »*)
+     - `Possédez par leur affection` $\rightarrow$ `Possédés par leur affection` (Sagesse 14:21 translation)
+     - `vrais / les possédez` $\rightarrow$ `vrais / les possédés` (Matthieu 17:14, Matthieu 8:34: demoniacs / the possessed)
+   - *Strictly preserves true 2nd-person plural verbs* (indicative & imperative): `vous possédez la terre`, `Possédez la terre`, `possédez le Royaume`.
 
 7. **`bled` family (`final mute d -> é`)**:
    - `bled` $\rightarrow$ `blé`
@@ -676,7 +683,54 @@ OCR line breaks in the printed 18th-century volumes frequently produced broken w
 
 ---
 
-## 15. How to Apply to Future Volumes
+## 15. `ferai(s/t)` / `feront` / `ferez` $\rightarrow$ `serai(s/t)` / `seront` / `serez` (41 replacements across 41 pages)
+
+### Problem
+In 18th-century French typography, the long-s (`ſ`) in future/conditional forms of *être* (*ſerai*, *ſeront*, *ſerez*, *ſeroit*, *ſeroient*, *ſuis*) was repeatedly misread as *f* (*ferai*, *feront*, *ferez*, *ferait*, *feraient*, *fuis*), creating spurious forms of *faire*.
+
+### Applied Rules & Contexts
+Only unambiguous contexts where *être* is syntactically required (predicative adjectives, passive participles, covenant formulas, and locative constructions) are converted:
+
+1. **`ferai` $\rightarrow$ `serai` (19 instances):**
+   - Direct inversion: `ne vous ferai-je pas favorable ?` $\rightarrow$ `ne vous serai-je pas favorable ?`
+   - With locative/predicative complements:
+     - `Je ferai avec vous` $\rightarrow$ `Je serai avec vous` (excluding `alliance` / `une alliance` / `un pacte`)
+     - `je ferai dans votre bouche` $\rightarrow$ `je serai dans votre bouche`
+     - `ferai-je votre Prince` $\rightarrow$ `serai-je votre Prince`
+     - `Je ferai agréable au Seigneur` $\rightarrow$ `Je serai agréable au Seigneur`
+     - `je ferai fidèle à` $\rightarrow$ `je serai fidèle à`
+     - `je ferai touché de miséricorde` $\rightarrow$ `je serai touché de miséricorde`
+     - `pendant que je ferai assise dans les ténèbres` $\rightarrow$ `pendant que je serai assise dans les ténèbres`
+     - `Je ferai comme une panthère / léopard / rosée` $\rightarrow$ `Je serai comme...`
+     - `je ferai ta mort ; ô enfer, je ferai ta ruine` $\rightarrow$ `je serai ta mort ; ô enfer, je serai ta ruine`
+   - Covenant formula:
+     - `je ferai leur Dieu` / `moi je ferai votre Dieu` $\rightarrow$ `je serai leur Dieu` / `moi je serai votre Dieu`
+     - `je ne ferai plus votre Dieu` $\rightarrow$ `je ne serai plus votre Dieu`
+
+2. **`feront` $\rightarrow$ `seront` (15 instances):**
+   - Passive participles & predicate adjectives:
+     - `feront circoncis`, `feront au Seigneur`, `feront savants`, `ne lui feront point agréables`, `feront comme la`, `feront rassemblés`, `feront enterrés`, `ne feront point vaines`, `ne feront point pleurés`, `en feront restés`, `feront desséchés`, `feront dispersés`, `en feront chassés`, `feront enveloppées`, `ne feront point montés`, `nous feront toujours aussi chers`, `feront appelés`, `feront assis`, `feront comblés de biens`.
+   - Covenant formula:
+     - `ils feront mon peuple` / `Ils feront mon peuple` $\rightarrow$ `ils seront mon peuple` / `Ils seront mon peuple`
+
+3. **`ferez` $\rightarrow$ `serez` (4 instances):**
+   - `Vous ne ferez point obligé` $\rightarrow$ `Vous ne serez point obligé`
+   - `vous ferez mon peuple` $\rightarrow$ `vous serez mon peuple`
+   - `Vous ferez aplanie` $\rightarrow$ `Vous serez aplanie`
+
+4. **`ferait` / `feraient` $\rightarrow$ `serait` / `seraient` (2 instances):**
+   - `ferait morte de soif` $\rightarrow$ `serait morte de soif`
+   - `qui feraient avec lui` $\rightarrow$ `qui seraient avec lui`
+
+5. **`fuis` $\rightarrow$ `suis` (1 instance):**
+   - `ce que je fuis tombée` $\rightarrow$ `ce que je suis tombée`
+
+6. **Strict Preservations (False Positives Avoided):**
+   - Genuine *faire* idioms: *« je ferai avec vous une alliance »*, *« je ferai alliance »*, *« ils feront bonne chère »* (even on the same line as *seront assis*: *« où les Élus seront assis, et feront bonne chère »*), *« feront des présents »*, *« ils feront la guerre »*, *« ce que je ferai »*, *« comme je ferai »*, *« ferez des sacrifices »*, *« ce qui ferait tort / plaisir »*.
+
+---
+
+## 16. How to Apply to Future Volumes
 
 When processing a new volume (e.g. `48_marc`):
 

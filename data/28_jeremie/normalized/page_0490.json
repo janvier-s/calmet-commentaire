@@ -20,7 +20,7 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 36,
       "latin_quote": null,
       "french_translation": null,
@@ -28,7 +28,7 @@
     },
     {
       "commentary_id": 2,
-      "verse_ref": "3",
+      "verse_ref": 3,
       "chapter": 36,
       "latin_quote": "SI FORTE AUDIENTE DOMO JUDA.",
       "french_translation": "Si lorsque la maison de Juda entendra tous les maux que je suis résolu de leur faire.",
@@ -36,15 +36,15 @@
     },
     {
       "commentary_id": 3,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 36,
       "latin_quote": "BARUCH.",
-      "french_translation": "Baruch était le Secrétaire, et le principal des Disciples de Jérémie.",
-      "french_commentary": "Nous nous sommes étendus sur ce qui regarde sa personne, et ses Écrits, à la tête du Livre qui porte son nom."
+      "french_translation": "Baruch",
+      "french_commentary": "était le Secrétaire, et le principal des Disciples de Jérémie. Nous nous sommes étendus sur ce qui regarde sa personne, et ses Écrits, à la tête du Livre qui porte son nom."
     },
     {
       "commentary_id": 4,
-      "verse_ref": "4",
+      "verse_ref": 4,
       "chapter": 36,
       "latin_quote": "SCRIPSIT EX ORE JEREMIÆ.",
       "french_translation": "Il écrivit selon que Jérémie lui dictait de sa bouche.",
@@ -53,20 +53,24 @@
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "footnote_text": "(a) _Jerem. I. 2._"
+      "text": "Jerem. I. 2.",
+      "marker": "(a)",
+      "tags": []
     },
     {
-      "footnote_id": 2,
-      "footnote_text": "(b) _Jerem. XXII. 30. Scribe virum istum sterilem, etc._"
+      "text": "Jerem. XXII. 30. Scribe virum istum sterilem, etc.",
+      "marker": "(b)",
+      "tags": []
     },
     {
-      "footnote_id": 3,
-      "footnote_text": "(c) _Jerem. XXX. 2. Scribe tibi omnia verba quæ locutus sum ad te, etc._"
+      "text": "Jerem. XXX. 2. Scribe tibi omnia verba quæ locutus sum ad te, etc.",
+      "marker": "(c)",
+      "tags": []
     },
     {
-      "footnote_id": 4,
-      "footnote_text": "(d) _Jerem. L. 59. 60._"
+      "text": "Jerem. L. 59. 60.",
+      "marker": "(d)",
+      "tags": []
     }
   ],
   "book_end_marker": null

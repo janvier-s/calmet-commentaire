@@ -15,8 +15,8 @@
   "commentary": [
     {
       "commentary_id": 1,
-      "verse_number": "2",
-      "verse_ref": "1",
+      "verse_number": 2,
+      "verse_ref": 1,
       "chapter": 48,
       "latin_quote": null,
       "french_translation": null,
@@ -25,7 +25,7 @@
     {
       "commentary_id": 2,
       "verse_number": null,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 48,
       "latin_quote": "VÆ SUPER NABO, QUONIAM VASTATA EST.",
       "french_translation": "Malheur à Nabo, parce qu'elle a été détruite.",
@@ -34,7 +34,7 @@
     {
       "commentary_id": 3,
       "verse_number": null,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 48,
       "latin_quote": "CAPTA EST CARIATHAIM.",
       "french_translation": "Cariathaïm a été prise.",
@@ -43,16 +43,16 @@
     {
       "commentary_id": 4,
       "verse_number": null,
-      "verse_ref": "1",
+      "verse_ref": 1,
       "chapter": 48,
       "latin_quote": "CONFUSA EST FORTIS, ET TREMUIT.",
-      "french_translation": "La ville forte a été couverte de confusion. L'Hébreu : ^{(k)} Hammisgab est dans la confusion, et dans la frayeur.",
-      "french_commentary": "On croit qu'Hammisgab est une forteresse. ^{(l)} C'est peut-être aussi l'épithète de Cariathaïm : _Cariathaïm est prise ; elle est couverte de confusion, et remplie de frayeur, cette forteresse d'une situation si avantageuse._"
+      "french_translation": "La ville forte a été couverte de confusion.",
+      "french_commentary": "L'Hébreu : ^{(k)} _Hammisgab est dans la confusion, et dans la frayeur_. On croit qu'_Hammisgab_ est une forteresse. ^{(l)} C'est peut-être aussi l'épithète de _Cariathaïm : Cariathaïm est prise ; elle est couverte de confusion, et remplie de frayeur, cette forteresse d'une situation si avantageuse._"
     },
     {
       "commentary_id": 5,
       "verse_number": null,
-      "verse_ref": "2",
+      "verse_ref": 2,
       "chapter": 48,
       "latin_quote": "NON EST ULTRA EXULTATIO IN MOAB. CONTRA",
       "french_translation": null,
@@ -61,95 +61,84 @@
   ],
   "footnotes": [
     {
-      "footnote_id": 1,
-      "footnote_marker": "a",
-      "text": "(a) Comparez Jérémie 48:1-3, 29, 31-32, 34. avec Isaïe 15:2, 5 et 16:6-8. Item Isaïe 21:17. et Jérémie 48:43.",
+      "text": "Comparez Jérémie 48:1-3, 29, 31-32, 34. avec Isaïe 15:2, 5 et 16:6-8. Item Isaïe 21:17. et Jérémie 48:43.",
       "tags": [
         "verse",
         "old-ref"
-      ]
+      ],
+      "marker": "(a)"
     },
     {
-      "footnote_id": 2,
-      "footnote_marker": "b",
-      "text": "(b) Voyez Michée 3:1-3. comparé avec Isaïe 2:2-4.",
+      "text": "Voyez Michée 3:1-3. comparé avec Isaïe 2:2-4.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(b)"
     },
     {
-      "footnote_id": 3,
-      "footnote_marker": "c",
-      "text": "(c) Nombres 32:3. et _L. Par. V._ 8.",
+      "text": "Nombres 32:3. et _L. Par. V._ 8.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(c)"
     },
     {
-      "footnote_id": 4,
-      "footnote_marker": "d",
-      "text": "(d) Deutéronome 32:49.",
+      "text": "Deutéronome 32:49.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(d)"
     },
     {
-      "footnote_id": 5,
-      "footnote_marker": "e",
-      "text": "(e) Deutéronome 34:1.",
+      "text": "Deutéronome 34:1.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(e)"
     },
     {
-      "footnote_id": 6,
-      "footnote_marker": "f",
-      "text": "(f) Isaïe 15:1.",
+      "text": "Isaïe 15:1.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(f)"
     },
     {
-      "footnote_id": 7,
-      "footnote_marker": "g",
-      "text": "(g) Isaïe 46:1. Nabo peut dériver de Nabi נביא Prophète. נבא Prophétiser.",
+      "text": "Isaïe 46:1. Nabo peut dériver de Nabi נביא Prophète. נבא Prophétiser.",
       "tags": [
         "hebrew",
         "verse",
         "explanation"
-      ]
+      ],
+      "marker": "(g)"
     },
     {
-      "footnote_id": 8,
-      "footnote_marker": "h",
-      "text": "(h) Nombres 32:37. Josué 13:19.",
+      "text": "Nombres 32:37. Josué 13:19.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(h)"
     },
     {
-      "footnote_id": 9,
-      "footnote_marker": "i",
-      "text": "(i) Ézéchiel 25:9.",
+      "text": "Ézéchiel 25:9.",
       "tags": [
         "verse"
-      ]
+      ],
+      "marker": "(i)"
     },
     {
-      "footnote_id": 10,
-      "footnote_marker": "k",
-      "text": "(k) המישגב חתה",
+      "text": "המישגב חתה",
       "tags": [
         "hebrew"
-      ]
+      ],
+      "marker": "(k)"
     },
     {
-      "footnote_id": 11,
-      "footnote_marker": "l",
-      "text": "(l) _Mek._ Vatab. Mont. Pagne.",
+      "text": "_Mek._ Vatab. Mont. Pagne.",
       "tags": [
         "commentators"
-      ]
+      ],
+      "marker": "(l)"
     }
   ],
   "book_end_marker": null

@@ -88,6 +88,72 @@ def test_fait_to_sait():
     text, _ = modernize_text("On ne fait point la cuisine ce jour-là.")
     assert "On ne fait point la cuisine" in text
 
+
+def test_ferai_to_serai():
+    # 1. ferai -> serai
+    text, _ = modernize_text("ne vous ferai-je pas favorable ? Je ferai avec vous, et je vous bénirai.")
+    assert "ne vous serai-je pas favorable ?" in text
+    assert "Je serai avec vous," in text
+
+    text, _ = modernize_text("je ferai bien aise de le voir ; je ferai dans votre bouche ; ferai-je votre Prince ?")
+    assert "je serai bien aise de le voir" in text
+    assert "je serai dans votre bouche" in text
+    assert "serai-je votre Prince ?" in text
+
+    text, _ = modernize_text("je ferai leur Dieu, et ils feront mon peuple. Vous ferez mon peuple, et moi je ferai votre Dieu.")
+    assert "je serai leur Dieu" in text
+    assert "ils seront mon peuple" in text
+    assert "Vous serez mon peuple" in text
+    assert "je serai votre Dieu" in text
+
+    text, _ = modernize_text("je ne ferai plus votre Dieu ; je ferai touché de miséricorde ; Je ferai comme une panthère ; je ferai ta mort ; ô enfer, je ferai ta ruine.")
+    assert "je ne serai plus votre Dieu" in text
+    assert "je serai touché de miséricorde" in text
+    assert "Je serai comme une panthère" in text
+    assert "je serai ta mort" in text
+    assert "je serai ta ruine" in text
+
+    # 2. feront -> seront
+    text, _ = modernize_text("Tous les mâles feront circoncis ; les prémices feront au Seigneur ; ceux qui feront savants.")
+    assert "feront circoncis" not in text
+    assert "seront circoncis" in text
+    assert "seront au Seigneur" in text
+    assert "seront savants" in text
+
+    text, _ = modernize_text("ne lui feront point agréables ; ils feront rassemblés ; mes menaces ne feront point vaines ; où les Élus feront assis, et feront bonne chère.")
+    assert "ne lui seront point agréables" in text
+    assert "ils seront rassemblés" in text
+    assert "ne seront point vaines" in text
+    assert "les Élus seront assis, et feront bonne chère" in text
+
+    # 3. ferez -> serez
+    text, _ = modernize_text("Vous ne ferez point obligé ; Vous ferez aplanie.")
+    assert "Vous ne serez point obligé" in text
+    assert "Vous serez aplanie" in text
+
+    # 4. ferait / feraient -> serait / seraient
+    text, _ = modernize_text("l'armée ferait morte de soif ; tous ceux qui feraient avec lui.")
+    assert "ferait morte de soif" not in text
+    assert "serait morte de soif" in text
+    assert "ceux qui seraient avec lui" in text
+
+    # 5. fuis -> suis
+    text, _ = modernize_text("de ce que je fuis tombée dans le péché.")
+    assert "ce que je suis tombée" in text
+
+    # Negative cases: genuine faire preserved
+    text, _ = modernize_text("je ferai avec vous une alliance éternelle ; comme je ferai alliance avec la maison d'Israël.")
+    assert "je ferai avec vous une alliance" in text
+    assert "je ferai alliance" in text
+
+    text, _ = modernize_text("ce que je ferai ; je ferai mourir ; ils feront des présents ; vous ferez des sacrifices ; ce qui ferait tort.")
+    assert "ce que je ferai" in text
+    assert "je ferai mourir" in text
+    assert "ils feront des présents" in text
+    assert "vous ferez des sacrifices" in text
+    assert "ce qui ferait tort" in text
+
+
     text, _ = modernize_text("A-t-on fait que des fautes ?")
     assert "A-t-on fait que" in text
 
@@ -505,6 +571,22 @@ def test_misc_archaic_and_pattern_families():
     text, _ = modernize_text("Ils ont fouillé par tout, et ils allèrent par tout ailleurs.")
     assert "fouillé partout," in text
     assert "partout ailleurs." in text
+
+    # Contextual adverbial exceptions:
+    text, _ = modernize_text("publiez par tout son injustice ; ils portent par tout l'effroi ; prêchant par tout l'Évangile ; Salomon recommande par tout le ménage.")
+    assert "publiez partout son injustice" in text
+    assert "portent partout l'effroi" in text
+    assert "prêchant partout l'Évangile" in text
+    assert "recommande partout le ménage" in text
+
+    # 6b. Possédez participle / noun -> Possédés / possédés
+    text, _ = modernize_text("Les hommes ou possédez par leur affection. Possédez par leur affection. Ils étaient de vrais possédez et les possédez du pays. Mais vous possédez la terre, et possédez ce champ.")
+    assert "ou possédés par leur affection" in text
+    assert "Possédés par leur affection" in text
+    assert "de vrais possédés" in text
+    assert "les possédés du pays" in text
+    assert "vous possédez la terre" in text
+    assert "possédez ce champ" in text
 
     # 7. bled -> blé
     text, _ = modernize_text("Où est le bled et les bleds mûrs ?")
