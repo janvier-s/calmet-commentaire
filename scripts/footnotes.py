@@ -490,10 +490,10 @@ def render_bible(note, prev):
         same = i and refs[i - 1].book == r.book and not out[-1].startswith(" ; comparez")
         out.append(r.render(with_book=False) if same else f"{book} {r.render(with_book=False)}")
         pos = r.end
-        s = SEQ.match(t, pos)
+        s = SEQ.match(t[pos:])  # "^" only matches at the start of the string
         if s:
             out.append(" et suivants")
-            pos = s.end()
+            pos += s.end()
     tail = t[pos:]
     if not re.fullmatch(r"[\s.,;:]*(?:etc\.?)?[\s.]*", tail):
         return None

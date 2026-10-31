@@ -164,7 +164,12 @@ _NUMPFX = r"(?:(?P<n>[1-4]|I{1,3}|IV)(?:\s*\.\s*|\s+)(?:Livre\s+des?\s+)?)"
 _CH = r"(?:[IVXLC]+|(?![lcd]\b)[ivxlc]+|\d{1,3})"
 # verses: "1. 4. 5"  "16. & 17"  "21, 22, 23"  "22-23"; a number is not a verse when a chapter
 # follows it ("95:10") or, for 1-4, a book name ("31. 1 Rois")
-_VN = r"(?:[1-4](?!\d|\s*:|\s*\.?\s*(?!et\b)[A-Za-zÀ-ÿſ]{2,}\.?\s*(?:[IVXLC]+\b|\d))|(?:[1-9]\d{1,2}|[05-9])(?!\d|\s*:))"
+_LOOSE = {"a": "[aàâ]", "e": "[eéèêë]", "i": "[iî]", "o": "[oô]", "u": "[uùû]", "s": "[sſ]", "c": "[cç]"}
+# the names that take a number ("1 Rois", "2 Cor."), as the page may spell them
+_NUMBERED_NAME = "|".join(sorted(("".join(_LOOSE.get(ch, re.escape(ch)) for ch in a)
+                                  for a, name in ABBR.items() if name in NUMBERED), key=len, reverse=True))
+_VN = (r"(?:[1-4](?!\d|\s*:|\s*\.?\s*(?i:livre|" + _NUMBERED_NAME + r")\b\.?\s*(?:[IVXLC]+\b|\d))"
+       r"|(?:[1-9]\d{1,2}|[05-9])(?!\d|\s*:))")
 _VS = rf"\d{{1,3}}(?!\d|\s*:)(?:\s*\.?\s*(?:,|-|&|et|\.)\s*{_VN})*"
 # chapter then verse(s): "XVI. 1. 4. 5."  "16:1, 4, 5"  "XXXIX. ℣. 3."  "1. 2."  "9:7-8"
 _CV = (rf"(?P<c>{_CH})\s*(?:[.,:]\s*|\s+)(?:(?:℣|v|verset|vers)\.?\s*)?"

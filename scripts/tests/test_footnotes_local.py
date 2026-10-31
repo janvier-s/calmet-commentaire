@@ -16,6 +16,9 @@ def note(text, chap=5):
     ("Vide Exod. 12. 3.", "Voyez Exode 12:3."),
     ("Psalm. 22. 1. confer Matth. 27. 46.", "Psaumes 22:1 ; comparez Matthieu 27:46."),
     ("Isai. 7. 14. etc.", "Isaïe 7:14 etc."),
+    ("Gen. 3. 4. & seq.", "Genèse 3:4 et suivants."),
+    ("Matth. 5. 3. 4. Luc. 6. 20.", "Matthieu 5:3-4 ; Luc 6:20."),      # 4 is a verse, not "4 Luc"
+    ("Psal. 31. 1. 2. Reg. 3. 4.", "Psaumes 31:1 ; 2 Rois 3:4."),       # 2 is the book's number
     ("Ibid. v. 7.", "Jérémie 4:7."),  # the reference before
     ("v. 9.", "Isaïe 5:9."),          # the volume's book and the note's chapter
 ])
