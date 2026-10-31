@@ -252,13 +252,15 @@ def find_refs(text):
             c = num(m.group("conly"))
             if not c:
                 continue
-            out.append(Ref(_start(text, m, name), m.end(), book, name, c, [], m.group(0)))
+            s = _start(text, m, name)
+            out.append(Ref(s, m.end(), book, name, c, [], text[s:m.end()]))
             pos = m.end()
             continue
         c = num(m.group("c"))
         if not c:
             continue
-        ref = Ref(_start(text, m, name), m.end(), book, name, c, _verses(m.group("v")), m.group(0))
+        s = _start(text, m, name)
+        ref = Ref(s, m.end(), book, name, c, _verses(m.group("v")), text[s:m.end()])
         out.append(ref)
         pos = m.end()
         while True:  # "& XCV. 10."  ", 9:7-8"  "et ℣. 3."

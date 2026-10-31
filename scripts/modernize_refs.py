@@ -33,6 +33,8 @@ def unitalic(text):
 # is: from the scan, or (with *, the guess convention) the verse that fits the context. None: Calmet's numbers do not match
 # the Vulgate, but are written out as printed. "": not a reference, or unreadable; left alone.
 MANUAL = {
+    ('47_matthieu/page_0512', 'I. 1. 7'): '',  # garbled in the scan: which book?
+    ('47_matthieu/page_0184', 'Genes. VIII. 7. 2'): 'Genèse 8:7. 2',  # the 2 belongs to "2. Reg." after it
     ('21a_psaumes/page_0233', 'Act. III. 29'): 'Actes 2:29*',  # David's tomb, in Peter's speech
     ('21a_psaumes/page_0687', 'Psal. x. 7. 14'): 'Psaumes 9:28, 35',  # labor (amal); Hebrew 10:7, 14
     ('02_exode/page_0573', 'Psal. 59. 5 et 59. 10'): 'Psaumes 59:5 et 59:10',

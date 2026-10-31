@@ -134,7 +134,9 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
 14. **The user reviews** in `review_web.py` (§7). Commit `data/` when they say.
 15. **Footnotes** (§10): references and authors written out in French, Hebrew and Greek
     checked, doubtful notes settled from context; what is left waits for the scans.
-16. `python3 modernize_refs.py <vol>`, then with `--apply`: Bible references left in the old
+16. `python3 chapter_refs.py <vol>`, then with `--apply`: references naming no book
+    ("Chapitre XXXI. 3." → "chapitre 31:3"). Then `python3 modernize_refs.py <vol>`, then with
+    `--apply` (twice: a first pass can open a second): Bible references left in the old
     form (Roman chapters, abbreviations) written out in the commentary and the notes (§11).
     After the footnotes, which write out most of the notes' references themselves.
 17. **Publish** (§8).
