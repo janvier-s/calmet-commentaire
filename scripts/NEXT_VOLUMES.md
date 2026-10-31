@@ -16,8 +16,8 @@ the full spec.
   book) are fixed when the context settles them, without any mark.
 - **Never OCR the scans.** If text is missing, say so and list the pages; the user can supply
   the original data.
-- **Run LLM jobs in the foreground** (`llm_modernize.py`, `seam_check.py`), never in the
-  background.
+- **LLM jobs may run in the background** (`llm_modernize.py`, `seam_check.py`, `ref_context.py`):
+  they cache or log as they go, so an interrupted run picks up where it stopped.
 - **Stay on the Calmet modernization**: no detours into the Lectio booklet.
 - **Mechanical fixes may be applied; judgement calls are queued.** Anything that needs the scan
   goes into the review queue for the user, with a clear message, not into the data.
@@ -91,7 +91,7 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
    (`raw_json/commentaire/` or `21st_gemini/commentaire/`) before seeding. Never overwrite an
    existing `normalized/`.
 2. `python3 modernize.py <vol>`: rule-based pre-pass (ſ, common OCR f/s slips).
-3. `LLM_BACKEND=claude python3 llm_modernize.py <vol>`: modernize the French. **Foreground.**
+3. `LLM_BACKEND=claude python3 llm_modernize.py <vol>`: modernize the French.
    Cached in `cache/llm_cache.json` by md5 of the text; a usage limit just means re-running
    later (the cache keeps what was done). Don't run other cache writers at the same time.
 4. `python3 modernize_inplace.py <vol>`: rule-based modernization of the archaic spellings the
@@ -128,7 +128,7 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
 11. `python3 assign_chapters.py <key>`: the `chapter` field (§5). Read
     `docs/chapter_check.json`; the judgement cases go to the queue.
 12. `python3 seam_check.py <vol>`: Claude reads every page break for lost or repeated text
-    (**foreground**, cached in `cache/seam_cache.json`). Results → `docs/seam_check.json`.
+    (cached in `cache/seam_cache.json`). Results → `docs/seam_check.json`.
 13. `python3 audit_integrity.py ../docs/integrity_audit_<date>.json` → `docs/review_queue.json`.
     Report the counts by kind to the user.
 14. **The user reviews** in `review_web.py` (§7). Commit `data/` when they say.

@@ -1,20 +1,22 @@
 """Check every Bible reference (commentary and footnotes) against what its context says, with a log
 so a rerun only checks the references that are new or whose context changed.
 
-  python3 ref_context.py <volume|book|all> ...            local stage, then Claude for the rest
+  python3 ref_context.py <volume|book|all> ...            local stage, then the model for the rest
   python3 ref_context.py <volume|book|all> ... --local    local stage only (no calls)
-  python3 ref_context.py ... --limit N                    at most N references sent to Claude
+  python3 ref_context.py ... --limit N                    at most N references sent to the model
 
 Each reference is keyed by its page, its text and its context: fixing the text or the reference
 gives a new key, and the next run checks it again; an unchanged one is never sent twice.
   local    the Latin quoted right against it is that verse (ref_check.fits_here): ok, no call
-  claude   the reference, the Vulgate text of the verse, the passage it stands in (for a note,
+  first    the reference, the Vulgate text of the verse, the passage it stands in (for a note,
            the sentence that calls it too) and the verses it may have meant (a digit or Roman
            numeral misread, the verses around): ok, wrong (with the right one) or unsure
+  second   a `wrong` or `unsure` goes to a stronger model (REF_SECOND), asked blind: its `ok` stands,
+           a fix stands only when both give it, anything else is `unsure` (both readings kept)
 The log is docs/ref_context.json; `wrong` and `unsure` are listed in docs/ref_context_review.json.
 The Vulgate numbering is the one used (Psalms too). The calls go through agy, REF_MODEL picking
 its model (default gemini-3.8-flash-low); REF_BACKEND=claude sends them to Claude (REF_MODEL
-then defaults to sonnet).
+then defaults to sonnet); the second opinion defaults to gemini-4-argon-medium (opus on Claude).
 """
 import asyncio
 import hashlib
@@ -33,6 +35,7 @@ LOG = DOCS / "ref_context.json"
 REVIEW = DOCS / "ref_context_review.json"
 BACKEND = os.environ.get("REF_BACKEND", "agy")
 MODEL = os.environ.get("REF_MODEL", "sonnet" if BACKEND == "claude" else "gemini-3.8-flash-low")
+SECOND = os.environ.get("REF_SECOND", "opus" if BACKEND == "claude" else "gemini-4-argon-medium")
 BATCH = int(os.environ.get("REF_BATCH", 15))
 
 PROMPT = """You check Bible references in Dom Augustin Calmet's Commentaire littéral (1707-1716),
@@ -93,7 +96,7 @@ def collect(vol):
 
 
 def local(item):
-    """'ok' when the Latin quoted right against the reference is that verse; None: ask Claude."""
+    """'ok' when the Latin quoted right against the reference is that verse; None: ask the model."""
     r = item["_ref"]
     return "ok" if item["quote"] and B.exists(r) and fits_here(item["quote"], r) else None
 
@@ -106,45 +109,76 @@ def prompt_item(i, item):
             f"candidates: {cands or '-'}\npassage: {item['context']}\n")
 
 
-async def ask(todo, log):
+def save(log):
+    LOG.write_text(json.dumps(log, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def entry(it, a, model):
+    return dict(where=it["where"], field=it["field"], ref=it["ref"], written=it["written"],
+                verdict=a["verdict"], fix=a.get("fix") or "", why=a.get("why") or "", by=model)
+
+
+def same(a, b):
+    return " ".join(a.split()).rstrip(".") == " ".join(b.split()).rstrip(".")
+
+
+def settle(first, a, model):
+    """The first reading and the second (asked blind): a fix stands only when both give it."""
+    second = dict(verdict=a["verdict"], fix=a.get("fix") or "", why=a.get("why") or "", by=model)
+    if second["verdict"] == "ok":
+        verdict, fix = "ok", ""
+    elif first["verdict"] == second["verdict"] == "wrong" and same(first["fix"], second["fix"]):
+        verdict, fix = "wrong", first["fix"]
+    else:
+        verdict, fix = "unsure", " / ".join(dict.fromkeys(x for x in (first["fix"], second["fix"]) if x))
+    return {**first, "verdict": verdict, "fix": fix, "first": {k: first[k] for k in ("verdict", "fix", "why", "by")},
+            "second": second, "why": second["why"] or first["why"]}
+
+
+async def ask(todo, model, record, log):
+    """Send the items in batches; record(item, answer) sets its log entry."""
     sem = asyncio.Semaphore(4)
     batches = [todo[i:i + BATCH] for i in range(0, len(todo), BATCH)]
 
     async def one(b):
         prompt = PROMPT.format(items="\n".join(prompt_item(i, it) for i, it in enumerate(b)))
-        ans = await (F.agy(prompt, sem) if BACKEND == "agy" else F.claude(prompt, MODEL, sem))
+        ans = await (F.agy(prompt, sem, model) if BACKEND == "agy" else F.claude(prompt, model, sem))
         for i, it in enumerate(b):
             a = ans.get(str(i))
             if a and a.get("verdict") in ("ok", "wrong", "unsure"):
-                log[it["key"]] = dict(where=it["where"], field=it["field"], ref=it["ref"], written=it["written"],
-                                      verdict=a["verdict"], fix=a.get("fix") or "", why=a.get("why") or "", by=MODEL)
-        LOG.write_text(json.dumps(log, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+                log[it["key"]] = record(it, a)
+        save(log)
     await asyncio.gather(*(one(b) for b in batches))
 
 
 def main(argv):
-    F.AGY_MODEL = MODEL  # footnotes.agy() reads it
     only_local = "--local" in argv
     limit = int(argv[argv.index("--limit") + 1]) if "--limit" in argv else None
     vols = volumes_of([a for a in argv if not a.startswith("--") and not a.isdigit()] or ["all"])
     log = json.loads(LOG.read_text(encoding="utf-8")) if LOG.exists() else {}
-    stats, todo = Counter(), []
+    stats, todo, seconds = Counter(), [], []
     for vol in vols:
         for it in collect(vol):
             stats["references"] += 1
             if it["key"] in log:
                 stats["already checked"] += 1
+                if log[it["key"]]["verdict"] != "ok" and "second" not in log[it["key"]]:
+                    seconds.append(it)
                 continue
             if local(it):
-                log[it["key"]] = dict(where=it["where"], field=it["field"], ref=it["ref"], written=it["written"],
-                                      verdict="ok", fix="", why="the quotation is this verse", by="local")
+                log[it["key"]] = entry(it, dict(verdict="ok", why="the quotation is this verse"), "local")
                 stats["ok by the quotation"] += 1
             else:
                 todo.append(it)
-    LOG.write_text(json.dumps(log, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
-    stats["for Claude"] = len(todo)
+    save(log)
+    stats["to ask"] = len(todo)
     if not only_local and todo:
-        asyncio.run(ask(todo[:limit] if limit else todo, log))
+        todo = todo[:limit] if limit else todo
+        asyncio.run(ask(todo, MODEL, lambda it, a: entry(it, a, MODEL), log))
+        seconds += [it for it in todo if log.get(it["key"], {}).get("verdict") in ("wrong", "unsure")]
+    if not only_local and seconds:
+        stats["second opinions"] = len(seconds)
+        asyncio.run(ask(seconds, SECOND, lambda it, a: settle(log[it["key"]], a, SECOND), log))
     review = sorted((v for v in log.values() if v["verdict"] != "ok" and v["where"].split("/")[0] in vols),
                     key=lambda v: (v["where"], v["field"]))
     REVIEW.write_text(json.dumps(review, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

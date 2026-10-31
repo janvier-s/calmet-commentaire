@@ -716,15 +716,16 @@ def answer_key(tag, *parts):
 AGY_PLAIN = "Answer directly, with text only: do not use any tool, do not run commands, do not read or write files.\n\n"
 
 
-async def agy(prompt, sem):
+async def agy(prompt, sem, model=None):
     """claude() for the text-only calls, through agy (FOOTNOTE_BACKEND=agy). agy is an agent: some
     models reach for a tool (a shell command, which print mode refuses, leaving no answer), so it is
-    told to answer in text and runs in an empty folder."""
+    told to answer in text and runs in an empty folder. model: instead of AGY_MODEL."""
     global LIMIT_HIT
     empty = Path(tempfile.gettempdir()) / "footnotes_agy"
     empty.mkdir(exist_ok=True)
     args = ["agy", "-p", AGY_PLAIN + prompt, "--print-timeout", "600s", "--disable-slash-commands", "--output-format", "json"]
-    args += ["--model", AGY_MODEL] if AGY_MODEL else []
+    model = model or AGY_MODEL
+    args += ["--model", model] if model else []
     async with sem:
         if LIMIT_HIT or NO_CALLS:
             return {}
@@ -742,7 +743,7 @@ async def agy(prompt, sem):
     text = str(d.get("response") or "")
     u = d.get("usage") or {}
     with USAGE.open("a", encoding="utf-8") as f:
-        f.write(json.dumps(dict(model=EXPAND_MODEL, image=False, cost=None, input_tokens=u.get("input_tokens", 0),
+        f.write(json.dumps(dict(model=f"agy:{model or 'default'}", image=False, cost=None, input_tokens=u.get("input_tokens", 0),
                                 output_tokens=u.get("output_tokens", 0))) + "\n")
     if d.get("status") != "SUCCESS":
         if re.search(r"quota|limit|exhausted|429", text + err.decode(), re.I):
