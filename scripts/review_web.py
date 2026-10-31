@@ -357,6 +357,17 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 "issues": [i for p in [page, *also] for i in rs.page_issues(items, progress, vol, p)],
                 "around": rs.neighbour_issue_pages(items, progress, vol, page)}
 
+    def run_refresh_generated(body):
+        """The quick half of a re-check, for Resolved: the page's generated issues (scan italics and gaps,
+        write-outs, refs) the edits fixed close at once, without waiting for the book's audit."""
+        vol, page = vol_page(body)
+        with lock:
+            gen = refresh_generated(rs.book_volumes(vol), [page])
+            by_id.update({it["id"]: it for it in items})
+        return {"fixed": len(gen["fixed"]), "added": len(gen["added"]),
+                "issues": rs.page_issues(items, progress, vol, page),
+                "around": rs.neighbour_issue_pages(items, progress, vol, page)}
+
     def item_of(iid):
         it = by_id.get(iid)
         if not it:
@@ -568,7 +579,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
            "/api/proposal": get_proposal, "/api/batch": batch, "/api/search": search, "/api/versions": versions}
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
-            "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
+            "/api/open": open_file, "/api/recheck": run_recheck, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
             "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
             "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit}

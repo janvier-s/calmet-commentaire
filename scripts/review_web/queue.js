@@ -157,8 +157,10 @@ let sending = Promise.resolve();  // the marks on their way to the server, in th
 async function mark(status, { thorough = false } = {}) {
   const it = currentItem();
   if (!it) { toast("No issue selected: click one in the left column"); return; }
+  const edited = S.dirty;
   if (S.dirty && !(await save({ redraw: false }))) return;  // a failed save stays put
   if (hooks.beforeMark && !(await hooks.beforeMark())) return;
+  if (edited && !thorough) await refreshGenerated();  // the page's other scan issues the edits fixed close: on to the next page
   if (thorough && pending.size) {  // only here does the bar show
     const vol = S.vol;
     barStart(vol);
@@ -362,6 +364,18 @@ async function runRecheck(vol, page, also) {
   if (--running === 0) $("rechecking").textContent = "";
   if (r.status === 200) recheckMs.set(vol, Math.max(600, Math.round(performance.now() - t0)));  // what the bar fills over next time
   if (r.status !== 200) { toast(`Re-check failed: ${r.body.error || "no answer"}`); return; }
+  return applyIssues(vol, page, also, r.body);
+}
+
+/** The page's generated issues (scan italics, gaps…) the edits fixed, closed at once: Resolved waits for this. */
+async function refreshGenerated(vol = S.vol, page = S.page) {
+  let r;
+  try { r = await api("/api/refresh_generated", { vol, page }); } catch (e) { return; }
+  if (r.status === 200) await applyIssues(vol, page, [], r.body);
+}
+
+async function applyIssues(vol, page, also, body) {
+  const r = { body };
   const byId = new Map(r.body.issues.map((it) => [it.id, it]));
   for (const it of Q.items) {
     const fresh = byId.get(it.id);

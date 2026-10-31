@@ -310,3 +310,29 @@ def test_ocr_italic_is_an_issue_that_italicizes(data_dir):
     assert call(f"/api/page?vol={VOL}&page=194")["data"]["commentary"][0]["french_commentary"] == "suite du _commentaire_."
     assert call("/api/queue?kind=ocr_italic&status=open")["items"] == []  # done: no longer an issue
     server.shutdown()
+
+
+def test_refresh_generated_closes_the_scan_issues_an_edit_fixed(data_dir):
+    from conftest import dump
+    docs = data_dir.parent / "docs"
+    dump(docs / "ocr_gaps.json", {"italics": [
+        {"vol": VOL, "page": 194, "path": "commentary/0/french_commentary", "a": 9, "b": 20, "to": "italic",
+         "old": "commentaire", "before": "suite du ", "after": ".", "words": [2, 2], "slant": 15}]})
+    server, token = make_server(Store(data_dir, docs), docs / "review_queue.json", port=0)
+    threading.Thread(target=server.serve_forever, args=(0.02,), daemon=True).start()
+    base = f"http://127.0.0.1:{server.server_address[1]}"
+
+    def call(path, body=None):
+        req = urllib.request.Request(base + path, data=None if body is None else json.dumps(body).encode(),
+                                     headers={"X-Token": token, "Content-Type": "application/json"})
+        with urllib.request.urlopen(req) as r:
+            return json.loads(r.read())
+
+    (it,) = call("/api/queue?kind=ocr_italic&status=open")["items"]
+    p = call(f"/api/page?vol={VOL}&page=194")
+    p["data"]["commentary"][0]["french_commentary"] = "suite du _commentaire_."  # italicized by hand
+    call("/api/page", {"vol": VOL, "page": 194, "data": p["data"], "version": p["version"]})
+    r = call("/api/refresh_generated", {"vol": VOL, "page": 194})
+    assert r["fixed"] == 1 and next(i for i in r["issues"] if i["id"] == it["id"])["status"] == "resolved"
+    assert call("/api/queue?kind=ocr_italic&status=open")["items"] == []
+    server.shutdown()

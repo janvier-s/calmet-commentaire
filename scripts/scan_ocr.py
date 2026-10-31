@@ -577,7 +577,11 @@ def italics(o, data, res=None):
         if numeral(w["t"]):
             continue  # 17, XVII (as after a ℣, or by a lemma)
         src = "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"])
-        t = src if "'" in src or "’" in src else w["t"]  # qu' il, s' il: the pieces of one word vote as that word
+        t = w["t"]
+        if "'" in src or "’" in src:  # qu' il: the pieces of one word vote as that word, its letters (s'y leans as y)
+            t = re.sub(r"\W", "", src)
+            if len(t) < 4:
+                continue  # n'a, s'en: the apostrophe's own slant outweighs so few letters
         sl = word_slant(o, w)
         if sl is None or ROMAN_AT < sl < ITALIC_AT or (len(t) < 3 and SHORT_ROMAN < sl < SHORT_ITALIC) or 5 * sum(c in LEANING for c in t) >= 2 * len(t):
             continue

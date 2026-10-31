@@ -381,7 +381,8 @@ document.body.append(pop);
 pop.addEventListener("mousedown", (e) => e.preventDefault());  // the field keeps its selection
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") pop.hidden = true; });
 document.addEventListener("pointerdown", (e) => { if (!pop.contains(e.target) && !view.contains(e.target)) pop.hidden = true; });
-$("scan-view").addEventListener("scroll", () => { pop.hidden = true; });
+let popAt = 0;  // when the menu opened: the scroll its own click starts (the word brought into view) leaves it open
+$("scan-view").addEventListener("scroll", () => { if (performance.now() - popAt > 400) pop.hidden = true; });
 
 const EDGE = /^[^\p{L}\p{N}]*|[^\p{L}\p{N}]*$/gu;  // a word's punctuation and _ around its letters
 const core = (t) => t.replace(EDGE, "");
@@ -475,6 +476,7 @@ function showActions(i, x, y) {
     textContent: label, onclick: () => { pop.hidden = true; act(); },
   })));
   pop.hidden = false;
+  popAt = performance.now();
   pop.style.left = `${Math.min(innerWidth - pop.offsetWidth - 4, Math.max(4, x - pop.offsetWidth / 2))}px`;
   pop.style.top = `${y + 14 + pop.offsetHeight > innerHeight ? y - pop.offsetHeight - 10 : y + 14}px`;
 }
