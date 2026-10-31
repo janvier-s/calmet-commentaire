@@ -33,7 +33,7 @@ from functools import lru_cache
 from itertools import islice
 
 from calmet import _fold, vulgate_words
-from paths import BOOKS, DATA, DOCS, HUNSPELL_CACHE, HUNSPELL_DICT, LLM_CACHE, SCRIPTS, load, pages
+from paths import DATA, DOCS, HUNSPELL_CACHE, HUNSPELL_DICT, LLM_CACHE, SCRIPTS, load, pages, volumes_of
 
 OUT = DOCS / "hunspell"
 NAMES = SCRIPTS / "spellcheck_names.txt"
@@ -760,20 +760,6 @@ def scan_ez(volumes, limit=30, show_fp=False, apply=False):
         if show_fp and fp_examples.get(w):
             floc, fwhy, fsnip = fp_examples[w][0]
             print(f"      [FP skipped ({fwhy})]: {floc}: …{fsnip}…")
-
-
-def volumes_of(args):
-    vols = []
-    for a in args:
-        if a == "all":
-            vols += sorted(p.name for p in DATA.iterdir() if (p / "normalized").is_dir())
-        elif a in BOOKS:
-            vols += BOOKS[a]["studium"]
-        elif (DATA / a / "normalized").is_dir():
-            vols.append(a)
-        else:
-            sys.exit(f"Unknown volume or book: {a}")
-    return vols
 
 
 def main(argv):

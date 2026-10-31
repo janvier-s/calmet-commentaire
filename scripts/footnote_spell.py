@@ -23,6 +23,7 @@ from collections import Counter, defaultdict
 
 import bible_refs as B
 from paths import SCRIPTS
+from vulgate_check import lev
 
 DICT = SCRIPTS / "cache" / "refs" / "grc_hunspell" / "usr" / "share" / "hunspell" / "grc"
 BREATHING = "̓̔"
@@ -127,14 +128,7 @@ def suggestions(words):
 
 def distance(a, b):
     """Letters added, dropped or changed between two words, accents aside."""
-    a, b = plain(a), plain(b)
-    prev = list(range(len(b) + 1))
-    for i, x in enumerate(a, 1):
-        cur = [i]
-        for j, y in enumerate(b, 1):
-            cur.append(min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (x != y)))
-        prev = cur
-    return prev[-1]
+    return lev(plain(a), plain(b))
 
 
 def one_of(cands):

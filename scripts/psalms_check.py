@@ -17,26 +17,12 @@ Usage: python3 psalms_check.py [volume]   (default 21a_psaumes) -> docs/psalms_c
 import json
 import re
 import sys
-import unicodedata
 from collections import defaultdict
 
 
 from export import chapter_of
+from fill_vulgate_verses import words
 from paths import DOCS, VUL, load, pages
-
-
-def words(s):
-    """Spelling-tolerant word keys: unquam/umquam, exultavit/exsultavit, cœlo/cælo match."""
-    s = unicodedata.normalize("NFKD", (s or "").lower()).encode("ascii", "ignore").decode()
-    s = s.replace("j", "i").replace("v", "u").replace("y", "i")
-    out = []
-    for w in re.findall(r"[a-z]+", s):
-        if w == "etc":
-            continue
-        w = w.replace("ae", "e").replace("oe", "e").replace("xs", "x").replace("mq", "nq").replace("ph", "f").replace("h", "")
-        w = re.sub(r"(.)\1", r"\1", w)
-        out.append(w[:5])
-    return out
 
 
 VULGATE = {c["chapter"]: {v["verse"]: words(v["text"]) for v in c["verses"]}

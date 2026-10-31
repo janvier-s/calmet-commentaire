@@ -25,6 +25,7 @@ NOTE = (
 
 
 def words(s):
+    """Spelling-tolerant word keys: unquam/umquam, exultavit/exsultavit, cœlo/cælo match."""
     s = unicodedata.normalize("NFKD", (s or "").lower()).encode("ascii", "ignore").decode()
     s = s.replace("j", "i").replace("v", "u").replace("y", "i")
     out = []
