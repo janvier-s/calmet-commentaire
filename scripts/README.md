@@ -127,6 +127,10 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   quotation): "ITALICS (SCAN)", with the `_` marks to change; green dotted boxes over the scan, a wavy
   green underline in the text. Commentary, verses' French and chapter intros only (the footnotes are
   written out); a lone word must lean clearly, and words mostly of v, w, x, y, z, k do not count.
+- Click a word on the overlay: its place in the text is selected and a menu offers Insert (a missing
+  word, or the whole missing run, as the OCR spelled it), Use the scan's word (diff/near: the letters
+  only, punctuation and `_` kept), Make it italic/roman (an ITALICS (SCAN) stretch) and Italic / roman
+  (the word alone). Hover a word for its slant. Each change is a plain edit (⌘Z undoes it).
 - Work through the queue in the browser: `python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters]`
   (with no book given it resumes where you stopped: the page, and without filters the same filters and
   issue; `--fresh` starts from the first open issue)

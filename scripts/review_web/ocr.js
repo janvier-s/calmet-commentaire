@@ -371,8 +371,82 @@ view.addEventListener("click", (e) => {
   if (!on || !res || !down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 4) return;  // a pan, not a click
   const [px, py] = scanPoint(e);
   const i = res.words.findIndex((w) => w.boxes.some(([x, y, bw, bh]) => px >= x && px <= x + bw && py >= y && py <= y + bh));
-  if (i >= 0) goToText(i);
+  if (i >= 0) { goToText(i); showActions(i, e.clientX, e.clientY); }
+  else pop.hidden = true;
 });
+
+// --- a clicked word's actions: insert it, take the scan's reading, toggle its italics ---
+const pop = Object.assign(document.createElement("div"), { id: "ocr-pop", hidden: true });
+document.body.append(pop);
+pop.addEventListener("mousedown", (e) => e.preventDefault());  // the field keeps its selection
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") pop.hidden = true; });
+document.addEventListener("pointerdown", (e) => { if (!pop.contains(e.target) && !view.contains(e.target)) pop.hidden = true; });
+$("scan-view").addEventListener("scroll", () => { pop.hidden = true; });
+
+const EDGE = /^[^\p{L}\p{N}]*|[^\p{L}\p{N}]*$/gu;  // a word's punctuation and _ around its letters
+const core = (t) => t.replace(EDGE, "");
+
+/** The run of words of the same status around i (the missing words read together). */
+function runOf(i) {
+  let a = i, b = i;
+  const st = res.words[i].s;
+  while (a > 0 && res.words[a - 1].s === st) a--;
+  while (b + 1 < res.words.length && res.words[b + 1].s === st) b++;
+  return [a, b];
+}
+
+/** Put the scan's words i..j into the text where they belong. */
+function insertWords(i, j) {
+  const loc = placeWord(i, j), f = loc && fieldOf(loc.path)?.field;
+  if (!f) { toast("No place found in the text for it"); return; }
+  const t = res.words.slice(i, j + 1).map((w) => w.t).join(" "), s = f.text;
+  if (/^\s+$/.test(s.slice(loc.start, loc.end))) {
+    f.edit(loc.start, loc.end, (loc.start > 0 ? " " : "") + t + (loc.end < s.length ? " " : ""));
+  } else {
+    const at = loc.start, before = at > 0 && !/\s/.test(s[at - 1]);
+    f.edit(at, at, before ? ` ${t}` : `${t} `);
+  }
+}
+
+/** The text's word i replaced by the scan's reading, its punctuation and italics marks kept. */
+function useScan(w) {
+  const f = fieldOf(w.path)?.field;
+  if (!f) return;
+  const old = f.text.slice(w.a, w.b), lead = old.match(/^[^\p{L}\p{N}]*/u)[0], trail = old.match(/[^\p{L}\p{N}]*$/u)[0];
+  f.edit(w.a, w.b, lead + core(w.t) + trail);
+}
+
+function toggleItalic(path, a, b) {
+  const f = fieldOf(path)?.field;
+  if (!f) return;
+  f.select(a, b);
+  f.toggleItalic();
+}
+
+function showActions(i, x, y) {
+  const w = res.words[i], acts = [];
+  if (w.s === "missing") {
+    const [a, b] = runOf(i);
+    acts.push([`Insert “${w.t}”`, () => insertWords(i, i)]);
+    if (b > a) acts.push([`Insert all ${b - a + 1}: “${res.words.slice(a, b + 1).map((x) => x.t).join(" ")}”`, () => insertWords(a, b)]);
+  } else if (w.path) {
+    const now = textAt(w);
+    if ((w.s === "diff" || w.s === "near") && core(w.t) && core(w.t) !== core(now)) acts.push([`Use the scan’s “${core(w.t)}”`, () => useScan(w)]);
+    const it = res.italics.find((r) => r.words[0] <= i && i <= r.words[1]);
+    if (it) {
+      const n = it.words[1] - it.words[0] + 1;
+      acts.push([`Make ${n > 1 ? `these ${n} words` : "it"} ${it.to} (scan)`, () => toggleItalic(it.path, it.a, it.b)]);
+    }
+    acts.push([`Italic / roman${w.sl == null ? "" : ` (slant ${w.sl}°)`}`, () => toggleItalic(w.path, w.a, w.b)]);
+  }
+  if (!acts.length) { pop.hidden = true; return; }
+  pop.replaceChildren(...acts.map(([label, act]) => Object.assign(document.createElement("button"), {
+    textContent: label, onclick: () => { pop.hidden = true; act(); },
+  })));
+  pop.hidden = false;
+  pop.style.left = `${Math.min(innerWidth - pop.offsetWidth - 4, Math.max(4, x - pop.offsetWidth / 2))}px`;
+  pop.style.top = `${y + 14 + pop.offsetHeight > innerHeight ? y - pop.offsetHeight - 10 : y + 14}px`;
+}
 
 // --- text → scan ---
 document.addEventListener("selectionchange", () => {
