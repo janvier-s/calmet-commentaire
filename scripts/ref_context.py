@@ -12,7 +12,9 @@ gives a new key, and the next run checks it again; an unchanged one is never sen
            the sentence that calls it too) and the verses it may have meant (a digit or Roman
            numeral misread, the verses around): ok, wrong (with the right one) or unsure
 The log is docs/ref_context.json; `wrong` and `unsure` are listed in docs/ref_context_review.json.
-The Vulgate numbering is the one used (Psalms too). REF_MODEL picks the model (default sonnet).
+The Vulgate numbering is the one used (Psalms too). The calls go through agy, REF_MODEL picking
+its model (default gemini-3.8-flash-low); REF_BACKEND=claude sends them to Claude (REF_MODEL
+then defaults to sonnet).
 """
 import asyncio
 import hashlib
@@ -29,8 +31,9 @@ from ref_check import candidates, fits_here, quote_near
 
 LOG = DOCS / "ref_context.json"
 REVIEW = DOCS / "ref_context_review.json"
-MODEL = os.environ.get("REF_MODEL", "sonnet")
-BATCH = 30
+BACKEND = os.environ.get("REF_BACKEND", "agy")
+MODEL = os.environ.get("REF_MODEL", "sonnet" if BACKEND == "claude" else "gemini-3.8-flash-low")
+BATCH = int(os.environ.get("REF_BATCH", 15))
 
 PROMPT = """You check Bible references in Dom Augustin Calmet's Commentaire littéral (1707-1716),
 modernized French. Calmet cites the Latin Vulgate, with its numbering (Psalms too: Psaume 50 is
@@ -108,7 +111,8 @@ async def ask(todo, log):
     batches = [todo[i:i + BATCH] for i in range(0, len(todo), BATCH)]
 
     async def one(b):
-        ans = await F.claude(PROMPT.format(items="\n".join(prompt_item(i, it) for i, it in enumerate(b))), MODEL, sem)
+        prompt = PROMPT.format(items="\n".join(prompt_item(i, it) for i, it in enumerate(b)))
+        ans = await (F.agy(prompt, sem) if BACKEND == "agy" else F.claude(prompt, MODEL, sem))
         for i, it in enumerate(b):
             a = ans.get(str(i))
             if a and a.get("verdict") in ("ok", "wrong", "unsure"):
@@ -119,6 +123,7 @@ async def ask(todo, log):
 
 
 def main(argv):
+    F.AGY_MODEL = MODEL  # footnotes.agy() reads it
     only_local = "--local" in argv
     limit = int(argv[argv.index("--limit") + 1]) if "--limit" in argv else None
     vols = volumes_of([a for a in argv if not a.startswith("--") and not a.isdigit()] or ["all"])

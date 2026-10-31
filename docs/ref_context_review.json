@@ -1,52 +1,182 @@
 [
  {
-  "where": "47_matthieu/page_0177",
+  "by": "sonnet",
   "field": "footnotes[1].text",
+  "fix": "",
   "ref": "4 Rois 19:18",
-  "written": "4 Rois 19:18",
   "verdict": "unsure",
-  "fix": "",
+  "where": "47_matthieu/page_0177",
   "why": "4 Rois 19:18 is about burnt idols; no link to the omitted kings, target unclear",
-  "by": "sonnet"
+  "written": "4 Rois 19:18"
  },
  {
-  "where": "47_matthieu/page_0178",
+  "by": "sonnet",
   "field": "footnotes[3].text",
-  "ref": "2 Paralipomènes 35:4-5, 8",
-  "written": "2 Paralipomènes 35:4-5, 8",
-  "verdict": "wrong",
   "fix": "2 Paralipomènes 36:4-5, 8",
+  "ref": "2 Paralipomènes 35:4-5, 8",
+  "verdict": "wrong",
+  "where": "47_matthieu/page_0178",
   "why": "Eliacim renamed Joakim, his reign and acts are in ch. 36; 35:4-5 is about Levite divisions",
-  "by": "sonnet"
+  "written": "2 Paralipomènes 35:4-5, 8"
  },
  {
-  "where": "47_matthieu/page_0178",
+  "by": "sonnet",
   "field": "footnotes[4].text",
+  "fix": "",
   "ref": "4 Rois 14:18",
-  "written": "4 Rois 14:18",
+  "verdict": "unsure",
+  "where": "47_matthieu/page_0178",
+  "why": "14:18 is only the closing formula on Amasias; unclear which verse on Jechonias/Joakim is meant (24:6 or 24:18?)",
+  "written": "4 Rois 14:18"
+ },
+ {
+  "by": "sonnet",
+  "field": "commentary[0].french_commentary",
+  "fix": "Psaumes 122:2",
+  "ref": "Psaumes 122:3",
+  "verdict": "wrong",
+  "where": "47_matthieu/page_0184",
+  "why": "donec misereatur nostri is v.2; v.3 is 'Miserere nostri'",
+  "written": "; 122:3."
+ },
+ {
+  "by": "sonnet",
+  "field": "footnotes[3].text",
+  "fix": "Marc 3:31, 35",
+  "ref": "Marc 13:31, 35",
+  "verdict": "wrong",
+  "where": "47_matthieu/page_0184",
+  "why": "mother and brothers stand outside; ch. 13 is the eschatological discourse",
+  "written": "Marc 13:31, 35"
+ },
+ {
+  "where": "47_matthieu/page_0189",
+  "field": "footnotes[0].text",
+  "ref": "Luc 1:13",
+  "written": "Luc 1:13",
+  "verdict": "wrong",
+  "fix": "Luc 1:31",
+  "why": "vocabis nomen ejus Jesum",
+  "by": "gemini-3.8-flash-low"
+ },
+ {
+  "where": "47_matthieu/page_0191",
+  "field": "footnotes[1].text",
+  "ref": "1 Paralipomènes 1:5",
+  "written": "1 Paralipomènes 1:5",
   "verdict": "unsure",
   "fix": "",
-  "why": "14:18 is only the closing formula on Amasias; unclear which verse on Jechonias/Joakim is meant (24:6 or 24:18?)",
-  "by": "sonnet"
+  "why": "liste de descendants sans rapport évident avec premier-né",
+  "by": "gemini-3.8-flash-low"
  },
  {
-  "where": "47_matthieu/page_0184",
-  "field": "commentary[0].french_commentary",
-  "ref": "Psaumes 122:3",
-  "written": "; 122:3.",
-  "verdict": "wrong",
-  "fix": "Psaumes 122:2",
-  "why": "donec misereatur nostri is v.2; v.3 is 'Miserere nostri'",
-  "by": "sonnet"
+  "where": "47_matthieu/page_0191",
+  "field": "footnotes[1].text",
+  "ref": "1 Paralipomènes 2:15, 17",
+  "written": "; 2:15, 17.",
+  "verdict": "unsure",
+  "fix": "",
+  "why": "généalogie sans mention de premier-né",
+  "by": "gemini-3.8-flash-low"
  },
  {
-  "where": "47_matthieu/page_0184",
+  "where": "47_matthieu/page_0191",
   "field": "footnotes[3].text",
-  "ref": "Marc 13:31, 35",
-  "written": "Marc 13:31, 35",
+  "ref": "Psaumes 8:7",
+  "written": "Psaumes 8:7",
   "verdict": "wrong",
-  "fix": "Marc 3:31, 35",
-  "why": "mother and brothers stand outside; ch. 13 is the eschatological discourse",
-  "by": "sonnet"
+  "fix": "Psaumes 109:1",
+  "why": "donec ponam inimicos tuos scabellum pedum tuorum",
+  "by": "gemini-3.8-flash-low"
+ },
+ {
+  "where": "47_matthieu/page_0191",
+  "field": "footnotes[4].text",
+  "ref": "2 Timothée 4:13",
+  "written": "2 Timothée 4:13",
+  "verdict": "wrong",
+  "fix": "1 Timothée 4:13",
+  "why": "attende lectioni... dum venio",
+  "by": "gemini-3.8-flash-low"
+ },
+ {
+  "where": "47_matthieu/page_0193",
+  "field": "footnotes[1].text",
+  "ref": "Michée 5:1",
+  "written": "Michée 5:1",
+  "verdict": "wrong",
+  "fix": "Michée 5:2",
+  "why": "Bethleem Ephrata... terra Juda",
+  "by": "gemini-3.8-flash-low"
+ },
+ {
+  "where": "47_matthieu/page_0194",
+  "field": "footnotes[4].text",
+  "ref": "Luc 23:31-32",
+  "written": "Luc 23:31-32",
+  "verdict": "wrong",
+  "fix": "Luc 13:31-32",
+  "why": "Herodes vult te occidere",
+  "by": "gemini-3.8-flash-low"
+ },
+ {
+  "by": "gemini-3.8-flash-medium",
+  "field": "footnotes[0].text",
+  "fix": "",
+  "ref": "1 Paralipomènes 25:2",
+  "verdict": "unsure",
+  "where": "47_matthieu/page_0198",
+  "why": "filii Asaph cantores",
+  "written": "1 Paralipomènes 25:2"
+ },
+ {
+  "by": "gemini-3.8-flash-medium",
+  "field": "footnotes[0].text",
+  "fix": "",
+  "ref": "2 Paralipomènes 35:14",
+  "verdict": "unsure",
+  "where": "47_matthieu/page_0198",
+  "why": "sibi et sacerdotibus",
+  "written": "2 Paralipomènes 35:14"
+ },
+ {
+  "by": "gemini-3.8-flash-medium",
+  "field": "footnotes[2].text",
+  "fix": "Deutéronome 16:16",
+  "ref": "Deutéronome 6:16",
+  "verdict": "wrong",
+  "where": "47_matthieu/page_0203",
+  "why": "non apparebit ante Dominum vacuus",
+  "written": "Deutéronome 6:16"
+ },
+ {
+  "by": "gemini-3.8-flash-medium",
+  "field": "footnotes[3].text",
+  "fix": "Daniel 9:27",
+  "ref": "Daniel 9:14",
+  "verdict": "wrong",
+  "where": "47_matthieu/page_0207",
+  "why": "abominatio desolationis",
+  "written": "Daniel 9:14"
+ },
+ {
+  "by": "gemini-3.8-flash-medium",
+  "field": "footnotes[4].text",
+  "fix": "1 Machabées 1:57",
+  "ref": "1 Machabées 1:51",
+  "verdict": "wrong",
+  "where": "47_matthieu/page_0207",
+  "why": "abominandum idolum desolationis",
+  "written": "1 Machabées 1:51"
+ },
+ {
+  "by": "gemini-3.8-flash-medium",
+  "field": "footnotes[7].text",
+  "fix": "Nombres 23:22",
+  "ref": "Nombres 23:12",
+  "verdict": "wrong",
+  "where": "47_matthieu/page_0207",
+  "why": "Deus eduxit eum de Ægypto",
+  "written": "Nombres 23:12"
  }
 ]
