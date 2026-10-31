@@ -136,7 +136,9 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
     checked, doubtful notes settled from context; what is left waits for the scans.
 16. `python3 chapter_refs.py <vol>`, then with `--apply`: references naming no book
     ("Chapitre XXXI. 3." → "chapitre 31:3"). Then `python3 modernize_refs.py <vol>`, then with
-    `--apply` (twice: a first pass can open a second): Bible references left in the old
+    `--apply` (twice: a first pass can open a second), then `python3 roman_refs.py <vol>` and
+    `--apply` (psalms and chapters named alone, "ci-devant XVII. 6.", verses the scan read
+    "I."/"II." for 1/11), then chapter_refs and modernize_refs once more: Bible references left in the old
     form (Roman chapters, abbreviations) written out in the commentary and the notes (§11).
     After the footnotes, which write out most of the notes' references themselves.
 17. **Publish** (§8).
