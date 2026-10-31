@@ -18,7 +18,7 @@ def queue():
     info = A.BOOKS["proverbs"]
     orig_fp = A.FP_IDS
     try:
-        A.FP_IDS = set()
+        A.FP_IDS = A.FalsePositives()
         return A.audit_book("proverbs", info, info.get("site") or A.site_slugs().get(info["fr"]))["queue"]
     finally:
         A.FP_IDS = orig_fp

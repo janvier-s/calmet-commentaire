@@ -226,10 +226,11 @@ def test_recheck_reloads_false_positives(tmp_path, monkeypatch):
     shutil.copytree(REAL_DATA / VOL / "normalized", tmp_path / VOL / "normalized")
     monkeypatch.setattr(paths, "DATA", tmp_path)
     monkeypatch.setattr(audit_integrity, "STUDIUM", tmp_path)
-    monkeypatch.setattr(audit_integrity, "FP_IDS", {"stale"})
-    monkeypatch.setattr(audit_integrity, "load_false_positives", lambda: {"fresh"})
+    fresh = audit_integrity.FalsePositives({"fresh"})
+    monkeypatch.setattr(audit_integrity, "FP_IDS", audit_integrity.FalsePositives({"stale"}))
+    monkeypatch.setattr(audit_integrity, "load_false_positives", lambda: fresh)
     recheck_book(VOL)
-    assert audit_integrity.FP_IDS == {"fresh"}
+    assert audit_integrity.FP_IDS is fresh
 
 
 def test_recheck_returns_the_other_page_of_a_turn(data_dir):

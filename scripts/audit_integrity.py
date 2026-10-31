@@ -271,11 +271,79 @@ def best_verse(lemma, verses):
     score = {k: len(ws & latin_words(t)) / len(ws) for k, t in verses.items()}
     return score, max(score, key=score.get) if score else None
 
-def audit_book(key, info, slug, published=True):
-    r = dict(key=key, fr=info["fr"], slug=slug, volumes=info["studium"])
-    # ---------- source pages ----------
-    pages, malformed, raw_only = [], [], []
-    for vol in info["studium"]:
+class Book:
+    """One book being audited: its source pages, the result (r) and the review queue being built."""
+
+    def __init__(self, key, info, slug):
+        self.key, self.info = key, info
+        self.r = dict(key=key, fr=info["fr"], slug=slug, volumes=info["studium"])
+        self.pages, self.queue, self.counts, self._latin = [], [], Counter(), {}
+
+    def item(self, kind, vol, page, msg, optional=False, where=None):
+        """Queue an item for the review editor, unless it was marked a false positive: True when queued."""
+        # Stable across runs, so review progress survives a re-audit; `where`: the entry and field
+        uid = hashlib.md5(msg.encode()).hexdigest()[:8]
+        item_id = f"{vol}/{page:04d}/{kind}/{uid}"
+        if FP_IDS.matches(item_id, vol, page, kind, msg, where):
+            return False
+        self.queue.append(dict(id=item_id, book_dir=vol, page=page,
+                               kind=kind, msg=msg, optional=optional, **({"where": where} if where else {})))
+        return True
+
+    def vol_of(self, page_name):
+        return next((v for v in self.info["studium"] if (STUDIUM / v / "normalized" / page_name).exists()), None)
+
+    def latin_of(self, vol):
+        """{(chapter, verse number): Latin} of a volume's verses, as strings."""
+        if vol not in self._latin:
+            self._latin[vol] = {(str(v.get("chapter")), str(v.get("verse_number"))): v.get("latin") or ""
+                                for vv, _, dd in self.pages if vv == vol for v in dd.get("verses") or []}
+        return self._latin[vol]
+
+    def next_page(self, i):
+        """Page i+1, when it is in the same volume."""
+        return self.pages[i + 1][2] if i + 1 < len(self.pages) and self.pages[i + 1][0] == self.pages[i][0] else None
+
+    def runs_over(self, i):
+        """The first note of page i+1 finishes the last note of page i (no comment yet, same verse)."""
+        nxt = self.next_page(i)
+        if nxt is None:
+            return None
+        last = (self.pages[i][2].get("commentary") or [None])[-1]
+        first = (nxt.get("commentary") or [None])[0]
+        if not last or not first or (last.get("french_commentary") or "").strip():
+            return None
+        ref = str(first.get("verse_ref") or "").strip()
+        return first if not ref or ref == str(last.get("verse_ref") or "").strip() else None
+
+
+class Note:
+    """Commentary block j of page i, with the fields the checks read."""
+
+    def __init__(self, b, i, j):
+        self.i, self.j = i, j
+        self.vol, self.name, self.d = b.pages[i]
+        self.page = int(self.name[5:9])
+        self.cs = self.d.get("commentary") or []
+        self.c = self.cs[j]
+        self.lemma = (self.c.get("latin_quote") or "").strip()
+        self.tr = (self.c.get("french_translation") or "").strip()
+        self.fc = self.c.get("french_commentary") or ""
+        self.last = j == len(self.cs) - 1
+        self.next = b.next_page(i)
+        # the first note overleaf, for the last note of the page
+        self.overleaf = ((self.next or {}).get("commentary") or [{}])[0] if self.last else {}
+        self.ref = f"Note {self.c.get('commentary_id')} (℣ {self.c.get('verse_ref')})"
+
+    def at(self, field):
+        return dict(section="commentary", index=self.j, field=field)
+
+
+# ---------- source pages ----------
+
+def read_pages(b):
+    pages, malformed, raw_only = b.pages, [], []
+    for vol in b.info["studium"]:
         nd, rd = STUDIUM / vol / "normalized", STUDIUM / vol / "raw_json" / "commentaire"
         if not nd.exists():
             continue
@@ -288,22 +356,27 @@ def audit_book(key, info, slug, published=True):
                 malformed.append(f"{vol}/{n}")
                 continue
             pages.append((vol, n, d))
-    r["pages"] = len(pages)
-    r["malformed"] = malformed
-    r["raw_not_normalized"] = raw_only
-    # numbering gaps in the page sequence
+    b.r["pages"] = len(pages)
+    b.r["malformed"] = malformed
+    b.r["raw_not_normalized"] = raw_only
+
+
+def page_gaps(b):
+    """Numbering gaps in the page sequence."""
     gaps = []
-    for vol in info["studium"]:
-        nums = sorted({int(n[5:9]) for v, n, _ in pages if v == vol} |
-                      {int(m.split("/")[1][5:9]) for m in malformed if m.startswith(vol + "/")})
-        gaps += [f"{vol}/page_{a+1:04d}" + (f"–{b-1:04d}" if b - a > 2 else "")
-                 for a, b in zip(nums, nums[1:]) if b - a > 1]
-    r["page_number_gaps"] = gaps
-    # empty / thin pages
-    sizes = []
-    empty, thin = [], []
-    for vol, n, d in pages:
-        c = sum(len(b.get("french_commentary") or "") for b in d.get("commentary") or [])
+    for vol in b.info["studium"]:
+        nums = sorted({int(n[5:9]) for v, n, _ in b.pages if v == vol} |
+                      {int(m.split("/")[1][5:9]) for m in b.r["malformed"] if m.startswith(vol + "/")})
+        gaps += [f"{vol}/page_{a+1:04d}" + (f"–{z-1:04d}" if z - a > 2 else "")
+                 for a, z in zip(nums, nums[1:]) if z - a > 1]
+    b.r["page_number_gaps"] = gaps
+
+
+def page_sizes(b):
+    """Empty and thin pages."""
+    sizes, empty, thin = [], [], []
+    for vol, n, d in b.pages:
+        c = sum(len(x.get("french_commentary") or "") for x in d.get("commentary") or [])
         v = sum(len(x.get("french") or "") for x in d.get("verses") or [])
         i = len((d.get("chapter_intro") or "").strip())
         a = len((d.get("chapter_argument") or "").strip())
@@ -311,15 +384,17 @@ def audit_book(key, info, slug, published=True):
         if not (d.get("commentary") or d.get("verses") or a or i):  # Intro / argument / commentary pages
             empty.append(f"{vol}/{n}")
     med = statistics.median(sizes) if sizes else 0
-    for (vol, n, d), s in zip(pages, sizes):
+    for (vol, n, d), s in zip(b.pages, sizes):
         if 0 < s < 0.2 * med:
             thin.append(f"{vol}/{n} ({s} chars)")
-    r["empty_pages"], r["thin_pages"], r["median_page_chars"] = empty, thin, int(med)
-    # suspicious seams between consecutive pages' commentary
-    seams = []
-    prev = None
-    for vol, n, d in pages:
-        blocks = [b for b in d.get("commentary") or [] if (b.get("french_commentary") or "").strip()]
+    b.r["empty_pages"], b.r["thin_pages"], b.r["median_page_chars"] = empty, thin, int(med)
+
+
+def page_seams(b):
+    """Suspicious seams between consecutive pages' commentary."""
+    seams, prev = [], None
+    for vol, n, d in b.pages:
+        blocks = [x for x in d.get("commentary") or [] if (x.get("french_commentary") or "").strip()]
         if not blocks:
             continue
         if prev is not None:
@@ -330,65 +405,46 @@ def audit_book(key, info, slug, published=True):
             ended = bool(re.search(r"[.!?»]$", t))
             cont = head[:1].islower()
             new_lemma = bool((first.get("latin_quote") or "").strip())
-            if cont and ended:
-                seams.append(dict(seam=f"{pn}>{vol}/{n}", kind="gap? continuation after a full stop",
-                                  before=t[-60:], after=head[:60]))
-            elif not ended and t[-1:].isalpha() and not cont and new_lemma:
-                seams.append(dict(seam=f"{pn}>{vol}/{n}", kind="gap? sentence cut, next page opens a new lemma",
-                                  before=t[-60:], after=head[:60]))
-            elif cont and first.get("verse_ref"):
-                seams.append(dict(seam=f"{pn}>{vol}/{n}", kind="continuation tagged as a new note",
-                                  before=t[-60:], after=head[:60]))
+            kind = ("gap? continuation after a full stop" if cont and ended else
+                    "gap? sentence cut, next page opens a new lemma"
+                    if not ended and t[-1:].isalpha() and not cont and new_lemma else
+                    "continuation tagged as a new note" if cont and first.get("verse_ref") else None)
+            if kind:
+                seams.append(dict(seam=f"{pn}>{vol}/{n}", kind=kind, before=t[-60:], after=head[:60]))
         prev = (f"{vol}/{n}", blocks[-1].get("french_commentary") or "")
-    r["suspicious_seams"] = seams
+    b.r["suspicious_seams"] = seams
 
-    # ---------- review queue: what a person has to check against the scans ----------
-    queue = r["queue"] = []
-    def vol_of(page_name):
-        return next((v for v in info["studium"] if (STUDIUM / v / "normalized" / page_name).exists()), None)
 
-    latin = {}
-    def latin_of(vol):
-        if vol not in latin:
-            latin[vol] = {(str(v.get("chapter")), str(v.get("verse_number"))): v.get("latin") or ""
-                          for vv, _, dd in pages if vv == vol for v in dd.get("verses") or []}
-        return latin[vol]
+# ---------- review queue: what a person has to check against the scans ----------
 
-    def item(kind, vol, page, msg, optional=False, where=None):
-        # Stable across runs, so review progress survives a re-audit; `where`: the entry and field
-        uid = hashlib.md5(msg.encode()).hexdigest()[:8]
-        item_id = f"{vol}/{page:04d}/{kind}/{uid}"
-        if FP_IDS.matches(item_id, vol, page, kind, msg, where) if hasattr(FP_IDS, "matches") else item_id in FP_IDS:
-            return
-        queue.append(dict(id=item_id, book_dir=vol, page=page,
-                          kind=kind, msg=msg, optional=optional, **({"where": where} if where else {})))
-
-    for g in gaps:
+def queue_page_problems(b):
+    for g in b.r["page_number_gaps"]:
         vol, rest = g.split("/")
-        a = int(rest[5:9]); b = int(rest.split("–")[1]) if "–" in rest else a
-        for pg in range(a, b + 1):
-            item("missing_page", vol, pg, "Page has no JSON at all: create it from the scan and transcribe it")
-    for m in malformed:
+        a = int(rest[5:9]); last = int(rest.split("–")[1]) if "–" in rest else a
+        for pg in range(a, last + 1):
+            b.item("missing_page", vol, pg, "Page has no JSON at all: create it from the scan and transcribe it")
+    for m in b.r["malformed"]:
         vol, n = m.split("/")
-        item("malformed_page", vol, int(n[5:9]), "Page JSON is malformed and is skipped by every export: repair it")
-    for e in empty:
+        b.item("malformed_page", vol, int(n[5:9]), "Page JSON is malformed and is skipped by every export: repair it")
+    for e in b.r["empty_pages"]:
         vol, n = e.split("/")
-        item("empty_page", vol, int(n[5:9]), "Page has neither verses nor commentary: blank/plate, or lost content?")
-    for s in seams:
-        a, b = s["seam"].split(">")
-        vol, n = b.split("/")
+        b.item("empty_page", vol, int(n[5:9]), "Page has neither verses nor commentary: blank/plate, or lost content?")
+    for s in b.r["suspicious_seams"]:
+        vol, n = s["seam"].split(">")[1].split("/")
         if s["kind"].startswith("gap? sentence cut"):
-            item("possible_gap", vol, int(n[5:9]),
-                 f"Possible lost text at the page turn: “…{s['before'][-45:]}” ‖ “{s['after'][:45]}…”")
+            b.item("possible_gap", vol, int(n[5:9]),
+                   f"Possible lost text at the page turn: “…{s['before'][-45:]}” ‖ “{s['after'][:45]}…”")
         elif s["kind"].startswith("gap? continuation"):
-            item("seam_artifact", vol, int(n[5:9]),
-                 f"Page-turn glitch (stray full stop / repeated syllable): “…{s['before'][-40:]}” ‖ “{s['after'][:40]}…”",
-                 optional=True)
+            b.item("seam_artifact", vol, int(n[5:9]),
+                   f"Page-turn glitch (stray full stop / repeated syllable): “…{s['before'][-40:]}” ‖ “{s['after'][:40]}…”",
+                   optional=True)
 
-    # verse_ref must run in order within a chapter (the `chapter` field, assign_chapters.py):
-    # a drop inside a chapter is a misread number, or Calmet going back to a verse.
+
+def ref_order(b):
+    """verse_ref must run in order within a chapter (the `chapter` field, assign_chapters.py):
+    a drop inside a chapter is a misread number, or Calmet going back to a verse."""
     nums = []
-    for vol, n, d in pages:
+    for vol, n, d in b.pages:
         for ci, c in enumerate(d.get("commentary") or []):
             m = re.match(r"(\d+)", str(c.get("verse_ref") or ""))
             if m:
@@ -401,538 +457,688 @@ def audit_book(key, info, slug, published=True):
         if ch == pch and ref < prev and not (ok or nums[j - 1][4]):  # not a move made on purpose
             ctx = ", ".join(str(y[3]) for y in nums[max(0, j - 3):j + 2])
             out_of_order.append(f"{vol}/{n}")
-            item("ref_order", vol, int(n[5:9]),
-                 f"verse_ref goes back from {prev} to {ref} (… {ctx} …) in chapter {ch}: "
-                 f"misread number, or Calmet returning to a verse?",
-                 where=dict(section="commentary", index=ci, field="verse_ref"))
+            b.item("ref_order", vol, int(n[5:9]),
+                   f"verse_ref goes back from {prev} to {ref} (… {ctx} …) in chapter {ch}: "
+                   f"misread number, or Calmet returning to a verse?",
+                   where=dict(section="commentary", index=ci, field="verse_ref"))
+    b.r["ref_out_of_order"] = out_of_order
 
-    # The chapter field: on every entry after the book's first heading, never going back
-    # or skipping a chapter.
+
+def chapter_field(b):
+    """The chapter field: on every entry after the book's first heading, never going back
+    or skipping a chapter."""
     for section, field in (("verses", "verse_number"), ("commentary", "verse_ref")):
         prev = None
-        for vol, n, d in pages:
+        for vol, n, d in b.pages:
             for ei, e in enumerate(d.get(section) or []):
                 ch = e.get("chapter")
+                where = dict(section=section, index=ei, field="chapter")
                 if not isinstance(ch, int):
                     if prev is not None:
-                        item("chapter_field", vol, int(n[5:9]), f"{section}: {field} {e.get(field)} has no chapter",
-                             where=dict(section=section, index=ei, field="chapter"))
+                        b.item("chapter_field", vol, int(n[5:9]), f"{section}: {field} {e.get(field)} has no chapter",
+                               where=where)
                     continue
                 if prev is not None and not (prev <= ch <= prev + 1):
-                    item("chapter_field", vol, int(n[5:9]),
-                         f"{section}: chapter goes from {prev} to {ch} at {field} {e.get(field)}",
-                         where=dict(section=section, index=ei, field="chapter"))
+                    b.item("chapter_field", vol, int(n[5:9]),
+                           f"{section}: chapter goes from {prev} to {ch} at {field} {e.get(field)}", where=where)
                 prev = ch
-    r["ref_out_of_order"] = out_of_order
 
-    # Notes with no commentary. Fine when the comment opens the next page, or when
-    # Calmet gives only the translation; suspicious when nothing follows the lemma.
-    CAPS = re.compile(r"\b[A-ZÀ-ÝŒÆ]{2,}(?:[\s,;:'’.-]+[A-ZÀ-ÝŒÆ]{2,})+\b")
-    ODD_MARK = re.compile(r"\^[^{]|\^\{(?!\([a-z]\)\})[^}]*\}")
-    empty_notes = caps_runs = odd_marks = 0
 
-    def runs_over(i):
-        """The first note of page i+1 finishes the last note of page i (no comment yet, same verse)."""
-        if i + 1 >= len(pages) or pages[i + 1][0] != pages[i][0]:
-            return None
-        last = (pages[i][2].get("commentary") or [None])[-1]
-        first = (pages[i + 1][2].get("commentary") or [None])[0]
-        if not last or not first or (last.get("french_commentary") or "").strip():
-            return None
-        ref = str(first.get("verse_ref") or "").strip()
-        return first if not ref or ref == str(last.get("verse_ref") or "").strip() else None
+# ---------- each note ----------
 
-    for i, (vol, n, d) in enumerate(pages):
-        if chapter_of(d) and not str(d.get("chapter_summary") or "").strip():
-            item("empty_summary", vol, int(n[5:9]),
-                 f"Chapter {chapter_of(d)} opens here but chapter_summary is empty: type it from the scan "
-                 f"(or the heading is a running head and chapter_number/chapter_title should go)")
-        cs = d.get("commentary") or []
-        nxt_page = pages[i + 1][2] if i + 1 < len(pages) and pages[i + 1][0] == vol else None
-        notes_here = {re.sub(r"\W", "", str(fn.get("marker") or "")) for fn in d.get("footnotes") or []}
-        for j, c in enumerate(cs):
-            lemma = (c.get("latin_quote") or "").strip()
-            tr = (c.get("french_translation") or "").strip()
-            fc = c.get("french_commentary") or ""
-            if not fc.strip():
-                if j == len(cs) - 1 and lemma and not tr:
-                    problem = None  # a lemma alone at the foot of the page: its text is overleaf
-                elif j == len(cs) - 1:
-                    first = ((nxt_page or {}).get("commentary") or [{}])[0]
-                    problem = None if nxt_page and not (first.get("latin_quote") or "").strip() else \
-                        "is the last note on the page and the next page starts a new lemma: comment lost at the page break?"
-                elif not (cs[j + 1].get("latin_quote") or "").strip():
-                    problem = "is followed by a block with no lemma: one note split in two?"
-                elif not tr:
-                    problem = "has neither translation nor comment" + (" (the comment may be inside latin_quote)" if re.search(r"[a-zé]{4,}", lemma) else "")
-                elif not re.search(r"[.!?»]_?(\s*\^\{\([a-z]\)\})?$", tr):
-                    problem = "has no comment and its translation is cut off"
-                else:
-                    problem = None
-                if problem:
-                    empty_notes += 1
-                    item("empty_commentary", vol, int(n[5:9]), f"Note “{lemma[:40]}” (℣ {c.get('verse_ref')}) {problem}",
-                         where=dict(section="commentary", index=j, field="french_commentary"))
-            for m in CAPS.finditer(fc):
-                if re.fullmatch(r"[IVXLC.\s,et]+", m.group()):
-                    continue
-                caps_runs += 1
-                where = "starts the comment" if m.start() < 3 else "inside the comment"
-                item("caps_in_commentary", vol, int(n[5:9]),
-                     f"Capitals {where}: “…{fc[max(0, m.start() - 25):m.end() + 15]}…”: a lemma that should start its own note, or a word to put in lower case?",
-                     where=dict(section="commentary", index=j, field="french_commentary"))
-            for k in ("latin_quote", "french_translation", "french_commentary"):
-                for m in re.finditer(r"(?<![\w.])(?:[A-Za-zÀ-ÿŒÆœæ] ){3,}[A-Za-zÀ-ÿŒÆœæ](?!\w)", c.get(k) or ""):
-                    item("spaced_letters", vol, int(n[5:9]),
-                         f"Letter-spaced word in {k}: “{m.group()}”: close up the letters (put the word breaks back)",
-                         where=dict(section="commentary", index=j, field=k))
-            for k in ("latin_quote", "french_translation", "french_commentary"):
-                m = re.match(r"\s*\^\{[^}]*\}", c.get(k) or "")
-                if m:
-                    item("leading_call", vol, int(n[5:9]),
-                         f"{k} of note {c.get('commentary_id')} (℣ {c.get('verse_ref')}) starts with the footnote call "
-                         f"“{m.group().strip()}”: “{(c.get(k) or '')[:60]}…”: move it after the word it belongs to "
-                         f"(end of the previous field or page?)",
-                         where=dict(section="commentary", index=j, field=k))
-            if re.match(r"\s*[.,;:!?»]", fc):
-                item("leading_punctuation", vol, int(n[5:9]),
-                     f"Comment starts with punctuation “{fc[:40]}…”"
-                     + (": move it to the end of the translation (tidy_fields.py does)" if tr else
-                        ": no translation in this block, so it belongs to the text before (previous page?)"),
-                     where=dict(section="commentary", index=j, field="french_commentary"))
-            # a lemma or translation cut by the page turn ("PER-", or mid-sentence in a note whose
-            # comment hasn't started) must go on in the same field overleaf
-            for k in ("latin_quote", "french_translation"):
-                t = re.sub(r"\^\{[^}]*\}", "", c.get(k) or "").rstrip()
-                if not t:
-                    continue
-                hyphen = t.endswith("-")
-                open_ = (j == len(cs) - 1 and not fc.strip() and not re.search(r"[.!?»…)\]]$", t)
-                         and (k == "french_translation" or not tr))
-                if not (hyphen or open_):
-                    continue
-                first = ((nxt_page or {}).get("commentary") or [{}])[0] if j == len(cs) - 1 else {}
-                if (first.get(k) or "").strip():
-                    continue
-                overleaf = (first.get("french_commentary") or first.get("french_translation")
-                            or first.get("latin_quote") or "")
-                item("hyphen_cut", vol, int(n[5:9]),
-                     f"{k} ends “…{t[-40:]}”" + ("" if hyphen else " with no full stop") + " but "
-                     + (f"the next page's first note has no {k} (it starts “{overleaf[:50]}…”)"
-                        if j == len(cs) - 1 else "another note follows on this page")
-                     + f": put the rest of the {k} back together"
-                     + ("" if hyphen else " (or add the missing full stop)"),
-                     where=dict(section="commentary", index=j, field=k))
-            # the page turn inside a comment: italics and sentences must carry over
-            nfirst = ((nxt_page or {}).get("commentary") or [{}])[0] if j == len(cs) - 1 else {}
-            nfc = nfirst.get("french_commentary") or ""
-            if fc.strip() and nfc.strip() and not (nfirst.get("latin_quote") or "").strip() \
-                    and not (nfirst.get("french_translation") or "").strip():
-                if fc.count("_") % 2 and not nfc.count("_") % 2:
-                    item("italic_seam", vol, int(n[5:9]),
-                         f"Italics still open at the foot of the page (“…{fc[fc.rfind('_'):][-60:]}”) but not closed "
-                         f"overleaf (“{nfc[:50]}…”): close them here, or a “_” is missing or extra",
-                         where=dict(section="commentary", index=j, field="french_commentary"))
-                tail = re.sub(r"(\s*\^\{[^}]*\})+\s*$", "", fc).rstrip()
-                head = re.match(r"\s*[_«\"(]*\s*(\w)", nfc)
-                # italics closed right at the foot of the page, mid-sentence, while the quotation runs
-                # on in roman overleaf (Ruth 25-26: "…d'un homme_" ‖ "d'honneur.")
-                run = re.search(r"_([^_]+)_$", tail)
-                if (run and not fc.count("_") % 2 and not re.search(r"[.;:!?»]$", run.group(1).rstrip())
-                        and len(run.group(1).split()) >= 2 and not re.match(r"\s*_", nfc)
-                        and head and head.group(1).islower()):
-                    item("italic_seam", vol, int(n[5:9]),
-                         f"Italics closed at the very foot of the page (“…{tail[-50:]}”) but the sentence goes on "
-                         f"in roman overleaf (“{nfc[:50]}…”): carry the italics over to where the quotation ends",
-                         where=dict(section="commentary", index=j, field="french_commentary"))
-                if tail.endswith(".") and head and head.group(1).islower() and not ABBREV.search(tail):
-                    item("period_seam", vol, int(n[5:9]),
-                         f"Full stop at the foot of the page (“…{tail[-45:]}”) but the next page goes on in "
-                         f"lower case (“{nfc[:45]}…”): stray full stop, or a capital to restore?",
-                         where=dict(section="commentary", index=j, field="french_commentary"))
-            # a comment opening mid-sentence on a page whose predecessor has nothing for it to go on from
-            if j == 0 and fc.strip() and i and pages[i - 1][0] == vol and int(pages[i - 1][1][5:9]) == int(n[5:9]) - 1:
-                before = (pages[i - 1][2].get("commentary") or [None])[-1]
-                if start_missing(before, c):
-                    item("missing_start", vol, int(n[5:9]),
-                         f"The first note opens in the middle of a sentence (“{fc[:50]}…”) but "
-                         + (f"the last note of the page before (“{(before.get('latin_quote') or before.get('french_translation') or '')[:40]}…”) has no comment"
-                            if before else "the page before has no notes")
-                         + ": the start of the comment is missing (typed on the page before, or lost at the page turn)",
-                         where=dict(section="commentary", index=0, field="french_commentary"))
-            # the first note of a page with no lemma at all: the end of the note before, or a note whose lemma was lost
-            if j == 0 and not lemma and not tr and fc.strip():
-                before = next((cc[-1].get("french_commentary") or "" for vv, _, dd in reversed(pages[max(0, i - 20):i])
-                               if vv == vol and (cc := dd.get("commentary") or []) and (cc[-1].get("french_commentary") or "").strip()),
-                              None)
-                why = first_note_without_lemma(before, fc) if before else None
-                if why:
-                    item("first_no_lemma", vol, int(n[5:9]),
-                         (f"The first note opens with what looks like its lemma in capitals (“{fc[:60]}…”): "
-                          f"move it to latin_quote" if why == "lemma" else
-                          f"The first note (“{fc[:50]}…”) has no latin_quote or french_translation, but the page "
-                          f"before ends a sentence (…{before.rstrip()[-40:]}): a new note whose lemma was lost, "
-                          f"or the next sentence of the same note?"),
-                         optional=why == "sentence", where=dict(section="commentary", index=0, field="latin_quote"))
-            # only the first block of a page may lack a lemma (it continues the page before)
-            if not lemma and c.get("commentary_id") != 1:
-                why = ("the lemma is at the start of the comment: move it to latin_quote"
-                       if re.match(r"\s*[A-ZÀ-ÝŒÆ]{2,}[\sA-ZÀ-ÝŒÆ',.;:?!-]{6,}", fc) else
-                       "one note split in two, or a lemma lost?")
-                item("no_lemma", vol, int(n[5:9]),
-                     f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}) has no latin_quote: “{(tr or fc)[:70]}…”: {why}",
-                 where=dict(section="commentary", index=j, field="latin_quote"))
-            # the lemma: printed in capitals, with a verse_ref, and a translation of about its length
-            bare = re.sub(r"\^\{[^}]*\}", "", lemma)
-            if (lemma or tr) and not str(c.get("verse_ref") or "").strip():
-                item("no_verse_ref", vol, int(n[5:9]), f"Note “{(lemma or tr)[:50]}” has no verse_ref",
-                     where=dict(section="commentary", index=j, field="verse_ref"))
-            if re.search(r"[a-zàâçéèêëîïôûùüÿœæ]", bare):
-                item("lowercase_lemma", vol, int(n[5:9]),
-                     f"Lower case in latin_quote “{lemma[:70]}”: French or commentary in the lemma field?",
-                     where=dict(section="commentary", index=j, field="latin_quote"))
-            # the site takes the lemma's capitals from the Vulgate (calmet.py latin_case): a word the
-            # Vulgate lacks comes out in lower case
-            unknown = [w for w in re.findall(r"[^\W\d_]{3,}", STRAY.sub("", lemma))
-                       if _fold(w) not in vulgate_words() and w.lower() != "etc"]
-            if unknown:
-                item("lemma_unknown_word", vol, int(n[5:9]),
-                     f"Not in the Vulgate: {', '.join(unknown)} in “{lemma[:60]}”: a name (add it to "
-                     f"scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
-                     optional=True, where=dict(section="commentary", index=j, field="latin_quote"))
-            # a lemma and translation split by the page turn are measured whole
-            la, fr, cut = bare, tr, ""
-            if j == len(cs) - 1 and (rest := runs_over(i)):
-                la = (la + " " + re.sub(r"\^\{[^}]*\}", "", rest.get("latin_quote") or "")).strip()
-                fr, cut = (fr + " " + (rest.get("french_translation") or "")).strip(), " (with the next page)"
-            if j == 0 and i and runs_over(i - 1):
-                la = ""  # measured with the previous page's last note
-            if la and len(fr) > 3 * len(la) and len(fr) - len(la) > 40:
-                item("long_translation", vol, int(n[5:9]),
-                     f"Translation of {len(fr)} characters for a lemma of {len(la)}{cut} “{lemma[:40]}”: "
-                     f"“{fr[:90]}…”: commentary run into the translation?",
-                     where=dict(section="commentary", index=j, field="french_translation"))
-            if la.strip() and not fr:
-                fc, where = c.get("french_commentary") or "", "the comment starts"
-                overleaf = (j == len(cs) - 1 and not fc.strip() and i + 1 < len(pages) and pages[i + 1][0] == vol
-                            and (pages[i + 1][2].get("commentary") or [None])[0])
-                if overleaf:  # the last note of the page, its comment overleaf
-                    fc, where = overleaf.get("french_commentary") or "", "the next page starts"
-                one_word = len(re.findall(r"[^\W\d_]+", la)) == 1
-                why = ("French in the lemma?" if re.search(r"[a-zàâçéèêëîïôûùüÿœæ]{3}", la) else
-                       "the translation run into the commentary?" if re.match(r"\s*_[^_]{3,}_", fc)
-                       or re.match(rf"\s*[^.;:,]{{{len(la) // 2},{len(la) * 3}}}[.;:,]", fc) else
-                       "a name Calmet leaves untranslated?" if one_word else "a translation lost?")
-                item("no_translation", vol, int(n[5:9]),
-                     f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}): latin_quote “{lemma[:50]}” has no "
-                     f"french_translation; {where} “{fc[:60]}…”: {why}", optional=one_word,
-                     where=dict(section="commentary", index=j, field="french_translation"))
-            if marks := translation_markers(tr):
-                if re.search(r"\bl['’]\s?h[ée]breu", tr, re.I):
-                    # keep the old wording (and so the old id) for items already reviewed
-                    msg = (f"“L'Hébreu” in the translation of “{lemma[:40]}”: “{tr[:100]}…”: "
-                           "commentary run into the translation?")
-                else:
-                    shown = " ".join(f"“{m}”" for m in marks)
-                    msg = (f"{shown} in the translation of “{lemma[:40]}”: “{tr[:100]}…”: "
-                           "commentary or a variant run into the translation?")
-                item("hebrew_in_translation", vol, int(n[5:9]), msg,
-                     where=dict(section="commentary", index=j, field="french_translation"))
-            if tr:
-                tr_bare = tr.rstrip("_* \t")
-                if j != len(cs) - 1 and not re.search(r"\^\{[^\}]+\}\s*$", tr_bare):
-                    if not tr_bare.rstrip("])»”\"'").endswith((".", ",", ";", ":", "!", "?", "…")):
-                        item("translation_no_punct", vol, int(n[5:9]),
-                             f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}): french_translation does not end with punctuation: “{tr[-50:]}”",
-                             where=dict(section="commentary", index=j, field="french_translation"))
-                if j != 0:
-                    clean_start = re.sub(r"^\s*(\^\{[^}]*\}|[\s_«\"'‘“\(\[\{:§.])+", "", tr)
-                    m = re.search(r"[A-Za-zÀ-ÖØ-öø-ÿœæŒÆ]", clean_start)
-                    if m and m.group(0).islower():
-                        item("lowercase_translation", vol, int(n[5:9]),
-                             f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}): french_translation missing initial capital: starts with “{m.group(0)}” in “{tr[:50]}…”",
-                             where=dict(section="commentary", index=j, field="french_translation"))
-            if lemma:
-                la_bare = lemma.rstrip("_* \t")
-                if j != len(cs) - 1 and not re.search(r"\^\{[^\}]+\}\s*$", la_bare):
-                    if not la_bare.rstrip("])»”\"'").endswith((".", ",", ";", ":", "!", "?", "…")):
-                        item("lemma_no_punct", vol, int(n[5:9]),
-                             f"Note {c.get('commentary_id')} (℣ {c.get('verse_ref')}): latin_quote does not end with punctuation: “{lemma[-50:]}”",
-                             where=dict(section="commentary", index=j, field="latin_quote"))
-            for k in ("latin_quote", "french_translation", "french_commentary"):
-                t = c.get(k) or ""
-                bad = [m.group() for m in ODD_MARK.finditer(t)]
-                bad += [m.group() for m in re.finditer(r"(?<![\^{\w])\(\s?([a-z])\s?\)(?!\})", t) if m.group(1) not in notes_here]
-                for b in bad:
-                    odd_marks += 1
-                    pos = t.find(b)
-                    item("broken_marker", vol, int(n[5:9]),
-                         f"Footnote call “{b}” in {k}: “…{t[max(0, pos - 30):pos + len(b) + 10]}…”",
-                         where=dict(section="commentary", index=j, field=k))
-        fns = d.get("footnotes") or []
-        # Bible references guessed from the context (starred), or left as printed with no such verse
-        texts = [(f"commentary {c.get('commentary_id')}", c.get("french_commentary") or "") for c in d.get("commentary") or []]
-        texts += [(f"footnote {f.get('marker')}", str(f.get("text") or "")) for f in fns]
-        guessed = [f"{where}: “{m.group()}”" for where, t in texts for m in GUESSED_REF.finditer(t)]
-        printed = [f"“{src}”" for (page, src), v in REF_MANUAL.items() if v is None and page == f"{vol}/page_{n[5:9]}"]
-        if guessed or printed:
-            item("guessed_ref", vol, int(n[5:9]), "; ".join(
-                ([", ".join(guessed) + " guessed from the context: check against the scan, then remove the asterisk "
-                  "or set the reference right"] if guessed else [])
-                + ([f"Calmet's {', '.join(printed)} written out as printed, but no such verse in the Vulgate: "
-                    "check against the scan"] if printed else [])))
-        # lemmas filled in by hand where there was none, and lemmas whose words are in another verse
-        added = lemma_added(vol, n)
-        for j, c in enumerate(d.get("commentary") or []):
-            lemma = c.get("latin_quote") or ""
-            if not lemma.strip():
-                continue
-            fc = flat(c.get("french_commentary") or "")
-            # the same block: one commentary holds the other's start (a lemma moved out of it, a block joined)
-            by_hand = fc and any(fc[:40] in o or o[:40] in fc or fc[-40:] in o for o in added)
-            ch, ref = str(c.get("chapter") or ""), str(c.get("verse_ref") or "")
-            score, best = best_verse(re.sub(r"\^\{[^}]*\}", "", lemma), {v: t for (cc, v), t in latin_of(vol).items() if cc == ch})
-            span = re.fullmatch(r"(\d+)\s*[-–]\s*(\d+)", ref)  # "16-17": the best of the verses it covers
-            if span and score:
-                inside = [str(v) for v in range(int(span[1]), int(span[2]) + 1)]
-                score[ref] = max(score.get(v, 0) for v in inside)
-                best = ref if best in inside else best
-            if by_hand:
-                hint = (f"its words fit ℣ {best} better ({score[best]:.0%} against {score.get(ref, 0):.0%})"
-                        if best and best != ref and score[best] > score.get(ref, 0) else
-                        f"its words fit ℣ {ref}" if score.get(ref) else "")
-                item("lemma_verse", vol, int(n[5:9]),
-                     f"Note {c.get('commentary_id')} had no latin_quote; now “{lemma[:60]}” at chapter {ch}, ℣ {ref}: "
-                     f"check the verse number{': ' + hint if hint else ''}", optional="better" not in hint,
-                     where=dict(section="commentary", index=j, field="verse_ref"))
-            elif best and best != ref and score[best] >= 0.8 and score.get(ref, 0) <= 0.4 \
-                    and len(re.findall(r"[^\W\d_]{3,}", lemma)) >= 2:
-                item("verse_mismatch", vol, int(n[5:9]),
-                     f"Note {c.get('commentary_id')} “{lemma[:60]}” is under chapter {ch}, ℣ {ref}, but its words are in "
-                     f"℣ {best} ({score[best]:.0%} against {score.get(ref, 0):.0%}): wrong verse_ref, or the verse misnumbered?",
-                     where=dict(section="commentary", index=j, field="verse_ref"))
-        # chapter references chapter_refs.py could not write out: which book, or which numbers?
-        for j, c in enumerate(d.get("commentary") or []):
-            t, where = c.get("french_commentary") or "", f"commentary {c.get('commentary_id')} (℣ {c.get('verse_ref')})"
-            left = [m.group().strip(" ,") for m in CH_REF.finditer(t) if chapter_write(m, t) == m.group()]
-            which = [t[max(0, m.start() - 30):m.end()].lstrip() for m in WHICH_BOOK.finditer(t)]
-            if left:
-                item("chapter_ref", vol, int(n[5:9]), f"{where}: “{'”, “'.join(left)}” left as printed (chapters "
-                     "not in order: a verse, or a word?): write it as “chapitre C:V”, or “Livre C:V” after a book",
-                     where=dict(section="commentary", index=j, field="french_commentary"))
-            if which:
-                item("chapter_ref", vol, int(n[5:9]), f"{where}: “…{'”, “…'.join(which)}”: which book? write it as "
-                     "“2 Rois 1:18” / “1 Paralipomènes 9:22”",
-                     where=dict(section="commentary", index=j, field="french_commentary"))
-        # an asterisk marks footnote text that was guessed, not read on the scan: one item per page
-        starred = [str(f.get("marker")) for f in fns if "*" in GUESSED_REF.sub("", str(f.get("text") or ""))]
-        if starred:
-            item("footnote_asterisk", vol, int(n[5:9]),
-                 f"Footnote{'s' if len(starred) > 1 else ''} {', '.join(starred)}: words marked * were guessed: "
-                 f"check them against the scan, then remove the asterisks")
-        called = set(re.findall(r"\^\{\(([a-z])\)\}", json.dumps({k: v for k, v in d.items() if k != "footnotes"},
-                                                                ensure_ascii=False)))
-        if len(fns) > len(called):
-            uncalled = [str(f.get("marker")) for f in fns if re.sub(r"\W", "", str(f.get("marker") or "")) not in called]
-            item("extra_footnotes", vol, int(n[5:9]),
-                 f"{len(fns)} footnotes for {len(called)} calls in the text"
-                 + (f": nothing calls {', '.join(uncalled)}" if uncalled else ": a marker is used twice")
-                 + " (footnote from another page, a call lost, or a duplicate?)")
-    # "&" (et) at the bottom of the page misread as "etc." at the end of the last commentary block
-    ETC_END = re.compile(r"\b(?:etc|ETC)\.?[_\s»”)]*$")
-    for vol, n, d in pages:
+CAPS = re.compile(r"\b[A-ZÀ-ÝŒÆ]{2,}(?:[\s,;:'’.-]+[A-ZÀ-ÝŒÆ]{2,})+\b")
+ODD_MARK = re.compile(r"\^[^{]|\^\{(?!\([a-z]\)\})[^}]*\}")
+NOTE_FIELDS = ("latin_quote", "french_translation", "french_commentary")
+STOPS = (".", ",", ";", ":", "!", "?", "…")
+
+
+def empty_commentary(b, t):
+    """Notes with no commentary. Fine when the comment opens the next page, or when
+    Calmet gives only the translation; suspicious when nothing follows the lemma."""
+    if t.fc.strip():
+        return
+    if t.last and t.lemma and not t.tr:
+        problem = None  # a lemma alone at the foot of the page: its text is overleaf
+    elif t.last:
+        problem = None if t.next and not (t.overleaf.get("latin_quote") or "").strip() else \
+            "is the last note on the page and the next page starts a new lemma: comment lost at the page break?"
+    elif not (t.cs[t.j + 1].get("latin_quote") or "").strip():
+        problem = "is followed by a block with no lemma: one note split in two?"
+    elif not t.tr:
+        problem = "has neither translation nor comment" + (" (the comment may be inside latin_quote)" if re.search(r"[a-zé]{4,}", t.lemma) else "")
+    elif not re.search(r"[.!?»]_?(\s*\^\{\([a-z]\)\})?$", t.tr):
+        problem = "has no comment and its translation is cut off"
+    else:
+        problem = None
+    if problem:
+        b.counts["empty_commentary"] += 1
+        b.item("empty_commentary", t.vol, t.page, f"Note “{t.lemma[:40]}” (℣ {t.c.get('verse_ref')}) {problem}",
+               where=t.at("french_commentary"))
+
+
+def caps_in_commentary(b, t):
+    fc = t.fc
+    for m in CAPS.finditer(fc):
+        if re.fullmatch(r"[IVXLC.\s,et]+", m.group()):
+            continue
+        b.counts["caps_in_commentary"] += 1
+        where = "starts the comment" if m.start() < 3 else "inside the comment"
+        b.item("caps_in_commentary", t.vol, t.page,
+               f"Capitals {where}: “…{fc[max(0, m.start() - 25):m.end() + 15]}…”: a lemma that should start its own note, or a word to put in lower case?",
+               where=t.at("french_commentary"))
+
+
+def spaced_letters(b, t):
+    for k in NOTE_FIELDS:
+        for m in re.finditer(r"(?<![\w.])(?:[A-Za-zÀ-ÿŒÆœæ] ){3,}[A-Za-zÀ-ÿŒÆœæ](?!\w)", t.c.get(k) or ""):
+            b.item("spaced_letters", t.vol, t.page,
+                   f"Letter-spaced word in {k}: “{m.group()}”: close up the letters (put the word breaks back)",
+                   where=t.at(k))
+
+
+def leading_call(b, t):
+    for k in NOTE_FIELDS:
+        m = re.match(r"\s*\^\{[^}]*\}", t.c.get(k) or "")
+        if m:
+            b.item("leading_call", t.vol, t.page,
+                   f"{k} of note {t.c.get('commentary_id')} (℣ {t.c.get('verse_ref')}) starts with the footnote call "
+                   f"“{m.group().strip()}”: “{(t.c.get(k) or '')[:60]}…”: move it after the word it belongs to "
+                   f"(end of the previous field or page?)",
+                   where=t.at(k))
+
+
+def leading_punctuation(b, t):
+    if re.match(r"\s*[.,;:!?»]", t.fc):
+        b.item("leading_punctuation", t.vol, t.page,
+               f"Comment starts with punctuation “{t.fc[:40]}…”"
+               + (": move it to the end of the translation (tidy_fields.py does)" if t.tr else
+                  ": no translation in this block, so it belongs to the text before (previous page?)"),
+               where=t.at("french_commentary"))
+
+
+def hyphen_cut(b, t):
+    """A lemma or translation cut by the page turn ("PER-", or mid-sentence in a note whose
+    comment hasn't started) must go on in the same field overleaf."""
+    for k in ("latin_quote", "french_translation"):
+        s = re.sub(r"\^\{[^}]*\}", "", t.c.get(k) or "").rstrip()
+        if not s:
+            continue
+        hyphen = s.endswith("-")
+        open_ = (t.last and not t.fc.strip() and not re.search(r"[.!?»…)\]]$", s)
+                 and (k == "french_translation" or not t.tr))
+        if not (hyphen or open_) or (t.overleaf.get(k) or "").strip():
+            continue
+        first = t.overleaf
+        overleaf = first.get("french_commentary") or first.get("french_translation") or first.get("latin_quote") or ""
+        b.item("hyphen_cut", t.vol, t.page,
+               f"{k} ends “…{s[-40:]}”" + ("" if hyphen else " with no full stop") + " but "
+               + (f"the next page's first note has no {k} (it starts “{overleaf[:50]}…”)"
+                  if t.last else "another note follows on this page")
+               + f": put the rest of the {k} back together"
+               + ("" if hyphen else " (or add the missing full stop)"),
+               where=t.at(k))
+
+
+def page_turn_seams(b, t):
+    """The page turn inside a comment: italics and sentences must carry over."""
+    fc, nfirst = t.fc, t.overleaf
+    nfc = nfirst.get("french_commentary") or ""
+    if not (fc.strip() and nfc.strip()) or (nfirst.get("latin_quote") or "").strip() \
+            or (nfirst.get("french_translation") or "").strip():
+        return
+    if fc.count("_") % 2 and not nfc.count("_") % 2:
+        b.item("italic_seam", t.vol, t.page,
+               f"Italics still open at the foot of the page (“…{fc[fc.rfind('_'):][-60:]}”) but not closed "
+               f"overleaf (“{nfc[:50]}…”): close them here, or a “_” is missing or extra",
+               where=t.at("french_commentary"))
+    tail = re.sub(r"(\s*\^\{[^}]*\})+\s*$", "", fc).rstrip()
+    head = re.match(r"\s*[_«\"(]*\s*(\w)", nfc)
+    # italics closed right at the foot of the page, mid-sentence, while the quotation runs
+    # on in roman overleaf (Ruth 25-26: "…d'un homme_" ‖ "d'honneur.")
+    run = re.search(r"_([^_]+)_$", tail)
+    if (run and not fc.count("_") % 2 and not re.search(r"[.;:!?»]$", run.group(1).rstrip())
+            and len(run.group(1).split()) >= 2 and not re.match(r"\s*_", nfc)
+            and head and head.group(1).islower()):
+        b.item("italic_seam", t.vol, t.page,
+               f"Italics closed at the very foot of the page (“…{tail[-50:]}”) but the sentence goes on "
+               f"in roman overleaf (“{nfc[:50]}…”): carry the italics over to where the quotation ends",
+               where=t.at("french_commentary"))
+    if tail.endswith(".") and head and head.group(1).islower() and not ABBREV.search(tail):
+        b.item("period_seam", t.vol, t.page,
+               f"Full stop at the foot of the page (“…{tail[-45:]}”) but the next page goes on in "
+               f"lower case (“{nfc[:45]}…”): stray full stop, or a capital to restore?",
+               where=t.at("french_commentary"))
+
+
+def missing_start(b, t):
+    """A comment opening mid-sentence on a page whose predecessor has nothing for it to go on from."""
+    i = t.i
+    if not (t.j == 0 and t.fc.strip() and i and b.pages[i - 1][0] == t.vol
+            and int(b.pages[i - 1][1][5:9]) == t.page - 1):
+        return
+    before = (b.pages[i - 1][2].get("commentary") or [None])[-1]
+    if start_missing(before, t.c):
+        b.item("missing_start", t.vol, t.page,
+               f"The first note opens in the middle of a sentence (“{t.fc[:50]}…”) but "
+               + (f"the last note of the page before (“{(before.get('latin_quote') or before.get('french_translation') or '')[:40]}…”) has no comment"
+                  if before else "the page before has no notes")
+               + ": the start of the comment is missing (typed on the page before, or lost at the page turn)",
+               where=t.at("french_commentary"))
+
+
+def first_no_lemma(b, t):
+    """The first note of a page with no lemma at all: the end of the note before, or a note whose lemma was lost."""
+    if not (t.j == 0 and not t.lemma and not t.tr and t.fc.strip()):
+        return
+    before = next((cc[-1].get("french_commentary") or "" for vv, _, dd in reversed(b.pages[max(0, t.i - 20):t.i])
+                   if vv == t.vol and (cc := dd.get("commentary") or []) and (cc[-1].get("french_commentary") or "").strip()),
+                  None)
+    why = first_note_without_lemma(before, t.fc) if before else None
+    if why:
+        b.item("first_no_lemma", t.vol, t.page,
+               (f"The first note opens with what looks like its lemma in capitals (“{t.fc[:60]}…”): "
+                f"move it to latin_quote" if why == "lemma" else
+                f"The first note (“{t.fc[:50]}…”) has no latin_quote or french_translation, but the page "
+                f"before ends a sentence (…{before.rstrip()[-40:]}): a new note whose lemma was lost, "
+                f"or the next sentence of the same note?"),
+               optional=why == "sentence", where=t.at("latin_quote"))
+
+
+def no_lemma(b, t):
+    """Only the first block of a page may lack a lemma (it continues the page before)."""
+    if t.lemma or t.c.get("commentary_id") == 1:
+        return
+    why = ("the lemma is at the start of the comment: move it to latin_quote"
+           if re.match(r"\s*[A-ZÀ-ÝŒÆ]{2,}[\sA-ZÀ-ÝŒÆ',.;:?!-]{6,}", t.fc) else
+           "one note split in two, or a lemma lost?")
+    b.item("no_lemma", t.vol, t.page,
+           f"{t.ref} has no latin_quote: “{(t.tr or t.fc)[:70]}…”: {why}",
+           where=t.at("latin_quote"))
+
+
+def lemma_form(b, t):
+    """The lemma: printed in capitals, with a verse_ref, in words the Vulgate has."""
+    lemma = t.lemma
+    if (lemma or t.tr) and not str(t.c.get("verse_ref") or "").strip():
+        b.item("no_verse_ref", t.vol, t.page, f"Note “{(lemma or t.tr)[:50]}” has no verse_ref",
+               where=t.at("verse_ref"))
+    if re.search(r"[a-zàâçéèêëîïôûùüÿœæ]", re.sub(r"\^\{[^}]*\}", "", lemma)):
+        b.item("lowercase_lemma", t.vol, t.page,
+               f"Lower case in latin_quote “{lemma[:70]}”: French or commentary in the lemma field?",
+               where=t.at("latin_quote"))
+    # the site takes the lemma's capitals from the Vulgate (calmet.py latin_case): a word the
+    # Vulgate lacks comes out in lower case
+    unknown = [w for w in re.findall(r"[^\W\d_]{3,}", STRAY.sub("", lemma))
+               if _fold(w) not in vulgate_words() and w.lower() != "etc"]
+    if unknown:
+        b.item("lemma_unknown_word", t.vol, t.page,
+               f"Not in the Vulgate: {', '.join(unknown)} in “{lemma[:60]}”: a name (add it to "
+               f"scripts/latin_names.txt), a misreading, French in the lemma, or a word cut in two?",
+               optional=True, where=t.at("latin_quote"))
+
+
+def translation_length(b, t):
+    """A translation of about the lemma's length; a lemma and translation split by the page turn
+    are measured whole."""
+    la, fr, cut = re.sub(r"\^\{[^}]*\}", "", t.lemma), t.tr, ""
+    if t.last and (rest := b.runs_over(t.i)):
+        la = (la + " " + re.sub(r"\^\{[^}]*\}", "", rest.get("latin_quote") or "")).strip()
+        fr, cut = (fr + " " + (rest.get("french_translation") or "")).strip(), " (with the next page)"
+    if t.j == 0 and t.i and b.runs_over(t.i - 1):
+        la = ""  # measured with the previous page's last note
+    if la and len(fr) > 3 * len(la) and len(fr) - len(la) > 40:
+        b.item("long_translation", t.vol, t.page,
+               f"Translation of {len(fr)} characters for a lemma of {len(la)}{cut} “{t.lemma[:40]}”: "
+               f"“{fr[:90]}…”: commentary run into the translation?",
+               where=t.at("french_translation"))
+    if la.strip() and not fr:
+        no_translation(b, t, la)
+
+
+def no_translation(b, t, la):
+    fc, where = t.fc, "the comment starts"
+    overleaf = t.last and not fc.strip() and t.next is not None and (t.next.get("commentary") or [None])[0]
+    if overleaf:  # the last note of the page, its comment overleaf
+        fc, where = overleaf.get("french_commentary") or "", "the next page starts"
+    one_word = len(re.findall(r"[^\W\d_]+", la)) == 1
+    why = ("French in the lemma?" if re.search(r"[a-zàâçéèêëîïôûùüÿœæ]{3}", la) else
+           "the translation run into the commentary?" if re.match(r"\s*_[^_]{3,}_", fc)
+           or re.match(rf"\s*[^.;:,]{{{len(la) // 2},{len(la) * 3}}}[.;:,]", fc) else
+           "a name Calmet leaves untranslated?" if one_word else "a translation lost?")
+    b.item("no_translation", t.vol, t.page,
+           f"{t.ref}: latin_quote “{t.lemma[:50]}” has no "
+           f"french_translation; {where} “{fc[:60]}…”: {why}", optional=one_word,
+           where=t.at("french_translation"))
+
+
+def hebrew_in_translation(b, t):
+    marks = translation_markers(t.tr)
+    if not marks:
+        return
+    if re.search(r"\bl['’]\s?h[ée]breu", t.tr, re.I):
+        # keep the old wording (and so the old id) for items already reviewed
+        msg = (f"“L'Hébreu” in the translation of “{t.lemma[:40]}”: “{t.tr[:100]}…”: "
+               "commentary run into the translation?")
+    else:
+        shown = " ".join(f"“{m}”" for m in marks)
+        msg = (f"{shown} in the translation of “{t.lemma[:40]}”: “{t.tr[:100]}…”: "
+               "commentary or a variant run into the translation?")
+    b.item("hebrew_in_translation", t.vol, t.page, msg, where=t.at("french_translation"))
+
+
+def field_ends(b, t):
+    """Lemma and translation end with punctuation (unless the note runs over the page);
+    a translation after the first note starts with a capital."""
+    tr, lemma = t.tr, t.lemma
+    if tr:
+        tr_bare = tr.rstrip("_* \t")
+        if not t.last and not re.search(r"\^\{[^\}]+\}\s*$", tr_bare) \
+                and not tr_bare.rstrip("])»”\"'").endswith(STOPS):
+            b.item("translation_no_punct", t.vol, t.page,
+                   f"{t.ref}: french_translation does not end with punctuation: “{tr[-50:]}”",
+                   where=t.at("french_translation"))
+        if t.j != 0:
+            clean_start = re.sub(r"^\s*(\^\{[^}]*\}|[\s_«\"'‘“\(\[\{:§.])+", "", tr)
+            m = re.search(r"[A-Za-zÀ-ÖØ-öø-ÿœæŒÆ]", clean_start)
+            if m and m.group(0).islower():
+                b.item("lowercase_translation", t.vol, t.page,
+                       f"{t.ref}: french_translation missing initial capital: starts with “{m.group(0)}” in “{tr[:50]}…”",
+                       where=t.at("french_translation"))
+    if lemma:
+        la_bare = lemma.rstrip("_* \t")
+        if not t.last and not re.search(r"\^\{[^\}]+\}\s*$", la_bare) \
+                and not la_bare.rstrip("])»”\"'").endswith(STOPS):
+            b.item("lemma_no_punct", t.vol, t.page,
+                   f"{t.ref}: latin_quote does not end with punctuation: “{lemma[-50:]}”",
+                   where=t.at("latin_quote"))
+
+
+def broken_marker(b, t):
+    notes_here = {re.sub(r"\W", "", str(fn.get("marker") or "")) for fn in t.d.get("footnotes") or []}
+    for k in NOTE_FIELDS:
+        s = t.c.get(k) or ""
+        bad = [m.group() for m in ODD_MARK.finditer(s)]
+        bad += [m.group() for m in re.finditer(r"(?<![\^{\w])\(\s?([a-z])\s?\)(?!\})", s) if m.group(1) not in notes_here]
+        for x in bad:
+            b.counts["broken_markers"] += 1
+            pos = s.find(x)
+            b.item("broken_marker", t.vol, t.page,
+                   f"Footnote call “{x}” in {k}: “…{s[max(0, pos - 30):pos + len(x) + 10]}…”",
+                   where=t.at(k))
+
+
+NOTE_CHECKS = (empty_commentary, caps_in_commentary, spaced_letters, leading_call, leading_punctuation,
+               hyphen_cut, page_turn_seams, missing_start, first_no_lemma, no_lemma, lemma_form,
+               translation_length, hebrew_in_translation, field_ends, broken_marker)
+
+
+# ---------- each page, around its notes ----------
+
+def empty_summary(b, vol, n, d):
+    if chapter_of(d) and not str(d.get("chapter_summary") or "").strip():
+        b.item("empty_summary", vol, int(n[5:9]),
+               f"Chapter {chapter_of(d)} opens here but chapter_summary is empty: type it from the scan "
+               f"(or the heading is a running head and chapter_number/chapter_title should go)")
+
+
+def guessed_ref(b, vol, n, d):
+    """Bible references guessed from the context (starred), or left as printed with no such verse."""
+    texts = [(f"commentary {c.get('commentary_id')}", c.get("french_commentary") or "") for c in d.get("commentary") or []]
+    texts += [(f"footnote {f.get('marker')}", str(f.get("text") or "")) for f in d.get("footnotes") or []]
+    guessed = [f"{where}: “{m.group()}”" for where, t in texts for m in GUESSED_REF.finditer(t)]
+    printed = [f"“{src}”" for (page, src), v in REF_MANUAL.items() if v is None and page == f"{vol}/page_{n[5:9]}"]
+    if guessed or printed:
+        b.item("guessed_ref", vol, int(n[5:9]), "; ".join(
+            ([", ".join(guessed) + " guessed from the context: check against the scan, then remove the asterisk "
+              "or set the reference right"] if guessed else [])
+            + ([f"Calmet's {', '.join(printed)} written out as printed, but no such verse in the Vulgate: "
+                "check against the scan"] if printed else [])))
+
+
+def lemma_verse(b, vol, n, d):
+    """Lemmas filled in by hand where there was none, and lemmas whose words are in another verse."""
+    added = lemma_added(vol, n)
+    for j, c in enumerate(d.get("commentary") or []):
+        lemma = c.get("latin_quote") or ""
+        if not lemma.strip():
+            continue
+        fc = flat(c.get("french_commentary") or "")
+        # the same block: one commentary holds the other's start (a lemma moved out of it, a block joined)
+        by_hand = fc and any(fc[:40] in o or o[:40] in fc or fc[-40:] in o for o in added)
+        ch, ref = str(c.get("chapter") or ""), str(c.get("verse_ref") or "")
+        score, best = best_verse(re.sub(r"\^\{[^}]*\}", "", lemma), {v: t for (cc, v), t in b.latin_of(vol).items() if cc == ch})
+        span = re.fullmatch(r"(\d+)\s*[-–]\s*(\d+)", ref)  # "16-17": the best of the verses it covers
+        if span and score:
+            inside = [str(v) for v in range(int(span[1]), int(span[2]) + 1)]
+            score[ref] = max(score.get(v, 0) for v in inside)
+            best = ref if best in inside else best
+        where = dict(section="commentary", index=j, field="verse_ref")
+        if by_hand:
+            hint = (f"its words fit ℣ {best} better ({score[best]:.0%} against {score.get(ref, 0):.0%})"
+                    if best and best != ref and score[best] > score.get(ref, 0) else
+                    f"its words fit ℣ {ref}" if score.get(ref) else "")
+            b.item("lemma_verse", vol, int(n[5:9]),
+                   f"Note {c.get('commentary_id')} had no latin_quote; now “{lemma[:60]}” at chapter {ch}, ℣ {ref}: "
+                   f"check the verse number{': ' + hint if hint else ''}", optional="better" not in hint, where=where)
+        elif best and best != ref and score[best] >= 0.8 and score.get(ref, 0) <= 0.4 \
+                and len(re.findall(r"[^\W\d_]{3,}", lemma)) >= 2:
+            b.item("verse_mismatch", vol, int(n[5:9]),
+                   f"Note {c.get('commentary_id')} “{lemma[:60]}” is under chapter {ch}, ℣ {ref}, but its words are in "
+                   f"℣ {best} ({score[best]:.0%} against {score.get(ref, 0):.0%}): wrong verse_ref, or the verse misnumbered?",
+                   where=where)
+
+
+def unwritten_chapter_refs(b, vol, n, d):
+    """Chapter references chapter_refs.py could not write out: which book, or which numbers?"""
+    for j, c in enumerate(d.get("commentary") or []):
+        t, where = c.get("french_commentary") or "", f"commentary {c.get('commentary_id')} (℣ {c.get('verse_ref')})"
+        left = [m.group().strip(" ,") for m in CH_REF.finditer(t) if chapter_write(m, t) == m.group()]
+        which = [t[max(0, m.start() - 30):m.end()].lstrip() for m in WHICH_BOOK.finditer(t)]
+        at = dict(section="commentary", index=j, field="french_commentary")
+        if left:
+            b.item("chapter_ref", vol, int(n[5:9]), f"{where}: “{'”, “'.join(left)}” left as printed (chapters "
+                   "not in order: a verse, or a word?): write it as “chapitre C:V”, or “Livre C:V” after a book", where=at)
+        if which:
+            b.item("chapter_ref", vol, int(n[5:9]), f"{where}: “…{'”, “…'.join(which)}”: which book? write it as "
+                   "“2 Rois 1:18” / “1 Paralipomènes 9:22”", where=at)
+
+
+def footnote_calls(b, vol, n, d):
+    """Footnotes with guessed words (an asterisk: one item per page), and more footnotes than calls."""
+    fns = d.get("footnotes") or []
+    starred = [str(f.get("marker")) for f in fns if "*" in GUESSED_REF.sub("", str(f.get("text") or ""))]
+    if starred:
+        b.item("footnote_asterisk", vol, int(n[5:9]),
+               f"Footnote{'s' if len(starred) > 1 else ''} {', '.join(starred)}: words marked * were guessed: "
+               f"check them against the scan, then remove the asterisks")
+    called = set(re.findall(r"\^\{\(([a-z])\)\}", json.dumps({k: v for k, v in d.items() if k != "footnotes"},
+                                                            ensure_ascii=False)))
+    if len(fns) > len(called):
+        uncalled = [str(f.get("marker")) for f in fns if re.sub(r"\W", "", str(f.get("marker") or "")) not in called]
+        b.item("extra_footnotes", vol, int(n[5:9]),
+               f"{len(fns)} footnotes for {len(called)} calls in the text"
+               + (f": nothing calls {', '.join(uncalled)}" if uncalled else ": a marker is used twice")
+               + " (footnote from another page, a call lost, or a duplicate?)")
+
+
+def check_notes(b):
+    for i, (vol, n, d) in enumerate(b.pages):
+        empty_summary(b, vol, n, d)
+        for j in range(len(d.get("commentary") or [])):
+            t = Note(b, i, j)
+            for check in NOTE_CHECKS:
+                check(b, t)
+        for check in (guessed_ref, lemma_verse, unwritten_chapter_refs, footnote_calls):
+            check(b, vol, n, d)
+
+
+# ---------- whole pages ----------
+
+ETC_END = re.compile(r"\b(?:etc|ETC)\.?[_\s»”)]*$")
+
+
+def etc_for_et(b):
+    """"&" (et) at the bottom of the page misread as "etc." at the end of the last commentary block."""
+    for vol, n, d in b.pages:
         comm = d.get("commentary") or []
         if not comm:
             continue
         t = (comm[-1].get("french_commentary") or "").strip()
         m = ETC_END.search(t)
         if m:
-            item("etc_for_et", vol, int(n[5:9]),
-                 f"Last commentary ends with “{m.group(0).strip()}”: “…{t[max(0, m.start() - 45):]}” — "
-                 f"an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
-                 where=dict(section="commentary", index=len(comm) - 1, field="french_commentary"))
-    # A page whose commentary repeats a neighbour's: one of the two scans was transcribed twice
+            b.item("etc_for_et", vol, int(n[5:9]),
+                   f"Last commentary ends with “{m.group(0).strip()}”: “…{t[max(0, m.start() - 45):]}” — "
+                   f"an “&” (et) at the page turn misread as etc.? (fine if the scan has &c.)",
+                   where=dict(section="commentary", index=len(comm) - 1, field="french_commentary"))
+
+
+def duplicate_page(b):
+    """A page whose commentary repeats a neighbour's: one of the two scans was transcribed twice."""
     def shingles(d):
         w = re.findall(r"\w+", " ".join((c.get("french_commentary") or "") + " " + (c.get("latin_quote") or "")
                                         for c in d.get("commentary") or []).lower())
         return {" ".join(w[k:k + 4]) for k in range(len(w) - 3)}
-    sh = [(vol, n, shingles(d)) for vol, n, d in pages]
-    for i, (vol, n, a) in enumerate(sh):
-        for vol2, n2, b in sh[i + 1:i + 3]:
-            if vol2 == vol and len(a) > 40 and len(b) > 40 and len(a & b) / min(len(a), len(b)) > 0.5:
-                item("duplicate_page", vol, int(n[5:9]),
-                     f"Commentary of page {int(n[5:9])} repeats page {int(n2[5:9])} "
-                     f"({round(100 * len(a & b) / min(len(a), len(b)))}% the same): one of them must be retranscribed from its scan")
-    # verses filled in from the Vulgate (fill_psalm_verses.py) until their French is typed;
-    # any other verse without French lost it in transcription
-    for vol, n, d in pages:
+    sh = [(vol, n, shingles(d)) for vol, n, d in b.pages]
+    for i, (vol, n, x) in enumerate(sh):
+        for vol2, n2, y in sh[i + 1:i + 3]:
+            if vol2 == vol and len(x) > 40 and len(y) > 40 and len(x & y) / min(len(x), len(y)) > 0.5:
+                b.item("duplicate_page", vol, int(n[5:9]),
+                       f"Commentary of page {int(n[5:9])} repeats page {int(n2[5:9])} "
+                       f"({round(100 * len(x & y) / min(len(x), len(y)))}% the same): one of them must be retranscribed from its scan")
+
+
+def missing_french(b):
+    """Verses filled in from the Vulgate (fill_psalm_verses.py) until their French is typed;
+    any other verse without French lost it in transcription."""
+    for vol, n, d in b.pages:
         for vi, v in enumerate(d.get("verses") or []):
             if (v.get("french") or "").strip():
                 continue
+            where = dict(section="verses", index=vi, field="french")
             if str(v.get("annotations") or "").startswith("Latin from the Vulgate"):
-                item("vulgate_filled", vol, int(n[5:9]),
-                     f"Verse {v.get('verse_number')} was missing: its Latin is filled in from the Vulgate "
-                     f"(“{(v.get('latin') or '')[:50]}…”). Check it against the scan, type Calmet's French, then clear the note",
-                     where=dict(section="verses", index=vi, field="french"))
+                b.item("vulgate_filled", vol, int(n[5:9]),
+                       f"Verse {v.get('verse_number')} was missing: its Latin is filled in from the Vulgate "
+                       f"(“{(v.get('latin') or '')[:50]}…”). Check it against the scan, type Calmet's French, then clear the note",
+                       where=where)
             else:
-                item("missing_french", vol, int(n[5:9]),
-                     f"Verse {v.get('chapter')}:{v.get('verse_number')} has no French "
-                     f"(Latin: “{(v.get('latin') or '')[:50]}…”): type Calmet's translation from the scan",
-                     where=dict(section="verses", index=vi, field="french"))
-    # the end of a verse, a footnote; italics opened and never closed (or the reverse) within a field
-    tail = lambda s: re.sub(r"(\s*(\^\{[^}]*\}|[_*»”\"')\]]))+\s*$", "", s.rstrip())
-    for vol, n, d in pages:
-        for vi, v in enumerate(d.get("verses") or []):
-            for k in ("latin", "french"):
-                end = tail(v.get(k) or "")
-                if end and not end.endswith((".", ",", ";", ":", "!", "?", "…")):
-                    item("verse_no_punct", vol, int(n[5:9]),
-                         f"Verse {v.get('chapter')}:{v.get('verse_number')}: {k} does not end with punctuation: “…{end[-50:]}” "
-                         "(a word lost, or the verse runs on overleaf?)", where=dict(section="verses", index=vi, field=k))
-        for fi, f in enumerate(d.get("footnotes") or []):
-            end = tail(str(f.get("text") or ""))
-            # Hebrew and Greek are printed without a stop after them
-            if end and not end.endswith((".", "!", "?", "…")) and not re.search(r"[\u0370-\u03FF\u1F00-\u1FFF\u0590-\u05FF\uFB1D-\uFB4F]\W*$", end) \
-                    and not re.search(r"\[UNCERTAIN [A-Z]+\]?$", end):
-                item("footnote_no_period", vol, int(n[5:9]),
-                     f"Footnote {f.get('marker')} does not end with a full stop: “…{end[-60:]}”",
-                     where=dict(section="footnotes", index=fi, field="text"))
-        cs = d.get("commentary") or []
-        fields = [("verses", vi, v, k) for vi, v in enumerate(d.get("verses") or []) for k in ("latin", "french", "annotations")]
-        fields += [("commentary", j, c, k) for j, c in enumerate(cs) for k in ("latin_quote", "french_translation", "french_commentary")]
-        fields += [("footnotes", fi, f, "text") for fi, f in enumerate(d.get("footnotes") or [])]
-        for sec, i, e, k in fields:
-            text = str(e.get(k) or "")
-            # a comment's italics may run over the page turn (italic_seam checks those)
-            if "_" not in text or (sec == "commentary" and k == "french_commentary" and i in (0, len(cs) - 1)):
-                continue
-            bad = stray_underscore(text)
-            if bad is None:
-                continue
-            at, why = bad
-            item("stray_underscore", vol, int(n[5:9]),
-                 f"Italics in {k} ({sec} {i + 1}): {why}: “{text[max(0, at - 40):at + 25]}”",
-                 where=dict(section=sec, index=i, field=k))
-    r["empty_commentary"], r["caps_in_commentary"], r["broken_markers"] = empty_notes, caps_runs, odd_marks
+                b.item("missing_french", vol, int(n[5:9]),
+                       f"Verse {v.get('chapter')}:{v.get('verse_number')} has no French "
+                       f"(Latin: “{(v.get('latin') or '')[:50]}…”): type Calmet's translation from the scan",
+                       where=where)
 
-    # ---------- assembled chapters & notes (from normalized/) ----------
-    if not pages:
-        r["published"] = False
-        return r
-    r["published"] = published
-    chapters, summaries, _ = verses_by_chapter(key)
-    vul = {c["chapter"]: {v["verse"] for v in c["verses"]}
-           for c in json.loads((VUL / f"{info['vul']}.json").read_text())["chapters"]}
-    r["chapters_site"], r["chapters_vulgate"] = len(chapters), len(vul)
-    r["chapters_missing"] = sorted(set(vul) - set(chapters))
-    verse_issues, empty_verse = [], []
-    fr_hits, fr_words, la_hits = Counter(), 0, Counter()
-    note_hits, note_words = Counter(), 0
-    site_text = []
-    orphan_notes, missing_fn = [], 0
-    total_verses = 0
-    for ch in sorted(chapters):
-        vs = chapters[ch]
-        total_verses += len(vs)
-        nums = [v.get("verse_number") for v in vs if isinstance(v.get("verse_number"), int)]
-        have = set(nums)
-        top = max(have) if have else 0
-        expect = max(vul.get(ch, {0}))
-        missing = [n for n in range(1, min(top, expect) + 1) if n not in have] if key != "psalms" and ch in vul else []
-        dups = sorted({n for n in nums if nums.count(n) > 1})
-        tail = list(range(top + 1, expect + 1)) if key != "psalms" and ch in vul else []
-        if missing or dups or tail:
-            located = [(v["verse_number"], v.get("source_pages", [None])[0]) for v in vs
-                       if isinstance(v.get("verse_number"), int) and v.get("source_pages")]
 
-            def page_of(n):
-                before = [pg for k, pg in located if k < n]
-                after = [pg for k, pg in located if k > n]
-                pg = before[-1] if before else (after[0] if after else None)
-                return int(pg[5:9]) if pg else None
+def text_end(s):
+    """`s` without the calls, italics, quotes and brackets that close it."""
+    return re.sub(r"(\s*(\^\{[^}]*\}|[_*»”\"')\]]))+\s*$", "", s.rstrip())
 
-            kept_missing, kept_tail = [], []
-            for n in missing + tail:
-                pg = page_of(n)
-                vol = pg and vol_of(f"page_{pg:04d}.json")
-                if vol:
-                    msg = f"{info['fr']} {ch}:{n} is missing (page shown holds the nearest verse)"
-                    uid = hashlib.md5(msg.encode()).hexdigest()[:8]
-                    mid = f"{vol}/{pg:04d}/missing_verse/{uid}"
-                    if FP_IDS.matches(mid, vol, pg, "missing_verse", msg) if hasattr(FP_IDS, "matches") else mid in FP_IDS:
-                        continue
-                    item("missing_verse", vol, pg, msg)
-                (kept_missing if n in missing else kept_tail).append(n)
-            missing, tail = kept_missing, kept_tail
-            for n in dups:
-                for k, pg in located:
-                    if k == n and vol_of(pg):
-                        item("duplicate_verse", vol_of(pg), int(pg[5:9]), f"{info['fr']} {ch}:{n} appears more than once")
-            if missing or dups or tail:
-                verse_issues.append(dict(chapter=ch, missing=missing, duplicated=dups,
-                                         missing_tail=tail, vulgate_count=expect))
-        for v in vs:
-            if not (v.get("french") or "").strip() or not (v.get("latin") or "").strip():
-                empty_verse.append(f"{ch}:{v.get('verse_number')}")
-            fr_hits += archaic_hits(v.get("french")); fr_words += words(v.get("french"))
-            for name, rx in LATIN_OLD:
-                la_hits[name] += len(rx.findall(v.get("latin") or ""))
-        if summaries.get(ch):
-            fr_hits += archaic_hits(summaries[ch]); fr_words += words(summaries[ch])
-        if not published:
+
+def verse_ends(b, vol, n, d):
+    for vi, v in enumerate(d.get("verses") or []):
+        for k in ("latin", "french"):
+            end = text_end(v.get(k) or "")
+            if end and not end.endswith(STOPS):
+                b.item("verse_no_punct", vol, int(n[5:9]),
+                       f"Verse {v.get('chapter')}:{v.get('verse_number')}: {k} does not end with punctuation: “…{end[-50:]}” "
+                       "(a word lost, or the verse runs on overleaf?)", where=dict(section="verses", index=vi, field=k))
+
+
+def footnote_ends(b, vol, n, d):
+    for fi, f in enumerate(d.get("footnotes") or []):
+        end = text_end(str(f.get("text") or ""))
+        # Hebrew and Greek are printed without a stop after them
+        if end and not end.endswith((".", "!", "?", "…")) and not re.search(r"[Ͱ-Ͽἀ-῿֐-׿יִ-ﭏ]\W*$", end) \
+                and not re.search(r"\[UNCERTAIN [A-Z]+\]?$", end):
+            b.item("footnote_no_period", vol, int(n[5:9]),
+                   f"Footnote {f.get('marker')} does not end with a full stop: “…{end[-60:]}”",
+                   where=dict(section="footnotes", index=fi, field="text"))
+
+
+def italics(b, vol, n, d):
+    """Italics opened and never closed (or the reverse) within a field."""
+    cs = d.get("commentary") or []
+    fields = [("verses", vi, v, k) for vi, v in enumerate(d.get("verses") or []) for k in ("latin", "french", "annotations")]
+    fields += [("commentary", j, c, k) for j, c in enumerate(cs) for k in NOTE_FIELDS]
+    fields += [("footnotes", fi, f, "text") for fi, f in enumerate(d.get("footnotes") or [])]
+    for sec, i, e, k in fields:
+        text = str(e.get(k) or "")
+        # a comment's italics may run over the page turn (italic_seam checks those)
+        if "_" not in text or (sec == "commentary" and k == "french_commentary" and i in (0, len(cs) - 1)):
             continue
-        try:
-            c = calmet_notes(key, ch, 1, 999)
-        except Exception:
-            verse_issues.append(dict(chapter=ch, notes_file_missing=True))
+        bad = stray_underscore(text)
+        if bad is None:
             continue
-        missing_fn += len(c.get("missing_footnotes") or [])
-        for k in c.get("missing_footnotes") or []:
-            m = re.match(r"page_(\d+)-(\w)", k)
-            vol = m and vol_of(f"page_{m.group(1)}.json")
-            if vol:
-                item("missing_footnote", vol, int(m.group(1)),
-                     f"Footnote marker ({m.group(2)}) has no footnote text on this page")
-        for note in c.get("notes") or []:
-            txt = " ".join(str(note.get(k) or "") for k in ("lemma", "text"))
-            site_text.append(flat(txt))
-            note_hits += archaic_hits(txt); note_words += words(txt)
-            for name, rx in LATIN_OLD:
-                la_hits[name] += len(rx.findall(note.get("latin_lemma") or ""))
-            if note.get("verse") not in have:
-                orphan_notes.append(f"{ch}:{note.get('verse')}")
-    r["verses_site"] = total_verses
-    r["verse_issues"] = verse_issues
-    r["verses_missing_count"] = sum(len(i.get("missing", [])) + len(i.get("missing_tail", [])) for i in verse_issues)
-    r["verses_duplicated_count"] = sum(len(i.get("duplicated", [])) for i in verse_issues)
-    r["verses_empty_text"] = empty_verse
-    r["notes_without_verse"] = sorted(set(orphan_notes), key=lambda s: [int(x) if x.isdigit() else 0 for x in s.split(":")])
-    r["missing_footnotes"] = missing_fn
-    r["french_verse_archaic"] = dict(fr_hits); r["french_verse_words"] = fr_words
-    r["notes_archaic"] = dict(note_hits); r["notes_words"] = note_words
-    r["latin_old_spelling"] = dict(la_hits)
-    # commentary blocks in the source that never reach the site
-    blob = "".join(site_text)
+        at, why = bad
+        b.item("stray_underscore", vol, int(n[5:9]),
+               f"Italics in {k} ({sec} {i + 1}): {why}: “{text[max(0, at - 40):at + 25]}”",
+               where=dict(section=sec, index=i, field=k))
+
+
+def field_ends_and_italics(b):
+    for vol, n, d in b.pages:
+        for check in (verse_ends, footnote_ends, italics):
+            check(b, vol, n, d)
+
+
+# ---------- assembled chapters & notes (from normalized/) ----------
+
+class Site:
+    """What the checks on the assembled chapters gather."""
+
+    def __init__(self):
+        self.verse_issues, self.empty_verse, self.site_text, self.orphan_notes = [], [], [], []
+        self.fr_hits, self.la_hits, self.note_hits = Counter(), Counter(), Counter()
+        self.fr_words = self.note_words = self.missing_fn = self.total_verses = 0
+
+
+def verse_numbering(b, ch, vs, vul):
+    """Verses missing, repeated, or missing at the end of the chapter, against the Vulgate: the
+    chapter's issue, or None. The verse numbers it has."""
+    key, info = b.key, b.info
+    nums = [v.get("verse_number") for v in vs if isinstance(v.get("verse_number"), int)]
+    have = set(nums)
+    top = max(have) if have else 0
+    expect = max(vul.get(ch, {0}))
+    counted = key != "psalms" and ch in vul
+    missing = [n for n in range(1, min(top, expect) + 1) if n not in have] if counted else []
+    dups = sorted({n for n in nums if nums.count(n) > 1})
+    tail = list(range(top + 1, expect + 1)) if counted else []
+    if not (missing or dups or tail):
+        return None, have
+    located = [(v["verse_number"], v.get("source_pages", [None])[0]) for v in vs
+               if isinstance(v.get("verse_number"), int) and v.get("source_pages")]
+
+    def page_of(n):
+        before = [pg for k, pg in located if k < n]
+        after = [pg for k, pg in located if k > n]
+        pg = before[-1] if before else (after[0] if after else None)
+        return int(pg[5:9]) if pg else None
+
+    kept_missing, kept_tail = [], []
+    for n in missing + tail:
+        pg = page_of(n)
+        vol = pg and b.vol_of(f"page_{pg:04d}.json")
+        # a missing verse marked a false positive is no longer missing
+        if vol and not b.item("missing_verse", vol, pg, f"{info['fr']} {ch}:{n} is missing (page shown holds the nearest verse)"):
+            continue
+        (kept_missing if n in missing else kept_tail).append(n)
+    for n in dups:
+        for k, pg in located:
+            if k == n and b.vol_of(pg):
+                b.item("duplicate_verse", b.vol_of(pg), int(pg[5:9]), f"{info['fr']} {ch}:{n} appears more than once")
+    if kept_missing or dups or kept_tail:
+        return dict(chapter=ch, missing=kept_missing, duplicated=dups, missing_tail=kept_tail, vulgate_count=expect), have
+    return None, have
+
+
+def chapter_text(s, ch, vs, summary):
+    """Old spellings in the chapter's verses and summary."""
+    for v in vs:
+        if not (v.get("french") or "").strip() or not (v.get("latin") or "").strip():
+            s.empty_verse.append(f"{ch}:{v.get('verse_number')}")
+        s.fr_hits += archaic_hits(v.get("french")); s.fr_words += words(v.get("french"))
+        for name, rx in LATIN_OLD:
+            s.la_hits[name] += len(rx.findall(v.get("latin") or ""))
+    if summary:
+        s.fr_hits += archaic_hits(summary); s.fr_words += words(summary)
+
+
+def chapter_notes(b, s, ch, have):
+    """The chapter's notes as the site builds them: footnote calls without a note, notes without a verse."""
+    try:
+        c = calmet_notes(b.key, ch, 1, 999)
+    except Exception:
+        s.verse_issues.append(dict(chapter=ch, notes_file_missing=True))
+        return
+    s.missing_fn += len(c.get("missing_footnotes") or [])
+    for k in c.get("missing_footnotes") or []:
+        m = re.match(r"page_(\d+)-(\w)", k)
+        vol = m and b.vol_of(f"page_{m.group(1)}.json")
+        if vol:
+            b.item("missing_footnote", vol, int(m.group(1)),
+                   f"Footnote marker ({m.group(2)}) has no footnote text on this page")
+    for note in c.get("notes") or []:
+        txt = " ".join(str(note.get(k) or "") for k in ("lemma", "text"))
+        s.site_text.append(flat(txt))
+        s.note_hits += archaic_hits(txt); s.note_words += words(txt)
+        for name, rx in LATIN_OLD:
+            s.la_hits[name] += len(rx.findall(note.get("latin_lemma") or ""))
+        if note.get("verse") not in have:
+            s.orphan_notes.append(f"{ch}:{note.get('verse')}")
+
+
+def dropped_commentary(b, s):
+    """Commentary blocks in the source that never reach the site."""
+    blob = "".join(s.site_text)
     dropped, checked = [], 0
-    for vol, n, d in (pages if published else []):
-        for b in d.get("commentary") or []:
-            t = flat(b.get("french_commentary"))
+    for vol, n, d in b.pages:
+        for x in d.get("commentary") or []:
+            t = flat(x.get("french_commentary"))
             if len(t) < 80:
                 continue
             checked += 1
             probes = [t[int(len(t) * q) - 12: int(len(t) * q) + 12] for q in (0.25, 0.5, 0.75)]
             if not any(p in blob for p in probes):
-                dropped.append(dict(page=f"{vol}/{n}", verse_ref=b.get("verse_ref"),
-                                    chars=len(b.get("french_commentary") or ""),
-                                    start=(b.get("french_commentary") or "")[:70]))
+                dropped.append(dict(page=f"{vol}/{n}", verse_ref=x.get("verse_ref"),
+                                    chars=len(x.get("french_commentary") or ""),
+                                    start=(x.get("french_commentary") or "")[:70]))
     for x in dropped:
         vol, n = x["page"].split("/")
-        item("dropped_commentary", vol, int(n[5:9]),
-             f"Commentary block never reaches the site (verse ref: {x['verse_ref'] or 'none'}): "
-             f"“{x['start'][:60].strip()}…” Usually a missing or unreadable verse_ref: set it from the scan")
+        b.item("dropped_commentary", vol, int(n[5:9]),
+               f"Commentary block never reaches the site (verse ref: {x['verse_ref'] or 'none'}): "
+               f"“{x['start'][:60].strip()}…” Usually a missing or unreadable verse_ref: set it from the scan")
+    return dropped, checked
+
+
+def check_site(b, published):
+    r = b.r
+    r["published"] = published
+    chapters, summaries, _ = verses_by_chapter(b.key)
+    vul = {c["chapter"]: {v["verse"] for v in c["verses"]}
+           for c in json.loads((VUL / f"{b.info['vul']}.json").read_text())["chapters"]}
+    r["chapters_site"], r["chapters_vulgate"] = len(chapters), len(vul)
+    r["chapters_missing"] = sorted(set(vul) - set(chapters))
+    s = Site()
+    for ch in sorted(chapters):
+        vs = chapters[ch]
+        s.total_verses += len(vs)
+        issue, have = verse_numbering(b, ch, vs, vul)
+        if issue:
+            s.verse_issues.append(issue)
+        chapter_text(s, ch, vs, summaries.get(ch))
+        if published:
+            chapter_notes(b, s, ch, have)
+    r["verses_site"] = s.total_verses
+    r["verse_issues"] = s.verse_issues
+    r["verses_missing_count"] = sum(len(i.get("missing", [])) + len(i.get("missing_tail", [])) for i in s.verse_issues)
+    r["verses_duplicated_count"] = sum(len(i.get("duplicated", [])) for i in s.verse_issues)
+    r["verses_empty_text"] = s.empty_verse
+    r["notes_without_verse"] = sorted(set(s.orphan_notes), key=lambda x: [int(y) if y.isdigit() else 0 for y in x.split(":")])
+    r["missing_footnotes"] = s.missing_fn
+    r["french_verse_archaic"] = dict(s.fr_hits); r["french_verse_words"] = s.fr_words
+    r["notes_archaic"] = dict(s.note_hits); r["notes_words"] = s.note_words
+    r["latin_old_spelling"] = dict(s.la_hits)
+    dropped, checked = dropped_commentary(b, s) if published else ([], 0)
     r["commentary_blocks_checked"] = checked
     r["commentary_blocks_not_on_site"] = dropped
     r["commentary_chars_not_on_site"] = sum(x["chars"] for x in dropped)
+
+
+def audit_book(key, info, slug, published=True):
+    """Every check on one book: the result, its review queue in r["queue"]."""
+    b = Book(key, info, slug)
+    r = b.r
+    for check in (read_pages, page_gaps, page_sizes, page_seams):
+        check(b)
+    r["queue"] = b.queue
+    for check in (queue_page_problems, ref_order, chapter_field, check_notes, etc_for_et, duplicate_page,
+                  missing_french, field_ends_and_italics):
+        check(b)
+    r["empty_commentary"], r["caps_in_commentary"], r["broken_markers"] = (
+        b.counts["empty_commentary"], b.counts["caps_in_commentary"], b.counts["broken_markers"])
+    if not b.pages:
+        r["published"] = False
+        return r
+    check_site(b, published)
     return r
 
 
@@ -1036,7 +1242,7 @@ def main():
                    key=lambda q: (order.index(q["kind"]), q["book_dir"], q["page"]))
     if FP_IDS:
         before_len = len(queue)
-        queue = [q for q in queue if not (FP_IDS.matches(q["id"], q["book_dir"], q["page"], q["kind"], q["msg"], q.get("where")) if hasattr(FP_IDS, "matches") else q["id"] in FP_IDS)]
+        queue = [q for q in queue if not FP_IDS.matches(q["id"], q["book_dir"], q["page"], q["kind"], q["msg"], q.get("where"))]
         filtered = before_len - len(queue)
         if filtered:
             print(f"filtered out {filtered} permanently resolved false positive(s)")
