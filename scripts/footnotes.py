@@ -495,9 +495,9 @@ def render_bible(note, prev):
             out.append(" et suivants")
             pos += s.end()
     tail = t[pos:]
-    if not re.fullmatch(r"[\s.,;:]*(?:etc\.?)?[\s.]*", tail):
+    if not re.fullmatch(r"[\s.,;:]*(?:etc\.?|&c\.?)?[\s.]*", tail):
         return None
-    text = ("Voyez " if see else "") + "".join(out) + (" etc." if "etc" in tail else ".")
+    text = ("Voyez " if see else "") + "".join(out) + (" etc." if re.search(r"etc|&c", tail) else ".")
     return text, refs[-1]
 
 

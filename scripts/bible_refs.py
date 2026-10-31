@@ -179,6 +179,16 @@ REF = re.compile(
 )
 CONT = re.compile(rf"\s*\.?\s*(?:,|;|&|et)\s*(?:(?:℣|v|verset)\.?\s*(?P<vo>{_VS})|{_CV})\.?")
 
+# words of the name before the one REF reads: "Cantique des cantiques", "Jerem. Thren."
+_NAME_BEFORE = {"Cantique des cantiques": re.compile(r"\bCantique\s+des\s+$", re.I),
+                "Lamentations": re.compile(r"\bJ[eé]r[eé]m(?:ie|\.)?,?\s*$")}
+
+
+def _start(text, m, name):
+    k = _NAME_BEFORE.get(name)
+    k = k and k.search(text, 0, m.start())
+    return k.start() if k else m.start()
+
 
 def _verses(s):
     """'1. 4. 5' -> [1, 4, 5]; '22-23' -> [22, 23]."""
@@ -242,13 +252,13 @@ def find_refs(text):
             c = num(m.group("conly"))
             if not c:
                 continue
-            out.append(Ref(m.start(), m.end(), book, name, c, [], m.group(0)))
+            out.append(Ref(_start(text, m, name), m.end(), book, name, c, [], m.group(0)))
             pos = m.end()
             continue
         c = num(m.group("c"))
         if not c:
             continue
-        ref = Ref(m.start(), m.end(), book, name, c, _verses(m.group("v")), m.group(0))
+        ref = Ref(_start(text, m, name), m.end(), book, name, c, _verses(m.group("v")), m.group(0))
         out.append(ref)
         pos = m.end()
         while True:  # "& XCV. 10."  ", 9:7-8"  "et ℣. 3."

@@ -19,6 +19,9 @@ def note(text, chap=5):
     ("Gen. 3. 4. & seq.", "Genèse 3:4 et suivants."),
     ("Matth. 5. 3. 4. Luc. 6. 20.", "Matthieu 5:3-4 ; Luc 6:20."),      # 4 is a verse, not "4 Luc"
     ("Psal. 31. 1. 2. Reg. 3. 4.", "Psaumes 31:1 ; 2 Rois 3:4."),       # 2 is the book's number
+    ("Cantique des Cantiques 2:17. et 4:6.", "Cantique des cantiques 2:17 ; 4:6."),
+    ("Jerem. Thren. III. 4.", "Lamentations 3:4."),
+    ("4. Reg. XII. 3. &c.", "4 Rois 12:3 etc."),
     ("Ibid. v. 7.", "Jérémie 4:7."),  # the reference before
     ("v. 9.", "Isaïe 5:9."),          # the volume's book and the note's chapter
 ])
