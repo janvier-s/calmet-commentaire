@@ -13,11 +13,11 @@ const el = (tag, props = {}, ...kids) => {
 };
 
 const cache = new Map();  // item id -> proposal (or null), until something changes
-const generated = (p) => /\/(footnote_writeout|ref_candidate)\//.test(p.item || "");
+const generated = (p) => /\/(footnote_writeout|ref_candidate|ocr_gap)\//.test(p.item || "");
 
 /** The diff of one change: red struck words removed, green ones added. */
 export function diffLine(c) {
-  const where = `p.${c.page} · ${c.path[2].replace(/_/g, " ")}`;
+  const where = `p.${c.page} · ${(c.path[2] || c.path[0]).replace(/_/g, " ")}`;
   return el("div", { className: "diff" }, el("span", { className: "where", textContent: where }),
     el("span", { className: "dt" }, ...wordDiff(c.old, c.new).map(([op, t]) =>
       op === "=" ? t : el(op === "-" ? "del" : "ins", { textContent: t }))));

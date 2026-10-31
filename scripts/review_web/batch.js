@@ -57,7 +57,7 @@ function contextCell(r, done) {
   }
   return el("td", { className: "bctx", title: "Open this issue", onclick: () => go(r) }, context(r),
             // a write-out's message only repeats the note and the proposal
-            ["footnote_writeout", "ref_candidate"].includes(r.kind) ? null : el("div", { className: "msg", textContent: r.msg }));
+            ["footnote_writeout", "ref_candidate", "ocr_gap"].includes(r.kind) ? null : el("div", { className: "msg", textContent: r.msg }));
 }
 
 function render() {

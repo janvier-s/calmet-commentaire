@@ -70,3 +70,28 @@ def test_ocr_slips_and_doubled_letters_are_not_flagged():
     r = O.align(ocr(line(300, "une", "salte", "pour", "jetter", "et", "traduite", "ils", "se", "déchaussent")),
                 page("une salle pour jeter et traduire ils se déchaussaient"))
     assert [s for _, s in statuses(r)] == ["ok"] * 8 + ["near"]
+
+
+def test_gap_put_in_after_the_word_before_it_in_modern_spelling():
+    o = ocr(line(300, "ou", "Ajoth,", "comme", "quelques", "exemplaires", "des", "Septante,", "ou", "Judé,", "comme"),
+            line(340, "lit", "Joſeph,", "étoit", "de", "la", "tribu"))
+    d = page("ou _Ajoth_, comme _Judé_, comme lit Joseph, était de la tribu")
+    [g] = O.gaps(o, d)
+    assert (g["path"], g["ocr"], g["text"]) == ("commentary/0/french_commentary", "quelques exemplaires des Septante, ou",
+                                                "quelques exemplaires des Septante, ou")
+    s = d["commentary"][0]["french_commentary"]
+    assert O.insert(s, g["pos"], g["text"]) == "ou _Ajoth_, comme quelques exemplaires des Septante, ou _Judé_, comme lit Joseph, était de la tribu"
+
+
+def test_no_gap_for_one_word_an_unsure_run_or_a_reference():
+    d = page("ils étaient du voyage du désert et le reste")
+    assert O.gaps(ocr(line(300, "ils", "étoient", "seuls", "du", "voyage", "du", "désert", "&", "le", "reste")), d) == []
+    assert O.gaps(ocr(line(300, "ils", "étoient", "du"), line(340, "xqzw", "olaolas", "glodo", wc=0.7),
+                      line(380, "voyage", "du", "désert", "&", "le", "reste")), d) == []
+    assert O.gaps(ocr(line(300, "ils", "étoient", "du", "voyage", "du", "désert", "Judic.", "XVII.", "4.", "&", "le", "reste")), d) == []
+
+
+def test_a_run_opening_with_a_lemma_is_a_whole_note():
+    o = ocr(line(300, "la", "fin", "du", "texte."), line(340, "10.ET", "FUIT", "IN", "EO", "SPIRITUS", "DOMINI.", "Il", "fut", "rempli"))
+    [g] = O.gaps(o, page("la fin du texte."))
+    assert g["note"]

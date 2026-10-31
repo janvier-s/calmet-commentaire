@@ -97,6 +97,7 @@ def key(t):
     t = unicodedata.normalize("NFKD", t.lower().replace("ſ", "s").replace("æ", "ae").replace("œ", "oe"))
     t = "".join(c for c in t if c.isalnum())
     t = t.replace("y", "i").replace("j", "i").replace("v", "u").replace("oi", "ai")
+    t = re.sub(r"([ae])nts$", r"\1ns", re.sub(r"ez$", "es", t))  # enfans, alliez: enfants, alliés
     return ABBREV.get(t, "et" if t == "" else t)
 
 
@@ -111,10 +112,11 @@ def ocr_tokens(o):
             for m in OCR_TOKEN.finditer(text):
                 a, b = m.span()
                 tok = {"t": m.group(), "boxes": [[x + round(bw * a / n), y, max(1, round(bw * (b - a) / n)), bh]],
-                       "wc": w["wc"], "line": li}
+                       "wc": w["wc"], "line": li, "src": [[li, wi]]}
                 if carry:  # the first word after a cut
                     carry["t"] += tok["t"]
                     carry["boxes"] += tok["boxes"]
+                    carry["src"] += tok["src"]
                     carry["wc"] = min(carry["wc"], tok["wc"])
                     tok, carry = carry, None
                 out.append(tok)
@@ -165,7 +167,7 @@ def slip(o, j):
     def look_alike(o, j):
         diff = [(x, y) for x, y in zip(o, j) if x != y]
         return len(o) == len(j) and len(diff) == 1 and any(set(diff[0]) <= g for g in CONFUSED)
-    single = lambda t: re.sub(r"(.)\1+", r"\1", t)
+    single = lambda t: re.sub(r"(.)\1+", r"\1", t).rstrip("s")  # Hipocrates: Hippocrate
     return single(o) == single(j) or look_alike(o, j) or look_alike(single(o), single(j))
 
 
@@ -221,7 +223,7 @@ def align(o, data):
     skip = skipped_lines(o)
     ot = [t for t in ocr_tokens(o) if t["line"] not in skip]
     jt = json_tokens(data)
-    res = [dict(t=t["t"], boxes=t["boxes"], s="missing") for t in ot]
+    res = [dict(t=t["t"], boxes=t["boxes"], s="missing", src=t["src"], wc=t["wc"]) for t in ot]
 
     used = set()
 
@@ -239,6 +241,14 @@ def align(o, data):
                 for i in idx:
                     if j is not None:
                         link(i1 + i, j1 + j, status, n)
+    # what is left on both sides, the same words in another order (the margin's years): linked too
+    rest = [i for i, r in enumerate(res) if "path" not in r]
+    free = [j for j in range(len(jt)) if j not in used]
+    sm = difflib.SequenceMatcher(None, [ot[i]["k"] for i in rest], [jt[j]["k"] for j in free], autojunk=False)
+    for a, b, n in sm.get_matching_blocks():
+        if n >= 2 or (n == 1 and len(ot[rest[a]]["k"]) >= 4):
+            for d in range(n):
+                link(rest[a + d], free[b + d], "ok")
     # around the footnotes (expanded by design), the unmatched are not flagged; nor are unsure readings
     near_path = [None] * len(res)
     last = None
@@ -254,9 +264,111 @@ def align(o, data):
             r["s"] = "skip" if r["s"] == "missing" else "ok"
         if r["s"] == "missing" and (t["t"].isdigit() or len(t["t"]) <= 1):  # a verse number, a stray letter
             r["s"] = "skip"
+    # nor the top and bottom bands (a header misread, the catchword), nor what is below the first footnote
+    h = o["size"][1]
+    fn_top = min((r["boxes"][0][1] for r in res if (r.get("path") or "").startswith("footnotes/")), default=h)
+    for r in res:
+        y = r["boxes"][0][1]
+        if r["s"] == "missing" and (y < 0.075 * h or y > 0.88 * h or y >= fn_top - 5):
+            r["s"] = "skip"
     extra = [dict(t=t["t"], path=t["path"], a=t["a"], b=t["b"]) for j, t in enumerate(jt)
              if j not in used and not t["path"].startswith("footnotes/") and len(t["t"]) > 1 and not t["t"].isdigit()]
     return {"size": o["size"], "words": res, "extra": extra}
+
+
+def gaps(o, data, res=None, least=3):
+    """Runs of words the scan has and the JSON lacks: `least` words or more, or two with eight letters
+    or more (one word alone is mostly the modernization's), read with confidence. Each: {path, pos, ocr,
+    text, before, after, words: [first, last], note?}: `note` when it opens with a lemma (a whole note
+    missing); `text` (the scan's words in modern spelling) goes in at `pos` of field `path`
+    (after the word before the run, or before the word after it when the run opens a field); `before`
+    and `after`: the field's text around `pos`, to find the place again once the field has changed."""
+    from clean_mechanical import fix_spelling
+    from modernize_inplace import modernize_text
+    res = res or align(o, data)["words"]
+    fields = {path: s for path, s in _fields(data)}
+    out, i = [], 0
+    while i < len(res):
+        if res[i]["s"] != "missing":
+            i += 1
+            continue
+        j = i
+        while j + 1 < len(res) and res[j + 1]["s"] in ("missing", "skip") and "path" not in res[j + 1]:
+            j += 1
+        while res[j]["s"] == "skip":
+            j -= 1
+        run = [w for w in res[i:j + 1] if w["s"] == "missing"]
+        sure = sum(w["wc"] for w in run) / len(run) >= 0.9  # gibberish (an ornament, Greek) reads unsure
+        if sure and (len(run) >= least or (len(run) == 2 and sum(len(w["t"]) for w in run) >= 8)):
+            g = _place(res, i, j, fields)
+            if g:
+                ocr = _raw(o, res[i:j + 1])
+                text = modernize_text(fix_spelling(ocr.replace("ſ", "s").replace("&", "et").replace("’", "'")))[0]
+                if REF_ONLY.fullmatch(ocr):  # a reference, written out in the JSON (Judic. XVII. 4.: Juges 17:4)
+                    i = j + 1
+                    continue
+                note = bool(LEMMA.match(ocr))  # a whole note: a block of its own, not words in a field
+                out.append(dict(g, ocr=ocr, text=text, words=[i, j], **({"note": True} if note else {})))
+        i = j + 1
+    return out
+
+
+REF_ONLY = re.compile(r"\W*(?:\d\.?\s*)?[A-ZÉ][a-zé]+\.?(?:\s+(?:[IVXLC]+|\d+)[.,:]?)+\W*")
+LEMMA = re.compile(r"\W*[\dIl]*\W*[A-ZÆŒ]{2,}[\s.,]+[A-ZÆŒ]{2,}")
+
+
+def _fields(data):
+    seen = set()
+    for t in json_tokens(data):
+        seen.add(t["path"])
+    for path in seen:
+        o = data
+        for k in path.split("/"):
+            o = o[int(k)] if isinstance(o, list) else o.get(k)
+        yield path, o
+
+
+def _raw(o, words):
+    """The scan's text of these words, punctuation kept, a word cut at the line's end joined."""
+    seen, parts = set(), []
+    for w in words:
+        for li, wi in w["src"]:
+            if (li, wi) not in seen:
+                seen.add((li, wi))
+                parts.append(o["lines"][li]["words"][wi]["t"])
+    text = ""
+    for p in parts:
+        text = text[:-1] + p if text.endswith(("¬", "-")) and text else (text + " " + p if text else p)
+    return text
+
+
+def _place(res, i, j, fields):
+    """Where the run res[i..j] goes: after the linked word before it, else before the linked word after."""
+    prev = next((w for w in reversed(res[:i]) if "path" in w), None)
+    nxt = next((w for w in res[j + 1:] if "path" in w), None)
+    if prev:
+        path, pos = prev["path"], prev["b"]
+        s = fields.get(path) or ""
+        while pos < len(s) and s[pos] in ",.;:!?)»_}":  # the word's own punctuation stays with it
+            pos += 1
+    elif nxt:
+        path, pos = nxt["path"], nxt["a"]
+        s = fields.get(path) or ""
+    else:
+        return None
+    if path.startswith("footnotes/"):
+        return None
+    return {"path": path, "pos": pos, "before": s[max(0, pos - 30):pos], "after": s[pos:pos + 30]}
+
+
+def insert(s, pos, text):
+    """`text` put into `s` at `pos`, one space each side where words meet."""
+    left, right = s[:pos], s[pos:]
+    if left and not left.endswith((" ", "\n")):
+        text = " " + text
+    if right and not right.startswith((" ", "\n")) and right[0] not in ",.;:!?)":
+        text = text + " "
+    return left + text + right
 
 
 CHUNK = 10  # pages a Kraken run: the model loads once, and an interrupted run loses little

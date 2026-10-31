@@ -1,6 +1,7 @@
 import json
 import threading
 import urllib.error
+import urllib.parse
 import urllib.request
 
 import pytest
@@ -256,3 +257,30 @@ def test_ocr_from_the_cache_set_against_the_typed_text(web, tmp_path, monkeypatc
     o = web("/api/ocr", {"vol": VOL, "page": 194, "data": data})[1]["ocr"]
     assert [w["s"] for w in o["words"]] == ["ok", "missing", "ok"]
     assert o["words"][2]["path"] == "commentary/0/french_commentary"
+
+
+def test_ocr_gap_is_an_issue_whose_words_go_in(data_dir):
+    from conftest import dump
+    docs = data_dir.parent / "docs"
+    dump(docs / "ocr_gaps.json", {"gaps": [
+        {"vol": VOL, "page": 194, "path": "commentary/0/french_commentary", "pos": 5, "before": "suite",
+         "after": " du commentaire.", "ocr": "& la fin", "text": "et la fin", "words": [3, 5]},
+        {"vol": VOL, "page": 194, "path": "commentary/0/french_commentary", "pos": 5, "before": "gone",
+         "after": " away", "ocr": "x y z", "text": "x y z", "words": [9, 11]}]})  # the field changed there
+    server, token = make_server(Store(data_dir, docs), docs / "review_queue.json", port=0)
+    threading.Thread(target=server.serve_forever, args=(0.02,), daemon=True).start()
+    base = f"http://127.0.0.1:{server.server_address[1]}"
+
+    def call(path, body=None):
+        req = urllib.request.Request(base + path, data=None if body is None else json.dumps(body).encode(),
+                                     headers={"X-Token": token, "Content-Type": "application/json"})
+        with urllib.request.urlopen(req) as r:
+            return json.loads(r.read())
+
+    items = call("/api/queue?kind=ocr_gap&status=open")["items"]
+    assert len(items) == 1 and items[0]["where"]["field"] == "french_commentary"
+    p = call(f"/api/proposal?id={urllib.parse.quote(items[0]['id'])}")["proposal"]
+    call("/api/proposal/accept", {"id": items[0]["id"], "proposal_id": p["id"], "option": 0})
+    assert call(f"/api/page?vol={VOL}&page=194")["data"]["commentary"][0]["french_commentary"] == \
+        "suite et la fin du commentaire."
+    server.shutdown()

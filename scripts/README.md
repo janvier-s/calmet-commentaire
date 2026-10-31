@@ -116,6 +116,11 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   goes from flag to flag. Shift-drag (or "Box", then drag) a region of the scan: a to-do for it, drawn
   there whenever the page is open. The running header and "COMMENTAIRE." are left out, unsure
   readings and the footnotes (expanded by design) are not flagged.
+- Words the scan has and the text lacks: `python3 ocr_gaps.py [VOLUME ...]` (seconds; pages Kraken has
+  read only) writes `docs/ocr_gaps.json`; the editor shows each as "WORDS MISSING (SCAN)" with the words
+  to put in, in modern spelling (`fix_spelling` + `modernize_text`): Accept, Edit or Reject. A run of
+  three words or more (two if long), read with confidence; a run opening with a lemma is a whole note
+  missing (no proposal: a block to add). Restart the editor to see a new report.
 - Work through the queue in the browser: `python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters]`
   (with no book given it resumes where you stopped: the page, and without filters the same filters and
   issue; `--fresh` starts from the first open issue)

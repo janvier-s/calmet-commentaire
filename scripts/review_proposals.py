@@ -84,13 +84,52 @@ def _ref_items(store, volumes):
     return out
 
 
+def _gap_items(store, volumes):
+    """Words the scan has and the field lacks (docs/ocr_gaps.json, ocr_gaps.py), while the field still
+    reads as it did around the place."""
+    import scan_ocr
+    report = _read_json(store.docs / "ocr_gaps.json")
+    out = []
+    for g in (report or {}).get("gaps") or []:
+        if g["vol"] not in volumes:
+            continue
+        path = g["path"].split("/")
+        o = store._load(g["vol"], g["page"]) or {}
+        for k in path:
+            o = (o[int(k)] if int(k) < len(o) else None) if isinstance(o, list) and k.isdigit() else (o or {}).get(k)
+        if not isinstance(o, str):
+            continue
+        pos = g["pos"] if o[:g["pos"]].endswith(g["before"]) and o[g["pos"]:].startswith(g["after"]) else None
+        if pos is None and o.count(g["before"] + g["after"]) == 1:
+            pos = o.index(g["before"] + g["after"]) + len(g["before"])
+        if pos is None or g["text"] in o:  # the field changed there, or the words are in
+            continue
+        vol, page = g["vol"], g["page"]
+        iid = f"{vol}/{page:04d}/ocr_gap/{_md5(g['path'], g['before'], g['ocr'])}"
+        where = {"section": path[0], "index": int(path[1]), "field": path[2]} if len(path) == 3 else \
+            {"section": "heading", "index": 0, "field": path[0]}
+        change = {"vol": vol, "page": page, "path": [path[0], int(path[1]), path[2]] if len(path) == 3 else path,
+                  "old": o, "new": scan_ocr.insert(o, pos, g["text"])}
+        if g.get("note"):  # a whole note: a block to add by hand
+            out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_gap", "optional": False,
+                        "msg": f"A whole note missing? The scan has, after “…{g['before'][-40:]}”: “{g['ocr']}”",
+                        "where": where})
+            continue
+        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_gap", "optional": False,
+                    "msg": f"The scan has “{g['ocr']}” after “…{g['before'][-40:]}”", "where": where,
+                    "proposal": {"id": iid, "item": iid, "title": "Words missing (from the scan's OCR)",
+                                 "why": ["Kraken reads these words on the scan; the text lacks them"],
+                                 "flags": [], "sure": False, "options": [{"label": "put them in", "changes": [change]}]}})
+    return out
+
+
 def generated_items(store):
-    """Queue items for the write-outs and reference candidates that still apply to the pages."""
+    """Queue items for the write-outs, reference candidates and OCR gaps that still apply to the pages."""
     volumes = store.volumes()
     out = []
     for vol in volumes:
         out += _footnote_items(store, vol)
-    return out + _ref_items(store, set(volumes))
+    return out + _ref_items(store, set(volumes)) + _gap_items(store, set(volumes))
 
 
 def proposal_for(store, progress, item):
@@ -116,6 +155,10 @@ def apply(store, proposal, option=0, edited=None):
     for (vol, page), cs in by_page.items():
         data, version = store.read(vol, page)
         for c, _ in cs:
+            if len(c["path"]) == 1:  # a heading field
+                if data.get(c["path"][0]) != c["old"]:
+                    raise Conflict(data, version)
+                continue
             section, i, name = c["path"]
             entries = data.get(section) or []
             if i >= len(entries) or entries[i].get(name) != c["old"]:
@@ -125,6 +168,9 @@ def apply(store, proposal, option=0, edited=None):
     for (vol, page), cs in by_page.items():
         data, version = loaded[(vol, page)]
         for c, new in cs:
+            if len(c["path"]) == 1:
+                data[c["path"][0]] = new
+                continue
             section, i, name = c["path"]
             data[section][i][name] = new
         d, v = store.save(vol, page, data, version)
