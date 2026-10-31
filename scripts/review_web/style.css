@@ -103,6 +103,21 @@ body { grid-template-rows: auto auto auto 1fr; }
 #scan-view.dragging { cursor: grabbing; }
 #scan-img { display: block; user-select: none; max-width: none; }
 #scan-dim { position: absolute; left: 0; top: 0; background: #000; pointer-events: none; }
+#ocr-layer { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
+#ocr-layer rect { pointer-events: all; fill: transparent; vector-effect: non-scaling-stroke; }
+#ocr-layer .ow { stroke: none; }
+#ocr-layer .s-missing { fill: rgba(220, 40, 40, .28); stroke: #d32f2f; stroke-width: 2; }
+#ocr-layer .s-diff { fill: rgba(240, 160, 0, .28); stroke: #e69500; stroke-width: 2; }
+#ocr-layer .s-near { stroke: #e69500; stroke-width: 1; stroke-dasharray: 3 2; }
+#ocr-layer .ow:hover { stroke: var(--save); stroke-width: 1; }
+#ocr-layer .cur { fill: rgba(59, 110, 165, .25); stroke: var(--save); stroke-width: 2; }
+#ocr-layer .otodo { stroke: var(--trans); stroke-width: 2; stroke-dasharray: 6 3; fill: rgba(138, 92, 196, .08); }
+#ocr-layer .otodo.done { stroke-opacity: .4; fill: none; }
+#ocr-layer .drawing { pointer-events: none; }
+#ocr-count { white-space: nowrap; }
+#scan-tools button.on { background: var(--info-bg); border-color: var(--info-border); }
+::highlight(ocr-extra) { background-color: rgba(220, 40, 40, .3); }
+::highlight(ocr-here) { background-color: rgba(59, 110, 165, .3); }
 #no-scan { padding: 40px; text-align: center; color: var(--muted); }
 #divider { cursor: col-resize; background: var(--border); }
 

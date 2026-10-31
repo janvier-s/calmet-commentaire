@@ -12,6 +12,7 @@ import "./tags.js";
 import "./todo.js";
 import "./reviewed.js";
 import "./watch.js";
+import "./ocr.js";
 import { decorate } from "./icons.js";
 
 decorate();

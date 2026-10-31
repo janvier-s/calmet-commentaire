@@ -30,6 +30,7 @@ from pathlib import Path
 import review_proposals as rp
 import review_store as rs
 import review_turns as rt
+import scan_ocr
 from page_text import toggle_italics
 from review_search import Searcher
 
@@ -179,13 +180,31 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             raise ApiError(400, {"error": "an empty to-do"})
         held = by_id.get(body.get("holds"))
         with lock:
-            it = rs.todo_item(vol, progress.add_todo(vol, page, msg, body.get("where"), held and held["id"]))
+            box = body.get("box")
+            box = [int(v) for v in box][:4] if isinstance(box, list) and len(box) == 4 else None
+            it = rs.todo_item(vol, progress.add_todo(vol, page, msg, body.get("where"), held and held["id"], box))
             items.append(it)
             by_id[it["id"]] = it
             if held:  # the issue waits for the to-do
                 progress.set(held["id"], "on_hold")
         return {"item": dict(it, status=None), "issues": rs.page_issues(items, progress, vol, page),
                 "held": held and held["id"]}
+
+    def ocr(body):
+        """The scan's OCR set against the page (`data`: the text being edited, else the one on disk); with
+        `run`, Kraken reads a page not yet read (about 30 s)."""
+        vol, page = vol_page(body)
+        scan = store.scan(vol, page)
+        if scan is None:
+            raise ApiError(404, {"error": "no scan for this page"})
+        try:
+            o = scan_ocr.ocr(vol, page, run=bool(body.get("run")), scan=scan)
+        except (OSError, subprocess.CalledProcessError) as e:
+            raise ApiError(500, {"error": f"Kraken failed: {getattr(e, 'stderr', b'') and e.stderr.decode(errors='replace')[-300:] or e}"})
+        if o is None:
+            return {"ocr": None}
+        data = body.get("data") or (store.read(vol, page)[0] if store.path(vol, page).exists() else {})
+        return {"ocr": scan_ocr.align(o, data)}
 
     def delete_todo(body):
         it = by_id.get(body.get("id"))
@@ -498,7 +517,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
-            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/todo/delete": delete_todo,
+            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
             "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit}
 

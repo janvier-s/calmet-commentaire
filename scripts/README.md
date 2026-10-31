@@ -108,6 +108,14 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
 - `audit_integrity.py ../docs/integrity_audit_<date>.json` → that report plus
   `docs/review_queue.json` (missing verses, page breaks, verse_ref order, notes without
   commentary, lemmas without translation, capitals, broken footnote calls, …).
+- The scan's OCR in the editor: tick "OCR" above the scan ("Read the scan" runs Kraken on a page not
+  yet read, about 30 s; `python3 scan_ocr.py VOLUME [first-last]` reads a whole volume ahead, cached
+  in `cache/ocr/`, Kraken in `../.kraken-venv`). Over the scan: red, a word the JSON lacks; amber, a
+  different word; dashed, nearly the same; the JSON's words the scan lacks are underlined red in the
+  text. Click a box: the word in its field; the caret in a field: its word on the scan; the counter
+  goes from flag to flag. Shift-drag (or "Box", then drag) a region of the scan: a to-do for it, drawn
+  there whenever the page is open. The running header and "COMMENTAIRE." are left out, unsure
+  readings and the footnotes (expanded by design) are not flagged.
 - Work through the queue in the browser: `python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters]`
   (with no book given it resumes where you stopped: the page, and without filters the same filters and
   issue; `--fresh` starts from the first open issue)

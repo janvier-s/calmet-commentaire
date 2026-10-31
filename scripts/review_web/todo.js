@@ -13,7 +13,7 @@ const el = (tag, props = {}, ...kids) => {
 };
 
 /** A field's place as an issue's `where` (data-path "commentary/3/french_commentary"). */
-function whereOf(path) {
+export function whereOf(path) {
   const p = path.split("/");
   return p.length === 3 ? { section: p[0], index: +p[1], field: p[2] } : { section: "heading", index: 0, field: p[0] };
 }
@@ -24,8 +24,8 @@ function holdable() {
   return it && it.book_dir === S.vol && it.page === S.page && it.kind !== "todo" && !it.status ? it : null;
 }
 
-async function add(msg, where, holds) {
-  const r = await api("/api/todo", { vol: S.vol, page: S.page, msg, where, holds: holds && holds.id });
+async function add(msg, where, holds, box) {
+  const r = await api("/api/todo", { vol: S.vol, page: S.page, msg, where, holds: holds && holds.id, box });
   if (r.status !== 200) { toast(r.body.error || "Could not add the to-do"); return; }
   S.issues = r.body.issues;
   listAdd(r.body.item);
@@ -35,8 +35,9 @@ async function add(msg, where, holds) {
   toast(r.body.held ? `To-do added; the issue is on hold until it is done` : `To-do added: ${msg}`);
 }
 
-/** The presets as buttons, then a line for anything else. */
-async function prompt(where) {
+/** The presets as buttons, then a line for anything else; `box`: a region of the scan (ocr.js), `region`
+ *  how the dialog names it. */
+export async function todoPrompt(where, box = null, region = null) {
   const input = el("input", { placeholder: "Or type a to-do…" });
   let chosen = null;
   const presets = el("div", { className: "todo-presets" }, ...(S.config.todo_presets || []).map((p) =>
@@ -46,11 +47,11 @@ async function prompt(where) {
                          ` Put the open issue on hold until this is done (${S.config.labels[held.kind] || held.kind})`) : null;
   const body = el("div", {}, presets, input, hold);
   input.onkeydown = (e) => { if (e.key === "Enter") { e.preventDefault(); $("dialog").close("add"); } };
-  const what = where ? `${where.field.replace(/_/g, " ")}${where.section !== "heading" ? ` (${where.section} ${where.index + 1})` : ""}` : "this page";
+  const what = region || (where ? `${where.field.replace(/_/g, " ")}${where.section !== "heading" ? ` (${where.section} ${where.index + 1})` : ""}` : "this page");
   const r = await ask(`To-do for ${what}, p.${S.page}:`, [["cancel", "Cancel"], ["add", "Add", "ok"]], body);
   const msg = (chosen || input.value).trim();
   const holds = hold && hold.querySelector("input").checked ? held : null;
-  if (r === "add" && msg) await add(chosen ? (where ? `${chosen} (${what})` : chosen) : msg, where, holds);
+  if (r === "add" && msg) await add(chosen ? (where && !region ? `${chosen} (${what})` : chosen) : msg, where, holds, box);
 }
 
 hooks.deleteTodo = async (it) => {
@@ -66,7 +67,7 @@ hooks.deleteTodo = async (it) => {
 
 // "+ To-do" for the page, beside the page's issues
 const pageBtn = el("button", { id: "todo-page", className: "link", title: "Add a to-do for this page (something no check finds)",
-                               onclick: () => prompt(null) }, icon("plus", 12), "To-do");
+                               onclick: () => todoPrompt(null) }, icon("plus", 12), "To-do");
 $("pageinfo").append(pageBtn);
 
 // "To-do": a "+" on every field, for a to-do about that field
@@ -85,7 +86,7 @@ show(on);
 hooks.afterRender.push((root) => {
   for (const f of root.querySelectorAll(".f[data-path]:not(.short)")) {  // text fields, not the numbers
     const b = el("button", { className: "todo-add", title: "Add a to-do about this field",
-                             onclick: (e) => { e.stopPropagation(); prompt(whereOf(f.dataset.path)); } }, icon("plus", 11));
+                             onclick: (e) => { e.stopPropagation(); todoPrompt(whereOf(f.dataset.path)); } }, icon("plus", 11));
     b.addEventListener("mousedown", (e) => e.preventDefault());
     const tools = f.closest(".block.fn") && f.closest(".block-head").querySelector(":scope > .tool");
     if (tools) tools.before(b);  // a footnote: with its tools, not on the edge of its one line

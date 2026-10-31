@@ -235,3 +235,24 @@ def test_add_note(tmp_path):
     assert add_note(g, "SPELLING", "bled") and g.read_text(encoding="utf-8") == "\n## SPELLING\n\nbled  \n"
     with pytest.raises(ValueError):
         add_note(g, "SPELLING", "  ")
+
+
+def test_todo_with_a_region_of_the_scan(web):
+    r = web("/api/todo", {"vol": VOL, "page": 194, "msg": "A word missing here", "box": [340, 300, 120.4, 40]})[1]
+    assert r["item"]["box"] == [340, 300, 120, 40]
+    assert any(i.get("box") == [340, 300, 120, 40] for i in web(f"/api/page?vol={VOL}&page=194")[1]["issues"])
+    assert "box" not in web("/api/todo", {"vol": VOL, "page": 194, "msg": "No region", "box": "x"})[1]["item"]
+
+
+def test_ocr_from_the_cache_set_against_the_typed_text(web, tmp_path, monkeypatch):
+    import scan_ocr
+    from conftest import dump
+    monkeypatch.setattr(scan_ocr, "OCR_CACHE", tmp_path / "ocr")
+    assert web("/api/ocr", {"vol": VOL, "page": 194})[1] == {"ocr": None}  # not read yet, and not asked to
+    assert web("/api/ocr", {"vol": VOL, "page": 195})[0] == 404  # no scan
+    dump(scan_ocr.cache_path(VOL, 194), {"size": [1479, 1969], "lines": [{"box": [340, 300, 300, 30], "words": [
+        {"t": w, "box": [340 + 80 * i, 300, 70, 30], "wc": 0.99} for i, w in enumerate(["une", "grande", "chose"])]}]})
+    data = {"verses": [], "commentary": [{"french_commentary": "une chose"}], "footnotes": []}
+    o = web("/api/ocr", {"vol": VOL, "page": 194, "data": data})[1]["ocr"]
+    assert [w["s"] for w in o["words"]] == ["ok", "missing", "ok"]
+    assert o["words"][2]["path"] == "commentary/0/french_commentary"

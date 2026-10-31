@@ -14,8 +14,10 @@ the full spec.
   happens only in the export; a script that edited refs from the Vulgate wholesale was written
   once and had to be reverted). But Calmet's own mistakes (a wrong reference, a misremembered
   book) are fixed when the context settles them, without any mark.
-- **Never OCR the scans.** If text is missing, say so and list the pages; the user can supply
-  the original data.
+- **Never OCR the scans into the text.** If text is missing, say so and list the pages; the user can
+  supply the original data. The one OCR is Kraken's (CATMuS-Print Large, `scan_ocr.py`, cached in
+  `scripts/cache/ocr/`), a witness drawn over the scan in the review editor: it flags words, the user
+  decides.
 - **LLM jobs may run in the background** (`llm_modernize.py`, `seam_check.py`, `ref_context.py`):
   they cache or log as they go, so an interrupted run picks up where it stopped.
 - **Stay on the Calmet modernization**: no detours into the Lectio booklet.

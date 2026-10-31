@@ -626,13 +626,13 @@ class Progress:
         self.reviewed[vol] = {k: set(v) for k, v in d["reviewed"].items()}
         return d["reviewed"]
 
-    def add_todo(self, vol, page, msg, where=None, holds=None):
+    def add_todo(self, vol, page, msg, where=None, holds=None, box=None):
         """A page to-do (something to do that no check finds: a rescan, an abbreviation…); `holds`: the
-        issue it puts on hold until it is done."""
+        issue it puts on hold until it is done; `box`: the region of the scan it is about, [x, y, w, h]."""
         d = self._read(vol)
         stamp = f"{msg}\n{where}\n{len(d['todos'])}\n{time.time()}"
         td = {"id": f"{vol}/{page:04d}/todo/{hashlib.md5(stamp.encode()).hexdigest()[:8]}", "page": page,
-              "msg": msg, "where": where or None, **({"holds": holds} if holds else {})}
+              "msg": msg, "where": where or None, **({"holds": holds} if holds else {}), **({"box": box} if box else {})}
         d["todos"].append(td)
         self._write(vol, d)
         self.todos.setdefault(vol, []).append(td)
@@ -686,7 +686,7 @@ def todo_item(vol, td):
     """A page to-do as a queue item."""
     return dict({"id": td["id"], "book_dir": vol, "page": td["page"], "kind": "todo", "msg": td["msg"],
                  "optional": False}, **({"where": td["where"]} if td.get("where") else {}),
-                **({"holds": td["holds"]} if td.get("holds") else {}))
+                **({"holds": td["holds"]} if td.get("holds") else {}), **({"box": td["box"]} if td.get("box") else {}))
 
 
 def load_queue(queue_path, progress, include_optional=False):
