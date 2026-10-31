@@ -89,12 +89,12 @@ def kraken(vol, scans):
 # --- alignment ---
 TOKEN = re.compile(r"[^\W_]+(?:-[^\W_]+)*")
 OCR_TOKEN = re.compile(r"&|[^\W_]+(?:-[^\W_]+)*")  # & is "et"
-ABBREV = {"s": "saint", "ste": "sainte", "st": "saint"}
+ABBREV = {"s": "saint", "ste": "sainte", "st": "saint", "tems": "temps", "longtems": "longtemps"}
 
 
 def key(t):
     """A word's spelling-blind key: no accents or case; ſ, &, y, j, v, oi as in the modernized text."""
-    t = unicodedata.normalize("NFKD", t.lower().replace("ſ", "s").replace("æ", "ae").replace("œ", "oe"))
+    t = unicodedata.normalize("NFKD", t.lower().replace("ſ", "s").replace("æ", "e").replace("œ", "e"))  # æ, œ mixed up
     t = "".join(c for c in t if c.isalnum())
     t = t.replace("y", "i").replace("j", "i").replace("v", "u").replace("oi", "ai")
     t = re.sub(r"([ae])nts$", r"\1ns", re.sub(r"ez$", "es", t))  # enfans, alliez: enfants, alliés
@@ -136,12 +136,21 @@ MARKUP = re.compile(r"\^\{|\}")
 
 
 def json_tokens(data):
-    """The page's words in the scan's order: headings, the verses' Latin column then their French, the
-    commentary, the footnotes. Each: {t, k, path, a, b} (a, b: offsets in the field's string)."""
-    fields = [(f, data.get(f)) for f in HEAD_FIELDS]
+    """The page's words in the scan's order: the notes on the chapter before (a chapter opens), headings,
+    the verses' Latin column then their French, the commentary, the footnotes. Each: {t, k, path, a, b} (a, b: offsets in the field's string)."""
+    notes = data.get("commentary") or []
+    # on a page where a chapter opens, the notes on the chapter before are printed above its title
+    opening = data.get("chapter_title") and (data.get("verses") or [{}])[0].get("chapter")
+    before = 0
+    while opening and before < len(notes) and notes[before].get("chapter") not in (None, opening):
+        before += 1
+    fields = [(f"commentary/{i}/{f}", notes[i].get(f)) for i in range(before) for f in TEXT_FIELDS["commentary"]]
+    fields += [(f, data.get(f)) for f in HEAD_FIELDS]
     for sec in ("verses", "verses_fr", "commentary", "footnotes"):
         src = "verses" if sec == "verses_fr" else sec
         for i, blk in enumerate(data.get(src) or []):
+            if sec == "commentary" and i < before:
+                continue
             for f in TEXT_FIELDS[sec]:
                 fields.append((f"{src}/{i}/{f}", blk.get(f)))
     fields.append(("book_end_marker", data.get("book_end_marker")))
@@ -185,10 +194,10 @@ def _pair(ocr_run, json_run):
                 jk = "".join(t["k"] for t in json_run[jj:jj + jtake])
                 r = similar(k, jk) - 0.05 * (jj - j) - 0.02 * (take + jtake - 2)
                 if best is None or r > best[0]:
-                    best = (r, jj, take, jtake, k == jk)
+                    best = (r, jj, take, jtake, k, jk)
         if best and best[0] >= 0.5:
-            r, jj, take, jtake, same = best
-            status = ("ok" if same or (take == jtake == 1 and slip(k, json_run[jj]["k"]))  # a lost space is the OCR's
+            r, jj, take, jtake, k, jk = best
+            status = ("ok" if k == jk or (take == jtake == 1 and slip(k, jk))  # a lost space is the OCR's
                       else "near" if r >= 0.8 and take == jtake == 1 else "diff")
             out.append((list(range(i, i + take)), jj, jtake, status))
             i, j = i + take, jj + jtake
@@ -214,12 +223,35 @@ def skipped_lines(o):
     return out
 
 
+def split_columns(o):
+    """A line Kraken read across the gutter (a verse's Latin and French on one line) cut in two, the
+    right part put before the right column's next line, so the reading goes column by column."""
+    lines = [dict(ln, words=list(ln["words"])) for ln in o["lines"]]
+    mid = o["size"][0] * 0.45
+    i = 0
+    while i < len(lines):
+        ws, h = lines[i]["words"], lines[i]["box"][3]
+        cut = next((k for k in range(1, len(ws)) if ws[k]["box"][0] > mid
+                    and ws[k]["box"][0] - (ws[k - 1]["box"][0] + ws[k - 1]["box"][2]) > max(60, 2 * h)), None)
+        if cut is not None:
+            left, right = ws[:cut], ws[cut:]
+            span = lambda w: [w[0]["box"][0], min(x["box"][1] for x in w),
+                              w[-1]["box"][0] + w[-1]["box"][2] - w[0]["box"][0], h]
+            lines[i] = dict(lines[i], words=left, box=span(left))
+            piece = dict(lines[i], words=right, box=span(right))
+            at = next((k for k in range(i + 1, len(lines)) if lines[k]["box"][0] > mid), len(lines))
+            lines.insert(at, piece)
+        i += 1
+    return dict(o, lines=lines)
+
+
 def align(o, data):
     """The OCR set against the JSON: {"size", "words": [{t, boxes, s, path?, a?, b?}], "extra": [{t, path,
     a, b}]}. A word's `s`: ok (the same word, old spelling allowed), near (nearly), diff (a different
     word), missing (not in the JSON), skip (the running header, an unsure reading, a footnote: they are
     expanded, so they differ by design). `extra`: the JSON's words the scan does not have (but for the
     footnotes'), with what they are written in."""
+    o = split_columns(o)
     skip = skipped_lines(o)
     ot = [t for t in ocr_tokens(o) if t["line"] not in skip]
     jt = json_tokens(data)
@@ -242,13 +274,18 @@ def align(o, data):
                     if j is not None:
                         link(i1 + i, j1 + j, status, n)
     # what is left on both sides, the same words in another order (the margin's years): linked too
-    rest = [i for i, r in enumerate(res) if "path" not in r]
-    free = [j for j in range(len(jt)) if j not in used]
-    sm = difflib.SequenceMatcher(None, [ot[i]["k"] for i in rest], [jt[j]["k"] for j in free], autojunk=False)
-    for a, b, n in sm.get_matching_blocks():
-        if n >= 2 or (n == 1 and len(ot[rest[a]]["k"]) >= 4):
-            for d in range(n):
-                link(rest[a + d], free[b + d], "ok")
+    for _ in range(4):  # again while it finds some: a pass keeps only blocks that do not cross
+        rest = [i for i, r in enumerate(res) if "path" not in r]
+        free = [j for j in range(len(jt)) if j not in used]
+        sm = difflib.SequenceMatcher(None, [ot[i]["k"] for i in rest], [jt[j]["k"] for j in free], autojunk=False)
+        found = 0
+        for a, b, n in sm.get_matching_blocks():
+            if n >= 2 or (n == 1 and len(ot[rest[a]]["k"]) >= 4):
+                for d in range(n):
+                    link(rest[a + d], free[b + d], "ok")
+                found += n
+        if not found:
+            break
     # around the footnotes (expanded by design), the unmatched are not flagged; nor are unsure readings
     near_path = [None] * len(res)
     last = None
@@ -285,6 +322,7 @@ def gaps(o, data, res=None, least=3):
     and `after`: the field's text around `pos`, to find the place again once the field has changed."""
     from clean_mechanical import fix_spelling
     from modernize_inplace import modernize_text
+    o = split_columns(o)
     res = res or align(o, data)["words"]
     fields = {path: s for path, s in _fields(data)}
     out, i = [], 0
