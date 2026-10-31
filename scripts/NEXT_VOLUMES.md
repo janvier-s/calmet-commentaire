@@ -9,10 +9,11 @@ the full spec.
 
 ## 1. Ground rules (from the user — don't relitigate)
 
-- **The page JSONs stay as close to the printed page as possible.** Never reorder, renumber or
-  "correct" anything in `normalized/page_NNNN.json` to match the Vulgate or the verse order.
-  Reordering (notes in verse order) happens only in the export. A script that edited refs
-  from the Vulgate was written once and had to be reverted: don't do it again.
+- **The page JSONs stay as close to the printed page as possible in content, not in format.**
+  Never reorder or renumber the notes or verses to match the Vulgate or the verse order (that
+  happens only in the export; a script that edited refs from the Vulgate wholesale was written
+  once and had to be reverted). But Calmet's own mistakes (a wrong reference, a misremembered
+  book) are fixed when the context settles them, without any mark.
 - **Never OCR the scans.** If text is missing, say so and list the pages; the user can supply
   the original data.
 - **Run LLM jobs in the foreground** (`llm_modernize.py`, `seam_check.py`), never in the
@@ -20,9 +21,8 @@ the full spec.
 - **Stay on the Calmet modernization**: no detours into the Lectio booklet.
 - **Mechanical fixes may be applied; judgement calls are queued.** Anything that needs the scan
   goes into the review queue for the user, with a clear message, not into the data.
-- **Commit only when the user says so**, and deploy only when asked. `data/` (normalized pages)
-  and `scripts/` are in this one repository (`calmet-commentaire`); the website is a separate
-  one.
+- **Commit and push as work is done**; deploy only when asked. `data/` (normalized pages) and
+  `scripts/` are in this one repository (`calmet-commentaire`); the website is a separate one.
 - Before a bulk change, run with `--dry-run`, look at a sample, then apply. Report counts and
   anything left for the user.
 
@@ -141,6 +141,9 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
     "I."/"II." for 1/11), then chapter_refs and modernize_refs once more: Bible references left in the old
     form (Roman chapters, abbreviations) written out in the commentary and the notes (§11).
     After the footnotes, which write out most of the notes' references themselves.
+    Then `python3 ref_context.py <vol>`: every reference checked against its context (the
+    quotation, or Claude); logged in docs/ref_context.json, so a rerun only sends what changed.
+    What it finds wrong or unsure is in docs/ref_context_review.json.
 17. **Publish** (§8).
 
 ## 5. Chapters
