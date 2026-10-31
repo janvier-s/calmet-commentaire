@@ -490,6 +490,11 @@ CAPS = re.compile(r"\b[A-ZÀ-ÝŒÆ]{2,}(?:[\s,;:'’.-]+[A-ZÀ-ÝŒÆ]{2,})+\b"
 ODD_MARK = re.compile(r"\^[^{]|\^\{(?!\([a-z]\)\})[^}]*\}")
 NOTE_FIELDS = ("latin_quote", "french_translation", "french_commentary")
 STOPS = (".", ",", ";", ":", "!", "?", "…")
+_NAME = r"[A-ZÀ-ÝŒÆ]+(?:-[A-ZÀ-ÝŒÆ]+)*"
+# a lemma that is only names ("EN-GANNIM.", "LOD, HADID, ET ONO."): Calmet seldom translates those
+NAMES_ONLY = re.compile(rf"\s*{_NAME}(?:\s*(?:,\s*ET\b|,|\bET\b)\s*{_NAME})*\s*[.,;:]?\s*")
+# "or" in the Latin: an "ou" in the translation renders it
+OR_IN_LATIN = re.compile(r"\b(?:AUT|VEL|SIVE|SEU|AN|NUMQUID|UTRUM)\b", re.I)
 
 
 def empty_commentary(b, t):
@@ -690,6 +695,8 @@ def translation_length(b, t):
         b.item("long_translation", t.vol, t.page,
                f"Translation of {len(fr)} characters for a lemma of {len(la)}{cut} “{t.lemma[:40]}”: "
                f"“{fr[:90]}…”: commentary run into the translation?",
+               # "QUI JUSTIFICAT IMPIUM, ETC.": Calmet translates the whole verse
+               optional=bool(re.search(r"\bETC\.?\s*$", t.lemma, re.I)),
                where=t.at("french_translation"))
     if la.strip() and not fr:
         no_translation(b, t, la)
@@ -707,13 +714,15 @@ def no_translation(b, t, la):
            "a name Calmet leaves untranslated?" if one_word else "a translation lost?")
     b.item("no_translation", t.vol, t.page,
            f"{t.ref}: latin_quote “{t.lemma[:50]}” has no "
-           f"french_translation; {where} “{fc[:60]}…”: {why}", optional=one_word,
+           f"french_translation; {where} “{fc[:60]}…”: {why}",
+           optional=one_word or bool(NAMES_ONLY.fullmatch(la)),
            where=t.at("french_translation"))
 
 
 def hebrew_in_translation(b, t):
     marks = translation_markers(t.tr)
-    if not marks:
+    if not marks or ([m.lower() for m in marks] == ["ou"]
+                     and (OR_IN_LATIN.search(t.lemma) or re.search(r"\(\s*ou\b", t.tr))):
         return
     if re.search(r"\bl['’]\s?h[ée]breu", t.tr, re.I):
         # keep the old wording (and so the old id) for items already reviewed

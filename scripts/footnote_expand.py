@@ -271,255 +271,343 @@ def numbers(toks, i):
     return ns, sep, j - i
 
 
-def parse(text):
-    """Citations: [{'lead': '', 'author': str|None, 'groups': [[('work'|'place'|'in'|'word', str)]]}]."""
-    toks = [t for _, _, t in words_of(text)]
-    cites, cur, lead = [], None, ""
-    i = 0
+class Parser:
+    """parse() under way: the tokens, the one reached (i) and the citations read so far. Each step
+    reads the token at i, or the few starting there, and moves i past them; it returns False when
+    the token is not its kind."""
 
-    def new(author=None, how=" ; "):
-        nonlocal cur
-        cur = dict(lead=how, author=author, groups=[[]])
-        cites.append(cur)
+    def __init__(self, text):
+        self.toks = [t for _, _, t in words_of(text)]
+        self.cites, self.cur, self.lead, self.i = [], None, "", 0
+        self.pending = None  # a number before its place ("1. part.")
+        self.hit = None  # the glossary phrase at i (lookup)
 
-    def item(kind, val):
-        if cur is None:
-            new()
-        cur["groups"][-1].append((kind, val))
+    def new(self, author=None, how=" ; "):
+        self.cur = dict(lead=how, author=author, groups=[[]])
+        self.cites.append(self.cur)
 
-    pending = None  # a number before its place ("1. part.")
-    while i < len(toks):
-        t = toks[i]
-        if isinstance(t, tuple):  # a Bible reference
-            r = t[1]
-            if cur and cur["groups"][-1] and cur["groups"][-1][-1] == ("in", None):
-                cur["groups"][-1].pop()
-                book = r.book
-                if r.name == "Psaumes":
-                    item("in", f"sur le Psaume {r.render(with_book=False)}")
-                else:
-                    item("in", f"sur {ARTICLE.get(book, '')}{book} {r.render(with_book=False)}")
+    def item(self, kind, val):
+        if self.cur is None:
+            self.new()
+        self.cur["groups"][-1].append((kind, val))
+
+    def at(self, j):
+        """The key of token j, "" past the end or for a Bible reference."""
+        return key(self.toks[j]) if j < len(self.toks) and isinstance(self.toks[j], str) else ""
+
+    def number_at(self, j):
+        return j < len(self.toks) and isinstance(self.toks[j], str) and number(self.toks[j]) is not None
+
+    def bible(self, t, k):
+        if not isinstance(t, tuple):
+            return False
+        r, cur = t[1], self.cur
+        if cur and cur["groups"][-1] and cur["groups"][-1][-1] == ("in", None):
+            cur["groups"][-1].pop()
+            book = r.book
+            if r.name == "Psaumes":
+                self.item("in", f"sur le Psaume {r.render(with_book=False)}")
             else:
-                if not (cur and cur["author"] is None and not any(cur["groups"])):
-                    new(None, " ; " if cites else "")
-                cur["author"] = r.render()
-            i += 1
-            continue
-        k = key(t) if isinstance(t, str) else ""
-        if t in (",", ";", ":"):
-            i += 1
-            continue
-        if t in ("etc.", "etc", "&c."):
-            item("word", "etc.")
-            i += 1
-            continue
-        if k == "ita":  # "Ita Cornel." = Ainsi Cornelius a Lapide; "Ita et" = de même
-            same = i + 1 < len(toks) and key(toks[i + 1]) == "et"
-            if cites:
-                new(None, " ; de même " if same else " ; ainsi ")
-            else:
-                lead = "De même " if same else "Ainsi "
-            i += 2 if same else 1
-            continue
-        if k in SEE:
-            j = i + 1 + (i + 1 < len(toks) and toks[i + 1] == ",")
-            if j + 1 < len(toks) and key(toks[j]) == "si" and key(toks[j + 1]) in ("lubet", "placet", "libet"):
-                if cites:
-                    new(None, ". Voyez, si l'on veut, ")
-                else:
-                    lead = "Voyez, si l'on veut, "
-                i = j + 2 + (j + 2 < len(toks) and toks[j + 2] == ",")
-                continue
-            also = i + 1 < len(toks) and key(toks[i + 1]) in ("et", "etiam", "aussi")
-            if cites:
-                new(None, ". Voyez aussi " if also else ". Voyez ")
-            else:
-                lead = "Voyez aussi " if also else "Voyez "
-            i += 2 if also else 1
-            continue
-        joined = " ".join(key(x) for x in toks[i:i + 4] if isinstance(x, str))
-        hit_other = next((o for o in sorted(OTHERS, key=len, reverse=True) if (joined + " ").startswith(o + " ")), None)
-        if hit_other:
-            new(OTHERS[hit_other], " ; ")
-            i += len(hit_other.split())
-            continue
-        hit_word = next((w for w in sorted(WORDS, key=len, reverse=True) if (joined + " ").startswith(w + " ")), None)
-        if hit_word:
-            item("word", WORDS[hit_word])
-            i += len(hit_word.split())
-            continue
-        if k in ("apud", "dans"):
-            new(None, ", dans ")
-            i += 1
-            continue
-        if k in ("ex", "d'apres"):
-            new(None, ", d'après ")
-            i += 1
-            continue
-        if k in ("et", "&") and i + 1 < len(toks) and key(toks[i + 1]) in ("apud", "dans"):
-            new(None, ", et dans ")
-            i += 2
-            continue
-        if k in ("et", "&") and i + 1 < len(toks) and key(toks[i + 1]) in SEE:
-            new(None, " ; et voyez ")
-            i += 2
-            continue
-        if k in ("et", "&") and i + 1 < len(toks):
-            nxt = lookup(toks, i + 1)
-            if nxt and nxt[0] == "author" or SAINT.match(key(toks[i + 1]) if isinstance(toks[i + 1], str) else "") \
-                    or isinstance(toks[i + 1], tuple):
-                new(None, " ; et ")
-            elif cur and cur["groups"][-1]:
-                cur["groups"].append([])
-            i += 1
-            continue
-        if SAINT.match(k) and i + 1 < len(toks) and (lookup(toks, i + 1) or (None,))[0] == "author":
-            i += 1
-            continue
-        if k == "in" and i + 1 < len(toks):
-            nb = toks[i + 1]
-            if isinstance(nb, tuple):
-                item("in", None)
-                i += 1
-                continue
-            pk = B.plain(nb).rstrip(".") if isinstance(nb, str) else ""
-            name = B.ABBR.get(pk) or next((v for a, v in B.ABBR.items() if len(a) >= 4 and pk.startswith(a)
-                                           and len(pk) - len(a) <= 3), None)
-            if name and (lookup(toks, i) or (None,))[:1] != ("in",):
-                if name in EPISTLE:
-                    item("in", f"sur {EPISTLE[name]}")
-                elif name in ARTICLE:
-                    item("in", f"sur {ARTICLE[name]}{name}")
-                else:
-                    raise Unknown(f"in {nb}")
-                i += 2
-                continue
-            hit = lookup(toks, i + 1)
-            if hit and hit[0] == "work":  # "homil. 3 in Hexaëmer." = Homélie 3 sur l'Hexaméron; alone, Hexaméron
-                item("in-work", hit[1])
-                i += 1 + hit[2]
-                continue
-        hit = lookup(toks, i) if isinstance(t, str) else None
-        if hit and hit[2] >= 2 and hit[0] != "author":
-            place = None
+                self.item("in", f"sur {ARTICLE.get(book, '')}{book} {r.render(with_book=False)}")
         else:
-            place = PLACES.get(k) if isinstance(t, str) and (t.endswith(".") or k in ("ode",) or (
-                i + 1 < len(toks) and isinstance(toks[i + 1], str) and number(toks[i + 1]) is not None)) else None
-            if k in ("verset", "vers", "v") and i + 1 < len(toks) and isinstance(toks[i + 1], str) \
-                    and toks[i + 1][:1].isdigit() and cur and cur["author"] and not re.search(r"\d", cur["author"]) \
-                    and any(k2 in ("place", "work") for k2, _ in cur["groups"][-1]):
-                place = ("vers", "vers", False)  # "Ovid. Metam. lib. 8. verset 749." = vers 749
-            # "Jun. Pag. Mont.": a capitalised name the glossary knows is the author, not "page"
-            if place and t[0].isupper() and (lookup(toks, i) or (None,))[0] == "author" and not (
-                    i + 1 < len(toks) and isinstance(toks[i + 1], str) and number(toks[i + 1]) is not None):
-                place = None
+            if not (cur and cur["author"] is None and not any(cur["groups"])):
+                self.new(None, " ; " if self.cites else "")
+            self.cur["author"] = r.render()
+        self.i += 1
+        return True
+
+    def punctuation(self, t, k):
+        if t in (",", ";", ":"):
+            self.i += 1
+            return True
+        if t in ("etc.", "etc", "&c."):
+            self.item("word", "etc.")
+            self.i += 1
+            return True
+        return False
+
+    def ita(self, t, k):
+        """"Ita Cornel." = Ainsi Cornelius a Lapide; "Ita et" = de même."""
+        if k != "ita":
+            return False
+        same = self.at(self.i + 1) == "et"
+        if self.cites:
+            self.new(None, " ; de même " if same else " ; ainsi ")
+        else:
+            self.lead = "De même " if same else "Ainsi "
+        self.i += 2 if same else 1
+        return True
+
+    def see(self, t, k):
+        if k not in SEE:
+            return False
+        toks, i = self.toks, self.i
+        j = i + 1 + (i + 1 < len(toks) and toks[i + 1] == ",")
+        if j + 1 < len(toks) and key(toks[j]) == "si" and key(toks[j + 1]) in ("lubet", "placet", "libet"):
+            if self.cites:
+                self.new(None, ". Voyez, si l'on veut, ")
+            else:
+                self.lead = "Voyez, si l'on veut, "
+            self.i = j + 2 + (j + 2 < len(toks) and toks[j + 2] == ",")
+            return True
+        also = i + 1 < len(toks) and key(toks[i + 1]) in ("et", "etiam", "aussi")
+        if self.cites:
+            self.new(None, ". Voyez aussi " if also else ". Voyez ")
+        else:
+            self.lead = "Voyez aussi " if also else "Voyez "
+        self.i += 2 if also else 1
+        return True
+
+    def phrase(self, t, k):
+        """"et alii", "passim", "hic"...: OTHERS opens a citation, WORDS goes in the current one."""
+        joined = " ".join(key(x) for x in self.toks[self.i:self.i + 4] if isinstance(x, str)) + " "
+        hit = next((o for o in sorted(OTHERS, key=len, reverse=True) if joined.startswith(o + " ")), None)
+        if hit:
+            self.new(OTHERS[hit], " ; ")
+            self.i += len(hit.split())
+            return True
+        hit = next((w for w in sorted(WORDS, key=len, reverse=True) if joined.startswith(w + " ")), None)
+        if hit:
+            self.item("word", WORDS[hit])
+            self.i += len(hit.split())
+            return True
+        return False
+
+    def link(self, t, k):
+        """"apud", "ex", "et apud", "et vid.", "et": how the next citation follows."""
+        toks, i = self.toks, self.i
+        if k in ("apud", "dans"):
+            self.new(None, ", dans ")
+            self.i += 1
+        elif k in ("ex", "d'apres"):
+            self.new(None, ", d'après ")
+            self.i += 1
+        elif k not in ("et", "&") or i + 1 >= len(toks):
+            return False
+        elif self.at(i + 1) in ("apud", "dans"):
+            self.new(None, ", et dans ")
+            self.i += 2
+        elif self.at(i + 1) in SEE:
+            self.new(None, " ; et voyez ")
+            self.i += 2
+        else:
+            nxt = lookup(toks, i + 1)
+            if nxt and nxt[0] == "author" or SAINT.match(self.at(i + 1)) or isinstance(toks[i + 1], tuple):
+                self.new(None, " ; et ")
+            elif self.cur and self.cur["groups"][-1]:
+                self.cur["groups"].append([])
+            self.i += 1
+        return True
+
+    def saint(self, t, k):
+        """"S. Aug.": the author says it."""
+        if SAINT.match(k) and self.i + 1 < len(self.toks) and (lookup(self.toks, self.i + 1) or (None,))[0] == "author":
+            self.i += 1
+            return True
+        return False
+
+    def in_book(self, t, k):
+        """"in Genes." = sur la Genèse; "homil. 3 in Hexaëmer." = Homélie 3 sur l'Hexaméron."""
+        toks, i = self.toks, self.i
+        if k != "in" or i + 1 >= len(toks):
+            return False
+        nb = toks[i + 1]
+        if isinstance(nb, tuple):
+            self.item("in", None)
+            self.i += 1
+            return True
+        pk = B.plain(nb).rstrip(".")
+        name = B.ABBR.get(pk) or next((v for a, v in B.ABBR.items() if len(a) >= 4 and pk.startswith(a)
+                                       and len(pk) - len(a) <= 3), None)
+        if name and (lookup(toks, i) or (None,))[:1] != ("in",):
+            if name in EPISTLE:
+                self.item("in", f"sur {EPISTLE[name]}")
+            elif name in ARTICLE:
+                self.item("in", f"sur {ARTICLE[name]}{name}")
+            else:
+                raise Unknown(f"in {nb}")
+            self.i += 2
+            return True
+        hit = lookup(toks, i + 1)
+        if hit and hit[0] == "work":  # alone, Hexaméron
+            self.item("in-work", hit[1])
+            self.i += 1 + hit[2]
+            return True
+        return False
+
+    def place_at(self, t, k):
+        """The place (livre, chapitre...) token i names, if it is one: (French, plural, title)."""
+        toks, i = self.toks, self.i
         if t == "§":
-            place, t = ("§", "§", False), "§."
-            if i + 1 < len(toks) and toks[i + 1] == ".":
-                i += 1
-        if place and not (k in ("c", "l", "p", "n", "q") and not t.endswith(".")):
-            if k in ("c", "l") and i + 1 < len(toks) and key(toks[i + 1]) in ("ult", "ultim"):
-                item("place", ("dernier " + place[0], True))
-                i += 2
-                continue
-            m = re.fullmatch(r"(\d+):(\d+)\.?", toks[i + 1]) if i + 1 < len(toks) and isinstance(toks[i + 1], str) else None
-            if m and place[0] == "livre":  # "Plin. l. 7:12" = livre 7, chapitre 12
-                item("place", (f"livre {m.group(1)}", False))
-                item("place", (f"chapitre {m.group(2)}", False))
-                i += 2
-                continue
-            ns, sep, used = numbers(toks, i + 1)
-            if pending is not None:
-                if ns:
-                    raise Unknown(str(pending))  # "Plin. 13. cap. 3.": a number left over
-                ns, sep, used = [pending], ", ", 0
-            pending = None
-            if not ns and place[0] == "livre" and i + 1 < len(toks) and key(toks[i + 1]) in ("de", "contra", "adversus", "advers", "in"):
-                i += 1  # "lib. de Baptismo" = De baptismo
-                continue
-            if not ns:
-                raise Unknown(t)
-            word = place[1] if len(ns) > 1 else place[0]
-            if sep == "." and place[0] == "livre" and len(ns) == 2:  # "Plin. lib. 6. 28." = livre 6, chapitre 28
-                item("place", (f"livre {ns[0]}", False))
-                place, ns, word = ("chapitre", "chapitres", False), ns[1:], "chapitre"
-            elif sep == "." and place[0] == "livre":
-                raise Unknown(t)
-            sep = ", " if sep == "." else sep
-            ns = list(map(str, ns))  # "cap. 21. & 22." -> "chapitres 21 et 22"; "1. 2. 3." -> "1, 2 et 3"
-            val = f"{word} {', '.join(ns[:-1]) + ' et ' + ns[-1] if len(ns) > 1 else ''.join(ns)}" if ns else word
-            item("place", (val, place[2]))
-            i += 1 + used
-            continue
-        m = re.fullmatch(r"(\d+):(\d+)\.?", t) if isinstance(t, str) else None
-        if m and cites and cites[-1]["author"] and re.search(r"\d:\d", cites[-1]["author"]) and not any(cites[-1]["groups"]):
+            return ("§", "§", False)
+        if self.hit and self.hit[2] >= 2 and self.hit[0] != "author":
+            return None
+        place = PLACES.get(k) if t.endswith(".") or k in ("ode",) or self.number_at(i + 1) else None
+        if k in ("verset", "vers", "v") and i + 1 < len(toks) and isinstance(toks[i + 1], str) \
+                and toks[i + 1][:1].isdigit() and self.cur and self.cur["author"] and not re.search(r"\d", self.cur["author"]) \
+                and any(k2 in ("place", "work") for k2, _ in self.cur["groups"][-1]):
+            place = ("vers", "vers", False)  # "Ovid. Metam. lib. 8. verset 749." = vers 749
+        # "Jun. Pag. Mont.": a capitalised name the glossary knows is the author, not "page"
+        if place and t[0].isupper() and (self.hit or (None,))[0] == "author" and not self.number_at(i + 1):
+            place = None
+        return place
+
+    def place(self, t, k):
+        """"l. 4.", "cap. 21. & 22.", "hom. 3": a place in the work, with its numbers."""
+        if not isinstance(t, str):
+            return False
+        self.hit = lookup(self.toks, self.i)
+        place = self.place_at(t, k)
+        if t == "§":
+            t = "§."
+            if self.i + 1 < len(self.toks) and self.toks[self.i + 1] == ".":
+                self.i += 1
+        if not place or k in ("c", "l", "p", "n", "q") and not t.endswith("."):
+            return False
+        toks, i = self.toks, self.i
+        if k in ("c", "l") and self.at(i + 1) in ("ult", "ultim"):
+            self.item("place", ("dernier " + place[0], True))
+            self.i += 2
+            return True
+        m = re.fullmatch(r"(\d+):(\d+)\.?", toks[i + 1]) if i + 1 < len(toks) and isinstance(toks[i + 1], str) else None
+        if m and place[0] == "livre":  # "Plin. l. 7:12" = livre 7, chapitre 12
+            self.item("place", (f"livre {m.group(1)}", False))
+            self.item("place", (f"chapitre {m.group(2)}", False))
+            self.i += 2
+            return True
+        ns, sep, used = numbers(toks, i + 1)
+        if self.pending is not None:
+            if ns:
+                raise Unknown(str(self.pending))  # "Plin. 13. cap. 3.": a number left over
+            ns, sep, used = [self.pending], ", ", 0
+        self.pending = None
+        if not ns and place[0] == "livre" and self.at(i + 1) in ("de", "contra", "adversus", "advers", "in"):
+            self.i += 1  # "lib. de Baptismo" = De baptismo
+            return True
+        if not ns:
+            raise Unknown(t)
+        word = place[1] if len(ns) > 1 else place[0]
+        if sep == "." and place[0] == "livre" and len(ns) == 2:  # "Plin. lib. 6. 28." = livre 6, chapitre 28
+            self.item("place", (f"livre {ns[0]}", False))
+            ns, word = ns[1:], "chapitre"
+        elif sep == "." and place[0] == "livre":
+            raise Unknown(t)
+        sep = ", " if sep == "." else sep
+        ns = list(map(str, ns))  # "cap. 21. & 22." -> "chapitres 21 et 22"; "1. 2. 3." -> "1, 2 et 3"
+        self.item("place", (f"{word} {', '.join(ns[:-1]) + ' et ' + ns[-1] if len(ns) > 1 else ''.join(ns)}", place[2]))
+        self.i += 1 + used
+        return True
+
+    def after_reference(self, t, k):
+        """Another chapter of the book just cited, with no book: "Gen. 3:4 ; 5:6", "Osee IV. 15. et X. 5."."""
+        toks, i, cites = self.toks, self.i, self.cites
+        if not isinstance(t, str) or not cites or any(cites[-1]["groups"]):
+            return False
+        author = cites[-1]["author"] or ""
+        m = re.fullmatch(r"(\d+):(\d+)\.?", t)
+        if m and re.search(r"\d:\d", author):
             vs, j = [int(m.group(2))], i + 1
             while j + 1 < len(toks) and toks[j] in (",", "et") and isinstance(toks[j + 1], str) \
                     and re.fullmatch(r"\d+\.?", toks[j + 1]) and not (j + 2 < len(toks) and isinstance(toks[j + 2], str)
                                                                     and re.fullmatch(r"\d+:\d+\.?", toks[j + 2])):
                 vs.append(int(toks[j + 1].rstrip(".")))
                 j += 2
-            new(f"{m.group(1)}:{B.fmt_verses(vs)}", " ; ")
-            i = j
-            continue
-        n = number(t) if isinstance(t, str) else None
-        if n is not None and not t[0].isdigit() and cites and re.search(r"\d:\d|\D \d+$", cites[-1]["author"] or "") \
-                and not any(cites[-1]["groups"]) and i + 1 < len(toks) and isinstance(toks[i + 1], str) \
+            self.new(f"{m.group(1)}:{B.fmt_verses(vs)}", " ; ")
+            self.i = j
+            return True
+        n = number(t)
+        if n is not None and not t[0].isdigit() and re.search(r"\d:\d|\D \d+$", author) \
+                and i + 1 < len(toks) and isinstance(toks[i + 1], str) \
                 and toks[i + 1][:1].isdigit() and not toks[i + 1].endswith(":"):
-            vs, sep, used = numbers(toks, i + 1)  # "Osee IV. 15. et X. 5.": chapter 10 of the same book
-            new(f"{n}:{B.fmt_verses(vs)}", " ; ")
-            i += 1 + used
-            continue
-        if n is not None:
-            if i + 1 < len(toks) and PLACES.get(key(toks[i + 1]) if isinstance(toks[i + 1], str) else ""):
-                pending = n
-                i += 1
-                continue
-            g = cur["groups"][-1] if cur else []
-            if g and g[-1][0] == "work":  # "Strom. 5." = Stromates 5
-                ns, sep, used = numbers(toks, i)
-                g[-1] = ("work", f"{g[-1][1]} {(', ' if sep == '.' else sep).join(map(str, ns))}")
-                i += used
-                if i < len(toks) and isinstance(toks[i], str) and number(toks[i]) is not None:
-                    raise Unknown(toks[i])  # "Æneid. VII. V. 176.", "Antiq. xx. 5.": what is which?
-                continue
+            vs, sep, used = numbers(toks, i + 1)  # chapter 10 of the same book
+            self.new(f"{n}:{B.fmt_verses(vs)}", " ; ")
+            self.i += 1 + used
+            return True
+        return False
+
+    def bare_number(self, t, k):
+        """A number before its place ("1. part."), or after a work ("Strom. 5." = Stromates 5)."""
+        n = number(t) if isinstance(t, str) else None
+        if n is None:
+            return False
+        toks, i = self.toks, self.i
+        if i + 1 < len(toks) and PLACES.get(self.at(i + 1)):
+            self.pending = n
+            self.i += 1
+            return True
+        g = self.cur["groups"][-1] if self.cur else []
+        if not (g and g[-1][0] == "work"):
             raise Unknown(t)
+        ns, sep, used = numbers(toks, i)
+        g[-1] = ("work", f"{g[-1][1]} {(', ' if sep == '.' else sep).join(map(str, ns))}")
+        self.i += used
+        if self.number_at(self.i):
+            raise Unknown(toks[self.i])  # "Æneid. VII. V. 176.", "Antiq. xx. 5.": what is which?
+        return True
+
+    def glossary(self, t, k):
+        """An author, a work or "in ..." from the glossary, or a Latin title ("de Carne Christi")."""
+        hit = self.hit
         if k == "de" and not hit:
-            lt = latin_title(toks, i)
+            lt = latin_title(self.toks, self.i)
             if lt:
                 hit = ("work",) + lt
-        if hit:
-            kind, fr, used = hit
-            if kind == "author":
-                if cur and cur["author"] is None and not any(cur["groups"]):  # after "apud", "vid.", "et"
-                    cur["author"] = fr
-                else:
-                    new(fr, " ; " if cites else "")
-            elif kind == "in":
-                item("in", fr)
+        if not hit:
+            return False
+        kind, fr, used = hit
+        cur = self.cur
+        if kind == "author":
+            if cur and cur["author"] is None and not any(cur["groups"]):  # after "apud", "vid.", "et"
+                cur["author"] = fr
             else:
-                g = cur["groups"][-1] if cur else []
-                if any(x[0] == "work" for x in g):  # a second work: "l. 4 Confess. c. 3. lib. 5 de Civit."
-                    moved = []
-                    while g and g[-1][0] == "place" and g[-1][1][0].split()[0] in HIGH:
-                        moved.insert(0, g.pop())
-                    cur["groups"].append(moved)
-                    cur.setdefault("split", set()).add(len(cur["groups"]) - 1)
-                item("work", fr)
-            i += used
-            continue
-        if k in ("edit", "edition") and i + 1 < len(toks) and key(toks[i + 1]) in CITIES:
-            item("word", f"édition de {CITIES[key(toks[i + 1])]}")
-            i += 2
-            continue
-        if isinstance(t, str) and re.fullmatch(r"\d{4}\.?", t) and cur and cur["groups"][-1] and "édition" in str(cur["groups"][-1][-1]):
-            item("word", t.rstrip("."))
-            i += 1
-            continue
-        raise Unknown(t if isinstance(t, str) else t[1].src)
-    if pending is not None:
-        raise Unknown(str(pending))
-    return lead, cites
+                self.new(fr, " ; " if self.cites else "")
+        elif kind == "in":
+            self.item("in", fr)
+        else:
+            g = cur["groups"][-1] if cur else []
+            if any(x[0] == "work" for x in g):  # a second work: "l. 4 Confess. c. 3. lib. 5 de Civit."
+                moved = []
+                while g and g[-1][0] == "place" and g[-1][1][0].split()[0] in HIGH:
+                    moved.insert(0, g.pop())
+                cur["groups"].append(moved)
+                cur.setdefault("split", set()).add(len(cur["groups"]) - 1)
+            self.item("work", fr)
+        self.i += used
+        return True
+
+    def edition(self, t, k):
+        """"edit. Paris. 1675." = édition de Paris 1675."""
+        toks, i, cur = self.toks, self.i, self.cur
+        if k in ("edit", "edition") and self.at(i + 1) in CITIES:
+            self.item("word", f"édition de {CITIES[self.at(i + 1)]}")
+            self.i += 2
+            return True
+        if isinstance(t, str) and re.fullmatch(r"\d{4}\.?", t) and cur and cur["groups"][-1] \
+                and "édition" in str(cur["groups"][-1][-1]):
+            self.item("word", t.rstrip("."))
+            self.i += 1
+            return True
+        return False
+
+    STEPS = (bible, punctuation, ita, see, phrase, link, saint, in_book, place, after_reference, bare_number,
+             glossary, edition)
+
+    def step(self):
+        t = self.toks[self.i]
+        k = key(t) if isinstance(t, str) else ""
+        self.hit = None
+        if not any(s(self, t, k) for s in self.STEPS):
+            raise Unknown(t if isinstance(t, str) else t[1].src)
+
+
+def parse(text):
+    """Citations: [{'lead': '', 'author': str|None, 'groups': [[('work'|'place'|'in'|'word', str)]]}]."""
+    p = Parser(text)
+    while p.i < len(p.toks):
+        p.step()
+    if p.pending is not None:
+        raise Unknown(str(p.pending))
+    return p.lead, p.cites
 
 
 TITLES = {fr for fr, plural, title in PLACES.values() if title} | {plural for fr, plural, title in PLACES.values() if title}
@@ -646,16 +734,21 @@ def expand(text, abbrev):
     return None
 
 
+WRITTEN_OUT = "37eaf90ac"  # the commit with Genesis 99-141's notes written out by Claude
+
+
 def test():
     """Compare with the notes of Genesis 99-141 that Claude wrote out (git: before and after)."""
     import json, subprocess
     import footnotes as F
     from paths import DATA
+
+    def at(rev, f):  # "./": the path from data/, wherever the repository's root is
+        return json.loads(subprocess.run(["git", "show", f"{rev}:./{f}"], capture_output=True, text=True, cwd=DATA).stdout)
     same = diff = none = 0
     for p in range(99, 142):
         f = f"01_genese/normalized/page_{p:04d}.json"
-        old = json.loads(subprocess.run(["git", "show", f"baa58f61~1:{f}"], capture_output=True, text=True, cwd=DATA).stdout)
-        new = json.loads((DATA / f).read_text(encoding="utf-8"))
+        old, new = at(f"{WRITTEN_OUT}~1", f), at(WRITTEN_OUT, f)
         before = {n["marker"]: n["text"] for n in old.get("footnotes") or []}
         for n in new.get("footnotes") or []:
             o = before.get(n["marker"])

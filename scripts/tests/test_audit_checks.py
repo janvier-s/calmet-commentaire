@@ -112,3 +112,27 @@ def test_item_skips_false_positives(monkeypatch):
     monkeypatch.setattr(A, "FP_IDS", A.FalsePositives({b.queue[0]["id"]}))
     assert not b.item("no_lemma", VOL, 1, "msg")
     assert len(b.queue) == 1
+
+
+def test_names_left_untranslated_are_optional():
+    b = book({"commentary": [note("LOD, HADID, ET ONO.", None, "Ce sont des villes."),
+                             note("EN-GANNIM.", None, "Ville des Lévites.", cid=3),
+                             note("QUASI STORAX.", None, "Le storax est une liqueur.", cid=4)]})
+    run(A.translation_length, b)
+    assert [q["optional"] for q in b.queue] == [True, True, False]
+
+
+def test_long_translation_of_a_lemma_cut_with_etc_is_optional():
+    tr = "Celui qui justifie l'injuste, et celui qui condamne le juste, sont tous deux abominables devant Dieu."
+    b = book({"commentary": [note("QUI JUSTIFICAT IMPIUM, ETC.", tr, "x."), note("QUI JUSTIFICAT.", tr, "y.", cid=3)]})
+    run(A.translation_length, b)
+    assert [q["optional"] for q in b.queue] == [True, False]
+
+
+def test_ou_for_aut_or_a_gloss_is_not_flagged():
+    b = book({"commentary": [note("IN STAMINE, AUT SUBTEGMINE.", "Dans la chaîne, ou dans la trame.", "x."),
+                             note("TUUM EST DECUS.", "La gloire _(ou la beauté)_ vous appartient.", "y.", cid=3),
+                             note("TUUM EST DECUS.", "La gloire, ou la beauté vous appartient.", "z.", cid=4),
+                             note("IN STAMINE, AUT SUBTEGMINE.", "Dans la chaîne, à la lettre, ou la trame.", "w.", cid=5)]})
+    assert run(A.hebrew_in_translation, b) == ["hebrew_in_translation"] * 2
+    assert [q["where"]["index"] for q in b.queue] == [2, 3]
