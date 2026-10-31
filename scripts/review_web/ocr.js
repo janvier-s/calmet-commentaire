@@ -34,7 +34,7 @@ box.append(check, " OCR");
 const count = Object.assign(document.createElement("button"), { className: "link small", id: "ocr-count", hidden: true,
                                                                 title: "Go to the next flagged word" });
 const run = Object.assign(document.createElement("button"), { textContent: "Read the scan", hidden: true,
-                                                              title: "OCR this page with Kraken (about 30 s)" });
+                                                              title: "OCR this page with Kraken (about 15 s)" });
 const region = Object.assign(document.createElement("button"), { textContent: "Box", title: "Drag a region on the scan for a to-do (or Shift-drag)" });
 $("scan-tools").querySelector(".grow").before(box, count, run, region);
 check.onchange = () => {
@@ -59,7 +59,7 @@ async function refresh(runOcr = false) {
   const at = `${S.vol}/${S.page}`;
   if (!on || !S.vol) { res = null; draw(); return; }
   const n = ++pending;
-  if (runOcr) { run.disabled = true; run.textContent = "Reading… (30 s)"; }
+  if (runOcr) { run.disabled = true; run.textContent = "Reading… (15 s)"; }
   const r = await api("/api/ocr", { vol: S.vol, page: S.page, data: S.fields.length ? typedData() : S.data, run: runOcr });
   run.disabled = false;
   run.textContent = "Read the scan";

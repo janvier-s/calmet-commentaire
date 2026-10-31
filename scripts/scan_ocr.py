@@ -2,7 +2,7 @@
 
     python3 scan_ocr.py <volume> [first-last]     OCR every page of a volume (or a range) not yet cached
 
-`ocr(vol, page)` runs Kraken (CATMuS-Print Large, about 30 s a page) and caches the words with their
+`ocr(vol, page)` runs Kraken (CATMuS-Print Large, about 12 s a page) and caches the words with their
 boxes in cache/ocr/<vol>/page_NNNN.json; `align(ocr, data)` sets each OCR word against the page's
 JSON fields: the same word (old spelling allowed), a different one, or missing from the JSON.
 """
@@ -42,8 +42,8 @@ def parse_alto(xml):
     box = lambda e: [int(float(e.get(k))) for k in ("HPOS", "VPOS", "WIDTH", "HEIGHT")]
     page = root.find(f".//{ns}Page")
     lines = [{"box": box(ln), "words": [{"t": unicodedata.normalize("NFC", s.get("CONTENT")), "box": box(s), "wc": round(float(s.get("WC") or 0), 3)}
-                                        for s in ln.iter(f"{ns}String")]}
-             for ln in root.iter(f"{ns}TextLine")]
+                                        for s in ln.iter(f"{ns}String") if s.get("HPOS")]}  # a word without a box: dropped
+             for ln in root.iter(f"{ns}TextLine") if ln.get("HPOS")]
     return {"size": [int(page.get("WIDTH")), int(page.get("HEIGHT"))], "lines": [ln for ln in lines if ln["words"]]}
 
 
@@ -64,14 +64,26 @@ def ocr(vol, page, run=True, scan=None):
     with lock:
         if out.exists():
             return json.loads(out.read_text(encoding="utf-8"))
-        with tempfile.TemporaryDirectory() as tmp:
-            xml = Path(tmp) / "page.xml"
-            subprocess.run([str(KRAKEN), "-a", "-i", str(scan), str(xml),
-                            "segment", "-bl", "ocr", "-m", str(MODEL)], check=True, capture_output=True)
-            data = parse_alto(xml.read_bytes())
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-        return data
+        kraken(vol, [(page, scan)])
+        return json.loads(out.read_text(encoding="utf-8"))
+
+
+def kraken(vol, scans):
+    """Read [(page, image)] in one Kraken run (the model loads once) and cache each page. On this Mac
+    8 threads and 64 lines a pass halve the time (about 12 s a page); two runs side by side are slower."""
+    with tempfile.TemporaryDirectory() as tmp:
+        pairs = [a for page, scan in scans for a in ("-i", str(scan), str(Path(tmp) / f"{page}.xml"))]
+        subprocess.run([str(KRAKEN), "-a", "-d", "mps", "--threads", "8", *pairs, "segment", "-bl",
+                        "ocr", "-B", "64", "-m", str(MODEL)], check=True, capture_output=True)
+        for page, _ in scans:
+            out = cache_path(vol, page)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                data = parse_alto((Path(tmp) / f"{page}.xml").read_bytes())
+            except (OSError, ET.ParseError, TypeError, ValueError) as e:
+                print(f"  {vol} p.{page}: no OCR ({type(e).__name__}: {e})", flush=True)
+                continue
+            out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 
 # --- alignment ---
@@ -247,6 +259,9 @@ def align(o, data):
     return {"size": o["size"], "words": res, "extra": extra}
 
 
+CHUNK = 10  # pages a Kraken run: the model loads once, and an interrupted run loses little
+
+
 def main(argv):
     if not argv:
         sys.exit(__doc__)
@@ -257,14 +272,18 @@ def main(argv):
         pages = [p for p in pages if int(a) <= p <= int(b or a)]
     todo = [p for p in pages if not cache_path(vol, p).exists()]
     print(f"{vol}: {len(pages) - len(todo)} pages cached, {len(todo)} to OCR", flush=True)
-    for n, p in enumerate(todo, 1):
+    for n in range(0, len(todo), CHUNK):
+        chunk = todo[n:n + CHUNK]
         try:
-            ocr(vol, p)
-        except subprocess.CalledProcessError as e:
-            print(f"  p.{p}: Kraken failed: {e.stderr.decode(errors='replace')[-300:]}", flush=True)
-            continue
-        if n % 10 == 0 or n == len(todo):
-            print(f"  {n}/{len(todo)} (p.{p})", flush=True)
+            kraken(vol, [(p, scan_path(vol, p)) for p in chunk])
+        except subprocess.CalledProcessError as e:  # page by page, to find the one that fails
+            print(f"  p.{chunk[0]}-{chunk[-1]}: Kraken failed, page by page: {e.stderr.decode(errors='replace')[-200:]}", flush=True)
+            for p in chunk:
+                try:
+                    kraken(vol, [(p, scan_path(vol, p))])
+                except subprocess.CalledProcessError:
+                    print(f"  p.{p}: Kraken failed", flush=True)
+        print(f"  {min(n + CHUNK, len(todo))}/{len(todo)} (p.{chunk[-1]})", flush=True)
 
 
 if __name__ == "__main__":

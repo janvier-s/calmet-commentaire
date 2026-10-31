@@ -109,7 +109,7 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   `docs/review_queue.json` (missing verses, page breaks, verse_ref order, notes without
   commentary, lemmas without translation, capitals, broken footnote calls, …).
 - The scan's OCR in the editor: tick "OCR" above the scan ("Read the scan" runs Kraken on a page not
-  yet read, about 30 s; `python3 scan_ocr.py VOLUME [first-last]` reads a whole volume ahead, cached
+  yet read, about 15 s; `python3 scan_ocr.py VOLUME [first-last]` reads a whole volume ahead, cached
   in `cache/ocr/`, Kraken in `../.kraken-venv`). Over the scan: red, a word the JSON lacks; amber, a
   different word; dashed, nearly the same; the JSON's words the scan lacks are underlined red in the
   text. Click a box: the word in its field; the caret in a field: its word on the scan; the counter
