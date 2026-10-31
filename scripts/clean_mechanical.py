@@ -1484,94 +1484,70 @@ def fix_spelling(s):
     return s
 
 
+PAGE_FIELDS = ("book_title", "chapter_title", "chapter_intro", "chapter_summary", "chapter_argument",
+               "chapter_preface", "book_end_marker")
+
+
+def _set(obj, k, fix):
+    """obj[k] = fix(obj[k]) when it is a non-empty string; True if that changed it."""
+    s = obj.get(k)
+    if not s or not isinstance(s, str):
+        return False
+    s2 = fix(s)
+    if s2 == s:
+        return False
+    obj[k] = s2
+    return True
+
+
+def lemma_from_commentary(c):
+    """A lemma and translation the OCR merged into french_commentary, moved to their fields.
+    Block 1 legitimately goes on with the note of the page before, without a lemma."""
+    if c.get("commentary_id") == 1 or c.get("latin_quote") or not c.get("french_commentary"):
+        return False
+    # junk prefixes like "⁼⁾. 23." or "ⁱ. 12."
+    m = LEMMA_PATTERN.match(PREFIX_JUNK.sub("", c["french_commentary"].strip()).strip())
+    if not m:
+        return False
+    lemma = m.group(1).strip() + "."
+    if lemma in FORBIDDEN_LEMMAS or len(lemma) < 5 or not re.search(r"[A-Z]{3,}", lemma):
+        return False
+    c["latin_quote"] = lemma
+    if not c.get("french_translation"):
+        c["french_translation"] = m.group(2).strip()
+    c["french_commentary"] = m.group(3).strip()
+    return True
+
+
+def leading_call(c):
+    """A note call opening french_commentary, moved to the end of the translation. With no
+    translation to carry it, the call stays: at the top of a continuation it belongs to the last
+    word of the page before, and dropping it loses the note."""
+    fc, tr = c.get("french_commentary"), c.get("french_translation")
+    m = fc and re.match(r"^\s*(\^\{[^}]+\})\s*", fc)
+    if not (m and tr):
+        return False
+    c["french_commentary"] = fc[m.end():]
+    if m.group(1) not in tr:
+        c["french_translation"] = tr.rstrip() + " " + m.group(1)
+    return True
+
+
 def clean_page(d):
+    """Spelling, OCR headers, merged lemmas and leading calls fixed in place; True if anything changed."""
     changed = False
-
-    # Top-level string fields
-    for k in (
-        "book_title",
-        "chapter_title",
-        "chapter_intro",
-        "chapter_summary",
-        "chapter_argument",
-        "chapter_preface",
-        "book_end_marker",
-    ):
-        v = d.get(k)
-        if v and isinstance(v, str):
-            v2 = fix_spelling(v)
-            if v2 != v:
-                d[k] = v2
-                changed = True
-
-    # Verses
+    for k in PAGE_FIELDS:
+        changed |= _set(d, k, fix_spelling)
     for i, v in enumerate(d.get("verses", [])):
-        s = v.get("french")
-        if s and isinstance(s, str):
-            s2 = keep_printed(fix_spelling, s, lead=i == 0)
-            if s2 != s:
-                v["french"] = s2
-                changed = True
-
-    # Footnotes
+        changed |= _set(v, "french", lambda s: keep_printed(fix_spelling, s, lead=i == 0))
     for fn in d.get("footnotes", []):
-        t = fn.get("text")
-        if t and isinstance(t, str):
-            t2 = keep_printed(fix_spelling, t)
-            if t2 != t:
-                fn["text"] = t2
-                changed = True
-
+        changed |= _set(fn, "text", lambda s: keep_printed(fix_spelling, s))
     for i, c in enumerate(d.get("commentary", [])):
-        # 1. Spaced letters and spelling
         for k in ("french_translation", "french_commentary"):
-            s = c.get(k)
-            if s:
-                s2 = fix_spaced_letters(s)
-                s2 = keep_printed(fix_spelling, s2, lead=i == 0)
-                if s2 != s:
-                    c[k] = s2
-                    changed = True
-
-        # Strip OCR headers like "COMMENTAIRE.\n" or "ARGUMENT.\n"
-        fc = c.get("french_commentary")
-        if fc:
-            fc_clean = HEADER_PREFIX.sub("", fc)
-            if fc_clean != fc:
-                c["french_commentary"] = fc_clean
-                changed = True
-
-        # 2. Extract missing lemma/translation if merged into french_commentary
-        # Note: block 1 legitimately continues the note from previous page without a lemma
-        if c.get("commentary_id") != 1 and not c.get("latin_quote") and c.get("french_commentary"):
-            raw_fc = c["french_commentary"].strip()
-            # Strip junk prefixes like "⁼⁾. 23." or "ⁱ. 12."
-            stripped = PREFIX_JUNK.sub("", raw_fc).strip()
-            m = LEMMA_PATTERN.match(stripped)
-            if m:
-                cand_lemma, cand_trans, rest_comm = m.group(1).strip() + ".", m.group(2).strip(), m.group(3).strip()
-                if cand_lemma not in FORBIDDEN_LEMMAS and len(cand_lemma) >= 5 and re.search(r"[A-Z]{3,}", cand_lemma):
-                    c["latin_quote"] = cand_lemma
-                    if not c.get("french_translation"):
-                        c["french_translation"] = cand_trans
-                    c["french_commentary"] = rest_comm
-                    changed = True
-
-        # 3. Leading call in latin_quote or french_commentary
-        fc = c.get("french_commentary")
-        if fc:
-            m = re.match(r"^\s*(\^\{[^}]+\})\s*", fc)
-            # With no translation to carry it, the call stays: at the top of a continuation it
-            # belongs to the last word of the page before, and dropping it loses the note.
-            if m and c.get("french_translation"):
-                # If french_translation exists, move it to end of french_translation
-                call_str = m.group(1)
-                c["french_commentary"] = fc[m.end():]
-                tr = c.get("french_translation")
-                if tr and call_str not in tr:
-                    c["french_translation"] = tr.rstrip() + " " + call_str
-                changed = True
-
+            changed |= _set(c, k, lambda s: keep_printed(fix_spelling, fix_spaced_letters(s), lead=i == 0))
+        changed |= _set(c, "french_commentary", lambda s: HEADER_PREFIX.sub("", s))  # "COMMENTAIRE.\n"
+        changed |= lemma_from_commentary(c)
+        changed |= leading_call(c)
     return changed
 
 
