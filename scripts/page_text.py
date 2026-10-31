@@ -71,6 +71,8 @@ def isolate_hebrew(s):
 
 CLOSING_FOLLOWERS = set(",.;:!?)»]")
 TRAILING_PUNCT = re.compile(r"_?[ \t]*([;?!]|:(?!\d))+")
+JOIN_BEFORE = re.compile(r"_([ \t]*[,;:]?[ \t]*)$")  # a run closing just before (spaces, a comma between)
+JOIN_AFTER = re.compile(r"([ \t]*[,;:]?[ \t]*)_")  # one opening just after
 ROMAN_TRAILING = re.compile(r"[ \t]*(?:([;?!]|:(?!\d))+|[.,]+(?=_))")
 
 
@@ -126,5 +128,13 @@ def toggle_italics(s, sa, sb):
     opening = "_" if italic_at(sa) != make and (make or sa > 0) else ""
     closing = "_" if italic_at(sb) != make and (make or sb < len(s)) else ""
     mid = s[sa:sb].replace("_", "")
-    start = sa + len(opening)
-    return s[:sa] + opening + mid + closing + s[sb:], start, start + len(mid)
+    head, tail = s[:sa], s[sb:]
+    if make:  # italics next to italics join: "_au_ Dieu" -> "_au Dieu_"
+        m = JOIN_BEFORE.search(head)
+        if opening and m:
+            head, opening = head[:m.start()] + m.group(1), ""
+        m = JOIN_AFTER.match(tail)
+        if closing and m:
+            tail, closing = m.group(1) + tail[m.end():], ""
+    start = len(head) + len(opening)
+    return head + opening + mid + closing + tail, start, start + len(mid)

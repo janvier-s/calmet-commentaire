@@ -395,11 +395,39 @@ function runOf(i) {
   return [a, b];
 }
 
-/** Put the scan's words i..j into the text where they belong. */
+/** The text's red words (not on the scan) where the scan's missing run i..j belongs: [{a, b}] in loc.path, or []. */
+function extrasAt(i, j, loc) {
+  let prev = null, nxt = null;
+  for (let k = i - 1; k >= 0 && !prev; k--) if (res.words[k].path) prev = res.words[k];
+  for (let k = j + 1; k < res.words.length && !nxt; k++) if (res.words[k].path) nxt = res.words[k];
+  const f = fieldOf(loc.path)?.field;
+  if (!f) return [];
+  const s = f.text, ex = res.extra.filter((x) => x.path === loc.path).sort((x, y) => x.a - y.a);
+  const gap = (a, b) => a <= b && !/[\p{L}\p{N}]/u.test(s.slice(a, b));  // nothing but spaces and punctuation
+  const out = [];
+  if (prev && prev.path === loc.path) {  // the red words right after the previous word, up to the next one
+    let at = prev.b;
+    const end = nxt && nxt.path === loc.path ? nxt.a : s.length;
+    for (const x of ex) if (x.a >= at && x.b <= end && gap(at, x.a)) { out.push(x); at = x.b; }
+  } else if (nxt && nxt.path === loc.path) {  // or right before the next word
+    let at = nxt.a;
+    for (const x of [...ex].reverse()) if (x.b <= at && gap(x.b, at)) { out.unshift(x); at = x.a; }
+  }
+  return out;
+}
+
+/** Put the scan's words i..j into the text where they belong: over the text's red words there, if any
+ * (when i..j is the whole missing run), else between the words around. */
 function insertWords(i, j) {
   const loc = placeWord(i, j), f = loc && fieldOf(loc.path)?.field;
   if (!f) { toast("No place found in the text for it"); return; }
   const t = res.words.slice(i, j + 1).map((w) => w.t).join(" "), s = f.text;
+  const [ra, rb] = runOf(i), ex = ra === i && rb === j ? extrasAt(i, j, loc) : [];
+  if (ex.length) {
+    const a = ex[0].a, b = ex[ex.length - 1].b, old = s.slice(a, b);
+    f.edit(a, b, old.match(/^[^\p{L}\p{N}]*/u)[0] + core(t) + old.match(/[^\p{L}\p{N}]*$/u)[0]);
+    return;
+  }
   if (/^\s+$/.test(s.slice(loc.start, loc.end))) {
     f.edit(loc.start, loc.end, (loc.start > 0 ? " " : "") + t + (loc.end < s.length ? " " : ""));
   } else {
@@ -426,9 +454,12 @@ function toggleItalic(path, a, b) {
 function showActions(i, x, y) {
   const w = res.words[i], acts = [];
   if (w.s === "missing") {
-    const [a, b] = runOf(i);
-    acts.push([`Insert “${w.t}”`, () => insertWords(i, i)]);
-    if (b > a) acts.push([`Insert all ${b - a + 1}: “${res.words.slice(a, b + 1).map((x) => x.t).join(" ")}”`, () => insertWords(a, b)]);
+    const [a, b] = runOf(i), loc = placeWord(a, b), f = loc && fieldOf(loc.path)?.field;
+    const ex = f ? extrasAt(a, b, loc) : [], words = res.words.slice(a, b + 1).map((x) => x.t).join(" ");
+    const old = ex.length ? `“${f.text.slice(ex[0].a, ex[ex.length - 1].b)}”` : "";
+    if (old) acts.push([`Replace ${old} with “${words}”`, () => insertWords(a, b)]);
+    if (b > a || !old) acts.push([`Insert “${w.t}”`, () => insertWords(i, i)]);
+    if (b > a && !old) acts.push([`Insert all ${b - a + 1}: “${words}”`, () => insertWords(a, b)]);
   } else if (w.path) {
     const now = textAt(w);
     if ((w.s === "diff" || w.s === "near") && core(w.t) && core(w.t) !== core(now)) acts.push([`Use the scan’s “${core(w.t)}”`, () => useScan(w)]);

@@ -3,6 +3,8 @@
 
 const CLOSING_FOLLOWERS = new Set(",.;:!?)»]");
 const TRAILING_PUNCT = /^_?[ \t]*([;?!]|:(?!\d))+/;
+const JOIN_BEFORE = /_([ \t]*[,;:]?[ \t]*)$/;  // a run closing just before (spaces, a comma between)
+const JOIN_AFTER = /^([ \t]*[,;:]?[ \t]*)_/;   // one opening just after
 const ROMAN_TRAILING = /^[ \t]*(?:([;?!]|:(?!\d))+|[.,]+(?=_))/;
 const isSpace = (c) => /\s/.test(c);
 
@@ -44,8 +46,15 @@ export function toggleItalics(s, sa, sb) {
   const opening = italicAt(sa) !== make && (make || sa > 0) ? "_" : "";
   const closing = italicAt(sb) !== make && (make || sb < s.length) ? "_" : "";
   const mid = s.slice(sa, sb).replaceAll("_", "");
-  const start = sa + opening.length;
-  return { text: s.slice(0, sa) + opening + mid + closing + s.slice(sb), start, end: start + mid.length };
+  let head = s.slice(0, sa), tail = s.slice(sb), open = opening, close = closing;
+  if (make) {  // italics next to italics join: "_au_ Dieu" -> "_au Dieu_"
+    let m = JOIN_BEFORE.exec(head);
+    if (open && m) { head = head.slice(0, m.index) + m[1]; open = ""; }
+    m = JOIN_AFTER.exec(tail);
+    if (close && m) { tail = m[1] + tail.slice(m[0].length); close = ""; }
+  }
+  const start = head.length + open.length;
+  return { text: head + open + mid + close + tail, start, end: start + mid.length };
 }
 
 /** Convert s[sa:sb] to uppercase; returns { text, start, end } or null if empty / unchanged. */

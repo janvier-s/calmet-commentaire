@@ -15,6 +15,10 @@ const TOGGLE = [
   [["un mot ! ici", 3, 6], { text: "un _mot !_ ici", start: 4, end: 9 }],
   [["_un mot ;_ ici", 1, 7], { text: "un mot ; ici", start: 0, end: 9 }],
   [["_un mot._ ici", 1, 7], { text: "un mot. ici", start: 0, end: 8 }],
+  [["_au_ Dieu", 5, 9], { text: "_au Dieu_", start: 4, end: 8 }],
+  [["Dieu _au_", 0, 4], { text: "_Dieu au_", start: 1, end: 5 }],
+  [["_a_ b _c_", 4, 5], { text: "_a b c_", start: 3, end: 4 }],
+  [["_œuvres_, que", 10, 13], { text: "_œuvres, que_", start: 9, end: 12 }],
 ];
 
 for (const [args, expected] of TOGGLE) {
