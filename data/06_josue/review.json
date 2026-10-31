@@ -402,6 +402,12 @@
    "msg": "Note 1 (℣ 45): latin_quote “JUD, BANE, BARAC.” has no french_translation; the comment starts “Il vaut mieux traduire, Jéhud des enfants de _Barac_. On ne …”: the translation run into the commentary?",
    "page": 347
   },
+  "06_josue/0353/hebrew_in_translation/d79f9701": {
+   "book_dir": "06_josue",
+   "kind": "hebrew_in_translation",
+   "msg": "“ou” in the translation of “NEC ANTE BIDUUM TRIDUUMVE EJUS PROBATUR ”: “Et qu'on ne saurait prouver que deux ou trois jours auparavant il ait été son ennemi.…”: commentary or a variant run into the translation?",
+   "page": 353
+  },
   "06_josue/0354/no_translation/cfe05959": {
    "book_dir": "06_josue",
    "kind": "no_translation",
@@ -463,9 +469,15 @@
    "page": 365
   }
  },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
+ },
  "status": {
   "06_josue/0065/no_translation/5f92f6dd": "resolved",
   "06_josue/0071/italic_seam/56ed30a4": "resolved",
+  "06_josue/0072/hebrew_in_translation/4bbd8c7d": "resolved",
   "06_josue/0076/seam_repeat/0075": "resolved",
   "06_josue/0080/footnote_writeout/0dcbde7c": "resolved",
   "06_josue/0081/footnote_no_period/4e5526be": "resolved",
@@ -488,6 +500,7 @@
   "06_josue/0095/seam_repeat/0094": "resolved",
   "06_josue/0096/long_translation/f0aa99bc": "resolved",
   "06_josue/0097/seam_repeat/0096": "resolved",
+  "06_josue/0098/hebrew_in_translation/785d9197": "resolved",
   "06_josue/0100/footnote_no_period/cfdcea16": "resolved",
   "06_josue/0100/period_seam/f214a7f5": "resolved",
   "06_josue/0103/seam_repeat/0102": "resolved",
@@ -521,6 +534,7 @@
   "06_josue/0129/seam_repeat/0128": "resolved",
   "06_josue/0130/verse_no_punct/6385be06": "false_positive",
   "06_josue/0131/footnote_writeout/47685809": "resolved",
+  "06_josue/0131/hebrew_in_translation/049cdecc": "resolved",
   "06_josue/0134/hyphen_cut/17915706": "resolved",
   "06_josue/0137/seam_repeat/0136": "resolved",
   "06_josue/0140/long_translation/33e93db6": "resolved",
@@ -533,6 +547,7 @@
   "06_josue/0146/etc_for_et/12eb0609": "resolved",
   "06_josue/0148/footnote_asterisk/815261d7": "resolved",
   "06_josue/0149/hyphen_cut/3e69fc5c": "resolved",
+  "06_josue/0150/hebrew_in_translation/82fc870c": "resolved",
   "06_josue/0151/footnote_writeout/88883cf0": "resolved",
   "06_josue/0151/seam_repeat/0150": "resolved",
   "06_josue/0154/footnote_asterisk/815261d7": "resolved",
@@ -634,6 +649,7 @@
   "06_josue/0259/missing_verse/379f3fc4": "resolved",
   "06_josue/0263/missing_verse/993ae73e": "resolved",
   "06_josue/0264/long_translation/a7859057": "resolved",
+  "06_josue/0266/hebrew_in_translation/9c39437e": "resolved",
   "06_josue/0268/footnote_no_period/7b427514": "resolved",
   "06_josue/0271/hebrew_in_translation/645bc6a0": "resolved",
   "06_josue/0271/long_translation/23d4d52b": "resolved",
@@ -651,6 +667,7 @@
   "06_josue/0278/italic_seam/fa58c986": "resolved",
   "06_josue/0278/missing_verse/f7ccd18a": "resolved",
   "06_josue/0279/missing_footnote/f0c68a41": "resolved",
+  "06_josue/0280/hebrew_in_translation/f1363f76": "resolved",
   "06_josue/0280/seam_missing/0279": "resolved",
   "06_josue/0281/chapter_ref/2d664410": "resolved",
   "06_josue/0281/long_translation/1455c0ad": "resolved",
@@ -807,12 +824,15 @@
   "06_josue/0349/hebrew_in_translation/2031debe": "resolved",
   "06_josue/0349/long_translation/439e569b": "resolved",
   "06_josue/0349/stray_underscore/d2f5f8d2": "resolved",
+  "06_josue/0350/hebrew_in_translation/748291d5": "resolved",
+  "06_josue/0353/hebrew_in_translation/d79f9701": "false_positive",
   "06_josue/0353/hyphen_cut/90c892a8": "resolved",
   "06_josue/0353/seam_repeat/0352": "resolved",
   "06_josue/0354/no_translation/cfe05959": "false_positive",
   "06_josue/0354/translation_no_punct/51e988d0": "resolved",
   "06_josue/0355/long_translation/b4092bfe": "resolved",
   "06_josue/0356/hyphen_cut/6303110d": "resolved",
+  "06_josue/0357/hebrew_in_translation/d4e967a3": "resolved",
   "06_josue/0357/leading_call/c9544800": "resolved",
   "06_josue/0358/lowercase_lemma/0b488c01": "resolved",
   "06_josue/0359/hyphen_cut/55e3e51c": "resolved",
@@ -851,6 +871,7 @@
   "06_josue/0376/leading_call/40099234": "resolved",
   "06_josue/0378/long_translation/45f529dc": "resolved",
   "06_josue/0379/empty_commentary/5efaf732": "resolved",
+  "06_josue/0381/hebrew_in_translation/5266b7de": "resolved",
   "06_josue/0385/seam_repeat/0384": "resolved",
   "06_josue/0388/seam_repeat/0387": "resolved",
   "06_josue/0389/caps_in_commentary/39c62593": "resolved",

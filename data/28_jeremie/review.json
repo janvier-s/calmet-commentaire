@@ -2146,5 +2146,16 @@
   "28_jeremie/0688/seam_missing/0687": "resolved",
   "28_jeremie/0688/translation_no_punct/c626de50": "false_positive"
  },
- "todos": []
+ "todos": [
+  {
+   "id": "28_jeremie/0305/todo/ea76c012",
+   "msg": "“Je ferai comme un vent brûlant”: faire or être? A long s read as f would make it “Je serai comme un vent brûlant”. Check the scan; the modernize_inplace rules leave this one as printed.",
+   "page": 305,
+   "where": {
+    "field": "french",
+    "index": 1,
+    "section": "verses"
+   }
+  }
+ ]
 }
