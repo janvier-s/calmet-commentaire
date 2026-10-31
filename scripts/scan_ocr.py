@@ -386,6 +386,9 @@ def align(o, data):
         y = r["boxes"][0][1]
         if r["s"] == "missing" and (y < 0.075 * h or y > 0.88 * h or y >= fn_top - 5):
             r["s"] = "skip"
+        sl = word_slant(o, r)
+        if sl is not None:
+            r["sl"] = round(sl)
     extra = [dict(t=t["t"], path=t["path"], a=t["a"], b=t["b"]) for j, t in enumerate(jt)
              if j not in used and not t["path"].startswith("footnotes/") and len(t["t"]) > 1 and not t["t"].isdigit()]
     return {"size": o["size"], "words": res, "extra": extra, "unscanned": _unscanned(jt, at, res)}

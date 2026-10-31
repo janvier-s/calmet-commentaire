@@ -158,8 +158,9 @@ function draw() {
         const r = svgEl("rect", { x, y, width: bw, height: bh, class: `ow${i === cur ? " cur" : ""}` });
         r.dataset.i = i;
         r.append(svgEl("title"));
-        r.lastChild.textContent = w.s === "missing" ? `${w.t}: not in the JSON`
-          : w.path ? `${w.t} → ${S.data && textAt(w)} (${w.path})` : w.t;
+        r.lastChild.textContent = (w.s === "missing" ? `${w.t}: not in the JSON`
+          : w.path ? `${w.t} → ${S.data && textAt(w)} (${w.path})` : w.t)
+          + (w.sl == null ? "" : `\nSlant ${w.sl}° (${w.sl >= 9 ? "italic" : w.sl <= 4 ? "roman" : "unsure"})`);
         svg.append(r);
       }
     });

@@ -160,3 +160,9 @@ def test_the_text_running_on_past_the_scan_page_is_flagged():
     d = page("Zeb était caché dans une de ces cavernes souterraines du roc")
     r = O.align(ocr(line(300, "Zeb", "étoit", "caché")), d)
     assert [x.get("end") for x in r["unscanned"]] == [True]
+
+
+def test_align_gives_each_word_its_slant():
+    o = ocr(line(300, "Il", "vint", "dans", sl=[0, 14.6, None]))
+    w = O.align(o, page("Il vint dans"))["words"]
+    assert [x.get("sl") for x in w] == [0, 15, None]
