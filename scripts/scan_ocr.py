@@ -3,7 +3,7 @@
     python3 scan_ocr.py <volume> [first-last]     OCR every page of a volume (or a range) not yet cached
 
 `ocr(vol, page)` runs Kraken (CATMuS-Print Large, about 12 s a page) and caches the words with their
-boxes in cache/ocr/<vol>/page_NNNN.json; `align(ocr, data)` sets each OCR word against the page's
+boxes, and their slant (scan_slant.py: italics), in cache/ocr/<vol>/page_NNNN.json; `align(ocr, data)` sets each OCR word against the page's
 JSON fields: the same word (old spelling allowed), a different one, or missing from the JSON.
 """
 import difflib
@@ -24,6 +24,7 @@ OCR_CACHE = SCRIPTS / "cache" / "ocr"
 KRAKEN = Path(os.environ.get("CALMET_KRAKEN") or STUDIUM / ".kraken-venv" / "bin" / "kraken")
 MODEL = Path(os.environ.get("CALMET_KRAKEN_MODEL") or Path.home() / "Library" / "Application Support" / "htrmopo"
              / "d96caf7a-122e-5576-ab2b-a246c4e64221" / "catmus-print-fondue-large.mlmodel")
+VENV_PYTHON = KRAKEN.parent / "python"  # numpy and Pillow, for the slant
 
 
 def scan_path(vol, page):
@@ -56,7 +57,10 @@ def ocr(vol, page, run=True, scan=None):
     `scan`: the image, if not the one in data/."""
     out, scan = cache_path(vol, page), Path(scan or scan_path(vol, page))
     if out.exists():
-        return json.loads(out.read_text(encoding="utf-8"))
+        o = json.loads(out.read_text(encoding="utf-8"))
+        if "slant" not in o and scan.exists() and slants(vol, [(page, scan)]):  # read before the slant was measured
+            o = json.loads(out.read_text(encoding="utf-8"))
+        return o
     if not run or not scan.exists():
         return None
     with _running_lock:  # one Kraken per page at a time: a second request waits for the first
@@ -84,7 +88,25 @@ def kraken(vol, scans):
                 print(f"  {vol} p.{page}: no OCR ({type(e).__name__}: {e})", flush=True)
                 continue
             out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    slants(vol, [(page, scan) for page, scan in scans if cache_path(vol, page).exists()])
 
+
+_no_slant = []  # the venv's Python failed once: not tried again
+
+
+def slants(vol, scans):
+    """Measure the slant of every word of the cached pages [(page, image)]. False if it could not."""
+    if _no_slant or not scans:
+        return False
+    try:
+        subprocess.run([str(VENV_PYTHON), str(SCRIPTS / "scan_slant.py"),
+                        *(a for page, scan in scans for a in (str(scan), str(cache_path(vol, page))))],
+                       check=True, capture_output=True)
+        return True
+    except (OSError, subprocess.CalledProcessError) as e:
+        _no_slant.append(e)
+        print(f"  {vol}: no slant ({getattr(e, 'stderr', b'') and e.stderr.decode(errors='replace')[-200:] or e})", flush=True)
+        return False
 
 # --- alignment ---
 TOKEN = re.compile(r"[^\W_]+(?:-[^\W_]+)*")
@@ -351,6 +373,67 @@ def gaps(o, data, res=None, least=3):
     return out
 
 
+# --- italics ---
+ITALIC_CHECKED = {"french_commentary", "french", "chapter_intro", "chapter_argument"}  # the rest: italic, or caps, by
+# style; the footnotes are written out (their italic book names dropped)
+LEANING = set("vwxyzkAVWXYZK")  # letters whose strokes lean in roman too: a word mostly of them is not told
+ITALIC_AT, ROMAN_AT = 9, 4  # a word's slant, in degrees: italic from 9, roman to 4 (between: not told)
+
+
+def word_slant(o, w):
+    """The slant of a word as measured on the scan (o: split_columns'), or None (unmeasured, too small)."""
+    sl = [o["lines"][li]["words"][wi].get("sl") for li, wi in w["src"]]
+    sl = [x for x in sl if x is not None]
+    return sum(sl) / len(sl) if sl else None
+
+
+def italics(o, data, res=None):
+    """Stretches the scan prints in italics and the JSON in roman, or the other way. Each: {path, a, b,
+    to: "italic" | "roman", words: [first, last] (in `res`), slant, old, before, after, new}: `old` is
+    the field's a..b, `before` and `after` its text around (to find the place again), `new` the field
+    with a..b toggled. Words of three letters or more vote; a lone word must lean clearly (12 or more,
+    or 2 or less); a word two fifths of letters that lean anyway (voyez) has no vote."""
+    from page_text import ROMAN_TRAILING, TRAILING_PUNCT, italic_runs, toggle_italics
+    o = split_columns(o)
+    res = res or align(o, data)["words"]
+    fields = dict(_fields(data))
+    marks = {path: {i for a, b in italic_runs(s)[0] for i in range(a, b)} for path, s in fields.items()}
+    votes = []  # (index in res, the scan's italic?, the JSON's italic?, slant)
+    for i, w in enumerate(res):
+        path = w.get("path")
+        if not path or w["s"] == "skip" or path.rsplit("/", 1)[-1] not in ITALIC_CHECKED or len(w["t"]) < 3:
+            continue
+        sl = word_slant(o, w)
+        if sl is None or ROMAN_AT < sl < ITALIC_AT or 5 * sum(c in LEANING for c in w["t"]) >= 2 * len(w["t"]):
+            continue
+        votes.append((i, sl >= ITALIC_AT, w["a"] in marks[path], sl))
+    out, k = [], 0
+    while k < len(votes):
+        i, scan, js, _ = votes[k]
+        if scan == js:
+            k += 1
+            continue
+        m = k
+        while m + 1 < len(votes) and votes[m + 1][1:3] == (scan, js) and res[votes[m + 1][0]]["path"] == res[i]["path"]:
+            m += 1
+        run = votes[k:m + 1]
+        mean = sum(v[3] for v in run) / len(run)
+        if len(run) > 1 or mean >= 12 or mean <= 2:
+            first, last = res[run[0][0]], res[run[-1][0]]
+            s = fields[first["path"]]
+            a, b = first["a"], last["b"]
+            pm = (TRAILING_PUNCT if scan else ROMAN_TRAILING).match(s, b)
+            if pm and (scan or pm.end() - 1 in marks[first["path"]]):
+                b = pm.end()
+            t = toggle_italics(s, a, b)
+            if t and t[0] != s:
+                out.append(dict(path=first["path"], a=a, b=b, to="italic" if scan else "roman",
+                                words=[run[0][0], run[-1][0]], slant=round(mean), old=s[a:b],
+                                before=s[max(0, a - 30):a], after=s[b:b + 30], new=t[0]))
+        k = m + 1
+    return out
+
+
 REF_ONLY = re.compile(r"\W*(?:\d\.?\s*)?[A-ZÉ][a-zé]+\.?(?:\s+(?:[IVXLC]+|\d+)[.,:]?)+\W*")
 LEMMA = re.compile(r"\W*[\dIl]*\W*[A-ZÆŒ]{2,}[\s.,]+[A-ZÆŒ]{2,}")
 
@@ -422,6 +505,11 @@ def main(argv):
         pages = [p for p in pages if int(a) <= p <= int(b or a)]
     todo = [p for p in pages if not cache_path(vol, p).exists()]
     print(f"{vol}: {len(pages) - len(todo)} pages cached, {len(todo)} to OCR", flush=True)
+    unslanted = [p for p in pages if p not in todo and '"slant"' not in cache_path(vol, p).read_text(encoding="utf-8")[-20:]]
+    for n in range(0, len(unslanted), 50):  # read before the slant was measured
+        slants(vol, [(p, scan_path(vol, p)) for p in unslanted[n:n + 50]])
+    if unslanted:
+        print(f"  slant measured on {len(unslanted)} pages read before", flush=True)
     for n in range(0, len(todo), CHUNK):
         chunk = todo[n:n + CHUNK]
         try:

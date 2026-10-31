@@ -93,7 +93,7 @@ body { grid-template-rows: auto auto auto 1fr; }
 
 /* scan */
 #scan-pane { display: grid; grid-template-rows: auto 1fr; min-height: 0; background: var(--scan-bg); }
-#scan-tools { display: flex; align-items: center; gap: 4px; padding: 5px 8px; background: var(--panel); border-bottom: 1px solid var(--border); }
+#scan-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 5px 8px; background: var(--panel); border-bottom: 1px solid var(--border); }
 #scan-tools button { padding: 1px 8px; }
 #zoom-label { min-width: 44px; text-align: center; font-size: 12px; }
 #dim { width: 70px; vertical-align: middle; }
@@ -106,17 +106,38 @@ body { grid-template-rows: auto auto auto 1fr; }
 #ocr-layer { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
 #ocr-layer rect { pointer-events: all; fill: transparent; vector-effect: non-scaling-stroke; }
 #ocr-layer .ow { stroke: none; }
+#ocr-layer .ow-flag { pointer-events: none; }
 #ocr-layer .s-missing { fill: rgba(220, 40, 40, .28); stroke: #d32f2f; stroke-width: 2; }
 #ocr-layer .s-diff { fill: rgba(240, 160, 0, .28); stroke: #e69500; stroke-width: 2; }
 #ocr-layer .s-near { stroke: #e69500; stroke-width: 1; stroke-dasharray: 3 2; }
 #ocr-layer .ow:hover { stroke: var(--save); stroke-width: 1; }
 #ocr-layer .cur { fill: rgba(59, 110, 165, .25); stroke: var(--save); stroke-width: 2; }
+#ocr-layer .oit { pointer-events: none; fill: none; stroke: #00a035; stroke-width: 2.5; }
+:root[data-theme="dark"] #ocr-layer .oit { fill: none; stroke: #3ddc58; stroke-width: 2.5; }
 #ocr-layer .otodo { stroke: var(--trans); stroke-width: 2; stroke-dasharray: 6 3; fill: rgba(138, 92, 196, .08); }
 #ocr-layer .otodo.done { stroke-opacity: .4; fill: none; }
 #ocr-layer .drawing { pointer-events: none; }
 #ocr-count { white-space: nowrap; }
 #scan-tools button.on { background: var(--info-bg); border-color: var(--info-border); }
-::highlight(ocr-extra) { background-color: rgba(220, 40, 40, .3); }
+#ocr-filters { gap: 3px; }
+#scan-tools .ocr-f { font-size: 11px; padding: 1px 6px; border-radius: 10px; opacity: .45; text-decoration: line-through;
+                     border: 1.5px solid var(--ocr-c); background: var(--surface); color: var(--text); white-space: nowrap; }
+#scan-tools .ocr-f.f-near { border-style: dashed; }
+#scan-tools .ocr-f.on { opacity: 1; text-decoration: none; background: color-mix(in srgb, var(--ocr-c) 26%, var(--surface)); border-color: var(--ocr-c); font-weight: 600; }
+#scan-tools .ocr-f.on.zero { opacity: .65; font-weight: 400; background: var(--surface); }
+#scan-tools .f-missing, #scan-tools .f-extra { --ocr-c: #d32f2f; }
+:root[data-theme="dark"] #scan-tools .f-missing, :root[data-theme="dark"] #scan-tools .f-extra { --ocr-c: #ff6060; }
+#scan-tools .f-diff, #scan-tools .f-near { --ocr-c: #e69500; }
+#scan-tools .f-italics { --ocr-c: #00b248; }
+:root[data-theme="dark"] #scan-tools .f-italics { --ocr-c: #5eff6e; }
+:root { --ocr-it-bg: rgba(0, 210, 70, .35); --ocr-it-ul: #009639; }
+:root[data-theme="dark"] { --ocr-it-bg: rgba(80, 255, 100, .5); --ocr-it-ul: #5eff6e; }
+::highlight(ocr-extra) { background-color: rgba(225, 40, 40, .28); color: #c62828; text-decoration: underline wavy #d32f2f; text-decoration-thickness: 1.5px; }
+:root[data-theme="dark"]::highlight(ocr-extra) { background-color: rgba(255, 60, 60, .45); color: #ff8585; text-decoration: underline wavy #ff5555; text-decoration-thickness: 1.5px; }
+::highlight(ocr-missing) { background-color: #d32f2f; color: #fff; }
+:root[data-theme="dark"]::highlight(ocr-missing) { background-color: #ff5252; color: #fff; }
+::highlight(ocr-italic) { background-color: var(--ocr-it-bg); text-decoration: underline wavy var(--ocr-it-ul); }
+:root[data-theme="dark"]::highlight(ocr-italic) { background-color: rgba(80, 255, 100, .5); color: #fff; text-decoration: underline wavy #5eff6e; }
 ::highlight(ocr-here) { background-color: rgba(59, 110, 165, .3); }
 #no-scan { padding: 40px; text-align: center; color: var(--muted); }
 #divider { cursor: col-resize; background: var(--border); }
@@ -340,6 +361,7 @@ body.batch-open #undo-all, body.batch-open #save, body.batch-open #italic, body.
 body.no-hi .f mark { background: none; box-shadow: none; }
 body.no-hi .f.flagged { border-color: var(--border); box-shadow: none; }
 body.no-hi .block.flash { animation: none; }
+body.no-proposals .proposal, body.no-proposals #turn-proposal { display: none; }
 
 /* Save in colour; rose with unsaved changes (no other button has it) */
 #save { background: var(--save); color: #fff; border-color: transparent; font-weight: 600; }

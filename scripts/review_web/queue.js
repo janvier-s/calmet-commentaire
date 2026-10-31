@@ -169,6 +169,11 @@ async function mark(status, { thorough = false } = {}) {
   const was = statusOf(it);
   setStatus(it.id, status);
   if (status) marked.push(it);
+  if (status === "false_positive" && it.kind === "ocr_italic") {
+    const m = (it.msg || "").match(/“([^”]+)”/);
+    const w = m ? m[1].replace(/_/g, "").trim() : "";
+    api("/api/note", { section: "FALSE POSITIVE ITALICS", text: w ? `${w} (${it.book_dir} p.${it.page})` : `${it.book_dir} p.${it.page}` });
+  }
   if (DONE.has(status)) { justMarked.set(it.id, performance.now()); setTimeout(() => justMarked.delete(it.id), 600); }
   renderIssues();
   sending = sending.then(() => api("/api/mark", { id: it.id, status })).then(async (r) => {

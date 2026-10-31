@@ -34,13 +34,15 @@ def _page_of(where):
     return vol, int(stem[5:9])
 
 
-def _footnote_items(store, vol):
+def _footnote_items(store, vol, pages=None):
     report = _read_json(store.docs / "footnotes" / f"{vol}.json")
     out = []
     for n in (report or {}).get("notes") or []:
         if n.get("proposed") in (None, n.get("text")):
             continue
         page = int(n["page"][5:9])
+        if pages is not None and page not in pages:
+            continue
         notes = (store._load(vol, page) or {}).get("footnotes") or []  # gone or malformed: nothing
         i = next((i for i, f in enumerate(notes)
                   if f.get("marker") == n["marker"] and f.get("text") == n["text"]), None)
@@ -58,7 +60,7 @@ def _footnote_items(store, vol):
     return sorted(out, key=lambda it: it["page"])
 
 
-def _ref_items(store, volumes):
+def _ref_items(store, volumes, pages=None):
     report = _read_json(store.docs / "ref_check.json")
     out = []
     for r in (report or {}).get("items") or []:
@@ -66,7 +68,7 @@ def _ref_items(store, volumes):
         if not r.get("candidates") or not m:
             continue
         vol, page = _page_of(r["where"])
-        if vol not in volumes:
+        if vol not in volumes or (pages is not None and page not in pages):
             continue
         section, i, name = m.group(1), int(m.group(2)), m.group(3)
         entries = (store._load(vol, page) or {}).get(section) or []
@@ -84,14 +86,14 @@ def _ref_items(store, volumes):
     return out
 
 
-def _gap_items(store, volumes):
+def _gap_items(store, volumes, pages=None):
     """Words the scan has and the field lacks (docs/ocr_gaps.json, ocr_gaps.py), while the field still
     reads as it did around the place."""
     import scan_ocr
     report = _read_json(store.docs / "ocr_gaps.json")
     out = []
     for g in (report or {}).get("gaps") or []:
-        if g["vol"] not in volumes:
+        if g["vol"] not in volumes or (pages is not None and g["page"] not in pages):
             continue
         path = g["path"].split("/")
         o = store._load(g["vol"], g["page"]) or {}
@@ -123,13 +125,65 @@ def _gap_items(store, volumes):
     return out
 
 
-def generated_items(store):
-    """Queue items for the write-outs, reference candidates and OCR gaps that still apply to the pages."""
-    volumes = store.volumes()
+def _italic_items(store, volumes, pages=None):
+    """Words the scan prints in italics and the field in roman, or the other way (docs/ocr_gaps.json),
+    while the field still reads so there."""
+    from page_text import italic_runs, toggle_italics
+    report = _read_json(store.docs / "ocr_gaps.json")
+    out = []
+    for r in (report or {}).get("italics") or []:
+        if r["vol"] not in volumes or (pages is not None and r["page"] not in pages):
+            continue
+        path = r["path"].split("/")
+        o = store._load(r["vol"], r["page"]) or {}
+        for k in path:
+            o = (o[int(k)] if int(k) < len(o) else None) if isinstance(o, list) and k.isdigit() else (o or {}).get(k)
+        if not isinstance(o, str):
+            continue
+        a = r["a"] if o[r["a"]:r["b"]] == r["old"] and o[:r["a"]].endswith(r["before"]) else None
+        if a is None and o.count(r["before"] + r["old"] + r["after"]) == 1:
+            a = o.index(r["before"] + r["old"] + r["after"]) + len(r["before"])
+        if a is None:  # the field changed there
+            continue
+        b = a + len(r["old"])
+        italic = {i for x, y in italic_runs(o)[0] for i in range(x, y)}
+        letters = [i for i in range(a, b) if o[i].isalnum()]
+        if all((i in italic) == (r["to"] == "italic") for i in letters):  # done already
+            continue
+        t = toggle_italics(o, a, b) if r["to"] == "roman" or not all(i in italic for i in letters) else None
+        if not t or t[0] == o:
+            continue
+        vol, page = r["vol"], r["page"]
+        iid = f"{vol}/{page:04d}/ocr_italic/{_md5(r['path'], r['before'], r['old'])}"
+        where = {"section": path[0], "index": int(path[1]), "field": path[2]} if len(path) == 3 else \
+            {"section": "heading", "index": 0, "field": path[0]}
+        change = {"vol": vol, "page": page, "path": [path[0], int(path[1]), path[2]] if len(path) == 3 else path,
+                  "old": o, "new": t[0]}
+        word = r["old"].replace("_", "").rstrip(" \t;:?!.,")
+        said = "in italics; the text has it in roman" if r["to"] == "italic" else "in roman; the text has it in italics"
+        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_italic", "optional": False,
+                    "msg": f"The scan prints “{word}” {said}", "where": where,
+                    "proposal": {"id": iid, "item": iid, "title": "Italics as on the scan", "word": word,
+                                 "why": [f"The words lean {r['slant']}° on the scan" if r["to"] == "italic"
+                                         else f"The words stand upright on the scan ({r['slant']}°)"],
+                                 "flags": [], "sure": False,
+                                 "options": [{"label": "italicize" if r["to"] == "italic" else "make roman",
+                                              "changes": [change]}]}})
+    return out
+
+
+GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ocr_gap", "ocr_italic")
+
+
+def generated_items(store, volumes=None, pages=None):
+    """Queue items for the write-outs, reference candidates and OCR gaps and italics that still apply."""
+    volumes = list(volumes if volumes is not None else store.volumes())
+    pset = set(pages) if pages is not None else None
     out = []
     for vol in volumes:
-        out += _footnote_items(store, vol)
-    return out + _ref_items(store, set(volumes)) + _gap_items(store, set(volumes))
+        out += _footnote_items(store, vol, pset)
+    vset = set(volumes)
+    return out + _ref_items(store, vset, pset) + _gap_items(store, vset, pset) + _italic_items(store, vset, pset)
 
 
 def proposal_for(store, progress, item):

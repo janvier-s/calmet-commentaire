@@ -70,6 +70,8 @@ def isolate_hebrew(s):
 
 
 CLOSING_FOLLOWERS = set(",.;:!?)»]")
+TRAILING_PUNCT = re.compile(r"_?[ \t]*([;?!]|:(?!\d))+")
+ROMAN_TRAILING = re.compile(r"[ \t]*(?:([;?!]|:(?!\d))+|[.,]+(?=_))")
 
 
 def italic_runs(s):
@@ -106,6 +108,9 @@ def toggle_italics(s, sa, sb):
     runs, _, open_at = italic_runs(s)
     italic = {i for a, b in runs for i in range(a, b)}
     make = not all(i in italic for i in range(sa, sb) if s[i] != "_" and not s[i].isspace())
+    m = (TRAILING_PUNCT if make else ROMAN_TRAILING).match(s, sb)
+    if m and (make or m.end() - 1 in italic):
+        sb = m.end()
     # Take in the marks at the selection's edges, and when un-italicizing the spaces
     # too, so that "_a b c_" becomes "_a_ b _c_".
     def absorbs(c):

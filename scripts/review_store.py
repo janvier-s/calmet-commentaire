@@ -364,6 +364,7 @@ KIND_LABELS = {
     "footnote_writeout": "FOOTNOTE WRITE-OUT TO CHECK",
     "ref_candidate": "VERSE REFERENCE TO CHECK",
     "ocr_gap": "WORDS MISSING (SCAN)",
+    "ocr_italic": "ITALICS (SCAN)",
 }
 
 VERSE_KINDS = {
@@ -399,7 +400,7 @@ KIND_THEMES = [
                    "footnote_asterisk", "footnote_writeout", "hebrew_recheck"]),
     ("Typography", ["spaced_letters", "leading_punctuation", "leading_call", "etc_for_et", "stray_underscore",
                     "caps_in_commentary"]),
-    ("Scan (OCR)", ["ocr_gap"]),
+    ("Scan (OCR)", ["ocr_gap", "ocr_italic"]),
     ("To-dos", ["todo"]),
 ]
 
@@ -761,7 +762,7 @@ AUDIT_KINDS = frozenset(KIND_LABELS) - {
     "todo", "psalm_missing_verse", "psalm_missing_title", "psalm_number", "psalm_wrong_psalm",
     "psalm_unmatched", "chapter_vulgate", "chapter_heading", "hebrew_recheck", "latin_long_s",
     "seam_missing", "seam_repeat", "seam_unclear", "duplicate_verse", "footnote_writeout", "ref_candidate",
-    "ocr_gap"}
+    "ocr_gap", "ocr_italic"}
 
 
 def book_volumes(vol):
@@ -801,7 +802,7 @@ def merge_recheck(items, progress, vols, new_items, include_optional=True):
 
 
 # --- the notes file: words picked in the editor, added under a heading ---
-NOTES_SECTIONS = ("SPELLING", "VERSE FIXES")
+NOTES_SECTIONS = ("SPELLING", "VERSE FIXES", "FALSE POSITIVE ITALICS")
 
 
 def add_note(path, section, text):

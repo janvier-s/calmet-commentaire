@@ -9,6 +9,12 @@ TOGGLE_CASES = [
     (("a  b", 1, 3), None),
     (("un mot ici", 3, 6), ("un _mot_ ici", 4, 7)),
     (("_tout_", 1, 5), ("tout", 0, 4)),
+    (("un mot ; ici", 3, 6), ("un _mot ;_ ici", 4, 9)),
+    (("un mot : ici", 3, 6), ("un _mot :_ ici", 4, 9)),
+    (("un mot ? ici", 3, 6), ("un _mot ?_ ici", 4, 9)),
+    (("un mot ! ici", 3, 6), ("un _mot !_ ici", 4, 9)),
+    (("_un mot ;_ ici", 1, 7), ("un mot ; ici", 0, 9)),
+    (("_un mot._ ici", 1, 7), ("un mot. ici", 0, 8)),
 ]
 
 

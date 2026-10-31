@@ -72,6 +72,11 @@ def tidy(d, cache, stats):
         d["chapter_summary"] = strip_us(t)
         stats["summary underscores"] += 1
         changed = True
+    bt = d.get("book_title")
+    if isinstance(bt, str) and re.match(r"^\s*(?:SUR(?:\b|-|EZECHIEL)|COMMENTAIRE\s+LITT[EÉ]RAL[.']*$)", bt, re.I):
+        d["book_title"] = None
+        stats["running-header book_title cleared"] += 1
+        changed = True
     ct = d.get("chapter_title")
     if ct:
         cs = bool((d.get("chapter_summary") or "").strip())

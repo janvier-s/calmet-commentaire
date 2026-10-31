@@ -2,10 +2,11 @@
 import scan_ocr as O
 
 
-def line(y, *words, wc=0.99):
+def line(y, *words, wc=0.99, sl=None):
+    """A line of words; `sl`: their slants (one each), as scan_slant.py measures them."""
     x, out = 340, []
-    for w in words:
-        out.append({"t": w, "box": [x, y, 20 * len(w), 30], "wc": wc})
+    for k, w in enumerate(words):
+        out.append({"t": w, "box": [x, y, 20 * len(w), 30], "wc": wc, "sl": sl and sl[k]})
         x += 20 * len(w) + 15
     return {"box": [340, y, x - 355, 30], "words": out}
 
@@ -95,3 +96,18 @@ def test_a_run_opening_with_a_lemma_is_a_whole_note():
     o = ocr(line(300, "la", "fin", "du", "texte."), line(340, "10.ET", "FUIT", "IN", "EO", "SPIRITUS", "DOMINI.", "Il", "fut", "rempli"))
     [g] = O.gaps(o, page("la fin du texte."))
     assert g["note"]
+
+
+def test_italics_the_scan_has_and_the_text_lacks_and_the_other_way():
+    o = ocr(line(300, "Il", "vint", "dans", "Aïalon,", "puis", "il", "dit:", sl=[0, -1, 1, 16, 0, 0, -2]),
+            line(340, "Je", "suis", "dit-il", "votre", "Dieu", sl=[14, 15, -1, 16, 15]))
+    d = page("Il vint dans Aïalon, puis il dit : _Je suis, dit-il, votre Dieu_")
+    r = O.italics(o, d)
+    assert [(x["to"], x["old"]) for x in r] == [("italic", "Aïalon"), ("roman", "dit-il")]
+    assert r[0]["new"] == "Il vint dans _Aïalon_, puis il dit : _Je suis, dit-il, votre Dieu_"
+    assert r[1]["new"] == "Il vint dans Aïalon, puis il dit : _Je suis,_ dit-il_, votre Dieu_"
+
+
+def test_no_italics_for_a_lone_word_that_leans_anyway_or_hardly():
+    o = ocr(line(300, "les", "voyes", "du", "Seigneur", "sont", "droites", sl=[0, 15, 0, 10, 0, 1]))
+    assert O.italics(o, page("les voies du Seigneur sont droites")) == []

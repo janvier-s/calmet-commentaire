@@ -275,8 +275,9 @@ async function fetchTurn(q) {
 async function settle() {
   if (!dirty()) return true;
   const pages = sides().filter((s) => s.dirty).map((s) => `p.${s.page}`).join(" and ");
-  const choice = await ask(`Save your changes to ${T.vol} ${pages} before leaving the page turn?`,
-                           [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
+  const choice = $("save-on-leave").checked ? "save"
+    : await ask(`Save your changes to ${T.vol} ${pages} before leaving the page turn?`,
+                [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
   if (choice === "save") return saveTurn();
   if (choice !== "discard") return false;
   for (const s of sides()) s.dirty = false;
@@ -297,8 +298,9 @@ function show(on) {
 /** Open the turn after page `a` ({vol, a}) or of an issue ({id}). */
 export async function openTurn(q) {
   if (S.dirty) {
-    const choice = await ask(`Save your changes to ${S.vol} p.${S.page} first?`,
-                             [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
+    const choice = $("save-on-leave").checked ? "save"
+      : await ask(`Save your changes to ${S.vol} p.${S.page} first?`,
+                  [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
     if (choice === "save") { if (!(await save({ redraw: false }))) return false; }
     else if (choice !== "discard") return false;
     else { setDirty(false); await loadPage(S.vol, S.page); }  // the dropped edits leave the fields too

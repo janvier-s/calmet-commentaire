@@ -69,6 +69,48 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             progress.update({it["id"]: "resolved" for it in gone})
         return [it["id"] for it in gone]
 
+    def refresh_generated(vols=None, pages=None):
+        """Re-read generated proposals (italics, gaps, write-outs, refs) for `vols` (and `pages` when given):
+        items fixed by hand close, still-open ones get fresh proposals against the current text, and new ones
+        from a re-run report join."""
+        vset = set(vols) if vols is not None else set(store.volumes())
+        pset = set(pages) if pages is not None else None
+        fresh = {g["id"]: g for g in rp.generated_items(store, vset, pset)}
+        fixed, added, changes = [], [], {}
+        for it in items:
+            if it["book_dir"] not in vset or it["kind"] not in rp.GENERATED_KINDS:
+                continue
+            if pset is not None and it["page"] not in pset:
+                continue
+            g = fresh.pop(it["id"], None)
+            if g:
+                it.update(msg=g["msg"], where=g.get("where"), **({"proposal": g["proposal"]} if "proposal" in g else {}))
+                if it.pop("fixed", False) and progress.status(it["id"]) == "resolved":
+                    changes[it["id"]] = None
+            elif rs.in_status(it, progress, "open"):
+                it.pop("proposal", None)
+                changes[it["id"]] = "resolved"
+                it["fixed"] = True
+                fixed.append(it["id"])
+        for gid, g in fresh.items():
+            if gid not in by_id:
+                items.append(g)
+                by_id[gid] = g
+                added.append(gid)
+        if changes:
+            progress.update(changes)
+        return {"fixed": fixed, "added": added}
+
+    gaps_file = store.docs / "ocr_gaps.json"
+    gaps_mtime = [gaps_file.stat().st_mtime_ns if gaps_file.exists() else None]
+
+    def check_gaps_mtime():
+        m = gaps_file.stat().st_mtime_ns if gaps_file.exists() else None
+        if m != gaps_mtime[0]:
+            gaps_mtime[0] = m
+            with lock:
+                refresh_generated()
+
     close_stale_repeats()
 
     def vol_page(q):
@@ -115,6 +157,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return out
 
     def get_page(q):
+        check_gaps_mtime()
         if q.get("page") in (None, "", "null") and q.get("vol") in store.volumes() and store.pages(q["vol"]):
             q = dict(q, page=store.pages(q["vol"])[0])  # a book opens at its first page
         vol, page = vol_page(q)
@@ -124,6 +167,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return page_payload(vol, page, *store.read(vol, page))
 
     def queue(q):
+        check_gaps_mtime()
         f = {k: q.get(k) or None for k in ("cat", "kind", "book")}
         status = q.get("status") or "open"
         sel = rs.select(items, progress, status, **f)
@@ -191,7 +235,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 "held": held and held["id"]}
 
     def ocr(body):
-        """The scan's OCR set against the page (`data`: the text being edited, else the one on disk); with
+        """The scan's OCR set against the page (`data`: the text being edited, else the one on disk), and its
+        italics (`italics`: the stretches printed otherwise than the text has them); with
         `run`, Kraken reads a page not yet read (about 30 s)."""
         vol, page = vol_page(body)
         scan = store.scan(vol, page)
@@ -204,7 +249,9 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if o is None:
             return {"ocr": None}
         data = body.get("data") or (store.read(vol, page)[0] if store.path(vol, page).exists() else {})
-        return {"ocr": scan_ocr.align(o, data)}
+        res = scan_ocr.align(o, data)
+        res["italics"] = [{k: r[k] for k in ("path", "a", "b", "to", "words", "slant")} for r in scan_ocr.italics(o, data, res["words"])]
+        return {"ocr": res}
 
     def delete_todo(body):
         it = by_id.get(body.get("id"))
@@ -291,6 +338,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
 
     def run_recheck(body):
         vol, page = vol_page(body)
+        also = [int(p) for p in body.get("also") or [] if str(p).isdigit() and int(p) != page]
         audit = recheck
         if audit is None:
             from page_audit import recheck_book
@@ -298,11 +346,13 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         with audit_lock:  # one audit at a time: a second save waits and audits the later file
             new = audit(vol)  # slow, and reads files only: marks and edits go on meanwhile
             with lock:
-                r = rs.merge_recheck(items, progress, rs.book_volumes(vol), new, include_optional) \
+                vols = rs.book_volumes(vol)
+                r = rs.merge_recheck(items, progress, vols, new, include_optional) \
                     if new is not None else {"fixed": [], "added": []}  # a book the full audit leaves out
+                gen = refresh_generated(vols, [page, *also])
                 by_id.update({it["id"]: it for it in items})
-                r["fixed"] = r["fixed"] + close_stale_repeats(set(rs.book_volumes(vol)))
-        also = [int(p) for p in body.get("also") or [] if str(p).isdigit() and int(p) != page]
+                r["fixed"] = r["fixed"] + close_stale_repeats(set(vols)) + gen["fixed"]
+                r["added"] = r["added"] + gen["added"]
         return {"fixed": len(r["fixed"]), "added": len(r["added"]),
                 "issues": [i for p in [page, *also] for i in rs.page_issues(items, progress, vol, p)],
                 "around": rs.neighbour_issue_pages(items, progress, vol, page)}
@@ -374,6 +424,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return {"ok": True}
 
     def batch(q):
+        check_gaps_mtime()
         f = {k: q.get(k) or None for k in ("cat", "kind", "book")}
         rows = []
         for it in rs.select(items, progress, q.get("status") or "open", **f):

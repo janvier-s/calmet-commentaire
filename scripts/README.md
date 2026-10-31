@@ -121,6 +121,12 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   to put in, in modern spelling (`fix_spelling` + `modernize_text`): Accept, Edit or Reject. A run of
   three words or more (two if long), read with confidence; a run opening with a lemma is a whole note
   missing (no proposal: a block to add). Restart the editor to see a new report.
+- Italics: Kraken's word boxes are measured for slant (`scan_slant.py`, numpy in the Kraken venv, run
+  after each read; italics lean 12-20°, roman about 0°). `ocr_gaps.py` also lists the stretches the
+  scan prints in italics and the text has in roman, or the other way (Calmet's own words inside a
+  quotation): "ITALICS (SCAN)", with the `_` marks to change; green dotted boxes over the scan, a wavy
+  green underline in the text. Commentary, verses' French and chapter intros only (the footnotes are
+  written out); a lone word must lean clearly, and words mostly of v, w, x, y, z, k do not count.
 - Work through the queue in the browser: `python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters]`
   (with no book given it resumes where you stopped: the page, and without filters the same filters and
   issue; `--fresh` starts from the first open issue)

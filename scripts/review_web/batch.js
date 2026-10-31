@@ -57,7 +57,7 @@ function contextCell(r, done) {
   }
   return el("td", { className: "bctx", title: "Open this issue", onclick: () => go(r) }, context(r),
             // a write-out's message only repeats the note and the proposal
-            ["footnote_writeout", "ref_candidate", "ocr_gap"].includes(r.kind) ? null : el("div", { className: "msg", textContent: r.msg }));
+            ["footnote_writeout", "ref_candidate", "ocr_gap", "ocr_italic"].includes(r.kind) ? null : el("div", { className: "msg", textContent: r.msg }));
 }
 
 function render() {
@@ -204,8 +204,9 @@ export async function openBatch() {
   }
   if (T.open && !(await closeTurn())) return;
   if (S.dirty) {
-    const choice = await ask(`Save your changes to ${S.vol} p.${S.page} first?`,
-                             [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
+    const choice = $("save-on-leave").checked ? "save"
+      : await ask(`Save your changes to ${S.vol} p.${S.page} first?`,
+                  [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]]);
     if (choice === "save") { if (!(await save({ redraw: false }))) return; }
     else if (choice !== "discard") return;
     else { setDirty(false); await loadPage(S.vol, S.page); }  // the dropped edits leave the fields too

@@ -142,12 +142,13 @@ export async function op(o) {
   return true;
 }
 
-// leaving a page with unsaved changes asks first; a failed save stays
+// leaving a page with unsaved changes asks first (or saves at once when Save on page change is on); a failed save stays
 const plainGo = nav.go;
 nav.go = async (vol, page) => {
   if (S.dirty && S.data) {
-    const choice = await ask(`Save your changes to ${S.vol} p.${S.page} before leaving?`,
-                             [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]], null, "save");
+    const choice = $("save-on-leave").checked ? "save"
+      : await ask(`Save your changes to ${S.vol} p.${S.page} before leaving?`,
+                  [["cancel", "Cancel"], ["discard", "Don't save"], ["save", "Save", "ok"]], null, "save");
     if (choice === "save") { if (!(await save({ redraw: false }))) return null; }
     else if (choice !== "discard") return null;
   }
@@ -298,7 +299,7 @@ for (const t of SHELF) {
   $("shelf").append(b);
 }
 
-// italics underlined in the commentary (the menu's choice is kept)
+// italics underlined in the commentary, and saving on page change (the menu's choices are kept)
 {
   let on = true;
   try { on = localStorage.getItem("rw-underline") !== "0"; } catch (e) {}
@@ -308,5 +309,12 @@ for (const t of SHELF) {
   box.onchange = () => {
     document.body.classList.toggle("no-ul", !box.checked);
     try { localStorage.setItem("rw-underline", box.checked ? "1" : "0"); } catch (e) {}
+  };
+  let auto = false;
+  try { auto = localStorage.getItem("rw-save-on-leave") === "1"; } catch (e) {}
+  const saveBox = $("save-on-leave");
+  saveBox.checked = auto;
+  saveBox.onchange = () => {
+    try { localStorage.setItem("rw-save-on-leave", saveBox.checked ? "1" : "0"); } catch (e) {}
   };
 }

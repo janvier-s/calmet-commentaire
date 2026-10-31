@@ -2,6 +2,8 @@
 // (tests/js/text.test.mjs runs the same cases as tests/test_page_text.py).
 
 const CLOSING_FOLLOWERS = new Set(",.;:!?)»]");
+const TRAILING_PUNCT = /^_?[ \t]*([;?!]|:(?!\d))+/;
+const ROMAN_TRAILING = /^[ \t]*(?:([;?!]|:(?!\d))+|[.,]+(?=_))/;
 const isSpace = (c) => /\s/.test(c);
 
 /** Italic stretches between _underscore_ marks. openAt: an odd mark carries italics over the
@@ -33,6 +35,8 @@ export function toggleItalics(s, sa, sb) {
   for (const [a, b] of runs) for (let i = a; i < b; i++) italic.add(i);
   let make = false;
   for (let i = sa; i < sb; i++) if (s[i] !== "_" && !isSpace(s[i]) && !italic.has(i)) make = true;
+  const m = (make ? TRAILING_PUNCT : ROMAN_TRAILING).exec(s.slice(sb));
+  if (m && (make || italic.has(sb + m[0].length - 1))) sb += m[0].length;
   const absorbs = (c) => c === "_" || (!make && isSpace(c) && c !== "\n");
   while (sa > 0 && absorbs(s[sa - 1])) sa--;
   while (sb < s.length && absorbs(s[sb])) sb++;
