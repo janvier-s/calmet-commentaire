@@ -32,6 +32,9 @@ def scan_path(vol, page):
     return DATA / vol / "source_images" / "commentaire" / f"page_{page:04d}.png"
 
 
+SLANT = 2  # scan_slant.VERSION: a cache measured before is measured again
+
+
 def cache_path(vol, page):
     return OCR_CACHE / vol / f"page_{page:04d}.json"
 
@@ -59,7 +62,7 @@ def ocr(vol, page, run=True, scan=None):
     out, scan = cache_path(vol, page), Path(scan or scan_path(vol, page))
     if out.exists():
         o = json.loads(out.read_text(encoding="utf-8"))
-        if "slant" not in o and scan.exists() and slants(vol, [(page, scan)]):  # read before the slant was measured
+        if o.get("slant", 0) < SLANT and scan.exists() and slants(vol, [(page, scan)]):  # read before the slant was measured
             o = json.loads(out.read_text(encoding="utf-8"))
         return o
     if not run or not scan.exists():
@@ -571,10 +574,12 @@ def italics(o, data, res=None):
             continue
         if any(re.fullmatch(r"\(\w\)\W*", o["lines"][li]["words"][wi]["t"]) for li, wi in w["src"]):
             continue  # a note's letter
-        if numeral(w["t"]) or len(w["t"]) < 3 and any("'" in o["lines"][li]["words"][wi]["t"] or "’" in o["lines"][li]["words"][wi]["t"] for li, wi in w["src"]):
-            continue  # 17, XVII (as after a ℣, or by a lemma), s' n': a number or a piece of a word, not a word of its own
+        if numeral(w["t"]):
+            continue  # 17, XVII (as after a ℣, or by a lemma)
+        src = "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"])
+        t = src if "'" in src or "’" in src else w["t"]  # qu' il, s' il: the pieces of one word vote as that word
         sl = word_slant(o, w)
-        if sl is None or ROMAN_AT < sl < ITALIC_AT or (len(w["t"]) < 3 and SHORT_ROMAN < sl < SHORT_ITALIC) or 5 * sum(c in LEANING for c in w["t"]) >= 2 * len(w["t"]):
+        if sl is None or ROMAN_AT < sl < ITALIC_AT or (len(t) < 3 and SHORT_ROMAN < sl < SHORT_ITALIC) or 5 * sum(c in LEANING for c in t) >= 2 * len(t):
             continue
         votes.append((i, sl >= ITALIC_AT, w["a"] in marks[path], sl))
     out, k = [], 0
@@ -683,7 +688,7 @@ def main(argv):
         pages = [p for p in pages if int(a) <= p <= int(b or a)]
     todo = [p for p in pages if not cache_path(vol, p).exists()]
     print(f"{vol}: {len(pages) - len(todo)} pages cached, {len(todo)} to OCR", flush=True)
-    unslanted = [p for p in pages if p not in todo and '"slant"' not in cache_path(vol, p).read_text(encoding="utf-8")[-20:]]
+    unslanted = [p for p in pages if p not in todo and f'"slant":{SLANT}' not in cache_path(vol, p).read_text(encoding="utf-8")[-20:]]
     for n in range(0, len(unslanted), 50):  # read before the slant was measured
         slants(vol, [(p, scan_path(vol, p)) for p in unslanted[n:n + 50]])
     if unslanted:

@@ -166,3 +166,9 @@ def test_align_gives_each_word_its_slant():
     o = ocr(line(300, "Il", "vint", "dans", sl=[0, 14.6, None]))
     w = O.align(o, page("Il vint dans"))["words"]
     assert [x.get("sl") for x in w] == [0, 15, None]
+
+
+def test_italics_take_in_a_word_cut_at_its_apostrophe():
+    o = ocr(line(300, "Il", "dit", "qu’il", "enleva", "les", "deux", "portes", sl=[0, 0, 15, 16, 15, 15, 16]))
+    (it,) = O.italics(o, page("Il dit qu'il enleva les deux portes"))
+    assert it["to"] == "italic" and it["old"] == "qu'il enleva les deux portes"
