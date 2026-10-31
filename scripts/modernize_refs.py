@@ -33,6 +33,13 @@ def unitalic(text):
 # is: from the scan, or (with *, the guess convention) the verse that fits the context. None: Calmet's numbers do not match
 # the Vulgate, but are written out as printed. "": not a reference, or unreadable; left alone.
 MANUAL = {
+    # not references to rewrite: chapter lists already written out, "saint Luc. Cet", other works
+    ('21c_psaumes/page_0086', 'Isaïe 13, 14, 15, 21 et 47'): '',
+    ('27_isaie/page_0264', 'Isaïe 15, 16'): '',
+    ('47_matthieu/page_0427', 'Luc. C'): '',
+    ('47_matthieu/page_0731', 'col 1. 151'): '',
+    ('47_matthieu/page_0774', 'it. 22'): '',
+    ('31_ezechiel/page_0237', '23:45. 3'): '',  # "3°." opens the next point
     ('47_matthieu/page_0512', 'I. 1. 7'): '',  # garbled in the scan: which book?
     ('47_matthieu/page_0184', 'Genes. VIII. 7. 2'): 'Genèse 8:7. 2',  # the 2 belongs to "2. Reg." after it
     ('21a_psaumes/page_0233', 'Act. III. 29'): 'Actes 2:29*',  # David's tomb, in Peter's speech
