@@ -13,7 +13,7 @@ const el = (tag, props = {}, ...kids) => {
 };
 
 const cache = new Map();  // item id -> proposal (or null), until something changes
-const generated = (p) => /\/(footnote_writeout|ref_candidate|ocr_gap|ocr_italic)\//.test(p.item || "");
+const generated = (p) => /\/(footnote_writeout|ref_candidate|ocr_gap|ocr_italic|ocr_word|ocr_unscanned)\//.test(p.item || "");
 const isItalic = (p) => /\/ocr_italic\//.test(p.item || "");
 
 function italicNoteText(p) {

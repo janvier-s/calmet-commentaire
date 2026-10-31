@@ -7,6 +7,7 @@ boxes, and their slant (scan_slant.py: italics), in cache/ocr/<vol>/page_NNNN.js
 JSON fields: the same word (old spelling allowed), a different one, or missing from the JSON.
 """
 import difflib
+import functools
 import json
 import os
 import re
@@ -111,11 +112,38 @@ def slants(vol, scans):
 # --- alignment ---
 TOKEN = re.compile(r"[^\W_]+(?:-[^\W_]+)*")
 OCR_TOKEN = re.compile(r"&|[^\W_]+(?:-[^\W_]+)*")  # & is "et"
-ABBREV = {"s": "saint", "ste": "sainte", "st": "saint", "tems": "temps", "longtems": "longtemps"}
+ABBREV = {"s": "saint", "ste": "sainte", "st": "saint", "tems": "temps", "longtems": "longtemps",
+          "entr": "entre", "contr": "contre", "chap": "chapitre"}  # entr'eux: entre eux
+SPELLING = SCRIPTS / "ocr_spelling.txt"  # "old modern" a line: what the scan prints and the text has
 
 
 def key(t):
-    """A word's spelling-blind key: no accents or case; ſ, &, y, j, v, oi as in the modernized text."""
+    """A word's spelling-blind key: no accents or case; ſ, &, y, j, v, oi as in the modernized text; the
+    pairs of ocr_spelling.txt (loix: lois, Caldéen: Chaldéen, Iraël: Israël)."""
+    k = _key(t)
+    return _keymap().get(k, k)
+
+
+@functools.cache
+def _keymap():
+    out = {}
+    for ln in (SPELLING.read_text(encoding="utf-8").splitlines() if SPELLING.exists() else []):
+        old, _, new = ln.split("#")[0].strip().partition(" ")
+        if old and new.strip():
+            out[_key(old)] = _key(new.strip())
+    return out
+
+
+@functools.cache
+def modern_key(t):
+    """The key of the scan's words once modernized as the text was (avoit: avait, soixante & dix)."""
+    from clean_mechanical import fix_spelling
+    from modernize_inplace import modernize_text
+    m = modernize_text(fix_spelling(t.replace("ſ", "s").replace("&", "et").replace("’", "'")))[0]
+    return "".join(key(w) for w in TOKEN.findall(m))
+
+
+def _key(t):
     t = re.sub(r"\btems\b", "temps", t.lower())  # même-tems
     t = unicodedata.normalize("NFKD", t.replace("ſ", "s").replace("æ", "e").replace("œ", "e"))  # æ, œ mixed up
     t = "".join(c for c in t if c.isalnum())
@@ -124,7 +152,7 @@ def key(t):
     return ABBREV.get(t, "et" if t == "" else t)
 
 
-MARGIN_YEAR = re.compile(r"(?:An\.?)?\d{3,4}\.?|An\.?")
+MARGIN_YEAR = re.compile(r"(?:An[.-]?)?\d{3,4}[.,]?|An\.?")  # An.2585. An-2917,
 ROMAN_NUMERAL = re.compile(r"(?=[IVXLCDM])M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})")
 
 
@@ -243,6 +271,9 @@ def _pair(ocr_run, json_run):
                     best = (r, jj, take, jtake, k, jk)
         if best and best[0] >= 0.5:
             r, jj, take, jtake, k, jk = best
+            ae = "".join(_key(t["t"].replace("æ", "a").replace("Æ", "A")) for t in json_run[jj:jj + jtake])  # quæ read qua
+            if k != jk and (ae == k or modern_key(" ".join(t["t"] for t in ocr_run[i:i + take])) in (jk, jk.replace("-", ""))):
+                k = jk
             status = ("ok" if k == jk or (slip(k, jk) and (take == jtake == 1 or take == 1 and "-" in ocr_run[i]["t"]))  # a lost space is the OCR's; même-tems: même temps
                       else "near" if r >= 0.8 and take == jtake == 1 else "diff")
             out.append((list(range(i, i + take)), jj, jtake, status))
@@ -253,7 +284,7 @@ def _pair(ocr_run, json_run):
     return out
 
 
-HEADER = re.compile(r"COMMENTAIRE|LITTERAL|^SUR\b|CHAP", re.I)
+HEADER = re.compile(r"COMMENTAIRE|LITTERAL|^SUR\b|CHAP")  # capitals: a body line may open with "sur"
 
 
 def skipped_lines(o):
@@ -303,11 +334,12 @@ def align(o, data):
     jt = json_tokens(data)
     res = [dict(t=t["t"], boxes=t["boxes"], s="missing", src=t["src"], wc=t["wc"]) for t in ot]
 
-    used = set()
+    used, at = set(), {}  # at: a JSON word's index -> the scan's word linked to it
 
     def link(i, j, status, n=1):
         res[i].update(s=status, path=jt[j]["path"], a=jt[j]["a"], b=jt[j + n - 1]["b"])
         used.update(range(j, j + n))
+        at.update((x, i) for x in range(j, j + n))
 
     sm = difflib.SequenceMatcher(None, [t["k"] for t in ot], [t["k"] for t in jt], autojunk=False)
     for op, i1, i2, j1, j2 in sm.get_opcodes():
@@ -345,7 +377,7 @@ def align(o, data):
         if r["s"] in ("missing", "diff", "near") and (
                 t["wc"] < 0.6 or (p or "").startswith("footnotes/") or (r.get("path") or "").startswith("footnotes/")):
             r["s"] = "skip" if r["s"] == "missing" else "ok"
-        if r["s"] == "missing" and (numeral(t["t"]) or len(t["t"]) <= 1):  # a verse number (roman too), a stray letter
+        if r["s"] == "missing" and (numeral(t["t"]) or len(t["t"]) <= 1 or MARGIN_YEAR.fullmatch(t["t"])):  # a verse number (roman too), a stray letter, the margin's year
             r["s"] = "skip"
     # nor the top and bottom bands (a header misread, the catchword), nor what is below the first footnote
     h = o["size"][1]
@@ -356,7 +388,58 @@ def align(o, data):
             r["s"] = "skip"
     extra = [dict(t=t["t"], path=t["path"], a=t["a"], b=t["b"]) for j, t in enumerate(jt)
              if j not in used and not t["path"].startswith("footnotes/") and len(t["t"]) > 1 and not t["t"].isdigit()]
-    return {"size": o["size"], "words": res, "extra": extra}
+    return {"size": o["size"], "words": res, "extra": extra, "unscanned": _unscanned(jt, at, res)}
+
+
+def _unscanned(jt, at, res, least=3):
+    """Runs of the JSON's words the scan does not have, read where the scan was read: `least` words or
+    more (of two letters or more), with linked words both sides, one in the same field, and few of the scan's
+    words between those two, a third of theirs or less (else the scan has words there, misread: Orda concubinc). Each: {path, a, b}."""
+    used = at
+    out, j = [], 0
+    while j < len(jt):
+        if j in used:
+            j += 1
+            continue
+        k = j
+        while k + 1 < len(jt) and k + 1 not in used and jt[k + 1]["path"] == jt[j]["path"]:
+            k += 1
+        path = jt[j]["path"]
+        words = [t for t in jt[j:k + 1] if len(t["t"]) > 1 and not t["t"].isdigit()]
+        sides = [jt[n]["path"] for n in (j - 1, k + 1) if 0 <= n < len(jt) and n in used]
+        between = res[at[j - 1] + 1:at[k + 1]] if len(sides) == 2 and at[j - 1] < at[k + 1] else None
+        if (len(words) >= least and between is not None and path in sides and not path.startswith("footnotes/")
+                and 3 * sum("path" not in r and len(r["t"]) > 1 and not numeral(r["t"]) for r in between) <= len(words)):
+            out.append(dict(path=path, a=jt[j]["a"], b=jt[k]["b"], words=[at[j - 1], at[k + 1]]))
+        j = k + 1
+    # the page's end: the text runs on past the scan's last words (a stray word linked further on let by)
+    body = [n for n, t in enumerate(jt) if not t["path"].startswith("footnotes/") and t["path"] != "book_end_marker"]
+    if body:
+        last = body[-1]
+        j, strays = last, 0
+        while j > 0 and jt[j - 1]["path"] == jt[last]["path"] and (j - 1 not in at or strays < 1 and len(jt[j - 1]["t"]) <= 4):
+            strays += j - 1 in at
+            j -= 1
+        words = [t for t in jt[j:last + 1] if len(t["t"]) > 1 and not t["t"].isdigit()]
+        if len(words) >= least and j - 1 in at and not any(r.get("a") == jt[j]["a"] and r.get("path") == jt[j]["path"] for r in out):
+            after = [r for r in res[at[j - 1] + 1:] if not (r.get("path") or "").startswith("footnotes/") and r["s"] != "skip"]
+            if 3 * sum("path" not in r and len(r["t"]) > 1 for r in after) <= len(words):
+                out.append(dict(path=jt[j]["path"], a=jt[j]["a"], b=jt[last]["b"], end=True, words=[at[j - 1], at[j - 1]]))
+    return out
+
+
+def scan_box(size, res, i, j):
+    """Where res[i..j] is on the scan, for a crop of it: {size, boxes (a box a line)}."""
+    out = []
+    for x, y, w, h in (b for r in res[i:j + 1] for b in r["boxes"]):
+        last = out[-1] if out else None
+        if last and x >= last[0] and abs((y + h / 2) - (last[1] + last[3] / 2)) < max(h, last[3]) * 0.8:
+            x2, y2 = max(last[0] + last[2], x + w), max(last[1] + last[3], y + h)
+            last[1] = min(last[1], y)
+            last[2], last[3] = x2 - last[0], y2 - last[1]
+        else:
+            out.append([x, y, w, h])
+    return {"size": size, "boxes": out}
 
 
 def gaps(o, data, res=None, least=3):
@@ -394,6 +477,61 @@ def gaps(o, data, res=None, least=3):
                 note = bool(LEMMA.match(ocr))  # a whole note: a block of its own, not words in a field
                 out.append(dict(g, ocr=ocr, text=text, words=[i, j], **({"note": True} if note else {})))
         i = j + 1
+    return out
+
+
+FRENCH_FIELDS = {"french_commentary", "french", "french_translation", "chapter_intro", "chapter_argument",
+                 "chapter_summary", "chapter_title"}
+
+
+def unscanned(o, data, al=None):
+    """The JSON's runs of words the scan lacks (align's `unscanned`), with what they are written in: each
+    {path, a, b, old, before, after}."""
+    al = al or align(o, data)
+    fields = dict(_fields(data))
+    out = []
+    for r in al["unscanned"]:
+        s = fields[r["path"]]
+        out.append(dict(r, old=s[r["a"]:r["b"]], before=s[max(0, r["a"] - 30):r["a"]], after=s[r["b"]:r["b"] + 30]))
+    return out
+
+
+def differs(o, data, res=None):
+    """Words the scan prints, read with confidence, where the French text has another word, and the scan's
+    word (modernized) is French where the text's is not, or both are (une for un, dessous for dessus).
+    Not: a shorter or longer form of the same word (Exod., qu'), nor an a the scan has for u or o (an, lai,
+    san: Kraken's). Each: {path, a, b, old, new, ocr, word (in res), known (the text's word is French),
+    before, after}."""
+    from clean_mechanical import fix_spelling
+    from modernize_inplace import modernize_text
+    from spellcheck import check
+    o = split_columns(o)
+    res = res or align(o, data)["words"]
+    fields = dict(_fields(data))
+    cands = []
+    for i, w in enumerate(res):
+        path = w.get("path")
+        if w["s"] not in ("diff", "near") or w["wc"] < 0.95 or not path or path.rsplit("/", 1)[-1] not in FRENCH_FIELDS:
+            continue
+        if any(res[n].get("path") == path and res[n].get("a") == w["a"] for n in (i - 1, i + 1) if 0 <= n < len(res)):
+            continue  # two of the scan's words for one of the text's
+        s = fields[path]
+        old = s[w["a"]:w["b"]]
+        new = modernize_text(fix_spelling(_raw(o, [w]).replace("ſ", "s").replace("’", "'")))[0]
+        new = (TOKEN.findall(new) or [""])[0]
+        lo, ln = old.lower(), new.lower()
+        if len(new) < 2 or " " in old or key(new) == key(old) or lo.startswith(ln) or ln.startswith(lo):
+            continue
+        d = [(x, y) for x, y in zip(ln, lo) if x != y]
+        if len(ln) == len(lo) and len(d) == 1 and d[0][0] == "a":
+            continue
+        cands.append(dict(path=path, a=w["a"], b=w["b"], old=old, new=new, ocr=w["t"], word=i,
+                          before=s[max(0, w["a"] - 30):w["a"]], after=s[w["b"]:w["b"] + 30]))
+    unknown = check(sorted({c["old"] for c in cands} | {c["new"] for c in cands})) if cands else {}
+    out = []
+    for c in cands:
+        if c["new"] not in unknown:
+            out.append(dict(c, known=c["old"] not in unknown))
     return out
 
 

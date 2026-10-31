@@ -123,3 +123,40 @@ def test_small_words_vote_when_clear_and_note_letters_and_pieces_do_not():
     assert [x["old"] for x in O.italics(o, page("Il dit à vous ne"))] == ["à"]
     o = ocr(line(300, "Il", "dit", "(a)", "vous", "ne", sl=[0, 0, 15, 0, 0]))
     assert O.italics(o, page("Il dit a vous ne")) == []
+
+
+def test_a_body_line_in_the_top_band_opening_with_sur_is_read():
+    r = O.align(ocr(line(80, "SUR", "LES", "JUGES."), line(130, "sur", "lui,", "ce", "qu’il", "avoit")),
+                page("sur lui, ce qu'il avait"))
+    assert {s for _, s in statuses(r)} == {"ok"} and r["unscanned"] == []
+
+
+def test_the_margin_year_with_a_comma_ends_the_line():
+    r = O.align(ocr(line(300, "celui", "qui", "reprend", "An-2917,"), line(340, "sur", "lui")),
+                page("celui qui reprend sur lui"))
+    assert statuses(r)[3] == ("An-2917", "skip") and {s for _, s in statuses(r)} == {"ok", "skip"}
+
+
+def test_spelling_pairs_and_the_modernizer_make_old_words_the_same():
+    assert O.key("Caldéen") == O.key("Chaldéen") and O.key("loix") != O.key("lois")
+    r = O.align(ocr(line(300, "les", "loix", "des", "Caldéens", "entr’eux")), page("les lois des Chaldéens entre eux"))
+    assert {s for _, s in statuses(r)} == {"ok"}
+
+
+def test_words_the_scan_lacks_between_words_it_has():
+    o = ocr(line(300, "Il", "passe", "le", "Jourdain", "avec", "ses", "gens"))
+    r = O.align(o, page("Il passe le Jourdain sans aucun bateau avec ses gens"))
+    assert [(x["path"], page("Il passe le Jourdain sans aucun bateau avec ses gens")["commentary"][0]["french_commentary"][x["a"]:x["b"]])
+            for x in r["unscanned"]] == [("commentary/0/french_commentary", "sans aucun bateau")]
+
+
+def test_no_unscanned_run_where_the_scan_has_misread_words():
+    r = O.align(ocr(line(300, "Il", "passe", "Orda", "concubinc", "quixz", "avec", "ses", "gens")),
+                page("Il passe Or sa concubine qui avec ses gens"))
+    assert r["unscanned"] == []
+
+
+def test_the_text_running_on_past_the_scan_page_is_flagged():
+    d = page("Zeb était caché dans une de ces cavernes souterraines du roc")
+    r = O.align(ocr(line(300, "Zeb", "étoit", "caché")), d)
+    assert [x.get("end") for x in r["unscanned"]] == [True]

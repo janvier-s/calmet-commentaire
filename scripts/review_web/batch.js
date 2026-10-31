@@ -57,12 +57,31 @@ function contextCell(r, done) {
   }
   return el("td", { className: "bctx", title: "Open this issue", onclick: () => go(r) }, context(r),
             // a write-out's message only repeats the note and the proposal
-            ["footnote_writeout", "ref_candidate", "ocr_gap", "ocr_italic"].includes(r.kind) ? null : el("div", { className: "msg", textContent: r.msg }));
+            ["footnote_writeout", "ref_candidate", "ocr_gap", "ocr_italic", "ocr_word", "ocr_unscanned"].includes(r.kind) ? null : el("div", { className: "msg", textContent: r.msg }));
+}
+
+/** The scan where a row's words are (an OCR issue): the lines round them, the words outlined. Click: larger. */
+function scanCrop(r, width = 420) {
+  const b = r.scan_box;
+  if (!b || !b.boxes || !b.boxes.length) return null;
+  const [W, H] = b.size, bs = b.boxes;
+  const lh = Math.max(...bs.map((q) => q[3]));
+  const x1 = Math.max(0, Math.min(...bs.map((q) => q[0])) - 5 * lh), x2 = Math.min(W, Math.max(...bs.map((q) => q[0] + q[2])) + 5 * lh);
+  const y1 = Math.max(0, Math.min(...bs.map((q) => q[1])) - 1.3 * lh), y2 = Math.min(H, Math.max(...bs.map((q) => q[1] + q[3])) + 1.3 * lh);
+  const k = width / (x2 - x1);
+  const box = el("div", { className: `bscan k-${r.kind}`, title: "The scan (click: larger)",
+                          style: `width:${width}px;height:${Math.round((y2 - y1) * k)}px` },
+    el("img", { src: `/scan/${encodeURIComponent(r.book_dir)}/${r.page}`, loading: "lazy", alt: "", draggable: false,
+                style: `width:${W * k}px;left:${-x1 * k}px;top:${-y1 * k}px` }),
+    ...bs.map(([x, y, w, h]) => el("div", { className: "mk", style: `left:${(x - x1) * k - 3}px;top:${(y - y1) * k - 2}px;width:${w * k + 6}px;height:${h * k + 4}px` })));
+  box.onclick = (e) => { e.stopPropagation(); box.replaceWith(scanCrop(r, width > 420 ? 420 : 760)); };
+  return box;
 }
 
 function render() {
   const f = filters();
   const label = S.config.labels[f.kind] || f.kind;
+  const scans = B.rows.some((r) => r.scan_box);  // OCR issues: a column with the scan
   const rows = B.rows.map((r) => {
     const done = DONE.has(r.status);
     r.box = el("input", { type: "checkbox", disabled: done, onchange: countTicks });
@@ -70,6 +89,7 @@ function render() {
     const tr = el("tr", { className: done ? "done" : "" },
       el("td", {}, r.box),
       el("td", { className: "pg", title: "Open this issue", onclick: () => go(r), textContent: `${r.book_dir === f.book ? "" : r.book_dir + " "}p.${r.page}` }),
+      scans ? el("td", { className: "bscan-td" }, scanCrop(r)) : null,
       ctx,
       el("td", {}, ...(r.proposal ? r.proposal.options[0].changes.map(diffLine) : [el("span", { className: "muted small", textContent: "no proposal" })])),
       el("td", { className: "st", textContent: r.status ? r.status.replace("_", " ") : "" }));
@@ -88,7 +108,7 @@ function render() {
        el("button", { id: "batch-resolve", className: "ok", disabled: true, title: "Mark the ticked rows resolved (an edit typed in a ticked row is saved first)", onclick: () => markTicked("resolved") }, "Resolve 0 ticked"),
        el("button", { id: "batch-fp", disabled: true, onclick: () => markTicked("false_positive") }, "False positive 0"),
        el("button", { title: "Back to the page (Esc)", onclick: closeBatch }, icon("back", 13), " Page")),
-    el("table", {}, el("thead", {}, el("tr", {}, ...["", "Page", "Context", "Proposed fix", "Status"].map((h) => el("th", { textContent: h })))),
+    el("table", {}, el("thead", {}, el("tr", {}, ...["", "Page", ...(scans ? ["Scan"] : []), "Context", "Proposed fix", "Status"].map((h) => el("th", { textContent: h })))),
        el("tbody", {}, ...rows)));
   countTicks();
 }

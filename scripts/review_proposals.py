@@ -113,11 +113,11 @@ def _gap_items(store, volumes, pages=None):
         change = {"vol": vol, "page": page, "path": [path[0], int(path[1]), path[2]] if len(path) == 3 else path,
                   "old": o, "new": scan_ocr.insert(o, pos, g["text"])}
         if g.get("note"):  # a whole note: a block to add by hand
-            out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_gap", "optional": False,
+            out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_gap", "optional": False, "scan_box": g.get("box"),
                         "msg": f"A whole note missing? The scan has, after “…{g['before'][-40:]}”: “{g['ocr']}”",
                         "where": where})
             continue
-        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_gap", "optional": False,
+        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_gap", "optional": False, "scan_box": g.get("box"),
                     "msg": f"The scan has “{g['ocr']}” after “…{g['before'][-40:]}”", "where": where,
                     "proposal": {"id": iid, "item": iid, "title": "Words missing (from the scan's OCR)",
                                  "why": ["Kraken reads these words on the scan; the text lacks them"],
@@ -161,7 +161,7 @@ def _italic_items(store, volumes, pages=None):
                   "old": o, "new": t[0]}
         word = r["old"].replace("_", "").rstrip(" \t;:?!.,")
         said = "in italics; the text has it in roman" if r["to"] == "italic" else "in roman; the text has it in italics"
-        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_italic", "optional": False,
+        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_italic", "optional": False, "scan_box": r.get("box"),
                     "msg": f"The scan prints “{word}” {said}", "where": where,
                     "proposal": {"id": iid, "item": iid, "title": "Italics as on the scan", "word": word,
                                  "why": [f"The words lean {r['slant']}° on the scan" if r["to"] == "italic"
@@ -172,7 +172,78 @@ def _italic_items(store, volumes, pages=None):
     return out
 
 
-GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ocr_gap", "ocr_italic")
+def _scan_field(store, r):
+    """The field an ocr_gaps.json entry is about, its `where` and its change path; the place a..b found
+    again (by the text around) if the field changed elsewhere: (o, a, where, path) or None."""
+    path = r["path"].split("/")
+    o = store._load(r["vol"], r["page"]) or {}
+    for k in path:
+        o = (o[int(k)] if int(k) < len(o) else None) if isinstance(o, list) and k.isdigit() else (o or {}).get(k)
+    if not isinstance(o, str):
+        return None
+    a = r["a"] if o[r["a"]:r["b"]] == r["old"] and o[:r["a"]].endswith(r["before"]) else None
+    if a is None and o.count(r["before"] + r["old"] + r["after"]) == 1:
+        a = o.index(r["before"] + r["old"] + r["after"]) + len(r["before"])
+    if a is None:
+        return None
+    where = {"section": path[0], "index": int(path[1]), "field": path[2]} if len(path) == 3 else \
+        {"section": "heading", "index": 0, "field": path[0]}
+    return o, a, where, [path[0], int(path[1]), path[2]] if len(path) == 3 else path
+
+
+def _differ_items(store, volumes, pages=None):
+    """A word the scan prints, read with confidence, where the text has another (docs/ocr_gaps.json)."""
+    report = _read_json(store.docs / "ocr_gaps.json")
+    out = []
+    for r in (report or {}).get("differs") or []:
+        if r["vol"] not in volumes or (pages is not None and r["page"] not in pages):
+            continue
+        got = _scan_field(store, r)
+        if not got:
+            continue
+        o, a, where, cpath = got
+        vol, page = r["vol"], r["page"]
+        iid = f"{vol}/{page:04d}/ocr_word/{_md5(r['path'], r['before'], r['old'], r['new'])}"
+        new = o[:a] + r["new"] + o[a + len(r["old"]):]
+        why = "Both are French: a slip of the text, or a word the modernization changed?" if r["known"] \
+            else "The text's word is not French; the scan's is"
+        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_word", "optional": True, "scan_box": r.get("box"),
+                    "msg": f"The scan has “{r['ocr']}” where the text has “{r['old']}”", "where": where,
+                    "proposal": {"id": iid, "item": iid, "title": "A word as on the scan", "word": r["old"],
+                                 "why": [why], "flags": [], "sure": False,
+                                 "options": [{"label": f"“{r['new']}”", "changes": [
+                                     {"vol": vol, "page": page, "path": cpath, "old": o, "new": new}]}]}})
+    return out
+
+
+def _unscanned_items(store, volumes, pages=None):
+    """Runs of the text's words the scan does not have (docs/ocr_gaps.json): added, or another page's."""
+    report = _read_json(store.docs / "ocr_gaps.json")
+    out = []
+    for r in (report or {}).get("unscanned") or []:
+        if r["vol"] not in volumes or (pages is not None and r["page"] not in pages):
+            continue
+        got = _scan_field(store, r)
+        if not got:
+            continue
+        o, a, where, cpath = got
+        vol, page = r["vol"], r["page"]
+        b = a + len(r["old"])
+        left, right = o[:a].rstrip(" "), o[b:].lstrip(" ")
+        new = left + (" " if left and right and right[0] not in ",.;:!?)" else "") + right
+        iid = f"{vol}/{page:04d}/ocr_unscanned/{_md5(r['path'], r['before'], r['old'])}"
+        said = (f"The text runs on past the scan's page: “{r['old'][:80]}” (the next page's?)" if r.get("end")
+                else f"The scan does not have “{r['old'][:80]}”")
+        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_unscanned", "optional": False, "scan_box": r.get("box"),
+                    "msg": said, "where": where,
+                    "proposal": {"id": iid, "item": iid, "title": "Words not on the scan", "word": r["old"][:40],
+                                 "why": ["Kraken reads the words round them, not these"], "flags": [], "sure": False,
+                                 "options": [{"label": "take them out", "changes": [
+                                     {"vol": vol, "page": page, "path": cpath, "old": o, "new": new}]}]}})
+    return out
+
+
+GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ocr_gap", "ocr_italic", "ocr_word", "ocr_unscanned")
 
 
 def generated_items(store, volumes=None, pages=None):
@@ -183,7 +254,9 @@ def generated_items(store, volumes=None, pages=None):
     for vol in volumes:
         out += _footnote_items(store, vol, pset)
     vset = set(volumes)
-    return out + _ref_items(store, vset, pset) + _gap_items(store, vset, pset) + _italic_items(store, vset, pset)
+    return (out + _ref_items(store, vset, pset) + _gap_items(store, vset, pset) + _italic_items(store, vset, pset)
+            + _differ_items(store, vset, pset) + _unscanned_items(store, vset, pset))
+
 
 
 def proposal_for(store, progress, item):

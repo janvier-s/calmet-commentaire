@@ -441,6 +441,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 ctx = entries[i].get(w.get("field")) if isinstance(i, int) and i < len(entries) else None
             rows.append({"id": it["id"], "book_dir": it["book_dir"], "page": it["page"], "kind": it["kind"],
                          "msg": it["msg"], "status": progress.status(it["id"]), "context": ctx,
+                         "scan_box": it.get("scan_box"),
                          "editable": editable_field(it) and (ctx is None or isinstance(ctx, str)),
                          "proposal": rp.proposal_for(store, progress, it)})
         return {"rows": rows}

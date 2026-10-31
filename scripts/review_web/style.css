@@ -338,6 +338,12 @@ ins { background: color-mix(in srgb, var(--ok) 20%, transparent); color: var(--o
 #batch td.bctx { cursor: pointer; max-width: 40vw; }
 #batch td.bctx:hover { background: var(--accent-weak); }
 #batch td.bctx .msg { font-size: 12px; color: var(--muted); }
+#batch td.bscan-td { padding: 4px; }
+.bscan { position: relative; overflow: hidden; cursor: zoom-in; border-radius: 4px; background: #fff; max-height: 60vh; }
+.bscan img { position: absolute; max-width: none; }
+.bscan .mk { position: absolute; border: 2px solid #d32f2f; border-radius: 3px; pointer-events: none; }
+.bscan.k-ocr_italic .mk { border-color: #00a035; }
+.bscan.k-ocr_unscanned .mk { border-color: #e08a00; border-style: dashed; }
 #batch tr.done { opacity: .5; }
 #batch textarea.bedit { width: 100%; box-sizing: border-box; font: inherit; resize: vertical; }
 #batch tr.edited textarea.bedit { border-color: var(--warn); }
