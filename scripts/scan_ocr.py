@@ -144,6 +144,19 @@ def similar(a, b):
     return difflib.SequenceMatcher(None, a, b, autojunk=False).ratio()
 
 
+CONFUSED = [set("tlrfsi"), set("ceo"), set("nu")]  # letters Kraken mistakes for each other in this type
+
+
+def slip(o, j):
+    """Two keys that differ only as Kraken's slips or old spelling do: a doubled letter (jetter, AAn), or
+    one letter for a look-alike (salte, traduite)."""
+    def look_alike(o, j):
+        diff = [(x, y) for x, y in zip(o, j) if x != y]
+        return len(o) == len(j) and len(diff) == 1 and any(set(diff[0]) <= g for g in CONFUSED)
+    single = lambda t: re.sub(r"(.)\1+", r"\1", t)
+    return single(o) == single(j) or look_alike(o, j) or look_alike(single(o), single(j))
+
+
 def _pair(ocr_run, json_run):
     """Inside a stretch the two disagree on: [(ocr indexes, json index or None, json count, status)]."""
     out, j = [], 0
@@ -161,7 +174,8 @@ def _pair(ocr_run, json_run):
                     best = (r, jj, take, jtake, k == jk)
         if best and best[0] >= 0.5:
             r, jj, take, jtake, same = best
-            status = "ok" if same else "near" if r >= 0.8 and take == jtake == 1 else "diff"  # a lost space is the OCR's
+            status = ("ok" if same or (take == jtake == 1 and slip(k, json_run[jj]["k"]))  # a lost space is the OCR's
+                      else "near" if r >= 0.8 and take == jtake == 1 else "diff")
             out.append((list(range(i, i + take)), jj, jtake, status))
             i, j = i + take, jj + jtake
         else:

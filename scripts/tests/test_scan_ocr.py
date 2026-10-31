@@ -64,3 +64,9 @@ def test_word_only_in_the_json_is_extra():
 def test_unsure_reading_is_not_flagged():
     r = O.align(ocr(line(300, "le", "texte"), line(340, "xqzw", wc=0.3)), page("le texte"))
     assert statuses(r)[-1] == ("xqzw", "skip")
+
+
+def test_ocr_slips_and_doubled_letters_are_not_flagged():
+    r = O.align(ocr(line(300, "une", "salte", "pour", "jetter", "et", "traduite", "ils", "se", "déchaussent")),
+                page("une salle pour jeter et traduire ils se déchaussaient"))
+    assert [s for _, s in statuses(r)] == ["ok"] * 8 + ["near"]
