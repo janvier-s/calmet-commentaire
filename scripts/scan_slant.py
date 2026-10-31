@@ -42,8 +42,13 @@ def main(argv):
         with open(cache, encoding="utf-8") as f:
             o = json.load(f)
         for ln in o["lines"]:
-            for w in ln["words"]:
-                w["sl"] = slant(img, w["box"])
+            ws = ln["words"]
+            for n, w in enumerate(ws):
+                box = w["box"]
+                if w["box"][2] < 6 and "&" in w["t"] and 0 < n < len(ws) - 1:  # Kraken boxes an & as a point: it lies between its neighbours
+                    x = ws[n - 1]["box"][0] + ws[n - 1]["box"][2]
+                    box = [x, box[1], ws[n + 1]["box"][0] - x, box[3]]
+                w["sl"] = slant(img, box)
         o["slant"] = 1
         with open(cache, "w", encoding="utf-8") as f:
             json.dump(o, f, ensure_ascii=False, separators=(",", ":"))

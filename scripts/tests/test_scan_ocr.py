@@ -100,14 +100,26 @@ def test_a_run_opening_with_a_lemma_is_a_whole_note():
 
 def test_italics_the_scan_has_and_the_text_lacks_and_the_other_way():
     o = ocr(line(300, "Il", "vint", "dans", "Aïalon,", "puis", "il", "dit:", sl=[0, -1, 1, 16, 0, 0, -2]),
-            line(340, "Je", "suis", "dit-il", "votre", "Dieu", sl=[14, 15, -1, 16, 15]))
-    d = page("Il vint dans Aïalon, puis il dit : _Je suis, dit-il, votre Dieu_")
+            line(340, "Je", "suis", "dit-il", "à", "tous", "ici", "votre", "Dieu", sl=[14, 15, -1, -2, -1, 0, 16, 15]))
+    d = page("Il vint dans Aïalon, puis il dit : _Je suis, dit-il à tous ici, votre Dieu_")
     r = O.italics(o, d)
-    assert [(x["to"], x["old"]) for x in r] == [("italic", "Aïalon"), ("roman", "dit-il")]
-    assert r[0]["new"] == "Il vint dans _Aïalon_, puis il dit : _Je suis, dit-il, votre Dieu_"
-    assert r[1]["new"] == "Il vint dans Aïalon, puis il dit : _Je suis,_ dit-il_, votre Dieu_"
+    assert [(x["to"], x["old"]) for x in r] == [("italic", "Aïalon"), ("roman", "dit-il à tous ici")]
+    assert r[0]["new"] == "Il vint dans _Aïalon_, puis il dit : _Je suis, dit-il à tous ici, votre Dieu_"
+    assert r[1]["new"] == "Il vint dans Aïalon, puis il dit : _Je suis,_ dit-il à tous ici_, votre Dieu_"
 
 
 def test_no_italics_for_a_lone_word_that_leans_anyway_or_hardly():
     o = ocr(line(300, "les", "voyes", "du", "Seigneur", "sont", "droites", sl=[0, 15, 0, 10, 0, 1]))
     assert O.italics(o, page("les voies du Seigneur sont droites")) == []
+
+
+def test_a_few_words_measured_roman_inside_italics_are_a_misread_glyph():
+    o = ocr(line(300, "Sur", "la", "montagne", "aux", "Tuiles,", sl=[14, 15, -3, 16, 17]))
+    assert O.italics(o, page("_Sur la montagne aux Tuiles,_")) == []
+
+
+def test_small_words_vote_when_clear_and_note_letters_and_pieces_do_not():
+    o = ocr(line(300, "Il", "dit", "à", "vous", "ne", sl=[0, 0, 15, 0, 0]))
+    assert [x["old"] for x in O.italics(o, page("Il dit à vous ne"))] == ["à"]
+    o = ocr(line(300, "Il", "dit", "(a)", "vous", "ne", sl=[0, 0, 15, 0, 0]))
+    assert O.italics(o, page("Il dit a vous ne")) == []

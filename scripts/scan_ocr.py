@@ -116,34 +116,58 @@ ABBREV = {"s": "saint", "ste": "sainte", "st": "saint", "tems": "temps", "longte
 
 def key(t):
     """A word's spelling-blind key: no accents or case; ſ, &, y, j, v, oi as in the modernized text."""
-    t = unicodedata.normalize("NFKD", t.lower().replace("ſ", "s").replace("æ", "e").replace("œ", "e"))  # æ, œ mixed up
+    t = re.sub(r"\btems\b", "temps", t.lower())  # même-tems
+    t = unicodedata.normalize("NFKD", t.replace("ſ", "s").replace("æ", "e").replace("œ", "e"))  # æ, œ mixed up
     t = "".join(c for c in t if c.isalnum())
     t = t.replace("y", "i").replace("j", "i").replace("v", "u").replace("oi", "ai")
     t = re.sub(r"([ae])nts$", r"\1ns", re.sub(r"ez$", "es", t))  # enfans, alliez: enfants, alliés
     return ABBREV.get(t, "et" if t == "" else t)
 
 
+MARGIN_YEAR = re.compile(r"(?:An\.?)?\d{3,4}\.?|An\.?")
+ROMAN_NUMERAL = re.compile(r"(?=[IVXLCDM])M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})")
+
+
+def numeral(t):
+    """A number: digits, or a roman numeral (the JSON has them in arabic: Juges XVII. 4 is 17:4) -- an
+    OCR l for I allowed (XIl)."""
+    return t.isdigit() or bool(ROMAN_NUMERAL.fullmatch(t.replace("l", "I") if len(t) > 2 else t))
+
+
 def ocr_tokens(o):
     """The OCR's words in reading order as tokens: a String may hold several ("21.Et"), a word cut at
     the line's end (¬) is joined to the next line's first. Each: {t, k, boxes, wc, line}."""
-    out, carry = [], None
+    out, carry, held = [], None, []
     for li, ln in enumerate(o["lines"]):
-        for wi, w in enumerate(ln["words"]):
+        ws = ln["words"]
+        body = len(ws)  # the margin's year ends a line (An.2585.): after the word cut at the end of the line
+        while body and MARGIN_YEAR.fullmatch(ws[body - 1]["t"]):
+            body -= 1
+        for wi, w in enumerate(ws):
             text, (x, y, bw, bh) = unicodedata.normalize("NFC", w["t"]), w["box"]
             n = max(1, len(text))
-            for m in OCR_TOKEN.finditer(text):
+            year = re.fullmatch(r"(.+?)-?An\.?-?\d{3,4}\.?", text)  # ren-An.2784: the year is glued to a cut word
+            for m in OCR_TOKEN.finditer(year.group(1) + "-" if year else text):
                 a, b = m.span()
                 tok = {"t": m.group(), "boxes": [[x + round(bw * a / n), y, max(1, round(bw * (b - a) / n)), bh]],
                        "wc": w["wc"], "line": li, "src": [[li, wi]]}
+                if wi >= body and body and ws[body - 1]["t"].endswith(("¬", "-")):
+                    held.append(tok)  # the year goes on after the word it interrupts
+                    continue
                 if carry:  # the first word after a cut
                     carry["t"] += tok["t"]
                     carry["boxes"] += tok["boxes"]
                     carry["src"] += tok["src"]
                     carry["wc"] = min(carry["wc"], tok["wc"])
                     tok, carry = carry, None
+                    out.append(tok)
+                    out.extend(held)
+                    held = []
+                    continue
                 out.append(tok)
-            if wi == len(ln["words"]) - 1 and text.endswith(("¬", "-")) and out and out[-1]["line"] == li:
+            if (wi == body - 1 or year) and (year or text.endswith(("¬", "-"))) and out and out[-1]["line"] == li:
                 carry = out.pop()
+    out.extend(held)
     if carry:
         out.append(carry)
     for t in out:
@@ -209,7 +233,7 @@ def _pair(ocr_run, json_run):
     while i < len(ocr_run):
         best = None
         for jj in range(j, min(len(json_run), j + 3)):
-            for take, jtake in ((1, 1), (2, 1), (1, 2)):  # 2:1 or 1:2, a space lost on one side
+            for take, jtake in ((1, 1), (2, 1), (1, 2), (1, 3)):  # 2:1, 1:2, 1:3 (tout-à-fait), a space lost or added
                 if i + take > len(ocr_run) or jj + jtake > len(json_run):
                     continue
                 k = "".join(t["k"] for t in ocr_run[i:i + take])
@@ -219,7 +243,7 @@ def _pair(ocr_run, json_run):
                     best = (r, jj, take, jtake, k, jk)
         if best and best[0] >= 0.5:
             r, jj, take, jtake, k, jk = best
-            status = ("ok" if k == jk or (take == jtake == 1 and slip(k, jk))  # a lost space is the OCR's
+            status = ("ok" if k == jk or (slip(k, jk) and (take == jtake == 1 or take == 1 and "-" in ocr_run[i]["t"]))  # a lost space is the OCR's; même-tems: même temps
                       else "near" if r >= 0.8 and take == jtake == 1 else "diff")
             out.append((list(range(i, i + take)), jj, jtake, status))
             i, j = i + take, jj + jtake
@@ -321,7 +345,7 @@ def align(o, data):
         if r["s"] in ("missing", "diff", "near") and (
                 t["wc"] < 0.6 or (p or "").startswith("footnotes/") or (r.get("path") or "").startswith("footnotes/")):
             r["s"] = "skip" if r["s"] == "missing" else "ok"
-        if r["s"] == "missing" and (t["t"].isdigit() or len(t["t"]) <= 1):  # a verse number, a stray letter
+        if r["s"] == "missing" and (numeral(t["t"]) or len(t["t"]) <= 1):  # a verse number (roman too), a stray letter
             r["s"] = "skip"
     # nor the top and bottom bands (a header misread, the catchword), nor what is below the first footnote
     h = o["size"][1]
@@ -377,6 +401,7 @@ def gaps(o, data, res=None, least=3):
 ITALIC_CHECKED = {"french_commentary", "french", "chapter_intro", "chapter_argument"}  # the rest: italic, or caps, by
 # style; the footnotes are written out (their italic book names dropped)
 LEANING = set("vwxyzkAVWXYZK")  # letters whose strokes lean in roman too: a word mostly of them is not told
+SHORT_ITALIC, SHORT_ROMAN = 12, 2  # a word of one or two letters (à, La, ne, ô) votes only this clearly
 ITALIC_AT, ROMAN_AT = 9, 4  # a word's slant, in degrees: italic from 9, roman to 4 (between: not told)
 
 
@@ -401,10 +426,14 @@ def italics(o, data, res=None):
     votes = []  # (index in res, the scan's italic?, the JSON's italic?, slant)
     for i, w in enumerate(res):
         path = w.get("path")
-        if not path or w["s"] == "skip" or path.rsplit("/", 1)[-1] not in ITALIC_CHECKED or len(w["t"]) < 3:
+        if not path or w["s"] == "skip" or path.rsplit("/", 1)[-1] not in ITALIC_CHECKED:
             continue
+        if any(re.fullmatch(r"\(\w\)\W*", o["lines"][li]["words"][wi]["t"]) for li, wi in w["src"]):
+            continue  # a note's letter
+        if numeral(w["t"]) or len(w["t"]) < 3 and any("'" in o["lines"][li]["words"][wi]["t"] or "’" in o["lines"][li]["words"][wi]["t"] for li, wi in w["src"]):
+            continue  # 17, XVII (as after a ℣, or by a lemma), s' n': a number or a piece of a word, not a word of its own
         sl = word_slant(o, w)
-        if sl is None or ROMAN_AT < sl < ITALIC_AT or 5 * sum(c in LEANING for c in w["t"]) >= 2 * len(w["t"]):
+        if sl is None or ROMAN_AT < sl < ITALIC_AT or (len(w["t"]) < 3 and SHORT_ROMAN < sl < SHORT_ITALIC) or 5 * sum(c in LEANING for c in w["t"]) >= 2 * len(w["t"]):
             continue
         votes.append((i, sl >= ITALIC_AT, w["a"] in marks[path], sl))
     out, k = [], 0
@@ -418,6 +447,14 @@ def italics(o, data, res=None):
             m += 1
         run = votes[k:m + 1]
         mean = sum(v[3] for v in run) / len(run)
+        flank = [votes[n] for n in (k - 1, m + 1) if 0 <= n < len(votes) and res[votes[n][0]]["path"] == res[i]["path"] and votes[n][2] == js]
+        t = res[i]["t"]
+        lone = len(run) == 1 and scan and (mean < 14 or 5 * sum(c in LEANING for c in t) > len(t))  # leaning letters (voyage.)
+        # montagne, sur le bord: a few words the scan measures roman with the text's own style (italic) round them
+        ringed = not scan and len(run) <= 3 and flank and all(v[1] == js for v in flank) and (len(flank) == 2 or len(run) == 1)
+        if lone or ringed:
+            k = m + 1
+            continue
         if len(run) > 1 or mean >= 12 or mean <= 2:
             first, last = res[run[0][0]], res[run[-1][0]]
             s = fields[first["path"]]
