@@ -109,6 +109,7 @@ body { grid-template-rows: auto auto auto 1fr; }
 #ocr-layer .ow-flag { pointer-events: none; }
 #ocr-layer .s-missing { fill: rgba(220, 40, 40, .28); stroke: #d32f2f; stroke-width: 2; }
 #ocr-layer .s-diff { fill: rgba(240, 160, 0, .28); stroke: #e69500; stroke-width: 2; }
+#ocr-layer .s-both { fill: rgba(240, 160, 0, .28); stroke: #e69500; stroke-width: 2.5; }
 #ocr-layer .s-near { stroke: #e69500; stroke-width: 1; stroke-dasharray: 3 2; }
 #ocr-layer .ow:hover { stroke: var(--save); stroke-width: 1; }
 #ocr-layer .cur { fill: rgba(59, 110, 165, .25); stroke: var(--save); stroke-width: 2; }
@@ -127,7 +128,7 @@ body { grid-template-rows: auto auto auto 1fr; }
 #scan-tools .ocr-f.on.zero { opacity: .65; font-weight: 400; background: var(--surface); }
 #scan-tools .f-missing, #scan-tools .f-extra { --ocr-c: #d32f2f; }
 :root[data-theme="dark"] #scan-tools .f-missing, :root[data-theme="dark"] #scan-tools .f-extra { --ocr-c: #ff6060; }
-#scan-tools .f-diff, #scan-tools .f-near { --ocr-c: #e69500; }
+#scan-tools .f-diff, #scan-tools .f-near, #scan-tools .f-both { --ocr-c: #e69500; }
 #scan-tools .f-italics { --ocr-c: #00b248; }
 :root[data-theme="dark"] #scan-tools .f-italics { --ocr-c: #5eff6e; }
 :root { --ocr-it-bg: rgba(0, 210, 70, .35); --ocr-it-ul: #009639; }
@@ -465,3 +466,4 @@ body.turn-open #reviewed, body.batch-open #reviewed { display: none; }
 
 /* italics in the commentary also underlined, to spot them at a glance */
 body:not(.no-ul) .f[data-name="french_commentary"] .it { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+#scan-tools .ocr-phase { font-size: 11px; padding: 1px 6px; }

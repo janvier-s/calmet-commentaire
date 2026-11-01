@@ -15,11 +15,12 @@ const svgEl = (tag, attrs = {}) => {
   for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
   return e;
 };
-const FLAGS = ["missing", "diff", "near"];
+const FLAGS = ["missing", "diff", "near", "both"];
 const TYPES = [
   ["missing", "missing", "Red: in the scan, not in the JSON (space shown red in the text)"],
   ["extra", "not on scan", "Red in the text: in the JSON, not on the scan"],
   ["diff", "diff", "Orange: a different word"],
+  ["both", "both OCRs", "Orange: Kraken and Tesseract both read this word, the JSON has another"],
   ["near", "near", "Orange dashed: nearly the same word"],
   ["italics", "italics", "Green: italic on the scan and roman in the text, or the other way"],
 ];
@@ -64,12 +65,21 @@ const filterBtns = Object.fromEntries(TYPES.map(([k, label, desc]) => {
   filterBar.append(b);
   return [k, b];
 }));
+const phase = (label, keys, title) => Object.assign(document.createElement("button"), {
+  textContent: label, title, className: "ocr-phase",
+  onclick: () => { active = new Set(keys); saveFilters(); draw(); },
+});
+filterBar.prepend(
+  phase("Phase 1", ["missing", "extra", "italics"], "Show only red (missing, not on scan) and green (italics)"),
+  phase("Phase 2", ["both"], "Show only the words both OCRs read and the JSON has otherwise"));
 const count = Object.assign(document.createElement("button"), { className: "link small", id: "ocr-count", hidden: true,
                                                                 title: "Go to the next flagged word among the active filters" });
 const run = Object.assign(document.createElement("button"), { textContent: "Read the scan", hidden: true,
                                                               title: "OCR this page with Kraken (about 15 s)" });
+const tessBtn = Object.assign(document.createElement("button"), { textContent: "Tesseract", hidden: true, className: "small",
+                                                                 title: "Read this page with Tesseract too (a few seconds), to settle the red words" });
 const region = Object.assign(document.createElement("button"), { textContent: "Box", title: "Drag a region on the scan for a to-do (or Shift-drag)" });
-$("scan-tools").querySelector(".grow").before(box, filterBar, count, run, region);
+$("scan-tools").querySelector(".grow").before(box, filterBar, count, tessBtn, run, region);
 check.onchange = () => {
   on = check.checked;
   try { localStorage.setItem("rw-ocr", on ? "1" : "0"); } catch (e) {}
@@ -77,6 +87,7 @@ check.onchange = () => {
   refresh();
 };
 run.onclick = () => refresh(true);
+tessBtn.onclick = () => refresh(false, true);
 region.onclick = () => region.classList.toggle("on");
 function activeFlags() {
   if (!res) return [];
@@ -94,12 +105,15 @@ count.onclick = () => {
 
 // --- fetching and drawing ---
 let pending = 0;
-async function refresh(runOcr = false) {
+async function refresh(runOcr = false, runTess = false) {
   const at = `${S.vol}/${S.page}`;
   if (!on || !S.vol) { res = null; draw(); return; }
   const n = ++pending;
   if (runOcr) { run.disabled = true; run.textContent = "Reading… (15 s)"; }
-  const r = await api("/api/ocr", { vol: S.vol, page: S.page, data: S.fields.length ? typedData() : S.data, run: runOcr });
+  if (runTess) { tessBtn.disabled = true; tessBtn.textContent = "Reading…"; }
+  const r = await api("/api/ocr", { vol: S.vol, page: S.page, data: S.fields.length ? typedData() : S.data, run: runOcr, tess_run: runTess });
+  tessBtn.disabled = false;
+  tessBtn.textContent = "Tesseract";
   run.disabled = false;
   run.textContent = "Read the scan";
   if (n !== pending || at !== `${S.vol}/${S.page}`) return;  // a later page or edit came meanwhile
@@ -133,6 +147,7 @@ function draw() {
   run.hidden = !on || res !== null || img.hidden;
   filterBar.hidden = !on || !res;
   count.hidden = !on || !res;
+  tessBtn.hidden = !on || !res || res.tess !== false;
   svg.hidden = img.hidden || !size;
   if (svg.hidden) return;
   svg.setAttribute("viewBox", `0 0 ${size[0]} ${size[1]}`);
@@ -142,6 +157,7 @@ function draw() {
       extra: res.extra.length,
       diff: res.words.filter((w) => w.s === "diff").length,
       near: res.words.filter((w) => w.s === "near").length,
+      both: res.words.filter((w) => w.s === "both").length,
       italics: res.italics.length,
     };
     for (const [k, label] of TYPES) {
@@ -159,7 +175,7 @@ function draw() {
         r.dataset.i = i;
         r.append(svgEl("title"));
         r.lastChild.textContent = (w.s === "missing" ? `${w.t}: not in the JSON`
-          : w.path ? `${w.t} → ${S.data && textAt(w)} (${w.path})` : w.t)
+          : w.path ? `${w.by === "tess" || w.tt ? `Kraken «${w.t}»` + (w.tt ? ` · Tesseract «${w.tt}»` : "") : w.t} → ${S.data && textAt(w)} (${w.path})` : w.t)
           + (w.sl == null ? "" : `\nSlant ${w.sl}° (${w.sl >= 9 ? "italic" : w.sl <= 4 ? "roman" : "unsure"})`);
         svg.append(r);
       }
