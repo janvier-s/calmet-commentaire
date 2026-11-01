@@ -21,6 +21,11 @@ def page(commentary, latin=None):
             "footnotes": []}
 
 
+def verses_page(latin, french):
+    """A page with one verse holding both its fields."""
+    return {"verses": [{"verse_number": 1, "latin": latin, "french": french}], "commentary": [], "footnotes": []}
+
+
 def statuses(r):
     return [(w["t"], w["s"]) for w in r["words"]]
 
@@ -172,3 +177,106 @@ def test_italics_take_in_a_word_cut_at_its_apostrophe():
     o = ocr(line(300, "Il", "dit", "qu’il", "enleva", "les", "deux", "portes", sl=[0, 0, 15, 16, 15, 15, 16]))
     (it,) = O.italics(o, page("Il dit qu'il enleva les deux portes"))
     assert it["to"] == "italic" and it["old"] == "qu'il enleva les deux portes"
+
+
+def test_default_is_todays_alignment():
+    o, d = ocr(line(300, "le", "troupeaur")), page("le troupeaux")
+    assert O.align(o, d) == O.align(o, d, fix=False)
+
+
+def test_fix_pairs_a_misread_left_unpaired():
+    r = O.align(ocr(line(300, "Nequanda", "dicat", "inimi-I"), line(340, "eus", "meus")),
+                page("Nequando dicat inimicus meus"), fix=True)
+    assert "missing" not in {s for _, s in statuses(r)} and r["extra"] == []
+
+
+def test_fix_joins_a_split_without_any_hyphen():
+    r = O.align(ocr(line(300, "ils", "répom"), line(340, "dent", "ainsi")), page("ils répondent ainsi"), fix=True)
+    assert "missing" not in {s for _, s in statuses(r)} and r["extra"] == []
+
+
+def test_fix_keeps_a_word_only_on_the_scan_red():
+    r = O.align(ocr(line(300, "il", "dit", "alors", "ceci")), page("il dit ceci"), fix=True)
+    assert ("alors", "missing") in statuses(r)
+
+
+def test_fix_keeps_a_deletion_beside_an_unrelated_addition_red():
+    r = O.align(ocr(line(300, "il", "dit", "alors", "ceci")), page("il dit pourtant ceci"), fix=True)
+    assert ("alors", "missing") in statuses(r) and [e["t"] for e in r["extra"]] == ["pourtant"]
+
+
+def test_fix_never_pairs_across_the_verse_columns():
+    right = {"box": [800, 300, 100, 30], "words": [{"t": "aurez", "box": [800, 300, 100, 30], "wc": .99}]}
+    r = O.align(ocr(line(300, "manfueris"), right), verses_page(latin="fueris", french="vous aurez"), fix=True)
+    assert not any(w["t"] == "aurez" and w.get("path", "").endswith("/latin") for w in r["words"])
+
+
+def test_fix_never_pairs_a_verse_number_with_a_word():
+    r = O.align(ocr(line(300, "6", "Quæ", "dixit")), verses_page(latin="Quæ dixit", french=None), fix=True)
+    assert "path" not in r["words"][0]
+
+
+def test_fix_still_pairs_a_number_with_a_number():
+    assert ("37", "ok") in statuses(O.align(ocr(line(300, "chap.", "37")), page("chapitre 37"), fix=True))
+
+
+def test_fix_pairs_on_the_right_half_of_a_commentary_page():
+    o = ocr({"box": [800, 300, 300, 30], "words": [{"t": "parple", "box": [800, 300, 120, 30], "wc": .99}]})
+    assert O.align(o, page("parole"), fix=True)["words"][0].get("path") == "commentary/0/french_commentary"
+
+
+def test_leftovers_are_not_paired_across_two_fields():
+    d = {"verses": [], "footnotes": [], "commentary": [
+        {"latin_quote": None, "french_translation": None, "french_commentary": "il dit"},
+        {"latin_quote": None, "french_translation": None, "french_commentary": "parole vraie"}]}
+    r = O.align(ocr(line(300, "il", "dit", "Xparolx"), line(340, "vraie")), d, fix=True)
+    paths = [w.get("path") for w in r["words"]]
+    assert paths[:2] == ["commentary/0/french_commentary"] * 2 and paths[3] == "commentary/1/french_commentary"
+
+
+def test_the_words_are_the_same_with_and_without_fix():
+    o, d = ocr(line(300, "le", "troupeaur", "alors")), page("le troupeaux")
+    assert [w["t"] for w in O.align(o, d)["words"]] == [w["t"] for w in O.align(o, d, fix=True)["words"]]
+
+
+def test_fix_keeps_a_right_column_word_out_of_the_latin():
+    right = {"box": [800, 300, 100, 30], "words": [{"t": "aurez", "box": [800, 300, 100, 30], "wc": .99}]}
+    o, d = ocr(line(300, "fueris"), right), verses_page(latin="fueris aurem", french="vous")
+    assert O.align(o, d)["words"][1]["path"] == "verses/0/latin"  # today: paired across the gutter
+    assert "path" not in O.align(o, d, fix=True)["words"][1]
+
+
+def test_fix_keeps_a_roman_verse_number_out_of_a_word():
+    o, d = ocr(line(300, "et", "VI", "dixit")), verses_page(latin="et vir dixit", french=None)
+    assert O.align(o, d)["words"][1]["s"] == "near"  # today: VI read as vir
+    assert "path" not in O.align(o, d, fix=True)["words"][1]
+
+
+def _leftovers(commentary, *words, linked, **kw):
+    """`words` read, those of `linked` ({scan index: json index}) linked, the rest left to _repair_leftovers."""
+    ot = O.ocr_tokens(ocr(line(300, *words)))
+    jt = O.json_tokens({"verses": [], "footnotes": [], "commentary": [
+        {"latin_quote": None, "french_translation": None, "french_commentary": c} for c in commentary]})
+    res = [dict(t=t["t"]) for t in ot]
+
+    def link(i, j, status, n=1):
+        res[i].update(s=status, path=jt[j]["path"], a=jt[j]["a"], b=jt[j + n - 1]["b"])
+    for i, j in linked.items():
+        link(i, j, "ok")
+    O._repair_leftovers(res, ot, jt, link, None, **kw)
+    return [(r["t"], r.get("path"), r.get("a")) for r in res]
+
+
+def test_leftovers_pair_with_the_unpaired_between_their_neighbours():
+    out = _leftovers(["il dit répondent ainsi"], "il", "dit", "répom", "dent", "ainsi", linked={0: 0, 1: 1, 4: 3})
+    assert out[2:4] == [("répom", "commentary/0/french_commentary", 7), ("dent", "commentary/0/french_commentary", 7)]
+
+
+def test_leftovers_need_the_likeness_asked():
+    out = _leftovers(["il dit répondent ainsi"], "il", "dit", "répom", "dent", "ainsi", linked={0: 0, 1: 1, 4: 3}, least=0.95)
+    assert [p for _, p, _ in out[2:4]] == [None, None]
+
+
+def test_leftovers_stay_out_of_a_field_neither_neighbour_is_in():
+    out = _leftovers(["il", "répondent", "ainsi"], "il", "répondent", "ainsi", linked={0: 0, 2: 2})
+    assert out[1][1] is None

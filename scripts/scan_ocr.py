@@ -257,22 +257,23 @@ def slip(o, j):
     return single(o) == single(j) or look_alike(o, j) or look_alike(single(o), single(j))
 
 
-def _pair(ocr_run, json_run):
-    """Inside a stretch the two disagree on: [(ocr indexes, json index or None, json count, status)]."""
+def _pair(ocr_run, json_run, allow=None, least=0.5):
+    """Inside a stretch the two disagree on: [(ocr indexes, json index or None, json count, status)].
+    `allow(ocr word, json word)`: False keeps the two apart; `least`: the likeness a pair needs."""
     out, j = [], 0
     i = 0
     while i < len(ocr_run):
         best = None
         for jj in range(j, min(len(json_run), j + 3)):
             for take, jtake in ((1, 1), (2, 1), (1, 2), (1, 3)):  # 2:1, 1:2, 1:3 (tout-à-fait), a space lost or added
-                if i + take > len(ocr_run) or jj + jtake > len(json_run):
+                if i + take > len(ocr_run) or jj + jtake > len(json_run) or allow and not allow(ocr_run[i], json_run[jj]):
                     continue
                 k = "".join(t["k"] for t in ocr_run[i:i + take])
                 jk = "".join(t["k"] for t in json_run[jj:jj + jtake])
                 r = similar(k, jk) - 0.05 * (jj - j) - 0.02 * (take + jtake - 2)
                 if best is None or r > best[0]:
                     best = (r, jj, take, jtake, k, jk)
-        if best and best[0] >= 0.5:
+        if best and best[0] >= least:
             r, jj, take, jtake, k, jk = best
             ae = "".join(_key(t["t"].replace("æ", "a").replace("Æ", "A")) for t in json_run[jj:jj + jtake])  # quæ read qua
             if k != jk and (ae == k or modern_key(" ".join(t["t"] for t in ocr_run[i:i + take])) in (jk, jk.replace("-", ""))):
@@ -325,18 +326,69 @@ def split_columns(o):
     return dict(o, lines=lines)
 
 
-def align(o, data):
+def _allow(o):
+    """The pairs the fixed alignment refuses: a word of the right column with a verse's Latin, of the left
+    with its French; a verse number with a word."""
+    mid = o["size"][0] * 0.45
+
+    def allow(ot, jt):
+        x, path = ot["boxes"][0][0], jt["path"]
+        if path.startswith("verses/") and path.endswith("/latin") and x > mid or path.endswith("/french") and x < mid:
+            return False
+        return not numeral(ot["t"]) or jt["t"].isdigit()
+    return allow
+
+
+def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0.5):
+    """The scan's words still unpaired, paired again with the JSON's words still unpaired between the
+    words linked either side of them, in the field of one of those two (a misread the stretches cut apart:
+    inimi-I eus, répom dent)."""
+    first = {(t["path"], t["a"]): j for j, t in enumerate(jt)}
+
+    def linked(r):  # the JSON's words a scan word is linked to (the last may be in the next field)
+        j = first[r["path"], r["a"]]
+        return range(j, next(k for k in range(j, len(jt)) if jt[k]["b"] == r["b"]) + 1)
+    used = {j for r in res if "path" in r for j in linked(r)}
+    keyed = lambda t: dict(t, k=key_of(t))
+    i = 0
+    while i < len(res):
+        if "path" in res[i]:
+            i += 1
+            continue
+        e = i
+        while e < len(res) and "path" not in res[e]:
+            e += 1
+        sides = [n for n in (i - 1, e) if 0 <= n < len(res)]
+        lo = max(linked(res[i - 1])) if i else -1
+        hi = min(linked(res[e])) if e < len(res) else len(jt)
+        for path in dict.fromkeys(res[n]["path"] for n in sides):
+            run = [n for n in range(i, e) if "path" not in res[n]]
+            cand = [j for j in range(lo + 1, hi) if j not in used and jt[j]["path"] == path]
+            if not run or not cand:
+                continue
+            for idx, j, n, status in _pair([keyed(ot[x]) for x in run], [keyed(jt[x]) for x in cand], allow, least):
+                for x in idx:
+                    if j is not None:
+                        link(run[x], cand[j], status, n)
+                        used.update(cand[j:j + n])
+        i = e
+
+
+def align(o, data, fix=False, tess=None):
     """The OCR set against the JSON: {"size", "words": [{t, boxes, s, path?, a?, b?}], "extra": [{t, path,
     a, b}]}. A word's `s`: ok (the same word, old spelling allowed), near (nearly), diff (a different
     word), missing (not in the JSON), skip (the running header, an unsure reading, a footnote: they are
     expanded, so they differ by design). `extra`: the JSON's words the scan does not have (but for the
-    footnotes'), with what they are written in."""
+    footnotes'), with what they are written in. `fix`: the fixed alignment (the verses' columns kept apart,
+    the verse numbers out of the words, the words left unpaired paired again); `tess`: Tesseract's reading
+    of the page (task 3: not read yet)."""
     o = split_columns(o)
     skip = skipped_lines(o)
     ot = [t for t in ocr_tokens(o) if t["line"] not in skip]
     jt = json_tokens(data)
     res = [dict(t=t["t"], boxes=t["boxes"], s="missing", src=t["src"], wc=t["wc"]) for t in ot]
 
+    allow = _allow(o) if fix else None
     used, at = set(), {}  # at: a JSON word's index -> the scan's word linked to it
 
     def link(i, j, status, n=1):
@@ -350,7 +402,7 @@ def align(o, data):
             for d in range(i2 - i1):
                 link(i1 + d, j1 + d, "ok")
         elif op == "replace":
-            for idx, j, n, status in _pair(ot[i1:i2], jt[j1:j2]):
+            for idx, j, n, status in _pair(ot[i1:i2], jt[j1:j2], allow):
                 for i in idx:
                     if j is not None:
                         link(i1 + i, j1 + j, status, n)
@@ -363,10 +415,13 @@ def align(o, data):
         for a, b, n in sm.get_matching_blocks():
             if n >= 2 or (n == 1 and len(ot[rest[a]]["k"]) >= 4):
                 for d in range(n):
-                    link(rest[a + d], free[b + d], "ok")
-                found += n
+                    if not allow or allow(ot[rest[a + d]], jt[free[b + d]]):
+                        link(rest[a + d], free[b + d], "ok")
+                        found += 1
         if not found:
             break
+    if fix:
+        _repair_leftovers(res, ot, jt, link, allow)
     # around the footnotes (expanded by design), the unmatched are not flagged; nor are unsure readings
     near_path = [None] * len(res)
     last = None
@@ -394,7 +449,10 @@ def align(o, data):
             r["sl"] = round(sl)
     extra = [dict(t=t["t"], path=t["path"], a=t["a"], b=t["b"]) for j, t in enumerate(jt)
              if j not in used and not t["path"].startswith("footnotes/") and len(t["t"]) > 1 and not t["t"].isdigit()]
-    return {"size": o["size"], "words": res, "extra": extra, "unscanned": _unscanned(jt, at, res)}
+    out = {"size": o["size"], "words": res, "extra": extra, "unscanned": _unscanned(jt, at, res)}
+    if fix:
+        out["fix"] = fix
+    return out
 
 
 def _unscanned(jt, at, res, least=3):
