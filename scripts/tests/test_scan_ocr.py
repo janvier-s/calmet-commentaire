@@ -425,3 +425,9 @@ def test_fix_joins_two_scan_words_only_when_they_make_the_json_word():  # Juges 
 def test_plain_still_joins_two_scan_words_by_likeness():
     r = O.align(ocr(line(300, "il", "dit", "entre", "deux", "colomnes", "Dieu")), page("il dit entre colonnes Dieu"))
     assert [w["s"] for w in r["words"][3:5]] == ["diff", "diff"]
+
+
+def test_fix_does_not_join_a_short_word_to_a_long_misread():  # et + miséricordieusemeut: the long word alone is likelier
+    r = O.align(ocr(line(300, "il", "dit", "et", "miséricordieusemeut", "Dieu")),
+                page("il dit miséricordieusement Dieu"), fix=True)
+    assert ("et", "missing") in statuses(r) and r["words"][3]["s"] in ("ok", "near")

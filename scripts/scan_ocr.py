@@ -258,10 +258,10 @@ def slip(o, j):
 
 
 def _joined_same(ocr_toks, json_toks, k, jk):
-    """Words joined on one side or the other that make the same word: the same key, a slip, a likeness of
-    0.9, quæ read qua, or the same once modernized."""
+    """Words joined on one side or the other that make the same word: the same key, a slip, quæ read qua,
+    or the same once modernized."""
     ae = "".join(_key(t["t"].replace("æ", "a").replace("Æ", "A")) for t in json_toks)
-    return (k == jk or slip(k, jk) or similar(k, jk) >= 0.9 or ae == k
+    return (k == jk or slip(k, jk) or ae == k
             or modern_key(" ".join(t["t"] for t in ocr_toks)) in (jk, jk.replace("-", "")))
 
 
@@ -289,7 +289,7 @@ def _pair(ocr_run, json_run, allow=None, least=0.5, skip_least=None):
                         for y in ([t["k"] for t in json_run[jj:jj + jtake]] if jtake > 1 else [jk])):
                     continue  # deux colomnes: colonnes (colomnes alone is likelier); répom dent: répondent joins
                 if skip_least is not None and jj > j and not same and similar(k, jk) < skip_least:
-                    continue  # nostrum: not past "in" to a nostram further on
+                    continue  # nostrum: not past "in" to a nostram further on (a slip-equal one, nostrums, still pairs: a known limit)
                 r = similar(k, jk) - 0.05 * (jj - j) - 0.02 * (take + jtake - 2)
                 if best is None or r > best[0]:
                     best = (r, jj, take, jtake, k, jk)
