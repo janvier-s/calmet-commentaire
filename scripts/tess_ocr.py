@@ -3,8 +3,11 @@
   python tess_ocr.py <volume> <page>...   read the pages (12, 30-34) and cache them
 
 The reading: {"size": [w, h], "words": [{"t", "box": [x, y, w, h], "conf"}]}, cached in
-cache/tess/<volume>/page_NNNN.json. Models: cache/tessdata (fra; lat and frm from tessdata_best)."""
+cache/tess/<volume>/page_NNNN.json. Models: cache/tessdata (fra; lat and frm from tessdata_best).
+Tesseract itself: $CALMET_TESSERACT, else the one on the PATH, else Homebrew's."""
 import json
+import os
+import shutil
 import subprocess
 import sys
 import urllib.request
@@ -14,7 +17,7 @@ from scan_ocr import scan_path
 
 TESS_CACHE = SCRIPTS / "cache" / "tess"
 TESSDATA = SCRIPTS / "cache" / "tessdata"
-TESSERACT = "/opt/homebrew/bin/tesseract"
+TESSERACT = os.environ.get("CALMET_TESSERACT") or shutil.which("tesseract") or "/opt/homebrew/bin/tesseract"
 MODELS = "https://github.com/tesseract-ocr/tessdata_best/raw/main/{}.traineddata"
 
 
@@ -43,7 +46,7 @@ def _size(text):
 
 def read(vol, page, run=False):
     """The page's Tesseract reading, from the cache; else, with `run`, Tesseract's (cached). None: no
-    scan, or not run. A run that fails gives no words (not cached: it is tried again)."""
+    scan, or not run. A run that fails gives no words and its `error` (not cached: it is tried again)."""
     out, scan = cache_path(vol, page), scan_path(vol, page)
     if out.exists():
         return json.loads(out.read_text(encoding="utf-8"))
@@ -54,9 +57,17 @@ def read(vol, page, run=False):
         tsv = subprocess.run([TESSERACT, str(scan), "-", "--tessdata-dir", str(TESSDATA), "-l", "frm+lat+fra",
                               "--psm", "3", "-c", "tessedit_create_tsv=1"],
                              check=True, capture_output=True).stdout.decode("utf-8", errors="replace")
-    except (OSError, subprocess.CalledProcessError) as e:
-        print(f"  {vol} p.{page}: Tesseract failed ({type(e).__name__})", flush=True)
-        return {"size": [0, 0], "words": []}
+    except FileNotFoundError:
+        why = f"tesseract not found ({TESSERACT}; set CALMET_TESSERACT)"
+    except subprocess.CalledProcessError as e:
+        why = (e.stderr or b"").decode("utf-8", errors="replace").strip()[-300:] or f"exit {e.returncode}"
+    except OSError as e:
+        why = str(e)
+    else:
+        why = None
+    if why:
+        print(f"  {vol} p.{page}: Tesseract failed: {why}", flush=True)
+        return {"size": [0, 0], "words": [], "error": why}
     data = {"size": _size(tsv), "words": parse_tsv(tsv)}
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
@@ -93,7 +104,7 @@ def main(argv):
         a, _, b = arg.partition("-")
         for p in range(int(a), int(b or a) + 1):
             t = read(vol, p, run=True)
-            print(f"{vol} p.{p}: " + ("no scan" if t is None else f"{len(t['words'])} words"), flush=True)
+            print(f"{vol} p.{p}: " + ("no scan" if t is None else t.get("error") or f"{len(t['words'])} words"), flush=True)
 
 
 if __name__ == "__main__":

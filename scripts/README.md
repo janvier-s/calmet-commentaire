@@ -116,6 +116,18 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   goes from flag to flag. Shift-drag (or "Box", then drag) a region of the scan: a to-do for it, drawn
   there whenever the page is open. The running header and "COMMENTAIRE." are left out, unsure
   readings and the footnotes (expanded by design) are not flagged.
+- The overlay uses the fixed alignment (`scan_ocr.align(…, fix=True)`): the verses' Latin and French
+  columns kept apart, the verse numbers out of the words, the words still unpaired paired again (a
+  misread split or joined: two words joined only when they make the word); a real missing or added word
+  stays red. "Tesseract" (above the scan, a few seconds) reads the page a second time
+  (`python3 tess_ocr.py VOLUME PAGES` ahead; cached in `cache/tess/`, models in `cache/tessdata/`, lat
+  and frm downloaded from tessdata_best the first time; `$CALMET_TESSERACT` if not on the PATH): a word
+  Kraken garbled is paired by Tesseract's reading, and orange, "both OCRs", is a word both read
+  alike and the JSON has otherwise. Presets: "Phase 1", only the red and the italics; "Phase 2", only
+  "both OCRs". Diagnostics, writing nothing: `ocr_red_report.py VOLUME [--fix]` counts the red of a
+  volume (could pair or not, with a sample); `ocr_reconcile_check.py VOL:PAGE …` sets plain against
+  fixed on chosen pages, plants deleted, inserted and replaced words and checks they stay red (exit 1
+  if not).
 - Words the scan has and the text lacks: `python3 ocr_gaps.py [VOLUME ...]` (seconds; pages Kraken has
   read only) writes `docs/ocr_gaps.json`; the editor shows each as "WORDS MISSING (SCAN)" with the words
   to put in, in modern spelling (`fix_spelling` + `modernize_text`): Accept, Edit or Reject. A run of

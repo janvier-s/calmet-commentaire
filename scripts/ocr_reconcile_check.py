@@ -11,9 +11,11 @@ the planted check.
 The planted check, on a deep copy of the page (the seed: the page's name): two words deleted from a
 verse's Latin, two from its French and two from the commentary (the first of each pair at the end of a
 line on the scan, if one can be), ZZplant1 and ZZplant2 inserted, one word replaced by an unrelated real
-word. Pass: a deleted word's scan box is `missing`, an inserted word is in `extra`, the replaced word's
-scan box is not paired as the same word (diff, missing or both), and every red of the page unplanted
-still red planted (collateral). A field the page lacks gets no plant. Exits 1 if any of these fails.
+word, and one more word deleted next to a scan word the unplanted run leaves unpaired or diff (where the
+repair works: delete-near). Pass: a deleted word's scan box is `missing`, an inserted word is in `extra`,
+the replaced word is red (its scan box `missing`, or the new word in `extra`), and every red of the page
+unplanted still red planted (collateral). A field the page lacks gets no plant. Exits 1 if any of these
+fails.
 """
 import collections
 import copy
@@ -232,6 +234,22 @@ def plant(vol, page, o, data, fixed):
     else:
         notes.append("nowhere to replace a word")
 
+    # deleted next to a red: a word whose scan neighbour is unpaired or diff in the unplanted run
+    sore = lambda n: 0 <= n < len(ws) and (ws[n]["s"] == "diff" or "path" not in ws[n])
+    pool = [(p, c) for ps in targets.values() for p in ps for c in candidates(o, data, fixed, lines, p)
+            if far(c[0]) and (sore(c[0] - 1) or sore(c[0] + 1))]
+    if pool:
+        p, (i, end) = rnd.choice(pool)
+        taken.add(i)
+        s = field(data, p)
+        a, b = ws[i]["a"], ws[i]["b"]
+        plants.append(("delete-near", p, s[a:b], i, end))
+        b2 = b + 1 if s[b:b + 1] == " " else b
+        a2 = a - 1 if b2 == b and s[a - 1:a] == " " else a
+        edits.append((p, a2, b2, ""))
+    else:
+        notes.append("no word to delete next to an unpaired or diff scan word")
+
     planted = copy.deepcopy(data)
     plants_edits.clear()
     plants_edits.extend(edits)
@@ -242,7 +260,7 @@ def plant(vol, page, o, data, fixed):
 
 
 def verdict(kind, word, i, res, planted):
-    if kind == "delete":
+    if kind.startswith("delete"):
         w = res["words"][i]
         return w["s"] == "missing", (f"scan box {w['s']}" + (f" paired to {text_of(planted, w['path'], w['a'], w['b'])!r}"
                                                              f" @{w['path']} {w['a']}-{w['b']}"
@@ -252,7 +270,8 @@ def verdict(kind, word, i, res, planted):
         hit = [e for e in res["extra"] if e["t"] == word]
         return bool(hit), ("in extra" if hit else "not in extra")
     w = res["words"][i]
-    return w["s"] in ("diff", "missing", "both"), f"scan {w['t']!r} {w['s']}"
+    new = any(e["t"] == UNRELATED for e in res["extra"])
+    return w["s"] == "missing" or new, f"scan {w['t']!r} {w['s']}" + (f", {UNRELATED!r} in extra" if new else "")
 
 
 def planted_check(vol, page, o, data, tess, fixed):
@@ -266,7 +285,7 @@ def planted_check(vol, page, o, data, tess, fixed):
         good, got = verdict(kind, word, i, pf, planted)
         _, got0 = verdict(kind, word, i, pp, planted)
         ok += good
-        print(f"     {'PASS' if good else 'FAIL'} {kind:7} {word!r} @{path}{' (line end)' if end else ''}:"
+        print(f"     {'PASS' if good else 'FAIL'} {kind:11} {word!r} @{path}{' (line end)' if end else ''}:"
               f" fixed+tess {got}; plain {got0}")
     # collateral: every red of the unplanted run still red in the planted one
     lost = []

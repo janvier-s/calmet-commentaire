@@ -50,6 +50,8 @@ def red(vol, fix=False):
 
 
 def main(argv):
+    if not argv or argv[0].startswith("-"):
+        sys.exit(__doc__)
     vol, fix = argv[0], "--fix" in argv
     r = red(vol, fix)
     print(f"{vol}{' --fix' if fix else ''}: pages with OCR {r['pages']}, with red {r['red_pages']}, red {r['red']}"

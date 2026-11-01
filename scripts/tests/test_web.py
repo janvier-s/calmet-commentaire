@@ -336,3 +336,17 @@ def test_refresh_generated_closes_the_scan_issues_an_edit_fixed(data_dir):
     assert r["fixed"] == 1 and next(i for i in r["issues"] if i["id"] == it["id"])["status"] == "resolved"
     assert call("/api/queue?kind=ocr_italic&status=open")["items"] == []
     server.shutdown()
+
+
+def test_ocr_tesseract_run_that_reads_nothing_is_an_error(web, tmp_path, monkeypatch):
+    import scan_ocr
+    import tess_ocr
+    from conftest import dump
+    monkeypatch.setattr(scan_ocr, "OCR_CACHE", tmp_path / "ocr")
+    dump(scan_ocr.cache_path(VOL, 194), {"size": [1479, 1969], "lines": [{"box": [340, 300, 300, 30], "words": [
+        {"t": "une", "box": [340, 300, 70, 30], "wc": 0.99}]}]})
+    monkeypatch.setattr(tess_ocr, "read", lambda vol, page, run=False: {"size": [0, 0], "words": [], "error": "tesseract not found"})
+    data = {"verses": [], "commentary": [{"french_commentary": "une"}], "footnotes": []}
+    st, r = web("/api/ocr", {"vol": VOL, "page": 194, "data": data, "tess_run": True})
+    assert st == 500 and r["error"] == "Tesseract failed: tesseract not found"
+    assert web("/api/ocr", {"vol": VOL, "page": 194, "data": data})[1]["ocr"]["tess"] is False  # not asked: no error

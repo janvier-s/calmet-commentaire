@@ -431,3 +431,23 @@ def test_fix_does_not_join_a_short_word_to_a_long_misread():  # et + miséricord
     r = O.align(ocr(line(300, "il", "dit", "et", "miséricordieusemeut", "Dieu")),
                 page("il dit miséricordieusement Dieu"), fix=True)
     assert ("et", "missing") in statuses(r) and r["words"][3]["s"] in ("ok", "near")
+
+
+def test_tesseract_reading_nothing_beneath_does_not_join_a_scan_only_word():  # "" + "sedenti" made sedenti
+    o = ocr(line(300, "ejus", "alors", "xqdzmi", "in"))
+    r = O.align(o, verses_page(latin="ejus sedenti in", french=None), fix=True,
+                tess=tess(("sedenti", o["lines"][0]["words"][2]["box"])))
+    assert ("alors", "missing") in statuses(r)
+
+
+def test_tesseract_reading_nothing_beneath_does_not_join_in_the_commentary():
+    o = ocr(line(300, "il", "dit", "alors", "xqdzmi", "ceci"))
+    r = O.align(o, page("il dit pourtant ceci"), fix=True,
+                tess=tess(("pourtant", o["lines"][0]["words"][3]["box"])))
+    assert ("alors", "missing") in statuses(r)
+
+
+def test_tesseract_reading_only_punctuation_is_no_reading():  # _key("") is "et"
+    o = ocr(line(300, "il", "dit", "xqdzmi", "ceci"))
+    r = O.align(o, page("il dit et ceci"), fix=True, tess=tess(("—", o["lines"][0]["words"][2]["box"])))
+    assert r["words"][2].get("by") != "tess" and r["words"][2]["s"] != "ok"

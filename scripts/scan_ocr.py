@@ -279,6 +279,8 @@ def _pair(ocr_run, json_run, allow=None, least=0.5, skip_least=None):
             for take, jtake in ((1, 1), (2, 1), (1, 2), (1, 3)):  # 2:1, 1:2, 1:3 (tout-à-fait), a space lost or added
                 if i + take > len(ocr_run) or jj + jtake > len(json_run):
                     continue
+                if (take > 1 or jtake > 1) and not all(t["k"] for t in ocr_run[i:i + take] + json_run[jj:jj + jtake]):
+                    continue  # a piece with no key ("" + sedenti is sedenti): no join
                 k = "".join(t["k"] for t in ocr_run[i:i + take])
                 jk = "".join(t["k"] for t in json_run[jj:jj + jtake])
                 if allow and not allow(ocr_run[i], json_run[jj], k == jk):
@@ -412,11 +414,13 @@ def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0
         lo = max(linked(res[i - 1])) if i else -1
         hi = min(linked(res[e])) if e < len(res) else len(jt)
         for path in dict.fromkeys(res[n]["path"] for n in sides):
-            run = [n for n in range(i, e) if "path" not in res[n]]
+            run = [n for n in range(i, e) if "path" not in res[n] and key_of(ot[n]) is not None]  # None: no reading
             cand = [j for j in range(lo + 1, hi) if j not in used and jt[j]["path"] == path]
             if not run or not cand:
                 continue
             for idx, j, n, status in _pair([keyed(ot[x]) for x in run], [jt[x] for x in cand], allow, least, skip_least):
+                if run[idx[-1]] - run[idx[0]] != len(idx) - 1:
+                    continue  # a join over a scan word left out (no reading): not made, it stays red
                 for x in idx:  # a join only over the JSON's words next to each other (link takes those between)
                     if j is not None and cand[j + n - 1] == cand[j] + n - 1:
                         link(run[x], cand[j], status, n)
@@ -482,7 +486,8 @@ def align(o, data, fix=False, tess=None):
         def by_tess(i, j, status, n=1):
             link(i, j, status, n)
             res[i]["by"] = "tess"
-        tk = {id(t): key(r) if r else "" for t, r in zip(ot, read)}  # nothing beneath: it pairs with nothing
+        tk = {id(t): key(r) if any(c.isalnum() for c in r) else None  # nothing beneath (or only a dash): no key, left out
+              for t, r in zip(ot, read)}
         _repair_leftovers(res, ot, jt, by_tess, allow, lambda t: tk[id(t)], 0.7)
     # around the footnotes (expanded by design), the unmatched are not flagged; nor are unsure readings
     near_path = [None] * len(res)

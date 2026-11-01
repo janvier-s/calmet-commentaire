@@ -255,6 +255,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             tess = tess_ocr.read(vol, page, run=bool(body.get("tess_run")))
         except (OSError, subprocess.CalledProcessError) as e:  # URLError and HTTPError are OSErrors
             raise ApiError(500, {"error": f"Tesseract failed: {getattr(e, 'stderr', b'') and e.stderr.decode(errors='replace')[-300:] or e}"})
+        if body.get("tess_run") and tess is not None and not tess["words"]:  # asked to read, and it read nothing
+            raise ApiError(500, {"error": f"Tesseract failed: {tess.get('error') or 'no words read'}"})
         res = scan_ocr.align(o, data, fix=True, tess=tess)
         res["italics"] = [{k: r[k] for k in ("path", "a", "b", "to", "words", "slant")} for r in scan_ocr.italics(o, data, raw["words"])]
         return {"ocr": res}

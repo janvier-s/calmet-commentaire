@@ -30,7 +30,10 @@ try { on = localStorage.getItem("rw-ocr") === "1"; } catch (e) {}
 let active = new Set(TYPES.map(([k]) => k));
 try {
   const saved = JSON.parse(localStorage.getItem("rw-ocr-filters"));
-  if (Array.isArray(saved)) active = new Set(saved.filter((k) => TYPES.some(([t]) => t === k)));
+  if (Array.isArray(saved)) {
+    active = new Set(saved.filter((k) => TYPES.some(([t]) => t === k)));
+    if (!saved.includes("both") && (active.has("diff") || active.has("near"))) active.add("both");  // saved before "both" was
+  }
 } catch (e) {}
 const saveFilters = () => { try { localStorage.setItem("rw-ocr-filters", JSON.stringify([...active])); } catch (e) {} };
 
@@ -479,7 +482,7 @@ function showActions(i, x, y) {
     if (b > a && !old) acts.push([`Insert all ${b - a + 1}: “${words}”`, () => insertWords(a, b)]);
   } else if (w.path) {
     const now = textAt(w);
-    if ((w.s === "diff" || w.s === "near") && core(w.t) && core(w.t) !== core(now)) acts.push([`Use the scan’s “${core(w.t)}”`, () => useScan(w)]);
+    if ((w.s === "diff" || w.s === "near" || w.s === "both") && core(w.t) && core(w.t) !== core(now)) acts.push([`Use the scan’s “${core(w.t)}”`, () => useScan(w)]);
     const it = res.italics.find((r) => r.words[0] <= i && i <= r.words[1]);
     if (it) {
       const n = it.words[1] - it.words[0] + 1;
