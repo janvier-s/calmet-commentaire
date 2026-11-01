@@ -259,17 +259,20 @@ def slip(o, j):
 
 def _pair(ocr_run, json_run, allow=None, least=0.5):
     """Inside a stretch the two disagree on: [(ocr indexes, json index or None, json count, status)].
-    `allow(ocr word, json word)`: False keeps the two apart; `least`: the likeness a pair needs."""
+    `allow(ocr word, json word, exact)`: False keeps the two apart (`exact`: their keys, joined, the same);
+    `least`: the likeness a pair needs."""
     out, j = [], 0
     i = 0
     while i < len(ocr_run):
         best = None
         for jj in range(j, min(len(json_run), j + 3)):
             for take, jtake in ((1, 1), (2, 1), (1, 2), (1, 3)):  # 2:1, 1:2, 1:3 (tout-à-fait), a space lost or added
-                if i + take > len(ocr_run) or jj + jtake > len(json_run) or allow and not allow(ocr_run[i], json_run[jj]):
+                if i + take > len(ocr_run) or jj + jtake > len(json_run):
                     continue
                 k = "".join(t["k"] for t in ocr_run[i:i + take])
                 jk = "".join(t["k"] for t in json_run[jj:jj + jtake])
+                if allow and not allow(ocr_run[i], json_run[jj], k == jk):
+                    continue
                 r = similar(k, jk) - 0.05 * (jj - j) - 0.02 * (take + jtake - 2)
                 if best is None or r > best[0]:
                     best = (r, jj, take, jtake, k, jk)
@@ -327,13 +330,17 @@ def split_columns(o):
 
 
 def _allow(o):
-    """The pairs the fixed alignment refuses: a word of the right column with a verse's Latin, of the left
-    with its French; a verse number with a word (a number, a range 51-52, allowed)."""
-    mid = o["size"][0] * 0.45
+    """The pairs the fixed alignment refuses, `o` the columns split: but for the same word, a word of the
+    right column with a verse's Latin, of the left with its French; a verse number with a word (a number,
+    a range 51-52, allowed). The right column: from 30 px before the middle start of the lines begun
+    between 0.3 and 0.7 of the width (the page sits further left or right on the scan); else 0.45."""
+    w = o["size"][0]
+    starts = sorted(ln["box"][0] for ln in o["lines"] if 0.3 * w < ln["box"][0] < 0.7 * w)
+    mid = (starts[(len(starts) - 1) // 2] + starts[len(starts) // 2]) / 2 - 30 if starts else 0.45 * w
 
-    def allow(ot, jt):
-        x, path = ot["boxes"][0][0], jt["path"]
-        if path.startswith("verses/") and path.endswith("/latin") and x > mid or path.endswith("/french") and x < mid:
+    def allow(ot, jt, exact=False):
+        right, path = ot["boxes"][0][0] >= mid, jt["path"]
+        if not exact and path.startswith("verses/") and (path.endswith("/latin") and right or path.endswith("/french") and not right):
             return False
         return not numeral(ot["t"]) or any(c.isdigit() for c in jt["t"])
     return allow
@@ -415,7 +422,7 @@ def align(o, data, fix=False, tess=None):
         for a, b, n in sm.get_matching_blocks():
             if n >= 2 or (n == 1 and len(ot[rest[a]]["k"]) >= 4):
                 for d in range(n):
-                    if not allow or allow(ot[rest[a + d]], jt[free[b + d]]):
+                    if not allow or allow(ot[rest[a + d]], jt[free[b + d]], True):
                         link(rest[a + d], free[b + d], "ok")
                         found += 1
         if not found:

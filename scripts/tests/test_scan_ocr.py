@@ -285,3 +285,19 @@ def test_leftovers_stay_out_of_a_field_neither_neighbour_is_in():
 def test_fix_pairs_a_number_with_a_range():
     r = O.align(ocr(line(300, "versets", "52", "ainsi")), page("versets 51-52 ainsi"), fix=True)
     assert r["words"][1].get("path") == "commentary/0/french_commentary"
+
+
+def test_fix_pairs_the_same_word_across_the_gutter():
+    right = {"box": [800, 300, 100, 30], "words": [{"t": "au", "box": [800, 300, 40, 30], "wc": .99},
+                                                   {"t": "rem", "box": [855, 300, 60, 30], "wc": .99}]}
+    r = O.align(ocr(line(300, "dixit"), right), verses_page(latin="dixit aurem", french="vous"), fix=True)
+    assert [w.get("path") for w in r["words"][1:]] == ["verses/0/latin"] * 2
+
+
+def test_the_gutter_is_the_right_columns_start_else_045():
+    tok = lambda x: {"t": "aurez", "boxes": [[x, 300, 100, 30]]}
+    latin = {"t": "aurem", "path": "verses/0/latin"}
+    left_only = ocr(line(300, "dixit"))  # no line starts mid-page: the right column from 0.45 of the width
+    assert not O._allow(left_only)(tok(700), latin) and O._allow(left_only)(tok(600), latin)
+    two = ocr(line(300, "dixit"), {"box": [900, 340, 100, 30], "words": []})
+    assert O._allow(two)(tok(700), latin) and not O._allow(two)(tok(875), latin)
