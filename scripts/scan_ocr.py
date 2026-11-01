@@ -374,7 +374,7 @@ def _allow(o):
 def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0.5):
     """The scan's words still unpaired, paired again with the JSON's words still unpaired between the
     words linked either side of them, in the field of one of those two (a misread the stretches cut apart:
-    inimi-I eus, répom dent)."""
+    inimi-I eus, répom dent). `key_of`: the scan word's key (another reading of it: Tesseract's)."""
     first = {(t["path"], t["a"]): j for j, t in enumerate(jt)}
 
     def linked(r):  # the JSON's words a scan word is linked to (the last may be in the next field)
@@ -398,7 +398,7 @@ def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0
             cand = [j for j in range(lo + 1, hi) if j not in used and jt[j]["path"] == path]
             if not run or not cand:
                 continue
-            for idx, j, n, status in _pair([keyed(ot[x]) for x in run], [keyed(jt[x]) for x in cand], allow, least):
+            for idx, j, n, status in _pair([keyed(ot[x]) for x in run], [jt[x] for x in cand], allow, least):
                 for x in idx:  # a join only over the JSON's words next to each other (link takes those between)
                     if j is not None and cand[j + n - 1] == cand[j] + n - 1:
                         link(run[x], cand[j], status, n)
@@ -413,7 +413,9 @@ def align(o, data, fix=False, tess=None):
     expanded, so they differ by design). `extra`: the JSON's words the scan does not have (but for the
     footnotes'), with what they are written in. `fix`: the fixed alignment (the verses' columns kept apart,
     the verse numbers out of the words, the words left unpaired paired again); `tess`: Tesseract's reading
-    of the page (task 3: not read yet)."""
+    of the page (tess_ocr.read), with `fix`: the words still unpaired paired by it (`by`: tess), a paired
+    word both OCRs read against the JSON `both` (`was`: its status before), `tt` its reading under each
+    paired word, and `tess`: whether there was one."""
     o = split_columns(o)
     skip = skipped_lines(o, fix)
     ot = [t for t in ocr_tokens(o) if t["line"] not in skip]
@@ -452,8 +454,18 @@ def align(o, data, fix=False, tess=None):
                         found += 1
         if not found:
             break
+    tess = fix and tess and tess["words"] and tess
     if fix:
         _repair_leftovers(res, ot, jt, link, allow)
+    if tess:
+        from tess_ocr import under
+        read = [under(tess, t["boxes"]) for t in ot]
+
+        def by_tess(i, j, status, n=1):
+            link(i, j, status, n)
+            res[i]["by"] = "tess"
+        tk = {id(t): key(r) if r else "" for t, r in zip(ot, read)}  # nothing beneath: it pairs with nothing
+        _repair_leftovers(res, ot, jt, by_tess, allow, lambda t: tk[id(t)], 0.7)
     # around the footnotes (expanded by design), the unmatched are not flagged; nor are unsure readings
     near_path = [None] * len(res)
     last = None
@@ -484,10 +496,30 @@ def align(o, data, fix=False, tess=None):
     extra = [dict(t=t["t"], path=t["path"], a=t["a"], b=t["b"]) for j, t in enumerate(jt)
              if j not in used and not t["path"].startswith("footnotes/") and len(t["t"]) > 1 and not t["t"].isdigit()
              and not (fix and re.fullmatch(r"verses/\d+/annotations", t["path"]) and MARGIN_YEAR.fullmatch(t["t"]))]  # the margin's year
+    if tess:
+        _both(res, ot, jt, read)
     out = {"size": o["size"], "words": res, "extra": extra, "unscanned": _unscanned(jt, at, res)}
     if fix:
-        out["fix"] = fix
+        out.update(fix=fix, tess=bool(tess))
     return out
+
+
+def _both(res, ot, jt, read):
+    """`tt` on every paired word; `both` on those Tesseract reads as Kraken does (the same key or modern
+    key), against the JSON's word, but for numbers and the pieces of a word split (its key under 60% of
+    the JSON's, or a scan word beside it linked to the same JSON words)."""
+    first = {(t["path"], t["a"]): j for j, t in enumerate(jt)}
+    span = lambda r: (r.get("path"), r.get("a"), r.get("b"))
+    for i, (r, t, tt) in enumerate(zip(res, ot, read)):
+        if "path" not in r:
+            continue
+        r["tt"] = tt
+        j = first[r["path"], r["a"]]
+        jk = "".join(x["k"] for x in jt[j:next(k for k in range(j, len(jt)) if jt[k]["b"] == r["b"]) + 1])
+        piece = any(0 <= n < len(res) and span(res[n]) == span(r) for n in (i - 1, i + 1))
+        if (r["s"] in ("diff", "near") and tt and (key(tt) == t["k"] or modern_key(tt) == modern_key(t["t"]))
+                and t["k"] != jk and not numeral(t["t"]) and len(t["k"]) >= 0.6 * len(jk) and not piece):
+            r.update(was=r["s"], s="both")
 
 
 def _unscanned(jt, at, res, least=3):

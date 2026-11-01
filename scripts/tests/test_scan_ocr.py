@@ -360,3 +360,46 @@ def test_leftovers_join_only_json_words_next_to_each_other():
         link(i, j, "ok")
     O._repair_leftovers(res, ot, jt, link, None)
     assert res[1].get("b") != jt[2]["b"]  # not over XX, linked to the scan's last word
+
+
+def tess(*words):
+    return {"size": [1479, 1969], "words": [{"t": t, "box": b, "conf": 90} for t, b in words]}
+
+
+def test_tesseract_pairs_a_garbled_word_kraken_could_not():
+    o = ocr(line(300, "ejus", "xqdzmi", "in"))   # similar(key("xqdzmi"), key("sedenti")) = 0.31: Kraken alone cannot pair it
+    r = O.align(o, verses_page(latin="ejus sedenti in", french=None), fix=True,
+                tess=tess(("sedenti", o["lines"][0]["words"][1]["box"])))
+    assert r["words"][1].get("by") == "tess" and r["extra"] == []
+
+
+def test_tesseract_does_not_pair_a_real_deletion_with_an_unrelated_addition():
+    o = ocr(line(300, "il", "dit", "alors", "ceci"))
+    r = O.align(o, page("il dit pourtant ceci"), fix=True, tess=tess(("alors", o["lines"][0]["words"][2]["box"])))
+    assert ("alors", "missing") in statuses(r)
+
+
+def test_both_ocrs_against_the_json():
+    o = ocr(line(300, "telles", "choses"))
+    r = O.align(o, page("celles choses"), fix=True, tess=tess(("telles", [340, 300, 120, 30])))
+    assert (r["tess"], r["words"][0]["s"]) == (True, "both")
+
+
+def test_not_both_when_tesseract_reads_the_json_word():
+    o = ocr(line(300, "parple"))
+    r = O.align(o, page("parole"), fix=True, tess=tess(("parole", [340, 300, 120, 30])))
+    assert r["words"][0]["s"] != "both"
+
+
+def test_not_both_for_numbers_and_pieces():
+    o = ocr(line(300, "ma"), line(340, "culini"))
+    r = O.align(o, verses_page(latin="masculini", french=None), fix=True,
+                tess=tess(("ma", [340, 300, 40, 30]), ("culini", [340, 340, 120, 30])))
+    assert "both" not in {w["s"] for w in r["words"]}
+
+
+def test_no_tesseract_reading_falls_back_and_says_so():
+    o, d = ocr(line(300, "telles")), page("celles")
+    for t in (None, {"size": [1479, 1969], "words": []}):
+        r = O.align(o, d, fix=True, tess=t)
+        assert r["tess"] is False and r["words"][0]["s"] in ("diff", "near")
