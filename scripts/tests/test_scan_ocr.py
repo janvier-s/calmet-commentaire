@@ -280,3 +280,8 @@ def test_leftovers_need_the_likeness_asked():
 def test_leftovers_stay_out_of_a_field_neither_neighbour_is_in():
     out = _leftovers(["il", "répondent", "ainsi"], "il", "répondent", "ainsi", linked={0: 0, 2: 2})
     assert out[1][1] is None
+
+
+def test_fix_pairs_a_number_with_a_range():
+    r = O.align(ocr(line(300, "versets", "52", "ainsi")), page("versets 51-52 ainsi"), fix=True)
+    assert r["words"][1].get("path") == "commentary/0/french_commentary"

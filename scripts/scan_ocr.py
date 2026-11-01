@@ -328,14 +328,14 @@ def split_columns(o):
 
 def _allow(o):
     """The pairs the fixed alignment refuses: a word of the right column with a verse's Latin, of the left
-    with its French; a verse number with a word."""
+    with its French; a verse number with a word (a number, a range 51-52, allowed)."""
     mid = o["size"][0] * 0.45
 
     def allow(ot, jt):
         x, path = ot["boxes"][0][0], jt["path"]
         if path.startswith("verses/") and path.endswith("/latin") and x > mid or path.endswith("/french") and x < mid:
             return False
-        return not numeral(ot["t"]) or jt["t"].isdigit()
+        return not numeral(ot["t"]) or any(c.isdigit() for c in jt["t"])
     return allow
 
 
