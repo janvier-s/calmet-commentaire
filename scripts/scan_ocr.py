@@ -332,7 +332,7 @@ def split_columns(o):
 def _allow(o):
     """The pairs the fixed alignment refuses, `o` the columns split: but for the same word, a word of the
     right column with a verse's Latin, of the left with its French; a verse number with a word (a number,
-    a range 51-52, allowed). The right column: from 30 px before the middle start of the lines begun
+    a range 51-52, the same numeral XC, a slip II for Il allowed). The right column: from 30 px before the middle start of the lines begun
     between 0.3 and 0.7 of the width (the page sits further left or right on the scan); else 0.45."""
     w = o["size"][0]
     starts = sorted(ln["box"][0] for ln in o["lines"] if 0.3 * w < ln["box"][0] < 0.7 * w)
@@ -342,7 +342,7 @@ def _allow(o):
         right, path = ot["boxes"][0][0] >= mid, jt["path"]
         if not exact and path.startswith("verses/") and (path.endswith("/latin") and right or path.endswith("/french") and not right):
             return False
-        return not numeral(ot["t"]) or any(c.isdigit() for c in jt["t"])
+        return not numeral(ot["t"]) or exact or any(c.isdigit() for c in jt["t"]) or slip(ot["k"], jt["k"])
     return allow
 
 

@@ -301,3 +301,13 @@ def test_the_gutter_is_the_right_columns_start_else_045():
     assert not O._allow(left_only)(tok(700), latin) and O._allow(left_only)(tok(600), latin)
     two = ocr(line(300, "dixit"), {"box": [900, 340, 100, 30], "words": []})
     assert O._allow(two)(tok(700), latin) and not O._allow(two)(tok(875), latin)
+
+
+def test_fix_pairs_a_numeral_with_the_same_numeral():
+    d = {"chapter_title": "PSEAUME XC", "verses": [], "commentary": [], "footnotes": []}
+    r = O.align(ocr(line(300, "PSEAUME", "X", "C")), d, fix=True)
+    assert [w.get("path") for w in r["words"]] == ["chapter_title"] * 3
+
+
+def test_fix_pairs_a_numeral_that_is_a_slip_for_a_word():
+    assert ("II", "ok") in statuses(O.align(ocr(line(300, "dit", "II", "vient")), page("dit Il vient"), fix=True))
