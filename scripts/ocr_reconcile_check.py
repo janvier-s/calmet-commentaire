@@ -5,14 +5,15 @@
 Reads cache/ocr/<vol>/ (never runs Kraken), cache/tess/<vol>/ (run tess_ocr.py first) and
 data/<vol>/normalized/; writes nothing. For each page: the count of each status, plain and fixed with
 Tesseract; every red (a scan word `missing`, a JSON word `extra`) the fix took away and what it paired it
-to; the `both` list; the italics stretches found on each alignment; then the planted check.
+to, and every red it added; the `both` list; the italics stretches found on one alignment only; then
+the planted check.
 
 The planted check, on a deep copy of the page (the seed: the page's name): two words deleted from a
 verse's Latin, two from its French and two from the commentary (the first of each pair at the end of a
 line on the scan, if one can be), ZZplant1 and ZZplant2 inserted, one word replaced by an unrelated real
 word. Pass: a deleted word's scan box is `missing`, an inserted word is in `extra`, the replaced word's
-scan box is not paired as the same word (diff, missing or both). A field the page lacks gets no plant.
-Exits 1 if a planted word fails.
+scan box is not paired as the same word (diff, missing or both), and every red of the page unplanted
+still red planted (collateral). A field the page lacks gets no plant. Exits 1 if any of these fails.
 """
 import collections
 import copy
@@ -95,11 +96,24 @@ def report(vol, page, o, data, tess, plain, fixed):
         to = ", ".join(f"scan {w['t']!r} ({w['s']}{' by tess' if w.get('by') == 'tess' else ''})" for w in by) \
             or "no longer flagged (not paired)"
         gone.append(f"json {e['t']!r} @{e['path']} -> {to}")
-    new = sum(1 for a, b in zip(ws0, ws1) if b["s"] in RED and a["s"] not in RED)
+    new = []
+    for a, b in zip(ws0, ws1):
+        if b["s"] in RED and a["s"] not in RED:
+            was = (f"{a.get('path')} {a.get('a')}-{a.get('b')} {text_of(data, a['path'], a['a'], a['b'])!r}"
+                   if a.get("path") else "(unpaired)")
+            new.append(f"scan {a['t']!r}: plain {a['s']}{' ' + was if a.get('path') else ''}")
     px = {(e["path"], e["a"]) for e in plain["extra"]}
-    new += sum(1 for e in fixed["extra"] if (e["path"], e["a"]) not in px)
-    print(f"  red gone ({len(gone)}), red new ({new}):")
+    for e in fixed["extra"]:
+        if (e["path"], e["a"]) in px:
+            continue
+        by = [w for w in ws0 if w.get("path") == e["path"] and w["a"] <= e["a"] < w["b"]]
+        was = ", ".join(f"scan {w['t']!r} ({w['s']})" for w in by) or "not flagged"
+        new.append(f"json {e['t']!r} @{e['path']}: plain {was}")
+    print(f"  red gone ({len(gone)}):")
     for g in gone:
+        print("    ", g)
+    print(f"  red new ({len(new)}):")
+    for g in new:
         print("    ", g)
 
     both = [w for w in ws1 if w["s"] == "both"]
@@ -108,10 +122,18 @@ def report(vol, page, o, data, tess, plain, fixed):
         print(f"     scan {w['t']!r} tess {w.get('tt')!r} json {text_of(data, w['path'], w['a'], w['b'])!r}"
               f" @{w['path']} (was {w.get('was')})")
 
-    i0, i1 = O.italics(o, data, ws0), O.italics(o, data, ws1)
-    print(f"  italics: plain {len(i0)}, fixed+tess {len(i1)}{'' if len(i0) == len(i1) else '  (DIFFER)'}")
+    stretch = lambda x: (x["path"], x["a"], x["b"], x["to"])
+    i0, i1 = {stretch(x): x for x in O.italics(o, data, ws0)}, {stretch(x): x for x in O.italics(o, data, ws1)}
+    only0, only1 = [i0[k] for k in i0 if k not in i1], [i1[k] for k in i1 if k not in i0]
+    print(f"  italics: plain {len(i0)}, fixed+tess {len(i1)}, the same {len(i0) - len(only0)}"
+          f"{'' if not only0 and not only1 else '  (DIFFER)'}")
+    for name, xs, ws in (("only plain", only0, ws0), ("only fixed+tess", only1, ws1)):
+        for x in xs:
+            f, l = x["words"]
+            print(f"     {name}: {x['to']} {x['old']!r} @{x['path']} {x['a']}-{x['b']}"
+                  f" (scan {' '.join(w['t'] for w in ws[f:l + 1])!r}, slant {x['slant']})")
     return {"red": (c0["missing"] + c0["extra"], c1["missing"] + c1["extra"]), "both": len(both),
-            "italics": (len(i0), len(i1))}
+            "italics": f"{len(i0) - len(only0)} same, {len(only0)} only plain, {len(only1)} only fixed"}
 
 
 # --- the planted check
@@ -137,6 +159,14 @@ def candidates(o, data, res, lines, path):
         end = i + 1 >= len(ws) or lines[i + 1][0] != lines[i][-1] or len(set(lines[i])) > 1
         out.append((i, end))
     return out
+
+
+plants_edits = []  # the last plant's edits: (path, a, b, new)
+
+
+def shift(path, a, edits):
+    """Offset `a` of `path` once the edits are made (none overlaps a word they leave)."""
+    return a + sum(len(new) - (eb - ea) for p, ea, eb, new in edits if p == path and eb <= a)
 
 
 def plant(vol, page, o, data, fixed):
@@ -203,6 +233,8 @@ def plant(vol, page, o, data, fixed):
         notes.append("nowhere to replace a word")
 
     planted = copy.deepcopy(data)
+    plants_edits.clear()
+    plants_edits.extend(edits)
     for p, a, b, new in sorted(edits, key=lambda e: (e[0], -e[1])):  # the last first: the offsets hold
         s = field(planted, p)
         set_field(planted, p, s[:a] + new + s[b:])
@@ -236,7 +268,25 @@ def planted_check(vol, page, o, data, tess, fixed):
         ok += good
         print(f"     {'PASS' if good else 'FAIL'} {kind:7} {word!r} @{path}{' (line end)' if end else ''}:"
               f" fixed+tess {got}; plain {got0}")
-    return ok, len(plants)
+    # collateral: every red of the unplanted run still red in the planted one
+    lost = []
+    for i, w in enumerate(fixed["words"]):
+        if w["s"] in RED and pf["words"][i]["s"] not in RED:
+            v = pf["words"][i]
+            lost.append(f"scan {w['t']!r} now {v['s']}" + (f" paired to {text_of(planted, v['path'], v['a'], v['b'])!r}"
+                                                         f" @{v['path']}" if v.get("path") else ""))
+    px = {(e["path"], e["a"]) for e in pf["extra"]}
+    for e in fixed["extra"]:
+        a = shift(e["path"], e["a"], plants_edits)
+        if (e["path"], a) not in px:
+            by = [v for v in pf["words"] if v.get("path") == e["path"] and v["a"] <= a < v["b"]]
+            lost.append(f"json {e['t']!r} @{e['path']} now " + (", ".join(f"paired to scan {v['t']!r} ({v['s']})" for v in by)
+                                                               or "not flagged"))
+    reds = sum(1 for w in fixed["words"] if w["s"] in RED) + len(fixed["extra"])
+    print(f"     {'PASS' if not lost else 'FAIL'} collateral: {reds - len(lost)}/{reds} reds of the page still red")
+    for x in lost:
+        print("       FAIL lost red:", x)
+    return ok, len(plants), reds - len(lost), reds
 
 
 def main(argv):
@@ -255,10 +305,10 @@ def main(argv):
         fixed = O.align(o, data, fix=True, tess=tess)
         r = report(vol, page, o, data, tess, plain, fixed)
         print("  planted:")
-        ok, n = planted_check(vol, page, o, data, tess, fixed)
-        fails += n - ok
+        ok, n, kept, reds = planted_check(vol, page, o, data, tess, fixed)
+        fails += n - ok + reds - kept
         summary.append(f"{vol}:{page}  red {r['red'][0]}->{r['red'][1]}  both {r['both']}"
-                       f"  italics {r['italics'][0]}/{r['italics'][1]}  planted {ok}/{n}")
+                       f"  planted {ok}/{n}  collateral {kept}/{reds}  italics {r['italics']}")
     print("== summary")
     for s in summary:
         print("  ", s)

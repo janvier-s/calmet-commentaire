@@ -257,10 +257,20 @@ def slip(o, j):
     return single(o) == single(j) or look_alike(o, j) or look_alike(single(o), single(j))
 
 
-def _pair(ocr_run, json_run, allow=None, least=0.5):
+def _joined_same(ocr_toks, json_toks, k, jk):
+    """Words joined on one side or the other that make the same word: the same key, a slip, a likeness of
+    0.9, quæ read qua, or the same once modernized."""
+    ae = "".join(_key(t["t"].replace("æ", "a").replace("Æ", "A")) for t in json_toks)
+    return (k == jk or slip(k, jk) or similar(k, jk) >= 0.9 or ae == k
+            or modern_key(" ".join(t["t"] for t in ocr_toks)) in (jk, jk.replace("-", "")))
+
+
+def _pair(ocr_run, json_run, allow=None, least=0.5, skip_least=None):
     """Inside a stretch the two disagree on: [(ocr indexes, json index or None, json count, status)].
     `allow(ocr word, json word, exact)`: False keeps the two apart (`exact`: their keys, joined, the same);
-    `least`: the likeness a pair needs."""
+    with it (the fixed alignment), words are joined only when they make the same word or a likelier one
+    than any of them alone; `least`: the likeness a pair needs; `skip_least`: the likeness a pair needs
+    that passes over JSON words left unpaired (they stay red), but for the same word."""
     out, j = [], 0
     i = 0
     while i < len(ocr_run):
@@ -273,6 +283,13 @@ def _pair(ocr_run, json_run, allow=None, least=0.5):
                 jk = "".join(t["k"] for t in json_run[jj:jj + jtake])
                 if allow and not allow(ocr_run[i], json_run[jj], k == jk):
                     continue
+                same = _joined_same(ocr_run[i:i + take], json_run[jj:jj + jtake], k, jk)
+                if allow and (take > 1 or jtake > 1) and not same and similar(k, jk) <= max(
+                        similar(x, y) for x in ([t["k"] for t in ocr_run[i:i + take]] if take > 1 else [k])
+                        for y in ([t["k"] for t in json_run[jj:jj + jtake]] if jtake > 1 else [jk])):
+                    continue  # deux colomnes: colonnes (colomnes alone is likelier); répom dent: répondent joins
+                if skip_least is not None and jj > j and not same and similar(k, jk) < skip_least:
+                    continue  # nostrum: not past "in" to a nostram further on
                 r = similar(k, jk) - 0.05 * (jj - j) - 0.02 * (take + jtake - 2)
                 if best is None or r > best[0]:
                     best = (r, jj, take, jtake, k, jk)
@@ -371,10 +388,11 @@ def _allow(o):
     return allow
 
 
-def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0.5):
+def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0.5, skip_least=0.9):
     """The scan's words still unpaired, paired again with the JSON's words still unpaired between the
     words linked either side of them, in the field of one of those two (a misread the stretches cut apart:
-    inimi-I eus, répom dent). `key_of`: the scan word's key (another reading of it: Tesseract's)."""
+    inimi-I eus, répom dent). `key_of`: the scan word's key (another reading of it: Tesseract's);
+    `skip_least`: the likeness a pair needs that passes over unpaired JSON words (else the same word)."""
     first = {(t["path"], t["a"]): j for j, t in enumerate(jt)}
 
     def linked(r):  # the JSON's words a scan word is linked to (the last may be in the next field)
@@ -398,7 +416,7 @@ def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0
             cand = [j for j in range(lo + 1, hi) if j not in used and jt[j]["path"] == path]
             if not run or not cand:
                 continue
-            for idx, j, n, status in _pair([keyed(ot[x]) for x in run], [jt[x] for x in cand], allow, least):
+            for idx, j, n, status in _pair([keyed(ot[x]) for x in run], [jt[x] for x in cand], allow, least, skip_least):
                 for x in idx:  # a join only over the JSON's words next to each other (link takes those between)
                     if j is not None and cand[j + n - 1] == cand[j] + n - 1:
                         link(run[x], cand[j], status, n)

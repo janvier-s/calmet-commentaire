@@ -403,3 +403,25 @@ def test_no_tesseract_reading_falls_back_and_says_so():
     for t in (None, {"size": [1479, 1969], "words": []}):
         r = O.align(o, d, fix=True, tess=t)
         assert r["tess"] is False and r["words"][0]["s"] in ("diff", "near")
+
+
+def test_leftovers_do_not_skip_unpaired_json_words_for_a_weak_likeness():  # Juges p. 286: nostrum deleted, nostram further on
+    out = _leftovers(["dit in manus terram nostram", "eux"], "manus", "terram", "dit", "nostrum", "eux",
+                     linked={0: 2, 1: 3, 2: 0, 4: 5})
+    assert out[3] == ("nostrum", None, None)
+
+
+def test_leftovers_still_skip_unpaired_json_words_for_a_near_word():
+    out = _leftovers(["dit in manus terram nostrums", "eux"], "manus", "terram", "dit", "nostrum", "eux",
+                     linked={0: 2, 1: 3, 2: 0, 4: 5})
+    assert out[3][1:] == ("commentary/0/french_commentary", 20)
+
+
+def test_fix_joins_two_scan_words_only_when_they_make_the_json_word():  # Juges p. 286: deux deleted before colomnes
+    r = O.align(ocr(line(300, "il", "dit", "entre", "deux", "colomnes", "Dieu")), page("il dit entre colonnes Dieu"), fix=True)
+    assert ("deux", "missing") in statuses(r) and r["words"][4]["s"] in ("ok", "near")
+
+
+def test_plain_still_joins_two_scan_words_by_likeness():
+    r = O.align(ocr(line(300, "il", "dit", "entre", "deux", "colomnes", "Dieu")), page("il dit entre colonnes Dieu"))
+    assert [w["s"] for w in r["words"][3:5]] == ["diff", "diff"]
