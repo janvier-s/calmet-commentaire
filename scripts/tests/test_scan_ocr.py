@@ -311,3 +311,52 @@ def test_fix_pairs_a_numeral_with_the_same_numeral():
 
 def test_fix_pairs_a_numeral_that_is_a_slip_for_a_word():
     assert ("II", "ok") in statuses(O.align(ocr(line(300, "dit", "II", "vient")), page("dit Il vient"), fix=True))
+
+
+def test_fix_does_not_flag_the_margin_year_the_json_keeps():
+    d = {"verses": [{"verse_number": 1, "annotations": "An. 2585", "latin": "Et dixit", "french": None}],
+         "commentary": [], "footnotes": []}
+    r = O.align(ocr(line(300, "Et", "dixit")), d, fix=True)
+    assert r["extra"] == []
+    assert [e["t"] for e in O.align(ocr(line(300, "Et", "dixit")), d)["extra"]] == ["An"]  # today: flagged
+
+
+def test_fix_skips_misread_roman_numerals():
+    r = O.align(ocr(line(300, "xII", "Et", "dixit", "L2")), verses_page(latin="Et dixit", french=None), fix=True)
+    assert ("xII", "skip") in statuses(r) and ("L2", "skip") in statuses(r)
+
+
+def test_fix_still_flags_latin_words_made_of_numeral_letters():
+    r = O.align(ocr(line(300, "Et", "dixi", "dic", "vix", "mi")), verses_page(latin="Et", french=None), fix=True)
+    assert {t for t, s in statuses(r) if s == "missing"} == {"dixi", "dic", "vix", "mi"}
+
+
+def test_fix_still_flags_a_capitalized_word_made_of_numeral_letters():
+    r = O.align(ocr(line(300, "et", "Il", "Civil", "vint")), page("et vint"), fix=True)
+    assert {t for t, s in statuses(r) if s == "missing"} == {"Il", "Civil"}
+
+
+def test_fix_skips_a_misread_running_head():  # Juges p. 232 (COMMENTAIRF. at 0.083), p. 171, p. 155
+    o = ocr(line(30, "SURLESIUGES", "CHNR", "VIII."), line(55, "S'UR", "LES"), line(160, "COMMENTAIRF."), line(300, "le", "texte"))
+    assert statuses(O.align(o, page("le texte"), fix=True)) == [("le", "ok"), ("texte", "ok")]
+    assert ("COMMENTAIRF", "missing") in statuses(O.align(o, page("le texte")))  # today: red
+
+
+def test_fix_reads_a_lemma_or_a_head_misread_below_the_top_band():
+    o = ocr(line(80, "V.", "JO.FERTE", "SENTENTIAM."), line(300, "COMMENTAIRF."), line(340, "le", "texte"))
+    r = O.align(o, page("FERTE SENTENTIAM le texte"), fix=True)
+    assert ("SENTENTIAM", "ok") in statuses(r) and ("COMMENTAIRF", "missing") in statuses(r)
+
+
+def test_leftovers_join_only_json_words_next_to_each_other():
+    ot = O.ocr_tokens(ocr(line(300, "il", "répondent", "ainsi", "XX")))
+    jt = O.json_tokens({"verses": [], "footnotes": [], "commentary": [
+        {"latin_quote": None, "french_translation": None, "french_commentary": "il répon XX dent ainsi"}]})
+    res = [dict(t=t["t"]) for t in ot]
+
+    def link(i, j, status, n=1):
+        res[i].update(s=status, path=jt[j]["path"], a=jt[j]["a"], b=jt[j + n - 1]["b"])
+    for i, j in {0: 0, 2: 4, 3: 2}.items():
+        link(i, j, "ok")
+    O._repair_leftovers(res, ot, jt, link, None)
+    assert res[1].get("b") != jt[2]["b"]  # not over XX, linked to the scan's last word

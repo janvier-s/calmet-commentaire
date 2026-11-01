@@ -294,9 +294,18 @@ def _pair(ocr_run, json_run, allow=None, least=0.5):
 HEADER = re.compile(r"COMMENTAIRE|LITTERAL|^SUR\b|CHAP")  # capitals: a body line may open with "sur"
 
 
-def skipped_lines(o):
+def misread_head(text):
+    """A running head (or the "COMMENTAIRE.") misread, in capitals: S'UR LES, SURLESIUGES, COMME NTAIRE
+    LITTERAI., COMMENTAIRF. (Juges); a lemma in capitals is not one (FERTE SENTENTIAM)."""
+    caps = re.sub(r"[^A-Z]", "", text)
+    letters = sum(c.isalpha() for c in text)
+    return bool(caps) and len(caps) >= 0.8 * letters and (caps.startswith("SURLES") or any(
+        similar(re.sub(r"[^A-Z]", "", w), h) >= 0.8 for w in text.split() for h in ("COMMENTAIRE", "LITTERAL")))
+
+
+def skipped_lines(o, fix=False):
     """Lines no field holds: the running header (in the top band, but for the year in the margin) and the
-    "COMMENTAIRE." between the verses and the commentary."""
+    "COMMENTAIRE." between the verses and the commentary. `fix`: their misreadings too, in the top tenth."""
     h = o["size"][1]
     out = set()
     for li, ln in enumerate(o["lines"]):
@@ -304,7 +313,23 @@ def skipped_lines(o):
         top = ln["box"][1] < 0.075 * h
         if (top and (HEADER.search(text) or re.fullmatch(r"[\dIVXLC.\s]+", text))) or re.fullmatch(r"COMMENTAIRE\.?", text.strip()):
             out.add(li)
+        elif fix and ln["box"][1] < 0.10 * h and misread_head(text):
+            out.add(li)
     return out
+
+
+MISREAD_NUMERAL = re.compile(r"[IVXLCDMivxlcdm0-9]{1,6}\.?")
+
+
+def misread_numeral(t):
+    """A roman numeral misread: a digit among its letters (L2, I0), or capitals and small letters mixed
+    (xII, viII) -- not as a word is (Il, Civil); a word of those letters alone stays one (dixi, dic, vix, mi)."""
+    if not MISREAD_NUMERAL.fullmatch(t):
+        return False
+    letters = [c for c in t if c.isalpha()]
+    title = t[0].isupper() and t[1:].rstrip(".").islower()
+    return bool(letters) and (any(c.isdigit() for c in t) or (not title and any(c.isupper() for c in letters)
+                                                               and any(c.islower() for c in letters)))
 
 
 def split_columns(o):
@@ -374,8 +399,8 @@ def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0
             if not run or not cand:
                 continue
             for idx, j, n, status in _pair([keyed(ot[x]) for x in run], [keyed(jt[x]) for x in cand], allow, least):
-                for x in idx:
-                    if j is not None:
+                for x in idx:  # a join only over the JSON's words next to each other (link takes those between)
+                    if j is not None and cand[j + n - 1] == cand[j] + n - 1:
                         link(run[x], cand[j], status, n)
                         used.update(cand[j:j + n])
         i = e
@@ -390,7 +415,7 @@ def align(o, data, fix=False, tess=None):
     the verse numbers out of the words, the words left unpaired paired again); `tess`: Tesseract's reading
     of the page (task 3: not read yet)."""
     o = split_columns(o)
-    skip = skipped_lines(o)
+    skip = skipped_lines(o, fix)
     ot = [t for t in ocr_tokens(o) if t["line"] not in skip]
     jt = json_tokens(data)
     res = [dict(t=t["t"], boxes=t["boxes"], s="missing", src=t["src"], wc=t["wc"]) for t in ot]
@@ -444,6 +469,8 @@ def align(o, data, fix=False, tess=None):
             r["s"] = "skip" if r["s"] == "missing" else "ok"
         if r["s"] == "missing" and (numeral(t["t"]) or len(t["t"]) <= 1 or MARGIN_YEAR.fullmatch(t["t"])):  # a verse number (roman too), a stray letter, the margin's year
             r["s"] = "skip"
+        if fix and r["s"] == "missing" and misread_numeral(t["t"]):  # xII, L2
+            r["s"] = "skip"
     # nor the top and bottom bands (a header misread, the catchword), nor what is below the first footnote
     h = o["size"][1]
     fn_top = min((r["boxes"][0][1] for r in res if (r.get("path") or "").startswith("footnotes/")), default=h)
@@ -455,7 +482,8 @@ def align(o, data, fix=False, tess=None):
         if sl is not None:
             r["sl"] = round(sl)
     extra = [dict(t=t["t"], path=t["path"], a=t["a"], b=t["b"]) for j, t in enumerate(jt)
-             if j not in used and not t["path"].startswith("footnotes/") and len(t["t"]) > 1 and not t["t"].isdigit()]
+             if j not in used and not t["path"].startswith("footnotes/") and len(t["t"]) > 1 and not t["t"].isdigit()
+             and not (fix and re.fullmatch(r"verses/\d+/annotations", t["path"]) and MARGIN_YEAR.fullmatch(t["t"]))]  # the margin's year
     out = {"size": o["size"], "words": res, "extra": extra, "unscanned": _unscanned(jt, at, res)}
     if fix:
         out["fix"] = fix
