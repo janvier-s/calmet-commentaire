@@ -591,3 +591,14 @@ def test_italics_do_not_take_in_a_notes_mark():
 def test_no_italics_for_a_lone_short_word():  # Juges p. 228: ſes read fes, roman on the scan, at 15 degrees
     o = ocr(line(300, "dans", "fes", "pieds", "dit", sl=[0, 16, 0, 0]))
     assert O.italics(o, page("dans ses pieds dit")) == []
+
+
+def test_italics_leave_a_notes_mark_out():  # Genèse p. 845: _vestiges^{(f)} du pays_ made vestiges_^{(f)} _du pays_
+    o = ocr(line(300, "dit", "Vous", "venez", "observer", "les", "vestiges", "(f)", "du", "pays", "ici", sl=[0, 16, 17, 16, 17, 16, 15, 16, 17, 0]))
+    r = O.italics(o, page("dit Vous venez observer les vestiges^{(f)} du pays ici"))
+    assert [x["new"] for x in r] == ["dit _Vous venez observer les vestiges_^{(f)} _du pays_ ici"]
+
+
+def test_no_word_differs_for_a_notes_letter():
+    o = ocr(line(300, "il", "dit", "Ce", "que", "vous", "dites", wc=0.99))
+    assert O.differs(o, page("il dit ^{(e)} que vous dites")) == []
