@@ -539,8 +539,8 @@ The only place for status: when a step is done, update it here, not in the secti
     and `python3 footnotes.py apply <vol>`.
 - **Scan OCR** (§13): Kraken has read every page of `01_genese` through `46_2_maccabees` (100%
   complete, all 148 pages of `23_ecclesiaste` included); `ocr_gaps.py` runs on all of them. Tesseract
-  cached for all 854 pages of `01_genese` and a few pages of `06_josue`, `07_juges`, `21a_psaumes`.
-  `47_matthieu` not read yet.
+  cached for all 854 pages of `01_genese`, all 557 pages of `02_exode`, and a few pages of `06_josue`,
+  `07_juges`, `21a_psaumes`. `47_matthieu` not read yet.
 - **Remaining Tasks before New Testament**:
   - Two to-dos in the review editor (`faire` or `être`?): `28_jeremie` p. 305 *Je ferai comme
     un vent brûlant*, `27_isaie` p. 333 *Je ferai à l'égard de Sennachérib*.
