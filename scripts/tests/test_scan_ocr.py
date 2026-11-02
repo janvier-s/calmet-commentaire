@@ -124,8 +124,8 @@ def test_a_few_words_measured_roman_inside_italics_are_a_misread_glyph():
 
 
 def test_small_words_vote_when_clear_and_note_letters_and_pieces_do_not():
-    o = ocr(line(300, "Il", "dit", "à", "vous", "ne", sl=[0, 0, 15, 0, 0]))
-    assert [x["old"] for x in O.italics(o, page("Il dit à vous ne"))] == ["à"]
+    o = ocr(line(300, "Il", "dit", "à", "vous", "ne", sl=[0, 0, 15, 15, 0]))  # alone, no issue (a lone short word)
+    assert [x["old"] for x in O.italics(o, page("Il dit à vous ne"))] == ["à vous"]
     o = ocr(line(300, "Il", "dit", "(a)", "vous", "ne", sl=[0, 0, 15, 0, 0]))
     assert O.italics(o, page("Il dit a vous ne")) == []
 
@@ -586,3 +586,8 @@ def test_a_split_elision_is_made_whole():
 def test_italics_do_not_take_in_a_notes_mark():
     o = ocr(line(300, "dit", "f", "Comme", "la", "prairie", "ou", sl=[0, 11, 16, 15, 17, 0]))
     assert [x["new"] for x in O.italics(o, page("dit ^{(f)} Comme la prairie ou"))] == ["dit ^{(f)} _Comme la prairie_ ou"]
+
+
+def test_no_italics_for_a_lone_short_word():  # Juges p. 228: ſes read fes, roman on the scan, at 15 degrees
+    o = ocr(line(300, "dans", "fes", "pieds", "dit", sl=[0, 16, 0, 0]))
+    assert O.italics(o, page("dans ses pieds dit")) == []

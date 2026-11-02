@@ -54,17 +54,17 @@ def page_report(vol, page, data=None):
     data = data if data is not None else json.loads(path.read_text(encoding="utf-8"))
     al = scan_ocr.align(o, data)
     res = al["words"]
-    fx = scan_ocr.align(o, data, fix=True)  # the gaps and the words not on the scan: the fixed alignment (same words, same indexes)
+    fx = scan_ocr.align(o, data, fix=True)  # every list from the fixed alignment (same words, same indexes): the plain one pairs across the verses' columns
     at = dict(vol=vol, page=page)
     word = lambda r: r["old"].replace("_", "").rstrip(" \t;:?!.,").strip().lower()
-    its = [r for r in scan_ocr.italics(o, data, res) if (vol, page, word(r)) not in FP[0] and word(r) not in FP[1]]
+    its = [r for r in scan_ocr.italics(o, data, fx["words"]) if (vol, page, word(r)) not in FP[0] and word(r) not in FP[1]]
     def box(r):
         i, j = r["words"] if "words" in r else (r["word"], r["word"])
         return scan_ocr.scan_box(o["size"], res, i, j)
     scope = lambda r: not scan_ocr.OUT_OF_SCOPE.fullmatch(r["path"])  # not the verses' Latin and margin
     return ([dict(g, **at, box=box(g)) for g in scan_ocr.gaps(o, data, fx["words"]) if scope(g)],
             [dict({k: v for k, v in r.items() if k != "new"}, **at, box=box(r)) for r in its],
-            [dict(r, **at, box=box(r)) for r in scan_ocr.differs(o, data, res)],
+            [dict(r, **at, box=box(r)) for r in scan_ocr.differs(o, data, fx["words"])],
             [dict(r, **at, box=box(r)) for r in scan_ocr.unscanned(o, data, fx) if scope(r)])
 
 
