@@ -471,9 +471,11 @@ witness only (§1): nothing it reads goes into `normalized/` unless the user acc
    queue's scan category, "WORDS MISSING (SCAN)", "WORD DIFFERS (SCAN)", "NOT ON SCAN",
    "ITALICS (SCAN)", each with its change to Accept / Edit / Reject. Restart the editor to see a
    new report. Saving a page in the editor remakes that page's scan issues by itself
-   (`ocr_gaps.update_page`).
-3. Optional, for pages where Kraken is doubtful: `python3 tess_ocr.py <vol> <pages>` (or the
-   "Tesseract" button above the scan): a second reading, cached in `cache/tess/<vol>/`.
+   (`ocr_gaps.update_page`). Where Tesseract's reading is cached (step 3) it is used too: a word both
+   OCRs read against the text is "WORD DIFFERS (BOTH OCRS)" (`ocr_both`, the strongest; review it
+   first), not "WORD DIFFERS (SCAN)". With Tesseract the run takes about 3x as long.
+3. `python3 tess_ocr.py <vol> [first-last]` (or the "Tesseract" button above the scan): a second
+   reading, cached in `cache/tess/<vol>/`. Run it on whole volumes, then step 2 again.
 4. Before handing a new volume to the user: `python3 ocr_red_report.py <vol>` (how much red, with
    a sample) and `python3 ocr_reconcile_check.py <vol>:<page> …` on a few pages of different
    kinds (a verse page, a commentary page, a chapter opening). Both write nothing.
@@ -541,7 +543,9 @@ The only place for status: when a step is done, update it here, not in the secti
   complete, all 148 pages of `23_ecclesiaste` included); `ocr_gaps.py` runs on all of them. Tesseract
   cached for all 854 pages of `01_genese`, all 557 pages of `02_exode`, all 326 pages of `03_levitique`,
   all 387 pages of `04_nombres`, all 388 pages of `05_deuteronome`, and a few pages of `06_josue`,
-  `07_juges`, `21a_psaumes`. `47_matthieu` not read yet.
+  `07_juges`, `21a_psaumes`. `47_matthieu` not read yet. `ocr_gaps.py` uses the Tesseract cache since
+  Nov 2, 2026: 287 "WORD DIFFERS (BOTH OCRS)" in `01_genese`–`05_deuteronome` (of 747 word differs).
+  Not done: a "both" word under Kraken's 0.95 confidence still isn't flagged (47 more, mostly noise).
 - **Remaining Tasks before New Testament**:
   - Two to-dos in the review editor (`faire` or `être`?): `28_jeremie` p. 305 *Je ferai comme
     un vent brûlant*, `27_isaie` p. 333 *Je ferai à l'égard de Sennachérib*.

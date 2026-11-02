@@ -205,7 +205,8 @@ def _scan_field(store, r):
 
 
 def _differ_items(store, volumes, pages=None):
-    """A word the scan prints, read with confidence, where the text has another (docs/ocr_gaps.json)."""
+    """A word the scan prints, read with confidence, where the text has another (docs/ocr_gaps.json); `ocr_both`
+    when Tesseract reads it as Kraken does (the strongest of them, reviewed first)."""
     report = _read_json(store.docs / "ocr_gaps.json")
     out = []
     for r in (report or {}).get("differs") or []:
@@ -216,14 +217,16 @@ def _differ_items(store, volumes, pages=None):
             continue
         o, a, where, cpath = got
         vol, page = r["vol"], r["page"]
-        iid = f"{vol}/{page:04d}/ocr_word/{_md5(r['path'], r['before'], r['old'], r['new'])}"
+        kind = "ocr_both" if r.get("both") else "ocr_word"
+        iid = f"{vol}/{page:04d}/{kind}/{_md5(r['path'], r['before'], r['old'], r['new'])}"
         new = o[:a] + r["new"] + o[a + len(r["old"]):]
         why = "Both are French: a slip of the text, or a word the modernization changed?" if r["known"] \
             else "The text's word is not French; the scan's is"
-        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_word", "optional": True, "scan_box": r.get("box"),
+        whys = [why] + (["Kraken and Tesseract both read it this way"] if r.get("both") else [])
+        out.append({"id": iid, "book_dir": vol, "page": page, "kind": kind, "optional": True, "scan_box": r.get("box"),
                     "msg": f"The scan has “{r['ocr']}” where the text has “{r['old']}”", "where": where,
                     "proposal": {"id": iid, "item": iid, "title": "A word as on the scan", "word": r["old"],
-                                 "why": [why], "flags": [], "sure": False,
+                                 "why": whys, "flags": [], "sure": False,
                                  "options": [{"label": f"“{r['new']}”", "changes": [
                                      {"vol": vol, "page": page, "path": cpath, "old": o, "new": new}]}]}})
     return out
@@ -297,7 +300,7 @@ def _context_items(store, volumes, pages=None):
     return out
 
 
-GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_word", "ocr_unscanned")
+GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned")
 
 
 class _Snapshot:

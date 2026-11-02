@@ -385,6 +385,14 @@ def test_both_ocrs_against_the_json():
     assert (r["tess"], r["words"][0]["s"]) == (True, "both")
 
 
+def test_a_word_both_ocrs_read_stays_a_word_that_differs_marked_both():
+    o, d = ocr(line(300, "telles", "choses", wc=0.99)), page("celles choses")
+    fx = O.align(o, d, fix=True, tess=tess(("telles", [340, 300, 120, 30])))["words"]
+    assert [(x["old"], x["new"], x.get("both")) for x in O.differs(o, d, fx)] == [("celles", "telles", True)]
+    fx = O.align(o, d, fix=True)["words"]
+    assert [(x["old"], x.get("both")) for x in O.differs(o, d, fx)] == [("celles", None)]
+
+
 def test_not_both_when_tesseract_reads_the_json_word():
     o = ocr(line(300, "parple"))
     r = O.align(o, page("parole"), fix=True, tess=tess(("parole", [340, 300, 120, 30])))

@@ -19,6 +19,7 @@ import sys
 import time
 
 import scan_ocr
+import tess_ocr
 from pathlib import Path
 
 from paths import DATA, DOCS, STUDIUM
@@ -57,7 +58,7 @@ def page_report(vol, page, data=None):
     data = data if data is not None else json.loads(path.read_text(encoding="utf-8"))
     al = scan_ocr.align(o, data)
     res = al["words"]
-    fx = scan_ocr.align(o, data, fix=True)  # every list from the fixed alignment (same words, same indexes): the plain one pairs across the verses' columns
+    fx = scan_ocr.align(o, data, fix=True, tess=tess_ocr.read(vol, page))  # Tesseract's reading when cached; every list from the fixed alignment (same words, same indexes): the plain one pairs across the verses' columns
     at = dict(vol=vol, page=page)
     word = lambda r: r["old"].replace("_", "").rstrip(" \t;:?!.,").strip().lower()
     its = [r for r in scan_ocr.italics(o, data, fx["words"]) if (vol, page, word(r)) not in FP[0] and word(r) not in FP[1]]

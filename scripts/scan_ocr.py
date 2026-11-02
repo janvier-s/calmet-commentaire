@@ -768,7 +768,7 @@ def differs(o, data, res=None):
     word (modernized) is French where the text's is not, or both are (une for un, dessous for dessus).
     Not: a shorter or longer form of the same word (Exod., qu'), nor an a the scan has for u or o (an, lai,
     san: Kraken's). Each: {path, a, b, old, new, ocr, word (in res), known (the text's word is French),
-    before, after}."""
+    before, after, both (Tesseract reads it as Kraken does: the strongest)}."""
     from clean_mechanical import fix_spelling
     from modernize_inplace import modernize_text
     from spellcheck import check
@@ -778,7 +778,7 @@ def differs(o, data, res=None):
     cands = []
     for i, w in enumerate(res):
         path = w.get("path")
-        if w["s"] not in ("diff", "near") or w["wc"] < 0.95 or not path or path.rsplit("/", 1)[-1] not in FRENCH_FIELDS:
+        if w["s"] not in ("diff", "near", "both") or w["wc"] < 0.95 or not path or path.rsplit("/", 1)[-1] not in FRENCH_FIELDS:
             continue
         if any(res[n].get("path") == path and res[n].get("a") == w["a"] for n in (i - 1, i + 1) if 0 <= n < len(res)):
             continue  # two of the scan's words for one of the text's
@@ -801,7 +801,8 @@ def differs(o, data, res=None):
         if len(ln) == len(lo) and len(d) == 1 and d[0][0] == "a":
             continue
         cands.append(dict(path=path, a=w["a"], b=w["b"], old=old, new=new, ocr=w["t"], word=i,
-                          before=s[max(0, w["a"] - 30):w["a"]], after=s[w["b"]:w["b"] + 30]))
+                          before=s[max(0, w["a"] - 30):w["a"]], after=s[w["b"]:w["b"] + 30],
+                          **({"both": True} if w["s"] == "both" else {})))
     unknown = check(sorted({c["old"] for c in cands} | {c["new"] for c in cands})) if cands else {}
     out = []
     for c in cands:
