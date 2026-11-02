@@ -360,7 +360,7 @@ def test_refresh_generated_closes_the_scan_issues_an_edit_fixed(data_dir):
     server.shutdown()
 
 
-def test_ocr_tesseract_run_that_reads_nothing_is_an_error(web, tmp_path, monkeypatch):
+def test_ocr_tesseract_run_that_reads_nothing_says_so_and_keeps_the_overlay(web, tmp_path, monkeypatch):
     import scan_ocr
     import tess_ocr
     from conftest import dump
@@ -370,5 +370,22 @@ def test_ocr_tesseract_run_that_reads_nothing_is_an_error(web, tmp_path, monkeyp
     monkeypatch.setattr(tess_ocr, "read", lambda vol, page, run=False: {"size": [0, 0], "words": [], "error": "tesseract not found"})
     data = {"verses": [], "commentary": [{"french_commentary": "une"}], "footnotes": []}
     st, r = web("/api/ocr", {"vol": VOL, "page": 194, "data": data, "tess_run": True})
-    assert st == 500 and r["error"] == "Tesseract failed: tesseract not found"
+    assert st == 200 and r["tess_error"] == "Tesseract failed: tesseract not found"
+    assert r["ocr"]["tess"] is False and [w["s"] for w in r["ocr"]["words"]] == ["ok"]  # the overlay, without Tesseract
     assert web("/api/ocr", {"vol": VOL, "page": 194, "data": data})[1]["ocr"]["tess"] is False  # not asked: no error
+
+
+def test_ocr_tesseract_that_fails_to_run_keeps_the_overlay(web, tmp_path, monkeypatch):
+    import scan_ocr
+    import tess_ocr
+    from conftest import dump
+    monkeypatch.setattr(scan_ocr, "OCR_CACHE", tmp_path / "ocr")
+    dump(scan_ocr.cache_path(VOL, 194), {"size": [1479, 1969], "lines": [{"box": [340, 300, 300, 30], "words": [
+        {"t": "une", "box": [340, 300, 70, 30], "wc": 0.99}]}]})
+
+    def fail(vol, page, run=False):
+        raise OSError("no tesseract")
+    monkeypatch.setattr(tess_ocr, "read", fail)
+    data = {"verses": [], "commentary": [{"french_commentary": "une"}], "footnotes": []}
+    st, r = web("/api/ocr", {"vol": VOL, "page": 194, "data": data, "tess_run": True})
+    assert st == 200 and r["tess_error"].startswith("Tesseract failed") and r["ocr"]["words"][0]["s"] == "ok"
