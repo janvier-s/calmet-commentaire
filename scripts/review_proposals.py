@@ -161,7 +161,9 @@ def _italic_items(store, volumes, pages=None):
                   "old": o, "new": t[0]}
         word = r["old"].replace("_", "").rstrip(" \t;:?!.,")
         said = "in italics; the text has it in roman" if r["to"] == "italic" else "in roman; the text has it in italics"
-        out.append({"id": iid, "book_dir": vol, "page": page, "kind": "ocr_italic", "optional": False, "scan_box": r.get("box"),
+        # one word alone: a type of its own, as the slant of one word is often wrong (ſes, Anges); the id stays
+        kind = "ocr_italic_word" if len(re.findall(r"[^\W_]+", r["old"])) == 1 else "ocr_italic"
+        out.append({"id": iid, "book_dir": vol, "page": page, "kind": kind, "optional": False, "scan_box": r.get("box"),
                     "msg": f"The scan prints “{word}” {said}", "where": where,
                     "proposal": {"id": iid, "item": iid, "title": "Italics as on the scan", "word": word,
                                  "why": [f"The words lean {r['slant']}° on the scan" if r["to"] == "italic"
@@ -284,7 +286,7 @@ def _context_items(store, volumes, pages=None):
     return out
 
 
-GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_word", "ocr_unscanned")
+GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_word", "ocr_unscanned")
 
 
 def generated_items(store, volumes=None, pages=None):

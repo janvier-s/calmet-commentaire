@@ -851,7 +851,8 @@ def italics(o, data, res=None):
         mean = sum(v[3] for v in run) / len(run)
         flank = [votes[n] for n in (k - 1, m + 1) if 0 <= n < len(votes) and res[votes[n][0]]["path"] == res[i]["path"] and votes[n][2] == js]
         t = res[i]["t"]
-        lone = len(run) == 1 and scan and (mean < 14 or 5 * sum(c in LEANING for c in t) > len(t))  # leaning letters (voyage.)
+        lone = len(run) == 1 and scan and (mean < 14 or 5 * sum(c in LEANING for c in t) > len(t)  # leaning letters (voyage.)
+                                           or len(re.sub(r"\W", "", t)) <= 3)  # ses (ſ leans), Les, en, ô: 8 in 12 roman on the scan
         # montagne, sur le bord: a few words the scan measures roman with the text's own style (italic) round them
         ringed = not scan and len(run) <= 3 and flank and all(v[1] == js for v in flank) and (len(flank) == 2 or len(run) == 1)
         if lone or ringed:

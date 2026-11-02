@@ -325,12 +325,12 @@ def test_ocr_italic_is_an_issue_that_italicizes(data_dir):
         with urllib.request.urlopen(req) as r:
             return json.loads(r.read())
 
-    items = call("/api/queue?kind=ocr_italic&status=open")["items"]
+    items = call("/api/queue?kind=ocr_italic_word&status=open")["items"]
     assert len(items) == 1 and "in italics" in items[0]["msg"]
     p = call(f"/api/proposal?id={urllib.parse.quote(items[0]['id'])}")["proposal"]
     call("/api/proposal/accept", {"id": items[0]["id"], "proposal_id": p["id"], "option": 0})
     assert call(f"/api/page?vol={VOL}&page=194")["data"]["commentary"][0]["french_commentary"] == "suite du _commentaire_."
-    assert call("/api/queue?kind=ocr_italic&status=open")["items"] == []  # done: no longer an issue
+    assert call("/api/queue?kind=ocr_italic_word&status=open")["items"] == []  # done: no longer an issue
     server.shutdown()
 
 
@@ -350,13 +350,13 @@ def test_refresh_generated_closes_the_scan_issues_an_edit_fixed(data_dir):
         with urllib.request.urlopen(req) as r:
             return json.loads(r.read())
 
-    (it,) = call("/api/queue?kind=ocr_italic&status=open")["items"]
+    (it,) = call("/api/queue?kind=ocr_italic_word&status=open")["items"]
     p = call(f"/api/page?vol={VOL}&page=194")
     p["data"]["commentary"][0]["french_commentary"] = "suite du _commentaire_."  # italicized by hand
     call("/api/page", {"vol": VOL, "page": 194, "data": p["data"], "version": p["version"]})
     r = call("/api/refresh_generated", {"vol": VOL, "page": 194})
     assert r["fixed"] == 1 and next(i for i in r["issues"] if i["id"] == it["id"])["status"] == "resolved"
-    assert call("/api/queue?kind=ocr_italic&status=open")["items"] == []
+    assert call("/api/queue?kind=ocr_italic_word&status=open")["items"] == []
     server.shutdown()
 
 
@@ -420,3 +420,14 @@ def test_saving_a_page_makes_its_scan_issues_again(data_dir, tmp_path, monkeypat
     assert r["fixed"] == 1 and call("/api/queue?kind=ocr_gap&status=open")["items"] == []
     assert json.loads((docs / "ocr_gaps.json").read_text(encoding="utf-8"))["gaps"] == []
     server.shutdown()
+
+
+def test_one_word_italics_are_a_type_of_their_own(data_dir):
+    from conftest import dump
+    import review_proposals as RP
+    docs = data_dir.parent / "docs"
+    it = lambda a, b, old, before: {"vol": VOL, "page": 194, "path": "commentary/0/french_commentary", "a": a, "b": b,
+                                    "to": "italic", "old": old, "before": before, "after": ".", "words": [0, 1], "slant": 16}
+    dump(docs / "ocr_gaps.json", {"italics": [it(6, 20, "du commentaire", "suite "), it(9, 20, "commentaire", "suite du ")]})
+    kinds = sorted(i["kind"] for i in RP._italic_items(Store(data_dir, docs), {VOL}, {194}))
+    assert kinds == ["ocr_italic", "ocr_italic_word"]

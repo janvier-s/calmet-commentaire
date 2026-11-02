@@ -262,7 +262,6 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if o is None:
             return {"ocr": None}
         data = body.get("data") or (store.read(vol, page)[0] if store.path(vol, page).exists() else {})
-        raw = scan_ocr.align(o, data)  # the plain alignment: the italics' word indexes come from it
         tess_error = None  # Tesseract failing says so, and the overlay is drawn without it
         try:
             tess = tess_ocr.read(vol, page, run=bool(body.get("tess_run")))
@@ -271,7 +270,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if body.get("tess_run") and tess is not None and not tess["words"]:  # asked to read, and it read nothing
             tess_error = f"Tesseract failed: {tess.get('error') or 'no words read'}"
         res = scan_ocr.align(o, data, fix=True, tess=tess)
-        res["italics"] = [{k: r[k] for k in ("path", "a", "b", "to", "words", "slant")} for r in scan_ocr.italics(o, data, raw["words"])]
+        res["italics"] = [{k: r[k] for k in ("path", "a", "b", "to", "words", "slant")} for r in scan_ocr.italics(o, data, res["words"])]  # the fixed alignment: the columns kept apart
         return {"ocr": res, **({"tess_error": tess_error} if tess_error else {})}
 
     def delete_todo(body):

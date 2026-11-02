@@ -171,7 +171,7 @@ async function mark(status, { thorough = false } = {}) {
   const was = statusOf(it);
   setStatus(it.id, status);
   if (status) marked.push(it);
-  if (status === "false_positive" && it.kind === "ocr_italic") {
+  if (status === "false_positive" && it.kind.startsWith("ocr_italic")) {
     const m = (it.msg || "").match(/“([^”]+)”/);
     const w = m ? m[1].replace(/_/g, "").trim() : "";
     api("/api/note", { section: "FALSE POSITIVE ITALICS", text: w ? `${w} (${it.book_dir} p.${it.page})` : `${it.book_dir} p.${it.page}` });
