@@ -115,6 +115,9 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
    when the neighbours make the reading certain (1989 among 2989s), and say which you changed.
 9. `python3 paragraph_breaks.py <vol>`: numbered points on their own paragraph; a literal
    `\n` typed in the editor becomes a real break.
+9b. `python3 latin_italics.py <vol>`: Latin in the French commentary (quotations, locutions) found
+    and italicized. Writes only the report, `docs/latin_italics.json`, until `--apply` writes the
+    italics into `normalized/`. Read the report first.
 10. **Psalms only** (21b, 21c), in this order:
    - `python3 fix_psalm_verses.py <vol>`: relabel verses whose text opens with a number, drop
      verses repeated across a page break;
@@ -137,6 +140,9 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
     hours for a volume: run it in the background; it caches each page and resumes), then
     `python3 ocr_gaps.py <vol>` for the scan issues (words missing, word differs, not on scan,
     italics). Check a sample with `ocr_red_report.py <vol>` before handing it to the user.
+    Then `python3 ocr_reconcile_check.py <vol>:<page> …` on a few pages of different kinds (a verse
+    page, a commentary page, a chapter opening). It writes nothing; it exits 1 if the alignment
+    has lost a planted word or a red it used to show (§13).
 14. **The user reviews** in `review_web.py` (§7). Commit `data/` when they say.
 15. **Footnotes** (§10): references and authors written out in French, Hebrew and Greek
     checked, doubtful notes settled from context; what is left waits for the scans.
