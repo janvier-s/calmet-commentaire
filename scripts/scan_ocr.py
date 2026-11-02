@@ -171,7 +171,10 @@ def ocr_tokens(o):
     """The OCR's words in reading order as tokens: a String may hold several ("21.Et"), a word cut at
     the line's end (¬) is joined to the next line's first. Each: {t, k, boxes, wc, line}."""
     out, carry, held = [], None, []
-    for li, ln in enumerate(o["lines"]):
+    mid, lines = gutter(o), o["lines"]
+    side = [ln["box"][0] > mid for ln in lines]
+    carry_to = None  # where a cut word goes on: the next line of its column (verses: a French line, then a Latin one)
+    for li, ln in enumerate(lines):
         ws = ln["words"]
         body = len(ws)  # the margin's year ends a line (An.2585.): after the word cut at the end of the line
         while body and MARGIN_YEAR.fullmatch(ws[body - 1]["t"]):
@@ -187,7 +190,7 @@ def ocr_tokens(o):
                 if wi >= body and body and ws[body - 1]["t"].endswith(("¬", "-")):
                     held.append(tok)  # the year goes on after the word it interrupts
                     continue
-                if carry:  # the first word after a cut
+                if carry and li == carry_to:  # the first word after a cut
                     carry["t"] += tok["t"]
                     carry["boxes"] += tok["boxes"]
                     carry["src"] += tok["src"]
@@ -200,6 +203,7 @@ def ocr_tokens(o):
                 out.append(tok)
             if (wi == body - 1 or year) and (year or text.endswith(("¬", "-"))) and out and out[-1]["line"] == li:
                 carry = out.pop()
+                carry_to = next((k for k in range(li + 1, min(li + 9, len(lines))) if side[k] == side[li]), li + 1)
     out.extend(held)
     if carry:
         out.append(carry)
@@ -376,22 +380,53 @@ def split_columns(o):
     """A line Kraken read across the gutter (a verse's Latin and French on one line) cut in two, the
     right part put before the right column's next line, so the reading goes column by column."""
     lines = [dict(ln, words=list(ln["words"])) for ln in o["lines"]]
-    mid = o["size"][0] * 0.45
+    mid, gut = o["size"][0] * 0.45, gutter(o)
+    head = min((ln["box"][1] for ln in lines if re.sub(r"[^A-Z]", "", "".join(w["t"] for w in ln["words"]).upper())
+                == "COMMENTAIRE" and ln["box"][1] > 0.1 * o["size"][1]), default=0)  # the verses end there
+    right_ys = [ln["box"][1] for ln in lines if ln["box"][0] > gut and ln["box"][1] < head]  # the French column's lines
     i = 0
     while i < len(lines):
         ws, h = lines[i]["words"], lines[i]["box"][3]
         cut = next((k for k in range(1, len(ws)) if ws[k]["box"][0] > mid
                     and ws[k]["box"][0] - (ws[k - 1]["box"][0] + ws[k - 1]["box"][2]) > max(60, 2 * h)), None)
+        y = lines[i]["box"][1]
+        if cut is None and y < head and lines[i]["box"][0] < gut and any(0 < abs(r - y) < 2.5 * h for r in right_ys) \
+                and any(c.islower() for w in ws for c in w["t"]):
+            # no gap, the French column beside: the gutter's rule read as a letter (mani-i re) or glued in a
+            # word (addu-[mandérent): cut at it
+            ws = lines[i]["words"] = [x for w in ws for x in _at_rule(w, gut)]
+            cut = next((k for k in range(1, len(ws)) if ws[k]["box"][0] > gut and ws[k - 1]["box"][0] < gut), None)
         if cut is not None:
             left, right = ws[:cut], ws[cut:]
             span = lambda w: [w[0]["box"][0], min(x["box"][1] for x in w),
                               w[-1]["box"][0] + w[-1]["box"][2] - w[0]["box"][0], h]
             lines[i] = dict(lines[i], words=left, box=span(left))
             piece = dict(lines[i], words=right, box=span(right))
-            at = next((k for k in range(i + 1, len(lines)) if lines[k]["box"][0] > mid), len(lines))
+            py = piece["box"][1]  # among the right column's lines by height: two lines cut, their pieces in order
+            col = min(mid, gut)
+            at = next((k for k in range(i + 1, len(lines)) if lines[k]["box"][0] > col and lines[k]["box"][1] > py), i + 1)
             lines.insert(at, piece)
         i += 1
     return dict(o, lines=lines)
+
+
+RULE = re.compile(r"(?<=-)[\[\]|¡Il](?=\W*$|[^\W\d_])|[\[\]|¡]")  # the gutter's rule in a word: addu-[mandérent, fecerún-I
+
+
+def _at_rule(w, gut):
+    """A word across the gutter cut at the rule read in it (dropped), when the rule falls by the gutter."""
+    t, (x, y, bw, bh) = w["t"], w["box"]
+    if not (x < gut < x + bw):
+        return [w]
+    n = max(1, len(t))
+    for m in RULE.finditer(t):
+        at = x + bw * m.start() / n
+        if abs(at - (gut + 15)) < 60:
+            a, b = t[:m.start()], t[m.end():]
+            xb = round(x + bw * m.end() / n)
+            return [dict(w, t=a, box=[x, y, max(1, round(bw * m.start() / n)), bh])] * bool(a) + \
+                [dict(w, t=b, box=[xb, y, max(1, x + bw - xb), bh])] * bool(b)
+    return [w]
 
 
 def gutter(o):
@@ -756,6 +791,8 @@ def differs(o, data, res=None):
         lo, ln = old.lower(), new.lower()
         if len(new) < 2 or " " in old or key(new) == key(old) or lo.startswith(ln) or ln.startswith(lo):
             continue
+        if w["src"][0][1] == 0 and lo.endswith(ln):
+            continue  # a line's first word, the end of the text's word: the cut word's half (Taber-|nacle), the hyphen lost
         d = [(x, y) for x, y in zip(ln, lo) if x != y]
         if len(ln) == len(lo) and len(d) == 1 and d[0][0] == "a":
             continue

@@ -614,3 +614,24 @@ def test_a_note_mark_misread_is_neither_red_nor_a_different_word():
     assert ("Ce", "skip") in statuses(r)
     r = O.align(ocr(line(300, "une", "chose", "grande")), page("une chose"), fix=True)
     assert ("grande", "missing") in statuses(r)
+
+
+def _words(y, *spec):
+    """A line from (text, x, width) triples."""
+    ws = [{"t": t, "box": [x, y, bw, 30], "wc": 0.99, "sl": None} for t, x, bw in spec]
+    return {"box": [ws[0]["box"][0], y, ws[-1]["box"][0] + ws[-1]["box"][2] - ws[0]["box"][0], 30], "words": ws}
+
+
+def test_a_line_read_across_the_gutter_without_a_gap_is_cut_and_a_cut_word_goes_on_in_its_column():
+    """Kraken reads the rule as a letter (mani-i re) or glues it in a word (addu-[mandérent); a word cut at
+    the end of a French line goes on at the next French line, not at the Latin line read after it."""
+    o = ocr(_words(300, ("Latin", 340, 100), ("unum", 460, 80)),
+            _words(333, ("dixit", 340, 340), ("mani-i", 700, 90), ("re", 805, 40), ("que", 860, 60)),
+            _words(366, ("dixit", 340, 280), ("addu-[mandérent", 640, 330)),
+            _words(399, ("ctus", 340, 80)),
+            _words(300, ("Vous", 790, 80), ("ter¬", 890, 60)),
+            _words(399, ("suite", 790, 100)),
+            _words(900, ("COMMENTAIRE.", 600, 250)))
+    toks = [t["t"] for t in O.ocr_tokens(O.split_columns(o))]
+    assert "terre" in toks and "adductus" in toks and "mandérent" in toks
+    assert toks.index("terre") > toks.index("adductus")  # the French after the Latin column
