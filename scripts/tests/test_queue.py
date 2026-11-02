@@ -28,6 +28,7 @@ def test_labels_and_categories():
     assert kind_category("missing_verse") == "verses"
     assert kind_category("hyphen_cut") == "commentary"
     assert kind_category("todo") == "todo"
+    assert kind_category("ocr_word") == "scan"
 
 
 def test_load_queue_optional(docs):

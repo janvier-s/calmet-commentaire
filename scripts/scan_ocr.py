@@ -6,6 +6,7 @@
 boxes, and their slant (scan_slant.py: italics), in cache/ocr/<vol>/page_NNNN.json; `align(ocr, data)` sets each OCR word against the page's
 JSON fields: the same word (old spelling allowed), a different one, or missing from the JSON.
 """
+import datetime
 import difflib
 import functools
 import json
@@ -15,6 +16,7 @@ import subprocess
 import sys
 import tempfile
 import threading
+import time
 import unicodedata
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -682,6 +684,18 @@ def insert(s, pos, text):
 CHUNK = 10  # pages a Kraken run: the model loads once, and an interrupted run loses little
 
 
+def _fmt_duration(seconds):
+    seconds = int(round(seconds))
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    if h > 0:
+        return f"{h}h{m:02d}m{s:02d}s"
+    elif m > 0:
+        return f"{m}m{s:02d}s"
+    else:
+        return f"{s}s"
+
+
 def main(argv):
     if not argv:
         sys.exit(__doc__)
@@ -691,14 +705,20 @@ def main(argv):
         a, _, b = argv[1].partition("-")
         pages = [p for p in pages if int(a) <= p <= int(b or a)]
     todo = [p for p in pages if not cache_path(vol, p).exists()]
-    print(f"{vol}: {len(pages) - len(todo)} pages cached, {len(todo)} to OCR", flush=True)
+    t0 = time.time()
+    total_pages = len(pages)
+    cached_count = total_pages - len(todo)
+    total_todo = len(todo)
+    now_str = datetime.datetime.now().strftime("%H:%M:%S")
+    print(f"[{now_str}] {vol}: {cached_count} pages cached, {total_todo} to OCR", flush=True)
     unslanted = [p for p in pages if p not in todo and f'"slant":{SLANT}' not in cache_path(vol, p).read_text(encoding="utf-8")[-20:]]
     for n in range(0, len(unslanted), 50):  # read before the slant was measured
         slants(vol, [(p, scan_path(vol, p)) for p in unslanted[n:n + 50]])
     if unslanted:
         print(f"  slant measured on {len(unslanted)} pages read before", flush=True)
-    for n in range(0, len(todo), CHUNK):
+    for n in range(0, total_todo, CHUNK):
         chunk = todo[n:n + CHUNK]
+        chunk_t0 = time.time()
         try:
             kraken(vol, [(p, scan_path(vol, p)) for p in chunk])
         except subprocess.CalledProcessError as e:  # page by page, to find the one that fails
@@ -708,7 +728,25 @@ def main(argv):
                     kraken(vol, [(p, scan_path(vol, p))])
                 except subprocess.CalledProcessError:
                     print(f"  p.{p}: Kraken failed", flush=True)
-        print(f"  {min(n + CHUNK, len(todo))}/{len(todo)} (p.{chunk[-1]})", flush=True)
+        chunk_took = time.time() - chunk_t0
+        done = min(n + CHUNK, total_todo)
+        current_page_count = cached_count + done
+        pct = (current_page_count / total_pages) * 100 if total_pages else 100.0
+        now_time = datetime.datetime.now().strftime("%H:%M:%S")
+        elapsed = time.time() - t0
+        if done > 0 and done < total_todo:
+            sec_per_item = elapsed / done
+            remaining = sec_per_item * (total_todo - done)
+            time_info = f"took {_fmt_duration(chunk_took)} ({_fmt_duration(elapsed)} elapsed, ~{_fmt_duration(remaining)} left)"
+        else:
+            time_info = f"took {_fmt_duration(chunk_took)} ({_fmt_duration(elapsed)} elapsed)"
+        print(f"[{now_time}]   {current_page_count:3d}/{total_pages} ({pct:5.1f}%) (p.{chunk[-1]}) · {time_info}", flush=True)
+
+    if total_todo:
+        total_time = time.time() - t0
+        sec_per_page = total_time / total_todo
+        now_time = datetime.datetime.now().strftime("%H:%M:%S")
+        print(f"[{now_time}] {vol}: {total_todo} pages OCR'd in {_fmt_duration(total_time)} ({sec_per_page:.1f}s/page)", flush=True)
 
 
 if __name__ == "__main__":

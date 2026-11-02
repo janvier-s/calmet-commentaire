@@ -93,6 +93,11 @@ The full spec, with the conventions and the reasons behind each step: `NEXT_VOLU
   reference that is another verse, each with its candidates (a digit misread, a Roman numeral off,
   the verses around, the verse the quotation is). `--apply` writes in those the quotation settles;
   the rest go to a model (one Haiku call settled a dozen for under a cent) or a reader.
+- `ref_context.py <volume|book|all> … [--local|--limit N|--apply]`: every Bible reference (commentary and
+  footnotes) checked against the passage it stands in, by agy (`REF_BACKEND=claude` for Claude), with a
+  second, blind opinion on each doubt → `docs/ref_context.json` (the log: a rerun asks only what is new
+  or changed) and `docs/ref_context_review.json`. `--apply` writes in the fixes both models gave;
+  the others become `ref_context` (readings to choose from) and `ref_unsure` (none) issues in the queue.
 - `seam_join.py <volume|book|all> … [--apply]`: a lemma or translation the page turn cut off
   (`hyphen_cut` in the queue) goes on in the same field of the next page's first block, taken from
   its french_commentary: the capitals up to the lemma's full stop, the French up to the earliest

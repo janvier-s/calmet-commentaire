@@ -77,6 +77,20 @@ def neighbours(r):
     return out
 
 
+def book_numbers(r):
+    """The same book under its other numbers (1 Rois read for 2 Rois): the scans misread the digit, and
+    Calmet's Rois and Paralipomènes numbering is not the one a reader expects."""
+    m = re.fullmatch(r"\d (.+)", r.book)
+    out = []
+    for n in range(1, 5):
+        name = f"{n} {m.group(1)}" if m else None
+        if name and name != r.book and name in B.BOOK:
+            x = B.Ref(r.start, r.end, name, name, r.chap, r.verses, r.src)
+            if B.exists(x):
+                out.append(x)
+    return out
+
+
 def anywhere(quote):
     """The verse of the whole Vulgate the quotation is, if one fits well: (Ref, score) or None."""
     q = latin_words(quote)
@@ -90,7 +104,7 @@ def anywhere(quote):
 def candidates(r, quote):
     """[(rendered reference, its Vulgate text, how well the quotation fits it)], best first."""
     seen, out = set(), []
-    pool = misread(r) + neighbours(r)
+    pool = misread(r) + neighbours(r) + book_numbers(r)
     far = anywhere(quote) if quote else None
     if far:
         pool.append(far[0])

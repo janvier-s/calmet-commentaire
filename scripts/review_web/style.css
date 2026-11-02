@@ -227,6 +227,7 @@ button.icon-after { flex-direction: row-reverse; }
 .k-verse { --c: var(--c-verse); }
 .k-note { --c: var(--c-note); }
 .k-fn { --c: var(--c-fn); }
+.k-scan { --c: var(--c-head); }
 .k-todo { --c: var(--teal); }
 .k-head { --c: var(--c-head); }
 .block[class*="k-"] { border-left: 3px solid var(--c); }

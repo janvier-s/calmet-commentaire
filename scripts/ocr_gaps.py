@@ -7,10 +7,12 @@ each with its change. Italics logged as false positives in NOTES.md are left out
 
 Only pages already read by Kraken are looked at; run it again after more are read (it is quick).
 """
+import datetime
 import json
 import os
 import re
 import sys
+import time
 
 import scan_ocr
 from pathlib import Path
@@ -67,10 +69,13 @@ def main(argv):
     old = json.loads(REPORT.read_text(encoding="utf-8")) if REPORT.exists() else {}
     out = {k: [g for g in old.get(k) or [] if g["vol"] not in vols] for k in KINDS}
     for vol in vols:
+        t0 = time.time()
         pages = sorted(int(p.stem[5:]) for p in (scan_ocr.OCR_CACHE / vol).glob("page_*.json"))
         found = [page_report(vol, p) for p in pages]
         got = {k: [g for f in found for g in f[n]] for n, k in enumerate(KINDS)}
-        print(f"{vol}: {len(pages)} pages read, " + ", ".join(f"{len(v)} {k} on {len({g['page'] for g in v})} pages" for k, v in got.items()))
+        dur = scan_ocr._fmt_duration(time.time() - t0)
+        now_time = datetime.datetime.now().strftime("%H:%M:%S")
+        print(f"[{now_time}] {vol}: {len(pages)} pages analyzed in {dur}, " + ", ".join(f"{len(v)} {k} on {len({g['page'] for g in v})} pages" for k, v in got.items()), flush=True)
         for k in KINDS:
             out[k] += got[k]
     for v in out.values():

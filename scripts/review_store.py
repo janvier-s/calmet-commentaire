@@ -363,6 +363,8 @@ KIND_LABELS = {
     # proposals from the scripts' reports (review_proposals.py)
     "footnote_writeout": "FOOTNOTE WRITE-OUT TO CHECK",
     "ref_candidate": "VERSE REFERENCE TO CHECK",
+    "ref_context": "VERSE REFERENCE vs CONTEXT",
+    "ref_unsure": "VERSE REFERENCE UNSURE",
     "ocr_gap": "WORDS MISSING (SCAN)",
     "ocr_italic": "ITALICS (SCAN)",
     "ocr_word": "WORD DIFFERS (SCAN)",
@@ -397,7 +399,7 @@ KIND_THEMES = [
                                       "lemma_unknown_word", "lowercase_translation", "translation_no_punct",
                                       "hebrew_in_translation"]),
     ("Verse numbers and references", ["no_verse_ref", "ref_order", "lemma_verse", "verse_mismatch", "chapter_ref",
-                                      "guessed_ref", "ref_candidate"]),
+                                      "guessed_ref", "ref_candidate", "ref_context", "ref_unsure"]),
     ("Footnotes", ["missing_footnote", "extra_footnotes", "broken_marker", "footnote_no_period",
                    "footnote_asterisk", "footnote_writeout", "hebrew_recheck"]),
     ("Typography", ["spaced_letters", "leading_punctuation", "leading_call", "etc_for_et", "stray_underscore",
@@ -407,9 +409,14 @@ KIND_THEMES = [
 ]
 
 
+OCR_KINDS = {"ocr_gap", "ocr_italic", "ocr_word", "ocr_unscanned"}
+
+
 def kind_category(k):
     if k == "todo":
         return "todo"
+    if k in OCR_KINDS:
+        return "scan"
     if k in VERSE_KINDS:
         return "verses"
     if k in FOOTNOTE_KINDS:
@@ -418,7 +425,7 @@ def kind_category(k):
 
 
 STATUSES = ("open", "on_hold", "false_positive", "skipped", "resolved", "all")
-CATEGORIES = ("verses", "commentary", "footnotes", "todo")
+CATEGORIES = ("verses", "commentary", "footnotes", "scan", "todo")
 
 
 def _atomic_write(path, text):
@@ -763,7 +770,7 @@ def neighbour_issue_pages(items, progress, vol, page):
 AUDIT_KINDS = frozenset(KIND_LABELS) - {
     "todo", "psalm_missing_verse", "psalm_missing_title", "psalm_number", "psalm_wrong_psalm",
     "psalm_unmatched", "chapter_vulgate", "chapter_heading", "hebrew_recheck", "latin_long_s",
-    "seam_missing", "seam_repeat", "seam_unclear", "duplicate_verse", "footnote_writeout", "ref_candidate",
+    "seam_missing", "seam_repeat", "seam_unclear", "duplicate_verse", "footnote_writeout", "ref_candidate", "ref_context", "ref_unsure",
     "ocr_gap", "ocr_italic", "ocr_word", "ocr_unscanned"}
 
 

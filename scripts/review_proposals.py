@@ -243,7 +243,47 @@ def _unscanned_items(store, volumes, pages=None):
     return out
 
 
-GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ocr_gap", "ocr_italic", "ocr_word", "ocr_unscanned")
+def _context_items(store, volumes, pages=None):
+    """References both models checked against their context and did not settle together
+    (docs/ref_context_review.json, ref_context.py): `ref_context` with the readings they gave as options,
+    `ref_unsure` with none. The ones they agreed on are written in by `ref_context.py --apply`."""
+    import ref_context as RC
+    report = _read_json(store.docs / "ref_context_review.json")
+    out = []
+    for r in report or []:
+        m = FIELD.fullmatch(r.get("field") or "")
+        vol, page = _page_of(r["where"])
+        if not m or vol not in volumes or (pages is not None and page not in pages):
+            continue
+        section, i, name = m.group(1), int(m.group(2)), m.group(3)
+        entries = (store._load(vol, page) or {}).get(section) or []
+        old = entries[i].get(name) if i < len(entries) else None
+        if not isinstance(old, str) or old.count(r["written"]) != 1:
+            continue
+        fixes = []
+        for f in (r.get("fix"), (r.get("first") or {}).get("fix"), (r.get("second") or {}).get("fix"), (r.get("third") or {}).get("fix")):
+            if f and f != r["written"] and f not in fixes:
+                fixes.append(f)
+        options = []
+        for f in fixes:
+            new = RC.rewrite(r["written"], f, r.get("ref") or "")
+            if new and new != r["written"]:
+                options.append({"label": f, "changes": [{"vol": vol, "page": page, "path": [section, i, name], "old": old,
+                                                         "new": old.replace(r["written"], new)}]})
+        kind = "ref_context" if options else "ref_unsure"
+        iid = f"{vol}/{page:04d}/{kind}/{_md5(r['field'], r['written'], r.get('why') or '')}"
+        said = f"{r['written']}: {r.get('why') or ''}"
+        it = {"id": iid, "book_dir": vol, "page": page, "kind": kind, "optional": False, "msg": said,
+              "where": {"section": section, "index": i, "field": name}}
+        if options:
+            it["proposal"] = {"id": iid, "item": iid, "title": f"Verse reference {r['written']}",
+                              "why": [r.get("why") or "the context does not fit"], "flags": [], "sure": False,
+                              "options": options}
+        out.append(it)
+    return out
+
+
+GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_word", "ocr_unscanned")
 
 
 def generated_items(store, volumes=None, pages=None):
@@ -254,7 +294,7 @@ def generated_items(store, volumes=None, pages=None):
     for vol in volumes:
         out += _footnote_items(store, vol, pset)
     vset = set(volumes)
-    return (out + _ref_items(store, vset, pset) + _gap_items(store, vset, pset) + _italic_items(store, vset, pset)
+    return (out + _ref_items(store, vset, pset) + _context_items(store, vset, pset) + _gap_items(store, vset, pset) + _italic_items(store, vset, pset)
             + _differ_items(store, vset, pset) + _unscanned_items(store, vset, pset))
 
 
