@@ -539,6 +539,18 @@ The only place for status: when a step is done, update it here, not in the secti
     `cache/refs/grc_hunspell_asked.json` for fast replay.
   - `27_isaie` through `46_2_maccabees`: ready to run with `uv run --no-project --with pillow python footnotes.py run <vol> --local`
     and `python3 footnotes.py apply <vol>`.
+  - **The write-out (agy, Oct 24–25), still to do**, in this order (from scripts/):
+    1. ~~Its checks into `footnotes.py`~~ (done, 027fadf12: `tidy_expansion` keeps lists on one
+       line and the first capital; the `expand-changed-numbers` guard).
+    2. Re-ask the 42 agy batches that timed out: `FOOTNOTE_BACKEND=agy AGY_MODEL=gemini-3.8-flash-low
+       uv run --no-project --with pillow python -u footnotes.py run all --no-scan`, then
+       `python3 footnotes.py apply <vol>` for each volume (the cache makes everything else free).
+    3. ~~Lists left one name per line by an earlier write-out~~ (done Nov 2, 026d7f6cc: 1,503 notes,
+       not ~25 as first counted; five poems with " ;" at a line's end left as printed).
+    4. The Haiku second pass on the notes Flash left unchanged (agreed Oct 24: Haiku is more
+       thorough but once invented a reference; the `expand-changed-numbers` flag holds those).
+    5. Last: the 7,568 held notes (`python3 footnotes.py held` → `docs/footnotes/held.json`).
+       Most need their Greek or Hebrew read on the scan: a separate job.
 - **Scan OCR** (§13): Kraken has read every page of `01_genese` through `46_2_maccabees` (100%
   complete, all 148 pages of `23_ecclesiaste` included); `ocr_gaps.py` runs on all of them. Tesseract
   cached for all 854 pages of `01_genese`, all 557 pages of `02_exode`, all 326 pages of `03_levitique`,
