@@ -766,6 +766,9 @@ def word_slant(o, w):
     return sum(sl) / len(sl) if sl else None
 
 
+REF_AFTER = re.compile(r"\.?\s+\d+:\d+")  # Psaumes 118:17
+
+
 def italics(o, data, res=None):
     """Stretches the scan prints in italics and the JSON in roman, or the other way. Each: {path, a, b,
     to: "italic" | "roman", words: [first, last] (in `res`), slant, old, before, after, new}: `old` is
@@ -787,6 +790,19 @@ def italics(o, data, res=None):
         if numeral(w["t"]):
             continue  # 17, XVII (as after a ℣, or by a lemma)
         src = "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"])
+        if "&" in src:
+            continue  # the & leans in roman too (&, &c.)
+        f = fields[path]
+        if f[max(0, w["a"] - 3):w["a"]].endswith("{(") or f[w["a"]:w["b"]].isdigit() or REF_AFTER.match(f, w["b"]):
+            continue  # a note's letter ^{(d)}; a number (70 for LXX); a book before its chapter:verse (Psal. for Psaumes)
+        if len({i in marks[path] for i in range(w["a"], min(w["b"], len(f))) if f[i].isalnum()}) > 1:
+            continue  # the text has both under one scan word already
+        if re.match(re.escape(w["t"]) + "['’]", src):  # d'Achat: one slant for both pieces
+            j = w["b"]
+            while j < len(f) and f[j] in "'’_":
+                j += 1
+            if j < len(f) and (j in marks[path]) != (w["a"] in marks[path]):
+                continue  # d'_Achat_: the text has the elided d roman, the name italic
         t = w["t"]
         if "'" in src or "’" in src:  # qu' il: the pieces of one word vote as that word, its letters (s'y leans as y)
             t = re.sub(r"\W", "", src)
