@@ -523,3 +523,20 @@ def test_a_real_word_before_a_lemma_stays_red():
 def test_no_gap_for_the_commentaire_heading_misread():  # Juges p. 254: C.OM MENT.AIRE.
     o = ocr(line(300, "il", "dit", "C.OM", "MENT.AIRE.", "ceci", wc=0.99))
     assert O.gaps(o, page("il dit ceci"), least=2) == []
+
+
+def test_fix_pairs_a_number_printed_with_et():  # Juges p. 160: soixante & dix-sept, soixante-dix-sept
+    r = O.align(ocr(line(300, "les", "soixante", "&", "dix-sept", "hommes")), page("les soixante-dix-sept hommes"), fix=True)
+    assert [w["s"] for w in r["words"]] == ["ok"] * 5 and r["extra"] == []
+    r = O.align(ocr(line(300, "les", "soixante", "&", "dix", "fils")), page("les soixante-dix fils"), fix=True)
+    assert "missing" not in {w["s"] for w in r["words"]} and r["extra"] == []
+
+
+def test_three_scan_words_are_not_joined_by_likeness():
+    r = O.align(ocr(line(300, "il", "dit", "soit", "&", "dix", "ceci")), page("il dit soixante-dix ceci"), fix=True)
+    links = [(w.get("path"), w.get("a")) for w in r["words"] if "path" in w]
+    assert max(links.count(x) for x in links) < 3  # soit is no number: no join of three
+
+
+def test_et_before_a_lone_number_stays_red():
+    assert ("et", "missing") in statuses(O.align(ocr(line(300, "il", "dit", "et", "dix", "fils")), page("il dit dix fils"), fix=True))
