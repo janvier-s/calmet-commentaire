@@ -373,14 +373,20 @@ def split_columns(o):
     return dict(o, lines=lines)
 
 
+def gutter(o):
+    """Where the right column starts: 30 px before the middle start of the lines begun between 0.3 and 0.7
+    of the width (the page sits further left or right on the scan); else 0.45 of the width."""
+    w = o["size"][0]
+    starts = sorted(ln["box"][0] for ln in o["lines"] if 0.3 * w < ln["box"][0] < 0.7 * w)
+    return (starts[(len(starts) - 1) // 2] + starts[len(starts) // 2]) / 2 - 30 if starts else 0.45 * w
+
+
 def _allow(o):
     """The pairs the fixed alignment refuses, `o` the columns split: but for the same word, a word of the
     right column with a verse's Latin, of the left with its French; a verse number with a word (a number,
     a range 51-52, the same numeral XC, a slip II for Il allowed). The right column: from 30 px before the middle start of the lines begun
     between 0.3 and 0.7 of the width (the page sits further left or right on the scan); else 0.45."""
-    w = o["size"][0]
-    starts = sorted(ln["box"][0] for ln in o["lines"] if 0.3 * w < ln["box"][0] < 0.7 * w)
-    mid = (starts[(len(starts) - 1) // 2] + starts[len(starts) // 2]) / 2 - 30 if starts else 0.45 * w
+    mid = gutter(o)
 
     def allow(ot, jt, exact=False):
         right, path = ot["boxes"][0][0] >= mid, jt["path"]
@@ -391,10 +397,10 @@ def _allow(o):
 
 
 def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0.5, skip_least=0.9):
-    """The scan's words still unpaired, paired again with the JSON's words still unpaired between the
-    words linked either side of them, in the field of one of those two (a misread the stretches cut apart:
-    inimi-I eus, répom dent). `key_of`: the scan word's key (another reading of it: Tesseract's);
-    `skip_least`: the likeness a pair needs that passes over unpaired JSON words (else the same word)."""
+    """The scan's words still unpaired, paired again with the JSON's words still unpaired in the field of
+    one of the words linked either side of them, between the nearest scan words linked in that field (a
+    misread the stretches cut apart: inimi-I eus, répom dent; soptem between a French line and a Latin
+    one). `key_of`: the scan word's key (another reading of it: Tesseract's); `skip_least`: the likeness a pair needs that passes over unpaired JSON words (else the same word)."""
     first = {(t["path"], t["a"]): j for j, t in enumerate(jt)}
 
     def linked(r):  # the JSON's words a scan word is linked to (the last may be in the next field)
@@ -411,9 +417,13 @@ def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0
         while e < len(res) and "path" not in res[e]:
             e += 1
         sides = [n for n in (i - 1, e) if 0 <= n < len(res)]
-        lo = max(linked(res[i - 1])) if i else -1
-        hi = min(linked(res[e])) if e < len(res) else len(jt)
         for path in dict.fromkeys(res[n]["path"] for n in sides):
+            # the neighbours in this field: on a verse page the scan goes a French line, a Latin line, so
+            # the words either side of a misread are often one in each field
+            before = next((n for n in range(i - 1, -1, -1) if res[n].get("path") == path), None)
+            after = next((n for n in range(e, len(res)) if res[n].get("path") == path), None)
+            lo = max(linked(res[before])) if before is not None else -1
+            hi = min(linked(res[after])) if after is not None else len(jt)
             run = [n for n in range(i, e) if "path" not in res[n] and key_of(ot[n]) is not None]  # None: no reading
             cand = [j for j in range(lo + 1, hi) if j not in used and jt[j]["path"] == path]
             if not run or not cand:
@@ -428,14 +438,43 @@ def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0
         i = e
 
 
+OUT_OF_SCOPE = re.compile(r"verses/\d+/(?:latin|annotations)")  # the verses' Latin and margin: no red there
+LEMMA_MARK = 3  # the longest a lemma's verse number reads (ỳ. 19.: Y19, VA7, IJ)
+LATIN_QUOTE = re.compile(r"commentary/\d+/latin_quote")
+
+
+def _out_of_scope(o, res):
+    """Red only where the reviewer looks, the commentary and the verses' French: a scan word left unpaired
+    between words of the verses, in the Latin column (left of the gutter) or between Latin or margin words
+    only, is skipped; so is a short word or one with a digit read just before a lemma (its verse number)."""
+    mid = gutter(o)
+    prev, nxt, last = [None] * len(res), [None] * len(res), None
+    for i, r in enumerate(res):
+        prev[i], last = last, (i if "path" in r else last)
+    last = None
+    for i in range(len(res) - 1, -1, -1):
+        nxt[i], last = last, (i if "path" in res[i] else last)
+    for i, r in enumerate(res):
+        if r["s"] != "missing":
+            continue
+        near = [res[n]["path"] for n in (prev[i], nxt[i]) if n is not None]
+        if near and all(p.startswith("verses/") for p in near) and (
+                all(OUT_OF_SCOPE.fullmatch(p) for p in near) or r["boxes"][0][0] < mid):
+            r["s"] = "skip"
+        elif (nxt[i] is not None and nxt[i] - i <= 2 and LATIN_QUOTE.fullmatch(res[nxt[i]]["path"])
+              and res[nxt[i]]["a"] == 0 and (len(r["t"]) <= LEMMA_MARK or any(c.isdigit() for c in r["t"]))):
+            r["s"] = "skip"
+
+
 def align(o, data, fix=False, tess=None):
     """The OCR set against the JSON: {"size", "words": [{t, boxes, s, path?, a?, b?}], "extra": [{t, path,
     a, b}]}. A word's `s`: ok (the same word, old spelling allowed), near (nearly), diff (a different
     word), missing (not in the JSON), skip (the running header, an unsure reading, a footnote: they are
     expanded, so they differ by design). `extra`: the JSON's words the scan does not have (but for the
     footnotes'), with what they are written in. `fix`: the fixed alignment (the verses' columns kept apart,
-    the verse numbers out of the words, the words left unpaired paired again); `tess`: Tesseract's reading
-    of the page (tess_ocr.read), with `fix`: the words still unpaired paired by it (`by`: tess), a paired
+    the verse numbers out of the words, the words left unpaired paired again, no red in the verses' Latin
+    and margin nor for a lemma's verse number); `tess`: Tesseract's reading of the page (tess_ocr.read),
+    with `fix`: the words still unpaired paired by it (`by`: tess), a paired
     word both OCRs read against the JSON `both` (`was`: its status before), `tt` its reading under each
     paired word, and `tess`: whether there was one."""
     o = split_columns(o)
@@ -516,9 +555,11 @@ def align(o, data, fix=False, tess=None):
         sl = word_slant(o, r)
         if sl is not None:
             r["sl"] = round(sl)
+    if fix:
+        _out_of_scope(o, res)
     extra = [dict(t=t["t"], path=t["path"], a=t["a"], b=t["b"]) for j, t in enumerate(jt)
              if j not in used and not t["path"].startswith("footnotes/") and len(t["t"]) > 1 and not t["t"].isdigit()
-             and not (fix and re.fullmatch(r"verses/\d+/annotations", t["path"]) and MARGIN_YEAR.fullmatch(t["t"]))]  # the margin's year
+             and not (fix and OUT_OF_SCOPE.fullmatch(t["path"]))]
     if tess:
         _both(res, ot, jt, read)
     out = {"size": o["size"], "words": res, "extra": extra, "unscanned": _unscanned(jt, at, res)}

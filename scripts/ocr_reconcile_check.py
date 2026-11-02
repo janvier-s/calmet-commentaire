@@ -14,7 +14,8 @@ line on the scan, if one can be), ZZplant1 and ZZplant2 inserted, one word repla
 word, and one more word deleted next to a scan word the unplanted run leaves unpaired or diff (where the
 repair works: delete-near). Pass: a deleted word's scan box is `missing`, an inserted word is in `extra`,
 the replaced word is red (its scan box `missing`, or the new word in `extra`), and every red of the page
-unplanted still red planted (collateral). A field the page lacks gets no plant. Exits 1 if any of these
+unplanted still red planted (collateral). A field the page lacks gets no plant. A plant in the verses'
+Latin or margin is listed `out` and not counted: the fixed alignment shows no red there, by design. Exits 1 if any of these
 fails.
 """
 import collections
@@ -280,11 +281,15 @@ def planted_check(vol, page, o, data, tess, fixed):
     pp = O.align(o, planted)
     for n in notes:
         print("     note:", n)
-    ok = 0
+    ok = n = 0
     for kind, path, word, i, end in plants:
         good, got = verdict(kind, word, i, pf, planted)
         _, got0 = verdict(kind, word, i, pp, planted)
+        if O.OUT_OF_SCOPE.fullmatch(path):  # the verses' Latin and margin: no red there, by design
+            print(f"     out  {kind:11} {word!r} @{path}: fixed+tess {got}; plain {got0}")
+            continue
         ok += good
+        n += 1
         print(f"     {'PASS' if good else 'FAIL'} {kind:11} {word!r} @{path}{' (line end)' if end else ''}:"
               f" fixed+tess {got}; plain {got0}")
     # collateral: every red of the unplanted run still red in the planted one
@@ -305,7 +310,7 @@ def planted_check(vol, page, o, data, tess, fixed):
     print(f"     {'PASS' if not lost else 'FAIL'} collateral: {reds - len(lost)}/{reds} reds of the page still red")
     for x in lost:
         print("       FAIL lost red:", x)
-    return ok, len(plants), reds - len(lost), reds
+    return ok, n, reds - len(lost), reds
 
 
 def main(argv):

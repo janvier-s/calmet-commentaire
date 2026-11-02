@@ -327,7 +327,7 @@ def test_fix_skips_misread_roman_numerals():
 
 
 def test_fix_still_flags_latin_words_made_of_numeral_letters():
-    r = O.align(ocr(line(300, "Et", "dixi", "dic", "vix", "mi")), verses_page(latin="Et", french=None), fix=True)
+    r = O.align(ocr(line(300, "Et", "dixi", "dic", "vix", "mi")), page("Et"), fix=True)  # a Latin quotation in the commentary
     assert {t for t, s in statuses(r) if s == "missing"} == {"dixi", "dic", "vix", "mi"}
 
 
@@ -437,7 +437,7 @@ def test_tesseract_reading_nothing_beneath_does_not_join_a_scan_only_word():  # 
     o = ocr(line(300, "ejus", "alors", "xqdzmi", "in"))
     r = O.align(o, verses_page(latin="ejus sedenti in", french=None), fix=True,
                 tess=tess(("sedenti", o["lines"][0]["words"][2]["box"])))
-    assert ("alors", "missing") in statuses(r)
+    assert "path" not in r["words"][1]  # unpaired (and not red: the verses' Latin)
 
 
 def test_tesseract_reading_nothing_beneath_does_not_join_in_the_commentary():
@@ -451,3 +451,70 @@ def test_tesseract_reading_only_punctuation_is_no_reading():  # _key("") is "et"
     o = ocr(line(300, "il", "dit", "xqdzmi", "ceci"))
     r = O.align(o, page("il dit et ceci"), fix=True, tess=tess(("—", o["lines"][0]["words"][2]["box"])))
     assert r["words"][2].get("by") != "tess" and r["words"][2]["s"] != "ok"
+
+
+def _verse_page_lines():
+    """A verse page as the scan reads it: a Latin line (left), its French (right), the next Latin line..."""
+    right = lambda y, *ws: {"box": [800, y, 300, 30], "words": [
+        {"t": w, "box": [800 + 120 * k, y, 100, 30], "wc": .99} for k, w in enumerate(ws)]}
+    return ocr(line(300, "Qui", "judicavit"), right(300, "Il", "jugea"), line(340, "soptem", "annis"), right(340, "sept", "ans"))
+
+
+def test_leftovers_pair_between_neighbours_of_their_own_field():  # Juges p. 233: soptem between jugea and annis
+    o = _verse_page_lines()
+    ot = O.ocr_tokens(o)
+    jt = O.json_tokens(verses_page(latin="Qui judicavit septem annis", french="Il jugea sept ans"))
+    res = [dict(t=t["t"]) for t in ot]
+
+    def link(i, j, status, n=1):
+        res[i].update(s=status, path=jt[j]["path"], a=jt[j]["a"], b=jt[j + n - 1]["b"])
+    for i, j in {0: 0, 1: 1, 2: 4, 3: 5, 5: 3, 6: 6, 7: 7}.items():
+        link(i, j, "ok")
+    O._repair_leftovers(res, ot, jt, link, O._allow(o))
+    assert (res[4].get("path"), res[4].get("a")) == ("verses/0/latin", jt[2]["a"])
+
+
+def test_no_red_in_the_verses_latin():
+    o = _verse_page_lines()
+    r = O.align(o, verses_page(latin="Qui judicavit pater septem annis", french="Il jugea sept ans"), fix=True)
+    assert r["extra"] == [] and "missing" not in {w["s"] for w in r["words"]}
+    assert [e["t"] for e in O.align(o, verses_page(latin="Qui judicavit pater septem annis",
+                                                    french="Il jugea sept ans"))["extra"]][:1] == ["pater"]  # plain: red
+
+
+def test_no_red_for_a_word_only_in_the_latin_column():
+    o = _verse_page_lines()
+    o["lines"][2]["words"].insert(0, {"t": "xqdzmi", "box": [300, 340, 60, 30], "wc": .99})
+    r = O.align(o, verses_page(latin="Qui judicavit septem annis", french="Il jugea sept ans"), fix=True)
+    assert ("xqdzmi", "skip") in statuses(r)
+
+
+def test_still_red_in_the_verses_french():
+    o = _verse_page_lines()
+    r = O.align(o, verses_page(latin="Qui judicavit septem annis", french="Il jugea Israël sept ans"), fix=True)
+    assert [e["t"] for e in r["extra"]] == ["Israël"]
+    o["lines"][3]["words"].append({"t": "alors", "box": [1040, 340, 100, 30], "wc": .99})
+    r = O.align(o, verses_page(latin="Qui judicavit septem annis", french="Il jugea sept ans"), fix=True)
+    assert ("alors", "missing") in statuses(r)
+
+
+def test_no_red_in_the_margin_notes():
+    d = {"verses": [{"verse_number": 1, "annotations": "Hebr. Gedeon", "latin": "Et dixit", "french": None}],
+         "commentary": [], "footnotes": []}
+    assert O.align(ocr(line(300, "Et", "dixit")), d, fix=True)["extra"] == []
+
+
+def _lemma_page(*words):
+    d = {"verses": [], "footnotes": [], "commentary": [
+        {"latin_quote": None, "french_translation": None, "french_commentary": "il dit ceci"},
+        {"latin_quote": "VENITE SUB UMBRA", "french_translation": None, "french_commentary": "Le texte"}]}
+    return O.align(ocr(line(300, *words)), d, fix=True)
+
+
+def test_no_red_for_a_lemmas_verse_number():  # ỳ. 19. read Y19, VA7, IJ
+    for mark in ("Y19", "VA7", "IJ"):
+        assert (mark, "skip") in statuses(_lemma_page("il", "dit", "ceci", mark, "VENITE", "SUB", "UMBRA", "Le", "texte"))
+
+
+def test_a_real_word_before_a_lemma_stays_red():
+    assert ("champ", "missing") in statuses(_lemma_page("il", "dit", "ceci", "champ", "VENITE", "SUB", "UMBRA", "Le", "texte"))
