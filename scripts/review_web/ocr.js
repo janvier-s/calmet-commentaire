@@ -32,10 +32,14 @@ try {
   const saved = JSON.parse(localStorage.getItem("rw-ocr-filters"));
   if (Array.isArray(saved)) {
     active = new Set(saved.filter((k) => TYPES.some(([t]) => t === k)));
-    if (!saved.includes("both") && (active.has("diff") || active.has("near"))) active.add("both");  // saved before "both" was
+    if (localStorage.getItem("rw-ocr-both") !== "1" && !saved.includes("both") && (active.has("diff") || active.has("near")))
+      active.add("both");  // saved before "both" was: once (saved below), so "both" turned off stays off
   }
 } catch (e) {}
 const saveFilters = () => { try { localStorage.setItem("rw-ocr-filters", JSON.stringify([...active])); } catch (e) {} };
+try {
+  if (localStorage.getItem("rw-ocr-both") !== "1") { saveFilters(); localStorage.setItem("rw-ocr-both", "1"); }
+} catch (e) {}
 
 let res = null;       // the alignment of the page shown: {size, words, extra}
 let shownFor = null;  // "vol/page" it is for
@@ -121,7 +125,10 @@ async function refresh(runOcr = false, runTess = false) {
   run.textContent = "Read the scan";
   if (n !== pending || at !== `${S.vol}/${S.page}`) return;  // a later page or edit came meanwhile
   if (r.status !== 200) { toast(r.body.error || "No OCR"); res = null; }
-  else res = r.body.ocr;
+  else {
+    res = r.body.ocr;
+    if (r.body.tess_error) toast(r.body.tess_error);  // the overlay stays, without Tesseract
+  }
   if (shownFor !== at) { cur = -1; flagAt = -1; }
   shownFor = at;
   draw();

@@ -523,3 +523,40 @@ def test_a_real_word_before_a_lemma_stays_red():
 def test_no_gap_for_the_commentaire_heading_misread():  # Juges p. 254: C.OM MENT.AIRE.
     o = ocr(line(300, "il", "dit", "C.OM", "MENT.AIRE.", "ceci", wc=0.99))
     assert O.gaps(o, page("il dit ceci"), least=2) == []
+
+
+def test_fix_pairs_a_number_printed_with_et():  # Juges p. 160: soixante & dix-sept, soixante-dix-sept
+    r = O.align(ocr(line(300, "les", "soixante", "&", "dix-sept", "hommes")), page("les soixante-dix-sept hommes"), fix=True)
+    assert [w["s"] for w in r["words"]] == ["ok"] * 5 and r["extra"] == []
+    r = O.align(ocr(line(300, "les", "soixante", "&", "dix", "fils")), page("les soixante-dix fils"), fix=True)
+    assert "missing" not in {w["s"] for w in r["words"]} and r["extra"] == []
+
+
+def test_three_scan_words_are_not_joined_by_likeness():
+    r = O.align(ocr(line(300, "il", "dit", "soit", "&", "dix", "ceci")), page("il dit soixante-dix ceci"), fix=True)
+    links = [(w.get("path"), w.get("a")) for w in r["words"] if "path" in w]
+    assert max(links.count(x) for x in links) < 3  # soit is no number: no join of three
+
+
+def test_et_before_a_lone_number_stays_red():
+    assert ("et", "missing") in statuses(O.align(ocr(line(300, "il", "dit", "et", "dix", "fils")), page("il dit dix fils"), fix=True))
+
+
+def test_no_italics_vote_for_the_ampersand():  # the & leans in roman too: 852 issues "et" corpus-wide
+    o = ocr(line(300, "branche", "&", "&c.", "pour", "lui", sl=[0, 16, 17, 0, 0]))
+    assert O.italics(o, page("branche et etc. pour lui")) == []
+
+
+def test_no_italics_vote_for_a_notes_letter_numbers_or_a_books_name():  # ^{(f)}, Les 70 (LXX), Psal. cxviii. 17
+    o = ocr(line(300, "commerce", "f", "Les", "LXX", "voyez", "Psal.", "118:17", "ici", sl=[0, 16, 0, 16, 0, 17, 0, 0]))
+    assert O.italics(o, page("commerce ^{(f)} Les 70 voyez Psaumes 118:17 ici")) == []
+
+
+def test_no_italics_for_a_scan_word_the_text_already_splits():  # d'_Achat_: d' roman, the name italic
+    o = ocr(line(300, "assez", "d'Achat", "ou", "Acada", sl=[0, 16, 0, 16]))
+    assert O.italics(o, page("assez d'_Achat_ ou _Acada_")) == []
+
+
+def test_italics_still_found_beside_an_ampersand():
+    o = ocr(line(300, "il", "dit", "le", "firmament", "du", "Ciel", "&", "puis", sl=[0, 0, 16, 17, 16, 17, 16, 0]))
+    assert [(x["to"], x["old"]) for x in O.italics(o, page("il dit le firmament du Ciel et puis"))] == [("italic", "le firmament du Ciel")]

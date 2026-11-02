@@ -360,7 +360,7 @@ def test_refresh_generated_closes_the_scan_issues_an_edit_fixed(data_dir):
     server.shutdown()
 
 
-def test_ocr_tesseract_run_that_reads_nothing_is_an_error(web, tmp_path, monkeypatch):
+def test_ocr_tesseract_run_that_reads_nothing_says_so_and_keeps_the_overlay(web, tmp_path, monkeypatch):
     import scan_ocr
     import tess_ocr
     from conftest import dump
@@ -370,5 +370,53 @@ def test_ocr_tesseract_run_that_reads_nothing_is_an_error(web, tmp_path, monkeyp
     monkeypatch.setattr(tess_ocr, "read", lambda vol, page, run=False: {"size": [0, 0], "words": [], "error": "tesseract not found"})
     data = {"verses": [], "commentary": [{"french_commentary": "une"}], "footnotes": []}
     st, r = web("/api/ocr", {"vol": VOL, "page": 194, "data": data, "tess_run": True})
-    assert st == 500 and r["error"] == "Tesseract failed: tesseract not found"
+    assert st == 200 and r["tess_error"] == "Tesseract failed: tesseract not found"
+    assert r["ocr"]["tess"] is False and [w["s"] for w in r["ocr"]["words"]] == ["ok"]  # the overlay, without Tesseract
     assert web("/api/ocr", {"vol": VOL, "page": 194, "data": data})[1]["ocr"]["tess"] is False  # not asked: no error
+
+
+def test_ocr_tesseract_that_fails_to_run_keeps_the_overlay(web, tmp_path, monkeypatch):
+    import scan_ocr
+    import tess_ocr
+    from conftest import dump
+    monkeypatch.setattr(scan_ocr, "OCR_CACHE", tmp_path / "ocr")
+    dump(scan_ocr.cache_path(VOL, 194), {"size": [1479, 1969], "lines": [{"box": [340, 300, 300, 30], "words": [
+        {"t": "une", "box": [340, 300, 70, 30], "wc": 0.99}]}]})
+
+    def fail(vol, page, run=False):
+        raise OSError("no tesseract")
+    monkeypatch.setattr(tess_ocr, "read", fail)
+    data = {"verses": [], "commentary": [{"french_commentary": "une"}], "footnotes": []}
+    st, r = web("/api/ocr", {"vol": VOL, "page": 194, "data": data, "tess_run": True})
+    assert st == 200 and r["tess_error"].startswith("Tesseract failed") and r["ocr"]["words"][0]["s"] == "ok"
+
+
+def test_saving_a_page_makes_its_scan_issues_again(data_dir, tmp_path, monkeypatch):
+    import scan_ocr
+    from conftest import dump
+    monkeypatch.setattr(scan_ocr, "OCR_CACHE", tmp_path / "ocr")
+    words = ["suite", "du", "fort", "grand", "et", "beau", "commentaire."]
+    dump(scan_ocr.cache_path(VOL, 194), {"size": [1479, 1969], "lines": [{"box": [340, 300, 900, 30], "words": [
+        {"t": w, "box": [340 + 120 * i, 300, 100, 30], "wc": 0.99} for i, w in enumerate(words)]}]})
+    docs = data_dir.parent / "docs"
+    server, token = make_server(Store(data_dir, docs), docs / "review_queue.json", port=0)
+    threading.Thread(target=server.serve_forever, args=(0.02,), daemon=True).start()
+    base = f"http://127.0.0.1:{server.server_address[1]}"
+
+    def call(path, body=None):
+        req = urllib.request.Request(base + path, data=None if body is None else json.dumps(body).encode(),
+                                     headers={"X-Token": token, "Content-Type": "application/json"})
+        with urllib.request.urlopen(req) as r:
+            return json.loads(r.read())
+
+    assert call("/api/queue?kind=ocr_gap&status=open")["items"] == []  # no report yet
+    r = call("/api/refresh_generated", {"vol": VOL, "page": 194})  # a save: the page's issues made again
+    (it,) = call("/api/queue?kind=ocr_gap&status=open")["items"]
+    assert r["added"] == 1 and "fort grand et beau" in it["msg"]
+    p = call(f"/api/page?vol={VOL}&page=194")
+    p["data"]["commentary"][0]["french_commentary"] = "suite du fort grand et beau commentaire."
+    call("/api/page", {"vol": VOL, "page": 194, "data": p["data"], "version": p["version"]})
+    r = call("/api/refresh_generated", {"vol": VOL, "page": 194})
+    assert r["fixed"] == 1 and call("/api/queue?kind=ocr_gap&status=open")["items"] == []
+    assert json.loads((docs / "ocr_gaps.json").read_text(encoding="utf-8"))["gaps"] == []
+    server.shutdown()

@@ -66,3 +66,11 @@ def data_dir(tmp_path):
     docs = tmp_path / "docs"
     dump(docs / "review_queue.json", QUEUE)
     return data
+
+
+@pytest.fixture(autouse=True)
+def no_real_ocr(tmp_path, monkeypatch):
+    """No test reads the real Kraken cache (a save makes the page's scan issues again from it); a test
+    that wants OCR writes its own under scan_ocr.OCR_CACHE."""
+    import scan_ocr
+    monkeypatch.setattr(scan_ocr, "OCR_CACHE", tmp_path / "ocr-cache")

@@ -259,12 +259,28 @@ def slip(o, j):
     return single(o) == single(j) or look_alike(o, j) or look_alike(single(o), single(j))
 
 
+NUMBER_WORDS = {"un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze",
+                "treize", "quatorze", "quinze", "seize", "uingt", "uingts", "trente", "quarante", "cinquante",
+                "saixante", "cent", "cents", "mille"}  # keys
+
+
+def _number(ocr_toks):
+    """A number the scan prints with & (soixante & dix-sept): its key without the et, else None."""
+    words = [t for t in ocr_toks if t["t"] not in ("&", "et")]
+    if len(words) < 2 or len(words) == len(ocr_toks):  # et dix for dix: the et may be a real word missing
+        return None
+    if not all(_key(x) in NUMBER_WORDS for t in words for x in t["t"].split("-")):
+        return None
+    return "".join(_key(t["t"]) for t in words)
+
+
 def _joined_same(ocr_toks, json_toks, k, jk):
     """Words joined on one side or the other that make the same word: the same key, a slip, quæ read qua,
-    or the same once modernized."""
+    the same once modernized, or a number printed with & (soixante & dix: soixante-dix)."""
     ae = "".join(_key(t["t"].replace("æ", "a").replace("Æ", "A")) for t in json_toks)
     return (k == jk or slip(k, jk) or ae == k
-            or modern_key(" ".join(t["t"] for t in ocr_toks)) in (jk, jk.replace("-", "")))
+            or modern_key(" ".join(t["t"] for t in ocr_toks)) in (jk, jk.replace("-", ""))
+            or _number(ocr_toks) == jk)
 
 
 def _pair(ocr_run, json_run, allow=None, least=0.5, skip_least=None):
@@ -278,7 +294,7 @@ def _pair(ocr_run, json_run, allow=None, least=0.5, skip_least=None):
     while i < len(ocr_run):
         best = None
         for jj in range(j, min(len(json_run), j + 3)):
-            for take, jtake in ((1, 1), (2, 1), (1, 2), (1, 3)):  # 2:1, 1:2, 1:3 (tout-à-fait), a space lost or added
+            for take, jtake in ((1, 1), (2, 1), (1, 2), (1, 3)) + (((3, 1),) if allow else ()):  # 2:1, 1:2, 1:3 (tout-à-fait), a space lost or added; 3:1 (soixante & dix)
                 if i + take > len(ocr_run) or jj + jtake > len(json_run):
                     continue
                 if (take > 1 or jtake > 1) and not all(t["k"] for t in ocr_run[i:i + take] + json_run[jj:jj + jtake]):
@@ -288,6 +304,8 @@ def _pair(ocr_run, json_run, allow=None, least=0.5, skip_least=None):
                 if allow and not allow(ocr_run[i], json_run[jj], k == jk):
                     continue
                 same = _joined_same(ocr_run[i:i + take], json_run[jj:jj + jtake], k, jk)
+                if take == 3 and not same:
+                    continue  # three of the scan's words: only when they make the word
                 if allow and (take > 1 or jtake > 1) and not same and similar(k, jk) <= max(
                         similar(x, y) for x in ([t["k"] for t in ocr_run[i:i + take]] if take > 1 else [k])
                         for y in ([t["k"] for t in json_run[jj:jj + jtake]] if jtake > 1 else [jk])):
@@ -300,7 +318,8 @@ def _pair(ocr_run, json_run, allow=None, least=0.5, skip_least=None):
         if best and best[0] >= least:
             r, jj, take, jtake, k, jk = best
             ae = "".join(_key(t["t"].replace("æ", "a").replace("Æ", "A")) for t in json_run[jj:jj + jtake])  # quæ read qua
-            if k != jk and (ae == k or modern_key(" ".join(t["t"] for t in ocr_run[i:i + take])) in (jk, jk.replace("-", ""))):
+            if k != jk and (ae == k or modern_key(" ".join(t["t"] for t in ocr_run[i:i + take])) in (jk, jk.replace("-", ""))
+                            or _number(ocr_run[i:i + take]) == jk):
                 k = jk
             status = ("ok" if k == jk or (slip(k, jk) and (take == jtake == 1 or take == 1 and "-" in ocr_run[i]["t"]))  # a lost space is the OCR's; même-tems: même temps
                       else "near" if r >= 0.8 and take == jtake == 1 else "diff")
@@ -747,6 +766,9 @@ def word_slant(o, w):
     return sum(sl) / len(sl) if sl else None
 
 
+REF_AFTER = re.compile(r"\.?\s+\d+:\d+")  # Psaumes 118:17
+
+
 def italics(o, data, res=None):
     """Stretches the scan prints in italics and the JSON in roman, or the other way. Each: {path, a, b,
     to: "italic" | "roman", words: [first, last] (in `res`), slant, old, before, after, new}: `old` is
@@ -768,6 +790,19 @@ def italics(o, data, res=None):
         if numeral(w["t"]):
             continue  # 17, XVII (as after a ℣, or by a lemma)
         src = "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"])
+        if "&" in src:
+            continue  # the & leans in roman too (&, &c.)
+        f = fields[path]
+        if f[max(0, w["a"] - 3):w["a"]].endswith("{(") or f[w["a"]:w["b"]].isdigit() or REF_AFTER.match(f, w["b"]):
+            continue  # a note's letter ^{(d)}; a number (70 for LXX); a book before its chapter:verse (Psal. for Psaumes)
+        if len({i in marks[path] for i in range(w["a"], min(w["b"], len(f))) if f[i].isalnum()}) > 1:
+            continue  # the text has both under one scan word already
+        if re.match(re.escape(w["t"]) + "['’]", src):  # d'Achat: one slant for both pieces
+            j = w["b"]
+            while j < len(f) and f[j] in "'’_":
+                j += 1
+            if j < len(f) and (j in marks[path]) != (w["a"] in marks[path]):
+                continue  # d'_Achat_: the text has the elided d roman, the name italic
         t = w["t"]
         if "'" in src or "’" in src:  # qu' il: the pieces of one word vote as that word, its letters (s'y leans as y)
             t = re.sub(r"\W", "", src)
