@@ -767,6 +767,8 @@ def word_slant(o, w):
 
 
 REF_AFTER = re.compile(r"\.?\s+\d+:\d+")  # Psaumes 118:17
+ELIDED = re.compile(r"(?:^|(?<=[^\w_]))(\w{1,2})['’]$")  # d', l', qu' just before a word
+SPLIT_ELISION = re.compile(r"(?<![\w_])_(\w{1,2})_(['’])_(?=\w)")  # _d_'_Achat_
 
 
 def italics(o, data, res=None):
@@ -812,6 +814,30 @@ def italics(o, data, res=None):
         if sl is None or ROMAN_AT < sl < ITALIC_AT or (len(t) < 3 and SHORT_ROMAN < sl < SHORT_ITALIC) or 5 * sum(c in LEANING for c in t) >= 2 * len(t):
             continue
         votes.append((i, sl >= ITALIC_AT, w["a"] in marks[path], sl))
+    voters = {v[0] for v in votes}
+
+    def widen(n, step, scan, js):
+        """The stretch's edge moved over up to two words that did not vote (short, or not clear enough) but
+        that the scan measures the stretch's way and the text has as the rest of it (La terre de Sual)."""
+        path = res[n]["path"]
+        for _ in range(2):
+            m = n + step
+            if not 0 <= m < len(res) or m in voters:
+                break
+            w = res[m]
+            if w.get("path") != path or w["s"] == "skip" or numeral(w["t"]) or (w["a"] in marks[path]) != js:
+                break
+            f = fields[path]
+            if f[max(0, w["a"] - 3):w["a"]].endswith("{(") or f[w["a"]:w["b"]].isdigit() or "^{" in f[min(w["a"], f.rfind(" ", 0, w["a"]) + 1):w["b"]]:
+                break  # a note's mark ^{(f)}, a number: never taken in
+            if "&" in "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"]):
+                break
+            sl = word_slant(o, w)
+            if sl is None or not (sl >= ITALIC_AT if scan else sl <= ROMAN_AT):
+                break
+            n = m
+        return n
+
     out, k = [], 0
     while k < len(votes):
         i, scan, js, _ = votes[k]
@@ -832,17 +858,22 @@ def italics(o, data, res=None):
             k = m + 1
             continue
         if len(run) > 1 or mean >= 12 or mean <= 2:
-            first, last = res[run[0][0]], res[run[-1][0]]
+            lo, hi = widen(run[0][0], -1, scan, js), widen(run[-1][0], 1, scan, js)
+            first, last = res[lo], res[hi]
             s = fields[first["path"]]
             a, b = first["a"], last["b"]
+            m_el = ELIDED.search(s, 0, a) if a >= 2 and s[a - 1] in "'’" else None
+            if m_el and all((i in marks[first["path"]]) == js for i in range(m_el.start(1), a - 1)):
+                a = m_el.start(1)  # d'Achat: the elision with the word (_d'Achat_, the text's way)
             pm = (TRAILING_PUNCT if scan else ROMAN_TRAILING).match(s, b)
             if pm and (scan or pm.end() - 1 in marks[first["path"]]):
                 b = pm.end()
             t = toggle_italics(s, a, b)
             if t and t[0] != s:
+                new = SPLIT_ELISION.sub(r"_\1\2", t[0])  # _d_'_Achat_: _d'Achat_
                 out.append(dict(path=first["path"], a=a, b=b, to="italic" if scan else "roman",
-                                words=[run[0][0], run[-1][0]], slant=round(mean), old=s[a:b],
-                                before=s[max(0, a - 30):a], after=s[b:b + 30], new=t[0]))
+                                words=[lo, hi], slant=round(mean), old=s[a:b],
+                                before=s[max(0, a - 30):a], after=s[b:b + 30], new=new))
         k = m + 1
     return out
 
