@@ -105,6 +105,18 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     gaps_file = store.docs / "ocr_gaps.json"
     gaps_mtime = [gaps_file.stat().st_mtime_ns if gaps_file.exists() else None]
 
+    def rescan(vol, pages):
+        """The pages' scan issues (ocr_gaps.json) made again from their saved text, before the refresh reads
+        them: a word put in, or an italic fixed, and the issue goes; a new one shows."""
+        import ocr_gaps
+        for p in pages:
+            if store.path(vol, p).exists():
+                try:
+                    ocr_gaps.update_page(gaps_file, vol, p, store.read(vol, p)[0])
+                except (OSError, ValueError) as e:  # a report or cache unreadable: the refresh goes on with the old one
+                    print(f"ocr_gaps: {vol} {p}: {e}", file=sys.stderr)
+        gaps_mtime[0] = gaps_file.stat().st_mtime_ns if gaps_file.exists() else None  # not a full refresh for it
+
     def check_gaps_mtime():
         m = gaps_file.stat().st_mtime_ns if gaps_file.exists() else None
         if m != gaps_mtime[0]:
@@ -358,6 +370,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 vols = rs.book_volumes(vol)
                 r = rs.merge_recheck(items, progress, vols, new, include_optional) \
                     if new is not None else {"fixed": [], "added": []}  # a book the full audit leaves out
+                rescan(vol, [page, *also])
                 gen = refresh_generated(vols, [page, *also])
                 by_id.update({it["id"]: it for it in items})
                 r["fixed"] = r["fixed"] + close_stale_repeats(set(vols)) + gen["fixed"]
@@ -371,6 +384,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         write-outs, refs) the edits fixed close at once, without waiting for the book's audit."""
         vol, page = vol_page(body)
         with lock:
+            rescan(vol, [page])
             gen = refresh_generated(rs.book_volumes(vol), [page])
             by_id.update({it["id"]: it for it in items})
         return {"fixed": len(gen["fixed"]), "added": len(gen["added"]),

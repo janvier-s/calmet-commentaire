@@ -42,15 +42,16 @@ def italic_false_positives():
 FP = None
 
 
-def page_report(vol, page):
-    """The page's gaps, italics, words that differ, words the scan lacks."""
+def page_report(vol, page, data=None):
+    """The page's gaps, italics, words that differ, words the scan lacks; `data`: the page's text, else the
+    one in data/."""
     global FP
     FP = FP or italic_false_positives()
     o = scan_ocr.ocr(vol, page, run=False)
     path = DATA / vol / "normalized" / f"page_{page:04d}.json"
-    if not o or not path.exists():
+    if not o or (data is None and not path.exists()):
         return [], [], [], []
-    data = json.loads(path.read_text(encoding="utf-8"))
+    data = data if data is not None else json.loads(path.read_text(encoding="utf-8"))
     al = scan_ocr.align(o, data)
     res = al["words"]
     fx = scan_ocr.align(o, data, fix=True)  # the gaps and the words not on the scan: the fixed alignment (same words, same indexes)
@@ -67,6 +68,26 @@ def page_report(vol, page):
             [dict(r, **at, box=box(r)) for r in scan_ocr.unscanned(o, data, fx) if scope(r)])
 
 
+def _write(report, out):
+    for v in out.values():
+        v.sort(key=lambda g: (g["vol"], g["page"], g["words"][0] if "words" in g else g.get("word", g.get("a", 0))))
+    tmp = report.with_name(report.name + ".tmp")
+    tmp.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    tmp.replace(report)
+
+
+def update_page(report, vol, page, data):
+    """The page's entries of `report` (an ocr_gaps.json) made again from `data` (the text just saved), the
+    others kept: the issues follow the edits without a run over the volume. False: no OCR for the page."""
+    if scan_ocr.ocr(vol, page, run=False) is None:
+        return False
+    old = json.loads(report.read_text(encoding="utf-8")) if report.exists() else {}
+    found = page_report(vol, page, data)
+    _write(report, {k: [g for g in old.get(k) or [] if (g["vol"], g["page"]) != (vol, page)] + found[n]
+                    for n, k in enumerate(KINDS)})
+    return True
+
+
 def main(argv):
     vols = argv or sorted(p.name for p in scan_ocr.OCR_CACHE.iterdir() if p.is_dir())
     old = json.loads(REPORT.read_text(encoding="utf-8")) if REPORT.exists() else {}
@@ -81,9 +102,7 @@ def main(argv):
         print(f"[{now_time}] {vol}: {len(pages)} pages analyzed in {dur}, " + ", ".join(f"{len(v)} {k} on {len({g['page'] for g in v})} pages" for k, v in got.items()), flush=True)
         for k in KINDS:
             out[k] += got[k]
-    for v in out.values():
-        v.sort(key=lambda g: (g["vol"], g["page"], g["words"][0] if "words" in g else g.get("word", g.get("a", 0))))
-    REPORT.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    _write(REPORT, out)
 
 
 if __name__ == "__main__":
