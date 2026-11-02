@@ -5,15 +5,17 @@
 The reading: {"size": [w, h], "words": [{"t", "box": [x, y, w, h], "conf"}]}, cached in
 cache/tess/<volume>/page_NNNN.json. Models: cache/tessdata (fra; lat and frm from tessdata_best).
 Tesseract itself: $CALMET_TESSERACT, else the one on the PATH, else Homebrew's."""
+import datetime
 import json
 import os
 import shutil
 import subprocess
 import sys
+import time
 import urllib.request
 
 from paths import SCRIPTS
-from scan_ocr import scan_path
+from scan_ocr import _fmt_duration, scan_path
 
 TESS_CACHE = SCRIPTS / "cache" / "tess"
 TESSDATA = SCRIPTS / "cache" / "tessdata"
@@ -100,11 +102,63 @@ def main(argv):
     if len(argv) < 2:
         sys.exit(__doc__)
     vol = argv[0]
+    pages = []
     for arg in argv[1:]:
         a, _, b = arg.partition("-")
-        for p in range(int(a), int(b or a) + 1):
-            t = read(vol, p, run=True)
-            print(f"{vol} p.{p}: " + ("no scan" if t is None else t.get("error") or f"{len(t['words'])} words"), flush=True)
+        pages.extend(range(int(a), int(b or a) + 1))
+
+    scanned = [p for p in pages if scan_path(vol, p).exists()]
+    todo = [p for p in scanned if not cache_path(vol, p).exists()]
+    total_scanned = len(scanned)
+    cached_count = total_scanned - len(todo)
+    total_todo = len(todo)
+    now_str = datetime.datetime.now().strftime("%H:%M:%S")
+
+    print(f"[{now_str}] {vol}: {cached_count} pages cached, {total_todo} to OCR", flush=True)
+
+    t0 = time.time()
+    done_count = 0
+    chunk_t0 = time.time()
+
+    for p in pages:
+        is_cached = cache_path(vol, p).exists()
+        page_t0 = time.time()
+        t = read(vol, p, run=True)
+        page_took = time.time() - page_t0
+        now = datetime.datetime.now()
+        now_time = now.strftime("%H:%M:%S")
+
+        if is_cached:
+            status = "no scan" if t is None else t.get("error") or f"{len(t['words'])} words"
+            print(f"[{now_time}] {vol} p.{p}: {status}", flush=True)
+        elif t is None:
+            print(f"[{now_time}] {vol} p.{p}: no scan", flush=True)
+        elif "error" in t:
+            print(f"[{now_time}] {vol} p.{p}: Tesseract failed: {t['error']}", flush=True)
+        else:
+            done_count += 1
+            current_count = cached_count + done_count
+            pct = (current_count / total_scanned) * 100 if total_scanned else 100.0
+            elapsed = time.time() - t0
+            words = len(t["words"])
+            if done_count < total_todo:
+                sec_per_item = elapsed / done_count
+                remaining_sec = sec_per_item * (total_todo - done_count)
+                eta_time = (now + datetime.timedelta(seconds=remaining_sec)).strftime("%H:%M:%S")
+                time_info = f"ETA {eta_time} (~{_fmt_duration(remaining_sec)} left)"
+            else:
+                time_info = f"done in {_fmt_duration(elapsed)}"
+            print(f"[{now_time}] {vol} p.{p}: {words} words ({page_took:.1f}s) · {current_count}/{total_scanned} ({pct:4.1f}%) · {time_info}", flush=True)
+            if done_count % 10 == 0 or done_count == total_todo:
+                chunk_took = time.time() - chunk_t0
+                print(f"[{now_time}]   {current_count:3d}/{total_scanned} ({pct:5.1f}%) (p.{p}) · took {_fmt_duration(chunk_took)} ({_fmt_duration(elapsed)} elapsed, {time_info})", flush=True)
+                chunk_t0 = time.time()
+
+    if total_todo:
+        total_time = time.time() - t0
+        sec_per_page = total_time / total_todo
+        now_time = datetime.datetime.now().strftime("%H:%M:%S")
+        print(f"[{now_time}] {vol}: {total_todo} pages OCR'd in {_fmt_duration(total_time)} ({sec_per_page:.1f}s/page)", flush=True)
 
 
 if __name__ == "__main__":

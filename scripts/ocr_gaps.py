@@ -5,6 +5,9 @@ each with its change. Italics logged as false positives in NOTES.md are left out
 on the scan in the verses' Latin and margin are left out (nearly all misreads).
 
     python3 ocr_gaps.py [volume ...]     (default: every volume with OCR cached)
+    python3 ocr_gaps.py --vols X,Y       (check mode: analyze only X and Y, print counts against the
+                                          current report, write nothing; use it to test a change
+                                          before a full rebuild)
 
 Only pages already read by Kraken are looked at; run it again after more are read (it is quick).
 """
@@ -89,6 +92,11 @@ def update_page(report, vol, page, data):
 
 
 def main(argv):
+    check = argv[:1] == ["--vols"]
+    if check:
+        if len(argv) < 2:
+            sys.exit("--vols needs a comma-separated list of volumes")
+        argv = [v for a in argv[1:] for v in a.split(",") if v]
     vols = argv or sorted(p.name for p in scan_ocr.OCR_CACHE.iterdir() if p.is_dir())
     old = json.loads(REPORT.read_text(encoding="utf-8")) if REPORT.exists() else {}
     out = {k: [g for g in old.get(k) or [] if g["vol"] not in vols] for k in KINDS}
@@ -100,9 +108,13 @@ def main(argv):
         dur = scan_ocr._fmt_duration(time.time() - t0)
         now_time = datetime.datetime.now().strftime("%H:%M:%S")
         print(f"[{now_time}] {vol}: {len(pages)} pages analyzed in {dur}, " + ", ".join(f"{len(v)} {k} on {len({g['page'] for g in v})} pages" for k, v in got.items()), flush=True)
+        if check:
+            before = {k: sum(1 for g in old.get(k) or [] if g["vol"] == vol) for k in KINDS}
+            print("    vs report: " + ", ".join(f"{k} {before[k]}->{len(got[k])}" for k in KINDS), flush=True)
         for k in KINDS:
             out[k] += got[k]
-    _write(REPORT, out)
+    if not check:
+        _write(REPORT, out)
 
 
 if __name__ == "__main__":

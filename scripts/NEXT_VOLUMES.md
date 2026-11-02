@@ -537,9 +537,10 @@ The only place for status: when a step is done, update it here, not in the secti
     `cache/refs/grc_hunspell_asked.json` for fast replay.
   - `27_isaie` through `46_2_maccabees`: ready to run with `uv run --no-project --with pillow python footnotes.py run <vol> --local`
     and `python3 footnotes.py apply <vol>`.
-- **Scan OCR** (§13): Kraken has read every page of `01_genese` through `46_2_maccabees` (all but one
-  page of `23_ecclesiaste`, 148 of 149); `ocr_gaps.py` runs on all of them. Tesseract cached only for a
-  few pages of `06_josue`, `07_juges`, `21a_psaumes`. `47_matthieu` not read yet.
+- **Scan OCR** (§13): Kraken has read every page of `01_genese` through `46_2_maccabees` (100%
+  complete, all 148 pages of `23_ecclesiaste` included); `ocr_gaps.py` runs on all of them. Tesseract
+  cached for all 854 pages of `01_genese` and a few pages of `06_josue`, `07_juges`, `21a_psaumes`.
+  `47_matthieu` not read yet.
 - **Remaining Tasks before New Testament**:
   - Two to-dos in the review editor (`faire` or `être`?): `28_jeremie` p. 305 *Je ferai comme
     un vent brûlant*, `27_isaie` p. 333 *Je ferai à l'égard de Sennachérib*.
