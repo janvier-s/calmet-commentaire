@@ -546,7 +546,8 @@ The only place for status: when a step is done, update it here, not in the secti
        uv run --no-project --with pillow python -u footnotes.py run all --no-scan`, then
        `python3 footnotes.py apply <vol>` for each volume (the cache makes everything else free).
     3. ~~Lists left one name per line by an earlier write-out~~ (done Nov 2, 026d7f6cc: 1,503 notes,
-       not ~25 as first counted; five poems with " ;" at a line's end left as printed).
+       not ~25 as first counted; five poems with " ;" at a line's end left as printed). A name that
+       began a line keeps "Saint" with a capital (131e046ae, the user's choice).
     4. The Haiku second pass on the notes Flash left unchanged (agreed Oct 24: Haiku is more
        thorough but once invented a reference; the `expand-changed-numbers` flag holds those).
     5. Last: the 7,568 held notes (`python3 footnotes.py held` → `docs/footnotes/held.json`).
