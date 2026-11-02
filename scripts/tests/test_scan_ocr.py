@@ -635,3 +635,8 @@ def test_a_line_read_across_the_gutter_without_a_gap_is_cut_and_a_cut_word_goes_
     toks = [t["t"] for t in O.ocr_tokens(O.split_columns(o))]
     assert "terre" in toks and "adductus" in toks and "mandérent" in toks
     assert toks.index("terre") > toks.index("adductus")  # the French after the Latin column
+
+
+def test_a_word_differs_after_an_elision_names_the_word_not_the_elision():  # qu'Abraham: not "qu"
+    o = ocr(line(300, "il", "dit", "lorsqu'avant", "tout", "vint", wc=0.99))
+    assert [(x["old"], x["new"]) for x in O.differs(o, page("il dit lorsqu'ayant tout vint"))] == [("ayant", "avant")]

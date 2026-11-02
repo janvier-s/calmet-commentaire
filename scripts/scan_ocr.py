@@ -787,7 +787,11 @@ def differs(o, data, res=None):
             continue  # a note's letter ^{(e)}, read with the word next to it (Ce)
         old = s[w["a"]:w["b"]]
         new = modernize_text(fix_spelling(_raw(o, [w]).replace("ſ", "s").replace("’", "'")))[0]
-        new = (TOKEN.findall(new) or [""])[0]
+        toks = TOKEN.findall(new) or [""]
+        el = re.search(r"(\w+)['’]$", s[max(0, w["a"] - 8):w["a"]])
+        if len(toks) > 1 and el and toks[0].lower() == el.group(1).lower():
+            toks = toks[1:]  # the scan's qu'Henoc for the text's qu'|Hénoch: the word, not the qu
+        new = toks[0]
         lo, ln = old.lower(), new.lower()
         if len(new) < 2 or " " in old or key(new) == key(old) or lo.startswith(ln) or ln.startswith(lo):
             continue
