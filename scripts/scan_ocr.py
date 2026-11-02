@@ -732,6 +732,8 @@ def differs(o, data, res=None):
         if any(res[n].get("path") == path and res[n].get("a") == w["a"] for n in (i - 1, i + 1) if 0 <= n < len(res)):
             continue  # two of the scan's words for one of the text's
         s = fields[path]
+        if s[max(0, w["a"] - 3):w["a"]].endswith("{("):
+            continue  # a note's letter ^{(e)}, read with the word next to it (Ce)
         old = s[w["a"]:w["b"]]
         new = modernize_text(fix_spelling(_raw(o, [w]).replace("ſ", "s").replace("’", "'")))[0]
         new = (TOKEN.findall(new) or [""])[0]
@@ -767,6 +769,7 @@ def word_slant(o, w):
 
 
 REF_AFTER = re.compile(r"\.?\s+\d+:\d+")  # Psaumes 118:17
+NOTE_MARK = re.compile(r"\^\{[^}]*\}")  # ^{(f)}
 ELIDED = re.compile(r"(?:^|(?<=[^\w_]))(\w{1,2})['’]$")  # d', l', qu' just before a word
 SPLIT_ELISION = re.compile(r"(?<![\w_])_(\w{1,2})_(['’])_(?=\w)")  # _d_'_Achat_
 
@@ -869,9 +872,18 @@ def italics(o, data, res=None):
             pm = (TRAILING_PUNCT if scan else ROMAN_TRAILING).match(s, b)
             if pm and (scan or pm.end() - 1 in marks[first["path"]]):
                 b = pm.end()
-            t = toggle_italics(s, a, b)
-            if t and t[0] != s:
-                new = SPLIT_ELISION.sub(r"_\1\2", t[0])  # _d_'_Achat_: _d'Achat_
+            # a note's mark inside the stretch stays out of the italics (the text's way: vestiges_^{(f)} _du pays_)
+            segs, pos = [], a
+            for mk in NOTE_MARK.finditer(s, a, b):
+                segs.append((pos, mk.start()))
+                pos = mk.end()
+            segs.append((pos, b))
+            t = s
+            for sa, sb in reversed(segs):  # the last first: the offsets before it hold
+                if any(c.isalnum() for c in s[sa:sb]):
+                    t = (toggle_italics(t, sa, sb) or (t,))[0]
+            if t != s:
+                new = SPLIT_ELISION.sub(r"_\1\2", t)  # _d_'_Achat_: _d'Achat_
                 out.append(dict(path=first["path"], a=a, b=b, to="italic" if scan else "roman",
                                 words=[lo, hi], slant=round(mean), old=s[a:b],
                                 before=s[max(0, a - 30):a], after=s[b:b + 30], new=new))
