@@ -31,6 +31,7 @@ import review_proposals as rp
 import review_store as rs
 import review_turns as rt
 import scan_ocr
+import tess_ocr
 from page_text import toggle_italics
 from review_search import Searcher
 
@@ -237,7 +238,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     def ocr(body):
         """The scan's OCR set against the page (`data`: the text being edited, else the one on disk), and its
         italics (`italics`: the stretches printed otherwise than the text has them); with
-        `run`, Kraken reads a page not yet read (about 30 s)."""
+        `run`, Kraken reads a page not yet read (about 30 s); with `tess_run`, so does Tesseract."""
         vol, page = vol_page(body)
         scan = store.scan(vol, page)
         if scan is None:
@@ -249,8 +250,15 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if o is None:
             return {"ocr": None}
         data = body.get("data") or (store.read(vol, page)[0] if store.path(vol, page).exists() else {})
-        res = scan_ocr.align(o, data)
-        res["italics"] = [{k: r[k] for k in ("path", "a", "b", "to", "words", "slant")} for r in scan_ocr.italics(o, data, res["words"])]
+        raw = scan_ocr.align(o, data)  # the plain alignment: the italics' word indexes come from it
+        try:
+            tess = tess_ocr.read(vol, page, run=bool(body.get("tess_run")))
+        except (OSError, subprocess.CalledProcessError) as e:  # URLError and HTTPError are OSErrors
+            raise ApiError(500, {"error": f"Tesseract failed: {getattr(e, 'stderr', b'') and e.stderr.decode(errors='replace')[-300:] or e}"})
+        if body.get("tess_run") and tess is not None and not tess["words"]:  # asked to read, and it read nothing
+            raise ApiError(500, {"error": f"Tesseract failed: {tess.get('error') or 'no words read'}"})
+        res = scan_ocr.align(o, data, fix=True, tess=tess)
+        res["italics"] = [{k: r[k] for k in ("path", "a", "b", "to", "words", "slant")} for r in scan_ocr.italics(o, data, raw["words"])]
         return {"ocr": res}
 
     def delete_todo(body):

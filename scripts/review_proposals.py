@@ -93,8 +93,8 @@ def _gap_items(store, volumes, pages=None):
     report = _read_json(store.docs / "ocr_gaps.json")
     out = []
     for g in (report or {}).get("gaps") or []:
-        if g["vol"] not in volumes or (pages is not None and g["page"] not in pages):
-            continue
+        if g["vol"] not in volumes or (pages is not None and g["page"] not in pages) or scan_ocr.OUT_OF_SCOPE.fullmatch(g["path"]):
+            continue  # the verses' Latin and margin: not reviewed against the scan
         path = g["path"].split("/")
         o = store._load(g["vol"], g["page"]) or {}
         for k in path:
@@ -218,11 +218,12 @@ def _differ_items(store, volumes, pages=None):
 
 def _unscanned_items(store, volumes, pages=None):
     """Runs of the text's words the scan does not have (docs/ocr_gaps.json): added, or another page's."""
+    import scan_ocr
     report = _read_json(store.docs / "ocr_gaps.json")
     out = []
     for r in (report or {}).get("unscanned") or []:
-        if r["vol"] not in volumes or (pages is not None and r["page"] not in pages):
-            continue
+        if r["vol"] not in volumes or (pages is not None and r["page"] not in pages) or scan_ocr.OUT_OF_SCOPE.fullmatch(r["path"]):
+            continue  # the verses' Latin and margin: not reviewed against the scan
         got = _scan_field(store, r)
         if not got:
             continue

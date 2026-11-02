@@ -21,6 +21,11 @@ def page(commentary, latin=None):
             "footnotes": []}
 
 
+def verses_page(latin, french):
+    """A page with one verse holding both its fields."""
+    return {"verses": [{"verse_number": 1, "latin": latin, "french": french}], "commentary": [], "footnotes": []}
+
+
 def statuses(r):
     return [(w["t"], w["s"]) for w in r["words"]]
 
@@ -172,3 +177,349 @@ def test_italics_take_in_a_word_cut_at_its_apostrophe():
     o = ocr(line(300, "Il", "dit", "qu’il", "enleva", "les", "deux", "portes", sl=[0, 0, 15, 16, 15, 15, 16]))
     (it,) = O.italics(o, page("Il dit qu'il enleva les deux portes"))
     assert it["to"] == "italic" and it["old"] == "qu'il enleva les deux portes"
+
+
+def test_default_is_todays_alignment():
+    o, d = ocr(line(300, "le", "troupeaur")), page("le troupeaux")
+    assert O.align(o, d) == O.align(o, d, fix=False)
+
+
+def test_fix_pairs_a_misread_left_unpaired():
+    r = O.align(ocr(line(300, "Nequanda", "dicat", "inimi-I"), line(340, "eus", "meus")),
+                page("Nequando dicat inimicus meus"), fix=True)
+    assert "missing" not in {s for _, s in statuses(r)} and r["extra"] == []
+
+
+def test_fix_joins_a_split_without_any_hyphen():
+    r = O.align(ocr(line(300, "ils", "répom"), line(340, "dent", "ainsi")), page("ils répondent ainsi"), fix=True)
+    assert "missing" not in {s for _, s in statuses(r)} and r["extra"] == []
+
+
+def test_fix_keeps_a_word_only_on_the_scan_red():
+    r = O.align(ocr(line(300, "il", "dit", "alors", "ceci")), page("il dit ceci"), fix=True)
+    assert ("alors", "missing") in statuses(r)
+
+
+def test_fix_keeps_a_deletion_beside_an_unrelated_addition_red():
+    r = O.align(ocr(line(300, "il", "dit", "alors", "ceci")), page("il dit pourtant ceci"), fix=True)
+    assert ("alors", "missing") in statuses(r) and [e["t"] for e in r["extra"]] == ["pourtant"]
+
+
+def test_fix_never_pairs_across_the_verse_columns():
+    right = {"box": [800, 300, 100, 30], "words": [{"t": "aurez", "box": [800, 300, 100, 30], "wc": .99}]}
+    r = O.align(ocr(line(300, "manfueris"), right), verses_page(latin="fueris", french="vous aurez"), fix=True)
+    assert not any(w["t"] == "aurez" and w.get("path", "").endswith("/latin") for w in r["words"])
+
+
+def test_fix_never_pairs_a_verse_number_with_a_word():
+    r = O.align(ocr(line(300, "6", "Quæ", "dixit")), verses_page(latin="Quæ dixit", french=None), fix=True)
+    assert "path" not in r["words"][0]
+
+
+def test_fix_still_pairs_a_number_with_a_number():
+    assert ("37", "ok") in statuses(O.align(ocr(line(300, "chap.", "37")), page("chapitre 37"), fix=True))
+
+
+def test_fix_pairs_on_the_right_half_of_a_commentary_page():
+    o = ocr({"box": [800, 300, 300, 30], "words": [{"t": "parple", "box": [800, 300, 120, 30], "wc": .99}]})
+    assert O.align(o, page("parole"), fix=True)["words"][0].get("path") == "commentary/0/french_commentary"
+
+
+def test_leftovers_are_not_paired_across_two_fields():
+    d = {"verses": [], "footnotes": [], "commentary": [
+        {"latin_quote": None, "french_translation": None, "french_commentary": "il dit"},
+        {"latin_quote": None, "french_translation": None, "french_commentary": "parole vraie"}]}
+    r = O.align(ocr(line(300, "il", "dit", "Xparolx"), line(340, "vraie")), d, fix=True)
+    paths = [w.get("path") for w in r["words"]]
+    assert paths[:2] == ["commentary/0/french_commentary"] * 2 and paths[3] == "commentary/1/french_commentary"
+
+
+def test_the_words_are_the_same_with_and_without_fix():
+    o, d = ocr(line(300, "le", "troupeaur", "alors")), page("le troupeaux")
+    assert [w["t"] for w in O.align(o, d)["words"]] == [w["t"] for w in O.align(o, d, fix=True)["words"]]
+
+
+def test_fix_keeps_a_right_column_word_out_of_the_latin():
+    right = {"box": [800, 300, 100, 30], "words": [{"t": "aurez", "box": [800, 300, 100, 30], "wc": .99}]}
+    o, d = ocr(line(300, "fueris"), right), verses_page(latin="fueris aurem", french="vous")
+    assert O.align(o, d)["words"][1]["path"] == "verses/0/latin"  # today: paired across the gutter
+    assert "path" not in O.align(o, d, fix=True)["words"][1]
+
+
+def test_fix_keeps_a_roman_verse_number_out_of_a_word():
+    o, d = ocr(line(300, "et", "VI", "dixit")), verses_page(latin="et vir dixit", french=None)
+    assert O.align(o, d)["words"][1]["s"] == "near"  # today: VI read as vir
+    assert "path" not in O.align(o, d, fix=True)["words"][1]
+
+
+def _leftovers(commentary, *words, linked, **kw):
+    """`words` read, those of `linked` ({scan index: json index}) linked, the rest left to _repair_leftovers."""
+    ot = O.ocr_tokens(ocr(line(300, *words)))
+    jt = O.json_tokens({"verses": [], "footnotes": [], "commentary": [
+        {"latin_quote": None, "french_translation": None, "french_commentary": c} for c in commentary]})
+    res = [dict(t=t["t"]) for t in ot]
+
+    def link(i, j, status, n=1):
+        res[i].update(s=status, path=jt[j]["path"], a=jt[j]["a"], b=jt[j + n - 1]["b"])
+    for i, j in linked.items():
+        link(i, j, "ok")
+    O._repair_leftovers(res, ot, jt, link, None, **kw)
+    return [(r["t"], r.get("path"), r.get("a")) for r in res]
+
+
+def test_leftovers_pair_with_the_unpaired_between_their_neighbours():
+    out = _leftovers(["il dit répondent ainsi"], "il", "dit", "répom", "dent", "ainsi", linked={0: 0, 1: 1, 4: 3})
+    assert out[2:4] == [("répom", "commentary/0/french_commentary", 7), ("dent", "commentary/0/french_commentary", 7)]
+
+
+def test_leftovers_need_the_likeness_asked():
+    out = _leftovers(["il dit répondent ainsi"], "il", "dit", "répom", "dent", "ainsi", linked={0: 0, 1: 1, 4: 3}, least=0.95)
+    assert [p for _, p, _ in out[2:4]] == [None, None]
+
+
+def test_leftovers_stay_out_of_a_field_neither_neighbour_is_in():
+    out = _leftovers(["il", "répondent", "ainsi"], "il", "répondent", "ainsi", linked={0: 0, 2: 2})
+    assert out[1][1] is None
+
+
+def test_fix_pairs_a_number_with_a_range():
+    r = O.align(ocr(line(300, "versets", "52", "ainsi")), page("versets 51-52 ainsi"), fix=True)
+    assert r["words"][1].get("path") == "commentary/0/french_commentary"
+
+
+def test_fix_pairs_the_same_word_across_the_gutter():
+    right = {"box": [800, 300, 100, 30], "words": [{"t": "au", "box": [800, 300, 40, 30], "wc": .99},
+                                                   {"t": "rem", "box": [855, 300, 60, 30], "wc": .99}]}
+    r = O.align(ocr(line(300, "dixit"), right), verses_page(latin="dixit aurem", french="vous"), fix=True)
+    assert [w.get("path") for w in r["words"][1:]] == ["verses/0/latin"] * 2
+
+
+def test_the_gutter_is_the_right_columns_start_else_045():
+    tok = lambda x: {"t": "aurez", "boxes": [[x, 300, 100, 30]]}
+    latin = {"t": "aurem", "path": "verses/0/latin"}
+    left_only = ocr(line(300, "dixit"))  # no line starts mid-page: the right column from 0.45 of the width
+    assert not O._allow(left_only)(tok(700), latin) and O._allow(left_only)(tok(600), latin)
+    two = ocr(line(300, "dixit"), {"box": [900, 340, 100, 30], "words": []})
+    assert O._allow(two)(tok(700), latin) and not O._allow(two)(tok(875), latin)
+
+
+def test_fix_pairs_a_numeral_with_the_same_numeral():
+    d = {"chapter_title": "PSEAUME XC", "verses": [], "commentary": [], "footnotes": []}
+    r = O.align(ocr(line(300, "PSEAUME", "X", "C")), d, fix=True)
+    assert [w.get("path") for w in r["words"]] == ["chapter_title"] * 3
+
+
+def test_fix_pairs_a_numeral_that_is_a_slip_for_a_word():
+    assert ("II", "ok") in statuses(O.align(ocr(line(300, "dit", "II", "vient")), page("dit Il vient"), fix=True))
+
+
+def test_fix_does_not_flag_the_margin_year_the_json_keeps():
+    d = {"verses": [{"verse_number": 1, "annotations": "An. 2585", "latin": "Et dixit", "french": None}],
+         "commentary": [], "footnotes": []}
+    r = O.align(ocr(line(300, "Et", "dixit")), d, fix=True)
+    assert r["extra"] == []
+    assert [e["t"] for e in O.align(ocr(line(300, "Et", "dixit")), d)["extra"]] == ["An"]  # today: flagged
+
+
+def test_fix_skips_misread_roman_numerals():
+    r = O.align(ocr(line(300, "xII", "Et", "dixit", "L2")), verses_page(latin="Et dixit", french=None), fix=True)
+    assert ("xII", "skip") in statuses(r) and ("L2", "skip") in statuses(r)
+
+
+def test_fix_still_flags_latin_words_made_of_numeral_letters():
+    r = O.align(ocr(line(300, "Et", "dixi", "dic", "vix", "mi")), page("Et"), fix=True)  # a Latin quotation in the commentary
+    assert {t for t, s in statuses(r) if s == "missing"} == {"dixi", "dic", "vix", "mi"}
+
+
+def test_fix_still_flags_a_capitalized_word_made_of_numeral_letters():
+    r = O.align(ocr(line(300, "et", "Il", "Civil", "vint")), page("et vint"), fix=True)
+    assert {t for t, s in statuses(r) if s == "missing"} == {"Il", "Civil"}
+
+
+def test_fix_skips_a_misread_running_head():  # Juges p. 232 (COMMENTAIRF. at 0.083), p. 171, p. 155
+    o = ocr(line(30, "SURLESIUGES", "CHNR", "VIII."), line(55, "S'UR", "LES"), line(160, "COMMENTAIRF."), line(300, "le", "texte"))
+    assert statuses(O.align(o, page("le texte"), fix=True)) == [("le", "ok"), ("texte", "ok")]
+    assert ("COMMENTAIRF", "missing") in statuses(O.align(o, page("le texte")))  # today: red
+
+
+def test_fix_reads_a_lemma_or_a_head_misread_below_the_top_band():
+    o = ocr(line(80, "V.", "JO.FERTE", "SENTENTIAM."), line(300, "COMMENTAIRF."), line(340, "le", "texte"))
+    r = O.align(o, page("FERTE SENTENTIAM le texte"), fix=True)
+    assert ("SENTENTIAM", "ok") in statuses(r) and ("COMMENTAIRF", "missing") in statuses(r)
+
+
+def test_leftovers_join_only_json_words_next_to_each_other():
+    ot = O.ocr_tokens(ocr(line(300, "il", "répondent", "ainsi", "XX")))
+    jt = O.json_tokens({"verses": [], "footnotes": [], "commentary": [
+        {"latin_quote": None, "french_translation": None, "french_commentary": "il répon XX dent ainsi"}]})
+    res = [dict(t=t["t"]) for t in ot]
+
+    def link(i, j, status, n=1):
+        res[i].update(s=status, path=jt[j]["path"], a=jt[j]["a"], b=jt[j + n - 1]["b"])
+    for i, j in {0: 0, 2: 4, 3: 2}.items():
+        link(i, j, "ok")
+    O._repair_leftovers(res, ot, jt, link, None)
+    assert res[1].get("b") != jt[2]["b"]  # not over XX, linked to the scan's last word
+
+
+def tess(*words):
+    return {"size": [1479, 1969], "words": [{"t": t, "box": b, "conf": 90} for t, b in words]}
+
+
+def test_tesseract_pairs_a_garbled_word_kraken_could_not():
+    o = ocr(line(300, "ejus", "xqdzmi", "in"))   # similar(key("xqdzmi"), key("sedenti")) = 0.31: Kraken alone cannot pair it
+    r = O.align(o, verses_page(latin="ejus sedenti in", french=None), fix=True,
+                tess=tess(("sedenti", o["lines"][0]["words"][1]["box"])))
+    assert r["words"][1].get("by") == "tess" and r["extra"] == []
+
+
+def test_tesseract_does_not_pair_a_real_deletion_with_an_unrelated_addition():
+    o = ocr(line(300, "il", "dit", "alors", "ceci"))
+    r = O.align(o, page("il dit pourtant ceci"), fix=True, tess=tess(("alors", o["lines"][0]["words"][2]["box"])))
+    assert ("alors", "missing") in statuses(r)
+
+
+def test_both_ocrs_against_the_json():
+    o = ocr(line(300, "telles", "choses"))
+    r = O.align(o, page("celles choses"), fix=True, tess=tess(("telles", [340, 300, 120, 30])))
+    assert (r["tess"], r["words"][0]["s"]) == (True, "both")
+
+
+def test_not_both_when_tesseract_reads_the_json_word():
+    o = ocr(line(300, "parple"))
+    r = O.align(o, page("parole"), fix=True, tess=tess(("parole", [340, 300, 120, 30])))
+    assert r["words"][0]["s"] != "both"
+
+
+def test_not_both_for_numbers_and_pieces():
+    o = ocr(line(300, "ma"), line(340, "culini"))
+    r = O.align(o, verses_page(latin="masculini", french=None), fix=True,
+                tess=tess(("ma", [340, 300, 40, 30]), ("culini", [340, 340, 120, 30])))
+    assert "both" not in {w["s"] for w in r["words"]}
+
+
+def test_no_tesseract_reading_falls_back_and_says_so():
+    o, d = ocr(line(300, "telles")), page("celles")
+    for t in (None, {"size": [1479, 1969], "words": []}):
+        r = O.align(o, d, fix=True, tess=t)
+        assert r["tess"] is False and r["words"][0]["s"] in ("diff", "near")
+
+
+def test_leftovers_do_not_skip_unpaired_json_words_for_a_weak_likeness():  # Juges p. 286: nostrum deleted, nostram further on
+    out = _leftovers(["dit in manus terram nostram", "eux"], "manus", "terram", "dit", "nostrum", "eux",
+                     linked={0: 2, 1: 3, 2: 0, 4: 5})
+    assert out[3] == ("nostrum", None, None)
+
+
+def test_leftovers_still_skip_unpaired_json_words_for_a_near_word():
+    out = _leftovers(["dit in manus terram nostrums", "eux"], "manus", "terram", "dit", "nostrum", "eux",
+                     linked={0: 2, 1: 3, 2: 0, 4: 5})
+    assert out[3][1:] == ("commentary/0/french_commentary", 20)
+
+
+def test_fix_joins_two_scan_words_only_when_they_make_the_json_word():  # Juges p. 286: deux deleted before colomnes
+    r = O.align(ocr(line(300, "il", "dit", "entre", "deux", "colomnes", "Dieu")), page("il dit entre colonnes Dieu"), fix=True)
+    assert ("deux", "missing") in statuses(r) and r["words"][4]["s"] in ("ok", "near")
+
+
+def test_plain_still_joins_two_scan_words_by_likeness():
+    r = O.align(ocr(line(300, "il", "dit", "entre", "deux", "colomnes", "Dieu")), page("il dit entre colonnes Dieu"))
+    assert [w["s"] for w in r["words"][3:5]] == ["diff", "diff"]
+
+
+def test_fix_does_not_join_a_short_word_to_a_long_misread():  # et + miséricordieusemeut: the long word alone is likelier
+    r = O.align(ocr(line(300, "il", "dit", "et", "miséricordieusemeut", "Dieu")),
+                page("il dit miséricordieusement Dieu"), fix=True)
+    assert ("et", "missing") in statuses(r) and r["words"][3]["s"] in ("ok", "near")
+
+
+def test_tesseract_reading_nothing_beneath_does_not_join_a_scan_only_word():  # "" + "sedenti" made sedenti
+    o = ocr(line(300, "ejus", "alors", "xqdzmi", "in"))
+    r = O.align(o, verses_page(latin="ejus sedenti in", french=None), fix=True,
+                tess=tess(("sedenti", o["lines"][0]["words"][2]["box"])))
+    assert "path" not in r["words"][1]  # unpaired (and not red: the verses' Latin)
+
+
+def test_tesseract_reading_nothing_beneath_does_not_join_in_the_commentary():
+    o = ocr(line(300, "il", "dit", "alors", "xqdzmi", "ceci"))
+    r = O.align(o, page("il dit pourtant ceci"), fix=True,
+                tess=tess(("pourtant", o["lines"][0]["words"][3]["box"])))
+    assert ("alors", "missing") in statuses(r)
+
+
+def test_tesseract_reading_only_punctuation_is_no_reading():  # _key("") is "et"
+    o = ocr(line(300, "il", "dit", "xqdzmi", "ceci"))
+    r = O.align(o, page("il dit et ceci"), fix=True, tess=tess(("—", o["lines"][0]["words"][2]["box"])))
+    assert r["words"][2].get("by") != "tess" and r["words"][2]["s"] != "ok"
+
+
+def _verse_page_lines():
+    """A verse page as the scan reads it: a Latin line (left), its French (right), the next Latin line..."""
+    right = lambda y, *ws: {"box": [800, y, 300, 30], "words": [
+        {"t": w, "box": [800 + 120 * k, y, 100, 30], "wc": .99} for k, w in enumerate(ws)]}
+    return ocr(line(300, "Qui", "judicavit"), right(300, "Il", "jugea"), line(340, "soptem", "annis"), right(340, "sept", "ans"))
+
+
+def test_leftovers_pair_between_neighbours_of_their_own_field():  # Juges p. 233: soptem between jugea and annis
+    o = _verse_page_lines()
+    ot = O.ocr_tokens(o)
+    jt = O.json_tokens(verses_page(latin="Qui judicavit septem annis", french="Il jugea sept ans"))
+    res = [dict(t=t["t"]) for t in ot]
+
+    def link(i, j, status, n=1):
+        res[i].update(s=status, path=jt[j]["path"], a=jt[j]["a"], b=jt[j + n - 1]["b"])
+    for i, j in {0: 0, 1: 1, 2: 4, 3: 5, 5: 3, 6: 6, 7: 7}.items():
+        link(i, j, "ok")
+    O._repair_leftovers(res, ot, jt, link, O._allow(o))
+    assert (res[4].get("path"), res[4].get("a")) == ("verses/0/latin", jt[2]["a"])
+
+
+def test_no_red_in_the_verses_latin():
+    o = _verse_page_lines()
+    r = O.align(o, verses_page(latin="Qui judicavit pater septem annis", french="Il jugea sept ans"), fix=True)
+    assert r["extra"] == [] and "missing" not in {w["s"] for w in r["words"]}
+    assert [e["t"] for e in O.align(o, verses_page(latin="Qui judicavit pater septem annis",
+                                                    french="Il jugea sept ans"))["extra"]][:1] == ["pater"]  # plain: red
+
+
+def test_no_red_for_a_word_only_in_the_latin_column():
+    o = _verse_page_lines()
+    o["lines"][2]["words"].insert(0, {"t": "xqdzmi", "box": [300, 340, 60, 30], "wc": .99})
+    r = O.align(o, verses_page(latin="Qui judicavit septem annis", french="Il jugea sept ans"), fix=True)
+    assert ("xqdzmi", "skip") in statuses(r)
+
+
+def test_still_red_in_the_verses_french():
+    o = _verse_page_lines()
+    r = O.align(o, verses_page(latin="Qui judicavit septem annis", french="Il jugea Israël sept ans"), fix=True)
+    assert [e["t"] for e in r["extra"]] == ["Israël"]
+    o["lines"][3]["words"].append({"t": "alors", "box": [1040, 340, 100, 30], "wc": .99})
+    r = O.align(o, verses_page(latin="Qui judicavit septem annis", french="Il jugea sept ans"), fix=True)
+    assert ("alors", "missing") in statuses(r)
+
+
+def test_no_red_in_the_margin_notes():
+    d = {"verses": [{"verse_number": 1, "annotations": "Hebr. Gedeon", "latin": "Et dixit", "french": None}],
+         "commentary": [], "footnotes": []}
+    assert O.align(ocr(line(300, "Et", "dixit")), d, fix=True)["extra"] == []
+
+
+def _lemma_page(*words):
+    d = {"verses": [], "footnotes": [], "commentary": [
+        {"latin_quote": None, "french_translation": None, "french_commentary": "il dit ceci"},
+        {"latin_quote": "VENITE SUB UMBRA", "french_translation": None, "french_commentary": "Le texte"}]}
+    return O.align(ocr(line(300, *words)), d, fix=True)
+
+
+def test_no_red_for_a_lemmas_verse_number():  # ỳ. 19. read Y19, VA7, IJ
+    for mark in ("Y19", "VA7", "IJ"):
+        assert (mark, "skip") in statuses(_lemma_page("il", "dit", "ceci", mark, "VENITE", "SUB", "UMBRA", "Le", "texte"))
+
+
+def test_a_real_word_before_a_lemma_stays_red():
+    assert ("champ", "missing") in statuses(_lemma_page("il", "dit", "ceci", "champ", "VENITE", "SUB", "UMBRA", "Le", "texte"))
+
+
+def test_no_gap_for_the_commentaire_heading_misread():  # Juges p. 254: C.OM MENT.AIRE.
+    o = ocr(line(300, "il", "dit", "C.OM", "MENT.AIRE.", "ceci", wc=0.99))
+    assert O.gaps(o, page("il dit ceci"), least=2) == []

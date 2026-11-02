@@ -287,6 +287,28 @@ def test_ocr_gap_is_an_issue_whose_words_go_in(data_dir):
     server.shutdown()
 
 
+def test_no_ocr_issue_in_the_verses_latin_or_margin(data_dir):
+    from conftest import dump
+    docs = data_dir.parent / "docs"
+    dump(data_dir / VOL / "normalized" / "page_0197.json", {
+        "verses": [{"verse_number": 1, "annotations": "An. 2585", "latin": "Qui judicavit annis",
+                    "french": "Il jugea ans"}], "commentary": [], "footnotes": []})
+    gap = lambda path, before, after, ocr: {"vol": VOL, "page": 197, "path": path, "pos": len(before),
+                                            "before": before, "after": after, "ocr": ocr, "text": ocr, "words": [0, 2]}
+    gone = lambda path, old: {"vol": VOL, "page": 197, "path": path, "a": 0, "b": len(old), "old": old,
+                              "before": "", "after": ""}
+    dump(docs / "ocr_gaps.json", {
+        "gaps": [gap("verses/0/latin", "Qui judicavit", " annis", "uumeri soptem ilic"),
+                 gap("verses/0/annotations", "An.", " 2585", "Hebr Gedeon ilic"),
+                 gap("verses/0/french", "Il jugea", " ans", "Israël sept fois")],
+        "unscanned": [gone("verses/0/latin", "Qui"), gone("verses/0/annotations", "An."), gone("verses/0/french", "Il")]})
+    store = Store(data_dir, docs)
+    import review_proposals as RP
+    gaps = RP._gap_items(store, {VOL}, {197})
+    assert [g["where"]["field"] for g in gaps] == ["french"]
+    assert [u["where"]["field"] for u in RP._unscanned_items(store, {VOL}, {197})] == ["french"]
+
+
 def test_ocr_italic_is_an_issue_that_italicizes(data_dir):
     from conftest import dump
     docs = data_dir.parent / "docs"
@@ -336,3 +358,17 @@ def test_refresh_generated_closes_the_scan_issues_an_edit_fixed(data_dir):
     assert r["fixed"] == 1 and next(i for i in r["issues"] if i["id"] == it["id"])["status"] == "resolved"
     assert call("/api/queue?kind=ocr_italic&status=open")["items"] == []
     server.shutdown()
+
+
+def test_ocr_tesseract_run_that_reads_nothing_is_an_error(web, tmp_path, monkeypatch):
+    import scan_ocr
+    import tess_ocr
+    from conftest import dump
+    monkeypatch.setattr(scan_ocr, "OCR_CACHE", tmp_path / "ocr")
+    dump(scan_ocr.cache_path(VOL, 194), {"size": [1479, 1969], "lines": [{"box": [340, 300, 300, 30], "words": [
+        {"t": "une", "box": [340, 300, 70, 30], "wc": 0.99}]}]})
+    monkeypatch.setattr(tess_ocr, "read", lambda vol, page, run=False: {"size": [0, 0], "words": [], "error": "tesseract not found"})
+    data = {"verses": [], "commentary": [{"french_commentary": "une"}], "footnotes": []}
+    st, r = web("/api/ocr", {"vol": VOL, "page": 194, "data": data, "tess_run": True})
+    assert st == 500 and r["error"] == "Tesseract failed: tesseract not found"
+    assert web("/api/ocr", {"vol": VOL, "page": 194, "data": data})[1]["ocr"]["tess"] is False  # not asked: no error
