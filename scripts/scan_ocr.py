@@ -666,8 +666,8 @@ def gaps(o, data, res=None, least=3):
             if g:
                 ocr = _raw(o, res[i:j + 1])
                 text = modernize_text(fix_spelling(ocr.replace("ſ", "s").replace("&", "et").replace("’", "'")))[0]
-                if REF_ONLY.fullmatch(ocr):  # a reference, written out in the JSON (Judic. XVII. 4.: Juges 17:4)
-                    i = j + 1
+                if REF_ONLY.fullmatch(ocr) or re.sub(r"[^A-Z]", "", ocr.upper()) == "COMMENTAIRE":  # a reference, written
+                    i = j + 1  # out in the JSON (Judic. XVII. 4.: Juges 17:4); the heading misread (C.OM MENT.AIRE.)
                     continue
                 note = bool(LEMMA.match(ocr))  # a whole note: a block of its own, not words in a field
                 out.append(dict(g, ocr=ocr, text=text, words=[i, j], **({"note": True} if note else {})))

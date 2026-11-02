@@ -518,3 +518,8 @@ def test_no_red_for_a_lemmas_verse_number():  # ỳ. 19. read Y19, VA7, IJ
 
 def test_a_real_word_before_a_lemma_stays_red():
     assert ("champ", "missing") in statuses(_lemma_page("il", "dit", "ceci", "champ", "VENITE", "SUB", "UMBRA", "Le", "texte"))
+
+
+def test_no_gap_for_the_commentaire_heading_misread():  # Juges p. 254: C.OM MENT.AIRE.
+    o = ocr(line(300, "il", "dit", "C.OM", "MENT.AIRE.", "ceci", wc=0.99))
+    assert O.gaps(o, page("il dit ceci"), least=2) == []

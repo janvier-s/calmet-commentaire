@@ -287,6 +287,28 @@ def test_ocr_gap_is_an_issue_whose_words_go_in(data_dir):
     server.shutdown()
 
 
+def test_no_ocr_issue_in_the_verses_latin_or_margin(data_dir):
+    from conftest import dump
+    docs = data_dir.parent / "docs"
+    dump(data_dir / VOL / "normalized" / "page_0197.json", {
+        "verses": [{"verse_number": 1, "annotations": "An. 2585", "latin": "Qui judicavit annis",
+                    "french": "Il jugea ans"}], "commentary": [], "footnotes": []})
+    gap = lambda path, before, after, ocr: {"vol": VOL, "page": 197, "path": path, "pos": len(before),
+                                            "before": before, "after": after, "ocr": ocr, "text": ocr, "words": [0, 2]}
+    gone = lambda path, old: {"vol": VOL, "page": 197, "path": path, "a": 0, "b": len(old), "old": old,
+                              "before": "", "after": ""}
+    dump(docs / "ocr_gaps.json", {
+        "gaps": [gap("verses/0/latin", "Qui judicavit", " annis", "uumeri soptem ilic"),
+                 gap("verses/0/annotations", "An.", " 2585", "Hebr Gedeon ilic"),
+                 gap("verses/0/french", "Il jugea", " ans", "Israël sept fois")],
+        "unscanned": [gone("verses/0/latin", "Qui"), gone("verses/0/annotations", "An."), gone("verses/0/french", "Il")]})
+    store = Store(data_dir, docs)
+    import review_proposals as RP
+    gaps = RP._gap_items(store, {VOL}, {197})
+    assert [g["where"]["field"] for g in gaps] == ["french"]
+    assert [u["where"]["field"] for u in RP._unscanned_items(store, {VOL}, {197})] == ["french"]
+
+
 def test_ocr_italic_is_an_issue_that_italicizes(data_dir):
     from conftest import dump
     docs = data_dir.parent / "docs"
