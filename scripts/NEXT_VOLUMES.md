@@ -3,7 +3,7 @@
 Written for Claude (and anyone else) picking up the Calmet work on a new volume: the New
 Testament (`47_matthieu` onward) and 3–4 Maccabees. Volumes 01_genese … 21a_psaumes were taken
 through everything below between Oct 9 and Oct 14, 2026, and the rest of the Old Testament
-through most of it by Oct 30 (§13 says what is left). This is what was done to them, in the
+through most of it by Oct 30 (§14 says what is left). This is what was done to them, in the
 order to do it, with the decisions behind it. `README.md` is the short command list; this is
 the full spec.
 
@@ -133,6 +133,10 @@ Do one volume at a time and check each step's output before the next. `<vol>` is
     (cached in `cache/seam_cache.json`). Results → `docs/seam_check.json`.
 13. `python3 audit_integrity.py ../docs/integrity_audit_<date>.json` → `docs/review_queue.json`.
     Report the counts by kind to the user.
+13b. **Read the scans with Kraken** (§13): `python3 scan_ocr.py <vol>` (about 13 s a page, so
+    hours for a volume: run it in the background; it caches each page and resumes), then
+    `python3 ocr_gaps.py <vol>` for the scan issues (words missing, word differs, not on scan,
+    italics). Check a sample with `ocr_red_report.py <vol>` before handing it to the user.
 14. **The user reviews** in `review_web.py` (§7). Commit `data/` when they say.
 15. **Footnotes** (§10): references and authors written out in French, Hebrew and Greek
     checked, doubtful notes settled from context; what is left waits for the scans.
@@ -450,7 +454,70 @@ volume needs from them:
   alliance or a pact, and in `à l'égard de`, `comme un vent`, which read either way and wait
   for the scan.
 
-## 13. Current status & remaining work (as of Oct 30, 2026)
+## 13. The scan's OCR and keeping its flags trustworthy (Oct 2026)
+
+Kraken reads the scans so the review editor can point at what the text got wrong. It is a
+witness only (§1): nothing it reads goes into `normalized/` unless the user accepts it.
+`scripts/README.md` ("The scan's OCR in the editor" onward) has the editor's side in detail.
+
+### The commands, in order (run from `scripts/`)
+
+1. `python3 scan_ocr.py <vol> [first-last]`: Kraken (CATMuS-Print Large, in `../.kraken-venv`)
+   on every page not yet cached, into `cache/ocr/<vol>/page_NNNN.json` with word boxes and each
+   word's slant (`scan_slant.py`: italics lean 12–20°, roman about 0°). One Kraken run per 10
+   pages, 8 threads: about 13 s a page. Runs in the background and resumes; the editor's
+   "Read the scan" does one page on demand (about 15 s).
+2. `python3 ocr_gaps.py <vol>` (seconds; only pages already read) → `docs/ocr_gaps.json`: the
+   queue's scan category, "WORDS MISSING (SCAN)", "WORD DIFFERS (SCAN)", "NOT ON SCAN",
+   "ITALICS (SCAN)", each with its change to Accept / Edit / Reject. Restart the editor to see a
+   new report. Saving a page in the editor remakes that page's scan issues by itself
+   (`ocr_gaps.update_page`).
+3. Optional, for pages where Kraken is doubtful: `python3 tess_ocr.py <vol> <pages>` (or the
+   "Tesseract" button above the scan): a second reading, cached in `cache/tess/<vol>/`.
+4. Before handing a new volume to the user: `python3 ocr_red_report.py <vol>` (how much red, with
+   a sample) and `python3 ocr_reconcile_check.py <vol>:<page> …` on a few pages of different
+   kinds (a verse page, a commentary page, a chapter opening). Both write nothing.
+
+### The fixed alignment: how the false positives were taken out
+
+The first overlay was mostly red that meant nothing: Kraken misreads, the verses' two columns
+paired across each other, verse numbers taken for words. The **fixed alignment**
+(`scan_ocr.align(…, fix=True)`, used by the overlay and by `ocr_gaps.py`) is what removed them,
+and the **Tesseract witness** and **"both OCRs"** sit on top of it. Keep all of it for new
+volumes; don't fall back to the plain alignment (it pairs across the verses' columns).
+
+- The verses' Latin and French columns kept apart, the gutter found on each page; verse lines
+  and chapter openings read across the gutter, a word cut at the gutter joined at the rule.
+- Verse numbers kept out of the words (a number may pair with a range, 51-52); margin years,
+  roman numerals (XC, II for Il), misread running heads and "COMMENTAIRE." not flagged.
+- Words left unpaired are paired again between the nearest words of their own field; two scan
+  words joined only when they make the JSON word (soixante & dix-sept, respecte t il), never for
+  a mere likeness.
+- No red at all in the verses' Latin and the margin notes, nor for a lemma's verse number
+  misread (Y19, VA7): there it was nearly all misreads. A real missing or added word stays red
+  in the commentary and the verses' French.
+- A doubled letter or one look-alike letter (salte, jetter, AAn), old spellings (tems/temps),
+  note marks Kraken misreads ((Ce) for (e), 1b) for (b)), the word after an elision: not a
+  "word differs". Footnotes are not flagged (they are written out by design).
+- Italics: no vote for the &, a note's letter, a number, a book before its chapter:verse; a lone
+  word must lean clearly; words mostly of v, w, x, y, z, k don't count; a note mark inside an
+  italic stretch stays roman.
+- Tesseract: a word Kraken garbled is paired by Tesseract's reading; orange "both OCRs" is a word
+  both read alike and the JSON has otherwise (the strongest flags). Presets: "Phase 1" (red and
+  italics only), "Phase 2" ("both OCRs" only).
+- The user's false positives: italics ones logged in `NOTES.md` are left out by `ocr_gaps.py`;
+  the rest live in `data/<book>/review.json` with signatures that survive text edits (§2).
+
+### Changing the alignment
+
+Any change to `scan_ocr.align` or `ocr_gaps.py` can trade false positives for missed words.
+Before committing: `python3 ocr_reconcile_check.py` on the pages above (it plants deleted,
+inserted and replaced words and exits 1 if any stops being red, or if red the page had before is
+lost), and `python3 ocr_gaps.py --vols X,Y` to compare counts against the current report without
+writing it. Then rebuild `ocr_gaps.py` for every volume. The tests never read the real Kraken
+cache.
+
+## 14. Current status & remaining work (as of Oct 30, 2026)
 
 The only place for status: when a step is done, update it here, not in the sections above.
 
@@ -470,6 +537,9 @@ The only place for status: when a step is done, update it here, not in the secti
     `cache/refs/grc_hunspell_asked.json` for fast replay.
   - `27_isaie` through `46_2_maccabees`: ready to run with `uv run --no-project --with pillow python footnotes.py run <vol> --local`
     and `python3 footnotes.py apply <vol>`.
+- **Scan OCR** (§13): Kraken has read every page of `01_genese` through `46_2_maccabees` (all but one
+  page of `23_ecclesiaste`, 148 of 149); `ocr_gaps.py` runs on all of them. Tesseract cached only for a
+  few pages of `06_josue`, `07_juges`, `21a_psaumes`. `47_matthieu` not read yet.
 - **Remaining Tasks before New Testament**:
   - Two to-dos in the review editor (`faire` or `être`?): `28_jeremie` p. 305 *Je ferai comme
     un vent brûlant*, `27_isaie` p. 333 *Je ferai à l'égard de Sennachérib*.
