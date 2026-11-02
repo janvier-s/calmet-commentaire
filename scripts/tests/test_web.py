@@ -96,6 +96,12 @@ def test_queue_counts(web):
     assert [i["kind"] for i in q["items"]] == ["missing_footnote"]
 
 
+def test_queue_counts_only(web):
+    full = web("/api/queue?status=open&cat=footnotes")[1]
+    code, q = web("/api/queue?status=open&cat=footnotes&counts_only=1")
+    assert code == 200 and q == {"counts": full["counts"]}
+
+
 def test_mark_does_not_save_page(web):
     f = web.data / VOL / "normalized" / "page_0194.json"
     before = f.stat().st_mtime_ns

@@ -56,6 +56,8 @@ class Store:
         self.data, self.docs = Path(data), Path(docs)
         self._index = {}  # volume -> chapter:verse index, see locate()
         self._chapters = {}  # volume -> [{"chapter": n, "pages": [...]}], see chapters()
+        self._texts = {}  # page path -> (version, text): a file read again only once it changed on disk
+        self._pages = {}  # volume -> (the folder's mtime, [pages]): listed again once a file comes or goes
 
     def volumes(self):
         return sorted(p.name for p in self.data.iterdir() if (p / "normalized").is_dir())
@@ -64,8 +66,14 @@ class Store:
         return self.data / vol / "normalized" / f"page_{page:04d}.json"
 
     def pages(self, vol):
-        return sorted(int(m.group(1)) for f in (self.data / vol / "normalized").iterdir()
-                      if (m := PAGE_FILE.fullmatch(f.name)))
+        folder = self.data / vol / "normalized"
+        mtime = folder.stat().st_mtime_ns
+        hit = self._pages.get(vol)
+        if hit and hit[0] == mtime:
+            return list(hit[1])
+        pages = sorted(int(m.group(1)) for f in folder.iterdir() if (m := PAGE_FILE.fullmatch(f.name)))
+        self._pages[vol] = (mtime, pages)
+        return list(pages)
 
     def chapters(self, vol):
         """Every chapter with its pages: a page that ends one chapter and starts the next counts in
@@ -106,8 +114,18 @@ class Store:
         return f"{st.st_mtime_ns}-{st.st_size}"
 
     def read(self, vol, page):
+        """The page parsed afresh (the caller may change it) and its version; the text is kept while the
+        file's mtime and size stay the same."""
         p = self.path(vol, page)
-        return json.loads(p.read_text(encoding="utf-8")), self._version(p)
+        before = self._version(p)
+        hit = self._texts.get(p)
+        if hit and hit[0] == before:
+            return json.loads(hit[1]), before
+        text = p.read_text(encoding="utf-8")
+        v = self._version(p)
+        if v == before:  # not written while it was read
+            self._texts[p] = (v, text)
+        return json.loads(text), v
 
     def _write(self, p, d):
         tmp = p.with_name(p.name + ".tmp")
@@ -739,17 +757,30 @@ def select(items, progress, status, cat=None, kind=None, book=None):
 
 def counts(items, progress, status, cat, kind, book):
     """Each filter's choices with how many items each leaves, the other filters applied."""
-    def tally(key, **f):
-        out = {}
-        for it in select(items, progress, **f):
-            out[key(it)] = out.get(key(it), 0) + 1
-        return out
-    by_status = {s: len(select(items, progress, s, cat, kind, book)) for s in STATUSES}
-    by_cat = {"all": len(select(items, progress, status, None, kind, book))}
-    by_cat.update({c: len(select(items, progress, status, c, kind, book)) for c in CATEGORIES})
-    return {"status": by_status, "cat": by_cat,
-            "kind": tally(lambda it: it["kind"], status=status, cat=cat, kind=None, book=book),
-            "book": tally(lambda it: it["book_dir"], status=status, cat=cat, kind=kind, book=None)}
+    # one pass: each item's status and category worked out once, then counted under each filter it passes
+    by_status = dict.fromkeys(STATUSES, 0)
+    by_cat = dict.fromkeys(("all", *CATEGORIES), 0)
+    by_kind, by_book = {}, {}
+    status_of = progress.status_of if hasattr(progress, "status_of") else (lambda it: progress.status(it["id"]))
+    for it in items:
+        s = status_of(it)
+        k, b, c = it["kind"], it["book_dir"], kind_category(it["kind"])
+        in_st = {"open": s not in ("resolved", "false_positive", "skipped", "on_hold"), "all": True}
+        ok_st = in_st[status] if status in in_st else s == status
+        ok_cat, ok_kind, ok_book = cat is None or c == cat, kind is None or k == kind, book is None or b == book
+        if ok_cat and ok_kind and ok_book:
+            for st in STATUSES:
+                if (in_st[st] if st in in_st else s == st):
+                    by_status[st] += 1
+        if ok_st and ok_kind and ok_book:
+            by_cat["all"] += 1
+            if c in by_cat:
+                by_cat[c] += 1
+        if ok_st and ok_cat and ok_book:
+            by_kind[k] = by_kind.get(k, 0) + 1
+        if ok_st and ok_cat and ok_kind:
+            by_book[b] = by_book.get(b, 0) + 1
+    return {"status": by_status, "cat": by_cat, "kind": by_kind, "book": by_book}
 
 
 def page_issues(items, progress, vol, page):

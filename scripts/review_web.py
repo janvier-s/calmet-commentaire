@@ -183,10 +183,13 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         check_gaps_mtime()
         f = {k: q.get(k) or None for k in ("cat", "kind", "book")}
         status = q.get("status") or "open"
+        counts = rs.counts(items, progress, status, f["cat"], f["kind"], f["book"])
+        if q.get("counts_only"):  # the filters' numbers after a mark: not the whole list again
+            return {"counts": counts}
         sel = rs.select(items, progress, status, **f)
         return {"items": [dict({k: v for k, v in it.items() if k != "proposal"}, status=progress.status(it["id"]))
                           for it in sel],
-                "counts": rs.counts(items, progress, status, f["cat"], f["kind"], f["book"])}
+                "counts": counts}
 
     def locate(q):
         vol = q.get("vol")

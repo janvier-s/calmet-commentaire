@@ -21,6 +21,23 @@ def test_pages_ignore_conflict_copies(store):
     assert store.volumes() == ["22_proverbes"]
 
 
+def test_read_sees_edits_made_outside(store):
+    d, v = store.read("22_proverbes", 194)
+    d["changed"] = True  # the copy handed out is the caller's: the cache is not touched
+    assert "changed" not in store.read("22_proverbes", 194)[0]
+    path(store, 194).write_text(json.dumps({"verses": [], "x": 1}), encoding="utf-8")
+    d2, v2 = store.read("22_proverbes", 194)
+    assert d2 == {"verses": [], "x": 1} and v2 != v
+
+
+def test_pages_see_files_added_outside(store):
+    assert 196 not in store.pages("22_proverbes")
+    path(store, 196).write_text("{}", encoding="utf-8")
+    assert 196 in store.pages("22_proverbes")
+    path(store, 196).unlink()
+    assert 196 not in store.pages("22_proverbes")
+
+
 def test_read_save_roundtrip(store):
     d, v = store.read("22_proverbes", 194)
     saved, v2 = store.save("22_proverbes", 194, d, v)

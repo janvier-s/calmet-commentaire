@@ -24,9 +24,10 @@ const sentence = (t) => t.charAt(0) + t.slice(1).toLowerCase();  // "MISSING VER
 const statusOf = (it) => it.status || null;
 const isOpen = (it) => !statusOf(it) || !["resolved", "false_positive", "skipped", "on_hold"].includes(statusOf(it));
 
-function query(f) {
+function query(f, countsOnly = false) {
   const q = new URLSearchParams({ status: f.status });
   for (const k of ["cat", "kind", "book"]) if (f[k]) q.set(k, f[k]);
+  if (countsOnly) q.set("counts_only", "1");
   return api(`/api/queue?${q}`);
 }
 
@@ -73,7 +74,7 @@ function volShown() {
 hooks.volShown = volShown;
 
 async function refreshCounts() {
-  const r = await query(Q);
+  const r = await query(Q, true);
   Q.counts = r.body.counts;
   fillFilters();
   updateCounter();
