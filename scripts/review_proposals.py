@@ -21,9 +21,20 @@ def _md5(*parts):
     return hashlib.md5("\0".join(str(x) for x in parts).encode()).hexdigest()[:8]
 
 
+_reports = {}  # path -> ((mtime, size), parsed): ocr_gaps.json (11 MB) is read by four makers
+
+
 def _read_json(path):
+    """A report, parsed once while it stays the same on disk; the makers only read it."""
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        st = path.stat()
+        key = (st.st_mtime_ns, st.st_size)
+        hit = _reports.get(path)
+        if hit and hit[0] == key:
+            return hit[1]
+        data = json.loads(path.read_text(encoding="utf-8"))
+        _reports[path] = (key, data)
+        return data
     except (OSError, ValueError):
         return None
 
@@ -289,8 +300,26 @@ def _context_items(store, volumes, pages=None):
 GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_word", "ocr_unscanned")
 
 
+class _Snapshot:
+    """The store as one pass of generated_items reads it: each page parsed once, however many report
+    entries point at it (the makers only read them); everything else goes to the store."""
+
+    def __init__(self, store):
+        self._store, self._pages = store, {}
+
+    def __getattr__(self, name):
+        return getattr(self._store, name)
+
+    def _load(self, vol, page):
+        key = (vol, page)
+        if key not in self._pages:
+            self._pages[key] = self._store._load(vol, page)
+        return self._pages[key]
+
+
 def generated_items(store, volumes=None, pages=None):
     """Queue items for the write-outs, reference candidates and OCR gaps and italics that still apply."""
+    store = _Snapshot(store)
     volumes = list(volumes if volumes is not None else store.volumes())
     pset = set(pages) if pages is not None else None
     out = []

@@ -437,3 +437,16 @@ def test_one_word_italics_are_a_type_of_their_own(data_dir):
     dump(docs / "ocr_gaps.json", {"italics": [it(6, 20, "du commentaire", "suite "), it(9, 20, "commentaire", "suite du ")]})
     kinds = sorted(i["kind"] for i in RP._italic_items(Store(data_dir, docs), {VOL}, {194}))
     assert kinds == ["ocr_italic", "ocr_italic_word"]
+
+
+def test_batch_pages_by_cursor(web):
+    full = web("/api/batch?status=open")[1]
+    ids = [r["id"] for r in full["rows"]]
+    assert len(ids) == 3 and full["total"] == 3 and full["more"] == 0
+    first = web("/api/batch?status=open&limit=1")[1]
+    assert [r["id"] for r in first["rows"]] == ids[:1] and first["more"] == 2 and first["total"] == 3
+    # a row marked meanwhile leaves the open list: the cursor still goes on from the last row shown
+    assert web("/api/mark", {"id": ids[1], "status": "resolved"})[0] == 200
+    rest = web(f"/api/batch?status=open&after={ids[0]}")[1]
+    assert [r["id"] for r in rest["rows"]] == ids[2:] and rest["more"] == 0
+    assert web("/api/batch?status=open&after=nope")[0] == 409

@@ -83,7 +83,10 @@ def italic_runs(s):
     the field's edge: open_at is "start" when the first mark closes a run begun
     before the field (followed by a space or punctuation), else "end".
     """
-    marks = [i for i, c in enumerate(s) if c == "_"]
+    marks, i = [], s.find("_")
+    while i != -1:  # str.find, not a loop over every character: long fields, thousands of calls at start
+        marks.append(i)
+        i = s.find("_", i + 1)
     edges, open_at = marks, None
     if len(marks) % 2:
         i = marks[0]

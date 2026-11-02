@@ -14,7 +14,8 @@ const el = (tag, props = {}, ...kids) => {
   return e;
 };
 const DONE = new Set(["resolved", "false_positive"]);
-const B = { open: false, rows: [] };
+const B = { open: false, rows: [], byId: new Map(), query: "", total: 0, more: 0 };
+const PAGE = 300;  // rows fetched at a time: a type can have thousands, each with its field and scan
 
 function show(on) {
   B.open = on;
@@ -31,7 +32,7 @@ function context(r) {
   return el("div", {}, c == null ? "" : String(c));
 }
 
-const tickedRows = () => [...$("batch").querySelectorAll("tbody input:checked")].map((b) => B.rows.find((r) => r.id === b.closest("tr").dataset.id));
+const tickedRows = () => [...$("batch").querySelectorAll("tbody input:checked")].map((b) => B.byId.get(b.closest("tr").dataset.id));
 const edited = (r) => r.box && r.field && r.field.value !== r.text;  // typed in the row, not saved yet
 const editedRows = () => B.rows.filter((r) => edited(r) && !DONE.has(r.status));
 
@@ -96,11 +97,7 @@ function italicPreview(change) {
     cut[1] ? " …" : "");
 }
 
-function render() {
-  const f = filters();
-  const label = S.config.labels[f.kind] || f.kind;
-  const scans = B.rows.some((r) => r.scan_box);  // OCR issues: a column with the scan
-  const rows = B.rows.map((r) => {
+function rowEl(r, f, scans) {
     const done = DONE.has(r.status);
     r.box = el("input", { type: "checkbox", disabled: done, onchange: countTicks });
     const ctx = contextCell(r, done);
@@ -117,19 +114,58 @@ function render() {
     tr.dataset.page = r.page;
     r.tr = tr;
     return tr;
-  });
+}
+
+function summary() {
+  const loaded = B.rows.length < B.total ? ` (${B.rows.length} loaded)` : "";
+  return ` ${B.total} issues${loaded} · ${B.rows.filter((r) => r.proposal).length} with a proposal · ${B.rows.filter((r) => r.field).length} editable`;
+}
+
+/** The rows not yet loaded: a bar under the table to fetch the next ones, or all of them. */
+function moreBar() {
+  if (!B.more) return el("div", { id: "batch-more" });
+  return el("div", { id: "batch-more", className: "batch-more" },
+    el("span", { className: "muted", textContent: `${B.more} more issues ` }),
+    el("button", { textContent: `Load ${Math.min(PAGE, B.more)} more`, onclick: () => loadMore(false) }),
+    el("button", { textContent: `Load all ${B.more}`, title: "Every row at once (slow for thousands)", onclick: () => loadMore(true) }));
+}
+
+function addRows(rows) {
+  for (const r of rows) { B.rows.push(r); B.byId.set(r.id, r); }
+}
+
+async function loadMore(all) {
+  const last = B.rows[B.rows.length - 1];
+  for (const b of $("batch-more").querySelectorAll("button")) b.disabled = true;
+  const r = await api(`/api/batch?${B.query}&after=${encodeURIComponent(last.id)}${all ? "" : `&limit=${PAGE}`}`);
+  if (r.status !== 200) { toast(r.body.error || "Could not load more rows"); $("batch-more").replaceWith(moreBar()); return; }
+  addRows(r.body.rows);
+  B.more = r.body.more;
+  const f = filters(), scans = $("batch").querySelector("th.scan-th") != null;
+  $("batch").querySelector("tbody").append(...r.body.rows.map((x) => rowEl(x, f, scans)));
+  $("batch-summary").textContent = summary();
+  $("batch-more").replaceWith(moreBar());
+  countTicks();
+}
+
+function render() {
+  const f = filters();
+  const label = S.config.labels[f.kind] || f.kind;
+  const scans = B.rows.some((r) => r.scan_box);  // OCR issues: a column with the scan
+  const rows = B.rows.map((r) => rowEl(r, f, scans));
   $("batch").replaceChildren(
     el("div", { className: "batch-head" }, icon("table", 15), el("b", { textContent: ` ${label}` }),
-       el("span", { className: "muted", textContent: ` ${B.rows.length} issues · ${B.rows.filter((r) => r.proposal).length} with a proposal · ${B.rows.filter((r) => r.field).length} editable` }),
+       el("span", { id: "batch-summary", className: "muted", textContent: summary() }),
        el("span", { className: "grow" }),
-       el("button", { id: "batch-all", textContent: "Tick all", title: "Every row not done yet", onclick: tickAll }),
+       el("button", { id: "batch-all", textContent: "Tick all", title: "Every row loaded and not done yet", onclick: tickAll }),
        el("button", { id: "batch-save", disabled: true, title: "Write the text you typed in the rows", onclick: () => saveEdits(editedRows()) }, "Save 0 edits"),
        el("button", { id: "batch-accept", className: "ok", disabled: true, title: "Apply the proposals of the ticked rows", onclick: acceptTicked }, "Accept 0 ticked"),
        el("button", { id: "batch-resolve", className: "ok", disabled: true, title: "Mark the ticked rows resolved (an edit typed in a ticked row is saved first)", onclick: () => markTicked("resolved") }, "Resolve 0 ticked"),
        el("button", { id: "batch-fp", disabled: true, onclick: () => markTicked("false_positive") }, "False positive 0"),
        el("button", { title: "Back to the page (Esc)", onclick: closeBatch }, icon("back", 13), " Page")),
-    el("table", {}, el("thead", {}, el("tr", {}, ...["", "Page", ...(scans ? ["Scan"] : []), "Context", "Proposed fix", "Status"].map((h) => el("th", { textContent: h })))),
-       el("tbody", {}, ...rows)));
+    el("table", {}, el("thead", {}, el("tr", {}, ...["", "Page", ...(scans ? ["Scan"] : []), "Context", "Proposed fix", "Status"].map((h) => el("th", { textContent: h, className: h === "Scan" ? "scan-th" : "" })))),
+       el("tbody", {}, ...rows)),
+    moreBar());
   countTicks();
 }
 
@@ -200,7 +236,7 @@ async function markTicked(status) {
 
 async function acceptTicked() {
   const ids = tickedRows().filter((x) => x.proposal && !edited(x)).map((x) => x.id);  // a proposal is for the text as it was
-  const byId = new Map(B.rows.map((x) => [x.id, x]));
+  const byId = B.byId;
   if (!ids.length) return;
   if (await ask(`Accept the ${ids.length} ticked proposals? Each page is written and its issue resolved.`,
                 [["cancel", "Cancel"], ["yes", `Accept ${ids.length}`, "ok"]]) !== "yes") return;
@@ -255,10 +291,12 @@ export async function openBatch() {
   if (f.cat) q.set("cat", f.cat);
   if (f.book) q.set("book", f.book);
   $("batch-btn").disabled = true;
-  const r = await api(`/api/batch?${q}`);
+  const r = await api(`/api/batch?${q}&limit=${PAGE}`);
   $("batch-btn").disabled = false;
   if (r.status !== 200) { toast(r.body.error || "Could not load the table"); return; }
-  B.rows = r.body.rows;
+  B.rows = []; B.byId = new Map();
+  addRows(r.body.rows);
+  Object.assign(B, { query: q.toString(), total: r.body.total, more: r.body.more });
   show(true);
   render();
   $("batch").scrollTop = 0;

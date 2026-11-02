@@ -470,3 +470,4 @@ body.turn-open #reviewed, body.batch-open #reviewed { display: none; }
 /* italics in the commentary also underlined, to spot them at a glance */
 body:not(.no-ul) .f[data-name="french_commentary"] .it { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 #scan-tools .ocr-phase { font-size: 11px; padding: 1px 6px; }
+.batch-more { display: flex; align-items: center; gap: 8px; justify-content: center; padding: 12px 0 24px; }

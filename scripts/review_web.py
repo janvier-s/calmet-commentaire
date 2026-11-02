@@ -462,8 +462,31 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     def batch(q):
         check_gaps_mtime()
         f = {k: q.get(k) or None for k in ("cat", "kind", "book")}
+        sel = rs.select(items, progress, q.get("status") or "open", **f)
+        total = len(sel)
+        # the table loads its rows as it goes: `limit` of them, those after the row `after` in the queue's
+        # order (not an offset: rows marked meanwhile leave the list, and an offset would skip as many)
+        if q.get("after"):
+            order = {it["id"]: i for i, it in enumerate(items)}
+            if q["after"] not in order:
+                raise ApiError(409, {"error": "the table's last row is gone: reload the table"})
+            pos = order[q["after"]]
+            sel = [it for it in sel if order[it["id"]] > pos]
+        try:
+            limit = int(q["limit"]) if q.get("limit") else None
+        except ValueError:
+            raise ApiError(400, {"error": "bad limit"})
+        more = max(0, len(sel) - limit) if limit is not None else 0
+        sel = sel[:limit]
+        loaded = {}  # each page parsed once for its rows
+
+        def load(vol, page):
+            if (vol, page) not in loaded:
+                loaded[(vol, page)] = store._load(vol, page) or {}
+            return loaded[(vol, page)]
+
         rows = []
-        for it in rs.select(items, progress, q.get("status") or "open", **f):
+        for it in sel:
             ctx = None
             if it["kind"] in rt.TURN_KINDS:
                 t = rt.turn_of(store, it)
@@ -472,7 +495,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                     ctx = tt["join"] and {k: tt["join"][k] for k in ("tail", "head", "joined")}
             elif it.get("where"):
                 w = it["where"]
-                entries = (store._load(it["book_dir"], it["page"]) or {}).get(w.get("section")) or []
+                entries = load(it["book_dir"], it["page"]).get(w.get("section")) or []
                 i = w.get("index")
                 ctx = entries[i].get(w.get("field")) if isinstance(i, int) and i < len(entries) else None
             rows.append({"id": it["id"], "book_dir": it["book_dir"], "page": it["page"], "kind": it["kind"],
@@ -480,7 +503,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                          "scan_box": it.get("scan_box"),
                          "editable": editable_field(it) and (ctx is None or isinstance(ctx, str)),
                          "proposal": rp.proposal_for(store, progress, it)})
-        return {"rows": rows}
+        return {"rows": rows, "total": total, "more": more}
 
     def editable_field(it):
         """Does the item point at one text field of one entry (and is it no page-turn issue)?"""
