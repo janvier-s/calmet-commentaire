@@ -1,13 +1,14 @@
 {
  "summary": {
   "notes": 311,
-  "changed": 10,
+  "changed": 14,
   "flags": {
    "greek": 8,
    "scan-unread": 11,
-   "ambiguous-name": 5,
+   "ambiguous-name": 7,
    "uncertain": 2,
-   "hebrew": 1
+   "hebrew": 1,
+   "expand-changed-italics": 1
   }
  },
  "notes": [
@@ -15,11 +16,9 @@
    "id": "0053(d)",
    "page": "page_0053",
    "marker": "(d)",
-   "text": "Antiq. lib xi cap 4. Ζοροβάβιλος, ὃς τῶ ἐν μελῶν· αν ἰνδαίων ἡγεμων ἀποδίδικτο; πάλαι δὲ ὢν σῶμα φύλαξ τρὸς τὸν Βασιλέα, (Δαρείον) ὃ δὲ σωματοφύλακῶν ἀυτῶ μετ᾽ ἀλλῶν δύο κεκληρῶτο.",
+   "text": "Antiq. lib xi cap 4. Ζοροβάβιλος, ὃς τῶ ἐν μελῶν· ἂν ἰνδαίων ἡγεμόν ἀποδίδικτο; πάλαι δὲ ὢν σῶμα φύλαξ τρὸς τὸν Βασιλέα, (Δαρείον) ὃ δὲ σωματοφύλακῶν ἀυτῶ μετ᾽ ἀλλῶν δύο κεκληρῶτο.",
    "proposed": "Antiq. lib xi cap 4. Ζοροβάβιλος, ὃς τῶ ἐν μελῶν· ἂν ἰνδαίων ἡγεμόν ἀποδίδικτο; πάλαι δὲ ὢν σῶμα φύλαξ τρὸς τὸν Βασιλέα, (Δαρείον) ὃ δὲ σωματοφύλακῶν ἀυτῶ μετ᾽ ἀλλῶν δύο κεκληρῶτο.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: αν -> ἂν, ἡγεμων -> ἡγεμόν"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -38,16 +37,34 @@
    ]
   },
   {
+   "id": "0055(g)",
+   "page": "page_0055",
+   "marker": "(g)",
+   "text": "Ita Grotius ; Ménochius ; Vatable ; Cornelius a Lapide ; Sanctius.",
+   "proposed": "Ita Grotius ;\nMénochius ;\nVatable ;\nCornelius a Lapide ;\nSanctius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0061(c)",
+   "page": "page_0061",
+   "marker": "(c)",
+   "text": "Ita legunt Bible de Venise, an 1478. Et une autre, an 1489. et une autre gothique, d'année incertaine ; Robert Estienne, an 1546 ; et Jean Benoît, 1565 ; et Sébastien Nivelle, 1572 ; et la Bible polyglotte d'Anvers, etc.",
+   "proposed": "Ainsi lisent la Bible de Venise, année 1478. Et une autre, année 1489. et une autre gothique, d'année incertaine ; Robert Estienne, année 1546 ; et Jean Benoît, 1565 ; et Sébastien Nivelle, 1572 ; et la Bible polyglotte d'Anvers, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0061(d)",
    "page": "page_0061",
    "marker": "(d)",
-   "text": "אחד נבו נכו אחד 70. Ἀνδρες ναβια : Ils n'ont pas lû אחד et au ℣. 30 ils portent : Ἀνδρες ῥααμα, κγ Γαβαα.",
-   "proposed": "אחד נבו נכו אחד 70. Ἄνδρες ναβια : Ils n'ont pas lû אחד et au ℣. 30 ils portent : Ἄνδρες ῥααμα, κγ Γαβαα.",
+   "text": "אחד נבו נכו אחד 70. Ἄνδρες ναβια : Ils n'ont pas lu אחד et au ℣. 30 ils portent : Ἄνδρες ῥααμα, κγ Γαβαα.",
+   "proposed": "אחד נבו נכו אחד 70. Ἄνδρες ναβια : Ils n'ont pas lu אחד et au ℣. 30 ils portent : Ἄνδρες ῥααμα, κγ Γαβαα.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary: Ἀνδρες -> Ἄνδρες",
-    "Greek spelling checked against a Greek dictionary: Ἀνδρες -> Ἄνδρες"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
    ],
    "flags": [
     "greek",
@@ -60,6 +77,17 @@
    "marker": "(a)",
    "text": "3 Rois 5:11 ; 2 Paralipomènes 2:15-16.",
    "proposed": "3 Rois 5:11 ; 2 Paralipomènes 2:15-16.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0074(a)",
+   "page": "page_0074",
+   "marker": "(a)",
+   "text": "4 Rois 17:24… 24.",
+   "proposed": "4 Rois 17:24… 24.",
    "why": [],
    "flags": [
     "ambiguous-name"
@@ -91,47 +119,59 @@
    "id": "0078(d)",
    "page": "page_0078",
    "marker": "(d)",
-   "text": "Herodot. lib. 6. c. 98. Δυνάται δὲ κατὰ ἰμάδα γλῶσσαν ζεῦα ὁ ὄνομα Ξέρξης, Αρήϊος· Αρταξέρξης, μέγας ἀρήϊος.",
+   "text": "Herodot. lib. 6. c. 98. Δυνάται δὲ κατὰ ἰμάδα γλῶσσαν ζεῦα ὁ ὄνομα Ξέρξης, Αρήϊος· Ἀρταξέρξης, μέγας ἀρήϊος.",
    "proposed": "Herodot. lib. 6. c. 98. Δυνάται δὲ κατὰ ἰμάδα γλῶσσαν ζεῦα ὁ ὄνομα Ξέρξης, Αρήϊος· Ἀρταξέρξης, μέγας ἀρήϊος.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Αρταξέρξης -> Ἀρταξέρξης"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
   },
   {
-   "id": "0084(c)",
-   "page": "page_0084",
-   "marker": "(c)",
-   "text": "Sup. ℣. 21.",
-   "proposed": "Plus haut, verset 21.",
+   "id": "0080(e)",
+   "page": "page_0080",
+   "marker": "(e)",
+   "text": "Junius ; Piscator ; Malvenda ; Cornelius a Lapide ; Nicolas de Lyre.",
+   "proposed": "Junius ;\nPiscator ;\nMalvenda ;\nCornelius a Lapide ;\nNicolas de Lyre.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0080(g)",
+   "page": "page_0080",
+   "marker": "(g)",
+   "text": "Junius ; Tremellius ; Piscator ; Belgica et Anglica versiones.",
+   "proposed": "Junius ;\nTremellius ;\nPiscator ;\nBelgica et Anglica versiones.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0080(h)",
+   "page": "page_0080",
+   "marker": "(h)",
+   "text": "Pagnin ; Arias Montanus ; Castalion ; Vatable. Syrus legit, Acheeneth.",
+   "proposed": "Pagnin ;\nArias Montanus ;\nCastalion ;\nVatable. Le Syriaque lit, Acheeneth.",
    "why": [
     "abbreviations written out"
    ],
    "flags": []
   },
   {
-   "id": "0086(c)",
+   "id": "0086(a)",
    "page": "page_0086",
-   "marker": "(c)",
-   "text": "3. Esdr. iii. et iv.",
-   "proposed": "3 Esdras 3 et 4.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "marker": "(a)",
+   "text": "_Voyez Rabbi Salomon ; Nicolas de Lyre ; Munster, sur le chapitre_ 4, verset 6. _Seder Olam._",
+   "proposed": "_Voyez Rabbi Salomon ;\nNicolas de Lyre ;\nMunster, sur le chapitre_ 4, verset 6. _Seder Olam._",
+   "why": [],
    "flags": []
   },
   {
-   "id": "0087(b)",
-   "page": "page_0087",
-   "marker": "(b)",
-   "text": "Ita les Septante ; l'Arabe ; Vatable ; le Syriaque ; la version belge, etc.",
-   "proposed": "Ainsi lisent les Septante ; l'Arabe ; Vatable ; le Syriaque ; la version belge, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0091(f)",
+   "page": "page_0091",
+   "marker": "(f)",
+   "text": "Ainsi Ménochius ; Junius ; Piscator ; Sanctius ; Nicolas de Lyre ; Malvenda.",
+   "proposed": "Ainsi Ménochius ;\nJunius ;\nPiscator ;\nSanctius ;\nNicolas de Lyre ;\nMalvenda.",
+   "why": [],
    "flags": []
   },
   {
@@ -149,14 +189,23 @@
    ]
   },
   {
+   "id": "0093(d)",
+   "page": "page_0093",
+   "marker": "(d)",
+   "text": "3 Rois 6:36.",
+   "proposed": "3 Rois 6:36.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
    "id": "0096(a)",
    "page": "page_0096",
    "marker": "(a)",
-   "text": "Καθαρετθήσεται ξύλον εκ τῆς οικίας αυτῦ, καὶ ὀρθωθὲν πληγήσεται, (Alii ανηθήσεται) επ' αυτῦ.",
+   "text": "Καθαρετθήσεται ξύλον ἐκ τῆς οἰκίας αυτῦ, καὶ ὀρθωθὲν πληγήσεται, (Alii ανηθήσεται) επ' αυτῦ.",
    "proposed": "Καθαρετθήσεται ξύλον ἐκ τῆς οἰκίας αυτῦ, καὶ ὀρθωθὲν πληγήσεται, (Alii ανηθήσεται) επ' αυτῦ.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: εκ -> ἐκ, οικίας -> οἰκίας"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -175,18 +224,34 @@
    ]
   },
   {
+   "id": "0107(d)",
+   "page": "page_0107",
+   "marker": "(d)",
+   "text": "Aben Ezra ; Junius ; Le Clerc.",
+   "proposed": "Aben Ezra ;\nJunius ;\nLe Clerc.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0109(b)",
    "page": "page_0109",
    "marker": "(b)",
-   "text": "Καὶ ὑιῶν Σαθανίας, Ζαχαρίος ὑιὸς Ζήλ. Ils ont lû, des enfants de Zathoé, aussi bien que l'A-",
-   "proposed": "Καὶ ὑιῶν Σαθανίας, Ζαχαρίος υἱὸς Ζήλ. Ils ont lû, des enfants de Zathoé, aussi bien que l'A-",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ὑιὸς -> υἱὸς"
-   ],
+   "text": "Καὶ ὑιῶν Σαθανίας, Ζαχαρίος υἱὸς Ζήλ. Ils ont lu, _des enfants de Zathoé_, aussi bien que l'Arabe, quoiqu'ils ne soient pas dans le Texte.",
+   "proposed": "Καὶ ὑιῶν Σαθανίας, Ζαχαρίος υἱὸς Ζήλ. Ils ont lu, _des enfants de Zathoé_, aussi bien que l'Arabe, quoiqu'ils ne soient pas dans le Texte.",
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0110(a)",
+   "page": "page_0110",
+   "marker": "(a)",
+   "text": "Voyez Junius ; Malvenda ; Grotius, sur ce passage ; Ammien Marcellin, livre 23, chapitre 6.",
+   "proposed": "Voyez Junius ;\nMalvenda ;\nGrotius, sur ce passage ;\nAmmien Marcellin, livre 23, chapitre 6.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0110(c)",
@@ -215,14 +280,22 @@
    ]
   },
   {
+   "id": "0111(g)",
+   "page": "page_0111",
+   "marker": "(g)",
+   "text": "Junius ; Grotius ; Malvenda ; Munster.",
+   "proposed": "Junius ;\nGrotius ;\nMalvenda ;\nMunster.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0112(b)",
    "page": "page_0112",
    "marker": "(b)",
-   "text": "Εξήγαγον αυτὸς ἐπὶ ἀρχόντας ἐν ἀργυρίῳ τῷ τόπῳ… τῷ οἴκῳ, τοὺ οἴκησαν ἡμῖν ἄδοντας εἰς οἶκον Θεοῦ ἡμῶν.",
+   "text": "Ἐξήγαγον αὐτὸς ἐπὶ ἀρχόντας ἐν ἀργυρίῳ τῷ τόπῳ… τῷ οἴκῳ, τοὺ οἴκησαν ἡμῖν ᾄδοντας εἰς οἶκον Θεοῦ ἡμῶν.",
    "proposed": "Ἐξήγαγον αὐτὸς ἐπὶ ἀρχόντας ἐν ἀργυρίῳ τῷ τόπῳ… τῷ οἴκῳ, τοὺ οἴκησαν ἡμῖν ᾄδοντας εἰς οἶκον Θεοῦ ἡμῶν.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Εξήγαγον -> Ἐξήγαγον, αυτὸς -> αὐτὸς",
-    "Greek spelling checked against a Greek dictionary: ἄδοντας -> ᾄδοντας"
+    "Greek spelling checked against a Greek dictionary"
    ],
    "flags": [
     "greek",
@@ -230,25 +303,45 @@
    ]
   },
   {
-   "id": "0115(b)",
-   "page": "page_0115",
-   "marker": "(b)",
-   "text": "Sup. VI. 17.",
-   "proposed": "Plus haut, 6:17.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0113(c)",
+   "page": "page_0113",
+   "marker": "(c)",
+   "text": "Rabbi Salomon ; et Aben Ezra ; Munster.",
+   "proposed": "Rabbi Salomon ;\net Aben Ezra ;\nMunster.",
+   "why": [],
    "flags": []
   },
   {
    "id": "0117(a)",
    "page": "page_0117",
    "marker": "(a)",
-   "text": "Genèse 35:29 ; 37:24 ; Nombres 14:6 ; Josué 7:6 ; 2 Rois 1:11 ; Job 1:20.",
-   "proposed": "Genèse 35:29 ; 37:24 ; Nombres 14:6 ; Josué 7:6 ; 2 Rois 1:11 ; Job 1:20.",
+   "text": "Genèse 37:29 ; 37:34 ; Nombres 14:6 ; Josué 7:6 ; 2 Rois 1:11 ; Job 1:20.",
+   "proposed": "Genèse 37:29 ; 37:34 ; Nombres 14:6 ; Josué 7:6 ; 2 Rois 1:11 ; Job 1:20.",
    "why": [],
    "flags": [
     "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0117(d)",
+   "page": "page_0117",
+   "marker": "(d)",
+   "text": "Item le Syriaque ; Vatable ; Arias Montanus.",
+   "proposed": "Item le Syriaque ;\nVatable ;\nArias Montanus.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0119(a)",
+   "page": "page_0119",
+   "marker": "(a)",
+   "text": "Cornelius a Lapide ; Ofr. ; Tirin. Voyez Delrii _Alleg._ 118.",
+   "proposed": "Cornelius a Lapide ;\nOfr. ;\nTirin. Voyez Delrii _Alleg._ 118.",
+   "why": [
+    "written out, but the italics changed: Cornelius a Lapide ; Ofr. ; Tirin. Voyez Delrio, Adagialia sacra, 118."
+   ],
+   "flags": [
+    "expand-changed-italics"
    ]
   },
   {
@@ -264,6 +357,17 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0125(a)",
+   "page": "page_0125",
+   "marker": "(a)",
+   "text": "Voyez Bède, dans Estius ; Cajetan ; Cornelius a Lapide ; Tirin.",
+   "proposed": "Voyez Bède, dans Estius ;\nCajetan ;\nCornelius a Lapide ;\nTirin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   }
  ]
 }

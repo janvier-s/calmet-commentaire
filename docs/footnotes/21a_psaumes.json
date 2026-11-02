@@ -1,45 +1,20 @@
 {
  "summary": {
-  "notes": 3977,
-  "changed": 257,
+  "notes": 3973,
+  "changed": 390,
   "flags": {
    "uncertain": 176,
    "scan-unread": 408,
    "greek": 222,
-   "reference-not-in-vulgate": 20,
-   "reference-mismatch": 4,
+   "reference-not-in-vulgate": 16,
    "hebrew": 40,
-   "ambiguous-name": 26,
-   "expand-changed-numbers": 8,
-   "reference-corrected": 1
+   "ambiguous-name": 33,
+   "expand-changed-italics": 16,
+   "expand-changed-numbers": 4,
+   "reference-mismatch": 2
   }
  },
  "notes": [
-  {
-   "id": "0080(a)",
-   "page": "page_0080",
-   "marker": "(a)",
-   "text": "Édit. Complut. Ψαλμός τῷ Δαυίδ, _ἀνεπιγράφοις παρ' Εβραίοις._ Théodoret simplement _Ἀνεπίγραφος παρ' Εβραίοις._ Les autres ne lisent aucun titre.",
-   "proposed": "Édition de Complute : Ψαλμός τῷ Δαυίδ, _ἀνεπιγράφοις παρ' Εβραίοις._ Théodoret simplement _Ἀνεπίγραφος παρ' Εβραίοις._ Les autres ne lisent aucun titre.",
-   "why": [
-    "Greek checked against the Septuagint, Psaumes 3:1",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0080(c)",
-   "page": "page_0080",
-   "marker": "(c)",
-   "text": "Incognit. in Psalm.",
-   "proposed": "Auteur incertain, sur les Psaumes.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
   {
    "id": "0082(a)",
    "page": "page_0082",
@@ -80,17 +55,6 @@
    ]
   },
   {
-   "id": "0082(d)",
-   "page": "page_0082",
-   "marker": "(d)",
-   "text": "Vide Proverbes 1:22. 3:34. 9:7-8, 18. 11:1. 14:6. 15:12. 19:25, 29. 20:2 ?]. etc.",
-   "proposed": "Voyez Proverbes 1:22 ; 3:34 ; 9:7-8, 18 ; 11:1 ; 14:6 ; 15:12 ; 19:25, 29 ; 20:2 ?]. etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0083(f)",
    "page": "page_0083",
    "marker": "(f)",
@@ -103,6 +67,15 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0083(g)",
+   "page": "page_0083",
+   "marker": "(g)",
+   "text": "Eusèbe de Césarée ; saint Hilaire ; saint Ambroise, sur ce passage.",
+   "proposed": "Eusèbe de Césarée ;\nsaint Hilaire ;\nsaint Ambroise, sur ce passage.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0084(a)",
@@ -120,6 +93,24 @@
    ]
   },
   {
+   "id": "0084(b)",
+   "page": "page_0084",
+   "marker": "(b)",
+   "text": "Psaumes 91:13 ; Job 29:18 ; Ecclésiastique 24:18.",
+   "proposed": "Psaumes 91:13 ;\nJob 29:18 ;\nEcclésiastique 24:18.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0085(b)",
+   "page": "page_0085",
+   "marker": "(b)",
+   "text": "Eusèbe de Césarée ; saint Ambroise ; saint Hilaire, sur ce passage.",
+   "proposed": "Eusèbe de Césarée ;\nsaint Ambroise ;\nsaint Hilaire, sur ce passage.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0085(c)",
    "page": "page_0085",
    "marker": "(c)",
@@ -135,6 +126,17 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0086(g)",
+   "page": "page_0086",
+   "marker": "(g)",
+   "text": "Les rabbins ; David Kimhi ; et d'autres Hébreux. Voyez Buxtorf, Synagogue judaïque, chapitre 1. Multis hic.",
+   "proposed": "Les rabbins ; David Kimhi ; et d'autres Hébreux. Voyez Buxtorf, Synagogue judaïque, chapitre 1. Plusieurs sur ce passage.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0087(a)",
@@ -156,8 +158,8 @@
    "id": "0088(c)",
    "page": "page_0088",
    "marker": "(c)",
-   "text": "Voyez la nouvelle édition de saint Augustin. Ubi citantur le Psautier romain ; le Psautier de Chartres ; Colbert. In Psalterio Sancti Germani et Gallicano legitur : In finem Psalmus ipse David. Voyez aussi Corderius, note sur la Chaîne.",
-   "proposed": "Voyez la nouvelle édition de saint Augustin. Ubi citantur le Psautier romain ; le Psautier de Chartres ; Colbert. Dans le Psautier de Saint-Germain et Gallicano legitur : In finem Psalmus ipse David. Voyez aussi Corderius, note sur la Chaîne.",
+   "text": "Voyez la nouvelle édition de saint Augustin. Ubi citantur le Psautier romain ; le Psautier de Chartres ; Colbert. Dans le Psautier de Saint-Germain et Gallicano legitur : In finem Psalmus ipse David. Voyez aussi Corderius, note sur la Chaîne.",
+   "proposed": "Voyez la nouvelle édition de saint Augustin. Où sont cités le Psautier romain ; le Psautier de Chartres ; Colbert. Dans le Psautier de Saint-Germain et Gallicano legitur : In finem Psalmus ipse David. Voyez aussi Corderius, note sur la Chaîne.",
    "why": [
     "abbreviations written out"
    ],
@@ -167,8 +169,8 @@
    "id": "0088(e)",
    "page": "page_0088",
    "marker": "(e)",
-   "text": "Dans la Vulgate, Græcis et Latinis, legunt : Ἐν τῷ Ψαλμῷ τῷ δευτέρῳ. In secundo Psalmo. Alii legunt : In primo Psalmo. Ita saint Justin, Seconde Apologie ; Tertullien, Contre Marcion ; Saint Hilaire ; Saint Jérôme ; Cassiodore, his, etc.",
-   "proposed": "Dans la Vulgate, en grec et en latin, legunt : Ἐν τῷ Ψαλμῷ τῷ δευτέρῳ. In secundo Psalmo. D'autres lisent : In primo Psalmo. Ainsi saint Justin, Seconde Apologie ; Tertullien, Contre Marcion ; saint Hilaire ; saint Jérôme ; Cassiodore, sur ce passage, etc.",
+   "text": "Dans la Vulgate, en grec et en latin, legunt : Ἐν τῷ Ψαλμῷ τῷ δευτέρῳ. In secundo Psalmo. D'autres lisent : In primo Psalmo. Ainsi saint Justin, Seconde Apologie ; Tertullien, Contre Marcion ; Saint Hilaire ; Saint Jérôme ; Cassiodore, sur ce passage, etc.",
+   "proposed": "Dans la Vulgate, en grec et en latin, lisent : Ἐν τῷ Ψαλμῷ τῷ δευτέρῳ. In secundo Psalmo. D'autres lisent : In primo Psalmo. Ainsi saint Justin, Seconde Apologie ; Tertullien, Contre Marcion ; saint Hilaire ; saint Jérôme ; Cassiodore, sur ce passage, etc.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "abbreviations written out"
@@ -176,14 +178,12 @@
    "flags": []
   },
   {
-   "id": "0088(f)",
-   "page": "page_0088",
+   "id": "0089(f)",
+   "page": "page_0089",
    "marker": "(f)",
-   "text": "Hieron. Præfat. in Psalterium.",
-   "proposed": "Saint Jérôme, Préface sur le Psautier.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Nicolas de Lyre ; Grotius ; Hamond.",
+   "proposed": "Nicolas de Lyre ;\nGrotius ;\nHamond.",
+   "why": [],
    "flags": []
   },
   {
@@ -241,38 +241,39 @@
    ]
   },
   {
-   "id": "0095(e)",
-   "page": "page_0095",
-   "marker": "(e)",
-   "text": "Saint Augustin, sur ce passage ; Cassiodore. De même de Muis ; et Paul, Hébreux 1:5 ; et plusieurs autres, dans l. Blanc, sur ce passage.",
-   "proposed": "Saint Augustin, sur ce passage ; Cassiodore. De même de Muis ; et Paul, Hébreux 1:5 ; et plusieurs autres, dans Le Blanc, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0093(d)",
+   "page": "page_0093",
+   "marker": "(d)",
+   "text": "Saint Hilaire ; saint Athanase ; Eusèbe.",
+   "proposed": "Saint Hilaire ;\nsaint Athanase ;\nEusèbe.",
+   "why": [],
    "flags": []
   },
   {
-   "id": "0097(e)",
-   "page": "page_0097",
-   "marker": "(e)",
-   "text": "Philippiens 2:9.",
-   "proposed": "Philippiens 2:9.",
-   "why": [
-    "the Latin next to the call is Jean 3:35, not Philippiens 2:9"
-   ],
-   "flags": [
-    "reference-mismatch"
-   ]
+   "id": "0095(f)",
+   "page": "page_0095",
+   "marker": "(f)",
+   "text": "Saint Justin, Dialogue avec Tryphon ; saint Méthode, Discours 8, De la virginité ; saint Hilaire, sur Matthieu.",
+   "proposed": "Saint Justin, Dialogue avec Tryphon ;\nsaint Méthode, Discours 8, De la virginité ;\nsaint Hilaire, sur Matthieu.",
+   "why": [],
+   "flags": []
   },
   {
-   "id": "0100(b)",
-   "page": "page_0100",
+   "id": "0096(b)",
+   "page": "page_0096",
    "marker": "(b)",
-   "text": "Hilar. in hunc loc.",
-   "proposed": "Saint Hilaire, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Voyez Matthieu 14:6 ; Genèse 40:20 ; Spartien, Vie d'Hadrien. Natalis adoptionis v. Idus Aug.",
+   "proposed": "Voyez Matthieu 14:6 ;\nGenèse 40:20 ;\nSpartien, Vie d'Hadrien. Natalis adoptionis v. Idus Aug.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0098(a)",
+   "page": "page_0098",
+   "marker": "(a)",
+   "text": "Voyez saint Hilaire, sur ce passage ; Théodoret ; et Eusèbe de Césarée.",
+   "proposed": "Voyez saint Hilaire, sur ce passage ;\nThéodoret ;\net Eusèbe de Césarée.",
+   "why": [],
    "flags": []
   },
   {
@@ -305,6 +306,35 @@
    ]
   },
   {
+   "id": "0105(a)",
+   "page": "page_0105",
+   "marker": "(a)",
+   "text": "Saint Athanase ; saint Jean Chrysostome ; Euthyme.",
+   "proposed": "Saint Athanase ;\nsaint Jean Chrysostome ;\nEuthyme.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0106(d)",
+   "page": "page_0106",
+   "marker": "(d)",
+   "text": "Voyez Job 10:15 ; Psaumes 109:7 ; Jérémie 52:31.",
+   "proposed": "Voyez Job 10:15 ;\nPsaumes 109:7 ;\nJérémie 52:31.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0107(c)",
+   "page": "page_0107",
+   "marker": "(c)",
+   "text": "Eusèbe de Césarée ; saint Augustin ; Théodoret.",
+   "proposed": "Eusèbe de Césarée ;\nsaint Augustin ;\nThéodoret.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0108(a)",
    "page": "page_0108",
    "marker": "(a)",
@@ -325,8 +355,8 @@
    "id": "0108(c)",
    "page": "page_0108",
    "marker": "(c)",
-   "text": "קימה יהוה הושיעני אלהי כי הכית את כל איבי לחי שני רשעים שברת [UNCERTAIN HEBREW] 70. Ὁ σὺ ἐπάταξας τὰς ἐχθραίνοντάς μοι ματαίως. Ils ont lû לחיים, au lieu de לחי. Quelques-uns conjecturent que ces Interprètes avaient mis μαδίας, ou, μαδύας, les ma-",
-   "proposed": "קימה יהוה הושיעני אלהי כי הכית את כל איבי לחי שני רשעים שברת [UNCERTAIN HEBREW] 70. Ὁ σὺ ἐπάταξας τὰς ἐχθραίνοντάς μοι ματαίως. Ils ont lû לחיים, au lieu de לחי. Quelques-uns conjecturent que ces Interprètes avaient mis μαδίας, ou, μαδύας, les ma-",
+   "text": "קימה יהוה הושיעני אלהי כי הכית את כל איבי לחי שני רשעים שברת [UNCERTAIN HEBREW] 70. Ὁ σὺ ἐπάταξας τὰς ἐχθραίνοντάς μοι ματαίως. Ils ont lu לחיים, au lieu de לחי. Quelques-uns conjecturent que ces Interprètes avaient mis μαδίας, ou, μαδύας, les ma-",
+   "proposed": "קימה יהוה הושיעני אלהי כי הכית את כל איבי לחי שני רשעים שברת [UNCERTAIN HEBREW] 70. Ὁ σὺ ἐπάταξας τὰς ἐχθραίνοντάς μοι ματαίως. Ils ont lu לחיים, au lieu de לחי. Quelques-uns conjecturent que ces Interprètes avaient mis μαδίας, ou, μαδύας, les ma-",
    "why": [
     "Hebrew checked against the Hebrew Bible, Psalms 3:7",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -338,6 +368,24 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0108(d)",
+   "page": "page_0108",
+   "marker": "(d)",
+   "text": "Voyez Job 16:10 ; Lamentations 3:30 ; Michée 5:1 etc.",
+   "proposed": "Voyez Job 16:10 ;\nLamentations 3:30 ;\nMichée 5:1 etc.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0109(a)",
+   "page": "page_0109",
+   "marker": "(a)",
+   "text": "Voyez Théodoret, sur ce passage ; Flaminius ; Grotius.",
+   "proposed": "Voyez Théodoret, sur ce passage ;\nFlaminius ;\nGrotius.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0109(c)",
@@ -365,14 +413,32 @@
    ]
   },
   {
-   "id": "0111(a)",
-   "page": "page_0111",
-   "marker": "(a)",
-   "text": "August. in hunc loc.",
-   "proposed": "Saint Augustin, sur ce passage.",
+   "id": "0110(b)",
+   "page": "page_0110",
+   "marker": "(b)",
+   "text": "Is. de Muis ; Eusèbe de Césarée ; Ferrand ; Bossuet ; Kimhi.",
+   "proposed": "Is. de Muis ;\nEusèbe de Césarée ;\nFerrand ;\nBossuet ;\nKimhi.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0110(c)",
+   "page": "page_0110",
+   "marker": "(c)",
+   "text": "Saint Augustin ; saint Jérôme ; saint Athanase ; Cassiodore ; Théodoret.",
+   "proposed": "Saint Augustin ;\nsaint Jérôme ;\nsaint Athanase ;\nCassiodore ;\nThéodoret.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
+   "flags": []
+  },
+  {
+   "id": "0110(d)",
+   "page": "page_0110",
+   "marker": "(d)",
+   "text": "Théodoret ; Titelman ; Eugubinus.",
+   "proposed": "Théodoret ;\nTitelman ;\nEugubinus.",
+   "why": [],
    "flags": []
   },
   {
@@ -388,6 +454,15 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0114(e)",
+   "page": "page_0114",
+   "marker": "(e)",
+   "text": "Arnobe ; saint Augustin ; Eusèbe.",
+   "proposed": "Arnobe ;\nsaint Augustin ;\nEusèbe.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0115(d)",
@@ -407,25 +482,12 @@
    ]
   },
   {
-   "id": "0116(b)",
-   "page": "page_0116",
-   "marker": "(b)",
-   "text": "Vide Chrysost. Theodoret, Aug. hic. et Psaumes 50:14. et L. I. 18, 19.",
-   "proposed": "Voyez saint Jean Chrysostome ; Théodoret ; saint Augustin, sur ce passage ; et Psaumes 50:14 ; et 50:18-19.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0117(c)",
    "page": "page_0117",
    "marker": "(c)",
-   "text": "Psal. LXVI. I. et LXXXVIII. 16. Nombres 6:25.",
-   "proposed": "Psaumes 66:1 et 88:16. Nombres 6:25.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Psaumes 66:2 et 88:16. Nombres 6:25.",
+   "proposed": "Psaumes 66:2 ; 88:16 ; Nombres 6:25.",
+   "why": [],
    "flags": []
   },
   {
@@ -439,6 +501,17 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0120(c)",
+   "page": "page_0120",
+   "marker": "(c)",
+   "text": "Théodoret ; saint Jean Chrysostome ; saint Augustin.",
+   "proposed": "Théodoret ;\nsaint Jean Chrysostome ;\nsaint Augustin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0120(f)",
@@ -479,6 +552,73 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0125(a)",
+   "page": "page_0125",
+   "marker": "(a)",
+   "text": "Saint Athanase ; saint Jérôme ; saint Jean Chrysostome.",
+   "proposed": "Saint Athanase ;\nsaint Jérôme ;\nsaint Jean Chrysostome.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0127(b)",
+   "page": "page_0127",
+   "marker": "(b)",
+   "text": "Saint Ambroise, sur saint Luc, livre 5, numéro 49, et livre 7, numéro 6 ; saint Jérôme, sur ce passage ; Vatable ; Estius.",
+   "proposed": "Saint Ambroise, sur saint Luc, livre 5, numéro 49, et livre 7, numéro 6 ;\nsaint Jérôme, sur ce passage ;\nVatable ;\nEstius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0127(f)",
+   "page": "page_0127",
+   "marker": "(f)",
+   "text": "Geier ; Munster ; Mar. etc.",
+   "proposed": "Geier ;\nMunster ;\nMariana, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0128(b)",
+   "page": "page_0128",
+   "marker": "(b)",
+   "text": "Aben Ezra ; Munster ; Vatable.",
+   "proposed": "Aben Ezra ;\nMunster ;\nVatable.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0129(b)",
+   "page": "page_0129",
+   "marker": "(b)",
+   "text": "Théodoret ; saint Jérôme ; Eusèbe",
+   "proposed": "Théodoret ;\nsaint Jérôme ;\nEusèbe",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0131(d)",
+   "page": "page_0131",
+   "marker": "(d)",
+   "text": "Eusèbe ; saint Athanase ; Théodoret ; Elamin.",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nThéodoret ;\nElamin.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0132(d)",
+   "page": "page_0132",
+   "marker": "(d)",
+   "text": "Geler ; Grotius ; Piscator ; Vatable ; La Bible de Zurich.",
+   "proposed": "Geler ;\nGrotius ;\nPiscator ;\nVatable ;\nLa Bible de Zurich.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0132(e)",
@@ -536,6 +676,24 @@
    ]
   },
   {
+   "id": "0135(b)",
+   "page": "page_0135",
+   "marker": "(b)",
+   "text": "Junius ; Tremellius ; Piscator ; Geier ; Gataker.",
+   "proposed": "Junius ;\nTremellius ;\nPiscator ;\nGeier ;\nGataker.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0135(c)",
+   "page": "page_0135",
+   "marker": "(c)",
+   "text": "Ainsi saint Basile ; saint Jean Chrysostome ; Théodoret ; saint Augustin ; Cassiodore ; Euthyme ; Eusèbe ; saint Athanase.",
+   "proposed": "Ainsi saint Basile ;\nsaint Jean Chrysostome ;\nThéodoret ;\nsaint Augustin ;\nCassiodore ;\nEuthyme ;\nEusèbe ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0135(d)",
    "page": "page_0135",
    "marker": "(d)",
@@ -562,6 +720,28 @@
    ]
   },
   {
+   "id": "0136(c)",
+   "page": "page_0136",
+   "marker": "(c)",
+   "text": "2 Rois 16:5.",
+   "proposed": "2 Rois 16:5.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0136(d)",
+   "page": "page_0136",
+   "marker": "(d)",
+   "text": "Aben Ezra ; Grotius ; Bossuet.",
+   "proposed": "Aben Ezra ;\nGrotius ;\nBossuet.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0137(e)",
    "page": "page_0137",
    "marker": "(e)",
@@ -579,8 +759,8 @@
    "id": "0138(c)",
    "page": "page_0138",
    "marker": "(c)",
-   "text": "L'Hébreu à la lettre : _Seigneur, mon Dieu, ou mon Juge, si j'ai fait_ יהוה אלהי אם־עשיתי זאת אם־ישׁ עול בכפי׃ Les Septante ont lû, אם גמלתי וגו ואחלצה צוררי ריקם _Je n'échapperai de mes ennemis_ Ἀ μὴ διασωθῇ ἀπὸ τῶν ἐχθρῶν μου.",
-   "proposed": "L'Hébreu à la lettre : _Seigneur, mon Dieu, ou mon Juge, si j'ai fait_ יהוה אלהי אם־עשיתי זאת אם־ישׁ עול בכפי׃ Les Septante ont lû, אם גמלתי וגו ואחלצה צוררי ריקם _Je n'échapperai de mes ennemis_ Ἀ μὴ διασωθῇ ἀπὸ τῶν ἐχθρῶν μου.",
+   "text": "L'Hébreu à la lettre : _Seigneur, mon Dieu, ou mon Juge, si j'ai fait_ יהוה אלהי אם־עשיתי זאת אם־ישׁ עול בכפי׃ Les Septante ont lu, אם גמלתי וגו ואחלצה צוררי ריקם _Je n'échapperai de mes ennemis_ Ἀ μὴ διασωθῇ ἀπὸ τῶν ἐχθρῶν μου.",
+   "proposed": "L'Hébreu à la lettre : _Seigneur, mon Dieu, ou mon Juge, si j'ai fait_ יהוה אלהי אם־עשיתי זאת אם־ישׁ עול בכפי׃ Les Septante ont lu, אם גמלתי וגו ואחלצה צוררי ריקם _Je n'échapperai de mes ennemis_ Ἀ μὴ διασωθῇ ἀπὸ τῶν ἐχθρῶν μου.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Psalms 7:3",
     "Hebrew checked against the Hebrew Bible, Psalms 7:4"
@@ -610,6 +790,17 @@
    ]
   },
   {
+   "id": "0141(b)",
+   "page": "page_0141",
+   "marker": "(b)",
+   "text": "Théodoret ; saint Jean Chrysostome ; Génébrard ; Ferrand.",
+   "proposed": "Théodoret ;\nsaint Jean Chrysostome ;\nGénébrard ;\nFerrand.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0143(a)",
    "page": "page_0143",
    "marker": "(a)",
@@ -623,18 +814,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0144(c)",
-   "page": "page_0144",
-   "marker": "(c)",
-   "text": "L'édition de Complute : Ἐτάζων καρδίας καὶ νεφροὺς ὁ Θεός δικαιος. Ἡ Βοήθειά μου παρὰ τοῦ Θεοῦ. Ita et Latina édition : Scrutans corda et renes Deus juste. Adjutorium, etc. Ita decem Manuscripta, dans Reyrand.",
-   "proposed": "L'édition de Complute : Ἐτάζων καρδίας καὶ νεφροὺς ὁ Θεός δικαιος. Ἡ Βοήθειά μου παρὰ τοῦ Θεοῦ. De même l'édition latine : Scrutans corda et renes Deus juste. Adjutorium, etc. Ainsi dix manuscrits, dans Reyrand.",
-   "why": [
-    "Greek checked against the Septuagint, Psaumes 7:10",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0144(d)",
@@ -723,6 +902,15 @@
    ]
   },
   {
+   "id": "0146(f)",
+   "page": "page_0146",
+   "marker": "(f)",
+   "text": "Voyez Psaumes 17:9, 13, 15 ; Psaumes 65:4 ; et Psaumes 76:18 et passim.",
+   "proposed": "Voyez Psaumes 17:9, 13, 15 ;\nPsaumes 65:4 ;\net Psaumes 76:18 et passim.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0146(g)",
    "page": "page_0146",
    "marker": "(g)",
@@ -747,11 +935,31 @@
    ]
   },
   {
+   "id": "0149(a)",
+   "page": "page_0149",
+   "marker": "(a)",
+   "text": "Ita quelques rabbins ; Grotius ; Bossuet.",
+   "proposed": "Ainsi l'entendent quelques rabbins ;\nGrotius ;\nBossuet.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0149(b)",
+   "page": "page_0149",
+   "marker": "(b)",
+   "text": "Ainsi saint Athanase ; Eusèbe ; Didyme ; Théodoret ; Hésychius ; Nicéphore ; saint Augustin ; saint Jérôme.",
+   "proposed": "Ainsi saint Athanase ;\nEusèbe ;\nDidyme ;\nThéodoret ;\nHésychius ;\nNicéphore ;\nsaint Augustin ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0149(d)",
    "page": "page_0149",
    "marker": "(d)",
-   "text": "[UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]. Ils ont lû [UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]. Ils ont lû [UNCERTAIN HEBREW]",
+   "text": "[UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]. Ils ont lu [UNCERTAIN HEBREW]",
+   "proposed": "[UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]. Ils ont lu [UNCERTAIN HEBREW]",
    "why": [],
    "flags": [
     "uncertain",
@@ -768,6 +976,15 @@
    "flags": [
     "ambiguous-name"
    ]
+  },
+  {
+   "id": "0151(c)",
+   "page": "page_0151",
+   "marker": "(c)",
+   "text": "Saint Jérôme ; saint Jean Chrysostome ; saint Athanase ; Eusèbe.",
+   "proposed": "Saint Jérôme ;\nsaint Jean Chrysostome ;\nsaint Athanase ;\nEusèbe.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0153(b)",
@@ -787,8 +1004,8 @@
    "id": "0153(c)",
    "page": "page_0153",
    "marker": "(c)",
-   "text": "[UNCERTAIN HEBREW] Aquil. et 6. Édit. E' Superioribus κράτος.",
-   "proposed": "[UNCERTAIN HEBREW] Aquil. et 6. Édit. E' Superioribus κράτος.",
+   "text": "[UNCERTAIN HEBREW] Aquil. et 6. Édit. É Superioribus κράτος.",
+   "proposed": "[UNCERTAIN HEBREW] Aquil. et 6. Édit. É Superioribus κράτος.",
    "why": [
     "Greek spelling checked against a Greek dictionary"
    ],
@@ -811,6 +1028,35 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0154(f)",
+   "page": "page_0154",
+   "marker": "(f)",
+   "text": "Saint Jérôme ; Théodoret ; saint Augustin ; Eusèbe.",
+   "proposed": "Saint Jérôme ;\nThéodoret ;\nsaint Augustin ;\nEusèbe.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0156(e)",
+   "page": "page_0156",
+   "marker": "(e)",
+   "text": "Vatable ; Cocceius ; Castalion.",
+   "proposed": "Vatable ;\nCocceius ;\nCastalion.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0159(a)",
+   "page": "page_0159",
+   "marker": "(a)",
+   "text": "Eusèbe ; saint Athanase ; saint Augustin.",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nsaint Augustin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0159(g)",
@@ -855,17 +1101,6 @@
    ]
   },
   {
-   "id": "0164(a)",
-   "page": "page_0164",
-   "marker": "(a)",
-   "text": "Tacit. de Morib. German.",
-   "proposed": "Tacite, Des mœurs des Germains.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0164(c)",
    "page": "page_0164",
    "marker": "(c)",
@@ -890,6 +1125,15 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0164(e)",
+   "page": "page_0164",
+   "marker": "(e)",
+   "text": "Vatable ; Junius ; Castalion.",
+   "proposed": "Vatable ;\nJunius ;\nCastalion.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0164(f)",
@@ -952,6 +1196,26 @@
    ]
   },
   {
+   "id": "0167(c)",
+   "page": "page_0167",
+   "marker": "(c)",
+   "text": "Saint Jérôme ; saint Augustin ; Théodoret.",
+   "proposed": "Saint Jérôme ;\nsaint Augustin ;\nThéodoret.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0169(a)",
+   "page": "page_0169",
+   "marker": "(a)",
+   "text": "Origène ; saint Cyrille d'Alexandrie ; saint Augustin ; saint Grégoire.",
+   "proposed": "Origène ;\nsaint Cyrille d'Alexandrie ;\nsaint Augustin ;\nsaint Grégoire.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0169(b)",
    "page": "page_0169",
    "marker": "(b)",
@@ -990,15 +1254,12 @@
    ]
   },
   {
-   "id": "0172(b)",
+   "id": "0172(c)",
    "page": "page_0172",
-   "marker": "(b)",
-   "text": "Symm. τάξον Κύριε νομοθέτην αὐτοῖς.",
-   "proposed": "Symmaque : τάξον Κύριε νομοθέτην αὐτοῖς.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
+   "marker": "(c)",
+   "text": "Théodoret ; Eusèbe ; Euthyme ; saint Athanase.",
+   "proposed": "Théodoret ;\nEusèbe ;\nEuthyme ;\nsaint Athanase.",
+   "why": [],
    "flags": []
   },
   {
@@ -1075,19 +1336,6 @@
    ]
   },
   {
-   "id": "0181(c)",
-   "page": "page_0181",
-   "marker": "(c)",
-   "text": "Sym. Ἐκζηθήσεται ἡ ἀσέβεια αὐτỡ, ἵνα μὴ εὑρεθῇ ἀυτος.",
-   "proposed": "Symmaque : Ἐκζηθήσεται ἡ ἀσέβεια αὐτỡ, ἵνα μὴ εὑρεθῇ ἀυτος.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek checked against the Septuagint, Siracide 8:15",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0183(a)",
    "page": "page_0183",
    "marker": "(a)",
@@ -1124,6 +1372,24 @@
    ]
   },
   {
+   "id": "0183(f)",
+   "page": "page_0183",
+   "marker": "(f)",
+   "text": "Ainsi le Syriaque ; Arias Montanus ; Pagnin.",
+   "proposed": "Ainsi le Syriaque ;\nArias Montanus ;\nPagnin.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0184(c)",
+   "page": "page_0184",
+   "marker": "(c)",
+   "text": "Saint Jérôme ; saint Augustin ; saint Grégoire le Grand ; Cassiodore.",
+   "proposed": "Saint Jérôme ;\nsaint Augustin ;\nsaint Grégoire le Grand ;\nCassiodore.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0186(a)",
    "page": "page_0186",
    "marker": "(a)",
@@ -1151,6 +1417,15 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0187(b)",
+   "page": "page_0187",
+   "marker": "(b)",
+   "text": "Pagnin ; Vatable ; Cocceius.",
+   "proposed": "Pagnin ;\nVatable ;\nCocceius.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0188(b)",
@@ -1195,6 +1470,15 @@
    ]
   },
   {
+   "id": "0189(f)",
+   "page": "page_0189",
+   "marker": "(f)",
+   "text": "Vatable ; Aben Ezra ; Kimhi.",
+   "proposed": "Vatable ;\nAben Ezra ;\nKimhi.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0190(a)",
    "page": "page_0190",
    "marker": "(a)",
@@ -1223,6 +1507,17 @@
    ]
   },
   {
+   "id": "0190(f)",
+   "page": "page_0190",
+   "marker": "(f)",
+   "text": "Théodoret ; Saint Augustin.",
+   "proposed": "Théodoret ; saint Augustin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0192(e)",
    "page": "page_0192",
    "marker": "(e)",
@@ -1235,17 +1530,12 @@
    ]
   },
   {
-   "id": "0195(c)",
-   "page": "page_0195",
+   "id": "0197(c)",
+   "page": "page_0197",
    "marker": "(c)",
-   "text": "Les Septante : Θήσομαι ἐν σωτηρίῳ παρρησιάσομαι ἐν αὐτῷ. Symmaque : θήσω σωτήριον ἐμφανές. Je lui donnerai un salut manifeste ; je le sauverai à la vue de tout le monde. Saint Jérôme lit : _In salutari meo_. Et il l'explique de Jésus-Christ. Arnobe et le Psautier romain _In salutare meum_. Le Psaultier de Milan. _In salutari tuo_. Un ancien Interprète Grec, ἐν σωτηρίῳ σου. Dans votre salut.",
-   "proposed": "Les Septante : Θήσομαι ἐν σωτηρίῳ παρρησιάσομαι ἐν αὐτῷ. Symmaque : θήσω σωτήριον ἐμφανές. Je lui donnerai un salut manifeste ; je le sauverai à la vue de tout le monde. Saint Jérôme lit : _In salutari meo_. Et il l'explique de Jésus-Christ. Arnobe et le Psautier romain _In salutare meum_. Le Psautier de Milan. _In salutari tuo_. Un ancien Interprète Grec, ἐν σωτηρίῳ σου. Dans votre salut.",
-   "why": [
-    "Greek checked against the Septuagint, Psaumes 11:6",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek checked against the Septuagint, Psaumes 19:6",
-    "abbreviations written out"
-   ],
+   "text": "Ainsi saint Jérôme ; Aben Ezra ; Mariana ; Ham-",
+   "proposed": "Ainsi saint Jérôme ;\nAben Ezra ;\nMariana ;\nHam-",
+   "why": [],
    "flags": []
   },
   {
@@ -1265,6 +1555,15 @@
    ]
   },
   {
+   "id": "0198(e)",
+   "page": "page_0198",
+   "marker": "(e)",
+   "text": "Théodoret ; Euthymius ; Nicéphore.",
+   "proposed": "Théodoret ;\nEuthymius ;\nNicéphore.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0200(a)",
    "page": "page_0200",
    "marker": "(a)",
@@ -1282,14 +1581,30 @@
    ]
   },
   {
-   "id": "0205(a)",
-   "page": "page_0205",
+   "id": "0200(b)",
+   "page": "page_0200",
+   "marker": "(b)",
+   "text": "Saint Augustin ; saint Jérôme ; Théodoret ; Eusèbe ; saint Athanase.",
+   "proposed": "Saint Augustin ;\nsaint Jérôme ;\nThéodoret ;\nEusèbe ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0203(f)",
+   "page": "page_0203",
+   "marker": "(f)",
+   "text": "Saint Hilaire ; saint Athanase ; Eusèbe.",
+   "proposed": "Saint Hilaire ;\nsaint Athanase ;\nEusèbe.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0204(a)",
+   "page": "page_0204",
    "marker": "(a)",
-   "text": "Chald. Non est potestas Dei in terra.",
-   "proposed": "Le Chaldéen : Non est potestas Dei in terra.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Voyez saint Clément d'Alexandrie, Stromates, livre 6 ; Tertullien, Contre Marcion, livre 2, chapitre 24 ; Lactance, Contre Épicure, etc.",
+   "proposed": "Voyez saint Clément d'Alexandrie, Stromates, livre 6 ;\nTertullien, Contre Marcion, livre 2, chapitre 24 ;\nLactance, Contre Épicure, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -1307,14 +1622,57 @@
    ]
   },
   {
-   "id": "0219(b)",
-   "page": "page_0219",
+   "id": "0212(a)",
+   "page": "page_0212",
+   "marker": "(a)",
+   "text": "Isaïe 13 ; Isaïe 14 ; Isaïe 21, etc.",
+   "proposed": "Isaïe 13 ;\nIsaïe 14 ;\nIsaïe 21, etc.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0213(a)",
+   "page": "page_0213",
+   "marker": "(a)",
+   "text": "Théodoret ; saint Jérôme ; saint Hilaire ; saint Augustin ; Eusèbe ; saint Athanase.",
+   "proposed": "Théodoret ;\nsaint Jérôme ;\nsaint Hilaire ;\nsaint Augustin ;\nEusèbe ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0217(b)",
+   "page": "page_0217",
    "marker": "(b)",
-   "text": "Philo. lib de Decalogo.",
-   "proposed": "Philon, livre Du Décalogue.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Voyez saint Basile ; Agellius ; Remigius ; Menochius.",
+   "proposed": "Voyez saint Basile ;\nAgellius ;\nRemigius ;\nMenochius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0217(c)",
+   "page": "page_0217",
+   "marker": "(c)",
+   "text": "Théodoret ; saint Hilaire ; saint Jérôme.",
+   "proposed": "Théodoret ;\nsaint Hilaire ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0218(g)",
+   "page": "page_0218",
+   "marker": "(g)",
+   "text": "Ainsi le Chaldéen ; Kimhi ; Aben Ezra ; Munster ; Vatable.",
+   "proposed": "Ainsi le Chaldéen ;\nKimhi ;\nAben Ezra ;\nMunster ;\nVatable.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0219(a)",
+   "page": "page_0219",
+   "marker": "(a)",
+   "text": "Voyez Matthieu 5:33 ; Lévitique 19:12 ; Nombres 30:3 ; Exode 23:13.",
+   "proposed": "Voyez Matthieu 5:33 ;\nLévitique 19:12 ;\nNombres 30:3 ;\nExode 23:13.",
+   "why": [],
    "flags": []
   },
   {
@@ -1345,17 +1703,6 @@
    ]
   },
   {
-   "id": "0220(e)",
-   "page": "page_0220",
-   "marker": "(e)",
-   "text": "Hilar. hic. Fallax hoc beneficium, et humanitas fraudulenta, et damnosa hæc benevolentia docetur. Quid enim tam intolerabile, quàm ut indigenti ita beneficium tribuas, ut magis egeat ; et miseriam inopis, opem laturus accumules ?",
-   "proposed": "Saint Hilaire, sur ce passage. Fallax hoc beneficium, et humanitas fraudulenta, et damnosa hæc benevolentia docetur. Quid enim tam intolerabile, quàm ut indigenti ita beneficium tribuas, ut magis egeat ; et miseriam inopis, opem laturus accumules ?",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0220(h)",
    "page": "page_0220",
    "marker": "(h)",
@@ -1383,8 +1730,8 @@
    "id": "0222(e)",
    "page": "page_0222",
    "marker": "(e)",
-   "text": "Vide Jérémie 2:12. ונתם עונך לפני comme s'il était le même que חתם il a scellé.",
-   "proposed": "Vide Jérémie 2:12. ונתם עונך לפני comme s'il était le même que חתם il a scellé.",
+   "text": "Vide Jérémie 2:22. ונתם עונך לפני comme s'il était le même que חתם il a scellé.",
+   "proposed": "Vide Jérémie 2:22. ונתם עונך לפני comme s'il était le même que חתם il a scellé.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
    ],
@@ -1392,6 +1739,15 @@
     "hebrew",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0223(b)",
+   "page": "page_0223",
+   "marker": "(b)",
+   "text": "Eusèbe de Césarée ; Théodoret ; saint Jérôme ; saint Augustin ; saint Athanase.",
+   "proposed": "Eusèbe de Césarée ;\nThéodoret ;\nsaint Jérôme ;\nsaint Augustin ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0224(a)",
@@ -1404,18 +1760,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0224(e)",
-   "page": "page_0224",
-   "marker": "(e)",
-   "text": "Sym. Ἀγαθόν μοι οὐκ ἔστιν ἄνευ σου. Hier. Bene mihi non est sine te.",
-   "proposed": "Symmaque : Ἀγαθόν μοι οὐκ ἔστιν ἄνευ σου. Saint Jérôme : Bene mihi non est sine te.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0224(f)",
@@ -1442,6 +1786,15 @@
    ]
   },
   {
+   "id": "0229(a)",
+   "page": "page_0229",
+   "marker": "(a)",
+   "text": "Saint Jérôme ; saint Augustin ; Euthyme ; Eusèbe ; saint Athanase.",
+   "proposed": "Saint Jérôme ;\nsaint Augustin ;\nEuthyme ;\nEusèbe ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0232(a)",
    "page": "page_0232",
    "marker": "(a)",
@@ -1460,31 +1813,20 @@
    "text": "_Vide Ezech._ XXXVII. 4. Baruch 3:4. II. Thren. III. 6. Daniel 12:2. et _passim._",
    "proposed": "_Vide Ezech._ XXXVII. 4. Baruch 3:4. II. Thren. III. 6. Daniel 12:2. et _passim._",
    "why": [
-    "written out, but a number changed or added: Voyez Ézéchiel 37:4. Baruch 3:4. 11. Lamentations 3:6. Daniel 12:2. et passim."
+    "written out, but the italics changed: Voyez Ézéchiel 37:4. Baruch 3:4. 11. Lamentations 3:6. Daniel 12:2. et passim."
    ],
    "flags": [
-    "expand-changed-numbers"
+    "expand-changed-italics"
    ]
-  },
-  {
-   "id": "0234(a)",
-   "page": "page_0234",
-   "marker": "(a)",
-   "text": "Hieronym. Illuc descendit ut electos suos exinde ejiceret, et Diabolum ligaret. Vide et Geneb.",
-   "proposed": "Saint Jérôme : Illuc descendit ut electos suos exinde ejiceret, et Diabolum ligaret. Voyez aussi Génébrard.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0234(f)",
    "page": "page_0234",
    "marker": "(f)",
-   "text": "Eusebym. Bellar. Geneb. Vatab.",
-   "proposed": "Eusèbe ; Bellarmin ; Génébrard ; Vatable.",
+   "text": "Eusèbe ; Bellarmin ; Génébrard ; Vatable.",
+   "proposed": "Eusèbe ;\nBellarmin ;\nGénébrard ;\nVatable.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -1492,13 +1834,42 @@
    "id": "0235(a)",
    "page": "page_0235",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] pour sept Les autres l'ont pris pour rassasiemens : Elle est remplie de délices éternelles. Aq. Th. Symmach. [UNCERTAIN GREEK] Il y a sept joies devant votre face. Il a pris [UNCERTAIN HEBREW] pour sept.",
-   "proposed": "[UNCERTAIN HEBREW] pour sept Les autres l'ont pris pour rassasiemens : Elle est remplie de délices éternelles. Aq. Th. Symmach. [UNCERTAIN GREEK] Il y a sept joies devant votre face. Il a pris [UNCERTAIN HEBREW] pour sept.",
+   "text": "[UNCERTAIN HEBREW] pour sept Les autres l'ont pris pour rassasiements : Elle est remplie de délices éternelles. Aq. Th. Symmach. [UNCERTAIN GREEK] Il y a sept joies devant votre face. Il a pris [UNCERTAIN HEBREW] pour sept.",
+   "proposed": "[UNCERTAIN HEBREW] pour sept Les autres l'ont pris pour rassasiements : Elle est remplie de délices éternelles. Aq. Th. Symmach. [UNCERTAIN GREEK] Il y a sept joies devant votre face. Il a pris [UNCERTAIN HEBREW] pour sept.",
    "why": [],
    "flags": [
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0235(b)",
+   "page": "page_0235",
+   "marker": "(b)",
+   "text": "De Muis ; Buxtorf ; Hammond ; Grotius.",
+   "proposed": "De Muis ;\nBuxtorf ;\nHammond ;\nGrotius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0236(b)",
+   "page": "page_0236",
+   "marker": "(b)",
+   "text": "Les rabbins ; Rabbi Salomon ; Kimhi ; Kabuenachi, dans de Muis, après le verset 15.",
+   "proposed": "Les rabbins ;\nRabbi Salomon ;\nKimhi ;\nKabuenachi, dans de Muis, après le verset 15.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0236(c)",
+   "page": "page_0236",
+   "marker": "(c)",
+   "text": "De Muis ; Bossuet ; Ferrand.",
+   "proposed": "De Muis ;\nBossuet ;\nFerrand.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0239(a)",
@@ -1530,25 +1901,13 @@
    "id": "0239(e)",
    "page": "page_0239",
    "marker": "(e)",
-   "text": "[UNCERTAIN HEBREW] se met souvent pour transgresser, désobéir, etc. Voyez Deutéronome 26:15. Nombres 14:41. 21:18. 22:13. etc.",
-   "proposed": "[UNCERTAIN HEBREW] se met souvent pour transgresser, désobéir, etc. Voyez Deutéronome 26:15. Nombres 14:41. 21:18. 22:13. etc.",
+   "text": "[UNCERTAIN HEBREW] se met souvent pour transgresser, désobéir, etc. Voyez Deutéronome 26:13. Nombres 14:41. 21:18. 22:13. etc.",
+   "proposed": "[UNCERTAIN HEBREW] se met souvent pour transgresser, désobéir, etc. Voyez Deutéronome 26:13. Nombres 14:41. 21:18. 22:13. etc.",
    "why": [],
    "flags": [
     "uncertain",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0240(c)",
-   "page": "page_0240",
-   "marker": "(c)",
-   "text": "Symmach. ἐγὼ ἐφυλαξάμην ὁδὸς λῃστῶν.",
-   "proposed": "Symmaque : ἐγὼ ἐφυλαξάμην ὁδὸς λῃστῶν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0241(b)",
@@ -1565,17 +1924,6 @@
     "uncertain",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0242(h)",
-   "page": "page_0242",
-   "marker": "(h)",
-   "text": "Origen. in Caten. hic.",
-   "proposed": "Origène, dans la Chaîne, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0244(b)",
@@ -1652,30 +2000,41 @@
    ]
   },
   {
-   "id": "0248(b)",
-   "page": "page_0248",
-   "marker": "(b)",
-   "text": "Hieronym. hic. Rogat pro illis qui prædestinati sunt, ut veniant, et separentur ab illis qui non sunt prædestinati. Ita ferè Athanas.",
-   "proposed": "Saint Jérôme, sur ce passage. Rogat pro illis qui prædestinati sunt, ut veniant, et separentur ab illis qui non sunt prædestinati. C'est à peu près ainsi que saint Athanase.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0250(i)",
+   "page": "page_0250",
+   "marker": "(i)",
+   "text": "Théodoret, sur ce passage, et Théodoret d'Antioche, dans la Chaîne grecque ; Eusèbe ; saint Basile ; saint Athanase.",
+   "proposed": "Théodoret, sur ce passage, et Théodoret d'Antioche, dans la Chaîne grecque ;\nEusèbe ;\nsaint Basile ;\nsaint Athanase.",
+   "why": [],
    "flags": []
   },
   {
-   "id": "025270.",
+   "id": "0252(d)",
    "page": "page_0252",
-   "marker": "70.",
-   "text": "Στίγμα κατὰ σῶμα παλαιὸn ἀντὶ, is ὅθεν, καὶ",
-   "proposed": "Στίγμα κατὰ σῶμα παλαιὸn ἀντὶ, is ὅθεν, καὶ",
+   "marker": "(d)",
+   "text": "Στίγμα κατὰ σῶμα παλαιὸn ἀντὶ, is ὅθεν, καὶ δι᾽ αἰνιγμάτων, καὶ τὴν δόξαν Κυρίου ἴδεν.\nThéodotion : χορτασθήσομαι ἐν τῷ ὀφθῆναι τὴν δόξαν σου. Il a lu בהקיץ, au lieu de בהקִיצך. Le Syriaque videtur legisse אמונתך Fidelitas tua, seu veritas tua.",
+   "proposed": "Στίγμα κατὰ σῶμα παλαιὸn ἀντὶ, is ὅθεν, καὶ δι᾽ αἰνιγμάτων, καὶ τὴν δόξαν Κυρίου ἴδεν.\nThéodotion : χορτασθήσομαι ἐν τῷ ὀφθῆναι τὴν δόξαν σου. Il a lu בהקיץ, au lieu de בהקִיצך. Le Syriaque videtur legisse אמונתך Fidelitas tua, seu veritas tua.",
    "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "Greek checked against the Septuagint, Psaumes 16:15"
    ],
    "flags": [
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0256(b)",
+   "page": "page_0256",
+   "marker": "(b)",
+   "text": "Voyez Genèse 15:1 ; Deutéronome 33:29 ; Psaumes 3:4 etc.",
+   "proposed": "Voyez Genèse 15:1 ;\nDeutéronome 33:29 ;\nPsaumes 3:4 etc.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0256(c)",
@@ -1718,6 +2077,19 @@
    ]
   },
   {
+   "id": "0258(c)",
+   "page": "page_0258",
+   "marker": "(c)",
+   "text": "1 Rois 1:7, 10 et 11, 29.",
+   "proposed": "1 Rois 1:7, 10-11, 29.",
+   "why": [
+    "1 Rois 1:7, 10-11, 29 does not exist in the Vulgate"
+   ],
+   "flags": [
+    "reference-not-in-vulgate"
+   ]
+  },
+  {
    "id": "0259(a)",
    "page": "page_0259",
    "marker": "(a)",
@@ -1730,17 +2102,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0259(b)",
-   "page": "page_0259",
-   "marker": "(b)",
-   "text": "Theodor. Antioc. in Catena.",
-   "proposed": "Théodore d'Antioche, dans la Chaîne.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0259(f)",
@@ -1769,6 +2130,17 @@
    ]
   },
   {
+   "id": "0259(i)",
+   "page": "page_0259",
+   "marker": "(i)",
+   "text": "Voyez de Muis, sur ce passage ; Génébrard ; Vatable.",
+   "proposed": "Voyez de Muis, sur ce passage ;\nGénébrard ;\nVatable.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0260(g)",
    "page": "page_0260",
    "marker": "(g)",
@@ -1779,6 +2151,15 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0261(a)",
+   "page": "page_0261",
+   "marker": "(a)",
+   "text": "Eusèbe ; saint Athanase ; saint Jérôme.",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0261(e)",
@@ -1807,15 +2188,21 @@
    ]
   },
   {
-   "id": "0262(f)",
-   "page": "page_0262",
-   "marker": "(f)",
-   "text": "Pindar. ἐλατὴρ ὑπέρτατε, βροντᾶς ἀκαμαντόποδος Ζεῦ.",
-   "proposed": "Pindare : ἐλατὴρ ὑπέρτατε, βροντᾶς ἀκαμαντόποδος Ζεῦ.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
+   "id": "0263(a)",
+   "page": "page_0263",
+   "marker": "(a)",
+   "text": "Théodoret ; Flaminius ; Buchanan ; Ferrand.",
+   "proposed": "Théodoret ;\nFlaminius ;\nBuchanan ;\nFerrand.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0264(g)",
+   "page": "page_0264",
+   "marker": "(g)",
+   "text": "Ézéchiel 13:14 ; Isaïe 24:18 ; Michée 1:6 ; Habacuc 3:13 ; Psaumes 136:7.",
+   "proposed": "Ézéchiel 13:14 ;\nIsaïe 24:18 ;\nMichée 1:6 ;\nHabacuc 3:13 ;\nPsaumes 136:7.",
+   "why": [],
    "flags": []
   },
   {
@@ -1855,18 +2242,6 @@
    ]
   },
   {
-   "id": "0267(g)",
-   "page": "page_0267",
-   "marker": "(g)",
-   "text": "Édition romaine et Codices Regii sex, et duo Colbertini, dans Ferrand, sur ce passage. τὰ δικαιώματα αὐτ, ἐκ ἀπέστησα ἀπ' ἐμοῦ. Ainsi Théodoret.",
-   "proposed": "Édition romaine et six manuscrits du Roi, et deux de Colbert, dans Ferrand, sur ce passage. τὰ δικαιώματα αὐτ, ἐκ ἀπέστησα ἀπ' ἐμοῦ. Ainsi Théodoret.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0267(h)",
    "page": "page_0267",
    "marker": "(h)",
@@ -1896,6 +2271,15 @@
    ]
   },
   {
+   "id": "0271(b)",
+   "page": "page_0271",
+   "marker": "(b)",
+   "text": "L'édition de Complute, Question illuminabis ; saint Augustin ; saint Athanase ; Eusèbe.",
+   "proposed": "L'édition de Complute, Question illuminabis ;\nsaint Augustin ;\nsaint Athanase ;\nEusèbe.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0273(a)",
    "page": "page_0273",
    "marker": "(a)",
@@ -1907,34 +2291,11 @@
    ]
   },
   {
-   "id": "0273(b)",
-   "page": "page_0273",
-   "marker": "(b)",
-   "text": "Iliad. passim. Πόδας ὠκὺς Ἀχιλλεὺς.",
-   "proposed": "Iliade, passim. Πόδας ὠκὺς Ἀχιλλεὺς.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0273(e)",
-   "page": "page_0273",
-   "marker": "(e)",
-   "text": "Proclus et Tzetzes in Hesiod.",
-   "proposed": "Proclus et Tzetzès sur Hésiode.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0273(g)",
    "page": "page_0273",
    "marker": "(g)",
-   "text": "ונחתה קשת נחושה זרועתי Il paraît que les Septante ont lû נחתה, E'sv, _posuisti_. Dans 2 Rois 22:35. ונתת קשת נחושה",
-   "proposed": "ונחתה קשת נחושה זרועתי Il paraît que les Septante ont lû נחתה, E'sv, _posuisti_. Dans 2 Rois 22:35. ונתת קשת נחושה",
+   "text": "ונחתה קשת נחושה זרועתי Il paraît que les Septante ont lu נחתה, Ésv, _posuisti_. Dans 2 Rois 22:35. ונתת קשת נחושה",
+   "proposed": "ונחתה קשת נחושה זרועתי Il paraît que les Septante ont lu נחתה, Ésv, _posuisti_. Dans 2 Rois 22:35. ונתת קשת נחושה",
    "why": [
     "Hebrew checked against the Hebrew Bible, Psalms 18:34",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
@@ -1943,6 +2304,15 @@
     "hebrew",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0274(h)",
+   "page": "page_0274",
+   "marker": "(h)",
+   "text": "Théodoret ; Euthyme ; saint Augustin ; saint Jérôme ; Génébrard.",
+   "proposed": "Théodoret ;\nEuthyme ;\nsaint Augustin ;\nsaint Jérôme ;\nGénébrard.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0275(b)",
@@ -1957,6 +2327,15 @@
    ]
   },
   {
+   "id": "0275(c)",
+   "page": "page_0275",
+   "marker": "(c)",
+   "text": "Voyez Ham. ; Piscator ; Kimhi ; Tarreham ; Rob. Walid.",
+   "proposed": "Voyez Ham. ;\nPiscator ;\nKimhi ;\nTarreham ;\nRob. Walid.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0279(c)",
    "page": "page_0279",
    "marker": "(c)",
@@ -1968,17 +2347,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0279(d)",
-   "page": "page_0279",
-   "marker": "(d)",
-   "text": "Du Chald.",
-   "proposed": "Du Chaldéen.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0280(a)",
@@ -2060,6 +2428,51 @@
    ]
   },
   {
+   "id": "0281(e)",
+   "page": "page_0281",
+   "marker": "(e)",
+   "text": "Ainsi saint Athanase ; saint Basile ; Flaminius.",
+   "proposed": "Ainsi saint Athanase ;\nsaint Basile ;\nFlaminius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0283(c)",
+   "page": "page_0283",
+   "marker": "(c)",
+   "text": "Saint Athanase ; saint Jérôme ; Hésychius ; Astérius ; saint Augustin ; Cassiodore ; Bède.",
+   "proposed": "Saint Athanase ;\nsaint Jérôme ;\nHésychius ;\nAstérius ;\nsaint Augustin ;\nCassiodore ;\nBède.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0284(c)",
+   "page": "page_0284",
+   "marker": "(c)",
+   "text": "Voyez Eusèbe ; saint Jérôme ; et Hésychius.",
+   "proposed": "Voyez Eusèbe ;\nsaint Jérôme ;\net Hésychius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0285(b)",
+   "page": "page_0285",
+   "marker": "(b)",
+   "text": "Origène, Des principes, livre 1, chapitre 7, et Contre Celse, livre 4 ; saint Clément, Reconnaissances, livre 5. Voyez, s'il vous plaît, saint Augustin, Enchiridion, chapitre 58, et De la Genèse à la lettre, livre 2, chapitre 18 ; saint Jérôme, Commentaire.",
+   "proposed": "Origène, Des principes, livre 1, chapitre 7, et Contre Celse, livre 4 ;\nsaint Clément, Reconnaissances, livre 5. Voyez, s'il vous plaît, saint Augustin, Enchiridion, chapitre 58, et De la Genèse à la lettre, livre 2, chapitre 18 ;\nsaint Jérôme, Commentaire.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0288(b)",
+   "page": "page_0288",
+   "marker": "(b)",
+   "text": "Voyez Eusèbe ; Didyme ; Théodoret ; Diodore de Sicile ; saint Athanase.",
+   "proposed": "Voyez Eusèbe ;\nDidyme ;\nThéodoret ;\nDiodore de Sicile ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0288(d)",
    "page": "page_0288",
    "marker": "(d)",
@@ -2098,13 +2511,13 @@
    ]
   },
   {
-   "id": "0292(a)",
-   "page": "page_0292",
-   "marker": "(a)",
-   "text": "August. hic. Timor Domini non servilis, sed castus ; gratis amants, non puniri timens ab eo quem tremit, sed separari ab eo, quem diligit.",
-   "proposed": "Saint Augustin, sur ce passage. Timor Domini non servilis, sed castus ; gratis amants, non puniri timens ab eo quem tremit, sed separari ab eo, quem diligit.",
+   "id": "0294(d)",
+   "page": "page_0294",
+   "marker": "(d)",
+   "text": "Origène ; Didyme ; Eusèbe ; Théodoret.",
+   "proposed": "Origène ;\nDidyme ;\nEusèbe ;\nThéodoret.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -2112,11 +2525,9 @@
    "id": "0295(a)",
    "page": "page_0295",
    "marker": "(a)",
-   "text": "Leuit. IV. 2. VI. 1. 2. et seq.",
-   "proposed": "Lévitique 4:2 ; 6:1, 2 et suivants.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Lévitique 4:2 ; 6:1, 2 et suivants.",
+   "proposed": "Lévitique 4:2 ; 6:1-2 et suivants.",
+   "why": [],
    "flags": []
   },
   {
@@ -2186,11 +2597,29 @@
    ]
   },
   {
+   "id": "0302(d)",
+   "page": "page_0302",
+   "marker": "(d)",
+   "text": "Théodoret ; Nicéphore ; Euthyme ; saint Basile.",
+   "proposed": "Théodoret ;\nNicéphore ;\nEuthyme ;\nsaint Basile.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0303(d)",
+   "page": "page_0303",
+   "marker": "(d)",
+   "text": "Le Chaldéen ; Nicolas de Lyre ; Kimhi. Voyez de Muis, sur ce passage.",
+   "proposed": "Le Chaldéen ;\nNicolas de Lyre ;\nKimhi. Voyez de Muis, sur ce passage.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0307(a)",
    "page": "page_0307",
    "marker": "(a)",
-   "text": "Voyez Juges 1:5 ; 1 Rois 31:3 ; 3 Rois 13:34 ; 4 Rois 17:4 ; 1 Paralipomènes 10:3, 8. _Voyez le Chaldéen sur ce passage, et Symmaque._ Καταλήψεται ἡ χείρ σου πάντας τοὺς ἐχθρός σου ἡ δεξιά σου εὕροι πάντας τοὺς μισοῦντάς σε.",
-   "proposed": "Voyez Juges 1:5 ; 1 Rois 31:3 ; 3 Rois 13:34 ; 4 Rois 17:4 ; 1 Paralipomènes 10:3, 8. _Voyez le Chaldéen sur ce passage, et Symmaque._ Καταλήψεται ἡ χείρ σου πάντας τοὺς ἐχθρός σου ἡ δεξιά σου εὕροι πάντας τοὺς μισοῦντάς σε.",
+   "text": "Voyez Juges 1:5 ; 1 Rois 31:3 ; 3 Rois 13:24 ; 4 Rois 17:4 ; 1 Paralipomènes 10:3, 8. _Voyez le Chaldéen sur ce passage, et Symmaque._ Καταλήψεται ἡ χείρ σου πάντας τοὺς ἐχθρός σου ἡ δεξιά σου εὕροι πάντας τοὺς μισοῦντάς σε.",
+   "proposed": "Voyez Juges 1:5 ; 1 Rois 31:3 ; 3 Rois 13:24 ; 4 Rois 17:4 ; 1 Paralipomènes 10:3, 8. _Voyez le Chaldéen sur ce passage, et Symmaque._ Καταλήψεται ἡ χείρ σου πάντας τοὺς ἐχθρός σου ἡ δεξιά σου εὕροι πάντας τοὺς μισοῦντάς σε.",
    "why": [
     "Greek spelling checked against a Greek dictionary"
    ],
@@ -2205,10 +2634,10 @@
    "text": "_Vide Levit._ XII. 8. XXV. 18. Deut. XXXIII. II.",
    "proposed": "_Vide Levit._ XII. 8. XXV. 18. Deut. XXXIII. II.",
    "why": [
-    "written out, but a number changed or added: Voyez Lévitique 12:8 ; 25:18 ; Deutéronome 33:11."
+    "written out, but the italics changed: Voyez Lévitique 12:8 ; 25:18 ; Deutéronome 33:11."
    ],
    "flags": [
-    "expand-changed-numbers"
+    "expand-changed-italics"
    ]
   },
   {
@@ -2224,6 +2653,35 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0308(g)",
+   "page": "page_0308",
+   "marker": "(g)",
+   "text": "Théodoret ; Flaminius ; Génébrard.",
+   "proposed": "Théodoret ;\nFlaminius ;\nGénébrard.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0309(c)",
+   "page": "page_0309",
+   "marker": "(c)",
+   "text": "2 Rois 10:4 et suivants.",
+   "proposed": "2 Rois 10:4 et suivants.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0309(f)",
+   "page": "page_0309",
+   "marker": "(f)",
+   "text": "Quid. dans Théodoret ; Euthyme ; Nicéphore.",
+   "proposed": "Quid. dans Théodoret ;\nEuthyme ;\nNicéphore.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0310(a)",
@@ -2250,6 +2708,15 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0311(c)",
+   "page": "page_0311",
+   "marker": "(c)",
+   "text": "Eusèbe ; saint Athanase ; saint Augustin ; Nicéphore ; saint Jérôme.",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nsaint Augustin ;\nNicéphore ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0315(a)",
@@ -2282,11 +2749,29 @@
    ]
   },
   {
+   "id": "0315(g)",
+   "page": "page_0315",
+   "marker": "(g)",
+   "text": "Théodoret ; saint Jérôme ; Eusèbe ; saint Athanase.",
+   "proposed": "Théodoret ;\nsaint Jérôme ;\nEusèbe ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0319(a)",
+   "page": "page_0319",
+   "marker": "(a)",
+   "text": "Voyez Théodoret ; Eusèbe ; Origène ; Euthyme ; saint Jérôme.",
+   "proposed": "Voyez Théodoret ;\nEusèbe ;\nOrigène ;\nEuthyme ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0320(b)",
    "page": "page_0320",
    "marker": "(b)",
-   "text": "Chald. שבחת קדם יוי ושובכני בי Comme si גלי dérivoit de גלי Gavisus est, exultavit.",
-   "proposed": "Chald. שבחת קדם יוי ושובכני בי Comme si גלי dérivoit de גלי Gavisus est, exultavit.",
+   "text": "Chald. שבחת קדם יוי ושובכני בי Comme si גלי dérivait de גלי Gavisus est, exultavit.",
+   "proposed": "Chald. שבחת קדם יוי ושובכני בי Comme si גלי dérivait de גלי Gavisus est, exultavit.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
@@ -2295,6 +2780,15 @@
     "hebrew",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0321(a)",
+   "page": "page_0321",
+   "marker": "(a)",
+   "text": "Eusèbe de Césarée ; saint Athanase ; saint Augustin, dans l'Exposition.",
+   "proposed": "Eusèbe de Césarée ;\nsaint Athanase ;\nsaint Augustin, dans l'Exposition.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0322(e)",
@@ -2309,6 +2803,35 @@
    ]
   },
   {
+   "id": "0323(a)",
+   "page": "page_0323",
+   "marker": "(a)",
+   "text": "Ainsi Génébrard ; Flaminius ; Mariana.",
+   "proposed": "Ainsi Génébrard ;\nFlaminius ;\nMariana.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0323(e)",
+   "page": "page_0323",
+   "marker": "(e)",
+   "text": "Ainsi saint Augustin ; Théodoret ; saint Jérôme ; saint Athanase.",
+   "proposed": "Ainsi saint Augustin ;\nThéodoret ;\nsaint Jérôme ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0324(b)",
+   "page": "page_0324",
+   "marker": "(b)",
+   "text": "Saint Jérôme ; Saint Augustin.",
+   "proposed": "Saint Jérôme ; saint Augustin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0324(c)",
    "page": "page_0324",
    "marker": "(c)",
@@ -2321,25 +2844,12 @@
    ]
   },
   {
-   "id": "0324(d)",
-   "page": "page_0324",
-   "marker": "(d)",
-   "text": "Hieronym. hic, in Comment. etc.",
-   "proposed": "Saint Jérôme, sur ce passage, dans le Commentaire, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0325(a)",
+   "id": "0325(b)",
    "page": "page_0325",
-   "marker": "(a)",
-   "text": "Sup. ℣. 13.",
-   "proposed": "Ci-dessus, verset 13.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "marker": "(b)",
+   "text": "Théodoret ; Eusèbe ; Nicéphore ; Euthyme.",
+   "proposed": "Théodoret ;\nEusèbe ;\nNicéphore ;\nEuthyme.",
+   "why": [],
    "flags": []
   },
   {
@@ -2359,14 +2869,12 @@
    ]
   },
   {
-   "id": "0327(c)",
+   "id": "0327(e)",
    "page": "page_0327",
-   "marker": "(c)",
-   "text": "Hieronym. ad Suniam et Fretell. et quæ-",
-   "proposed": "Saint Jérôme, à Sunia et Fretela, et quæ-",
-   "why": [
-    "abbreviations written out"
-   ],
+   "marker": "(e)",
+   "text": "De Muis ; Pagnin ; Geier ; Flaminius ; saint Jérôme.",
+   "proposed": "De Muis ;\nPagnin ;\nGeier ;\nFlaminius ;\nsaint Jérôme.",
+   "why": [],
    "flags": []
   },
   {
@@ -2385,8 +2893,8 @@
    "id": "0328(b)",
    "page": "page_0328",
    "marker": "(b)",
-   "text": "Καὶ ἀπὸ κεράτων μονοκερώτων τὴν ταπείνωσίν μου. Ils ont lû [UNCERTAIN HEBREW] au lieu de [UNCERTAIN HEBREW]",
-   "proposed": "Καὶ ἀπὸ κεράτων μονοκερώτων τὴν ταπείνωσίν μου. Ils ont lû [UNCERTAIN HEBREW] au lieu de [UNCERTAIN HEBREW]",
+   "text": "Καὶ ἀπὸ κεράτων μονοκερώτων τὴν ταπείνωσίν μου. Ils ont lu [UNCERTAIN HEBREW] au lieu de [UNCERTAIN HEBREW]",
+   "proposed": "Καὶ ἀπὸ κεράτων μονοκερώτων τὴν ταπείνωσίν μου. Ils ont lu [UNCERTAIN HEBREW] au lieu de [UNCERTAIN HEBREW]",
    "why": [
     "Greek checked against the Septuagint, Psaumes 21:22"
    ],
@@ -2396,11 +2904,29 @@
    ]
   },
   {
+   "id": "0328(f)",
+   "page": "page_0328",
+   "marker": "(f)",
+   "text": "Matthieu 28:10 ; Jean 20:17 ; Romains 8:29 ; Galates 4:5 ; Éphésiens 1:5 ; Hébreux 2:11.",
+   "proposed": "Matthieu 28:10 ;\nJean 20:17 ;\nRomains 8:29 ;\nGalates 4:5 ;\nÉphésiens 1:5 ;\nHébreux 2:11.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0330(e)",
+   "page": "page_0330",
+   "marker": "(e)",
+   "text": "Théodoret ; saint Augustin ; saint Jérôme ; Eusèbe.",
+   "proposed": "Théodoret ;\nsaint Augustin ;\nsaint Jérôme ;\nEusèbe.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0331(b)",
    "page": "page_0331",
    "marker": "(b)",
-   "text": "[UNCERTAIN HEBREW] yo. Zimday et diey dimstr. Ils ont lû [UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW] yo. Zimday et diey dimstr. Ils ont lû [UNCERTAIN HEBREW]",
+   "text": "[UNCERTAIN HEBREW] yo. Zimday et diey dimstr. Ils ont lu [UNCERTAIN HEBREW]",
+   "proposed": "[UNCERTAIN HEBREW] yo. Zimday et diey dimstr. Ils ont lu [UNCERTAIN HEBREW]",
    "why": [],
    "flags": [
     "uncertain",
@@ -2408,17 +2934,22 @@
    ]
   },
   {
+   "id": "0333(a)",
+   "page": "page_0333",
+   "marker": "(a)",
+   "text": "Saint Jérôme ; saint Augustin, Exposition 1 ; Eusèbe.",
+   "proposed": "Saint Jérôme ;\nsaint Augustin, Exposition 1 ;\nEusèbe.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0334(e)",
    "page": "page_0334",
    "marker": "(e)",
-   "text": "Psaumes 6:6 et 31:24-25. Isaïe 38:18.",
-   "proposed": "Psaumes 6:6 ; 31:24-25 ; Isaïe 38:18.",
-   "why": [
-    "Psaumes 31:24-25 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
+   "text": "Psaumes 6:6 et 21:24-25. Isaïe 38:18.",
+   "proposed": "Psaumes 6:6 ; 21:24-25 ; Isaïe 38:18.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0334(f)",
@@ -2450,6 +2981,69 @@
    ]
   },
   {
+   "id": "0336(a)",
+   "page": "page_0336",
+   "marker": "(a)",
+   "text": "Voyez Didyme ; Eusèbe ; Théodoret ; saint Augustin ; saint Jérôme.",
+   "proposed": "Voyez Didyme ;\nEusèbe ;\nThéodoret ;\nsaint Augustin ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0338(b)",
+   "page": "page_0338",
+   "marker": "(b)",
+   "text": "Eusèbe ; Théodoret ; Euthyme ; saint Jean Chrysostome ; saint Jérôme ; saint Augustin ; saint Athanase.",
+   "proposed": "Eusèbe ;\nThéodoret ;\nEuthyme ;\nsaint Jean Chrysostome ;\nsaint Jérôme ;\nsaint Augustin ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0338(c)",
+   "page": "page_0338",
+   "marker": "(c)",
+   "text": "Eusèbe ; Euthyme ; Nicéphore ; Hugues Carr.",
+   "proposed": "Eusèbe ;\nEuthyme ;\nNicéphore ;\nHugues Carr.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0338(d)",
+   "page": "page_0338",
+   "marker": "(d)",
+   "text": "Saint Augustin ; saint Jérôme ; Génébrard.",
+   "proposed": "Saint Augustin ;\nsaint Jérôme ;\nGénébrard.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0343(c)",
+   "page": "page_0343",
+   "marker": "(c)",
+   "text": "Saint Athanase ; Théodoret ; saint Augustin ; Euthyme.",
+   "proposed": "Saint Athanase ;\nThéodoret ;\nsaint Augustin ;\nEuthyme.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0343(d)",
+   "page": "page_0343",
+   "marker": "(d)",
+   "text": "Saint Justin, Seconde Apologie, et Dialogue avec Tryphon ; saint Grégoire de Nysse, Discours sur l'Ascension du Seigneur ; saint Jérôme, ad",
+   "proposed": "Saint Justin, Seconde Apologie, et Dialogue avec Tryphon ;\nsaint Grégoire de Nysse, Discours sur l'Ascension du Seigneur ;\nsaint Jérôme, ad",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0344(a)",
+   "page": "page_0344",
+   "marker": "(a)",
+   "text": "Saint Augustin ; saint Jérôme ; Théodoret ; Euthyme.",
+   "proposed": "Saint Augustin ;\nsaint Jérôme ;\nThéodoret ;\nEuthyme.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0344(b)",
    "page": "page_0344",
    "marker": "(b)",
@@ -2473,32 +3067,43 @@
    ]
   },
   {
+   "id": "0347(e)",
+   "page": "page_0347",
+   "marker": "(e)",
+   "text": "Voyez 4 Rois 2:2, 4, 6 ; 4:30.",
+   "proposed": "Voyez 4 Rois 2:2, 4, 6 ; 4:30.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
    "id": "0348(a)",
    "page": "page_0348",
    "marker": "(a)",
    "text": "2. Reg. VI. II. _Benedixit Dominus Obededom, et omnem domum ejus._",
    "proposed": "2. Reg. VI. II. _Benedixit Dominus Obededom, et omnem domum ejus._",
    "why": [
-    "written out, but a number changed or added: 2 Rois 6:11. Benedixit Dominus Obededom, et omnem domum ejus."
+    "written out, but the italics changed: 2 Rois 6:11. Benedixit Dominus Obededom, et omnem domum ejus."
    ],
    "flags": [
-    "expand-changed-numbers"
+    "expand-changed-italics"
    ]
   },
   {
    "id": "0348(c)",
    "page": "page_0348",
    "marker": "(c)",
-   "text": "_Vide Psal._ IV. 1. et _c._ 1. Les Septante traduisent très souvent צדק, par ἔλεος, _Miséricorde_, Voyez Isaï. XVI. I. Ezech. XVIII. 19. 21. ou par Ἐλεημοσύνη, comme ici, _Et Deut._ VI. 25. XXIV. 13. Psaumes 22:5. _CII._ 6. Isaïe 1:27. 28:17. 59:16. Daniel 4:24. 9:16.",
-   "proposed": "_Vide Psal._ IV. 1. et _c._ 1. Les Septante traduisent très souvent צדק, par ἔλεος, _Miséricorde_, Voyez Isaï. XVI. I. Ezech. XVIII. 19. 21. ou par Ἐλεημοσύνη, comme ici, _Et Deut._ VI. 25. XXIV. 13. Psaumes 22:5. _CII._ 6. Isaïe 1:27. 28:17. 59:16. Daniel 4:24. 9:16.",
+   "text": "_Vide Psal._ IV. 1. et _c._ 1. Les Septante traduisent très souvent צדק, par ἔλεος, _Miséricorde_, Voyez Isaï. XVI. I. Ezech. XVIII. 19. 21. ou par Ἐλεημοσύνη, comme ici, _Et Deut._ VI. 25. XXIV. 13. Psaumes 32:5. _CII._ 6. Isaïe 1:27. 28:17. 59:16. Daniel 4:24. 9:16.",
+   "proposed": "_Vide Psal._ IV. 1. et _c._ 1. Les Septante traduisent très souvent צדק, par ἔλεος, _Miséricorde_, Voyez Isaï. XVI. I. Ezech. XVIII. 19. 21. ou par Ἐλεημοσύνη, comme ici, _Et Deut._ VI. 25. XXIV. 13. Psaumes 32:5. _CII._ 6. Isaïe 1:27. 28:17. 59:16. Daniel 4:24. 9:16.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "written out, but a number changed or added: Voyez Psaumes 4:1 et chapitre 1. Les Septante traduisent très souvent צדק, par ἔλεος, Miséricorde, Voyez Isaïe 16:1 ; Ézéchiel 18:19, 21 ou par Ἐλεημοσύνη, comme ici, Et Deutéronome 6:25 ; 24:13 ; Psa"
+    "written out, but the italics changed: _Voyez Psaumes_ 4:1 et _chapitre_ 1. Les Septante traduisent très souvent צדק, par ἔλεος, _Miséricorde_, Voyez Isaïe 16:1. Ézéchiel 18:19, 21. ou par Ἐλεημοσύνη, comme ici, _Et Deutéronome_ 6:25 ; 24:"
    ],
    "flags": [
-    "expand-changed-numbers"
+    "expand-changed-italics"
    ]
   },
   {
@@ -2553,18 +3158,6 @@
    ]
   },
   {
-   "id": "0353(b)",
-   "page": "page_0353",
-   "marker": "(b)",
-   "text": "Ψαλμὸς τῶ Δαυὶδ. le Psautier de Chartres utrumque : Psalmus David. Saint Augustin et Théodoret. In finem Psalmus David.",
-   "proposed": "Ψαλμὸς τῶ Δαυὶδ. le Psautier de Chartres tous les deux : Psalmus David. Saint Augustin et Théodoret. In finem Psalmus David.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0353(d)",
    "page": "page_0353",
    "marker": "(d)",
@@ -2591,24 +3184,22 @@
    ]
   },
   {
-   "id": "0357(b)",
-   "page": "page_0357",
-   "marker": "(b)",
-   "text": "August. Quia à sæculo sunt. na 78. O'ti apo tou aionos eisin.",
-   "proposed": "Saint Augustin. Quia à sæculo sunt. na 78. O'ti apo tou aionos eisin.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0356(e)",
+   "page": "page_0356",
+   "marker": "(e)",
+   "text": "Saint Athanase ; Didyme ; saint Augustin ; saint Jérôme.",
+   "proposed": "Saint Athanase ;\nDidyme ;\nsaint Augustin ;\nsaint Jérôme.",
+   "why": [],
    "flags": []
   },
   {
-   "id": "0360(b)",
-   "page": "page_0360",
-   "marker": "(b)",
-   "text": "Hieronym. Ipsa misericordia æquis est librata ponderibus.",
-   "proposed": "Saint Jérôme. Ipsa misericordia æquis est librata ponderibus.",
+   "id": "0361(a)",
+   "page": "page_0361",
+   "marker": "(a)",
+   "text": "Saint Jérôme ; saint Augustin ; Théodoret.",
+   "proposed": "Saint Jérôme ;\nsaint Augustin ;\nThéodoret.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -2660,6 +3251,15 @@
    ]
   },
   {
+   "id": "0365(b)",
+   "page": "page_0365",
+   "marker": "(b)",
+   "text": "Origène ; Hésychius ; Héracléote, dans la Chaîne de Barbari.",
+   "proposed": "Origène ;\nHésychius ;\nHéracléote, dans la Chaîne de Barbari.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0366(b)",
    "page": "page_0366",
    "marker": "(b)",
@@ -2675,11 +3275,11 @@
    ]
   },
   {
-   "id": "0370(70.)",
+   "id": "0370(e)",
    "page": "page_0370",
-   "marker": "(70.)",
-   "text": "A'κουσαι νυ.",
-   "proposed": "A'κουσαι νυ.",
+   "marker": "(e)",
+   "text": "Saint Augustin ; le Psautier romain ; le Psautier de Milan : Laudis tuæ.\n70. A'κουσαι νυ.",
+   "proposed": "Saint Augustin ; le Psautier romain ; le Psautier de Milan : Laudis tuæ.\n70. A'κουσαι νυ.",
    "why": [],
    "flags": [
     "greek",
@@ -2687,26 +3287,13 @@
    ]
   },
   {
-   "id": "0374(d)",
-   "page": "page_0374",
-   "marker": "(d)",
-   "text": "1 Rois 21:46.",
-   "proposed": "1 Rois 21:46.",
-   "why": [
-    "1 Rois 21:46 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
-  },
-  {
    "id": "0377(c)",
    "page": "page_0377",
    "marker": "(c)",
    "text": "Saint Jérôme ; le Psautier romain ; le Psautier de Chartres ; le Psautier de Saint-Germain ; Bède ; Cassiodore. _Et plurima impressa etiam Sixti V. sed mendum sustulerunt correctores Romani sub. Clem. VIII._",
-   "proposed": "Saint Jérôme ; le Psautier romain ; le Psautier de Chartres ; le Psautier de Saint-Germain ; Bède ; Cassiodore. Et plurima impressa etiam Sixti V. sed mendum sustulerunt correctores Romani sub. Clem. VIII.",
+   "proposed": "Saint Jérôme ; le Psautier romain ; le Psautier de Chartres ; le Psautier de Saint-Germain ; Bède ; Cassiodore. _Et plurima impressa etiam Sixti V. sed mendum sustulerunt correctores Romani sub. Clem. VIII._",
    "why": [
-    "abbreviations written out"
+    "written out, but the italics changed: Saint Jérôme ; le Psautier romain ; le Psautier de Chartres ; le Psautier de Saint-Germain ; Bède ; Cassiodore. Et plurima impressa etiam Sixti V. sed mendum sustulerunt correctores Romani sub. Clem. "
    ],
    "flags": [
     "expand-changed-italics"
@@ -2717,11 +3304,11 @@
    "page": "page_0378",
    "marker": "(c)",
    "text": "_Le Psautier romain et saint Augustin. Hostiam jubilationis. Les Septante. Édition romaine._ Θυσίαν ἀλαλαγμοῦ _Alii Hostiam laudis et jubilationis. Édition de Complute. Les Septante._ Θυσίαν αἰνέσεως, καὶ ἀλαλαγμοῦ.",
-   "proposed": "Le Psautier romain et saint Augustin. Hostiam jubilationis. Les Septante. Édition romaine. Θυσίαν ἀλαλαγμοῦ D'autres Hostiam laudis et jubilationis. Édition de Complute. Les Septante. Θυσίαν αἰνέσεως, καὶ ἀλαλαγμοῦ.",
+   "proposed": "_Le Psautier romain et saint Augustin. Hostiam jubilationis. Les Septante. Édition romaine._ Θυσίαν ἀλαλαγμοῦ _Alii Hostiam laudis et jubilationis. Édition de Complute. Les Septante._ Θυσίαν αἰνέσεως, καὶ ἀλαλαγμοῦ.",
    "why": [
     "Greek checked against the Septuagint, Psaumes 26:6",
     "Greek checked against the Septuagint, 2 Paralipomènes 33:16",
-    "abbreviations written out"
+    "written out, but the italics changed: Le Psautier romain et saint Augustin. Hostiam jubilationis. Les Septante. Édition romaine. Θυσίαν ἀλαλαγμοῦ D'autres Hostiam laudis et jubilationis. Édition de Complute. Les Septante. Θυσίαν αἰνέσεως,"
    ],
    "flags": [
     "expand-changed-italics"
@@ -2762,8 +3349,8 @@
    "id": "0382(c)",
    "page": "page_0382",
    "marker": "(c)",
-   "text": "Aquil. et Symmach. [UNCERTAIN GREEK] Ils ont lû [UNCERTAIN HEBREW]",
-   "proposed": "Aquil. et Symmach. [UNCERTAIN GREEK] Ils ont lû [UNCERTAIN HEBREW]",
+   "text": "Aquil. et Symmach. [UNCERTAIN GREEK] Ils ont lu [UNCERTAIN HEBREW]",
+   "proposed": "Aquil. et Symmach. [UNCERTAIN GREEK] Ils ont lu [UNCERTAIN HEBREW]",
    "why": [],
    "flags": [
     "uncertain",
@@ -2797,14 +3384,21 @@
    ]
   },
   {
-   "id": "0384(a)",
-   "page": "page_0384",
-   "marker": "(a)",
-   "text": "Hieronym. ad ℣. 8. Iste Psalmus, exceptâ [ secundum ordinem litterarum, and literâ, ] in Hebrais voluminibus scriptus est.",
-   "proposed": "Saint Jérôme, au verset 8. Iste Psalmus, exceptâ [ secundum ordinem litterarum, and literâ, ] in Hebrais voluminibus scriptus est.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0383(e)",
+   "page": "page_0383",
+   "marker": "(e)",
+   "text": "Théodoret ; Nicéphore ; Euthyme.",
+   "proposed": "Théodoret ;\nNicéphore ;\nEuthyme.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0388(c)",
+   "page": "page_0388",
+   "marker": "(c)",
+   "text": "Eusèbe ; saint Athanase ; Didyme ; saint Jérôme.",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nDidyme ;\nsaint Jérôme.",
+   "why": [],
    "flags": []
   },
   {
@@ -2822,14 +3416,12 @@
    ]
   },
   {
-   "id": "0394(a)",
-   "page": "page_0394",
+   "id": "0393(a)",
+   "page": "page_0393",
    "marker": "(a)",
-   "text": "Hieronym. Disperget eas quasi vitulus Libani, et Sarion, quasi filius rhinocerotis.",
-   "proposed": "Saint Jérôme. Disperget eas quasi vitulus Libani, et Sarion, quasi filius rhinocerotis.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Voyez Exode 9:23, 28-29 ; Job 37:2 ; Psaumes 17:14 ; Isaïe 30:30.",
+   "proposed": "Voyez Exode 9:23, 28-29 ;\nJob 37:2 ;\nPsaumes 17:14 ;\nIsaïe 30:30.",
+   "why": [],
    "flags": []
   },
   {
@@ -2868,14 +3460,22 @@
    "page": "page_0396",
    "marker": "(b)",
    "text": "_Voyez Genèse_ 20:1. Exode 47:19. Nombres 13:27. etc.",
-   "proposed": "Voyez Genèse 20:1 ; Exode 47:19 ; Nombres 13:27, etc.",
+   "proposed": "_Voyez Genèse_ 20:1. Exode 47:19. Nombres 13:27. etc.",
    "why": [
-    "abbreviations written out",
-    "Exode 47:19 does not exist in the Vulgate"
+    "written out, but the italics changed: Voyez Genèse 20:1 ; Exode 47:19 ; Nombres 13:27, etc."
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "expand-changed-italics"
    ]
+  },
+  {
+   "id": "0397(a)",
+   "page": "page_0397",
+   "marker": "(a)",
+   "text": "Saint Jérôme, sur ce passage ; saint Augustin ; Cassiodore ; saint Basile ; Eusèbe ; Théodoret ; Didyme ; saint Athanase.",
+   "proposed": "Saint Jérôme, sur ce passage ;\nsaint Augustin ;\nCassiodore ;\nsaint Basile ;\nEusèbe ;\nThéodoret ;\nDidyme ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0397(e)",
@@ -2902,11 +3502,38 @@
    ]
   },
   {
+   "id": "0399(i)",
+   "page": "page_0399",
+   "marker": "(i)",
+   "text": "Grotius ; Hammond ; Bossuet ; Geier.",
+   "proposed": "Grotius ;\nHammond ;\nBossuet ;\nGeier.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0400(a)",
+   "page": "page_0400",
+   "marker": "(a)",
+   "text": "Théodoret, sur ce passage. Voyez aussi saint Athanase, in Catena ; Daniel Barbari ; et Bède, sur ce passage.",
+   "proposed": "Théodoret, sur ce passage. Voyez aussi saint Athanase, in Catena ;\nDaniel Barbari ;\net Bède, sur ce passage.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0402(c)",
+   "page": "page_0402",
+   "marker": "(c)",
+   "text": "Voyez saint Augustin ; et Théodoret ; Eusèbe ; saint Athanase.",
+   "proposed": "Voyez saint Augustin ;\net Théodoret ;\nEusèbe ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0402(f)",
    "page": "page_0402",
    "marker": "(f)",
-   "text": "רגע Jérémie 4:20. Διαχάραξις. Jérémie 31:23. Θλίψις. Isaïe 51:15. Θραύσις. Ézéchiel 32:10. Πτοία. Exode 33:5. Πληγὴ. Psaumes 34:13. Ὀργὴ. Job 20:5. Ἀπωλεία. Isaïe 26:12. Σύντριμμα.",
-   "proposed": "רגע Jérémie 4:20. Διαχάραξις. Jérémie 31:23. Θλίψις. Isaïe 51:15. Θραύσις. Ézéchiel 32:10. Πτοία. Exode 33:5. Πληγὴ. Psaumes 34:13. Ὀργὴ. Job 20:5. Ἀπωλεία. Isaïe 26:12. Σύντριμμα.",
+   "text": "רגע Jérémie 4:20. Διαχάραξις. Jérémie 30:23. Θλίψις. Isaïe 51:15. Θραύσις. Ézéchiel 32:10. Πτοία. Exode 33:5. Πληγὴ. Psaumes 34:20. Ὀργὴ. Job 20:5. Ἀπωλεία. Isaïe 26:20. Σύντριμμα.",
+   "proposed": "רגע Jérémie 4:20. Διαχάραξις. Jérémie 30:23. Θλίψις. Isaïe 51:15. Θραύσις. Ézéchiel 32:10. Πτοία. Exode 33:5. Πληγὴ. Psaumes 34:20. Ὀργὴ. Job 20:5. Ἀπωλεία. Isaïe 26:20. Σύντριμμα.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary",
@@ -2941,8 +3568,8 @@
    "id": "0404(d)",
    "page": "page_0404",
    "marker": "(d)",
-   "text": "4 Rois 24:17.",
-   "proposed": "4 Rois 24:17.",
+   "text": "2 Rois 24:17.",
+   "proposed": "2 Rois 24:17.",
    "why": [],
    "flags": [
     "ambiguous-name"
@@ -2968,12 +3595,30 @@
    "id": "0405(d)",
    "page": "page_0405",
    "marker": "(d)",
-   "text": "4 Rois 24:16.",
-   "proposed": "4 Rois 24:16.",
+   "text": "2 Rois 24:16.",
+   "proposed": "2 Rois 24:16.",
    "why": [],
    "flags": [
     "ambiguous-name"
    ]
+  },
+  {
+   "id": "0406(d)",
+   "page": "page_0406",
+   "marker": "(d)",
+   "text": "Théodoret ; Euthyme ; Nicéphore.",
+   "proposed": "Théodoret ;\nEuthyme ;\nNicéphore.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0406(e)",
+   "page": "page_0406",
+   "marker": "(e)",
+   "text": "Eusèbe ; saint Basile ; saint Athanase.",
+   "proposed": "Eusèbe ;\nsaint Basile ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0407(f)",
@@ -2994,27 +3639,14 @@
    "page": "page_0407",
    "marker": "(g)",
    "text": "Les Septante ajoutent : Καὶ ἐξελοῦ με. Saint Augustin. _Erue me et exime me._ Le Psautier romain. _Libera me et eripe me._",
-   "proposed": "Les Septante ajoutent : Καὶ ἐξελοῦ με. Saint Augustin. Erue me et exime me. Le Psautier romain. Libera me et eripe me.",
+   "proposed": "Les Septante ajoutent : Καὶ ἐξελοῦ με. Saint Augustin. _Erue me et exime me._ Le Psautier romain. _Libera me et eripe me._",
    "why": [
     "Greek checked against the Septuagint, Psaumes 30:2",
-    "abbreviations written out"
+    "written out, but the italics changed: Les Septante ajoutent : Καὶ ἐξελοῦ με. Saint Augustin. Erue me et exime me. Le Psautier romain. Libera me et eripe me."
    ],
    "flags": [
     "expand-changed-italics"
    ]
-  },
-  {
-   "id": "0408(d)",
-   "page": "page_0408",
-   "marker": "(d)",
-   "text": "Sym. Τελευτήσῃς με. 70. Διαθρέψεις με.",
-   "proposed": "Symmaque : Τελευτήσῃς με. Les Septante : Διαθρέψεις με.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek checked against the Septuagint, Psaumes 30:4",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0410(b)",
@@ -3129,14 +3761,21 @@
    ]
   },
   {
-   "id": "0421(c)",
-   "page": "page_0421",
-   "marker": "(c)",
-   "text": "Hieronym. ad Suniam, et Fretell.",
-   "proposed": "Saint Jérôme, à Sunia et Fretela.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0419(a)",
+   "page": "page_0419",
+   "marker": "(a)",
+   "text": "Eusèbe, sur le Psaume 41 ; Théodoret, sur le Psaume 88 ; Didyme.",
+   "proposed": "Eusèbe, sur le Psaume 41 ;\nThéodoret, sur le Psaume 88 ;\nDidyme.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0419(e)",
+   "page": "page_0419",
+   "marker": "(e)",
+   "text": "Voyez saint Jérôme ; saint Augustin ; saint Grégoire le Grand.",
+   "proposed": "Voyez saint Jérôme ;\nsaint Augustin ;\nsaint Grégoire le Grand.",
+   "why": [],
    "flags": []
   },
   {
@@ -3168,6 +3807,15 @@
    ]
   },
   {
+   "id": "0423(b)",
+   "page": "page_0423",
+   "marker": "(b)",
+   "text": "Théodoret ; Euthyme ; Didyme ; saint Athanase ; saint Grégoire, sur ce Psaume. Peccatum dum confert delectationem, quasi pungendo lacerat mentem",
+   "proposed": "Théodoret ;\nEuthyme ;\nDidyme ;\nsaint Athanase ;\nsaint Grégoire, sur ce Psaume. Peccatum dum confert delectationem, quasi pungendo lacerat mentem",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0423(c)",
    "page": "page_0423",
    "marker": "(c)",
@@ -3182,11 +3830,20 @@
    ]
   },
   {
+   "id": "0425(f)",
+   "page": "page_0425",
+   "marker": "(f)",
+   "text": "Junius ; Piscator ; Ainsworth.",
+   "proposed": "Junius ;\nPiscator ;\nAinsworth.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0426(d)",
    "page": "page_0426",
    "marker": "(d)",
-   "text": "_Sym. Σιτιαῶ σε, … και βυλ[ILLEGIBLE] σοι εν τῷ ὀφθαλμῷ μυ. 70. Επισημῶ ἐπὶ σε τῆς ὀφθαλμῖς μυ. Ils ont lû :_ אעוצה X x ij",
-   "proposed": "_Sym. Σιτιαῶ σε, … καὶ βουλ[ILLEGIBLE] σοι ἐν τῷ ὀφθαλμῷ μου. 70. Επισημῶ ἐπὶ σε τῆς ὀφθαλμῖς μου. Ils ont lû :_ אעוצה X x ij",
+   "text": "_Sym. Σιτιαῶ σε, … και βυλ[ILLEGIBLE] σοι εν τῷ ὀφθαλμῷ μυ. 70. Επισημῶ ἐπὶ σε τῆς ὀφθαλμῖς μυ. Ils ont lu :_ אעוצה X x ij",
+   "proposed": "_Sym. Σιτιαῶ σε, … καὶ βουλ[ILLEGIBLE] σοι ἐν τῷ ὀφθαλμῷ μου. 70. Επισημῶ ἐπὶ σε τῆς ὀφθαλμῖς μου. Ils ont lu :_ אעוצה X x ij",
    "why": [
     "Greek spelling checked against a Greek dictionary: και -> καὶ, βυλ -> βουλ",
     "Greek spelling checked against a Greek dictionary: εν -> ἐν, μυ -> μου",
@@ -3198,6 +3855,15 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0429(c)",
+   "page": "page_0429",
+   "marker": "(c)",
+   "text": "Théodoret ; Héraclée et Antioche ; et Theodoretus ; et Euthyme ; et Bède.",
+   "proposed": "Théodoret ;\nHéraclée et Antioche ;\net Theodoretus ;\net Euthyme ;\net Bède.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0430(d)",
@@ -3245,15 +3911,12 @@
    ]
   },
   {
-   "id": "0434(d)",
-   "page": "page_0434",
-   "marker": "(d)",
-   "text": "Les Septante. Συνάγων ὡσεὶ ἀσκὸν ὕδατα θαλάσσης. Ainsi l'entendent saint Basile ; Théodoret ; Euthyme. Græci Codices, dans Ferrand. L'Éthiopien ; l'Arabe.",
-   "proposed": "Les Septante. Συνάγων ὡσεὶ ἀσκὸν ὕδατα θαλάσσης. Ainsi l'entendent saint Basile ; Théodoret ; Euthyme. Manuscrits grecs, dans Ferrand. L'Éthiopien ; l'Arabe.",
-   "why": [
-    "Greek checked against the Septuagint, Psaumes 32:7",
-    "abbreviations written out"
-   ],
+   "id": "0432(b)",
+   "page": "page_0432",
+   "marker": "(b)",
+   "text": "Eusèbe ; saint Athanase ; Théodoret ; saint Augustin ; et Expositores.",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nThéodoret ;\nsaint Augustin ;\net Expositores.",
+   "why": [],
    "flags": []
   },
   {
@@ -3329,17 +3992,6 @@
    ]
   },
   {
-   "id": "0438(b)",
-   "page": "page_0438",
-   "marker": "(b)",
-   "text": "Aug. Mendax equus. 70. et hic, in me.",
-   "proposed": "Saint Augustin. Mendax equus. Les Septante et sur ce passage, in me.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0439(b)",
    "page": "page_0439",
    "marker": "(b)",
@@ -3357,7 +4009,7 @@
    "id": "0439(d)",
    "page": "page_0439",
    "marker": "(d)",
-   "text": "L'Hébreu אבימלך* les Septante ; Aquila et la sixième édition : Ἀβιμέλεχ. Saint Jérôme, in versione, et in Commentario : Abimelech. Ita Eusèbe ; Saint Basile ; Théodoret ; Hésychius ; Saint Augustin ; le Psautier romain ; le Psautier gallican ; le Psautier de Chartres ; le Psautier de Saint-Germain ; etc. Editio tam Græca, quàm Latina Sixti V. Manuscripta dans Ferrand et impressa quàm plurima, etiam post correctionem romaine.",
+   "text": "L'Hébreu אבימלך* les Septante ; Aquila et la sixième édition : Ἀβιμέλεχ. Saint Jérôme, dans sa version, et dans son Commentaire : Abimelech. Ainsi l'entendent Eusèbe ; Saint Basile ; Théodoret ; Hésychius ; Saint Augustin ; le Psautier romain ; le Psautier gallican ; le Psautier de Chartres ; le Psautier de Saint-Germain ; etc. L'édition tant grecque que latine de Sixte V. Manuscrits dans Ferrand et imprimés autant qu'il y en a, même après la correction romaine.",
    "proposed": "L'Hébreu אבימלך* les Septante ; Aquila et la sixième édition : Ἀβιμέλεχ. Saint Jérôme, dans sa version, et dans son Commentaire : Abimelech. Ainsi l'entendent Eusèbe ; saint Basile ; Théodoret ; Hésychius ; saint Augustin ; le Psautier romain ; le Psautier gallican ; le Psautier de Chartres ; le Psautier de Saint-Germain ; etc. L'édition tant grecque que latine de Sixte V. Manuscrits dans Ferrand et imprimés autant qu'il y en a, même après la correction romaine.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -3381,40 +4033,17 @@
    ]
   },
   {
-   "id": "0442(c)",
-   "page": "page_0442",
-   "marker": "(c)",
-   "text": "Sym. Ex πασῶν τῆς ἀθυμίας με.",
-   "proposed": "Symmaque : D'après πασῶν τῆς ἀθυμίας με.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0442(e)",
    "page": "page_0442",
    "marker": "(e)",
    "text": "_Voyez les Pseaumes_ 66:2 ; 118:135 ; Baruch 1:12 ; Psaumes 34:4 ; 39:15 ; 69:3 ; Isaïe 1:29 ; Jérémie 50:12 ; etc.",
-   "proposed": "Voyez les Psaumes 66:2 ; 118:135 ; Baruch 1:12 ; Psaumes 34:4 ; 39:15 ; 69:3 ; Isaïe 1:29 ; Jérémie 50:12 ; etc.",
+   "proposed": "_Voyez les Pseaumes_ 66:2 ; 118:135 ; Baruch 1:12 ; Psaumes 34:4 ; 39:15 ; 69:3 ; Isaïe 1:29 ; Jérémie 50:12 ; etc.",
    "why": [
-    "abbreviations written out"
+    "written out, but the italics changed: Voyez les Psaumes 66:2 ; 118:135 ; Baruch 1:12 ; Psaumes 34:4 ; 39:15 ; 69:3 ; Isaïe 1:29 ; Jérémie 50:12 ; etc."
    ],
    "flags": [
     "expand-changed-italics"
    ]
-  },
-  {
-   "id": "0443(a)",
-   "page": "page_0443",
-   "marker": "(a)",
-   "text": "Hieronym. in Comment. et allii Immittet Angelum Domini.",
-   "proposed": "Saint Jérôme, dans son Commentaire, et d'autres Immittet Angelum Domini.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0443(b)",
@@ -3429,17 +4058,6 @@
     "uncertain",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0443(e)",
-   "page": "page_0443",
-   "marker": "(e)",
-   "text": "Genèse 19:1. sq.",
-   "proposed": "Genèse 19:1 et suivants.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0444(a)",
@@ -3467,6 +4085,33 @@
    ]
   },
   {
+   "id": "0450(c)",
+   "page": "page_0450",
+   "marker": "(c)",
+   "text": "Saint Jérôme, Commentaire ; saint Thomas ; Hugues de Saint-Cher.",
+   "proposed": "Saint Jérôme, Commentaire ;\nsaint Thomas ;\nHugues de Saint-Cher.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0450(d)",
+   "page": "page_0450",
+   "marker": "(d)",
+   "text": "Saint Cyrille d'Alexandrie ; Eusèbe ; Théodoret ; Euthyme.",
+   "proposed": "Saint Cyrille d'Alexandrie ;\nEusèbe ;\nThéodoret ;\nEuthyme.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0450(f)",
+   "page": "page_0450",
+   "marker": "(f)",
+   "text": "Eusèbe ; Théodore d'Antioche ; Bède.",
+   "proposed": "Eusèbe ;\nThéodore d'Antioche ;\nBède.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0452(e)",
    "page": "page_0452",
    "marker": "(e)",
@@ -3476,6 +4121,15 @@
    "flags": [
     "ambiguous-name"
    ]
+  },
+  {
+   "id": "0453(a)",
+   "page": "page_0453",
+   "marker": "(a)",
+   "text": "Grotius ; Hammond ; Drusius ; Ainsworth ; Glassius, Rhétorique, livre 1, chapitre 7.",
+   "proposed": "Grotius ;\nHammond ;\nDrusius ;\nAinsworth ;\nGlassius, Rhétorique, livre 1, chapitre 7.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0453(b)",
@@ -3493,14 +4147,12 @@
    ]
   },
   {
-   "id": "0454(f)",
+   "id": "0454(e)",
    "page": "page_0454",
-   "marker": "(f)",
-   "text": "August. legit : Absconderunt muscipula sua corruptionem.",
-   "proposed": "Saint Augustin lit : Absconderunt muscipula sua corruptionem.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "marker": "(e)",
+   "text": "Hermas, livre 2, Pasteur, Précepte 6 ; Origène, Homélie 35 sur Luc ; saint Grégoire de Nysse, Vie de Moïse ; Cassien, Conférences 8, chapitre 17, et Conférences 13, chapitre 12 ; Autor operis imperfecti sur Matthieu, Homélie 5.",
+   "proposed": "Hermas, livre 2, Pasteur, Précepte 6 ;\nOrigène, Homélie 35 sur Luc ;\nsaint Grégoire de Nysse, Vie de Moïse ;\nCassien, Conférences 8, chapitre 17, et Conférences 13, chapitre 12 ;\nAutor operis imperfecti sur Matthieu, Homélie 5.",
+   "why": [],
    "flags": []
   },
   {
@@ -3567,9 +4219,9 @@
    "page": "page_0462",
    "marker": "(a)",
    "text": "Saint Augustin. _Et super iram dolosè cogitabant._ Ainsi lisent le Psautier romain ; le Psautier de Milan ; le Psautier de Chartres. Sed le Psautier de Saint-Germain _Super iram dolosè agebant._",
-   "proposed": "Saint Augustin. Et super iram dolosè cogitabant. Ainsi lisent le Psautier romain ; le Psautier de Milan ; le Psautier de Chartres. Mais le Psautier de Saint-Germain Super iram dolosè agebant.",
+   "proposed": "Saint Augustin. _Et super iram dolosè cogitabant._ Ainsi lisent le Psautier romain ; le Psautier de Milan ; le Psautier de Chartres. Sed le Psautier de Saint-Germain _Super iram dolosè agebant._",
    "why": [
-    "abbreviations written out"
+    "written out, but the italics changed: Saint Augustin. Et super iram dolosè cogitabant. Ainsi lisent le Psautier romain ; le Psautier de Milan ; le Psautier de Chartres. Mais le Psautier de Saint-Germain Super iram dolosè agebant."
    ],
    "flags": [
     "expand-changed-italics"
@@ -3592,25 +4244,14 @@
    "page": "page_0464",
    "marker": "(a)",
    "text": "Saint Augustin _Secundum justitiam meam_. Eu- | l'édition de Complute et Rom. thym. et Codices Reg. 1532. 1775. 2603. 2606. et Colb. 6051. legunt : δικαιοσύνην ut. Dans Ferrand. sed Cod. Reg. 928. 2653. Colb. 4439. 6158. 6510. _Justitiam tuam_. D'après la Vulgate et les Septante.",
-   "proposed": "Saint Augustin Secundum justitiam meam. Euthyme et les manuscrits du Roi 1532, 1775, 2603, 2606 et Colbert 6051 lisent : δικαιοσύνην ut. Dans Ferrand. Mais le manuscrit du Roi 928, 2653, Colbert 4439, 6158, 6510. Justitiam tuam. D'après la Vulgate et les Septante.",
+   "proposed": "Saint Augustin _Secundum justitiam meam_. Eu- | l'édition de Complute et Rom. thym. et Codices Reg. 1532. 1775. 2603. 2606. et Colb. 6051. legunt : δικαιοσύνην ut. Dans Ferrand. sed Cod. Reg. 928. 2653. Colb. 4439. 6158. 6510. _Justitiam tuam_. D'après la Vulgate et les Septante.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
+    "written out, but the italics changed: Saint Augustin Secundum justitiam meam. Euthyme et les manuscrits du Roi 1532, 1775, 2603, 2606 et Colbert 6051 lisent : δικαιοσύνην ut. Dans Ferrand. Mais le manuscrit du Roi 928, 2653, Colbert 4439,"
    ],
    "flags": [
     "expand-changed-italics"
    ]
-  },
-  {
-   "id": "0465(a)",
-   "page": "page_0465",
-   "marker": "(a)",
-   "text": "Ainsi l'entendent saint Ambroise, sur ce passage ; et saint Jérôme, Commentaire. Cod. Reg. 158. olb. 158. Ainsi l'entendent Eusèbe ; Théodoret.",
-   "proposed": "Ainsi l'entendent saint Ambroise, sur ce passage ; et saint Jérôme, Commentaire. Manuscrit du Roi 158. Colbert 158. Ainsi l'entendent Eusèbe ; Théodoret.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0467(b)",
@@ -3640,36 +4281,31 @@
    ]
   },
   {
-   "id": "0469(d)",
-   "page": "page_0469",
-   "marker": "(d)",
-   "text": "Tatian. contra Græc.",
-   "proposed": "Tatien, Contre les Grecs.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0470(e)",
-   "page": "page_0470",
+   "id": "0467(e)",
+   "page": "page_0467",
    "marker": "(e)",
-   "text": "Psal. LXXIX. II.",
-   "proposed": "Psaumes 79:2.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "les rabbins ; Rabbi Salomon ; Ezra ; Bellarmin.",
+   "proposed": "les rabbins ;\nRabbi Salomon ;\nEzra ;\nBellarmin.",
+   "why": [],
    "flags": []
   },
   {
-   "id": "0470(f)",
-   "page": "page_0470",
-   "marker": "(f)",
-   "text": "Aquil. Δικαιοσύνη σου ὡς ὄρη ἰσχυρά.",
-   "proposed": "Aquila : Δικαιοσύνη σου ὡς ὄρη ἰσχυρά.",
+   "id": "0472(b)",
+   "page": "page_0472",
+   "marker": "(b)",
+   "text": "Saint Jérôme ; Théodoret ; saint Ambroise.",
+   "proposed": "Saint Jérôme ;\nThéodoret ;\nsaint Ambroise.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0472(c)",
+   "page": "page_0472",
+   "marker": "(c)",
+   "text": "Eusèbe ; saint Athanase ; saint Augustin.",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nsaint Augustin.",
    "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -3689,10 +4325,10 @@
    "id": "0474(c)",
    "page": "page_0474",
    "marker": "(c)",
-   "text": "Origène ; Saint Ambroise ; Saint Augustin ; Théodoret ; Saint Jérôme ; Bède, ita et Recentiores. Génébrard ; Flaminius ; Vatable.",
-   "proposed": "Origène ; Saint Ambroise ; Saint Augustin ; Théodoret ; Saint Jérôme ; Bède, de même les modernes. Génébrard ; Flaminius ; Vatable.",
+   "text": "Origène ; Saint Ambroise ; Saint Augustin ; Théodoret ; Saint Jérôme ; Bède, de même les modernes. Génébrard ; Flaminius ; Vatable.",
+   "proposed": "Origène ;\nSaint Ambroise ;\nSaint Augustin ;\nThéodoret ;\nSaint Jérôme ;\nBède, de même les modernes. Génébrard ;\nFlaminius ;\nVatable.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -3733,14 +4369,30 @@
    ]
   },
   {
-   "id": "0478(a)",
-   "page": "page_0478",
-   "marker": "(a)",
-   "text": "Origenes in hunc Psal.",
-   "proposed": "Origène, sur ce Psaume.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0477(b)",
+   "page": "page_0477",
+   "marker": "(b)",
+   "text": "Saint Augustin ; saint Ambroise ; Origène. Revela ad Dominum.",
+   "proposed": "Saint Augustin ;\nsaint Ambroise ;\nOrigène. Revela ad Dominum.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0477(c)",
+   "page": "page_0477",
+   "marker": "(c)",
+   "text": "Saint Jérôme ; saint Augustin ; Bellarmin.",
+   "proposed": "Saint Jérôme ;\nsaint Augustin ;\nBellarmin.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0481(d)",
+   "page": "page_0481",
+   "marker": "(d)",
+   "text": "1 Rois 26:10. Voyez Job 18:20 ; Isaïe 9:4 ; Jérémie 50:27 ; Osée 1:11.",
+   "proposed": "1 Rois 26:10. Voyez Job 18:20 ;\nIsaïe 9:4 ;\nJérémie 50:27 ;\nOsée 1:11.",
+   "why": [],
    "flags": []
   },
   {
@@ -3754,6 +4406,15 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0482(b)",
+   "page": "page_0482",
+   "marker": "(b)",
+   "text": "Saint Athanase ; Eusèbe ; Génébrard ; Vatable ; Flaminius",
+   "proposed": "Saint Athanase ;\nEusèbe ;\nGénébrard ;\nVatable ;\nFlaminius",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0482(c)",
@@ -3804,6 +4465,15 @@
    ]
   },
   {
+   "id": "0487(a)",
+   "page": "page_0487",
+   "marker": "(a)",
+   "text": "Origène, Homélie 4 sur ce Psaume. Ainsi l'entendent saint Ambroise, Discours 2 Du jeûne ; saint Augustin, sur ce passage ; saint Jérôme, sur ce passage ; et Eusèbe ; saint Athanase.",
+   "proposed": "Origène, Homélie 4 sur ce Psaume. Ainsi l'entendent saint Ambroise, Discours 2 Du jeûne ;\nsaint Augustin, sur ce passage ;\nsaint Jérôme, sur ce passage ;\net Eusèbe ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0489(a)",
    "page": "page_0489",
    "marker": "(a)",
@@ -3833,17 +4503,6 @@
    ]
   },
   {
-   "id": "0490(b)",
-   "page": "page_0490",
-   "marker": "(b)",
-   "text": "Ita Codex Colbert 6158. Dans Ferrand. Et d'autres quidem, dans de Muis, sur ce passage. Alii omnes codices",
-   "proposed": "Ainsi lit le manuscrit Colbert 6158. Dans Ferrand. Et d'autres à la vérité, dans de Muis, sur ce passage. Tous les autres manuscrits",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0490(c)",
    "page": "page_0490",
    "marker": "(c)",
@@ -3857,17 +4516,6 @@
     "uncertain",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0491(b)",
-   "page": "page_0491",
-   "marker": "(b)",
-   "text": "August. hic. Liberat à laqueo verbum Dei in corde ; liberat à via prava verbum Dei in corde.",
-   "proposed": "Saint Augustin, sur ce passage. Liberat à laqueo verbum Dei in corde ; liberat à via prava verbum Dei in corde.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0492(b)",
@@ -3887,8 +4535,8 @@
    "id": "0492(c)",
    "page": "page_0492",
    "marker": "(c)",
-   "text": "70. [UNCERTAIN GREEK] Εἶδον τὸν ἀσεβῆ ὑπερυψέμενον, καὶ ἐπαιρόμενον ὡς τὰς Κέδρες τῶ Λιβάνω. Ils ont lû, [UNCERTAIN HEBREW] כאזרחי לבנון, au lieu de [UNCERTAIN HEBREW] כאזרח רענן",
-   "proposed": "70. [UNCERTAIN GREEK] Εἶδον τὸν ἀσεβῆ ὑπερυψούμενον, καὶ ἐπαιρόμενον ὡς τὰς Κέδρους τοῦ Λιβάνου. Ils ont lû, [UNCERTAIN HEBREW] כאזרחי לבנון, au lieu de [UNCERTAIN HEBREW] כאזרח רענן",
+   "text": "70. [UNCERTAIN GREEK] Εἶδον τὸν ἀσεβῆ ὑπερυψέμενον, καὶ ἐπαιρόμενον ὡς τὰς Κέδρες τῶ Λιβάνω. Ils ont lu, [UNCERTAIN HEBREW] כאזרחי לבנון, au lieu de [UNCERTAIN HEBREW] כאזרח רענן",
+   "proposed": "70. [UNCERTAIN GREEK] Εἶδον τὸν ἀσεβῆ ὑπερυψούμενον, καὶ ἐπαιρόμενον ὡς τὰς Κέδρους τοῦ Λιβάνου. Ils ont lu, [UNCERTAIN HEBREW] כאזרחי לבנון, au lieu de [UNCERTAIN HEBREW] כאזרח רענן",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew checked against the Hebrew Bible, Psalms 37:35",
@@ -3900,6 +4548,35 @@
    ]
   },
   {
+   "id": "0494(d)",
+   "page": "page_0494",
+   "marker": "(d)",
+   "text": "Génébrard ; Ferrand ; Mariana.",
+   "proposed": "Génébrard ;\nFerrand ;\nMariana.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0494(e)",
+   "page": "page_0494",
+   "marker": "(e)",
+   "text": "Origène ; Théodoret ; Grotius ; Junius.",
+   "proposed": "Origène ;\nThéodoret ;\nGrotius ;\nJunius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0494(h)",
+   "page": "page_0494",
+   "marker": "(h)",
+   "text": "Saint Jérôme ; Saint Augustin.",
+   "proposed": "Saint Jérôme ; saint Augustin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0495(b)",
    "page": "page_0495",
    "marker": "(b)",
@@ -3909,6 +4586,17 @@
    "flags": [
     "ambiguous-name"
    ]
+  },
+  {
+   "id": "0495(f)",
+   "page": "page_0495",
+   "marker": "(f)",
+   "text": "Théodoret, sur ce passage ; Eusèbe ; saint Basile ; Origène.",
+   "proposed": "Théodoret, sur ce passage ;\nEusèbe ;\nsaint Basile ;\nOrigène.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0499(a)",
@@ -3928,14 +4616,11 @@
    "id": "0499(f)",
    "page": "page_0499",
    "marker": "(f)",
-   "text": "3 Rois 8:29. _Filius qui egredietur de renibus tuis. Psal._ VIII. 10. _Scrutans corda et renes, etc._",
+   "text": "3 Rois 8:19. _Filius qui egredietur de renibus tuis. Psal._ VIII. 10. _Scrutans corda et renes, etc._",
    "proposed": "3 Rois 8:19. _Filius qui egredietur de renibus tuis. Psal._ VIII. 10. _Scrutans corda et renes, etc._",
-   "why": [
-    "3 Rois 8:29 -> 3 Rois 8:19: the Latin quoted («egredietur filius psal renibus tuis») is 3 Rois 8:19"
-   ],
+   "why": [],
    "flags": [
-    "ambiguous-name",
-    "reference-corrected"
+    "ambiguous-name"
    ]
   },
   {
@@ -3953,17 +4638,6 @@
    ]
   },
   {
-   "id": "0500(a)",
-   "page": "page_0500",
-   "marker": "(a)",
-   "text": "Ita Codices Regii, et Colbert. Mß. apud Ferrand.",
-   "proposed": "Ainsi lisent les manuscrits du Roi, et le manuscrit de Colbert, dans Ferrand.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0503(a)",
    "page": "page_0503",
    "marker": "(a)",
@@ -3976,6 +4650,15 @@
    ]
   },
   {
+   "id": "0504(d)",
+   "page": "page_0504",
+   "marker": "(d)",
+   "text": "Genèse 13:9 ; Genèse 20:15 ; Genèse 24:51 ; Cantique des cantiques 8:12, etc.",
+   "proposed": "Genèse 13:9 ; 20:15 ; 24:51 ; Cantique des cantiques 8:12 etc.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0505(a)",
    "page": "page_0505",
    "marker": "(a)",
@@ -3986,6 +4669,15 @@
     "hebrew",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0507(f)",
+   "page": "page_0507",
+   "marker": "(f)",
+   "text": "Théodoret ; Ferrand ; Haimis ; saint Ambroise, au verset 3.",
+   "proposed": "Théodoret ;\nFerrand ;\nHaimis ;\nsaint Ambroise, au verset 3.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0509(f)",
@@ -4016,13 +4708,13 @@
    ]
   },
   {
-   "id": "0510(f)",
+   "id": "0510(e)",
    "page": "page_0510",
-   "marker": "(f)",
-   "text": "Job 7:1, 16, 9 ; 3:9 ; 9:25 ; 10:1 ; 14:5 et suivants. Psaumes 89:4, 9-10, etc. G. 4. 12. 24.",
-   "proposed": "Job 7:1, 16, 9 ; 3:9 ; 9:25 ; 10:1 ; 14:5 et suivants. Psaumes 89:4, 9-10, etc. Genèse 4:12, 24.",
+   "marker": "(e)",
+   "text": "Eusèbe ; Génébrard ; Vatable.",
+   "proposed": "Eusèbe ;\nGénébrard ;\nVatable.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -4042,18 +4734,6 @@
    ]
   },
   {
-   "id": "0512(b)",
-   "page": "page_0512",
-   "marker": "(b)",
-   "text": "Sym. ἰδὲ ὡς σπιθαμιαίας ἔδωκας τὰς ἡμέρας μου, καὶ ἡ ὑπόστασίς μου ὡς οὐδὲν ἐνώπιόν σου.",
-   "proposed": "Symmaque : ἰδὲ ὡς σπιθαμιαίας ἔδωκας τὰς ἡμέρας μου, καὶ ἡ ὑπόστασίς μου ὡς οὐδὲν ἐνώπιόν σου.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0514(a)",
    "page": "page_0514",
    "marker": "(a)",
@@ -4067,6 +4747,26 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0514(b)",
+   "page": "page_0514",
+   "marker": "(b)",
+   "text": "Saint Jérôme, sur ce passage ; et Origène ; saint Ambroise.",
+   "proposed": "Saint Jérôme, sur ce passage ;\net Origène ;\nsaint Ambroise.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0514(d)",
+   "page": "page_0514",
+   "marker": "(d)",
+   "text": "Origène ; saint Athanase ; Génébrard ; Vatable.",
+   "proposed": "Origène ;\nsaint Athanase ;\nGénébrard ;\nVatable.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0516(c)",
@@ -4084,22 +4784,9 @@
    "id": "0519(a)",
    "page": "page_0519",
    "marker": "(a)",
-   "text": "Bossuet, Choisy, Ferrand. Sacy.",
-   "proposed": "Bossuet ; Choisy ; Ferrand ; Sacy.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0519(b)",
-   "page": "page_0519",
-   "marker": "(b)",
-   "text": "Quidam, dans Théodoret.",
-   "proposed": "Certains, dans Théodoret.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Bossuet ; Choisy ; Ferrand ; Sacy.",
+   "proposed": "Bossuet ;\nChoisy ;\nFerrand ;\nSacy.",
+   "why": [],
    "flags": []
   },
   {
@@ -4145,42 +4832,25 @@
    ]
   },
   {
+   "id": "0522(a)",
+   "page": "page_0522",
+   "marker": "(a)",
+   "text": "Saint Cyrille d'Alexandrie ; saint Jean Chrysostome ; saint Ambroise ; Euthyme.",
+   "proposed": "Saint Cyrille d'Alexandrie ;\nsaint Jean Chrysostome ;\nsaint Ambroise ;\nEuthyme.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0522(c)",
    "page": "page_0522",
    "marker": "(c)",
-   "text": "Symmaque : Τὰς διαλογισμὸς σου τίς ἐκδιηγήσεται; Ὧν ἴσα οὐδέν σοι. Eusèbe. L'Aquila, etc.",
-   "proposed": "Symmaque : Τὰς διαλογισμὸς σου τίς ἐκδιηγήσεται; Ὧν ἴσα οὐδέν σοι. Eusèbe. Aquila, etc.",
+   "text": "Symmaque : Τὰς διαλογισμὸς σου τίς ἐκδιηγήσεται; Ὧν ἴσα οὐδέν σοι. Eusèbe. Aquila, etc.",
+   "proposed": "Symmaque : Τὰς διαλογισμὸς σου τίς ἐκδιηγήσεται; Ὧν ἴσα οὐδέν σοι. Eusèbe ; Aquila ; etc.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
-  },
-  {
-   "id": "0522(e)",
-   "page": "page_0522",
-   "marker": "(e)",
-   "text": "Si narrare voluero, et memorare, plura sunt quàm ut narrari queant. Symmaque. L'Aquila, etc. καὶ ἐὰν λέγω, πλείω ἐστὶ τῆς διηγήσεως. Suiv.",
-   "proposed": "Si narrare voluero, et memorare, plura sunt quàm ut narrari queant. Symmaque. Aquila, etc. καὶ ἐὰν λέγω, πλείω ἐστὶ τῆς διηγήσεως. Suivant.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0523(d)",
-   "page": "page_0523",
-   "marker": "(d)",
-   "text": "Hébreux 10:5 et 70. Θυσίας καὶ προσφορὰς ἐκ ἠθέλησας Σῶμα δ' κατηρτίσω μοι.",
-   "proposed": "Hébreux 10:5 et 70. Θυσίας καὶ προσφορὰς ἐκ ἠθέλησας Σῶμα δ' κατηρτίσω μοι.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Hébreux 10:5, 70 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
   },
   {
    "id": "0524(a)",
@@ -4212,17 +4882,6 @@
    ]
   },
   {
-   "id": "0525(d)",
-   "page": "page_0525",
-   "marker": "(d)",
-   "text": "August. Holocausta etiam pro delicto non postulasti : Ou simplement : Holocausta pro delicto.",
-   "proposed": "Saint Augustin : Holocausta etiam pro delicto non postulasti : Ou simplement : Holocausta pro delicto.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0525(e)",
    "page": "page_0525",
    "marker": "(e)",
@@ -4237,11 +4896,29 @@
    ]
   },
   {
+   "id": "0526(a)",
+   "page": "page_0526",
+   "marker": "(a)",
+   "text": "Tertullien, Contre Praxéas ; saint Ambroise et saint Jérôme, sur ce passage ; saint Hilaire, sur le Psaume 11.",
+   "proposed": "Tertullien, Contre Praxéas ;\nsaint Ambroise et saint Jérôme, sur ce passage ;\nsaint Hilaire, sur le Psaume 11.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0526(e)",
+   "page": "page_0526",
+   "marker": "(e)",
+   "text": "Origène, Philocalie, chapitre 5 ; Théodoret, sur ce passage, Fuld. ; Euthyme ; Nicéphore ; Eusèbe ; saint Ambroise.",
+   "proposed": "Origène, Philocalie, chapitre 5 ;\nThéodoret, sur ce passage, Fuld. ;\nEuthyme ;\nNicéphore ;\nEusèbe ;\nsaint Ambroise.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0526(g)",
    "page": "page_0526",
    "marker": "(g)",
-   "text": "Suidas. Κεφαλὶς, κύλημα. Volumen. Il se prend en ce sens. Ézéchiel 2:9 et 3:1-2. et 2 Esdras 6:2. Theodoret. τῆν Κεφαλίδα, ἀντὶ τῆς εἰρήνης ὁ κύκλος, καὶ Σύμμαχος.",
-   "proposed": "Suidas. Κεφαλὶς, κύλημα. Volumen. Il se prend en ce sens. Ézéchiel 2:9 et 3:1-2. et 2 Esdras 6:2. Theodoret. τῆν Κεφαλίδα, ἀντὶ τῆς εἰρήνης ὁ κύκλος, καὶ Σύμμαχος.",
+   "text": "Suidas. Κεφαλὶς, κύλημα. Volumen. Il se prend en ce sens. Ézéchiel 2:9 et 3:1-2. et 1 Esdras 6:2. Theodoret. τῆν Κεφαλίδα, ἀντὶ τῆς εἰρήνης ὁ κύκλος, καὶ Σύμμαχος.",
+   "proposed": "Suidas. Κεφαλὶς, κύλημα. Volumen. Il se prend en ce sens. Ézéchiel 2:9 et 3:1-2. et 1 Esdras 6:2. Theodoret. τῆν Κεφαλίδα, ἀντὶ τῆς εἰρήνης ὁ κύκλος, καὶ Σύμμαχος.",
    "why": [
     "Greek spelling checked against a Greek dictionary"
    ],
@@ -4263,27 +4940,12 @@
    ]
   },
   {
-   "id": "0528(b)",
-   "page": "page_0528",
-   "marker": "(b)",
-   "text": "בשרתי צדק בקהל רב. _Εὐηγγελισάμην δικαιοσύνην ἐν ἐκκλησία μεγάλη._ Ainsi l'entendent Théodoret ; Héracléote ; et Théodoret ; et l'édition de Sixte V ; et l'édition de Complute ; et les codex royal et de Colbert, dans Ferrand.",
-   "proposed": "בשרתי צדק בקהל רב. _Εὐηγγελισάμην δικαιοσύνην ἐν ἐκκλησία μεγάλη._ Ainsi l'entendent Théodoret ; Héracléote ; et Théodoret ; et l'édition de Sixte V ; et l'édition de Complute ; et les manuscrits du Roi et de Colbert, dans Ferrand.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Psalms 40:9",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0528(c)",
    "page": "page_0528",
    "marker": "(c)",
-   "text": "Psal. IV. I. XXIII. I. LXXXVIII. 14. CIX. 6. etc.",
-   "proposed": "Psaumes 4:1 ; 23:1 ; 88:14 ; 109:6, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Psaumes 4:2 ; 23:5 ; 88:15 ; 109:6, etc.",
+   "proposed": "Psaumes 4:2 ; 23:5 ; 88:15 ; 109:6 etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -4337,6 +4999,24 @@
    ]
   },
   {
+   "id": "0533(d)",
+   "page": "page_0533",
+   "marker": "(d)",
+   "text": "Saint Ambroise ; saint Augustin ; saint Jérôme ; Théodoret ; Eusèbe ; saint Athanase.",
+   "proposed": "Saint Ambroise ;\nsaint Augustin ;\nsaint Jérôme ;\nThéodoret ;\nEusèbe ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0534(b)",
+   "page": "page_0534",
+   "marker": "(b)",
+   "text": "De Muis ; Génébrard ; Flaminius.",
+   "proposed": "De Muis ;\nGénébrard ;\nFlaminius.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0534(d)",
    "page": "page_0534",
    "marker": "(d)",
@@ -4347,6 +5027,17 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0536(f)",
+   "page": "page_0536",
+   "marker": "(f)",
+   "text": "Saint Athanase ; saint Ambroise ; saint Augustin.",
+   "proposed": "Saint Athanase ;\nsaint Ambroise ;\nsaint Augustin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0536(g)",
@@ -4433,6 +5124,15 @@
    ]
   },
   {
+   "id": "0540(d)",
+   "page": "page_0540",
+   "marker": "(d)",
+   "text": "Nombres 5:22 ; Deutéronome 27:15 ; Psaumes 71:19 etc.",
+   "proposed": "Nombres 5:22 ;\nDeutéronome 27:15 ;\nPsaumes 71:19 etc.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0541(a)",
    "page": "page_0541",
    "marker": "(a)",
@@ -4444,6 +5144,24 @@
    "flags": [
     "reference-not-in-vulgate"
    ]
+  },
+  {
+   "id": "0542(b)",
+   "page": "page_0542",
+   "marker": "(b)",
+   "text": "Jansénius de Gand ; Moller. ; Begucc. ; Vatable ; Jan. ; Mariana.",
+   "proposed": "Jansénius de Gand ;\nMoller. ;\nBegucc. ;\nVatable ;\nJan. ;\nMariana.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0543(a)",
+   "page": "page_0543",
+   "marker": "(a)",
+   "text": "Élien, Histoire, livre 2, chapitre 9, et livre 8, chapitre 6 ; Appien, livre 2, De la chasse ; Aristote, Histoire des animaux, livre 9, chapitre 5 ; Nicandre, Thériaques ; Pline, Histoire naturelle, livre 8, chapitre 27, livre 9, chapitre 3.",
+   "proposed": "Élien, Histoire, livre 2, chapitre 9, et livre 8, chapitre 6 ;\nAppien, livre 2, De la chasse ;\nAristote, Histoire des animaux, livre 9, chapitre 5 ;\nNicandre, Thériaques ;\nPline, Histoire naturelle, livre 8, chapitre 27, livre 9, chapitre 3.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0543(f)",
@@ -4473,23 +5191,9 @@
    "id": "0544(h)",
    "page": "page_0544",
    "marker": "(h)",
-   "text": "_Ita saint Bernard ;\nSaint Isidore ;\nSaint Thomas ;\nSixti V. Aliàs penè omnes Latini Codices, tam impressi, quàm manuscripti. Plures etiam post correctionem Clementis_ VIII.",
-   "proposed": "_Ainsi saint Bernard ;\nSaint Isidore ;\nSaint Thomas ;\nSixte V. Presque tous les autres manuscrits latins, tant imprimés que manuscrits. Plusieurs même après la correction de Clément_ VIII.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0545(b)",
-   "page": "page_0545",
-   "marker": "(b)",
-   "text": "Sym. Ὡς ἄρτος αὐτάρκης μοι.",
-   "proposed": "Symmaque : Ὡς ἄρτος αὐτάρκης μοι.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
+   "text": "_Ainsi saint Bernard ; saint Isidore ; saint Thomas ; Sixte V. Presque tous les autres manuscrits latins, tant imprimés que manuscrits. Plusieurs même après la correction de Clément_ VIII.",
+   "proposed": "_Ainsi saint Bernard ;\nsaint Isidore ;\nsaint Thomas ;\nSixte V. Presque tous les autres manuscrits latins, tant imprimés que manuscrits. Plusieurs même après la correction de Clément_ VIII.",
+   "why": [],
    "flags": []
   },
   {
@@ -4531,28 +5235,6 @@
    "flags": [
     "ambiguous-name"
    ]
-  },
-  {
-   "id": "0547(a)",
-   "page": "page_0547",
-   "marker": "(a)",
-   "text": "_Vide Deut._ XII. 12. XVI. 14. XXVII. 7. 2. Esdr. VIII. 12. Psaumes 77:3.",
-   "proposed": "_Voyez Deutéronome_ 12:12 ; 16:14 ; 27:7. 2 Esdras 8:12. Psaumes 77:3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0547(c)",
-   "page": "page_0547",
-   "marker": "(c)",
-   "text": "Ita l'édition latine de Complute et de Sixti V.",
-   "proposed": "Ainsi lit l'édition latine de Complute et de Sixte V.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0548(a)",
@@ -4685,34 +5367,9 @@
    "id": "0551(b)",
    "page": "page_0551",
    "marker": "(b)",
-   "text": "Psaumes 17*:14 ;\nJob 37:4-5 ;\nPsaumes 28:3-5 etc.",
+   "text": "Psaumes 17*:14 ; Job 37:4-5 ; Psaumes 28:3-5, etc.",
    "proposed": "Psaumes 17*:14 ;\nJob 37:4-5 ;\nPsaumes 28:3-5, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0552(a)",
-   "page": "page_0552",
-   "marker": "(a)",
-   "text": "August. Dum confringit ossa mea. In 70. Rom.",
-   "proposed": "Saint Augustin : Dum confringit ossa mea. Dans les Septante de Rome.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0552(b)",
-   "page": "page_0552",
-   "marker": "(b)",
-   "text": "Saint Augustin, les Pseautiers de Rome, de Chartres, de Saint Germain, l'Édition de Sixte V. et les Septante de Rome, ne lisent point, Inimici mei. L'Édition de Complute, et le Pseautier de Milan ont : Inimici mei : mais non pas, Qui tribulant me. L'Hébreu ne met que צררי, que l'on peut traduire par, Inimici mei, ou, qui tribulant me.",
-   "proposed": "Saint Augustin, les Psautiers de Rome, de Chartres, de Saint-Germain, l'édition de Sixte V et les Septante de Rome, ne lisent point, Inimici mei. L'édition de Complute, et le Psautier de Milan ont : Inimici mei : mais non pas, Qui tribulant me. L'Hébreu ne met que צררי, que l'on peut traduire par, Inimici mei, ou, qui tribulant me.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
-   ],
+   "why": [],
    "flags": []
   },
   {
@@ -4734,22 +5391,9 @@
    "id": "0553(b)",
    "page": "page_0553",
    "marker": "(b)",
-   "text": "Ita Marianus, Cholsy, Moller. Bossuet.",
-   "proposed": "Ainsi l'entendent Mariana ; Choisy ; Moller ; Bossuet.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0554(b)",
-   "page": "page_0554",
-   "marker": "(b)",
-   "text": "Hebr. 70. non legunt : Me.",
-   "proposed": "L'Hébreu et les Septante ne lisent pas : Me.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Ainsi l'entendent Mariana ; Choisy ; Moller ; Bossuet.",
+   "proposed": "Ainsi l'entendent Mariana ;\nChoisy ;\nMoller ;\nBossuet.",
+   "why": [],
    "flags": []
   },
   {
@@ -4782,6 +5426,17 @@
    ]
   },
   {
+   "id": "0555(a)",
+   "page": "page_0555",
+   "marker": "(a)",
+   "text": "Dans saint Augustin ; Saint Jérôme ; etc.",
+   "proposed": "Dans saint Augustin ; saint Jérôme ; etc.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0558(a)",
    "page": "page_0558",
    "marker": "(a)",
@@ -4797,8 +5452,8 @@
    "id": "0559(c)",
    "page": "page_0559",
    "marker": "(c)",
-   "text": "Deutéronome 33:17. 3 Rois 22:11. Psaumes 91:14. Jérémie 48:25.",
-   "proposed": "Deutéronome 33:17. 3 Rois 22:11. Psaumes 91:14. Jérémie 48:25.",
+   "text": "Deutéronome 33:17. 3 Rois 22:11. Psaumes 91:11. Jérémie 48:25.",
+   "proposed": "Deutéronome 33:17. 3 Rois 22:11. Psaumes 91:11. Jérémie 48:25.",
    "why": [],
    "flags": [
     "ambiguous-name"
@@ -4869,26 +5524,12 @@
    ]
   },
   {
-   "id": "0565(d)",
-   "page": "page_0565",
-   "marker": "(d)",
-   "text": "Theodoret. Πολλοῖς ἡμᾶς καὶ παντοδαποῖς περιέβαλες ἀλγηδόσι, ὥστε ἱκαναὶ εἶναι καὶ ἀποστῆσαι τῆς εἰς σε. Vide et Muis.",
-   "proposed": "Théodoret : Πολλοῖς ἡμᾶς καὶ παντοδαποῖς περιέβαλες ἀλγηδόσι, ὥστε ἱκαναὶ εἶναι καὶ ἀποστῆσαι τῆς εἰς σε. Voyez aussi de Muis.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0565(e)",
    "page": "page_0565",
    "marker": "(e)",
-   "text": "Theodoret. Heracl. et Euthym.",
-   "proposed": "Théodoret ; Héracléote ; et Euthyme.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Théodoret ; Héracléote ; et Euthyme.",
+   "proposed": "Théodoret ;\nHéracléote ;\net Euthyme.",
+   "why": [],
    "flags": []
   },
   {
@@ -4931,16 +5572,36 @@
    ]
   },
   {
+   "id": "0568(b)",
+   "page": "page_0568",
+   "marker": "(b)",
+   "text": "Saint Athanase ; saint Cyrille d'Alexandrie ; Euthyme. Tome I.",
+   "proposed": "Saint Athanase ;\nsaint Cyrille d'Alexandrie ;\nEuthyme. Tome I.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0569(d)",
    "page": "page_0569",
    "marker": "(d)",
-   "text": "[UNCERTAIN HEBREW] signifie, Les réjouissances. Psaumes 45:8. 51:10, 14. 105:43. 118:111.",
-   "proposed": "[UNCERTAIN HEBREW] signifie, Les réjouissances. Psaumes 45:8. 51:10, 14. 105:43. 118:111.",
+   "text": "[UNCERTAIN HEBREW] signifie, Les réjouissances. Psaumes 44:8. 51:10, 14. 105:43. 118:111.",
+   "proposed": "[UNCERTAIN HEBREW] signifie, Les réjouissances. Psaumes 44:8. 51:10, 14. 105:43. 118:111.",
    "why": [],
    "flags": [
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0569(e)",
+   "page": "page_0569",
+   "marker": "(e)",
+   "text": "Voyez Génébrard, sur ce passage ; Calvin ; Anti-Grotius ; Bèze ; Ferrand.",
+   "proposed": "Voyez Génébrard, sur ce passage ;\nCalvin ;\nAnti-Grotius ;\nBèze ;\nFerrand.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0571(c)",
@@ -4955,14 +5616,30 @@
    ]
   },
   {
-   "id": "0572(b)",
-   "page": "page_0572",
-   "marker": "(b)",
-   "text": "4. Esdr. XIV. 39-40.",
-   "proposed": "4 Esdras 14:39-40.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0574(h)",
+   "page": "page_0574",
+   "marker": "(h)",
+   "text": "Voyez saint Jean Chrysostome ; Jansénius ; Lindan ; Génébrard ; Emmanuel Sa ; Mariana.",
+   "proposed": "Voyez saint Jean Chrysostome ;\nJansénius ;\nLindan ;\nGénébrard ;\nEmmanuel Sa ;\nMariana.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0575(a)",
+   "page": "page_0575",
+   "marker": "(a)",
+   "text": "Voyez 3 Rois 9:23 ; et 2 Paralipomènes 8:3-5 et suivants.",
+   "proposed": "Voyez 3 Rois 9:23 ; 2 Paralipomènes 8:3-5 et suivants.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0575(c)",
+   "page": "page_0575",
+   "marker": "(c)",
+   "text": "Voyez Cantique des cantiques 3:8 ; Exode 32:27 ; Juges 3:16.",
+   "proposed": "Voyez Cantique des cantiques 3:8 ;\nExode 32:27 ;\nJuges 3:16.",
+   "why": [],
    "flags": []
   },
   {
@@ -4978,14 +5655,13 @@
    ]
   },
   {
-   "id": "0579(c)",
+   "id": "0579(e)",
    "page": "page_0579",
-   "marker": "(c)",
-   "text": "August. Præ participibus tuis. 70. Παρά τοὺς μετόχους σȣ.",
-   "proposed": "Saint Augustin : Præ participibus tuis. Les Septante : Παρά τοὺς μετόχους σȣ.",
+   "marker": "(e)",
+   "text": "Saint Athanase ; saint Grégoire de Nazianze ; saint Basile ; saint Cyrille d'Alexandrie ; saint Augustin.",
+   "proposed": "Saint Athanase ;\nsaint Grégoire de Nazianze ;\nsaint Basile ;\nsaint Cyrille d'Alexandrie ;\nsaint Augustin.",
    "why": [
-    "Greek checked against the Septuagint, Psaumes 44:8",
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -5008,21 +5684,10 @@
    "id": "0580(a)",
    "page": "page_0580",
    "marker": "(a)",
-   "text": "Voyez Genèse 18:5 ;\nGenèse 19:8 ;\nPsaumes 41:7 ;\nGenèse 33:10* etc. Voyez de Muis ;\nVatable ;\nRivet.",
-   "proposed": "Voyez Genèse 18:5 ;\nGenèse 19:8 ;\nPsaumes 41:7 ;\nGenèse 33:10*, etc. Voyez de Muis ;\nVatable ;\nRivet.",
+   "text": "Voyez Genèse 18:5 ; Genèse 19:8 ; Psaumes 41:7 ; Genèse 33:10, etc. Voyez de Muis ; Vatable ; Rivet.",
+   "proposed": "Voyez Genèse 18:5 ;\nGenèse 19:8 ;\nPsaumes 41:7 ;\nGenèse 33:10 etc.. Voyez de Muis ;\nVatable ;\nRivet.",
    "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0580(f)",
-   "page": "page_0580",
-   "marker": "(f)",
-   "text": "Martial. Eos nisi de flavâ lasulus implere negabit.",
-   "proposed": "Martial : Eos nisi de flavâ lasulus implere negabit.",
-   "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -5053,6 +5718,44 @@
    ]
   },
   {
+   "id": "0581(c)",
+   "page": "page_0581",
+   "marker": "(c)",
+   "text": "Cassiodore, sur le Cantique des cantiques 4 ; saint Isidore, livre 17 ; Origène, chapitre 8.",
+   "proposed": "Cassiodore, sur le Cantique des cantiques 4 ;\nsaint Isidore, livre 17 ;\nOrigène, chapitre 8.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0582(b)",
+   "page": "page_0582",
+   "marker": "(b)",
+   "text": "3 Rois 22:39.",
+   "proposed": "3 Rois 22:39.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0582(c)",
+   "page": "page_0582",
+   "marker": "(c)",
+   "text": "Saint Augustin ; saint Basile ; Cassiodore ; Nicéphore.",
+   "proposed": "Saint Augustin ;\nsaint Basile ;\nCassiodore ;\nNicéphore.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0582(d)",
+   "page": "page_0582",
+   "marker": "(d)",
+   "text": "1 Corinthiens 3:17. Voyez saint Augustin ; Eusèbe ; saint Grégoire de Nazianze.",
+   "proposed": "1 Corinthiens 3:17. Voyez saint Augustin ;\nEusèbe ;\nsaint Grégoire de Nazianze.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0583(b)",
    "page": "page_0583",
    "marker": "(b)",
@@ -5067,11 +5770,31 @@
    ]
   },
   {
+   "id": "0583(e)",
+   "page": "page_0583",
+   "marker": "(e)",
+   "text": "Saint Jean Chrysostome ; Saint Augustin ; Saint Athanase ; Eusèbe ; etc.",
+   "proposed": "Saint Jean Chrysostome ; saint Augustin ; saint Athanase ; Eusèbe ; etc.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0583(f)",
+   "page": "page_0583",
+   "marker": "(f)",
+   "text": "Saint Athanase ; saint Bernard ; saint Ildefonse.",
+   "proposed": "Saint Athanase ;\nsaint Bernard ;\nsaint Ildefonse.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0587(c)",
    "page": "page_0587",
    "marker": "(c)",
-   "text": "(טו) משבצות זהב סב. ἐν κροσσωτοῖς χρυσοῖς. Des agraffes d'or. _Alius_, Διὰ κροσσῶν χρυσῶν.",
-   "proposed": "(טו) משבצות זהב סב. ἐν κροσσωτοῖς χρυσοῖς. Des agraffes d'or. _Alius_, Διὰ κροσσῶν χρυσῶν.",
+   "text": "(טו) משבצות זהב סב. ἐν κροσσωτοῖς χρυσοῖς. Des agrafes d'or. _Alius_, Διὰ κροσσῶν χρυσῶν.",
+   "proposed": "(טו) משבצות זהב סב. ἐν κροσσωτοῖς χρυσοῖς. Des agrafes d'or. _Alius_, Διὰ κροσσῶν χρυσῶν.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek checked against the Septuagint, Psaumes 44:14",
@@ -5104,6 +5827,17 @@
    "flags": [
     "ambiguous-name"
    ]
+  },
+  {
+   "id": "0592(c)",
+   "page": "page_0592",
+   "marker": "(c)",
+   "text": "Saint Basile ; saint Jean Chrysostome ; saint Augustin ; Théodoret.",
+   "proposed": "Saint Basile ;\nsaint Jean Chrysostome ;\nsaint Augustin ;\nThéodoret.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0594(a)",
@@ -5150,14 +5884,12 @@
    "id": "0595(f)",
    "page": "page_0595",
    "marker": "(f)",
-   "text": "Jérémie 25:3. 26:5. 29:19*. Psaumes 100:8. 62:1. 5:5. 77:14. etc. _Vide Chrysost._ _Joseph._ et _Nicephor._ et _Genebr._",
-   "proposed": "Jérémie 25:3 ; 26:5 ; 29:19*. Psaumes 100:8 ; 62:1 ; 5:5 ; 77:14, etc. Voyez saint Jean Chrysostome ; Josèphe ; et Nicéphore ; et Génébrard.",
+   "text": "Jérémie 25:3. 26:5. 29:19. Psaumes 100:8. 62:1. 5:5. 77:14. etc. _Vide Chrysost._ _Joseph._ et _Nicephor._ et _Genebr._",
+   "proposed": "Jérémie 25:3 ; 26:5 ; 29:19 ; Psaumes 100:8 ; 62:1 ; 5:5 ; 77:14 etc.. Voyez saint Jean Chrysostome ; Josèphe ; et Nicéphore ; et Génébrard.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": [
-    "expand-changed-italics"
-   ]
+   "flags": []
   },
   {
    "id": "0596(c)",
@@ -5172,9 +5904,9 @@
    ]
   },
   {
-   "id": "0597לכל באש",
+   "id": "0597(c)",
    "page": "page_0597",
-   "marker": "לכל באש",
+   "marker": "(c)",
    "text": "Alius, Kai δυοξας ἑρημωσιν ἐν τῆ γῆ.",
    "proposed": "Alius, Kai δυοξας ἐρήμωσιν ἐν τῆ γῆ.",
    "why": [
@@ -5184,17 +5916,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0597עגלות",
-   "page": "page_0597",
-   "marker": "עגלות",
-   "text": "Plaustra comburet igni. Ita Hieronym.",
-   "proposed": "Plaustra comburet igni. Ainsi saint Jérôme.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0598(a)",
@@ -5212,29 +5933,29 @@
    ]
   },
   {
-   "id": "0606(e)",
-   "page": "page_0606",
-   "marker": "(e)",
-   "text": "Les Septante : Ἄρχοντες λαῶν συνήχθησαν μετὰ τοῦ Θεοῦ Αβραὰμ, ὅτι τοῦ Θεοῦ οἱ κραταιοὶ τῆς γῆς σφόδρα ἐπήρθησαν. Il faudrait lire dans la Vulgate : _Quoniam ipsius Dei fortes terræ, etc._ Aquila, _Θυρεοὶ* τῆς γῆς._ La cinquième édition : _κραταιοὶ._ Ainsi lisent Théodotion et Symmaque, dans Théodoret.",
-   "proposed": "Les Septante : Ἄρχοντες λαῶν συνήχθησαν μετὰ τοῦ Θεοῦ Αβραὰμ, ὅτι τοῦ Θεοῦ οἱ κραταιοὶ τῆς γῆς σφόδρα ἐπήρθησαν. Il faudrait lire dans la Vulgate : Quoniam ipsius Dei fortes terræ, etc. Aquila : Θυρεοὶ* τῆς γῆς. La cinquième édition : κραταιοὶ. Ainsi lisent Théodotion et Symmaque, dans Théodoret.",
-   "why": [
-    "Greek checked against the Septuagint, Psaumes 46:10",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek checked against the Septuagint, Psaumes 45:9",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
+   "id": "0602(f)",
+   "page": "page_0602",
+   "marker": "(f)",
+   "text": "_Voyez Isaïe_ 5:17 ; Michée 2:12. _Junius ; Tremellius ; et Glassius, Grammatica_ livre 3, chapitre 3.",
+   "proposed": "_Voyez Isaïe_ 5:17 ;\nMichée 2:12. _Junius ;\nTremellius ;\net Glassius, Grammatica_ livre 3, chapitre 3.",
+   "why": [],
+   "flags": []
   },
   {
-   "id": "0607(b)",
-   "page": "page_0607",
-   "marker": "(b)",
-   "text": "Euseb. hic. et Cod. Mommian. 2.",
-   "proposed": "Eusèbe, sur ce passage ; et manuscrit Memm. 2.",
+   "id": "0603(a)",
+   "page": "page_0603",
+   "marker": "(a)",
+   "text": "Ils ont lu גאון יעקב au lieu de וגאון ישראל. Les Septante : κληρονομίαν ἑαυτῷ, seu αὐτῷ. τῆς καλλονῆς Ἰακώβ. Quelquefois ils le rendent par, ἀγαπητὸς, la beauté. Psaumes 67:13 ou Εὐπρέπεια, dec.r. 2 Rois 14:25 et Εὐπρεπὴς Job 18:16 ou θεατὸς, speciosus : Psaumes 64:13.",
+   "proposed": "Ils ont lu גאון יעקב au lieu de וגאון ישראל. Les Septante : κληρονομίαν ἑαυτῷ, seu αὐτῷ. τῆς καλλονῆς Ἰακώβ. Quelquefois ils le rendent par, ἀγαπητὸς, la beauté. Psaumes 67:17 ou Εὐπρέπεια, dec.r. 2 Rois 15:25 et Εὐπρεπὴς Job 18:16 ou θεατὸς, speciosus : Psaumes 64:13.",
    "why": [
+    "Hebrew checked against the Hebrew Bible, Psalms 47:4",
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
     "abbreviations written out"
    ],
    "flags": []
@@ -5249,17 +5970,6 @@
    "flags": [
     "ambiguous-name"
    ]
-  },
-  {
-   "id": "0608(a)",
-   "page": "page_0608",
-   "marker": "(a)",
-   "text": "Ambros. in loco sancto ejus.",
-   "proposed": "Saint Ambroise, in loco sancto ejus.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0609(g)",
@@ -5296,19 +6006,30 @@
    "id": "0611(e)",
    "page": "page_0611",
    "marker": "(e)",
-   "text": "Voyez Genèse 14:10 ;\nJob 35:13 ;\nPsaumes 13:5* ;\nMichée 4:9-10 etc.",
-   "proposed": "Voyez Genèse 14:10 ;\nJob 35:13 ;\nPsaumes 13:5* ;\nMichée 4:9-10, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Voyez Genèse 14:10 ; Job 35:12 ; Psaumes 13:5 ; Michée 4:9-10, etc.",
+   "proposed": "Voyez Genèse 14:10 ;\nJob 35:12 ;\nPsaumes 13:5 ;\nMichée 4:9-10 etc.",
+   "why": [],
    "flags": []
+  },
+  {
+   "id": "0611(f)",
+   "page": "page_0611",
+   "marker": "(f)",
+   "text": "Isaïe 13:8 ; Jérémie 4:311 ; 6:24 ; Osée 13:13.",
+   "proposed": "Isaïe 13:8 ; Jérémie 4:311 ; 6:24 ; Osée 13:13.",
+   "why": [
+    "Jérémie 4:311 does not exist in the Vulgate"
+   ],
+   "flags": [
+    "reference-not-in-vulgate"
+   ]
   },
   {
    "id": "0614(b)",
    "page": "page_0614",
    "marker": "(b)",
    "text": "_Vide Psal._ IV. 1. XXXII. 5. L. 15. CXI. 18. CXL. 8.",
-   "proposed": "_Voyez Psaumes_ 4:1 ; Psaumes 32:5 ; Psaumes 50:15 ; Psaumes 111:18 ; Psaumes 140:8.",
+   "proposed": "_Voyez Psaumes_ 4:1 ;\nPsaumes 32:5 ;\nPsaumes 50:15 ;\nPsaumes 111:18 ;\nPsaumes 140:8.",
    "why": [
     "abbreviations written out",
     "Psaumes 111:18 does not exist in the Vulgate"
@@ -5333,20 +6054,6 @@
    ]
   },
   {
-   "id": "0618(a)",
-   "page": "page_0618",
-   "marker": "(a)",
-   "text": "Ambros. Orbem terræ. 70. Κατοικοῦντες τὴν οἰκουμένην. Ils ont lû חלד, pour חדל.",
-   "proposed": "Saint Ambroise : Orbem terræ. Les Septante : Κατοικοῦντες τὴν οἰκουμένην. Ils ont lû חלד, pour חדל.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek checked against the Septuagint, Psaumes 48:2",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0618(c)",
    "page": "page_0618",
    "marker": "(c)",
@@ -5361,26 +6068,32 @@
    ]
   },
   {
-   "id": "0618(f)",
+   "id": "0618(h)",
    "page": "page_0618",
-   "marker": "(f)",
-   "text": "Platon, Sophiste. Perse, Satire 6, vers 56. Præsto est mihi Manius hæres. Progenies terræ, etc.",
-   "proposed": "Platon, Sophiste. Perse, Satire 6, vers 56 : Præsto est mihi Manius hæres. Progenies terræ, etc.",
+   "marker": "(h)",
+   "text": "Saint Basile ; saint Grégoire de Nysse ; saint Augustin.",
+   "proposed": "Saint Basile ;\nsaint Grégoire de Nysse ;\nsaint Augustin.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
   {
-   "id": "0618(g)",
-   "page": "page_0618",
-   "marker": "(g)",
-   "text": "Symmach. Ἠ μὲν ἀνθρώπινοι, οὐσίαν ἡ οἱ υἱοὶ ἑνὸς ἀνδρὸς, αἰδὲ.",
-   "proposed": "Symmaque : Ἠ μὲν ἀνθρώπινοι, οὐσίαν ἡ οἱ υἱοὶ ἑνὸς ἀνδρὸς, αἰδὲ.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
+   "id": "0620(b)",
+   "page": "page_0620",
+   "marker": "(b)",
+   "text": "Héracléote ; saint Jean Chrysostome ; saint Basile.",
+   "proposed": "Héracléote ;\nsaint Jean Chrysostome ;\nsaint Basile.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0620(c)",
+   "page": "page_0620",
+   "marker": "(c)",
+   "text": "Saint Jérôme ; Théodoret ; saint Augustin ; saint Jean Chrysostome ; saint Basile ; saint Athanase.",
+   "proposed": "Saint Jérôme ;\nThéodoret ;\nsaint Augustin ;\nsaint Jean Chrysostome ;\nsaint Basile ;\nsaint Athanase.",
+   "why": [],
    "flags": []
   },
   {
@@ -5419,6 +6132,17 @@
    ]
   },
   {
+   "id": "0623(d)",
+   "page": "page_0623",
+   "marker": "(d)",
+   "text": "Saint Jean Chrysostome ; saint Athanase ; Eusèbe ; Théodoret.",
+   "proposed": "Saint Jean Chrysostome ;\nsaint Athanase ;\nEusèbe ;\nThéodoret.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0623(e)",
    "page": "page_0623",
    "marker": "(e)",
@@ -5442,6 +6166,15 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0623(g)",
+   "page": "page_0623",
+   "marker": "(g)",
+   "text": "Voyez Hammond ; Bossuet ; Rabbi Moïse Hadarsan.",
+   "proposed": "Voyez Hammond ;\nBossuet ;\nRabbi Moïse Hadarsan.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0624(c)",
@@ -5539,6 +6272,24 @@
    ]
   },
   {
+   "id": "0629(a)",
+   "page": "page_0629",
+   "marker": "(a)",
+   "text": "Saint Jean Chrysostome ; Théodoret ; saint Basile ; Eusèbe ; saint Athanase ; Héracléote.",
+   "proposed": "Saint Jean Chrysostome ;\nThéodoret ;\nsaint Basile ;\nEusèbe ;\nsaint Athanase ;\nHéracléote.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0629(b)",
+   "page": "page_0629",
+   "marker": "(b)",
+   "text": "Saint Augustin ; saint Jérôme ; Théodoret ; saint Jean Chrysostome ; saint Ambroise. Voyez aussi Génébrard ; Vatable ; Flaminius.",
+   "proposed": "Saint Augustin ;\nsaint Jérôme ;\nThéodoret ;\nsaint Jean Chrysostome ;\nsaint Ambroise. Voyez aussi Génébrard ;\nVatable ;\nFlaminius.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0629(e)",
    "page": "page_0629",
    "marker": "(e)",
@@ -5553,6 +6304,15 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0630(c)",
+   "page": "page_0630",
+   "marker": "(c)",
+   "text": "Saint Basile ; Euthyme ; Cassiodore.",
+   "proposed": "Saint Basile ;\nEuthyme ;\nCassiodore.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0632(a)",
@@ -5570,6 +6330,33 @@
    ]
   },
   {
+   "id": "0633(a)",
+   "page": "page_0633",
+   "marker": "(a)",
+   "text": "Saint Athanase, sur le titre du Psaume 82 ; Vatable ; Piscator ; Ferrand.",
+   "proposed": "Saint Athanase, sur le titre du Psaume 82 ;\nVatable ;\nPiscator ;\nFerrand.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0635(a)",
+   "page": "page_0635",
+   "marker": "(a)",
+   "text": "Saint Jean Chrysostome ; Théodoret ; Eusèbe.",
+   "proposed": "Saint Jean Chrysostome ;\nThéodoret ;\nEusèbe.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0636(d)",
+   "page": "page_0636",
+   "marker": "(d)",
+   "text": "Ainsi l'entendent saint Jérôme ; Théodoret ; Estius.",
+   "proposed": "Ainsi l'entendent saint Jérôme ;\nThéodoret ;\nEstius.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0637(a)",
    "page": "page_0637",
    "marker": "(a)",
@@ -5579,19 +6366,6 @@
    "flags": [
     "hebrew",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0638(a)",
-   "page": "page_0638",
-   "marker": "(a)",
-   "text": "Deutéronome 33:22. Psaumes 10:10. 18:9. 11:10. 96:3.",
-   "proposed": "Deutéronome 33:22. Psaumes 10:10. 18:9. 11:10. 96:3.",
-   "why": [
-    "Psaumes 10:10 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
    ]
   },
   {
@@ -5610,11 +6384,31 @@
    ]
   },
   {
+   "id": "0638(e)",
+   "page": "page_0638",
+   "marker": "(e)",
+   "text": "Saint Athanase ; saint Augustin ; saint Jean Chrysostome.",
+   "proposed": "Saint Athanase ;\nsaint Augustin ;\nsaint Jean Chrysostome.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0639(a)",
+   "page": "page_0639",
+   "marker": "(a)",
+   "text": "Saint Jérôme ; Saint Augustin.",
+   "proposed": "Saint Jérôme ; saint Augustin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0639(k)",
    "page": "page_0639",
    "marker": "(k)",
-   "text": "Psaumes 3:4. 11:2. 16:10. 13:26. 29:5. 30:6, 24, 31. 36:28. 51:11. 78:2. 85:9. 97:10. etc.",
-   "proposed": "Psaumes 3:4 ; 11:2 ; 16:10 ; 13:26 ; 29:5 ; 30:6, 24, 31 ; 36:28 ; 51:11 ; 78:2 ; 85:9 ; 97:10, etc.",
+   "text": "Psaumes 4:4. 11:2. 16:10. 13:26. 29:5. 30:6, 24, 31. 36:28. 51:11. 78:2. 85:9. 97:10. etc.",
+   "proposed": "Psaumes 4:4 ; 11:2 ; 16:10 ; 13:26 ; 29:5 ; 30:6, 24, 31 ; 36:28 ; 51:11 ; 78:2 ; 85:9 ; 97:10, etc.",
    "why": [
     "abbreviations written out",
     "Psaumes 13:26 does not exist in the Vulgate",
@@ -5626,6 +6420,15 @@
     "reference-not-in-vulgate",
     "reference-not-in-vulgate"
    ]
+  },
+  {
+   "id": "0641(g)",
+   "page": "page_0641",
+   "marker": "(g)",
+   "text": "Voyez Vatable ; Pagnin ; Munster ; Geier ; Castalion.",
+   "proposed": "Voyez Vatable ;\nPagnin ;\nMunster ;\nGeier ;\nCastalion.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0646(b)",
@@ -5655,6 +6458,15 @@
    ]
   },
   {
+   "id": "0647(c)",
+   "page": "page_0647",
+   "marker": "(c)",
+   "text": "Saint Clément de Rome, Aux Corinthiens, Lettre 1, chapitre 35 ; saint Augustin, sur ce passage, et sur le Psaume 100 ; saint Éloi, Homélie 8. Statuam te. Saint Jérôme, dans sa version : Propónam te ante oculos tuos.",
+   "proposed": "Saint Clément de Rome, Aux Corinthiens, Lettre 1, chapitre 35 ;\nsaint Augustin, sur ce passage, et sur le Psaume 100 ;\nsaint Éloi, Homélie 8. Statuam te. Saint Jérôme, dans sa version : Propónam te ante oculos tuos.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0647(d)",
    "page": "page_0647",
    "marker": "(d)",
@@ -5679,35 +6491,49 @@
    ]
   },
   {
-   "id": "0648(c)",
-   "page": "page_0648",
-   "marker": "(c)",
-   "text": "Celui qui sacrifice pour me louer, me glorifie, et je ferai voir le salut du Seigneur à celui qui marche d'une manière réglée… Καὶ ὅταν ἴδῃς ἐν Δίψα αὐτῷ, τὸ σωτήριόν με. 70. Καὶ ἐκεῖ ὁδὸς ᾗ δείξω ἀυτῷ, etc.",
-   "proposed": "Celui qui sacrifice pour me louer, me glorifie, et je ferai voir le salut du Seigneur à celui qui marche d'une manière réglée… Καὶ ὅταν ἴδῃς ἐν Δίψα αὐτῷ, τὸ σωτήριόν με. Les Septante : Καὶ ἐκεῖ ὁδὸς ᾗ δείξω ἀυτῷ, etc.",
+   "id": "0650(b)",
+   "page": "page_0650",
+   "marker": "(b)",
+   "text": "Voyez Moris, sur le dernier verset de ce psaume.",
+   "proposed": "Voyez de Muis, sur le dernier verset de ce psaume.",
    "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek checked against the Septuagint, Psaumes 49:23",
     "abbreviations written out"
    ],
+   "flags": []
+  },
+  {
+   "id": "0651(a)",
+   "page": "page_0651",
+   "marker": "(a)",
+   "text": "Eusèbe ; saint Athanase ; saint Augustin ; Théodoret, etc. ; saint Jérôme, Contre Jovinien, livre 2.",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nsaint Augustin ;\nThéodoret, etc. ;\nsaint Jérôme, Contre Jovinien, livre 2.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0654(c)",
+   "page": "page_0654",
+   "marker": "(c)",
+   "text": "Gemara de Jérusalem ; Grotius, sur ce passage ; Selden, Des Sanhédrins, livre 3, chapitre 9.",
+   "proposed": "Gemara de Jérusalem ;\nGrotius, sur ce passage ;\nSelden, Des Sanhédrins, livre 3, chapitre 9.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0655(c)",
+   "page": "page_0655",
+   "marker": "(c)",
+   "text": "Voyez saint Jean Chrysostome ; Eusèbe ; saint Athanase ; et Flaminius.",
+   "proposed": "Voyez saint Jean Chrysostome ;\nEusèbe ;\nsaint Athanase ;\net Flaminius.",
+   "why": [],
    "flags": []
   },
   {
    "id": "0656(a)",
    "page": "page_0656",
    "marker": "(a)",
-   "text": "Origène, Japins. V. G. sur l'Épître aux Romains, chapitre 6, 5, et livres 4 et 7 Contre Celse, Homélie 8 sur le Lévitique et Traité 9 sur saint Matthieu ;\nSaint Athanase, sur ce passage ;\nEusèbe ;\nSaint Hilaire, sur le Psaume 58 et sur le Psaume 118:8, 175 ;\nSaint Ambroise, Apologie de David, chapitre 11 ;\nSaint Jean Chrysostome, sur ce Psaume ;\nSaint Jérôme ;\nThéodoret ;\nSaint Augustin, sur ce passage, et Ouvrage inachevé contre Julien, livre 4, chapitre 129, et livre 5, chapitre 11, et livre 4, chapitres 126, 128 et 133, et livre 6, chapitre 12, etc.",
-   "proposed": "Origène, Japins. V. G. sur l'Épître aux Romains, chapitre 6, verset 5, et livres 4 et 7 Contre Celse, Homélie 8 sur le Lévitique et Traité 9 sur saint Matthieu ;\nSaint Athanase, sur ce passage ;\nEusèbe ;\nSaint Hilaire, sur le Psaume 58 et sur le Psaume 118:8, 175 ;\nSaint Ambroise, Apologie de David, chapitre 11 ;\nSaint Jean Chrysostome, sur ce Psaume ;\nSaint Jérôme ;\nThéodoret ;\nSaint Augustin, sur ce passage, et Ouvrage inachevé contre Julien, livre 4, chapitre 129, et livre 5, chapitre 11, et livre 4, chapitres 126, 128 et 133, et livre 6, chapitre 12, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0656(d)",
-   "page": "page_0656",
-   "marker": "(d)",
-   "text": "Muis in hunc loc.",
-   "proposed": "De Muis, sur ce passage.",
+   "text": "Origène, Japins. V. G. sur l'Épître aux Romains, chapitre 6, verset 5, et livres 4 et 7 Contre Celse, Homélie 8 sur le Lévitique et Traité 9 sur saint Matthieu ; saint Athanase, sur ce passage ; Eusèbe ; saint Hilaire, sur le Psaume 58 et sur le Psaume 118:8, 175 ; saint Ambroise, Apologie de David, chapitre 11 ; saint Jean Chrysostome, sur ce Psaume ; saint Jérôme ; Théodoret ; saint Augustin, sur ce passage, et Ouvrage inachevé contre Julien, livre 4, chapitre 129, et livre 5, chapitre 11, et livre 4, chapitres 126, 128 et 133, et livre 6, chapitre 12, etc.",
+   "proposed": "Origène, Japins. Voyez Grotius sur l'Épître aux Romains, chapitre 6, verset 5, et livres 4 et 7 Contre Celse, Homélie 8 sur le Lévitique et Traité 9 sur saint Matthieu ;\nsaint Athanase, sur ce passage ;\nEusèbe ;\nsaint Hilaire, sur le Psaume 58 et sur le Psaume 118:8, 175 ;\nsaint Ambroise, Apologie de David, chapitre 11 ;\nsaint Jean Chrysostome, sur ce Psaume ;\nsaint Jérôme ;\nThéodoret ;\nsaint Augustin, sur ce passage, et Ouvrage inachevé contre Julien, livre 4, chapitre 129, et livre 5, chapitre 11, et livre 4, chapitres 126, 128 et 133, et livre 6, chapitre 12, etc.",
    "why": [
     "abbreviations written out"
    ],
@@ -5738,30 +6564,34 @@
    ]
   },
   {
-   "id": "0661(c)",
-   "page": "page_0661",
-   "marker": "(c)",
-   "text": "Aug. hic. Cùm quisque sibi irascitur, sibi displicet, sine dono Spiritûs sancti non est ; quamvis veniam deprecetur.",
-   "proposed": "Saint Augustin, sur ce passage : Cùm quisque sibi irascitur, sibi displicet, sine dono Spiritûs sancti non est ; quamvis veniam deprecetur.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0659(a)",
+   "page": "page_0659",
+   "marker": "(a)",
+   "text": "Théodoret ; saint Jean Chrysostome ; saint Ambroise.",
+   "proposed": "Théodoret ;\nsaint Jean Chrysostome ;\nsaint Ambroise.",
+   "why": [],
    "flags": []
   },
   {
    "id": "0662(a)",
    "page": "page_0662",
    "marker": "(a)",
-   "text": "Luc 23:25. _Qui potestatem habent super eos, benefici vocantur_. 1 Rois 2:8. _Ut sedeant cum Principibus_ Hebr. [UNCERTAIN HEBREW] _y Vide_ 1 Paralipomènes 29:6. et 2 Paralipomènes 35:8. Job 12:21. 12:28. Psaumes 46:10. et _passim_.",
-   "proposed": "Luc 23:25. _Qui potestatem habent super eos, benefici vocantur_. 1 Rois 2:8. _Ut sedeant cum Principibus_ Hebr. [UNCERTAIN HEBREW] _y Vide_ 1 Paralipomènes 29:6. et 2 Paralipomènes 35:8. Job 12:21. 12:28. Psaumes 46:10. et _passim_.",
-   "why": [
-    "the Latin next to the call is Luc 22:25, not Luc 23:25, 1 Rois 2:8, 1 Paralipomènes 29:6, 2 Paralipomènes 35:8, Job 12:21, Psaumes 46:10"
-   ],
+   "text": "Luc 22:25. _Qui potestatem habent super eos, benefici vocantur_. 1 Rois 2:8. _Ut sedeant cum Principibus_ Hebr. [UNCERTAIN HEBREW] _y Vide_ 1 Paralipomènes 29:6. et 2 Paralipomènes 35:8. Job 12:21. 12:28. Psaumes 46:10. et _passim_.",
+   "proposed": "Luc 22:25. _Qui potestatem habent super eos, benefici vocantur_. 1 Rois 2:8. _Ut sedeant cum Principibus_ Hebr. [UNCERTAIN HEBREW] _y Vide_ 1 Paralipomènes 29:6. et 2 Paralipomènes 35:8. Job 12:21. 12:28. Psaumes 46:10. et _passim_.",
+   "why": [],
    "flags": [
     "uncertain",
-    "scan-unread",
-    "reference-mismatch"
+    "scan-unread"
    ]
+  },
+  {
+   "id": "0662(d)",
+   "page": "page_0662",
+   "marker": "(d)",
+   "text": "Saint Augustin ; Cassiodore ; saint Jérôme.",
+   "proposed": "Saint Augustin ;\nCassiodore ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0662(e)",
@@ -5819,41 +6649,28 @@
    "id": "0668(a)",
    "page": "page_0668",
    "marker": "(a)",
-   "text": "Ainsi l'entendent Théodoret ; Saint Jean Chrysostome ; Eusèbe ; Euthyme. Il est bon de remarquer que l'Homélie de saint Chrysostome sur le Psaume LI. est la même que le Commentaire d'Eusèbe sur le même Psaume.",
-   "proposed": "Ainsi l'entendent Théodoret ; Saint Jean Chrysostome ; Eusèbe ; Euthyme. Il est bon de remarquer que l'Homélie de saint Jean Chrysostome sur le Psaume 51 est la même que le Commentaire d'Eusèbe sur le même Psaume.",
+   "text": "Ainsi l'entendent Théodoret ; Saint Jean Chrysostome ; Eusèbe ; Euthyme. Il est bon de remarquer que l'Homélie de saint Jean Chrysostome sur le Psaume 51 est la même que le Commentaire d'Eusèbe sur le même Psaume.",
+   "proposed": "Ainsi l'entendent Théodoret ; saint Jean Chrysostome ; Eusèbe ; Euthyme. Il est bon de remarquer que l'Homélie de saint Jean Chrysostome sur le Psaume 51 est la même que le Commentaire d'Eusèbe sur le même Psaume.",
    "why": [
     "abbreviations written out"
    ],
    "flags": []
   },
   {
-   "id": "0668(b)",
+   "id": "0668(c)",
    "page": "page_0668",
-   "marker": "(b)",
-   "text": "In édition de Sixte V et Polyglotte de Complute. Ainsi lisent les manuscrits royaux 769 et Memm. -2, dans Ferrand ; et plusieurs manuscrits, dans saint Augustin.",
-   "proposed": "Dans l'édition de Sixte V et la Polyglotte de Complute. Ainsi lisent les manuscrits royaux 769 et Memm. 2, dans Ferrand ; et plusieurs manuscrits, dans saint Augustin.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0670(c)",
-   "page": "page_0670",
    "marker": "(c)",
-   "text": "Ainsi lisent Codices royaux et de Colbert, dans Ferrand.",
-   "proposed": "Ainsi lisent les manuscrits royaux et de Colbert, dans Ferrand.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "4 Rois 18:19.",
+   "proposed": "2 Rois 18:19.",
+   "why": [],
    "flags": []
   },
   {
    "id": "0673(c)",
    "page": "page_0673",
    "marker": "(c)",
-   "text": "Aquil. ἐπὶ χορείᾳ. Th. ὑπὲρ χορείας. Pour la danse. Sym. Διὰ χόρον. Par le chœur. מחלת, signifie une danse. Psaumes 30:12. 149:3. Juges 21:13. Cantis. VI. 12.",
-   "proposed": "Aquil. ἐπὶ χορείᾳ. Th. ὑπὲρ χορείας. Pour la danse. Sym. Διὰ χόρον. Par le chœur. מחלת, signifie une danse. Psaumes 30:12. 149:3. Juges 21:13. Cantis. VI. 12.",
+   "text": "Aquil. ἐπὶ χορείᾳ. Th. ὑπὲρ χορείας. Pour la danse. Sym. Διὰ χόρον. Par le chœur. מחלת, signifie une danse. Psaumes 29:12. 149:3. Juges 21:13. Cantis. VI. 12.",
+   "proposed": "Aquil. ἐπὶ χορείᾳ. Th. ὑπὲρ χορείας. Pour la danse. Sym. Διὰ χόρον. Par le chœur. מחלת, signifie une danse. Psaumes 29:12. 149:3. Juges 21:13. Cantis. VI. 12.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary",
@@ -5863,6 +6680,17 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0673(d)",
+   "page": "page_0673",
+   "marker": "(d)",
+   "text": "Ita Codices manuscrits royaux 138, 122 ; de Colbert 158. Item édition de Sixte V, etc.",
+   "proposed": "Ainsi lisent les manuscrits royaux 138, 122 ; de Colbert 158. De même l'édition de Sixte V, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0674(c)",
@@ -5950,13 +6778,31 @@
    "id": "0678(d)",
    "page": "page_0678",
    "marker": "(d)",
-   "text": "Job 15:13. Psaumes 108:11. Isaïe 1:7. 21:5. Jérémie 51:51*. Lamentations 5:2. Ézéchiel 7:21. etc. Cicero. lib. I. de Offic. _Hostis apud majores nostros dicebatur, quem nunc peregrinum dicimus._ Le mot latin _hostis_, vient du grec οσις, quilibet, un inconnu.",
-   "proposed": "Job 15:13. Psaumes 108:11. Isaïe 1:7. 21:5. Jérémie 51:51*. Lamentations 5:2. Ézéchiel 7:21. etc. Cicero. lib. I. de Offic. _Hostis apud majores nostros dicebatur, quem nunc peregrinum dicimus._ Le mot latin _hostis_, vient du grec οσις, quilibet, un inconnu.",
+   "text": "Job 15:19. Psaumes 108:11. Isaïe 1:7. 21:5. Jérémie 51:51. Lamentations 5:2. Ézéchiel 7:21. etc. Cicero. lib. I. de Offic. _Hostis apud majores nostros dicebatur, quem nunc peregrinum dicimus._ Le mot latin _hostis_, vient du grec οσις, quilibet, un inconnu.",
+   "proposed": "Job 15:19. Psaumes 108:11. Isaïe 1:7. 21:5. Jérémie 51:51. Lamentations 5:2. Ézéchiel 7:21. etc. Cicero. lib. I. de Offic. _Hostis apud majores nostros dicebatur, quem nunc peregrinum dicimus._ Le mot latin _hostis_, vient du grec οσις, quilibet, un inconnu.",
    "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0680(b)",
+   "page": "page_0680",
+   "marker": "(b)",
+   "text": "Isaïe 53:7. Voyez Psaumes 39:9 ; Jean 10:17-18 ; saint Jérôme, sur ce passage.",
+   "proposed": "Isaïe 53:7. Voyez Psaumes 39:9 ;\nJean 10:17-18 ;\nsaint Jérôme, sur ce passage.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0680(e)",
+   "page": "page_0680",
+   "marker": "(e)",
+   "text": "Ainsi le Chaldéen ; Génébrard ; Flaminius.",
+   "proposed": "Ainsi le Chaldéen ;\nGénébrard ;\nFlaminius.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0683(a)",
@@ -6060,10 +6906,10 @@
    "page": "page_0690",
    "marker": "(a)",
    "text": "Saint Hilaire et antiqua Psalteria. _Et Dominus exaudivit me._ Ainsi lisent les Septante. Καὶ ὁ Κύριος εἰσήκουσε με. Ainsi l'entendent saint Athanase, etc.",
-   "proposed": "Saint Hilaire et les anciens Psautiers : Et Dominus exaudivit me. Ainsi lisent les Septante : Καὶ ὁ Κύριος εἰσήκουσε με. Ainsi l'entendent saint Athanase, etc.",
+   "proposed": "Saint Hilaire et antiqua Psalteria. _Et Dominus exaudivit me._ Ainsi lisent les Septante. Καὶ ὁ Κύριος εἰσήκουσε με. Ainsi l'entendent saint Athanase, etc.",
    "why": [
     "Greek checked against the Septuagint, Genèse 24:37",
-    "abbreviations written out"
+    "written out, but the italics changed: Saint Hilaire et les anciens Psautiers : Et Dominus exaudivit me. Ainsi lisent les Septante : Καὶ ὁ Κύριος εἰσήκουσε με. Ainsi l'entendent saint Athanase, etc."
    ],
    "flags": [
     "expand-changed-italics"
@@ -6087,8 +6933,8 @@
    "id": "0691(e)",
    "page": "page_0691",
    "marker": "(e)",
-   "text": "עמרי עזרני כי ברבוי Le Syriaque a lû, ברוגזיא",
-   "proposed": "עמרי עזרני כי ברבוי Le Syriaque a lû, ברוגזיא",
+   "text": "עמרי עזרני כי ברבוי Le Syriaque a lu, ברוגזיא",
+   "proposed": "עמרי עזרני כי ברבוי Le Syriaque a lu, ברוגזיא",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
    ],
@@ -6141,6 +6987,24 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0695(a)",
+   "page": "page_0695",
+   "marker": "(a)",
+   "text": "Voyez Job 21:21 ; Isaïe 65:20 ; Psaumes 101:25.",
+   "proposed": "Voyez Job 21:21 ;\nIsaïe 65:20 ;\nPsaumes 101:25.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0696(d)",
+   "page": "page_0696",
+   "marker": "(d)",
+   "text": "Saint Hilaire ; saint Augustin ; saint Jérôme.",
+   "proposed": "Saint Hilaire ;\nsaint Augustin ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0697(a)",
@@ -6235,6 +7099,24 @@
    ]
   },
   {
+   "id": "0703(c)",
+   "page": "page_0703",
+   "marker": "(c)",
+   "text": "Saint Augustin ; Eusèbe ; Mar. ; Piscator.",
+   "proposed": "Saint Augustin ;\nEusèbe ;\nMar. ;\nPiscator.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0704(c)",
+   "page": "page_0704",
+   "marker": "(c)",
+   "text": "Théodoret ; saint Augustin ; saint Athanase.",
+   "proposed": "Théodoret ;\nsaint Augustin ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0704(e)",
    "page": "page_0704",
    "marker": "(e)",
@@ -6244,6 +7126,24 @@
    "flags": [
     "ambiguous-name"
    ]
+  },
+  {
+   "id": "0705(a)",
+   "page": "page_0705",
+   "marker": "(a)",
+   "text": "Les rabbins ; Rabbi Salomon ; Junius ; Vatable ; Grotius ; Geier ; Piscator.",
+   "proposed": "Les rabbins ;\nRabbi Salomon ;\nJunius ;\nVatable ;\nGrotius ;\nGeier ;\nPiscator.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0705(b)",
+   "page": "page_0705",
+   "marker": "(b)",
+   "text": "Saint Basile ; Théodoret ; Euthyme.",
+   "proposed": "Saint Basile ;\nThéodoret ;\nEuthyme.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0706(h)",
@@ -6261,14 +7161,12 @@
    ]
   },
   {
-   "id": "0707(c)",
+   "id": "0707(d)",
    "page": "page_0707",
-   "marker": "(c)",
-   "text": "Chald. Kimchi, Ainsu aliit.",
-   "proposed": "Le Chaldéen ; Kimhi ; Ainsworth ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "marker": "(d)",
+   "text": "_Le Grec ; Ainsworth._ Voyez patres Eustsplos _2 Rois 6:6 ; Exode 9:15 ; Psaumes 17:17._",
+   "proposed": "_Le Grec ;\nAinsworth._ Voyez patres Eustsplos _2 Rois 6:6 ;\nExode 9:15 ;\nPsaumes 17:17._",
+   "why": [],
    "flags": []
   },
   {
@@ -6288,6 +7186,15 @@
    ]
   },
   {
+   "id": "0710(a)",
+   "page": "page_0710",
+   "marker": "(a)",
+   "text": "Voyez Eusèbe ; saint Athanase ; saint Augustin ; saint Hilaire.",
+   "proposed": "Voyez Eusèbe ;\nsaint Athanase ;\nsaint Augustin ;\nsaint Hilaire.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0710(d)",
    "page": "page_0710",
    "marker": "(d)",
@@ -6300,6 +7207,17 @@
     "hebrew",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0713(a)",
+   "page": "page_0713",
+   "marker": "(a)",
+   "text": "Théodoret ; Euthyme ; Nicéphore ; Ferrand. Voyez aussi Rabbi Salomon.",
+   "proposed": "Théodoret ;\nEuthyme ;\nNicéphore ;\nFerrand. Voyez aussi Rabbi Salomon.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0716(c)",
@@ -6341,6 +7259,35 @@
    ]
   },
   {
+   "id": "0718(c)",
+   "page": "page_0718",
+   "marker": "(c)",
+   "text": "Eusèbe ; saint Athanase ; saint Hilaire.",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nsaint Hilaire.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0719(c)",
+   "page": "page_0719",
+   "marker": "(c)",
+   "text": "De Muis ; Vatable, d'après le Chaldéen ; et Kimhi,",
+   "proposed": "De Muis ;\nVatable, d'après le Chaldéen ;\net Kimhi,",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0720(a)",
+   "page": "page_0720",
+   "marker": "(a)",
+   "text": "Ecclésiaste 7:7. Voyez aussi Exode 22:6. Si egressus ignis invenerit spinas, etc. Juges 9:14-15. Egrediatur ignis de Rhamno, et devoret cedros Libani Psaumes 117:12. Exarserunt sicut ignis in spinis.",
+   "proposed": "Ecclésiaste 7:7. Voyez aussi Exode 22:6. Si egressus ignis invenerit spinas, etc. Juges 9:14-15. Egrediatur ignis de Rhamno, et devoret cedros Libani ; Psaumes 117:12. Exarserunt sicut ignis in spinis.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0720(e)",
    "page": "page_0720",
    "marker": "(e)",
@@ -6376,6 +7323,17 @@
    ]
   },
   {
+   "id": "0724(a)",
+   "page": "page_0724",
+   "marker": "(a)",
+   "text": "Saint Augustin ; saint Jérôme ; Théodoret.",
+   "proposed": "Saint Augustin ;\nsaint Jérôme ;\nThéodoret.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0724(e)",
    "page": "page_0724",
    "marker": "(e)",
@@ -6388,6 +7346,33 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0728(c)",
+   "page": "page_0728",
+   "marker": "(c)",
+   "text": "Eusèbe ; saint Hilaire ; saint Athanase.",
+   "proposed": "Eusèbe ;\nsaint Hilaire ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0728(e)",
+   "page": "page_0728",
+   "marker": "(e)",
+   "text": "Psaumes 2:2, selon l'Hébreu ; Psaumes 58:4 ; Psaumes 58:10-11 ; et Psaumes 11:5.",
+   "proposed": "Psaumes 2:2, selon l'Hébreu ;\nPsaumes 58:4 ;\nPsaumes 58:10-11 ;\net Psaumes 11:5.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0729(c)",
+   "page": "page_0729",
+   "marker": "(c)",
+   "text": "Saint Augustin ; Arnobe ; saint Hilaire ; saint Jérôme. In Com-",
+   "proposed": "Saint Augustin ;\nArnobe ;\nsaint Hilaire ;\nsaint Jérôme. In Com-",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0730(a)",
@@ -6415,6 +7400,15 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0731(b)",
+   "page": "page_0731",
+   "marker": "(b)",
+   "text": "Saint Augustin ; saint Jérôme ; Eusèbe.",
+   "proposed": "Saint Augustin ;\nsaint Jérôme ;\nEusèbe.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0731(f)",
@@ -6560,14 +7554,21 @@
    ]
   },
   {
-   "id": "0745(c)",
-   "page": "page_0745",
-   "marker": "(c)",
-   "text": "Voyez 1 Maccabées 4:15 ; 1 Maccabées 5:68 ; 1 Maccabées 13:43 ; 1 Maccabées 14:7 ; 1 Maccabées 16:9-10 ; 2 Maccabées 12:6 et suivants. Voyez aussi Josèphe, Antiquités judaïques, livre 13 ; et livre 4 des Maccabées.",
-   "proposed": "Voyez 1 Machabées 4:15 ; 1 Machabées 5:68 ; 1 Machabées 13:43 ; 1 Machabées 14:7 ; 1 Machabées 16:9-10 ; 2 Machabées 12:6 et suivants. Voyez aussi Josèphe, Antiquités judaïques, livre 13 ; et livre 4 des Machabées.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0744(h)",
+   "page": "page_0744",
+   "marker": "(h)",
+   "text": "Diodore de Sicile ; Arrien ; Justin.",
+   "proposed": "Diodore de Sicile ;\nArrien ;\nJustin.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0748(b)",
+   "page": "page_0748",
+   "marker": "(b)",
+   "text": "Eusèbe ; saint Augustin ; Théodoret ; saint Jérôme.",
+   "proposed": "Eusèbe ;\nsaint Augustin ;\nThéodoret ;\nsaint Jérôme.",
+   "why": [],
    "flags": []
   },
   {
@@ -6585,6 +7586,17 @@
    "flags": [
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0751(c)",
+   "page": "page_0751",
+   "marker": "(c)",
+   "text": "2 Rois 2:17.",
+   "proposed": "2 Rois 2:17.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
    ]
   },
   {
@@ -6642,6 +7654,15 @@
    ]
   },
   {
+   "id": "0755(d)",
+   "page": "page_0755",
+   "marker": "(d)",
+   "text": "Théodoret ; Euthyme ; Eusèbe d'Héraclée.",
+   "proposed": "Théodoret ;\nEuthyme ;\nEusèbe d'Héraclée.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0755(f)",
    "page": "page_0755",
    "marker": "(f)",
@@ -6666,6 +7687,15 @@
    ]
   },
   {
+   "id": "0757(a)",
+   "page": "page_0757",
+   "marker": "(a)",
+   "text": "Voyez saint Basile ; Théodoret ; Euthyme ; Eusèbe.",
+   "proposed": "Voyez saint Basile ;\nThéodoret ;\nEuthyme ;\nEusèbe.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0757(e)",
    "page": "page_0757",
    "marker": "(e)",
@@ -6681,15 +7711,24 @@
    ]
   },
   {
+   "id": "0760(b)",
+   "page": "page_0760",
+   "marker": "(b)",
+   "text": "Ainsi lisent Codices Regii et Colbert plerique, dans Ferrand, sur ce passage. De même Eusèbe ; saint Athanase ; Théodoret ; Euthyme ; et Corderii Paraphrastes.",
+   "proposed": "Ainsi lisent Codices Regii et Colbert plerique, dans Ferrand, sur ce passage. De même Eusèbe ;\nsaint Athanase ;\nThéodoret ;\nEuthyme ;\net Corderii Paraphrastes.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0762(a)",
    "page": "page_0762",
    "marker": "(a)",
    "text": "_saint Hilaire ; Saint Augustin. Sitivit tibi anima mea._ Ita _Édition romaine. Ἐδίψησέ σοι._ D'autres. _Sitivit te._ Ita _Édition de Complute. Ἐδίψησά σοι._ 70. Et omnes Interpretes dans saint Jérôme, ad Suniam. _Sit'vit tibi._",
-   "proposed": "Saint Hilaire ; Saint Augustin : Sitivit tibi anima mea. Ainsi lit l'Édition romaine : Ἐδίψησέ σοι. D'autres : Sitivit te. Ainsi lit l'Édition de Complute : Ἐδίψησά σοι. Les Septante et omnes Interpretes dans saint Jérôme, ad Suniam : Sitivit tibi.",
+   "proposed": "_saint Hilaire ; Saint Augustin. Sitivit tibi anima mea._ Ita _Édition romaine. Ἐδίψησέ σοι._ D'autres. _Sitivit te._ Ita _Édition de Complute. Ἐδίψησά σοι._ 70. Et omnes Interpretes dans saint Jérôme, ad Suniam. _Sit'vit tibi._",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
+    "written out, but the italics changed: Saint Hilaire ; Saint Augustin : Sitivit tibi anima mea. Ainsi lit l'Édition romaine : Ἐδίψησέ σοι. D'autres : Sitivit te. Ainsi lit l'Édition de Complute : Ἐδίψησά σοι. Les Septante et omnes Interpre"
    ],
    "flags": [
     "expand-changed-italics"
@@ -6741,6 +7780,35 @@
    ]
   },
   {
+   "id": "0767(b)",
+   "page": "page_0767",
+   "marker": "(b)",
+   "text": "Isaïe 13:1 et suivants ; Isaïe 14:22 ; Isaïe 21:9 ; Jérémie 25:12.",
+   "proposed": "Isaïe 13:1 et suivants ; 14:22 ; 21:9 ; Jérémie 25:12.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0767(c)",
+   "page": "page_0767",
+   "marker": "(c)",
+   "text": "Eusèbe ; saint Jérôme ; saint Augustin.",
+   "proposed": "Eusèbe ;\nsaint Jérôme ;\nsaint Augustin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0768(c)",
+   "page": "page_0768",
+   "marker": "(c)",
+   "text": "Eusèbe ; saint Hilaire ; saint Augustin ; saint Jérôme.",
+   "proposed": "Eusèbe ;\nsaint Hilaire ;\nsaint Augustin ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0768(d)",
    "page": "page_0768",
    "marker": "(d)",
@@ -6750,6 +7818,33 @@
    "flags": [
     "ambiguous-name"
    ]
+  },
+  {
+   "id": "0768(f)",
+   "page": "page_0768",
+   "marker": "(f)",
+   "text": "le Chaldéen ; Kimhi ; Aben Ezra ; Rabbi Salomon ; Génébrard ; Gaier ; Ménochius ; Tirin.",
+   "proposed": "le Chaldéen ;\nKimhi ;\nAben Ezra ;\nRabbi Salomon ;\nGénébrard ;\nGaier ;\nMénochius ;\nTirin.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0769(a)",
+   "page": "page_0769",
+   "marker": "(a)",
+   "text": "Voyez de Muis ; Geier ; Nicolas de Lyre.",
+   "proposed": "Voyez de Muis ;\nGeier ;\nNicolas de Lyre.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0770(f)",
+   "page": "page_0770",
+   "marker": "(f)",
+   "text": "Eusèbe ; saint Athanase ; saint Hilaire : Qui, pro, _Quia._",
+   "proposed": "Eusèbe ;\nsaint Athanase ;\nsaint Hilaire : Qui, pro, _Quia._",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0771(a)",
@@ -6772,10 +7867,10 @@
    "page": "page_0772",
    "marker": "(b)",
    "text": "Les Septante : Ἐξεζήτησαν ἀδικίας, ἐξέλιπον ἐξερευνῶντες ἐξερευνήσεις. _Ra_ Théodoret. _Eusèbe ; Euthyme ; Saint Augustin : Defecerunt scrutantes scrutationes. Cassiodore ; le Psautier romain et le Psautier de Milan : Scrutantes scrutinium. Édition romaine.",
-   "proposed": "Les Septante : Ἐξεζήτησαν ἀδικίας, ἐξέλιπον ἐξερευνῶντες ἐξερευνήσεις. Théodoret ; Eusèbe ; Euthyme ; Saint Augustin : Defecerunt scrutantes scrutationes. Cassiodore ; le Psautier romain et le Psautier de Milan : Scrutantes scrutinium. Édition romaine.",
+   "proposed": "Les Septante : Ἐξεζήτησαν ἀδικίας, ἐξέλιπον ἐξερευνῶντες ἐξερευνήσεις. _Ra_ Théodoret. _Eusèbe ; Euthyme ; Saint Augustin : Defecerunt scrutantes scrutationes. Cassiodore ; le Psautier romain et le Psautier de Milan : Scrutantes scrutinium. Édition romaine.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
+    "written out, but the italics changed: Les Septante : Ἐξεζήτησαν ἀδικίας, ἐξέλιπον ἐξερευνῶντες ἐξερευνήσεις. Théodoret ; Eusèbe ; Euthyme ; Saint Augustin : Defecerunt scrutantes scrutationes. Cassiodore ; le Psautier romain et le Psautie"
    ],
    "flags": [
     "expand-changed-italics"
@@ -6809,8 +7904,8 @@
    "id": "0773(a)",
    "page": "page_0773",
    "marker": "(a)",
-   "text": "le Psautier gallican ; Saint Hilaire ; dans le manuscrit royal 769. Item manuscrit royal 158, 222 ; Colbert 1, 158, 1339 ; Memin. 2, dans Ferrand.",
-   "proposed": "le Psautier gallican ; Saint Hilaire, dans le manuscrit royal 769. De même les manuscrits royaux 158, 222 ; Colbert 1, 158, 1339 ; Memm. 2, dans Ferrand.",
+   "text": "le Psautier gallican ; Saint Hilaire, dans le manuscrit royal 769. De même les manuscrits royaux 158, 222 ; Colbert 1, 158, 1339 ; Memm. 2, dans Ferrand.",
+   "proposed": "le Psautier gallican ;\nsaint Hilaire, dans le manuscrit royal 769. De même les manuscrits royaux 158, 222 ;\nColbert 1, 158, 1339 ;\nMemm. 2, dans Ferrand.",
    "why": [
     "abbreviations written out"
    ],
@@ -6845,29 +7940,6 @@
    ]
   },
   {
-   "id": "0774(d)",
-   "page": "page_0774",
-   "marker": "(d)",
-   "text": "Sup. ℣. 3.",
-   "proposed": "Supra, verset 3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0774(f)",
-   "page": "page_0774",
-   "marker": "(f)",
-   "text": "Édition de Complute : καὶ ἠσθένησαν ἐπ' αὐτὸς αἱ γλῶσσαι αὐτῶν. Ainsi l'entend saint Augustin. Infirmata sunt super ipsos.",
-   "proposed": "Édition de Complute : καὶ ἠσθένησαν ἐπ' αὐτὸς αἱ γλῶσσαι αὐτῶν. Ainsi l'entend saint Augustin : Infirmata sunt super ipsos.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0778(a)",
    "page": "page_0778",
    "marker": "(a)",
@@ -6886,10 +7958,10 @@
    "page": "page_0779",
    "marker": "(b)",
    "text": "Saint Hilaire ; Saint Augustin. _Impietates nostras tu propitiabis._ Ainsi lisent les Septante, édition romaine. Τὰς ἀσεβείας ἡμῶν σὺ ἱλάσῃ.",
-   "proposed": "Saint Hilaire ; Saint Augustin : Impietates nostras tu propitiabis. Ainsi lisent les Septante, édition romaine : Τὰς ἀσεβείας ἡμῶν σὺ ἱλάσῃ.",
+   "proposed": "Saint Hilaire ; Saint Augustin. _Impietates nostras tu propitiabis._ Ainsi lisent les Septante, édition romaine. Τὰς ἀσεβείας ἡμῶν σὺ ἱλάσῃ.",
    "why": [
     "Greek checked against the Septuagint, Psaumes 64:4",
-    "abbreviations written out"
+    "written out, but the italics changed: Saint Hilaire ; Saint Augustin : Impietates nostras tu propitiabis. Ainsi lisent les Septante, édition romaine : Τὰς ἀσεβείας ἡμῶν σὺ ἱλάσῃ."
    ],
    "flags": [
     "expand-changed-italics"
@@ -6964,6 +8036,24 @@
    ]
   },
   {
+   "id": "0784(c)",
+   "page": "page_0784",
+   "marker": "(c)",
+   "text": "Saint Hilaire ; saint Augustin ; saint Thomas d'Aquin.",
+   "proposed": "Saint Hilaire ;\nsaint Augustin ;\nsaint Thomas d'Aquin.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0784(d)",
+   "page": "page_0784",
+   "marker": "(d)",
+   "text": "Théodoret et la paraphrase grecque, Corderius, dans la Chaîne ; Euthyme ; Génébrard.",
+   "proposed": "Théodoret et la paraphrase grecque, Corderius, dans la Chaîne ;\nEuthyme ;\nGénébrard.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0784(g)",
    "page": "page_0784",
    "marker": "(g)",
@@ -6979,8 +8069,8 @@
    "id": "0784(h)",
    "page": "page_0784",
    "marker": "(h)",
-   "text": "Saint Augustin ; Saint Hilaire ; antiqua Psalteria. Ita est præparatio tua. Les Septante, édition romaine et édition de Complute : Ὅτι οὕτως ἡ ἑτοιμασία. In aliquibus Græcis : Ἑτοιμασία σὺ. Quod probat saint Jérôme, À Sunia et Fretela, et Théodoret. ☉ l'Arabe et l'Éthiopien.",
-   "proposed": "Saint Augustin ; Saint Hilaire ; les anciens Psautiers : Ita est præparatio tua. Les Septante, édition romaine et édition de Complute : Ὅτι οὕτως ἡ ἑτοιμασία. In aliquibus Græcis : Ἑτοιμασία σὺ. Quod probat saint Jérôme, À Sunia et Fretela ; et Théodoret. ☉ l'Arabe et l'Éthiopien.",
+   "text": "Saint Augustin ; Saint Hilaire ; les anciens Psautiers : Ita est præparatio tua. Les Septante, édition romaine et édition de Complute : Ὅτι οὕτως ἡ ἑτοιμασία. In aliquibus Græcis : Ἑτοιμασία σὺ. Quod probat saint Jérôme, À Sunia et Fretela ; et Théodoret. ☉ l'Arabe et l'Éthiopien.",
+   "proposed": "Saint Augustin ; saint Hilaire ; les anciens Psautiers : Ita est præparatio tua. Les Septante, édition romaine et édition de Complute : Ὅτι οὕτως ἡ ἑτοιμασία. In aliquibus Græcis : Ἑτοιμασία σὺ. Quod probat saint Jérôme, À Sunia et Fretela ; et Théodoret. ☉ l'Arabe et l'Éthiopien.",
    "why": [
     "Greek checked against the Septuagint, Psaumes 64:10",
     "Greek spelling checked against a Greek dictionary",
@@ -7013,6 +8103,15 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0785(b)",
+   "page": "page_0785",
+   "marker": "(b)",
+   "text": "Lévitique 26:26 ; Psaumes 104:16 ; Ézéchiel 4:16.",
+   "proposed": "Lévitique 26:26 ;\nPsaumes 104:16 ;\nÉzéchiel 4:16.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0785(f)",
@@ -7057,6 +8156,24 @@
    ]
   },
   {
+   "id": "0789(a)",
+   "page": "page_0789",
+   "marker": "(a)",
+   "text": "Voyez saint Augustin ; saint Jérôme ; Cassiodore ; Héracléote ; Eusèbe ; saint Athanase.",
+   "proposed": "Voyez saint Augustin ;\nsaint Jérôme ;\nCassiodore ;\nHéracléote ;\nEusèbe ;\nsaint Athanase.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0790(b)",
+   "page": "page_0790",
+   "marker": "(b)",
+   "text": "Voyez Théodoret ; saint Jean Chrysostome ; Kimhi ; Génébrard ; Flaminius.",
+   "proposed": "Voyez Théodoret ;\nsaint Jean Chrysostome ;\nKimhi ;\nGénébrard ;\nFlaminius.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0791(c)",
    "page": "page_0791",
    "marker": "(c)",
@@ -7096,11 +8213,22 @@
    ]
   },
   {
+   "id": "0793(b)",
+   "page": "page_0793",
+   "marker": "(b)",
+   "text": "Eusèbe ; Saint Athanase ; Saint Augustin ; Saint Hilaire ; etc.",
+   "proposed": "Eusèbe ; saint Athanase ; saint Augustin ; saint Hilaire ; etc.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0795(b)",
    "page": "page_0795",
    "marker": "(b)",
-   "text": "ובמצודתם הביאנו נתת מועקה במתנינו veloppoit les villes assiégées, de filets, ou de palissades, de même à peu près qu'on enveloppe le gibier dans des toiles. Voyez Ploton, _lib._ 3. _De Legib._ et Hérodote. Ces Traducteurs ont lû במצודים au lieu de במצודה.",
-   "proposed": "ובמצודתם הביאנו נתת מועקה במתנינו veloppoit les villes assiégées, de filets, ou de palissades, de même à peu près qu'on enveloppe le gibier dans des toiles. Voyez Ploton, _lib._ 3. _De Legib._ et Hérodote. Ces Traducteurs ont lû במצודים au lieu de במצודה.",
+   "text": "ובמצודתם הביאנו נתת מועקה במתנינו enveloppait les villes assiégées, de filets, ou de palissades, de même à peu près qu'on enveloppe le gibier dans des toiles. Voyez Ploton, _lib._ 3. _De Legib._ et Hérodote. Ces Traducteurs ont lu במצודים au lieu de במצודה.",
+   "proposed": "ובמצודתם הביאנו נתת מועקה במתנינו enveloppait les villes assiégées, de filets, ou de palissades, de même à peu près qu'on enveloppe le gibier dans des toiles. Voyez Ploton, _lib._ 3. _De Legib._ et Hérodote. Ces Traducteurs ont lu במצודים au lieu de במצודה.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
@@ -7141,41 +8269,6 @@
    ]
   },
   {
-   "id": "0798(b)",
-   "page": "page_0798",
-   "marker": "(b)",
-   "text": "Ita Euthym. Syr. Kimchi, Pagn. Piscat. Ferrand. Castal. Tir. Vide Psaumes 9:28*. 14:3. 65:16. Cantique des cantiques 4:11.",
-   "proposed": "Ainsi l'entendent Euthyme ; le Syriaque ; Kimhi ; Pagnin ; Piscator ; Ferrand ; Castalion ; Tirin. Voyez Psaumes 9:28* ; 14:3 ; 65:16 ; Cantique des cantiques 4:11.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0801(c)",
-   "page": "page_0801",
-   "marker": "(c)",
-   "text": "Comparez les Psaumes CXV. 13. et XCVII. 10.",
-   "proposed": "Comparez les Psaumes CXV. 13. et XCVII. 10.",
-   "why": [
-    "Psaumes 97:10 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
-  },
-  {
-   "id": "0802(a)",
-   "page": "page_0802",
-   "marker": "(a)",
-   "text": "Muis ad finem Comment. in hunc Psalm.",
-   "proposed": "De Muis, à la fin du Commentaire sur ce Psaume.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0803(a)",
    "page": "page_0803",
    "marker": "(a)",
@@ -7186,6 +8279,17 @@
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0803(b)",
+   "page": "page_0803",
+   "marker": "(b)",
+   "text": "Voyez saint Hilaire ; Eusèbe ; Saint Athanase ; etc.",
+   "proposed": "Voyez saint Hilaire ; Eusèbe ; saint Athanase ; etc.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0805(a)",
@@ -7244,11 +8348,20 @@
    "id": "0811(c)",
    "page": "page_0811",
    "marker": "(c)",
-   "text": "Ba saint Hilaire ;\nSaint Athanase ;\nEusèbe ;\nSaint Augustin.",
-   "proposed": "Saint Hilaire ;\nSaint Athanase ;\nEusèbe ;\nSaint Augustin.",
+   "text": "Saint Hilaire ; saint Athanase ; Eusèbe ; saint Augustin.",
+   "proposed": "Saint Hilaire ;\nsaint Athanase ;\nEusèbe ;\nsaint Augustin.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
+   "flags": []
+  },
+  {
+   "id": "0816(h)",
+   "page": "page_0816",
+   "marker": "(h)",
+   "text": "Voyez Théodoret ; saint Augustin ; saint Jérôme ; Origène, Homélie 27 sur Luc ; saint Ambroise, Du paradis, livre 3 (chapitre 3), et De Tobie, chapitre 5 ; Eusèbe, sur ce passage.",
+   "proposed": "Voyez Théodoret ;\nsaint Augustin ;\nsaint Jérôme ;\nOrigène, Homélie 27 sur Luc ;\nsaint Ambroise, Du paradis, livre 3 (chapitre 3), et De Tobie, chapitre 5 ;\nEusèbe, sur ce passage.",
+   "why": [],
    "flags": []
   },
   {
@@ -7315,9 +8428,9 @@
    "page": "page_0820",
    "marker": "(d)",
    "text": "Saint Hilaire. _Ascendit in altum, cepit captivitatem, dedit dona hominibus._ Mais dans son Commentaire il lit : _Accepit dona_, etc. Saint Augustin approuve l'une et l'autre Leçon.",
-   "proposed": "Saint Hilaire : Ascendit in altum, cepit captivitatem, dedit dona hominibus. Mais dans son Commentaire il lit : Accepit dona, etc. Saint Augustin approuve l'une et l'autre Leçon.",
+   "proposed": "Saint Hilaire. _Ascendit in altum, cepit captivitatem, dedit dona hominibus._ Mais dans son Commentaire il lit : _Accepit dona_, etc. Saint Augustin approuve l'une et l'autre Leçon.",
    "why": [
-    "abbreviations written out"
+    "written out, but the italics changed: Saint Hilaire : Ascendit in altum, cepit captivitatem, dedit dona hominibus. Mais dans son Commentaire il lit : Accepit dona, etc. Saint Augustin approuve l'une et l'autre Leçon."
    ],
    "flags": [
     "expand-changed-italics"
@@ -7327,8 +8440,8 @@
    "id": "0820(e)",
    "page": "page_0820",
    "marker": "(e)",
-   "text": "Voyez Genèse 38:6, 21 ; 34:4 ; Exode 21:10 ; 25:2 ; 32:20 ; Juges 14:3 ; Osée 14:2 ; 3 Rois 3:24 ; 17:10. Voyez Geier ; Rivet ; Pococke, Miscellanea, chapitre 2.",
-   "proposed": "Voyez Genèse 38:6, 21 ; 34:4 ; Exode 21:10 ; 25:2 ; 32:20 ; Juges 14:3 ; Osée 14:2 ; 3 Rois 3:24 ; 17:10. Voyez Geier ; Rivet ; Pococke, Miscellanea, chapitre 2.",
+   "text": "Voyez Genèse 38:6, 21 ; 34:4 ; Exode 21:10 ; 25:2 ; 32:20 ; Juges 14:3 ; Osée 14:3 ; 3 Rois 3:24 ; 17:10. Voyez Geier ; Rivet ; Pococke, Miscellanea, chapitre 2.",
+   "proposed": "Voyez Genèse 38:6, 21 ; 34:4 ; Exode 21:10 ; 25:2 ; 32:20 ; Juges 14:3 ; Osée 14:3 ; 3 Rois 3:24 ; 17:10. Voyez Geier ; Rivet ; Pococke, Miscellanea, chapitre 2.",
    "why": [],
    "flags": [
     "ambiguous-name"
@@ -7433,6 +8546,28 @@
    ]
   },
   {
+   "id": "0830(c)",
+   "page": "page_0830",
+   "marker": "(c)",
+   "text": "3 Rois 10:28-29.",
+   "proposed": "3 Rois 10:28-29.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0830(d)",
+   "page": "page_0830",
+   "marker": "(d)",
+   "text": "3 Rois 4:21 ; 2 Paralipomènes 9:14, 26.",
+   "proposed": "3 Rois 4:21 ; 2 Paralipomènes 9:14, 26.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
    "id": "0833(a)",
    "page": "page_0833",
    "marker": "(a)",
@@ -7477,15 +8612,23 @@
    ]
   },
   {
-   "id": "0838(a)",
-   "page": "page_0838",
-   "marker": "(a)",
-   "text": "_Saint Augustin :_ Exprobrationem. Les Septante : _Ovedio-piv._ te impudence contre les reproches qu'on m'a fait, d'adorer un Crucifié. Saint Augustin. Symmaque : _ἐκάλυψεν αἰσχύνης τὸ πρόσωπον αὐτοῦ._ Operuit ignominia faciem ejus. Et au lieu de, Operuit confusio faciem _meam._ Saint Augustin lit : Operuit irreverentia. Et saint Hilaire : Operuit reverentia. Le Pseautier Romain : Irreverentia. Je me suis revêtu d'une sain-",
-   "proposed": "_Saint Augustin :_ Exprobrationem. Les Septante : _Ovedio-piv._ te impudence contre les reproches qu'on m'a fait, d'adorer un Crucifié. Saint Augustin. Symmaque : _ἐκάλυψεν αἰσχύνης τὸ πρόσωπον αὐτοῦ._ Operuit ignominia faciem ejus. Et au lieu de, Operuit confusio faciem _meam._ Saint Augustin lit : Operuit irreverentia. Et saint Hilaire : Operuit reverentia. Le Psautier romain : Irreverentia. Je me suis revêtu d'une sain-",
+   "id": "0837(f)",
+   "page": "page_0837",
+   "marker": "(f)",
+   "text": "Saint Athanase ; Eusèbe ; saint Hilaire ; saint Augustin.",
+   "proposed": "Saint Athanase ;\nEusèbe ;\nsaint Hilaire ;\nsaint Augustin.",
    "why": [
-    "Greek checked against the Septuagint, Job 15:27",
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
+   "flags": []
+  },
+  {
+   "id": "0839(c)",
+   "page": "page_0839",
+   "marker": "(c)",
+   "text": "Voyez saint Hilaire ; Eusèbe ; saint Augustin ; saint Jérôme ; saint Athanase.",
+   "proposed": "Voyez saint Hilaire ;\nEusèbe ;\nsaint Augustin ;\nsaint Jérôme ;\nsaint Athanase.",
+   "why": [],
    "flags": []
   },
   {
@@ -7527,6 +8670,24 @@
     "hebrew",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0844(b)",
+   "page": "page_0844",
+   "marker": "(b)",
+   "text": "Saint Hilaire ; Eusèbe ; saint Augustin ; saint Jérôme.",
+   "proposed": "Saint Hilaire ;\nEusèbe ;\nsaint Augustin ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0845(c)",
+   "page": "page_0845",
+   "marker": "(c)",
+   "text": "Matthieu 27:48 ; Marc 15:36 ; Luc 23:36 ; Jean 19:29.",
+   "proposed": "Matthieu 27:48 ;\nMarc 15:36 ;\nLuc 23:36 ;\nJean 19:29.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0847(d)",
@@ -7574,26 +8735,12 @@
    ]
   },
   {
-   "id": "0852(a)",
-   "page": "page_0852",
-   "marker": "(a)",
-   "text": "Saint Hilaire ; Saint Augustin ; le Psautier romain ; le Psautier de Saint-Germain ; plut. Ἡ σωτηρία συ, ὁ Θεὸς, ἀντελάβετο με. Le Psautier de Chartres : Salus vultûs tui, Deus, suscepit me. It à les Septante, édition romaine.",
-   "proposed": "Saint Hilaire ; saint Augustin ; le Psautier romain ; le Psautier de Saint-Germain ; plusieurs : Ἡ σωτηρία συ, ὁ Θεὸς, ἀντελάβετο με. Le Psautier de Chartres : Salus vultûs tui, Deus, suscepit me. Ainsi lisent les Septante, édition romaine.",
-   "why": [
-    "Greek checked against the Septuagint, Psaumes 68:30",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0854(b)",
-   "page": "page_0854",
-   "marker": "(b)",
-   "text": "Ainsi lisent le Psautier romain, Gallican ou de Chartres. Reg. 222. Colbert. 1. et 1339. et Memm. 2. dans Ferrand.",
-   "proposed": "Ainsi lisent le Psautier romain, gallican ou de Chartres. Manuscrit royal 222, Colbert 1 et 1339, et Memm. 2, dans Ferrand.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0851(c)",
+   "page": "page_0851",
+   "marker": "(c)",
+   "text": "Exode 30:12-13 ; Nombres 1:2 et suivants ; Nombres 26:2.",
+   "proposed": "Exode 30:12-13 ; Nombres 1:2 et suivants ; 26:2.",
+   "why": [],
    "flags": []
   },
   {
@@ -7679,6 +8826,15 @@
    ]
   },
   {
+   "id": "0863(c)",
+   "page": "page_0863",
+   "marker": "(c)",
+   "text": "Comparez 2 Rois 11:16 ; Job 10:14 ; Psaumes 55:7.",
+   "proposed": "Comparez 2 Rois 11:16 ;\nJob 10:14 ;\nPsaumes 55:7.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0863(d)",
    "page": "page_0863",
    "marker": "(d)",
@@ -7704,6 +8860,15 @@
    ]
   },
   {
+   "id": "0869(e)",
+   "page": "page_0869",
+   "marker": "(e)",
+   "text": "le Chaldéen ; Rabbi Salomon ; Ezra ; Kimhi ; Obadias ; Midras ; Thillim. Voyez aussi Théodoret, sur ce passage.",
+   "proposed": "le Chaldéen ;\nRabbi Salomon ;\nEzra ;\nKimhi ;\nObadias ;\nMidras ;\nThillim. Voyez aussi Théodoret, sur ce passage.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0874(c)",
    "page": "page_0874",
    "marker": "(c)",
@@ -7716,6 +8881,24 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0877(a)",
+   "page": "page_0877",
+   "marker": "(a)",
+   "text": "Genèse 15:18 ; Nombres 34:3-4 et suivants ; Deutéronome 11:24 ; Exode 23:31.",
+   "proposed": "Genèse 15:18 ;\nNombres 34:3-4 et suivants ;\nDeutéronome 11:24 ;\nExode 23:31.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0880(a)",
+   "page": "page_0880",
+   "marker": "(a)",
+   "text": "Genèse 10:5 ; Isaïe 66:19 ; Daniel 11:18.",
+   "proposed": "Genèse 10:5 ;\nIsaïe 66:19 ;\nDaniel 11:18.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0880(d)",
@@ -7733,11 +8916,20 @@
    ]
   },
   {
+   "id": "0881(a)",
+   "page": "page_0881",
+   "marker": "(a)",
+   "text": "Théodoret ; saint Augustin ; saint Jérôme.",
+   "proposed": "Théodoret ;\nsaint Augustin ;\nsaint Jérôme.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0881(b)",
    "page": "page_0881",
    "marker": "(b)",
-   "text": "אביון משוע ועני ואין עזר לו. Les Septante : E'giptior. Liberavit. Ainsi l'entendent saint Athanase ; Eusèbe | saint Augustin. Symmaque : Ἐξελεῖται πτωχὸν. Il délivrera le pauvre qui criera.",
-   "proposed": "אביון משוע ועני ואין עזר לו. Les Septante : E'giptior. Liberavit. Ainsi l'entendent saint Athanase ; Eusèbe ; saint Augustin. Symmaque : Ἐξελεῖται πτωχὸν. Il délivrera le pauvre qui criera.",
+   "text": "אביון משוע ועני ואין עזר לו. Les Septante : Égiptior. Liberavit. Ainsi l'entendent saint Athanase ; Eusèbe ; Saint Augustin. Symmaque : Ἐξελεῖται πτωχὸν. Il délivrera le pauvre qui criera.",
+   "proposed": "אביון משוע ועני ואין עזר לו. Les Septante : Égiptior. Liberavit. Ainsi l'entendent saint Athanase ; Eusèbe ; saint Augustin. Symmaque : Ἐξελεῖται πτωχὸν. Il délivrera le pauvre qui criera.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Psalms 72:12",
     "Greek spelling checked against a Greek dictionary",
@@ -7746,43 +8938,21 @@
    "flags": []
   },
   {
-   "id": "0885(c)",
+   "id": "0885(a)",
    "page": "page_0885",
-   "marker": "(c)",
-   "text": "שמו לעולם ינון שמו לפני שמש ינון שמו. Les Septante, édition romaine : ἔσται τὸ ὄνομα αὐτοῦ εὐλογημένον εἰς τὰς αἰῶνας, πρὸ τοῦ ἡλίκ διαμένει τὸ ὄνομα αὐτοῦ. Sed l'édition de Complute : ἔσται τὸ ὄνομα αὐτοῦ εὐλογημένον… πρὸ τοῦ ἡλίκ διαμένει… etc. Ils ont ינון, au lieu de ינון",
-   "proposed": "שמו לעולם ינון שמו לפני שמש ינון שמו. Les Septante, édition romaine : ἔσται τὸ ὄνομα αὐτοῦ εὐλογημένον εἰς τὰς αἰῶνας, πρὸ τοῦ ἡλίκ διαμένει τὸ ὄνομα αὐτοῦ. Mais l'édition de Complute : ἔσται τὸ ὄνομα αὐτοῦ εὐλογημένον… πρὸ τοῦ ἡλίκ διαμένει… etc. Ils ont ינון, au lieu de ינון",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Psalms 72:17",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek checked against the Septuagint, Psaumes 71:17",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
+   "marker": "(a)",
+   "text": "Voyez Eusèbe ; saint Jérôme ; saint Athanase.",
+   "proposed": "Voyez Eusèbe ;\nsaint Jérôme ;\nsaint Athanase.",
+   "why": [],
    "flags": []
   },
   {
    "id": "0888(a)",
    "page": "page_0888",
    "marker": "(a)",
-   "text": "Ainsi l'entendent les Septante, édition romaine de Sixte V. Saint Jérôme, dans son Commentaire ;\nSaint Augustin ;\nSaint Ambroise ;\nBède ;\nCassiodore.",
-   "proposed": "Ainsi l'entendent les Septante, édition romaine de Sixte V ;\nsaint Jérôme, dans son Commentaire ;\nSaint Augustin ;\nSaint Ambroise ;\nBède ;\nCassiodore.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0888(c)",
-   "page": "page_0888",
-   "marker": "(c)",
-   "text": "Th. et v. édition Αἰνέσεις Δαυὶδ υἱοῦ Ἰεσσαί. ἐξέλιπον Δαυὶδ υἱοῦ Ἰεσσαί.",
-   "proposed": "Théodotion et la cinquième édition : Αἰνέσεις Δαυὶδ υἱοῦ Ἰεσσαί. ἐξέλιπον Δαυὶδ υἱοῦ Ἰεσσαί.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
+   "text": "Ainsi l'entendent les Septante, édition romaine de Sixte V ; saint Jérôme, dans son Commentaire ; saint Augustin ; saint Ambroise ; Bède ; Cassiodore.",
+   "proposed": "Ainsi l'entendent les Septante, édition romaine de Sixte V ;\nsaint Jérôme, dans son Commentaire ;\nsaint Augustin ;\nsaint Ambroise ;\nBède ;\nCassiodore.",
+   "why": [],
    "flags": []
   }
  ]

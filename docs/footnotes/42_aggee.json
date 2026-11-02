@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 84,
-  "changed": 24,
+  "changed": 10,
   "flags": {
    "uncertain": 2,
    "scan-unread": 4,
@@ -10,17 +10,6 @@
   }
  },
  "notes": [
-  {
-   "id": "0004(a)",
-   "page": "page_0004",
-   "marker": "(a)",
-   "text": "Vide 1 Esdras 4:5. et Usser. ad an. 3470.",
-   "proposed": "Voyez 1 Esdras 4:5 ; et Ussérius, à l'an 3470.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
   {
    "id": "0004(b)",
    "page": "page_0004",
@@ -63,28 +52,6 @@
    ]
   },
   {
-   "id": "0005(c)",
-   "page": "page_0005",
-   "marker": "(c)",
-   "text": "Vide Vat. hic. et Ierom. Præfat. in Agg.",
-   "proposed": "Voyez Vatable, sur ce passage ; et saint Jérôme, Préface sur Aggée.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0005(d)",
-   "page": "page_0005",
-   "marker": "(d)",
-   "text": "Vide Usser. ad an. M. 3485.",
-   "proposed": "Voyez Ussérius, à l'an du monde 3485.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0009(a)",
    "page": "page_0009",
    "marker": "(a)",
@@ -104,22 +71,11 @@
    "id": "0011(b)",
    "page": "page_0011",
    "marker": "(b)",
-   "text": "70. Ετι απας, _i.q._ ετι μια, _etc. Ludov. Tigur. T.tt ij._",
-   "proposed": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. Tigur. T.tt ij._",
+   "text": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. Tigur. T.tt ij._",
+   "proposed": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. la Bible de Zurich T.tt ij._",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Ετι -> Ἔτι, απας -> ἅπας",
-    "Greek spelling checked against a Greek dictionary: ετι -> ἔτι, μια -> μία",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0012(f)",
-   "page": "page_0012",
-   "marker": "(f)",
-   "text": "Tull. lib. 14. Ep. 2. Ad uxorem, et filiam.",
-   "proposed": "Cicéron, livre 14, lettre 2, À son épouse et à sa fille.",
-   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
     "abbreviations written out"
    ],
    "flags": []
@@ -128,55 +84,9 @@
    "id": "0013(a)",
    "page": "page_0013",
    "marker": "(a)",
-   "text": "Vide Psaumes 49:10. Cyrill. in hunc loc. Grot. Sanƈt.",
-   "proposed": "Voyez Psaumes 49:10 ; saint Cyrille, sur ce passage ; Grotius ; Sanctius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0014(d)",
-   "page": "page_0014",
-   "marker": "(d)",
-   "text": "Vide Ierom. hic. et Chrysost. t. 5. Dèmonstr. quòd Christus sit Deus, et homil. 34. in 1. Cor. Vide Kimchi, et alios Rabb. apud Menasse Ben-Israel. lib. de termino vitæ.",
-   "proposed": "Voyez saint Jérôme, sur ce passage ; et saint Jean Chrysostome, tome 5, Démonstration que le Christ est Dieu, et homélie 34 sur 1 Corinthiens. Voyez Kimhi, et d'autres rabbins dans Menasseh Ben-Israël, livre De termino vitæ.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0014(f)",
-   "page": "page_0014",
-   "marker": "(f)",
-   "text": "Vide Joseph. Antiq. lib. XV. c. 14. et de Bello. lib. VI. c. 6. in Lat.",
-   "proposed": "Voyez Josèphe, Antiquités judaïques, livre 15, chapitre 14 ; et Guerre des Juifs, livre 6, chapitre 6, en latin.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0014(g)",
-   "page": "page_0014",
-   "marker": "(g)",
-   "text": "Vide Usser. ad an. M. 3988.",
-   "proposed": "Voyez Ussérius, à l'an du monde 3988.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0014(h)",
-   "page": "page_0014",
-   "marker": "(h)",
-   "text": "Vide si lubet, Tract. Middot. et Not. Constant. Imperat. et Munst. hic.",
-   "proposed": "Voyez au besoin, Traité Middot ; et notes de Constantin l'Empereur ; et Munster, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Voyez Psaumes 49:10 ; Saint Cyrille, sur ce passage ; Grotius ; Sanctius.",
+   "proposed": "Voyez Psaumes 49:10 ;\nSaint Cyrille, sur ce passage ;\nGrotius ;\nSanctius.",
+   "why": [],
    "flags": []
   },
   {
@@ -194,58 +104,12 @@
    ]
   },
   {
-   "id": "0015(a)",
-   "page": "page_0015",
-   "marker": "(a)",
-   "text": "Joseph. Antiq. lib. x. c. 11. Disp. 4. c. 68. Salian. t. 6. Annal. an. 4051",
-   "proposed": "Josèphe, Antiquités judaïques, livre 10, chapitre 11, Dispute 4, chapitre 68 ; Salian, tome 6, Annales, an 4051",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0015(b)",
-   "page": "page_0015",
-   "marker": "(b)",
-   "text": "Idem lib. 7. de Bello. c. 10. Spond. an. 4032. Sandt. hic. Alii recentes, nec panci, nec contemnendi.",
-   "proposed": "Le même, livre 7 de la Guerre des Juifs, chapitre 10 ; Sponde, an 4032 ; Sanctius, sur ce passage ; et d'autres récents, ni peu nombreux, ni méprisables.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0015(c)",
-   "page": "page_0015",
-   "marker": "(c)",
-   "text": "Vide Villalpand. in Ezech. t. 2. p.2. lib. 5.",
-   "proposed": "Voyez Villalpand, sur Ézéchiel, tome 2, partie 2, livre 5.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0019(d)",
-   "page": "page_0019",
-   "marker": "(d)",
-   "text": "Aristophan. Pace et Scholiast.",
-   "proposed": "Aristophane, La Paix, et le Scholiaste.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0020(d)",
+   "id": "0020(c)",
    "page": "page_0020",
-   "marker": "(d)",
-   "text": "Chald. An adhuc in area ? 70. Kær.",
-   "proposed": "Le Chaldéen : An adhuc in area ? Les Septante : Kær.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "marker": "(c)",
+   "text": "Pagnin ; Arias Montanus ; Munster ; Piscator ; Vatable ; Ménochius.",
+   "proposed": "Pagnin ;\nArias Montanus ;\nMunster ;\nPiscator ;\nVatable ;\nMénochius.",
+   "why": [],
    "flags": []
   },
   {
@@ -262,35 +126,13 @@
    ]
   },
   {
-   "id": "0021(b)",
-   "page": "page_0021",
-   "marker": "(b)",
-   "text": "Plin. lib. XVIII. cap 7. _In Ægypto hordeum sexto à satu mense ; frumenta septimo metuntur._",
-   "proposed": "Pline, livre 18, chapitre 7. _In Ægypto hordeum sexto à satu mense ; frumenta septimo metuntur._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0021(d)",
-   "page": "page_0021",
-   "marker": "(d)",
-   "text": "Vide Ieron. ad Amos 4:7. et 1 Rois 12:17.",
-   "proposed": "Voyez saint Jérôme, sur Amos 4:7 ; et 1 Rois 12:17.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0022(b)",
+   "id": "0022(a)",
    "page": "page_0022",
-   "marker": "(b)",
-   "text": "Ezech. XXXVIII. XXXIX.",
-   "proposed": "Ézéchiel 38 ; 39.",
+   "marker": "(a)",
+   "text": "Voyez des expressions à peu près semblables. Aggée 2:7 ; Psaumes 17:8 ; Isaïe 24:19-20 ; et Jérémie 49:21 ; Ézéchiel 38:19-20 etc.",
+   "proposed": "Voyez des expressions à peu près semblables. Aggée 2:7 ;\nPsaumes 17:8 ;\nIsaïe 24:19-20 ;\net Jérémie 49:21 ;\nÉzéchiel 38:19-20 etc.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -298,22 +140,18 @@
    "id": "0022(c)",
    "page": "page_0022",
    "marker": "(c)",
-   "text": "Cyrill. Lir. Remig. Dionys. Vat. Riber.",
-   "proposed": "Saint Cyrille ; Nicolas de Lyre ; saint Remi ; Denys les Chartreux ; Vatable ; Ribera.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Saint Cyrille ; Nicolas de Lyre ; Saint Remi ; Denys les Chartreux ; Vatable ; Ribera.",
+   "proposed": "Saint Cyrille ;\nNicolas de Lyre ;\nSaint Remi ;\nDenys les Chartreux ;\nVatable ;\nRibera.",
+   "why": [],
    "flags": []
   },
   {
    "id": "0022(d)",
    "page": "page_0022",
    "marker": "(d)",
-   "text": "Ieronym. Hugo. Haimo etc.",
-   "proposed": "Saint Jérôme ; Hugues de Saint-Cher ; Haymon etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Saint Jérôme ; Hugues de Saint-Cher ; Haymon etc.",
+   "proposed": "Saint Jérôme ;\nHugues de Saint-Cher ;\nHaymon etc.",
+   "why": [],
    "flags": []
   }
  ]

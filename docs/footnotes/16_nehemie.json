@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 395,
-  "changed": 12,
+  "changed": 32,
   "flags": {
    "reference-not-in-vulgate": 2,
    "greek": 13,
@@ -16,15 +16,23 @@
    "id": "0010(c)",
    "page": "page_0010",
    "marker": "(c)",
-   "text": "Xénophon Cyropæd. lib. 8. Quint. Curt. lib. 5. c. 8. Plut lib. de Exilio.",
-   "proposed": "Xénophon, Cyropédie, livre 8 ; Quinte-Curce, livre 5, chapitre 8 ; Plutarque, De l'exil.",
+   "text": "Xénophon, Cyropédie, livre 8 ; Quinte-Curce, livre 5, chapitre 8 ; Plutarque, De l'exil.",
+   "proposed": "Xénophon, Cyropédie, livre 8 ;\nQuinte-Curce, livre 5, chapitre 8 ;\nPlutarque, De l'exil.",
    "why": [
-    "abbreviations written out",
     "Exode 49 does not exist in the Vulgate"
    ],
    "flags": [
     "reference-not-in-vulgate"
    ]
+  },
+  {
+   "id": "0011(b)",
+   "page": "page_0011",
+   "marker": "(b)",
+   "text": "Nicolas de Lyre ; Junius ; Tirin ; Estius.",
+   "proposed": "Nicolas de Lyre ;\nJunius ;\nTirin ;\nEstius.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0014(d)",
@@ -42,25 +50,96 @@
    "id": "0015(a)",
    "page": "page_0015",
    "marker": "(a)",
-   "text": "Athen. lib. x. cap. 6. pag. 424. 425. qua. χθιζον παρὰ τοῖς ἀρχαίοις δι ἰνοχόοι, ὅπως παῖδες,…-cest παρὰ Βασιλεῖ, διὰ τί προσωπόν σε σκυθρωπόν; ἦ παρὰ Βασιλεῖ δι ἰνοχόοι τῶν παίδων, τὴν ἀκρεστυλίαν ζῶσαν ἐκτέλλοντες τῷ ζῶν δημοσιλῶν τῶν θυσιῶν.",
+   "text": "Athen. lib. x. cap. 6. pag. 424. 425. qua. χθιζον παρὰ τοῖς ἀρχαίοις δῑ οἰνοχόοι, ὅπως παῖδες,…-cest παρὰ Βασιλεῖ, διὰ τί πρόσωπόν σε σκυθρωπόν; ἦ παρὰ Βασιλεῖ δῑ οἰνοχόοι τῶν παίδων, τὴν ἀκρεστυλίαν ζῶσαν ἐκτίλλοντες τῷ ζῶν δημοσιλῶν τῶν θυσιῶν.",
    "proposed": "Athen. lib. x. cap. 6. pag. 424. 425. qua. χθιζον παρὰ τοῖς ἀρχαίοις δῑ οἰνοχόοι, ὅπως παῖδες,…-cest παρὰ Βασιλεῖ, διὰ τί πρόσωπόν σε σκυθρωπόν; ἦ παρὰ Βασιλεῖ δῑ οἰνοχόοι τῶν παίδων, τὴν ἀκρεστυλίαν ζῶσαν ἐκτίλλοντες τῷ ζῶν δημοσιλῶν τῶν θυσιῶν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: δι -> δῑ, ἰνοχόοι -> οἰνοχόοι",
-    "Greek spelling checked against a Greek dictionary: δι -> δῑ, προσωπόν -> πρόσωπόν, ἰνοχόοι -> οἰνοχόοι, ἐκτέλλοντες -> ἐκτίλλοντες"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
   },
   {
-   "id": "0023(g)",
-   "page": "page_0023",
+   "id": "0015(f)",
+   "page": "page_0015",
+   "marker": "(f)",
+   "text": "Vatable ; Tirin ; Lyre ; Cornelius a Lapide ; Ménochius.",
+   "proposed": "Vatable ;\nTirin ;\nLyre ;\nCornelius a Lapide ;\nMénochius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0015(g)",
+   "page": "page_0015",
    "marker": "(g)",
-   "text": "Jerom. in Sophon.",
-   "proposed": "Saint Jérôme, sur Sophonie.",
+   "text": "Malvenda ; Junius ; Piscator.",
+   "proposed": "Malvenda ;\nJunius ;\nPiscator.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0018(c)",
+   "page": "page_0018",
+   "marker": "(c)",
+   "text": "Munster ; Junius ; Tremellius ; Vatable.",
+   "proposed": "Munster ;\nJunius ;\nTremellius ;\nVatable.",
    "why": [
-    "abbreviations written out"
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0018(e)",
+   "page": "page_0018",
+   "marker": "(e)",
+   "text": "Tirin ; Ménochius ; Grotius.",
+   "proposed": "Tirin ;\nMénochius ;\nGrotius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0022(a)",
+   "page": "page_0022",
+   "marker": "(a)",
+   "text": "Ainsi Tirin ; Cornelius a Lapide ; Estius.",
+   "proposed": "Ainsi Tirin ;\nCornelius a Lapide ;\nEstius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0022(e)",
+   "page": "page_0022",
+   "marker": "(e)",
+   "text": "Ainsi Junius ; Grotius ; Tirin ; Ménochius ; Cornelius a Lapide.",
+   "proposed": "Ainsi Junius ;\nGrotius ;\nTirin ;\nMénochius ;\nCornelius a Lapide.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0022(f)",
+   "page": "page_0022",
+   "marker": "(f)",
+   "text": "Vatable ; Ménochius ; Munster.",
+   "proposed": "Vatable ;\nMénochius ;\nMunster.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0023(b)",
+   "page": "page_0023",
+   "marker": "(b)",
+   "text": "Cornelius a Lapide ; Malvenda ; Sanctius.",
+   "proposed": "Cornelius a Lapide ;\nMalvenda ;\nSanctius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0023(d)",
+   "page": "page_0023",
+   "marker": "(d)",
+   "text": "Pagnin ; Arias Montanus ; Vatable ; Tirin.",
+   "proposed": "Pagnin ;\nArias Montanus ;\nVatable ;\nTirin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -68,24 +147,40 @@
    "id": "0023(i)",
    "page": "page_0023",
    "marker": "(i)",
-   "text": "Isai. XXII. II. Lacum fecistis inter duos muros, ad aquam Piscinæ veteris",
-   "proposed": "Isai. XXII. II. Lacum fecistis inter duos muros, ad aquam Piscinæ veteris",
+   "text": "Isai. XXII. II. Lacum fecistis inter duos muros, ad aquam Piscinæ veteris.",
+   "proposed": "Isai. XXII. II. Lacum fecistis inter duos muros, ad aquam Piscinæ veteris.",
    "why": [
-    "written out, but a number changed or added: Isaïe 22:11. Lacum fecistis inter duos muros, ad aquam Piscinæ veteris"
+    "written out, but a number changed or added: Isaïe 22:11. Lacum fecistis inter duos muros, ad aquam Piscinæ veteris."
    ],
    "flags": [
     "expand-changed-numbers"
    ]
   },
   {
+   "id": "0025(a)",
+   "page": "page_0025",
+   "marker": "(a)",
+   "text": "Cornelius a Lapide ; Sanctius ; Ménochius.",
+   "proposed": "Cornelius a Lapide ;\nSanctius ;\nMénochius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0025(b)",
+   "page": "page_0025",
+   "marker": "(b)",
+   "text": "Munster ; Kimhi ; Louis de Dieu ; Pagnin.",
+   "proposed": "Munster ;\nKimhi ;\nLouis de Dieu ;\nPagnin.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0028(a)",
    "page": "page_0028",
    "marker": "(a)",
-   "text": "70. Κιμβάλων τῆς συναλώσεως τῆς γαίης, μετ' ἀνδρῶν ἀοιδῶν Βαρώχ.",
+   "text": "70. Κυμβάλων τῆς συναλώσεως τῆς γαίης, μετ' ἀνδρῶν ἀοιδῶν Βαρώχ.",
    "proposed": "70. Κυμβάλων τῆς συναλώσεως τῆς γαίης, μετ' ἀνδρῶν ἀοιδῶν Βαρώχ.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Κιμβάλων -> Κυμβάλων"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -104,13 +199,23 @@
    ]
   },
   {
+   "id": "0034(b)",
+   "page": "page_0034",
+   "marker": "(b)",
+   "text": "Ita Sanctius ; Cornelius a Lapide ; Tirin.",
+   "proposed": "Ainsi Sanctius ;\nCornelius a Lapide ;\nTirin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0039(a)",
    "page": "page_0039",
    "marker": "(a)",
-   "text": "70. Complut. _Kmp_, κὴ ἴκασον ἀυτῶ iis τὸ ὕδωρ. Malv.",
+   "text": "70. Complut. _Kmp_, καὶ ἴκασον ἀυτῶ iis τὸ ὕδωρ. Malv.",
    "proposed": "70. Complut. _Kmp_, καὶ ἴκασον ἀυτῶ iis τὸ ὕδωρ. Malv.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: κὴ -> καὶ",
     "Greek spelling checked against a Greek dictionary",
     "Malachie 5 does not exist in the Vulgate"
    ],
@@ -121,11 +226,20 @@
    ]
   },
   {
+   "id": "0039(b)",
+   "page": "page_0039",
+   "marker": "(b)",
+   "text": "Junius ; Piscator ; Gall. Belg.",
+   "proposed": "Junius ;\nPiscator ;\nGall. Belg.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0039(d)",
    "page": "page_0039",
    "marker": "(d)",
-   "text": "Il a lû אחנו, au lieu de אנחנו",
-   "proposed": "Il a lû אחנו, au lieu de אנחנו",
+   "text": "Il a lu אחנו, au lieu de אנחנו",
+   "proposed": "Il a lu אחנו, au lieu de אנחנו",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
    ],
@@ -133,6 +247,15 @@
     "hebrew",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0040(f)",
+   "page": "page_0040",
+   "marker": "(f)",
+   "text": "Exode 22:25 ; Lévitique 25:36 ; Deutéronome 23:19.",
+   "proposed": "Exode 22:25 ;\nLévitique 25:36 ;\nDeutéronome 23:19.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0043(c)",
@@ -148,6 +271,15 @@
    ]
   },
   {
+   "id": "0043(e)",
+   "page": "page_0043",
+   "marker": "(e)",
+   "text": "Mens. ; Vatable ; Tig.",
+   "proposed": "Mens. ;\nVatable ;\nTig.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0047(a)",
    "page": "page_0047",
    "marker": "(a)",
@@ -159,6 +291,15 @@
     "hebrew",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0049(d)",
+   "page": "page_0049",
+   "marker": "(d)",
+   "text": "Junius ; Tremellius ; Piscator ; Version anglaise ; Version française ; Pierre Martyr.",
+   "proposed": "Junius ;\nTremellius ;\nPiscator ;\nVersion anglaise ;\nVersion française ;\nPierre Martyr.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0050(b)",
@@ -175,18 +316,63 @@
    ]
   },
   {
+   "id": "0050(c)",
+   "page": "page_0050",
+   "marker": "(c)",
+   "text": "Vatable ; Cornelius a Lapide ; Ménochius.",
+   "proposed": "Vatable ;\nCornelius a Lapide ;\nMénochius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0050(e)",
+   "page": "page_0050",
+   "marker": "(e)",
+   "text": "Grotius ; Junius ; Vatable.",
+   "proposed": "Grotius ;\nJunius ;\nVatable.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0050(f)",
+   "page": "page_0050",
+   "marker": "(f)",
+   "text": "Estius ; Malvenda ; Tirin ; Ménochius.",
+   "proposed": "Estius ;\nMalvenda ;\nTirin ;\nMénochius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0051(b)",
+   "page": "page_0051",
+   "marker": "(b)",
+   "text": "Vatable ; Pierre Martyr ; Osiander.",
+   "proposed": "Vatable ;\nPierre Martyr ;\nOsiander.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0051(c)",
    "page": "page_0051",
    "marker": "(c)",
-   "text": "Joseph Antiq. lib. XI. cap. 5. Επ' ἔτη β', ἐφ'ἡμέρας δ', ὡς τέτῳ τῷ χρόνῳ τοῖς Ἱεροσολύμοις ἀνακδομήθη τὸ τεῖχος. Ita Caiet. Hist. Scolast.",
+   "text": "Joseph Antiq. lib. XI. cap. 5. Επ' ἔτη β', ἐφ'ἡμέρας δ', ὡς τούτῳ τῷ χρόνῳ τοῖς Ἱεροσολύμοις ἀνακδομήθη τὸ τεῖχος. Ita Caiet. Hist. Scolast.",
    "proposed": "Joseph Antiq. lib. XI. cap. 5. Επ' ἔτη β', ἐφ'ἡμέρας δ', ὡς τούτῳ τῷ χρόνῳ τοῖς Ἱεροσολύμοις ἀνακδομήθη τὸ τεῖχος. Ita Caiet. Hist. Scolast.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: τέτῳ -> τούτῳ"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0054(b)",
+   "page": "page_0054",
+   "marker": "(b)",
+   "text": "Cornelius a Lapide ; Malvenda ; Osiander ; Piscator.",
+   "proposed": "Cornelius a Lapide ;\nMalvenda ;\nOsiander ;\nPiscator.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0060(a)",
@@ -203,41 +389,43 @@
    ]
   },
   {
-   "id": "0081(a)",
-   "page": "page_0081",
-   "marker": "(a)",
-   "text": "Vide Sup. IX 38.",
-   "proposed": "Voyez plus haut 9:38.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0061(d)",
+   "page": "page_0061",
+   "marker": "(d)",
+   "text": "Cornelius a Lapide ; Tirin ; Pierre Martyr ; Osiander.",
+   "proposed": "Cornelius a Lapide ;\nTirin ;\nPierre Martyr ;\nOsiander.",
+   "why": [],
    "flags": []
   },
   {
-   "id": "0081(c)",
-   "page": "page_0081",
-   "marker": "(c)",
-   "text": "Voyez Sup. VIII. 9 ; 1 Paralipomènes 19:10 ; 2 Paralipomènes 26:5. Ubi מבין significat. qui docet,",
-   "proposed": "Voyez plus haut 8:9 ; 1 Paralipomènes 19:10 ; 2 Paralipomènes 26:5. Ubi מבין significat. qui docet,",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
-   ],
+   "id": "0067(a)",
+   "page": "page_0067",
+   "marker": "(a)",
+   "text": "Torniel, à l'an 3610 ; Canus, De locis theologicis, livre 2, chapitre 11 ; Ribera, sur Aggée 1:14.",
+   "proposed": "Torniel, à l'an 3610 ;\nCanus, De locis theologicis, livre 2, chapitre 11 ;\nRibera, sur Aggée 1:14.",
+   "why": [],
    "flags": []
   },
   {
    "id": "0081(d)",
    "page": "page_0081",
    "marker": "(d)",
-   "text": "Πᾶς ὁ εἰδὼς καὶ συνιὼν ἐπιχόμ ἐπὶ τὰς ἀδελφὰς αὐτῶν. Vide Est.",
+   "text": "Πᾶς ὁ εἰδὼς καὶ συνιὼν ἐπιχόμ ἐπὶ τὰς ἀδελφὰς αὐτῶν. Voyez Estius.",
    "proposed": "Πᾶς ὁ εἰδὼς καὶ συνιὼν ἐπιχόμ ἐπὶ τὰς ἀδελφὰς αὐτῶν. Voyez Estius.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0081(e)",
+   "page": "page_0081",
+   "marker": "(e)",
+   "text": "Voyez Exode 23:10-11 ; Lévitique 25:2 et suivants ; Deutéronome 15:1.",
+   "proposed": "Voyez Exode 23:10-11 ;\nLévitique 25:2 et suivants ;\nDeutéronome 15:1.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0085(a)",
@@ -266,6 +454,24 @@
    ]
   },
   {
+   "id": "0087(d)",
+   "page": "page_0087",
+   "marker": "(d)",
+   "text": "Voyez sur 1 Paralipomènes 9:5. Et sur ce passage Cornelius a Lapide ; Tirin ; Malvenda.",
+   "proposed": "Voyez sur 1 Paralipomènes 9:5. Et sur ce passage Cornelius a Lapide ;\nTirin ;\nMalvenda.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0091(a)",
+   "page": "page_0091",
+   "marker": "(a)",
+   "text": "Voyez au besoin Grotius sur ce passage ; Estius ; et Digeste, titre De muneribus et honoribus.",
+   "proposed": "Voyez au besoin Grotius sur ce passage ;\nEstius ;\net Digeste, titre De muneribus et honoribus.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0092(b)",
    "page": "page_0092",
    "marker": "(b)",
@@ -278,28 +484,65 @@
    ]
   },
   {
+   "id": "0093(f)",
+   "page": "page_0093",
+   "marker": "(f)",
+   "text": "Ainsi le Syriaque ; Vatable ; Piscator.",
+   "proposed": "Ainsi le Syriaque ;\nVatable ;\nPiscator.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0094(a)",
+   "page": "page_0094",
+   "marker": "(a)",
+   "text": "Ita Nicolas de Lyre ; Sanctius ; Malvenda ; Cornelius a Lapide ; Vvlph. ; Minor. ; Tostat.",
+   "proposed": "Ainsi l'entendent Nicolas de Lyre ;\nSanctius ;\nMalvenda ;\nCornelius a Lapide ;\nVvlph. ;\nMinor. ;\nTostat.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0096(b)",
+   "page": "page_0096",
+   "marker": "(b)",
+   "text": "Voyez Cornelius a Lapide et Tirin ; Petau, De la doctrine des temps, livre 12, chapitre 25 ; Noël Alexandre, Histoire de l'Ancien Testament, tome 2, Dissertation 7.",
+   "proposed": "Voyez Cornelius a Lapide et Tirin ;\nPetau, De la doctrine des temps, livre 12, chapitre 25 ;\nNoël Alexandre, Histoire de l'Ancien Testament, tome 2, Dissertation 7.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0100(a)",
    "page": "page_0100",
    "marker": "(a)",
-   "text": "_Joseph Antiq. lib._ XI. _cap._ 5. Επ᾽ ἴση δ᾽ ἡμέρας δ. τε τείχη ηὐτὸ τὸ χρέος τοῖς Ἰεροσολύμοις ἀνῳκοδομήθη τι τέχνη.",
+   "text": "_Joseph Antiq. lib._ XI. _cap._ 5. Επ᾽ ἴση δ᾽ ἡμέρας δ. τε τείχη ηὐτὸ τὸ χρέος τοῖς Ἰεροσολύμοις ἀνῳκοδομήθη τί τέχνη.",
    "proposed": "_Joseph Antiq. lib._ XI. _cap._ 5. Επ᾽ ἴση δ᾽ ἡμέρας δ. τε τείχη ηὐτὸ τὸ χρέος τοῖς Ἰεροσολύμοις ἀνῳκοδομήθη τί τέχνη.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: τι -> τί"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
   },
   {
+   "id": "0114(a)",
+   "page": "page_0114",
+   "marker": "(a)",
+   "text": "Aben Ezra ; Sanctius ; Cornelius a Lapide ; Vatable ; Tirin.",
+   "proposed": "Aben Ezra ;\nSanctius ;\nCornelius a Lapide ;\nVatable ;\nTirin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
    "id": "0114(d)",
    "page": "page_0114",
    "marker": "(d)",
-   "text": "Aristoph. Nubib. Τὶ δ᾽ ἂν παθὼν δίκην | παιδάριμ᾽ συ, τιφφέτη τίλΔΕ.",
+   "text": "Aristoph. Nubib. Τὶ δ᾽ ἂν παθὼν δίκην | παιδάριμ᾽ σὺ, τιφφέτη τίλΔΕ.",
    "proposed": "Aristoph. Nubib. Τὶ δ᾽ ἂν παθὼν δίκην | παιδάριμ᾽ σὺ, τιφφέτη τίλΔΕ.",
    "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary: συ -> σὺ"
+    "Greek spelling checked against a Greek dictionary"
    ],
    "flags": [
     "greek",
@@ -310,11 +553,9 @@
    "id": "0114(e)",
    "page": "page_0114",
    "marker": "(e)",
-   "text": "Plutarch. Apophtegm. Τοῖς ἁμαρτάνεσι τῶν ἡγεμονικῶν τιμωρίαν ἔταξεν, ἀντὶ τῆς τῶν κεφαλῶν ἀποτιλμῶν, τιάραν ἀποθεμένων.",
+   "text": "Plutarch. Apophtegm. Τοῖς ἁμαρτάνουσι τῶν ἡγεμονικῶν τιμωρίαν ἔταξεν, ἀντὶ τῆς τῶν κεφαλῶν ἀποτιλμῶν, τιάραν ἀποθεμένων.",
    "proposed": "Plutarch. Apophtegm. Τοῖς ἁμαρτάνουσι τῶν ἡγεμονικῶν τιμωρίαν ἔταξεν, ἀντὶ τῆς τῶν κεφαλῶν ἀποτιλμῶν, τιάραν ἀποθεμένων.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἁμαρτάνεσι -> ἁμαρτάνουσι"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"

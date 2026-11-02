@@ -1,14 +1,13 @@
 {
  "summary": {
   "notes": 157,
-  "changed": 11,
+  "changed": 39,
   "flags": {
    "greek": 16,
    "scan-unread": 28,
-   "expand-unread": 36,
    "uncertain": 9,
    "hebrew": 4,
-   "reference-mismatch": 1
+   "expand-changed-numbers": 1
   }
  },
  "notes": [
@@ -51,28 +50,6 @@
    ]
   },
   {
-   "id": "0004(a)",
-   "page": "page_0004",
-   "marker": "(a)",
-   "text": "Chap. 1. 8. et dans tous les Chapitres 2. et 3.",
-   "proposed": "Chap. 1. 8. et dans tous les Chapitres 2. et 3.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0004(b)",
-   "page": "page_0004",
-   "marker": "(b)",
-   "text": "Chap. II. 2.",
-   "proposed": "Chap. II. 2.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0004(c)",
    "page": "page_0004",
    "marker": "(c)",
@@ -82,17 +59,6 @@
    "flags": [
     "uncertain",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0004(d)",
-   "page": "page_0004",
-   "marker": "(d)",
-   "text": "Exode 34:7. Nullus apud te per se innocents est.",
-   "proposed": "Exode 34:7. Nullus apud te per se innocents est.",
-   "why": [],
-   "flags": [
-    "expand-unread"
    ]
   },
   {
@@ -127,50 +93,47 @@
    "page": "page_0006",
    "marker": "(d)",
    "text": "ותחל הארץ מפניו Anselm. et ÿv.",
-   "proposed": "ותחל הארץ מפניו Anselm. et ÿv.",
+   "proposed": "ותחל הארץ מפניו saint Anselme ; et Yves.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "abbreviations written out"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0006(e)",
    "page": "page_0006",
    "marker": "(e)",
    "text": "Aqu. Εφριξεν.",
-   "proposed": "Aqu. Ἔφριξεν.",
+   "proposed": "Symmaque : Ἔφριξεν.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Εφριξεν -> Ἔφριξεν"
+    "Greek spelling checked against a Greek dictionary: Εφριξεν -> Ἔφριξεν",
+    "abbreviations written out"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0006(f)",
    "page": "page_0006",
    "marker": "(f)",
    "text": "Sym. Εσεισθη.",
-   "proposed": "Sym. Ἐσείσθη.",
+   "proposed": "Symmaque : Ἐσείσθη.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Εσεισθη -> Ἐσείσθη"
+    "Greek spelling checked against a Greek dictionary: Εσεισθη -> Ἐσείσθη",
+    "abbreviations written out"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0006(h)",
    "page": "page_0006",
    "marker": "(h)",
    "text": "Jun. Trem. Grot. Vat. Mont. Drus.",
-   "proposed": "Jun. Trem. Grot. Vat. Mont. Drus.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Junius ;\nTremellius ;\nGrotius ;\nVatable ;\nArias Montanus ;\nDrusius.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0006(i)",
@@ -193,40 +156,40 @@
    "page": "page_0007",
    "marker": "(a)",
    "text": "Diodor. Sicul. lib. 2. Athen. lib. 12. ex Ctesia. Les vingt stades font deux mille cinq cens pas de long.",
-   "proposed": "Diodor. Sicul. lib. 2. Athen. lib. 12. ex Ctesia. Les vingt stades font deux mille cinq cens pas de long.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Diodore de Sicile, livre 2 ; Athénée, livre 12, d'après Ctésias. Les vingt stades font deux mille cinq cens pas de long.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0007(b)",
    "page": "page_0007",
    "marker": "(b)",
    "text": "Vide Pseudo-Épiphane. et alios de vita Prophet. Vide et Tirin.",
-   "proposed": "Vide Pseudo-Épiphane. et alios de vita Prophet. Vide et Tirin.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Voyez le Pseudo-Épiphane et d'autres, De vita Prophetarum. Voyez aussi Tirin.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0007(c)",
    "page": "page_0007",
    "marker": "(c)",
    "text": "Vat. Mant. Sanst. Castr. Foreir. Grot.",
-   "proposed": "Vat. Mant. Sanst. Castr. Foreir. Grot.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Vatable ;\nArias Montanus ;\nSanctius ;\nCastro ;\nForeiro ;\nGrotius.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0007(e)",
    "page": "page_0007",
    "marker": "(e)",
-   "text": "Jérémie 48:2. Ézéchiel 26:10. Καὶ σὺ ταλανιωρὸς περιπόλει συντέλειαν ποιήσει, τῆς ἐπεγειρομλύης, τὲ τὰς ἐχθρὸς ἀυτῆς διαλέξεται σκότῷ. Ils ont pris כלה עשה מקומה comme si מקום était le participe de קום. Aqu. Καὶ ἀνισάμλνοι. Theodot. Consurgentibus ei. Quint. edit. A consurgentibus illi. Ieronym.",
-   "proposed": "Jérémie 48:2. Ézéchiel 26:10. Καὶ σὺ ταλανιωρὸς περιπόλει συντέλειαν ποιήσει, τῆς ἐπεγειρομλύης, τὲ τὰς ἐχθρὸς ἀυτῆς διαλέξεται σκότῷ. Ils ont pris כלה עשה מקומה comme si מקום était le participe de קום. Aqu. Καὶ ἀνισάμλνοι. Theodot. Consurgentibus ei. Quint. edit. A consurgentibus illi. Ieronym.",
+   "text": "Jérémie 47:2. Ézéchiel 26:10. Καὶ σὺ ταλανιωρὸς περιπόλει συντέλειαν ποιήσει, τῆς ἐπεγειρομλύης, τὲ τὰς ἐχθρὸς ἀυτῆς διαλέξεται σκότῷ. Ils ont pris כלה עשה מקומה comme si מקום était le participe de קום. Aqu. Καὶ ἀνισάμλνοι. Theodot. Consurgentibus ei. Quint. edit. A consurgentibus illi. Ieronym.",
+   "proposed": "Jérémie 47:2. Ézéchiel 26:10. Καὶ σὺ ταλανιωρὸς περιπόλει συντέλειαν ποιήσει, τῆς ἐπεγειρομλύης, τὲ τὰς ἐχθρὸς ἀυτῆς διαλέξεται σκότῷ. Ils ont pris כלה עשה מקומה comme si מקום était le participe de קום. Aqu. Καὶ ἀνισάμλνοι. Theodot. Consurgentibus ei. Quint. edit. A consurgentibus illi. Ieronym.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Nahum 1:8",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -242,36 +205,35 @@
    "page": "page_0008",
    "marker": "(e)",
    "text": "Ita Theodoret. Theophylact. Hugo. Castr. Vat. Drus. Grot.",
-   "proposed": "Ita Theodoret. Theophylact. Hugo. Castr. Vat. Drus. Grot.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Ainsi l'entendent Théodoret ;\nThéophylacte ;\nHugues de Saint-Victor ;\nCastro ;\nVatable ;\nDrusius ;\nGrotius.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0009(a)",
    "page": "page_0009",
    "marker": "(a)",
    "text": "70. Συντέλειαν διπλῆν ποιήσει. in ἐπιδιώξει δὶς ἐπὶ τὸ αὐτὸ etc. Sym. Non subsinebit impetum secunda angustia. Theodor. Non consurget secunda tribulatio.",
-   "proposed": "70. Συντέλειαν διπλῆν ποιήσει. in ἐπιδιώξει δὶς ἐπὶ τὸ αὐτὸ etc. Sym. Non subsinebit impetum secunda angustia. Theodor. Non consurget secunda tribulatio.",
+   "proposed": "Les Septante : Συντέλειαν διπλῆν ποιήσει. in ἐπιδιώξει δὶς ἐπὶ τὸ αὐτὸ etc. Symmaque : Non subsinebit impetum secunda angustia. Théodoret : Non consurget secunda tribulatio.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0009(b)",
    "page": "page_0009",
    "marker": "(b)",
    "text": "Origen. homil. 1. in Ezech. Ierom. hic. Remig. Haimo. D. Th. 3. parte qu. 59. art. 5.",
-   "proposed": "Origen. homil. 1. in Ezech. Ierom. hic. Remig. Haimo. D. Th. 3. parte qu. 59. art. 5.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Origène, Homélie 1 sur Ézéchiel ;\nsaint Jérôme, sur ce passage ;\nRemi ;\nHaymon ;\nsaint Thomas, 3e partie, question 59, article 5.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0009(e)",
@@ -314,65 +276,53 @@
    "page": "page_0013",
    "marker": "(a)",
    "text": "Ita Ierom. 2. Exposit. Theodor. Theophyl. Rupert. Vat. Sanct.",
-   "proposed": "Ita Ierom. 2. Exposit. Theodor. Theophyl. Rupert. Vat. Sanct.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Ainsi l'entendent saint Jérôme, 2e Exposition ;\nThéodoret ;\nThéophylacte ;\nRupert ;\nVatable ;\nSanctius.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0013(f)",
    "page": "page_0013",
    "marker": "(f)",
    "text": "Ierom. Haimo. Albert. Remig. Dionys. Estyan. Riber. Drus. Munst. Grot.",
-   "proposed": "Ierom. Haimo. Albert. Remig. Dionys. Estyan. Riber. Drus. Munst. Grot.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0014(b)",
-   "page": "page_0014",
-   "marker": "(b)",
-   "text": "Ainsi saint Jérôme ; Théodoret ; Estius ; Grotius ; Castalion ; etc.",
-   "proposed": "Ainsi saint Jérôme ; Théodoret ; Estius ; Grotius ; Castalion ; etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Saint Jérôme ;\nHaymon ;\nsaint Albert ;\nRemi ;\nDenys ;\nEstius ;\nRibera ;\nDrusius ;\nMunster ;\nGrotius.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0014(c)",
    "page": "page_0014",
    "marker": "(c)",
    "text": "Psaumes 79:9. Isaïe 5:1. et sequ. Jeremy II, 21. Ézéchiel 17:6. Joël 1:7.",
-   "proposed": "Psaumes 79:9. Isaïe 5:1. et sequ. Jeremy II, 21. Ézéchiel 17:6. Joël 1:7.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Psaumes 79:9 ;\nIsaïe 5:1 et suivants ;\nJérémie 2:21 ;\nÉzéchiel 17:6 ;\nJoël 1:7.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0015(c)",
    "page": "page_0015",
    "marker": "(c)",
    "text": "Zenophon. de instit. Cyri. lib. 3. initiô. לפניו dérivé de Totahas תולעה la pourpre.",
-   "proposed": "Zenophon. de instit. Cyri. lib. 3. initiô. לפניו dérivé de Totahas תולעה la pourpre.",
+   "proposed": "Xénophon, Cyropédie, livre 3, au commencement. לפניו dérivé de Totahas תולעה la pourpre.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "abbreviations written out"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0015(d)",
    "page": "page_0015",
    "marker": "(d)",
-   "text": "Λίθοι δυνατοι ἱππεύοντες ἐν πυρὶ. Ils ont pût lû מתלהטים ou מתלהטים au lieu de פלדות.",
-   "proposed": "Λίθοι δυνατοι ἱππεύοντες ἐν πυρὶ. Ils ont pût lû מתלהטים ou מתלהטים au lieu de פלדות.",
+   "text": "Λίθοι δυνατοι ἱππεύοντες ἐν πυρὶ. Ils ont pût lu מתלהטים ou מתלהטים au lieu de פלדות.",
+   "proposed": "Λίθοι δυνατοι ἱππεύοντες ἐν πυρὶ. Ils ont pût lu מתלהטים ou מתלהטים au lieu de פלדות.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -388,22 +338,22 @@
    "page": "page_0016",
    "marker": "(f)",
    "text": "Senec. Oedip.",
-   "proposed": "Senec. Oedip.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Sénèque, Œdipe.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0017(f)",
    "page": "page_0017",
    "marker": "(f)",
    "text": "70. Barbinus Masius. Vide Grot. Drus. Pagn.",
-   "proposed": "70. Barbinus Masius. Vide Grot. Drus. Pagn.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Les Septante, Barberinus ;\nMasius. Voyez Grotius ;\nDrusius ;\nPagnin.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0018(a)",
@@ -424,13 +374,12 @@
    "page": "page_0018",
    "marker": "(b)",
    "text": "Vide Herodot. lib. 1. et Sanct. hic. n. 31. Strabo. lib. XVI. de Comana. Πλῆθος γυναικῶν τῶν ἐργαζομένων ἀπὸ τοῦ σώματος, ἃς ἐκάλουν ἱεροδούλους. Vide eund. lib. XII. Cappadocia. p. 369.",
-   "proposed": "Vide Herodot. lib. 1. et Sanct. hic. n. 31. Strabo. lib. XVI. de Comana. Πλῆθος γυναικῶν τῶν ἐργαζομένων ἀπὸ τοῦ σώματος, ἃς ἐκάλουν ἱεροδούλους. Vide eund. lib. XII. Cappadocia. p. 369.",
+   "proposed": "Voyez Hérodote, livre 1 ; et Sanctius, sur ce passage, numéro 31. Strabon, livre 16, De Comana. Πλῆθος γυναικῶν τῶν ἐργαζομένων ἀπὸ τοῦ σώματος, ἃς ἐκάλουν ἱεροδούλους. Voyez le même, livre 12, Cappadocia, page 369.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0019(b)",
@@ -460,19 +409,28 @@
    "id": "0019(d)",
    "page": "page_0019",
    "marker": "(d)",
-   "text": "Tavernier, voyage de Perse, liv. 2. ch. 7. pag. 192.",
-   "proposed": "Tavernier, voyage de Perse, liv. 2. ch. 7. pag. 192.",
+   "text": "Tavernier, voyage de Perse, liv. 2. chapitre 7. pag. 192.",
+   "proposed": "Tavernier, voyage de Perse, livre 2, chapitre 7, page 192.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0019(e)",
+   "page": "page_0019",
+   "marker": "(e)",
+   "text": "Joël 2:6 ; Isaïe 13:7-8 ; Ézéchiel 20:47.",
+   "proposed": "Joël 2:6 ;\nIsaïe 13:7-8 ;\nÉzéchiel 20:47.",
    "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0020(a)",
    "page": "page_0020",
    "marker": "(a)",
-   "text": "Καὶ καπνίσω ἐν καπνῷ τὸ πλῆθός σου. Ils ont lû רבכה בעשן הבעיתי au lieu de רכבך Vos chariots.",
-   "proposed": "Καὶ καπνίσω ἐν καπνῷ τὸ πλῆθός σου. Ils ont lû רבכה בעשן הבעיתי au lieu de רכבך Vos chariots.",
+   "text": "Καὶ καπνίσω ἐν καπνῷ τὸ πλῆθός σου. Ils ont lu רבכה בעשן הבעיתי au lieu de רכבך Vos chariots.",
+   "proposed": "Καὶ καπνίσω ἐν καπνῷ τὸ πλῆθός σου. Ils ont lu רבכה בעשן הבעיתי au lieu de רכבך Vos chariots.",
    "why": [],
    "flags": [
     "hebrew",
@@ -485,11 +443,9 @@
    "page": "page_0020",
    "marker": "(b)",
    "text": "4 Rois 18:17. et seq. 2 Paralipomènes 32:1. Isaïe 36.",
-   "proposed": "4 Rois 18:17. et seq. 2 Paralipomènes 32:1. Isaïe 36.",
+   "proposed": "4 Rois 18:17 et suivants ; 2 Paralipomènes 32:1 ; Isaïe 36.",
    "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0021(c)",
@@ -510,25 +466,13 @@
    "page": "page_0021",
    "marker": "(d)",
    "text": "Sym. Κνωδαλων πληρης, ou μιαιφονιας πληρης. Ieronym. hic.",
-   "proposed": "Sym. Κνωδάλων πλήρης, ou μιαιφονίας πλήρης. Ieronym. hic.",
+   "proposed": "Symmaque : Κνωδάλων πλήρης, ou μιαιφονίας πλήρης. Saint Jérôme, sur ce passage.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Κνωδαλων -> Κνωδάλων, πληρης -> πλήρης",
-    "Greek spelling checked against a Greek dictionary: πληρης -> πλήρης, μιαιφονιας -> μιαιφονίας"
+    "Greek spelling checked against a Greek dictionary: πληρης -> πλήρης, μιαιφονιας -> μιαιφονίας",
+    "abbreviations written out"
    ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0022(b)",
-   "page": "page_0022",
-   "marker": "(b)",
-   "text": "Chap. II. 3. 4.",
-   "proposed": "Chap. II. 3. 4.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0022(c)",
@@ -569,19 +513,6 @@
    ]
   },
   {
-   "id": "0024(a)",
-   "page": "page_0024",
-   "marker": "(a)",
-   "text": "Psaumes 44:15. _Posuisti nos in similitudinem gentibus, commotionem capitis in populis._ Vide et Matthieu 27:39. Isaïe 37:22. Jérémie 18:16. Lamentations 2:15.",
-   "proposed": "Psaumes 44:15. _Posuisti nos in similitudinem gentibus, commotionem capitis in populis._ Vide et Matthieu 27:39. Isaïe 37:22. Jérémie 18:16. Lamentations 2:15.",
-   "why": [
-    "the Latin next to the call is Psaumes 43:15, not Psaumes 44:15, Matthieu 27:39, Isaïe 37:22, Jérémie 18:16, Lamentations 2:15"
-   ],
-   "flags": [
-    "reference-mismatch"
-   ]
-  },
-  {
    "id": "0024(d)",
    "page": "page_0024",
    "marker": "(d)",
@@ -615,22 +546,22 @@
    "page": "page_0024",
    "marker": "(f)",
    "text": "Drus. Tarnov. Vide Job 2:11. Isaïe 51:19. Jérémie 15:5. 16:5.",
-   "proposed": "Drus. Tarnov. Vide Job 2:11. Isaïe 51:19. Jérémie 15:5. 16:5.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Drusius ; Tarnovius. Voyez Job 2:11 ; Isaïe 51:19 ; Jérémie 15:5 ; 16:5.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0024(g)",
    "page": "page_0024",
    "marker": "(g)",
    "text": "Vide Strabo. lib. 17. p. 792. Pausan, Eliaca.",
-   "proposed": "Vide Strabo. lib. 17. p. 792. Pausan, Eliaca.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Voyez Strabon, livre 17, page 792 ; Pausanias, Éliades.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0025(b)",
@@ -649,11 +580,11 @@
    "page": "page_0025",
    "marker": "(c)",
    "text": "Plin. v. 9. Hammoniacum nonnum, tradentem ad Hammonis Jovis oraculum.",
-   "proposed": "Plin. v. 9. Hammoniacum nonnum, tradentem ad Hammonis Jovis oraculum.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Pline, vers 9. Hammoniacum nonnum, tradentem ad Hammonis Jovis oraculum.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0026(d)",
@@ -674,22 +605,31 @@
    "page": "page_0026",
    "marker": "(f)",
    "text": "Jerem. XLVI. Ézéchiel 30.",
-   "proposed": "Jerem. XLVI. Ézéchiel 30.",
+   "proposed": "Jérémie 46 ; Ézéchiel 30.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0026(g)",
+   "page": "page_0026",
+   "marker": "(g)",
+   "text": "Saint Jérôme, sur ce passage ; Sanctius ; Drusius ; Ménochius.",
+   "proposed": "Saint Jérôme, sur ce passage ;\nSanctius ;\nDrusius ;\nMénochius.",
    "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0026(h)",
    "page": "page_0026",
    "marker": "(h)",
    "text": "Vide Usser. ad an. M. 3292. Joseph. Antiq. lib. 6. c. 1. 2.",
-   "proposed": "Vide Usser. ad an. M. 3292. Joseph. Antiq. lib. 6. c. 1. 2.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Voyez Ussérius, à l'an du monde 3292 ; Josèphe, Antiquités judaïques, livre 6, chapitres 1-2.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0027(a)",
@@ -698,10 +638,11 @@
    "text": "Isai. XXXVI I. 25. כל מצערי מצור Vulg. Omnes rivos aggerum.",
    "proposed": "Isai. XXXVI I. 25. כל מצערי מצור Vulg. Omnes rivos aggerum.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "written out, but a number changed or added: Isaïe 37:25. כל מצערי מצור la Vulgate : Omnes rivos aggerum."
    ],
    "flags": [
-    "expand-unread"
+    "expand-changed-numbers"
    ]
   },
   {
@@ -709,35 +650,43 @@
    "page": "page_0028",
    "marker": "(a)",
    "text": "Diodor. lib. 1. p. 8. Οἱ γὰρ Αἰγύπτιοι νομίζουσι τὸν μὲν Ὠκεανὸν εἶναι τὸν παρ᾽ ἀυτοῖς ποταμὸν Νεῖλον, τὰς δὲ τὸν Θεὸν γινέσθαι κινήσεις.",
-   "proposed": "Diodor. lib. 1. p. 8. Οἱ γὰρ Αἰγύπτιοι νομίζουσι τὸν μὲν Ὠκεανὸν εἶναι τὸν παρ᾽ αὐτοῖς ποταμὸν Νεῖλον, τὰς δὲ τὸν Θεὸν γενέσθαι κινήσεις.",
+   "proposed": "Diodore de Sicile, livre 1, page 8. Οἱ γὰρ Αἰγύπτιοι νομίζουσι τὸν μὲν Ὠκεανὸν εἶναι τὸν παρ᾽ αὐτοῖς ποταμὸν Νεῖλον, τὰς δὲ τὸν Θεὸν γενέσθαι κινήσεις.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: ἀυτοῖς -> αὐτοῖς, γινέσθαι -> γενέσθαι"
+    "Greek spelling checked against a Greek dictionary: ἀυτοῖς -> αὐτοῖς, γινέσθαι -> γενέσθαι",
+    "abbreviations written out"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0028(d)",
    "page": "page_0028",
    "marker": "(d)",
    "text": "Vide Genèse 10:6. Voyez notre Commentaire, p. 258.",
-   "proposed": "Vide Genèse 10:6. Voyez notre Commentaire, p. 258.",
+   "proposed": "Voyez Genèse 10:6. Voyez notre Commentaire, page 258.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0028(e)",
+   "page": "page_0028",
+   "marker": "(e)",
+   "text": "Voyez Isaïe 13:16 ; Psaumes 136:9 ; Osée 10:14.",
+   "proposed": "Voyez Isaïe 13:16 ;\nPsaumes 136:9 ;\nOsée 10:14.",
    "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0029(a)",
    "page": "page_0029",
    "marker": "(a)",
    "text": "Isaïe 63:6. 51:17. Jérémie 25:27. 51:7. 49:12. Psaumes 10:7. 74:9. Ézéchiel 23:31. etc.",
-   "proposed": "Isaïe 63:6. 51:17. Jérémie 25:27. 51:7. 49:12. Psaumes 10:7. 74:9. Ézéchiel 23:31. etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Isaïe 63:6 ; 51:17 ; Jérémie 25:27 ; 51:7 ; 49:12 ; Psaumes 10:7 ; 74:9 ; Ézéchiel 23:31, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0029(c)",
@@ -752,26 +701,15 @@
    ]
   },
   {
-   "id": "0030(a)",
-   "page": "page_0030",
-   "marker": "(a)",
-   "text": "Chap. II. 6.",
-   "proposed": "Chap. II. 6.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0030(f)",
    "page": "page_0030",
    "marker": "(f)",
    "text": "Mont. Pagn. Drus. Jun. Tremel. Cast. Munst. Pisc.",
-   "proposed": "Mont. Pagn. Drus. Jun. Tremel. Cast. Munst. Pisc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "proposed": "Arias Montanus ;\nPagnin ;\nDrusius ;\nJunius ;\nTremellius ;\nCastalion ;\nMunster ;\nPiscator.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0030(g)",

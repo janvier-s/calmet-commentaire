@@ -1,8 +1,9 @@
 {
  "summary": {
   "notes": 139,
-  "changed": 3,
+  "changed": 10,
   "flags": {
+   "ambiguous-name": 2,
    "greek": 2,
    "scan-unread": 6,
    "uncertain": 3,
@@ -10,6 +11,35 @@
   }
  },
  "notes": [
+  {
+   "id": "0004(c)",
+   "page": "page_0004",
+   "marker": "(c)",
+   "text": "Juges 12:5 ; 1 Rois 1:1 ; 3 Rois 11:26.",
+   "proposed": "Juges 12:5 ; 1 Rois 1:1 ; 3 Rois 11:26.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0005(g)",
+   "page": "page_0005",
+   "marker": "(g)",
+   "text": "Voyez Munster ; Drusius ; Serarius.",
+   "proposed": "Voyez Munster ;\nDrusius ;\nSerarius.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0005(i)",
+   "page": "page_0005",
+   "marker": "(i)",
+   "text": "Tostat ; Vatable ; Arias.",
+   "proposed": "Tostat ;\nVatable ;\nArias.",
+   "why": [],
+   "flags": []
+  },
   {
    "id": "0008(c)",
    "page": "page_0008",
@@ -26,8 +56,8 @@
    "id": "0009(a)",
    "page": "page_0009",
    "marker": "(a)",
-   "text": "ובמתך. 70. i simus ? ex.",
-   "proposed": "ובמתך. Les Septante : i simus ? ex.",
+   "text": "ובמתך. Les Septante : i simus ? ex.",
+   "proposed": "ובמתך. Les Septante : i simus ? d'après.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "abbreviations written out"
@@ -38,8 +68,8 @@
    "id": "0011(c)",
    "page": "page_0011",
    "marker": "(c)",
-   "text": "Nicolas de Lyre, sur les chapitres 2 et 4, et sur Matthieu 1. Qui-dam in Jar hir. Catarin, livre contre Cajetan, etc.",
-   "proposed": "Nicolas de Lyre, sur les chapitres 2 et 4, et sur Matthieu 1 ; quelques-uns dans Jarchi ; Catarin, livre contre Cajetan, etc.",
+   "text": "Nicolas de Lyre, sur les chapitres 2 et 4, et sur Matthieu 1 ; quelques-uns dans Jarchi ; Catarin, livre contre Cajetan, etc.",
+   "proposed": "Nicolas de Lyre, sur les chapitres 2 et 4, et sur Matthieu 1 ; quelques-uns dans Rabbi Salomon Jarchi ; Catarin, livre contre Cajetan, etc.",
    "why": [
     "abbreviations written out"
    ],
@@ -58,19 +88,74 @@
    ]
   },
   {
+   "id": "0016(d)",
+   "page": "page_0016",
+   "marker": "(d)",
+   "text": "Voyez Genèse 34:3 ; Juges 19:3 ; Isaïe 40:2 ; Osée 2:14.",
+   "proposed": "Voyez Genèse 34:3 ;\nJuges 19:3 ;\nIsaïe 40:2 ;\nOsée 2:14.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0016(e)",
+   "page": "page_0016",
+   "marker": "(e)",
+   "text": "Aben Ezra ; Nicolas de Lyre ; Munster ; Vatable ; Drusius.",
+   "proposed": "Aben Ezra ;\nNicolas de Lyre ;\nMunster ;\nVatable ;\nDrusius.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0017(g)",
    "page": "page_0017",
    "marker": "(g)",
-   "text": "Homer. Iliad. N. … Κι δὴ γυναῖκες Αλφιτον ἰοβόλουν, λευκ᾽ ἄλφιτα παλύνουσαι, Vide et Odyss. ξ.",
+   "text": "Homer. Iliad. N. … Κι δὴ γυναῖκες Ἄλφιτον ἰοβόλουν, λευκ᾽ ἄλφιτα παλύνουσαι, Vide et Odyss. ξ.",
    "proposed": "Homer. Iliad. N. … Κι δὴ γυναῖκες Ἄλφιτον ἰοβόλουν, λευκ᾽ ἄλφιτα παλύνουσαι, Vide et Odyss. ξ.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Αλφιτον -> Ἄλφιτον",
     "Greek spelling checked against a Greek dictionary"
    ],
    "flags": [
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0017(i)",
+   "page": "page_0017",
+   "marker": "(i)",
+   "text": "1 Rois 17:17.",
+   "proposed": "1 Rois 17:17.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0024(a)",
+   "page": "page_0024",
+   "marker": "(a)",
+   "text": "Voyez saint Ambroise, à l'endroit cité ; Théodoret, Question 2 ; saint Jean Chrysostome, Homélie 3 sur saint Matthieu.",
+   "proposed": "Voyez saint Ambroise, à l'endroit cité ;\nThéodoret, Question 2 ;\nsaint Jean Chrysostome, Homélie 3 sur saint Matthieu.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0024(e)",
+   "page": "page_0024",
+   "marker": "(e)",
+   "text": "Voyez Caton, chapitre 131 ; Philochore ; Varron, De re rustica, livre 1 ; et Virgile, Géorgiques, livre 1.",
+   "proposed": "Voyez Caton, chapitre 131 ;\nPhilochore ;\nVarron, De re rustica, livre 1 ;\net Virgile, Géorgiques, livre 1.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0028(b)",
+   "page": "page_0028",
+   "marker": "(b)",
+   "text": "Junius ; et Tremellius ; Drusius ; Bonfrère.",
+   "proposed": "Junius ;\net Tremellius ;\nDrusius ;\nBonfrère.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0034(b)",
@@ -111,6 +196,15 @@
     "hebrew",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0036(b)",
+   "page": "page_0036",
+   "marker": "(b)",
+   "text": "Saint Augustin, Question 31 sur le Deutéronome ; Srav. ; Bonfrère.",
+   "proposed": "Saint Augustin, Question 31 sur le Deutéronome ;\nSrav. ;\nBonfrère.",
+   "why": [],
+   "flags": []
   }
  ]
 }

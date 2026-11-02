@@ -1,17 +1,26 @@
 {
  "summary": {
   "notes": 817,
-  "changed": 14,
+  "changed": 50,
   "flags": {
    "greek": 24,
-   "scan-unread": 38,
+   "scan-unread": 37,
    "hebrew": 8,
+   "ambiguous-name": 17,
    "reference-mismatch": 1,
-   "uncertain": 9,
-   "ambiguous-name": 10
+   "uncertain": 8
   }
  },
  "notes": [
+  {
+   "id": "0002(a)",
+   "page": "page_0002",
+   "marker": "(a)",
+   "text": "Exode 27:1 et suivants ; Exode 31:2.",
+   "proposed": "Exode 27:1 et suivants ; 31:2.",
+   "why": [],
+   "flags": []
+  },
   {
    "id": "0003(a)",
    "page": "page_0003",
@@ -39,10 +48,43 @@
    ]
   },
   {
+   "id": "0010(a)",
+   "page": "page_0010",
+   "marker": "(a)",
+   "text": "3 Rois 5:8.",
+   "proposed": "3 Rois 5:8.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0011(c)",
+   "page": "page_0011",
+   "marker": "(c)",
+   "text": "Pagnin ; Junius ; Tremellius ; Mariana ; Vatable.",
+   "proposed": "Pagnin ;\nJunius ;\nTremellius ;\nMariana ;\nVatable.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0011(e)",
+   "page": "page_0011",
+   "marker": "(e)",
+   "text": "3 Rois 7:14.",
+   "proposed": "3 Rois 7:14.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
    "id": "0012(b)",
    "page": "page_0012",
    "marker": "(b)",
-   "text": "1 Rois 9:13.",
+   "text": "3 Rois 9:13.",
    "proposed": "1 Rois 9:13.",
    "why": [
     "the Latin next to the call is 3 Rois 9:13, not 1 Rois 9:13"
@@ -52,16 +94,34 @@
    ]
   },
   {
+   "id": "0012(d)",
+   "page": "page_0012",
+   "marker": "(d)",
+   "text": "Rapsodia. Voyez Plutarque, Lycurgue ; Diogène Laërce, Solon ; Élien, Histoire variée, livre 13, chapitre 14 ; et Marsham, sur le siècle 15, Canon égyptien.",
+   "proposed": "Rapsodia. Voyez Plutarque, Lycurgue ;\nDiogène Laërce, Solon ;\nÉlien, Histoire variée, livre 13, chapitre 14 ;\net Marsham, sur le siècle 15, Canon égyptien.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0013(a)",
    "page": "page_0013",
    "marker": "(a)",
-   "text": "3 Rois 5:9. [UNCERTAIN HEBREW] _gregavimur omnes proselyti de terra Israël, etc. Ego ponam ea trabes in mari._",
-   "proposed": "3 Rois 5:9. [UNCERTAIN HEBREW] _gregavimur omnes proselyti de terra Israël, etc. Ego ponam ea trabes in mari._",
+   "text": "3 Rois 5:9. [UNCERTAIN HEBREW]",
+   "proposed": "3 Rois 5:9. [UNCERTAIN HEBREW]",
    "why": [],
    "flags": [
     "uncertain",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0015(e)",
+   "page": "page_0015",
+   "marker": "(e)",
+   "text": "Ainsi Pagnin ; Junius ; Tremellius ; Mariana ; Castalion ; Piscator.",
+   "proposed": "Ainsi Pagnin ;\nJunius ;\nTremellius ;\nMariana ;\nCastalion ;\nPiscator.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0016(d)",
@@ -92,6 +152,15 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0018(c)",
+   "page": "page_0018",
+   "marker": "(c)",
+   "text": "Grotius, sur ce passage ; Junius ; et Pline, Histoire naturelle, livre 6, chapitre 28.",
+   "proposed": "Grotius, sur ce passage ;\nJunius ;\net Pline, Histoire naturelle, livre 6, chapitre 28.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0019(a)",
@@ -142,14 +211,43 @@
    ]
   },
   {
-   "id": "0031(a)",
-   "page": "page_0031",
+   "id": "0026(a)",
+   "page": "page_0026",
    "marker": "(a)",
-   "text": "3 Rois 7:49 Candelaire aurea,… et quasi lilii flores, et lucernas desuper aureas. II. Livre des Paralipomènes.",
-   "proposed": "3 Rois 7:49 Candelaire aurea,… et quasi lilii flores, et lucernas desuper aureas. 2 Paralipomènes.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Voyez, si l'on veut, Vatable ; Mariana ; Tirin ; Piscator.",
+   "proposed": "Voyez, si l'on veut, Vatable ;\nMariana ;\nTirin ;\nPiscator.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0030(b)",
+   "page": "page_0030",
+   "marker": "(b)",
+   "text": "3 Rois 4:12.",
+   "proposed": "3 Rois 4:12.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0032(c)",
+   "page": "page_0032",
+   "marker": "(c)",
+   "text": "3 Rois 8:4.",
+   "proposed": "3 Rois 8:4.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0033(a)",
+   "page": "page_0033",
+   "marker": "(a)",
+   "text": "Junius ; et Tremellius ; Piscator.",
+   "proposed": "Junius ;\net Tremellius ;\nPiscator.",
+   "why": [],
    "flags": []
   },
   {
@@ -178,6 +276,44 @@
    ]
   },
   {
+   "id": "0042(b)",
+   "page": "page_0042",
+   "marker": "(b)",
+   "text": "Voyez Genèse 49:15 ; Exode 33:14 ; Deutéronome 3:20 ; Josué 1:13 ; Ruth 1:9, passim.",
+   "proposed": "Voyez Genèse 49:15 ;\nExode 33:14 ;\nDeutéronome 3:20 ;\nJosué 1:13 ;\nRuth 1:9, passim.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0047(b)",
+   "page": "page_0047",
+   "marker": "(b)",
+   "text": "Voyez Psaumes 23:6 ; 26:8 ; 94:2 ; 104:4, etc. II. Livre des Paralipomènes.",
+   "proposed": "Voyez Psaumes 23:6 ; 26:8 ; 94:2 ; 104:4, etc. 2 Paralipomènes.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0049(c)",
+   "page": "page_0049",
+   "marker": "(c)",
+   "text": "Voyez 2 Rois 8:9 ; 1 Paralipomènes 18:9.",
+   "proposed": "Voyez 1 Rois 8:9 ; 1 Paralipomènes 18:9.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0056(b)",
+   "page": "page_0056",
+   "marker": "(b)",
+   "text": "Ainsi Mariana ; Junius ; et Tremellius ; Piscator.",
+   "proposed": "Ainsi Mariana ;\nJunius ;\net Tremellius ;\nPiscator.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0057(a)",
    "page": "page_0057",
    "marker": "(a)",
@@ -186,18 +322,6 @@
    "why": [
     "Greek checked against the Septuagint, 2 Paralipomènes 9:5"
    ],
-   "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0067(a)",
-   "page": "page_0067",
-   "marker": "(a)",
-   "text": "3 Rois 12:25. [ILLEGIBLE]",
-   "proposed": "3 Rois 12:25. [ILLEGIBLE]",
-   "why": [],
    "flags": [
     "uncertain",
     "scan-unread"
@@ -215,6 +339,15 @@
    ]
   },
   {
+   "id": "0072(a)",
+   "page": "page_0072",
+   "marker": "(a)",
+   "text": "Voyez 2 Paralipomènes 26:8 ; Daniel 11:43 ; Nahum 3:9.",
+   "proposed": "Voyez 2 Paralipomènes 26:8 ;\nDaniel 11:43 ;\nNahum 3:9.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0074(a)",
    "page": "page_0074",
    "marker": "(a)",
@@ -227,18 +360,76 @@
    ]
   },
   {
+   "id": "0074(b)",
+   "page": "page_0074",
+   "marker": "(b)",
+   "text": "Ainsi Pagnin ; Munster ; Vatable ; Castalion.",
+   "proposed": "Ainsi Pagnin ;\nMunster ;\nVatable ;\nCastalion.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0078(a)",
+   "page": "page_0078",
+   "marker": "(a)",
+   "text": "Vatable ; Malvenda ; Ménochius. Voyez dicta ad Nombres 18:19.",
+   "proposed": "Vatable ;\nMalvenda ;\nMénochius. Voyez dicta ad Nombres 18:19.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0078(c)",
    "page": "page_0078",
    "marker": "(c)",
-   "text": "Τ'ζιτζες in Leophron ἄλα ἐτίθεν δαιτὶ ἐπὶ τῆι ξενίαι ἀπαρχαῖς, ἀσινχρόμοις. Συμπήξας ἐκ δύω φύσεων ἐκείνη, ἵνα καὶ ἡμεῖς εἴημεν εἰς μίαν ὁμόνοιαν.",
+   "text": "Τ'ζιτζες in Leophron ἄλα ἐτίθουν δαιτὶ ἐπὶ τῆι ξενίαι ἀπαρχαῖς, ἀσινχρόμοις. Συμπήξας ἐκ δύω φύσεων ἐκείνη, ἵνα καὶ ἡμεῖς εἴημεν εἰς μίαν ὁμόνοιαν.",
    "proposed": "Τ'ζιτζες in Leophron ἄλα ἐτίθουν δαιτὶ ἐπὶ τῆι ξενίαι ἀπαρχαῖς, ἀσινχρόμοις. Συμπήξας ἐκ δύω φύσεων ἐκείνη, ἵνα καὶ ἡμεῖς εἴημεν εἰς μίαν ὁμόνοιαν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἐτίθεν -> ἐτίθουν"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0081(b)",
+   "page": "page_0081",
+   "marker": "(b)",
+   "text": "Voyez Nicolas de Lyre ; Torniel ; Tirin.",
+   "proposed": "Voyez Nicolas de Lyre ;\nTorniel ;\nTirin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0082(a)",
+   "page": "page_0082",
+   "marker": "(a)",
+   "text": "Salian ; Ménochius ; Tostat.",
+   "proposed": "Salian ;\nMénochius ;\nTostat.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0083(a)",
+   "page": "page_0083",
+   "marker": "(a)",
+   "text": "Ita Seder Olam. Nicolas de Lyre ; Vatable ; Mariana ; Tirin.",
+   "proposed": "Ainsi l'entend le Seder Olam ;\nNicolas de Lyre ;\nVatable ;\nMariana ;\nTirin.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0087(b)",
+   "page": "page_0087",
+   "marker": "(b)",
+   "text": "Tostat ; Salian ; Ménochius ; Tirin ; Mariana ; Grotius.",
+   "proposed": "Tostat ;\nSalian ;\nMénochius ;\nTirin ;\nMariana ;\nGrotius.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0089(b)",
@@ -278,14 +469,21 @@
    ]
   },
   {
+   "id": "0092(b)",
+   "page": "page_0092",
+   "marker": "(b)",
+   "text": "Munster ; Junius ; Tirin ; Sandius.",
+   "proposed": "Munster ;\nJunius ;\nTirin ;\nSandius.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0094(a)",
    "page": "page_0094",
    "marker": "(a)",
-   "text": "Autor quarti livre d'Esdras 14:43 ad Chilon. De même Nicolas de Lyre sur ce passage, etc. 44 et suivants. Saint Clément d'Alexandrie, Stromates, livre 1 ;\nThéodoret, sur les Psaumes et sur le Cantique des cantiques ;\nSaint Basile, lettre.",
-   "proposed": "Auteur du quatrième livre d'Esdras 14:43 ad Chilon. De même Nicolas de Lyre sur ce passage, etc. 44 et suivants. Saint Clément d'Alexandrie, Stromates, livre 1 ;\nThéodoret, sur les Psaumes et sur le Cantique des cantiques ;\nSaint Basile, lettre.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Auteur du quatrième livre d'Esdras 14:43 ad Chilon. De même Nicolas de Lyre sur ce passage, etc. 44 et suivants. Saint Clément d'Alexandrie, Stromates, livre 1 ; Théodoret, sur les Psaumes et sur le Cantique des cantiques ; saint Basile, lettre.",
+   "proposed": "Auteur du quatrième livre d'Esdras 14:43 ad Chilon. De même Nicolas de Lyre sur ce passage, etc. 44 et suivants. Saint Clément d'Alexandrie, Stromates, livre 1 ;\nThéodoret, sur les Psaumes et sur le Cantique des cantiques ;\nsaint Basile, lettre.",
+   "why": [],
    "flags": []
   },
   {
@@ -301,15 +499,61 @@
    ]
   },
   {
-   "id": "0111(i)",
+   "id": "0105(d)",
+   "page": "page_0105",
+   "marker": "(d)",
+   "text": "Pagnin ; Arias Montanus ; Junius ; et Tremellius ; Mariana.",
+   "proposed": "Pagnin ;\nArias Montanus ;\nJunius ;\net Tremellius ;\nMariana.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0105(g)",
+   "page": "page_0105",
+   "marker": "(g)",
+   "text": "Voyez Sanctius sur 4 Rois 8:24, numéros 37 et 38 ; Ménochius ; Mariana ; Tirin ; Cornelius a Lapide.",
+   "proposed": "Voyez Sanctius sur 4 Rois 8:24, numéros 37 et 38 ;\nMénochius ;\nMariana ;\nTirin ;\nCornelius a Lapide.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0106(a)",
+   "page": "page_0106",
+   "marker": "(a)",
+   "text": "_Pagnin ; Arias Montanus ; Cajetan ; Vatable ; Mereer ; Bertram ; Avenarius._ Voyez ce que nous avons dit sur la Genèse livre 3, page 844.",
+   "proposed": "_Pagnin ;\nArias Montanus ;\nCajetan ;\nVatable ;\nMereer ;\nBertram ;\nAvenarius._ Voyez ce que nous avons dit sur la Genèse livre 3, page 844.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0109(b)",
+   "page": "page_0109",
+   "marker": "(b)",
+   "text": "3 Rois 22:44. Verumtamen excelsa non abstulit.",
+   "proposed": "3 Rois 22:44. Verumtamen excelsa non abstulit.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0110(a)",
+   "page": "page_0110",
+   "marker": "(a)",
+   "text": "Voyez 2 Rois 8:1 ; Psaumes 59:10.",
+   "proposed": "Voyez 2 Rois 8:1 ; Psaumes 59:10.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0111(h)",
    "page": "page_0111",
-   "marker": "(i)",
-   "text": "Jeron. ad Principiam ; cum Baquis sit verbum ἐγχώριον Palestinæ, et usque ho ie sutur ex omni parte conscripta et in modum ædificatæ turrium, Baquis appellantur.",
-   "proposed": "Saint Jérôme, à Principia ; cum Baquis sit verbum ἐγχώριον Palestinæ, et usque ho ie sutur ex omni parte conscripta et in modum ædificatæ turrium, Baquis appellantur.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
+   "marker": "(h)",
+   "text": "2 Esdras 1:1 ; Daniel 8:2 ; Esther 1:2 etc.",
+   "proposed": "2 Esdras 1:1 ;\nDaniel 8:2 ;\nEsther 1:2 etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -355,6 +599,24 @@
    ]
   },
   {
+   "id": "0126(a)",
+   "page": "page_0126",
+   "marker": "(a)",
+   "text": "Ainsi l'entendent l'Hébreu ; Nicolas de Lyre ; Vatable ; Ménochius ; Mariana.",
+   "proposed": "Ainsi l'entendent l'Hébreu ;\nNicolas de Lyre ;\nVatable ;\nMénochius ;\nMariana.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0127(a)",
+   "page": "page_0127",
+   "marker": "(a)",
+   "text": "Strabon, livre 16, page 728 ; Pline, Histoire naturelle, livre 6, chapitre 28 ; Étienne de Byzance ; Ptolémée.",
+   "proposed": "Strabon, livre 16, page 728 ;\nPline, Histoire naturelle, livre 6, chapitre 28 ;\nÉtienne de Byzance ;\nPtolémée.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0128(a)",
    "page": "page_0128",
    "marker": "(a)",
@@ -369,14 +631,22 @@
    ]
   },
   {
+   "id": "0130(d)",
+   "page": "page_0130",
+   "marker": "(d)",
+   "text": "Junius ; Malvenda ; Osiander.",
+   "proposed": "Junius ;\nMalvenda ;\nOsiander.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0134(e)",
    "page": "page_0134",
    "marker": "(e)",
-   "text": "καὶ Μωὰβ ὴ ὄρος Σηὶρ… ὴ ἐγερσάθησαν, ὴ ἀνέστησαν οἱ υἱοὶ Αμμὼν ὴ Μωὰβ ἐπὶ τὰς κατοικῦντας ὄρος Σηὶρ, ἐξολοθρεῦσαι ὴ ἐκτρῖψαι αὐτὲς; ὴ ὡς συντελέσαι τῆς κατοικίας Σηὶρ, ἀνέστησαν εἰς ἀμύλως.",
+   "text": "καὶ Μωὰβ ὴ ὄρος Σηὶρ… ὴ ἐγερσάθησαν, ὴ ἀνέστησαν οἱ υἱοὶ Αμμὼν ὴ Μωὰβ ἐπὶ τὰς κατοικοῦντας ὄρος Σηὶρ, ἐξολοθρεῦσαι ὴ ἐκτρῖψαι αὐτοὺς; ὴ ὡς συντελέσαι τῆς κατοικίας Σηὶρ, ἀνέστησαν εἰς ἀμύλους.",
    "proposed": "καὶ Μωὰβ ὴ ὄρος Σηὶρ… ὴ ἐγερσάθησαν, ὴ ἀνέστησαν οἱ υἱοὶ Αμμὼν ὴ Μωὰβ ἐπὶ τὰς κατοικοῦντας ὄρος Σηὶρ, ἐξολοθρεῦσαι ὴ ἐκτρῖψαι αὐτοὺς; ὴ ὡς συντελέσαι τῆς κατοικίας Σηὶρ, ἀνέστησαν εἰς ἀμύλους.",
    "why": [
-    "Greek checked against the Septuagint, 2 Paralipomènes 20:10",
-    "Greek spelling checked against a Greek dictionary: κατοικῦντας -> κατοικοῦντας, αὐτὲς -> αὐτοὺς, ἀμύλως -> ἀμύλους"
+    "Greek checked against the Septuagint, 2 Paralipomènes 20:10"
    ],
    "flags": [
     "greek",
@@ -410,6 +680,15 @@
    ]
   },
   {
+   "id": "0141(c)",
+   "page": "page_0141",
+   "marker": "(c)",
+   "text": "Ainsi l'entendent l'Hébreu ; Efr. ; Tirin ; Mariana.",
+   "proposed": "Ainsi l'entendent l'Hébreu ;\nEfr. ;\nTirin ;\nMariana.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0142(a)",
    "page": "page_0142",
    "marker": "(a)",
@@ -421,39 +700,91 @@
    ]
   },
   {
+   "id": "0142(c)",
+   "page": "page_0142",
+   "marker": "(c)",
+   "text": "Ménochius ; Mariana ; Junius ; Piscator.",
+   "proposed": "Ménochius ;\nMariana ;\nJunius ;\nPiscator.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0144(a)",
    "page": "page_0144",
    "marker": "(a)",
-   "text": "_Vide Diodor. Sicul. lib. 1. Bibliotec._ πλὴν ἀνέγγητον ἀναφαίνεται τῆς ἱμερανης καὶ τοῦ νομίμου ζήλου, Diodor. Sicul. lib. 2. pag. 46.",
+   "text": "_Vide Diodor. Sicul. lib. 1. Bibliotec._ πλὴν ἀνέργητον ἀναφαίνεται τῆς ἱμερανης καὶ τοῦ νομίμου ζήλου, Diodor. Sicul. lib. 2. pag. 46.",
    "proposed": "_Vide Diodor. Sicul. lib. 1. Bibliotec._ πλὴν ἀνέργητον ἀναφαίνεται τῆς ἱμερανης καὶ τοῦ νομίμου ζήλου, Diodor. Sicul. lib. 2. pag. 46.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἀνέγγητον -> ἀνέργητον"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0146(f)",
+   "page": "page_0146",
+   "marker": "(f)",
+   "text": "Ita sun. l'Hébreu ; Brent. ; Arduin.",
+   "proposed": "Ita sun. l'Hébreu ;\nBrent. ;\nArduin.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0148(b)",
    "page": "page_0148",
    "marker": "(b)",
-   "text": "ὡς ἐξεδίκασεν Ιηὺ τόν οἶκον Α'χάβ.",
+   "text": "ὡς ἐξεδίκασεν Ιηὺ τόν οἶκον Ἀχάβ.",
    "proposed": "ὡς ἐξεδίκασεν Ιηὺ τόν οἶκον Ἀχάβ.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Α'χάβ -> Ἀχάβ"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
   },
   {
-   "id": "0163(a)",
-   "page": "page_0163",
+   "id": "0151(c)",
+   "page": "page_0151",
+   "marker": "(c)",
+   "text": "Grotius ; Junius ; Piscator, sur 4 Rois 11:5. II. Livre des Paralipomènes.",
+   "proposed": "Grotius ;\nJunius ;\nPiscator, sur 4 Rois 11:5. 2 Paralipomènes.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0151(f)",
+   "page": "page_0151",
+   "marker": "(f)",
+   "text": "Ménochius ; Grotius ; Villalpand, tome 2, livre 3, chapitre 32, etc.",
+   "proposed": "Ménochius ;\nGrotius ;\nVillalpand, tome 2, livre 3, chapitre 32, etc.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0152(a)",
+   "page": "page_0152",
    "marker": "(a)",
-   "text": "Ainsi l'entendent Salian ; Ménochius ; Le Clerc ; et d'autres sur ce passage ; et plusieurs sur Matthieu 23:35, ut Jansénius, Maldonat, Salmeron, Tostat, Nicolas de Lyre, et ex antiquioribus, Bède, saint Thomas, Albert, etc.",
-   "proposed": "Ainsi l'entendent Salian ; Ménochius ; Le Clerc ; et d'autres sur ce passage ; et plusieurs sur Matthieu 23:35, comme Jansénius, Maldonat, Salmeron, Tostat, Nicolas de Lyre, et d'après les anciens, Bède, saint Thomas, Albert, etc.",
+   "text": "Ainsi Junius ; Tremellius ; Malvenda.",
+   "proposed": "Ainsi Junius ;\nTremellius ;\nMalvenda.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0154(b)",
+   "page": "page_0154",
+   "marker": "(b)",
+   "text": "Mar, Es, Arias Montanus ; Oscand. ; Piscator.",
+   "proposed": "Mar, Es, Arias Montanus ;\nOscand. ;\nPiscator.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0160(d)",
+   "page": "page_0160",
+   "marker": "(d)",
+   "text": "Pagnin ; Arias Montanus ; Castalion ; Belg. Voyez Proverbes.",
+   "proposed": "Pagnin ; Arias Montanus ; Castalion ; la Bible flamande. Voyez Proverbes.",
    "why": [
     "abbreviations written out"
    ],
@@ -474,15 +805,44 @@
    ]
   },
   {
-   "id": "0176(e)",
+   "id": "0170(b)",
+   "page": "page_0170",
+   "marker": "(b)",
+   "text": "Grotius ; Piscator, sur ce passage ; et Junius ; Malvenda, sur 4 Rois 14:7, etc.",
+   "proposed": "Grotius ;\nPiscator, sur ce passage ;\net Junius ;\nMalvenda, etc. sur 4 Rois 14:7.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0176(f)",
    "page": "page_0176",
-   "marker": "(e)",
-   "text": "4 Rois 24:20 21.",
-   "proposed": "4 Rois 24:20 21.",
+   "marker": "(f)",
+   "text": "L'auteur des Traditions hébraïques ; Denys ; Cajetan ; Tirin ; Ménochius ; Estius.",
+   "proposed": "L'auteur des Traditions hébraïques ;\nDenys ;\nCajetan ;\nTirin ;\nMénochius ;\nEstius.",
    "why": [],
-   "flags": [
-    "ambiguous-name"
-   ]
+   "flags": []
+  },
+  {
+   "id": "0183(a)",
+   "page": "page_0183",
+   "marker": "(a)",
+   "text": "Voyez saint Jérôme sur Isaïe 32:14 ; et Vatable ; Tyr. ; Josèphe, Guerre des Juifs, livre 6, chapitre 13, in Græcis.",
+   "proposed": "Voyez saint Jérôme sur Isaïe 32:14 ;\net Vatable ;\nTyr. ;\nJosèphe, Guerre des Juifs, livre 6, chapitre 13, in Græcis.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0194(b)",
+   "page": "page_0194",
+   "marker": "(b)",
+   "text": "L'auteur des Traditions hébraïques ; Mariana ; Tirin.",
+   "proposed": "L'auteur des Traditions hébraïques ;\nMariana ;\nTirin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
   },
   {
    "id": "0198(a)",
@@ -497,14 +857,41 @@
    ]
   },
   {
+   "id": "0201(a)",
+   "page": "page_0201",
+   "marker": "(a)",
+   "text": "Nicolas de Lyre ; Ménochius ; Tirin.",
+   "proposed": "Nicolas de Lyre ;\nMénochius ;\nTirin.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0201(b)",
+   "page": "page_0201",
+   "marker": "(b)",
+   "text": "Junius ; Piscator ; Munster.",
+   "proposed": "Junius ;\nPiscator ;\nMunster.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0206(b)",
+   "page": "page_0206",
+   "marker": "(b)",
+   "text": "Ita Pagnin ; Mariana ; Junius ; Munster ; Grotius.",
+   "proposed": "Ita Pagnin ;\nMariana ;\nJunius ;\nMunster ;\nGrotius.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0209(d)",
    "page": "page_0209",
    "marker": "(d)",
-   "text": "_Joseph. Antiq. lib_ x. c. 1. _τὰς θυσίας ἐπιτελῶν τῷ Θεῷ, Μωσῆς νόμοις ἑτέροις ἐξηγούμϐυα τὰς ὄχλοις._ Mais il n'est pas certain que ce passage doive se restreindre au seul agneau pascal ; et quand il s'y restreindrait,",
-   "proposed": "_Joseph. Antiq. lib_ x. c. 1. _τὰς θυσίας ἐπιτελῶν τῷ Θεῷ, Μωσῆς νόμοις ἑτέροις ἐξηγούμβυα τὰς ὄχλοις._ Mais il n'est pas certain que ce passage doive se restreindre au seul agneau pascal ; et quand il s'y restreindrait,",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἐξηγούμϐυα -> ἐξηγούμβυα"
-   ],
+   "text": "_Joseph. Antiq. lib_ x. c. 1. _τὰς θυσίας ἐπιτελῶν τῷ Θεῷ, Μωσῆς νόμοις ἑτέροις ἐξηγούμβυα τὰς ὄχλοις._ Mais il n'est pas certain que ce passage doive se restreindre au seul agneau pascal ; et quand il s'y restreindrait.",
+   "proposed": "_Joseph. Antiq. lib_ x. c. 1. _τὰς θυσίας ἐπιτελῶν τῷ Θεῷ, Μωσῆς νόμοις ἑτέροις ἐξηγούμβυα τὰς ὄχλοις._ Mais il n'est pas certain que ce passage doive se restreindre au seul agneau pascal ; et quand il s'y restreindrait.",
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -514,16 +901,23 @@
    "id": "0210(a)",
    "page": "page_0210",
    "marker": "(a)",
-   "text": "qu'on pourrait-on conclure ? Chacun des Prêtres, dit-il, était à la reste du peuple dans les sacrifices. Le même Auteur lib. 6. Α'λῶς. Κεφάλ. με Κισίῳ παραβάλλοι τις τὰς χρείας ὅπως ἄπανσι εἴη τῷ πληθυῒ εὐθυμῆσαι. δι ὃ ἑκάσης ἑορτῆς, μέχρι καὶ νῦν, καθ' ἣν ἦσαν μὲν ἰδιῶται οὐκ ὀλίγοι τὰ χεὶ ἱνδικάσης. Mais ce passage n'est pas plus décisif. Joseph peut marquer simplement que les Prêtres offrent le sang de l'agneau pascal, lorsqu'il dit que les Prêtres sacrifient depuis la neuvième heure, jusqu'à la onzième. Philo de Decalogo. ἐν πάσῃ δίκαια κωλυθμὸς ἱερᾶς γ'. τὰς ἱερὰς οὐκ ἀναφέροντας ἱεροσύνην ἣ νόμῳ χαλεσωμὸς τὸ ἔθνε πάντα μίαν ἡμέραν ἐξαίρετον ἀνὰ πᾶν ἔτος, εἰς αὐτουργίαν θυσιῶν. Et lib. 3. de vita Moysis. ἐν ᾗ (πάχα) οὐκ οἱ μὲν ἰδιῶται οὐδέποτε τῷ βωμῷ τὰ ἱερεῖα θύουσι δ' οἱ ἱερεῖς, ἀλλὰ νόμῳ πανδημεὶ σύμπαν τὸ ἔθνος ἱερᾶται) ἣ μέρος ἑκάστῳ τῆς ὑπὲρ αὐτῷ θυσίας ἀναθέντος, τότε χρὴ ἀφιερῶντος.",
+   "text": "qu'on pourrait-on conclure ? Chacun des Prêtres, dit-il, était à la reste du peuple dans les sacrifices. Le même Auteur lib. 6. Ἀλοῦς. Κεφάλῳ. με Κισίῳ παραβάλλοι τίς τὰς χρείας ὅπως ἄπαισι εἴη τῷ πληθυῒ εὐθυμῆσαι. δῑ ὃ ἑκάσης ἑορτῆς, μέχρι καὶ νῦν, καθ' ἣν ἦσαν μὲν ἰδιῶται οὐκ ὀλίγοι τὰ χεὶ ἱνδικάσης. Mais ce passage n'est pas plus décisif. Joseph peut marquer simplement que les Prêtres offrent le sang de l'agneau pascal, lorsqu'il dit que les Prêtres sacrifient depuis la neuvième heure, jusqu'à la onzième. Philo de Decalogo. ἐν πάσῃ δίκαια κωλυθμὸς ἱερᾶς γ'. τὰς ἱερὰς οὐκ ἀναφέροντας ἱερωσύνην ἣ νόμῳ χαλεσωμὸς τὸ ἔθνε πάντα μίαν ἡμέραν ἐξαίρετον ἀνὰ πᾶν ἔτος, εἰς αὐτουργίαν θυσιῶν. Et lib. 3. de vita Moysis. ἐν ᾗ (πάχα) οὐκ οἱ μὲν ἰδιῶται οὐδέποτε τῷ βωμῷ τὰ ἱερεῖα θύουσι δ' οἱ ἱερεῖς, ἀλλὰ νόμῳ πανδημεὶ σύμπαν τὸ ἔθνος ἱερᾶται) ἣ μέρος ἑκάστῳ τῆς ὑπὲρ αὐτῷ θυσίας ἀναθέντος, τότε χρὴ ἀφιεροῦντος.",
    "proposed": "qu'on pourrait-on conclure ? Chacun des Prêtres, dit-il, était à la reste du peuple dans les sacrifices. Le même Auteur lib. 6. Ἀλοῦς. Κεφάλῳ. με Κισίῳ παραβάλλοι τίς τὰς χρείας ὅπως ἄπαισι εἴη τῷ πληθυῒ εὐθυμῆσαι. δῑ ὃ ἑκάσης ἑορτῆς, μέχρι καὶ νῦν, καθ' ἣν ἦσαν μὲν ἰδιῶται οὐκ ὀλίγοι τὰ χεὶ ἱνδικάσης. Mais ce passage n'est pas plus décisif. Joseph peut marquer simplement que les Prêtres offrent le sang de l'agneau pascal, lorsqu'il dit que les Prêtres sacrifient depuis la neuvième heure, jusqu'à la onzième. Philo de Decalogo. ἐν πάσῃ δίκαια κωλυθμὸς ἱερᾶς γ'. τὰς ἱερὰς οὐκ ἀναφέροντας ἱερωσύνην ἣ νόμῳ χαλεσωμὸς τὸ ἔθνε πάντα μίαν ἡμέραν ἐξαίρετον ἀνὰ πᾶν ἔτος, εἰς αὐτουργίαν θυσιῶν. Et lib. 3. de vita Moysis. ἐν ᾗ (πάχα) οὐκ οἱ μὲν ἰδιῶται οὐδέποτε τῷ βωμῷ τὰ ἱερεῖα θύουσι δ' οἱ ἱερεῖς, ἀλλὰ νόμῳ πανδημεὶ σύμπαν τὸ ἔθνος ἱερᾶται) ἣ μέρος ἑκάστῳ τῆς ὑπὲρ αὐτῷ θυσίας ἀναθέντος, τότε χρὴ ἀφιεροῦντος.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Α'λῶς -> Ἀλοῦς, τις -> τίς, δι -> δῑ, Κεφάλ -> Κεφάλῳ, ἄπανσι -> ἄπαισι",
-    "Greek spelling checked against a Greek dictionary: ἱεροσύνην -> ἱερωσύνην",
-    "Greek spelling checked against a Greek dictionary: ἀφιερῶντος -> ἀφιεροῦντος"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0217(a)",
+   "page": "page_0217",
+   "marker": "(a)",
+   "text": "2 Rois 6:17.",
+   "proposed": "2 Rois 6:17.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
    ]
   },
   {
@@ -539,14 +933,21 @@
    ]
   },
   {
+   "id": "0223(a)",
+   "page": "page_0223",
+   "marker": "(a)",
+   "text": "Junius ; et Tremellius ; Piscator.",
+   "proposed": "Junius ;\net Tremellius ;\nPiscator.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0226(b)",
    "page": "page_0226",
    "marker": "(b)",
-   "text": "Mariana, Tig. Munst.",
-   "proposed": "Mariana ; Bible de Tigur ; Munster.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Mariana ; Bible de Tigur ; Munster.",
+   "proposed": "Mariana ;\nBible de Tigur ;\nMunster.",
+   "why": [],
    "flags": []
   },
   {
@@ -564,8 +965,8 @@
    "id": "0226(e)",
    "page": "page_0226",
    "marker": "(e)",
-   "text": "Voyez 2 Rois 5:9 ; 1 Rois 9:15.",
-   "proposed": "Voyez 2 Rois 5:9 ; 1 Rois 9:15.",
+   "text": "Voyez 2 Rois 5:9 ; 3 Rois 9:15.",
+   "proposed": "Voyez 2 Rois 5:9 ; 3 Rois 9:15.",
    "why": [],
    "flags": [
     "ambiguous-name"
@@ -586,6 +987,15 @@
    ]
   },
   {
+   "id": "0234(b)",
+   "page": "page_0234",
+   "marker": "(b)",
+   "text": "Vatable ; Villalpand ; Sa ; Pineda ; Grotius.",
+   "proposed": "Vatable ;\nVillalpand ;\nSa ;\nPineda ;\nGrotius.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0235(a)",
    "page": "page_0235",
    "marker": "(a)",
@@ -596,6 +1006,24 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0236(c)",
+   "page": "page_0236",
+   "marker": "(c)",
+   "text": "Ainsi l'entendent Junius ; Tremellius ; Piscator ; Usserius ; Bochart, De animalibus sacris, partie 1, livre 5, chapitre 4, page 765.",
+   "proposed": "Ainsi l'entendent Junius ;\nTremellius ;\nPiscator ;\nUsserius ;\nBochart, De animalibus sacris, partie 1, livre 5, chapitre 4, page 765.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0240(a)",
+   "page": "page_0240",
+   "marker": "(a)",
+   "text": "Grotius ; Estius ; Mariana.",
+   "proposed": "Grotius ;\nEstius ;\nMariana.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0242(e)",
@@ -634,26 +1062,13 @@
    "id": "0250(a)",
    "page": "page_0250",
    "marker": "(a)",
-   "text": "Εἶπε τοῖς Λευίταις τοῖς δυνατοῖς ἐν παντὶ Ισραὴλ, τῷ ἁγιάσθαι ἀυτὲς τῷ κυρίῳ.",
+   "text": "Εἶπε τοῖς Λευίταις τοῖς δυνατοῖς ἐν παντὶ Ισραὴλ, τῷ ἁγιάσθαι αὐτοὺς τῷ κυρίῳ.",
    "proposed": "Εἶπε τοῖς Λευίταις τοῖς δυνατοῖς ἐν παντὶ Ισραὴλ, τῷ ἁγιάσθαι αὐτοὺς τῷ κυρίῳ.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἀυτὲς -> αὐτοὺς"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0250(b)",
-   "page": "page_0250",
-   "marker": "(b)",
-   "text": "Ita l'auteur des Traditions hébraïques sur les Paralipomènes, etc.",
-   "proposed": "Ainsi l'entend l'auteur des Traditions hébraïques sur les Paralipomènes, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0252(a)",
@@ -679,14 +1094,41 @@
    ]
   },
   {
+   "id": "0257(e)",
+   "page": "page_0257",
+   "marker": "(e)",
+   "text": "Hugues de Saint-Cher ; Denys le Chartreux ; Raban Maur ; Junius ; Grotius ; Salian. Voyez aussi Cornelius a Lapide, Préface sur les Lamentations.",
+   "proposed": "Hugues de Saint-Cher ;\nDenys le Chartreux ;\nRaban Maur ;\nJunius ;\nGrotius ;\nSalian. Voyez aussi Cornelius a Lapide, Préface sur les Lamentations.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0260(c)",
+   "page": "page_0260",
+   "marker": "(c)",
+   "text": "4 Rois 24:6.",
+   "proposed": "4 Rois 24:6.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
+   ]
+  },
+  {
+   "id": "0261(g)",
+   "page": "page_0261",
+   "marker": "(g)",
+   "text": "L'Hébreu ; Vatable ; Nicolas de Lyre ; Estius ; Munster.",
+   "proposed": "L'Hébreu ;\nVatable ;\nNicolas de Lyre ;\nEstius ;\nMunster.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0263(a)",
    "page": "page_0263",
    "marker": "(a)",
-   "text": "’Εποίησεν Σαδακίαν ἀδελφὸν τῷ πατρὸς ἀυτῶ.",
+   "text": "’Ἐποίησεν Σαδακίαν ἀδελφὸν τῷ πατρὸς ἀυτῶ.",
    "proposed": "’Ἐποίησεν Σαδακίαν ἀδελφὸν τῷ πατρὸς ἀυτῶ.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Εποίησεν -> Ἐποίησεν"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"

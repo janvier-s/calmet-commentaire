@@ -1,14 +1,13 @@
 {
  "summary": {
   "notes": 444,
-  "changed": 25,
+  "changed": 15,
   "flags": {
    "uncertain": 2,
    "scan-unread": 50,
    "greek": 48,
    "hebrew": 1,
-   "ambiguous-name": 1,
-   "reference-mismatch": 2,
+   "ambiguous-name": 2,
    "reference-not-in-vulgate": 1
   }
  },
@@ -62,6 +61,24 @@
    ]
   },
   {
+   "id": "0042(b)",
+   "page": "page_0042",
+   "marker": "(b)",
+   "text": "Voyez Pline ; Polybe ; Denys d'Halicarnasse.",
+   "proposed": "Voyez Pline ;\nPolybe ;\nDenys d'Halicarnasse.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0042(d)",
+   "page": "page_0042",
+   "marker": "(d)",
+   "text": "Voyez Genèse 15:19 ; Deutéronome 2:26 ; Josué 13:18.",
+   "proposed": "Voyez Genèse 15:19 ;\nDeutéronome 2:26 ;\nJosué 13:18.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0043(d)",
    "page": "page_0043",
    "marker": "(d)",
@@ -91,11 +108,9 @@
    "id": "0047(e)",
    "page": "page_0047",
    "marker": "(e)",
-   "text": "Καὶ συντέλειαν πάσης τῆς κακίας τῆς γῆς ἐκ τῶ σόματ ἀυτῦ ; ἡ ἀυτὴ ἐκκλησία ἐλεοφόρησε τὰ καὶ ἐποίησεν, ὃς ἦν δευτερεύων τῆ λόγῳ τῶ στόματος αὐτοῦ.",
+   "text": "Καὶ συντέλειαν πάσης τῆς κακίας τῆς γῆς ἐκ τῶ σόματ αὐτοῦ ; ἡ ἀυτὴ ἐκκλησία ἐλεοφόρησε τὰ καὶ ἐποίησεν, ὃς ἦν δευτερεύων τῆ λόγῳ τῶ στόματος αὐτοῦ.",
    "proposed": "Καὶ συντέλειαν πάσης τῆς κακίας τῆς γῆς ἐκ τῶ σόματ αὐτοῦ ; ἡ ἀυτὴ ἐκκλησία ἐλεοφόρησε τὰ καὶ ἐποίησεν, ὃς ἦν δευτερεύων τῆ λόγῳ τῶ στόματος αὐτοῦ.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἀυτῦ -> αὐτοῦ"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -105,11 +120,9 @@
    "id": "0048(a)",
    "page": "page_0048",
    "marker": "(a)",
-   "text": "Polyb. lib. 32. apud Athen. lib. x. c. 11. Εἰσηγαγεν τῆ λανη, et τεχνιτικὲς ἀγῶνας.",
+   "text": "Polyb. lib. 32. apud Athen. lib. x. c. 11. Εἰσήγαγεν τῆ λανη, et τεχνιτικὲς ἀγῶνας.",
    "proposed": "Polyb. lib. 32. apud Athen. lib. x. c. 11. Εἰσήγαγεν τῆ λανη, et τεχνιτικὲς ἀγῶνας.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Εἰσηγαγεν -> Εἰσήγαγεν"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -187,17 +200,25 @@
    ]
   },
   {
+   "id": "0062(a)",
+   "page": "page_0062",
+   "marker": "(a)",
+   "text": "Eusèbe, Chronique ; saint Augustin, La Cité de Dieu, livre 18, chapitre 16 ; Sulpice Sévère, livre 2 ; Nicolas de Lyre ; Estius ; Denys le Chartreux ; Sixte de Sienne ; Noël Alexandre, Histoire de l'Ancien Testament, tome s.",
+   "proposed": "Eusèbe, Chronique ;\nsaint Augustin, La Cité de Dieu, livre 18, chapitre 16 ;\nSulpice Sévère, livre 2 ;\nNicolas de Lyre ;\nEstius ;\nDenys le Chartreux ;\nSixte de Sienne ;\nNoël Alexandre, Histoire de l'Ancien Testament, tome s.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0063(a)",
    "page": "page_0063",
    "marker": "(a)",
-   "text": "_Joseph Antiq. lib._ 10. _cap._ 4. Καὶ τὸν ναὸν ἅγιον, et τὴν πόλιν ζηλῶσαι, et μηδὲ μέρη τὰ λοιπὰ τῆς γῆς, et χάριν τὶ τῆς σωτηρίας, ἑαυτῶν τῷ Θεῷ, et διατηρεῖν ἀυτὸν ἐνδυμῇ πρὸς ὅλον τὸν βίον.",
+   "text": "_Joseph Antiq. lib._ 10. _cap._ 4. Καὶ τὸν ναὸν ἅγιον, et τὴν πόλιν ζηλῶσαι, et μηδὲ μέρη τὰ λοιπὰ τῆς γῆς, et χάριν τὶ τῆς σωτηρίας, ἑαυτῶν τῷ Θεῷ, et διατηρεῖν αὐτὸν ἐνδυμῇ πρὸς ὅλον τὸν βίον.",
    "proposed": "_Joseph Antiq. lib._ 10. _cap._ 4. Καὶ τὸν ναὸν ἅγιον, et τὴν πόλιν ζηλῶσαι, et μηδὲ μέρη τὰ λοιπὰ τῆς γῆς, et χάριν τὶ τῆς σωτηρίας, ἑαυτῶν τῷ Θεῷ, et διατηρεῖν αὐτὸν ἐνδυμῇ πρὸς ὅλον τὸν βίον.",
    "why": [
     "Greek checked against the Septuagint, 2 Paralipomènes 26:16",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary: ἀυτὸν -> αὐτὸν"
+    "Greek spelling checked against a Greek dictionary"
    ],
    "flags": [
     "greek",
@@ -220,11 +241,9 @@
    "id": "0073(b)",
    "page": "page_0073",
    "marker": "(b)",
-   "text": "Καὶ ὁ ναὸς τῷ Θεῷ ἀυτῶν ἐγενήθη εἰς ἔδαφος, καὶ αἱ πόλεις ἀυτῶν ὑπερήφθησαν ὑπὸ τῶν ἐχθρῶν ἀυτῶν. ἰδαφος πατέβαλεν. Æschil. scontra Ctesiphont. Hesych. Vide Thesaur. L. G. Henrici Stephani. Ioseph lib. X. Antiq. cap. 11, de Excidio Templi à Nabuchodonosor Καλαμήσεται ταῦτα καὶ ἐς Βασιλέα, πάντα πλὴν εἰς ἔδαφος καθελῶν.",
+   "text": "Καὶ ὁ ναὸς τῷ Θεῷ ἀυτῶν ἐγενήθη εἰς ἔδαφος, καὶ αἱ πόλεις ἀυτῶν ὑπερήφθησαν ὑπὸ τῶν ἐχθρῶν ἀυτῶν. ἔδαφος πατέβαλεν. Æschil. scontra Ctesiphont. Hesych. Vide Thesaur. L. G. Henrici Stephani. Ioseph lib. X. Antiq. cap. 11, de Excidio Templi à Nabuchodonosor Καλαμήσεται ταῦτα καὶ ἐς Βασιλέα, πάντα πλὴν εἰς ἔδαφος καθελῶν.",
    "proposed": "Καὶ ὁ ναὸς τῷ Θεῷ ἀυτῶν ἐγενήθη εἰς ἔδαφος, καὶ αἱ πόλεις ἀυτῶν ὑπερήφθησαν ὑπὸ τῶν ἐχθρῶν ἀυτῶν. ἔδαφος πατέβαλεν. Æschil. scontra Ctesiphont. Hesych. Vide Thesaur. L. G. Henrici Stephani. Ioseph lib. X. Antiq. cap. 11, de Excidio Templi à Nabuchodonosor Καλαμήσεται ταῦτα καὶ ἐς Βασιλέα, πάντα πλὴν εἰς ἔδαφος καθελῶν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἰδαφος -> ἔδαφος"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -234,8 +253,8 @@
    "id": "0073(d)",
    "page": "page_0073",
    "marker": "(d)",
-   "text": "Voyez Serarius et Tirin, et dom Bernard de Monfaucon, Vérité de l'Histoire de Judith.",
-   "proposed": "Voyez Serarius et Tirin, et dom Bernard de Montfaucon, Vérité de l'Histoire de Judith.",
+   "text": "Voyez Serarius et Tirin, et dom Bernard de Montfaucon, Vérité de l'Histoire de Judith.",
+   "proposed": "Voyez Serarius ; Tirin ; et dom Bernard de Montfaucon, Vérité de l'Histoire de Judith.",
    "why": [
     "abbreviations written out"
    ],
@@ -245,12 +264,23 @@
    "id": "0074(a)",
    "page": "page_0074",
    "marker": "(a)",
-   "text": "1 Maccabées 3:51. Τὰ ἅγια ὃς κατεπατήθη, καὶ βεβήλωται.",
-   "proposed": "1 Maccabées 3:51. Τὰ ἅγια ὃς κατεπατήθη, καὶ βεβήλωται.",
+   "text": "1 Machabées 3:51. Τὰ ἅγια ὃς κατεπατήθη, καὶ βεβήλωται.",
+   "proposed": "1 Machabées 3:51. Τὰ ἅγια ὃς κατεπατήθη, καὶ βεβήλωται.",
    "why": [],
    "flags": [
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0074(d)",
+   "page": "page_0074",
+   "marker": "(d)",
+   "text": "3 Rois 14:25-26.",
+   "proposed": "3 Rois 14:25-26.",
+   "why": [],
+   "flags": [
+    "ambiguous-name"
    ]
   },
   {
@@ -294,6 +324,24 @@
    ]
   },
   {
+   "id": "0095(a)",
+   "page": "page_0095",
+   "marker": "(a)",
+   "text": "Voyez Serarius, question 1 ; Bellarmin, Du Verbe de Dieu, livre 1, chapitre 12 ; Salian ; Ménochius ; Tirin ; Matiana.",
+   "proposed": "Voyez Serarius, question 1 ;\nBellarmin, Du Verbe de Dieu, livre 1, chapitre 12 ;\nSalian ;\nMénochius ;\nTirin ;\nMatiana.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0095(d)",
+   "page": "page_0095",
+   "marker": "(d)",
+   "text": "Voyez Ortelius, Thesaurus ; Josèphe ; Ptolémée ; Pline ; Étienne de Byzance.",
+   "proposed": "Voyez Ortelius, Thesaurus ;\nJosèphe ;\nPtolémée ;\nPline ;\nÉtienne de Byzance.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0096(a)",
    "page": "page_0096",
    "marker": "(a)",
@@ -304,6 +352,15 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0097(a)",
+   "page": "page_0097",
+   "marker": "(a)",
+   "text": "Martial, livre 4 ; Perse, Satire 5 ; Horace, Satires ; Justin, livre 36 ; Suétone, Auguste, chapitre 76, etc.",
+   "proposed": "Martial, livre 4 ;\nPerse, Satire 5 ;\nHorace, Satires ;\nJustin, livre 36 ;\nSuétone, Auguste, chapitre 76, etc.",
+   "why": [],
+   "flags": []
   },
   {
    "id": "0103(a)",
@@ -321,11 +378,9 @@
    "id": "0108(a)",
    "page": "page_0108",
    "marker": "(a)",
-   "text": "Καὶ τὴν κραμνὴν ἀνδῶν, ἢ ἠδίκαυν τὴν αἰδῶ τω ἀνδῶν εἰς αἷμα. Syr. _Stratum ipsorum quod accepit sanguinem dilectæ tuæ._",
+   "text": "Καὶ τὴν κραμνὴν ἀνδῶν, ἢ ἠδίκουν τὴν αἰδῶ τῷ ἀνδῶν εἰς αἷμα. Syr. _Stratum ipsorum quod accepit sanguinem dilectæ tuæ._",
    "proposed": "Καὶ τὴν κραμνὴν ἀνδῶν, ἢ ἠδίκουν τὴν αἰδῶ τῷ ἀνδῶν εἰς αἷμα. Syr. _Stratum ipsorum quod accepit sanguinem dilectæ tuæ._",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: τω -> τῷ, ἠδίκαυν -> ἠδίκουν"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -347,19 +402,6 @@
    ]
   },
   {
-   "id": "0112(a)",
-   "page": "page_0112",
-   "marker": "(a)",
-   "text": "1 Paralipomènes 14:11. _Non est apud te ulla distantia, utrum in paucis auxilieris an in pluribus._",
-   "proposed": "1 Paralipomènes 14:11. _Non est apud te ulla distantia, utrum in paucis auxilieris an in pluribus._",
-   "why": [
-    "the Latin next to the call is 2 Paralipomènes 14:11, not 1 Paralipomènes 14:11"
-   ],
-   "flags": [
-    "reference-mismatch"
-   ]
-  },
-  {
    "id": "0113(a)",
    "page": "page_0113",
    "marker": "(a)",
@@ -375,24 +417,31 @@
    "id": "0115(d)",
    "page": "page_0115",
    "marker": "(d)",
-   "text": "Hesych. Χλιδῶνας, κόσμον ἐν μὲν γυναιξὶν κλιδῶνας φερὰν, ἢ τὰς τραχήλους. Χλιδῶσιν; χλιδώμας παρὰ τὰς ωδὰς ἔχον.",
+   "text": "Hesych. Χλιδῶνας, κόσμον ἐν μὲν γυναιξὶν κλιδῶνας φερὰν, ἢ τὰς τραχήλους. Χλιδῶσιν; χλιδώσας παρὰ τὰς ᾠδὰς ἔχον.",
    "proposed": "Hesych. Χλιδῶνας, κόσμον ἐν μὲν γυναιξὶν κλιδῶνας φερὰν, ἢ τὰς τραχήλους. Χλιδῶσιν; χλιδώσας παρὰ τὰς ᾠδὰς ἔχον.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: χλιδώμας -> χλιδώσας, ωδὰς -> ᾠδὰς"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
   },
   {
+   "id": "0116(e)",
+   "page": "page_0116",
+   "marker": "(e)",
+   "text": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ; saint Clément de Rome, Première lettre aux Corinthiens ; Origène, Homélie 19 sur Jérémie ; Tertullien, livre De la monogamie, chapitre 17 ; saint Ambroise, Des devoirs, livre 3, chapitre 13 ; saint Jérôme, Lettre à Furia ; saint Fulgence, Lettre 2, à Galla, etc.",
+   "proposed": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ;\nsaint Clément de Rome, Première lettre aux Corinthiens ;\nOrigène, Homélie 19 sur Jérémie ;\nTertullien, livre De la monogamie, chapitre 17 ;\nsaint Ambroise, Des devoirs, livre 3, chapitre 13 ;\nsaint Jérôme, Lettre à Furia ;\nsaint Fulgence, Lettre 2, à Galla, etc.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0116(f)",
    "page": "page_0116",
    "marker": "(f)",
-   "text": "Κεμος, Uter, un outre, αϰος, un sac, une poche.",
+   "text": "Κεμος, Uter, un outre, ἄκος, un sac, une poche.",
    "proposed": "Κεμος, Uter, un outre, ἄκος, un sac, une poche.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: αϰος -> ἄκος"
+    "Greek spelling checked against a Greek dictionary"
    ],
    "flags": [
     "greek",
@@ -438,6 +487,24 @@
    ]
   },
   {
+   "id": "0118(d)",
+   "page": "page_0118",
+   "marker": "(d)",
+   "text": "Saint Thomas, secunda Secundæ, question 110, article 3, ad 3 ; Tostat, sur l'Exode 1, question 6 ; Nicolas de Lyre ; Estius ; Mariana ; Sa. Voyez Serarius, sur Judith 13, question 9.",
+   "proposed": "Saint Thomas, secunda Secundæ, question 110, article 3, ad 3 ;\nTostat, sur l'Exode 1, question 6 ;\nNicolas de Lyre ;\nEstius ;\nMariana ;\nSa. Voyez Serarius, sur Judith 13, question 9.",
+   "why": [],
+   "flags": []
+  },
+  {
+   "id": "0119(b)",
+   "page": "page_0119",
+   "marker": "(b)",
+   "text": "Rabban ; Hugues de Saint-Cher ; Glossa.",
+   "proposed": "Rabban ;\nHugues de Saint-Cher ;\nGlossa.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0119(c)",
    "page": "page_0119",
    "marker": "(c)",
@@ -450,30 +517,24 @@
    ]
   },
   {
+   "id": "0120(a)",
+   "page": "page_0120",
+   "marker": "(a)",
+   "text": "Voyez Xénophon, Cyropédie, livre 8 ; Quinte-Curce, livre 3 ; Procope de Gaza, Guerre des Perses, livre 2 ; Ammien Marcellin, livre 23.",
+   "proposed": "Voyez Xénophon, Cyropédie, livre 8 ;\nQuinte-Curce, livre 3 ;\nProcope de Gaza, Guerre des Perses, livre 2 ;\nAmmien Marcellin, livre 23.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0120(c)",
    "page": "page_0120",
    "marker": "(c)",
-   "text": "Le Grec ℣. 3. et 4. suppose qu'il faisait encore nuit ; Ουκ αναγελωψιδος τῷ Κοσμῳ ην νυνι εωργ.",
+   "text": "Le Grec ℣. 3. et 4. suppose qu'il faisait encore nuit ; Οὐκ αναγελωψιδος τῷ Κόσμῳ ην νυνὶ εωργ.",
    "proposed": "Le Grec ℣. 3. et 4. suppose qu'il faisait encore nuit ; Οὐκ αναγελωψιδος τῷ Κόσμῳ ην νυνὶ εωργ.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Ουκ -> Οὐκ, νυνι -> νυνὶ, Κοσμῳ -> Κόσμῳ"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0121(b)",
-   "page": "page_0121",
-   "marker": "(b)",
-   "text": "Juges 10:11. _Cum descenderet montem, circa ortum diei._",
-   "proposed": "Juges 10:11. _Cum descenderet montem, circa ortum diei._",
-   "why": [
-    "the Latin next to the call is Judith 10:11, not Juges 10:11"
-   ],
-   "flags": [
-    "reference-mismatch"
    ]
   },
   {
@@ -493,11 +554,9 @@
    "id": "0124(b)",
    "page": "page_0124",
    "marker": "(b)",
-   "text": "Εβουλεύσαντο ἐπιβαλεῖν τὰς χεῖρας ἀυτῶν, καὶ πάντα ὅσα ἀπεδίλατο ἀυτοῖς ὁ Θεὸς ἐν τοῖς νόμοις ἀυτῶ μὴ φαγεῖν, διέγνωσαν καταναλῶσαι.",
+   "text": "Ἐβουλεύσαντο ἐπιβαλεῖν τὰς χεῖρας ἀυτῶν, καὶ πάντα ὅσα ἀπεδίλατο αὐτοῖς ὁ Θεὸς ἐν τοῖς νόμοις ἀυτῶ μὴ φαγεῖν, διέγνωσαν καταναλῶσαι.",
    "proposed": "Ἐβουλεύσαντο ἐπιβαλεῖν τὰς χεῖρας ἀυτῶν, καὶ πάντα ὅσα ἀπεδίλατο αὐτοῖς ὁ Θεὸς ἐν τοῖς νόμοις ἀυτῶ μὴ φαγεῖν, διέγνωσαν καταναλῶσαι.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἀυτοῖς -> αὐτοῖς, Εβουλεύσαντο -> Ἐβουλεύσαντο"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -535,25 +594,31 @@
    "id": "0129(a)",
    "page": "page_0129",
    "marker": "(a)",
-   "text": "Ε'βαπτίζετο ἐν τῆ παρεμβολῆ ἐν τῆ πηγῆ τῶν ὑδάτων… Sõrus rois Sec's. Diodor. lib. 1. Le Syriaque ne lit pas, dans le camp.",
+   "text": "Ἐβαπτίζετο ἐν τῆ παρεμβολῆ ἐν τῆ πηγῆ τῶν ὑδάτων… Sõrus rois Sec's. Diodor. lib. 1. Le Syriaque ne lit pas, dans le camp.",
    "proposed": "Ἐβαπτίζετο ἐν τῆ παρεμβολῆ ἐν τῆ πηγῆ τῶν ὑδάτων… Sõrus rois Sec's. Diodor. lib. 1. Le Syriaque ne lit pas, dans le camp.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Ε'βαπτίζετο -> Ἐβαπτίζετο"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
   },
   {
+   "id": "0130(c)",
+   "page": "page_0130",
+   "marker": "(c)",
+   "text": "Diodore de Sicile, tome 2, Histoire, livre 16 ; Quinte-Curce, livres 6 et 10 ; Plutarque, De la fortune d'Alexandre, etc.",
+   "proposed": "Diodore de Sicile, tome 2, Histoire, livre 16 ;\nQuinte-Curce, livres 6 et 10 ;\nPlutarque, De la fortune d'Alexandre, etc.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0130(e)",
    "page": "page_0130",
    "marker": "(e)",
-   "text": "Εἶναι Βαγώαν τῷ Διόχῳ, ὃς ἦν ἐφεστηκὼς ἐπὶ πάντων τῶν ἀυτῷ, μεῖζον τῆς γυναικὸς… ἢ ἐπὶ τῆς οἰκίας ἀυτ.",
+   "text": "Εἶναι Βαγώαν τῷ Διόχῳ, ὃς ἦν ἐφεστηκὼς ἐπὶ πάντων τῶν αὐτῷ, μεῖζον τῆς γυναικὸς… ἢ ἐπὶ τῆς οἰκίας αὐτ.",
    "proposed": "Εἶναι Βαγώαν τῷ Διόχῳ, ὃς ἦν ἐφεστηκὼς ἐπὶ πάντων τῶν αὐτῷ, μεῖζον τῆς γυναικὸς… ἢ ἐπὶ τῆς οἰκίας αὐτ.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: ἀυτῷ -> αὐτῷ",
-    "Greek spelling checked against a Greek dictionary: ἀυτ -> αὐτ"
+    "Greek spelling checked against a Greek dictionary"
    ],
    "flags": [
     "greek",
@@ -564,11 +629,9 @@
    "id": "0131(c)",
    "page": "page_0131",
    "marker": "(c)",
-   "text": "Herodot. lib 5. cap. 18. Εἴωθε δὲ Πέρσαισι, σμὰ. Ἡμῖν νόμος Περσέων ἐστὶ, δειπνα κροτέειν γυναῖκας μίγα, τάς τε δὴ γαμετὰς, κ τὰς παλλακὰς παρεῖναι. Vide et Just.",
+   "text": "Herodot. lib 5. cap. 18. Εἴωθε δὲ Πέρσαισι, σμὰ. Ἡμῖν νόμος Περσέων ἐστὶ, δεῖπνα κροτέειν γυναῖκας μίγα, τάς τε δὴ γαμετὰς, κ τὰς παλλακὰς παρεῖναι. Vide et Just.",
    "proposed": "Herodot. lib 5. cap. 18. Εἴωθε δὲ Πέρσαισι, σμὰ. Ἡμῖν νόμος Περσέων ἐστὶ, δεῖπνα κροτέειν γυναῖκας μίγα, τάς τε δὴ γαμετὰς, κ τὰς παλλακὰς παρεῖναι. Vide et Just.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: δειπνα -> δεῖπνα"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -578,11 +641,9 @@
    "id": "0131(d)",
    "page": "page_0131",
    "marker": "(d)",
-   "text": "Athen. Dipnosop. lib. 12. cap 2. Τῆς δὲ νυκτὸς ἀθέους, κ πάμφοροι διατελῦσι λύ. ται καλοῦμεναι. Χρῶνται δὲ αὐταῖς, κὴ πολέμοις ὁ Βασιλεὺς, etc.",
+   "text": "Athen. Dipnosop. lib. 12. cap 2. Τῆς δὲ νυκτὸς ἀθέους, κ πάμφοροι διατελοῦσι λύ. ται καλοῦμεναι. Χρῶνται δὲ αὐταῖς, καὶ πολέμοις ὁ Βασιλεὺς, etc.",
    "proposed": "Athen. Dipnosop. lib. 12. cap 2. Τῆς δὲ νυκτὸς ἀθέους, κ πάμφοροι διατελοῦσι λύ. ται καλοῦμεναι. Χρῶνται δὲ αὐταῖς, καὶ πολέμοις ὁ Βασιλεὺς, etc.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: διατελῦσι -> διατελοῦσι, κὴ -> καὶ"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -592,11 +653,9 @@
    "id": "0132(a)",
    "page": "page_0132",
    "marker": "(a)",
-   "text": "Ειρηκει αυτῃ κατεναντι Ολοφερνη χρυσοπορφυρα καδια, ἁ ἵλαβεν παρα Βαγωα, ὡς εναποκειμενην αυτην διαιταν αυτης, ὡς το ἱδειν κατακλινομενην επ' αυτων.",
+   "text": "Εἰρήκει αυτῃ κατέναντι Ολοφερνη χρυσοπορφυρα κώδια, ἁ ἵλαβεν παρὰ Βαγώᾳ, ὡς ἐναποκειμένην αυτην δίαιταν αὐτῆς, ὡς τὸ ἰδεῖν κατακλινομένην επ' αὐτῶν.",
    "proposed": "Εἰρήκει αυτῃ κατέναντι Ολοφερνη χρυσοπορφυρα κώδια, ἁ ἵλαβεν παρὰ Βαγώᾳ, ὡς ἐναποκειμένην αυτην δίαιταν αὐτῆς, ὡς τὸ ἰδεῖν κατακλινομένην επ' αὐτῶν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: κατεναντι -> κατέναντι, παρα -> παρὰ, Βαγωα -> Βαγώᾳ, διαιταν -> δίαιταν, αυτης -> αὐτῆς, το -> τὸ, κατακλινομενην -> κατακλινομένην, αυτων -> αὐτῶν, Ειρηκει -> Εἰρήκει, καδια -> κώδια, εναποκειμενην -> ἐναποκειμένην, ἱδειν -> ἰδεῖν"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -606,11 +665,9 @@
    "id": "0132(b)",
    "page": "page_0132",
    "marker": "(b)",
-   "text": "Homer. Iliad. 1… Στρωσαν λιτ' επ' εσχαρῃ, Κωεσι τ' ενιδοι, λευκοισι λεοντων ιδεισι.",
+   "text": "Homer. Iliad. 1… Στρωσαν λιτ' επ' ἐσχάρῃ, Κώεσι τ' ἐνίδοι, λευκοισι λεόντων ιδεισι.",
    "proposed": "Homer. Iliad. 1… Στρωσαν λιτ' επ' ἐσχάρῃ, Κώεσι τ' ἐνίδοι, λευκοισι λεόντων ιδεισι.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: λεοντων -> λεόντων, εσχαρῃ -> ἐσχάρῃ, Κωεσι -> Κώεσι, ενιδοι -> ἐνίδοι"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -620,11 +677,9 @@
    "id": "0133(a)",
    "page": "page_0133",
    "marker": "(a)",
-   "text": "Heraclides Cuman. apud Athen. lib. 1. cap. 10. Καὶ ὁι μὲν χαμαὶ καθήμενοι, ὁ δὲ ἐπὶ κλίνης χρυσοποδὸς καθηγήσατο.",
+   "text": "Heraclides Cuman. apud Athen. lib. 1. cap. 10. Καὶ οἱ μὲν χαμαὶ καθήμενοι, ὁ δὲ ἐπὶ κλίνης χρυσοποδὸς καθηγήσατο.",
    "proposed": "Heraclides Cuman. apud Athen. lib. 1. cap. 10. Καὶ οἱ μὲν χαμαὶ καθήμενοι, ὁ δὲ ἐπὶ κλίνης χρυσοποδὸς καθηγήσατο.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ὁι -> οἱ"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -634,11 +689,9 @@
    "id": "0135(a)",
    "page": "page_0135",
    "marker": "(a)",
-   "text": "Εἴπων Ἰεδὶθ τῇ δέλῃ αὐτῆς, εἴπως ἔξω τῆς αὐτῆς.",
+   "text": "Εἴπων Ἰεδὶθ τῇ δούλῃ αὐτῆς, εἴπως ἔξω τῆς αὐτῆς.",
    "proposed": "Εἴπων Ἰεδὶθ τῇ δούλῃ αὐτῆς, εἴπως ἔξω τῆς αὐτῆς.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: δέλῃ -> δούλῃ"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -648,11 +701,9 @@
    "id": "0136(b)",
    "page": "page_0136",
    "marker": "(b)",
-   "text": "Καβέλας καὶ ἀκινάκην ἀυτό.",
+   "text": "Καβέλας καὶ ἀκινάκην αὐτό.",
    "proposed": "Καβέλας καὶ ἀκινάκην αὐτό.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἀυτό -> αὐτό"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
@@ -662,10 +713,9 @@
    "id": "0142(b)",
    "page": "page_0142",
    "marker": "(b)",
-   "text": "Εξῆλθον κατὰ συνάγματὰ ἐπὶ τὰς ἀναβάσεις τῆς ὄρους. Versio Édit. Rom. Exierunt per spiras ad ascensionem montis. Le Syriaque l'a entendu des escadrons des ennemis. Συναγμ, Helych. Βάθρον, τάγμα, ἀγέλη. Antiq. vers. Lat. Exierunt secundum spiras ascensionis montis.",
+   "text": "Ἐξῆλθον κατὰ συνάγματὰ ἐπὶ τὰς ἀναβάσεις τῆς ὄρους. Versio Édit. Rom. Exierunt per spiras ad ascensionem montis. Le Syriaque l'a entendu des escadrons des ennemis. Συναγμ, Helych. Βάθρον, τάγμα, ἀγέλη. Antiq. vers. Lat. Exierunt secundum spiras ascensionis montis.",
    "proposed": "Ἐξῆλθον κατὰ συνάγματὰ ἐπὶ τὰς ἀναβάσεις τῆς ὄρους. Versio Édit. Rom. Exierunt per spiras ad ascensionem montis. Le Syriaque l'a entendu des escadrons des ennemis. Συναγμ, Helych. Βάθρον, τάγμα, ἀγέλη. Antiq. vers. Lat. Exierunt secundum spiras ascensionis montis.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Εξῆλθον -> Ἐξῆλθον",
     "Greek spelling checked against a Greek dictionary"
    ],
    "flags": [
@@ -677,10 +727,9 @@
    "id": "0145(a)",
    "page": "page_0145",
    "marker": "(a)",
-   "text": "Καὶ ὐκ ἦν ἄνθρωπῳ πρὸς τὸν πλησίον αὐτῦ μεῖναι, ἀλλὰ σπεύδοντες ὁμοθυμαδὸν ἔφυγον, etc. Grotius veut que saint Jérôme ait lû dans le Grec σπεύδοντες, au lieu de σπεύδοντες, parce qu'il traduit ; _inclinato capite_, comme s'il avait traduit sur le Grec, et non sur le Caldéen.",
-   "proposed": "Καὶ οὐκ ἦν ἄνθρωπῳ πρὸς τὸν πλησίον αὐτοῦ μεῖναι, ἀλλὰ σπεύδοντες ὁμοθυμαδὸν ἔφυγον, etc. Grotius veut que saint Jérôme ait lû dans le Grec σπεύδοντες, au lieu de σπεύδοντες, parce qu'il traduit ; _inclinato capite_, comme s'il avait traduit sur le Grec, et non sur le Caldéen.",
+   "text": "Καὶ οὐκ ἦν ἄνθρωπῳ πρὸς τὸν πλησίον αὐτοῦ μεῖναι, ἀλλὰ σπεύδοντες ὁμοθυμαδὸν ἔφυγον, etc. Grotius veut que saint Jérôme ait lu dans le Grec σπεύδοντες, au lieu de σπεύδοντες, parce qu'il traduit ; _inclinato capite_, comme s'il avait traduit sur le Grec, et non sur le Caldéen.",
+   "proposed": "Καὶ οὐκ ἦν ἄνθρωπῳ πρὸς τὸν πλησίον αὐτοῦ μεῖναι, ἀλλὰ σπεύδοντες ὁμοθυμαδὸν ἔφυγον, etc. Grotius veut que saint Jérôme ait lu dans le Grec σπεύδοντες, au lieu de σπεύδοντες, parce qu'il traduit ; _inclinato capite_, comme s'il avait traduit sur le Grec, et non sur le Caldéen.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: ὐκ -> οὐκ, αὐτῦ -> αὐτοῦ",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary"
    ],
@@ -714,14 +763,12 @@
    ]
   },
   {
-   "id": "0152(b)",
+   "id": "0152(c)",
    "page": "page_0152",
-   "marker": "(b)",
-   "text": "Sup. IX. 10.",
-   "proposed": "Osée 9:10.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "marker": "(c)",
+   "text": "Jérémie 11:20 ; Romains 9:29 ; Jacques 5:4.",
+   "proposed": "Jérémie 11:20 ;\nRomains 9:29 ;\nJacques 5:4.",
+   "why": [],
    "flags": []
   },
   {
@@ -740,25 +787,21 @@
    "id": "0156(a)",
    "page": "page_0156",
    "marker": "(a)",
-   "text": "Ἐξέστη Πέρσης τὴν νίκην αὐτῆς, καὶ δει τῇ θελήσει αὐτῆς ἐφράχθησαν. Aliàs. Ἐξέστη χθησαν.",
+   "text": "Ἐξέστη Πέρσης τὴν νίκην αὐτῆς, καὶ δεῖ τῇ θελήσει αὐτῆς ἐφράχθησαν. Aliàs. Ἐξέστη χθησαν.",
    "proposed": "Ἐξέστη Πέρσης τὴν νίκην αὐτῆς, καὶ δεῖ τῇ θελήσει αὐτῆς ἐφράχθησαν. Aliàs. Ἐξέστη χθησαν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: δει -> δεῖ"
-   ],
+   "why": [],
    "flags": [
     "greek",
     "scan-unread"
    ]
   },
   {
-   "id": "0158(c)",
-   "page": "page_0158",
-   "marker": "(c)",
-   "text": "Ainsi l'entendent les Pères, et interpretes plerique. Voyez saint Thomas, sur ce passage, question 1, 2 ; Tirin ; etc. Voyez aussi les Essais de Morale, des quatre Fins dernières : De l'Enfer.",
-   "proposed": "Ainsi l'entendent les Pères, et plerique interpretes. Voyez saint Thomas, sur ce passage, question 1, 2 ; Tirin ; etc. Voyez aussi les Essais de Morale, des quatre Fins dernières : De l'Enfer.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "id": "0162(b)",
+   "page": "page_0162",
+   "marker": "(b)",
+   "text": "Voyez Serrarius, sur ce passage, question 19 ; Selden, Des Sanhédrins, livre 3, chapitre 13 ; Grotius, sur ce passage.",
+   "proposed": "Voyez Serrarius, sur ce passage, question 19 ;\nSelden, Des Sanhédrins, livre 3, chapitre 13 ;\nGrotius, sur ce passage.",
+   "why": [],
    "flags": []
   }
  ]
