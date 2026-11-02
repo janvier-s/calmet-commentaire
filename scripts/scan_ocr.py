@@ -462,6 +462,7 @@ def _repair_leftovers(res, ot, jt, link, allow, key_of=lambda t: t["k"], least=0
 OUT_OF_SCOPE = re.compile(r"verses/\d+/(?:latin|annotations)")  # the verses' Latin and margin: no red there
 LEMMA_MARK = 3  # the longest a lemma's verse number reads (ỳ. 19.: Y19, VA7, IJ)
 LATIN_QUOTE = re.compile(r"commentary/\d+/latin_quote")
+NOTE_READ = re.compile(r"(?:[(\[][a-zàâèéòó][a-zjlY0-9ꝯ]?[)\]]?|[(\[]?[A-Za-z0-9]?[a-zàâèéòó][)\]])[il]?[.,:;]*")  # a note's mark misread: Ce) Id) (eY (sj 1b) (fe),
 
 
 def _out_of_scope(o, res):
@@ -485,6 +486,20 @@ def _out_of_scope(o, res):
         elif (nxt[i] is not None and nxt[i] - i <= 2 and LATIN_QUOTE.fullmatch(res[nxt[i]]["path"])
               and res[nxt[i]]["a"] == 0 and (len(r["t"]) <= LEMMA_MARK or any(c.isdigit() for c in r["t"]))):
             r["s"] = "skip"
+
+
+def _note_marks(o, data, res):
+    """A note's mark the scan misreads, "(e)" as "Ce)": not red, not a different word. Paired to the
+    text's note letter it is the same; else (unpaired, or paired to a word) it is left out."""
+    text = dict(_fields(data))
+    for r in res:
+        if r["s"] not in ("missing", "diff", "near", "both") or len(r["src"]) != 1:
+            continue
+        li, wi = r["src"][0]
+        if not NOTE_READ.fullmatch(o["lines"][li]["words"][wi]["t"]):
+            continue
+        f = text.get(r.get("path")) or ""
+        r["s"] = "ok" if "a" in r and f[max(0, r["a"] - 3):r["a"]].endswith("{(") else "skip"
 
 
 def align(o, data, fix=False, tess=None):
@@ -578,6 +593,7 @@ def align(o, data, fix=False, tess=None):
             r["sl"] = round(sl)
     if fix:
         _out_of_scope(o, res)
+        _note_marks(o, data, res)
     extra = [dict(t=t["t"], path=t["path"], a=t["a"], b=t["b"]) for j, t in enumerate(jt)
              if j not in used and not t["path"].startswith("footnotes/") and len(t["t"]) > 1 and not t["t"].isdigit()
              and not (fix and OUT_OF_SCOPE.fullmatch(t["path"]))]

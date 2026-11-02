@@ -602,3 +602,15 @@ def test_italics_leave_a_notes_mark_out():  # Genèse p. 845: _vestiges^{(f)} du
 def test_no_word_differs_for_a_notes_letter():
     o = ocr(line(300, "il", "dit", "Ce", "que", "vous", "dites", wc=0.99))
     assert O.differs(o, page("il dit ^{(e)} que vous dites")) == []
+
+
+def test_a_note_mark_misread_is_neither_red_nor_a_different_word():
+    """Kraken reads "(e)" as "Ce)", "(b)" as "1b)": the same as the text's note letter, or left out."""
+    words = ["une", "chose", "Ce)", "grande", "de", "Dieu", "1b)", "pour", "nous"]
+    r = O.align(ocr(line(300, *words)), page("une chose^{(e)} grande de Dieu pour nous"), fix=True)
+    assert statuses(r) == [(w, "ok") for w in ["une", "chose", "Ce", "grande", "de", "Dieu"]] + [
+        ("1b", "skip"), ("pour", "ok"), ("nous", "ok")]
+    r = O.align(ocr(line(300, "une", "Ce)", "chose")), page("une chose"), fix=True)
+    assert ("Ce", "skip") in statuses(r)
+    r = O.align(ocr(line(300, "une", "chose", "grande")), page("une chose"), fix=True)
+    assert ("grande", "missing") in statuses(r)
