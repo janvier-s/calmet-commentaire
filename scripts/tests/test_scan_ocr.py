@@ -560,3 +560,29 @@ def test_no_italics_for_a_scan_word_the_text_already_splits():  # d'_Achat_: d' 
 def test_italics_still_found_beside_an_ampersand():
     o = ocr(line(300, "il", "dit", "le", "firmament", "du", "Ciel", "&", "puis", sl=[0, 0, 16, 17, 16, 17, 16, 0]))
     assert [(x["to"], x["old"]) for x in O.italics(o, page("il dit le firmament du Ciel et puis"))] == [("italic", "le firmament du Ciel")]
+
+
+def test_italics_take_in_a_first_word_too_unclear_to_vote():  # La terre de Sual: La at 10 degrees votes not
+    o = ocr(line(300, "Jourdain", "La", "terre", "de", "Sual", "ou", sl=[0, 10, 16, 15, 17, 0]))
+    r = O.italics(o, page("Jourdain La terre de Sual ou"))
+    assert [(x["old"], x["new"]) for x in r] == [("La terre de Sual", "Jourdain _La terre de Sual_ ou")]
+
+
+def test_italics_do_not_take_in_a_roman_neighbour():
+    o = ocr(line(300, "Jourdain", "La", "terre", "de", "Sual", "ou", sl=[0, 3, 16, 15, 17, 0]))
+    assert [x["old"] for x in O.italics(o, page("Jourdain La terre de Sual ou"))] == ["terre de Sual"]
+
+
+def test_italics_take_in_the_elision_before_the_word():  # d’ read apart: _d'Achat_, not d'_Achat_
+    o = ocr(line(300, "assez", "d’", "Achat", "Acada", "ou", sl=[0, 3, 16, 17, 0]))
+    assert [x["new"] for x in O.italics(o, page("assez d'Achat Acada ou"))] == ["assez _d'Achat Acada_ ou"]
+
+
+def test_a_split_elision_is_made_whole():
+    o = ocr(line(300, "assez", "d", "Achat", "Acada", "ou", sl=[0, 16, 17, 17, 0]))
+    assert [x["new"] for x in O.italics(o, page("assez _d_'Achat Acada ou"))] == ["assez _d'Achat Acada_ ou"]
+
+
+def test_italics_do_not_take_in_a_notes_mark():
+    o = ocr(line(300, "dit", "f", "Comme", "la", "prairie", "ou", sl=[0, 11, 16, 15, 17, 0]))
+    assert [x["new"] for x in O.italics(o, page("dit ^{(f)} Comme la prairie ou"))] == ["dit ^{(f)} _Comme la prairie_ ou"]
