@@ -1,36 +1,19 @@
 {
  "summary": {
   "notes": 774,
-  "changed": 57,
+  "changed": 33,
   "flags": {
-   "greek": 74,
-   "scan-unread": 73,
-   "scanned": 16,
+   "greek": 71,
+   "scan-unread": 70,
+   "scanned": 19,
+   "expand-unread": 11,
    "context": 7,
+   "expand-changed-numbers": 2,
    "reference-not-in-vulgate": 1,
-   "uncertain": 4,
    "reference-mismatch": 1
   }
  },
  "notes": [
-  {
-   "id": "0038(d)",
-   "page": "page_0038",
-   "marker": "(d)",
-   "text": "Saint Bonaventure ; Vatable ; Jansénius ; Gand ; Clarius ; Grotius ; Cornelius a Lapide.",
-   "proposed": "Saint Bonaventure ;\nVatable ;\nJansénius ;\nGand ;\nClarius ;\nGrotius ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0039(a)",
-   "page": "page_0039",
-   "marker": "(a)",
-   "text": "Hugues de Saint-Cher ; Holkot ; Nicolas de Lyre ; Denys le Chartreux.",
-   "proposed": "Hugues de Saint-Cher ;\nHolkot ;\nNicolas de Lyre ;\nDenys le Chartreux.",
-   "why": [],
-   "flags": []
-  },
   {
    "id": "0041(a)",
    "page": "page_0041",
@@ -49,7 +32,7 @@
    "id": "0042(a)",
    "page": "page_0042",
    "marker": "(a)",
-   "text": "Évdiaboulion dotebeias igl[UNCERTAIN GREEK]isai. cere, quo-cuidam detrahatur. Ait enim : abstine te vos à murmuratione, et à detractione linguæ parcite.",
+   "text": "Ἐν διαβουλίοις ἀσεβοῦς ἐξέτασις ἔσται. cere, quo-cuidam detrahatur. Ait enim : abstine te vos à murmuratione, et à detractione linguæ parcite.",
    "proposed": "Ἐν διαβουλίοις ἀσεβοῦς ἐξέτασις ἔσται. cere, quo-cuidam detrahatur. Ait enim : abstine te vos à murmuratione, et à detractione linguæ parcite.",
    "why": [
     "scan: Replaced garbled transliteration with the printed Greek, Wisdom 1:9.",
@@ -63,7 +46,7 @@
    "id": "0042(b)",
    "page": "page_0042",
    "marker": "(b)",
-   "text": "Stigma para[UNCERTAIN GREEK]doxon ataxias thesin.",
+   "text": "Στόμα καταψευδόμενον ἀναιρεῖ ψυχήν.",
    "proposed": "Στόμα καταψευδόμενον ἀναιρεῖ ψυχήν.",
    "why": [
     "scan: Replaced garbled transliteration with the printed Greek.",
@@ -77,46 +60,30 @@
    "id": "0043(a)",
    "page": "page_0043",
    "marker": "(a)",
-   "text": "_Vide Hæbr._ [UNCERTAIN HEBREW] Genèse 37:11. Nombres 25:11. II. Psal. XXXVI. 1. LXXII. 3. LXXVIII. 5. _in passim._",
+   "text": "_Vide Hæbr._ קנא Genèse 37:11. Nombres 25:11. II. Psal. XXXVI. 1. LXXII. 3. LXXVIII. 5. _in passim._",
    "proposed": "_Vide Hæbr._ קנא Genèse 37:11. Nombres 25:11. II. Psal. XXXVI. 1. LXXII. 3. LXXVIII. 5. _in passim._",
    "why": [
     "scan: Filled the Hebrew word קנא.",
     "read on the scan: קנא"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
-  },
-  {
-   "id": "0044(d)",
-   "page": "page_0044",
-   "marker": "(d)",
-   "text": "Saint Bonaventure ; Nicolas de Lyre ; Hugues de Saint-Cher ; Denys le Chartreux.",
-   "proposed": "Saint Bonaventure ;\nNicolas de Lyre ;\nHugues de Saint-Cher ;\nDenys le Chartreux.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0044(f)",
-   "page": "page_0044",
-   "marker": "(f)",
-   "text": "Vatable ; Grotius ; Cornelius a Lapide ; Baduel.",
-   "proposed": "Vatable ;\nGrotius ;\nCornelius a Lapide ;\nBaduel.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0045(a)",
    "page": "page_0045",
    "marker": "(a)",
-   "text": "[UNCERTAIN GREEK] et d'autres etc.",
+   "text": "Δικαιοσύνη δὲ ἀθάνατός ἐστι. et d'autres etc.",
    "proposed": "Δικαιοσύνη δὲ ἀθάνατός ἐστι. et d'autres etc.",
    "why": [
     "scan: Filled the Greek placeholder.",
     "read on the scan: Δικαιοσύνη δὲ ἀθάνατός ἐστι."
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -149,7 +116,7 @@
    "id": "0056(a)",
    "page": "page_0056",
    "marker": "(a)",
-   "text": "Plato lib. 2. de Rep. Martyrio [UNCERTAIN GREEK], [UNCERTAIN GREEK], [UNCERTAIN GREEK], [UNCERTAIN GREEK], [UNCERTAIN GREEK].",
+   "text": "Plato lib. 2. de Rep. Martyrio Μαστιγώσεται, στρεβλώσεται, δεθήσεται, ἐκκαυθήσεται τὼ ὀφθαλμώ, Τελευτῶν, πάντα κακὰ παθών, ἀνασχινδυλευθήσεται.",
    "proposed": "Plato lib. 2. de Rep. Martyrio Μαστιγώσεται, στρεβλώσεται, δεθήσεται, ἐκκαυθήσεται τὼ ὀφθαλμώ, Τελευτῶν, πάντα κακὰ παθών, ἀνασχινδυλευθήσεται.",
    "why": [
     "scan: Filled the five Greek placeholders; also replaced the garbled 'Martyrio' by the Greek.",
@@ -160,14 +127,15 @@
     "read on the scan: Τελευτῶν, πάντα κακὰ παθών, ἀνασχινδυλευθήσεται"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
    "id": "0056(c)",
    "page": "page_0056",
    "marker": "(c)",
-   "text": "[UNCERTAIN GREEK] [UNCERTAIN GREEK].",
+   "text": "Ἔσται γὰρ αὐτῷ ἡ ἐπισκοπὴ ἐκ λόγων αὐτοῦ.",
    "proposed": "Ἔσται γὰρ αὐτῷ ἡ ἐπισκοπὴ ἐκ λόγων αὐτοῦ.",
    "why": [
     "scan: Filled the Greek placeholders.",
@@ -182,7 +150,7 @@
    "id": "0056(d)",
    "page": "page_0056",
    "marker": "(d)",
-   "text": "[UNCERTAIN GREEK] [UNCERTAIN GREEK].",
+   "text": "Ἔσται γὰρ αὐτῷ ἡ ἐπισκοπὴ ἐκ λόγων αὐτοῦ.",
    "proposed": "Ἔσται γὰρ αὐτῷ ἡ ἐπισκοπὴ ἐκ λόγων αὐτοῦ.",
    "why": [
     "scan: Filled the Greek placeholders.",
@@ -192,33 +160,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0056(e)",
-   "page": "page_0056",
-   "marker": "(e)",
-   "text": "Jérémie 5:6 et 4:16, etc.",
-   "proposed": "Jérémie 5:6 ; 4:16 etc.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0058(c)",
-   "page": "page_0058",
-   "marker": "(c)",
-   "text": "Voyez Tertullien, livre De la patience, chapitre 5 ; Saint Cyprien, De la jalousie et de l'envie ; Saint Augustin, livre 4 Du baptême contre les donatistes, chapitre 8.",
-   "proposed": "Voyez Tertullien, livre De la patience, chapitre 5 ;\nSaint Cyprien, De la jalousie et de l'envie ;\nSaint Augustin, livre 4 Du baptême contre les donatistes, chapitre 8.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0058(f)",
-   "page": "page_0058",
-   "marker": "(f)",
-   "text": "Osorius ; Jansénius ; Vatable ; Ménochius.",
-   "proposed": "Osorius ;\nJansénius ;\nVatable ;\nMénochius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0061(a)",
@@ -234,31 +175,26 @@
    ]
   },
   {
-   "id": "0061(g)",
-   "page": "page_0061",
-   "marker": "(g)",
-   "text": "Voyez Zacharie 13:9 ; Malachie 3:3 ; Ecclésiastique 27:6 etc.",
-   "proposed": "Voyez Zacharie 13:9 ;\nMalachie 3:3 ;\nEcclésiastique 27:6 etc.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0064(d)",
+   "id": "0064(a)",
    "page": "page_0064",
-   "marker": "(d)",
-   "text": "Voyez saint Thomas ; Saint Jérôme ; et Osorius.",
-   "proposed": "Voyez saint Thomas ;\nSaint Jérôme ;\net Osorius.",
-   "why": [],
+   "marker": "(a)",
+   "text": "Psal. XIII. I. XLVIII. II. LII. I. LXXIII. 18. XCI. 7. et passim.",
+   "proposed": "Psaumes 13:1 ; Psaumes 48:2 ; Psaumes 52:1 ; Psaumes 73:18 ; Psaumes 91:7 ; et passim.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": []
   },
   {
    "id": "0069(c)",
    "page": "page_0069",
    "marker": "(c)",
-   "text": "Ainsi lisent saint Bonaventure ; Nicolas de Lyre ; Hugues de Saint-Cher ; Holkot ; Denys le Chartreux. Voyez aussi Vatable et Clarius, etc.",
+   "text": "Ainsi lisent saint Bonaventure ;\nNicolas de Lyre ;\nHugues de Saint-Cher ;\nHolkot ;\nDenys le Chartreux. Voyez aussi Vatable et Clarius, etc.",
    "proposed": "Ainsi lisent saint Bonaventure ;\nNicolas de Lyre ;\nHugues de Saint-Cher ;\nHolkot ;\nDenys le Chartreux. Voyez aussi Vatable et Clarius, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0071(b)",
@@ -321,15 +257,6 @@
    ]
   },
   {
-   "id": "0079(a)",
-   "page": "page_0079",
-   "marker": "(a)",
-   "text": "Castro ; Denys ; Cornelius a Lapide.",
-   "proposed": "Castro ;\nDenys ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0080(g)",
    "page": "page_0080",
    "marker": "(g)",
@@ -352,15 +279,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0081(c)",
-   "page": "page_0081",
-   "marker": "(c)",
-   "text": "Deutéronome 32:23 ; 2 Rois 22:15 ; Psaumes 7:14 ; Psaumes 17:15 ; 76:18, etc.",
-   "proposed": "Deutéronome 32:23 ; 2 Rois 22:15 ; Psaumes 7:14 ; 17:15 ; 76:18 etc.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0084(g)",
@@ -401,24 +319,6 @@
    ]
   },
   {
-   "id": "0088(c)",
-   "page": "page_0088",
-   "marker": "(c)",
-   "text": "Proverbes 1:20-21 et 8:34 et 9:1-2. et suivants.",
-   "proposed": "Proverbes 1:20-21 ; 8:34 ; 9:1-2 et suivants.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0089(b)",
-   "page": "page_0089",
-   "marker": "(b)",
-   "text": "Cantacuzène ; Jansénius ; Osorius.",
-   "proposed": "Cantacuzène ;\nJansénius ;\nOsorius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0092(b)",
    "page": "page_0092",
    "marker": "(b)",
@@ -434,7 +334,7 @@
    "id": "0095(d)",
    "page": "page_0095",
    "marker": "(d)",
-   "text": "Sagesse 4:6. Est [UNCERTAIN GREEK] [UNCERTAIN GREEK]. Ici, [UNCERTAIN GREEK] [UNCERTAIN GREEK].",
+   "text": "Sagesse 4:6. Ἐξ ἀνόμων ὕπνων. Ici, ἡδονῆς ὕπνῳ συνελθούσης.",
    "proposed": "Sagesse 4:6. Ἐξ ἀνόμων ὕπνων. Ici, ἡδονῆς ὕπνῳ συνελθούσης.",
    "why": [
     "scan: Filled the Greek placeholders; corrected 'Est' to Ἐξ.",
@@ -448,19 +348,10 @@
    ]
   },
   {
-   "id": "0095(e)",
-   "page": "page_0095",
-   "marker": "(e)",
-   "text": "Nicolas de Lyre ; Holkot ; Clarius.",
-   "proposed": "Nicolas de Lyre ;\nHolkot ;\nClarius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0095(h)",
    "page": "page_0095",
    "marker": "(h)",
-   "text": "[UNCERTAIN GREEK] [UNCERTAIN GREEK] [UNCERTAIN GREEK].",
+   "text": "Ἐπὶ τὴν ὁμοιοπαθῆ κατέπεσον γῆν.",
    "proposed": "Ἐπὶ τὴν ὁμοιοπαθῆ κατέπεσον γῆν.",
    "why": [
     "scan: Filled the Greek placeholders.",
@@ -471,15 +362,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0095(i)",
-   "page": "page_0095",
-   "marker": "(i)",
-   "text": "Saint Augustin, La Cité de Dieu, livre 4. Voyez aussi Festus ; Varron, De la vie du peuple romain ; Macrobe, Le Songe de Scipion, livre 1 ; et Cornelius a Lapide sur ce passage.",
-   "proposed": "Saint Augustin, La Cité de Dieu, livre 4. Voyez aussi Festus ;\nVarron, De la vie du peuple romain ;\nMacrobe, Le Songe de Scipion, livre 1 ;\net Cornelius a Lapide sur ce passage.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0098(a)",
@@ -519,22 +401,17 @@
    ]
   },
   {
-   "id": "0104(c)",
-   "page": "page_0104",
-   "marker": "(c)",
-   "text": "Hébreux 1:3. Voyez au besoin Origène, Des principes, livre 1, chapitre 2 ; Eusèbe, Démonstration évangélique, livre 4, chapitre 30 ; Saint Augustin ou un autre auteur, De l'incarnation du Verbe, livre 1, chapitre 13.",
-   "proposed": "Hébreux 1:3. Voyez au besoin Origène, Des principes, livre 1, chapitre 2 ;\nEusèbe, Démonstration évangélique, livre 4, chapitre 30 ;\nSaint Augustin ou un autre auteur, De l'incarnation du Verbe, livre 1, chapitre 13.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0105(b)",
-   "page": "page_0105",
-   "marker": "(b)",
-   "text": "Saint Ildefonse, Sermon 1 sur l'Assomption ; Saint Bernard, Sermon sur cette parole : Signum magnum ; Saint Anselme, De l'excellence de la Vierge, chapitre 3. Voyez au besoin, Cornelius a Lapide sur ce passage, au verset 26.",
-   "proposed": "Saint Ildefonse, Sermon 1 sur l'Assomption ;\nSaint Bernard, Sermon sur cette parole : Signum magnum ;\nSaint Anselme, De l'excellence de la Vierge, chapitre 3. Voyez au besoin, Cornelius a Lapide sur ce passage, au verset 26.",
-   "why": [],
-   "flags": []
+   "id": "0109(a)",
+   "page": "page_0109",
+   "marker": "(a)",
+   "text": "Vide Proverbes 8:18. et Sagesse 7:8-9. 3. Reg. III. II. 12 etc. et X. 27.",
+   "proposed": "Vide Proverbes 8:18. et Sagesse 7:8-9. 3. Reg. III. II. 12 etc. et X. 27.",
+   "why": [
+    "written out, but a number changed or added: Voyez Proverbes 8:18 et Sagesse 7:8-9. 3 Rois 3:11-12 etc. et 3 Rois 10:27."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
   },
   {
    "id": "0111(a)",
@@ -574,37 +451,21 @@
    ]
   },
   {
-   "id": "0114(d)",
-   "page": "page_0114",
-   "marker": "(d)",
-   "text": "Voyez Denys ; Pineda ; Jansénius ; Lorin ; Cornelius a Lapide.",
-   "proposed": "Voyez Denys ;\nPineda ;\nJansénius ;\nLorin ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0116(e)",
    "page": "page_0116",
    "marker": "(e)",
-   "text": "La Glose ; Denys ; Holkot ; Hugues de Saint-Cher, etc.",
+   "text": "La Glose ;\nDenys ;\nHolkot ;\nHugues de Saint-Cher, etc.",
    "proposed": "La Glose ;\nDenys ;\nHolkot ;\nHugues de Saint-Cher, etc.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0117(a)",
-   "page": "page_0117",
-   "marker": "(a)",
-   "text": "Voyez Genèse 1:3 et suivants ; Psaumes 32:9 ; Jean 1:3 ; Proverbes 8:30-31.",
-   "proposed": "Voyez Genèse 1:3 et suivants ;\nPsaumes 32:9 ;\nJean 1:3 ;\nProverbes 8:30-31.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0121(a)",
    "page": "page_0121",
    "marker": "(a)",
-   "text": "[UNCERTAIN GREEK]",
+   "text": "Λογισμοὶ γὰρ θνητῶν δειλοὶ, καὶ ἐπισφαλεῖς αἱ ἐπίνοιαι ἡμῶν",
    "proposed": "Λογισμοὶ γὰρ θνητῶν δειλοὶ, καὶ ἐπισφαλεῖς αἱ ἐπίνοιαι ἡμῶν",
    "why": [
     "scan: Filled the Greek placeholder from the page (Wisdom 9:14)",
@@ -618,7 +479,7 @@
    "id": "0125(a)",
    "page": "page_0125",
    "marker": "(a)",
-   "text": "Édit. Complut et Sixti v. Propter quod aquæ. Invenit justum Ita Édit. Rom. Ita quidam Græci At ὁ κατὰ [UNCERTAIN GREEK] γῆν. melius, et plures. Δῑ ὃν.",
+   "text": "Édit. Complut et Sixti v. Propter quod aquæ. Invenit justum Ita Édit. Rom. Ita quidam Græci Δι' ὃ κατακλυζομένην γῆν. Alii melius, et plures. Δι' ὧν.",
    "proposed": "Édit. Complut et Sixti v. Propter quod aquæ. Invenit justum Ita Édit. Rom. Ita quidam Græci Δι' ὃ κατακλυζομένην γῆν. Alii melius, et plures. Δι' ὧν.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
@@ -628,7 +489,8 @@
     "read on the scan: κατακλυζομένην"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -690,15 +552,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0137(a)",
-   "page": "page_0137",
-   "marker": "(a)",
-   "text": "Cantacuzène ; Osorius ; Vatable ; Jansénius ; Clarius ; Cornelius a Lapide.",
-   "proposed": "Cantacuzène ;\nOsorius ;\nVatable ;\nJansénius ;\nClarius ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0137(c)",
@@ -764,15 +617,6 @@
    ]
   },
   {
-   "id": "0143(c)",
-   "page": "page_0143",
-   "marker": "(c)",
-   "text": "Ainsi l'entendent Cantacuzène ; Vatable ; Jansénius ; Osorius ; Cornelius a Lapide.",
-   "proposed": "Ainsi l'entendent Cantacuzène ;\nVatable ;\nJansénius ;\nOsorius ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0144(c)",
    "page": "page_0144",
    "marker": "(c)",
@@ -809,6 +653,18 @@
    ]
   },
   {
+   "id": "0147(e)",
+   "page": "page_0147",
+   "marker": "(e)",
+   "text": "Plurimi Mss. apud Nobil. Ex μέσου θιάσου,",
+   "proposed": "Plurimi manuscrits, dans Nobilius. Ex μέσου θιάσου,",
+   "why": [
+    "Greek checked against the Septuagint, Sagesse 12:5",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0147(f)",
    "page": "page_0147",
    "marker": "(f)",
@@ -816,11 +672,13 @@
    "proposed": "Voyez saint Clément d'Alexandrie, dans le Protreptique ;\nLucien, Du deuil ;\nPorphyre, De l'abstinence, livre 3 ;\nArnobe, Contre les païens, livre 5, etc.",
    "why": [
     "context: False positive, no Deuteronomy reference",
+    "Deutéronome 49 does not exist in the Vulgate",
     "Deutéronome 49 does not exist in the Vulgate"
    ],
    "flags": [
     "context",
-    "reference-not-in-vulgate"
+    "reference-not-in-vulgate",
+    "expand-unread"
    ]
   },
   {
@@ -910,15 +768,6 @@
    ]
   },
   {
-   "id": "0163(c)",
-   "page": "page_0163",
-   "marker": "(c)",
-   "text": "L'édition de Complute ; Nicolas de Lyre ; Hugues de Saint-Cher ; Denys le Chartreux : Vas inutile.",
-   "proposed": "L'édition de Complute ;\nNicolas de Lyre ;\nHugues de Saint-Cher ;\nDenys le Chartreux : Vas inutile.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0164(e)",
    "page": "page_0164",
    "marker": "(e)",
@@ -929,15 +778,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0165(c)",
-   "page": "page_0165",
-   "marker": "(c)",
-   "text": "Isaïe 46:7 ; Jérémie 10:4 ; Baruch 6:26.",
-   "proposed": "Isaïe 46:7 ;\nJérémie 10:4 ;\nBaruch 6:26.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0166(b)",
@@ -1021,10 +861,12 @@
    "id": "0171(a)",
    "page": "page_0171",
    "marker": "(a)",
-   "text": "Saint Ambroise, sur le Psaume 118, sermon 8 ; Saint Augustin, La Cité de Dieu, livre 15, chapitre 26 ; Saint Jean Chrysostome, discours de la fête de la Croix ; Saint Clément d'Alexandrie, livre 6 des Stromates ; Saint Cyrille de Jérusalem, Catéchèse 19, etc. De même saint Bonaventure ; et Denys le Chartreux ; et Holkot ; et Hugues de Saint-Cher, sur ce passage.",
+   "text": "Saint Ambroise, sur le Psaume 118, sermon 8 ;\nSaint Augustin, La Cité de Dieu, livre 15, chapitre 26 ;\nSaint Jean Chrysostome, discours de la fête de la Croix ;\nSaint Clément d'Alexandrie, livre 6 des Stromates ;\nSaint Cyrille de Jérusalem, Catéchèse 19, etc. De même saint Bonaventure ;\net Denys le Chartreux ;\net Holkot ;\net Hugues de Saint-Cher, sur ce passage.",
    "proposed": "Saint Ambroise, sur le Psaume 118, sermon 8 ;\nSaint Augustin, La Cité de Dieu, livre 15, chapitre 26 ;\nSaint Jean Chrysostome, discours de la fête de la Croix ;\nSaint Clément d'Alexandrie, livre 6 des Stromates ;\nSaint Cyrille de Jérusalem, Catéchèse 19, etc. De même saint Bonaventure ;\net Denys le Chartreux ;\net Holkot ;\net Hugues de Saint-Cher, sur ce passage.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0172(a)",
@@ -1054,28 +896,12 @@
    "id": "0173(c)",
    "page": "page_0173",
    "marker": "(c)",
-   "text": "Denys le Chartreux ; Hugues de Saint-Cher ; Holkot ; Vatable.",
+   "text": "Denys le Chartreux ;\nHugues de Saint-Cher ;\nHolkot ;\nVatable.",
    "proposed": "Denys le Chartreux ;\nHugues de Saint-Cher ;\nHolkot ;\nVatable.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0174(c)",
-   "page": "page_0174",
-   "marker": "(c)",
-   "text": "Victor de Marseille ; et Guillaume de Paris, livre Des lois ; et Barradas, tome 4, sur les Évangiles.",
-   "proposed": "Victor de Marseille ;\net Guillaume de Paris, livre Des lois ;\net Barradas, tome 4, sur les Évangiles.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0174(d)",
-   "page": "page_0174",
-   "marker": "(d)",
-   "text": "Daniel 3:1-2. et seqq.",
-   "proposed": "Daniel 3:1-2 et suivants.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0175(a)",
@@ -1117,15 +943,6 @@
    ]
   },
   {
-   "id": "0181(b)",
-   "page": "page_0181",
-   "marker": "(b)",
-   "text": "Romains 1:17 ; Romains 3:28 ; Romains 5:1 ; Galates 2:16 ; Galates 3:8 ; Jacques 2:14, 18, 20, 26.",
-   "proposed": "Romains 1:17 ; 3:28 ; 5:1 ; Galates 2:16 ; 3:8 ; Jacques 2:14, 18, 20, 26.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0184(a)",
    "page": "page_0184",
    "marker": "(a)",
@@ -1155,7 +972,7 @@
    "id": "0186(d)",
    "page": "page_0186",
    "marker": "(d)",
-   "text": "Πάντες δὲ ἀφρονέσαντες, καὶ ἀλαζονείᾳ οὑπερ[ILLEGIBLE]ντες, ἐν ἰσχύϊ αὐτῶν ἐχ.",
+   "text": "Πάντες δὲ ἀφρονέστατοι, καὶ τάλανες ὑπὲρ ψυχὰς νηπίων, οἱ ἐχθροὶ τοῦ λαοῦ σου.",
    "proposed": "Πάντες δὲ ἀφρονέστατοι, καὶ τάλανες ὑπὲρ ψυχὰς νηπίων, οἱ ἐχθροὶ τοῦ λαοῦ σου.",
    "why": [
     "context: Variant text, illegible word unclear",
@@ -1183,7 +1000,7 @@
    "id": "0189(a)",
    "page": "page_0189",
    "marker": "(a)",
-   "text": "[UNCERTAIN GREEK]",
+   "text": "Διὰ πλήθους κνωδάλων ἐξωλοθρεύθησαν.",
    "proposed": "Διὰ πλήθους κνωδάλων ἐξωλοθρεύθησαν.",
    "why": [
     "scan: Filled the Greek placeholder from the page",
@@ -1194,26 +1011,18 @@
    ]
   },
   {
-   "id": "0189(b)",
-   "page": "page_0189",
-   "marker": "(b)",
-   "text": "Exode 16:13 ; Nombres 11:31 ; Psaumes 77:26.",
-   "proposed": "Exode 16:13 ;\nNombres 11:31 ;\nPsaumes 77:26.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0190(a)",
    "page": "page_0190",
    "marker": "(a)",
-   "text": "Ita Édit. Rom. Διὰ τὴν ἰδιόχιλιαν τῶν ἰνα- [UNCERTAIN GREEK] πικαλμίων. Complut. Διὰ τὴν ἀηδίαν τῶν ἰνα- [UNCERTAIN GREEK] πικαλμίων. Ut Vulgata.",
+   "text": "Ita Édit. Rom. Διὰ τὴν εἰδέχθειαν τῶν ἐπαπεσταλμένων. Complut. Διὰ τὴν ἀπεχθεῖσαν τῶν ἐπαπεσταλμένων. Ut Vulgata.",
    "proposed": "Ita Édit. Rom. Διὰ τὴν εἰδέχθειαν τῶν ἐπαπεσταλμένων. Complut. Διὰ τὴν ἀπεχθεῖσαν τῶν ἐπαπεσταλμένων. Ut Vulgata.",
    "why": [
     "context: Garbled Greek, needs printed page",
     "scan (agy flash): Filled Greek hyphenated word and corrected readings"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -1229,15 +1038,6 @@
    ]
   },
   {
-   "id": "0193(f)",
-   "page": "page_0193",
-   "marker": "(f)",
-   "text": "Virgile, Énéide, livre 6, vers 11 ; Homère, Iliade, chant 8 ; Hésiode, Théogonie.",
-   "proposed": "Virgile, Énéide, livre 6, vers 11 ;\nHomère, Iliade, chant 8 ;\nHésiode, Théogonie.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0193(h)",
    "page": "page_0193",
    "marker": "(h)",
@@ -1248,15 +1048,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0195(g)",
-   "page": "page_0195",
-   "marker": "(g)",
-   "text": "Ainsi l'entendent Jansénius ; Denys le Chartreux ; Cornelius a Lapide ; Lorin.",
-   "proposed": "Ainsi l'entendent Jansénius ;\nDenys le Chartreux ;\nCornelius a Lapide ;\nLorin.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0197(a)",
@@ -1273,6 +1064,28 @@
    ]
   },
   {
+   "id": "0197(b)",
+   "page": "page_0197",
+   "marker": "(b)",
+   "text": "Nazianz. orat. 49. Fulgent. contra Arian. ad 4. object. Victor Uticens. Optatus, quidam Vide Cornel. à Lapide.",
+   "proposed": "Saint Grégoire de Nazianze, Discours 49 ;\nsaint Fulgence, Contre les ariens, objection 4 ;\nVictor d'Utique ;\nsaint Optat, quidam. Voyez Cornelius a Lapide.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0197(c)",
+   "page": "page_0197",
+   "marker": "(c)",
+   "text": "Caietan. Hugo, Jans. Vatab. Cornel. alii passim.",
+   "proposed": "Cajetan ; Hugues de Saint-Cher ; Jansénius ; Vatable ; Cornelius a Lapide ; et d'autres, passim.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0197(d)",
    "page": "page_0197",
    "marker": "(d)",
@@ -1283,6 +1096,51 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0197(e)",
+   "page": "page_0197",
+   "marker": "(e)",
+   "text": "Vide apud Cornel. à Lapid ; de Saintes de Eucharist. ripetit. 7. c. 3. Villegagnon. contra Calvin c. 52. Bezins de notis Eccles. c. ult. Gregor. de Valentia lib 4. disp 6. qu. 3 §. 4..",
+   "proposed": "Voyez dans Cornelius a Lapide ; de Saintes, De Eucharistia, répétition 7, chapitre 3 ; Villegagnon, Contre Calvin, chapitre 52 ; Bezins, De notis Ecclesiæ, dernier chapitre ; Grégoire de Valence, livre 4, disputation 6, question 3, § 4.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0197(f)",
+   "page": "page_0197",
+   "marker": "(f)",
+   "text": "Aug. Retract. l. 2. c. 9. et in 20 Greg. lib. 6. moral. c. 9. Ieron. in Psalm. cxlvii. Lyr. Dionys.",
+   "proposed": "Saint Augustin, Rétractations, livre 2, chapitre 9, et sur 20 ;\nsaint Grégoire le Grand, Morales sur Job, livre 6, chapitre 9 ;\nsaint Jérôme, sur le Psaume 147 ;\nNicolas de Lyre ;\nDenys le Chartreux.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0198(e)",
+   "page": "page_0198",
+   "marker": "(e)",
+   "text": "Édit. Compl. _Hoc autem iterum ut nutrirentur justi, ignis etiam suæ virtutis oblitus est._",
+   "proposed": "Édition de Complute : _Hoc autem iterum ut nutrirentur justi, ignis etiam suæ virtutis oblitus est._",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0199(b)",
+   "page": "page_0199",
+   "marker": "(b)",
+   "text": "Græc. Πρὸς τὴν τῶν δεομένων θέλησιν. Ad voluntatem petentium ; ou, indigentium.",
+   "proposed": "Le Grec : Πρὸς τὴν τῶν δεομένων θέλησιν. Ad voluntatem petentium ; ou, indigentium.",
+   "why": [
+    "Greek checked against the Septuagint, Sagesse 16:25",
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0200(d)",
@@ -1303,6 +1161,7 @@
    "text": "℣. 3. _Dum enim persuasum habent iniqui posse dominari nationi sanctæ._ Vide Exode 1:10.",
    "proposed": "℣. 3. _Dum enim persuasum habent iniqui posse dominari nationi sanctæ._ Vide Exode 1:10.",
    "why": [
+    "the Latin next to the call is Sagesse 17:2, not Exode 1:10",
     "the Latin next to the call is Sagesse 17:2, not Exode 1:10"
    ],
    "flags": [
@@ -1348,6 +1207,29 @@
    ]
   },
   {
+   "id": "0205(b)",
+   "page": "page_0205",
+   "marker": "(b)",
+   "text": "Herodot. l. 2. c. 36. Αἰγυπτίοισι δὲ μετὰ θηρίων ὁμοδίαιτα ἐστὶ. Ælian. l. 17. c. 5.",
+   "proposed": "Hérodote, livre 2, chapitre 36. Αἰγυπτίοισι δὲ μετὰ θηρίων ὁμοδίαιτα ἐστὶ. Élien, livre 17, chapitre 5.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0206(b)",
+   "page": "page_0206",
+   "marker": "(b)",
+   "text": "Plutarch. lib. de tranquillit. animi.",
+   "proposed": "Plutarque, livre De tranquillitate animi.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0206(c)",
    "page": "page_0206",
    "marker": "(c)",
@@ -1360,6 +1242,41 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0207(a)",
+   "page": "page_0207",
+   "marker": "(a)",
+   "text": "Complut. et Sixti V. Majorem computat potentiam ejus causæ.",
+   "proposed": "L'édition de Complute et celle de Sixte V : Majorem computat potentiam ejus causæ.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0207(b)",
+   "page": "page_0207",
+   "marker": "(b)",
+   "text": "Εὐδοξίᾳ δῑ ὅσα ἄγνωτα ἡ προσδοκία πλείω λογίζεται τὴν ἀγνοίαν, etc. Aristotel. l. 3. Nicomach. c. 9. Φόβος ἐστὶ προσδοκία τῶ κακῶ. Vide Grot. hic Nannium. Jans. Clar.",
+   "proposed": "Εὐδοξίᾳ δῑ ὅσα ἄγνωτα ἡ προσδοκία πλείω λογίζεται τὴν ἀγνοίαν, etc. Aristote, Éthique à Nicomaque, livre 3, chapitre 9. Φόβος ἐστὶ προσδοκία τῶ κακῶ. Voyez Grotius sur ce passage ; Nannius ; Jansénius ; Clarius.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0207(d)",
+   "page": "page_0207",
+   "marker": "(d)",
+   "text": "Complut. Qui in potentem venêre noctem.",
+   "proposed": "L'édition de Complute : Qui in potentem venêre noctem.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0207(e)",
@@ -1378,6 +1295,30 @@
    ]
   },
   {
+   "id": "0209(c)",
+   "page": "page_0209",
+   "marker": "(c)",
+   "text": "2 Pierre 2:17. Jude ℣. 13. etc.",
+   "proposed": "2 Pierre 2:17. Jude ℣. 13. etc.",
+   "why": [
+    "written out, but a number changed or added: 2 Pierre 2:17. Jude 1:13. etc."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
+  },
+  {
+   "id": "0211(a)",
+   "page": "page_0211",
+   "marker": "(a)",
+   "text": "Ita Catacuzen. Bonav. Dionys.",
+   "proposed": "Ainsi l'entendent Cantacuzène ;\nsaint Bonaventure ;\nDenys le Chartreux.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0211(b)",
    "page": "page_0211",
    "marker": "(b)",
@@ -1390,19 +1331,10 @@
    ]
   },
   {
-   "id": "0211(c)",
-   "page": "page_0211",
-   "marker": "(c)",
-   "text": "Ainsi Vatable ; Grotius ; Castalion.",
-   "proposed": "Ainsi Vatable ;\nGrotius ;\nCastalion.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0212(a)",
    "page": "page_0212",
    "marker": "(a)",
-   "text": "Ἥλιον δῑ ἔδωκἃς φλογίνης ξυμπλης-πλ[ILLEGIBLE]ας.",
+   "text": "Ἥλιον δὲ ἀβλαβῆ φιλοτίμου ξενιτείας παρέχεις.",
    "proposed": "Ἥλιον δὲ ἀβλαβῆ φιλοτίμου ξενιτείας παρέχεις.",
    "why": [
     "Greek spelling checked against a Greek dictionary: ας -> ἃς",
@@ -1424,6 +1356,17 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0214(e)",
+   "page": "page_0214",
+   "marker": "(e)",
+   "text": "Complat. Lyr. Sixti V. Patrimonium, etc.",
+   "proposed": "L'édition de Complute ; Nicolas de Lyre ; l'édition de Sixte V. Patrimonium, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0214(f)",
@@ -1450,6 +1393,43 @@
    ]
   },
   {
+   "id": "0217(c)",
+   "page": "page_0217",
+   "marker": "(c)",
+   "text": "Homer. Iliad. 4. Οὐρανῷ ἐστήριξε κάρη, καὶ ἐπὶ χθονὶ βαίνει.",
+   "proposed": "Homère, Iliade, livre 4. Οὐρανῷ ἐστήριξε κάρη, καὶ ἐπὶ χθονὶ βαίνει.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0218(a)",
+   "page": "page_0218",
+   "marker": "(a)",
+   "text": "Græc. Ἥψατο δὲ τότε καὶ δικαίων πεῖρα θανάτου. Tetigit autem aliquando et justos periculum mortis. L'Édition Rom. le lit ainsi, n'ayant pas luss. culummortis.",
+   "proposed": "Le Grec : Ἥψατο δὲ τότε καὶ δικαίων πεῖρα θανάτου. Tetigit autem aliquando et justos periculum mortis. L'Édition romaine le lit ainsi, n'ayant pas luss. culummortis.",
+   "why": [
+    "Greek checked against the Septuagint, Sagesse 18:20",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0219(c)",
+   "page": "page_0219",
+   "marker": "(c)",
+   "text": "Gr. Πέρας ἐπέθηκε τῇ συμφορᾷ. _Finem imposuit calamitati._ Συμφορὰ, se met souvent en ce sens dans l'Écriture. Voyez ci-devant Sagesse 14:21. 2 Machabées 6:15. 14:14. etc.",
+   "proposed": "Le Grec : Πέρας ἐπέθηκε τῇ συμφορᾷ. _Finem imposuit calamitati._ Συμφορὰ, se met souvent en ce sens dans l'Écriture. Voyez ci-devant Sagesse 14:21. 2 Machabées 6:15. 14:14. etc.",
+   "why": [
+    "Greek checked against the Septuagint, Sagesse 18:21",
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0219(d)",
    "page": "page_0219",
    "marker": "(d)",
@@ -1467,15 +1447,27 @@
    "id": "0220(b)",
    "page": "page_0220",
    "marker": "(b)",
-   "text": "Heb. [UNCERTAIN HEBREW] _Mehil._",
+   "text": "Heb. מעיל _Mehil._",
    "proposed": "Heb. מעיל _Mehil._",
    "why": [
     "scan: Filled the Hebrew placeholder from the page",
     "read on the scan: מעיל"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
+  },
+  {
+   "id": "0220(g)",
+   "page": "page_0220",
+   "marker": "(g)",
+   "text": "B nav. Hugo. Hoskot. Dionys. Cornel.",
+   "proposed": "Saint Bonaventure ;\nHugues de Saint-Cher ;\nHoskot ;\nDenys le Chartreux ;\nCornelius a Lapide.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0220(i)",
@@ -1504,6 +1496,17 @@
    ]
   },
   {
+   "id": "0222(a)",
+   "page": "page_0222",
+   "marker": "(a)",
+   "text": "Complut. et Sixti V. Consequebantur illos pœnitentia actus.",
+   "proposed": "L'édition de Complute et de Sixte V. Consequebantur illos pœnitentia actus.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0224(c)",
    "page": "page_0224",
    "marker": "(c)",
@@ -1516,10 +1519,55 @@
    ]
   },
   {
+   "id": "0224(d)",
+   "page": "page_0224",
+   "marker": "(d)",
+   "text": "Bonavent. Jans. Lyr. Holcot.",
+   "proposed": "Saint Bonaventure ;\nJansénius ;\nNicolas de Lyre ;\nHolcot.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0224(e)",
+   "page": "page_0224",
+   "marker": "(e)",
+   "text": "Lorin. à Castro. Cornel. hic. Pineda lib. 4. de l'eb. Salom. c. 13. n. 6.",
+   "proposed": "Lorin ; de Castro ; Cornelius a Lapide, sur ce passage ; Pineda, De rebus Salomonis, livre 4, chapitre 13, numéro 6.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0225(d)",
+   "page": "page_0225",
+   "marker": "(d)",
+   "text": "Ita Grot. Cornel. Arab. Complut. Édit.",
+   "proposed": "Ainsi l'entendent Grotius ; Cornelius a Lapide. Ainsi lisent l'Arabe ; l'édition de Complute ; l'Édition",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0225(e)",
+   "page": "page_0225",
+   "marker": "(e)",
+   "text": "Rom. Ὡς γὰρ ἵπποι ἐπεμάνησαν. Ὡς γὰρ ἵπποι ἐχρεμέτισαν, _Ita Vetab. et alii._",
+   "proposed": "Romaine : Ὡς γὰρ ἵπποι ἐπεμάνησαν. Ὡς γὰρ ἵπποι ἐχρεμέτισαν, _Ainsi l'entendent Vatable et d'autres._",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0226(a)",
    "page": "page_0226",
    "marker": "(a)",
-   "text": "[UNCERTAIN GREEK] Ce dernier mot signifie les vers qui s'engendrent dans le bois. L'Hébreu [UNCERTAIN HEBREW] signifie des moucherons, ou des poux. Voyez Exode 8:16.",
+   "text": "Ἀντὶ μὲν γενέσεως ζώων, ἐξήγαγεν ἡ γῆ σκνῖπα. Ce dernier mot signifie les vers qui s'engendrent dans le bois. L'Hébreu כנים signifie des moucherons, ou des poux. Voyez Exode 8:16.",
    "proposed": "Ἀντὶ μὲν γενέσεως ζώων, ἐξήγαγεν ἡ γῆ σκνῖπα. Ce dernier mot signifie les vers qui s'engendrent dans le bois. L'Hébreu כנים signifie des moucherons, ou des poux. Voyez Exode 8:16.",
    "why": [
     "scan: Filled the Greek and Hebrew placeholders from the page",
@@ -1534,7 +1582,7 @@
    "id": "0226(c)",
    "page": "page_0226",
    "marker": "(c)",
-   "text": "[UNCERTAIN GREEK]",
+   "text": "Ἤτησαν ἐδέσματα τρυφῆς.",
    "proposed": "Ἤτησαν ἐδέσματα τρυφῆς.",
    "why": [
     "scan: Filled the Greek placeholder from the page",
@@ -1548,7 +1596,7 @@
    "id": "0226(d)",
    "page": "page_0226",
    "marker": "(d)",
-   "text": "[UNCERTAIN GREEK]",
+   "text": "Ἤτησαν ἐδέσματα τρυφῆς.",
    "proposed": "Ἤτησαν ἐδέσματα τρυφῆς.",
    "why": [
     "scan: Filled the Greek placeholder from the page",
@@ -1557,6 +1605,28 @@
    "flags": [
     "scanned"
    ]
+  },
+  {
+   "id": "0227(a)",
+   "page": "page_0227",
+   "marker": "(a)",
+   "text": "Genes. XVIII. XIX. 1. 2. 3. 4.",
+   "proposed": "Genèse 18 ; Genèse 19:1-4.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0228(a)",
+   "page": "page_0228",
+   "marker": "(a)",
+   "text": "Vide Plutarch. de Musica, et Macrob. in Somn Scipionis lib 2.",
+   "proposed": "Voyez Plutarque, De la musique ; et Macrobe, Commentaire sur le Songe de Scipion, livre 2.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0228(b)",
@@ -1571,6 +1641,17 @@
    ]
   },
   {
+   "id": "0230(a)",
+   "page": "page_0230",
+   "marker": "(a)",
+   "text": "Vide Cornel. hic et notas nostras in Sagesse 16:18.",
+   "proposed": "Voyez Cornelius a Lapide, sur ce passage et notas nostras in Sagesse 16:18.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0230(b)",
    "page": "page_0230",
    "marker": "(b)",
@@ -1583,12 +1664,14 @@
    ]
   },
   {
-   "id": "0230(g)",
+   "id": "0230(e)",
    "page": "page_0230",
-   "marker": "(g)",
-   "text": "3 Rois 9:2-3. et seq.",
-   "proposed": "3 Rois 9:2-3 et suivants.",
-   "why": [],
+   "marker": "(e)",
+   "text": "Ovid. de Ponto. lib. I. Eleg. II.",
+   "proposed": "Ovide, Lettres du Pont, livre 1, élégie 2.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": []
   }
  ]

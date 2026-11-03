@@ -1,12 +1,12 @@
 {
  "summary": {
   "notes": 84,
-  "changed": 9,
+  "changed": 3,
   "flags": {
    "scanned": 1,
+   "expand-unread": 9,
    "greek": 3,
-   "scan-unread": 3,
-   "uncertain": 1
+   "scan-unread": 3
   }
  },
  "notes": [
@@ -14,7 +14,7 @@
    "id": "0004(b)",
    "page": "page_0004",
    "marker": "(b)",
-   "text": "[UNCERTAIN HEBREW] Aqu. Sym. Theod. Ηγέμων Iudæ.",
+   "text": "פחת יהודה Aqu. Sym. Theod. Ἡγέμων Iudæ.",
    "proposed": "פחת יהודה Aqu. Sym. Theod. Ἡγέμων Iudæ.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Ηγέμων -> Ἡγέμων",
@@ -22,7 +22,19 @@
     "read on the scan: פחת יהודה"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0004(f)",
+   "page": "page_0004",
+   "marker": "(f)",
+   "text": "Zach. VI. II. 12. 13.",
+   "proposed": "Zach. VI. II. 12. 13.",
+   "why": [],
+   "flags": [
+    "expand-unread"
    ]
   },
   {
@@ -37,6 +49,17 @@
    "flags": [
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0005(c)",
+   "page": "page_0005",
+   "marker": "(c)",
+   "text": "Voyez Vatable, sur ce passage ; et saint Jérôme, Préface sur Aggée.",
+   "proposed": "Voyez Vatable, sur ce passage ; et saint Jérôme, Préface sur Aggée.",
+   "why": [],
+   "flags": [
+    "expand-unread"
    ]
   },
   {
@@ -56,13 +79,29 @@
    ]
   },
   {
-   "id": "0013(a)",
-   "page": "page_0013",
-   "marker": "(a)",
-   "text": "Voyez Psaumes 49:10 ; Saint Cyrille, sur ce passage ; Grotius ; Sanctius.",
-   "proposed": "Voyez Psaumes 49:10 ;\nSaint Cyrille, sur ce passage ;\nGrotius ;\nSanctius.",
+   "id": "0011(b)",
+   "page": "page_0011",
+   "marker": "(b)",
+   "text": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. Tigur. T.tt ij._",
+   "proposed": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. Tigur. T.tt ij._",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0014(d)",
+   "page": "page_0014",
+   "marker": "(d)",
+   "text": "Voyez saint Jérôme, sur ce passage ; et saint Jean Chrysostome, tome 5, Démonstration que le Christ est Dieu, et homélie 34 sur 1 Corinthiens. Voyez Kimhi, et d'autres rabbins dans Menasseh Ben-Israël, livre De termino vitæ.",
+   "proposed": "Voyez saint Jérôme, sur ce passage ; et saint Jean Chrysostome, tome 5, Démonstration que le Christ est Dieu, et homélie 34 sur 1 Corinthiens. Voyez Kimhi, et d'autres rabbins dans Menasseh Ben-Israël, livre De termino vitæ.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0014(i)",
@@ -79,42 +118,50 @@
    ]
   },
   {
-   "id": "0020(c)",
-   "page": "page_0020",
-   "marker": "(c)",
-   "text": "Pagnin ; Arias Montanus ; Munster ; Piscator ; Vatable ; Ménochius.",
-   "proposed": "Pagnin ;\nArias Montanus ;\nMunster ;\nPiscator ;\nVatable ;\nMénochius.",
+   "id": "0017(e)",
+   "page": "page_0017",
+   "marker": "(e)",
+   "text": "Voyez notre Commentaire sur l'endroit cité du Lévitique.",
+   "proposed": "Voyez notre Commentaire sur l'endroit cité du Lévitique.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0021(a)",
+   "page": "page_0021",
+   "marker": "(a)",
+   "text": "Agg. II. II. et 19.",
+   "proposed": "Agg. II. II. et 19.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0022(a)",
    "page": "page_0022",
    "marker": "(a)",
-   "text": "Voyez des expressions à peu près semblables. Aggée 2:7 ; Psaumes 17:8 ; Isaïe 24:19-20 ; et Jérémie 49:21 ; Ézéchiel 38:19-20 etc.",
+   "text": "Voyez des expressions à peu près semblables. Aggée 2:7 ;\nPsaumes 17:8 ;\nIsaïe 24:19-20 ;\net Jérémie 49:21 ;\nÉzéchiel 38:19-20 etc.",
    "proposed": "Voyez des expressions à peu près semblables. Aggée 2:7 ;\nPsaumes 17:8 ;\nIsaïe 24:19-20 ;\net Jérémie 49:21 ;\nÉzéchiel 38:19-20 etc.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
-  },
-  {
-   "id": "0022(c)",
-   "page": "page_0022",
-   "marker": "(c)",
-   "text": "Saint Cyrille ; Nicolas de Lyre ; Saint Remi ; Denys les Chartreux ; Vatable ; Ribera.",
-   "proposed": "Saint Cyrille ;\nNicolas de Lyre ;\nSaint Remi ;\nDenys les Chartreux ;\nVatable ;\nRibera.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0022(d)",
    "page": "page_0022",
    "marker": "(d)",
-   "text": "Saint Jérôme ; Hugues de Saint-Cher ; Haymon etc.",
+   "text": "Saint Jérôme ;\nHugues de Saint-Cher ;\nHaymon etc.",
    "proposed": "Saint Jérôme ;\nHugues de Saint-Cher ;\nHaymon etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   }
  ]
 }

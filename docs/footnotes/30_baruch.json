@@ -1,35 +1,16 @@
 {
  "summary": {
   "notes": 192,
-  "changed": 25,
+  "changed": 19,
   "flags": {
    "hebrew": 1,
    "scan-unread": 30,
    "greek": 29,
+   "expand-unread": 1,
    "scanned": 1
   }
  },
  "notes": [
-  {
-   "id": "0008(d)",
-   "page": "page_0008",
-   "marker": "(d)",
-   "text": "Théodoret, sur ce passage ; Hugues de Saint-Cher ; Nicolas de Lyre ; Sixtus ; Castro ; Emmanuel Sa ; Cornelius a Lapide ; Sanctius ; Torniel, etc.",
-   "proposed": "Théodoret, sur ce passage ; Hugues de Saint-Cher ; Nicolas de Lyre ; Sixtus ; Castro ; Emmanuel Sa ; Cornelius a Lapide ; Sanctius ; Torniel ; etc.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0008(e)",
-   "page": "page_0008",
-   "marker": "(e)",
-   "text": "Maldonat ; Ussérius, ad an. 3409 ; Junius ; Grotius.",
-   "proposed": "Maldonat ;\nUssérius, ad an. 3409 ;\nJunius ;\nGrotius.",
-   "why": [],
-   "flags": []
-  },
   {
    "id": "0009(a)",
    "page": "page_0009",
@@ -43,24 +24,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0009(b)",
-   "page": "page_0009",
-   "marker": "(b)",
-   "text": "Junius ; Ussérius ; Anglo-Douaisiens.",
-   "proposed": "Junius ;\nUssérius ;\nAnglo-Douaisiens.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0010(b)",
-   "page": "page_0010",
-   "marker": "(b)",
-   "text": "4 Rois 22:4 et 23:4, 24 ; 2 Paralipomènes 34:9.",
-   "proposed": "4 Rois 22:4 ; 23:4, 24 ; 2 Paralipomènes 34:9.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0011(b)",
@@ -80,6 +43,17 @@
    ]
   },
   {
+   "id": "0012(c)",
+   "page": "page_0012",
+   "marker": "(c)",
+   "text": "Voyez Nicolas de Lyre, in uit. Jerem. ; comparez Tostat, in Reg. 25:9, 37, d'après les traditions hébraïques ; Sanctius, sur ce passage ; et nous, Préface sur Daniel.",
+   "proposed": "Voyez Nicolas de Lyre, au commencement de Jérémie ; comparez Tostat, sur les Rois 25:9, 37, d'après les traditions hébraïques ; Sanctius, sur ce passage ; et nous, Préface sur Daniel.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0013(b)",
    "page": "page_0013",
    "marker": "(b)",
@@ -92,6 +66,40 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0014(a)",
+   "page": "page_0014",
+   "marker": "(a)",
+   "text": "_Voyez_ Dan. III. _insra_.",
+   "proposed": "_Voyez_ Daniel 3 _infra_.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0014(b)",
+   "page": "page_0014",
+   "marker": "(b)",
+   "text": "_Vide_ Sanct. hic. Ribull. Tunc operata Deo quibus discumbeo in herba.",
+   "proposed": "_Voyez_ Sanctius, sur ce passage. Ribull. Tunc operata Deo quibus discumbeo in herba.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0017(b)",
+   "page": "page_0017",
+   "marker": "(b)",
+   "text": "Theodor. hic. Ἐγρήγορεν Θεὸς τιμωρίαν καλὴν. Τῆς δὲ μακαριότητος αἰτία, ὅτι ὅσα τῆς θείας χάριτος κατῆρξεν. Vide Ierem. I. II. XXXI. 28. XLIV. 29. Lamentations 1:14. Daniel 9:14.",
+   "proposed": "Théodoret, sur ce passage. Ἐγρήγορεν Θεὸς τιμωρίαν καλὴν. Τῆς δὲ μακαριότητος αἰτία, ὅτι ὅσα τῆς θείας χάριτος κατῆρξεν. Voyez Jérémie 1 ; 2 ; 31:28 ; 44:29 ; Lamentations 1:14 ; Daniel 9:14.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0020(a)",
@@ -160,15 +168,6 @@
    ]
   },
   {
-   "id": "0023(a)",
-   "page": "page_0023",
-   "marker": "(a)",
-   "text": "Denys le Chartreux ; Hugues de Saint-Cher ; Nicolas de Lyre ; Maldonat ; Castro ; Sanctius ; et Jérémie 31:31-32.",
-   "proposed": "Denys le Chartreux ;\nHugues de Saint-Cher ;\nNicolas de Lyre ;\nMaldonat ;\nCastro ;\nSanctius ;\net Jérémie 31:31-32.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0025(d)",
    "page": "page_0025",
    "marker": "(d)",
@@ -193,15 +192,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0026(b)",
-   "page": "page_0026",
-   "marker": "(b)",
-   "text": "Exode 21:7 ; Deutéronome 15:12 ; Isaïe 42:19 ; Baruch 4:6 ; Matthieu 18:25.",
-   "proposed": "Exode 21:7 ;\nDeutéronome 15:12 ;\nIsaïe 42:19 ;\nBaruch 4:6 ;\nMatthieu 18:25.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0027(a)",
@@ -231,15 +221,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0032(c)",
-   "page": "page_0032",
-   "marker": "(c)",
-   "text": "Voyez Tertullien, Contre Praxéas, chapitre 6 ; Saint Cyprien, Contre les Juifs, livre 2, chapitre 5 ; Eusèbe, Démonstration évangélique, livre 5, chapitre 19 ; Saint Ambroise, livre 1, De la foi, chapitre 2 ; Saint Hilaire, De la Trinité, livre 5 ; Saint Grégoire de Nazianze, Discours 40, De la théologie ; Saint Basile, livre 4, Contre Eunome ; Saint Cyrille d'Alexandrie, livre 10, Contre Julien.",
-   "proposed": "Voyez Tertullien, Contre Praxéas, chapitre 6 ;\nSaint Cyprien, Contre les Juifs, livre 2, chapitre 5 ;\nEusèbe, Démonstration évangélique, livre 5, chapitre 19 ;\nSaint Ambroise, livre 1, De la foi, chapitre 2 ;\nSaint Hilaire, De la Trinité, livre 5 ;\nSaint Grégoire de Nazianze, Discours 40, De la théologie ;\nSaint Basile, livre 4, Contre Eunome ;\nSaint Cyrille d'Alexandrie, livre 10, Contre Julien.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0036(e)",
@@ -292,22 +273,15 @@
    ]
   },
   {
-   "id": "0044(a)",
-   "page": "page_0044",
-   "marker": "(a)",
-   "text": "Psaumes 75:5 ; Deutéronome 33:15 ; Habacuc 3:6.",
-   "proposed": "Psaumes 75:5 ;\nDeutéronome 33:15 ;\nHabacuc 3:6.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0046(d)",
    "page": "page_0046",
    "marker": "(d)",
-   "text": "Voyez Amos 5:26 ; Isaïe 46:1 ; Jérémie 10:5 ; Saint Clément d'Alexandrie, Protreptique, page 49 ; Apulée, livre 11, etc.",
+   "text": "Voyez Amos 5:26 ;\nIsaïe 46:1 ;\nJérémie 10:5 ;\nSaint Clément d'Alexandrie, Protreptique, page 49 ;\nApulée, livre 11, etc.",
    "proposed": "Voyez Amos 5:26 ;\nIsaïe 46:1 ;\nJérémie 10:5 ;\nSaint Clément d'Alexandrie, Protreptique, page 49 ;\nApulée, livre 11, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0047(d)",
@@ -342,7 +316,7 @@
    "id": "0049(c)",
    "page": "page_0049",
    "marker": "(c)",
-   "text": "quas Græci Σκεύεα dixêre. Quod [ILLEGIBLE] de armis [ILLEGIBLE]",
+   "text": "quas Græci Σκεύεα dixêre. Quod dicitur* de armis usurpatur*",
    "proposed": "quas Græci Σκεύεα dixêre. Quod dicitur* de armis usurpatur*",
    "why": [
     "Greek spelling checked against a Greek dictionary",

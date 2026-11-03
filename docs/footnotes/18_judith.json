@@ -1,15 +1,15 @@
 {
  "summary": {
   "notes": 444,
-  "changed": 14,
+  "changed": 1,
   "flags": {
    "uncertain-fill-asterisk-wrong": 1,
-   "scanned": 1,
-   "greek": 48,
-   "scan-unread": 49,
+   "scanned": 2,
+   "expand-unread": 3,
+   "greek": 47,
+   "scan-unread": 48,
    "hebrew": 1,
-   "context": 3,
-   "uncertain": 1
+   "context": 3
   }
  },
  "notes": [
@@ -25,7 +25,8 @@
    ],
    "flags": [
     "uncertain-fill-asterisk-wrong",
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -63,24 +64,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0042(b)",
-   "page": "page_0042",
-   "marker": "(b)",
-   "text": "Voyez Pline ; Polybe ; Denys d'Halicarnasse.",
-   "proposed": "Voyez Pline ;\nPolybe ;\nDenys d'Halicarnasse.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0042(d)",
-   "page": "page_0042",
-   "marker": "(d)",
-   "text": "Voyez Genèse 15:19 ; Deutéronome 2:26 ; Josué 13:18.",
-   "proposed": "Voyez Genèse 15:19 ;\nDeutéronome 2:26 ;\nJosué 13:18.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0043(d)",
@@ -209,10 +192,12 @@
    "id": "0062(a)",
    "page": "page_0062",
    "marker": "(a)",
-   "text": "Eusèbe, Chronique ; Saint Augustin, La Cité de Dieu, livre 18, chapitre 16 ; Sulpice Sévère, livre 2 ; Nicolas de Lyre ; Estius ; Denys le Chartreux ; Sixte de Sienne ; Noël Alexandre, Histoire de l'Ancien Testament, tome s.",
+   "text": "Eusèbe, Chronique ;\nSaint Augustin, La Cité de Dieu, livre 18, chapitre 16 ;\nSulpice Sévère, livre 2 ;\nNicolas de Lyre ;\nEstius ;\nDenys le Chartreux ;\nSixte de Sienne ;\nNoël Alexandre, Histoire de l'Ancien Testament, tome s.",
    "proposed": "Eusèbe, Chronique ;\nSaint Augustin, La Cité de Dieu, livre 18, chapitre 16 ;\nSulpice Sévère, livre 2 ;\nNicolas de Lyre ;\nEstius ;\nDenys le Chartreux ;\nSixte de Sienne ;\nNoël Alexandre, Histoire de l'Ancien Testament, tome s.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0063(a)",
@@ -321,24 +306,6 @@
    ]
   },
   {
-   "id": "0095(a)",
-   "page": "page_0095",
-   "marker": "(a)",
-   "text": "Voyez Serarius, question 1 ; Bellarmin, Du Verbe de Dieu, livre 1, chapitre 12 ; Salian ; Ménochius ; Tirin ; Matiana.",
-   "proposed": "Voyez Serarius, question 1 ;\nBellarmin, Du Verbe de Dieu, livre 1, chapitre 12 ;\nSalian ;\nMénochius ;\nTirin ;\nMatiana.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0095(d)",
-   "page": "page_0095",
-   "marker": "(d)",
-   "text": "Voyez Ortelius, Thesaurus ; Josèphe ; Ptolémée ; Pline ; Étienne de Byzance.",
-   "proposed": "Voyez Ortelius, Thesaurus ;\nJosèphe ;\nPtolémée ;\nPline ;\nÉtienne de Byzance.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0096(a)",
    "page": "page_0096",
    "marker": "(a)",
@@ -349,15 +316,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0097(a)",
-   "page": "page_0097",
-   "marker": "(a)",
-   "text": "Martial, livre 4 ; Perse, Satire 5 ; Horace, Satires ; Justin, livre 36 ; Suétone, Auguste, chapitre 76, etc.",
-   "proposed": "Martial, livre 4 ;\nPerse, Satire 5 ;\nHorace, Satires ;\nJustin, livre 36 ;\nSuétone, Auguste, chapitre 76, etc.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0103(a)",
@@ -387,7 +345,7 @@
    "id": "0109(b)",
    "page": "page_0109",
    "marker": "(b)",
-   "text": "Πάταξον δῆλον οἰκ χαλκὸν ἀνδραγας [UNCERTAIN GREEK] ἄρχοντα, καὶ δεχόμενον ἐπὶ δεσπότην αὐτὸν.",
+   "text": "Πάταξον δοῦλον ἐκ χειλέων ἀπάτης μου ἐπ’ ἄρχοντι, καὶ ἄρχοντα ἐπὶ θεράποντι αὐτοῦ.",
    "proposed": "Πάταξον δοῦλον ἐκ χειλέων ἀπάτης μου ἐπ’ ἄρχοντι, καὶ ἄρχοντα ἐπὶ θεράποντι αὐτοῦ.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
@@ -426,10 +384,12 @@
    "id": "0116(e)",
    "page": "page_0116",
    "marker": "(e)",
-   "text": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ; Saint Clément de Rome, Première lettre aux Corinthiens ; Origène, Homélie 19 sur Jérémie ; Tertullien, livre De la monogamie, chapitre 17 ; Saint Ambroise, Des devoirs, livre 3, chapitre 13 ; Saint Jérôme, Lettre à Furia ; Saint Fulgence, Lettre 2, à Galla, etc.",
+   "text": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ;\nSaint Clément de Rome, Première lettre aux Corinthiens ;\nOrigène, Homélie 19 sur Jérémie ;\nTertullien, livre De la monogamie, chapitre 17 ;\nSaint Ambroise, Des devoirs, livre 3, chapitre 13 ;\nSaint Jérôme, Lettre à Furia ;\nSaint Fulgence, Lettre 2, à Galla, etc.",
    "proposed": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ;\nSaint Clément de Rome, Première lettre aux Corinthiens ;\nOrigène, Homélie 19 sur Jérémie ;\nTertullien, livre De la monogamie, chapitre 17 ;\nSaint Ambroise, Des devoirs, livre 3, chapitre 13 ;\nSaint Jérôme, Lettre à Furia ;\nSaint Fulgence, Lettre 2, à Galla, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0116(f)",
@@ -484,24 +444,6 @@
    ]
   },
   {
-   "id": "0118(d)",
-   "page": "page_0118",
-   "marker": "(d)",
-   "text": "Saint Thomas, secunda Secundæ, question 110, article 3, ad 3 ; Tostat, sur l'Exode 1, question 6 ; Nicolas de Lyre ; Estius ; Mariana ; Sa. Voyez Serarius, sur Judith 13, question 9.",
-   "proposed": "Saint Thomas, secunda Secundæ, question 110, article 3, ad 3 ;\nTostat, sur l'Exode 1, question 6 ;\nNicolas de Lyre ;\nEstius ;\nMariana ;\nSa. Voyez Serarius, sur Judith 13, question 9.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0119(b)",
-   "page": "page_0119",
-   "marker": "(b)",
-   "text": "Rabban ; Hugues de Saint-Cher ; Glossa.",
-   "proposed": "Rabban ;\nHugues de Saint-Cher ;\nGlossa.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0119(c)",
    "page": "page_0119",
    "marker": "(c)",
@@ -512,15 +454,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0120(a)",
-   "page": "page_0120",
-   "marker": "(a)",
-   "text": "Voyez Xénophon, Cyropédie, livre 8 ; Quinte-Curce, livre 3 ; Procope de Gaza, Guerre des Perses, livre 2 ; Ammien Marcellin, livre 23.",
-   "proposed": "Voyez Xénophon, Cyropédie, livre 8 ;\nQuinte-Curce, livre 3 ;\nProcope de Gaza, Guerre des Perses, livre 2 ;\nAmmien Marcellin, livre 23.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0120(c)",
@@ -598,15 +531,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0130(c)",
-   "page": "page_0130",
-   "marker": "(c)",
-   "text": "Diodore de Sicile, tome 2, Histoire, livre 16 ; Quinte-Curce, livres 6 et 10 ; Plutarque, De la fortune d'Alexandre, etc.",
-   "proposed": "Diodore de Sicile, tome 2, Histoire, livre 16 ;\nQuinte-Curce, livres 6 et 10 ;\nPlutarque, De la fortune d'Alexandre, etc.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0130(e)",
@@ -760,15 +684,6 @@
    ]
   },
   {
-   "id": "0152(c)",
-   "page": "page_0152",
-   "marker": "(c)",
-   "text": "Jérémie 11:20 ; Romains 9:29 ; Jacques 5:4.",
-   "proposed": "Jérémie 11:20 ;\nRomains 9:29 ;\nJacques 5:4.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0155(a)",
    "page": "page_0155",
    "marker": "(a)",
@@ -791,15 +706,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0162(b)",
-   "page": "page_0162",
-   "marker": "(b)",
-   "text": "Voyez Serrarius, sur ce passage, question 19 ; Selden, Des Sanhédrins, livre 3, chapitre 13 ; Grotius, sur ce passage.",
-   "proposed": "Voyez Serrarius, sur ce passage, question 19 ;\nSelden, Des Sanhédrins, livre 3, chapitre 13 ;\nGrotius, sur ce passage.",
-   "why": [],
-   "flags": []
   }
  ]
 }

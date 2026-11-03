@@ -1,10 +1,11 @@
 {
  "summary": {
   "notes": 122,
-  "changed": 18,
+  "changed": 7,
   "flags": {
    "greek": 13,
    "scan-unread": 13,
+   "expand-unread": 16,
    "scanned": 2,
    "garbled-reference": 1,
    "context": 1,
@@ -27,31 +28,26 @@
    ]
   },
   {
-   "id": "0006(i)",
+   "id": "0006(e)",
    "page": "page_0006",
-   "marker": "(i)",
-   "text": "Jérémie 46:1. et seq",
-   "proposed": "Jérémie 46:1 et suivants.",
+   "marker": "(e)",
+   "text": "Voyez la Préface de Théodoret sur Jonas.",
+   "proposed": "Voyez la Préface de Théodoret sur Jonas.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
-   "id": "0008(b)",
-   "page": "page_0008",
-   "marker": "(b)",
-   "text": "Voyez saint Jérôme, sur ce passage ; Saint Grégoire le Grand, livre 6, Morales sur Job, chapitre 11 ; Saint Grégoire de Nazianze, dans l'Apologétique.",
-   "proposed": "Voyez saint Jérôme, sur ce passage ;\nSaint Grégoire le Grand, livre 6, Morales sur Job, chapitre 11 ;\nSaint Grégoire de Nazianze, dans l'Apologétique.",
+   "id": "0006(k)",
+   "page": "page_0006",
+   "marker": "(k)",
+   "text": "Ézéchiel 31:3. Voyez de même Zacharie 2 ; Sophonie 13, etc.",
+   "proposed": "Ézéchiel 31:3. Voyez de même Zacharie 2 ; Sophonie 13, etc.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0008(c)",
-   "page": "page_0008",
-   "marker": "(c)",
-   "text": "Saint Athanase, sermon sur la passion du Seigneur, tome 3 ; Théodoret ; Saint Cyrille ; Théophylacte, sur ce passage.",
-   "proposed": "Saint Athanase, sermon sur la passion du Seigneur, tome 3 ;\nThéodoret ;\nSaint Cyrille ;\nThéophylacte, sur ce passage.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0008(e)",
@@ -94,22 +90,30 @@
    ]
   },
   {
-   "id": "0012(d)",
-   "page": "page_0012",
-   "marker": "(d)",
-   "text": "Ainsi Théodoret ; Vatable ; Grotius ; Mercier ; Glassius.",
-   "proposed": "Ainsi Théodoret ;\nVatable ;\nGrotius ;\nMercier ;\nGlassius.",
-   "why": [],
-   "flags": []
+   "id": "0009(g)",
+   "page": "page_0009",
+   "marker": "(g)",
+   "text": "Les Hébreux, dans Nicolas de Lyre ; Arias Montanus, d'après Éléazar ; d'Herbelot, Bibliothèque orientale. Voyez aussi Théodoret. Καὶ τὸν ἄλλον ἐξέπλει ἐκείνως φερόμενον, καὶ μόνον τὸ σκάφος ἕστηκεν ὡς ἐν λιμένι, ὡς ἐν ζάλῃ, τῇ τοῦ δικαίου ζήσαντος.",
+   "proposed": "Les Hébreux, dans Nicolas de Lyre ; Arias Montanus, d'après Éléazar ; d'Herbelot, Bibliothèque orientale. Voyez aussi Théodoret. Καὶ τὸν ἄλλον ἐξέπλει ἐκείνως φερόμενον, καὶ μόνον τὸ σκάφος ἕστηκεν ὡς ἐν λιμένι, ὡς ἐν ζάλῃ, τῇ τοῦ δικαίου ζήσαντος.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
-   "id": "0013(a)",
-   "page": "page_0013",
-   "marker": "(a)",
-   "text": "Voyez au besoin, Sanctius, numéro 14, 15, 18 ; Grotius ; Liveley ; Tarnovius ; Mercier.",
-   "proposed": "Voyez au besoin, Sanctius, numéro 14, 15, 18 ;\nGrotius ;\nLiveley ;\nTarnovius ;\nMercier.",
-   "why": [],
-   "flags": []
+   "id": "0014(b)",
+   "page": "page_0014",
+   "marker": "(b)",
+   "text": "Vatable ; Mercier ; Grotius ; Piscator, etc. ; Théodoret, sur ce passage. Κάτω δὲ τῆς κοιλίας τὸ κῆτος ἐκάλεσεν.",
+   "proposed": "Vatable ; Mercier ; Grotius ; Piscator, etc. ; Théodoret, sur ce passage. Κάτω δὲ τῆς κοιλίας τὸ κῆτος ἐκάλεσεν.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0014(d)",
@@ -129,7 +133,7 @@
    "id": "0015(a)",
    "page": "page_0015",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] סבבוני מים",
+   "text": "אפפוני מים עד נפש",
    "proposed": "אפפוני מים עד נפש",
    "why": [
     "Hebrew word order reversed: סבבוני מים -> מים סבבוני",
@@ -149,7 +153,8 @@
    "proposed": "Voyez notre Commentaire sur Osée 1v. 46 Lud. de Dieu, et Munster.",
    "why": [],
    "flags": [
-    "garbled-reference"
+    "garbled-reference",
+    "expand-unread"
    ]
   },
   {
@@ -170,12 +175,25 @@
    "id": "0019(d)",
    "page": "page_0019",
    "marker": "(d)",
-   "text": "Théodoret ; Grotius ; Vatable.",
+   "text": "Théodoret ;\nGrotius ;\nVatable.",
    "proposed": "Théodoret ;\nGrotius ;\nVatable.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0019(e)",
+   "page": "page_0019",
+   "marker": "(e)",
+   "text": "Origène, Homélie 16 sur les Nombres.",
+   "proposed": "Origène, Homélie 16 sur les Nombres.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0020(a)",
@@ -199,14 +217,15 @@
     "context: 4 Rois 15:19 is Phul/Manahem; correct"
    ],
    "flags": [
-    "context"
+    "context",
+    "expand-unread"
    ]
   },
   {
    "id": "0021(e)",
    "page": "page_0021",
    "marker": "(e)",
-   "text": "[UNCERTAIN HEBREW] Souvent l'on met en Hébreu la troisième personne de l'actif, dans un sens impersonnel pour le passif : il dit, il cria, pour, on cria ; on dit, 70. Εκηρύχθη, etc.",
+   "text": "ויזעק ויאמר מטעם המלך וגדוליו Souvent l'on met en Hébreu la troisième personne de l'actif, dans un sens impersonnel pour le passif : il dit, il cria, pour, on cria ; on dit, 70. Ἐκηρύχθη, etc.",
    "proposed": "ויזעק ויאמר מטעם המלך וגדוליו Souvent l'on met en Hébreu la troisième personne de l'actif, dans un sens impersonnel pour le passif : il dit, il cria, pour, on cria ; on dit, 70. Ἐκηρύχθη, etc.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Εκηρύχθη -> Ἐκηρύχθη",
@@ -214,7 +233,43 @@
     "read on the scan: ויזעק ויאמר מטעם המלך וגדוליו"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0023(e)",
+   "page": "page_0023",
+   "marker": "(e)",
+   "text": "Καὶ μετενόησεν ὁ Θεὸς ἐπὶ τῇ κακίᾳ, etc.",
+   "proposed": "Καὶ μετενόησεν ὁ Θεὸς ἐπὶ τῇ κακίᾳ, etc.",
+   "why": [
+    "Greek checked against the Septuagint, Jonas 3:10"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0023(f)",
+   "page": "page_0023",
+   "marker": "(f)",
+   "text": "Origène, sur les Nombres, homélie 16. Pœnituit ; vel ut in aliis exemplaribus legimus : Deprecatus est Deus super malitiam, etc.",
+   "proposed": "Origène, sur les Nombres, homélie 16. Pœnituit ; vel ut in aliis exemplaribus legimus : Deprecatus est Deus super malitiam, etc.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0023(g)",
+   "page": "page_0023",
+   "marker": "(g)",
+   "text": "Saint Jérôme, Préface sur Jonas ; et Théodoret, Préface sur Nahum.",
+   "proposed": "Saint Jérôme, Préface sur Jonas ; et Théodoret, Préface sur Nahum.",
+   "why": [],
+   "flags": [
+    "expand-unread"
    ]
   },
   {
@@ -230,24 +285,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0024(d)",
-   "page": "page_0024",
-   "marker": "(d)",
-   "text": "Théodoret ; Grotius ; Liveley ; Drusius.",
-   "proposed": "Théodoret ;\nGrotius ;\nLiveley ;\nDrusius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0026(a)",
-   "page": "page_0026",
-   "marker": "(a)",
-   "text": "Voyez saint Jérôme ; Vatable ; Mercier ; Drusius ; Munster, sur le verset 1 de Jonas 4.",
-   "proposed": "Voyez saint Jérôme ;\nVatable ;\nMercier ;\nDrusius ;\nMunster, sur le verset 1 de Jonas 4.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0026(e)",
@@ -279,10 +316,26 @@
    "id": "0027(c)",
    "page": "page_0027",
    "marker": "(c)",
-   "text": "Voyez Bochart, De animalibus sacris, 2e partie, livre 2, chapitre 24, page 293 et suivants ; Kimhi ; Salomon Ben-Melech ; Arias Montanus ; Junius ; Piscator ; Mercier ; Grotius ; Cocceius ; Schindler ; Buxtorf ; Drusius ; J. H. Ursinus ; Becman, etc.",
+   "text": "Voyez Bochart, De animalibus sacris, 2e partie, livre 2, chapitre 24, page 293 et suivants ;\nKimhi ;\nSalomon Ben-Melech ;\nArias Montanus ;\nJunius ;\nPiscator ;\nMercier ;\nGrotius ;\nCocceius ;\nSchindler ;\nBuxtorf ;\nDrusius ;\nJ. H. Ursinus ;\nBecman, etc.",
    "proposed": "Voyez Bochart, De animalibus sacris, 2e partie, livre 2, chapitre 24, page 293 et suivants ;\nKimhi ;\nSalomon Ben-Melech ;\nArias Montanus ;\nJunius ;\nPiscator ;\nMercier ;\nGrotius ;\nCocceius ;\nSchindler ;\nBuxtorf ;\nDrusius ;\nJ. H. Ursinus ;\nBecman, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0027(d)",
+   "page": "page_0027",
+   "marker": "(d)",
+   "text": "קיקיון En langue syriaque et punique Ciccia, dans saint Jérôme, sur ce passage et lettre 75 parmi celles de saint Augustin ; pour les Égyptiens, kiki. Voyez Hérodote, livre 2, chapitre 94. Ἀπό τῶν σιλλικυπρίων τὸ κίκι, τὸ κ λευκὸν ἀφ᾽ Αἰγυπτίοις κίκι. De même Pline, Histoire naturelle, livre 15, chapitre 7 ; Dioscoride, livre 1, chapitre 38 ; Théophraste, livre 1, chapitre 16, etc.",
+   "proposed": "קיקיון En langue syriaque et punique Ciccia, dans saint Jérôme, sur ce passage et lettre 75 parmi celles de saint Augustin ; pour les Égyptiens, kiki. Voyez Hérodote, livre 2, chapitre 94. Ἀπό τῶν σιλλικυπρίων τὸ κίκι, τὸ κ λευκὸν ἀφ᾽ Αἰγυπτίοις κίκι. De même Pline, Histoire naturelle, livre 15, chapitre 7 ; Dioscoride, livre 1, chapitre 38 ; Théophraste, livre 1, chapitre 16, etc.",
+   "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0028(a)",
@@ -300,6 +353,17 @@
    ]
   },
   {
+   "id": "0028(c)",
+   "page": "page_0028",
+   "marker": "(c)",
+   "text": "Pline, Histoire naturelle, livre 15, chapitre 7. Ibique non pridem, et in Hispania repente provenit, altitudine oleæ, etc.",
+   "proposed": "Pline, Histoire naturelle, livre 15, chapitre 7. Ibique non pridem, et in Hispania repente provenit, altitudine oleæ, etc.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
    "id": "0029(a)",
    "page": "page_0029",
    "marker": "(a)",
@@ -313,6 +377,17 @@
     "hebrew",
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0030(a)",
+   "page": "page_0030",
+   "marker": "(a)",
+   "text": "_Vide Aug. ep. c11. nov. edit. qu. 6. de Jona Propheta, et Chrysolog. homil. 37. Cyrill. Præfat. Comment. in Jonam._ Prosper. _de prædestin._ Paulin. _ep. 33._ Tertull. _de Baptismo, c. 1._ Ieronym.",
+   "proposed": "_Vide Aug. ep. c11. nov. edit. qu. 6. de Jona Propheta, et Chrysolog. homil. 37. Cyrill. Præfat. Comment. in Jonam._ Prosper. _de prædestin._ Paulin. _ep. 33._ Tertull. _de Baptismo, c. 1._ Ieronym.",
+   "why": [],
+   "flags": [
+    "expand-unread"
    ]
   },
   {

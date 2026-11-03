@@ -1,19 +1,44 @@
 {
  "summary": {
   "notes": 289,
-  "changed": 55,
+  "changed": 44,
   "flags": {
    "context": 9,
    "greek": 30,
    "scan-unread": 37,
+   "expand-changed-numbers": 2,
    "reference-corrected": 1,
+   "expand-unread": 4,
    "uncertain": 2,
+   "scan-agy-changed-text": 2,
    "reference-not-in-vulgate": 2,
    "scanned": 3,
    "hebrew": 7
   }
  },
  "notes": [
+  {
+   "id": "0006(a)",
+   "page": "page_0006",
+   "marker": "(a)",
+   "text": "Sand. Calv. Franc. Lucas Cornel. Et quotquot Hebræos sequuntur. Usser ad an. M. 3394.",
+   "proposed": "Sanderus ;\nCalvin ;\nFrançois Lucas ;\nCornelius a Lapide. Et quotquot Hebræos sequuntur. Ussérius, à l'année du monde 3394.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0006(b)",
+   "page": "page_0006",
+   "marker": "(b)",
+   "text": "Gretser. t. 1. deffens. Bellarm. lib. I. c. 14.",
+   "proposed": "Gretser, tome 1, Défense ; Bellarmin, livre 1, chapitre 14.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
   {
    "id": "0007(b)",
    "page": "page_0007",
@@ -41,64 +66,27 @@
    ]
   },
   {
-   "id": "0008(c)",
+   "id": "0008(f)",
    "page": "page_0008",
-   "marker": "(c)",
-   "text": "Psaumes 136:7. Abdias 1:11.",
-   "proposed": "Psaumes 136:7 ; Abdias 1:11.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0008(d)",
-   "page": "page_0008",
-   "marker": "(d)",
-   "text": "Sophonie 2:8. Ézéchiel 25:3. Jérémie 48:26-27. Abdias 1:10.",
-   "proposed": "Sophonie 2:8 ;\nÉzéchiel 25:3 ;\nJérémie 48:26-27 ;\nAbdias 1:10.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0011(b)",
-   "page": "page_0011",
-   "marker": "(b)",
-   "text": "Theodoret. Grot.",
-   "proposed": "Théodoret ; Grotius.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0011(c)",
-   "page": "page_0011",
-   "marker": "(c)",
-   "text": "Εμνήσθη Ἱερουσαλὴμ ἡμερῶν ταπεινώσεως αὐτῆς, καὶ ἀπωσμῶν αὐτῆς πάντα ἐπιθυμήματα.",
-   "proposed": "Ἐμνήσθη Ἱερουσαλὴμ ἡμερῶν ταπεινώσεως αὐτῆς, καὶ ἀπωσμῶν αὐτῆς πάντα ἐπιθυμήματα.",
-   "why": [
-    "Greek checked against the Septuagint, Lamentations 1:7: Εμνήσθη -> Ἐμνήσθη"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0011(e)",
-   "page": "page_0011",
-   "marker": "(e)",
-   "text": "Juvénal. Satyr. 5.",
-   "proposed": "Juvénal, satire 5.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0011(f)",
-   "page": "page_0011",
    "marker": "(f)",
-   "text": "Aug. lib. 6. de Civit. c. 11.",
-   "proposed": "Saint Augustin, La Cité de Dieu, livre 6, chapitre 11.",
+   "text": "Jérémie 40:7. Cumque audissent omnes Principes exercitûs qui dispersi fuerant per regiones, ipsi et socii eorum, quòd præfecisset Rex Babylonis Godoliam terræ ; venerunt ad Godoliam, etc. ℣. 11. Sed et omnes Judæi qui erant in Moab, et in filiis Ammon, et in Idumæa, et in universis regionibus… reversi sunt.",
+   "proposed": "Jérémie 40:7. Cumque audissent omnes Principes exercitûs qui dispersi fuerant per regiones, ipsi et socii eorum, quòd præfecisset Rex Babylonis Godoliam terræ ; venerunt ad Godoliam, etc. Jérémie 40:11. Sed et omnes Judæi qui erant in Moab, et in filiis Ammon, et in Idumæa, et in universis regionibus… reversi sunt.",
    "why": [
-    "abbreviations written out (footnote_expand.py)"
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0011(a)",
+   "page": "page_0011",
+   "marker": "(a)",
+   "text": "וזכרה ירושלם ימי עניה ומרודיה כל מחמדיה Ita Hebræi quidem, et alii apud Sanct. hic. αὐτῆς δέ, etc. ἧς ἐν τῇ ἡμερῶν ἀρχαίων.",
+   "proposed": "וזכרה ירושלם ימי עניה ומרודיה כל מחמדיה Ainsi lisent en effet les Hébreux, et d'autres dans Sanctius sur ce passage. αὐτῆς δέ, etc. ἧς ἐν τῇ ἡμερῶν ἀρχαίων.",
+   "why": [
+    "Hebrew checked against the Hebrew Bible, Lamentations 1:7",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
    "flags": []
   },
@@ -131,14 +119,48 @@
    ]
   },
   {
-   "id": "0015(f)",
+   "id": "0015(a)",
    "page": "page_0015",
-   "marker": "(f)",
-   "text": "_Heb._ עולל לו יהוה 70. Εταπείνωσέ με κύριος.",
-   "proposed": "_Heb._ עולל לו יהוה 70. Ἐταπείνωσέ με κύριος.",
+   "marker": "(a)",
+   "text": "Mont. Tig. Jun. Caluin. Pisc.",
+   "proposed": "Arias Montanus ; la Bible de Zurich ; Junius ; Calvin ; Piscator.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 1:12",
-    "Greek spelling checked against a Greek dictionary: Εταπείνωσέ -> Ἐταπείνωσέ"
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0015(b)",
+   "page": "page_0015",
+   "marker": "(b)",
+   "text": "Vat. Mari.",
+   "proposed": "Vatable ; Mariana.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0015(c)",
+   "page": "page_0015",
+   "marker": "(c)",
+   "text": "Castal. Grot. Buxtorf. Vindicia lib. 2. c. II. etc.",
+   "proposed": "Castal. Grot. Buxtorf. Vindicia lib. 2. c. II. etc.",
+   "why": [
+    "written out, but a number changed or added: Castalion ; Grotius ; Buxtorf, Vindiciæ, livre 2, chapitre 11, etc."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
+  },
+  {
+   "id": "0016(a)",
+   "page": "page_0016",
+   "marker": "(a)",
+   "text": "Theodoret. hic. Sanst. Anglic.",
+   "proposed": "Théodoret sur ce passage ; Sanctius ; les Anglais.",
+   "why": [
+    "abbreviations written out"
    ],
    "flags": []
   },
@@ -146,7 +168,7 @@
    "id": "0016(b)",
    "page": "page_0016",
    "marker": "(b)",
-   "text": "Ézéchiel 24:4, 9. L'Hébreu et les Septante semblent dire que les os furent mis sur le bois, pour y brûler sous la marmite. Voyez le Commentaire.",
+   "text": "Ézéchiel 24:10. L'Hébreu et les Septante semblent dire que les os furent mis sur le bois, pour y brûler sous la marmite. Voyez le Commentaire.",
    "proposed": "Ézéchiel 24:10. L'Hébreu et les Septante semblent dire que les os furent mis sur le bois, pour y brûler sous la marmite. Voyez le Commentaire.",
    "why": [
     "Ézéchiel 24:4, 9 -> Ézéchiel 24:10: the Latin quoted («carnes compositio congere consumentur coquetur igne ossa suc») is Ézéchiel 24:10"
@@ -156,25 +178,15 @@
    ]
   },
   {
-   "id": "0016(e)",
-   "page": "page_0016",
-   "marker": "(e)",
-   "text": "נשקד על פשעי בידו 70. Ε᾿γρηγόρησε ἐπὶ τὰ ἀσεβήματα μυ.",
-   "proposed": "נשקד על פשעי בידו 70. Ἐγρηγόρησε ἐπὶ τὰ ἀσεβήματα μου.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 1:14",
-    "Greek spelling checked against a Greek dictionary: Ε᾿γρηγόρησε -> Ἐγρηγόρησε, μυ -> μου"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0017(c)",
+   "id": "0017(a)",
    "page": "page_0017",
-   "marker": "(c)",
-   "text": "Exode 15:11 ; Isaïe 22:5 ; 33:21 ; Zacharie 11:2, etc.",
-   "proposed": "Exode 15:11 ; Isaïe 22:5 ; 33:21 ; Zacharie 11:2 etc.",
+   "marker": "(a)",
+   "text": "Aben Ezra dans Buxtorf ; les Hébreux dans Vatable vertunt : Acceleratum est.",
+   "proposed": "Aben Ezra dans Buxtorf ; les Hébreux dans Vatable vertunt : Acceleratum est.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0017(e)",
@@ -200,9 +212,11 @@
    "page": "page_0020",
    "marker": "(b)",
    "text": "Vide Jérémie 48:45 et 50:16.Lamentations 4:18. et Isai. LXVI. 30. et Sanct. in hec loca.",
-   "proposed": "Vide Jérémie 48:45 et 50:16.Lamentations 4:18. et Isai. LXVI. 30. et Sanct. in hec loca.",
+   "proposed": "Voyez Jérémie 48:45 et 50:16 ;\nLamentations 4:18 ;\nIsaïe 66:30 ;\net Sanctius sur ces passages.",
    "why": [
     "context: Isaïe 66:30 unverifiable; needs page",
+    "Isaïe 66:30 does not exist in the Vulgate",
+    "abbreviations written out",
     "Isaïe 66:30 does not exist in the Vulgate"
    ],
    "flags": [
@@ -210,13 +224,14 @@
    ]
   },
   {
-   "id": "0020(e)",
+   "id": "0020(c)",
    "page": "page_0020",
-   "marker": "(e)",
-   "text": "Æneid. 2.",
-   "proposed": "Énéide 2.",
+   "marker": "(c)",
+   "text": "Eutlym. in Ps. IX. Salmeron. Prolegem. 16.p.414 נהפך לבי בקרבי כי מרו מריתי.",
+   "proposed": "Euthymius sur le Psaume 9 ; Salmeron, Prolégomènes 16, page 414 נהפך לבי בקרבי כי מרו מריתי.",
    "why": [
-    "abbreviations written out (footnote_expand.py)"
+    "Hebrew checked against the Hebrew Bible, Lamentations 1:20",
+    "abbreviations written out"
    ],
    "flags": []
   },
@@ -237,24 +252,51 @@
    ]
   },
   {
-   "id": "0025(d)",
-   "page": "page_0025",
-   "marker": "(d)",
-   "text": "καὶ ἐπλήθυνεν τῇ θυγατρὶ Ἰούδα ταπεινὸν καὶ ταπεινήν. Compl. Ταπεινώσει, καὶ ταπεινώσει. ταπεινωμένην. Ut Vulg. Ita et Theodoret. et Alexandri.",
-   "proposed": "καὶ ἐπλήθυνεν τῇ θυγατρὶ Ἰούδα ταπεινὸν καὶ ταπεινήν. Compl. Ταπεινώσει, καὶ ταπεινώσει. ταπεινουμένην. Ut Vulg. Ita et Theodoret. et Alexandri.",
+   "id": "0024(c)",
+   "page": "page_0024",
+   "marker": "(c)",
+   "text": "Origen. Theodorst. Bonavent. Hugo. Grot.",
+   "proposed": "Origène ;\nThéodoret ;\nsaint Bonaventure ;\nHugues de Saint-Cher ;\nGrotius.",
    "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary: ταπεινωμένην -> ταπεινουμένην"
+    "abbreviations written out"
    ],
    "flags": []
   },
   {
-   "id": "0025(f)",
+   "id": "0024(d)",
+   "page": "page_0024",
+   "marker": "(d)",
+   "text": "Castr. Sanct.",
+   "proposed": "Castro ; Sanctius.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0025(d)",
    "page": "page_0025",
-   "marker": "(f)",
-   "text": "Ibid. ℣. 13.",
-   "proposed": "Lamentations 5:13.",
-   "why": [],
+   "marker": "(d)",
+   "text": "καὶ ἐπλήθυνεν τῇ θυγατρὶ Ἰούδα ταπεινὸν καὶ ταπεινήν. Compl. Ταπεινώσει, καὶ ταπεινώσει. ταπεινουμένην. Ut Vulg. Ita et Theodoret. et Alexandri.",
+   "proposed": "καὶ ἐπλήθυνεν τῇ θυγατρὶ Ἰούδα ταπεινὸν καὶ ταπεινήν. L'édition de Complute : Ταπεινώσει, καὶ ταπεινώσει. ταπεινουμένην. Comme la Vulgate. De même Théodoret et le manuscrit d'Alexandrie.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary: ταπεινωμένην -> ταπεινουμένην",
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0026(a)",
+   "page": "page_0026",
+   "marker": "(a)",
+   "text": "Διεσκέδασεν ὡς ἄμπελον τὸ σκήνωμα αὐτοῦ. Heb. חמס כגן שכו",
+   "proposed": "Διεσκέδασεν ὡς ἄμπελον τὸ σκήνωμα αὐτοῦ. L'Hébreu : חמס כגן שכו",
+   "why": [
+    "Hebrew checked against the Hebrew Bible, Lamentations 2:6",
+    "Greek checked against the Septuagint, Lamentations 2:6",
+    "abbreviations written out"
+   ],
    "flags": []
   },
   {
@@ -271,14 +313,13 @@
    ]
   },
   {
-   "id": "0027(a)",
-   "page": "page_0027",
+   "id": "0028(a)",
+   "page": "page_0028",
    "marker": "(a)",
-   "text": "הסגיר ביד צור חומת ארמנותיה 70. βάρεις αυτῆς.",
-   "proposed": "הסגיר ביד צור חומת ארמנותיה 70. βάρεις αὐτῆς.",
+   "text": "Isai. XXXIV. II.",
+   "proposed": "Isaïe 34:11.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 2:7",
-    "Greek checked against the Septuagint, Lamentations 2:5: αυτῆς -> αὐτῆς"
+    "abbreviations written out"
    ],
    "flags": []
   },
@@ -296,13 +337,57 @@
    ]
   },
   {
-   "id": "0028(c)",
+   "id": "0028(d)",
    "page": "page_0028",
-   "marker": "(c)",
-   "text": "Voyez Isidor. Origen.",
-   "proposed": "Voyez saint Isidore ; Origène.",
+   "marker": "(d)",
+   "text": "Ammian. Rer. XXI.",
+   "proposed": "Ammien Marcellin, Res gestæ, livre 21.",
    "why": [
-    "abbreviations written out (footnote_expand.py)"
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0028(e)",
+   "page": "page_0028",
+   "marker": "(e)",
+   "text": "Plutarch. in Pelopida. Ælian. Var. lib. 7.",
+   "proposed": "Plutarque, Vie de Pélopidas ; Élien, Histoires variées, livre 7.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0028(f)",
+   "page": "page_0028",
+   "marker": "(f)",
+   "text": "Voyez Jerem. XIV. I. Luxit Judæa, et portæ ejus obscuratæ sunt in terra.",
+   "proposed": "Voyez Jérémie 14:1. Luxit Judæa, et portæ ejus obscuratæ sunt in terra.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0029(a)",
+   "page": "page_0029",
+   "marker": "(a)",
+   "text": "Theodoret. Bonav. Raban. Dionys. Vatab. Chaldaus.",
+   "proposed": "Théodoret ; saint Bonaventure ; Raban Maur ; Denys le Chartreux ; Vatable ; le Chaldéen.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0029(b)",
+   "page": "page_0029",
+   "marker": "(b)",
+   "text": "Theodoret. hic, et alii sup. citati. Vide et ℣. 14. et Sanct. hic.",
+   "proposed": "Théodoret sur ce passage, et d'autres cités plus haut. Voyez aussi Lamentations 2:14 et Sanctius sur ce passage.",
+   "why": [
+    "abbreviations written out"
    ],
    "flags": []
   },
@@ -323,12 +408,14 @@
    "id": "0030(b)",
    "page": "page_0030",
    "marker": "(b)",
-   "text": "Virgil. Æneid. x. Vide et Homer. Iliad. XVIII. etc.",
+   "text": "Virgile, Énéide 10. Voyez aussi Homère, Iliade 18, etc.",
    "proposed": "Virgile, Énéide 10. Voyez aussi Homère, Iliade 18, etc.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0030(c)",
@@ -345,13 +432,13 @@
    ]
   },
   {
-   "id": "0030(e)",
+   "id": "0030(f)",
    "page": "page_0030",
-   "marker": "(e)",
-   "text": "_(e) Εξεχύθη εἰς γῆν ἡ δόξα μου._ Ils ont lu _Cabodi_, au lieu de _Cebédi._",
-   "proposed": "_(e) Ἐξεχύθη εἰς γῆν ἡ δόξα μου._ Ils ont lu _Cabodi_, au lieu de _Cebédi._",
+   "marker": "(f)",
+   "text": "Ita Jun. Piscat. Angl. Glassius.",
+   "proposed": "Ainsi l'entendent Junius ; Piscator ; les Anglais ; Glassius.",
    "why": [
-    "Greek checked against the Septuagint, Lamentations 2:11: Εξεχύθη -> Ἐξεχύθη"
+    "abbreviations written out"
    ],
    "flags": []
   },
@@ -370,21 +457,14 @@
    ]
   },
   {
-   "id": "0031(c)",
-   "page": "page_0031",
-   "marker": "(c)",
-   "text": "Sanctius, numéro 56 ; Strigelius ; Piscator.",
-   "proposed": "Sanctius, numéro 56 ;\nStrigelius ;\nPiscator.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0034(b)",
-   "page": "page_0034",
-   "marker": "(b)",
-   "text": "Deutéronome 28:15-16. et seqq.",
-   "proposed": "Deutéronome 28:15-16 et suivants.",
-   "why": [],
+   "id": "0033(a)",
+   "page": "page_0033",
+   "marker": "(a)",
+   "text": "Grot. initio Comment. in Thren. Jerem.",
+   "proposed": "Grotius, au commencement du Commentaire sur les Lamentations de Jérémie.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": []
   },
   {
@@ -407,7 +487,7 @@
    "id": "0038(a)",
    "page": "page_0038",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] אני הגבר ראה עני בשבט עברתו",
+   "text": "אני הגבר ראה עני בשבט עברתו",
    "proposed": "אני הגבר ראה עני בשבט עברתו",
    "why": [
     "Hebrew checked against the Hebrew Bible, Lamentations 3:1",
@@ -449,15 +529,17 @@
    ]
   },
   {
-   "id": "0043(b)",
-   "page": "page_0043",
+   "id": "0042(b)",
+   "page": "page_0042",
    "marker": "(b)",
-   "text": "Εξέβαλεν ἐν ψήφοις τὰς ὀδόντας μου ἐμέθυσέν με σποδῷ.",
-   "proposed": "Ἐξέβαλεν ἐν ψήφοις τὰς ὀδόντας μου ἐμέθυσέν με σποδῷ.",
+   "text": "Job. XVI. II. 14.",
+   "proposed": "Job. XVI. II. 14.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Εξέβαλεν -> Ἐξέβαλεν"
+    "written out, but a number changed or added: Job 16:11, 14."
    ],
-   "flags": []
+   "flags": [
+    "expand-changed-numbers"
+   ]
   },
   {
    "id": "0044(e)",
@@ -475,7 +557,7 @@
    "id": "0045(a)",
    "page": "page_0045",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] | sonibus : [UNCERTAIN GREEK]",
+   "text": "חסדי יהוה כי לא תמנו כי לא תמו רחמו | sonibus : Μνήας εἰς τὰς πρωΐας ἔλεος σου, κύριε, ὅτι οὐ συνετελέσθημεν, ὅτι οὐ συνετελέσθησαν οἱ οἰκτιρμοὶ αὐτοῦ. Καινὰ εἰς τὰς πρωΐας, πολλὴ ἡ πίστις σου.",
    "proposed": "חסדי יהוה כי לא תמנו כי לא תמו רחמו | sonibus : Μνήας εἰς τὰς πρωΐας ἔλεος σου, κύριε, ὅτι οὐ συνετελέσθημεν, ὅτι οὐ συνετελέσθησαν οἱ οἰκτιρμοὶ αὐτοῦ. Καινὰ εἰς τὰς πρωΐας, πολλὴ ἡ πίστις σου.",
    "why": [
     "scan: Filled Hebrew and Greek placeholders from page",
@@ -490,7 +572,7 @@
    "id": "0045(b)",
    "page": "page_0045",
    "marker": "(b)",
-   "text": "[UNCERTAIN HEBREW] | 70. [UNCERTAIN GREEK]. Édit. Rom. quædam habet admixta ex alienis ver-",
+   "text": "חדשים לבקרים רבה אמונתך | 70. Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου. Édit. Rom. quædam habet admixta ex alienis ver-",
    "proposed": "חדשים לבקרים רבה אמונתך | 70. Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου. Édit. Rom. quædam habet admixta ex alienis ver-",
    "why": [
     "scan: Filled Hebrew and Greek placeholders from page",
@@ -498,7 +580,8 @@
     "read on the scan: Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου."
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -512,15 +595,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0047(b)",
-   "page": "page_0047",
-   "marker": "(b)",
-   "text": "Matthieu 26:67. Marc 14:65.",
-   "proposed": "Matthieu 26:67 ; Marc 14:65.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0047(c)",
@@ -549,17 +623,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0050(b)",
-   "page": "page_0050",
-   "marker": "(b)",
-   "text": "Tertull. Apologet.",
-   "proposed": "Tertullien, Apologétique.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
   },
   {
    "id": "0050(e)",
@@ -613,15 +676,6 @@
    ]
   },
   {
-   "id": "0053(a)",
-   "page": "page_0053",
-   "marker": "(a)",
-   "text": "Jérémie 38:6. et seq.",
-   "proposed": "Jérémie 38:6 et suivants.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0055(a)",
    "page": "page_0055",
    "marker": "(a)",
@@ -636,13 +690,15 @@
    ]
   },
   {
-   "id": "0055(b)",
+   "id": "0055(d)",
    "page": "page_0055",
-   "marker": "(b)",
-   "text": "Virgil. Æneid. 2.",
-   "proposed": "Virgile, Énéide 2.",
+   "marker": "(d)",
+   "text": "Chald. 70. Vulg. Buxtorf. Rab. quidam, _quasi esset_ חלתא, _pro_ תלתא",
+   "proposed": "Le Chaldéen ; les Septante ; la Vulgate ; Buxtorf ; quelques rabbins, _quasi esset_ חלתא, _pro_ תלתא",
    "why": [
-    "abbreviations written out (footnote_expand.py)"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "abbreviations written out"
    ],
    "flags": []
   },
@@ -650,34 +706,14 @@
    "id": "0056(a)",
    "page": "page_0056",
    "marker": "(a)",
-   "text": "Ita Theodoret.",
+   "text": "Ainsi Théodoret.",
    "proposed": "Ainsi Théodoret.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
-  },
-  {
-   "id": "0056(b)",
-   "page": "page_0056",
-   "marker": "(b)",
-   "text": "Grot. Vat.",
-   "proposed": "Grotius ; Vatable.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0056(c)",
-   "page": "page_0056",
-   "marker": "(c)",
-   "text": "Chald. Munst. Sanct. Pisc.",
-   "proposed": "Le Chaldéen ;\nMunster ;\nPiscator.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0056(d)",
@@ -716,6 +752,28 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0057(d)",
+   "page": "page_0057",
+   "marker": "(d)",
+   "text": "Voyez Ovid. Fast. lib. 6. Petron. Satyric. Apul. Metamorphoj. lib. 1. Philostrat. vit. Apollon. lib. 4. etc.",
+   "proposed": "Voyez Ovide, Fastes, livre 6 ;\nPétrone, Satyricon ;\nApulée, Métamorphoses, livre 1 ;\nPhilostrate, Vie d'Apollonius, livre 4, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
+   "id": "0057(e)",
+   "page": "page_0057",
+   "marker": "(e)",
+   "text": "Leges Salic. c. 67.",
+   "proposed": "Loi salique, chapitre 67.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0059(b)",
@@ -783,15 +841,6 @@
    ]
   },
   {
-   "id": "0060(d)",
-   "page": "page_0060",
-   "marker": "(d)",
-   "text": "Ézéchiel 16:46-47. et sequ.",
-   "proposed": "Ézéchiel 16:46-47 et suivants.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0062(b)",
    "page": "page_0062",
    "marker": "(b)",
@@ -835,20 +884,12 @@
    "id": "0065(d)",
    "page": "page_0065",
    "marker": "(d)",
-   "text": "Joseph. de Bello lib. 7. c. 8. in Lat. Kα, in Græc.",
-   "proposed": "Joseph. de Bello lib. 7. c. 8. in Lat. Kἃ, in Græc.",
+   "text": "Joseph. de Bello lib. 7. c. 8. in Lat. Kἃ, in Græc.",
+   "proposed": "Josèphe, Guerre des Juifs, livre 7, chapitre 8, dans le Latin Kἃ, dans le Grec.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: α -> ἃ"
+    "Greek spelling checked against a Greek dictionary: α -> ἃ",
+    "abbreviations written out"
    ],
-   "flags": []
-  },
-  {
-   "id": "0066(d)",
-   "page": "page_0066",
-   "marker": "(d)",
-   "text": "Judith 13, 14.",
-   "proposed": "Judith 13:14.",
-   "why": [],
    "flags": []
   },
   {
@@ -926,24 +967,6 @@
    ]
   },
   {
-   "id": "0071(b)",
-   "page": "page_0071",
-   "marker": "(b)",
-   "text": "Ainsi l'entendent les Hébreux ; Raban Maur ; Hugues de Saint-Cher ; Vatable ; Nicolas de Lyre ; Saint Jérôme sur Zacharie 12 ; Sanctius ; Munster.",
-   "proposed": "Ainsi l'entendent les Hébreux ;\nRaban Maur ;\nHugues de Saint-Cher ;\nVatable ;\nNicolas de Lyre ;\nSaint Jérôme sur Zacharie 12 ;\nSanctius ;\nMunster.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0071(c)",
-   "page": "page_0071",
-   "marker": "(c)",
-   "text": "Saint Thomas ; Maldonat ; Sanctius ; Cornelius a Lapide ; Piscator.",
-   "proposed": "Saint Thomas ;\nMaldonat ;\nSanctius ;\nCornelius a Lapide ;\nPiscator.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0071(d)",
    "page": "page_0071",
    "marker": "(d)",
@@ -1009,6 +1032,7 @@
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "context: 70 means Septuagint; Greek fine",
+    "Jérémie 52:11, 70 does not exist in the Vulgate",
     "Jérémie 52:11, 70 does not exist in the Vulgate"
    ],
    "flags": [
@@ -1042,15 +1066,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0081(e)",
-   "page": "page_0081",
-   "marker": "(e)",
-   "text": "Saint Thomas ; Raban Maur ; Ménochius ; Sanctius.",
-   "proposed": "Saint Thomas ;\nRaban Maur ;\nMénochius ;\nSanctius.",
-   "why": [],
-   "flags": []
   }
  ]
 }

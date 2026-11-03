@@ -1,9 +1,10 @@
 {
  "summary": {
   "notes": 210,
-  "changed": 23,
+  "changed": 4,
   "flags": {
    "scanned": 2,
+   "expand-unread": 2,
    "greek": 6,
    "scan-unread": 8,
    "context": 2,
@@ -12,28 +13,10 @@
  },
  "notes": [
   {
-   "id": "0006(g)",
-   "page": "page_0006",
-   "marker": "(g)",
-   "text": "Voyez au besoin, saint Jérôme ; Théodoret ; Remi ; Haymon ; Rupert ; Denys ; Hugues de Saint-Victor ; Ribera ; Crentz.",
-   "proposed": "Voyez au besoin, saint Jérôme ;\nThéodoret ;\nRemi ;\nHaymon ;\nRupert ;\nDenys ;\nHugues de Saint-Victor ;\nRibera ;\nCrentz.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0007(e)",
-   "page": "page_0007",
-   "marker": "(e)",
-   "text": "Junius ; Tremellius ; Piscator ; Liveley.",
-   "proposed": "Junius ;\nTremellius ;\nPiscator ;\nLiveley.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0007(f)",
    "page": "page_0007",
    "marker": "(f)",
-   "text": "ילק. Psal. 78. [ILLEGIBLE].",
+   "text": "ילק. Psal. 78. Βροῦχος*.",
    "proposed": "ילק. Psal. 78. Βροῦχος*.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -41,53 +24,9 @@
     "guessed from context: Βροῦχος*"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
-  },
-  {
-   "id": "0008(d)",
-   "page": "page_0008",
-   "marker": "(d)",
-   "text": "Ainsi l'entendent le Chaldéen ; Vatable ; Mercier ; Drusius ; Bochart, De animalibus sacris, partie 2, livre 4, chapitre 2 ; Grotius.",
-   "proposed": "Ainsi l'entendent le Chaldéen ;\nVatable ;\nMercier ;\nDrusius ;\nBochart, De animalibus sacris, partie 2, livre 4, chapitre 2 ;\nGrotius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0010(a)",
-   "page": "page_0010",
-   "marker": "(a)",
-   "text": "Voyez Bochart, à l'endroit cité plus haut ; Didyme, Géoponiques, livre 10 ; Pline, livre 17, chapitre 25 ; Théophraste, Histoire des plantes, livre 2, chapitre 4.",
-   "proposed": "Voyez Bochart, à l'endroit cité plus haut ;\nDidyme, Géoponiques, livre 10 ;\nPline, livre 17, chapitre 25 ;\nThéophraste, Histoire des plantes, livre 2, chapitre 4.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0010(b)",
-   "page": "page_0010",
-   "marker": "(b)",
-   "text": "Proverbes 2:17 ; Malachie 2:14 ; Jérémie 3:4 ; Isaïe 54:6 etc.",
-   "proposed": "Proverbes 2:17 ;\nMalachie 2:14 ;\nJérémie 3:4 ;\nIsaïe 54:6 etc.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0012(c)",
-   "page": "page_0012",
-   "marker": "(c)",
-   "text": "Saint Jérôme ; Vatable ; Drusius ; Mercier ; Figueras ; Sanctius.",
-   "proposed": "Saint Jérôme ;\nVatable ;\nDrusius ;\nMercier ;\nFigueras ;\nSanctius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0013(a)",
-   "page": "page_0013",
-   "marker": "(a)",
-   "text": "Jérémie 36:9 ; Isaïe 58:3 ; Joël 2:15 ; Jonas 3:5.",
-   "proposed": "Jérémie 36:9 ;\nIsaïe 58:3 ;\nJoël 2:15 ;\nJonas 3:5.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0019(a)",
@@ -121,7 +60,7 @@
    "id": "0021(b)",
    "page": "page_0021",
    "marker": "(b)",
-   "text": "[UNCERTAIN HEBREW] ובעד השלח יפלו לא יבצעו",
+   "text": "ובעד השלח יפלו לא יבצעו",
    "proposed": "ובעד השלח יפלו לא יבצעו",
    "why": [
     "Hebrew checked against the Hebrew Bible, Joel 2:8",
@@ -131,15 +70,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0022(a)",
-   "page": "page_0022",
-   "marker": "(a)",
-   "text": "Arias Montanus ; Bible de Tigur ; Mercier ; Rabbi Salomon.",
-   "proposed": "Arias Montanus ;\nBible de Tigur ;\nMercier ;\nRabbi Salomon.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0022(b)",
@@ -172,15 +102,6 @@
    ]
   },
   {
-   "id": "0022(d)",
-   "page": "page_0022",
-   "marker": "(d)",
-   "text": "Voyez Pline, livre 11, chapitre 29 ; Saint Jérôme, sur ce passage ; Eutychius, tome 2, page 518 ; Alvise Cadamosto, Navigation, chapitre 13 ; Remi d'Auxerre ; Tavernier, Voyage de Perse, livre 2, chapitre 3 ; Bochart, De animalibus sacris, partie 2, chapitre 6.",
-   "proposed": "Voyez Pline, livre 11, chapitre 29 ;\nSaint Jérôme, sur ce passage ;\nEutychius, tome 2, page 518 ;\nAlvise Cadamosto, Navigation, chapitre 13 ;\nRemi d'Auxerre ;\nTavernier, Voyage de Perse, livre 2, chapitre 3 ;\nBochart, De animalibus sacris, partie 2, chapitre 6.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0023(a)",
    "page": "page_0023",
    "marker": "(a)",
@@ -191,33 +112,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0024(a)",
-   "page": "page_0024",
-   "marker": "(a)",
-   "text": "Amos 3:6 ; Matthieu 6:34 ; 2 Rois 20:7, 9, 13 ; Jonas 3:10 ; 4:2, etc.",
-   "proposed": "Amos 3:6 ; Matthieu 6:34 ; 2 Rois 20:7, 9, 13 ; Jonas 3:10 ; 4:2 etc.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0025(a)",
-   "page": "page_0025",
-   "marker": "(a)",
-   "text": "Genèse 27:28 et 39 ; Lévitique 25:21, etc.",
-   "proposed": "Genèse 27:28, 39 ; Lévitique 25:21 etc.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0025(c)",
-   "page": "page_0025",
-   "marker": "(c)",
-   "text": "Jérémie 6:4 ; Joël 3:9 ; Michée 3:5.",
-   "proposed": "Jérémie 6:4 ;\nJoël 3:9 ;\nMichée 3:5.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0025(e)",
@@ -233,33 +127,15 @@
    ]
   },
   {
-   "id": "0029(d)",
-   "page": "page_0029",
-   "marker": "(d)",
-   "text": "Drusius ; Junius ; Livineius ; Piscator ; Vatable ; Tarnovius.",
-   "proposed": "Drusius ;\nJunius ;\nLivineius ;\nPiscator ;\nVatable ;\nTarnovius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0034(a)",
    "page": "page_0034",
    "marker": "(a)",
-   "text": "Ainsi l'entendent les Hébreux, dans saint Jérôme ; et Théodoret, sur ce passage, et Préface sur Joël. Voyez aussi saint Cyrille ; et Rufin.",
+   "text": "Ainsi l'entendent les Hébreux, dans saint Jérôme ;\net Théodoret, sur ce passage, et Préface sur Joël. Voyez aussi saint Cyrille ;\net Rufin.",
    "proposed": "Ainsi l'entendent les Hébreux, dans saint Jérôme ;\net Théodoret, sur ce passage, et Préface sur Joël. Voyez aussi saint Cyrille ;\net Rufin.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0038(a)",
-   "page": "page_0038",
-   "marker": "(a)",
-   "text": "Voyez 1 Machabées 4:61 ; 5:3-65 ; verset 31, etc.",
-   "proposed": "Voyez 1 Machabées 4:31, 61 etc.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0039(d)",
@@ -290,15 +166,6 @@
    ]
   },
   {
-   "id": "0042(a)",
-   "page": "page_0042",
-   "marker": "(a)",
-   "text": "Hérodote, livre 3, chapitre 26 ; Justin, livre 1, chapitre 9 ; Plutarque, dans la Vie d'Alexandre.",
-   "proposed": "Hérodote, livre 3, chapitre 26 ;\nJustin, livre 1, chapitre 9 ;\nPlutarque, dans la Vie d'Alexandre.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0044(c)",
    "page": "page_0044",
    "marker": "(c)",
@@ -323,15 +190,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0047(d)",
-   "page": "page_0047",
-   "marker": "(d)",
-   "text": "Jérémie 49:1 ; Amos 1:13 ; Sophonie 2:8.",
-   "proposed": "Jérémie 49:1 ;\nAmos 1:13 ;\nSophonie 2:8.",
-   "why": [],
-   "flags": []
   }
  ]
 }

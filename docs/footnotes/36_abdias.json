@@ -1,8 +1,9 @@
 {
  "summary": {
   "notes": 52,
-  "changed": 11,
+  "changed": 2,
   "flags": {
+   "expand-unread": 4,
    "scanned": 3,
    "greek": 6,
    "scan-unread": 6,
@@ -11,19 +12,23 @@
  },
  "notes": [
   {
-   "id": "0005(f)",
-   "page": "page_0005",
-   "marker": "(f)",
-   "text": "Voyez Sanctius sur ce passage, numéro 7 ; Théodoret ; Saint Cyrille ; Ribera ; Nicolas de Lyre.",
-   "proposed": "Voyez Sanctius sur ce passage, numéro 7 ;\nThéodoret ;\nSaint Cyrille ;\nRibera ;\nNicolas de Lyre.",
-   "why": [],
-   "flags": []
+   "id": "0004(a)",
+   "page": "page_0004",
+   "marker": "(a)",
+   "text": "כה אמר אדני יהוה לאדם Voyez Sanctius ; Vatable ; Junius ; Munster ; Livell. etc.",
+   "proposed": "כה אמר אדני יהוה לאדם Voyez Sanctius ; Vatable ; Junius ; Munster ; Livell. etc.",
+   "why": [
+    "Hebrew checked against the Hebrew Bible, Obadiah 1:1"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0006(a)",
    "page": "page_0006",
    "marker": "(a)",
-   "text": "השיאך בחנױ סלע שכני מרום שבתו [UNCERTAIN HEBREW] norum similes, quas Afri appellant Mapalia.",
+   "text": "השיאך שכני בחגוי סלע מרום שבתו norum similes, quas Afri appellant Mapalia.",
    "proposed": "השיאך שכני בחגוי סלע מרום שבתו norum similes, quas Afri appellant Mapalia.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon: final letter בחנױ -> בחןױ",
@@ -35,10 +40,21 @@
    ]
   },
   {
+   "id": "0008(a)",
+   "page": "page_0008",
+   "marker": "(a)",
+   "text": "Vide Psaumes 136:7. Ézéchiel 25:12. Jérémie 41:6. xxv. 14. et xlix. 7. Lamentations 4:3, 21-22. Esdr. iv. 45.",
+   "proposed": "Vide Psaumes 136:7. Ézéchiel 25:12. Jérémie 41:6. xxv. 14. et xlix. 7. Lamentations 4:3, 21-22. Esdr. iv. 45.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
    "id": "0008(b)",
    "page": "page_0008",
    "marker": "(b)",
-   "text": "לחמך ישימו מזור תחתיך [UNCERTAIN HEBREW]",
+   "text": "לחמך ישימו מזור תחתיך",
    "proposed": "לחמך ישימו מזור תחתיך",
    "why": [
     "Hebrew checked against the Hebrew Bible, Obadiah 1:7",
@@ -50,19 +66,21 @@
    ]
   },
   {
-   "id": "0008(d)",
-   "page": "page_0008",
-   "marker": "(d)",
-   "text": "Junius ; Tremellius ; Piscator ; Tarnovius ; Louis de Dieu.",
-   "proposed": "Junius ;\nTremellius ;\nPiscator ;\nTarnovius ;\nLouis de Dieu.",
+   "id": "0009(c)",
+   "page": "page_0009",
+   "marker": "(c)",
+   "text": "Eusèbe et saint Jérôme, Des lieux hébreux.",
+   "proposed": "Eusèbe et saint Jérôme, Des lieux hébreux.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0010(c)",
    "page": "page_0010",
    "marker": "(c)",
-   "text": "[UNCERTAIN HEBREW] אל תגדל פיך",
+   "text": "אל תגדיל פיך",
    "proposed": "אל תגדיל פיך",
    "why": [
     "Hebrew checked against the Hebrew Bible, Obadiah 1:12",
@@ -77,10 +95,12 @@
    "id": "0012(a)",
    "page": "page_0012",
    "marker": "(a)",
-   "text": "Voyez plus haut Osée 9:7 ; Joël 1:15 ; Amos 5:18 etc.",
+   "text": "Voyez plus haut Osée 9:7 ;\nJoël 1:15 ;\nAmos 5:18 etc.",
    "proposed": "Voyez plus haut Osée 9:7 ;\nJoël 1:15 ;\nAmos 5:18 etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0012(b)",
@@ -93,24 +113,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0012(e)",
-   "page": "page_0012",
-   "marker": "(e)",
-   "text": "Voyez saint Jérôme ; Saint Cyrille ; Vasquez et plusieurs autres.",
-   "proposed": "Voyez saint Jérôme ;\nSaint Cyrille ;\nVasquez et plusieurs autres.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0013(c)",
-   "page": "page_0013",
-   "marker": "(c)",
-   "text": "Ainsi saint Jérôme ; Théodoret ; Saint Cyrille d'Alexandrie ; Ribera.",
-   "proposed": "Ainsi saint Jérôme ;\nThéodoret ;\nSaint Cyrille d'Alexandrie ;\nRibera.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0014(d)",
@@ -181,15 +183,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0017(c)",
-   "page": "page_0017",
-   "marker": "(c)",
-   "text": "Saint Jérôme ; Théodoret ; Saint Cyrille d'Alexandrie ; Vatable ; Grotius ; Sanctius.",
-   "proposed": "Saint Jérôme ;\nThéodoret ;\nSaint Cyrille d'Alexandrie ;\nVatable ;\nGrotius ;\nSanctius.",
-   "why": [],
-   "flags": []
   }
  ]
 }

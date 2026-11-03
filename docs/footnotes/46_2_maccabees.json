@@ -1,14 +1,15 @@
 {
  "summary": {
   "notes": 507,
-  "changed": 64,
+  "changed": 34,
   "flags": {
-   "greek": 63,
-   "scan-unread": 64,
+   "greek": 62,
+   "scan-unread": 63,
+   "expand-unread": 36,
    "hebrew": 1,
    "reference-not-in-vulgate": 2,
    "context": 1,
-   "uncertain": 1
+   "scanned": 1
   }
  },
  "notes": [
@@ -27,33 +28,17 @@
    ]
   },
   {
-   "id": "0005(f)",
-   "page": "page_0005",
-   "marker": "(f)",
-   "text": "Josèphe, Antiquités judaïques, livre 13, chapitre 19. Voyez Rupert, livre 10, chapitre 15, De victoria Verbi ; Serarius ; Mariana.",
-   "proposed": "Josèphe, Antiquités judaïques, livre 13, chapitre 19. Voyez Rupert, livre 10, chapitre 15, De victoria Verbi ;\nSerarius ;\nMariana.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0006(c)",
    "page": "page_0006",
    "marker": "(c)",
-   "text": "Voyez Grotius, sur ce passage ; Ussérius, à l'an 3880 ; Selden, notes sur Origène, Contre Celse, page 198 ; Tirin.",
+   "text": "Voyez Grotius, sur ce passage ;\nUssérius, à l'an 3880 ;\nSelden, notes sur Origène, Contre Celse, page 198 ;\nTirin.",
    "proposed": "Voyez Grotius, sur ce passage ;\nUssérius, à l'an 3880 ;\nSelden, notes sur Origène, Contre Celse, page 198 ;\nTirin.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
-  },
-  {
-   "id": "0006(d)",
-   "page": "page_0006",
-   "marker": "(d)",
-   "text": "Rupert ; Medina ; Sigonius ; Serarius ; Tirin ; Ménochius.",
-   "proposed": "Rupert ;\nMedina ;\nSigonius ;\nSerarius ;\nTirin ;\nMénochius.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0007(a)",
@@ -74,10 +59,23 @@
    "id": "0007(c)",
    "page": "page_0007",
    "marker": "(c)",
-   "text": "Ainsi l'entendent Grotius ; Nicolas de Lyre ; Ménochius ; Tirin.",
+   "text": "Ainsi l'entendent Grotius ;\nNicolas de Lyre ;\nMénochius ;\nTirin.",
    "proposed": "Ainsi l'entendent Grotius ;\nNicolas de Lyre ;\nMénochius ;\nTirin.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0008(a)",
+   "page": "page_0008",
+   "marker": "(a)",
+   "text": "Senec. pater. Suasoriar. 1. et Dion. epitom. in _Augusto_.",
+   "proposed": "Senec. pater. Suasoriar. 1. et Dion. epitom. in _Augusto_.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0013(a)",
@@ -109,6 +107,19 @@
    ]
   },
   {
+   "id": "0013(c)",
+   "page": "page_0013",
+   "marker": "(c)",
+   "text": "Καὶ ὡς ἐχαρίζετο, etc.",
+   "proposed": "Καὶ ὡς ἐχαρίζετο, etc.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
    "id": "0013(d)",
    "page": "page_0013",
    "marker": "(d)",
@@ -121,15 +132,26 @@
    ]
   },
   {
-   "id": "0015(b)",
+   "id": "0015(c)",
    "page": "page_0015",
+   "marker": "(c)",
+   "text": "Vide Jerem. XXXIX II 12.",
+   "proposed": "Vide Jerem. XXXIX II 12.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0016(b)",
+   "page": "page_0016",
    "marker": "(b)",
-   "text": "Saint Dorothée ; et saint Épiphane, dans la Vie de Jérémie ; Saint Thomas, ou l'Auteur du Commentaire sur 2 Machabées ; Serarius ; Salian ; Torniel ; Tirin, etc.",
-   "proposed": "Saint Dorothée ; et saint Épiphane, dans la Vie de Jérémie ; Saint Thomas, ou l'Auteur du Commentaire sur 2 Machabées ; Serarius ; Salian ; Torniel ; Tirin ; etc.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
+   "text": "Voyez Noël Alexandre, Histoire de l'Ancien Testament, article sur les livres des Machabées.",
+   "proposed": "Voyez Noël Alexandre, Histoire de l'Ancien Testament, article sur les livres des Machabées.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0017(a)",
@@ -141,6 +163,17 @@
    "flags": [
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0018(a)",
+   "page": "page_0018",
+   "marker": "(a)",
+   "text": "On peut voir sur le Canon des Juifs, _du V. T. l. 1. c. 1._ Genebr. _Chronolog._ Serar. Simon. _hist. critiq._",
+   "proposed": "On peut voir sur le Canon des Juifs, _du V. T. l. 1. c. 1._ Genebr. _Chronolog._ Serar. Simon. _hist. critiq._",
+   "why": [],
+   "flags": [
+    "expand-unread"
    ]
   },
   {
@@ -199,12 +232,14 @@
    "id": "0027(a)",
    "page": "page_0027",
    "marker": "(a)",
-   "text": "Serarius ; Ménochius ; Tirin.",
+   "text": "Serarius ;\nMénochius ;\nTirin.",
    "proposed": "Serarius ;\nMénochius ;\nTirin.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0027(d)",
@@ -221,13 +256,15 @@
    ]
   },
   {
-   "id": "0027(e)",
-   "page": "page_0027",
-   "marker": "(e)",
-   "text": "1 Machabées 10:69. et seqn.",
-   "proposed": "1 Machabées 10:69 et suivants.",
+   "id": "0029(c)",
+   "page": "page_0029",
+   "marker": "(c)",
+   "text": "Voyez au besoin Grotius, sur ce passage ; Serarius, et d'après lui Tirin.",
+   "proposed": "Voyez au besoin Grotius, sur ce passage ; Serarius, et d'après lui Tirin.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0031(a)",
@@ -267,10 +304,12 @@
    "proposed": "Voyez ci-devant ℣. 15. et Joseph, en plusieurs endroits, et Judith 4:9 et 7:4. et 1 Machabées 17:32. etc.",
    "why": [
     "context: reference unclear; await printed page",
+    "1 Machabées 17:32 does not exist in the Vulgate",
     "1 Machabées 17:32 does not exist in the Vulgate"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "reference-not-in-vulgate",
+    "expand-unread"
    ]
   },
   {
@@ -302,15 +341,6 @@
    ]
   },
   {
-   "id": "0036(b)",
-   "page": "page_0036",
-   "marker": "(b)",
-   "text": "2 Machabées 1, 2.",
-   "proposed": "2 Machabées 1:2.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0039(b)",
    "page": "page_0039",
    "marker": "(b)",
@@ -339,6 +369,19 @@
    ]
   },
   {
+   "id": "0041(c)",
+   "page": "page_0041",
+   "marker": "(c)",
+   "text": "Homer. Odyss. Θ. Voyez aussi Ovide Métamorphos. l 10. La description de ce Jeu.",
+   "proposed": "Homer. Odyss. Θ. Voyez aussi Ovide Métamorphos. l 10. La description de ce Jeu.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
    "id": "0041(d)",
    "page": "page_0041",
    "marker": "(d)",
@@ -350,6 +393,17 @@
    "flags": [
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0042(a)",
+   "page": "page_0042",
+   "marker": "(a)",
+   "text": "Tirin. Voyez Serarius, sur ce passage.",
+   "proposed": "Tirin. Voyez Serarius, sur ce passage.",
+   "why": [],
+   "flags": [
+    "expand-unread"
    ]
   },
   {
@@ -415,19 +469,12 @@
    "id": "0046(a)",
    "page": "page_0046",
    "marker": "(a)",
-   "text": "Voyez au besoin Judith 3:10 ; et Isaïe 25 ; Ancien Testament, page 182, etc.",
+   "text": "Voyez au besoin Judith 3:10 ;\net Isaïe 25 ;\nAncien Testament, page 182, etc.",
    "proposed": "Voyez au besoin Judith 3:10 ;\net Isaïe 25 ;\nAncien Testament, page 182, etc.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0046(e)",
-   "page": "page_0046",
-   "marker": "(e)",
-   "text": "Nicolas de Lyre ; Tirin ; Serarius ; Hardouin, Chronologie.",
-   "proposed": "Nicolas de Lyre ;\nTirin ;\nSerarius ;\nHardouin, Chronologie.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0049(a)",
@@ -440,15 +487,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0049(b)",
-   "page": "page_0049",
-   "marker": "(b)",
-   "text": "Pline, Histoire naturelle, livre 5, chapitre 27 ; Strabon, livre 14 ; Grotius.",
-   "proposed": "Pline, Histoire naturelle, livre 5, chapitre 27 ;\nStrabon, livre 14 ;\nGrotius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0052(b)",
@@ -531,24 +569,17 @@
    ]
   },
   {
-   "id": "0060(b)",
-   "page": "page_0060",
-   "marker": "(b)",
-   "text": "Isaïe 1:11 ; Jérémie 6:20 ; Amos 5:22.",
-   "proposed": "Isaïe 1:11 ;\nJérémie 6:20 ;\nAmos 5:22.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0063(a)",
    "page": "page_0063",
    "marker": "(a)",
-   "text": "Τὲς ἐλθόντας καὶ τὰς ἀγέλας ἐπὶ τὴν θεωρίαν. Vide supra ad cap. 1v. 19.",
+   "text": "Τοὺς ἐλθόντας καὶ τὰς ἀγέλας ἐπὶ τὴν θεωρίαν. Vide supra ad cap. 1v. 19.",
    "proposed": "Τοὺς ἐλθόντας καὶ τὰς ἀγέλας ἐπὶ τὴν θεωρίαν. Vide supra ad cap. 1v. 19.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Τὲς -> Τοὺς"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0065(b)",
@@ -619,15 +650,6 @@
    ]
   },
   {
-   "id": "0071(a)",
-   "page": "page_0071",
-   "marker": "(a)",
-   "text": "Voyez saint Ambroise, livre 2, De Jacob et de la vie bienheureuse, chapitre 10 ; Saint Grégoire de Nazianze, Discours sur les Machabées ; Saint Cyprien, De la singularité des clercs.",
-   "proposed": "Voyez saint Ambroise, livre 2, De Jacob et de la vie bienheureuse, chapitre 10 ;\nSaint Grégoire de Nazianze, Discours sur les Machabées ;\nSaint Cyprien, De la singularité des clercs.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0072(a)",
    "page": "page_0072",
    "marker": "(a)",
@@ -640,6 +662,17 @@
    "flags": [
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0074(a)",
+   "page": "page_0074",
+   "marker": "(a)",
+   "text": "Voyez au besoin Grotius, sur ce passage, et dans Matthieu 12:32 ; et plus bas chapitre 7:9, 11, 14, 23, etc. ; 1:6. Voyez et Sagesse 5:16 ; et notre Commentaire sur les Psaumes.",
+   "proposed": "Voyez au besoin Grotius, sur ce passage, et dans Matthieu 12:32 ; et plus bas chapitre 7:9, 11, 14, 23, etc. ; 1:6. Voyez et Sagesse 5:16 ; et notre Commentaire sur les Psaumes.",
+   "why": [],
+   "flags": [
+    "expand-unread"
    ]
   },
   {
@@ -658,21 +691,47 @@
    "id": "0075(e)",
    "page": "page_0075",
    "marker": "(e)",
-   "text": "Serarius ; Estius ; Tirin.",
+   "text": "Serarius ;\nEstius ;\nTirin.",
    "proposed": "Serarius ;\nEstius ;\nTirin.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
-   "id": "0077(a)",
+   "id": "0077(b)",
    "page": "page_0077",
-   "marker": "(a)",
-   "text": "Josèphe, Antiquités judaïques, livre 12, chapitre 7 ; et Livret des Machabées ; Cédrénus ; et Baillet, Vies des Saints, 4e tome. Mais dans le mois d'août, au 1er tome, il dit que ce fut à Antioche.",
-   "proposed": "Josèphe, Antiquités judaïques, livre 12, chapitre 7 ;\net Livret des Machabées ;\nCédrénus ;\net Baillet, Vies des Saints, 4e tome. Mais dans le mois d'août, au 1er tome, il dit que ce fut à Antioche.",
+   "marker": "(b)",
+   "text": "It. Geronid Liv. in. Serar. Tir. Martyrol. Rom. et alia Martyrologia.",
+   "proposed": "It. Geronid Liv. in. Serar. Tir. Martyrol. Rom. et alia Martyrologia.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0077(d)",
+   "page": "page_0077",
+   "marker": "(d)",
+   "text": "Aug. Ser. 1. de Macc. 30. Nov. Édit.",
+   "proposed": "Aug. Ser. 1. de Macc. 30. Nov. Édit.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0080(a)",
+   "page": "page_0080",
+   "marker": "(a)",
+   "text": "Joan. XIX. II.",
+   "proposed": "Joan. XIX. II.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0081(b)",
@@ -703,26 +762,91 @@
    ]
   },
   {
+   "id": "0085(a)",
+   "page": "page_0085",
+   "marker": "(a)",
+   "text": "2. Macc. VIII. §. et 27.",
+   "proposed": "2. Macc. VIII. §. et 27.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
    "id": "0085(b)",
    "page": "page_0085",
    "marker": "(b)",
-   "text": "Joseph. libel. de Macc. c. Iva μὴ ψαύσῃ αυτῆς τις ἀνδρῶν ἀυτὸς ἑαυτὴν ἐρριψε καὶ τῆς πυρᾶς.",
+   "text": "Joseph. libel. de Macc. c. Iva μὴ ψαύσῃ αὐτῆς τίς ἀνδρῶν αὐτὸς ἑαυτὴν ἔρριψε καὶ τῆς πυρᾶς.",
    "proposed": "Joseph. libel. de Macc. c. Iva μὴ ψαύσῃ αὐτῆς τίς ἀνδρῶν αὐτὸς ἑαυτὴν ἔρριψε καὶ τῆς πυρᾶς.",
    "why": [
     "Greek spelling checked against a Greek dictionary: τις -> τίς, ἀυτὸς -> αὐτὸς, αυτῆς -> αὐτῆς, ἐρριψε -> ἔρριψε"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0086(b)",
+   "page": "page_0086",
+   "marker": "(b)",
+   "text": "Saint Jean Chrysostome, tome 1, Homélies sur les Machabées.",
+   "proposed": "Saint Jean Chrysostome, tome 1, Homélies sur les Machabées.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0086(e)",
+   "page": "page_0086",
+   "marker": "(e)",
+   "text": "Gaudence, Sermon sur les Machabées, etc.",
+   "proposed": "Gaudence, Sermon sur les Machabées, etc.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0093(a)",
    "page": "page_0093",
    "marker": "(a)",
-   "text": "Grotius ; Serarius ; Tirin.",
+   "text": "Grotius ;\nSerarius ;\nTirin.",
    "proposed": "Grotius ;\nSerarius ;\nTirin.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0093(c)",
+   "page": "page_0093",
+   "marker": "(c)",
+   "text": "Serarius ; et d'après lui Tirin.",
+   "proposed": "Serarius ; et d'après lui Tirin.",
+   "why": [],
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0094(e)",
+   "page": "page_0094",
+   "marker": "(e)",
+   "text": "Ἔτι δὲ καὶ Ἐλεάζαρον παραγνῶναι τὴν ἱερὰν βίβλον. etc. Je crois qu'il a mis παραγνῶναι, au lieu de ἀναγνῶναι ou παραναγνῶναι. Comme s'il y avait en hébreu ויקרא",
+   "proposed": "Ἔτι δὲ καὶ Ἐλεάζαρον παραγνῶναι τὴν ἱερὰν βίβλον. etc. Je crois qu'il a mis παραγνῶναι, au lieu de ἀναγνῶναι ou παραναγνῶναι. Comme s'il y avait en hébreu ויקרא",
+   "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0094(f)",
@@ -735,15 +859,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0097(a)",
-   "page": "page_0097",
-   "marker": "(a)",
-   "text": "Voyez 1 Machabées 5:11-34, 37 ; et 2 Machabées 12:10 et suivants.",
-   "proposed": "Voyez 1 Machabées 5:11-34, 37 ; 2 Machabées 12:10 et suivants.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0097(c)",
@@ -777,11 +892,13 @@
    "proposed": "Voyez Thévenot, Herbert, Figueroa, Mandsloe Mallet, Description de l'Univers, tom. 2. pag. 172. 173 Chevreau hist. du Monde, tom. 4. c. 1.",
    "why": [
     "context: Mallet is an author, not Malachie",
+    "Malachie 50 does not exist in the Vulgate",
     "Malachie 50 does not exist in the Vulgate"
    ],
    "flags": [
     "context",
-    "reference-not-in-vulgate"
+    "reference-not-in-vulgate",
+    "expand-unread"
    ]
   },
   {
@@ -798,6 +915,20 @@
    "flags": [
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0107(a)",
+   "page": "page_0107",
+   "marker": "(a)",
+   "text": "Συμπεριενεχθήσεται ὑμῖν. _Voyez Grotius sur ce passage._ Συμπεριφέρεσθαι se dit des amis qui se donnent réciproquement des marques d'amitié par leurs bons services, par leurs complaisances : et du mari, et de la femme, qui sont bien unis, etc.",
+   "proposed": "Συμπεριενεχθήσεται ὑμῖν. _Voyez Grotius sur ce passage._ Συμπεριφέρεσθαι se dit des amis qui se donnent réciproquement des marques d'amitié par leurs bons services, par leurs complaisances : et du mari, et de la femme, qui sont bien unis, etc.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "expand-unread"
    ]
   },
   {
@@ -841,22 +972,26 @@
    ]
   },
   {
-   "id": "0112(a)",
+   "id": "0112(e)",
    "page": "page_0112",
-   "marker": "(a)",
-   "text": "Voyez Strabon, livre 15, vers la fin ; Quinte-Curce, livre 4 ; Procope de Gaza, livre 2, Guerre des Perses.",
-   "proposed": "Voyez Strabon, livre 15, vers la fin ;\nQuinte-Curce, livre 4 ;\nProcope de Gaza, livre 2, Guerre des Perses.",
+   "marker": "(e)",
+   "text": "Au même endroit ; et 2 Machabées 1:20-21 etc.",
+   "proposed": "Au même endroit ; et 2 Machabées 1:20-21 etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
-   "id": "0112(d)",
-   "page": "page_0112",
-   "marker": "(d)",
-   "text": "2 Machabées 1:18-19 et suivants ; et 2 Machabées 2:2.",
-   "proposed": "2 Machabées 1:18-19 et suivants ; 2:2.",
+   "id": "0113(a)",
+   "page": "page_0113",
+   "marker": "(a)",
+   "text": "Voyez le voyage du P. Eugène Roger, et celui de Pierre Martyr au grand Caire.",
+   "proposed": "Voyez le voyage du P. Eugène Roger, et celui de Pierre Martyr au grand Caire.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0115(a)",
@@ -902,7 +1037,7 @@
    "id": "0116(a)",
    "page": "page_0116",
    "marker": "(a)",
-   "text": "Οἱ μὲν δὴ τῷδε τῷ Τρόπῳ ἐκ τῆς Ἰδεμαίας ἐγκρατεῖς ἐγένοντο ἐχυρωμάτων ὅπλις, ἐγύμναζον τοὺς ἰυδαίους, [ILLEGIBLE] καὶ τοὺς φυγάδας ἀπὸ Ἱεροσολύμων προσλαβόντες, μάλα πολεμοτρόφουν ἐπιμελῶς.",
+   "text": "Ὁμοῦ δὲ τούτῳ καὶ οἱ Ἰδουμαῖοι ἐγκρατεῖς ἐπικαίρων ὀχυρωμάτων ὄντες, ἐγύμναζον τοὺς Ἰουδαίους, καὶ τοὺς φυγαδευθέντας ἀπὸ Ἱεροσολύμων προσλαβόμενοι πολεμοτροφεῖν ἐπεχείρουν.",
    "proposed": "Ὁμοῦ δὲ τούτῳ καὶ οἱ Ἰδουμαῖοι ἐγκρατεῖς ἐπικαίρων ὀχυρωμάτων ὄντες, ἐγύμναζον τοὺς Ἰουδαίους, καὶ τοὺς φυγαδευθέντας ἀπὸ Ἱεροσολύμων προσλαβόμενοι πολεμοτροφεῖν ἐπεχείρουν.",
    "why": [
     "Greek spelling checked against a Greek dictionary: ἰυδαίους -> χυδαίους",
@@ -954,22 +1089,15 @@
    ]
   },
   {
-   "id": "0122(b)",
-   "page": "page_0122",
-   "marker": "(b)",
-   "text": "1 Machabées 6:28. et seqs.",
-   "proposed": "1 Machabées 6:28 et suivants.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0125(b)",
+   "id": "0125(f)",
    "page": "page_0125",
-   "marker": "(b)",
-   "text": "Ainsi Masius ; Salian ; Ménochius.",
-   "proposed": "Ainsi Masius ;\nSalian ;\nMénochius.",
+   "marker": "(f)",
+   "text": "Voyez le Commentaire sur cet endroit du premier des Machabées.",
+   "proposed": "Voyez le Commentaire sur cet endroit du premier des Machabées.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0131(d)",
@@ -1000,31 +1128,15 @@
    ]
   },
   {
-   "id": "0133(c)",
-   "page": "page_0133",
-   "marker": "(c)",
-   "text": "Nombres 21:25 ; Nombres 32:3 ; Deutéronome 1:4 etc.",
-   "proposed": "Nombres 21:25 ; 32:3 ; Deutéronome 1:4 etc.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0141(d)",
-   "page": "page_0141",
-   "marker": "(d)",
-   "text": "Bartolocci, Bibliothèque rabbinique, tome 2, page 150 ; Basnage, Histoire des Juifs, tome 3, livre 4, chapitre 32, article 9 et suivants ; Léon de Modène, cinquième partie, chapitre 10. _Voyez au besoin_. et Génébrard ; et Bellarmin ; et Sirmond ; et Tirin ; et Estius.",
-   "proposed": "Bartolocci, Bibliothèque rabbinique, tome 2, page 150 ;\nBasnage, Histoire des Juifs, tome 3, livre 4, chapitre 32, article 9 et suivants ;\nLéon de Modène, cinquième partie, chapitre 10. _Voyez au besoin_. et Génébrard ;\net Bellarmin ;\net Sirmond ;\net Tirin ;\net Estius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0144(c)",
    "page": "page_0144",
    "marker": "(c)",
-   "text": "Voyez saint Athanase, question 34 à Antiochus ; Saint Grégoire de Nazianze, Discours funèbre de Césaire ; Saint Cyrille, Catéchèses ; Eusèbe, livre 4 de la Vie de Constantin ; Saint Épiphane, hérésie 75, et à la fin du livre Des hérésies ; Saint Jean Chrysostome, homélie 41 sur 1 Corinthiens, et homélie 69 au peuple, et souvent ailleurs ; Théodoret, livre 5, chapitre 26 de l'Histoire ecclésiastique ; Saint Jean Damascène, livre Des fidèles défunts ; Tertullien, De la couronne militaire, et livre De la monogamie, et livre De l'exhortation à la chasteté ; Saint Cyprien, livre 1, lettre 9 ; Saint Ambroise, lettre à Faustus, et dans les Discours sur la mort de Théodose, de Valentinien et de Satyre ; Saint Augustin, Du soin des morts, chapitre 1, et souvent ailleurs, etc.",
+   "text": "Voyez saint Athanase, question 34 à Antiochus ;\nSaint Grégoire de Nazianze, Discours funèbre de Césaire ;\nSaint Cyrille, Catéchèses ;\nEusèbe, livre 4 de la Vie de Constantin ;\nSaint Épiphane, hérésie 75, et à la fin du livre Des hérésies ;\nSaint Jean Chrysostome, homélie 41 sur 1 Corinthiens, et homélie 69 au peuple, et souvent ailleurs ;\nThéodoret, livre 5, chapitre 26 de l'Histoire ecclésiastique ;\nSaint Jean Damascène, livre Des fidèles défunts ;\nTertullien, De la couronne militaire, et livre De la monogamie, et livre De l'exhortation à la chasteté ;\nSaint Cyprien, livre 1, lettre 9 ;\nSaint Ambroise, lettre à Faustus, et dans les Discours sur la mort de Théodose, de Valentinien et de Satyre ;\nSaint Augustin, Du soin des morts, chapitre 1, et souvent ailleurs, etc.",
    "proposed": "Voyez saint Athanase, question 34 à Antiochus ;\nSaint Grégoire de Nazianze, Discours funèbre de Césaire ;\nSaint Cyrille, Catéchèses ;\nEusèbe, livre 4 de la Vie de Constantin ;\nSaint Épiphane, hérésie 75, et à la fin du livre Des hérésies ;\nSaint Jean Chrysostome, homélie 41 sur 1 Corinthiens, et homélie 69 au peuple, et souvent ailleurs ;\nThéodoret, livre 5, chapitre 26 de l'Histoire ecclésiastique ;\nSaint Jean Damascène, livre Des fidèles défunts ;\nTertullien, De la couronne militaire, et livre De la monogamie, et livre De l'exhortation à la chasteté ;\nSaint Cyprien, livre 1, lettre 9 ;\nSaint Ambroise, lettre à Faustus, et dans les Discours sur la mort de Théodose, de Valentinien et de Satyre ;\nSaint Augustin, Du soin des morts, chapitre 1, et souvent ailleurs, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0150(a)",
@@ -1038,6 +1150,17 @@
    "flags": [
     "greek",
     "scan-unread"
+   ]
+  },
+  {
+   "id": "0151(a)",
+   "page": "page_0151",
+   "marker": "(a)",
+   "text": "2 Machabées 8:23. Et la Dissertation sur la milice des anciens Hébreux.",
+   "proposed": "2 Machabées 8:23. Et la Dissertation sur la milice des anciens Hébreux.",
+   "why": [],
+   "flags": [
+    "expand-unread"
    ]
   },
   {
@@ -1063,17 +1186,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0153(a)",
-   "page": "page_0153",
-   "marker": "(a)",
-   "text": "Ibid. 43. 44. 45.",
-   "proposed": "1 Machabées 6:43-45*.",
-   "why": [
-    "context: chapter lost; Eleazar's elephant 1 Mac 6: 1 Machabées 43:44-45 -> 1 Machabées 6:43-45*"
-   ],
-   "flags": []
   },
   {
    "id": "0154(d)",
@@ -1131,21 +1243,38 @@
    "id": "0167(d)",
    "page": "page_0167",
    "marker": "(d)",
-   "text": "Saint Thomas, Somme théologique, IIa-IIæ, question 64, article 5, ad 3 ; Estius ; Sacy ; Noël Alexandre, Histoire ecclésiastique de l'Ancien Testament, tome 2, sur les livres des Machabées.",
+   "text": "Saint Thomas, Somme théologique, IIa-IIæ, question 64, article 5, ad 3 ;\nEstius ;\nSacy ;\nNoël Alexandre, Histoire ecclésiastique de l'Ancien Testament, tome 2, sur les livres des Machabées.",
    "proposed": "Saint Thomas, Somme théologique, IIa-IIæ, question 64, article 5, ad 3 ;\nEstius ;\nSacy ;\nNoël Alexandre, Histoire ecclésiastique de l'Ancien Testament, tome 2, sur les livres des Machabées.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0167(f)",
    "page": "page_0167",
    "marker": "(f)",
-   "text": "Voyez Nicolas de Lyre sur ce passage ; Serarius ; François de Vitoria, Du meurtre ; Tirin.",
+   "text": "Voyez Nicolas de Lyre sur ce passage ;\nSerarius ;\nFrançois de Vitoria, Du meurtre ;\nTirin.",
    "proposed": "Voyez Nicolas de Lyre sur ce passage ;\nSerarius ;\nFrançois de Vitoria, Du meurtre ;\nTirin.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0174(a)",
+   "page": "page_0174",
+   "marker": "(a)",
+   "text": "Xénophon lib. 1. Κύρου παιδείας. Vide Brisson lib. 1. de Reg. p. 118. 119.",
+   "proposed": "Xénophon lib. 1. Κύρου παιδείας. Vide Brisson lib. 1. de Reg. p. 118. 119.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary"
+   ],
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0174(b)",

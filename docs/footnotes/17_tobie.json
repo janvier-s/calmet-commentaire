@@ -1,14 +1,14 @@
 {
  "summary": {
   "notes": 347,
-  "changed": 14,
+  "changed": 2,
   "flags": {
-   "hebrew": 11,
-   "scan-unread": 43,
-   "greek": 35,
-   "uncertain": 2,
+   "hebrew": 10,
+   "scan-unread": 41,
+   "greek": 34,
+   "scanned": 3,
+   "expand-unread": 3,
    "uncertain-fill-asterisk-wrong": 1,
-   "scanned": 1,
    "context": 2
   }
  },
@@ -144,7 +144,7 @@
    "id": "0036(a)",
    "page": "page_0036",
    "marker": "(a)",
-   "text": "היה אחיקר וקרובי [UNCERTAIN HEBREW]",
+   "text": "היה אחיקר אהובי וקרובי",
    "proposed": "היה אחיקר אהובי וקרובי",
    "why": [
     "context: Uncertain Hebrew not reconstructible",
@@ -158,7 +158,7 @@
    "id": "0036(d)",
    "page": "page_0036",
    "marker": "(d)",
-   "text": "Ἐν τῆ πεντεκοστῆ ἑορτῆ, ἥ ἐστιν ἁγία ἑπτὰ ἑβδομάδων. Ita, et Hebr. Munsteri. בחד שבועות [UNCERTAIN HEBREW]",
+   "text": "Ἐν τῇ πεντηκοστῇ ἑορτῇ, ἥ ἐστιν ἁγία ἑπτὰ ἑβδομάδων. Ita, et Hebr. Munsteri. בחג שבועות",
    "proposed": "Ἐν τῇ πεντηκοστῇ ἑορτῇ, ἥ ἐστιν ἁγία ἑπτὰ ἑβδομάδων. Ita, et Hebr. Munsteri. בחג שבועות",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -166,7 +166,8 @@
     "scan (agy flash): Removed spurious placeholder and corrected Greek breathing"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -208,7 +209,8 @@
    ],
    "flags": [
     "uncertain-fill-asterisk-wrong",
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -222,15 +224,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0040(d)",
-   "page": "page_0040",
-   "marker": "(d)",
-   "text": "Voyez Celse et Gesner, Histoire des animaux, livre 3 ; Aldrovandi, Ornithologie, livre 17 ; Valois, De sacra Philosophia, chapitre 42.",
-   "proposed": "Voyez Celse et Gesner, Histoire des animaux, livre 3 ;\nAldrovandi, Ornithologie, livre 17 ;\nValois, De sacra Philosophia, chapitre 42.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0041(b)",
@@ -284,15 +277,6 @@
    ]
   },
   {
-   "id": "0042(c)",
-   "page": "page_0042",
-   "marker": "(c)",
-   "text": "Voyez Aristée, Sur les Septante interprètes ; et Alexandre Polyhistor, dans Eusèbe, Préparation évangélique, livre 9 ; et Serarius, hier.",
-   "proposed": "Voyez Aristée, Sur les Septante interprètes ;\net Alexandre Polyhistor, dans Eusèbe, Préparation évangélique, livre 9 ;\net Serarius, hier.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0044(c)",
    "page": "page_0044",
    "marker": "(c)",
@@ -328,15 +312,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0047(a)",
-   "page": "page_0047",
-   "marker": "(a)",
-   "text": "Voyez Jamblique, section 4, chapitre 4 ; Plotin, Ennéades, livre 2, chapitre 29 ; Origène, livre 3, Des principes. Is. 2 Corinthiens 1:8 ; Romains 7:24 ; Ecclésiastique 30:17. Et Possidius, au chapitre 19 de la Vie de saint Augustin.",
-   "proposed": "Voyez Jamblique, section 4, chapitre 4 ;\nPlotin, Ennéades, livre 2, chapitre 29 ;\nOrigène, livre 3, Des principes. Is. 2 Corinthiens 1:8 ;\nRomains 7:24 ;\nEcclésiastique 30:17. Et Possidius, au chapitre 19 de la Vie de saint Augustin.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0048(e)",
@@ -401,15 +376,6 @@
    ]
   },
   {
-   "id": "0061(c)",
-   "page": "page_0061",
-   "marker": "(c)",
-   "text": "Voyez Origène, sur le chapitre 3 de Job ; Saint Jérôme, À Pammaque ; Saint Paulin, au même ; Saint Jean Chrysostome, Homélie 37 sur Matthieu ; Constitutions apostoliques, livre 8, chapitre 24.",
-   "proposed": "Voyez Origène, sur le chapitre 3 de Job ;\nSaint Jérôme, À Pammaque ;\nSaint Paulin, au même ;\nSaint Jean Chrysostome, Homélie 37 sur Matthieu ;\nConstitutions apostoliques, livre 8, chapitre 24.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0065(a)",
    "page": "page_0065",
    "marker": "(a)",
@@ -449,21 +415,18 @@
    ]
   },
   {
-   "id": "0073(f)",
-   "page": "page_0073",
-   "marker": "(f)",
-   "text": "Pline, livre 32, chapitre 7 ; Aristote ; Galien ; Dioscoride ; Belon ; Gesner ; Valois.",
-   "proposed": "Pline, livre 32, chapitre 7 ;\nAristote ;\nGalien ;\nDioscoride ;\nBelon ;\nGesner ;\nValois.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0074(f)",
-   "page": "page_0074",
-   "marker": "(f)",
-   "text": "Pline, livre 9, chapitre 15 ; Ausone, La Moselle ; Gesner, De piscibus.",
-   "proposed": "Pline, livre 9, chapitre 15 ;\nAusone, La Moselle ;\nGesner, De piscibus.",
-   "why": [],
+   "id": "0077(a)",
+   "page": "page_0077",
+   "marker": "(a)",
+   "text": "Ὅτι σοι ἐπιβάλλει ἡ κληρονομία αὐτῆς, καὶ αὐτὴν ἀνδρὶ ἑτέρῳ οὐ μὴ δῶμεν εἰ μὴ τῷ γένει αὐτῆς. Hebr. משפט לך לאשה Solet dici jus uxoris. Hebr. הלאה λαβεῖν, η πᾶσα κληρονομία. Ita vers. Latin. antiq.",
+   "proposed": "Ὅτι σοι ἐπιβάλλει ἡ κληρονομία αὐτῆς, καὶ αὐτὴν ἀνδρὶ ἑτέρῳ οὐ μὴ δῶμεν εἰ μὴ τῷ γένει αὐτῆς. L'Hébreu : משפט לך לאשה Solet dici jus uxoris. L'Hébreu : הלאה λαβεῖν, η πᾶσα κληρονομία. Ainsi lit l'ancienne version latine.",
+   "why": [
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "Greek spelling checked against a Greek dictionary",
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
    "flags": []
   },
   {
@@ -557,37 +520,12 @@
    "id": "0105(b)",
    "page": "page_0105",
    "marker": "(b)",
-   "text": "Celse, livre 5 ; Pline, livre 28, chapitre 11, et livre 32, chapitre 4 ; Galien, livre 10, De simplicium medicamentorum Facult. cap. 12. Ælian. lib. XIII. cap 4. Rhasis. lib. 9. cap. 27. Francis. Vales. de Sacra Philos. cap. 42. Vide et Justinian. Serar. et Menoch. et Tirin. hic, et nos Sup. v1. 2.",
+   "text": "Celse, livre 5 ;\nPline, livre 28, chapitre 11, et livre 32, chapitre 4 ;\nGalien, livre 10, De simplicium medicamentorum Facult. cap. 12. Ælian. lib. XIII. cap 4. Rhasis. lib. 9. cap. 27. Francis. Vales. de Sacra Philos. cap. 42. Vide et Justinian. Serar. et Menoch. et Tirin. hic, et nos Sup. v1. 2.",
    "proposed": "Celse, livre 5 ;\nPline, livre 28, chapitre 11, et livre 32, chapitre 4 ;\nGalien, livre 10, De simplicium medicamentorum Facult. cap. 12. Ælian. lib. XIII. cap 4. Rhasis. lib. 9. cap. 27. Francis. Vales. de Sacra Philos. cap. 42. Vide et Justinian. Serar. et Menoch. et Tirin. hic, et nos Sup. v1. 2.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0114(b)",
-   "page": "page_0114",
-   "marker": "(b)",
-   "text": "Bède ; Ausbert ; Haymon ; Rupert ; Saint Thomas, sur l'Apocalypse 1:3-4 ; Saint Anselme, au même endroit.",
-   "proposed": "Bède ;\nAusbert ;\nHaymon ;\nRupert ;\nSaint Thomas, sur l'Apocalypse 1:3-4 ;\nSaint Anselme, au même endroit.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0114(c)",
-   "page": "page_0114",
-   "marker": "(c)",
-   "text": "Hugues ; Nicolas de Lyre ; Denys le Chartreux.",
-   "proposed": "Hugues ;\nNicolas de Lyre ;\nDenys le Chartreux.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0116(b)",
-   "page": "page_0116",
-   "marker": "(b)",
-   "text": "Voyez Histoire de saint Boniface de Mayence, livre 1 ; Concile de Rome sous Zacharie, et Zacharie lui-même, lettre 9 ; Capitulaires de Charlemagne, livre 1, chapitre 6.",
-   "proposed": "Voyez Histoire de saint Boniface de Mayence, livre 1 ;\nConcile de Rome sous Zacharie, et Zacharie lui-même, lettre 9 ;\nCapitulaires de Charlemagne, livre 1, chapitre 6.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0117(d)",
@@ -688,24 +626,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0131(b)",
-   "page": "page_0131",
-   "marker": "(b)",
-   "text": "Justinien, sur ce passage ; Tirin ; Ménochius.",
-   "proposed": "Justinien, sur ce passage ;\nTirin ;\nMénochius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0133(a)",
-   "page": "page_0133",
-   "marker": "(a)",
-   "text": "Voyez Serarius, sur la question 8 ; Tenam, Isagoge, livre 2, section 4 ; Justinien, sur ce passage.",
-   "proposed": "Voyez Serarius, sur la question 8 ;\nTenam, Isagoge, livre 2, section 4 ;\nJustinien, sur ce passage.",
-   "why": [],
-   "flags": []
   }
  ]
 }

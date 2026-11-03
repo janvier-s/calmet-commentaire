@@ -1,11 +1,12 @@
 {
  "summary": {
   "notes": 133,
-  "changed": 24,
+  "changed": 5,
   "flags": {
    "greek": 8,
    "scan-unread": 12,
    "scanned": 2,
+   "expand-unread": 1,
    "hebrew": 4,
    "context": 2
   }
@@ -43,46 +44,10 @@
    ]
   },
   {
-   "id": "0008(a)",
-   "page": "page_0008",
-   "marker": "(a)",
-   "text": "Ézéchiel 39:17-18 ; Isaïe 34 ; Jérémie 46:10.",
-   "proposed": "Ézéchiel 39:17-18 ;\nIsaïe 34 ;\nJérémie 46:10.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0009(c)",
-   "page": "page_0009",
-   "marker": "(c)",
-   "text": "Théodoret ; Valois ; Albert.",
-   "proposed": "Théodoret ;\nValois ;\nAlbert.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0009(f)",
-   "page": "page_0009",
-   "marker": "(f)",
-   "text": "Sanctius, sur ce passage, numéro 25 ; Menochius ; Tirin ; Drusius.",
-   "proposed": "Sanctius, sur ce passage, numéro 25 ;\nMenochius ;\nTirin ;\nDrusius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0009(g)",
-   "page": "page_0009",
-   "marker": "(g)",
-   "text": "Gualterus ; Saint Jérôme ; Haymon ; Remi ; Nicolas de Lyre.",
-   "proposed": "Gualterus ;\nSaint Jérôme ;\nHaymon ;\nRemi ;\nNicolas de Lyre.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0011(b)",
    "page": "page_0011",
    "marker": "(b)",
-   "text": "[UNCERTAIN HEBREW] in convalle.",
+   "text": "הממלאים בית אדניהם חמס ומרמה in convalle.",
    "proposed": "הממלאים בית אדניהם חמס ומרמה in convalle.",
    "why": [
     "scan: Filled placeholder with the Hebrew of note (b) as printed, using the reference spelling אדניהם.",
@@ -91,15 +56,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0012(a)",
-   "page": "page_0012",
-   "marker": "(a)",
-   "text": "Sanctius ; Tirin ; Ribera.",
-   "proposed": "Sanctius ;\nTirin ;\nRibera.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0012(e)",
@@ -116,28 +72,10 @@
    ]
   },
   {
-   "id": "0012(i)",
-   "page": "page_0012",
-   "marker": "(i)",
-   "text": "Saint Jérôme, sur ce passage ; Tarnovius ; Drusius.",
-   "proposed": "Saint Jérôme, sur ce passage ;\nTarnovius ;\nDrusius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0012(l)",
-   "page": "page_0012",
-   "marker": "(l)",
-   "text": "La Bible de Zurich ; Pagnin ; Munster ; Junius ; Grotius.",
-   "proposed": "La Bible de Zurich ;\nPagnin ;\nMunster ;\nJunius ;\nGrotius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0013(a)",
    "page": "page_0013",
    "marker": "(a)",
-   "text": "כספו נשוי [UNCERTAIN HEBREW].",
+   "text": "כל נטילי כסף.",
    "proposed": "כל נטילי כסף.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -149,13 +87,15 @@
    ]
   },
   {
-   "id": "0014(a)",
-   "page": "page_0014",
-   "marker": "(a)",
-   "text": "4 Rois 22:14. et seqn.",
-   "proposed": "4 Rois 22:14 et suivants.",
+   "id": "0015(b)",
+   "page": "page_0015",
+   "marker": "(b)",
+   "text": "Isaïe 13:17. Suscitabo super eos Medos, qui argentum non quærant, et aurum nolint, etc.",
+   "proposed": "Isaïe 13:17. Suscitabo super eos Medos, qui argentum non quærant, et aurum nolint, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0016(a)",
@@ -198,15 +138,6 @@
    ]
   },
   {
-   "id": "0018(b)",
-   "page": "page_0018",
-   "marker": "(b)",
-   "text": "2 Rois 15:18.",
-   "proposed": "1 Rois 15:18.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0018(c)",
    "page": "page_0018",
    "marker": "(c)",
@@ -217,24 +148,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0018(e)",
-   "page": "page_0018",
-   "marker": "(e)",
-   "text": "Deutéronome 2:23 ; Jérémie 47:4 ; Amos 9:7.",
-   "proposed": "Deutéronome 2:23 ;\nJérémie 47:4 ;\nAmos 9:7.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0019(b)",
-   "page": "page_0019",
-   "marker": "(b)",
-   "text": "Voyez saint Jérôme, Des lieux hébreux ; Quinte-Curce, livre 4 ; Arrien, livre 2.",
-   "proposed": "Voyez saint Jérôme, Des lieux hébreux ;\nQuinte-Curce, livre 4 ;\nArrien, livre 2.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0020(b)",
@@ -252,7 +165,7 @@
    "id": "0021(b)",
    "page": "page_0021",
    "marker": "(b)",
-   "text": "Jérémie 48:477. 49:6.",
+   "text": "Jérémie 48:47. 49:6.",
    "proposed": "Jérémie 48:47. 49:6.",
    "why": [
     "context: Doubled digit; Moab's return, Jer 48:47: 48:477. -> 48:47."
@@ -279,7 +192,7 @@
    "id": "0026(b)",
    "page": "page_0026",
    "marker": "(b)",
-   "text": "Vide Juges 20:1. et 1 Rois 14:38. Isaïe 19:13.",
+   "text": "Voyez Juges 20:1 ; 1 Rois 14:38 ; Isaïe 19:13.",
    "proposed": "Voyez Juges 20:1 ; 1 Rois 14:38 ; Isaïe 19:13.",
    "why": [
     "context: Anguli populi is 1 Sam 14:38: 3 Rois 14:38 -> 1 Rois 14:38"
@@ -287,42 +200,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0026(c)",
-   "page": "page_0026",
-   "marker": "(c)",
-   "text": "Voyez Job 38:6 ; Psaumes 117:22 ; Isaïe 28:16 ; Jérémie 51:26 ; Zacharie 10:4.",
-   "proposed": "Voyez Job 38:6 ;\nPsaumes 117:22 ;\nIsaïe 28:16 ;\nJérémie 51:26 ;\nZacharie 10:4.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0027(b)",
-   "page": "page_0027",
-   "marker": "(b)",
-   "text": "Saint Jérôme, 3e exposition ; Eusèbe, Démonstration évangélique, livre 2, chapitre 17 ; Saint Augustin, La Cité de Dieu, livre 18, chapitre 33 ; Hugues de Saint-Victor ; Denys le Chartreux ; Le Maître de Sacy.",
-   "proposed": "Saint Jérôme, 3e exposition ;\nEusèbe, Démonstration évangélique, livre 2, chapitre 17 ;\nSaint Augustin, La Cité de Dieu, livre 18, chapitre 33 ;\nHugues de Saint-Victor ;\nDenys le Chartreux ;\nLe Maître de Sacy.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0027(c)",
-   "page": "page_0027",
-   "marker": "(c)",
-   "text": "Saint Jérôme, 2e exposition ; Remi ; Haymon ; Lit. Vet. ; Clarius.",
-   "proposed": "Saint Jérôme, 2e exposition ;\nRemi ;\nHaymon ;\nLit. Vet. ;\nClarius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0027(d)",
-   "page": "page_0027",
-   "marker": "(d)",
-   "text": "Le Chaldéen ; Albert ; Sanctius, numéro 19.",
-   "proposed": "Le Chaldéen ;\nAlbert ;\nSanctius, numéro 19.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0028(a)",

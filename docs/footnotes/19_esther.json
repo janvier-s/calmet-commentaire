@@ -1,12 +1,12 @@
 {
  "summary": {
   "notes": 478,
-  "changed": 21,
+  "changed": 3,
   "flags": {
    "scanned": 3,
    "greek": 59,
    "scan-unread": 62,
-   "uncertain": 1,
+   "expand-unread": 1,
    "hebrew": 3,
    "context": 2,
    "uncertain-fill-asterisk-wrong": 1
@@ -14,28 +14,10 @@
  },
  "notes": [
   {
-   "id": "0054(b)",
-   "page": "page_0054",
-   "marker": "(b)",
-   "text": "Ita Interpretes plures Ménochius ; Serarius ; Drusius ; Malvenda ; Junius ; Piscator.",
-   "proposed": "Ita Interpretes plures Ménochius ;\nSerarius ;\nDrusius ;\nMalvenda ;\nJunius ;\nPiscator.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0055(e)",
-   "page": "page_0055",
-   "marker": "(e)",
-   "text": "L'Arabe, Lexique ; Raphelengius ; Aben Ezra.",
-   "proposed": "L'Arabe, Lexique ;\nRaphelengius ;\nAben Ezra.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0056(b)",
    "page": "page_0056",
    "marker": "(b)",
-   "text": "שש ודר [UNCERTAIN HEBREW]",
+   "text": "עמודי שש",
    "proposed": "עמודי שש",
    "why": [
     "Hebrew checked against the Hebrew Bible, Esther 1:6",
@@ -98,10 +80,12 @@
    "id": "0057(h)",
    "page": "page_0057",
    "marker": "(h)",
-   "text": "Ovide, L'Art d'aimer, livre 3. Voyez aussi Théophraste, Des pierres ; Horace, Satires, livre 2, satire 2 ; Silius Italicus, livre 12, etc.",
+   "text": "Ovide, L'Art d'aimer, livre 3. Voyez aussi Théophraste, Des pierres ;\nHorace, Satires, livre 2, satire 2 ;\nSilius Italicus, livre 12, etc.",
    "proposed": "Ovide, L'Art d'aimer, livre 3. Voyez aussi Théophraste, Des pierres ;\nHorace, Satires, livre 2, satire 2 ;\nSilius Italicus, livre 12, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0059(b)",
@@ -176,12 +160,15 @@
    ]
   },
   {
-   "id": "0064(e)",
-   "page": "page_0064",
-   "marker": "(e)",
-   "text": "Voyez Hérodote, livre 3 ; Xénophon, Cyropédie, livre 1 ; Plutarque, Artaxerxès ; Élien, Histoire variée, livre 1, chapitre 24 ; Ammien Marcellin, livre 23, etc.",
-   "proposed": "Voyez Hérodote, livre 3 ;\nXénophon, Cyropédie, livre 1 ;\nPlutarque, Artaxerxès ;\nÉlien, Histoire variée, livre 1, chapitre 24 ;\nAmmien Marcellin, livre 23, etc.",
-   "why": [],
+   "id": "0071(b)",
+   "page": "page_0071",
+   "marker": "(b)",
+   "text": "Josèphe, Antiquités judaïques, livre 11, chapitre 6. Παρὰ τῶ Σαου Μαρδοχαίῳ. Ainsi l'entend Aben Ezra, le Syriaque, l'ancienne version latine : filiæ fratris ejus. Suyátris. Ita et Syr.",
+   "proposed": "Josèphe, Antiquités judaïques, livre 11, chapitre 6. Παρὰ τῶ Σαου Μαρδοχαίῳ. Ainsi l'entend Aben Ezra, le Syriaque, l'ancienne version latine : filiæ fratris ejus. Suyátris. De même le Syriaque.",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
    "flags": []
   },
   {
@@ -274,51 +261,6 @@
    ]
   },
   {
-   "id": "0077(e)",
-   "page": "page_0077",
-   "marker": "(e)",
-   "text": "Ainsi Junius ; Grotius ; Malvenda.",
-   "proposed": "Ainsi Junius ;\nGrotius ;\nMalvenda.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0078(a)",
-   "page": "page_0078",
-   "marker": "(a)",
-   "text": "Vatable ; Grotius ; Ménochius ; Sanctius.",
-   "proposed": "Vatable ;\nGrotius ;\nMénochius ;\nSanctius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0078(c)",
-   "page": "page_0078",
-   "marker": "(c)",
-   "text": "Voyez Cajetan ; Tirin ; Bonfrère.",
-   "proposed": "Voyez Cajetan ;\nTirin ;\nBonfrère.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0078(d)",
-   "page": "page_0078",
-   "marker": "(d)",
-   "text": "Nicolas de Lyre ; Hugues de Saint-Cher ; Denys le Chartreux.",
-   "proposed": "Nicolas de Lyre ;\nHugues de Saint-Cher ;\nDenys le Chartreux.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0079(b)",
-   "page": "page_0079",
-   "marker": "(b)",
-   "text": "Pagnin ; Inn. ; Piscator ; Vatable.",
-   "proposed": "Pagnin ;\nInn. ;\nPiscator ;\nVatable.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0081(c)",
    "page": "page_0081",
    "marker": "(c)",
@@ -348,7 +290,7 @@
    "id": "0086(a)",
    "page": "page_0086",
    "marker": "(a)",
-   "text": "Ézéchiel 21:211. In capite duarum viarum divinationem quærens, commiscens sagittas.",
+   "text": "Ézéchiel 21:21. In capite duarum viarum divinationem quærens, commiscens sagittas.",
    "proposed": "Ézéchiel 21:21. In capite duarum viarum divinationem quærens, commiscens sagittas.",
    "why": [
     "context: Stray digit; Latin is Ezek 21:21: 21:211. -> 21:21."
@@ -473,15 +415,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0096(a)",
-   "page": "page_0096",
-   "marker": "(a)",
-   "text": "_Justin, livre_ 1. _Voyez aussi Plutarque, Thémistocle ; Ammien Marcellin, livre_ 14. _Plaute, Le Soldat fanfaron, acte_ 3, _scène_ 1. _Et Brisson, Du royaume des Perses, livre_ 1, _page_ 23 _ ; et Saravia, sur ce passage._",
-   "proposed": "_Justin, livre_ 1. _Voyez aussi Plutarque, Thémistocle ;\nAmmien Marcellin, livre_ 14. _Plaute, Le Soldat fanfaron, acte_ 3, _scène_ 1. _Et Brisson, Du royaume des Perses, livre_ 1, _page_ 23 _ ;\net Saravia, sur ce passage._",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0100(c)",
@@ -733,33 +666,6 @@
    ]
   },
   {
-   "id": "0121(b)",
-   "page": "page_0121",
-   "marker": "(b)",
-   "text": "Voyez le Grec ; Josèphe ; Grotius ; Drusius ; Estius ; Menoah.",
-   "proposed": "Voyez le Grec ;\nJosèphe ;\nGrotius ;\nDrusius ;\nEstius ;\nMenoah.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0124(d)",
-   "page": "page_0124",
-   "marker": "(d)",
-   "text": "Voyez au besoin Bochart, De animalibus sacris, partie 1, livre 2, chapitre 6 ; Junius ; Tremellius ; et Piscator.",
-   "proposed": "Voyez au besoin Bochart, De animalibus sacris, partie 1, livre 2, chapitre 6 ;\nJunius ;\nTremellius ;\net Piscator.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0125(a)",
-   "page": "page_0125",
-   "marker": "(a)",
-   "text": "Montanus ; Pagnin ; Pierre Martyr ; Bochart ; Munster ; Louis de Dieu.",
-   "proposed": "Montanus ;\nPagnin ;\nPierre Martyr ;\nBochart ;\nMunster ;\nLouis de Dieu.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0125(e)",
    "page": "page_0125",
    "marker": "(e)",
@@ -834,7 +740,7 @@
    "id": "0142(c)",
    "page": "page_0142",
    "marker": "(c)",
-   "text": "[UNCERTAIN HEBREW] שם מס על הארץ ואיי הים",
+   "text": "וישם מס על הארץ ואיי הים",
    "proposed": "וישם מס על הארץ ואיי הים",
    "why": [
     "Hebrew checked against the Hebrew Bible, Esther 10:1",
@@ -844,26 +750,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0146(a)",
-   "page": "page_0146",
-   "marker": "(a)",
-   "text": "_Pererius, sur Daniel, livre_ 13. _Ménochius ; Tirin ; Ussérius, De l'édition_ 70 _Interprètes, chapitre_ 3.",
-   "proposed": "_Pererius, sur Daniel, livre_ 13. _Ménochius ;\nTirin ;\nUssérius, De l'édition_ 70 _Interprètes, chapitre_ 3.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0151(c)",
-   "page": "page_0151",
-   "marker": "(c)",
-   "text": "Cornelius a Lapide ; Ménochius ; Tirin.",
-   "proposed": "Cornelius a Lapide ;\nMénochius ;\nTirin.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
   },
   {
    "id": "0153(a)",
@@ -936,15 +822,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0161(b)",
-   "page": "page_0161",
-   "marker": "(b)",
-   "text": "Nombres 18:2 ; Jérémie 51:19 ; Habacuc 3:14.",
-   "proposed": "Nombres 18:2 ;\nJérémie 51:19 ;\nHabacuc 3:14.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0167(a)",

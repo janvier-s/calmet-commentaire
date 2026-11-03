@@ -1,34 +1,31 @@
 {
  "summary": {
   "notes": 525,
-  "changed": 61,
+  "changed": 5,
   "flags": {
-   "greek": 44,
-   "scan-unread": 45,
-   "uncertain": 1,
-   "scanned": 14,
+   "expand-changed-numbers": 4,
+   "greek": 43,
+   "scan-unread": 44,
+   "expand-unread": 18,
+   "scanned": 15,
    "hebrew": 2,
-   "context": 2
+   "context": 2,
+   "expand-changed-italics": 1
   }
  },
  "notes": [
   {
-   "id": "0025(c)",
-   "page": "page_0025",
-   "marker": "(c)",
-   "text": "Eusèbe, Démonstration évangélique, livre 5, chapitre 1 ; Saint Bernard sur ce passage ; Bède ; Cassiodore ; Juste d'Urgel.",
-   "proposed": "Eusèbe, Démonstration évangélique, livre 5, chapitre 1 ;\nSaint Bernard sur ce passage ;\nBède ;\nCassiodore ;\nJuste d'Urgel.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0027(e)",
+   "id": "0027(g)",
    "page": "page_0027",
-   "marker": "(e)",
-   "text": "2 Corinthiens 12:2-3. et seqn.",
-   "proposed": "2 Corinthiens 12:2-3 et suivants.",
-   "why": [],
-   "flags": []
+   "marker": "(g)",
+   "text": "Matt. XIII. II.",
+   "proposed": "Matt. XIII. II.",
+   "why": [
+    "written out, but a number changed or added: Matthieu 13:11."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
   },
   {
    "id": "0028(c)",
@@ -57,28 +54,21 @@
    ]
   },
   {
-   "id": "0032(d)",
-   "page": "page_0032",
-   "marker": "(d)",
-   "text": "Cassiodore ; Bède ; Philon de Carpathos.",
-   "proposed": "Cassiodore ;\nBède ;\nPhilon de Carpathos.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0033(b)",
    "page": "page_0033",
    "marker": "(b)",
-   "text": "Voyez Origène, sur ce passage ; Saint Bernard ; Saint Augustin, Sermon 50, De verbis Domini, etc.",
+   "text": "Voyez Origène, sur ce passage ;\nSaint Bernard ;\nSaint Augustin, Sermon 50, De verbis Domini, etc.",
    "proposed": "Voyez Origène, sur ce passage ;\nSaint Bernard ;\nSaint Augustin, Sermon 50, De verbis Domini, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0034(a)",
    "page": "page_0034",
    "marker": "(a)",
-   "text": "אם לא תדעי לך היפה בנשים צאי לך בעקבי הצאן [UNCERTAIN HEBREW] _Si ignoras tibi, vade tibi post vestigia gregum._ Aqu. Ἔξελθε σιαυτῆ. Sym. Ἔξελθε σαυτὴν πορεύου.",
+   "text": "אם לא תדעי לך היפה בנשים צאי לך בעקבי הצאן _Si ignoras tibi, vade tibi post vestigia gregum._ Aqu. Ἔξελθε σεαυτῇ. Sym. Ἐξελθοῦσα πορεύου.",
    "proposed": "אם לא תדעי לך היפה בנשים צאי לך בעקבי הצאן _Si ignoras tibi, vade tibi post vestigia gregum._ Aqu. Ἔξελθε σεαυτῇ. Sym. Ἐξελθοῦσα πορεύου.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Song of Solomon 1:8",
@@ -87,7 +77,8 @@
     "scan (agy flash): Corrected Symmachus Greek and removed placeholder"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -125,15 +116,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0035(f)",
-   "page": "page_0035",
-   "marker": "(f)",
-   "text": "1 Corinthiens 12:4, 7. et seqn.",
-   "proposed": "1 Corinthiens 12:4, 7 et suivants.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0036(c)",
@@ -205,18 +187,23 @@
    "id": "0041(c)",
    "page": "page_0041",
    "marker": "(c)",
-   "text": "Origène ; Théodoret ; Apponius ; Bède ; Cassiodore ; Saint Anselme ; Rupert, etc.",
+   "text": "Origène ;\nThéodoret ;\nApponius ;\nBède ;\nCassiodore ;\nSaint Anselme ;\nRupert, etc.",
    "proposed": "Origène ;\nThéodoret ;\nApponius ;\nBède ;\nCassiodore ;\nSaint Anselme ;\nRupert, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
-   "id": "0042(b)",
-   "page": "page_0042",
-   "marker": "(b)",
-   "text": "Origène ; Théodoret ; Juste d'Urgel.",
-   "proposed": "Origène ;\nThéodoret ;\nJuste d'Urgel.",
-   "why": [],
+   "id": "0043(a)",
+   "page": "page_0043",
+   "marker": "(a)",
+   "text": "Ruth 3:9. _Expande pallium tuum super famulam tuam_, etc. Théocrite, Idylles, 18, _Epithal. Helenæ. Ζηνὸς τοι θυγάτηρ ὑπὸ τὰν μίαν ἤλυθε χλαῖναν._",
+   "proposed": "Ruth 3:9. _Expande pallium tuum super famulam tuam_, etc. Théocrite, Idylles, 18, _Epithalamium Helenæ. Ζηνὸς τοι θυγάτηρ ὑπὸ τὰν μίαν ἤλυθε χλαῖναν._",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
    "flags": []
   },
   {
@@ -244,15 +231,6 @@
    ]
   },
   {
-   "id": "0044(c)",
-   "page": "page_0044",
-   "marker": "(c)",
-   "text": "Cassiodore ; Bède ; Saint Anselme.",
-   "proposed": "Cassiodore ;\nBède ;\nSaint Anselme.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0045(b)",
    "page": "page_0045",
    "marker": "(b)",
@@ -268,24 +246,27 @@
    "id": "0045(d)",
    "page": "page_0045",
    "marker": "(d)",
-   "text": "Cassiod. Beda. Carpat. Bern. [ILLEGIBLE].",
+   "text": "Cassiod. Beda. Carpat. Bern.",
    "proposed": "Cassiod. Beda. Carpat. Bern.",
    "why": [
     "scan: Placeholder removed; page reads Cassiod. Beda. Carpat. Bern.",
     "read on the scan: Bern."
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
    "id": "0046(a)",
    "page": "page_0046",
    "marker": "(a)",
-   "text": "Saint Grégoire ; Saint Anselme ; Juste d'Urgel ; Bède, etc.",
+   "text": "Saint Grégoire ;\nSaint Anselme ;\nJuste d'Urgel ;\nBède, etc.",
    "proposed": "Saint Grégoire ;\nSaint Anselme ;\nJuste d'Urgel ;\nBède, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0046(c)",
@@ -315,7 +296,7 @@
    "id": "0048(a)",
    "page": "page_0048",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] דלג על ההרים מקפץ על הגבעות",
+   "text": "מדלג על ההרים מקפץ על הגבעות",
    "proposed": "מדלג על ההרים מקפץ על הגבעות",
    "why": [
     "Hebrew checked against the Hebrew Bible, Song of Solomon 2:8",
@@ -325,42 +306,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0049(c)",
-   "page": "page_0049",
-   "marker": "(c)",
-   "text": "Saint Ambroise ; Saint Grégoire ; Cassiodore ; Bède ; Saint Bernard.",
-   "proposed": "Saint Ambroise ;\nSaint Grégoire ;\nCassiodore ;\nBède ;\nSaint Bernard.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0051(a)",
-   "page": "page_0051",
-   "marker": "(a)",
-   "text": "Origène ; Théodoret ; Saint Grégoire.",
-   "proposed": "Origène ;\nThéodoret ;\nSaint Grégoire.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0052(b)",
-   "page": "page_0052",
-   "marker": "(b)",
-   "text": "Cassiodore ; Bède ; Rupert ; Philon de Carpathos ; Saint Cyrille, De l'adoration en esprit et en vérité.",
-   "proposed": "Cassiodore ;\nBède ;\nRupert ;\nPhilon de Carpathos ;\nSaint Cyrille, De l'adoration en esprit et en vérité.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0052(e)",
-   "page": "page_0052",
-   "marker": "(e)",
-   "text": "Cantique des cantiques 2:13, 15 et 7:12.",
-   "proposed": "Cantique des cantiques 2:13, 15 ; 7:12.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0053(a)",
@@ -377,21 +322,15 @@
    ]
   },
   {
-   "id": "0053(f)",
+   "id": "0053(c)",
    "page": "page_0053",
-   "marker": "(f)",
-   "text": "Saint Grégoire le Grand ; Cassiodore ; Bède ; Juste d'Urgel ; Saint Anselme ; Saint Bernard, sermon 61.",
-   "proposed": "Saint Grégoire le Grand ;\nCassiodore ;\nBède ;\nJuste d'Urgel ;\nSaint Anselme ;\nSaint Bernard, sermon 61.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0054(b)",
-   "page": "page_0054",
-   "marker": "(b)",
-   "text": "Aristophane, Les Cavaliers ; Théocrite, Idylles, 5 ; Nicandre, dans les Alexipharmaques. Voyez Bochart, De animalibus sacris, tome 1, livre 3, chapitre 13.",
-   "proposed": "Aristophane, Les Cavaliers ;\nThéocrite, Idylles, 5 ;\nNicandre, dans les Alexipharmaques. Voyez Bochart, De animalibus sacris, tome 1, livre 3, chapitre 13.",
-   "why": [],
+   "marker": "(c)",
+   "text": "Homer. Illiad. xx. _Ὥστε πέλεια, ἣ ῥά θ᾽ ὑπ᾽ ἴρηκος κοίλην εἰσέπτατο πέτρην._",
+   "proposed": "Homère, Iliade, livre 20. _Ὥστε πέλεια, ἣ ῥά θ᾽ ὑπ᾽ ἴρηκος κοίλην εἰσέπτατο πέτρην._",
+   "why": [
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
+   ],
    "flags": []
   },
   {
@@ -453,32 +392,37 @@
    "id": "0061(b)",
    "page": "page_0061",
    "marker": "(b)",
-   "text": "Voyez au besoin saint Grégoire ; Bède ; Apocalypse, etc.",
+   "text": "Voyez au besoin saint Grégoire ;\nBède ;\nApocalypse, etc.",
    "proposed": "Voyez au besoin saint Grégoire ;\nBède ;\nApocalypse, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0062(b)",
    "page": "page_0062",
    "marker": "(b)",
-   "text": "Saint Grégoire ; Cassiodore ; Bède ; Théodoret ; Caspat., etc.",
+   "text": "Saint Grégoire ;\nCassiodore ;\nBède ;\nThéodoret ;\nCaspat., etc.",
    "proposed": "Saint Grégoire ;\nCassiodore ;\nBède ;\nThéodoret ;\nCaspat., etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0063(a)",
    "page": "page_0063",
    "marker": "(a)",
-   "text": "Dilecta [UNCERTAIN HEBREW] Vide Cantique des cantiques 2:7. 3:5. 8:4. etc.",
+   "text": "Dilecta אהבה Vide Cantique des cantiques 2:7. 3:5. 8:4. etc.",
    "proposed": "Dilecta אהבה Vide Cantique des cantiques 2:7. 3:5. 8:4. etc.",
    "why": [
     "scan: Filled Hebrew word אהבה",
     "read on the scan: אהבה"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -561,19 +505,10 @@
    ]
   },
   {
-   "id": "0069(c)",
-   "page": "page_0069",
-   "marker": "(c)",
-   "text": "Saint Grégoire ; Justin ; Orgellitanus ; Psellus ; Carpathius.",
-   "proposed": "Saint Grégoire ;\nJustin ;\nOrgellitanus ;\nPsellus ;\nCarpathius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0070(a)",
    "page": "page_0070",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] כעדר הקצובות שעלו מן הרחצה",
+   "text": "שניך כעדר הקצובות שעלו מן הרחצה שכלם מתאימות",
    "proposed": "שניך כעדר הקצובות שעלו מן הרחצה שכלם מתאימות",
    "why": [
     "Hebrew checked against the Hebrew Bible, Song of Solomon 4:2",
@@ -585,19 +520,10 @@
    ]
   },
   {
-   "id": "0070(d)",
-   "page": "page_0070",
-   "marker": "(d)",
-   "text": "Bède ; Saint Grégoire ; Aponius ; Cassiodore ; Saint Anselme ; Justin ; Carpathius.",
-   "proposed": "Bède ;\nSaint Grégoire ;\nAponius ;\nCassiodore ;\nSaint Anselme ;\nJustin ;\nCarpathius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0070(e)",
    "page": "page_0070",
    "marker": "(e)",
-   "text": "[UNCERTAIN HEBREW] כפלח הרמון רקתך",
+   "text": "כפלח הרמון רקתך",
    "proposed": "כפלח הרמון רקתך",
    "why": [
     "Hebrew checked against the Hebrew Bible, Song of Solomon 4:3",
@@ -612,7 +538,7 @@
    "id": "0072(a)",
    "page": "page_0072",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] 2. Ezech. III. 15. [UNCERTAIN HEBREW] Un défilé. Exode 14:2.",
+   "text": "כמגדל דויד צוארך בנוי לתלפיות אלף המגן תלוי עליו וגו' 2. Ezech. III. 15. פי Un défilé. Exode 14:2.",
    "proposed": "כמגדל דויד צוארך בנוי לתלפיות אלף המגן תלוי עליו וגו' 2. Ezech. III. 15. פי Un défilé. Exode 14:2.",
    "why": [
     "scan: Filled both Hebrew placeholders: the full quotation and פי",
@@ -620,7 +546,8 @@
     "read on the scan: פי"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -639,7 +566,7 @@
    "id": "0072(e)",
    "page": "page_0072",
    "marker": "(e)",
-   "text": "[UNCERTAIN HEBREW] Une hauteur. Deutéronome 13:16. Josué 8:28. Jérémie 30:18. Jérémie 49.",
+   "text": "תל Une hauteur. Deutéronome 13:16. Josué 8:28. Jérémie 30:18. Jérémie 49.",
    "proposed": "תל Une hauteur. Deutéronome 13:16. Josué 8:28. Jérémie 30:18. Jérémie 49.",
    "why": [
     "scan: Filled תל",
@@ -650,31 +577,55 @@
    ]
   },
   {
-   "id": "0073(c)",
+   "id": "0073(e)",
    "page": "page_0073",
-   "marker": "(c)",
-   "text": "Ainsi l'entendent la plupart des Pères ; Sanctius ; Cornelius a Lapide.",
-   "proposed": "Ainsi l'entendent la plupart des Pères ;\nSanctius ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0073(f)",
-   "page": "page_0073",
-   "marker": "(f)",
-   "text": "Cassiodore ; Bède ; Aponius ; Carpathius ; Justin ; Orgellitanus.",
-   "proposed": "Cassiodore ;\nBède ;\nAponius ;\nCarpathius ;\nJustin ;\nOrgellitanus.",
-   "why": [],
-   "flags": []
+   "marker": "(e)",
+   "text": "Cantique des cantiques 2:7. III. s.",
+   "proposed": "Cantique des cantiques 2:7. III. s.",
+   "why": [
+    "written out, but a number changed or added: Cantique des cantiques 2:7 ; 3:5."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
   },
   {
    "id": "0073(g)",
    "page": "page_0073",
    "marker": "(g)",
-   "text": "Saint Grégoire de Nysse ; Théodoret ; Psellus ; Rupert.",
+   "text": "Saint Grégoire de Nysse ;\nThéodoret ;\nPsellus ;\nRupert.",
    "proposed": "Saint Grégoire de Nysse ;\nThéodoret ;\nPsellus ;\nRupert.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
+  },
+  {
+   "id": "0074(b)",
+   "page": "page_0074",
+   "marker": "(b)",
+   "text": "Cant. III. II.",
+   "proposed": "Cant. III. II.",
+   "why": [
+    "written out, but a number changed or added: Cantique des cantiques 3:11."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
+  },
+  {
+   "id": "0076(a)",
+   "page": "page_0076",
+   "marker": "(a)",
+   "text": "לבבתני אחותי כלה 70. _Exastimaras me._ Édit. _ÉSaponas µe._ Vous m'avez donné du cœur. _Ita Sym apud Theodoret._",
+   "proposed": "לבבתני אחותי כלה 70. _Exastimaras me._ Édit. _ÉSaponas µe._ Vous m'avez donné du cœur. _Ita Sym apud Theodoret._",
+   "why": [
+    "Hebrew checked against the Hebrew Bible, Song of Solomon 4:9",
+    "written out, but the italics changed: לבבתני אחותי כלה 70. _Exastimaras me._ Édition _ÉSaponas µe._ Vous m'avez donné du cœur. Ainsi lit Symmaque, dans Théodoret."
+   ],
+   "flags": [
+    "expand-changed-italics"
+   ]
   },
   {
    "id": "0076(c)",
@@ -695,15 +646,6 @@
    ]
   },
   {
-   "id": "0077(c)",
-   "page": "page_0077",
-   "marker": "(c)",
-   "text": "Saint Grégoire ; Cassiodore ; Bède ; Théodoret ; Aponius ; Justin ; Saint Anselme.",
-   "proposed": "Saint Grégoire ;\nCassiodore ;\nBède ;\nThéodoret ;\nAponius ;\nJustin ;\nSaint Anselme.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0078(b)",
    "page": "page_0078",
    "marker": "(b)",
@@ -716,58 +658,26 @@
    ]
   },
   {
-   "id": "0078(g)",
-   "page": "page_0078",
-   "marker": "(g)",
-   "text": "Voyez saint Ambroise, Des vierges, livre 2 ; Saint Augustin, Du baptême contre les donatistes, livre 2, chapitre 27 ; Saint Anselme ; Théodoret ; Carpathius.",
-   "proposed": "Voyez saint Ambroise, Des vierges, livre 2 ;\nSaint Augustin, Du baptême contre les donatistes, livre 2, chapitre 27 ;\nSaint Anselme ;\nThéodoret ;\nCarpathius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0079(c)",
-   "page": "page_0079",
-   "marker": "(c)",
-   "text": "Théodoret ; Origène ; Saint Ambroise, De Isaac, chapitre 1.",
-   "proposed": "Théodoret ;\nOrigène ;\nSaint Ambroise, De Isaac, chapitre 1.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0080(c)",
-   "page": "page_0080",
-   "marker": "(c)",
-   "text": "Voyez Brocard ; Adrichomius ; Breydenbach ; Doubdan.",
-   "proposed": "Voyez Brocard ;\nAdrichomius ;\nBreydenbach ;\nDoubdan.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0081(b)",
-   "page": "page_0081",
-   "marker": "(b)",
-   "text": "Saint Grégoire ; Bède ; Philon ; Carpathius ; Aponius ; Justin ; Saint Anselme ; Saint Ambroise, De Isaac, chapitre 4.",
-   "proposed": "Saint Grégoire ;\nBède ;\nPhilon ;\nCarpathius ;\nAponius ;\nJustin ;\nSaint Anselme ;\nSaint Ambroise, De Isaac, chapitre 4.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0081(e)",
    "page": "page_0081",
    "marker": "(e)",
-   "text": "Voyez saint Grégoire de Nysse ; Rupert ; Saint Anselme ; Théodoret ; Psellus, etc.",
+   "text": "Voyez saint Grégoire de Nysse ;\nRupert ;\nSaint Anselme ;\nThéodoret ;\nPsellus, etc.",
    "proposed": "Voyez saint Grégoire de Nysse ;\nRupert ;\nSaint Anselme ;\nThéodoret ;\nPsellus, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0083(b)",
    "page": "page_0083",
    "marker": "(b)",
-   "text": "Voyez saint Athanase, dans la Synopse ; Rupert ; Lucas, abbé, etc.",
+   "text": "Voyez saint Athanase, dans la Synopse ;\nRupert ;\nLucas, abbé, etc.",
    "proposed": "Voyez saint Athanase, dans la Synopse ;\nRupert ;\nLucas, abbé, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0083(e)",
@@ -783,24 +693,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0084(d)",
-   "page": "page_0084",
-   "marker": "(d)",
-   "text": "Cantique des cantiques 1:1 et 4:10.",
-   "proposed": "Cantique des cantiques 1:1 ; 4:10.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0084(e)",
-   "page": "page_0084",
-   "marker": "(e)",
-   "text": "_Voyez saint Grégoire ; Philon de Carpasia ; Rupert ; Saint Cyprien, Lettre_ 63.",
-   "proposed": "_Voyez saint Grégoire ;\nPhilon de Carpasia ;\nRupert ;\nSaint Cyprien, Lettre_ 63.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0085(a)",
@@ -820,16 +712,18 @@
    "id": "0087(a)",
    "page": "page_0087",
    "marker": "(a)",
-   "text": "Rupert ; Honorius ; Cassiodore, etc.",
+   "text": "Rupert ;\nHonorius ;\nCassiodore, etc.",
    "proposed": "Rupert ;\nHonorius ;\nCassiodore, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0088(c)",
    "page": "page_0088",
    "marker": "(c)",
-   "text": "קמתי אני לפתוח לדודי וידי נטפו מור ואצבעותי מור עבר על כפות המנעול. [UNCERTAIN HEBREW] ἐγὼ ἀνέστην τ. ἀδελφιδῷ μου ; χεῖρές μου ἔσταξαν σμύρναν. Δάκτυλοί μου σμύρνης πλήρεις ἐπὶ χεῖρας τῆ κλήθρας. θεοῦ ἤνοιξα ἐγώ.",
+   "text": "קמתי אני לפתוח לדוד וידי נטפו מור ואצבעותי מור עבר על כפות המנעול. 70. Ἀνέστην ἐγὼ ἀνοῖξαι τ. ἀδελφιδῷ μου ; χεῖρές μου ἔσταξαν σμύρναν. Δάκτυλοί μου σμύρνης πλήρεις ἐπὶ χεῖρας τοῦ κλείθρου ἤνοιξα ἐγώ.",
    "proposed": "קמתי אני לפתוח לדוד וידי נטפו מור ואצבעותי מור עבר על כפות המנעול. 70. Ἀνέστην ἐγὼ ἀνοῖξαι τ. ἀδελφιδῷ μου ; χεῖρές μου ἔσταξαν σμύρναν. Δάκτυλοί μου σμύρνης πλήρεις ἐπὶ χεῖρας τοῦ κλείθρου ἤνοιξα ἐγώ.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Song of Solomon 5:5",
@@ -923,7 +817,7 @@
    "id": "0093(c)",
    "page": "page_0093",
    "marker": "(c)",
-   "text": "Σιαγόνες αὐτ[ILLEGIBLE] ὡς φιάλαι τ[ILLEGIBLE] ἀρώματ[ILLEGIBLE] φύουσαι μυρεψικά.",
+   "text": "Σιαγόνες αὐτοῦ ὡς φιάλαι τοῦ ἀρώματος φύουσαι μυρεψικά.",
    "proposed": "Σιαγόνες αὐτοῦ ὡς φιάλαι τοῦ ἀρώματος φύουσαι μυρεψικά.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
@@ -957,16 +851,18 @@
    "id": "0095(f)",
    "page": "page_0095",
    "marker": "(f)",
-   "text": "Saint Ambroise sur le Psaume 118 ; Saint Grégoire de Nysse ; Philon de Carpasia sur ce passage, etc.",
+   "text": "Saint Ambroise sur le Psaume 118 ;\nSaint Grégoire de Nysse ;\nPhilon de Carpasia sur ce passage, etc.",
    "proposed": "Saint Ambroise sur le Psaume 118 ;\nSaint Grégoire de Nysse ;\nPhilon de Carpasia sur ce passage, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0097(a)",
    "page": "page_0097",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] 70. Ποιμαίνειν ἐν κήποις.",
+   "text": "לרעות בגנים 70. Ποιμαίνειν ἐν κήποις.",
    "proposed": "לרעות בגנים 70. Ποιμαίνειν ἐν κήποις.",
    "why": [
     "Greek checked against the Septuagint, Cantique des cantiques 6:2",
@@ -981,7 +877,7 @@
    "id": "0098(a)",
    "page": "page_0098",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW]",
+   "text": "יפה את רעיתי כתרצה נאוה כירושלם",
    "proposed": "יפה את רעיתי כתרצה נאוה כירושלם",
    "why": [
     "scan: Filled Hebrew placeholder from page",
@@ -992,13 +888,17 @@
    ]
   },
   {
-   "id": "0101(a)",
-   "page": "page_0101",
-   "marker": "(a)",
-   "text": "3 Rois 11:1-3.",
-   "proposed": "1 Rois 11:1-3.",
-   "why": [],
-   "flags": []
+   "id": "0100(b)",
+   "page": "page_0100",
+   "marker": "(b)",
+   "text": "Voyez Proverbes 7:10. Osée. IX. II. Isai. XXX. 20. où l'on trouve des expressions à peu près semblables.",
+   "proposed": "Voyez Proverbes 7:10. Osée. IX. II. Isai. XXX. 20. où l'on trouve des expressions à peu près semblables.",
+   "why": [
+    "written out, but a number changed or added: Voyez Proverbes 7:10 ; Osée 9:11 ; Isaïe 30:20, où l'on trouve des expressions à peu près semblables."
+   ],
+   "flags": [
+    "expand-changed-numbers"
+   ]
   },
   {
    "id": "0103(a)",
@@ -1011,24 +911,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0103(c)",
-   "page": "page_0103",
-   "marker": "(c)",
-   "text": "Théodoret ; Saint Grégoire ; Bède ; Cassiodore.",
-   "proposed": "Théodoret ;\nSaint Grégoire ;\nBède ;\nCassiodore.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0104(f)",
-   "page": "page_0104",
-   "marker": "(f)",
-   "text": "Saint Grégoire ; Cassiodore ; Apponius ; Saint Anselme ; Philon de Carpasia.",
-   "proposed": "Saint Grégoire ;\nCassiodore ;\nApponius ;\nSaint Anselme ;\nPhilon de Carpasia.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0105(a)",
@@ -1060,28 +942,12 @@
    "id": "0109(c)",
    "page": "page_0109",
    "marker": "(c)",
-   "text": "Saint Grégoire ; Cassiodore ; Bède ; Saint Anselme, etc.",
+   "text": "Saint Grégoire ;\nCassiodore ;\nBède ;\nSaint Anselme, etc.",
    "proposed": "Saint Grégoire ;\nCassiodore ;\nBède ;\nSaint Anselme, etc.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0109(d)",
-   "page": "page_0109",
-   "marker": "(d)",
-   "text": "Nombres 21:15 et suivants ; Josué 9:10 ; 13:17, etc.",
-   "proposed": "Nombres 21:15 et suivants ; Josué 9:10 ; 13:17 etc.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0110(d)",
-   "page": "page_0110",
-   "marker": "(d)",
-   "text": "Saint Grégoire ; Cassiodore ; Bède ; Saint Anselme ; Philon ; Philon de Carpasia.",
-   "proposed": "Saint Grégoire ;\nCassiodore ;\nBède ;\nSaint Anselme ;\nPhilon ;\nPhilon de Carpasia.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0111(g)",
@@ -1098,6 +964,17 @@
    ]
   },
   {
+   "id": "0111(h)",
+   "page": "page_0111",
+   "marker": "(h)",
+   "text": "Homer. Odyss. Z. v. 4.",
+   "proposed": "Homère, Odyssée, livre Z, vers 4.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
+  },
+  {
    "id": "0111(m)",
    "page": "page_0111",
    "marker": "(m)",
@@ -1108,15 +985,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0113(d)",
-   "page": "page_0113",
-   "marker": "(d)",
-   "text": "Cantique des cantiques 1:3. Proverbes 23:31.",
-   "proposed": "Cantique des cantiques 1:3 ; Proverbes 23:31.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0113(e)",
@@ -1134,19 +1002,10 @@
    ]
   },
   {
-   "id": "0117(b)",
-   "page": "page_0117",
-   "marker": "(b)",
-   "text": "Théodoret ; Saint Grégoire le Grand ; Cassiodore ; Saint Ambroise, De l'enfance.",
-   "proposed": "Théodoret ;\nSaint Grégoire le Grand ;\nCassiodore ;\nSaint Ambroise, De l'enfance.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0118(c)",
    "page": "page_0118",
    "marker": "(c)",
-   "text": "Osée 14:8. [UNCERTAIN HEBREW]",
+   "text": "Osée 14:8. יין הלבנון",
    "proposed": "Osée 14:8. יין הלבנון",
    "why": [
     "scan: Filled Hebrew placeholder: יין הלבנון",
@@ -1160,7 +1019,7 @@
    "id": "0118(d)",
    "page": "page_0118",
    "marker": "(d)",
-   "text": "[UNCERTAIN HEBREW] _Nectar. Suffiri, fumigari, suavi perfundi._",
+   "text": "נקטר _Nectar. Suffiri, fumigari, suavi perfundi._",
    "proposed": "נקטר _Nectar. Suffiri, fumigari, suavi perfundi._",
    "why": [
     "scan: Filled Hebrew placeholder: נקטר",
@@ -1174,33 +1033,27 @@
    "id": "0118(e)",
    "page": "page_0118",
    "marker": "(e)",
-   "text": "Athen. l. 1. c. 2. p. 38. [UNCERTAIN GREEK]",
+   "text": "Athen. l. 1. c. 2. p. 38. Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη.",
    "proposed": "Athen. l. 1. c. 2. p. 38. Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη.",
    "why": [
     "scan: Filled Greek placeholder with the printed Athenaeus passage",
     "read on the scan: Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη."
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
-  },
-  {
-   "id": "0119(a)",
-   "page": "page_0119",
-   "marker": "(a)",
-   "text": "Columelle, livre 12, chapitre 19 et 25 et suivants ; Palladius, Octobre, numéro 14 ; Caton, De l'agriculture, chapitre 113.",
-   "proposed": "Columelle, livre 12, chapitre 19 et 25 et suivants ;\nPalladius, Octobre, numéro 14 ;\nCaton, De l'agriculture, chapitre 113.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0119(c)",
    "page": "page_0119",
    "marker": "(c)",
-   "text": "Cassiodore ; Bède ; Alcuin ; Angelome de Luxeuil ; Honorius d'Autun, etc.",
+   "text": "Cassiodore ;\nBède ;\nAlcuin ;\nAngelome de Luxeuil ;\nHonorius d'Autun, etc.",
    "proposed": "Cassiodore ;\nBède ;\nAlcuin ;\nAngelome de Luxeuil ;\nHonorius d'Autun, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0120(b)",
@@ -1215,12 +1068,14 @@
    ]
   },
   {
-   "id": "0121(d)",
+   "id": "0121(a)",
    "page": "page_0121",
-   "marker": "(d)",
-   "text": "Voyez Osée 11:2 ; Saint Clément d'Alexandrie, Le Pédagogue, livre 2, chapitre 11 ; Isaïe 3:20.",
-   "proposed": "Voyez Osée 11:2 ;\nSaint Clément d'Alexandrie, Le Pédagogue, livre 2, chapitre 11 ;\nIsaïe 3:20.",
-   "why": [],
+   "marker": "(a)",
+   "text": "Martial. de Curione.\n…_Dum prandia portat avanti_\n_Hirsutâ peperit rubicunda sub ilice conjux._",
+   "proposed": "Martial, De Curione.\n…_Dum prandia portat avanti_\n_Hirsutâ peperit rubicunda sub ilice conjux._",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": []
   },
   {
@@ -1241,10 +1096,12 @@
    "id": "0128(a)",
    "page": "page_0128",
    "marker": "(a)",
-   "text": "Voyez Bède ; Cassiodore ; Just d'Urgell ; Aponius ; Saint Bernard, Sermon 9 sur le Psaume Qui habitat, etc.",
+   "text": "Voyez Bède ;\nCassiodore ;\nJust d'Urgell ;\nAponius ;\nSaint Bernard, Sermon 9 sur le Psaume Qui habitat, etc.",
    "proposed": "Voyez Bède ;\nCassiodore ;\nJust d'Urgell ;\nAponius ;\nSaint Bernard, Sermon 9 sur le Psaume Qui habitat, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   }
  ]
 }

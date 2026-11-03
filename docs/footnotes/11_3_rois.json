@@ -1,13 +1,14 @@
 {
  "summary": {
   "notes": 1454,
-  "changed": 85,
+  "changed": 1,
   "flags": {
    "context": 37,
    "hebrew": 8,
    "greek": 47,
    "scan-unread": 53,
    "scanned": 19,
+   "expand-unread": 2,
    "garbled-reference": 1
   }
  },
@@ -24,15 +25,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0060(a)",
-   "page": "page_0060",
-   "marker": "(a)",
-   "text": "V de Nicolas de Lyre ; Munster ; et Sanctius.",
-   "proposed": "V de Nicolas de Lyre ;\nMunster ;\net Sanctius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0061(d)",
@@ -73,28 +65,10 @@
    ]
   },
   {
-   "id": "0065(b)",
-   "page": "page_0065",
-   "marker": "(b)",
-   "text": "2 Rois 8:18 ; 2 Rois 20:23.",
-   "proposed": "1 Rois 8:18 ; 20:23.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0065(d)",
-   "page": "page_0065",
-   "marker": "(d)",
-   "text": "Nicolas de Lyre ; Hugues de Saint-Cher ; Pierre Comestor ; Génébrard, Chronologie, livre 1 ; Pineda, De rebus Salomonis, chapitre 19 ; Ménochius.",
-   "proposed": "Nicolas de Lyre ;\nHugues de Saint-Cher ;\nPierre Comestor ;\nGénébrard, Chronologie, livre 1 ;\nPineda, De rebus Salomonis, chapitre 19 ;\nMénochius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0067(a)",
    "page": "page_0067",
    "marker": "(a)",
-   "text": "ויזבח צאן ובקר ומריא [UNCERTAIN HEBREW] TM, et βίας, et ἄρνας.",
+   "text": "יזבח צאן ובקר ומרי τα, et βόας, et ἄρνας.",
    "proposed": "יזבח צאן ובקר ומרי τα, et βόας, et ἄρνας.",
    "why": [
     "Hebrew checked against the Hebrew Bible, I Kings 1:9",
@@ -124,7 +98,7 @@
    "id": "0069(b)",
    "page": "page_0069",
    "marker": "(b)",
-   "text": "[UNCERTAIN HEBREW]",
+   "text": "ותקד ותשתחו",
    "proposed": "ותקד ותשתחו",
    "why": [
     "scan: Placeholder filled with the printed Hebrew",
@@ -135,19 +109,10 @@
    ]
   },
   {
-   "id": "0072(a)",
-   "page": "page_0072",
-   "marker": "(a)",
-   "text": "Théodoret ; Procope de Gaza ; Nicolas de Lyre ; Clarius ; Sa ; Pineda ; Ménochius ; Tirin.",
-   "proposed": "Théodoret ;\nProcope de Gaza ;\nNicolas de Lyre ;\nClarius ;\nSa ;\nPineda ;\nMénochius ;\nTirin.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0076(c)",
    "page": "page_0076",
    "marker": "(c)",
-   "text": "וישתחו המלך על המשכב [UNCERTAIN HEBREW]",
+   "text": "וישתחו המלך על המשכב",
    "proposed": "וישתחו המלך על המשכב",
    "why": [
     "Hebrew checked against the Hebrew Bible, I Kings 1:47",
@@ -174,7 +139,7 @@
    "id": "0079(a)",
    "page": "page_0079",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] שמרת את משמרת יהוה",
+   "text": "שמרת את משמרת יהוה",
    "proposed": "שמרת את משמרת יהוה",
    "why": [
     "Hebrew checked against the Hebrew Bible, I Kings 2:3",
@@ -189,7 +154,7 @@
    "id": "0079(c)",
    "page": "page_0079",
    "marker": "(c)",
-   "text": "[UNCERTAIN HEBREW] למען תשכיל את כל אשר תעשה 70. _Ut conserves, ut intelligas_. Aliàs, _ègas_",
+   "text": "למען תשכיל את כל אשר תעשה 70. ἵνα συνέχῃς, ut intelligas. Aliàs, ἵνα γνῷς",
    "proposed": "למען תשכיל את כל אשר תעשה 70. ἵνα συνέχῃς, ut intelligas. Aliàs, ἵνα γνῷς",
    "why": [
     "Hebrew checked against the Hebrew Bible, I Kings 2:3",
@@ -204,7 +169,7 @@
    "id": "0079(d)",
    "page": "page_0079",
    "marker": "(d)",
-   "text": "[UNCERTAIN HEBREW] דברו אשר דבר עלי iudæus wdsn. à wolnæus. Ut prosperè cédant omnia quæ facies.",
+   "text": "דברו אשר דבר עלי εὐοδωθῇ πάντα ἃ ποιήσεις. Ut prosperè cédant omnia quæ facies.",
    "proposed": "דברו אשר דבר עלי εὐοδωθῇ πάντα ἃ ποιήσεις. Ut prosperè cédant omnia quæ facies.",
    "why": [
     "Hebrew checked against the Hebrew Bible, I Kings 2:4",
@@ -219,21 +184,22 @@
    "id": "0081(a)",
    "page": "page_0081",
    "marker": "(a)",
-   "text": "Vide Cap. V. 4. [ILLEGIBLE]",
+   "text": "Vide Cap. V. 4. Et* cap.* IV.* 24.*",
    "proposed": "Vide Cap. V. 4. Et* cap.* IV.* 24.*",
    "why": [
     "scan: Illegible remainder guessed from context",
     "guessed from context: Et* cap.* IV.* 24.*"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
    "id": "0083(a)",
    "page": "page_0083",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] קללה נמרצת",
+   "text": "קללה נמרצת",
    "proposed": "קללה נמרצת",
    "why": [
     "Hebrew checked against the Hebrew Bible, I Kings 2:8",
@@ -243,24 +209,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0084(e)",
-   "page": "page_0084",
-   "marker": "(e)",
-   "text": "3 Rois 15:5.",
-   "proposed": "2 Rois 15:5.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0087(c)",
-   "page": "page_0087",
-   "marker": "(c)",
-   "text": "Sanctius sur ce passage et sur les Actes, chapitre 11 ; et Salian, an du monde 3021, article 113, 114 ; Tirin sur ce passage.",
-   "proposed": "Sanctius sur ce passage et sur les Actes, chapitre 11 ;\net Salian, an du monde 3021, article 113, 114 ;\nTirin sur ce passage.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0089(a)",
@@ -289,55 +237,10 @@
    ]
   },
   {
-   "id": "0090(a)",
-   "page": "page_0090",
-   "marker": "(a)",
-   "text": "Voyez Théodoret, question 7 ; Tostat, question 20 ; Denys le Chartreux ; Hugues de Saint-Cher ; Sanctius sur ce passage, sur 3 Rois 2:17.",
-   "proposed": "Voyez Théodoret, question 7 ;\nTostat, question 20 ;\nDenys le Chartreux ;\nHugues de Saint-Cher ;\nSanctius sur ce passage, sur 3 Rois 2:17.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0095(b)",
-   "page": "page_0095",
-   "marker": "(b)",
-   "text": "1 Rois 22:22 ; 1 Rois 23:9.",
-   "proposed": "2 Rois 22:22 ; 23:9.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0097(f)",
-   "page": "page_0097",
-   "marker": "(f)",
-   "text": "Ménochius ; Sanctius ; Tostat. Voyez et Rupert, livre 3, chapitre 37.",
-   "proposed": "Ménochius ;\nSanctius ;\nTostat. Voyez et Rupert, livre 3, chapitre 37.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0102(a)",
-   "page": "page_0102",
-   "marker": "(a)",
-   "text": "Cantique des cantiques 3:4 ; Cantique des cantiques 8:2.",
-   "proposed": "Cantique des cantiques 3:4 ; 8:2.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0109(a)",
-   "page": "page_0109",
-   "marker": "(a)",
-   "text": "Tostat ; Serarius ; Cornelius a Lapide.",
-   "proposed": "Tostat ;\nSerarius ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0114(a)",
    "page": "page_0114",
    "marker": "(a)",
-   "text": "בר אחימעץ כהן [UNCERTAIN HEBREW]",
+   "text": "בן אחימעץ הכהן",
    "proposed": "בן אחימעץ הכהן",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -386,15 +289,6 @@
    ]
   },
   {
-   "id": "0122(a)",
-   "page": "page_0122",
-   "marker": "(a)",
-   "text": "4 Rois 18:31 ; Michée 4:4 ; Zacharie 3:10.",
-   "proposed": "4 Rois 18:31 ;\nMichée 4:4 ;\nZacharie 3:10.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0126(a)",
    "page": "page_0126",
    "marker": "(a)",
@@ -405,24 +299,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0129(a)",
-   "page": "page_0129",
-   "marker": "(a)",
-   "text": "Ainsi l'Hébreu ; Munster ; Vatable.",
-   "proposed": "Ainsi l'Hébreu ;\nMunster ;\nVatable.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0130(b)",
-   "page": "page_0130",
-   "marker": "(b)",
-   "text": "Kimhi ; Piscator ; Pineda, livre 3, chapitre 21 ; Levinus Lemnius, De herbis Bibliæ, chapitre 16 ; Tostat, question 8.",
-   "proposed": "Kimhi ;\nPiscator ;\nPineda, livre 3, chapitre 21 ;\nLevinus Lemnius, De herbis Bibliæ, chapitre 16 ;\nTostat, question 8.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0133(a)",
@@ -438,15 +314,6 @@
    ]
   },
   {
-   "id": "0133(f)",
-   "page": "page_0133",
-   "marker": "(f)",
-   "text": "Tostat, question 4 ; Pineda, De rebus Salomonis, livre 1, chapitre 5 ; Salian et Ménochius sur 1 Paralipomènes 22.",
-   "proposed": "Tostat, question 4 ;\nPineda, De rebus Salomonis, livre 1, chapitre 5 ;\nSalian et Ménochius sur 1 Paralipomènes 22.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0137(a)",
    "page": "page_0137",
    "marker": "(a)",
@@ -457,15 +324,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0138(b)",
-   "page": "page_0138",
-   "marker": "(b)",
-   "text": "Buxtorf ; Glassius ; Piscator. Ainsi aussi le Syriaque, les Septante, l'Arabe et Aquila.",
-   "proposed": "Buxtorf ;\nGlassius ;\nPiscator. Ainsi aussi le Syriaque, les Septante, l'Arabe et Aquila.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0145(a)",
@@ -484,15 +342,6 @@
    ]
   },
   {
-   "id": "0147(c)",
-   "page": "page_0147",
-   "marker": "(c)",
-   "text": "Voyez Jérémie 17:1 ; Ézéchiel 3:9 ; Zacharie 7:12. Bochart, De animalibus sacris, partie 2, livre 5, chapitre 11.",
-   "proposed": "Voyez Jérémie 17:1 ;\nÉzéchiel 3:9 ;\nZacharie 7:12. Bochart, De animalibus sacris, partie 2, livre 5, chapitre 11.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0156(b)",
    "page": "page_0156",
    "marker": "(b)",
@@ -508,7 +357,7 @@
    "id": "0157(d)",
    "page": "page_0157",
    "marker": "(d)",
-   "text": "[UNCERTAIN HEBREW] _Fecit et in introitu templi postes de lignis olivarum, poste quintuplici._",
+   "text": "ואת פתח הדביר עשה דלתות עצי שמן האיל מזוזות חמשית _Fecit et in introitu templi postes de lignis olivarum, poste quintuplici._",
    "proposed": "ואת פתח הדביר עשה דלתות עצי שמן האיל מזוזות חמשית _Fecit et in introitu templi postes de lignis olivarum, poste quintuplici._",
    "why": [
     "scan: Filled Hebrew placeholder from the page",
@@ -522,7 +371,7 @@
    "id": "0157(e)",
    "page": "page_0157",
    "marker": "(e)",
-   "text": "[UNCERTAIN HEBREW]",
+   "text": "ועשה לפתח ההיכל מזוזות עצי שמן מאת הרבעית",
    "proposed": "ועשה לפתח ההיכל מזוזות עצי שמן מאת הרבעית",
    "why": [
     "scan: Filled Hebrew placeholder from the page",
@@ -582,35 +431,6 @@
    ]
   },
   {
-   "id": "0170(b)",
-   "page": "page_0170",
-   "marker": "(b)",
-   "text": "Grotius ; Cornelius a Lapide ; Pierre Martyr.",
-   "proposed": "Grotius ;\nCornelius a Lapide ;\nPierre Martyr.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0170(f)",
-   "page": "page_0170",
-   "marker": "(f)",
-   "text": "Vatable ; Grotius ; Sanctius.",
-   "proposed": "Vatable ;\nGrotius ;\nSanctius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0170(g)",
-   "page": "page_0170",
-   "marker": "(g)",
-   "text": "Junius ; Piscator ; Cornelius a Lapide.",
-   "proposed": "Junius ;\nPiscator ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0172(e)",
    "page": "page_0172",
    "marker": "(e)",
@@ -621,33 +441,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0176(b)",
-   "page": "page_0176",
-   "marker": "(b)",
-   "text": "Grotius ; Junius ; Piscator ; Ribera ; Ménochius ; Sanctius.",
-   "proposed": "Grotius ;\nJunius ;\nPiscator ;\nRibera ;\nMénochius ;\nSanctius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0176(c)",
-   "page": "page_0176",
-   "marker": "(c)",
-   "text": "Villalpand ; Alcasar ; Cornelius a Lapide ; Pierre Martyr.",
-   "proposed": "Villalpand ;\nAlcasar ;\nCornelius a Lapide ;\nPierre Martyr.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0177(b)",
-   "page": "page_0177",
-   "marker": "(b)",
-   "text": "Tostat ; Cajetan ; Sanctius ; Ménochius ; Cornelius a Lapide.",
-   "proposed": "Tostat ;\nCajetan ;\nSanctius ;\nMénochius ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0179(a)",
@@ -754,17 +547,6 @@
    ]
   },
   {
-   "id": "0195(b)",
-   "page": "page_0195",
-   "marker": "(b)",
-   "text": "Josèphe, Antiquités judaïques, livre 8, chapitre 2 ; Ribera ; Serarius ; Tostat ; Sanctius ; Tirin ; Junius, etc.",
-   "proposed": "Josèphe, Antiquités judaïques, livre 8, chapitre 2 ; Ribera ; Serarius ; Tostat ; Sanctius ; Tirin ; Junius ; etc.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
    "id": "0196(a)",
    "page": "page_0196",
    "marker": "(a)",
@@ -790,15 +572,6 @@
    ]
   },
   {
-   "id": "0199(b)",
-   "page": "page_0199",
-   "marker": "(b)",
-   "text": "Théophylacte, sur le chapitre 9 de la Lettre aux Hébreux ; Bellarmin, tome 1, livre 1, chapitre 17 ; Cano, livre 2, Des lieux théologiques, chapitre 11 ; Medina, livre 6, chapitre 25, De recta in Deum fide.",
-   "proposed": "Théophylacte, sur le chapitre 9 de la Lettre aux Hébreux ;\nBellarmin, tome 1, livre 1, chapitre 17 ;\nCano, livre 2, Des lieux théologiques, chapitre 11 ;\nMedina, livre 6, chapitre 25, De recta in Deum fide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0200(a)",
    "page": "page_0200",
    "marker": "(a)",
@@ -810,24 +583,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0216(a)",
-   "page": "page_0216",
-   "marker": "(a)",
-   "text": "Voyez Josué 13:3 ; Nombres 13:22 ; Josué 13:5.",
-   "proposed": "Voyez Josué 13:3 ;\nNombres 13:22 ;\nJosué 13:5.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0217(c)",
-   "page": "page_0217",
-   "marker": "(c)",
-   "text": "Ainsi Josèphe, Antiquités judaïques, livre 8, chapitre 2 ; Junius ; Malvenda ; Piscator.",
-   "proposed": "Ainsi Josèphe, Antiquités judaïques, livre 8, chapitre 2 ;\nJunius ;\nMalvenda ;\nPiscator.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0218(b)",
@@ -854,15 +609,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0222(e)",
-   "page": "page_0222",
-   "marker": "(e)",
-   "text": "Tostat ; Sanchez ; Ménochius ; Tirin ; Serarius ; Cornelius a Lapide,",
-   "proposed": "Tostat ;\nSanchez ;\nMénochius ;\nTirin ;\nSerarius ;\nCornelius a Lapide,",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0227(e)",
@@ -941,15 +687,6 @@
    ]
   },
   {
-   "id": "0235(b)",
-   "page": "page_0235",
-   "marker": "(b)",
-   "text": "Raban Maur ; Hugues le cardinal ; Denys le Chartreux ; Tostat ; Jansénius ; Maldonat ; Cornelius a Lapide.",
-   "proposed": "Raban Maur ;\nHugues le cardinal ;\nDenys le Chartreux ;\nTostat ;\nJansénius ;\nMaldonat ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0239(d)",
    "page": "page_0239",
    "marker": "(d)",
@@ -960,6 +697,17 @@
     "greek",
     "scan-unread"
    ]
+  },
+  {
+   "id": "0239(g)",
+   "page": "page_0239",
+   "marker": "(g)",
+   "text": "Saint Hilaire, sur le Psaume 121 ; Origène, Homélie 2 sur le Cantique des cantiques ; Saint Irénée, livre 4, chapitre 45 ; Saint Grégoire de Nazianze, Homélie 40 sur le saint baptême ; Nissenus, Homélie 6 sur le Cantique des cantiques ; Saint Cyrille d'Alexandrie, livre 5, Commentaire sur Isaïe ; l'auteur du Sermon 231, Appendice, parmi les œuvres de saint Augustin.",
+   "proposed": "Saint Hilaire, sur le Psaume 121 ; Origène, Homélie 2 sur le Cantique des cantiques ; Saint Irénée, livre 4, chapitre 45 ; Saint Grégoire de Nazianze, Homélie 40 sur le saint baptême ; saint Grégoire de Nysse, Homélie 6 sur le Cantique des cantiques ; Saint Cyrille d'Alexandrie, livre 5, Commentaire sur Isaïe ; l'auteur du Sermon 231, Appendice, parmi les œuvres de saint Augustin.",
+   "why": [
+    "abbreviations written out"
+   ],
+   "flags": []
   },
   {
    "id": "0241(a)",
@@ -974,15 +722,6 @@
    ]
   },
   {
-   "id": "0242(b)",
-   "page": "page_0242",
-   "marker": "(b)",
-   "text": "Pagnin ; Vatable ; Arias Montanus ; Junius ; Malvenda ; Piscator. De même Cornelius a Lapide et d'autres.",
-   "proposed": "Pagnin ;\nVatable ;\nArias Montanus ;\nJunius ;\nMalvenda ;\nPiscator. De même Cornelius a Lapide et d'autres.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0242(d)",
    "page": "page_0242",
    "marker": "(d)",
@@ -993,33 +732,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0245(c)",
-   "page": "page_0245",
-   "marker": "(c)",
-   "text": "Prosper Alpin ; Bellonius ; et Bodæi, notes sur le livre 4 de Théophraste, page 305.",
-   "proposed": "Prosper Alpin ;\nBellonius ;\net Bodæi, notes sur le livre 4 de Théophraste, page 305.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0246(a)",
-   "page": "page_0246",
-   "marker": "(a)",
-   "text": "Vatable ; Junius ; Piscator ; Ménochius.",
-   "proposed": "Vatable ;\nJunius ;\nPiscator ;\nMénochius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0250(b)",
-   "page": "page_0250",
-   "marker": "(b)",
-   "text": "Juba, dans Pline, livre 8 ; Pausanias, livre 5 ; Strabon, livre 16.",
-   "proposed": "Juba, dans Pline, livre 8 ;\nPausanias, livre 5 ;\nStrabon, livre 16.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0251(c)",
@@ -1046,51 +758,6 @@
    ]
   },
   {
-   "id": "0256(f)",
-   "page": "page_0256",
-   "marker": "(f)",
-   "text": "Aristote, Histoire des animaux, livre 5, chapitre 19 ; et Pline, livre 11, chapitre 21 ; Saint Isidore, Origines, livre 14, chapitre 6.",
-   "proposed": "Aristote, Histoire des animaux, livre 5, chapitre 19 ;\net Pline, livre 11, chapitre 21 ;\nSaint Isidore, Origines, livre 14, chapitre 6.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0257(b)",
-   "page": "page_0257",
-   "marker": "(b)",
-   "text": "Strat. ; Cornelius a Lapide ; Malvenda.",
-   "proposed": "Strat. ;\nCornelius a Lapide ;\nMalvenda.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0257(g)",
-   "page": "page_0257",
-   "marker": "(g)",
-   "text": "Arias Montanus ; Junius ; Louis de Dieu ; Braunius.",
-   "proposed": "Arias Montanus ;\nJunius ;\nLouis de Dieu ;\nBraunius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0258(c)",
-   "page": "page_0258",
-   "marker": "(c)",
-   "text": "Louis de Dieu ; Junius ; Piscator ; Belgæ v sio.",
-   "proposed": "Louis de Dieu ;\nJunius ;\nPiscator ;\nBelgæ v sio.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0259(c)",
-   "page": "page_0259",
-   "marker": "(c)",
-   "text": "4 Rois 7:6.",
-   "proposed": "1 Rois 7:6.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0265(c)",
    "page": "page_0265",
    "marker": "(c)",
@@ -1107,7 +774,7 @@
    "id": "0265(d)",
    "page": "page_0265",
    "marker": "(d)",
-   "text": "[UNCERTAIN HEBREW] _tuitra misa oë._",
+   "text": "יען אשר היתה זאת עמך ἀνθ᾽ ὧν ἐγένετο _ταῦτα μετὰ σοῦ._",
    "proposed": "יען אשר היתה זאת עמך ἀνθ᾽ ὧν ἐγένετο _ταῦτα μετὰ σοῦ._",
    "why": [
     "scan: Filled Hebrew; corrected garbled Greek to ταῦτα μετὰ σοῦ",
@@ -1157,15 +824,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0273(g)",
-   "page": "page_0273",
-   "marker": "(g)",
-   "text": "3 Rois 12:4.",
-   "proposed": "1 Rois 12:4.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0274(c)",
@@ -1246,28 +904,10 @@
    ]
   },
   {
-   "id": "0293(f)",
-   "page": "page_0293",
-   "marker": "(f)",
-   "text": "Ménochius ; Junius ; Piscator.",
-   "proposed": "Ménochius ;\nJunius ;\nPiscator.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0293(g)",
-   "page": "page_0293",
-   "marker": "(g)",
-   "text": "3 Rois 4:6.",
-   "proposed": "1 Rois 4:6.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0293(h)",
    "page": "page_0293",
    "marker": "(h)",
-   "text": "[UNCERTAIN HEBREW]",
+   "text": "התאמץ לעלות במרכבה",
    "proposed": "התאמץ לעלות במרכבה",
    "why": [
     "scan: Filled Hebrew placeholder from the page",
@@ -1276,24 +916,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0297(a)",
-   "page": "page_0297",
-   "marker": "(a)",
-   "text": "Lactance, livre 4, chapitre 10 ; Saint Ambroise, De la pénitence, livre 1, chapitre 10 ; Saint Augustin, sur le Psaume 73 ; Saint Jérôme, sur Osée, chapitre 7.",
-   "proposed": "Lactance, livre 4, chapitre 10 ;\nSaint Ambroise, De la pénitence, livre 1, chapitre 10 ;\nSaint Augustin, sur le Psaume 73 ;\nSaint Jérôme, sur Osée, chapitre 7.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0297(f)",
-   "page": "page_0297",
-   "marker": "(f)",
-   "text": "3 Rois 18:21.",
-   "proposed": "1 Rois 18:21.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0298(e)",
@@ -1347,15 +969,6 @@
    ]
   },
   {
-   "id": "0307(b)",
-   "page": "page_0307",
-   "marker": "(b)",
-   "text": "Tirin ; Ménochius ; Cornelius a Lapide.",
-   "proposed": "Tirin ;\nMénochius ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0308(c)",
    "page": "page_0308",
    "marker": "(c)",
@@ -1366,15 +979,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0311(a)",
-   "page": "page_0311",
-   "marker": "(a)",
-   "text": "Voyez saint Grégoire le Grand, his ; Grotius ; Estius ; Pierre Martyr ; Sanctius.",
-   "proposed": "Voyez saint Grégoire le Grand, his ;\nGrotius ;\nEstius ;\nPierre Martyr ;\nSanctius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0313(d)",
@@ -1412,15 +1016,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0318(d)",
-   "page": "page_0318",
-   "marker": "(d)",
-   "text": "Voyez Théophylacte ; et Euthyme, sur le chapitre 21 de Matthieu ; et Sandius, sur ce passage.",
-   "proposed": "Voyez Théophylacte ;\net Euthyme, sur le chapitre 21 de Matthieu ;\net Sandius, sur ce passage.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0320(a)",
@@ -1478,7 +1073,7 @@
    "id": "0323(a)",
    "page": "page_0323",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] _en d'autres de MSS sequitur versio Targum._",
+   "text": "כאשר יבער הגלל עד תמו _en d'autres de MSS sequitur versio Targum._",
    "proposed": "כאשר יבער הגלל עד תמו _en d'autres de MSS sequitur versio Targum._",
    "why": [
     "scan: Filled the Hebrew placeholder with the printed phrase, spelled as in the reference.",
@@ -1492,7 +1087,7 @@
    "id": "0323(c)",
    "page": "page_0323",
    "marker": "(c)",
-   "text": "[UNCERTAIN HEBREW] _Græci :_ [UNCERTAIN GREEK]",
+   "text": "ונמצא בו דבר טוב אל יהוה _Græci :_ ὅτι εὑρέθη ἐν αὐτῷ ῥῆμα καλὸν περὶ τοῦ κυρίου.",
    "proposed": "ונמצא בו דבר טוב אל יהוה _Græci :_ ὅτι εὑρέθη ἐν αὐτῷ ῥῆμα καλὸν περὶ τοῦ κυρίου.",
    "why": [
     "scan: Filled the Hebrew and the Greek from the printed note.",
@@ -1568,15 +1163,6 @@
    ]
   },
   {
-   "id": "0337(c)",
-   "page": "page_0337",
-   "marker": "(c)",
-   "text": "Tostat ; Sanctius ; Ménochius.",
-   "proposed": "Tostat ;\nSanctius ;\nMénochius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0339(h)",
    "page": "page_0339",
    "marker": "(h)",
@@ -1601,15 +1187,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0340(a)",
-   "page": "page_0340",
-   "marker": "(a)",
-   "text": "Cappel ; Grotius. Voyez au besoin Cajetan, sur 2 Paralipomènes 16:1 ; et Cano, Des lieux théologiques, livre 20, chapitre 5.",
-   "proposed": "Cappel ;\nGrotius. Voyez au besoin Cajetan, sur 2 Paralipomènes 16:1 ;\net Cano, Des lieux théologiques, livre 20, chapitre 5.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0342(i)",
@@ -1655,7 +1232,7 @@
    "id": "0352(a)",
    "page": "page_0352",
    "marker": "(a)",
-   "text": "ויקן את ההר שמרון [UNCERTAIN HEBREW]",
+   "text": "ויקן את ההר שמרון",
    "proposed": "ויקן את ההר שמרון",
    "why": [
     "Hebrew checked against the Hebrew Bible, I Kings 16:24",
@@ -1670,19 +1247,12 @@
    "id": "0357(a)",
    "page": "page_0357",
    "marker": "(a)",
-   "text": "Voyez au besoin Métaphraste, dans Surius ; Pseudo-Doxath., Synopsis ; Jean de Jérusalem, chapitre 1, tome 9, Bibliothèque des Pères ; Saint Isidore, De vita et morte sanctorum ; Saint Épiphane, De vita et interitu sanctorum ; et Sanctius sur ce passage, etc.",
+   "text": "Voyez au besoin Métaphraste, dans Surius ;\nPseudo-Doxath., Synopsis ;\nJean de Jérusalem, chapitre 1, tome 9, Bibliothèque des Pères ;\nSaint Isidore, De vita et morte sanctorum ;\nSaint Épiphane, De vita et interitu sanctorum ;\net Sanctius sur ce passage, etc.",
    "proposed": "Voyez au besoin Métaphraste, dans Surius ;\nPseudo-Doxath., Synopsis ;\nJean de Jérusalem, chapitre 1, tome 9, Bibliothèque des Pères ;\nSaint Isidore, De vita et morte sanctorum ;\nSaint Épiphane, De vita et interitu sanctorum ;\net Sanctius sur ce passage, etc.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0357(b)",
-   "page": "page_0357",
-   "marker": "(b)",
-   "text": "Saint Jean Chrysostome, Homélie 3 sur Élie ; Sedulius ; Bède ; Saint Anselme.",
-   "proposed": "Saint Jean Chrysostome, Homélie 3 sur Élie ;\nSedulius ;\nBède ;\nSaint Anselme.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0358(b)",
@@ -1700,7 +1270,7 @@
    "id": "0360(a)",
    "page": "page_0360",
    "marker": "(a)",
-   "text": "Oi xipanes [UNCERTAIN GREEK] aptus [UNCERTAIN GREEK], xpia [UNCERTAIN GREEK].",
+   "text": "Οἱ κόρακες ἔφερον αὐτῷ ἄρτους τὸ πρωΐ καὶ κρέα τὸ δείλης.",
    "proposed": "Οἱ κόρακες ἔφερον αὐτῷ ἄρτους τὸ πρωΐ καὶ κρέα τὸ δείλης.",
    "why": [
     "scan: Corrected the Latin-letter transliteration to Greek and filled the three placeholders.",
@@ -1711,24 +1281,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0360(b)",
-   "page": "page_0360",
-   "marker": "(b)",
-   "text": "Ainsi l'entendent saint Athanase, Synopsis ; Théodoret, sur 3 Rois, question 52 ; Saint Augustin, sermon 146 de tempore, dans la nouvelle édition 259…",
-   "proposed": "Ainsi l'entendent saint Athanase, Synopsis ;\nThéodoret, sur 3 Rois, question 52 ;\nSaint Augustin, sermon 146 de tempore, dans la nouvelle édition 259…",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0360(c)",
-   "page": "page_0360",
-   "marker": "(c)",
-   "text": "Voyez au besoin Bochart, à l'endroit cité ; Sanctius sur ce passage ; Tostat, questions 11 et 16.",
-   "proposed": "Voyez au besoin Bochart, à l'endroit cité ;\nSanctius sur ce passage ;\nTostat, questions 11 et 16.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0364(b)",
@@ -1742,15 +1294,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0364(e)",
-   "page": "page_0364",
-   "marker": "(e)",
-   "text": "Voyez Cornelius a Lapide, sur ce passage ; Tostat ; Tirin ; Sanctius.",
-   "proposed": "Voyez Cornelius a Lapide, sur ce passage ;\nTostat ;\nTirin ;\nSanctius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0372(a)",
@@ -1779,24 +1322,6 @@
    ]
   },
   {
-   "id": "0373(c)",
-   "page": "page_0373",
-   "marker": "(c)",
-   "text": "Junius ; Tremellius ; Glassius ; Piscator.",
-   "proposed": "Junius ;\nTremellius ;\nGlassius ;\nPiscator.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0374(c)",
-   "page": "page_0374",
-   "marker": "(c)",
-   "text": "Pagnin ; Montanus ; Junius ; Munster.",
-   "proposed": "Pagnin ;\nMontanus ;\nJunius ;\nMunster.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0379(a)",
    "page": "page_0379",
    "marker": "(a)",
@@ -1819,55 +1344,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0385(d)",
-   "page": "page_0385",
-   "marker": "(d)",
-   "text": "Ménochius ; Tirin ; Pierre Martyr.",
-   "proposed": "Ménochius ;\nTirin ;\nPierre Martyr.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0386(a)",
-   "page": "page_0386",
-   "marker": "(a)",
-   "text": "Grotius ; Estius ; Piscator ; Kimhi sur ce passage ; Érasme, Paraphrase sur Romains 11:3.",
-   "proposed": "Grotius ;\nEstius ;\nPiscator ;\nKimhi sur ce passage ;\nÉrasme, Paraphrase sur Romains 11:3.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0387(d)",
-   "page": "page_0387",
-   "marker": "(d)",
-   "text": "Théodoret ; Procope de Gaza ; Sanctius ; Cornelius a Lapide ; Tirin.",
-   "proposed": "Théodoret ;\nProcope de Gaza ;\nSanctius ;\nCornelius a Lapide ;\nTirin.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0390(c)",
-   "page": "page_0390",
-   "marker": "(c)",
-   "text": "Ita l'auteur de l'Histoire scolastique ; Raban Maur ; Denys le Chartreux ; Nicolas de Lyre ; Tostat ; Piscator, etc.",
-   "proposed": "Ita l'auteur de l'Histoire scolastique ;\nRaban Maur ;\nDenys le Chartreux ;\nNicolas de Lyre ;\nTostat ;\nPiscator, etc.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0393(a)",
-   "page": "page_0393",
-   "marker": "(a)",
-   "text": "Grotius ; Junius. Voyez Matthieu 8:22 ; et Luc 9:62.",
-   "proposed": "Grotius ;\nJunius. Voyez Matthieu 8:22 ;\net Luc 9:62.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0396(c)",
@@ -1893,17 +1369,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0404(b)",
-   "page": "page_0404",
-   "marker": "(b)",
-   "text": "L'Arabe ; Munster ; Vatable.",
-   "proposed": "L'Arabe ;\nMunster ;\nVatable.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
   },
   {
    "id": "0404(c)",
@@ -1943,15 +1408,6 @@
    ]
   },
   {
-   "id": "0408(d)",
-   "page": "page_0408",
-   "marker": "(d)",
-   "text": "Les rabbins ità ; et Rupert, livre 5, chapitre 13 ; Denys le Chartreux ; Nicolas de Lyre ; Sanctius.",
-   "proposed": "Les rabbins ità ;\net Rupert, livre 5, chapitre 13 ;\nDenys le Chartreux ;\nNicolas de Lyre ;\nSanctius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0414(g)",
    "page": "page_0414",
    "marker": "(g)",
@@ -1967,7 +1423,7 @@
    "id": "0416(a)",
    "page": "page_0416",
    "marker": "(a)",
-   "text": "[UNCERTAIN HEBREW] שני אנשים בני בליעל",
+   "text": "שני אנשים בני בליעל",
    "proposed": "שני אנשים בני בליעל",
    "why": [
     "Hebrew checked against the Hebrew Bible, I Kings 21:10",
@@ -1977,24 +1433,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0416(b)",
-   "page": "page_0416",
-   "marker": "(b)",
-   "text": "Ita Cajetan ; Tostat ; Grotius ; Junius ; Piscator ; Malvenda.",
-   "proposed": "Ita Cajetan ;\nTostat ;\nGrotius ;\nJunius ;\nPiscator ;\nMalvenda.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0416(d)",
-   "page": "page_0416",
-   "marker": "(d)",
-   "text": "Voyez au besoin Nicolas de Lyre ; Pierre Martyr ; Selden, de Successione in bona, chapitre 25.",
-   "proposed": "Voyez au besoin Nicolas de Lyre ;\nPierre Martyr ;\nSelden, de Successione in bona, chapitre 25.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0420(b)",
@@ -2011,30 +1449,10 @@
    ]
   },
   {
-   "id": "0421(d)",
-   "page": "page_0421",
-   "marker": "(d)",
-   "text": "Voyez Tostat, question 14 ; Sanctius, sur ce passage ; Cornelius a Lapide ; Vatable ; Grotius ; Noël Alexandre, Histoire ecclésiastique de l'Ancien Testament, tome 2.",
-   "proposed": "Voyez Tostat, question 14 ;\nSanctius, sur ce passage ;\nCornelius a Lapide ;\nVatable ;\nGrotius ;\nNoël Alexandre, Histoire ecclésiastique de l'Ancien Testament, tome 2.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0431(c)",
-   "page": "page_0431",
-   "marker": "(c)",
-   "text": "Grotius ; Piscator ; Tirin.",
-   "proposed": "Grotius ;\nPiscator ;\nTirin.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
    "id": "0433(d)",
    "page": "page_0433",
    "marker": "(d)",
-   "text": "[UNCERTAIN HEBREW] לתמו קשתו",
+   "text": "משך בקשת לתמו",
    "proposed": "משך בקשת לתמו",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",

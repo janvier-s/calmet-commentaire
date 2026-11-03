@@ -1,28 +1,22 @@
 {
  "summary": {
   "notes": 1322,
-  "changed": 79,
+  "changed": 6,
   "flags": {
-   "greek": 66,
-   "scan-unread": 78,
+   "greek": 64,
+   "scan-unread": 76,
    "reference-not-in-vulgate": 1,
+   "expand-unread": 9,
    "hebrew": 14,
-   "uncertain": 6,
+   "uncertain": 3,
+   "scan-agy-changed-text": 3,
    "context": 5,
-   "scanned": 8,
+   "scanned": 10,
+   "expand-changed-numbers": 1,
    "ambiguous-name": 1
   }
  },
  "notes": [
-  {
-   "id": "0034(b)",
-   "page": "page_0034",
-   "marker": "(b)",
-   "text": "Voyez, dans Serarius, sur ce passage : Tostat ; Glycas, partie 2 ; Melchior Cano, livre 11, chapitre 5, Réponse à l'argument 12.",
-   "proposed": "Voyez, dans Serarius, sur ce passage : Tostat ;\nGlycas, partie 2 ;\nMelchior Cano, livre 11, chapitre 5, Réponse à l'argument 12.",
-   "why": [],
-   "flags": []
-  },
   {
    "id": "0042(d)",
    "page": "page_0042",
@@ -67,6 +61,7 @@
    "proposed": "Nombres 13:22 ; 19:38 ; Josué 19:28.",
    "why": [
     "context: Verse references not confirmable",
+    "Nombres 19:38 does not exist in the Vulgate",
     "Nombres 19:38 does not exist in the Vulgate"
    ],
    "flags": [
@@ -127,15 +122,6 @@
    ]
   },
   {
-   "id": "0052(g)",
-   "page": "page_0052",
-   "marker": "(g)",
-   "text": "Jonathan ; Masius ; Vatable ; Grotius ; Junius ; Drusius ; Piscator.",
-   "proposed": "Jonathan ;\nMasius ;\nVatable ;\nGrotius ;\nJunius ;\nDrusius ;\nPiscator.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0053(c)",
    "page": "page_0053",
    "marker": "(c)",
@@ -146,15 +132,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0057(b)",
-   "page": "page_0057",
-   "marker": "(b)",
-   "text": "Josèphe ; Tostiel ; Salian.",
-   "proposed": "Josèphe ;\nTostiel ;\nSalian.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0069(m)",
@@ -186,10 +163,12 @@
    "id": "0074(d)",
    "page": "page_0074",
    "marker": "(d)",
-   "text": "Origène, Homélie 4 ; Saint Basile, Ascétiques ; Anastase de Nicée, question 74 ; Saint Augustin, Question 20 sur les Juges. Voyez Cornelius a Lapide sur Juges 3:19 ; et Serarius, question 23.",
+   "text": "Origène, Homélie 4 ;\nSaint Basile, Ascétiques ;\nAnastase de Nicée, question 74 ;\nSaint Augustin, Question 20 sur les Juges. Voyez Cornelius a Lapide sur Juges 3:19 ;\net Serarius, question 23.",
    "proposed": "Origène, Homélie 4 ;\nSaint Basile, Ascétiques ;\nAnastase de Nicée, question 74 ;\nSaint Augustin, Question 20 sur les Juges. Voyez Cornelius a Lapide sur Juges 3:19 ;\net Serarius, question 23.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0075(c)",
@@ -216,58 +195,26 @@
    ]
   },
   {
-   "id": "0081(c)",
-   "page": "page_0081",
-   "marker": "(c)",
-   "text": "Saint Clément d'Alexandrie, Stromates, livre 1 ; Eusèbe, Chronique ; Bède ; Saint Isidore. Voyez Génébrard, Chronique ; et Serarius et Bonfrère sur ce passage.",
-   "proposed": "Saint Clément d'Alexandrie, Stromates, livre 1 ;\nEusèbe, Chronique ;\nBède ;\nSaint Isidore. Voyez Génébrard, Chronique ;\net Serarius et Bonfrère sur ce passage.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0083(b)",
-   "page": "page_0083",
-   "marker": "(b)",
-   "text": "Théodoret, Question 11 ; Drusius ; Vatable ; Junius ; et Tremellius.",
-   "proposed": "Théodoret, Question 11 ;\nDrusius ;\nVatable ;\nJunius ;\net Tremellius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0083(c)",
-   "page": "page_0083",
-   "marker": "(c)",
-   "text": "Serarius ; Drusius ; Bonfrère ; Cornelius a Lapide.",
-   "proposed": "Serarius ;\nDrusius ;\nBonfrère ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0087(i)",
-   "page": "page_0087",
-   "marker": "(i)",
-   "text": "Matthieu 17:1 ; Marc 9:1 ; Luc 9:28.",
-   "proposed": "Matthieu 17:1 ;\nMarc 9:1 ;\nLuc 9:28.",
-   "why": [],
+   "id": "0079(f)",
+   "page": "page_0079",
+   "marker": "(f)",
+   "text": "Le Chaldéen ; le Syriaque ; l'Arabe ; Pagnin ; Vatable. Voyez 4 Rois 2:17.",
+   "proposed": "Le Chaldéen ; le Syriaque ; l'Arabe ; Pagnin ; Vatable. Voyez 3 Rois 2:17.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": []
   },
   {
    "id": "0088(a)",
    "page": "page_0088",
    "marker": "(a)",
-   "text": "Saint Jérôme, Lettre à Marcelle ; et Épitaphe de Paule ; Saint Cyrille ; Bède, etc.",
+   "text": "Saint Jérôme, Lettre à Marcelle ;\net Épitaphe de Paule ;\nSaint Cyrille ;\nBède, etc.",
    "proposed": "Saint Jérôme, Lettre à Marcelle ;\net Épitaphe de Paule ;\nSaint Cyrille ;\nBède, etc.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0088(b)",
-   "page": "page_0088",
-   "marker": "(b)",
-   "text": "Voyez Adeschomius ; Bonfrère, sur ce passage ; Cotovicus ; et Radzivill.",
-   "proposed": "Voyez Adeschomius ;\nBonfrère, sur ce passage ;\nCotovicus ;\net Radzivill.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0089(b)",
@@ -282,15 +229,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0094(a)",
-   "page": "page_0094",
-   "marker": "(a)",
-   "text": "Origène, Homélie 5 sur les Juges ; Saint Augustin, Contre Fauste, livre 12, chapitre 32 ; Saint Ambroise, Des veuves ; Saint Pierre Damien, Sermon 40. Voyez Serarius, sur le chapitre 5, question 13.",
-   "proposed": "Origène, Homélie 5 sur les Juges ;\nSaint Augustin, Contre Fauste, livre 12, chapitre 32 ;\nSaint Ambroise, Des veuves ;\nSaint Pierre Damien, Sermon 40. Voyez Serarius, sur le chapitre 5, question 13.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0094(b)",
@@ -393,24 +331,6 @@
    ]
   },
   {
-   "id": "0107(c)",
-   "page": "page_0107",
-   "marker": "(c)",
-   "text": "Voyez 4 Rois 12:10 ; 2 Paralipomènes 24:11 ; Isaïe 33:18 ; 2 Esdras 13:13.",
-   "proposed": "Voyez 1 Rois 12:10 ; 2 Paralipomènes 24:11 ; Isaïe 33:18 ; 2 Esdras 13:13.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0108(f)",
-   "page": "page_0108",
-   "marker": "(f)",
-   "text": "4 Rois 22:3 et suivants ; et 2 Paralipomènes 34:15.",
-   "proposed": "4 Rois 22:3 et suivants ; 2 Paralipomènes 34:15.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0108(k)",
    "page": "page_0108",
    "marker": "(k)",
@@ -446,7 +366,7 @@
    "id": "0110(b)",
    "page": "page_0110",
    "marker": "(b)",
-   "text": "למה ישבת בין המשפתים לשמע שרקות עדרים [UNCERTAIN HEBREW]",
+   "text": "למה ישבת בין המשפתים לשמע שרקות עדרים",
    "proposed": "למה ישבת בין המשפתים לשמע שרקות עדרים",
    "why": [
     "Hebrew checked against the Hebrew Bible, Judges 5:16",
@@ -499,15 +419,6 @@
    ]
   },
   {
-   "id": "0113(f)",
-   "page": "page_0113",
-   "marker": "(f)",
-   "text": "Ainsi Rupert ; Grotius ; Vatable ; Mariana ; Esp. ; Valois, De la philosophie sacrée, chapitre 31.",
-   "proposed": "Ainsi Rupert ;\nGrotius ;\nVatable ;\nMariana ;\nEsp. ;\nValois, De la philosophie sacrée, chapitre 31.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0116(a)",
    "page": "page_0116",
    "marker": "(a)",
@@ -518,15 +429,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0117(a)",
-   "page": "page_0117",
-   "marker": "(a)",
-   "text": "Gemarre de Babylone, au titre Moëd caton, chapitre 3 ; Rabbi Salomon Jarchi ; et Talmudista. Voyez Selden, Des Sanhédrins, livre 2, chapitre 7.",
-   "proposed": "Gemarre de Babylone, au titre Moëd caton, chapitre 3 ;\nRabbi Salomon Jarchi ;\net Talmudista. Voyez Selden, Des Sanhédrins, livre 2, chapitre 7.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0119(a)",
@@ -562,7 +464,7 @@
    "id": "0123(b)",
    "page": "page_0123",
    "marker": "(b)",
-   "text": "Nombres 13:300.",
+   "text": "Nombres 13:30*.",
    "proposed": "Nombres 13:30*.",
    "why": [
     "context: Amalec in the south, Vulgate 13:30: 13:300 -> 13:30*"
@@ -572,37 +474,10 @@
    ]
   },
   {
-   "id": "0125(d)",
-   "page": "page_0125",
-   "marker": "(d)",
-   "text": "Voyez saint Augustin, Question 21 ; et Serarius ; et Drusius.",
-   "proposed": "Voyez saint Augustin, Question 21 ;\net Serarius ;\net Drusius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0126(c)",
-   "page": "page_0126",
-   "marker": "(c)",
-   "text": "3 Rois 13:1.",
-   "proposed": "1 Rois 13:1.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0127(b)",
-   "page": "page_0127",
-   "marker": "(b)",
-   "text": "Ita Junius ; Pierre Martyr ; Brougton ; Chytreus et Habichorst, Dissertatio de altari Gedeon, etc.",
-   "proposed": "Ita Junius ;\nPierre Martyr ;\nBrougton ;\nChytreus et Habichorst, Dissertatio de altari Gedeon, etc.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0128(a)",
    "page": "page_0128",
    "marker": "(a)",
-   "text": "לַאֲשֶׁר אֲנִי הַעֲנִי [UNCERTAIN HEBREW]",
+   "text": "ליואש אבי העזרי",
    "proposed": "ליואש אבי העזרי",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -626,26 +501,6 @@
    ]
   },
   {
-   "id": "0129(c)",
-   "page": "page_0129",
-   "marker": "(c)",
-   "text": "Voyez Bonfrère ; Cornelius a Lapide ; Grotius ; Vatable.",
-   "proposed": "Voyez Bonfrère ;\nCornelius a Lapide ;\nGrotius ;\nVatable.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0131(e)",
-   "page": "page_0131",
-   "marker": "(e)",
-   "text": "Voyez Estius ; Bonfrère ; Cornelius a Lapide ; Ménochius.",
-   "proposed": "Voyez Estius ;\nBonfrère ;\nCornelius a Lapide ;\nMénochius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0133(b)",
    "page": "page_0133",
    "marker": "(b)",
@@ -658,15 +513,6 @@
    ]
   },
   {
-   "id": "0133(c)",
-   "page": "page_0133",
-   "marker": "(c)",
-   "text": "Serarius ; Bonfrère ; Ménochius ; Arias Montanus.",
-   "proposed": "Serarius ;\nBonfrère ;\nMénochius ;\nArias Montanus.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0134(c)",
    "page": "page_0134",
    "marker": "(c)",
@@ -677,26 +523,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0134(d)",
-   "page": "page_0134",
-   "marker": "(d)",
-   "text": "Cajetan ; Junius ; Tremellius ; Piscator ; Pierre Martyr.",
-   "proposed": "Cajetan ;\nJunius ;\nTremellius ;\nPiscator ;\nPierre Martyr.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0135(a)",
-   "page": "page_0135",
-   "marker": "(a)",
-   "text": "Vatable ; Serarius ; Bonfrère.",
-   "proposed": "Vatable ;\nSerarius ;\nBonfrère.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0138(f)",
@@ -741,28 +567,23 @@
    "id": "0141(e)",
    "page": "page_0141",
    "marker": "(e)",
-   "text": "Origène, Homélie 8 sur les Juges. Voyez aussi Théodoret, Question 14 sur les Juges ; Saint Jérôme, Lettre à Paulin ; Saint Augustin, De l'unité de l'Église, chapitre 5, et sur le Psaume 45 ; Saint Ambroise, dans la préface du livre 1, Du Saint-Esprit.",
+   "text": "Origène, Homélie 8 sur les Juges. Voyez aussi Théodoret, Question 14 sur les Juges ;\nSaint Jérôme, Lettre à Paulin ;\nSaint Augustin, De l'unité de l'Église, chapitre 5, et sur le Psaume 45 ;\nSaint Ambroise, dans la préface du livre 1, Du Saint-Esprit.",
    "proposed": "Origène, Homélie 8 sur les Juges. Voyez aussi Théodoret, Question 14 sur les Juges ;\nSaint Jérôme, Lettre à Paulin ;\nSaint Augustin, De l'unité de l'Église, chapitre 5, et sur le Psaume 45 ;\nSaint Ambroise, dans la préface du livre 1, Du Saint-Esprit.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0145(b)",
-   "page": "page_0145",
-   "marker": "(b)",
-   "text": "Ainsi Josèphe, Antiquités judaïques, livre 5, chapitre 8 ; Théodoret, Question 15 ; Munster.",
-   "proposed": "Ainsi Josèphe, Antiquités judaïques, livre 5, chapitre 8 ;\nThéodoret, Question 15 ;\nMunster.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0145(c)",
    "page": "page_0145",
    "marker": "(c)",
-   "text": "Ainsi l'entendent Serarius ; Bonfrère ; Nicolas de Lyre ; Arias Montanus, etc.",
+   "text": "Ainsi l'entendent Serarius ;\nBonfrère ;\nNicolas de Lyre ;\nArias Montanus, etc.",
    "proposed": "Ainsi l'entendent Serarius ;\nBonfrère ;\nNicolas de Lyre ;\nArias Montanus, etc.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0147(b)",
@@ -780,7 +601,8 @@
    ],
    "flags": [
     "scanned",
-    "expand-changed-numbers"
+    "expand-changed-numbers",
+    "expand-unread"
    ]
   },
   {
@@ -796,33 +618,6 @@
    ]
   },
   {
-   "id": "0150(e)",
-   "page": "page_0150",
-   "marker": "(e)",
-   "text": "Voyez Grotius, sur ce passage ; Frontin, livre 2, chapitre 4, Stratagèmes ; et Polyen, livre 2, § 7.",
-   "proposed": "Voyez Grotius, sur ce passage ;\nFrontin, livre 2, chapitre 4, Stratagèmes ;\net Polyen, livre 2, § 7.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0152(a)",
-   "page": "page_0152",
-   "marker": "(a)",
-   "text": "Jean 1:28. Ainsi l'entendent Scaliger, dans Drusius ; Bonfrère ; Junius.",
-   "proposed": "Jean 1:28. Ainsi l'entendent Scaliger, dans Drusius ;\nBonfrère ;\nJunius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0154(f)",
-   "page": "page_0154",
-   "marker": "(f)",
-   "text": "Ita Vatable ; Cajtal. ; Junius ; Piscator ; Cornelius a Lapide ; Delrio, Adagia 157.",
-   "proposed": "Ita Vatable ;\nCajtal. ;\nJunius ;\nPiscator ;\nCornelius a Lapide ;\nDelrio, Adagia 157.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0156(a)",
    "page": "page_0156",
    "marker": "(a)",
@@ -834,15 +629,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0156(b)",
-   "page": "page_0156",
-   "marker": "(b)",
-   "text": "Vatable ; Ménochius ; Cornelius a Lapide ; Junius.",
-   "proposed": "Vatable ;\nMénochius ;\nCornelius a Lapide ;\nJunius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0157(e)",
@@ -902,19 +688,10 @@
    ]
   },
   {
-   "id": "0164(b)",
-   "page": "page_0164",
-   "marker": "(b)",
-   "text": "Ménochius ; Tirin ; Serarius ; Bonfrère ; Cornelius a Lapide.",
-   "proposed": "Ménochius ;\nTirin ;\nSerarius ;\nBonfrère ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0165(f)",
    "page": "page_0165",
    "marker": "(f)",
-   "text": "_Xénophon_ l. 3. _Anabas._ [UNCERTAIN GREEK] Σκυθῶν ἀμφιτρίτα τὰ ὦτα τετρυπημένα. _Vide et Macrob._ l. 7. c. 3. _Saturn. Cum Ostavius Ciceroni recitanti dixisset ; non audio quæ dicis ; ille respondit, certè solebas bene foratas habere aures._",
+   "text": "_Xénophon_ l. 3. _Anabas._ ἐπεὶ ἐγὼ αὐτὸν εἶδον ὥσπερ Λυδόν, ἀμφότερα τὰ ὦτα τετρυπημένον. _Vide et Macrob._ l. 7. c. 3. _Saturn. Cum Ostavius Ciceroni recitanti dixisset ; non audio quæ dicis ; ille respondit, certè solebas bene foratas habere aures._",
    "proposed": "_Xénophon_ l. 3. _Anabas._ ἐπεὶ ἐγὼ αὐτὸν εἶδον ὥσπερ Λυδόν, ἀμφότερα τὰ ὦτα τετρυπημένον. _Vide et Macrob._ l. 7. c. 3. _Saturn. Cum Ostavius Ciceroni recitanti dixisset ; non audio quæ dicis ; ille respondit, certè solebas bene foratas habere aures._",
    "why": [
     "Greek spelling checked against a Greek dictionary",
@@ -922,7 +699,8 @@
     "read on the scan: ἐπεὶ ἐγὼ αὐτὸν εἶδον ὥσπερ Λυδόν, ἀμφότερα τὰ ὦτα τετρυπημένον"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -939,24 +717,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0166(c)",
-   "page": "page_0166",
-   "marker": "(c)",
-   "text": "Munster ; Vatable ; Grotius ; Junius ; Drusius ; Rabbi David ; Caist.",
-   "proposed": "Munster ;\nVatable ;\nGrotius ;\nJunius ;\nDrusius ;\nRabbi David ;\nCaist.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0167(c)",
-   "page": "page_0167",
-   "marker": "(c)",
-   "text": "Saint Augustin, Question 41 sur les Juges ; Arias Montanus ; Estius ; Nicolas de Lyre, etc.",
-   "proposed": "Saint Augustin, Question 41 sur les Juges ;\nArias Montanus ;\nEstius ;\nNicolas de Lyre, etc.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0169(b)",
@@ -999,15 +759,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0179(d)",
-   "page": "page_0179",
-   "marker": "(d)",
-   "text": "Psaumes 44:8 ; Isaïe 61:1 ; Daniel 9:24 ; Luc 4:18 ; Actes 4:27.",
-   "proposed": "Psaumes 44:8 ;\nIsaïe 61:1 ;\nDaniel 9:24 ;\nLuc 4:18 ;\nActes 4:27.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0181(d)",
@@ -1073,64 +824,18 @@
    ]
   },
   {
-   "id": "0198(e)",
-   "page": "page_0198",
-   "marker": "(e)",
-   "text": "Munster ; Bonfrère ; Cornelius a Lapide.",
-   "proposed": "Munster ;\nBonfrère ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0202(a)",
-   "page": "page_0202",
-   "marker": "(a)",
-   "text": "Ussérius ; Salian ; Torniel.",
-   "proposed": "Ussérius ;\nSalian ;\nTorniel.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0206(b)",
-   "page": "page_0206",
-   "marker": "(b)",
-   "text": "Rabbi David ; Drusius ; Munster ; Vatable ; Cornelius a Lapide.",
-   "proposed": "Rabbi David ;\nDrusius ;\nMunster ;\nVatable ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0207(a)",
-   "page": "page_0207",
-   "marker": "(a)",
-   "text": "Voyez Arus. sur ce passage ; Grotius ; et Selden, De successionibus in bona, livre 1, chapitre 3.",
-   "proposed": "Voyez Arus. sur ce passage ;\nGrotius ;\net Selden, De successionibus in bona, livre 1, chapitre 3.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0218(b)",
-   "page": "page_0218",
-   "marker": "(b)",
-   "text": "Serarius ; Ménochius ; Bonfrère ; Grotius ; Junius.",
-   "proposed": "Serarius ;\nMénochius ;\nBonfrère ;\nGrotius ;\nJunius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0220(a)",
    "page": "page_0220",
    "marker": "(a)",
-   "text": "Joseph. lib. 4. de Bello c. 25. Σάδων [UNCERTAIN GREEK] Γάδαρα μητρόπολιν τῆς περαίας παρτιεάν.",
+   "text": "Joseph. lib. 4. de Bello c. 25. ἐλθόντι ἐπὶ τὰ Γάδαρα μητρόπολιν τῆς περαίας καρτεράν.",
    "proposed": "Joseph. lib. 4. de Bello c. 25. ἐλθόντι ἐπὶ τὰ Γάδαρα μητρόπολιν τῆς περαίας καρτεράν.",
    "why": [
     "context: Josephus quotation unrecoverable",
     "scan (agy flash): Filled Greek placeholder and corrected καρτεράν"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -1226,28 +931,12 @@
    "id": "0240(c)",
    "page": "page_0240",
    "marker": "(c)",
-   "text": "Voyez Exode 29:36 ; Exode 12:47 ; Genèse 18:7, etc. Virgile, Églogues, 3. Cras faciam vitulâ.",
+   "text": "Voyez Exode 29:36 ;\nExode 12:47 ;\nGenèse 18:7, etc. Virgile, Églogues, 3. Cras faciam vitulâ.",
    "proposed": "Voyez Exode 29:36 ;\nExode 12:47 ;\nGenèse 18:7, etc. Virgile, Églogues, 3. Cras faciam vitulâ.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0246(h)",
-   "page": "page_0246",
-   "marker": "(h)",
-   "text": "Nicolas de Lyre ; Cajetan ; Arias ; Junius ; Pierre Martyr ; Serarius ; Cornelius a Lapide ; Bonfrère ; et Grotius.",
-   "proposed": "Nicolas de Lyre ;\nCajetan ;\nArias ;\nJunius ;\nPierre Martyr ;\nSerarius ;\nCornelius a Lapide ;\nBonfrère ;\net Grotius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0249(e)",
-   "page": "page_0249",
-   "marker": "(e)",
-   "text": "Arias Montanus ; Scaliger, livre 4, De emendatione temporum ; Bochart, De animalibus sacris, partie 2, livre 4, chapitre 9.",
-   "proposed": "Arias Montanus ;\nScaliger, livre 4, De emendatione temporum ;\nBochart, De animalibus sacris, partie 2, livre 4, chapitre 9.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0249(h)",
@@ -1314,15 +1003,6 @@
    ]
   },
   {
-   "id": "0252(d)",
-   "page": "page_0252",
-   "marker": "(d)",
-   "text": "Voyez Matthieu 9:15 ; Marc 2:19 ; Jean 3:29.",
-   "proposed": "Voyez Matthieu 9:15 ;\nMarc 2:19 ;\nJean 3:29.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0254(a)",
    "page": "page_0254",
    "marker": "(a)",
@@ -1335,15 +1015,6 @@
    ]
   },
   {
-   "id": "0257(a)",
-   "page": "page_0257",
-   "marker": "(a)",
-   "text": "Nicolas de Lyre ; Tostat ; Vatable ; Munster ; Castalion.",
-   "proposed": "Nicolas de Lyre ;\nTostat ;\nVatable ;\nMunster ;\nCastalion.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0258(a)",
    "page": "page_0258",
    "marker": "(a)",
@@ -1354,15 +1025,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0258(b)",
-   "page": "page_0258",
-   "marker": "(b)",
-   "text": "Ita Vatable ; Drusius ; Junius ; Serarius ; Cornelius a Lapide ; Bonfrère ; Delrio, etc.",
-   "proposed": "Ita Vatable ;\nDrusius ;\nJunius ;\nSerarius ;\nCornelius a Lapide ;\nBonfrère ;\nDelrio, etc.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0258(c)",
@@ -1391,15 +1053,6 @@
    ]
   },
   {
-   "id": "0263(b)",
-   "page": "page_0263",
-   "marker": "(b)",
-   "text": "Voyez Serarius, question 7 ; Bonfrère, sur ce passage ; Bochart, De animalibus sacris, partie 1, livre 3, chapitre 13.",
-   "proposed": "Voyez Serarius, question 7 ;\nBonfrère, sur ce passage ;\nBochart, De animalibus sacris, partie 1, livre 3, chapitre 13.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0265(c)",
    "page": "page_0265",
    "marker": "(c)",
@@ -1415,7 +1068,7 @@
    "id": "0267(g)",
    "page": "page_0267",
    "marker": "(g)",
-   "text": "Vide Isaïe 17:6. 27:10. et maximè 53:5. [UNCERTAIN HEBREW] תחת סעיפיו חסויו Ézéchiel 31:6, 8.",
+   "text": "Vide Isaïe 17:6. 27:10. et maximè 53:5. תחת סעיפי הסלעים Ézéchiel 31:6, 8.",
    "proposed": "Vide Isaïe 17:6. 27:10. et maximè 53:5. תחת סעיפי הסלעים Ézéchiel 31:6, 8.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
@@ -1451,24 +1104,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0270(c)",
-   "page": "page_0270",
-   "marker": "(c)",
-   "text": "Tostat ; Ménochius ; Serarius ; Cornelius a Lapide ; Bonfrère.",
-   "proposed": "Tostat ;\nMénochius ;\nSerarius ;\nCornelius a Lapide ;\nBonfrère.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0271(a)",
-   "page": "page_0271",
-   "marker": "(a)",
-   "text": "Vatable ; Junius ; Drusius ; Bochart, De animalibus sacris, partie 1, livre 2, chapitre 15 ; Serarius, questions 15 et 16 ; Grotius ; Patres Græci et Latini, dans Bonfrère, sur ce passage.",
-   "proposed": "Vatable ;\nJunius ;\nDrusius ;\nBochart, De animalibus sacris, partie 1, livre 2, chapitre 15 ;\nSerarius, questions 15 et 16 ;\nGrotius ;\nPatres Græci et Latini, dans Bonfrère, sur ce passage.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0271(k)",
@@ -1539,28 +1174,10 @@
    ]
   },
   {
-   "id": "0284(a)",
-   "page": "page_0284",
-   "marker": "(a)",
-   "text": "Vatable ; Junius ; Bochart, Phaleg, livre 3, chapitre 12.",
-   "proposed": "Vatable ;\nJunius ;\nBochart, Phaleg, livre 3, chapitre 12.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0284(g)",
-   "page": "page_0284",
-   "marker": "(g)",
-   "text": "Voyez Casaubon, sur Théocrite, chapitre 27 ; Pignorius, De servis, pages 9 et 10 ; Clénard, Lettres, livre 1.",
-   "proposed": "Voyez Casaubon, sur Théocrite, chapitre 27 ;\nPignorius, De servis, pages 9 et 10 ;\nClénard, Lettres, livre 1.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0285(a)",
    "page": "page_0285",
    "marker": "(a)",
-   "text": "Herodot. l. 4. c 2. τῆς δὲ Σκυθῶν [UNCERTAIN GREEK] τυφλῶν.",
+   "text": "Herodot. l. 4. c 2. τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*.",
    "proposed": "Herodot. l. 4. c 2. τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
@@ -1569,44 +1186,9 @@
     "guessed from context: τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
-  },
-  {
-   "id": "0289(b)",
-   "page": "page_0289",
-   "marker": "(b)",
-   "text": "Voyez Cajetan, sur ce passage ; Tostat, question 54 ; Lessius, De justitia, livre 2, chapitre 9 ; François Victoria, relectione de homicidio sub finem ; Sotarius, question 31 ; Bonfrère, sur ce passage.",
-   "proposed": "Voyez Cajetan, sur ce passage ;\nTostat, question 54 ;\nLessius, De justitia, livre 2, chapitre 9 ;\nFrançois Victoria, relectione de homicidio sub finem ;\nSotarius, question 31 ;\nBonfrère, sur ce passage.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0293(a)",
-   "page": "page_0293",
-   "marker": "(a)",
-   "text": "Nicolas de Lyre ; Tostat ; Masius.",
-   "proposed": "Nicolas de Lyre ;\nTostat ;\nMasius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0293(b)",
-   "page": "page_0293",
-   "marker": "(b)",
-   "text": "Ménochius ; Junius ; Bonfrère ; Cornelius a Lapide.",
-   "proposed": "Ménochius ;\nJunius ;\nBonfrère ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0293(c)",
-   "page": "page_0293",
-   "marker": "(c)",
-   "text": "Grotius ; Pierre Martyr ; Serarius.",
-   "proposed": "Grotius ;\nPierre Martyr ;\nSerarius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0296(a)",
@@ -1621,42 +1203,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0299(d)",
-   "page": "page_0299",
-   "marker": "(d)",
-   "text": "Voyez Serarius, question 6 ; Bonfrère ; Cornelius à Lapide.",
-   "proposed": "Voyez Serarius, question 6 ;\nBonfrère ;\nCornelius à Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0302(a)",
-   "page": "page_0302",
-   "marker": "(a)",
-   "text": "Ainsi Vatable ; Piscator ; Junius ; Drusius ; Munster.",
-   "proposed": "Ainsi Vatable ;\nPiscator ;\nJunius ;\nDrusius ;\nMunster.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0303(e)",
-   "page": "page_0303",
-   "marker": "(e)",
-   "text": "Serarius ; Junius ; Pagnin ; Arias Montanus.",
-   "proposed": "Serarius ;\nJunius ;\nPagnin ;\nArias Montanus.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0305(f)",
-   "page": "page_0305",
-   "marker": "(f)",
-   "text": "Philostorge ; Cornelius a Lapide ; Bonfrère, sur ce passage. Voyez du même Onomasticon et Serarius.",
-   "proposed": "Philostorge ;\nCornelius a Lapide ;\nBonfrère, sur ce passage. Voyez du même Onomasticon et Serarius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0307(a)",
@@ -1697,24 +1243,6 @@
    ]
   },
   {
-   "id": "0313(c)",
-   "page": "page_0313",
-   "marker": "(c)",
-   "text": "Munster ; Vatable ; Grotius ; Estius ; Serarius ; Cornelius a Lapide ; Junius.",
-   "proposed": "Munster ;\nVatable ;\nGrotius ;\nEstius ;\nSerarius ;\nCornelius a Lapide ;\nJunius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0316(a)",
-   "page": "page_0316",
-   "marker": "(a)",
-   "text": "Juges 19:18. Voyez Munster ; Vatable ; Drusius ; Cornelius a Lapide.",
-   "proposed": "Juges 19:18. Voyez Munster ;\nVatable ;\nDrusius ;\nCornelius a Lapide.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0317(e)",
    "page": "page_0317",
    "marker": "(e)",
@@ -1727,19 +1255,10 @@
    ]
   },
   {
-   "id": "0319(b)",
-   "page": "page_0319",
-   "marker": "(b)",
-   "text": "Ainsi Munster ; Pagnin ; Vatable ; Junius.",
-   "proposed": "Ainsi Munster ;\nPagnin ;\nVatable ;\nJunius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0322(d)",
    "page": "page_0322",
    "marker": "(d)",
-   "text": "עלי כל מחסורך עלי [UNCERTAIN HEBREW] ius.",
+   "text": "כל מחסורך עלי πᾶν τὸ ὑστέρημά σου ἐπ᾽ ἐμέ.",
    "proposed": "כל מחסורך עלי πᾶν τὸ ὑστέρημά σου ἐπ᾽ ἐμέ.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Judges 19:20",
@@ -1749,17 +1268,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0323(e)",
-   "page": "page_0323",
-   "marker": "(e)",
-   "text": "Voyez Tostat ; Estius ; Bonfrère ; Pierre Martyr.",
-   "proposed": "Voyez Tostat ;\nEstius ;\nBonfrère ;\nPierre Martyr.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
   },
   {
    "id": "0325(a)",
@@ -1776,28 +1284,10 @@
    ]
   },
   {
-   "id": "0329(c)",
-   "page": "page_0329",
-   "marker": "(c)",
-   "text": "Voyez ce qu'on a dit sur la Genèse 46:21 ; Nombres 26:38 ; et Kimhi, dans Drusius, sur ce passage,",
-   "proposed": "Voyez ce qu'on a dit sur la Genèse 46:21 ;\nNombres 26:38 ;\net Kimhi, dans Drusius, sur ce passage,",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0330(b)",
-   "page": "page_0330",
-   "marker": "(b)",
-   "text": "Drusius ; Munster ; Grotius.",
-   "proposed": "Drusius ;\nMunster ;\nGrotius.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0338(a)",
    "page": "page_0338",
    "marker": "(a)",
-   "text": "עם האורב… ומוסר היה [UNCERTAIN HEBREW]",
+   "text": "והמועד היה… עם האורב הרב",
    "proposed": "והמועד היה… עם האורב הרב",
    "why": [
     "Hebrew checked against the Hebrew Bible, Judges 20:38",
@@ -1813,7 +1303,7 @@
    "id": "0338(b)",
    "page": "page_0338",
    "marker": "(b)",
-   "text": "καὶ ἡ ἀπόκρισις ἦν αὐτοῖς, [UNCERTAIN GREEK]",
+   "text": "καὶ ἡ σύνταξις τοῖς ἀνδράσιν Ἰσραήλ, πρὸς τὸ ἀνελθεῖν,",
    "proposed": "καὶ ἡ σύνταξις τοῖς ἀνδράσιν Ἰσραήλ, πρὸς τὸ ἀνελθεῖν,",
    "why": [
     "Greek checked against the Septuagint, Deutéronome 2:15",
@@ -1837,15 +1327,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0345(b)",
-   "page": "page_0345",
-   "marker": "(b)",
-   "text": "Tostat ; Pierre Martyr ; Junius ; Cornelius a Lapide ; Bonfrère.",
-   "proposed": "Tostat ;\nPierre Martyr ;\nJunius ;\nCornelius a Lapide ;\nBonfrère.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0352(c)",

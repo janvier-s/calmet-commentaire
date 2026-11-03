@@ -1,15 +1,15 @@
 {
  "summary": {
   "notes": 1260,
-  "changed": 32,
+  "changed": 2,
   "flags": {
    "greek": 70,
    "scan-unread": 81,
    "hebrew": 13,
+   "expand-unread": 4,
    "context": 10,
    "ambiguous-name": 1,
-   "scanned": 4,
-   "uncertain": 1
+   "scanned": 4
   }
  },
  "notes": [
@@ -24,33 +24,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0037(e)",
-   "page": "page_0037",
-   "marker": "(e)",
-   "text": "Vatable ; Junius ; Tremellius ; Ménochius ; Piscator.",
-   "proposed": "Vatable ;\nJunius ;\nTremellius ;\nMénochius ;\nPiscator.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0039(c)",
-   "page": "page_0039",
-   "marker": "(c)",
-   "text": "Veteres Hebræi in Fagius ; Vatable ; Grotius ; Malvenda ; Mercier, in Both.",
-   "proposed": "Veteres Hebræi in Fagius ;\nVatable ;\nGrotius ;\nMalvenda ;\nMercier, in Both.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0044(f)",
-   "page": "page_0044",
-   "marker": "(f)",
-   "text": "Pagnin ; Vatable ; Malvenda.",
-   "proposed": "Pagnin ;\nVatable ;\nMalvenda.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0046(a)",
@@ -79,24 +52,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0047(e)",
-   "page": "page_0047",
-   "marker": "(e)",
-   "text": "Estius ; Ménochius ; Grotius.",
-   "proposed": "Estius ;\nMénochius ;\nGrotius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0048(d)",
-   "page": "page_0048",
-   "marker": "(d)",
-   "text": "Les rabbins ; Rabbi Salomon sur Lévitique 2:11 ; Maïmonide, traité Berakhot, chapitre 8 ; Kimhi sur 2 Paralipomènes 31:5.",
-   "proposed": "Les rabbins ;\nRabbi Salomon sur Lévitique 2:11 ;\nMaïmonide, traité Berakhot, chapitre 8 ;\nKimhi sur 2 Paralipomènes 31:5.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0050(d)",
@@ -141,19 +96,12 @@
    "id": "0058(a)",
    "page": "page_0058",
    "marker": "(a)",
-   "text": "Genèse 9:4 ; Lévitique 7:26-27 et 17:10-12 ; Deutéronome 12:16 et 15:23 ; Aben Ezra, etc.",
+   "text": "Genèse 9:4 ;\nLévitique 7:26-27 et 17:10-12 ;\nDeutéronome 12:16 et 15:23 ;\nAben Ezra, etc.",
    "proposed": "Genèse 9:4 ;\nLévitique 7:26-27 et 17:10-12 ;\nDeutéronome 12:16 et 15:23 ;\nAben Ezra, etc.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0058(b)",
-   "page": "page_0058",
-   "marker": "(b)",
-   "text": "Thrin. ; Ménochius ; Cornelius a Lapide ; Bonfrère ; Maïmonide.",
-   "proposed": "Thrin. ;\nMénochius ;\nCornelius a Lapide ;\nBonfrère ;\nMaïmonide.",
-   "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0071(a)",
@@ -169,17 +117,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0072(b)",
-   "page": "page_0072",
-   "marker": "(b)",
-   "text": "Saint Augustin, Question 2 sur le Lévitique, etc. ; Nicolas de Lyre ; Ménochius.",
-   "proposed": "Saint Augustin, Question 2 sur le Lévitique, etc. ;\nNicolas de Lyre ;\nMénochius.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
   },
   {
    "id": "0076(a)",
@@ -274,15 +211,6 @@
    ]
   },
   {
-   "id": "0093(a)",
-   "page": "page_0093",
-   "marker": "(a)",
-   "text": "Ménochius ; Cornelius a Lapide ; Villet.",
-   "proposed": "Ménochius ;\nCornelius a Lapide ;\nVillet.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0094(d)",
    "page": "page_0094",
    "marker": "(d)",
@@ -331,33 +259,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0110(d)",
-   "page": "page_0110",
-   "marker": "(d)",
-   "text": "Nombres 20:25 et suiv.",
-   "proposed": "Nombres 20:25 et suivants.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0116(a)",
-   "page": "page_0116",
-   "marker": "(a)",
-   "text": "Nicolas de Lyre ; Ménochius ; Cornelius a Lapide ; Piscator.",
-   "proposed": "Nicolas de Lyre ;\nMénochius ;\nCornelius a Lapide ;\nPiscator.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0118(d)",
-   "page": "page_0118",
-   "marker": "(d)",
-   "text": "Nicolas de Lyre ; Estius ; Ménochius ; Jansénius.",
-   "proposed": "Nicolas de Lyre ;\nEstius ;\nMénochius ;\nJansénius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0120(d)",
@@ -425,33 +326,6 @@
    ]
   },
   {
-   "id": "0132(a)",
-   "page": "page_0132",
-   "marker": "(a)",
-   "text": "Diodore, livre 2 ; Saint Jérôme, Contre Jovinien, livre 2 ; Thévenot, partie 1, livre 2, chapitre 32.",
-   "proposed": "Diodore, livre 2 ;\nSaint Jérôme, Contre Jovinien, livre 2 ;\nThévenot, partie 1, livre 2, chapitre 32.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0132(b)",
-   "page": "page_0132",
-   "marker": "(b)",
-   "text": "Hérodote, livre 1, chapitre 133 ; et Aristophane le comique, dans Athénée, livre 4, chapitre 14 ; et Héraclide Cumanus. Athénée, livre 4, chapitre 10.",
-   "proposed": "Hérodote, livre 1, chapitre 133 ;\net Aristophane le comique, dans Athénée, livre 4, chapitre 14 ;\net Héraclide Cumanus. Athénée, livre 4, chapitre 10.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0135(a)",
-   "page": "page_0135",
-   "marker": "(a)",
-   "text": "Hérodote, livre 2, chapitre 37 ; Porphyre, De abstinentia ; Plutarque, livre De Iside, et de superstitione ; Élien, livre 10, chapitre 16.",
-   "proposed": "Hérodote, livre 2, chapitre 37 ;\nPorphyre, De abstinentia ;\nPlutarque, livre De Iside, et de superstitione ;\nÉlien, livre 10, chapitre 16.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0146(d)",
    "page": "page_0146",
    "marker": "(d)",
@@ -468,10 +342,12 @@
    "id": "0151(a)",
    "page": "page_0151",
    "marker": "(a)",
-   "text": "Origène, Homélie 8 sur le Lévitique ; Saint Basile, sur le verset 141 sac. ; Euthyme ; Radulph. ; Bède, sur Luc 2 ; Saint Bernard, chapitre 7 d'Isaïe ; Saint Jean Chrysostome, homélie sur la Rencontre du Seigneur ; Saint Cyrille, livre 2, De fide ad Reginas, etc. ; Procope de Gaza ; Théophylacte.",
+   "text": "Origène, Homélie 8 sur le Lévitique ;\nSaint Basile, sur le verset 141 sac. ;\nEuthyme ;\nRadulph. ;\nBède, sur Luc 2 ;\nSaint Bernard, chapitre 7 d'Isaïe ;\nSaint Jean Chrysostome, homélie sur la Rencontre du Seigneur ;\nSaint Cyrille, livre 2, De fide ad Reginas, etc. ;\nProcope de Gaza ;\nThéophylacte.",
    "proposed": "Origène, Homélie 8 sur le Lévitique ;\nSaint Basile, sur le verset 141 sac. ;\nEuthyme ;\nRadulph. ;\nBède, sur Luc 2 ;\nSaint Bernard, chapitre 7 d'Isaïe ;\nSaint Jean Chrysostome, homélie sur la Rencontre du Seigneur ;\nSaint Cyrille, livre 2, De fide ad Reginas, etc. ;\nProcope de Gaza ;\nThéophylacte.",
    "why": [],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0155(a)",
@@ -550,24 +426,6 @@
    ]
   },
   {
-   "id": "0171(a)",
-   "page": "page_0171",
-   "marker": "(a)",
-   "text": "Arias Montanus ; Pagnin ; Munster ; Fagius.",
-   "proposed": "Arias Montanus ;\nPagnin ;\nMunster ;\nFagius.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0171(b)",
-   "page": "page_0171",
-   "marker": "(b)",
-   "text": "Rabbi Salomon, dans Munster ; Both. ; Malvenda.",
-   "proposed": "Rabbi Salomon, dans Munster ;\nBoth. ;\nMalvenda.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0171(d)",
    "page": "page_0171",
    "marker": "(d)",
@@ -599,12 +457,14 @@
    "id": "0173(f)",
    "page": "page_0173",
    "marker": "(f)",
-   "text": "Ménochius ; Nicolas de Lyre ; Tirin.",
+   "text": "Ménochius ;\nNicolas de Lyre ;\nTirin.",
    "proposed": "Ménochius ;\nNicolas de Lyre ;\nTirin.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   },
   {
    "id": "0174(a)",
@@ -657,15 +517,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0191(a)",
-   "page": "page_0191",
-   "marker": "(a)",
-   "text": "Saint Augustin, Traité 49 sur saint Jean, numéro 27 ; et Question 185 sur l'Exode ; et Question 33 sur le Lévitique.",
-   "proposed": "Saint Augustin, Traité 49 sur saint Jean, numéro 27 ;\net Question 185 sur l'Exode ;\net Question 33 sur le Lévitique.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0203(h)",
@@ -810,15 +661,6 @@
    ]
   },
   {
-   "id": "0229(h)",
-   "page": "page_0229",
-   "marker": "(h)",
-   "text": "Voyez Nicolas de Lyre ; Cajetan ; Malvenda.",
-   "proposed": "Voyez Nicolas de Lyre ;\nCajetan ;\nMalvenda.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0230(b)",
    "page": "page_0230",
    "marker": "(b)",
@@ -904,15 +746,6 @@
    ]
   },
   {
-   "id": "0244(d)",
-   "page": "page_0244",
-   "marker": "(d)",
-   "text": "Voyez Théodoret, Question 27 sur le Lévitique (Lévitique 19:19) ; Guillaume de Paris, livre Des lois, chapitre 12 ; Saint Thomas, Somme théologique, 2-2, question 102, article 6, réponse à la 8e objection.",
-   "proposed": "Voyez Théodoret, Question 27 sur le Lévitique (Lévitique 19:19) ;\nGuillaume de Paris, livre Des lois, chapitre 12 ;\nSaint Thomas, Somme théologique, 2-2, question 102, article 6, réponse à la 8e objection.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0246(c)",
    "page": "page_0246",
    "marker": "(c)",
@@ -938,15 +771,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0249(k)",
-   "page": "page_0249",
-   "marker": "(k)",
-   "text": "Homère, Iliade, chant B ; Virgile, Énéide, livre 2 ; Valère Maxime, livre 1, chapitre 6 ; Cicéron, De la divination, livre 1 ; Horace, Odes, 3, 37.",
-   "proposed": "Homère, Iliade, chant B ;\nVirgile, Énéide, livre 2 ;\nValère Maxime, livre 1, chapitre 6 ;\nCicéron, De la divination, livre 1 ;\nHorace, Odes, 3, 37.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0250(f)",
@@ -1090,14 +914,15 @@
    "id": "0264(a)",
    "page": "page_0264",
    "marker": "(a)",
-   "text": "Herodot. l. 2. c. 46. Egylto d' eè tà te-rò tèla in' imù tèlo tò riegos. Funaixì roiny@[UNCERTAIN GREEK] imioyiro ànafaidòn. Tàlo di' ùs isidùlys àidéxanto axinixo.",
+   "text": "Herodot. l. 2. c. 46. Ἐγύπτῳ δὲ ἐν τῷ νομῷ τῷ ἐπ' ἐμοῦ τοῦτο τὸ τέρας. Γυναικὶ τράγος ἐμίσγετο ἀναφανδόν. Τοῦτο δὲ ἐς ἐπίδειξιν ἀνθρώπων ἀπίκετο.",
    "proposed": "Herodot. l. 2. c. 46. Ἐγύπτῳ δὲ ἐν τῷ νομῷ τῷ ἐπ' ἐμοῦ τοῦτο τὸ τέρας. Γυναικὶ τράγος ἐμίσγετο ἀναφανδόν. Τοῦτο δὲ ἐς ἐπίδειξιν ἀνθρώπων ἀπίκετο.",
    "why": [
     "scan: Rewrote Greek from print; filled placeholder (τράγος)",
     "read on the scan: ος"
    ],
    "flags": [
-    "scanned"
+    "scanned",
+    "expand-unread"
    ]
   },
   {
@@ -1157,7 +982,7 @@
    "id": "0277(c)",
    "page": "page_0277",
    "marker": "(c)",
-   "text": "[UNCERTAIN HEBREW]",
+   "text": "פסח או חרם או שרוע",
    "proposed": "פסח או חרם או שרוע",
    "why": [
     "scan: Filled Hebrew from print: פסח או חרם או שרוע",
@@ -1171,7 +996,7 @@
    "id": "0277(d)",
    "page": "page_0277",
    "marker": "(d)",
-   "text": "70. [UNCERTAIN GREEK]",
+   "text": "70. Κολοβόρριν ἢ ὠτότμητος, ou κολοβόχειρ ἢ ὠτότμητος",
    "proposed": "70. Κολοβόρριν ἢ ὠτότμητος, ou κολοβόχειρ ἢ ὠτότμητος",
    "why": [
     "scan: Filled Greek from print (Κολοβόρριν… ὠτότμητος)",
@@ -1273,24 +1098,6 @@
    ]
   },
   {
-   "id": "0288(d)",
-   "page": "page_0288",
-   "marker": "(d)",
-   "text": "Gomar, édition de Bâle, sur le titre Chagiga, chapitre 1 ; Moïse Mikolzi, Précepte négatif 110 ; Maïmonide, Halachot isurifbie, chapitre 16.",
-   "proposed": "Gomar, édition de Bâle, sur le titre Chagiga, chapitre 1 ;\nMoïse Mikolzi, Précepte négatif 110 ;\nMaïmonide, Halachot isurifbie, chapitre 16.",
-   "why": [],
-   "flags": []
-  },
-  {
-   "id": "0297(e)",
-   "page": "page_0297",
-   "marker": "(e)",
-   "text": "Voyez Ménochius ; Cornelius a Lapide ; Malvenda.",
-   "proposed": "Voyez Ménochius ;\nCornelius a Lapide ;\nMalvenda.",
-   "why": [],
-   "flags": []
-  },
-  {
    "id": "0317(l)",
    "page": "page_0317",
    "marker": "(l)",
@@ -1330,7 +1137,7 @@
    "id": "0323(a)",
    "page": "page_0323",
    "marker": "(a)",
-   "text": "כל ארץ אחזתכם גאלה תתנו לארץ. [UNCERTAIN HEBREW] sdem-ris yis.",
+   "text": "כל ארץ אחזתכם גאלה תתנו לארץ. δόσετε τῆς γῆς",
    "proposed": "כל ארץ אחזתכם גאלה תתנו לארץ. δόσετε τῆς γῆς",
    "why": [
     "Hebrew checked against the Hebrew Bible, Leviticus 25:24",
@@ -1451,15 +1258,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0351(a)",
-   "page": "page_0351",
-   "marker": "(a)",
-   "text": "Ménochius ; Cornelius a Lapide ; Jansénius.",
-   "proposed": "Ménochius ;\nCornelius a Lapide ;\nJansénius.",
-   "why": [],
-   "flags": []
   },
   {
    "id": "0356(f)",
