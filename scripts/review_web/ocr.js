@@ -150,17 +150,26 @@ function mergeLineBoxes(boxes) {
   return out;
 }
 
+/** The part of the scan the image shows, in the scan's pixels: [x, y, w, h]. The editor shows the
+ * margin crop (S.scanCrop: [x0, y0, x1, y1]); every box (OCR, to-dos) stays in the scan's pixels. */
+function frame() {
+  const c = S.scanCrop;
+  if (c) return [c[0], c[1], c[2] - c[0], c[3] - c[1]];
+  const size = (res && res.size) || (img.naturalWidth ? [img.naturalWidth, img.naturalHeight] : null);
+  return size && [0, 0, size[0], size[1]];
+}
+
 function draw() {
   svg.replaceChildren();
   const todos = (S.issues || []).filter((it) => it.kind === "todo" && it.box);
-  const size = (res && res.size) || (img.naturalWidth ? [img.naturalWidth, img.naturalHeight] : null);
+  const fr = frame();
   run.hidden = !on || res !== null || img.hidden;
   filterBar.hidden = !on || !res;
   count.hidden = !on || !res;
   tessBtn.hidden = !on || !res || res.tess !== false;
-  svg.hidden = img.hidden || !size;
+  svg.hidden = img.hidden || !fr;
   if (svg.hidden) return;
-  svg.setAttribute("viewBox", `0 0 ${size[0]} ${size[1]}`);
+  svg.setAttribute("viewBox", fr.join(" "));
   if (on && res) {
     const counts = {
       missing: res.words.filter((w) => w.s === "missing").length,
@@ -378,8 +387,9 @@ function goToText(i) {
 
 function scrollScanTo(w) {
   const [x, y, bw, bh] = w.boxes[0];
-  const k = img.width / ((res && res.size[0]) || img.naturalWidth);
-  const left = x * k, top = y * k;
+  const [fx, fy, fw] = frame();
+  const k = img.width / fw;
+  const left = (x - fx) * k, top = (y - fy) * k;
   if (left < view.scrollLeft || left + bw * k > view.scrollLeft + view.clientWidth) view.scrollLeft = left - view.clientWidth / 3;
   if (top < view.scrollTop || top + bh * k > view.scrollTop + view.clientHeight) view.scrollTop = top - view.clientHeight / 3;
 }
@@ -387,8 +397,8 @@ function scrollScanTo(w) {
 /** A pointer's place on the scan, in the image's pixels. */
 function scanPoint(e) {
   const r = img.getBoundingClientRect();
-  const size = (res && res.size) || [img.naturalWidth, img.naturalHeight];
-  return [(e.clientX - r.left) * size[0] / r.width, (e.clientY - r.top) * size[1] / r.height];
+  const [fx, fy, fw, fh] = frame();
+  return [fx + (e.clientX - r.left) * fw / r.width, fy + (e.clientY - r.top) * fh / r.height];
 }
 
 let down = null;

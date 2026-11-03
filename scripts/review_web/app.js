@@ -70,7 +70,7 @@ export async function loadPage(vol, page) {
   S.opened = { vol, page, data: structuredClone(r.body.data) };  // for Undo all
   Object.assign(S, { vol, page, data: r.body.data, version: r.body.version, ctx: r.body.context,
                      pages: r.body.pages, chapters: r.body.chapters || [],
-                     issues: r.body.issues, around: r.body.around,
+                     issues: r.body.issues, around: r.body.around, scanCrop: r.body.scan_crop || null,
                      reviewed: Object.fromEntries(Object.entries(r.body.reviewed).map(([k, v]) => [k, new Set(v)])) });
   if (!hooks.remember) api("/api/state", { vol, page });  // the queue saves it with its filters and issue
   showScan(r.body.scan);

@@ -450,3 +450,20 @@ def test_batch_pages_by_cursor(web):
     rest = web(f"/api/batch?status=open&after={ids[0]}")[1]
     assert [r["id"] for r in rest["rows"]] == ids[2:] and rest["more"] == 0
     assert web("/api/batch?status=open&after=nope")[0] == 409
+
+
+def test_scan_shows_the_margin_crop(web):
+    crop = web.data / VOL / "source_images_cropped"
+    (crop / "commentaire").mkdir(parents=True)
+    (crop / "commentaire" / "page_0194.png").write_bytes(b"\x89PNG\r\n\x1a\ncropped")
+    (crop / "crops.json").write_text(json.dumps({"commentaire/page_0194": {"box": [10, 20, 300, 400]}}))
+    code, body = web(f"/scan/{VOL}/194", raw=True)
+    assert code == 200 and body.endswith(b"cropped")
+    code, p = web(f"/api/page?vol={VOL}&page=194")
+    assert code == 200 and p["scan"] and p["scan_crop"] == [10, 20, 300, 400]
+
+
+def test_scan_without_crop_is_the_scan(web):
+    code, body = web(f"/scan/{VOL}/194", raw=True)
+    assert body == b"\x89PNG\r\n\x1a\n"
+    assert web(f"/api/page?vol={VOL}&page=194")[1]["scan_crop"] is None

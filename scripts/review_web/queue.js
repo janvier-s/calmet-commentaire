@@ -294,7 +294,7 @@ nav.go = async (vol, page) => {
     const msg = `${vol} page ${page} has no JSON.\nCreate an empty page to transcribe from the scan?` +
       (r.scan ? "" : "\n\n(No scan was found for this page either.)");
     if (await ask(msg, [["no", "Cancel"], ["yes", "Create page", "ok"]]) !== "yes") {
-      Object.assign(S, { vol, page, data: null, version: null, ctx: null, issues: r.issues || [] });
+      Object.assign(S, { vol, page, data: null, version: null, ctx: null, issues: r.issues || [], scanCrop: r.scan_crop || null });
       setDirty(false);
       renderPage();
       document.getElementById("page-text").textContent = `Page ${page} has no JSON yet.`;

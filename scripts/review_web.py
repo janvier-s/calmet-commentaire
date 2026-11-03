@@ -140,6 +140,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
 
     def page_payload(vol, page, data, version):
         return {"page": page, "data": data, "version": version, "scan": store.scan(vol, page) is not None,
+                "scan_crop": store.scan_crop(vol, page)[1],
                 "context": store.context(vol, page), "pages": store.pages(vol),
                 "chapters": store.chapters(vol),
                 "issues": rs.page_issues(items, progress, vol, page),
@@ -176,6 +177,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         vol, page = vol_page(q)
         if not store.path(vol, page).exists():
             raise ApiError(404, {"missing": True, "scan": store.scan(vol, page) is not None,
+                                 "scan_crop": store.scan_crop(vol, page)[1],
                                  "issues": rs.page_issues(items, progress, vol, page)})
         return page_payload(vol, page, *store.read(vol, page))
 
@@ -500,7 +502,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 ctx = entries[i].get(w.get("field")) if isinstance(i, int) and i < len(entries) else None
             rows.append({"id": it["id"], "book_dir": it["book_dir"], "page": it["page"], "kind": it["kind"],
                          "msg": it["msg"], "status": progress.status(it["id"]), "context": ctx,
-                         "scan_box": it.get("scan_box"),
+                         "scan_box": it.get("scan_box") and {**it["scan_box"], "crop": store.scan_crop(it["book_dir"], it["page"])[1]},
                          "editable": editable_field(it) and (ctx is None or isinstance(ctx, str)),
                          "proposal": rp.proposal_for(store, progress, it)})
         return {"rows": rows, "total": total, "more": more}
@@ -692,7 +694,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 parts = path.split("/")
                 if len(parts) != 4 or parts[2] not in store.volumes() or not parts[3].isdigit():
                     return self._send(404, b"not found", "text/plain")
-                return self._file(store.scan(parts[2], int(parts[3])))
+                return self._file(store.scan_shown(parts[2], int(parts[3])))
             self._route(GET, lambda u: {k: v[0] for k, v in urllib.parse.parse_qs(u.query).items()})
 
         def do_POST(self):

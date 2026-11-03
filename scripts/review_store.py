@@ -56,6 +56,7 @@ class Store:
         self.data, self.docs = Path(data), Path(docs)
         self._index = {}  # volume -> chapter:verse index, see locate()
         self._chapters = {}  # volume -> [{"chapter": n, "pages": [...]}], see chapters()
+        self._crops = {}  # volume -> (mtime, source_images_cropped/crops.json), see scan_crop()
         self._texts = {}  # page path -> (version, text): a file read again only once it changed on disk
         self._pages = {}  # volume -> (the folder's mtime, [pages]): listed again once a file comes or goes
 
@@ -161,6 +162,34 @@ class Store:
 
     def scan(self, vol, page):
         return find_source_image(self.data / vol, page)
+
+    def scan_crop(self, vol, page):
+        """(cropped image, [x0, y0, x1, y1] of it in the scan) from source_images_cropped/
+        (margin_crop.py), or (None, None). Coordinates kept anywhere (Kraken, to-dos, scan issues)
+        stay the scan's: the editor shows the crop and offsets its overlay."""
+        src = self.scan(vol, page)
+        if not src:
+            return None, None
+        base = self.data / vol / "source_images"
+        try:
+            rel = src.relative_to(base)
+        except ValueError:
+            return None, None
+        f = self.data / vol / "source_images_cropped" / "crops.json"
+        try:
+            mt = f.stat().st_mtime
+        except OSError:
+            return None, None
+        cached = self._crops.get(vol)
+        if not cached or cached[0] != mt:
+            cached = self._crops[vol] = (mt, json.loads(f.read_text()))
+        rec = cached[1].get(str(rel.with_suffix("")))
+        img = self.data / vol / "source_images_cropped" / rel
+        return (img, rec["box"]) if rec and img.exists() else (None, None)
+
+    def scan_shown(self, vol, page):
+        """The image the editor shows: the crop when there is one, else the scan."""
+        return self.scan_crop(vol, page)[0] or self.scan(vol, page)
 
     # --- Where a page sits ---
     PREV_REACH = 20

@@ -76,8 +76,9 @@ function scanCrop(r, big = false) {
   const k = Math.min((big ? 38 : 24) / lh, most / (x2 - x1));
   const box = el("div", { className: `bscan k-${r.kind}`, title: big ? "The scan (click: smaller)" : "The scan (click: larger)",
                           style: `width:${Math.round((x2 - x1) * k)}px;height:${Math.round((y2 - y1) * k)}px` },
+    // the image is the margin crop when there is one (b.crop: where it sits in the scan)
     el("img", { src: `/scan/${encodeURIComponent(r.book_dir)}/${r.page}`, loading: "lazy", alt: "", draggable: false,
-                style: `width:${W * k}px;left:${-x1 * k}px;top:${-y1 * k}px` }),
+                style: `width:${(b.crop ? b.crop[2] - b.crop[0] : W) * k}px;left:${((b.crop ? b.crop[0] : 0) - x1) * k}px;top:${((b.crop ? b.crop[1] : 0) - y1) * k}px` }),
     ...bs.map(([x, y, w, h]) => el("div", { className: "mk", style: `left:${(x - x1) * k - 3}px;top:${(y - y1) * k - 2}px;width:${w * k + 6}px;height:${h * k + 4}px` })));
   box.onclick = (e) => { e.stopPropagation(); box.replaceWith(scanCrop(r, !big)); };
   return box;
