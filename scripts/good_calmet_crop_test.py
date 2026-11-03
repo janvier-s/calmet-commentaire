@@ -54,7 +54,11 @@ def ink_boxes(im: Image.Image):
     frac = faint.sum(1) / w
     rule = None
     for y in range(int(h * .5), int(h * .95)):
-        if frac[y] > .3 and frac[max(0, y - 8):y - 2].max(initial=0) < .1:
+        if frac[y] < .25:
+            continue
+        # longest unbroken run: the rule is one line, text rows are broken into words
+        idx = np.flatnonzero(np.diff(np.concatenate([[0], faint[y].astype(np.int8), [0]])))
+        if (idx[1::2] - idx[0::2]).max() > w * .25:
             rule = y; break
     rows = np.flatnonzero(m.sum(1) > w * .004)
     cols = np.flatnonzero(m.sum(0) > h * .004)
@@ -63,8 +67,8 @@ def ink_boxes(im: Image.Image):
     pad = 12
     text = (max(0, cols[0] - pad), max(0, rows[0] - pad), min(w, cols[-1] + pad), min(h, rows[-1] + pad))
     fn = None
-    if rule:
-        below = np.flatnonzero(m[rule + 4:].sum(1) > w * .004) + rule + 4
+    below = np.flatnonzero(m[rule + 4:].sum(1) > w * .004) + rule + 4 if rule else []
+    if len(below):
         # drop the signature mark: stop at the largest vertical gap after the rule
         end = below[-1]
         gaps = np.diff(below)
@@ -137,7 +141,7 @@ def main():
     cpath = a.out / "jev_cache.json"
     cache = json.loads(cpath.read_text()) if cpath.exists() else {}
     truth: dict[str, str] = {}
-    for f in (ROOT / "data/01_genese/raw_json/commentaire").glob("page_*.json"):
+    for f in (ROOT / "data/01_genese/normalized").glob("page_*.json"):
         try:
             fns = json.loads(f.read_text(), strict=False).get("footnotes") or []
         except ValueError:
