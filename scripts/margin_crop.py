@@ -15,6 +15,9 @@ footnotes, signature and catchword) plus a small pad. Originals are never touche
         {"<pdf>/page_NNNN": {"source": the source_images page it matches, "box", "size", "flag"}}.
         The usual <out_dir>: data/good_calmet/.
 
+    uv run --with pillow --with numpy python margin_crop.py refull <work_dir> <out_dir>
+        re-crop the Good_Calmet pages flagged "full" (see good_block)
+
     python margin_crop.py verify <vol> ... | --all     every Kraken word inside its page's crop?
 
 flag "narrow": the block is narrower than the volume's 25th percentile by 4 % of the width (a column cut
@@ -205,6 +208,46 @@ def crop_source(vol, redo=False):
     return recs
 
 
+def good_block(g):
+    """text_block of a Good_Calmet page; when it spans the page's height or width (a dark scan edge or a
+    thin line along it counted as ink) the edge strips masked grow from 1 % to 2, 3, 4 % of the height."""
+    h, w = g.shape
+    b = text_block(g, edge_x=0.015, edge_y=0.01)  # a margin note can sit close to the edge; shadows go as full-height columns
+    for ey in (0.02, 0.03, 0.04):
+        if not b or ((b[3] - b[1]) / h <= 0.97 and (b[2] - b[0]) / w <= 0.97):
+            break
+        b = text_block(g, edge_x=0.015, edge_y=ey) or b
+    return b
+
+
+def refull(work, out):
+    """Re-crop the pages of <out>/crops.json flagged "full" with good_block (their images in <work>, when
+    still extracted); records are updated in place and the flags of each PDF worked out again."""
+    f = Path(out) / "crops.json"
+    recs = json.loads(f.read_text())
+    man = DATA / "good_calmet_manifests"
+    files, n = {}, 0
+    for stem, r in recs.items():
+        if r["flag"] != "full":
+            continue
+        files.setdefault(r["pdf"], {q["pdf_page"]: q["file"] for q in json.loads((man / f"{r['pdf']}.json").read_text())["pages"]})
+        src = Path(work) / r["pdf"] / files[r["pdf"]][r["pdf_page"]]
+        if not src.exists():
+            continue
+        im = Image.open(src).convert("RGB")
+        g = np.asarray(im.convert("L"), dtype=np.int16)
+        h, w = g.shape
+        b = good_block(g)
+        box = pad_box(b, w, h) if b else [0, 0, w, h]
+        im.crop(box).save(Path(out) / f"{stem}.png")
+        r.update(block=b, box=box, flag="")
+        n += 1
+    flag_widths(recs, lambda r: r["pdf"])
+    f.write_text(json.dumps(recs, indent=0))
+    print(n, "pages re-cropped")
+    return recs
+
+
 def crop_good(work, out, align):
     pages = [p for p in json.loads(Path(align).read_text()) if p["type"] == "commentary"]
     man = DATA / "good_calmet_manifests"
@@ -216,7 +259,7 @@ def crop_good(work, out, align):
         im = Image.open(Path(work) / p["pdf"] / files[p["pdf"]][p["pdf_page"]]).convert("RGB")
         g = np.asarray(im.convert("L"), dtype=np.int16)
         h, w = g.shape
-        b = text_block(g, edge_x=0.015, edge_y=0.01)  # a margin note can sit close to the edge; shadows go as full-height columns
+        b = good_block(g)
         box = pad_box(b, w, h) if b else [0, 0, w, h]
         stem = f"{p['pdf']}/page_{p['pdf_page']:04d}"
         (out / p["pdf"]).mkdir(exist_ok=True)
@@ -257,7 +300,9 @@ def report(recs):
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    if a[:1] == ["good"]:
+    if a[:1] == ["refull"]:
+        report(refull(*a[1:3]))
+    elif a[:1] == ["good"]:
         report(crop_good(*a[1:4]))
     elif a[:1] == ["source"]:
         redo = "--redo" in a; a = [x for x in a if x != "--redo"]
