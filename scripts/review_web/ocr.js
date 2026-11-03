@@ -181,7 +181,7 @@ function wavy([x, y, bw, bh], cls = "ojit", lower = 0) {
   // reaches the line below
   const amp = Math.max(1.5, bh * 0.05), half = Math.max(4, bh * 0.18);
   const n = Math.max(1, Math.round(bw / (2 * half))), step = bw / (2 * n);
-  let d = `M${x},${lower ? y + bh + amp + 1 : y + bh - amp}`;
+  let d = `M${x},${lower ? y + bh + amp * 0.3 : y + bh - amp}`;
   for (let k = 0; k < 2 * n; k++) d += ` q${step / 2},${k % 2 ? amp * 2 : -amp * 2} ${step},0`;
   return svgEl("path", { d, class: cls });
 }
