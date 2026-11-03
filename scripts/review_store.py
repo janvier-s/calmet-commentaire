@@ -203,6 +203,12 @@ class Store:
             return []
         return [p for p in self._good[1].get((vol, f"page_{page:04d}"), []) if p.exists()]
 
+    def good_shown(self, crop):
+        """The image the editor shows for a Good_Calmet crop: its contrast-raised copy
+        (data/good_calmet_display/, good_calmet_display.py) when there is one, else the crop."""
+        shown = self.data / "good_calmet_display" / crop.relative_to(self.data / "good_calmet")
+        return shown if shown.exists() else crop
+
     def scan_shown(self, vol, page):
         """The image the editor shows: the crop when there is one, else the scan."""
         return self.scan_crop(vol, page)[0] or self.scan(vol, page)
