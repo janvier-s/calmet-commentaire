@@ -202,6 +202,8 @@ hooks.afterIssues = async (cur, here) => {
   const box = document.getElementById("current");
   box.querySelectorAll(".proposal").forEach((x) => x.remove());
   if (p) box.append(proposalCard(p));
+  const big = box.querySelector(".issue.big");
+  if (big) big.hidden = !!p && isItalic(p);  // scan italics: the buttons alone, the scan says the rest
 };
 const afterSave = hooks.afterSave;
 hooks.afterSave = () => { cache.clear(); return afterSave(); };
