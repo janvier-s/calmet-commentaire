@@ -177,9 +177,11 @@ function frame() {
 
 /** A wavy line under box [x, y, w, h], scaled to its height (the scan's own pixels). */
 function wavy([x, y, bw, bh], cls = "ojit", lower = 0) {
-  const amp = Math.max(2, bh * 0.09), half = Math.max(5, bh * 0.22);
+  // tight under the word: green in the box's own descender band, purple just under the box, so neither
+  // reaches the line below
+  const amp = Math.max(1.5, bh * 0.05), half = Math.max(4, bh * 0.18);
   const n = Math.max(1, Math.round(bw / (2 * half))), step = bw / (2 * n);
-  let d = `M${x},${y + bh + amp + 2 + lower * (amp * 2 + 2)}`;
+  let d = `M${x},${lower ? y + bh + amp + 1 : y + bh - amp}`;
   for (let k = 0; k < 2 * n; k++) d += ` q${step / 2},${k % 2 ? amp * 2 : -amp * 2} ${step},0`;
   return svgEl("path", { d, class: cls });
 }
