@@ -196,8 +196,7 @@ def italic_item(store, r, iid=None):
               "old": o, "new": t[0]}
     word = r["old"].replace("_", "").rstrip(" \t;:?!.,")
     said = "in italics; the text has it in roman" if r["to"] == "italic" else "in roman; the text has it in italics"
-    # one word alone: a type of its own, as the slant of one word is often wrong (ſes, Anges); the id stays
-    kind = "ocr_italic_word" if len(re.findall(r"[^\W_]+", r["old"])) == 1 else "ocr_italic"
+    kind = "ocr_italic"
     scan = {k: r[k] for k in ("vol", "page", "path", "a", "b", "old", "before", "after", "to") if k in r}
     scan["slant"] = r.get("slant")
     return {"id": iid, "book_dir": vol, "page": page, "kind": kind, "optional": False, "scan_box": r.get("box"),
@@ -357,7 +356,7 @@ def _context_items(store, volumes, pages=None):
     return out
 
 
-ITALIC_KINDS = ("ocr_italic", "ocr_italic_word")
+ITALIC_KINDS = ("ocr_italic",)
 GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned")
 
 

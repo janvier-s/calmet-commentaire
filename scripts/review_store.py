@@ -414,7 +414,6 @@ KIND_LABELS = {
     "ref_unsure": "VERSE REFERENCE UNSURE",
     "ocr_gap": "WORDS MISSING (SCAN)",
     "ocr_italic": "ITALICS (SCAN)",
-    "ocr_italic_word": "ITALICS (SCAN, ONE WORD)",
     "ocr_both": "WORD DIFFERS (BOTH OCRS)",
     "ocr_word": "WORD DIFFERS (SCAN)",
     "ocr_unscanned": "NOT ON SCAN",
@@ -453,12 +452,12 @@ KIND_THEMES = [
                    "footnote_asterisk", "footnote_writeout", "hebrew_recheck"]),
     ("Typography", ["spaced_letters", "leading_punctuation", "leading_call", "etc_for_et", "stray_underscore",
                     "caps_in_commentary"]),
-    ("Scan (OCR)", ["ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned"]),
+    ("Scan (OCR)", ["ocr_gap", "ocr_italic", "ocr_both", "ocr_word", "ocr_unscanned"]),
     ("To-dos", ["todo"]),
 ]
 
 
-OCR_KINDS = {"ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned"}
+OCR_KINDS = {"ocr_gap", "ocr_italic", "ocr_both", "ocr_word", "ocr_unscanned"}
 
 
 def kind_category(k):
@@ -833,7 +832,7 @@ AUDIT_KINDS = frozenset(KIND_LABELS) - {
     "todo", "psalm_missing_verse", "psalm_missing_title", "psalm_number", "psalm_wrong_psalm",
     "psalm_unmatched", "chapter_vulgate", "chapter_heading", "hebrew_recheck", "latin_long_s",
     "seam_missing", "seam_repeat", "seam_unclear", "duplicate_verse", "footnote_writeout", "ref_candidate", "ref_context", "ref_unsure",
-    "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned"}
+    "ocr_gap", "ocr_italic", "ocr_both", "ocr_word", "ocr_unscanned"}
 
 
 def book_volumes(vol):

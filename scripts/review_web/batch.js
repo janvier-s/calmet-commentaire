@@ -59,7 +59,7 @@ function contextCell(r, done) {
   }
   return el("td", { className: "bctx", title: "Open this issue", onclick: () => go(r) }, context(r),
             // a write-out's message only repeats the note and the proposal
-            ["footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned"].includes(r.kind) ? null : el("div", { className: "msg", textContent: r.msg }));
+            ["footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_both", "ocr_word", "ocr_unscanned"].includes(r.kind) ? null : el("div", { className: "msg", textContent: r.msg }));
 }
 
 /** The scan where a row's words are (an OCR issue), at one zoom for every row (a line about 24 px high):

@@ -599,6 +599,20 @@ def align(o, data, fix=False, tess=None):
         tk = {id(t): key(r) if any(c.isalnum() for c in r) else None  # nothing beneath (or only a dash): no key, left out
               for t, r in zip(ot, read)}
         _repair_leftovers(res, ot, jt, by_tess, allow, lambda t: tk[id(t)], 0.7)
+    # a body word paired with a footnote's (a "dans" of the text with the note's first word) is a wrong pairing: the
+    # notes are a block of consecutive words at the page's foot, so a footnote word alone, well above, is unlinked
+    in_fn = [(r.get("path") or "").startswith("footnotes/") for r in res]
+    block = [i for i in range(len(res)) if in_fn[i] and ((i > 0 and in_fn[i - 1]) or (i + 1 < len(res) and in_fn[i + 1]))]
+    if block:
+        top = min(res[i]["boxes"][0][1] for i in block)
+        for i, r in enumerate(res):
+            if in_fn[i] and i not in block and r["boxes"][0][1] < top - 0.1 * o["size"][1]:  # well above: a body line, not a note line misread
+                for j in [j for j, n in at.items() if n == i]:
+                    del at[j]
+                    used.discard(j)
+                for k in ("path", "a", "b"):
+                    r.pop(k, None)
+                r["s"] = "missing"
     # around the footnotes (expanded by design), the unmatched are not flagged; nor are unsure readings
     near_path = [None] * len(res)
     last = None
@@ -731,12 +745,36 @@ def gaps(o, data, res=None, least=3):
             j += 1
         while res[j]["s"] == "skip":
             j -= 1
+        # an elision opening the word after the run (dans l'Assyrie) goes in with it: it is skipped as a stray letter
+        if (j + 2 < len(res) and res[j + 1]["s"] == "skip" and "path" not in res[j + 1] and len(res[j + 1]["t"]) == 1
+                and res[j + 1]["t"].isalpha() and res[j + 2].get("path") and res[j + 1]["src"][0][0] == res[j]["src"][0][0]):
+            j += 1
         run = [w for w in res[i:j + 1] if w["s"] == "missing"]
         sure = sum(w["wc"] for w in run) / len(run) >= 0.9  # gibberish (an ornament, Greek) reads unsure
         if sure and (len(run) >= least or (len(run) == 2 and sum(len(w["t"]) for w in run) >= 8)):
-            g = _place(res, i, j, fields)
+            # A B X A' B' with A' B' paired to the JSON (Votre père. Quam ... à votre père, the JSON having Votre père once):
+            # the same alignment the other way, and the better one: X A' B' goes in after the JSON's words, A B are not missing
+            k = 0
+            while (i + k < j and j + 1 + k < len(res) and res[i + k]["s"] == "missing" and res[j + 1 + k]["s"] == "ok"
+                   and res[j + 1 + k].get("path") and key(res[i + k]["t"]) == key(res[j + 1 + k]["t"])):
+                k += 1
+            if k and sum(len(w["t"]) for w in res[i:i + k]) >= 6 and not (res[j + k]["path"].startswith("footnotes/")):
+                last = res[j + k]
+                s_ = fields.get(last["path"]) or ""
+                pos = last["b"]
+                while pos < len(s_) and s_[pos] in ",.;:!?)»_}":
+                    pos += 1
+                g = {"path": last["path"], "pos": pos, "before": s_[max(0, pos - 30):pos], "after": s_[pos:pos + 30]}
+                i, j, k = i + k, j + k, 0
+                run = [w for w in res[i:j + 1] if w["s"] == "missing" or w is res[j]]
+                if not any(w["s"] == "missing" for w in res[i:j + 1]):
+                    g = None
+            else:
+                g = _place(res, i, j, fields)
             if g:
                 ocr = _raw(o, res[i:j + 1])
+                if j + 1 < len(res) and res[j + 1]["src"] == res[j]["src"] and res[j + 1].get("path"):  # l'|Assyrie: one scan word
+                    ocr = ocr[:max(ocr.rfind("’"), ocr.rfind("'")) + 1]  # only up to the apostrophe, the word after is in the JSON
                 text = modernize_text(fix_spelling(ocr.replace("ſ", "s").replace("&", "et").replace("’", "'")))[0]
                 if REF_ONLY.fullmatch(ocr) or re.sub(r"[^A-Z]", "", ocr.upper()) == "COMMENTAIRE":  # a reference, written
                     i = j + 1  # out in the JSON (Judic. XVII. 4.: Juges 17:4); the heading misread (C.OM MENT.AIRE.)
@@ -957,11 +995,18 @@ def italics(o, data, res=None):
         mean = sum(v[3] for v in run) / len(run)
         flank = [votes[n] for n in (k - 1, m + 1) if 0 <= n < len(votes) and res[votes[n][0]]["path"] == res[i]["path"] and votes[n][2] == js]
         t = res[i]["t"]
+        w0 = res[i]
+        before0 = fields[w0["path"]][:w0["a"]].replace("_", "").rstrip() if w0.get("path") else ""
+        # a short name in the middle of a sentence, leaning clearly (engendra Sem, Cham; de Sur): not a ses, a Les or an en
+        name = len(run) == 1 and t[:1].isupper() and mean >= 12 and bool(before0) and before0[-1] not in ".?!"
         lone = len(run) == 1 and scan and (mean < 14 or 5 * sum(c in LEANING for c in t) > len(t)  # leaning letters (voyage.)
-                                           or len(re.sub(r"\W", "", t)) <= 3)  # ses (ſ leans), Les, en, ô: 8 in 12 roman on the scan
+                                           or (len(re.sub(r"\W", "", t)) <= 3 and not name))  # ses (ſ leans), Les, en, ô: 8 in 12 roman on the scan
         # montagne, sur le bord: a few words the scan measures roman with the text's own style (italic) round them
         ringed = not scan and len(run) <= 3 and flank and all(v[1] == js for v in flank) and (len(flank) == 2 or len(run) == 1)
-        if lone or ringed:
+        # one italic word, an "&", one italic word (Gad & Méni): each is a lone word's reading, the "&" never leans like the rest
+        pair = (scan and mean < 17 and len(run) in (2, 3) and run[-1][0] - run[0][0] == 2
+                and res[run[0][0] + 1]["t"].lower() in ("&", "et"))
+        if lone or ringed or pair:
             k = m + 1
             continue
         if len(run) > 1 or mean >= 12 or mean <= 2:
@@ -1061,9 +1106,11 @@ def _place(res, i, j, fields):
 def insert(s, pos, text):
     """`text` put into `s` at `pos`, one space each side where words meet."""
     left, right = s[:pos], s[pos:]
+    if text.endswith(("'", "’")) and right.startswith(" "):  # l' | Assyrie: the elision joins the word after
+        right = right[1:]
     if left and not left.endswith((" ", "\n")):
         text = " " + text
-    if right and not right.startswith((" ", "\n")) and right[0] not in ",.;:!?)":
+    if right and not right.startswith((" ", "\n")) and right[0] not in ",.;:!?)" and not text.endswith(("'", "’")):
         text = text + " "
     return left + text + right
 

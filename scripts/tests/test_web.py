@@ -331,12 +331,12 @@ def test_ocr_italic_is_an_issue_that_italicizes(data_dir):
         with urllib.request.urlopen(req) as r:
             return json.loads(r.read())
 
-    items = call("/api/queue?kind=ocr_italic_word&status=open")["items"]
+    items = call("/api/queue?kind=ocr_italic&status=open")["items"]
     assert len(items) == 1 and "in italics" in items[0]["msg"]
     p = call(f"/api/proposal?id={urllib.parse.quote(items[0]['id'])}")["proposal"]
     call("/api/proposal/accept", {"id": items[0]["id"], "proposal_id": p["id"], "option": 0})
     assert call(f"/api/page?vol={VOL}&page=194")["data"]["commentary"][0]["french_commentary"] == "suite du _commentaire_."
-    assert call("/api/queue?kind=ocr_italic_word&status=open")["items"] == []  # done: no longer an issue
+    assert call("/api/queue?kind=ocr_italic&status=open")["items"] == []  # done: no longer an issue
     server.shutdown()
 
 
@@ -356,13 +356,13 @@ def test_refresh_generated_closes_the_scan_issues_an_edit_fixed(data_dir):
         with urllib.request.urlopen(req) as r:
             return json.loads(r.read())
 
-    (it,) = call("/api/queue?kind=ocr_italic_word&status=open")["items"]
+    (it,) = call("/api/queue?kind=ocr_italic&status=open")["items"]
     p = call(f"/api/page?vol={VOL}&page=194")
     p["data"]["commentary"][0]["french_commentary"] = "suite du _commentaire_."  # italicized by hand
     call("/api/page", {"vol": VOL, "page": 194, "data": p["data"], "version": p["version"]})
     r = call("/api/refresh_generated", {"vol": VOL, "page": 194})
     assert r["fixed"] == 1 and next(i for i in r["issues"] if i["id"] == it["id"])["status"] == "resolved"
-    assert call("/api/queue?kind=ocr_italic_word&status=open")["items"] == []
+    assert call("/api/queue?kind=ocr_italic&status=open")["items"] == []
     server.shutdown()
 
 
@@ -428,7 +428,7 @@ def test_saving_a_page_makes_its_scan_issues_again(data_dir, tmp_path, monkeypat
     server.shutdown()
 
 
-def test_one_word_italics_are_a_type_of_their_own(data_dir):
+def test_one_word_italics_share_the_italics_type(data_dir):
     from conftest import dump
     import review_proposals as RP
     docs = data_dir.parent / "docs"
@@ -436,7 +436,7 @@ def test_one_word_italics_are_a_type_of_their_own(data_dir):
                                     "to": "italic", "old": old, "before": before, "after": ".", "words": [0, 1], "slant": 16}
     dump(docs / "ocr_gaps.json", {"italics": [it(6, 20, "du commentaire", "suite "), it(9, 20, "commentaire", "suite du ")]})
     kinds = sorted(i["kind"] for i in RP._italic_items(Store(data_dir, docs), {VOL}, {194}))
-    assert kinds == ["ocr_italic", "ocr_italic_word"]
+    assert kinds == ["ocr_italic", "ocr_italic"]
 
 
 def test_batch_pages_by_cursor(web):
@@ -494,7 +494,7 @@ TWO_ITALICS = [
 
 def test_a_second_italic_on_the_same_field_is_accepted_after_the_first(data_dir):
     server, call = _italics_server(data_dir, TWO_ITALICS)
-    a, b = call("/api/queue?kind=ocr_italic_word&status=open")["items"]
+    a, b = call("/api/queue?kind=ocr_italic&status=open")["items"]
     pa = call(f"/api/proposal?id={urllib.parse.quote(a['id'])}")["proposal"]
     pb = call(f"/api/proposal?id={urllib.parse.quote(b['id'])}")["proposal"]  # shown before the first is accepted
     r = call("/api/proposal/accept", {"id": a["id"], "proposal_id": pa["id"], "option": 0})
@@ -509,7 +509,7 @@ def test_accept_all_italics_on_a_page(data_dir):
     r = call("/api/proposal/accept_page", {"vol": VOL, "page": 194})
     assert len(r["done"]) == 2 and r["failed"] == []
     assert r["pages"]["194"]["data"]["commentary"][0]["french_commentary"] == "_suite_ du _commentaire_."
-    assert call("/api/queue?kind=ocr_italic_word&status=open")["items"] == []
+    assert call("/api/queue?kind=ocr_italic&status=open")["items"] == []
     server.shutdown()
 
 

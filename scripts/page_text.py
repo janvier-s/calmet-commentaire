@@ -69,6 +69,7 @@ def isolate_hebrew(s):
     return HEBREW_RUN.sub(lambda m: LRM + m.group() + LRM, s.replace(LRM, ""))
 
 
+BRACKETS = set("[](){}")
 CLOSING_FOLLOWERS = set(",.;:!?)»]")
 TRAILING_PUNCT = re.compile(r"_?[ \t]*([;?!]|:(?!\d))+")
 JOIN_BEFORE = re.compile(r"_([ \t]*[,;:]?[ \t]*)$")  # a run closing just before (spaces, a comma between)
@@ -113,6 +114,11 @@ def toggle_italics(s, sa, sb):
     runs, _, open_at = italic_runs(s)
     italic = {i for a, b in runs for i in range(a, b)}
     make = not all(i in italic for i in range(sa, sb) if s[i] != "_" and not s[i].isspace())
+    if make:  # a bracket at the selection's edge is roman: [ faire ce plaisir ] _écoutez-moi._
+        while sa < sb and (s[sa] in BRACKETS or s[sa].isspace()) and any(c.isalnum() for c in s[sa + 1:sb]):
+            sa += 1
+        while sb > sa and (s[sb - 1] in BRACKETS or s[sb - 1].isspace()) and any(c.isalnum() for c in s[sa:sb - 1]):
+            sb -= 1
     m = (TRAILING_PUNCT if make else ROMAN_TRAILING).match(s, sb)
     if m and (make or m.end() - 1 in italic):
         sb = m.end()
