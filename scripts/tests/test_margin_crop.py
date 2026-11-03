@@ -49,3 +49,14 @@ def test_dull_scan_show_through_is_not_ink():
     lines(g, 200, 800, 100, 1200, ink=30)
     x0, y0, x1, y1 = text_block(g)
     assert x0 >= 150 and x1 <= 850
+
+
+def test_faint_end_of_margin_note_kept():
+    g = page()
+    lines(g, 200, 800, 100, 1200)
+    g[300:312, 815:830] = 20                 # "An." 1.5 % of the width away
+    g[300:312, 840:842] = 20                 # a thin digit after it: 2 px a column
+    g[298:312, 850:851] = 20                 # and a hairline one
+    for x in range(870, 990, 20):
+        g[600:603, x:x + 3] = 20             # dust beyond: no glyph-tall stroke
+    assert 850 <= text_block(g)[2] < 870

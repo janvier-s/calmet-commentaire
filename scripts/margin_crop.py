@@ -2,14 +2,17 @@
 """Margin crop of page scans: per page, the printed block (header, both columns, margin notes,
 footnotes, signature and catchword) plus a small pad. Originals are never touched.
 
-    uv run --with pillow --with numpy python margin_crop.py source <vol> [<vol> ...] | --all
-        data/<vol>/source_images/<part>/page_NNNN.png -> data/<vol>/source_images_cropped/<part>/
+    uv run --with pillow --with numpy python margin_crop.py source <vol> [<vol> ...] | --all  [--redo]
+        data/<vol>/source_images/<part>/[<section>/]page_NNNN.png -> the same path under
+        data/<vol>/source_images_cropped/ (pages already cropped are kept unless --redo)
         and data/<vol>/source_images_cropped/crops.json: {"<part>/page_NNNN": {"box": [x0, y0, x1, y1],
         "size": [w, h], "flag": ...}}. The crop always contains every Kraken word of the page
         (cache/ocr/<vol>/page_NNNN.json); the Kraken cache stays in the original's coordinates,
         `ocr_on_crop()` shifts it onto the crop.
     uv run --with pillow --with numpy python margin_crop.py good <work_dir> <out_dir> <alignment.json>
         Good_Calmet commentary pages (spine/page-edge shadows masked) -> <out_dir>/<pdf2>_<page>.png + crops.json
+
+    python margin_crop.py verify <vol> ... | --all     every Kraken word inside its page's crop?
 
 flag "narrow": the block is narrower than the volume's 25th percentile by 4 % of the width (a column cut
 off? a half-empty page, a plate) and "full" (nothing trimmed): look at those. "wide" (margin notes, specks) is informational.
@@ -37,6 +40,53 @@ def _runs(idx, gap):
     return list(zip(idx[np.r_[0, cut + 1]], idx[np.r_[cut, len(idx) - 1]]))
 
 
+def ink_mask(g, edge_x=0.01, edge_y=0.01, mask=None):
+    h, w = g.shape
+    paper, ink = np.percentile(g, 80), np.percentile(g, 1)
+    m = g < min(paper - 60, (paper + ink) / 2)  # halfway: grey show-through on dull scans is not ink
+    ex, ey = int(w * edge_x), int(h * edge_y)
+    m[:, :ex] = False; m[:, w - ex:] = False
+    m[:ey] = False; m[h - ey:] = False
+    if mask:
+        m[int(h * mask[1]):, int(w * mask[0]):] = False
+    return m
+
+
+def extend(m, box):
+    """box widened, band by band (a line and a half high), through ink that continues the block
+    outwards (a margin note in small, faint type): gaps of up to 2 % of the width, within the
+    band, so dust elsewhere on the page does not count; 30 px of ink in pieces as tall as part of a
+    letter at least."""
+    h, w = m.shape
+    x0, y0, x1, y1 = box
+    gap = int(w * 0.02)
+    nx0, nx1 = x0, x1
+    bh = max(8, int(h * 0.025))  # about a line and a half; bands overlap by half
+    for a in range(y0, y1 + 1, bh // 2):
+        band = m[a:min(y1 + 1, a + bh)]
+        cols = band.sum(0)
+        for step, edge in ((1, x1), (-1, x0)):
+            x, far, got = edge, edge, 0
+            while True:
+                win = range(x + step, x + step * (gap + 1), step)
+                hit = [c for c in win if 0 <= c < w and cols[c]]
+                if not hit:
+                    break
+                c = hit[0]
+                piece = c  # the piece of ink starting at c, to its first blank column
+                while 0 <= piece + step < w and cols[piece + step]:
+                    piece += step
+                lo, hi = sorted((c, piece))
+                ys = np.flatnonzero(band[:, lo:hi + 1].any(1))
+                if ys[-1] - ys[0] + 1 >= max(5, h * 0.004):  # as tall as part of a letter, not dust
+                    got += cols[lo:hi + 1].sum()
+                x = piece
+                if got >= 30:  # a speck alone does not move the edge; a dot after a word does
+                    far = piece
+            nx1, nx0 = (max(nx1, far), nx0) if step == 1 else (nx1, min(nx0, far))
+    return [int(nx0), y0, int(nx1), y1]
+
+
 def text_block(g, edge_x=0.01, edge_y=0.01, mask=None):
     """[x0, y0, x1, y1] of the printed block of greyscale page g, or None.
 
@@ -47,13 +97,7 @@ def text_block(g, edge_x=0.01, edge_y=0.01, mask=None):
     mask: (x, y) fractions, the corner from there to the bottom right is masked (the
     "Digitized by Google" mark of source_images)."""
     h, w = g.shape
-    paper, ink = np.percentile(g, 80), np.percentile(g, 1)
-    m = g < min(paper - 60, (paper + ink) / 2)  # halfway: grey show-through on dull scans is not ink
-    ex, ey = int(w * edge_x), int(h * edge_y)
-    m[:, :ex] = False; m[:, w - ex:] = False
-    m[:ey] = False; m[h - ey:] = False
-    if mask:
-        m[int(h * mask[1]):, int(w * mask[0]):] = False
+    m = ink_mask(g, edge_x, edge_y, mask)
     col = m.sum(0)
     ok = (col >= 12) & (col < 0.6 * h)  # a column dark from top to bottom is a shadow or a fold
     groups = _runs(np.flatnonzero(ok), int(w * 0.04))
@@ -69,7 +113,7 @@ def text_block(g, edge_x=0.01, edge_y=0.01, mask=None):
         return None
     # every group: a blank band (end of a book, a vignette below) must not cut text off
     y0, y1 = rows[0][0], rows[-1][1]
-    return [int(x0), int(y0), int(x1), int(y1)]
+    return extend(m, [int(x0), int(y0), int(x1), int(y1)])
 
 
 def pad_box(b, w, h):
@@ -122,11 +166,16 @@ def flag_widths(recs, key):
             r["flag"] = "wide"
 
 
-def crop_source(vol):
+def crop_source(vol, redo=False):
     src, dst = DATA / vol / "source_images", DATA / vol / "source_images_cropped"
+    old = json.loads((dst / "crops.json").read_text()) if (dst / "crops.json").exists() else {}
     recs = {}
-    for f in sorted(src.glob("*/*.png")):
-        part = f.parent.name
+    for f in sorted(set(src.glob("*/**/*.png"))):  # intro/ and fin/ hold one folder a section
+        rel = f.relative_to(src)
+        part, k, out = rel.parts[0], str(rel.with_suffix("")), dst / rel
+        if k in old and out.exists() and not redo:
+            recs[k] = old[k]
+            continue
         im = Image.open(f)
         g = np.asarray(im.convert("L"), dtype=np.int16)
         h, w = g.shape
@@ -134,18 +183,20 @@ def crop_source(vol):
         box = pad_box(b, w, h) if b else [0, 0, w, h]
         rec = {"part": part, "size": [w, h], "block": b, "flag": ""}
         if part == "commentaire":
-            k = kraken_box(vol, f.stem)
-            if k:  # never cut a word Kraken read
-                kb = [max(0, k[0] - 4), max(0, k[1] - 4), min(w, k[2] + 4), min(h, k[3] + 4)]
+            kr = kraken_box(vol, f.stem)
+            if kr:  # never cut a word Kraken read
+                kb = [max(0, kr[0] - 4), max(0, kr[1] - 4), min(w, kr[2] + 4), min(h, kr[3] + 4)]
                 grown = [min(box[0], kb[0]), min(box[1], kb[1]), max(box[2], kb[2]), max(box[3], kb[3])]
                 if grown != box:
                     rec["grown_for_kraken"] = [g_ - b_ for g_, b_ in zip(grown, box)]
+                    # a word Kraken misread at the edge (a margin note): follow its ink out
+                    e = extend(ink_mask(g, 0.005, 0.005, GOOGLE), [grown[0], grown[1], grown[2] - 1, grown[3] - 1])
+                    grown = pad_box(e, w, h) if e[0] < grown[0] or e[2] > grown[2] - 1 else grown
                 box = grown
         rec["box"] = box
-        out = dst / part / f.name
         out.parent.mkdir(parents=True, exist_ok=True)
         im.crop(box).save(out)
-        recs[f"{part}/{f.stem}"] = rec
+        recs[k] = rec
     flag_widths(recs, lambda r: r["part"])
     (dst / "crops.json").write_text(json.dumps(recs, indent=0))
     return recs
@@ -173,6 +224,25 @@ def crop_good(work, out, align):
     return recs
 
 
+def verify(vol):
+    """Kraken words of vol outside their page's crop (the mark's misreadings aside): [] if none."""
+    crops = json.loads((DATA / vol / "source_images_cropped" / "crops.json").read_text())
+    bad = []
+    for f in sorted((OCR_CACHE / vol).glob("page_*.json")):
+        c = crops.get(f"commentaire/{f.stem}")
+        if not c:
+            bad.append((f.stem, "no crop")); continue
+        x0, y0, x1, y1 = c["box"]
+        o = json.loads(f.read_text()); W, H = o["size"]
+        for ln in o["lines"]:
+            for wd in ln["words"]:
+                b = wd["box"]
+                if b[2] and b[3] and not (b[1] >= GOOGLE[1] * H and b[0] >= GOOGLE[0] * W) and \
+                        (b[0] < x0 or b[1] < y0 or b[0] + b[2] > x1 or b[1] + b[3] > y1):
+                    bad.append((f.stem, wd["t"]))
+    return bad
+
+
 def report(recs):
     from collections import Counter
     print(len(recs), "pages;", dict(Counter(r["flag"] or "ok" for r in recs.values())),
@@ -184,9 +254,15 @@ if __name__ == "__main__":
     if a[:1] == ["good"]:
         report(crop_good(*a[1:4]))
     elif a[:1] == ["source"]:
+        redo = "--redo" in a; a = [x for x in a if x != "--redo"]
         vols = sorted(d.parent.name for d in DATA.glob("*/source_images")) if a[1:] == ["--all"] else a[1:]
         for v in vols:
             print(v, end=": ", flush=True)
-            report(crop_source(v))
+            report(crop_source(v, redo))
+    elif a[:1] == ["verify"]:
+        vols = sorted(d.parent.name for d in DATA.glob("*/source_images_cropped/crops.json")) if a[1:] == ["--all"] else a[1:]
+        for v in vols:
+            bad = verify(v)
+            print(v, "ok" if not bad else f"{len(bad)} Kraken words outside the crop: {bad[:5]}")
     else:
         print(__doc__)
