@@ -260,7 +260,7 @@ if __name__ == "__main__":
             print(v, end=": ", flush=True)
             report(crop_source(v, redo))
     elif a[:1] == ["verify"]:
-        vols = sorted(d.parent.name for d in DATA.glob("*/source_images_cropped/crops.json")) if a[1:] == ["--all"] else a[1:]
+        vols = sorted(d.parent.parent.name for d in DATA.glob("*/source_images_cropped/crops.json")) if a[1:] == ["--all"] else a[1:]
         for v in vols:
             bad = verify(v)
             print(v, "ok" if not bad else f"{len(bad)} Kraken words outside the crop: {bad[:5]}")
