@@ -586,6 +586,8 @@ def test_italics_leave_the_elision_before_a_name_roman():  # d'Achad: the d' rom
     assert [x["new"] for x in O.italics(o, page("assez d'Achat Acada ou"))] == ["assez d'_Achat Acada_ ou"]
     o = ocr(line(300, "ville", "d’Achad", "ici", sl=[0, 16, 0]))
     assert [x["new"] for x in O.italics(o, page("ville d'Achad ici"))] == ["ville d'_Achad_ ici"]
+    o = ocr(line(300, "dit", "qu’Arphaxad", "ici", sl=[0, 16, 0]))
+    assert [x["new"] for x in O.italics(o, page("dit qu'Arphaxad ici"))] == ["dit qu'_Arphaxad_ ici"]
 
 
 def test_italics_take_in_the_elision_before_a_common_word():  # _d'un homme sage_

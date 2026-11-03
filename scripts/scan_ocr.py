@@ -829,7 +829,7 @@ def word_slant(o, w):
 REF_AFTER = re.compile(r"\.?\s+\d+:\d+")  # Psaumes 118:17
 NOTE_MARK = re.compile(r"\^\{[^}]*\}")  # ^{(f)}
 ELIDED = re.compile(r"(?:^|(?<=[^\w_]))(\w{1,2})['’]$")  # d', l', qu' just before a word
-NAME_ELISION = re.compile(r"[a-zà-ÿ]['’]_?(?=[A-ZÀ-ÖØ-Þ])")  # d'Achad, l'Égypte: the elided article before a name
+NAME_ELISION = re.compile(r"(?:[a-zà-ÿ]|qu|jusqu|lorsqu|puisqu|quoiqu)['’]_?(?=[A-ZÀ-ÖØ-Þ])")  # d'Achad, l'Égypte, qu'Arphaxad: the elision before a name
 SPLIT_ELISION = re.compile(r"(?<![\w_])_(\w{1,2})_(['’])_(?=\w)")  # _d_'_Achat_
 
 
