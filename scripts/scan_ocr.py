@@ -78,15 +78,16 @@ def ocr(vol, page, run=True, scan=None):
         return json.loads(out.read_text(encoding="utf-8"))
 
 
-def kraken(vol, scans):
+def kraken(vol, scans, cache=cache_path):
     """Read [(page, image)] in one Kraken run (the model loads once) and cache each page. On this Mac
-    8 threads and 64 lines a pass halve the time (about 12 s a page); two runs side by side are slower."""
+    8 threads and 64 lines a pass halve the time (about 12 s a page); two runs side by side are slower.
+    `cache(vol, page)`: where a page's OCR goes (good_calmet_kraken.py: cache/good_ocr)."""
     with tempfile.TemporaryDirectory() as tmp:
         pairs = [a for page, scan in scans for a in ("-i", str(scan), str(Path(tmp) / f"{page}.xml"))]
         subprocess.run([str(KRAKEN), "-a", "-d", "mps", "--threads", "8", *pairs, "segment", "-bl",
                         "ocr", "-B", "64", "-m", str(MODEL)], check=True, capture_output=True)
         for page, _ in scans:
-            out = cache_path(vol, page)
+            out = cache(vol, page)
             out.parent.mkdir(parents=True, exist_ok=True)
             try:
                 data = parse_alto((Path(tmp) / f"{page}.xml").read_bytes())
@@ -94,19 +95,19 @@ def kraken(vol, scans):
                 print(f"  {vol} p.{page}: no OCR ({type(e).__name__}: {e})", flush=True)
                 continue
             out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    slants(vol, [(page, scan) for page, scan in scans if cache_path(vol, page).exists()])
+    slants(vol, [(page, scan) for page, scan in scans if cache(vol, page).exists()], cache)
 
 
 _no_slant = []  # the venv's Python failed once: not tried again
 
 
-def slants(vol, scans):
+def slants(vol, scans, cache=cache_path):
     """Measure the slant of every word of the cached pages [(page, image)]. False if it could not."""
     if _no_slant or not scans:
         return False
     try:
         subprocess.run([str(VENV_PYTHON), str(SCRIPTS / "scan_slant.py"),
-                        *(a for page, scan in scans for a in (str(scan), str(cache_path(vol, page))))],
+                        *(a for page, scan in scans for a in (str(scan), str(cache(vol, page))))],
                        check=True, capture_output=True)
         return True
     except (OSError, subprocess.CalledProcessError) as e:
