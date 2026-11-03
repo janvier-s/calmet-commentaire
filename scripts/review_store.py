@@ -801,7 +801,7 @@ def counts(items, progress, status, cat, kind, book):
             for st in STATUSES:
                 if (in_st[st] if st in in_st else s == st):
                     by_status[st] += 1
-        if ok_st and ok_kind and ok_book:
+        if ok_st and ok_book:  # a category spans several kinds: the kind filter does not narrow its count
             by_cat["all"] += 1
             if c in by_cat:
                 by_cat[c] += 1
