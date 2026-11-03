@@ -655,3 +655,13 @@ def test_words_the_json_has_in_italics_are_marked_for_the_underline():
     d = page("Il dit : _Je suis_ vo_tre_ Dieu")
     words = O.mark_json_italics(O.align(o, d)["words"], d)
     assert [w["t"] for w in words if w.get("it")] == ["Je", "suis"]
+
+
+def test_italics_take_in_il_read_as_a_roman_numeral():  # 3 Rois p. 174: Il read II, skipped as a number
+    o = ocr(line(300, "rangs.", "II", "fit", "des", "réseaux", "ici", sl=[0, 17, 22, 18, 16, 0]))
+    assert [x["old"] for x in O.italics(o, page("rangs. Il fit des réseaux ici"))] == ["Il fit des réseaux"]
+
+
+def test_italics_leave_out_a_short_word_the_scan_measures_roman():  # Psaumes p. 121: Le conseil, ou le secret
+    o = ocr(line(300, "lettre", "Le", "conseil,", "ou", "le", "secret", "des", "justes", sl=[0, 15, 16, 4, 15, 16, 0, 0]))
+    assert [x["new"] for x in O.italics(o, page("lettre Le conseil, ou le secret des justes"))] == ["lettre _Le conseil,_ ou _le secret_ des justes"]

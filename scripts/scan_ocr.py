@@ -868,12 +868,12 @@ def italics(o, data, res=None):
             continue
         if any(re.fullmatch(r"\(\w\)\W*", o["lines"][li]["words"][wi]["t"]) for li, wi in w["src"]):
             continue  # a note's letter
-        if numeral(w["t"]):
-            continue  # 17, XVII (as after a ℣, or by a lemma)
+        f = fields[path]
+        if numeral(w["t"]) and not any(c.isalpha() for c in f[w["a"]:w["b"]]):
+            continue  # 17, XVII (as after a ℣, or by a lemma); not Il read II
         src = "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"])
         if "&" in src:
             continue  # the & leans in roman too (&, &c.)
-        f = fields[path]
         if f[max(0, w["a"] - 3):w["a"]].endswith("{(") or f[w["a"]:w["b"]].isdigit() or REF_AFTER.match(f, w["b"]):
             continue  # a note's letter ^{(d)}; a number (70 for LXX); a book before its chapter:verse (Psal. for Psaumes)
         if len({i in marks[path] for i in range(w["a"], min(w["b"], len(f))) if f[i].isalnum()}) > 1:
@@ -904,9 +904,11 @@ def italics(o, data, res=None):
             if not 0 <= m < len(res) or m in voters:
                 break
             w = res[m]
-            if w.get("path") != path or w["s"] == "skip" or numeral(w["t"]) or (w["a"] in marks[path]) != js:
+            if w.get("path") != path or w["s"] == "skip" or (w["a"] in marks[path]) != js:
                 break
             f = fields[path]
+            if numeral(w["t"]) and not any(c.isalpha() for c in f[w["a"]:w["b"]]):
+                break  # a number; not Il read II
             if f[max(0, w["a"] - 3):w["a"]].endswith("{(") or f[w["a"]:w["b"]].isdigit() or "^{" in f[min(w["a"], f.rfind(" ", 0, w["a"]) + 1):w["b"]]:
                 break  # a note's mark ^{(f)}, a number: never taken in
             if "&" in "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"]):
@@ -948,11 +950,21 @@ def italics(o, data, res=None):
             pm = (TRAILING_PUNCT if scan else ROMAN_TRAILING).match(s, b)
             if pm and (scan or pm.end() - 1 in marks[first["path"]]):
                 b = pm.end()
-            # a note's mark inside the stretch stays out of the italics (the text's way: vestiges_^{(f)} _du pays_)
+            # a note's mark inside the stretch stays out of the italics (the text's way: vestiges_^{(f)} _du pays_),
+            # and so does a word that did not vote but the scan measures roman (Le conseil, ou le secret)
+            gaps = [(mk.start(), mk.end()) for mk in NOTE_MARK.finditer(s, a, b)]
+            if scan:
+                for n in range(lo + 1, hi):
+                    w = res[n]
+                    if n not in voters and w.get("path") == first["path"] and w["s"] != "skip":
+                        sl = word_slant(o, w)
+                        if sl is not None and sl <= ROMAN_AT:
+                            gaps.append((w["a"], w["b"]))
             segs, pos = [], a
-            for mk in NOTE_MARK.finditer(s, a, b):
-                segs.append((pos, mk.start()))
-                pos = mk.end()
+            for ga, gb in sorted(gaps):
+                if ga >= pos:
+                    segs.append((pos, ga))
+                    pos = gb
             segs.append((pos, b))
             t = s
             for sa, sb in reversed(segs):  # the last first: the offsets before it hold
