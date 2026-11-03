@@ -581,9 +581,16 @@ def test_italics_do_not_take_in_a_roman_neighbour():
     assert [x["old"] for x in O.italics(o, page("Jourdain La terre de Sual ou"))] == ["terre de Sual"]
 
 
-def test_italics_take_in_the_elision_before_the_word():  # d’ read apart: _d'Achat_, not d'_Achat_
+def test_italics_leave_the_elision_before_a_name_roman():  # d'Achad: the d' roman, the name italic
     o = ocr(line(300, "assez", "d’", "Achat", "Acada", "ou", sl=[0, 3, 16, 17, 0]))
-    assert [x["new"] for x in O.italics(o, page("assez d'Achat Acada ou"))] == ["assez _d'Achat Acada_ ou"]
+    assert [x["new"] for x in O.italics(o, page("assez d'Achat Acada ou"))] == ["assez d'_Achat Acada_ ou"]
+    o = ocr(line(300, "ville", "d’Achad", "ici", sl=[0, 16, 0]))
+    assert [x["new"] for x in O.italics(o, page("ville d'Achad ici"))] == ["ville d'_Achad_ ici"]
+
+
+def test_italics_take_in_the_elision_before_a_common_word():  # _d'un homme sage_
+    o = ocr(line(300, "parole", "d’un", "homme", "sage", "ici", sl=[0, 16, 16, 17, 0]))
+    assert [x["new"] for x in O.italics(o, page("parole d'un homme sage ici"))] == ["parole _d'un homme sage_ ici"]
 
 
 def test_a_split_elision_is_made_whole():

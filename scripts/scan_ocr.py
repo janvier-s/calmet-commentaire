@@ -829,6 +829,7 @@ def word_slant(o, w):
 REF_AFTER = re.compile(r"\.?\s+\d+:\d+")  # Psaumes 118:17
 NOTE_MARK = re.compile(r"\^\{[^}]*\}")  # ^{(f)}
 ELIDED = re.compile(r"(?:^|(?<=[^\w_]))(\w{1,2})['’]$")  # d', l', qu' just before a word
+NAME_ELISION = re.compile(r"[a-zà-ÿ]['’]_?(?=[A-ZÀ-ÖØ-Þ])")  # d'Achad, l'Égypte: the elided article before a name
 SPLIT_ELISION = re.compile(r"(?<![\w_])_(\w{1,2})_(['’])_(?=\w)")  # _d_'_Achat_
 
 
@@ -973,6 +974,10 @@ def italics(o, data, res=None):
             m_el = ELIDED.search(s, 0, a) if a >= 2 and s[a - 1] in "'’" else None
             if m_el and all((i in marks[first["path"]]) == js for i in range(m_el.start(1), a - 1)):
                 a = m_el.start(1)  # d'Achat: the elision with the word (_d'Achat_, the text's way)
+            if scan:  # but a d' or l' opening the stretch before a name stays roman: d'_Achad_, l'_Égypte_
+                m_nm = NAME_ELISION.match(s, a, b)
+                if m_nm:
+                    a = m_nm.end()
             pm = (TRAILING_PUNCT if scan else ROMAN_TRAILING).match(s, b)
             if pm and (scan or pm.end() - 1 in marks[first["path"]]):
                 b = pm.end()
