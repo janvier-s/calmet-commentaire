@@ -74,6 +74,10 @@ body { grid-template-rows: auto auto auto 1fr; }
 #pills { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; justify-content: flex-end; max-width: 360px; }
 #around { display: flex; gap: 6px; align-items: center; }
 #around button { display: inline-flex; align-items: center; gap: 2px; font-size: 12px; }
+#type-pages { display: flex; gap: 6px; align-items: center; }
+#type-pages button { display: inline-flex; align-items: center; gap: 2px; font-size: 12px; }
+#type-pages button:disabled { opacity: .35; }
+#type-pages select { font-size: 12px; max-width: 200px; }
 .pill { display: inline-flex; align-items: center; gap: 3px; padding: 1px 7px; font-size: 11.5px; border-radius: 10px;
         border: 1px solid var(--c, var(--border)); color: var(--c); background: var(--surface); }
 .pill.cur { background: color-mix(in srgb, var(--c) 20%, var(--surface)); font-weight: 600; }

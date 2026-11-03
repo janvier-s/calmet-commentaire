@@ -19,6 +19,8 @@ const KIND = { verses: "k-verse", commentary: "k-note", footnotes: "k-fn", scan:
 let CAT_OF = {};  // kind -> category, from the server
 
 const Q = { items: [], idx: 0, status: "open", cat: null, kind: null, book: null, counts: null, current: null };
+/** Every issue of the chosen category and type in the page's book, whatever its status: the pages menu. */
+const TP = { key: null, items: [], loading: null };
 const label = (k) => S.config.labels[k] || k;
 const sentence = (t) => t.charAt(0) + t.slice(1).toLowerCase();  // "MISSING VERSE" -> "Missing verse"
 const statusOf = (it) => it.status || null;
@@ -203,7 +205,7 @@ async function reopen() {
   await sending;
   const r = await api("/api/mark", { id: it.id, status: null });
   if (r.status !== 200) { marked.push(it); toast(r.body.error || "Could not reopen the issue"); return; }
-  for (const x of [...Q.items, ...S.issues]) if (x.id === it.id) x.status = null;
+  for (const x of [...Q.items, ...S.issues, ...TP.items]) if (x.id === it.id) x.status = null;
   await refreshCounts();
   const i = Q.items.findIndex((x) => x.id === it.id);
   if (i >= 0) await goItem(i);
@@ -284,6 +286,70 @@ function renderIssues() {
     el("span", { className: "muted small", textContent: ` ${a.n} ${Q.status === "open" ? "open " : ""}in this book ` }),
     a.next != null ? el("button", { className: "link", onclick: () => go(S.vol, a.next) }, `p.${a.next}`, icon("next", 12)) : null,
   ].filter(Boolean));
+  renderTypePages();
+}
+
+// --- the pages menu: every page of the book with an issue of the chosen type, whatever its status ---
+const tpKey = () => JSON.stringify([S.vol, Q.cat, Q.kind]);
+const typeName = () => Q.kind ? sentence(label(Q.kind)) : Q.cat ? CAT_LABELS[Q.cat].replace(/^\S+ /, "") : "any issue";
+
+/** The pages, in order, each with how many issues of the type it has and how many are still open. */
+function typePages() {
+  const by = new Map();
+  for (const it of TP.items) {
+    const p = by.get(it.page) || by.set(it.page, { page: it.page, n: 0, open: 0, ids: [] }).get(it.page);
+    p.n++;
+    if (isOpen(it)) p.open++;
+    p.ids.push(it.id);
+  }
+  return [...by.values()].sort((a, b) => a.page - b.page);
+}
+
+function renderTypePages() {
+  if (!S.vol) return;
+  if (TP.key !== tpKey()) {  // another book or type: fetch its issues, every status, then draw
+    const key = tpKey();
+    if (TP.loading === key) return;
+    TP.loading = key;
+    query({ status: "all", cat: Q.cat, kind: Q.kind, book: S.vol }).then((r) => {
+      if (TP.loading !== key) return;
+      Object.assign(TP, { key, items: r.status === 200 ? r.body.items : [], loading: null });
+      renderTypePages();
+    }, () => { TP.loading = null; });
+    return;
+  }
+  const pages = typePages();
+  const k = pages.findIndex((p) => p.page === S.page);
+  const before = pages.filter((p) => p.page < S.page).pop(), after = pages.find((p) => p.page > S.page);
+  const open = pages.filter((p) => p.open).length;
+  const sel = el("select", { title: `Every page of ${S.vol} with ${typeName()}, whatever its status: 🟠 issues still open, ✅ all done` },
+    ...(k < 0 ? [el("option", { value: "", textContent: `p.${S.page} (none here)` })] : []),
+    ...pages.map((p) => el("option", { value: p.page,
+      textContent: `${p.open ? "🟠" : "✅"} p.${p.page} · ${p.open ? `${p.open} open of ${p.n}` : `${p.n} done`}` })));
+  sel.value = k < 0 ? "" : String(S.page);
+  sel.onchange = () => sel.value && goTypePage(+sel.value);
+  const btn = (p, dir) => el("button", { className: "link", disabled: !p, title: p ? `p.${p.page}: previous/next page with ${typeName()}` : "",
+                                         onclick: () => goTypePage(p.page) },
+                             ...(dir < 0 ? [icon("prev", 12), "Page"] : ["Page", icon("next", 12)]));
+  $("type-pages").replaceChildren(
+    btn(before, -1), sel, btn(after, 1),
+    el("span", { className: "muted small", textContent: ` ${pages.length} pages · ${open} with open ${typeName().toLowerCase()}` }));
+}
+
+/** Open a page of the menu, its first open issue of the type selected (else its first one). */
+async function goTypePage(page) {
+  const vol = S.vol;
+  if (!(await go(vol, page))) return;
+  const mine = S.issues.filter(inFilters);
+  const it = mine.find(isOpen) || mine[0];
+  if (it) select(it);
+}
+
+/** ⌘⌥[ / ⌘⌥]: the previous / next page of the menu. */
+function stepTypePage(dir) {
+  const pages = typePages();
+  const p = dir > 0 ? pages.find((x) => x.page > S.page) : pages.filter((x) => x.page < S.page).pop();
+  if (p) goTypePage(p.page); else toast(dir > 0 ? "No later page with this type" : "No earlier page with this type");
 }
 
 // a page without JSON (scan only) can be created; every load redraws the column
@@ -378,10 +444,11 @@ async function refreshGenerated(vol = S.vol, page = S.page) {
 export async function applyIssues(vol, page, also, body) {
   const r = { body };
   const byId = new Map(r.body.issues.map((it) => [it.id, it]));
-  for (const it of Q.items) {
+  for (const it of [...Q.items, ...TP.items]) {
     const fresh = byId.get(it.id);
     if (fresh) Object.assign(it, { status: fresh.status, fixed: fresh.fixed, msg: fresh.msg, where: fresh.where });
   }
+  if (r.body.added) TP.key = null;  // new issues: the pages menu fetches its list again
   if (S.vol === vol && (S.page === page || also.includes(S.page))) {
     S.issues = r.body.issues.filter((it) => it.page === S.page);
     S.around = r.body.around;
@@ -396,7 +463,7 @@ hooks.afterSave = () => recheck();
 hooks.remember = remember;
 /** An issue's status changed elsewhere (a proposal accepted or rejected): the lists follow. */
 export function setStatus(id, status) {
-  for (const x of [...Q.items, ...S.issues]) if (x.id === id) x.status = status;
+  for (const x of [...Q.items, ...S.issues, ...TP.items]) if (x.id === id) x.status = status;
 }
 /** The filters in use. */
 export const filters = () => ({ status: Q.status, cat: Q.cat, kind: Q.kind, book: Q.book });
@@ -460,6 +527,9 @@ $("mark-reopen").onclick = reopen;
 document.addEventListener("keydown", (e) => {
   if (e.altKey && !e.metaKey && !e.ctrlKey && e.key === "Enter") { e.preventDefault(); mark("resolved", { thorough: true }); return; }
   if (!(e.metaKey || e.ctrlKey)) return;
+  if (e.altKey && (e.code === "BracketLeft" || e.code === "BracketRight")) {
+    e.preventDefault(); stepTypePage(e.code === "BracketRight" ? 1 : -1); return;
+  }
   const k = e.key;
   const act = k === "Enter" ? () => mark("resolved") : k.toLowerCase() === "p" ? () => mark("false_positive")
     : k === "]" ? () => step(1) : k === "[" ? () => step(-1) : null;
