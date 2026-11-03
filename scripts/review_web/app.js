@@ -109,6 +109,8 @@ function layoutScan(focus) {
   const before = { w: img.width || 1, x: view.scrollLeft, y: view.scrollTop };
   const w = Math.round((view.clientWidth - 2) * S.zoom);
   img.style.width = `${w}px`;
+  // zoomed out: the scan centred across the pane (the dim and the OCR layer follow by --scan-x)
+  view.style.setProperty("--scan-x", `${Math.max(0, Math.floor((view.clientWidth - w) / 2))}px`);
   const dim = $("scan-dim");
   Object.assign(dim.style, { width: `${img.width}px`, height: `${img.height}px`, opacity: S.dim / 100 });
   $("zoom-label").textContent = `${Math.round(S.zoom * 100)}%`;

@@ -105,9 +105,9 @@ body { grid-template-rows: auto auto auto 1fr; }
    changes made it resize without end (the scan flickered) */
 #scan-view { position: relative; overflow: auto; cursor: grab; min-height: 0; scrollbar-gutter: stable; }
 #scan-view.dragging { cursor: grabbing; }
-#scan-img { display: block; user-select: none; max-width: none; }
-#scan-dim { position: absolute; left: 0; top: 0; background: #000; pointer-events: none; }
-#ocr-layer { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
+#scan-img { display: block; user-select: none; max-width: none; margin-left: var(--scan-x, 0px); }
+#scan-dim { position: absolute; left: var(--scan-x, 0px); top: 0; background: #000; pointer-events: none; }
+#ocr-layer { position: absolute; left: var(--scan-x, 0px); top: 0; pointer-events: none; overflow: visible; }
 #ocr-layer rect { pointer-events: all; fill: transparent; vector-effect: non-scaling-stroke; }
 #ocr-layer .ow { stroke: none; }
 #ocr-layer .ow-flag { pointer-events: none; }
