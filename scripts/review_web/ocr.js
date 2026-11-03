@@ -273,6 +273,8 @@ function draw() {
     }
     if (active.has("italics")) {
       for (const it of res.italics) {
+        const ws = res.words.slice(it.words[0], it.words[1] + 1);
+        if (it.to === "roman" && active.has("jsonit") && ws.every((w) => w.it)) continue;  // the red underline says it
         const boxes = mergeLineBoxes(res.words.slice(it.words[0], it.words[1] + 1).flatMap((w) => w.boxes));
         for (const [x, y, bw, bh] of boxes) {
           svg.append(svgEl("rect", { x: x - 12, y: y - 3, width: bw + 24, height: bh + 6, class: "oit" }));
