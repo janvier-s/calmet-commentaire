@@ -3,7 +3,8 @@
 // the caret in a field: its word on the scan. Shift-drag on the scan (or "Box" then drag) draws a
 // region and adds a to-do for it; a page's region to-dos are drawn whenever it is open. Words printed in
 // italics where the text has roman, or the other way (their slant on the scan), are outlined in green.
-// Words the JSON has in italics already get a wavy green underline ("JSON italics").
+// Words the JSON has in italics already get a wavy green underline ("JSON italics"), and the commentary's
+// french_translation a wavy purple one, lower ("Translation"): where its italics need checking by hand.
 // The OCR is only a witness for the review, never a source of text.
 import { S, api, hooks, toast } from "./app.js";
 import { typedData } from "./edit.js";
@@ -25,6 +26,7 @@ const TYPES = [
   ["near", "near", "Orange dashed: nearly the same word"],
   ["italics", "italics", "Green: italic on the scan and roman in the text, or the other way"],
   ["jsonit", "JSON italics", "Wavy green underline: words already in italics in the JSON (italics on the scan without it still need marking)"],
+  ["ftr", "Translation", "Wavy purple underline: the commentary's french_translation, whose italics need checking by hand"],
 ];
 
 let on = false;
@@ -44,6 +46,11 @@ try {
     localStorage.setItem("rw-ocr-filters", JSON.stringify([...active]));
   }
   localStorage.setItem("rw-ocr-jsonit", "1");
+  if (localStorage.getItem("rw-ocr-ftr") !== "1" && localStorage.getItem("rw-ocr-filters")) {
+    active.add("ftr");  // saved before "Translation" was: shown once, so turned off stays off
+    localStorage.setItem("rw-ocr-filters", JSON.stringify([...active]));
+  }
+  localStorage.setItem("rw-ocr-ftr", "1");
 } catch (e) {}
 const saveFilters = () => { try { localStorage.setItem("rw-ocr-filters", JSON.stringify([...active])); } catch (e) {} };
 try {
@@ -86,7 +93,7 @@ const phase = (label, keys, title) => Object.assign(document.createElement("butt
   onclick: () => { active = new Set(keys); saveFilters(); draw(); },
 });
 filterBar.prepend(
-  phase("Phase 1", ["missing", "extra", "italics", "jsonit"], "Show only red (missing, not on scan) and green (italics, and the JSON's italics underlined)"),
+  phase("Phase 1", ["missing", "extra", "italics", "jsonit", "ftr"], "Show only red (missing, not on scan), green (italics, and the JSON's italics underlined) and purple (french_translation underlined)"),
   phase("Phase 2", ["both"], "Show only the words both OCRs read and the JSON has otherwise"));
 const count = Object.assign(document.createElement("button"), { className: "link small", id: "ocr-count", hidden: true,
                                                                 title: "Go to the next flagged word among the active filters" });
@@ -169,12 +176,27 @@ function frame() {
 }
 
 /** A wavy line under box [x, y, w, h], scaled to its height (the scan's own pixels). */
-function wavy([x, y, bw, bh]) {
+function wavy([x, y, bw, bh], cls = "ojit", lower = 0) {
   const amp = Math.max(2, bh * 0.09), half = Math.max(5, bh * 0.22);
   const n = Math.max(1, Math.round(bw / (2 * half))), step = bw / (2 * n);
-  let d = `M${x},${y + bh + amp + 2}`;
+  let d = `M${x},${y + bh + amp + 2 + lower * (amp * 2 + 2)}`;
   for (let k = 0; k < 2 * n; k++) d += ` q${step / 2},${k % 2 ? amp * 2 : -amp * 2} ${step},0`;
-  return svgEl("path", { d, class: "ojit" });
+  return svgEl("path", { d, class: cls });
+}
+
+/** Runs [first, last + 1) of the words of a french_translation, one per field; a word the JSON lacks
+ *  (no path) between two of the same field stays in. */
+const isFtr = (w) => !!w.path && /(^|\/)french_translation$/.test(w.path);
+function ftrRuns(words) {
+  const runs = [];
+  for (let i = 0; i < words.length;) {
+    if (!isFtr(words[i])) { i++; continue; }
+    let j = i + 1, last = i;
+    while (j < words.length && (words[j].path === words[i].path || !words[j].path)) { if (words[j].path) last = j; j++; }
+    runs.push([i, last + 1]);
+    i = last + 1;
+  }
+  return runs;
 }
 
 function draw() {
@@ -197,6 +219,7 @@ function draw() {
       both: res.words.filter((w) => w.s === "both").length,
       italics: res.italics.length,
       jsonit: res.words.filter((w) => w.it).length,
+      ftr: ftrRuns(res.words).length,
     };
     for (const [k, label] of TYPES) {
       const b = filterBtns[k];
@@ -205,7 +228,7 @@ function draw() {
       b.classList.toggle("zero", !counts[k]);
     }
     const flags = activeFlags();
-    count.textContent = flags.length ? "Next ›" : Object.entries(counts).some(([k, n]) => n && k !== "jsonit") ? "" : "all match";
+    count.textContent = flags.length ? "Next ›" : Object.entries(counts).some(([k, n]) => n && k !== "jsonit" && k !== "ftr") ? "" : "all match";
     count.disabled = !flags.length;
     res.words.forEach((w, i) => {
       for (const [x, y, bw, bh] of w.boxes) {
@@ -237,6 +260,10 @@ function draw() {
         for (const b of mergeLineBoxes(res.words.slice(i, j).flatMap((w) => w.boxes))) svg.append(wavy(b));
         i = j;
       }
+    }
+    if (active.has("ftr")) {
+      for (const [i, j] of ftrRuns(res.words))
+        for (const b of mergeLineBoxes(res.words.slice(i, j).flatMap((w) => w.boxes))) svg.append(wavy(b, "oftr", 1));
     }
     if (active.has("italics")) {
       for (const it of res.italics) {
