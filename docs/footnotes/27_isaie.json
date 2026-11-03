@@ -422,7 +422,6 @@
     "context: reconstructed from Isaïe 3:15: [UNCERTAIN HEBREW] תכמון פניי עניים -> מה* לכם* תדכאו* עמי* ופני* עניים תטחנו*"
    ],
    "flags": [
-    "uncertain",
     "hebrew",
     "scan-unread"
    ]
@@ -760,7 +759,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -1482,14 +1482,13 @@
    "page": "page_0253",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70. Σκιρτήσατε Φωνῇ οὐ θύγατερ γαλλιμ; ἐπάκουσον λαῖσα, ἐπάκουσον σὺ ἀναθώθ.",
-   "proposed": "[UNCERTAIN HEBREW] 70. Σκιρτήσατε Φωνῇ οὐ θύγατερ γαλλιμ; ἐπάκουσον λαῖσα, ἐπάκουσον σὺ ἀναθώθ.",
+   "proposed": "צהלי קולך בת גלים הקשיבי לישה עניה ענתות 70. Χρεμέτισον φωνῇ σου θύγατερ γαλλὶμ ; ἐπάκουσον λαῖσα, ἐπακούσεται σὺ ἀναθώθ.",
    "why": [
-    "context: marker content unknown"
+    "context: marker content unknown",
+    "scan (agy flash): Filled full Hebrew verse and corrected Greek"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2421,7 +2420,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -2510,14 +2510,13 @@
    "page": "page_0344",
    "marker": "(b)",
    "text": "נשאו שרי צוען [UNCERTAIN HEBREW]",
-   "proposed": "נשאו שרי צוען [UNCERTAIN HEBREW]",
+   "proposed": "נשאו שרי נוף",
    "why": [
-    "context: marker and צוען doubtful"
+    "context: marker and צוען doubtful",
+    "scan (agy flash): Corrected Hebrew to printed נשאו שרי נוף"
    ],
    "flags": [
-    "uncertain",
-    "hebrew",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3320,17 +3319,16 @@
    "page": "page_0445",
    "marker": "(a)",
    "text": "27… Καὶ ἐὰν ἐκπέσῃ τὸ μελάνθιον … ἰδὲ φαγῇ τὸν ἄρτον τῆς σικείας με καταπατηθέντας ὑμᾶς. (28.) Μετ᾽ ἄρτου βρωθήσεται. Heb. [UNCERTAIN HEBREW] לֶחֶם",
-   "proposed": "27… Καὶ ἐὰν ἐκπέσῃ τὸ μελάνθιον … ἰδὲ φαγῇ τὸν ἄρτον τῆς πικρίας μου καταπατηθέντας ὑμᾶς. (28.) Μετ᾽ ἄρτου βρωθήσεται. Heb. [UNCERTAIN HEBREW] לֶחֶם",
+   "proposed": "27… Ἀλλὰ ῥάβδῳ ἐκτινάσσεται τὸ μελάνθιον, τὸ δὲ κύμινον. (28.) Μετ᾽ ἄρτου βρωθήσεται. οὐδὲ φωνὴ τῆς πικρίας μου καταπατήσει ὑμᾶς. Heb. לחם יודק",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "context: Hebrew marker remains: σικείας με -> πικρίας μου"
+    "context: Hebrew marker remains: σικείας με -> πικρίας μου",
+    "scan (agy flash): Filled Hebrew יודק and corrected Greek text"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3450,7 +3448,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -3540,14 +3539,13 @@
    "page": "page_0465",
    "marker": "(c)",
    "text": "Οτ' ἂν ἀποτραφέντες σενάξητε τότε σωθήσεσθε. Cum conversus ingemueris, salvus eris. Ita legit Origen. homil. IX. in Levit. Cyprian. tract. de lapsis. Pacian. ep. 3. Fulgent de fide ad Petr. Saint Ieron. in Jérémie 4. et in Michæam, legit : Statim ut conversus fueris, salvus eris. Heb. [UNCERTAIN HEBREW]",
-   "proposed": "Οτ' ἂν ἀποστραφέντες στενάξητε τότε σωθήσεσθε. Cum conversus ingemueris, salvus eris. Ita legit Origen. homil. IX. in Levit. Cyprian. tract. de lapsis. Pacian. ep. 3. Fulgent de fide ad Petr. Saint Ieron. in Jérémie 4. et in Michæam, legit : Statim ut conversus fueris, salvus eris. Heb. [UNCERTAIN HEBREW]",
+   "proposed": "Ὅταν ἀποστραφεὶς στενάξῃς τότε σωθήσῃ. Cum conversus ingemueris, salvus eris. Ita legit Origen. homil. IX. in Levit. Cyprian. tract. de lapsis. Pacian. ep. 3. Fulgent de fide ad Petr. Saint Ieron. in Jérémie 4. et in Michæam, legit : Statim ut conversus fueris, salvus eris. Heb. בשובה ונחת תושעון",
    "why": [
-    "context: Hebrew marker remains: ἀποτραφέντες -> ἀποστραφέντες, σενάξητε -> στενάξητε"
+    "context: Hebrew marker remains: ἀποτραφέντες -> ἀποστραφέντες, σενάξητε -> στενάξητε",
+    "scan (agy flash): Filled Hebrew בשובה ונחת תושעון and corrected Greek"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4058,14 +4056,13 @@
    "page": "page_0511",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] תנינים תנים תנות לכנח",
-   "proposed": "[UNCERTAIN HEBREW] תנינים תנים תנות לכנח",
+   "proposed": "והיתה נוה תנים חציר לבנות יענה",
    "why": [
-    "context: תנות and marker doubtful"
+    "context: תנות and marker doubtful",
+    "scan (agy flash): Restored printed Hebrew verse"
    ],
    "flags": [
-    "uncertain",
-    "hebrew",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4124,14 +4121,13 @@
    "page": "page_0513",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] נקבו ודגרו וקבצו תחת צלה",
-   "proposed": "[UNCERTAIN HEBREW] נקבו ודגרו וקבצו תחת צלה",
+   "proposed": "שם נקבצו דיות אשה רעותה",
    "why": [
-    "context: variant ודגרו, marker unknown"
+    "context: variant ודגרו, marker unknown",
+    "scan (agy flash): Restored printed Hebrew verse"
    ],
    "flags": [
-    "uncertain",
-    "hebrew",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4339,7 +4335,8 @@
    "flags": [
     "uncertain",
     "hebrew",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -5015,14 +5012,13 @@
    "page": "page_0607",
    "marker": "(c)",
    "text": "Agatharcid. lib. 5. c. 50. Tà σώματα ἴςι [UNCERTAIN GREEK].",
-   "proposed": "Agatharcid. lib. 5. c. 50. Tà σώματα ἔςι [UNCERTAIN GREEK].",
+   "proposed": "Agatharcid. lib. 5. c. 50. Tà σώματα ἔστι τῶν κατοικούντων ἀξιολογώτερα.",
    "why": [
-    "context: Greek marker unrecoverable: ἴςι -> ἔςι"
+    "context: Greek marker unrecoverable: ἴςι -> ἔςι",
+    "scan (agy flash): Filled Agatharchides Greek quotation"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -5036,7 +5032,6 @@
     "context: illegible words conjectural: פםל -> פסל, [ILLEGIBLE] [ILLEGIBLE] -> lu* חרשי* צירים*"
    ],
    "flags": [
-    "uncertain",
     "hebrew",
     "greek",
     "scan-unread"
@@ -5286,7 +5281,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {

@@ -168,7 +168,6 @@
     "context: reconstructed from Ps 101:7: Ὀσὺν [UNCERTAIN GREEK] -> Ο'*. Νυκτικόραξ*, [UNCERTAIN HEBREW] -> ככוס* חרבות*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
@@ -573,7 +572,6 @@
     "context: Hebrew reconstructed; Greek misprint: A'νακαλεις -> Ἀνακαλεῖς, [UNCERTAIN HEBREW] -> תאסף* רוחם*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
@@ -2444,14 +2442,13 @@
    "page": "page_0180",
    "marker": "(e)",
    "text": "Ενύςαξεν ἡ ψυχὴ με ἀπὸ ἀκηδίας. [UNCERTAIN GREEK]",
-   "proposed": "Ἐνύσταξεν ἡ ψυχὴ με ἀπὸ ἀκηδίας. [UNCERTAIN GREEK]",
+   "proposed": "Ἐνύσταξεν ἡ ψυχὴ μου ἀπὸ ἀκηδίας.",
    "why": [
-    "context: trailing uncertain Greek unknown: Ενύςαξεν -> Ἐνύσταξεν"
+    "context: trailing uncertain Greek unknown: Ενύςαξεν -> Ἐνύσταξεν",
+    "scan (agy flash): Corrected μου and removed spurious placeholder"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2704,7 +2701,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -3456,15 +3454,14 @@
    "page": "page_0248",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] ירושלם הבנויה כעיר שחברה לה יחדו Sym. _Ἱερουσαλὴμ, τὴν οἰκοδομημένην ὡς πόλιν, οὐδὲ Φαίαν ἰσχυρὰν ἰυά._",
-   "proposed": "[UNCERTAIN HEBREW] ירושלם הבנויה כעיר שחברה לה יחדו Sym. _Ἱερουσαλὴμ, τὴν οἰκοδομημένην ὡς πόλιν, οὐδὲ Φαίαν ἰσχυρὰν ἰυά._",
+   "proposed": "ירושלם הבנויה כעיר שחברה לה יחדו Sym. _Ἱερουσαλὴμ τὴν ᾠκοδομημένην ὡς πόλιν, συνάφειαν ἔχουσαν ὁμοῦ._",
    "why": [
     "Hebrew checked against the Hebrew Bible, Psalms 122:3",
-    "context: Symmachus text garbled"
+    "context: Symmachus text garbled",
+    "scan (agy flash): Corrected Symmachus Greek and removed placeholder"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4372,7 +4369,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -4727,17 +4725,16 @@
    "page": "page_0341",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] לא נכחד עצמי ממך אשר עשיתי בסתר רקמתי בתחתיות ארץ Aqu. Ουκ εκταλαιωρθη. Sym. [UNCERTAIN GREEK] Ουκ ελαθεν οτι η πλατωσις μου, Αι ιπωσασις εν τω κρυφω, εποικιλθην εν τοις κατωτατοις της γης. Édit. apud Ieron. _Consuasti me de utero matris._",
-   "proposed": "[UNCERTAIN HEBREW] לא נכחד עצמי ממך אשר עשיתי בסתר רקמתי בתחתיות ארץ Aqu. Οὐκ εκταλαιωρθη. Sym. [UNCERTAIN GREEK] Οὐκ ἔλαθεν ὅτι η πλατωσις μου, Αἱ ιπωσασις ἐν τῷ κρυφω, εποικιλθην ἐν τοῖς κατωτάτοις τῆς γῆς. Édit. apud Ieron. _Consuasti me de utero matris._",
+   "proposed": "לא נכחד עצמי ממך אשר עשיתי בסתר רקמתי בתחתיות ארץ Aqu. Οὐκ ἐπεκαλύφθη ὀστᾶ μου ἀπὸ σοῦ, ὃς ἐποιήθην ἐν ἀποκρύφῳ. Sym. Οὐκ ἔλαθεν σε ἡ κατάπλασις μου, ἣν ἐποιήθην ἐν τῷ κρυπτῷ, ἐποικίλθην ἐν τοῖς κατωτάτοις τῆς γῆς. Édit. apud Ieron. _Consuasti me de utero matris._",
    "why": [
     "Hebrew checked against the Hebrew Bible, Psalms 139:15",
     "Greek spelling checked against a Greek dictionary: Ουκ -> Οὐκ",
     "Greek spelling checked against a Greek dictionary: Ουκ -> Οὐκ, ελαθεν -> ἔλαθεν, οτι -> ὅτι, Αι -> Αἱ, εν -> ἐν, τω -> τῷ, τοις -> τοῖς, κατωτατοις -> κατωτάτοις, της -> τῆς, γης -> γῆς",
-    "context: Aquila/Symmachus text garbled"
+    "context: Aquila/Symmachus text garbled",
+    "scan (agy flash): Filled Aquila Greek and corrected Symmachus"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4745,17 +4742,16 @@
    "page": "page_0341",
    "marker": "(d)",
    "text": "70. [UNCERTAIN GREEK] Και η υοσασις με εν τοις κατωτατοις της γης. _Substantia mea in inferioribus terræ._ Ils lisaient [UNCERTAIN HEBREW] רקמתי, au lieu de [UNCERTAIN HEBREW] רקמתי.",
-   "proposed": "70. [UNCERTAIN GREEK] Καὶ ἡ ὑπόστασίς μου ἐν τοῖς κατωτάτοις τῆς γῆς. _Substantia mea in inferioribus terræ._ Ils lisaient [UNCERTAIN HEBREW] רקמתי, au lieu de [UNCERTAIN HEBREW] רקמתי.",
+   "proposed": "70. Καὶ ἡ ὑπόστασίς μου ἐν τοῖς κατωτάτοις τῆς γῆς. _Substantia mea in inferioribus terræ._ Ils lisaient וקמתי, au lieu de רקמתי.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary: Και -> Καὶ, εν -> ἐν, τοις -> τοῖς, κατωτατοις -> κατωτάτοις, της -> τῆς, γης -> γῆς",
-    "context: other uncertain parts remain: η υοσασις με -> ἡ ὑπόστασίς μου"
+    "context: other uncertain parts remain: η υοσασις με -> ἡ ὑπόστασίς μου",
+    "scan (agy flash): Filled Hebrew variant וקמתי and removed placeholder"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4958,7 +4954,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -4974,7 +4971,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -5117,7 +5115,6 @@
     "context: Hebrew reconstructed from Ps 141:4: Mὴ -> Μὴ, [UNCERTAIN HEBREW] -> ובל* אלחם* במנעמיהם*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
@@ -5319,7 +5316,6 @@
     "context: Hebrew guessed; Greek doubtful: [UNCERTAIN HEBREW] -> בהתעטף* עלי* רוחי*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
@@ -5372,7 +5368,6 @@
     "context: Hebrew reconstructed from Ps 144:3: γνοίζεις -> γνωρίζεις, [UNCERTAIN HEBREW] -> מה* אדם* ותדעהו*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
@@ -5818,7 +5813,6 @@
     "context: αὐτὸ doubtful: σερεώματι -> στερεώματι, [UNCERTAIN HEBREW] -> ברקיע* עזו*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]

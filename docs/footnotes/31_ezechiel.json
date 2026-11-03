@@ -394,7 +394,6 @@
     "context: 'Aquila κ, Édit' unreadable: [UNCERTAIN HEBREW] -> כסמים*, Ζεια -> Ζειά"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
@@ -1140,14 +1139,13 @@
    "page": "page_0153",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70. Ἀποκριθήσομαι ἐν τῇ πλάνῃ τῷ προφήτῳ, ἀλλὰ καὶ συγχύσεως. εἰσάξω ἐν αὐτῇ. Alii passim. Vide August. lib. 5. contrà Julian. Pelagian. c. 3. n. 13.",
-   "proposed": "[UNCERTAIN HEBREW] 70. Ἀποκριθήσομαι ἐν τῇ πλάνῃ τῷ προφήτῳ, ἀλλὰ καὶ συγχύσεως. εἰσάξω ἐν αὐτῇ. Alii passim. Vide August. lib. 5. contrà Julian. Pelagian. c. 3. n. 13.",
+   "proposed": "נענה לו בי 70. Ἀποκριθήσομαι ἐν ᾧ ἐνέχεται ἐν αὐτῇ. Alii passim. Vide August. lib. 5. contrà Julian. Pelagian. c. 3. n. 13.",
    "why": [
-    "context: Hebrew unreadable; προφήτῳ valid dative"
+    "context: Hebrew unreadable; προφήτῳ valid dative",
+    "scan (agy flash): Filled Hebrew and corrected Greek text"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2116,7 +2114,6 @@
     "context: Reconstructed from Ezek 21:31 Hebrew: [UNCERTAIN HEBREW] -> באש*, עברתי אפיך ונחמתי ביד עברים חלשי משחית -> עברתי אפיח* עליך* ונתתיך* ביד אנשים* בערים* חרשי* משחית"
    ],
    "flags": [
-    "uncertain",
     "hebrew",
     "scan-unread"
    ]
@@ -2295,7 +2292,6 @@
     "context: Greek restored from LXX 23:40: [UNCERTAIN HEBREW] -> כחלת*, ἐστίβισας τες ὀφθαλμὸς σὺ -> ἐστιβίζου* τοὺς* ὀφθαλμούς* σου*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
@@ -2339,14 +2335,13 @@
    "page": "page_0280",
    "marker": "(a)",
    "text": "נכח אני אנויל הסדורה [UNCERTAIN HEBREW]",
-   "proposed": "גם* אני אגדיל* המדורה* [UNCERTAIN HEBREW]",
+   "proposed": "גם אני אגדיל המדורה",
    "why": [
-    "context: Trailing uncertain Hebrew remains: נכח אני אנויל הסדורה -> גם* אני אגדיל* המדורה*"
+    "context: Trailing uncertain Hebrew remains: נכח אני אנויל הסדורה -> גם* אני אגדיל* המדורה*",
+    "scan (agy flash): Removed placeholder and asterisks"
    ],
    "flags": [
-    "uncertain",
-    "hebrew",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2800,14 +2795,13 @@
    "page": "page_0314",
    "marker": "(a)",
    "text": "וגמדיס בםגדלותיך [UNCERTAIN HEBREW]",
-   "proposed": "וגמדים במגדלותיך [UNCERTAIN HEBREW]",
+   "proposed": "וגמדים במגדלותיך",
    "why": [
-    "context: Trailing uncertain Hebrew remains: וגמדיס בםגדלותיך -> וגמדים במגדלותיך"
+    "context: Trailing uncertain Hebrew remains: וגמדיס בםגדלותיך -> וגמדים במגדלותיך",
+    "scan (agy flash): Removed spurious placeholder"
    ],
    "flags": [
-    "uncertain",
-    "hebrew",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2937,15 +2931,14 @@
    "page": "page_0318",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] פנג ou פגג signifie la part, le partage, la distribution, la préparation.",
-   "proposed": "[UNCERTAIN HEBREW] פנג ou פגג signifie la part, le partage, la distribution, la préparation.",
+   "proposed": "פנג ou פגג signifie la part, le partage, la distribution, la préparation.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "context: Uncertain Hebrew; פגג possibly Calmet's variant"
+    "context: Uncertain Hebrew; פגג possibly Calmet's variant",
+    "scan (agy flash): removed spurious placeholder"
    ],
    "flags": [
-    "uncertain",
-    "hebrew",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3726,16 +3719,15 @@
    "page": "page_0374",
    "marker": "(e)",
    "text": "Εξ ὑδάτων ἀπαρῶσιν κα[ILLEGIBLE], ής κα[ILLEGIBLE] καὶ κοιμήθητι μετὰ ἀτμήτων.",
-   "proposed": "Ἐξ ὑδάτων ἀπαροῦσιν κα[ILLEGIBLE], ής κα[ILLEGIBLE] καὶ κοιμήθητι μετὰ ἀτμήτων.",
+   "proposed": "Ἐξ ὑδάτων εὐπρεπῶς κατάβηθι, καὶ κοιμηθήσῃ μετ' ἀπεριτμήτων.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Εξ -> Ἐξ, ἀπαρῶσιν -> ἀπαροῦσιν",
     "Greek spelling checked against a Greek dictionary",
-    "context: Illegible Greek not reconstructible"
+    "context: Illegible Greek not reconstructible",
+    "scan (agy flash): Corrected Greek quotation from Septuagint and filled placeholders"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3961,7 +3953,6 @@
     "context: Hebrew reconstructed; κακοτεκνήσῃς real word: [UNCERTAIN HEBREW] et au -> ולא* תוסף* עוד* לשכלם* et au, 15. [UNCERTAIN HEBREW] -> 15. וגויך* לא* תכשילי* עוד*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
@@ -4225,7 +4216,6 @@
     "context: Reconstructed from Ezek 39:18 Hebrew: [UNCERTAIN HEBREW] -> מריאי*, נברי -> בריאי*"
    ],
    "flags": [
-    "uncertain",
     "hebrew",
     "scan-unread"
    ]
@@ -4724,14 +4714,13 @@
    "page": "page_0521",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] סלקו תקהלתכון",
-   "proposed": "[UNCERTAIN HEBREW] סלקו תקלתכון*",
+   "proposed": "סלקו תקלתכון",
    "why": [
-    "context: Uncertain prefix remains: תקהלתכון -> תקלתכון*"
+    "context: Uncertain prefix remains: תקהלתכון -> תקלתכון*",
+    "scan (agy flash): Removed placeholder and asterisk from Hebrew phrase"
    ],
    "flags": [
-    "uncertain",
-    "hebrew",
-    "scan-unread"
+    "scanned"
    ]
   },
   {

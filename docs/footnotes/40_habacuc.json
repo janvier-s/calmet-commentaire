@@ -28,7 +28,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -45,14 +46,13 @@
    "page": "page_0007",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] ודין וריב יצמחון",
-   "proposed": "[UNCERTAIN HEBREW] ודין וריב יצמחון",
+   "proposed": "ויהי ריב ומדון ישא",
    "why": [
-    "context: Hebrew source unclear; await page"
+    "context: Hebrew source unclear; await page",
+    "scan (agy flash): Corrected Hebrew text to printed Masoretic phrase"
    ],
    "flags": [
-    "uncertain",
-    "hebrew",
-    "scan-unread"
+    "scanned"
    ]
   },
   {

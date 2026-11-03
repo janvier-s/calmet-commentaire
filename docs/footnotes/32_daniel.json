@@ -389,7 +389,6 @@
     "context: Opening words reconstructed from Hebrew: [UNCERTAIN HEBREW] -> נפל* על* אנפוהי* ו*, וננחה -> ומנחה, לסנכה -> לנסכה"
    ],
    "flags": [
-    "uncertain",
     "hebrew",
     "scan-unread"
    ]
@@ -780,7 +779,6 @@
     "context: Edit. Asii clause still doubtful: [UNCERTAIN HEBREW] -> וקדיש*, ἅγι[UNCERTAIN GREEK] -> ἅγιος*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
@@ -975,7 +973,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -1592,14 +1591,13 @@
    "page": "page_0215",
    "marker": "(a)",
    "text": "רסע יזכו על עזבי ברית קדש [UNCERTAIN HEBREW]",
-   "proposed": "ושב* ויבן* על עזבי ברית קדש [UNCERTAIN HEBREW]",
+   "proposed": "ושב ויבן על עזבי ברית קדש",
    "why": [
-    "context: Misread Hebrew; trailing gap remains: רסע יזכו -> ושב* ויבן*"
+    "context: Misread Hebrew; trailing gap remains: רסע יזכו -> ושב* ויבן*",
+    "scan (agy flash): Removed placeholder and asterisks from Hebrew phrase"
    ],
    "flags": [
-    "uncertain",
-    "hebrew",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1613,7 +1611,6 @@
     "context: τωλμά and samina doubtful: עזריס -> זרעים*, [UNCERTAIN HEBREW] -> ממנו*"
    ],
    "flags": [
-    "uncertain",
     "hebrew",
     "greek",
     "scan-unread"
@@ -1834,7 +1831,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {

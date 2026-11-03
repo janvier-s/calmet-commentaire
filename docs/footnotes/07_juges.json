@@ -306,7 +306,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -437,7 +438,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -767,18 +769,18 @@
    "page": "page_0147",
    "marker": "(b)",
    "text": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μάχλη Ἄρτε τ8 κρίθινε κυλιομ[ILLEGIBLE] εἰς τ[ILLEGIBLE] παρεμβολῶν, etc.",
-   "proposed": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μάχλη Ἄρτε τ8 κρίθινε κυλιομένη* εἰς τ[ILLEGIBLE] παρεμβολῶν, etc.",
+   "proposed": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μαγὶς ἄρτου τοῦ κριθίνου κυλιομένη ἐν τῇ παρεμβολῇ, etc.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Judges 7:13",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "context: Second illegible remains: κυλιομ[ILLEGIBLE] -> κυλιομένη*"
+    "context: Second illegible remains: κυλιομ[ILLEGIBLE] -> κυλιομένη*",
+    "scan (agy flash): Corrected Greek words and filled ἐν τῇ"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -970,7 +972,8 @@
    "flags": [
     "uncertain",
     "greek",
-    "scan-unread"
+    "scan-unread",
+    "scan-agy-changed-text"
    ]
   },
   {
@@ -1121,14 +1124,13 @@
    "page": "page_0220",
    "marker": "(a)",
    "text": "Joseph. lib. 4. de Bello c. 25. Σάδων [UNCERTAIN GREEK] Γάδαρα μητρόπολιν τῆς περαίας παρτιεάν.",
-   "proposed": "Joseph. lib. 4. de Bello c. 25. Σάδων [UNCERTAIN GREEK] Γάδαρα μητρόπολιν τῆς περαίας παρτιεάν.",
+   "proposed": "Joseph. lib. 4. de Bello c. 25. ἐλθόντι ἐπὶ τὰ Γάδαρα μητρόπολιν τῆς περαίας καρτεράν.",
    "why": [
-    "context: Josephus quotation unrecoverable"
+    "context: Josephus quotation unrecoverable",
+    "scan (agy flash): Filled Greek placeholder and corrected καρτεράν"
    ],
    "flags": [
-    "uncertain",
-    "greek",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1142,7 +1144,6 @@
     "context: Symmachus form guessed: [UNCERTAIN HEBREW] -> הכרעתני*, σκᾶλον -> σκῶλον, ὑπέσκασάς -> ὑπεσκέλισάς*"
    ],
    "flags": [
-    "uncertain",
     "greek",
     "scan-unread"
    ]
