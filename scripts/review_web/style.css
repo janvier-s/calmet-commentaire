@@ -115,6 +115,8 @@ body { grid-template-rows: auto auto auto 1fr; }
 #ocr-layer .cur { fill: rgba(59, 110, 165, .25); stroke: var(--save); stroke-width: 2; }
 #ocr-layer .oit { pointer-events: none; fill: none; stroke: #00a035; stroke-width: 2.5; }
 :root[data-theme="dark"] #ocr-layer .oit { fill: none; stroke: #3ddc58; stroke-width: 2.5; }
+#ocr-layer .ojit { pointer-events: none; fill: none; stroke: #00a035; stroke-width: 1.75; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+:root[data-theme="dark"] #ocr-layer .ojit { stroke: #3ddc58; }
 #ocr-layer .otodo { stroke: var(--trans); stroke-width: 2; stroke-dasharray: 6 3; fill: rgba(138, 92, 196, .08); }
 #ocr-layer .otodo.done { stroke-opacity: .4; fill: none; }
 #ocr-layer .drawing { pointer-events: none; }
@@ -131,6 +133,8 @@ body { grid-template-rows: auto auto auto 1fr; }
 #scan-tools .f-diff, #scan-tools .f-near, #scan-tools .f-both { --ocr-c: #e69500; }
 #scan-tools .f-italics { --ocr-c: #00b248; }
 :root[data-theme="dark"] #scan-tools .f-italics { --ocr-c: #5eff6e; }
+#scan-tools .f-jsonit { --ocr-c: #00b248; border-style: dotted; }
+:root[data-theme="dark"] #scan-tools .f-jsonit { --ocr-c: #5eff6e; }
 :root { --ocr-it-bg: rgba(0, 210, 70, .35); --ocr-it-ul: #009639; }
 :root[data-theme="dark"] { --ocr-it-bg: rgba(80, 255, 100, .5); --ocr-it-ul: #5eff6e; }
 ::highlight(ocr-extra) { background-color: rgba(225, 40, 40, .28); color: #c62828; text-decoration: underline wavy #d32f2f; text-decoration-thickness: 1.5px; }

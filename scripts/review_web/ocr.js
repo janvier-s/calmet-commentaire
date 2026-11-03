@@ -3,6 +3,7 @@
 // the caret in a field: its word on the scan. Shift-drag on the scan (or "Box" then drag) draws a
 // region and adds a to-do for it; a page's region to-dos are drawn whenever it is open. Words printed in
 // italics where the text has roman, or the other way (their slant on the scan), are outlined in green.
+// Words the JSON has in italics already get a wavy green underline ("JSON italics").
 // The OCR is only a witness for the review, never a source of text.
 import { S, api, hooks, toast } from "./app.js";
 import { typedData } from "./edit.js";
@@ -23,6 +24,7 @@ const TYPES = [
   ["both", "both OCRs", "Orange: Kraken and Tesseract both read this word, the JSON has another"],
   ["near", "near", "Orange dashed: nearly the same word"],
   ["italics", "italics", "Green: italic on the scan and roman in the text, or the other way"],
+  ["jsonit", "JSON italics", "Wavy green underline: words already in italics in the JSON (italics on the scan without it still need marking)"],
 ];
 
 let on = false;
@@ -35,6 +37,13 @@ try {
     if (localStorage.getItem("rw-ocr-both") !== "1" && !saved.includes("both") && (active.has("diff") || active.has("near")))
       active.add("both");  // saved before "both" was: once (saved below), so "both" turned off stays off
   }
+} catch (e) {}
+try {
+  if (localStorage.getItem("rw-ocr-jsonit") !== "1" && localStorage.getItem("rw-ocr-filters")) {
+    active.add("jsonit");  // saved before "JSON italics" was: shown once, so turned off stays off
+    localStorage.setItem("rw-ocr-filters", JSON.stringify([...active]));
+  }
+  localStorage.setItem("rw-ocr-jsonit", "1");
 } catch (e) {}
 const saveFilters = () => { try { localStorage.setItem("rw-ocr-filters", JSON.stringify([...active])); } catch (e) {} };
 try {
@@ -77,7 +86,7 @@ const phase = (label, keys, title) => Object.assign(document.createElement("butt
   onclick: () => { active = new Set(keys); saveFilters(); draw(); },
 });
 filterBar.prepend(
-  phase("Phase 1", ["missing", "extra", "italics"], "Show only red (missing, not on scan) and green (italics)"),
+  phase("Phase 1", ["missing", "extra", "italics", "jsonit"], "Show only red (missing, not on scan) and green (italics, and the JSON's italics underlined)"),
   phase("Phase 2", ["both"], "Show only the words both OCRs read and the JSON has otherwise"));
 const count = Object.assign(document.createElement("button"), { className: "link small", id: "ocr-count", hidden: true,
                                                                 title: "Go to the next flagged word among the active filters" });
@@ -159,6 +168,15 @@ function frame() {
   return size && [0, 0, size[0], size[1]];
 }
 
+/** A wavy line under box [x, y, w, h], scaled to its height (the scan's own pixels). */
+function wavy([x, y, bw, bh]) {
+  const amp = Math.max(2, bh * 0.09), half = Math.max(5, bh * 0.22);
+  const n = Math.max(1, Math.round(bw / (2 * half))), step = bw / (2 * n);
+  let d = `M${x},${y + bh + amp + 2}`;
+  for (let k = 0; k < 2 * n; k++) d += ` q${step / 2},${k % 2 ? amp * 2 : -amp * 2} ${step},0`;
+  return svgEl("path", { d, class: "ojit" });
+}
+
 function draw() {
   svg.replaceChildren();
   const todos = (S.issues || []).filter((it) => it.kind === "todo" && it.box);
@@ -178,6 +196,7 @@ function draw() {
       near: res.words.filter((w) => w.s === "near").length,
       both: res.words.filter((w) => w.s === "both").length,
       italics: res.italics.length,
+      jsonit: res.words.filter((w) => w.it).length,
     };
     for (const [k, label] of TYPES) {
       const b = filterBtns[k];
@@ -186,7 +205,7 @@ function draw() {
       b.classList.toggle("zero", !counts[k]);
     }
     const flags = activeFlags();
-    count.textContent = flags.length ? "Next ›" : Object.values(counts).some(Boolean) ? "" : "all match";
+    count.textContent = flags.length ? "Next ›" : Object.entries(counts).some(([k, n]) => n && k !== "jsonit") ? "" : "all match";
     count.disabled = !flags.length;
     res.words.forEach((w, i) => {
       for (const [x, y, bw, bh] of w.boxes) {
@@ -209,6 +228,15 @@ function draw() {
         svg.append(svgEl("rect", { x: x - 10, y: y - 2, width: bw + 20, height: bh + 4, class: `ow-flag s-${st}` }));
       }
       i = j;
+    }
+    if (active.has("jsonit")) {
+      for (let i = 0; i < res.words.length;) {
+        if (!res.words[i].it) { i++; continue; }
+        let j = i + 1;
+        while (j < res.words.length && res.words[j].it) j++;
+        for (const b of mergeLineBoxes(res.words.slice(i, j).flatMap((w) => w.boxes))) svg.append(wavy(b));
+        i = j;
+      }
     }
     if (active.has("italics")) {
       for (const it of res.italics) {

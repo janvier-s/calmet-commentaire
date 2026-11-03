@@ -283,6 +283,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if body.get("tess_run") and tess is not None and not tess["words"]:  # asked to read, and it read nothing
             tess_error = f"Tesseract failed: {tess.get('error') or 'no words read'}"
         res = scan_ocr.align(o, data, fix=True, tess=tess)
+        scan_ocr.mark_json_italics(res["words"], data)  # `it`: italic in the JSON, underlined on the scan
         res["italics"] = [{k: r[k] for k in ("path", "a", "b", "to", "words", "slant")} for r in scan_ocr.italics(o, data, res["words"])]  # the fixed alignment: the columns kept apart
         return {"ocr": res, **({"tess_error": tess_error} if tess_error else {})}
 

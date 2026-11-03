@@ -648,3 +648,10 @@ def test_a_line_read_across_the_gutter_without_a_gap_is_cut_and_a_cut_word_goes_
 def test_a_word_differs_after_an_elision_names_the_word_not_the_elision():  # qu'Abraham: not "qu"
     o = ocr(line(300, "il", "dit", "lorsqu'avant", "tout", "vint", wc=0.99))
     assert [(x["old"], x["new"]) for x in O.differs(o, page("il dit lorsqu'ayant tout vint"))] == [("ayant", "avant")]
+
+
+def test_words_the_json_has_in_italics_are_marked_for_the_underline():
+    o = ocr(line(300, "Il", "dit:", "Je", "suis", "votre", "Dieu"))
+    d = page("Il dit : _Je suis_ vo_tre_ Dieu")
+    words = O.mark_json_italics(O.align(o, d)["words"], d)
+    assert [w["t"] for w in words if w.get("it")] == ["Je", "suis"]

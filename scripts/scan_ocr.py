@@ -832,6 +832,24 @@ ELIDED = re.compile(r"(?:^|(?<=[^\w_]))(\w{1,2})['’]$")  # d', l', qu' just be
 SPLIT_ELISION = re.compile(r"(?<![\w_])_(\w{1,2})_(['’])_(?=\w)")  # _d_'_Achat_
 
 
+def mark_json_italics(res, data):
+    """Sets `it` on each word of `res` the JSON has in italics (all its letters inside _marks_), for the
+    scan's wavy underline: what is italic already, so what the scan has in italics besides shows."""
+    from page_text import italic_runs
+    fields = dict(_fields(data))
+    marks = {path: {i for a, b in italic_runs(s)[0] for i in range(a, b)} for path, s in fields.items() if isinstance(s, str)}
+    for w in res:
+        path = w.get("path")
+        m = marks.get(path) if path else None
+        if not m:
+            continue
+        f = fields[path]
+        letters = [i for i in range(w["a"], min(w["b"], len(f))) if f[i].isalnum()]
+        if letters and all(i in m for i in letters):
+            w["it"] = True
+    return res
+
+
 def italics(o, data, res=None):
     """Stretches the scan prints in italics and the JSON in roman, or the other way. Each: {path, a, b,
     to: "italic" | "roman", words: [first, last] (in `res`), slant, old, before, after, new}: `old` is
