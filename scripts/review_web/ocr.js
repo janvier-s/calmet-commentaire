@@ -7,6 +7,7 @@
 // french_translation a wavy purple one, lower ("Translation"): where its italics need checking by hand.
 // The OCR is only a witness for the review, never a source of text.
 import { S, api, hooks, toast } from "./app.js";
+import { refreshCounts, renderIssues, setStatus } from "./queue.js";
 import { typedData } from "./edit.js";
 import { todoPrompt, whereOf } from "./todo.js";
 
@@ -186,6 +187,14 @@ function wavy([x, y, bw, bh], cls = "ojit", lower = 0) {
   return svgEl("path", { d, class: cls });
 }
 
+/** The page's italics issue for an entry of res.italics (same field and way, the words overlapping), or null. */
+function issueOf(r) {
+  return (S.issues || []).find((it) => /^ocr_italic/.test(it.kind) && it.proposal && it.proposal.scan
+    && it.proposal.scan.path === r.path && it.proposal.scan.to === r.to && it.proposal.scan.a < r.b && r.a < it.proposal.scan.b) || null;
+}
+/** Tagged false positive: the scan's reading set aside, so not drawn as a mismatch (Accept all leaves it too). */
+const dismissed = (r) => { const it = issueOf(r); return !!it && it.status === "false_positive"; };
+
 /** Runs [first, last + 1) of the words of a french_translation, one per field; a word the JSON lacks
  *  (no path) between two of the same field stays in. */
 const isFtr = (w) => !!w.path && /(^|\/)french_translation$/.test(w.path);
@@ -256,7 +265,7 @@ function draw() {
     }
     if (active.has("jsonit")) {
       // red where the scan prints roman and the JSON has italics: italic that should not be
-      const roman = new Set(res.italics.filter((r) => r.to === "roman")
+      const roman = new Set(res.italics.filter((r) => r.to === "roman" && !dismissed(r))
                                        .flatMap((r) => Array.from({ length: r.words[1] - r.words[0] + 1 }, (_, k) => r.words[0] + k)));
       for (let i = 0; i < res.words.length;) {
         if (!res.words[i].it) { i++; continue; }
@@ -273,6 +282,7 @@ function draw() {
     }
     if (active.has("italics")) {
       for (const it of res.italics) {
+        if (dismissed(it)) continue;
         const ws = res.words.slice(it.words[0], it.words[1] + 1);
         if (it.to === "roman" && active.has("jsonit") && ws.every((w) => w.it)) continue;  // the red underline says it
         const boxes = mergeLineBoxes(res.words.slice(it.words[0], it.words[1] + 1).flatMap((w) => w.boxes));
@@ -389,7 +399,7 @@ function markExtra() {
   if (on && res) {
     if (active.has("extra")) for (const w of res.extra) { const r = rangeIn(w.path, w.a, w.b); if (r) extra.push(r); }
     // italic in the JSON, roman on the scan: red, as on the scan; the other way: green
-    if (active.has("italics")) for (const it of res.italics) { const r = rangeIn(it.path, it.a, it.b); if (r) (it.to === "roman" ? wrong : italic).push(r); }
+    if (active.has("italics")) for (const it of res.italics) { if (dismissed(it)) continue; const r = rangeIn(it.path, it.a, it.b); if (r) (it.to === "roman" ? wrong : italic).push(r); }
     if (active.has("missing")) for (const r of findMissingSpaces()) missing.push(r);
     const w = res.words[cur];
     if (w && w.path) { const r = rangeIn(w.path, w.a, w.b); if (r) here.push(r); }
@@ -569,6 +579,9 @@ function showActions(i, x, y) {
     if (it) {
       const n = it.words[1] - it.words[0] + 1;
       acts.push([`Make ${n > 1 ? `these ${n} words` : "it"} ${it.to} (scan)`, () => toggleItalic(it.path, it.a, it.b)]);
+      const iss = issueOf(it);
+      if (iss && iss.status === "false_positive") acts.push(["Not a false positive: reopen", () => tagFalsePositive(iss, false)]);
+      else if (iss && !iss.status) acts.push([`False positive: keep ${n > 1 ? "them" : "it"} ${it.to === "roman" ? "italic" : "roman"}`, () => tagFalsePositive(iss, true)]);
     }
     acts.push([`Italic / roman${w.sl == null ? "" : ` (slant ${w.sl}°)`}`, () => toggleItalic(w.path, w.a, w.b)]);
   }
@@ -580,6 +593,23 @@ function showActions(i, x, y) {
   popAt = performance.now();
   pop.style.left = `${Math.min(innerWidth - pop.offsetWidth - 4, Math.max(4, x - pop.offsetWidth / 2))}px`;
   pop.style.top = `${y + 14 + pop.offsetHeight > innerHeight ? y - pop.offsetHeight - 10 : y + 14}px`;
+}
+
+/** Tag an italics issue false positive (or open it again) without leaving the page: Accept all on page
+ *  then leaves it, and the scan stops flagging it. */
+async function tagFalsePositive(iss, on_) {
+  const r = on_ ? await api("/api/proposal/reject", { id: iss.id, proposal_id: iss.proposal.id })
+                : await api("/api/mark", { id: iss.id, status: null });
+  if (r.status !== 200) { toast(r.body.error || "Could not tag it"); return; }
+  if (on_) {
+    const w = (iss.proposal.word || "").trim();
+    api("/api/note", { section: "FALSE POSITIVE ITALICS", text: w ? `${w} (${iss.book_dir} p.${iss.page})` : `${iss.book_dir} p.${iss.page}` });
+  }
+  setStatus(iss.id, on_ ? "false_positive" : null);
+  toast(on_ ? "Tagged false positive" : "Open again", "ok");
+  draw();
+  renderIssues();
+  refreshCounts();
 }
 
 // --- text → scan ---
