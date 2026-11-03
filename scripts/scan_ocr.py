@@ -1052,6 +1052,41 @@ def italics(o, data, res=None):
                                 words=[lo, hi], slant=round(mean), old=s[a:b],
                                 before=s[max(0, a - 30):a], after=s[b:b + 30], new=new))
         k = m + 1
+    out += bracket_italics(res, fields)
+    return out
+
+
+BRACKET_OPENS = re.compile(r"\[\s*$")  # an italic stretch that ends with the bracket: _Elle se couvrit, [_elle se déguisa
+BRACKET_CLOSES = re.compile(r"[,;.:!?]*\]")  # one that opens with it: reconnue_,] et elle
+
+
+def bracket_italics(res, fields):
+    """A bracket (and the punctuation before a closing one) caught inside an italic stretch: the scan has the
+    brackets roman, whatever their words are, so the marks are misplaced round them. One row for each, to roman."""
+    from page_text import italic_runs, toggle_italics
+    out = []
+    for path, s in fields.items():
+        if not isinstance(s, str) or path.rsplit("/", 1)[-1] not in ITALIC_CHECKED or "[" not in s and "]" not in s:
+            continue
+        at = [n for n, w in enumerate(res) if w.get("path") == path]
+        if not at:
+            continue
+        for ra, rb in italic_runs(s)[0]:
+            text = s[ra:rb]
+            spans = []
+            m = BRACKET_OPENS.search(text)
+            if m and any(c.isalnum() for c in text[:m.start()]):
+                spans.append((ra + m.start(), ra + m.start() + 1))
+            m = BRACKET_CLOSES.match(text)
+            if m and any(c.isalnum() for c in text[m.end():]):
+                spans.append((ra, ra + m.end()))
+            for a, b in spans:
+                t = toggle_italics(s, a, b)
+                if not t or t[0] == s:
+                    continue
+                n = max((n for n in at if res[n]["a"] <= a), default=at[0])
+                out.append(dict(path=path, a=a, b=b, to="roman", words=[n, n], slant=0, old=s[a:b],
+                                before=s[max(0, a - 30):a], after=s[b:b + 30], new=t[0]))
     return out
 
 

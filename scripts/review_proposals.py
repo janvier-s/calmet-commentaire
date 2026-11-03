@@ -182,7 +182,7 @@ def italic_item(store, r, iid=None):
     a, b = ab
     path = r["path"].split("/")
     italic = {i for x, y in italic_runs(o)[0] for i in range(x, y)}
-    letters = [i for i in range(a, b) if o[i].isalnum()]
+    letters = [i for i in range(a, b) if o[i].isalnum()] or [i for i in range(a, b) if o[i] not in "_ \t\n"]  # a bracket alone
     if all((i in italic) == (r["to"] == "italic") for i in letters):  # done already
         return None
     t = toggle_italics(o, a, b) if r["to"] == "roman" or not all(i in italic for i in letters) else None
