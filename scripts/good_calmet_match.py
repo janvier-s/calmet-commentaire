@@ -3,7 +3,7 @@
 
 The two scan sets have different pagination, so page numbers can't be used.
 We compare OCR text of each new page (good_calmet_ocr.py) with the text we
-already extracted per source page (data/<book>/raw_json/commentaire/*.json),
+already extracted per source page (data/<book>/normalized/page_*.json),
 then pick the best order-preserving assignment.
 
 Usage:
@@ -89,7 +89,7 @@ def main():
                 if t.exists():
                     pdf_pages.append((stem, p["pdf_page"], p["type"], p.get("header", "")))
                     pdf_txt.append(norm(t.read_text()))
-    src_files = sorted((book / "raw_json" / "commentaire").glob("page_*.json"))
+    src_files = sorted((book / "normalized").glob("page_*.json"))
     src_txt = [norm(load_text(f)) for f in src_files]
     print(len(pdf_txt), "pdf pages,", len(src_txt), "source pages")
 
@@ -102,7 +102,7 @@ def main():
     rows = []                            # (>= THETA) sit well above the ~0.12-0.17 noise floor
     for k, (stem, pg, typ, hdr) in enumerate(pdf_pages):
         j = int(best[k])
-        row = {"pdf": stem, "pdf_page": pg, "type": typ, "header": hdr}
+        row = {"vol": book.name, "pdf": stem, "pdf_page": pg, "type": typ, "header": hdr}
         if S[k, j] >= THETA:
             row.update(source=src_files[j].stem, sim=round(float(S[k, j]), 3))
             if mono[k] != j:

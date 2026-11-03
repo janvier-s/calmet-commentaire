@@ -68,6 +68,8 @@ export async function loadPage(vol, page) {
   page = r.body.page;
   S.reveal = new Set();
   S.opened = { vol, page, data: structuredClone(r.body.data) };  // for Undo all
+  S.good = r.body.good || 0;
+  if (S.goodIdx >= S.good) S.goodIdx = 0;
   Object.assign(S, { vol, page, data: r.body.data, version: r.body.version, ctx: r.body.context,
                      pages: r.body.pages, chapters: r.body.chapters || [],
                      issues: r.body.issues, around: r.body.around, scanCrop: r.body.scan_crop || null,
@@ -92,14 +94,30 @@ export function updateTop() {
 // --- the scan ---
 export const ZOOM_STEPS = [0.5, 0.65, 0.8, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0];
 
+function goodUrl() { return `/good/${encodeURIComponent(S.vol)}/${S.page}/${S.goodIdx || 0}`; }
+
+export function toggleGood(next) {
+  if (!S.good) return;
+  if (!S.goodOn) S.goodOn = true;
+  else if (next && S.good > 1 && (S.goodIdx || 0) < S.good - 1) S.goodIdx = (S.goodIdx || 0) + 1;
+  else { S.goodOn = false; S.goodIdx = 0; }
+  showScan(true);
+}
+
 export function showScan(has) {
   const img = $("scan-img");
+  const g = !!(S.goodOn && S.good);
+  $("good-toggle").hidden = $("good-open").hidden = !S.good;
+  $("good-toggle").classList.toggle("on", g);
+  $("good-toggle").textContent = g && S.good > 1 ? `Good_Calmet ${(S.goodIdx || 0) + 1}/${S.good}` : "Good_Calmet";
+  $("scan-view").classList.toggle("good", g);
+  has = has || g;
   $("no-scan").hidden = has;
   img.hidden = !has;
   $("scan-dim").hidden = !has;
   if (has) {
     img.onload = () => layoutScan();
-    img.src = `/scan/${encodeURIComponent(S.vol)}/${S.page}`;
+    img.src = g ? goodUrl() : `/scan/${encodeURIComponent(S.vol)}/${S.page}`;
   }
 }
 
@@ -137,6 +155,12 @@ function setupScan() {
   $("zoom-out").onclick = () => zoomStep(-1);
   $("zoom-fit").onclick = () => { S.zoom = 1; S.fitV = false; layoutScan(); };
   $("zoom-fit-v").onclick = () => { S.fitV = true; layoutScan(); };
+  $("good-toggle").onclick = () => toggleGood(true);
+  $("good-open").onclick = () => { $("menu").hidden = true; if (S.good) window.open(goodUrl(), "_blank"); };
+  addEventListener("keydown", e => {
+    if ((e.key === "g" || e.key === "G") && !e.metaKey && !e.ctrlKey && !e.altKey &&
+        !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName) && !document.activeElement.isContentEditable) toggleGood(true);
+  });
   $("zoom-1").onclick = () => {
     const img = $("scan-img");
     S.fitV = false;

@@ -187,6 +187,22 @@ class Store:
         img = self.data / vol / "source_images_cropped" / rel
         return (img, rec["box"]) if rec and img.exists() else (None, None)
 
+    def good_pages(self, vol, page):
+        """Good_Calmet crops (data/good_calmet/, good_calmet_crop.py) matched to this scan page,
+        in PDF order. A record's "vol" names its volume (Genèse's, from before it, has none)."""
+        f = self.data / "good_calmet" / "crops.json"
+        try:
+            mt = f.stat().st_mtime
+            if getattr(self, "_good", (0,))[0] != mt:
+                self._good = (mt, {})
+                for key, rec in sorted(json.loads(f.read_text()).items()):
+                    if rec.get("source"):
+                        v = rec.get("vol") or "01_genese"
+                        self._good[1].setdefault((v, rec["source"]), []).append(self.data / "good_calmet" / f"{key}.png")
+        except OSError:
+            return []
+        return [p for p in self._good[1].get((vol, f"page_{page:04d}"), []) if p.exists()]
+
     def scan_shown(self, vol, page):
         """The image the editor shows: the crop when there is one, else the scan."""
         return self.scan_crop(vol, page)[0] or self.scan(vol, page)

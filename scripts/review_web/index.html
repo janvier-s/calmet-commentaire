@@ -61,6 +61,7 @@
           <button data-tool="flag">Flag for review</button>
           <button data-tool="json">Open JSON</button>
           <button data-tool="png">Reveal PNG in Finder</button>
+          <button id="good-open" hidden>Open Good_Calmet page</button>
         </div>
       </div>
       <button id="mark-skip" data-icon="skip" title="Skip">Skip</button>
@@ -88,6 +89,7 @@
     <div id="scan-tools">
       <button id="zoom-out" title="Zoom out">−</button><span id="zoom-label">100%</span><button id="zoom-in" title="Zoom in">+</button>
       <button id="zoom-fit" title="Fit the page's width to the pane">Fit ↔︎</button><button id="zoom-fit-v" title="Fit the whole page's height to the pane">Fit ↕︎</button><button id="zoom-1">1:1</button>
+      <button id="good-toggle" title="Show the Good_Calmet rescan of this page instead of the scan (G); click again for the next page if it spans two" hidden>Good_Calmet</button>
       <label class="muted" title="Darken the scan">Dim <input type="range" id="dim" min="0" max="100" value="10"></label>
       <label class="muted dark-only" title="Show the scan light-on-dark in the dark theme"><input type="checkbox" id="invert" checked> Invert</label>
       <span class="grow"></span><span class="muted small">drag to pan · ⌘ scroll to zoom</span>

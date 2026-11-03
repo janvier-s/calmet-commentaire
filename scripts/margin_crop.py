@@ -221,10 +221,12 @@ def crop_good(work, out, align):
         stem = f"{p['pdf']}/page_{p['pdf_page']:04d}"
         (out / p["pdf"]).mkdir(exist_ok=True)
         im.crop(box).save(out / f"{stem}.png")
-        recs[stem] = {"pdf": p["pdf"], "pdf_page": p["pdf_page"], "source": p.get("source"),
+        recs[stem] = {**({"vol": p["vol"]} if p.get("vol") else {}), "pdf": p["pdf"], "pdf_page": p["pdf_page"], "source": p.get("source"),
                       "size": [w, h], "block": b, "box": box, "flag": ""}
     flag_widths(recs, lambda r: r["pdf"])
-    (out / "crops.json").write_text(json.dumps(recs, indent=0))
+    f = out / "crops.json"  # other pages' records are kept
+    old = json.loads(f.read_text()) if f.exists() else {}
+    f.write_text(json.dumps({**old, **recs}, indent=0))
     return recs
 
 

@@ -149,6 +149,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     def page_payload(vol, page, data, version):
         return {"page": page, "data": data, "version": version, "scan": store.scan(vol, page) is not None,
                 "scan_crop": store.scan_crop(vol, page)[1],
+                "good": len(store.good_pages(vol, page)),
                 "context": store.context(vol, page), "pages": store.pages(vol),
                 "chapters": store.chapters(vol),
                 "issues": rs.page_issues(items, progress, vol, page),
@@ -733,6 +734,12 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 return self._file(target if STATIC.resolve() in target.parents else None)
             if not self._authorized():
                 return self._send(403, {"error": "missing session key"})
+            if path.startswith("/good/"):
+                parts = path.split("/")
+                if len(parts) != 5 or parts[2] not in store.volumes() or not (parts[3].isdigit() and parts[4].isdigit()):
+                    return self._send(404, b"not found", "text/plain")
+                g = store.good_pages(parts[2], int(parts[3]))
+                return self._file(g[int(parts[4])] if int(parts[4]) < len(g) else None)
             if path.startswith("/scan/"):
                 parts = path.split("/")
                 if len(parts) != 4 or parts[2] not in store.volumes() or not parts[3].isdigit():
