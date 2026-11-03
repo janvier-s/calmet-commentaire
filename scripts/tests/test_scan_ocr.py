@@ -665,3 +665,28 @@ def test_italics_take_in_il_read_as_a_roman_numeral():  # 3 Rois p. 174: Il read
 def test_italics_leave_out_a_short_word_the_scan_measures_roman():  # Psaumes p. 121: Le conseil, ou le secret
     o = ocr(line(300, "lettre", "Le", "conseil,", "ou", "le", "secret", "des", "justes", sl=[0, 15, 16, 4, 15, 16, 0, 0]))
     assert [x["new"] for x in O.italics(o, page("lettre Le conseil, ou le secret des justes"))] == ["lettre _Le conseil,_ ou _le secret_ des justes"]
+
+
+def test_italics_take_in_an_ampersand_that_leans_with_them():  # 3 Rois p. 143: & ce vestibule
+    o = ocr(line(300, "large,", "&", "ce", "vestibule", "était", "ici", sl=[0, 15, 16, 17, 16, 0]))
+    assert [x["old"] for x in O.italics(o, page("large, et ce vestibule était ici"))] == ["et ce vestibule était"]
+
+
+def test_italics_take_in_a_short_word_opening_the_sentence():  # Job p. 119: A quoi peut-on, the A not measured
+    o = ocr(line(300, "trompeuse.", "A", "quoi", "peut-on", "comparer", "ici", sl=[0, None, 16, 17, 16, 0]))
+    assert [x["old"] for x in O.italics(o, page("trompeuse. A quoi peut-on comparer ici"))] == ["A quoi peut-on comparer"]
+
+
+def test_italics_leave_out_a_short_word_measured_roman_opening_the_sentence():  # 3 Rois p. 138: Le _core_ contenait
+    o = ocr(line(300, "ornement.", "Le", "core", "contenait", sl=[0, -1, 16, 0]))
+    assert [x["old"] for x in O.italics(o, page("ornement. Le core contenait"))] == ["core"]
+
+
+def test_italics_leave_out_an_ampersand_measured_roman():  # 1 Chroniques p. 154: Mochori ; & _Mosollam_
+    o = ocr(line(300, "Mochori;", "&", "Mosollam", "fils", sl=[0, -3, 16, 0]))
+    assert [x["old"] for x in O.italics(o, page("Mochori ; et Mosollam fils"))] == ["Mosollam"]
+
+
+def test_italics_leave_a_short_roman_word_inside_a_sentence():
+    o = ocr(line(300, "voici", "le", "Serpent", "tortueux,", "que", sl=[0, -2, 16, 17, 0]))
+    assert [x["old"] for x in O.italics(o, page("voici le Serpent tortueux, que"))] == ["Serpent tortueux"]

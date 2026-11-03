@@ -911,13 +911,37 @@ def italics(o, data, res=None):
                 break  # a number; not Il read II
             if f[max(0, w["a"] - 3):w["a"]].endswith("{(") or f[w["a"]:w["b"]].isdigit() or "^{" in f[min(w["a"], f.rfind(" ", 0, w["a"]) + 1):w["b"]]:
                 break  # a note's mark ^{(f)}, a number: never taken in
-            if "&" in "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"]):
-                break
-            sl = word_slant(o, w)
+            if step > 0 and "&" in "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"]):
+                break  # an & after the stretch: it leans in roman too (Ciel & puis)
+            sl = word_slant(o, w)  # an & before it, leaning its way, is taken in (& ce vestibule)
             if sl is None or not (sl >= ITALIC_AT if scan else sl <= ROMAN_AT):
                 break
             n = m
         return n
+
+    def lead_in(n):
+        """A stretch to italics opening a sentence takes in a word of one or two letters just before it that
+        the scan does not measure roman (A quoi peut-on, the A unmeasured; on _vit paraître_ at 8 degrees):
+        too short to vote, and the stretch's first word as a rule. One measured roman stays out: mostly it is
+        (Le _core_ contenait, Un _cœur mauvais_, 17. Et _on y voyait_). An & comes in by `widen`, leaning."""
+        m = n - 1
+        if m < 0:
+            return n
+        w, path = res[m], res[n]["path"]
+        if w.get("path") != path or w["s"] == "skip" or w["a"] in marks[path]:
+            return n
+        f = fields[path]
+        word = f[w["a"]:w["b"]]
+        src = "".join(o["lines"][li]["words"][wi]["t"] for li, wi in w["src"])
+        sl = word_slant(o, w)
+        if "&" in src or not (word.isalpha() and len(word) <= 2) or (sl is not None and sl <= ROMAN_AT):
+            return n
+        before = f[:w["a"]].replace("_", "").rstrip()
+        if NOTE_MARK.search(f, w["a"], res[n]["a"]) or "^{" in before[-6:]:
+            return n
+        if before and before[-1] not in ".:;?!)" :
+            return n
+        return m
 
     out, k = [], 0
     while k < len(votes):
@@ -941,6 +965,8 @@ def italics(o, data, res=None):
             continue
         if len(run) > 1 or mean >= 12 or mean <= 2:
             lo, hi = widen(run[0][0], -1, scan, js), widen(run[-1][0], 1, scan, js)
+            if scan:
+                lo = lead_in(lo)
             first, last = res[lo], res[hi]
             s = fields[first["path"]]
             a, b = first["a"], last["b"]
