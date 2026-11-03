@@ -385,10 +385,11 @@ function findMissingSpaces() {
 // --- the JSON's words the scan lacks, underlined in the text (CSS highlights: the DOM is left alone) ---
 function markExtra() {
   if (!globalThis.CSS || !CSS.highlights) return;
-  const extra = [], here = [], italic = [], missing = [];
+  const extra = [], here = [], italic = [], wrong = [], missing = [];
   if (on && res) {
     if (active.has("extra")) for (const w of res.extra) { const r = rangeIn(w.path, w.a, w.b); if (r) extra.push(r); }
-    if (active.has("italics")) for (const it of res.italics) { const r = rangeIn(it.path, it.a, it.b); if (r) italic.push(r); }
+    // italic in the JSON, roman on the scan: red, as on the scan; the other way: green
+    if (active.has("italics")) for (const it of res.italics) { const r = rangeIn(it.path, it.a, it.b); if (r) (it.to === "roman" ? wrong : italic).push(r); }
     if (active.has("missing")) for (const r of findMissingSpaces()) missing.push(r);
     const w = res.words[cur];
     if (w && w.path) { const r = rangeIn(w.path, w.a, w.b); if (r) here.push(r); }
@@ -401,6 +402,7 @@ function markExtra() {
   CSS.highlights.set("ocr-missing", new Highlight(...missing));
   CSS.highlights.set("ocr-here", new Highlight(...here));
   CSS.highlights.set("ocr-italic", new Highlight(...italic));
+  CSS.highlights.set("ocr-italic-wrong", new Highlight(...wrong));
 }
 
 function rangeIn(path, a, b) {
