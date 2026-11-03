@@ -77,6 +77,9 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         vset = set(vols) if vols is not None else set(store.volumes())
         pset = set(pages) if pages is not None else None
         fresh = {g["id"]: g for g in rp.generated_items(store, vset, pset)}
+        # an italics entry whose context took in marks (an italic accepted near it) comes back under another
+        # id: it is the same issue, kept under its id rather than closed as fixed and opened again
+        by_key = {g["key"]: gid for gid, g in fresh.items() if g.get("key") and gid not in by_id}
         fixed, added, changes = [], [], {}
         for it in items:
             if it["book_dir"] not in vset or it["kind"] not in rp.GENERATED_KINDS:
@@ -84,8 +87,13 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             if pset is not None and it["page"] not in pset:
                 continue
             g = fresh.pop(it["id"], None)
+            if g is None and it.get("key") in by_key:
+                g = fresh.pop(by_key.pop(it["key"]), None)
+                if g and "proposal" in g:
+                    g["proposal"] = dict(g["proposal"], id=it["id"], item=it["id"])
             if g:
-                it.update(msg=g["msg"], where=g.get("where"), **({"proposal": g["proposal"]} if "proposal" in g else {}))
+                it.update(msg=g["msg"], where=g.get("where"), **({"proposal": g["proposal"]} if "proposal" in g else {}),
+                          **({"key": g["key"]} if "key" in g else {}))
                 if it.pop("fixed", False) and progress.status(it["id"]) == "resolved":
                     changes[it["id"]] = None
             elif rs.in_status(it, progress, "open"):
@@ -438,6 +446,12 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         p = rp.proposal_for(store, progress, it)
         if not p or (proposal_id is not None and p["id"] != proposal_id):
             raise ApiError(409, {"error": "the proposal changed since it was shown: reload"})
+        if edited is None and p.get("scan"):  # scan italics: made again against the field as it reads now
+            p = rp.fresh_proposal(store, p)
+            if p is None:  # already as the scan has it (an italic accepted over the same words)
+                progress.set(it["id"], "resolved", info(it))
+                return {"pages": {}}
+            it["proposal"] = p
         try:
             r = rp.apply(store, p, int(option), edited)
         except rs.Conflict:
@@ -447,10 +461,38 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         progress.set(it["id"], "resolved", info(it))
         return r
 
+    def after_accept(vol, page, r):
+        """The page's generated issues made again against the text just written, so that the next proposal
+        shown on it is not one made for the text before: the answer with the page's issues."""
+        rescan(vol, [page])
+        gen = refresh_generated(rs.book_volumes(vol), [page])
+        by_id.update({it["id"]: it for it in items})
+        return dict(r, fixed=len(gen["fixed"]), added=len(gen["added"]),
+                    issues=rs.page_issues(items, progress, vol, page),
+                    around=rs.neighbour_issue_pages(items, progress, vol, page))
+
     def accept(body):
         it = item_of(body.get("id"))
         with lock:
-            return accept_one(it, body.get("proposal_id"), body.get("option") or 0, body.get("edited"))
+            r = accept_one(it, body.get("proposal_id"), body.get("option") or 0, body.get("edited"))
+            return after_accept(it["book_dir"], it["page"], r)
+
+    def accept_page(body):
+        """Accept every open scan italics proposal of a page (kinds: the ones to take, all italics by
+        default), one after the other, each made again against the text the ones before left."""
+        vol, page = vol_page(body)
+        kinds = set(body.get("kinds") or rp.ITALIC_KINDS) & set(rp.ITALIC_KINDS)
+        done, failed, pages = [], [], {}
+        with lock:
+            todo = [it for it in items if it["book_dir"] == vol and it["page"] == page and it["kind"] in kinds
+                    and rs.in_status(it, progress, "open") and rp.proposal_for(store, progress, it)]
+            for it in todo:
+                try:
+                    pages.update(accept_one(it)["pages"])
+                    done.append(it["id"])
+                except ApiError as e:
+                    failed.append({"id": it["id"], "error": e.body.get("error")})
+            return after_accept(vol, page, {"done": done, "failed": failed, "pages": pages})
 
     def reject(body):
         it = item_of(body.get("id"))
@@ -629,7 +671,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
            "/api/proposal": get_proposal, "/api/batch": batch, "/api/search": search, "/api/versions": versions}
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
-            "/api/open": open_file, "/api/recheck": run_recheck, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
+            "/api/open": open_file, "/api/recheck": run_recheck, "/api/proposal/accept_page": accept_page, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
             "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
             "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit}

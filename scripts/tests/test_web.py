@@ -467,3 +467,55 @@ def test_scan_without_crop_is_the_scan(web):
     code, body = web(f"/scan/{VOL}/194", raw=True)
     assert body == b"\x89PNG\r\n\x1a\n"
     assert web(f"/api/page?vol={VOL}&page=194")[1]["scan_crop"] is None
+
+
+def _italics_server(data_dir, entries):
+    from conftest import dump
+    docs = data_dir.parent / "docs"
+    dump(docs / "ocr_gaps.json", {"italics": entries})
+    server, token = make_server(Store(data_dir, docs), docs / "review_queue.json", port=0)
+    threading.Thread(target=server.serve_forever, args=(0.02,), daemon=True).start()
+    base = f"http://127.0.0.1:{server.server_address[1]}"
+
+    def call(path, body=None):
+        req = urllib.request.Request(base + path, data=None if body is None else json.dumps(body).encode(),
+                                     headers={"X-Token": token, "Content-Type": "application/json"})
+        with urllib.request.urlopen(req) as r:
+            return json.loads(r.read())
+    return server, call
+
+
+TWO_ITALICS = [
+    {"vol": VOL, "page": 194, "path": "commentary/0/french_commentary", "a": 0, "b": 5, "to": "italic",
+     "old": "suite", "before": "", "after": " du commentaire.", "words": [0, 0], "slant": 15},
+    {"vol": VOL, "page": 194, "path": "commentary/0/french_commentary", "a": 9, "b": 20, "to": "italic",
+     "old": "commentaire", "before": "suite du ", "after": ".", "words": [2, 2], "slant": 15}]
+
+
+def test_a_second_italic_on_the_same_field_is_accepted_after_the_first(data_dir):
+    server, call = _italics_server(data_dir, TWO_ITALICS)
+    a, b = call("/api/queue?kind=ocr_italic_word&status=open")["items"]
+    pa = call(f"/api/proposal?id={urllib.parse.quote(a['id'])}")["proposal"]
+    pb = call(f"/api/proposal?id={urllib.parse.quote(b['id'])}")["proposal"]  # shown before the first is accepted
+    r = call("/api/proposal/accept", {"id": a["id"], "proposal_id": pa["id"], "option": 0})
+    assert any(i["id"] == b["id"] for i in r["issues"])  # the other one still there, under its id
+    call("/api/proposal/accept", {"id": b["id"], "proposal_id": pb["id"], "option": 0})  # no "text changed"
+    assert call(f"/api/page?vol={VOL}&page=194")["data"]["commentary"][0]["french_commentary"] == "_suite_ du _commentaire_."
+    server.shutdown()
+
+
+def test_accept_all_italics_on_a_page(data_dir):
+    server, call = _italics_server(data_dir, TWO_ITALICS)
+    r = call("/api/proposal/accept_page", {"vol": VOL, "page": 194})
+    assert len(r["done"]) == 2 and r["failed"] == []
+    assert r["pages"]["194"]["data"]["commentary"][0]["french_commentary"] == "_suite_ du _commentaire_."
+    assert call("/api/queue?kind=ocr_italic_word&status=open")["items"] == []
+    server.shutdown()
+
+
+def test_italics_entry_found_again_when_marks_come_into_its_context():
+    from review_proposals import _locate
+    r = {"a": 9, "b": 20, "old": "commentaire", "before": "suite du ", "after": "."}
+    o = "_suite_ du commentaire."
+    a, b = _locate(o, r)
+    assert o[a:b] == "commentaire"

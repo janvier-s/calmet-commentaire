@@ -2,7 +2,7 @@
 import { S, api, hooks, loadPage, renderPage, toast } from "./app.js";
 import { save } from "./edit.js";
 import { icon } from "./icons.js";
-import { currentItem, refreshCounts, recheck, renderIssues, setStatus, step } from "./queue.js";
+import { applyIssues, currentItem, refreshCounts, recheck, renderIssues, setStatus, step } from "./queue.js";
 import { T, dirty as turnDirty, refresh as refreshTurn, saveTurn } from "./turn.js";
 import { wordDiff } from "./text.js";
 
@@ -58,6 +58,10 @@ export function proposalCard(p, inTurn = false) {
                             : "Reject: hide this proposal, fix it by hand",
         disabled: !p.item, onclick: () => reject(p, inTurn, false),
       }, icon("x", 13), " Reject") : null,
+      k === 0 && isItalic(p) && !inTurn && italicsHere() > 1 ? el("button", {
+        title: "Accept every open scan italics proposal on this page, each made against the text the ones before leave",
+        disabled: !p.item, onclick: () => acceptPage(),
+      }, icon("check", 13), ` Accept all on page (${italicsHere()})`) : null,
       k === 0 ? el("button", {
         title: "Skip this issue and move to the next",
         disabled: !p.item, onclick: () => document.getElementById("mark-skip").click(),
@@ -83,8 +87,36 @@ async function accept(p, option, inTurn) {
     S.version = saved.version;
     renderPage();
   }
+  // the page's other proposals come back made against the text just written: shown before moving on
+  if (r.body.issues) await applyIssues(S.vol, S.page, [], r.body);
   if (inTurn) refreshTurn(true, false);
   else recheck(S.vol, S.page);
+  refreshCounts();
+  renderIssues();
+  step(1);
+}
+
+/** Open scan italics issues on this page (both kinds), proposals not rejected. */
+const CLOSED = ["resolved", "false_positive", "skipped", "on_hold"];
+const italicsHere = () => S.issues.filter((i) => /^ocr_italic/.test(i.kind) && !CLOSED.includes(i.status) && !i.fixed && i.proposal).length;
+
+/** Accept every scan italics proposal on the page at once. */
+async function acceptPage() {
+  if (S.dirty && !(await save({ redraw: false }))) return;
+  const r = await api("/api/proposal/accept_page", { vol: S.vol, page: S.page });
+  if (r.status !== 200) { toast(r.body.error || "Could not apply the proposals"); return; }
+  cache.clear();
+  for (const id of r.body.done) setStatus(id, "resolved");
+  const saved = r.body.pages && r.body.pages[S.page];
+  if (saved) {
+    S.data = saved.data;
+    S.version = saved.version;
+    renderPage();
+  }
+  await applyIssues(S.vol, S.page, [], r.body);
+  const n = r.body.done.length, bad = r.body.failed.length;
+  toast(`Accepted ${n} italics proposal${n === 1 ? "" : "s"}` + (bad ? `; ${bad} not applied: ${r.body.failed[0].error}` : ""), bad ? "" : "ok");
+  recheck(S.vol, S.page);
   refreshCounts();
   renderIssues();
   step(1);

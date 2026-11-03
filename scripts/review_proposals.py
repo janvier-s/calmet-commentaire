@@ -136,52 +136,109 @@ def _gap_items(store, volumes, pages=None):
     return out
 
 
+def _field_text(store, r):
+    path = r["path"].split("/")
+    o = store._load(r["vol"], r["page"]) or {}
+    for k in path:
+        o = (o[int(k)] if int(k) < len(o) else None) if isinstance(o, list) and k.isdigit() else (o or {}).get(k)
+    return o if isinstance(o, str) else None
+
+
+def _locate(o, r):
+    """Where the entry's words are in the field `o` now: r's a..b if they still read so, else found by the
+    text around, the _italics_ marks left out (an italic accepted nearby adds marks and shifts every offset
+    after it, and they enter the 30 letters of context): (a, b) or None."""
+    if o[r["a"]:r["b"]] == r["old"] and o[:r["a"]].endswith(r["before"]):
+        return r["a"], r["a"] + len(r["old"])
+    if o.count(r["before"] + r["old"] + r["after"]) == 1:
+        a = o.index(r["before"] + r["old"] + r["after"]) + len(r["before"])
+        return a, a + len(r["old"])
+    idx = [i for i, ch in enumerate(o) if ch != "_"]
+    plain = "".join(o[i] for i in idx)
+    old = r["old"].replace("_", "")
+    if not old:
+        return None
+    before, after = r["before"].replace("_", ""), r["after"].replace("_", "")
+    # the context loses a letter at its far end for each mark that came into it
+    for bl, al in ((len(before), len(after)), (max(0, len(before) - 10), max(0, len(after) - 10))):
+        needle = before[len(before) - bl:] + old + after[:al]
+        if plain.count(needle) == 1:
+            s = plain.index(needle) + bl
+            return idx[s], idx[s + len(old) - 1] + 1
+    return None
+
+
+def italic_item(store, r, iid=None):
+    """The queue item of one ocr_gaps.json italics entry against the field as it reads now, or None when
+    the words are gone or already as the scan has them. Its proposal keeps the entry (`scan`), so that
+    it can be made again against a field changed since (see fresh_proposal)."""
+    from page_text import italic_runs, toggle_italics
+    o = _field_text(store, r)
+    if o is None:
+        return None
+    ab = _locate(o, r)
+    if ab is None:  # the field changed there
+        return None
+    a, b = ab
+    path = r["path"].split("/")
+    italic = {i for x, y in italic_runs(o)[0] for i in range(x, y)}
+    letters = [i for i in range(a, b) if o[i].isalnum()]
+    if all((i in italic) == (r["to"] == "italic") for i in letters):  # done already
+        return None
+    t = toggle_italics(o, a, b) if r["to"] == "roman" or not all(i in italic for i in letters) else None
+    if not t or t[0] == o:
+        return None
+    vol, page = r["vol"], r["page"]
+    iid = iid or f"{vol}/{page:04d}/ocr_italic/{_md5(r['path'], r['before'], r['old'])}"
+    where = {"section": path[0], "index": int(path[1]), "field": path[2]} if len(path) == 3 else \
+        {"section": "heading", "index": 0, "field": path[0]}
+    change = {"vol": vol, "page": page, "path": [path[0], int(path[1]), path[2]] if len(path) == 3 else path,
+              "old": o, "new": t[0]}
+    word = r["old"].replace("_", "").rstrip(" \t;:?!.,")
+    said = "in italics; the text has it in roman" if r["to"] == "italic" else "in roman; the text has it in italics"
+    # one word alone: a type of its own, as the slant of one word is often wrong (ſes, Anges); the id stays
+    kind = "ocr_italic_word" if len(re.findall(r"[^\W_]+", r["old"])) == 1 else "ocr_italic"
+    scan = {k: r[k] for k in ("vol", "page", "path", "a", "b", "old", "before", "after", "to") if k in r}
+    scan["slant"] = r.get("slant")
+    return {"id": iid, "book_dir": vol, "page": page, "kind": kind, "optional": False, "scan_box": r.get("box"),
+            "msg": f"The scan prints “{word}” {said}", "where": where, "key": italic_key(r),
+            "proposal": {"id": iid, "item": iid, "title": "Italics as on the scan", "word": word, "scan": scan,
+                         "why": [f"The words lean {r['slant']}° on the scan" if r["to"] == "italic"
+                                 else f"The words stand upright on the scan ({r['slant']}°)"],
+                         "flags": [], "sure": False,
+                         "options": [{"label": "italicize" if r["to"] == "italic" else "make roman",
+                                      "changes": [change]}]}}
+
+
+def italic_key(r):
+    """What an italics entry stays when marks come into its context or its words (an italic accepted near
+    it, the page scanned again): its words and 20 letters each side, without marks."""
+    strip = lambda t: t.replace("_", "")
+    return "|".join((r["vol"], str(r["page"]), r["path"], r["to"], strip(r["before"])[-20:], strip(r["old"]),
+                     strip(r["after"])[:20]))
+
+
+def fresh_proposal(store, p):
+    """A scan italics proposal made again against the field as it reads now (its `old` is the whole
+    field, stale once another italic on the field was accepted): the proposal, or None when the words
+    are gone or already as the scan has them. Other proposals come back as they are."""
+    if not p or not p.get("scan"):
+        return p
+    it = italic_item(store, p["scan"], p["id"])
+    return it and dict(it["proposal"], item=p.get("item", p["id"]))
+
+
 def _italic_items(store, volumes, pages=None):
     """Words the scan prints in italics and the field in roman, or the other way (docs/ocr_gaps.json),
     while the field still reads so there."""
-    from page_text import italic_runs, toggle_italics
     report = _read_json(store.docs / "ocr_gaps.json")
     out = []
     for r in (report or {}).get("italics") or []:
         if r["vol"] not in volumes or (pages is not None and r["page"] not in pages):
             continue
-        path = r["path"].split("/")
-        o = store._load(r["vol"], r["page"]) or {}
-        for k in path:
-            o = (o[int(k)] if int(k) < len(o) else None) if isinstance(o, list) and k.isdigit() else (o or {}).get(k)
-        if not isinstance(o, str):
-            continue
-        a = r["a"] if o[r["a"]:r["b"]] == r["old"] and o[:r["a"]].endswith(r["before"]) else None
-        if a is None and o.count(r["before"] + r["old"] + r["after"]) == 1:
-            a = o.index(r["before"] + r["old"] + r["after"]) + len(r["before"])
-        if a is None:  # the field changed there
-            continue
-        b = a + len(r["old"])
-        italic = {i for x, y in italic_runs(o)[0] for i in range(x, y)}
-        letters = [i for i in range(a, b) if o[i].isalnum()]
-        if all((i in italic) == (r["to"] == "italic") for i in letters):  # done already
-            continue
-        t = toggle_italics(o, a, b) if r["to"] == "roman" or not all(i in italic for i in letters) else None
-        if not t or t[0] == o:
-            continue
-        vol, page = r["vol"], r["page"]
-        iid = f"{vol}/{page:04d}/ocr_italic/{_md5(r['path'], r['before'], r['old'])}"
-        where = {"section": path[0], "index": int(path[1]), "field": path[2]} if len(path) == 3 else \
-            {"section": "heading", "index": 0, "field": path[0]}
-        change = {"vol": vol, "page": page, "path": [path[0], int(path[1]), path[2]] if len(path) == 3 else path,
-                  "old": o, "new": t[0]}
-        word = r["old"].replace("_", "").rstrip(" \t;:?!.,")
-        said = "in italics; the text has it in roman" if r["to"] == "italic" else "in roman; the text has it in italics"
-        # one word alone: a type of its own, as the slant of one word is often wrong (ſes, Anges); the id stays
-        kind = "ocr_italic_word" if len(re.findall(r"[^\W_]+", r["old"])) == 1 else "ocr_italic"
-        out.append({"id": iid, "book_dir": vol, "page": page, "kind": kind, "optional": False, "scan_box": r.get("box"),
-                    "msg": f"The scan prints “{word}” {said}", "where": where,
-                    "proposal": {"id": iid, "item": iid, "title": "Italics as on the scan", "word": word,
-                                 "why": [f"The words lean {r['slant']}° on the scan" if r["to"] == "italic"
-                                         else f"The words stand upright on the scan ({r['slant']}°)"],
-                                 "flags": [], "sure": False,
-                                 "options": [{"label": "italicize" if r["to"] == "italic" else "make roman",
-                                              "changes": [change]}]}})
+        it = italic_item(store, r)
+        if it:
+            out.append(it)
     return out
 
 
@@ -300,6 +357,7 @@ def _context_items(store, volumes, pages=None):
     return out
 
 
+ITALIC_KINDS = ("ocr_italic", "ocr_italic_word")
 GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned")
 
 

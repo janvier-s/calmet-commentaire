@@ -375,7 +375,7 @@ async function refreshGenerated(vol = S.vol, page = S.page) {
   if (r.status === 200) await applyIssues(vol, page, [], r.body);
 }
 
-async function applyIssues(vol, page, also, body) {
+export async function applyIssues(vol, page, also, body) {
   const r = { body };
   const byId = new Map(r.body.issues.map((it) => [it.id, it]));
   for (const it of Q.items) {
