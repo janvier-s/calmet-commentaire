@@ -10,7 +10,10 @@ footnotes, signature and catchword) plus a small pad. Originals are never touche
         (cache/ocr/<vol>/page_NNNN.json); the Kraken cache stays in the original's coordinates,
         `ocr_on_crop()` shifts it onto the crop.
     uv run --with pillow --with numpy python margin_crop.py good <work_dir> <out_dir> <alignment.json>
-        Good_Calmet commentary pages (spine/page-edge shadows masked) -> <out_dir>/<pdf2>_<page>.png + crops.json
+        Good_Calmet commentary pages (the PDFs' pages extracted in <work_dir>/<pdf>/, see the manifests)
+        -> <out_dir>/<pdf>/page_NNNN.png (the PDF's page number) and <out_dir>/crops.json:
+        {"<pdf>/page_NNNN": {"source": the source_images page it matches, "box", "size", "flag"}}.
+        The usual <out_dir>: data/good_calmet/.
 
     python margin_crop.py verify <vol> ... | --all     every Kraken word inside its page's crop?
 
@@ -215,7 +218,8 @@ def crop_good(work, out, align):
         h, w = g.shape
         b = text_block(g, edge_x=0.015, edge_y=0.01)  # a margin note can sit close to the edge; shadows go as full-height columns
         box = pad_box(b, w, h) if b else [0, 0, w, h]
-        stem = f"{p['pdf'][:2]}_{p['pdf_page']:04d}"
+        stem = f"{p['pdf']}/page_{p['pdf_page']:04d}"
+        (out / p["pdf"]).mkdir(exist_ok=True)
         im.crop(box).save(out / f"{stem}.png")
         recs[stem] = {"pdf": p["pdf"], "pdf_page": p["pdf_page"], "source": p.get("source"),
                       "size": [w, h], "block": b, "box": box, "flag": ""}
