@@ -25,7 +25,7 @@ const TYPES = [
   ["both", "both OCRs", "Orange: Kraken and Tesseract both read this word, the JSON has another"],
   ["near", "near", "Orange dashed: nearly the same word"],
   ["italics", "italics", "Green: italic on the scan and roman in the text, or the other way"],
-  ["jsonit", "JSON italics", "Wavy green underline: words already in italics in the JSON (italics on the scan without it still need marking)"],
+  ["jsonit", "JSON italics", "Wavy green underline: words already in italics in the JSON (italics on the scan without it still need marking); red where the scan prints them roman"],
   ["ftr", "Translation", "Wavy purple underline: the commentary's french_translation, whose italics need checking by hand"],
 ];
 
@@ -255,11 +255,15 @@ function draw() {
       i = j;
     }
     if (active.has("jsonit")) {
+      // red where the scan prints roman and the JSON has italics: italic that should not be
+      const roman = new Set(res.italics.filter((r) => r.to === "roman")
+                                       .flatMap((r) => Array.from({ length: r.words[1] - r.words[0] + 1 }, (_, k) => r.words[0] + k)));
       for (let i = 0; i < res.words.length;) {
         if (!res.words[i].it) { i++; continue; }
+        const wrong = roman.has(i);
         let j = i + 1;
-        while (j < res.words.length && res.words[j].it) j++;
-        for (const b of mergeLineBoxes(res.words.slice(i, j).flatMap((w) => w.boxes))) svg.append(wavy(b));
+        while (j < res.words.length && res.words[j].it && roman.has(j) === wrong) j++;
+        for (const b of mergeLineBoxes(res.words.slice(i, j).flatMap((w) => w.boxes))) svg.append(wavy(b, wrong ? "ojit wrong" : "ojit"));
         i = j;
       }
     }
