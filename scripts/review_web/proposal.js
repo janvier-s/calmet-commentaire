@@ -39,9 +39,10 @@ export function diffLine(c) {
 
 /** The card; `inTurn` when drawn in the page-turn view. */
 export function proposalCard(p, inTurn = false) {
+  const bare = isItalic(p) && !inTurn;  // scan italics: the scan shows the change, only the buttons
   const opts = p.options.map((o, k) => el("div", { className: "option" },
     p.options.length > 1 ? el("div", { className: "muted small", textContent: `Option ${k + 1}: ${o.label}` }) : null,
-    ...o.changes.map(diffLine),
+    ...(bare ? [] : o.changes.map(diffLine)),
     el("div", { className: "acts" },
       el("button", { className: "ok", title: "Accept: write it and mark the issue resolved", disabled: !p.item,
                      onclick: () => accept(p, k, inTurn) },
@@ -58,16 +59,16 @@ export function proposalCard(p, inTurn = false) {
                             : "Reject: hide this proposal, fix it by hand",
         disabled: !p.item, onclick: () => reject(p, inTurn, false),
       }, icon("x", 13), " Reject") : null,
-      k === 0 && isItalic(p) && !inTurn && italicsHere() > 1 ? el("button", {
-        title: "Accept every open scan italics proposal on this page, each made against the text the ones before leave",
+      k === 0 && isItalic(p) && !inTurn && italicsHere() > 0 ? el("button", {
+        className: "ok recheck", title: "Accept every open scan italics proposal on this page, each made against the text the ones before leave",
         disabled: !p.item, onclick: () => acceptPage(),
       }, icon("check", 13), ` Accept all on page (${italicsHere()})`) : null,
       k === 0 ? el("button", {
         title: "Skip this issue and move to the next",
         disabled: !p.item, onclick: () => document.getElementById("mark-skip").click(),
       }, icon("skip", 13), " Skip") : null)));
-  return el("div", { className: "proposal" },
-    el("div", { className: "ptitle" }, el("b", { textContent: "Proposed fix" }), ` · ${p.title}`,
+  return el("div", { className: "proposal" + (bare ? " bare" : "") },
+    bare ? null : el("div", { className: "ptitle" }, el("b", { textContent: "Proposed fix" }), ` · ${p.title}`,
        p.sure ? el("span", { className: "tagpill ok-pill", textContent: "sure" }) : null,
        ...p.flags.map((f) => el("span", { className: "tagpill", textContent: f.replace(/-/g, " ") })),
        ...p.why.map((w) => el("span", { className: "muted small", textContent: ` ${w}` }))),

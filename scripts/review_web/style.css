@@ -343,6 +343,8 @@ body.turn-open #turn-btn { background: var(--accent-weak); border-color: var(--a
 del { background: color-mix(in srgb, var(--danger) 18%, transparent); color: var(--danger); text-decoration: line-through; }
 ins { background: color-mix(in srgb, var(--ok) 20%, transparent); color: var(--ok); text-decoration: none; }
 .proposal .acts { display: flex; gap: 6px; margin-top: 6px; }
+.proposal.bare { padding: 0; background: none; border: none; }
+.proposal.bare .acts { margin-top: 0; }
 .proposal .acts button { display: inline-flex; align-items: center; gap: 3px; }
 .proposal .acts button:disabled { opacity: .45; cursor: default; }
 #current { max-height: 46vh; overflow: auto; }
