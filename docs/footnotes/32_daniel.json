@@ -1,17 +1,15 @@
 {
  "summary": {
   "notes": 858,
-  "changed": 97,
+  "changed": 118,
   "flags": {
    "hebrew": 18,
-   "scan-unread": 96,
-   "uncertain": 32,
+   "scan-unread": 70,
+   "scanned": 26,
    "greek": 55,
-   "expand-changed-numbers": 11,
-   "ambiguous-name": 1,
-   "reference-not-in-vulgate": 2,
-   "reference-mismatch": 1,
-   "expand-changed-italics": 1
+   "context": 1,
+   "uncertain": 6,
+   "reference-mismatch": 1
   }
  },
  "notes": [
@@ -41,13 +39,14 @@
    "page": "page_0050",
    "marker": "(d)",
    "text": "מזרע המלוכה ומן הפרתמים [UNCERTAIN HEBREW]",
-   "proposed": "מזרע המלוכה ומן הפרתמים [UNCERTAIN HEBREW]",
+   "proposed": "מזרע המלוכה ומן הפרתמים",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Daniel 1:3"
+    "Hebrew checked against the Hebrew Bible, Daniel 1:3",
+    "scan: Filled the final blurred letter of הפרתמים with ם, as printed and in the reference",
+    "read on the scan: ם"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -74,28 +73,17 @@
    ]
   },
   {
-   "id": "0054(a)",
-   "page": "page_0054",
-   "marker": "(a)",
-   "text": "Vide, si placet, Judith 12:2. Aß. xx. 18. xI. 3. Jean 4:9. etc.",
-   "proposed": "Vide, si placet, Judith 12:2. Aß. xx. 18. xI. 3. Jean 4:9. etc.",
-   "why": [
-    "written out, but a number changed or added: Voyez, au besoin, Judith 12:2 ; Actes 10:28 ; 11:3 ; Jean 4:9, etc."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0054(c)",
    "page": "page_0054",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "פניכם זעפים",
+   "why": [
+    "scan: Filled both blurred final mems, in פניכם and זעפים",
+    "read on the scan: פניכם זעפים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -162,11 +150,13 @@
    "page": "page_0058",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "בשנת שתים למלכות",
+   "why": [
+    "scan: Filled the blurred final mem of שתים",
+    "read on the scan: בשנת שתים למלכות"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -211,19 +201,6 @@
    "flags": []
   },
   {
-   "id": "0059(h)",
-   "page": "page_0059",
-   "marker": "(h)",
-   "text": "Homer. Odyss. K.",
-   "proposed": "Homer. Odyss. K.",
-   "why": [
-    "written out, but a number changed or added: Homère, Odyssée, chant 10."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0060(a)",
    "page": "page_0060",
    "marker": "(a)",
@@ -256,11 +233,15 @@
    "page": "page_0061",
    "marker": "(h)",
    "text": "[UNCERTAIN HEBREW] O' simul ejus [UNCERTAIN GREEK] Ita et Syræ et Arab.",
-   "proposed": "[UNCERTAIN HEBREW] O' simul ejus [UNCERTAIN GREEK] Ita et Syræ et Arab.",
-   "why": [],
+   "proposed": "Ο' οἶκοι ὑμῶν διαρπαγήσονται. Ainsi et le Syriaque ; et l'Arabe.",
+   "why": [
+    "scan: Page shows only Greek here: Ο' οἶκοι ὑμῶν διαρπαγήσονται; no Hebrew, no 'simul ejus'",
+    "read on the scan: ",
+    "read on the scan: οἶκοι ὑμῶν διαρπαγήσονται",
+    "abbreviations written out (footnote_expand.py)"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -268,24 +249,15 @@
    "page": "page_0061",
    "marker": "(i)",
    "text": "[UNCERTAIN HEBREW] O' simul ejus [UNCERTAIN GREEK] Ita et Syræ et Arab.",
-   "proposed": "[UNCERTAIN HEBREW] O' simul ejus [UNCERTAIN GREEK] Ita et Syræ et Arab.",
-   "why": [],
-   "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0061(k)",
-   "page": "page_0061",
-   "marker": "(k)",
-   "text": "1. Esdr. VI. II.",
-   "proposed": "1. Esdr. VI. II.",
+   "proposed": "Ο' οἶκοι ὑμῶν διαρπαγήσονται. Ainsi et le Syriaque ; et l'Arabe.",
    "why": [
-    "written out, but a number changed or added: 1 Esdras 6:11."
+    "scan: Page shows only Greek here: Ο' οἶκοι ὑμῶν διαρπαγήσονται; no Hebrew, no 'simul ejus'",
+    "read on the scan: ",
+    "read on the scan: οἶκοι ὑμῶν διαρπαγήσονται",
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": [
-    "expand-changed-numbers"
+    "scanned"
    ]
   },
   {
@@ -323,13 +295,15 @@
    "page": "page_0065",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Græt. Τῷ ἀρχιμαγείρῳ. Principi coquorum. Ita Arab.",
-   "proposed": "[UNCERTAIN HEBREW] Græt. Τῷ ἀρχιμαγείρῳ. Principi coquorum. Ita Arab.",
+   "proposed": "דניאל התיב עטא וטעם לאריוך רב טבחיא די מלכא Græt. Τῷ Ἀριὼχ τῷ ἀρχιμαγείρῳ. Principi coquorum. Ainsi l'Arabe.",
    "why": [
-    "Greek checked against the Septuagint, Daniel 2:14"
+    "Greek checked against the Septuagint, Daniel 2:14",
+    "scan: Filled the Hebrew (עטא per reference); added the printed Greek Ἀριὼχ",
+    "read on the scan: דניאל התיב עטא וטעם לאריוך רב טבחיא די מלכא",
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -337,12 +311,12 @@
    "page": "page_0065",
    "marker": "(d)",
    "text": "Ibid. ℣. 25.",
-   "proposed": "Daniel 2:25.",
+   "proposed": "Ibid. ℣. 25.",
    "why": [
-    "abbreviations written out"
+    "context: No Rois reference in this note"
    ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -350,11 +324,13 @@
    "page": "page_0065",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "על מה דתא מהחצפה מן קדם מלכא",
+   "why": [
+    "scan: Filled the Hebrew; the blurred final mem of קדם is read from the page and the reference",
+    "read on the scan: על מה דתא מהחצפה מן קדם מלכא"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -408,8 +384,10 @@
    "page": "page_0079",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] לדניאל סגד וננחה וניחוחין אמר לסנכה לה",
-   "proposed": "[UNCERTAIN HEBREW] לדניאל סגד וננחה וניחוחין אמר לסנכה לה",
-   "why": [],
+   "proposed": "נפל* על* אנפוהי* ו* לדניאל סגד ומנחה וניחוחין אמר לנסכה לה",
+   "why": [
+    "context: Opening words reconstructed from Hebrew: [UNCERTAIN HEBREW] -> נפל* על* אנפוהי* ו*, וננחה -> ומנחה, לסנכה -> לנסכה"
+   ],
    "flags": [
     "uncertain",
     "hebrew",
@@ -421,11 +399,13 @@
    "page": "page_0081",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ומני על עבידתא די מדינת בבל",
+   "why": [
+    "scan: Filled the Hebrew placeholder with the printed Aramaic, which matches the reference.",
+    "read on the scan: ומני על עבידתא די מדינת בבל"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -433,11 +413,13 @@
    "page": "page_0081",
    "marker": "(e)",
    "text": "Ludovic. de Dieu. Vide Genes. II. s. III, 23. etc. [UNCERTAIN HEBREW]",
-   "proposed": "Ludovic. de Dieu. Vide Genes. II. s. III, 23. etc. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "Ludovic. de Dieu. Vide Genes. II. s. III, 23. etc. עבד את האדמה",
+   "why": [
+    "scan: Filled the Hebrew placeholder with the printed phrase from Genesis 3:23.",
+    "read on the scan: עבד את האדמה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -454,13 +436,14 @@
    "page": "page_0084",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Theod. Τυράνους.",
-   "proposed": "[UNCERTAIN HEBREW] Theod. Τυράννους.",
+   "proposed": "אחשדרפניא Theod. Τυράννους.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Τυράνους -> Τυράννους"
+    "Greek spelling checked against a Greek dictionary: Τυράνους -> Τυράννους",
+    "scan: Filled the Hebrew placeholder with the printed word.",
+    "read on the scan: אחשדרפניא"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -468,11 +451,15 @@
    "page": "page_0084",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] Magnus. Et [UNCERTAIN HEBREW] Manentes in facie Regis. Kimchi, l'Emper. Vatab.",
-   "proposed": "[UNCERTAIN HEBREW] Magnus. Et [UNCERTAIN HEBREW] Manentes in facie Regis. Kimchi, l'Emper. Vatab.",
-   "why": [],
+   "proposed": "אחש Magnus. Et דרי* פנים* Manentes in facie Regis. Kimchi, l'Emper. Vatable.",
+   "why": [
+    "scan: Filled both Hebrew placeholders; the second phrase is partly blotted, so I guessed it.",
+    "read on the scan: אחש",
+    "guessed from context: דרי* פנים*",
+    "abbreviations written out (footnote_expand.py)"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -494,11 +481,14 @@
    "page": "page_0084",
    "marker": "(f)",
    "text": "[UNCERTAIN HEBREW] Dignitas, seu Majestas, et [UNCERTAIN HEBREW] Darban, janua, Ita Hotting. et Geier.",
-   "proposed": "[UNCERTAIN HEBREW] Dignitas, seu Majestas, et [UNCERTAIN HEBREW] Darban, janua, Ita Hotting. et Geier.",
-   "why": [],
+   "proposed": "אחש Dignitas, seu Majestas, et דרבאן Darban, janua, Ita Hotting. et Geier.",
+   "why": [
+    "scan: Filled both Hebrew placeholders with the printed words.",
+    "read on the scan: אחש",
+    "read on the scan: דרבאן"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -506,11 +496,13 @@
    "page": "page_0084",
    "marker": "(h)",
    "text": "Jérémie 51:27. [UNCERTAIN HEBREW]",
-   "proposed": "Jérémie 51:27. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "Jérémie 51:27. טפסר",
+   "why": [
+    "scan: Filled the Hebrew placeholder with the printed word, as in Jeremiah 51:27.",
+    "read on the scan: טפסר"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -518,11 +510,14 @@
    "page": "page_0084",
    "marker": "(i)",
    "text": "[UNCERTAIN HEBREW] ou [UNCERTAIN HEBREW] Seganim en Hébreu. Vide 1 Esdras 9:2. et 2 Esdras 2:16. IV 14 V. 7. XII. 40. XIII. II. et Daniel 2:48. 3:27. 6:7. Isaïe 41:25. Jérémie 51:23, 28, 57. Ézéchiel 23:6, 23.",
-   "proposed": "[UNCERTAIN HEBREW] ou [UNCERTAIN HEBREW] Seganim en Hébreu. Vide 1 Esdras 9:2. et 2 Esdras 2:16. IV 14 V. 7. XII. 40. XIII. II. et Daniel 2:48. 3:27. 6:7. Isaïe 41:25. Jérémie 51:23, 28, 57. Ézéchiel 23:6, 23.",
-   "why": [],
+   "proposed": "סגנים ou סגניא Seganim en Hébreu. Vide 1 Esdras 9:2. et 2 Esdras 2:16. IV 14 V. 7. XII. 40. XIII. II. et Daniel 2:48. 3:27. 6:7. Isaïe 41:25. Jérémie 51:23, 28, 57. Ézéchiel 23:6, 23.",
+   "why": [
+    "scan: Filled both Hebrew placeholders with the two printed forms of the word.",
+    "read on the scan: סגנים",
+    "read on the scan: סגניא"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -576,22 +571,6 @@
    ]
   },
   {
-   "id": "0085(i)",
-   "page": "page_0085",
-   "marker": "(i)",
-   "text": "Daniel 2:27. 4:4. 5:7. II. גזרין Vulg. Aruspices. Theodot. Θύται, ou Θύτας, ap'ud Ieren.",
-   "proposed": "Daniel 2:27. 4:4. 5:7. II. גזרין Vulg. Aruspices. Theodot. Θύται, ou Θύτας, ap'ud Ieren.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "written out, but a number changed or added: Daniel 2:27 ; Daniel 4:4 ; Daniel 5:7, 11. גזרין la Vulgate, Aruspices ; Théodotion, Θύται, ou Θύτας, dans saint Jérôme."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0085(n)",
    "page": "page_0085",
    "marker": "(n)",
@@ -630,11 +609,13 @@
    "page": "page_0089",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "רחוק מה שהיה ועמק עמק מי ימצאנה",
+   "why": [
+    "scan: Filled placeholder with printed Hebrew of Eccl 7:24",
+    "read on the scan: רחוק מה שהיה ועמק עמק מי ימצאנה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -692,19 +673,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0093(b)",
-   "page": "page_0093",
-   "marker": "(b)",
-   "text": "4. Reg. ult. ℣. 27. Sublevavit Evilmerodach Rex Babylonis caput Joachin Regis Juda de carcere.",
-   "proposed": "4. Reg. ult. ℣. 27. Sublevavit Evilmerodach Rex Babylonis caput Joachin Regis Juda de carcere.",
-   "why": [
-    "written out, but a number changed or added: 4 Rois 25:27. Sublevavit Evilmerodach Rex Babylonis caput Joachin Regis Juda de carcere."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -805,10 +773,11 @@
    "page": "page_0107",
    "marker": "(a)",
    "text": "עיר [UNCERTAIN HEBREW] Theodot. Εἰρ καὶ ἅγι[UNCERTAIN GREEK]. edit. Asii τὰ δὲ οἱ Ἀγγελοι ὀφθαλμοι. Οἱ δὲ λοιποὶ ἐγρήγοροι.",
-   "proposed": "עיר [UNCERTAIN HEBREW] Theodot. Εἰρ καὶ ἅγι[UNCERTAIN GREEK]. edit. Asii τὰ δὲ οἱ Ἄγγελοι ὀφθαλμοι. Οἱ δὲ λοιποὶ ἐγρήγοροι.",
+   "proposed": "עיר וקדיש* Theodot. Εἰρ καὶ ἅγιος*. edit. Asii τὰ δὲ οἱ Ἄγγελοι ὀφθαλμοι. Οἱ δὲ λοιποὶ ἐγρήγοροι.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary: Ἀγγελοι -> Ἄγγελοι"
+    "Greek spelling checked against a Greek dictionary: Ἀγγελοι -> Ἄγγελοι",
+    "context: Edit. Asii clause still doubtful: [UNCERTAIN HEBREW] -> וקדיש*, ἅγι[UNCERTAIN GREEK] -> ἅγιος*"
    ],
    "flags": [
     "uncertain",
@@ -821,14 +790,15 @@
    "page": "page_0111",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Theodot. Κωφός-γε ὡς ὥρα μίαν. Grot. Modico tempore ; aliàs horam unam.",
-   "proposed": "[UNCERTAIN HEBREW] Theodot. Κωφός-γε ὡς ὥρα μίαν. Grot. Modico tempore ; aliàs horam unam.",
+   "proposed": "אשתומם כשעה חדה Theodot. Κωφός-γε ὡς ὥρα μίαν. Grot. Modico tempore ; aliàs horam unam.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled the Hebrew placeholder with the printed phrase, using the reference spelling.",
+    "read on the scan: אשתומם כשעה חדה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -836,11 +806,13 @@
    "page": "page_0111",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "אל יבהלך",
+   "why": [
+    "scan: Filled the Hebrew placeholder with the printed phrase.",
+    "read on the scan: אל יבהלך"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -860,11 +832,13 @@
    "page": "page_0112",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Castal. Perer. Sanct. Cornel. Catholici passim.",
-   "proposed": "[UNCERTAIN HEBREW] Castal. Perer. Sanct. Cornel. Catholici passim.",
-   "why": [],
+   "proposed": "חטיך בצדקה פרק ועויתך במחן ענין Castal. Perer. Sanct. Cornel. Catholici passim.",
+   "why": [
+    "scan: Filled the Hebrew placeholder with the printed phrase from Daniel 4:27.",
+    "read on the scan: חטיך בצדקה פרק ועויתך במחן ענין"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -901,19 +875,6 @@
    ]
   },
   {
-   "id": "0117(a)",
-   "page": "page_0117",
-   "marker": "(a)",
-   "text": "Joseph. lib 10 contra Apion. pag. 1045. ex Beroso. Item lib. x. Antiq. cap. 11. Et ex eo Ieronym. hic.",
-   "proposed": "Joseph. lib 10 contra Apion. pag. 1045. ex Beroso. Item lib. x. Antiq. cap. 11. Et ex eo Ieronym. hic.",
-   "why": [
-    "written out, but a number changed or added: Josèphe, livre 1, Contre Apion, page 1045, d'après Bérose. De même livre 10, Antiquités judaïques, chapitre 11. Et d'après lui saint Jérôme, sur ce passage."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0117(b)",
    "page": "page_0117",
    "marker": "(b)",
@@ -921,19 +882,6 @@
    "proposed": "Théodoret, sur ce passage ;\nEusèbe, dans la Chronique ;\nSulpice Sévère, livre 2, Histoire sacrée ;\nNicolas de Lyre.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0117(c)",
-   "page": "page_0117",
-   "marker": "(c)",
-   "text": "Malden. Perer. Polan. Geier. Usser. Vide Ieronym. In Isai. x I I I. 17.",
-   "proposed": "Malden. Perer. Polan. Geier. Usser. Vide Ieronym. In Isai. x I I I. 17.",
-   "why": [
-    "written out, but a number changed or added: Maldonat ; Pererius ; Polanus ; Geier ; Ussérius. Voyez saint Jérôme, sur Isaïe 13:17."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   },
   {
    "id": "0119(a)",
@@ -948,19 +896,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0121(a)",
-   "page": "page_0121",
-   "marker": "(a)",
-   "text": "Homer. Odyss. H. vers. 190.",
-   "proposed": "Homer. Odyss. H. vers. 190.",
-   "why": [
-    "written out, but a number changed or added: Homère, Odyssée 7, vers 190."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -1002,30 +937,18 @@
    "flags": []
   },
   {
-   "id": "0125(b)",
-   "page": "page_0125",
-   "marker": "(b)",
-   "text": "Chardin, Voyage de Perse, pag. 228. t. III ij.",
-   "proposed": "Chardin, Voyage de Perse, pag. 228. t. III ij.",
-   "why": [
-    "written out, but a number changed or added: Chardin, Voyage de Perse, page 228, tome 3-4."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0127(a)",
    "page": "page_0127",
    "marker": "(a)",
    "text": "נשמתך [UNCERTAIN HEBREW]",
-   "proposed": "נשמתך [UNCERTAIN HEBREW]",
+   "proposed": "נשמתך בידה",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled the Hebrew placeholder with the printed word.",
+    "read on the scan: בידה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1045,8 +968,10 @@
    "page": "page_0127",
    "marker": "(e)",
    "text": "_Beros. apud Joseph. Contra_ [UNCERTAIN GREEK] ἀππίωνα.",
-   "proposed": "_Beros. apud Joseph. Contra_ [UNCERTAIN GREEK] ἀππίωνα.",
-   "why": [],
+   "proposed": "_Beros. apud Joseph. Contra_ [UNCERTAIN GREEK] Ἀπίωνα.",
+   "why": [
+    "context: Uncertain Greek word unrecoverable: ἀππίωνα -> Ἀπίωνα"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -1058,36 +983,15 @@
    "page": "page_0127",
    "marker": "(f)",
    "text": "[UNCERTAIN GREEK] καὶ τότε δὴ χρύσεια πατὴρ ἐτίταινε τάλαντα, ἐν δ᾽ ἐτίθει δύο κῆρε τανηλεγέος θανάτοιο. _Homer. Iliad._ XXII.",
-   "proposed": "[UNCERTAIN GREEK] καὶ τότε δὴ χρύσεια πατὴρ ἐτίταινε τάλαντα, ἐν δ᾽ ἐτίθει δύο κῆρε τανηλεγέος θανάτοιο. _Homer. Iliad._ XXII.",
+   "proposed": "ἀλλ᾽* ὅτε* δὴ* τὸ* τέταρτον* ἐπὶ* κρουνοὺς* ἀφίκοντο,* καὶ τότε δὴ χρύσεια πατὴρ ἐτίταινε τάλαντα, ἐν δ᾽ ἐτίθει δύο κῆρε τανηλεγέος θανάτοιο. _Homer. Iliad._ XXII.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled the Greek placeholder with Iliad 22.208, which is not legible on the page.",
+    "guessed from context: ἀλλ᾽* ὅτε* δὴ* τὸ* τέταρτον* ἐπὶ* κρουνοὺς* ἀφίκοντο,*"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
-  },
-  {
-   "id": "0128(c)",
-   "page": "page_0128",
-   "marker": "(c)",
-   "text": "Isai. XIII. XIV. et XLV. XLVI. XLVII.",
-   "proposed": "Isaïe 13 ; 14 ; et 45 ; 46 ; 47.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0128(d)",
-   "page": "page_0128",
-   "marker": "(d)",
-   "text": "Jerem. L. LI.",
-   "proposed": "Jérémie 50 ; 51.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0130(c)",
@@ -1124,13 +1028,14 @@
    "page": "page_0131",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] בעיר עלה להשכחה לדניאל מצד מלכא",
-   "proposed": "[UNCERTAIN HEBREW] בעיר עלה להשכחה לדניאל מצד מלכא",
+   "proposed": "בעיד עלת להשכחת לדניאל מצד מלכתא",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled placeholder with the printed text; Aramaic spellings as printed (עלת, להשכחת, מלכתא)",
+    "read on the scan: בעיד"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1138,13 +1043,14 @@
    "page": "page_0131",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] הרגשו על מלכא",
-   "proposed": "[UNCERTAIN HEBREW] הרגשו על מלכא",
+   "proposed": "הרגשו על מלכא",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Daniel 6:6"
+    "Hebrew checked against the Hebrew Bible, Daniel 6:6",
+    "scan: Filled placeholder with the printed words",
+    "read on the scan: הרגשו"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1211,13 +1117,14 @@
    "page": "page_0138",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] כארז",
-   "proposed": "[UNCERTAIN HEBREW] כארז",
+   "proposed": "כארח",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled placeholder; the print shows four letters, the last looking like ח",
+    "read on the scan: כארח"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1270,11 +1177,13 @@
    "page": "page_0151",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "אני אמרתי בחפזי כל האדם כזב",
+   "why": [
+    "scan: Filled Hebrew placeholder from page",
+    "read on the scan: אני אמרתי בחפזי כל האדם כזב"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1282,11 +1191,13 @@
    "page": "page_0151",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "אני אמרתי בחפזי כל האדם כזב",
+   "why": [
+    "scan: Filled Hebrew placeholder from page",
+    "read on the scan: אני אמרתי בחפזי כל האדם כזב"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1347,11 +1258,13 @@
    "page": "page_0161",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "וצבא תנתן על התמיד בפשע",
+   "why": [
+    "scan: Filled placeholder; בפשע follows the reference where the print is unclear",
+    "read on the scan: וצבא תנתן על התמיד בפשע"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1376,20 +1289,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0163(f)",
-   "page": "page_0163",
-   "marker": "(f)",
-   "text": "1 Machabées 1:34-35. et sequ. Item. ℣. 50. 51. et sequ.",
-   "proposed": "1 Machabées 1:34-35 et suivants. De même Daniel 8:50-51 et suivants.",
-   "why": [
-    "abbreviations written out",
-    "Daniel 8:50-51 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
    ]
   },
   {
@@ -1439,17 +1338,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0176(f)",
-   "page": "page_0176",
-   "marker": "(f)",
-   "text": "Dan. X. II.",
-   "proposed": "Daniel 10:2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0177(c)",
@@ -1535,17 +1423,6 @@
    "text": "Junius ; Piscator ; Grotius ; Castalion ; Vatable ; Munster.",
    "proposed": "Junius ;\nPiscator ;\nGrotius ;\nCastalion ;\nVatable ;\nMunster.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0186(c)",
-   "page": "page_0186",
-   "marker": "(c)",
-   "text": "Saint Jérôme sur ce passage ; Lyranus ; Tirin ; Petau ; Vatable ; Grotius ; Maldonat, etc. Voyez, au besoin, et Origène, livre 7 Contre Celse, page 378 ; et livre 3 Des principes, chapitre 3 ; Saint Isidore de Péluse, livre 2, lettre 85 ; Saint Jean Chrysostome, dans Photius, codex 277 ; Saint Thomas, 1re partie, question 113, article 8.",
-   "proposed": "Saint Jérôme sur ce passage ; Nicolas de Lyre ; Tirin ; Petau ; Vatable ; Grotius ; Maldonat, etc. Voyez, au besoin, et Origène, livre 7 Contre Celse, page 378 ; et livre 3 Des principes, chapitre 3 ; Saint Isidore de Péluse, livre 2, lettre 85 ; Saint Jean Chrysostome, dans Photius, codex 277 ; Saint Thomas, 1re partie, question 113, article 8.",
-   "why": [
-    "abbreviations written out"
-   ],
    "flags": []
   },
   {
@@ -1652,19 +1529,6 @@
    ]
   },
   {
-   "id": "0205(b)",
-   "page": "page_0205",
-   "marker": "(b)",
-   "text": "_Vid._ Appian. Syriac. pag. 92. Polyb. lib. 3. Justin. lib. 30. et 32. Liv. lib. 35.",
-   "proposed": "_Vid._ Appian. Syriac. pag. 92. Polyb. lib. 3. Justin. lib. 30. et 32. Liv. lib. 35.",
-   "why": [
-    "written out, but the italics changed: Voyez Appien, De rebus Syriacis, page 92 ; Polybe, livre 3 ; Justin, livres 30 et 32 ; Tite-Live, livre 35."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
-  },
-  {
    "id": "0206(a)",
    "page": "page_0206",
    "marker": "(a)",
@@ -1728,8 +1592,10 @@
    "page": "page_0215",
    "marker": "(a)",
    "text": "רסע יזכו על עזבי ברית קדש [UNCERTAIN HEBREW]",
-   "proposed": "רסע יזכו על עזבי ברית קדש [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ושב* ויבן* על עזבי ברית קדש [UNCERTAIN HEBREW]",
+   "why": [
+    "context: Misread Hebrew; trailing gap remains: רסע יזכו -> ושב* ויבן*"
+   ],
    "flags": [
     "uncertain",
     "hebrew",
@@ -1741,29 +1607,16 @@
    "page": "page_0215",
    "marker": "(d)",
    "text": "עזריס [UNCERTAIN HEBREW] Theodot. Βραχίονες. Alius, τωλμά. samina.",
-   "proposed": "עזריס [UNCERTAIN HEBREW] Theodot. Βραχίονες. Alius, τωλμά. samina.",
+   "proposed": "זרעים* ממנו* Theodot. Βραχίονες. Alius, τωλμά. samina.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: τωλμά and samina doubtful: עזריס -> זרעים*, [UNCERTAIN HEBREW] -> ממנו*"
    ],
    "flags": [
     "uncertain",
     "hebrew",
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0221(a)",
-   "page": "page_0221",
-   "marker": "(a)",
-   "text": "Vide Psal. XXVI. I. XXVII. 8. XXX. 3. XLV. 36. Proverbes 10:29. Isaïe 17:9",
-   "proposed": "Voyez Psaumes 26:1 ; 27:8 ; 30:3 ; 45:36 ; Proverbes 10:29 ; Isaïe 17:9.",
-   "why": [
-    "abbreviations written out",
-    "Psaumes 45:36 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
    ]
   },
   {
@@ -1858,19 +1711,6 @@
    "flags": []
   },
   {
-   "id": "0232(a)",
-   "page": "page_0232",
-   "marker": "(a)",
-   "text": "Genèse 14:22. Exod. v1. 8. Nombres 14:30. Deutéronome 32:40. 2 Esdras 9:15. etc.",
-   "proposed": "Genèse 14:22. Exod. v1. 8. Nombres 14:30. Deutéronome 32:40. 2 Esdras 9:15. etc.",
-   "why": [
-    "written out, but a number changed or added: Genèse 14:22 ; Exode 6:8 ; Nombres 14:30 ; Deutéronome 32:40 ; 2 Esdras 9:15, etc."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0232(d)",
    "page": "page_0232",
    "marker": "(d)",
@@ -1883,30 +1723,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0233(c)",
-   "page": "page_0233",
-   "marker": "(c)",
-   "text": "1 Pierre 1:11-12. Daniel 9:2. Par. XXVI. s. 1 Corinthiens 14:26…28. 29.",
-   "proposed": "1 Pierre 1:11-12. Daniel 9:2. Par. XXVI. s. 1 Corinthiens 14:26…28. 29.",
-   "why": [
-    "written out, but a number changed or added: 1 Pierre 1:11-12 ; Daniel 9:2 ; 2 Paralipomènes 26:5 ; 1 Corinthiens 14:26…28, 29."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
-   "id": "0235(a)",
-   "page": "page_0235",
-   "marker": "(a)",
-   "text": "Voyez 1. Macc. VI. s… 16. et 2 Machabées 9:3. et sequ.",
-   "proposed": "Voyez 1 Machabées 6:16 et 2 Machabées 9:3 et suivants.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0235(c)",
@@ -2008,11 +1824,12 @@
    "page": "page_0250",
    "marker": "(d)",
    "text": "Voyez Xénophon. Cyropæd. I. 1. Φίλος συνδειπνῶν. Herodot. lib. 3. c. 132. Δημοκήδης ὁμοίως ἐπὶ βασιλέος γέγονε. Et l. 5. c. 24 Ext [ILLEGIBLE] τῷ ἄν ἔχω ἔξω, ἐμὲς εὐνοῦς ὢν, καὶ εὐμβουλος. C'est Darius, fils d'Hystaspe, qui parle à Histiæus.",
-   "proposed": "Voyez Xénophon. Cyropæd. I. 1. Φίλος συνδειπνῶν. Herodot. lib. 3. c. 132. Δημοκήδης ὁμοίως ἐπὶ βασιλέος γέγονε. Et l. 5. c. 24 Ext [ILLEGIBLE] τῷ ἄν ἔχω ἔξω, ἐμοὺς εὐνοῦς ὢν, καὶ εὐμβουλος. C'est Darius, fils d'Hystaspe, qui parle à Histiæus.",
+   "proposed": "Voyez Xénophon. Cyropæd. I. 1. Φίλος συνδειπνῶν. Herodot. lib. 3. c. 132. Δημοκήδης ὁμοίως ἐπὶ βασιλέος γέγονε. Et l. 5. c. 24 Ext [ILLEGIBLE] τῷ ἄν ἔχω ἔξω, ἐμοὺς εὔνους ὢν, καὶ σύμβουλος. C'est Darius, fils d'Hystaspe, qui parle à Histiæus.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary: ἐμὲς -> ἐμοὺς"
+    "Greek spelling checked against a Greek dictionary: ἐμὲς -> ἐμοὺς",
+    "context: [ILLEGIBLE] Herodotus words remain: εὐνοῦς -> εὔνους, εὐμβουλος -> σύμβουλος"
    ],
    "flags": [
     "uncertain",

@@ -1,13 +1,15 @@
 {
  "summary": {
   "notes": 347,
-  "changed": 13,
+  "changed": 14,
   "flags": {
    "hebrew": 11,
-   "scan-unread": 44,
+   "scan-unread": 43,
    "greek": 35,
-   "uncertain": 3,
-   "ambiguous-name": 2
+   "uncertain": 2,
+   "uncertain-fill-asterisk-wrong": 1,
+   "scanned": 1,
+   "context": 2
   }
  },
  "notes": [
@@ -144,7 +146,9 @@
    "marker": "(a)",
    "text": "היה אחיקר וקרובי [UNCERTAIN HEBREW]",
    "proposed": "היה אחיקר וקרובי [UNCERTAIN HEBREW]",
-   "why": [],
+   "why": [
+    "context: Uncertain Hebrew not reconstructible"
+   ],
    "flags": [
     "uncertain",
     "hebrew",
@@ -156,9 +160,10 @@
    "page": "page_0036",
    "marker": "(d)",
    "text": "Ἐν τῆ πεντεκοστῆ ἑορτῆ, ἥ ἐστιν ἁγία ἑπτὰ ἑβδομάδων. Ita, et Hebr. Munsteri. בחד שבועות [UNCERTAIN HEBREW]",
-   "proposed": "Ἐν τῆ πεντεκοστῆ ἑορτῆ, ἥ ἐστιν ἁγία ἑπτὰ ἑβδομάδων. Ita, et Hebr. Munsteri. בחד שבועות [UNCERTAIN HEBREW]",
+   "proposed": "Ἐν τῆ πεντηκοστῇ ἑορτῇ, ἥ ἐστιν ἁγία ἑπτὰ ἑβδομάδων. Ita, et Hebr. Munsteri. בחג* שבועות [UNCERTAIN HEBREW]",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "context: Uncertain Hebrew remains: πεντεκοστῆ ἑορτῆ -> πεντηκοστῇ ἑορτῇ, בחד שבועות -> בחג* שבועות"
    ],
    "flags": [
     "uncertain",
@@ -195,13 +200,17 @@
    "page": "page_0038",
    "marker": "(a)",
    "text": "℣. 10. Καὶ ἐν αὐτῇ τῇ νυκτὶ ἀπέλυσεν Σατίνας, καὶ ἐκοιμήθην [UNCERTAIN GREEK]. Hebr. [UNCERTAIN HEBREW] Munst. [UNCERTAIN HEBREW] fuit",
-   "proposed": "℣. 10. Καὶ ἐν αὐτῇ τῇ νυκτὶ ἀπέλυσεν Σατίνας, καὶ ἐκοιμήθην [UNCERTAIN GREEK]. Hebr. [UNCERTAIN HEBREW] Munst. [UNCERTAIN HEBREW] fuit",
+   "proposed": "℣. 10. Καὶ ἐν αὐτῇ τῇ νυκτὶ ἀπέλυσα Θάψας, καὶ ἐκοιμήθην μεμιασμένος. Hebr. ויהי* Munst. בלילה ההוא fuit",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Greek: Σατίνας→Θάψας, ἀπέλυσα, filled μεμιασμένος; Munster Hebrew read; first Hebrew guessed",
+    "guessed from context: μεμιασμένος",
+    "guessed from context: ויהי*",
+    "read on the scan: בלילה ההוא"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -315,9 +324,11 @@
    "marker": "(d)",
    "text": "2 Rois 24:15.",
    "proposed": "2 Rois 24:15.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering: 2 Samuel 24:15 pestilence"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -325,10 +336,8 @@
    "page": "page_0047",
    "marker": "(a)",
    "text": "Voyez Jamblique, section 4, chapitre 4 ; Plotin, Ennéades, livre 2, chapitre 29 ; Origène, livre 3, Des principes. Is. 2 Corinthiens 1:8 ; Romains 7:24 ; Ecclésiastique 30:17. Et Possidius, au chapitre 19 de la Vie de saint Augustin.",
-   "proposed": "Voyez Jamblique, section 4, chapitre 4 ;\nPlotin, Ennéades, livre 2, chapitre 29 ;\nOrigène, Des principes, livre 3. Isaïe 2 Corinthiens 1:8 ;\nRomains 7:24 ;\nEcclésiastique 30:17. Et Possidius, au chapitre 19 de la Vie de saint Augustin.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Voyez Jamblique, section 4, chapitre 4 ;\nPlotin, Ennéades, livre 2, chapitre 29 ;\nOrigène, livre 3, Des principes. Is. 2 Corinthiens 1:8 ;\nRomains 7:24 ;\nEcclésiastique 30:17. Et Possidius, au chapitre 19 de la Vie de saint Augustin.",
+   "why": [],
    "flags": []
   },
   {
@@ -397,8 +406,8 @@
    "id": "0061(c)",
    "page": "page_0061",
    "marker": "(c)",
-   "text": "Voyez Origène, sur le chapitre 3 de Job ; saint Jérôme, À Pammaque ; saint Paulin, au même ; saint Jean Chrysostome, Homélie 37 sur Matthieu ; Constitutions apostoliques, livre 8, chapitre 24.",
-   "proposed": "Voyez Origène, sur le chapitre 3 de Job ;\nsaint Jérôme, À Pammaque ;\nsaint Paulin, au même ;\nsaint Jean Chrysostome, Homélie 37 sur Matthieu ;\nConstitutions apostoliques, livre 8, chapitre 24.",
+   "text": "Voyez Origène, sur le chapitre 3 de Job ; Saint Jérôme, À Pammaque ; Saint Paulin, au même ; Saint Jean Chrysostome, Homélie 37 sur Matthieu ; Constitutions apostoliques, livre 8, chapitre 24.",
+   "proposed": "Voyez Origène, sur le chapitre 3 de Job ;\nSaint Jérôme, À Pammaque ;\nSaint Paulin, au même ;\nSaint Jean Chrysostome, Homélie 37 sur Matthieu ;\nConstitutions apostoliques, livre 8, chapitre 24.",
    "why": [],
    "flags": []
   },
@@ -460,21 +469,6 @@
    "flags": []
   },
   {
-   "id": "0077(a)",
-   "page": "page_0077",
-   "marker": "(a)",
-   "text": "Ὅτι σοι ἐπιβάλλει ἡ κληρονομία αὐτῆς, καὶ αὐτὴν ἀνδρὶ ἑτέρῳ οὐ μὴ δῶμεν εἰ μὴ τῷ γένει αὐτῆς. Hebr. משפט לך לאשה Solet dici jus uxoris. Hebr. הלאה λαβεῖν, η πᾶσα κληρονομία. Ita vers. Latin. antiq.",
-   "proposed": "Ὅτι σοι ἐπιβάλλει ἡ κληρονομία αὐτῆς, καὶ αὐτὴν ἀνδρὶ ἑτέρῳ οὐ μὴ δῶμεν εἰ μὴ τῷ γένει αὐτῆς. l'Hébreu : משפט לך לאשה Solet dici jus uxoris. l'Hébreu : הלאה λαβεῖν, η πᾶσα κληρονομία. Ainsi lit l'ancienne version latine.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0077(b)",
    "page": "page_0077",
    "marker": "(b)",
@@ -492,9 +486,11 @@
    "marker": "(d)",
    "text": "4 Rois 10:15 ; Lamentations 5:6 ; 1 Machabées 11:50, 61, 66 ; 13:45, 50 ; et 2 Machabées 4:34 ; 11:30 ; Isaïe 62:8, etc.",
    "proposed": "4 Rois 10:15 ; Lamentations 5:6 ; 1 Machabées 11:50, 61, 66 ; 13:45, 50 ; et 2 Machabées 4:34 ; 11:30 ; Isaïe 62:8, etc.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 10:15 Jehu/Jonadab, Calmet numbering"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -564,18 +560,16 @@
    "page": "page_0105",
    "marker": "(b)",
    "text": "Celse, livre 5 ; Pline, livre 28, chapitre 11, et livre 32, chapitre 4 ; Galien, livre 10, De simplicium medicamentorum Facult. cap. 12. Ælian. lib. XIII. cap 4. Rhasis. lib. 9. cap. 27. Francis. Vales. de Sacra Philos. cap. 42. Vide et Justinian. Serar. et Menoch. et Tirin. hic, et nos Sup. v1. 2.",
-   "proposed": "Celse, livre 5 ;\nPline, livre 28, chapitre 11, et livre 32, chapitre 4 ;\nGalien, livre 10, De simplicium medicamentorum facultatibus, chapitre 12 ;\nÉlien, livre 13, chapitre 4 ;\nRhazès, livre 9, chapitre 27 ;\nFrançois Vales, De sacra philosophia, chapitre 42. Voyez aussi Justinien ;\nSerarius ;\net Ménochius ;\net Tirin sur ce passage, et nous plus haut versets 1, 2.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Celse, livre 5 ;\nPline, livre 28, chapitre 11, et livre 32, chapitre 4 ;\nGalien, livre 10, De simplicium medicamentorum Facult. cap. 12. Ælian. lib. XIII. cap 4. Rhasis. lib. 9. cap. 27. Francis. Vales. de Sacra Philos. cap. 42. Vide et Justinian. Serar. et Menoch. et Tirin. hic, et nos Sup. v1. 2.",
+   "why": [],
    "flags": []
   },
   {
    "id": "0114(b)",
    "page": "page_0114",
    "marker": "(b)",
-   "text": "Bède ; Ausbert ; Haymon ; Rupert ; saint Thomas, sur l'Apocalypse 1:3-4 ; saint Anselme, au même endroit.",
-   "proposed": "Bède ;\nAusbert ;\nHaymon ;\nRupert ;\nsaint Thomas, sur l'Apocalypse 1:3-4 ;\nsaint Anselme, au même endroit.",
+   "text": "Bède ; Ausbert ; Haymon ; Rupert ; Saint Thomas, sur l'Apocalypse 1:3-4 ; Saint Anselme, au même endroit.",
+   "proposed": "Bède ;\nAusbert ;\nHaymon ;\nRupert ;\nSaint Thomas, sur l'Apocalypse 1:3-4 ;\nSaint Anselme, au même endroit.",
    "why": [],
    "flags": []
   },

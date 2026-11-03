@@ -1,14 +1,13 @@
 {
  "summary": {
   "notes": 311,
-  "changed": 14,
+  "changed": 15,
   "flags": {
    "greek": 8,
-   "scan-unread": 11,
-   "ambiguous-name": 7,
-   "uncertain": 2,
-   "hebrew": 1,
-   "expand-changed-italics": 1
+   "scan-unread": 9,
+   "context": 7,
+   "scanned": 2,
+   "hebrew": 1
   }
  },
  "notes": [
@@ -46,17 +45,6 @@
    "flags": []
   },
   {
-   "id": "0061(c)",
-   "page": "page_0061",
-   "marker": "(c)",
-   "text": "Ita legunt Bible de Venise, an 1478. Et une autre, an 1489. et une autre gothique, d'année incertaine ; Robert Estienne, an 1546 ; et Jean Benoît, 1565 ; et Sébastien Nivelle, 1572 ; et la Bible polyglotte d'Anvers, etc.",
-   "proposed": "Ainsi lisent la Bible de Venise, année 1478. Et une autre, année 1489. et une autre gothique, d'année incertaine ; Robert Estienne, année 1546 ; et Jean Benoît, 1565 ; et Sébastien Nivelle, 1572 ; et la Bible polyglotte d'Anvers, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0061(d)",
    "page": "page_0061",
    "marker": "(d)",
@@ -77,9 +65,11 @@
    "marker": "(a)",
    "text": "3 Rois 5:11 ; 2 Paralipomènes 2:15-16.",
    "proposed": "3 Rois 5:11 ; 2 Paralipomènes 2:15-16.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 5:11 is Solomon and Hiram; numbering same in both systems"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -88,9 +78,11 @@
    "marker": "(a)",
    "text": "4 Rois 17:24… 24.",
    "proposed": "4 Rois 17:24… 24.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 17:24 Samaria resettlement, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -99,9 +91,11 @@
    "marker": "(d)",
    "text": "4 Rois 17:12, 33-34.",
    "proposed": "4 Rois 17:12, 33-34.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 17:33 quoted text matches"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -110,9 +104,11 @@
    "marker": "(e)",
    "text": "4 Rois 17:32. Fecerunt sibi de novissimis Sacerdotes excelsorum, et ponebant eos in fanis sublimibus.",
    "proposed": "4 Rois 17:32. Fecerunt sibi de novissimis Sacerdotes excelsorum, et ponebant eos in fanis sublimibus.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 17:32 correct; quotation matches"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -150,10 +146,8 @@
    "page": "page_0080",
    "marker": "(h)",
    "text": "Pagnin ; Arias Montanus ; Castalion ; Vatable. Syrus legit, Acheeneth.",
-   "proposed": "Pagnin ;\nArias Montanus ;\nCastalion ;\nVatable. Le Syriaque lit, Acheeneth.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Pagnin ;\nArias Montanus ;\nCastalion ;\nVatable. Syrus legit, Acheeneth.",
+   "why": [],
    "flags": []
   },
   {
@@ -194,9 +188,11 @@
    "marker": "(d)",
    "text": "3 Rois 6:36.",
    "proposed": "3 Rois 6:36.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 6:36 Temple rows, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -216,11 +212,13 @@
    "page": "page_0107",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] 70. Eám iis mandâr.",
-   "proposed": "[UNCERTAIN HEBREW] 70. Eám iis mandâr.",
-   "why": [],
+   "proposed": "הן לשרשו 70. Εἴτε εἰς παιδείαν.",
+   "why": [
+    "scan: Filled Hebrew הן לשרשו; corrected Greek to Εἴτε εἰς παιδείαν",
+    "read on the scan: הן לשרשו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -259,9 +257,11 @@
    "marker": "(c)",
    "text": "4 Rois 17:24 ; 18:34 ; 19:13.",
    "proposed": "4 Rois 17:24 ; 18:34 ; 19:13.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 17:24, 18:34, 19:13 are 2 Kings; correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -317,9 +317,11 @@
    "marker": "(a)",
    "text": "Genèse 37:29 ; 37:34 ; Nombres 14:6 ; Josué 7:6 ; 2 Rois 1:11 ; Job 1:20.",
    "proposed": "Genèse 37:29 ; 37:34 ; Nombres 14:6 ; Josué 7:6 ; 2 Rois 1:11 ; Job 1:20.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 1:11 David tears garments"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -337,25 +339,22 @@
    "marker": "(a)",
    "text": "Cornelius a Lapide ; Ofr. ; Tirin. Voyez Delrii _Alleg._ 118.",
    "proposed": "Cornelius a Lapide ;\nOfr. ;\nTirin. Voyez Delrii _Alleg._ 118.",
-   "why": [
-    "written out, but the italics changed: Cornelius a Lapide ; Ofr. ; Tirin. Voyez Delrio, Adagialia sacra, 118."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
+   "why": [],
+   "flags": []
   },
   {
    "id": "0120(b)",
    "page": "page_0120",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] לתת לנו גדר ביהודה",
-   "proposed": "[UNCERTAIN HEBREW] לתת לנו גדר ביהודה",
+   "proposed": "לתת לנו גדר ביהודה",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Ezra 9:9"
+    "Hebrew checked against the Hebrew Bible, Ezra 9:9",
+    "scan: Filled placeholder; the Hebrew matches the page and the reference",
+    "read on the scan: לתת לנו גדר ביהודה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {

@@ -1,13 +1,13 @@
 {
  "summary": {
   "notes": 1363,
-  "changed": 51,
+  "changed": 49,
   "flags": {
    "greek": 37,
    "scan-unread": 48,
    "hebrew": 12,
-   "ambiguous-name": 5,
-   "reference-not-in-vulgate": 2
+   "context": 6,
+   "reference-not-in-vulgate": 1
   }
  },
  "notes": [
@@ -262,17 +262,19 @@
    "marker": "(c)",
    "text": "1 Rois 3:20. Idon l'Hébreu, Cognovit universus Israël… quia Samuel NÉEMAN, id est Propheta Domini.",
    "proposed": "1 Rois 3:20. Idon l'Hébreu, Cognovit universus Israël… quia Samuel NÉEMAN, id est Propheta Domini.",
-   "why": [],
+   "why": [
+    "context: Calmet's 1 Rois = 1 Sam 3:20, matches"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
    "id": "0166(c)",
    "page": "page_0166",
    "marker": "(c)",
-   "text": "Saint Augustin, ou plutôt saint Césaire, sermon 28, sermon 44 sur le Cantique ; Rupert, sur ce passage ; Appendice, nouvelle édition ; saint Jérôme, Lettre à Fabiola, station 15 ; saint Prosper, De prædictionibus, partie 2, chapitre 9 ; saint Bernard.",
-   "proposed": "Saint Augustin, ou plutôt saint Césaire, sermon 28, sermon 44 sur le Cantique ;\nRupert, sur ce passage ;\nAppendice, nouvelle édition ;\nsaint Jérôme, Lettre à Fabiola, station 15 ;\nsaint Prosper, De prædictionibus, partie 2, chapitre 9 ;\nsaint Bernard.",
+   "text": "Saint Augustin, ou plutôt saint Césaire, sermon 28, sermon 44 sur le Cantique ; Rupert, sur ce passage ; Appendice, nouvelle édition ; Saint Jérôme, Lettre à Fabiola, station 15 ; Saint Prosper, De prædictionibus, partie 2, chapitre 9 ; Saint Bernard.",
+   "proposed": "Saint Augustin, ou plutôt saint Césaire, sermon 28, sermon 44 sur le Cantique ;\nRupert, sur ce passage ;\nAppendice, nouvelle édition ;\nSaint Jérôme, Lettre à Fabiola, station 15 ;\nSaint Prosper, De prædictionibus, partie 2, chapitre 9 ;\nSaint Bernard.",
    "why": [],
    "flags": []
   },
@@ -417,8 +419,8 @@
    "id": "0210(b)",
    "page": "page_0210",
    "marker": "(b)",
-   "text": "Philon, Vie de Moïse, sur ce passage ; saint Grégoire de Nysse, Vie de Moïse ; Tostat, sur ce passage ; Procope de Gaza ; Bonfrère ; Cornelius a Lapide.",
-   "proposed": "Philon, Vie de Moïse, sur ce passage ;\nsaint Grégoire de Nysse, Vie de Moïse ;\nTostat, sur ce passage ;\nProcope de Gaza ;\nBonfrère ;\nCornelius a Lapide.",
+   "text": "Philon, Vie de Moïse, sur ce passage ; Saint Grégoire de Nysse, Vie de Moïse ; Tostat, sur ce passage ; Procope de Gaza ; Bonfrère ; Cornelius a Lapide.",
+   "proposed": "Philon, Vie de Moïse, sur ce passage ;\nSaint Grégoire de Nysse, Vie de Moïse ;\nTostat, sur ce passage ;\nProcope de Gaza ;\nBonfrère ;\nCornelius a Lapide.",
    "why": [],
    "flags": []
   },
@@ -438,8 +440,8 @@
    "id": "0212(d)",
    "page": "page_0212",
    "marker": "(d)",
-   "text": "Saint Jérôme, sur Jérémie, chapitre 1 ; saint Cyrille, livre 10, De adoratione ; saint Grégoire le Grand, livre 14, Morales sur Job, chapitre 29 ; saint Isidore.",
-   "proposed": "Saint Jérôme, sur Jérémie, chapitre 1 ;\nsaint Cyrille, livre 10, De adoratione ;\nsaint Grégoire le Grand, livre 14, Morales sur Job, chapitre 29 ;\nsaint Isidore.",
+   "text": "Saint Jérôme, sur Jérémie, chapitre 1 ; Saint Cyrille, livre 10, De adoratione ; Saint Grégoire le Grand, livre 14, Morales sur Job, chapitre 29 ; Saint Isidore.",
+   "proposed": "Saint Jérôme, sur Jérémie, chapitre 1 ;\nSaint Cyrille, livre 10, De adoratione ;\nSaint Grégoire le Grand, livre 14, Morales sur Job, chapitre 29 ;\nSaint Isidore.",
    "why": [],
    "flags": []
   },
@@ -466,10 +468,8 @@
    "page": "page_0225",
    "marker": "(a)",
    "text": "Ita le Syriaque ; Persa ; Versions vulgaires ; Ainsworth, etc.",
-   "proposed": "Ainsi lit le Syriaque ;\nPersa ;\nVersions vulgaires ;\nAinsworth, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Ita le Syriaque ;\nPersa ;\nVersions vulgaires ;\nAinsworth, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -631,13 +631,11 @@
    "page": "page_0256",
    "marker": "(f)",
    "text": "Nombres 33:45-46 ; 100:12.",
-   "proposed": "Nombres 33:45-46 ; 100:12.",
+   "proposed": "Nombres 33:45-46 ; 21:12*.",
    "why": [
-    "Nombres 100:12 does not exist in the Vulgate"
+    "context: Zared is Nombres 21:12; misread: 100:12 -> 21:12*"
    ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
+   "flags": []
   },
   {
    "id": "0256(g)",
@@ -845,8 +843,8 @@
    "id": "0303(h)",
    "page": "page_0303",
    "marker": "(h)",
-   "text": "Origène, Homélie 17 sur les Nombres ; Eusèbe, Préparation évangélique, livre 9, chapitre 3 ; saint Cyprien, À Quirinus, livre 1, Témoignages 10.",
-   "proposed": "Origène, Homélie 17 sur les Nombres ;\nEusèbe, Préparation évangélique, livre 9, chapitre 3 ;\nsaint Cyprien, À Quirinus, livre 1, Témoignages 10.",
+   "text": "Origène, Homélie 17 sur les Nombres ; Eusèbe, Préparation évangélique, livre 9, chapitre 3 ; Saint Cyprien, À Quirinus, livre 1, Témoignages 10.",
+   "proposed": "Origène, Homélie 17 sur les Nombres ;\nEusèbe, Préparation évangélique, livre 9, chapitre 3 ;\nSaint Cyprien, À Quirinus, livre 1, Témoignages 10.",
    "why": [],
    "flags": []
   },
@@ -863,17 +861,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0307(a)",
-   "page": "page_0307",
-   "marker": "(a)",
-   "text": "Saint Maxime, Sermon 3 sur l'Épiphanie ; Haymo ; Druthmar ; Procope de Gaza ; Saint Thomas ; etc., dans Barradas.",
-   "proposed": "Saint Maxime, Sermon 3 sur l'Épiphanie ; Haymo ; Druthmar ; Procope de Gaza ; saint Thomas ; etc., dans Barradas.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0309(b)",
@@ -902,9 +889,11 @@
    "marker": "(e)",
    "text": "3 Rois 11:15-16.",
    "proposed": "3 Rois 11:15-16.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 11:15-16 Edom, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -918,17 +907,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0315(d)",
-   "page": "page_0315",
-   "marker": "(d)",
-   "text": "Ainsi l'entendent les Septante ; Symmaque ; Saint Augustin ; Théodoret ; Origène ; Ménochius ; Tirin ; Bonfrère ; Nicolas de Lyre ; etc.",
-   "proposed": "Ainsi l'entendent les Septante ; Symmaque ; saint Augustin ; Théodoret ; Origène ; Ménochius ; Tirin ; Bonfrère ; Nicolas de Lyre ; etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0319(a)",
@@ -979,10 +957,8 @@
    "page": "page_0346",
    "marker": "(b)",
    "text": "Tostat ; Sanx. ; Tirin.",
-   "proposed": "Tostat ;\nSanchez ;\nTirin.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Tostat ;\nSanx. ;\nTirin.",
+   "why": [],
    "flags": []
   },
   {
@@ -1044,9 +1020,11 @@
    "marker": "(c)",
    "text": "Josué 6:1 et 1 Rois 4:5 et 2 Rois 11:11.",
    "proposed": "Josué 6:1 et 1 Rois 4:5 et 2 Rois 11:11.",
-   "why": [],
+   "why": [
+    "context: Both Rois refs fit Samuel/ark"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1064,9 +1042,11 @@
    "marker": "(a)",
    "text": "3 Rois 9:26.",
    "proposed": "3 Rois 9:26.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 9:26 Asiongaber, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1123,9 +1103,11 @@
    "marker": "(m)",
    "text": "3 Rois 8:65.",
    "proposed": "3 Rois 8:65.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 8:65 Emath, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1153,12 +1135,13 @@
    "page": "page_0417",
    "marker": "(a)",
    "text": "Deutéronome 19:12-13 et ici, verset 21 et 31. | Voir saint Augustin, question 65 sur les Nombres, Bonfrerius, Estius, Hostellius, etc.",
-   "proposed": "Deutéronome 19:12-13 et ici, verset 21 et 31. | Voyez saint Augustin, question 65 sur les Nombres, Bonfrère, Estius, Hostellius, etc.",
+   "proposed": "Deutéronome 19:12-13 et ici, verset 21 et 31. | Voir saint Augustin, question 65 sur les Nombres, Bonfrerius, Estius, Hostellius, etc.",
    "why": [
-    "abbreviations written out",
+    "context: Verses 21, 31 are of Nombres 35",
     "Deutéronome 100:21, 31 does not exist in the Vulgate"
    ],
    "flags": [
+    "context",
     "reference-not-in-vulgate"
    ]
   }

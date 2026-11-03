@@ -1,18 +1,16 @@
 {
  "summary": {
   "notes": 1390,
-  "changed": 252,
+  "changed": 216,
   "flags": {
    "greek": 150,
-   "scan-unread": 192,
+   "scan-unread": 170,
    "hebrew": 24,
-   "uncertain": 28,
-   "reference-not-in-vulgate": 7,
-   "expand-changed-hebrew-or-greek": 2,
-   "expand-unread": 50,
-   "ambiguous-name": 9,
-   "expand-changed-numbers": 7,
-   "expand-changed-italics": 3
+   "scanned": 22,
+   "uncertain": 6,
+   "uncertain-fill-unclear": 1,
+   "uncertain-fill-asterisk-wrong": 2,
+   "context": 10
   }
  },
  "notes": [
@@ -49,8 +47,8 @@
    "id": "0348(e)",
    "page": "page_0348",
    "marker": "(e)",
-   "text": "Saint Athanase ; Eusèbe ; saint Jérôme.",
-   "proposed": "Saint Athanase ;\nEusèbe ;\nsaint Jérôme.",
+   "text": "Saint Athanase ; Eusèbe ; Saint Jérôme.",
+   "proposed": "Saint Athanase ;\nEusèbe ;\nSaint Jérôme.",
    "why": [],
    "flags": []
   },
@@ -81,18 +79,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0350(b)",
-   "page": "page_0350",
-   "marker": "(b)",
-   "text": "Les Septante : Διῆλθον εἰς διάθεσιν καρδίας. Saint Augustin ; Saint Ambroise ; Cassiodore : In dispositionem cordis. Le Psautier de Chartres et le Psautier de Saint-Germain : In dispositione cordis, etc.",
-   "proposed": "Les Septante : Διῆλθον εἰς διάθεσιν καρδίας. Saint Augustin ; saint Ambroise ; Cassiodore : In dispositionem cordis. Le Psautier de Chartres et le Psautier de Saint-Germain : In dispositione cordis, etc.",
-   "why": [
-    "Greek checked against the Septuagint, Psaumes 72:7",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0351(a)",
@@ -135,11 +121,14 @@
    "page": "page_0353",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] et alterum Rom. Judex meus. 70. [UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN HEBREW] et alterum Rom. Judex meus. 70. [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "הנה אלה רשעים ושלוי עולם השגו חיל et alterum Rom. Judex meus. 70. Ὁ ἔλεγχός μου",
+   "why": [
+    "scan: Filled Hebrew from the page and read the Greek",
+    "read on the scan: הנה אלה רשעים ושלוי עולם השגו חיל",
+    "read on the scan: Ὁ ἔλεγχός μου"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -147,11 +136,13 @@
    "page": "page_0353",
    "marker": "(b)",
    "text": "Sym. [UNCERTAIN GREEK]",
-   "proposed": "Sym. [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "Sym. Ἴσως ἂν κἀγὼ μάτην ἐκάθαρα τὴν ψυχήν μου, καὶ ἐνιπτόμην ἐν ἀναμαρτησίᾳ τὰς χεῖρας μου.",
+   "why": [
+    "scan: Filled the Greek from the page",
+    "read on the scan: Ἴσως ἂν κἀγὼ μάτην ἐκάθαρα τὴν ψυχήν μου, καὶ ἐνιπτόμην ἐν ἀναμαρτησίᾳ τὰς χεῖρας μου."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -159,11 +150,13 @@
    "page": "page_0353",
    "marker": "(d)",
    "text": "Sym. [UNCERTAIN GREEK] saint Aug. argutio mea.",
-   "proposed": "Sym. [UNCERTAIN GREEK] saint Aug. argutio mea.",
-   "why": [],
+   "proposed": "Sym. Διετέλεσα μυκτηριζόμενος καθ᾽ ἑκάστην ἡμέραν, καὶ ἐλεγχόμενος καθ᾽ ἕκαστον ὄρθρον. saint Aug. argutio mea.",
+   "why": [
+    "scan: Filled the Greek from the page",
+    "read on the scan: Διετέλεσα μυκτηριζόμενος καθ᾽ ἑκάστην ἡμέραν, καὶ ἐλεγχόμενος καθ᾽ ἕκαστον ὄρθρον."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -261,11 +254,13 @@
    "page": "page_0358",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "אחזת ביד ימיני בעצתך תנחני ואחר כבוד תקחני",
+   "why": [
+    "scan: Filled the Hebrew from the page",
+    "read on the scan: אחזת ביד ימיני בעצתך תנחני ואחר כבוד תקחני"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -338,22 +333,6 @@
    ]
   },
   {
-   "id": "0364(b)",
-   "page": "page_0364",
-   "marker": "(b)",
-   "text": "Aug. Psal. Mediol. Ambros. in Ps. XXXVII. II. 34. Rom. Carnut. Saint Germ. in sanctis. Quidam libri apud Theodoret, ἐν τοῖς ἁγίοις, alii, et plures, ἐν τῷ ἁγίῳ.",
-   "proposed": "Saint Augustin ; le Psaume de Milan ; saint Ambroise, sur le Psaume 37:2, 34 ; le Psautier romain, de Chartres, de Saint-Germain : in sanctis. Certains livres dans Théodoret : ἐν τοῖς ἁγίοις ; d'autres, et la plupart : ἐν τῷ ἁγίῳ.",
-   "why": [
-    "Greek checked against the Septuagint, Psaumes 73:3",
-    "Greek checked against the Septuagint, Exode 26:34",
-    "abbreviations written out",
-    "Psaumes 37:2, 34 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
-  },
-  {
    "id": "0365(c)",
    "page": "page_0365",
    "marker": "(c)",
@@ -363,20 +342,19 @@
     "Hebrew checked against the Hebrew Bible, Psalms 74:5: במבוא -> כמביא",
     "Greek spelling checked against a Greek dictionary"
    ],
-   "flags": [
-    "expand-changed-hebrew-or-greek"
-   ]
+   "flags": []
   },
   {
    "id": "0366(a)",
    "page": "page_0366",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] סכך עץ קרדמות ועתה פתחיה יחד בכשיל וכילפות יהלמון Sym. Αξίναις τῶν δὲ κ[ILLEGIBLE] τὰς αὐλὰς ἀυλῆς ἐμὰς ἐν μοχλοῖς ἢ διαχεύσεις κατέῤῥαξαν.",
-   "proposed": "[UNCERTAIN HEBREW] סכך עץ קרדמות ועתה פתחיה יחד בכשיל וכילפות יהלמון Sym. Ἀξίναις τῶν δὲ κ[ILLEGIBLE] τὰς αὐλὰς αὐλῆς ἐμὰς ἐν μοχλοῖς ἢ διαχεύσεις κατέρραξαν.",
+   "proposed": "יודע* כמביא* למעלה* ב* סבך עץ קרדמות ועתה פתחיה יחד בכשיל וכילפות יהלמון Sym. Ἀξίναις τῶν δὲ κ[ILLEGIBLE] τὰς αὐλὰς αὐλῆς ἐμὰς ἐν μοχλοῖς ἢ διαχεύσεις κατέρραξαν.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary: Αξίναις -> Ἀξίναις",
-    "Greek spelling checked against a Greek dictionary: ἀυλῆς -> αὐλῆς, κατέῤῥαξαν -> κατέρραξαν"
+    "Greek spelling checked against a Greek dictionary: ἀυλῆς -> αὐλῆς, κατέῤῥαξαν -> κατέρραξαν",
+    "context: Greek garbled, ILLEGIBLE remains: [UNCERTAIN HEBREW] -> יודע* כמביא* למעלה* ב*, סכך עץ -> סבך עץ"
    ],
    "flags": [
     "uncertain",
@@ -389,13 +367,14 @@
    "page": "page_0366",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] שלחו באש מקדשך לארץ חללו משכן שמך",
-   "proposed": "[UNCERTAIN HEBREW] שלחו באש מקדשך לארץ חללו משכן שמך",
+   "proposed": "שלחו באש מקדשך לארץ חללו משכן שמך",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Psalms 74:7"
+    "Hebrew checked against the Hebrew Bible, Psalms 74:7",
+    "scan: Removed the placeholder; the page shows only the Hebrew line, with no extra Hebrew before it"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-unclear",
+    "scanned"
    ]
   },
   {
@@ -447,29 +426,6 @@
    ]
   },
   {
-   "id": "0373(i)",
-   "page": "page_0373",
-   "marker": "(i)",
-   "text": "Ainsv. Ham. Bossuet.",
-   "proposed": "Ainsworth ;\nHammond ;\nBossuet.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0373(m)",
-   "page": "page_0373",
-   "marker": "(m)",
-   "text": "Sym. Ποταμοὺς ἀρχαίους.",
-   "proposed": "Symmaque : Ποταμοὺς ἀρχαίους.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0374(b)",
    "page": "page_0374",
    "marker": "(b)",
@@ -512,95 +468,13 @@
    ]
   },
   {
-   "id": "0374(l)",
-   "page": "page_0374",
-   "marker": "(l)",
-   "text": "Aug. Cassiod. Psalt. Rom. Gall. German. Mediol.",
-   "proposed": "Saint Augustin ; Cassiodore ; le Psautier romain ; gallican ; le Psautier de Saint-Germain ; le Psautier de Milan.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0374(n)",
-   "page": "page_0374",
-   "marker": "(n)",
-   "text": "Muis, Chald. Pisc. Ham. alii.",
-   "proposed": "De Muis ; le Chaldéen ; Piscator ; Hammond ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0375(b)",
-   "page": "page_0375",
-   "marker": "(b)",
-   "text": "Voyez Genebr. sur cet endroit.",
-   "proposed": "Voyez Génébrard sur cet endroit.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0375(c)",
-   "page": "page_0375",
-   "marker": "(c)",
-   "text": "70. Édit. Rom. Μνήσθητι ταύτης τῆς κτίσεως σου, ἐχθρὸς ὠνείδισε τὸν κύριον. Ita Athan. Hesych. Aug. Psalt. Rom. Mediol. Jansen. German. Carthus.",
-   "proposed": "Les Septante, édition de Rome : Μνήσθητι ταύτης τῆς κτίσεως σου, ἐχθρὸς ὠνείδισε τὸν κύριον. Ainsi lisent saint Athanase ; Hésychius ; saint Augustin ; le Psautier romain ; le Psautier de Milan ; Jansénius ; le Psautier de Saint-Germain ; les Chartreux.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0375(d)",
-   "page": "page_0375",
-   "marker": "(d)",
-   "text": "Theodoret. Μνήσθητι ταύτης, ταύτης τῆς Συναγωγῆς. Ita Heracleot. et Theodorus. Sym. Μνήσθητι ταῦτα. Souvenez-vous de ces choses. L'Hébreu est au féminin ; mais les Hébreux mettent le féminin, comme les Grecs et les Latins mettent le neutre.",
-   "proposed": "Théodoret : Μνήσθητι ταύτης, ταύτης τῆς Συναγωγῆς. Ainsi l'entendent Héracléote et Théodore. Symmaque : Μνήσθητι ταῦτα. Souvenez-vous de ces choses. L'Hébreu est au féminin ; mais les Hébreux mettent le féminin, comme les Grecs et les Latins mettent le neutre.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0376(c)",
-   "page": "page_0376",
-   "marker": "(c)",
-   "text": "Ang. _Repleti sunt domo um iniquarum._ Psala. Rom. et Mediol. _Domorum iniquitatum : sensû eodem._ Germ. _Repleti sunt obscuritate terræ domus iniquitatum._",
-   "proposed": "Saint Augustin : _Repleti sunt domo um iniquarum._ Le Psautier romain et de Milan : _Domorum iniquitatum : sensû eodem._ Le Psautier de Saint-Germain : _Repleti sunt obscuritate terræ domus iniquitatum._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0377(b)",
    "page": "page_0377",
    "marker": "(b)",
    "text": "Sym. Οτι επλησθησαν καρπων της αδικιας αυτων.",
-   "proposed": "Symmaque : Ὅτι ἐπλήσθησαν καρπῶν τῆς ἀδικίας αὐτῶν.",
+   "proposed": "Sym. Ὅτι ἐπλήσθησαν καρπῶν τῆς ἀδικίας αὐτῶν.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Οτι -> Ὅτι, επλησθησαν -> ἐπλήσθησαν, καρπων -> καρπῶν, της -> τῆς, αδικιας -> ἀδικίας, αυτων -> αὐτῶν",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0377(c)",
-   "page": "page_0377",
-   "marker": "(c)",
-   "text": "Heb. רבת ריבך.",
-   "proposed": "L'Hébreu : רבת ריבך.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
+    "Greek spelling checked against a Greek dictionary: Οτι -> Ὅτι, επλησθησαν -> ἐπλήσθησαν, καρπων -> καρπῶν, της -> τῆς, αδικιας -> ἀδικίας, αυτων -> αὐτῶν"
    ],
    "flags": []
   },
@@ -609,58 +483,9 @@
    "page": "page_0377",
    "marker": "(d)",
    "text": "Sym. αγωνισαι της μαχης σου.",
-   "proposed": "Symmaque : ἀγώνισαι τῆς μάχης σου.",
+   "proposed": "Sym. ἀγώνισαι τῆς μάχης σου.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: αγωνισαι -> ἀγώνισαι, της -> τῆς, μαχης -> μάχης",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0378(b)",
-   "page": "page_0378",
-   "marker": "(b)",
-   "text": "Μὴ ἐπιλάθῃ τῆς φωνῆς τῶν ἱκετῶν σε. Psals. Mediol. supplicum tuorum.",
-   "proposed": "Μὴ ἐπιλάθῃ τῆς φωνῆς τῶν ἱκετῶν σε. Le Psautier de Milan : supplicum tuorum.",
-   "why": [
-    "Greek checked against the Septuagint, Psaumes 73:23",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0378(c)",
-   "page": "page_0378",
-   "marker": "(c)",
-   "text": "Psalt. Rom. et Cantuar.",
-   "proposed": "Le Psautier romain et de Cantorbéry.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0378(d)",
-   "page": "page_0378",
-   "marker": "(d)",
-   "text": "אל תשכח קול צרריך Sym. Hæbræi et Chaldæi sic : ascensio inimicorum.",
-   "proposed": "אל תשכח קול צרריך Symmaque, les Hébreux et les Chaldéens ainsi : ascensio inimicorum.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Psalms 74:23",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0378(e)",
-   "page": "page_0378",
-   "marker": "(e)",
-   "text": "שאון קמיך עלה תמיד Sym. Mixis et ἀναβαίνων ἀδιάλειπτος.",
-   "proposed": "שאון קמיך עלה תמיד Symmaque : Mixis et ἀναβαίνων ἀδιάλειπτος.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Psalms 74:23",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
+    "Greek spelling checked against a Greek dictionary: αγωνισαι -> ἀγώνισαι, της -> τῆς, μαχης -> μάχης"
    ],
    "flags": []
   },
@@ -669,21 +494,9 @@
    "page": "page_0378",
    "marker": "(g)",
    "text": "Sym. Επινίκιος ωδὴ ἀφθαρσίας, ἣ πρὸς Α'σάφ.",
-   "proposed": "Symmaque : Ἐπινίκιος ᾠδὴ ἀφθαρσίας, ἣ πρὸς Ἀσάφ.",
+   "proposed": "Sym. Ἐπινίκιος ᾠδὴ ἀφθαρσίας, ἣ πρὸς Ἀσάφ.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Α'σάφ -> Ἀσάφ, Επινίκιος -> Ἐπινίκιος, ωδὴ -> ᾠδὴ",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0379(b)",
-   "page": "page_0379",
-   "marker": "(b)",
-   "text": "Athan. Euthym.",
-   "proposed": "Saint Athanase ; Euthyme.",
-   "why": [
-    "abbreviations written out"
+    "Greek spelling checked against a Greek dictionary: Α'σάφ -> Ἀσάφ, Επινίκιος -> Ἐπινίκιος, ωδὴ -> ᾠδὴ"
    ],
    "flags": []
   },
@@ -700,28 +513,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0380(c)",
-   "page": "page_0380",
-   "marker": "(c)",
-   "text": "70. _Amstrdpen. Narrabo. Ita Euseb. Athanas. Aug._",
-   "proposed": "Les Septante : _Amstrdpen. Narrabo. C'est à peu près ainsi que lisent Eusèbe ; saint Athanase ; saint Augustin._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0380(d)",
-   "page": "page_0380",
-   "marker": "(d)",
-   "text": "Voyez saint Aug. et saint Jérôme sur cet endroit.",
-   "proposed": "Voyez saint Augustin et saint Jérôme sur cet endroit.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0380(f)",
@@ -778,61 +569,13 @@
    "flags": []
   },
   {
-   "id": "0384(a)",
-   "page": "page_0384",
-   "marker": "(a)",
-   "text": "Homer. Iliad. XXIV. Δοιοὶ γάρ τε πίθοι κατακείαται ἐν Διὸς οὔδει.",
-   "proposed": "Homère, Iliade, livre 24. Δοιοὶ γάρ τε πίθοι κατακείαται ἐν Διὸς οὔδει.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0384(c)",
-   "page": "page_0384",
-   "marker": "(c)",
-   "text": "Sym. Ποτήριον γὰρ ἐν χειρὶ Κυρίου, οἴνου ἀκράτου πλῆρες κεράσματος, καὶ ἔκλινεν ἀπ᾽ ἀυτῆς.",
-   "proposed": "Symmaque : Ποτήριον γὰρ ἐν χειρὶ Κυρίου, οἴνου ἀκράτου πλῆρες κεράσματος, καὶ ἔκλινεν ἀπ᾽ ἀυτῆς.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0384(e)",
-   "page": "page_0384",
-   "marker": "(e)",
-   "text": "Sym. Πλὴν τὰς τρυγίας ἀυτῆς ἐκπίνουσιν πάντες οἱ ἁμαρτωλοὶ τῆς γῆς.",
-   "proposed": "Symmaque : Πλὴν τὰς τρυγίας ἀυτῆς ἐκπίνουσιν πάντες οἱ ἁμαρτωλοὶ τῆς γῆς.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0384(h)",
-   "page": "page_0384",
-   "marker": "(h)",
-   "text": "Origen. Homil. 8. in Num. Euseb, Athas, bic.",
-   "proposed": "Origène, Homélie 8 sur les Nombres ;\nEusèbe ;\nsaint Athanase, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0385(a)",
    "page": "page_0385",
    "marker": "(a)",
    "text": "70. Εγὼ δὲ ἀγαλλιάσομαι εἰς τὸν αἰῶνα. Aug. Psalt. Rom. Arab. et Mediol. Ego autem in secula gaudebo. Saint Germ. in Domino gaudebo.",
-   "proposed": "Les Septante : Ἐγὼ δὲ ἀγαλλιάσομαι εἰς τὸν αἰῶνα. Saint Augustin ; le Psautier romain ; l'Arabe ; et le Psautier de Milan : Ego autem in secula gaudebo. Le Psautier de Saint-Germain : in Domino gaudebo.",
+   "proposed": "70. Ἐγὼ δὲ ἀγαλλιάσομαι εἰς τὸν αἰῶνα. Aug. Psalt. Rom. Arab. et Mediol. Ego autem in secula gaudebo. Saint Germ. in Domino gaudebo.",
    "why": [
-    "Greek checked against the Septuagint, Psaumes 74:10: Εγὼ -> Ἐγὼ",
-    "abbreviations written out"
+    "Greek checked against the Septuagint, Psaumes 74:10: Εγὼ -> Ἐγὼ"
    ],
    "flags": []
   },
@@ -866,28 +609,6 @@
    ]
   },
   {
-   "id": "0386(a)",
-   "page": "page_0386",
-   "marker": "(a)",
-   "text": "Theodor. Theodoret. Euthym. Heracleot. Rab. Sal. Muis, Flamin.",
-   "proposed": "Théodore ; Théodoret ; Euthyme ; Héracléote ; Rabbi Salomon ; de Muis ; Flaminius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0386(c)",
-   "page": "page_0386",
-   "marker": "(c)",
-   "text": "Vide si lubet Syr. Bossuet. alios.",
-   "proposed": "Voyez au besoin le Syriaque ; Bossuet ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0387(a)",
    "page": "page_0387",
    "marker": "(a)",
@@ -900,52 +621,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0387(f)",
-   "page": "page_0387",
-   "marker": "(f)",
-   "text": "Ieronym. Aug. Euseb. Athan. Ambr.",
-   "proposed": "Saint Jérôme ;\nsaint Augustin ;\nEusèbe ;\nsaint Athanase ;\nsaint Ambroise.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0387(g)",
-   "page": "page_0387",
-   "marker": "(g)",
-   "text": "ויהי בשלם סוכו ומעונתו בציון Aqu. Sym. Th. legunt Salem apud Euseb.",
-   "proposed": "ויהי בשלם סוכו ומעונתו בציון Aquila, Symmaque, Théodotion lisent Salem dans Eusèbe.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Psalms 76:2",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0388(d)",
-   "page": "page_0388",
-   "marker": "(d)",
-   "text": "Greg. l. 31. Moral. c. 28.",
-   "proposed": "Saint Grégoire, Morales sur Job, livre 31, chapitre 28.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0389(a)",
-   "page": "page_0389",
-   "marker": "(a)",
-   "text": "Græc. φωτίζεις. Illuminas.",
-   "proposed": "Le Grec : φωτίζεις. Illuminas.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0389(d)",
@@ -972,53 +647,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0390(e)",
-   "page": "page_0390",
-   "marker": "(e)",
-   "text": "Sym. Kai ἐν ὑπνώσαντες οὐδὲν εὗρον ταῖς χερσὶν αὐτῶν.\n70. ἐν ὑπνῷ ἰδὼν οὐδὲν εὗρον ἐκ τῶν χειρῶν αὐτῶν. Vide Ieron. ad Suniam, etc.",
-   "proposed": "Symmaque : Kai ἐν ὑπνώσαντες οὐδὲν εὗρον ταῖς χερσὶν αὐτῶν.\nLes Septante : ἐν ὑπνῷ ἰδὼν οὐδὲν εὗρον ἐκ τῶν χειρῶν αὐτῶν. Voyez saint Jérôme, Lettre à Sunnia, etc.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0391(c)",
-   "page": "page_0391",
-   "marker": "(c)",
-   "text": "וגערתך ורכב וסוס Sym. Exod. 15. aqua, et igne.",
-   "proposed": "וגערתך ורכב וסוס Symmaque ; Exode 15. aqua, et igne.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0391(f)",
-   "page": "page_0391",
-   "marker": "(f)",
-   "text": "Aug. Psalt. Saint Germ. Carnut.",
-   "proposed": "Saint Augustin ; le Psautier ; le Psautier de Saint-Germain ; le Psautier de Chartres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0391(g)",
-   "page": "page_0391",
-   "marker": "(g)",
-   "text": "Rom. Editio Fabri.",
-   "proposed": "Édition de Rome : Édition de Fabri.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0391(h)",
@@ -1049,28 +677,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0392(b)",
-   "page": "page_0392",
-   "marker": "(b)",
-   "text": "Aug. et Psalt. Carnut. Jaculatus es judicium. Romano Psalt. Jaculatum est judicium.",
-   "proposed": "Saint Augustin et le Psautier de Chartres : Jaculatus es judicium. Le Psautier romain : Jaculatum est judicium.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0392(c)",
-   "page": "page_0392",
-   "marker": "(c)",
-   "text": "Saint Germ. Jactasti judicium.",
-   "proposed": "Le Psautier de Saint-Germain : Jactasti judicium.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0392(d)",
@@ -1106,21 +712,9 @@
    "page": "page_0393",
    "marker": "(b)",
    "text": "Ambros. de Nabut. Jezr. c. 16. Orate et reddite, 70. Ευξασθε και αποδοτε.",
-   "proposed": "Saint Ambroise, De Naboth, chapitre 16 : Orate et reddite, les Septante : Εὔξασθε καὶ ἀπόδοτε.",
+   "proposed": "Ambros. de Nabut. Jezr. c. 16. Orate et reddite, 70. Εὔξασθε καὶ ἀπόδοτε.",
    "why": [
-    "Greek checked against the Septuagint, Psaumes 75:12: Ευξασθε -> Εὔξασθε, και -> καὶ, αποδοτε -> ἀπόδοτε",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0394(c)",
-   "page": "page_0394",
-   "marker": "(c)",
-   "text": "Pise. Ainsu. Geier. Ferrand. Chald.",
-   "proposed": "Piscator ; Ainsworth ; Geier ; Ferrand ; le Chaldéen.",
-   "why": [
-    "abbreviations written out"
+    "Greek checked against the Septuagint, Psaumes 75:12: Ευξασθε -> Εὔξασθε, και -> καὶ, αποδοτε -> ἀπόδοτε"
    ],
    "flags": []
   },
@@ -1139,50 +733,6 @@
    ]
   },
   {
-   "id": "0395(c)",
-   "page": "page_0395",
-   "marker": "(c)",
-   "text": "70. Compl. O'ixent Swgo. Ita Theodoret. et Mss. plures apud Ferrand. hic.",
-   "proposed": "Les Septante, édition de Complute : O'ixent Swgo. Ainsi l'entendent Théodoret et plusieurs manuscrits dans Ferrand, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0395(e)",
-   "page": "page_0395",
-   "marker": "(e)",
-   "text": "Chald. Ieronym. Euseb. Athan. Bossuet, alii.",
-   "proposed": "Le Chaldéen ; saint Jérôme ; Eusèbe ; saint Athanase ; Bossuet ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0396(a)",
-   "page": "page_0396",
-   "marker": "(a)",
-   "text": "Theodorus, Theodoret, Beda, Lir. Muis, German. Cornut. Mediol. Ferrand. Bossuet, alii.",
-   "proposed": "Théodore ; Théodoret ; Bède ; Lyranus ; de Muis ; le Psautier de Saint-Germain ; de Chartres ; de Milan ; Ferrand ; Bossuet ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0396(b)",
-   "page": "page_0396",
-   "marker": "(b)",
-   "text": "Aug. Psalter. Rom. edit. 1608. et 1663.",
-   "proposed": "Aug. Psalter. Rom. edit. 1608. et 1663.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0397(a)",
    "page": "page_0397",
    "marker": "(a)",
@@ -1197,26 +747,18 @@
    ]
   },
   {
-   "id": "0397(b)",
-   "page": "page_0397",
-   "marker": "(b)",
-   "text": "Psalt. Rom. Carnut. Aug. in impressis, _negavi consolari animam meam._ Psalt. Mediol. et Aug. in Mss. _negavit consolari anima mea._",
-   "proposed": "Psalt. Rom. Carnut. Aug. in impressis, _negavi consolari animam meam._ Psalt. Mediol. et Aug. in Mss. _negavit consolari anima mea._",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0398(b)",
    "page": "page_0398",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Sym. [UNCERTAIN GREEK].",
-   "proposed": "[UNCERTAIN HEBREW] Sym. [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "אחזת שמרות עיני Sym. Ἐκώλυον τὰς ἀναβλέψεις τῶν ὀφθαλμῶν μου.",
+   "why": [
+    "scan: Filled Hebrew and Greek from the page",
+    "read on the scan: אחזת שמרות עיני",
+    "read on the scan: Ἐκώλυον τὰς ἀναβλέψεις τῶν ὀφθαλμῶν μου"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1224,11 +766,15 @@
    "page": "page_0398",
    "marker": "(c)",
    "text": "Je lis [UNCERTAIN HEBREW] au lieu de [UNCERTAIN HEBREW] qui ne fait aucun sens. Je remarque dans Jérémie une expression toute semblable. [UNCERTAIN HEBREW] Lamentations 3:49.",
-   "proposed": "Je lis [UNCERTAIN HEBREW] au lieu de [UNCERTAIN HEBREW] qui ne fait aucun sens. Je remarque dans Jérémie une expression toute semblable. [UNCERTAIN HEBREW] Lamentations 3:49.",
-   "why": [],
+   "proposed": "Je lis עיני לילה נגרה ולא תפוג au lieu de ידי לילה נגרה qui ne fait aucun sens. Je remarque dans Jérémie une expression toute semblable. עיני נגרה ולא תדמה Lamentations 3:49.",
+   "why": [
+    "scan: Filled three Hebrew passages from the page",
+    "read on the scan: עיני לילה נגרה ולא תפוג",
+    "read on the scan: ידי לילה נגרה",
+    "read on the scan: עיני נגרה ולא תדמה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1236,22 +782,15 @@
    "page": "page_0398",
    "marker": "(d)",
    "text": "Heb. [UNCERTAIN HEBREW] Je dérive le verbe [UNCERTAIN HEBREW] de [UNCERTAIN HEBREW]. On trouve de ces verbes composés du futur, et du présent.",
-   "proposed": "Heb. [UNCERTAIN HEBREW] Je dérive le verbe [UNCERTAIN HEBREW] de [UNCERTAIN HEBREW]. On trouve de ces verbes composés du futur, et du présent.",
-   "why": [],
+   "proposed": "Heb. אחזת שמרות עיני Je dérive le verbe אחזת de חזה. On trouve de ces verbes composés du futur, et du présent.",
+   "why": [
+    "scan: Filled three Hebrew words from the page",
+    "read on the scan: אחזת שמרות עיני",
+    "read on the scan: אחזת",
+    "read on the scan: חזה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0398(e)",
-   "page": "page_0398",
-   "marker": "(e)",
-   "text": "Saint Aug. _Psalt._ Arab. Æthiop. Germ. Carthus. _Anticipaverunt vigilias inimici mei._",
-   "proposed": "Saint Aug. _Psalt._ Arab. Æthiop. Germ. Carthus. _Anticipaverunt vigilias inimici mei._",
-   "why": [],
-   "flags": [
-    "expand-unread"
+    "scanned"
    ]
   },
   {
@@ -1259,11 +798,14 @@
    "page": "page_0398",
    "marker": "(f)",
    "text": "[UNCERTAIN HEBREW] Sym. [UNCERTAIN GREEK].",
-   "proposed": "[UNCERTAIN HEBREW] Sym. [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "אחזת שמרות עיני Sym. Ἐκώλυον τὰς ἀναβλέψεις τῶν ὀφθαλμῶν μου.",
+   "why": [
+    "scan: Filled Hebrew and Greek from the page",
+    "read on the scan: אחזת שמרות עיני",
+    "read on the scan: Ἐκώλυον τὰς ἀναβλέψεις τῶν ὀφθαλμῶν μου"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1271,11 +813,13 @@
    "page": "page_0398",
    "marker": "(g)",
    "text": "Aqu. [UNCERTAIN GREEK].",
-   "proposed": "Aqu. [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "Aqu. Κατέχεις φυλακὰς ὀφθαλμῶν.",
+   "why": [
+    "scan: Filled the Greek from the page",
+    "read on the scan: Κατέχεις φυλακὰς ὀφθαλμῶν"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1283,22 +827,14 @@
    "page": "page_0398",
    "marker": "(h)",
    "text": "Theodot. [UNCERTAIN GREEK].",
-   "proposed": "Theodot. [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "Theodot. Ἐκράτησας φυλακὰς ὀφθαλμῶν μου.",
+   "why": [
+    "scan: Filled the Greek, partly guessed",
+    "guessed from context: Ἐκράτησας* φυλακὰς ὀφθαλμῶν μου"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0399(a)",
-   "page": "page_0399",
-   "marker": "(a)",
-   "text": "Chald. Euseb. Theodoret. Athan. Muis, alii.",
-   "proposed": "Chald. Euseb. Theodoret. Athan. Muis, alii.",
-   "why": [],
-   "flags": [
-    "expand-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -1311,20 +847,7 @@
     "Greek spelling checked against a Greek dictionary: τας -> τὰς, τα -> τὰ, ἀιῶνος -> αἰῶνος, Καλενόησα -> Κατενόησα, αρχαίας -> ἀρχαίας",
     "Greek spelling checked against a Greek dictionary"
    ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0399(d)",
-   "page": "page_0399",
-   "marker": "(d)",
-   "text": "Scopebam, quasi scopis mundabam. Huge et alii quidam legunt scopabam. Vulg. Isaïe 14:23. Scopabo eam in scopa terens.",
-   "proposed": "Scopebam, quasi scopis mundabam. Huge et alii quidam legunt scopabam. Vulg. Isaïe 14:23. Scopabo eam in scopa terens.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0399(e)",
@@ -1350,17 +873,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0400(b)",
-   "page": "page_0400",
-   "marker": "(b)",
-   "text": "Ieron. hic. Scobebam spiritum meum, id est sodiebam quasi agrum, ut ibi mitterem semen doctrinarum Domini.",
-   "proposed": "Ieron. hic. Scobebam spiritum meum, id est sodiebam quasi agrum, ut ibi mitterem semen doctrinarum Domini.",
-   "why": [],
-   "flags": [
-    "expand-unread"
    ]
   },
   {
@@ -1407,17 +919,6 @@
    ]
   },
   {
-   "id": "0401(d)",
-   "page": "page_0401",
-   "marker": "(d)",
-   "text": "Ieron. in Comment. hic. Sed in versione segit : aut complebit in furore misericordias suas ?",
-   "proposed": "Ieron. in Comment. hic. Sed in versione segit : aut complebit in furore misericordias suas ?",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0402(a)",
    "page": "page_0402",
    "marker": "(a)",
@@ -1427,17 +928,6 @@
     "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
-  },
-  {
-   "id": "0402(b)",
-   "page": "page_0402",
-   "marker": "(b)",
-   "text": "Theodoret. Athan. Ieronym. _Quod patior non de crudelitate Dei, sed de peccatis meis._",
-   "proposed": "Theodoret. Athan. Ieronym. _Quod patior non de crudelitate Dei, sed de peccatis meis._",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
   },
   {
    "id": "0402(c)",
@@ -1474,19 +964,6 @@
    ]
   },
   {
-   "id": "0403(c)",
-   "page": "page_0403",
-   "marker": "(c)",
-   "text": "Alii lib. Περινοίας.",
-   "proposed": "Alii lib. Περινοίας.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0403(e)",
    "page": "page_0403",
    "marker": "(e)",
@@ -1496,20 +973,7 @@
     "Greek spelling checked against a Greek dictionary: συ -> σὺ",
     "Greek spelling checked against a Greek dictionary: Ε’νθυμοῦμαι -> Ἐνθυμοῦμαι, τα -> τὰ, αδολεσχήσω -> ἀδολεσχήσω"
    ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0403(f)",
-   "page": "page_0403",
-   "marker": "(f)",
-   "text": "Psalt. Rom. Mediol. Carnut. sed Psalt. Saint Germ. in obsecrationibus tuis, etc.",
-   "proposed": "Psalt. Rom. Mediol. Carnut. sed Psalt. Saint Germ. in obsecrationibus tuis, etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0403(g)",
@@ -1541,28 +1005,6 @@
    "flags": []
   },
   {
-   "id": "0404(b)",
-   "page": "page_0404",
-   "marker": "(b)",
-   "text": "Geneb. Pat. Ter. Mari. Muns. etc.",
-   "proposed": "Geneb. Pat. Ter. Mari. Muns. etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0405(b)",
-   "page": "page_0405",
-   "marker": "(b)",
-   "text": "Artapan. apud Euseb. præp. l. 9. c. 27.",
-   "proposed": "Artapan. apud Euseb. præp. l. 9. c. 27.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0405(c)",
    "page": "page_0405",
    "marker": "(c)",
@@ -1577,55 +1019,6 @@
    ]
   },
   {
-   "id": "0405(f)",
-   "page": "page_0405",
-   "marker": "(f)",
-   "text": "אף חצציך יתהלכו קול רעמך בגלגל Sym. Et τὰ regxà. Ita Aqu. et Theodot.",
-   "proposed": "אף חצציך יתהלכו קול רעמך בגלגל Sym. Et τὰ regxà. Ita Aqu. et Theodot.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Psalms 77:17",
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0405(h)",
-   "page": "page_0405",
-   "marker": "(h)",
-   "text": "Apollodor. Bibliot. l. 1. Καὶ βύρσας μὲν ἐξημμένας ἐξ ἅρματος μετὰ λιβάνων χαλκῶν σύρων ἔλεγε βροντᾶν.",
-   "proposed": "Apollodor. Bibliot. l. 1. Καὶ βύρσας μὲν ἐξημμένας ἐξ ἅρματος μετὰ λιβάνων χαλκῶν σύρων ἔλεγε βροντᾶν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0407(a)",
-   "page": "page_0407",
-   "marker": "(a)",
-   "text": "Chald. Euseb. Cæzar. Athan. Tertull. contra Prax. Iren. hic Bossuet, alii.",
-   "proposed": "Chald. Euseb. Cæzar. Athan. Tertull. contra Prax. Iren. hic Bossuet, alii.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0407(d)",
-   "page": "page_0407",
-   "marker": "(d)",
-   "text": "Vide Athanas. Euseb. Ierom. Bedam.",
-   "proposed": "Vide Athanas. Euseb. Ierom. Bedam.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0409(d)",
    "page": "page_0409",
    "marker": "(d)",
@@ -1636,22 +1029,7 @@
     "Greek checked against the Septuagint, Psaumes 77:2: ἀπ' -> ἀπ’",
     "Greek spelling checked against a Greek dictionary"
    ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0409(e)",
-   "page": "page_0409",
-   "marker": "(e)",
-   "text": "Aqu. Αἰνίγματα.",
-   "proposed": "Aqu. Αἰνίγματα.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0409(f)",
@@ -1675,9 +1053,7 @@
     "Hebrew checked against the Hebrew Bible, Psalms 78:8",
     "Greek spelling checked against a Greek dictionary: ἀπίςῳ -> ἀπίστῳ, ἱσοῦσα -> ἰσοῦσα"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0413(a)",
@@ -1701,34 +1077,7 @@
     "Hebrew checked against the Hebrew Bible, Psalms 78:14",
     "Greek spelling checked against a Greek dictionary: Εν -> Ἐν"
    ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0415(d)",
-   "page": "page_0415",
-   "marker": "(d)",
-   "text": "Kimchi, Aben. z. Ferrand.",
-   "proposed": "Kimchi, Aben. z. Ferrand.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0416(a)",
-   "page": "page_0416",
-   "marker": "(a)",
-   "text": "ויחרף אפו Sym. Exod.32. Iratus est. Aqu. ἐνεβριμήσατο, Il ne différa pas.",
-   "proposed": "ויחרף אפו Sym. Exod.32. Iratus est. Aqu. ἐνεβριμήσατο, Il ne différa pas.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0417(b)",
@@ -1747,17 +1096,6 @@
    ]
   },
   {
-   "id": "0417(d)",
-   "page": "page_0417",
-   "marker": "(d)",
-   "text": "Psalt. Rom. Mediol. Carnut. 70. Exatiostionem.",
-   "proposed": "Psalt. Rom. Mediol. Carnut. 70. Exatiostionem.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0417(e)",
    "page": "page_0417",
    "marker": "(e)",
@@ -1767,9 +1105,7 @@
     "Hebrew checked against the Hebrew Bible, Psalms 78:26",
     "Greek spelling checked against a Greek dictionary: δε -> δὲ"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0417(f)",
@@ -1800,19 +1136,6 @@
    ]
   },
   {
-   "id": "0418(e)",
-   "page": "page_0418",
-   "marker": "(e)",
-   "text": "Euseb. hic. Ita Athan. Γέγονε γὰρ αὐτοῖς εἰς χολέραν ἤτοι εἰς τροφήν.",
-   "proposed": "Euseb. hic. Ita Athan. Γέγονε γὰρ αὐτοῖς εἰς χολέραν ἤτοι εἰς τροφήν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0419(e)",
    "page": "page_0419",
    "marker": "(e)",
@@ -1828,28 +1151,6 @@
    ]
   },
   {
-   "id": "0419(f)",
-   "page": "page_0419",
-   "marker": "(f)",
-   "text": "Num. XIII. XIV.",
-   "proposed": "Num. XIII. XIV.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0420(a)",
-   "page": "page_0420",
-   "marker": "(a)",
-   "text": "Num. XVI. XVII.",
-   "proposed": "Num. XVI. XVII.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0420(b)",
    "page": "page_0420",
    "marker": "(b)",
@@ -1859,39 +1160,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0420(d)",
-   "page": "page_0420",
-   "marker": "(d)",
-   "text": "Roman. an. 1663. et 1308. et Mediol. de Carnut.",
-   "proposed": "Roman. an. 1663. et 1308. et Mediol. de Carnut.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0421(f)",
-   "page": "page_0421",
-   "marker": "(f)",
-   "text": "Nec fides habita est illis, etc. Psals. Rom. et Mediol.",
-   "proposed": "Nec fides habita est illis, etc. Psals. Rom. et Mediol.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0422(a)",
-   "page": "page_0422",
-   "marker": "(a)",
-   "text": "Vide Ieron. Euseb. Muis, Geier. alios.",
-   "proposed": "Vide Ieron. Euseb. Muis, Geier. alios.",
-   "why": [],
-   "flags": [
-    "expand-unread"
    ]
   },
   {
@@ -1912,20 +1180,20 @@
    "why": [
     "Greek spelling checked against a Greek dictionary: Α’νδρῶν -> Ἀνδρῶν, ἱλετή -> ἑλετή"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0422(i)",
    "page": "page_0422",
    "marker": "(i)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "וישובו ויצרו אל וקדוש ישראל יתוו",
+   "why": [
+    "scan: Filled the Hebrew from the page",
+    "read on the scan: וישובו ויצרו אל וקדוש ישראל יתוו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1967,17 +1235,6 @@
    ]
   },
   {
-   "id": "0424(c)",
-   "page": "page_0424",
-   "marker": "(c)",
-   "text": "Ieron. ad Suniam et Fretell.",
-   "proposed": "Ieron. ad Suniam et Fretell.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0424(d)",
    "page": "page_0424",
    "marker": "(d)",
@@ -2002,17 +1259,6 @@
    ]
   },
   {
-   "id": "0424(f)",
-   "page": "page_0424",
-   "marker": "(f)",
-   "text": "Psalter. Rom. Mediolan. Carnut.",
-   "proposed": "Psalter. Rom. Mediolan. Carnut.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0424(i)",
    "page": "page_0424",
    "marker": "(i)",
@@ -2025,17 +1271,6 @@
    ]
   },
   {
-   "id": "0425(a)",
-   "page": "page_0425",
-   "marker": "(a)",
-   "text": "Athenæus lib. 1. vers. finem.",
-   "proposed": "Athenæus lib. 1. vers. finem.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0425(d)",
    "page": "page_0425",
    "marker": "(d)",
@@ -2045,9 +1280,7 @@
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary: Εν -> Ἐν"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0425(e)",
@@ -2059,20 +1292,7 @@
     "Greek spelling checked against a Greek dictionary: Εν -> Ἐν, κρυμω -> κρυμῷ",
     "Greek spelling checked against a Greek dictionary: Εις -> Εἰς, την -> τὴν"
    ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0425(f)",
-   "page": "page_0425",
-   "marker": "(f)",
-   "text": "Rabb. Salomon et Chasan apud Muis.",
-   "proposed": "Rabb. Salomon et Chasan apud Muis.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0425(k)",
@@ -2085,9 +1305,7 @@
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary: λοιμω -> λοιμῷ, τα -> τὰ, αυτων -> αὐτῶν, οιωνοις -> οἰωνοῖς, Ενδίδωσι -> Ἐνδίδωσι"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0426(a)",
@@ -2098,55 +1316,7 @@
    "why": [
     "Greek spelling checked against a Greek dictionary: ὑπεργὺς -> ὑπουργοὺς"
    ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0426(b)",
-   "page": "page_0426",
-   "marker": "(b)",
-   "text": "Ieron. hic. Ut qui divinis plagis non arguantur, diabolicis insidiis traderentur, etc.",
-   "proposed": "Ieron. hic. Ut qui divinis plagis non arguantur, diabolicis insidiis traderentur, etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0426(c)",
-   "page": "page_0426",
-   "marker": "(c)",
-   "text": "Ieron. in cap. VII. Dan.",
-   "proposed": "Ieron. in cap. VII. Dan.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0426(d)",
-   "page": "page_0426",
-   "marker": "(d)",
-   "text": "Ambros. in ep. 34. ad Horontian.",
-   "proposed": "Ambros. in ep. 34. ad Horontian.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0427(a)",
-   "page": "page_0427",
-   "marker": "(a)",
-   "text": "יפלס נתיב לאפו Muis, Mar. Jun. Munst. alii.",
-   "proposed": "יפלס נתיב לאפו Muis, Mar. Jun. Munst. alii.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Psalms 78:50"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0427(c)",
@@ -2171,18 +1341,17 @@
     "Greek spelling checked against a Greek dictionary: Καϑωδήγησεν -> Καθωδήγησεν, ἀυλὸς -> αὐλὸς",
     "Greek spelling checked against a Greek dictionary: ἐφοβήϑησαν -> ἐφοβήθησαν, ἀυτὸς -> αὐτὸς, Ἐξεδήγησεν -> Ἐξεδήμησεν"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0429(d)",
    "page": "page_0429",
    "marker": "(d)",
    "text": "Herodot. l. 2. c. 6. O' δέ χοῖν[UNCERTAIN GREEK] μίττον ἐς αἰγύπλιον, τξήκοντα ςαδία.",
-   "proposed": "Herodot. l. 2. c. 6. O' δέ χοῖν[UNCERTAIN GREEK] μίττον ἐς αἰγύπλιον, τξήκοντα σταδία.",
+   "proposed": "Herodot. l. 2. c. 6. O' δέ σχοῖνος* μέτρον ἐς Αἰγύπτιον, ἑξήκοντα σταδία.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: ςαδία -> σταδία"
+    "Greek spelling checked against a Greek dictionary: ςαδία -> σταδία",
+    "context: Herodotus 2.6; ἐς doubtful: χοῖν[UNCERTAIN GREEK] -> σχοῖνος*, μίττον -> μέτρον, αἰγύπλιον -> Αἰγύπτιον, τξήκοντα -> ἑξήκοντα"
    ],
    "flags": [
     "uncertain",
@@ -2191,54 +1360,18 @@
    ]
   },
   {
-   "id": "0430(c)",
-   "page": "page_0430",
-   "marker": "(c)",
-   "text": "Ita Psalt. Rom. et Carnut. Sed saint Germ. Repulerunt.",
-   "proposed": "Ita Psalt. Rom. et Carnut. Sed saint Germ. Repulerunt.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0431(a)",
    "page": "page_0431",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] probavit valde Israel. Aqu. ἀπεδοκίμασε ὁ Θεὸς, καὶ ἀναθεμάτισε τὸν Ἰσραήλ.",
-   "proposed": "[UNCERTAIN HEBREW] probavit valde Israel. Aqu. ἀπεδοκίμασε ὁ Θεὸς, καὶ ἀναθεμάτισε τὸν Ἰσραήλ.",
+   "proposed": "שמע אלהים ויתעבר וימאס מאוד בישראל probavit valde Israel. Aqu. ἤχθετο ὁ Θεὸς, καὶ ἀνεπιρθετήσεν.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled Hebrew from page; Aquila's Greek replaced with the printed text (Sym. belongs to note b).",
+    "read on the scan: שמע אלהים ויתעבר וימאס מאוד בישראל"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0431(b)",
-   "page": "page_0431",
-   "marker": "(b)",
-   "text": "Sym. Ἀπεδοκίμασε σφόδρα τὸν Ἰσραήλ. Rer.",
-   "proposed": "Sym. Ἀπεδοκίμασε σφόδρα τὸν Ἰσραήλ. Rer.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0432(c)",
-   "page": "page_0432",
-   "marker": "(c)",
-   "text": "לסגר וסגור Vide sup. ℣. 48. et Psaumes 34:3. Effunde frameam et conclude.",
-   "proposed": "לסגר וסגור Vide sup. ℣. 48. et Psaumes 34:3. Effunde frameam et conclude.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
-   ],
-   "flags": [
-    "expand-unread"
+    "scanned"
    ]
   },
   {
@@ -2250,42 +1383,6 @@
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary: ὑμνηθησαν -> ὑμνήθησαν"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0433(c)",
-   "page": "page_0433",
-   "marker": "(c)",
-   "text": "Sym. et Theod. Οὐκ ἐθρήνησαν. Ita et 5. edit.",
-   "proposed": "Symmaque ; et Théodoret : Οὐκ ἐθρήνησαν. De même la cinquième édition.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0433(d)",
-   "page": "page_0433",
-   "marker": "(d)",
-   "text": "Pagn. Jun. Pisc. Muis, Geier. Mont. Vat. glis. Vide Jérémie 7:34. 16:9. 25:10.",
-   "proposed": "Pagnin ; Junius ; Piscator ; de Muis ; Geier ; Arias Montanus ; Vatable, glis. Voyez Jérémie 7:34 ; 16:9 ; 25:10.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0433(e)",
-   "page": "page_0433",
-   "marker": "(e)",
-   "text": "Ita 70. Arab. Æth. Geneb. Muis.",
-   "proposed": "Ainsi lisent les Septante ; l'Arabe ; l'Éthiopien ; Genebrard ; de Muis.",
-   "why": [
-    "abbreviations written out"
    ],
    "flags": []
   },
@@ -2304,17 +1401,6 @@
    ]
   },
   {
-   "id": "0434(a)",
-   "page": "page_0434",
-   "marker": "(a)",
-   "text": "Voy. Chald. Ierom. Muis, Munst. Grier.",
-   "proposed": "Voyez le Chaldéen ; saint Jérôme ; de Muis ; Munster ; Geier.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0434(b)",
    "page": "page_0434",
    "marker": "(b)",
@@ -2329,28 +1415,16 @@
    ]
   },
   {
-   "id": "0434(c)",
-   "page": "page_0434",
-   "marker": "(c)",
-   "text": "Sym. O's δυνατὸς διαλαλῶν ἐξ ὕπνε. Tig. Grier. Pisc. Iun. alii.",
-   "proposed": "Symmaque : O's δυνατὸς διαλαλῶν ἐξ ὕπνε. Tigurina ; Geier ; Piscator ; Junius ; et d'autres.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0434(d)",
    "page": "page_0434",
    "marker": "(d)",
    "text": "1 Rois 5:6, 9 Reg.",
-   "proposed": "1 Rois 5:10 ; 1 Rois.",
+   "proposed": "1 Rois 5:6, 9 Reg.",
    "why": [
-    "abbreviations written out"
+    "context: 1 Samuel 5:6, Azotus"
    ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2385,17 +1459,6 @@
    ]
   },
   {
-   "id": "0437(a)",
-   "page": "page_0437",
-   "marker": "(a)",
-   "text": "Le Psautier de Milan, le Psautier romain, le Psautier de Saint-Germain, le Psautier de Chartres ; mais saint Augustin lit : In intellectu, etc.",
-   "proposed": "Le Psautier de Milan ; le Psautier romain ; le Psautier de Saint-Germain ; le Psautier de Chartres ; mais saint Augustin lit : In intellectu, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0437(f)",
    "page": "page_0437",
    "marker": "(f)",
@@ -2407,28 +1470,18 @@
    "flags": []
   },
   {
-   "id": "0437(g)",
-   "page": "page_0437",
-   "marker": "(g)",
-   "text": "Socrate, Histoire ecclésiastique, livre 1, chapitre 17 ; Saint Justin.",
-   "proposed": "Socrate, Histoire ecclésiastique, livre 1, chapitre 17 ; saint Justin.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0438(b)",
    "page": "page_0438",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] סכו את ירושלם לעיים",
-   "proposed": "[UNCERTAIN HEBREW] סכו את ירושלם לעיים",
+   "proposed": "שמו את ירושלים לעיים",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Psalms 79:1"
+    "Hebrew checked against the Hebrew Bible, Psalms 79:1",
+    "scan: Filled placeholder; first word is שמו, not סכו.",
+    "read on the scan: שמו את ירושלים לעיים"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2451,64 +1504,14 @@
    "page": "page_0439",
    "marker": "(b)",
    "text": "בחסדיך להיוך ארץ [UNCERTAIN HEBREW]",
-   "proposed": "בחסדיך להיוך ארץ [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "חסידיך לחיתו ארץ [UNCERTAIN HEBREW]",
+   "why": [
+    "context: UNCERTAIN HEBREW unreadable: בחסדיך -> חסידיך, להיוך -> לחיתו"
+   ],
    "flags": [
     "uncertain",
     "hebrew",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0439(d)",
-   "page": "page_0439",
-   "marker": "(d)",
-   "text": "Ézéchiel 25:12 et 26:2. Abdias 10. Psaumes 136:7. etc.",
-   "proposed": "Ézéchiel 25:12 et 26:2 ;\nAbdias 10 ;\nPsaumes 136:7, etc.",
-   "why": [
-    "abbreviations written out",
-    "Abdias 10 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
-  },
-  {
-   "id": "0439(e)",
-   "page": "page_0439",
-   "marker": "(e)",
-   "text": "Psal. XVI. j. XVIII. 9. XX. 10. XLIX. 30. LXXXVIII. 47.",
-   "proposed": "Psal. XVI. j. XVIII. 9. XX. 10. XLIX. 30. LXXXVIII. 47.",
-   "why": [
-    "written out, but a number changed or added: Psaumes 16:1 ; 18:9 ; 20:10 ; 49:30 ; 88:47."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
-   "id": "0440(a)",
-   "page": "page_0440",
-   "marker": "(a)",
-   "text": "נכסך את קנאתך Aqu. D'après d'autres Th. _Sanguines tuos._",
-   "proposed": "נכסך את קנאתך Aquila : d'après d'autres Théodotion : _Sanguines tuos._",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0440(c)",
-   "page": "page_0440",
-   "marker": "(c)",
-   "text": "Psaumes 77:61. 25:8. 47:8. et Hebr. _Vide_ et 1 Rois 4:21.",
-   "proposed": "Psaumes 77:61. 25:8. 47:8. et Hebr. _Vide_ et 1 Rois 4:21.",
-   "why": [
-    "written out, but the italics changed: Psaumes 77:61 ; 25:8 ; 47:8 ; et l'Hébreu. Voyez et 1 Rois 4:21."
-   ],
-   "flags": [
-    "expand-changed-italics"
    ]
   },
   {
@@ -2554,12 +1557,11 @@
    "page": "page_0445",
    "marker": "(a)",
    "text": "רועה ישראל האזינה נהג כצאן יוסף Aqu. Ως ποιμαινων Ιωσηφ. Sym. Ως ποιμαινων τον Ισραηλ. Ieron. _ut gregem Joseph._",
-   "proposed": "רועה ישראל האזינה נהג כצאן יוסף Aquila : Ὡς ποιμαίνων Ιωσηφ. Symmaque : Ως ποιμαίνων τὸν Ισραηλ. Saint Jérôme : _ut gregem Joseph._",
+   "proposed": "רועה ישראל האזינה נהג כצאן יוסף Aqu. Ὡς ποιμαίνων Ιωσηφ. Sym. Ως ποιμαίνων τὸν Ισραηλ. Ieron. _ut gregem Joseph._",
    "why": [
     "Hebrew checked against the Hebrew Bible, Psalms 80:1",
     "Greek spelling checked against a Greek dictionary: Ως -> Ὡς, ποιμαινων -> ποιμαίνων",
-    "Greek checked against the Septuagint, Psaumes 79:2: ποιμαινων -> ποιμαίνων, τον -> τὸν",
-    "abbreviations written out"
+    "Greek checked against the Septuagint, Psaumes 79:2: ποιμαινων -> ποιμαίνων, τον -> τὸν"
    ],
    "flags": []
   },
@@ -2603,12 +1605,12 @@
    "page": "page_0450",
    "marker": "(a)",
    "text": "Michée 4:4. 3 Rois 4:25. 1 Machabées 14:12.",
-   "proposed": "Michée 4:4 ; 1 Rois 4:25 ; 1 Machabées 14:12.",
+   "proposed": "Michée 4:4 ; 3 Rois 4:25 ; 1 Machabées 14:12.",
    "why": [
-    "1 Rois 4:25 does not exist in the Vulgate"
+    "context: Solomon, 1 Kings 4:25: 1 Rois 4:25 -> 3 Rois 4:25"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -2756,13 +1758,14 @@
    "page": "page_0462",
    "marker": "(c)",
    "text": "Nombres 20:12. et seq. [UNCERTAIN HEBREW] כד מריבה",
-   "proposed": "Nombres 20:12. et seq. [UNCERTAIN HEBREW] כד מריבה",
+   "proposed": "Nombres 20:12. et seq. מי מריבה",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Placeholder removed; printed Hebrew is מי מריבה, not כד מריבה.",
+    "read on the scan: מי מריבה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2770,12 +1773,13 @@
    "page": "page_0462",
    "marker": "(f)",
    "text": "[UNCERTAIN HEBREW] לא יהיה בך אל זר Aqu. Ουκ εςαι in te Deus ἀλλοτριος. Sym. Μη εςω in tei Θεος ξένος.",
-   "proposed": "[UNCERTAIN HEBREW] לא יהיה בך אל זר Aqu. Οὐκ ἔσται in te Deus ἀλλότριος. Sym. Μὴ ἔσω in tei Θεος ξένος.",
+   "proposed": "[UNCERTAIN HEBREW] לא יהיה בך אל זר Aqu. Οὐκ ἔσται in te Deus ἀλλότριος. Sym. Μὴ ἔσω in tei Θεὸς ξένος.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Psalms 81:9",
     "Greek checked against the Septuagint, Psaumes 80:10: Ουκ -> Οὐκ, εςαι -> ἔσται",
     "Greek spelling checked against a Greek dictionary: ἀλλοτριος -> ἀλλότριος",
-    "Greek spelling checked against a Greek dictionary: Μη -> Μὴ, εςω -> ἔσω"
+    "Greek spelling checked against a Greek dictionary: Μη -> Μὴ, εςω -> ἔσω",
+    "context: UNCERTAIN HEBREW unreadable: Θεος -> Θεὸς"
    ],
    "flags": [
     "uncertain",
@@ -2881,9 +1885,11 @@
    "marker": "(d)",
    "text": "2 Rois 10:16.",
    "proposed": "2 Rois 10:16.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel 10:16 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2892,9 +1898,11 @@
    "marker": "(a)",
    "text": "2 Rois 5:18 et suivants ; 2 Rois 8:1.",
    "proposed": "2 Rois 5:18 et suivants ; 2 Rois 8:1.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel references correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2911,13 +1919,11 @@
    "page": "page_0473",
    "marker": "(m)",
    "text": "Ibid. 22. 23. 24.",
-   "proposed": "2 Paralipomènes 22:23-24.",
+   "proposed": "2 Paralipomènes 20:22-23*.",
    "why": [
-    "2 Paralipomènes 22:23-24 does not exist in the Vulgate"
+    "context: Josaphat victory, 2 Chr 20: 22:23-24 -> 20:22-23*"
    ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
+   "flags": []
   },
   {
    "id": "0476(c)",
@@ -3025,18 +2031,6 @@
    "flags": []
   },
   {
-   "id": "0484(a)",
-   "page": "page_0484",
-   "marker": "(a)",
-   "text": "Théodoret. Ταῦτα καὶ ἐν Βαβυλῶνι διάγοντες ἐδιδάχθησαν λέγειν, ἵνα ποθήσωσι τὴν ἐπάνοδον, καὶ τῆς κατὰ νόμον σπεύδωσι λατρείας.",
-   "proposed": "Théodoret : Ταῦτα καὶ ἐν Βαβυλῶνι διάγοντες ἐδιδάχθησαν λέγειν, ἵνα ποθήσωσι τὴν ἐπάνοδον, καὶ τῆς κατὰ νόμον σπεύδωσι λατρείας.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0485(b)",
    "page": "page_0485",
    "marker": "(b)",
@@ -3083,22 +2077,11 @@
    "marker": "(e)",
    "text": "2 Rois 7:12-13.",
    "proposed": "2 Rois 7:12-13.",
-   "why": [],
-   "flags": [
-    "ambiguous-name"
-   ]
-  },
-  {
-   "id": "0489(c)",
-   "page": "page_0489",
-   "marker": "(c)",
-   "text": "Ovid. Amer. 106. _Janitor indignè durâ religate catenâ._ Et Sueton. _de clar. orator. in Oratione pro M. Marcello. Servile dicit, atque etiam oftiarium, veteri more, in catena fuisse._",
-   "proposed": "Ovid. Amer. 106. _Janitor indignè durâ religate catenâ._ Et Sueton. _de clar. orator. in Oratione pro M. Marcello. Servile dicit, atque etiam oftiarium, veteri more, in catena fuisse._",
    "why": [
-    "written out, but a number changed or added: Ovide, Amours, livre 1, élégie 6. _Janitor indignè durâ religate catenâ._ Et Suétone, _Des orateurs illustres, dans l'Oraison pour M. Marcellus. Servile dicit, atque etiam oftiarium, veteri more, in c"
+    "context: 2 Samuel 7 Nathan promise"
    ],
    "flags": [
-    "expand-changed-numbers"
+    "context"
    ]
   },
   {
@@ -3106,11 +2089,21 @@
    "page": "page_0490",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Aqu. O'ti [UNCERTAIN GREEK] et [UNCERTAIN GREEK] et [UNCERTAIN GREEK]. 5. Édit. H'[UNCERTAIN GREEK] et [UNCERTAIN GREEK]. Sym. quoque. H'[UNCERTAIN GREEK], et [UNCERTAIN GREEK].",
-   "proposed": "[UNCERTAIN HEBREW] Aqu. O'ti [UNCERTAIN GREEK] et [UNCERTAIN GREEK] et [UNCERTAIN GREEK]. 5. Édit. H'[UNCERTAIN GREEK] et [UNCERTAIN GREEK]. Sym. quoque. H'[UNCERTAIN GREEK], et [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "כי שמש ומגן יהוה אלהים חן וכבוד יתן Aqu. O'ti ἥλιος et θυρεὸς et κύριος ὁ Θεός. 5. Édit. Ἥλιος et σκεπαστής. Sym. quoque. Ἥλιος, et σκεπαστής.",
+   "why": [
+    "scan: Filled Hebrew and Greek placeholders from page; the Θεός reading is blurry.",
+    "read on the scan: כי שמש ומגן יהוה אלהים חן וכבוד יתן",
+    "read on the scan: ἥλιος",
+    "read on the scan: θυρεὸς",
+    "guessed from context: κύριος ὁ Θεός",
+    "read on the scan: Ἥλιος",
+    "read on the scan: σκεπαστής",
+    "read on the scan: Ἥλιος",
+    "read on the scan: σκεπαστής"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -3128,20 +2121,6 @@
    ]
   },
   {
-   "id": "0494(d)",
-   "page": "page_0494",
-   "marker": "(d)",
-   "text": "Comparez Zacharie 1:9. 2:14, 19. Angelus qui loquebatur in me. Item Cap. II. 3. IV. 1. ℣. 5. 10 VI. 4.",
-   "proposed": "Comparez Zacharie 1:9 ; Zacharie 2:14, 19. Angelus qui loquebatur in me. De même chapitre 2:3 ; chapitre 4:1, verset 5, 10 ; chapitre 6:4.",
-   "why": [
-    "abbreviations written out",
-    "Zacharie 2:14, 19 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
-  },
-  {
    "id": "0496(d)",
    "page": "page_0496",
    "marker": "(d)",
@@ -3149,19 +2128,6 @@
    "proposed": "Comparez Isaïe 56:1 ;\nIsaïe 58:7-8 ;\nZacharie 8:12, 16.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0500(a)",
-   "page": "page_0500",
-   "marker": "(a)",
-   "text": "Psaumes 46:2-3. et sequ. XCV. 3. 7. 10. XVII. 2. CL. 16. C. IV. 1. etc.",
-   "proposed": "Psaumes 46:2-3. et sequ. XCV. 3. 7. 10. XVII. 2. CL. 16. C. IV. 1. etc.",
-   "why": [
-    "written out, but a number changed or added: Psaumes 46:2-3 et suivants ; Psaumes 95:3, 7, 10 ; Psaumes 17:2 ; Psaumes 150:16 ; Psaumes 104:1, etc."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   },
   {
    "id": "0504(f)",
@@ -3180,18 +2146,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0505(a)",
-   "page": "page_0505",
-   "marker": "(a)",
-   "text": "Théodoret. תן עז לעבדך והושע לבן אמתך",
-   "proposed": "Théodoret : תן עז לעבדך והושע לבן אמתך",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0506(c)",
@@ -3232,19 +2186,6 @@
    ]
   },
   {
-   "id": "0508(b)",
-   "page": "page_0508",
-   "marker": "(b)",
-   "text": "Mal. I. II. Isaï. LXVI. Jérémie 31:38. et seq. Ézéchiel 36:33-34. et seq. XLVIII. per totum, et Michée 4:2. et Zacharie 14:10. et seq.",
-   "proposed": "Mal. I. II. Isaï. LXVI. Jérémie 31:38. et seq. Ézéchiel 36:33-34. et seq. XLVIII. per totum, et Michée 4:2. et Zacharie 14:10. et seq.",
-   "why": [
-    "written out, but a number changed or added: Malachie 1:11 ; Isaïe 66 ; Jérémie 31:38 et suivants ; Ézéchiel 36:33-34 et suivants ; Ézéchiel 48 tout entier ; et Michée 4:2 ; et Zacharie 14:10 et suivants."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0508(c)",
    "page": "page_0508",
    "marker": "(c)",
@@ -3267,26 +2208,16 @@
    "page": "page_0510",
    "marker": "(g)",
    "text": "[UNCERTAIN HEBREW] Aqu. [UNCERTAIN GREEK] Sym. [UNCERTAIN GREEK] Itz et Ieron. _Commemorabor superbiæ et Babylonis scientibus me._",
-   "proposed": "[UNCERTAIN HEBREW] Aqu. [UNCERTAIN GREEK] Sym. [UNCERTAIN GREEK] Itz et Ieron. _Commemorabor superbiæ et Babylonis scientibus me._",
-   "why": [],
-   "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0512(a)",
-   "page": "page_0512",
-   "marker": "(a)",
-   "text": "Saint Augustin ; Saint Ambroise ; le Psautier romain, et d'autres. Factus est in ea. Quelques manuscrits des Septante, Ἐγενήθη. D'autres, ἐγεννήθη, natus est, etc. Sion : Quid est ; et ils ont ajouté : Μήτηρ Σιὼν ἐρεῖ, et hoc propterea dicunt : Quia sequitur, et homo natus est in ea.",
-   "proposed": "Saint Augustin ; saint Ambroise ; le Psautier romain, et d'autres. Factus est in ea. Quelques manuscrits des Septante, Ἐγενήθη. D'autres, ἐγεννήθη, natus est, etc. Sion : Quid est ; et ils ont ajouté : Μήτηρ Σιὼν ἐρεῖ, et hoc propterea dicunt : Quia sequitur, et homo natus est in ea.",
+   "proposed": "אזכיר רהב ובבל ליודעי Aqu. Ἀναμνήσω ὁρμήματος καὶ Βαβυλῶνος. Sym. Ἀναμνήσω ὑπερηφανίαν καὶ Βαβυλῶνα. Itz et Ieron. _Commemorabor superbiæ et Babylonis scientibus me._",
    "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek checked against the Septuagint, Psaumes 86:5",
-    "abbreviations written out"
+    "scan: Filled Hebrew and the Greek of Aquila and Symmachus from page.",
+    "read on the scan: אזכיר רהב ובבל ליודעי",
+    "read on the scan: Ἀναμνήσω ὁρμήματος καὶ Βαβυλῶνος.",
+    "read on the scan: Ἀναμνήσω ὑπερηφανίαν καὶ Βαβυλῶνα."
    ],
-   "flags": []
+   "flags": [
+    "scanned"
+   ]
   },
   {
    "id": "0513(d)",
@@ -3348,13 +2279,13 @@
    "page": "page_0517",
    "marker": "(d)",
    "text": "4 Rois 15:2, 5. Par. xxvi. 21. וישב בבית החפשית Confer Lévitique 13:44.",
-   "proposed": "4 Rois 15:5 et 2 Paralipomènes 26:21. וישב בבית החפשית Comparez Lévitique 13:44.",
+   "proposed": "4 Rois 15:2, 5. Par. xxvi. 21. וישב בבית החפשית Confer Lévitique 13:44.",
    "why": [
     "Hebrew checked against the Hebrew Bible, II Kings 15:5",
-    "abbreviations written out"
+    "context: 4 Rois 15 Azarias, correct"
    ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -3458,19 +2389,6 @@
    ]
   },
   {
-   "id": "0521(e)",
-   "page": "page_0521",
-   "marker": "(e)",
-   "text": "Ezech. XXXIº 17. 18. XXXII. 19.",
-   "proposed": "Ezech. XXXIº 17. 18. XXXII. 19.",
-   "why": [
-    "written out, but a number changed or added: Ézéchiel 31:17-18 ; 32:19."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0521(g)",
    "page": "page_0521",
    "marker": "(g)",
@@ -3510,13 +2428,14 @@
    "page": "page_0524",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Ἐμάκρυνας ἀπ’ ἐμὲ φίλον καὶ πλησίον, καὶ τὰς γνωστές με ἀπὸ ταλαιπωρίας. nulli et Græci sqm Regii quàm Colbert. apud Ferrand. hic.",
-   "proposed": "[UNCERTAIN HEBREW] Ἐμάκρυνας ἀπ’ ἐμοῦ φίλον καὶ πλησίον, καὶ τὰς γνωστούς με ἀπὸ ταλαιπωρίας. nulli et Græci sqm Regii quàm Colbert. apud Ferrand. hic.",
+   "proposed": "הרחקת ממני אהב ורע מידעי מחשך. Ἐμάκρυνας ἀπ’ ἐμοῦ φίλον καὶ πλησίον, καὶ τοὺς γνωστούς μου ἀπὸ ταλαιπωρίας. nulli et Græci sqm Regii quàm Colbert. apud Ferrand. hic.",
    "why": [
-    "Greek checked against the Septuagint, Psaumes 87:19: ἐμὲ -> ἐμοῦ, γνωστές -> γνωστούς"
+    "Greek checked against the Septuagint, Psaumes 87:19: ἐμὲ -> ἐμοῦ, γνωστές -> γνωστούς",
+    "scan: Filled Hebrew from page; corrected Greek τὰς→τοὺς, με→μου.",
+    "read on the scan: הרחקת ממני אהב ורע מידעי מחשך"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3524,13 +2443,14 @@
    "page": "page_0525",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] על יד אברהם דאתא ממדנחא",
-   "proposed": "[UNCERTAIN HEBREW] על יד אברהם דאתא ממדנחא",
+   "proposed": "על יד אברהם דאתא ממדנחא",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled Hebrew (Chaldean) from page.",
+    "read on the scan: על יד אברהם דאתא ממדנחא"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3543,12 +2463,9 @@
     "Hebrew checked against the Hebrew Bible, Psalms 89:12",
     "Greek checked against the Septuagint, Psaumes 88:13",
     "Greek spelling checked against a Greek dictionary: ου -> οὐ",
-    "Greek checked against the Septuagint, Ruth 2:19: ου -> οὗ",
-    "written out, but a number changed or added: צפון וימין אתה בראתם תבור וחרמון בשמך ירננו Les Septante : Βορρᾶν καὶ θάλασσαν σὺ ἔκτισας. Θαβὼρ καὶ Ἑρμὼν τῷ ὀνόματί σου ἀγαλλιάσονται. Ainsi le tome 2 | ou Aquila : Et τὰ ὀνόματα οὐ Αἰνέσουσι. 9ᵉ éd"
+    "Greek checked against the Septuagint, Ruth 2:19: ου -> οὗ"
    ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
+   "flags": []
   },
   {
    "id": "0531(a)",
@@ -3640,9 +2557,11 @@
    "marker": "(e)",
    "text": "2 Rois 8:3 ; et 1 Paralipomènes 18:4 ; et 2 Rois 10:16, 19.",
    "proposed": "2 Rois 8:3 ; et 1 Paralipomènes 18:4 ; et 2 Rois 10:16, 19.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel David conquests"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -3708,8 +2627,8 @@
    "id": "0541(b)",
    "page": "page_0541",
    "marker": "(b)",
-   "text": "Saint Jérôme ; saint Athanase ; Eusèbe.",
-   "proposed": "Saint Jérôme ;\nsaint Athanase ;\nEusèbe.",
+   "text": "Saint Jérôme ; Saint Athanase ; Eusèbe.",
+   "proposed": "Saint Jérôme ;\nSaint Athanase ;\nEusèbe.",
    "why": [],
    "flags": []
   },
@@ -3727,19 +2646,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0541(d)",
-   "page": "page_0541",
-   "marker": "(d)",
-   "text": "Ainsi l'entendent Junius ; Piscator ; Ferrand ; Geier, etc. L'Hébreu, נזרו ; le Chaldéen, כליליה ; Saint Jérôme, Diadema.",
-   "proposed": "Ainsi l'entendent Junius ; Piscator ; Ferrand ; Geier, etc. L'Hébreu, נזרו ; le Chaldéen, כליליה ; saint Jérôme, Diadema.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0542(c)",
@@ -3856,17 +2762,6 @@
    ]
   },
   {
-   "id": "0547(a)",
-   "page": "page_0547",
-   "marker": "(a)",
-   "text": "Deutéronome 33:1, 34:5 ; Josué 1:1, 12:6 ; 1 Paralipomènes 23:14 ; 1 Esdras 3:2 ; Psaumes 105:28 ; Prologue sur les Psaumes. Ainsi l'entendent le Chaldéen et la plupart des rabbins ; de Muis ; Moller ; Bossuet ; Junius ; Piscator.",
-   "proposed": "Deutéronome 33:1 ; 34:5 ; Josué 1:1 ; 12:6 ; 1 Paralipomènes 23:14 ; 1 Esdras 3:2 ; Psaumes 105:28 ; Prologue sur les Psaumes. Ainsi l'entendent le Chaldéen et la plupart des rabbins ; de Muis ; Moller ; Bossuet ; Junius ; Piscator.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0547(d)",
    "page": "page_0547",
    "marker": "(d)",
@@ -3906,24 +2801,10 @@
    "id": "0551(a)",
    "page": "page_0551",
    "marker": "(a)",
-   "text": "Eusèbe ; saint Athanase ; saint Irénée, sur ce passage.",
-   "proposed": "Eusèbe ;\nsaint Athanase ;\nsaint Irénée, sur ce passage.",
+   "text": "Eusèbe ; Saint Athanase ; Saint Irénée, sur ce passage.",
+   "proposed": "Eusèbe ;\nSaint Athanase ;\nSaint Irénée, sur ce passage.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0551(e)",
-   "page": "page_0551",
-   "marker": "(e)",
-   "text": "Voyez le Psaume précédent ℣. 48. 49. Job 7:1, 6, 16. 10:5. et sequ. XIV. 5. et sequ. Psaumes 38:5-6. 110:15. etc.",
-   "proposed": "Voyez le Psaume précédent versets 48-49 ;\nJob 7:1, 6, 16, 10:5 et suivants, 14:5 et suivants ;\nPsaumes 38:5-6, 110:15, etc.",
-   "why": [
-    "abbreviations written out",
-    "Psaumes 110:15 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
   },
   {
    "id": "0553(a)",
@@ -3956,11 +2837,14 @@
    "page": "page_0554",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] sens passif : _On les considère comme l'araignée._ _Anni nostri sicut aranea meditati sunt, aut meditabantur._ Genebr. Tir. Ils lisaient [UNCERTAIN HEBREW] On prend ici _meditabuntur_, dans un",
-   "proposed": "[UNCERTAIN HEBREW] sens passif : _On les considère comme l'araignée._ _Anni nostri sicut aranea meditati sunt, aut meditabantur._ Genebr. Tir. Ils lisaient [UNCERTAIN HEBREW] On prend ici _meditabuntur_, dans un",
-   "why": [],
+   "proposed": "כי כל ימינו פנו בעברתך כלינו שנינו כמו הגה 70. Τὰ ἔτη ἡμῶν ὡσεὶ ἀράχνη ἐμελέτων, sens passif : _On les considère comme l'araignée._ _Anni nostri sicut aranea meditati sunt, aut meditabantur._ Genebr. Tir. Ils lisaient שנינו כמו יהגו On prend ici _meditabuntur_, dans un",
+   "why": [
+    "scan: Filled both Hebrew placeholders; the Greek was not in the given text, so I left it out.",
+    "read on the scan: כי כל ימינו פנו בעברתך כלינו שנינו כמו הגה",
+    "read on the scan: שנינו כמו יהגו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4174,10 +3058,11 @@
    "page": "page_0565",
    "marker": "(d)",
    "text": "Theocrit. Idil. 1. Οὐ θέμις, ὦ ποιμὰν, τὸ μεσαμβρινὸν, τὸ μεσαμβρινὸν αἰπολεῖν, ἢ σύριγγι [UNCERTAIN GREEK] Σύμβολον, τὸν Πᾶνα δεδιόκαμεν. Η' γὰρ ἀπ' ἄγρας Τανίκα κεκμακὼς ἀμπαύεται, ἔντιγε πικρὸς Καί οἱ ἀεὶ δριμεῖα χολὰ ποτὶ ῥινὶ κάθηται.",
-   "proposed": "Theocrit. Idil. 1. Οὐ θέμις, ὦ ποιμὰν, τὸ μεσαμβρινὸν, τὸ μεσαμβρινὸν αἰπολεῖν, ἢ σύριγγι [UNCERTAIN GREEK] Σύμβολον, τὸν Πᾶνα δεδιόκαμεν. Ἠ γὰρ ἀπ' ἄγρας Τηνίκα κεκμακὼς ἀμπαύεται, ἔντιμε πικρὸς Καί οἱ ἀεὶ δριμεῖα χολὰ ποτὶ ῥινὶ κάθηται.",
+   "proposed": "Theocrit. Idil. 1. Οὐ θέμις, ὦ ποιμὰν, τὸ μεσαμβρινὸν, τὸ μεσαμβρινὸν αἰπολεῖν, ἢ σύριγγι [UNCERTAIN GREEK] Σύμβολον, τὸν Πᾶνα δεδοίκαμεν*. Ἠ γὰρ ἀπ' ἄγρας Τηνίκα κεκμακὼς ἀμπαύεται, ἔντιμε πικρὸς Καί οἱ ἀεὶ δριμεῖα χολὰ ποτὶ ῥινὶ κάθηται.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary: Η' -> Ἠ, Τανίκα -> Τηνίκα, ἔντιγε -> ἔντιμε"
+    "Greek spelling checked against a Greek dictionary: Η' -> Ἠ, Τανίκα -> Τηνίκα, ἔντιγε -> ἔντιμε",
+    "context: UNCERTAIN GREEK remains: δεδιόκαμεν -> δεδοίκαμεν*"
    ],
    "flags": [
     "uncertain",
@@ -4262,13 +3147,14 @@
    "page": "page_0569",
    "marker": "(b)",
    "text": "Plato apud Porphyr. de abstin. l. 2. Et dixit [UNCERTAIN GREEK] ἀγγέλων τὰ παρὰ Θεῶν ἀνθρώποις. Vide et apud Clem. Alex. l. 5. Strom. et alios apud Ferrand. hic.",
-   "proposed": "Plato apud Porphyr. de abstin. l. 2. Et dixit [UNCERTAIN GREEK] ἀγγέλων τὰ παρὰ Θεῶν ἀνθρώποις. Vide et apud Clem. Alex. l. 5. Strom. et alios apud Ferrand. hic.",
+   "proposed": "Plato apud Porphyr. de abstin. l. 2. Et dixit δὲ τοῖς δαίμοσιν, καὶ τῆς πορθμευτικῆς, ὡς φησὶ Πλάτων, καὶ διαγγελτικῆς ἀγγέλων τὰ παρὰ Θεῶν ἀνθρώποις. Vide et apud Clem. Alex. l. 5. Strom. et alios apud Ferrand. hic.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled Greek placeholder with the printed Greek; the page is small, so some letters are uncertain.",
+    "guessed from context: δὲ τοῖς δαίμοσιν, καὶ τῆς πορθμευτικῆς, ὡς φησὶ Πλάτων, καὶ διαγγελτικῆς*"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4276,10 +3162,8 @@
    "page": "page_0569",
    "marker": "(c)",
    "text": "Saint Hilaire, Canon 18 sur saint Matthieu ; Saint Basile, sur les Psaumes 33 et 48 ; Saint Jean Chrysostome, Homélie 3 sur l'Épître aux Colossiens, etc.",
-   "proposed": "Saint Hilaire, Canon 18 sur saint Matthieu ;\nsaint Basile, sur les Psaumes 33 et 48 ;\nsaint Jean Chrysostome, Homélie 3 sur l'Épître aux Colossiens, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Saint Hilaire, Canon 18 sur saint Matthieu ;\nSaint Basile, sur les Psaumes 33 et 48 ;\nSaint Jean Chrysostome, Homélie 3 sur l'Épître aux Colossiens, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -4360,10 +3244,11 @@
    "page": "page_0579",
    "marker": "(b)",
    "text": "Sym. Ἐτὶ καρποφορήσεσι γηρᾶλες, ωἱονεὶ [ILLEGIBLE] πίονας, τῆ ἵνα ἀδικία ἐν ἀυτῷ.",
-   "proposed": "Sym. Ἐτὶ καρποφορήσουσι γηράλεος, οἱονεί [ILLEGIBLE] πίονας, τῆ ἵνα ἀδικία ἐν αὐτῷ.",
+   "proposed": "Sym. Ἔτι καρποφορήσουσι γηράλεος, οἱονεί [ILLEGIBLE] πίονας, τῆ ἵνα ἀδικία ἐν αὐτῷ.",
    "why": [
     "Greek spelling checked against a Greek dictionary: καρποφορήσεσι -> καρποφορήσουσι, γηρᾶλες -> γηράλεος, ωἱονεὶ -> οἱονεί",
-    "Greek spelling checked against a Greek dictionary: ἀυτῷ -> αὐτῷ"
+    "Greek spelling checked against a Greek dictionary: ἀυτῷ -> αὐτῷ",
+    "context: ILLEGIBLE remains: Ἐτὶ -> Ἔτι"
    ],
    "flags": [
     "uncertain",
@@ -4418,17 +3303,6 @@
    "text": "Eusèbe ; Saint Athanase ; Théodoret ; Saint Augustin ; Saint Jérôme.",
    "proposed": "Eusèbe ;\nSaint Athanase ;\nThéodoret ;\nSaint Augustin ;\nSaint Jérôme.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0585(d)",
-   "page": "page_0585",
-   "marker": "(d)",
-   "text": "Euthyme, sur ce passage ; Saint Augustin. Fidenter agit,",
-   "proposed": "Euthyme, sur ce passage ; saint Augustin. Fidenter agit,",
-   "why": [
-    "abbreviations written out"
-   ],
    "flags": []
   },
   {
@@ -4507,9 +3381,11 @@
    "marker": "(c)",
    "text": "1 Rois 2:9.",
    "proposed": "1 Rois 2:9.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 2:9 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -4549,9 +3425,7 @@
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary: ἑβραίοις -> ἑδραίοις"
    ],
-   "flags": [
-    "expand-changed-hebrew-or-greek"
-   ]
+   "flags": []
   },
   {
    "id": "0594(e)",
@@ -4648,17 +3522,6 @@
    ]
   },
   {
-   "id": "0603(e)",
-   "page": "page_0603",
-   "marker": "(e)",
-   "text": "Confer Genèse 13:9. _Universa terra coram te est_. Vous en êtes le maître, vous pouvez choisir. Et xx. 15. _Terra coram vobis est_. lxiv. 51. _Est Rebecca coram vobis est_, etc.",
-   "proposed": "Comparez Genèse 13:9. _Universa terra coram te est_. Vous en êtes le maître, vous pouvez choisir. Et 20:15. _Terra coram vobis est_. 64:51. _Est Rebecca coram vobis est_, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0603(f)",
    "page": "page_0603",
    "marker": "(f)",
@@ -4719,18 +3582,20 @@
    "page": "page_0609",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ישמחו איים רבים",
+   "why": [
+    "scan: Filled Hebrew from page.",
+    "read on the scan: ישמחו איים רבים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
    "id": "0609(d)",
    "page": "page_0609",
    "marker": "(d)",
-   "text": "Saint Athanase ; Eusèbe ; saint Irénée ; saint Augustin.",
+   "text": "Saint Athanase ; Eusèbe ; Saint Irénée ; Saint Augustin.",
    "proposed": "Saint Athanase ;\nEusèbe ;\nsaint Irénée ;\nsaint Augustin.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
@@ -4764,18 +3629,15 @@
    "text": "70. Προσκυνήσατε αυτῷ πάντες ἄγγελοι αυτῷ. Aug. _Filiæ Judæ._ a G _Psalt. Germ._",
    "proposed": "70. Προσκυνήσατε αὐτῷ πάντες ἄγγελοι αυτῷ. Aug. _Filiæ Judæ._ a G _Psalt. Germ._",
    "why": [
-    "Greek checked against the Septuagint, Psaumes 96:7: αυτῷ -> αὐτῷ",
-    "written out, but the italics changed: les Septante : Προσκυνήσατε αὐτῷ πάντες ἄγγελοι αυτῷ. saint Augustin : _Filiæ Judæ._ a G le Psautier de Saint-Germain."
+    "Greek checked against the Septuagint, Psaumes 96:7: αυτῷ -> αὐτῷ"
    ],
-   "flags": [
-    "expand-changed-italics"
-   ]
+   "flags": []
   },
   {
    "id": "0614(b)",
    "page": "page_0614",
    "marker": "(b)",
-   "text": "Saint Athanase ; Eusèbe ; saint Augustin ; saint Jérôme ; Théodoret.",
+   "text": "Saint Athanase ; Eusèbe ; Saint Augustin ; Saint Jérôme ; Théodoret.",
    "proposed": "Saint Athanase ;\nEusèbe ;\nsaint Augustin ;\nsaint Jérôme ;\nThéodoret.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
@@ -4803,9 +3665,11 @@
    "marker": "(c)",
    "text": "1 Rois 4:4 ; 2 Rois 6:2 ; 22:11 ; 4 Rois 19:15 ; Psaumes 79:2 ; Daniel 3:55 ; Isaïe 37:16.",
    "proposed": "1 Rois 4:4 ; 2 Rois 6:2 ; 22:11 ; 4 Rois 19:15 ; Psaumes 79:2 ; Daniel 3:55 ; Isaïe 37:16.",
-   "why": [],
+   "why": [
+    "context: Mixed numbering all consistent"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -4836,41 +3700,13 @@
    ]
   },
   {
-   "id": "0621(i)",
-   "page": "page_0621",
-   "marker": "(i)",
-   "text": "1 Paralipomènes 28:2. Vatable ; Gaier ; Piscator ; les Hébreux.",
-   "proposed": "1 Paralipomènes 28:2. Vatable ; Geier ; Piscator ; les Hébreux.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0621(k)",
-   "page": "page_0621",
-   "marker": "(k)",
-   "text": "Aug. et Ieron. hic. Ambros. _de Spiritu sancto._ l. 3. c. 12. Cyrill. alii.",
-   "proposed": "Aug. et Ieron. hic. Ambros. _de Spiritu sancto._ l. 3. c. 12. Cyrill. alii.",
-   "why": [
-    "written out, but the italics changed: Saint Augustin et saint Jérôme, sur ce passage ; saint Ambroise, Du Saint-Esprit, livre 3, chapitre 12 ; saint Cyrille ; et d'autres."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
-  },
-  {
    "id": "0622(i)",
    "page": "page_0622",
    "marker": "(i)",
    "text": "Voyez 2 Rois 8:18, comparé avec 1 Paralipomènes 18:17 ; Exode 2:16 ; Genèse 41 et 46:20, etc.",
    "proposed": "Voyez 2 Rois 8:18, comparé avec 1 Paralipomènes 18:17 ;\nExode 2:16 ;\nGenèse 41 et 46:20, etc.",
-   "why": [
-    "written out, but a number changed or added: Voyez 2 Rois 8:18, comparé avec 1 Paralipomènes 18:17 ; Exode 2:16 ; Genèse 41:45 et 46:20, etc."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
+   "why": [],
+   "flags": []
   },
   {
    "id": "0624(c)",
@@ -4921,13 +3757,12 @@
    "page": "page_0627",
    "marker": "(c)",
    "text": "4 Rois 23:200 ; 2 Paralipomènes 34.",
-   "proposed": "4 Rois 23:200 ; 2 Paralipomènes 34.",
+   "proposed": "4 Rois 23:20 ; 2 Paralipomènes 34.",
    "why": [
-    "4 Rois 23:200 does not exist in the Vulgate"
+    "context: Typo; Josiah slays priests: 23:200 -> 23:20"
    ],
    "flags": [
-    "ambiguous-name",
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {

@@ -5,13 +5,11 @@
   "flags": {
    "greek": 129,
    "scan-unread": 151,
-   "ambiguous-name": 8,
+   "context": 12,
    "hebrew": 23,
-   "reference-not-in-vulgate": 4,
    "garbled-reference": 1,
-   "expand-changed-hebrew-or-greek": 4,
-   "reference-mismatch": 1,
-   "expand-changed-numbers": 2
+   "reference-not-in-vulgate": 1,
+   "reference-mismatch": 1
   }
  },
  "notes": [
@@ -42,9 +40,11 @@
    "marker": "(b)",
    "text": "Deutéronome 4:20 ; 3 Rois 8:51 ; Jérémie 11:4.",
    "proposed": "Deutéronome 4:20 ; 3 Rois 8:51 ; Jérémie 11:4.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 8:51 fits (fornace ferrea)"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -131,12 +131,12 @@
    "page": "page_0088",
    "marker": "(d)",
    "text": "Voyez Exode 18:1 ; Nombres 10:299.",
-   "proposed": "Voyez Exode 18:1 ; Nombres 10:299.",
+   "proposed": "Voyez Exode 18:1 ; Nombres 10:29.",
    "why": [
-    "Nombres 10:299 does not exist in the Vulgate"
+    "context: Doubled digit; Hobab/Raguel verse: 10:299 -> 10:29"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -155,8 +155,8 @@
    "id": "0096(c)",
    "page": "page_0096",
    "marker": "(c)",
-   "text": "Lactance, Institutions divines, livre 1, chapitre 6 ; Philon, Du changement des noms, et livre De l'ambassade à Caïus ; saint Justin, Exhortation aux Grecs ; saint Clément d'Alexandrie, Stromates, livre 1 ; saint Grégoire de Nysse, livre 12, Contre Eunome.",
-   "proposed": "Lactance, Institutions divines, livre 1, chapitre 6 ;\nPhilon, Du changement des noms, et livre De l'ambassade à Caïus ;\nsaint Justin, Exhortation aux Grecs ;\nsaint Clément d'Alexandrie, Stromates, livre 1 ;\nsaint Grégoire de Nysse, livre 12, Contre Eunome.",
+   "text": "Lactance, Institutions divines, livre 1, chapitre 6 ; Philon, Du changement des noms, et livre De l'ambassade à Caïus ; Saint Justin, Exhortation aux Grecs ; Saint Clément d'Alexandrie, Stromates, livre 1 ; Saint Grégoire de Nysse, livre 12, Contre Eunome.",
+   "proposed": "Lactance, Institutions divines, livre 1, chapitre 6 ;\nPhilon, Du changement des noms, et livre De l'ambassade à Caïus ;\nSaint Justin, Exhortation aux Grecs ;\nSaint Clément d'Alexandrie, Stromates, livre 1 ;\nSaint Grégoire de Nysse, livre 12, Contre Eunome.",
    "why": [],
    "flags": []
   },
@@ -218,8 +218,8 @@
    "id": "0109(a)",
    "page": "page_0109",
    "marker": "(a)",
-   "text": "Saint Basile, sur Isaïe 6 ; saint Grégoire le Grand, livre 35, Morales sur Job, chapitre 3 ; saint Jérôme, à Damase.",
-   "proposed": "Saint Basile, sur Isaïe 6 ;\nsaint Grégoire le Grand, livre 35, Morales sur Job, chapitre 3 ;\nsaint Jérôme, à Damase.",
+   "text": "Saint Basile, sur Isaïe 6 ; Saint Grégoire le Grand, livre 35, Morales sur Job, chapitre 3 ; Saint Jérôme, à Damase.",
+   "proposed": "Saint Basile, sur Isaïe 6 ;\nSaint Grégoire le Grand, livre 35, Morales sur Job, chapitre 3 ;\nSaint Jérôme, à Damase.",
    "why": [],
    "flags": []
   },
@@ -333,11 +333,9 @@
    "id": "0131(e)",
    "page": "page_0131",
    "marker": "(e)",
-   "text": "Tertullien ; saint Justin ; saint Ambroise ; saint Jérôme ; saint Grégoire de Nysse ; Rupert, etc. Dans Bonfrère, etc.",
-   "proposed": "Tertullien ; saint Justin ; saint Ambroise ; saint Jérôme ; saint Grégoire de Nysse ; Rupert, etc., dans Bonfrère ; etc.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
+   "text": "Tertullien ; Saint Justin ; Saint Ambroise ; Saint Jérôme ; Saint Grégoire de Nysse ; Rupert, etc. Dans Bonfrère, etc.",
+   "proposed": "Tertullien ;\nSaint Justin ;\nSaint Ambroise ;\nSaint Jérôme ;\nSaint Grégoire de Nysse ;\nRupert, etc. Dans Bonfrère, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -559,9 +557,11 @@
    "marker": "(g)",
    "text": "1 Rois 2:13-14.",
    "proposed": "1 Rois 2:13-14.",
-   "why": [],
+   "why": [
+    "context: 1 Rois 2:13 = 1 Samuel, Eli's sons"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -607,12 +607,12 @@
    "page": "page_0182",
    "marker": "(g)",
    "text": "Romains 8:299.",
-   "proposed": "Romains 8:299.",
+   "proposed": "Romains 8:29.",
    "why": [
-    "Romains 8:299 does not exist in the Vulgate"
+    "context: Doubled digit; firstborn among brethren: 8:299 -> 8:29"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -691,10 +691,8 @@
    "page": "page_0207",
    "marker": "(a)",
    "text": "Voyez Cornelius a Lapide ; Jansénius ; Mariam, etc.",
-   "proposed": "Voyez Cornelius a Lapide ;\nJansénius ;\nMariana, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Voyez Cornelius a Lapide ;\nJansénius ;\nMariam, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -884,17 +882,19 @@
    "marker": "(a)",
    "text": "2 Rois 23:8 et 3 Rois 9:22.",
    "proposed": "2 Rois 23:8 et 3 Rois 9:22.",
-   "why": [],
+   "why": [
+    "context: 2 Sam 23:8, 3 Rois 9:22 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
    "id": "0229(a)",
    "page": "page_0229",
    "marker": "(a)",
-   "text": "Voyez Origène, Homélie 5 sur l'Exode ; et Eusèbe, sur le Psaume ; saint Épiphane, hérésie 64, etc.",
-   "proposed": "Voyez Origène, Homélie 5 sur l'Exode ;\net Eusèbe, sur le Psaume ;\nsaint Épiphane, hérésie 64, etc.",
+   "text": "Voyez Origène, Homélie 5 sur l'Exode ; et Eusèbe, sur le Psaume ; Saint Épiphane, hérésie 64, etc.",
+   "proposed": "Voyez Origène, Homélie 5 sur l'Exode ;\net Eusèbe, sur le Psaume ;\nSaint Épiphane, hérésie 64, etc.",
    "why": [],
    "flags": []
   },
@@ -928,8 +928,8 @@
    "id": "0232(b)",
    "page": "page_0232",
    "marker": "(b)",
-   "text": "Voyez Origène, Homélie 5 sur l'Exode ; saint Grégoire de Nysse, Vie de Moïse ; saint Cyprien, Exhortation au martyre.",
-   "proposed": "Voyez Origène, Homélie 5 sur l'Exode ;\nsaint Grégoire de Nysse, Vie de Moïse ;\nsaint Cyprien, Exhortation au martyre.",
+   "text": "Voyez Origène, Homélie 5 sur l'Exode ; Saint Grégoire de Nysse, Vie de Moïse ; Saint Cyprien, Exhortation au martyre.",
+   "proposed": "Voyez Origène, Homélie 5 sur l'Exode ;\nSaint Grégoire de Nysse, Vie de Moïse ;\nSaint Cyprien, Exhortation au martyre.",
    "why": [],
    "flags": []
   },
@@ -951,9 +951,11 @@
    "marker": "(e)",
    "text": "Deutéronome 29:20 ; 2 Rois 22:16 ; Psaumes 17:16 ; Job 4:9.",
    "proposed": "Deutéronome 29:20 ; 2 Rois 22:16 ; Psaumes 17:16 ; Job 4:9.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering; 2 Sam 22:16 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1101,8 +1103,8 @@
    "id": "0257(c)",
    "page": "page_0257",
    "marker": "(c)",
-   "text": "Voyez Philon, Allégories, livre 2, page 91. Voyez saint Jean Chrysostome ; Théodoret ; Théophylacte, sur 2 Corinthiens 8:15 ; saint Grégoire de Nysse, Vie de Moïse.",
-   "proposed": "Voyez Philon, Allégories, livre 2, page 91. Voyez saint Jean Chrysostome ;\nThéodoret ;\nThéophylacte, sur 2 Corinthiens 8:15 ;\nsaint Grégoire de Nysse, Vie de Moïse.",
+   "text": "Voyez Philon, Allégories, livre 2, page 91. Voyez saint Jean Chrysostome ; Théodoret ; Théophylacte, sur 2 Corinthiens 8:15 ; Saint Grégoire de Nysse, Vie de Moïse.",
+   "proposed": "Voyez Philon, Allégories, livre 2, page 91. Voyez saint Jean Chrysostome ;\nThéodoret ;\nThéophylacte, sur 2 Corinthiens 8:15 ;\nSaint Grégoire de Nysse, Vie de Moïse.",
    "why": [],
    "flags": []
   },
@@ -1140,22 +1142,11 @@
    ]
   },
   {
-   "id": "0267(g)",
-   "page": "page_0267",
-   "marker": "(g)",
-   "text": "Cajetan ; Rivet ; Tirin ; et d'après les anciens, Origène, Homélie 11 sur l'Exode, et d'après lui l'auteur du Sermon 26 dans l'Appendice du tomi 5, nouvelle édition. Saint Augustin. Moysus quidem manus elevat, non tamen extendit, etc.",
-   "proposed": "Cajetan ; Rivet ; Tirin ; et d'après les anciens, Origène, Homélie 11 sur l'Exode, et d'après lui l'auteur du Sermon 26 dans l'Appendice du tome 5, nouvelle édition. Saint Augustin. Moysus quidem manus elevat, non tamen extendit, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0268(a)",
    "page": "page_0268",
    "marker": "(a)",
-   "text": "Saint Augustin, Sermon 352 de tempore, nouvelle édition, et Contre Fauste, livre 12, chapitre 30, et De la Trinité, livre 4, chapitre 15 ; saint Justin, Dialogue avec Tryphon ; saint Irénée, livre 4 ; saint Grégoire de Nazianze, Discours à son père, et Apologétique 1, et ailleurs ; Tertullien, Contre Marcion, livre 3, chapitre 18 ; saint Jérôme, sur Osée 12.",
-   "proposed": "Saint Augustin, Sermon 352 de tempore, nouvelle édition, et Contre Fauste, livre 12, chapitre 30, et De la Trinité, livre 4, chapitre 15 ;\nsaint Justin, Dialogue avec Tryphon ;\nsaint Irénée, livre 4 ;\nsaint Grégoire de Nazianze, Discours à son père, et Apologétique 1, et ailleurs ;\nTertullien, Contre Marcion, livre 3, chapitre 18 ;\nsaint Jérôme, sur Osée 12.",
+   "text": "Saint Augustin, Sermon 352 de tempore, nouvelle édition, et Contre Fauste, livre 12, chapitre 30, et De la Trinité, livre 4, chapitre 15 ; Saint Justin, Dialogue avec Tryphon ; Saint Irénée, livre 4 ; Saint Grégoire de Nazianze, Discours à son père, et Apologétique 1, et ailleurs ; Tertullien, Contre Marcion, livre 3, chapitre 18 ; Saint Jérôme, sur Osée 12.",
+   "proposed": "Saint Augustin, Sermon 352 de tempore, nouvelle édition, et Contre Fauste, livre 12, chapitre 30, et De la Trinité, livre 4, chapitre 15 ;\nSaint Justin, Dialogue avec Tryphon ;\nSaint Irénée, livre 4 ;\nSaint Grégoire de Nazianze, Discours à son père, et Apologétique 1, et ailleurs ;\nTertullien, Contre Marcion, livre 3, chapitre 18 ;\nSaint Jérôme, sur Osée 12.",
    "why": [],
    "flags": []
   },
@@ -1280,19 +1271,6 @@
    "flags": []
   },
   {
-   "id": "0285(f)",
-   "page": "page_0285",
-   "marker": "(f)",
-   "text": "Sym. Λαὸς ἐξαίρετος.",
-   "proposed": "Sym. Λαὸς ἐξαίρετος.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-changed-hebrew-or-greek"
-   ]
-  },
-  {
    "id": "0289(d)",
    "page": "page_0289",
    "marker": "(d)",
@@ -1371,21 +1349,6 @@
    ]
   },
   {
-   "id": "0295(d)",
-   "page": "page_0295",
-   "marker": "(d)",
-   "text": "פן יפרץ בהם יהוה Agu. Μήποτε διακόψῃ ἐν αὐτοῖς. ὁ Κύριος. Sym. Μήποτε διαφθείρῃ.",
-   "proposed": "פן יפרץ בהם יהוה Agu. Μήποτε διακόψῃ ἐν αὐτοῖς. ὁ Κύριος. Sym. Μήποτε διαφθείρῃ.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Exodus 19:22",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-changed-hebrew-or-greek"
-   ]
-  },
-  {
    "id": "0298(b)",
    "page": "page_0298",
    "marker": "(b)",
@@ -1409,9 +1372,11 @@
    "marker": "(e)",
    "text": "3 Rois 7:44.",
    "proposed": "3 Rois 7:44.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 7:44 oxen under sea"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1420,9 +1385,11 @@
    "marker": "(f)",
    "text": "3 Rois 7:28.",
    "proposed": "3 Rois 7:28.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 7:28 figured bases"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1490,12 +1457,12 @@
    "page": "page_0315",
    "marker": "(d)",
    "text": "Voyez Nombres 24:111 ; 1 Timothée 5:3, 17.",
-   "proposed": "Voyez Nombres 24:111 ; 1 Timothée 5:3, 17.",
+   "proposed": "Voyez Nombres 24:11 ; 1 Timothée 5:3, 17.",
    "why": [
-    "Nombres 24:111 does not exist in the Vulgate"
+    "context: Doubled digit; honorare te: 24:111 -> 24:11"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -1513,8 +1480,8 @@
    "id": "0318(d)",
    "page": "page_0318",
    "marker": "(d)",
-   "text": "Lactance, Institutions divines, livre 6 ; Basile, Lettre canonique, chapitre 55 ; Ambroise, Des devoirs, livre 3, chapitre 4 ; saint Augustin, Du libre arbitre, livre 1, chapitre 5, et ailleurs ; saint Thomas, 2. 2, question 64, article 7.",
-   "proposed": "Lactance, Institutions divines, livre 6 ;\nBasile, Lettre canonique, chapitre 55 ;\nAmbroise, Des devoirs, livre 3, chapitre 4 ;\nsaint Augustin, Du libre arbitre, livre 1, chapitre 5, et ailleurs ;\nsaint Thomas, 2. 2, question 64, article 7.",
+   "text": "Lactance, Institutions divines, livre 6 ; Basile, Lettre canonique, chapitre 55 ; Ambroise, Des devoirs, livre 3, chapitre 4 ; Saint Augustin, Du libre arbitre, livre 1, chapitre 5, et ailleurs ; Saint Thomas, 2. 2, question 64, article 7.",
+   "proposed": "Lactance, Institutions divines, livre 6 ;\nBasile, Lettre canonique, chapitre 55 ;\nAmbroise, Des devoirs, livre 3, chapitre 4 ;\nSaint Augustin, Du libre arbitre, livre 1, chapitre 5, et ailleurs ;\nSaint Thomas, 2. 2, question 64, article 7.",
    "why": [],
    "flags": []
   },
@@ -1541,11 +1508,10 @@
    "page": "page_0334",
    "marker": "(a)",
    "text": "Πρὸς τὸ κριτήριον τῶ Θεοῦ. Aqu. Sym. Πρὸς τὰς κριτὰς.",
-   "proposed": "Πρὸς τὸ κριτήριον τοῦ Θεοῦ. Aquila ; Symmaque : Πρὸς τὰς κριτὰς.",
+   "proposed": "Πρὸς τὸ κριτήριον τοῦ Θεοῦ. Aqu. Sym. Πρὸς τὰς κριτὰς.",
    "why": [
     "Greek checked against the Septuagint, Exode 21:6: τῶ -> τοῦ",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
+    "Greek spelling checked against a Greek dictionary"
    ],
    "flags": []
   },
@@ -1584,8 +1550,8 @@
    "id": "0336(b)",
    "page": "page_0336",
    "marker": "(b)",
-   "text": "Denys d'Halicarnasse, livre 2 ; Cicéron, De l'orateur ; saint Jean Chrysostome, Discours 15.",
-   "proposed": "Denys d'Halicarnasse, livre 2 ;\nCicéron, De l'orateur ;\nsaint Jean Chrysostome, Discours 15.",
+   "text": "Denys d'Halicarnasse, livre 2 ; Cicéron, De l'orateur ; Saint Jean Chrysostome, Discours 15.",
+   "proposed": "Denys d'Halicarnasse, livre 2 ;\nCicéron, De l'orateur ;\nSaint Jean Chrysostome, Discours 15.",
    "why": [],
    "flags": []
   },
@@ -1606,20 +1572,6 @@
    "proposed": "Maïmonide ;\nRivet ;\nGrotius ;\nBonfrère.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0338(b)",
-   "page": "page_0338",
-   "marker": "(b)",
-   "text": "כמשפט הבנות Sym. Κατὰ τὸ δικαίωμα τῶν θυγατέρων.",
-   "proposed": "כמשפט הבנות Sym. Κατὰ τὸ δικαίωμα τῶν θυγατέρων.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Exodus 21:9",
-    "Greek checked against the Septuagint, Exode 21:9"
-   ],
-   "flags": [
-    "expand-changed-hebrew-or-greek"
-   ]
   },
   {
    "id": "0341(d)",
@@ -1687,9 +1639,11 @@
    "text": "Digest. 48. Tite 15",
    "proposed": "Digest. 48. Tite 15",
    "why": [
+    "context: Digest title, not Bible ref",
     "Tite 15 does not exist in the Vulgate"
    ],
    "flags": [
+    "context",
     "reference-not-in-vulgate"
    ]
   },
@@ -1760,17 +1714,6 @@
    "text": "Voyez Guy Pape, Décision 218, et Ranchin, au même endroit ; Rebuffe, sur les Constitutions royales, glose 5, §. 46 ; Tostat, sur Lévitique 20, question 14 ; Selden, Du droit naturel et des gens, livre 1, chapitre 5.",
    "proposed": "Voyez Guy Pape, Décision 218, et Ranchin, au même endroit ;\nRebuffe, sur les Constitutions royales, glose 5, §. 46 ;\nTostat, sur Lévitique 20, question 14 ;\nSelden, Du droit naturel et des gens, livre 1, chapitre 5.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0362(a)",
-   "page": "page_0362",
-   "marker": "(a)",
-   "text": "Saint Cyprien, livre 1, lettre 1 ; Lactance, Institutions divines, livre 6, chapitre 20 ; Saint Cyrille d'Alexandrie, livre 1 sur Jean, chapitre 12 ; Saint Augustin, Lettre à Publicola ; Saint Ambroise, livre 3, chapitre 4 ; Primasius, sur l'Épître aux Romains, chapitre 12 ; Saint Basile, Lettre canonique, chapitre 55 ; Canones Isaaci Lingonensis, chapitre 13 ; Hildebert du Mans ; Yves de Chartres, lettre 6 ; Saint Bernard, De præcepto et dispensatione, chapitre 7 ; et plusieurs conciles, etc.",
-   "proposed": "Saint Cyprien, livre 1, lettre 1 ; Lactance, Institutions divines, livre 6, chapitre 20 ; saint Cyrille d'Alexandrie, livre 1 sur Jean, chapitre 12 ; saint Augustin, Lettre à Publicola ; saint Ambroise, livre 3, chapitre 4 ; Primasius, sur l'Épître aux Romains, chapitre 12 ; saint Basile, Lettre canonique, chapitre 55 ; Canones Isaaci Lingonensis, chapitre 13 ; Hildebert du Mans ; Yves de Chartres, lettre 6 ; saint Bernard, De præcepto et dispensatione, chapitre 7 ; et plusieurs conciles, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
    "flags": []
   },
   {
@@ -1935,10 +1878,8 @@
    "page": "page_0384",
    "marker": "(h)",
    "text": "Patrab. ; Ménochius ; Tostat.",
-   "proposed": "Vatable ;\nMénochius ;\nTostat.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Patrab. ;\nMénochius ;\nTostat.",
+   "why": [],
    "flags": []
   },
   {
@@ -2127,20 +2068,6 @@
    ]
   },
   {
-   "id": "0417(d)",
-   "page": "page_0417",
-   "marker": "(d)",
-   "text": "עורות אילים מאדמים Aq. Sym. Theod. Δέρματα κριῶν ἠρυθροδανωμένα. Pelles arietum ignei coloris.",
-   "proposed": "עורות אילים מאדמים Aq. Sym. Theod. Δέρματα κριῶν ἠρυθροδανωμένα. Pelles arietum ignei coloris.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Exodus 25:5",
-    "Greek checked against the Septuagint, Exode 25:5"
-   ],
-   "flags": [
-    "expand-changed-hebrew-or-greek"
-   ]
-  },
-  {
    "id": "0417(f)",
    "page": "page_0417",
    "marker": "(f)",
@@ -2173,9 +2100,11 @@
    "marker": "(c)",
    "text": "1 Rois 2:18.",
    "proposed": "1 Rois 2:18.",
-   "why": [],
+   "why": [
+    "context: 1 Sam 2:18 Samuel's ephod"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2445,8 +2374,8 @@
    "id": "0481(b)",
    "page": "page_0481",
    "marker": "(b)",
-   "text": "Pline, Histoire naturelle, livre 37, chapitre 9. Sapphirus et aureis punctis liq̄ collucet. Ainsi l'entendent Théophraste ; saint Épiphane ; et Solin, chapitre 20. Boëtius, Des pierres, etc., dans Braun, livre 2, chapitre 12, article 10, Du vêtement des prêtres hébreux.",
-   "proposed": "Pline, Histoire naturelle, livre 37, chapitre 9. Sapphirus et aureis punctis liq̄ collucet. Ainsi l'entendent Théophraste ;\nsaint Épiphane ;\net Solin, chapitre 20. Boëtius, Des pierres, etc., dans Braun, livre 2, chapitre 12, article 10, Du vêtement des prêtres hébreux.",
+   "text": "Pline, Histoire naturelle, livre 37, chapitre 9. Sapphirus et aureis punctis liq̄ collucet. Ainsi l'entendent Théophraste ; Saint Épiphane ; et Solin, chapitre 20. Boëtius, Des pierres, etc., dans Braun, livre 2, chapitre 12, article 10, Du vêtement des prêtres hébreux.",
+   "proposed": "Pline, Histoire naturelle, livre 37, chapitre 9. Sapphirus et aureis punctis liq̄ collucet. Ainsi l'entendent Théophraste ;\nSaint Épiphane ;\net Solin, chapitre 20. Boëtius, Des pierres, etc., dans Braun, livre 2, chapitre 12, article 10, Du vêtement des prêtres hébreux.",
    "why": [],
    "flags": []
   },
@@ -2510,12 +2439,8 @@
    "marker": "(c)",
    "text": "Voyez dicta ad Exode 39:13. Voyez etiam Cantique des cantiques 1:11 ; Ézéchiel 16:13 ; Habacuc 2:19 ; Sophonie 1:11 ; Isaïe 40:19 ; Baruch, verset 50 ; Ecclésiastique 12:16 etc.",
    "proposed": "Voyez dicta ad Exode 39:13. Voyez etiam Cantique des cantiques 1:11 ;\nÉzéchiel 16:13 ;\nHabacuc 2:19 ;\nSophonie 1:11 ;\nIsaïe 40:19 ;\nBaruch, verset 50 ;\nEcclésiastique 12:16 etc.",
-   "why": [
-    "written out, but a number changed or added: Voyez ce qui a été dit sur Exode 39:13. Voyez aussi Cantique des cantiques 1:11 ; Ézéchiel 16:13 ; Habacuc 2:19 ; Sophonie 1:11 ; Isaïe 40:19 ; Baruch 6:50 ; Ecclésiastique 12:16 etc."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
+   "why": [],
+   "flags": []
   },
   {
    "id": "0486(a)",
@@ -2523,17 +2448,19 @@
    "marker": "(a)",
    "text": "Voyez 1 Rois 30:7 ; 23:9 et 14:3 et suivants.",
    "proposed": "Voyez 1 Rois 30:7 ; 23:9 et 14:3 et suivants.",
-   "why": [],
+   "why": [
+    "context: All 1 Samuel ephod passages"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
    "id": "0487(h)",
    "page": "page_0487",
    "marker": "(h)",
-   "text": "Origène, Homélie 9 sur l'Exode ; saint Augustin, question 117 sur l'Exode ; Radulphe, livre 6 sur le Lévitique ; Raban ; Rupert.",
-   "proposed": "Origène, Homélie 9 sur l'Exode ;\nsaint Augustin, question 117 sur l'Exode ;\nRadulphe, livre 6 sur le Lévitique ;\nRaban ;\nRupert.",
+   "text": "Origène, Homélie 9 sur l'Exode ; Saint Augustin, question 117 sur l'Exode ; Radulphe, livre 6 sur le Lévitique ; Raban ; Rupert.",
+   "proposed": "Origène, Homélie 9 sur l'Exode ;\nSaint Augustin, question 117 sur l'Exode ;\nRadulphe, livre 6 sur le Lévitique ;\nRaban ;\nRupert.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
@@ -2626,17 +2553,6 @@
    "flags": []
   },
   {
-   "id": "0494(d)",
-   "page": "page_0494",
-   "marker": "(d)",
-   "text": "2 Rois 1:9. Torrents me angustia, etc. L'Hébreu : Tenet me schabaz, seu tunica stricta.",
-   "proposed": "2 Rois 1:9. Torrens me angustia, etc. L'Hébreu : Tenet me schabaz, seu tunica stricta.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0495(b)",
    "page": "page_0495",
    "marker": "(b)",
@@ -2714,8 +2630,8 @@
    "id": "0501(i)",
    "page": "page_0501",
    "marker": "(i)",
-   "text": "Saint Jérôme, Lettre à Fabiola ; Origène, Homélie 9 sur l'Exode ; Théodoret, Question 160 ; saint Augustin, sur l'Exode, passim.",
-   "proposed": "Saint Jérôme, Lettre à Fabiola ;\nOrigène, Homélie 9 sur l'Exode ;\nThéodoret, Question 160 ;\nsaint Augustin, sur l'Exode, passim.",
+   "text": "Saint Jérôme, Lettre à Fabiola ; Origène, Homélie 9 sur l'Exode ; Théodoret, Question 160 ; Saint Augustin, sur l'Exode, passim.",
+   "proposed": "Saint Jérôme, Lettre à Fabiola ;\nOrigène, Homélie 9 sur l'Exode ;\nThéodoret, Question 160 ;\nSaint Augustin, sur l'Exode, passim.",
    "why": [],
    "flags": []
   },
@@ -2804,8 +2720,8 @@
    "id": "0508(g)",
    "page": "page_0508",
    "marker": "(g)",
-   "text": "Voyez Eusèbe, Démonstration évangélique, livre 4, chapitre 15 ; saint Jean Chrysostome, Discours 2 Contre les Juifs ; saint Cyrille de Jérusalem, Catéchèse mystagogique 3 ; saint Athanase, De l'incarnation du Verbe, livre 1, et Discours 2 contre les ariens ; Tertullien, Contre les Juifs, etc.",
-   "proposed": "Voyez Eusèbe, Démonstration évangélique, livre 4, chapitre 15 ;\nsaint Jean Chrysostome, Discours 2 Contre les Juifs ;\nsaint Cyrille de Jérusalem, Catéchèse mystagogique 3 ;\nsaint Athanase, De l'incarnation du Verbe, livre 1, et Discours 2 contre les ariens ;\nTertullien, Contre les Juifs, etc.",
+   "text": "Voyez Eusèbe, Démonstration évangélique, livre 4, chapitre 15 ; Saint Jean Chrysostome, Discours 2 Contre les Juifs ; Saint Cyrille de Jérusalem, Catéchèse mystagogique 3 ; Saint Athanase, De l'incarnation du Verbe, livre 1, et Discours 2 contre les ariens ; Tertullien, Contre les Juifs, etc.",
+   "proposed": "Voyez Eusèbe, Démonstration évangélique, livre 4, chapitre 15 ;\nSaint Jean Chrysostome, Discours 2 Contre les Juifs ;\nSaint Cyrille de Jérusalem, Catéchèse mystagogique 3 ;\nSaint Athanase, De l'incarnation du Verbe, livre 1, et Discours 2 contre les ariens ;\nTertullien, Contre les Juifs, etc.",
    "why": [],
    "flags": []
   },
@@ -2902,8 +2818,8 @@
    "id": "0525(a)",
    "page": "page_0525",
    "marker": "(a)",
-   "text": "Origène, Homélie 19 sur l'Exode ; saint Augustin, question 133 et 336 et 37 sur l'Exode ; saint Grégoire le Grand, sur 1 Rois 14",
-   "proposed": "Origène, Homélie 19 sur l'Exode ;\nsaint Augustin, question 133 et 336 et 37 sur l'Exode ;\nsaint Grégoire le Grand, sur 1 Rois 14",
+   "text": "Origène, Homélie 19 sur l'Exode ; Saint Augustin, question 133 et 336 et 37 sur l'Exode ; Saint Grégoire le Grand, sur 1 Rois 14",
+   "proposed": "Origène, Homélie 19 sur l'Exode ;\nSaint Augustin, question 133 et 336 et 37 sur l'Exode ;\nSaint Grégoire le Grand, sur 1 Rois 14",
    "why": [],
    "flags": []
   },
@@ -3035,19 +2951,6 @@
    "proposed": "Saint Augustin, De la Trinité, livre 2, chapitre 16 ;\net De la Genèse à la lettre, livre 12, chapitre 27 ;\net Question 161 sur l'Exode. Voyez et saint Ambroise, sur le Psaume 63, numéro 89 ;\net Philon, dans le livre De la monarchie.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0575(d)",
-   "page": "page_0575",
-   "marker": "(d)",
-   "text": "Homère, Iliade, N.",
-   "proposed": "Homère, Iliade, N.",
-   "why": [
-    "written out, but a number changed or added: Homère, Iliade, chant 13."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   },
   {
    "id": "0575(e)",

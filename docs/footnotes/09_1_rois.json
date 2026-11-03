@@ -1,14 +1,16 @@
 {
  "summary": {
   "notes": 1577,
-  "changed": 97,
+  "changed": 124,
   "flags": {
-   "ambiguous-name": 24,
+   "context": 26,
    "hebrew": 11,
-   "scan-unread": 148,
-   "uncertain": 34,
+   "scan-unread": 120,
+   "scanned": 28,
    "greek": 109,
-   "reference-not-in-vulgate": 3
+   "uncertain": 6,
+   "reference-not-in-vulgate": 1,
+   "uncertain-fill-asterisk-wrong": 1
   }
  },
  "notes": [
@@ -25,8 +27,8 @@
    "id": "0073(h)",
    "page": "page_0073",
    "marker": "(h)",
-   "text": "Philon, De Temulentia ; saint Jean Chrysostome, Homélie 1 sur Anne, et Homélie 79 au peuple ; saint Basile, Homélie 12 sur le jeûne ; Théodoret, question 5 ; Tertullien, Contre les psychiques, chapitre 7 ; saint Jérôme, livre 2 Contre Jovinien. Voyez Mendoza, Annotation 9, article 12.",
-   "proposed": "Philon, De Temulentia ;\nsaint Jean Chrysostome, Homélie 1 sur Anne, et Homélie 79 au peuple ;\nsaint Basile, Homélie 12 sur le jeûne ;\nThéodoret, question 5 ;\nTertullien, Contre les psychiques, chapitre 7 ;\nsaint Jérôme, livre 2 Contre Jovinien. Voyez Mendoza, Annotation 9, article 12.",
+   "text": "Philon, De Temulentia ; Saint Jean Chrysostome, Homélie 1 sur Anne, et Homélie 79 au peuple ; Saint Basile, Homélie 12 sur le jeûne ; Théodoret, question 5 ; Tertullien, Contre les psychiques, chapitre 7 ; Saint Jérôme, livre 2 Contre Jovinien. Voyez Mendoza, Annotation 9, article 12.",
+   "proposed": "Philon, De Temulentia ;\nSaint Jean Chrysostome, Homélie 1 sur Anne, et Homélie 79 au peuple ;\nSaint Basile, Homélie 12 sur le jeûne ;\nThéodoret, question 5 ;\nTertullien, Contre les psychiques, chapitre 7 ;\nSaint Jérôme, livre 2 Contre Jovinien. Voyez Mendoza, Annotation 9, article 12.",
    "why": [],
    "flags": []
   },
@@ -47,9 +49,11 @@
    "marker": "(e)",
    "text": "1 Rois 1:24.",
    "proposed": "1 Rois 1:24.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering, 1 Sam 1:24"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -78,13 +82,14 @@
    "page": "page_0091",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] כבוד או בכלחת או בסדור או בפרור.",
-   "proposed": "[UNCERTAIN HEBREW] כבוד או בכלחת או בסדור או בפרור.",
+   "proposed": "בכיור או בדוד או בקלחת או בפרור.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Replaced placeholder and misreadings with the four printed terms, as in the reference.",
+    "read on the scan: בכיור או בדוד או בקלחת או בפרור"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -130,10 +135,8 @@
    "page": "page_0095",
    "marker": "(c)",
    "text": "les rabbins et l'auteur des Traditions hébraïques sur les Rois ; Rupert ; Angelome ; Hugues, etc.",
-   "proposed": "les rabbins et l'auteur des Traditions hébraïques sur les livres des Rois ;\nRupert ;\nAngelome ;\nHugues de Saint-Victor, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "les rabbins et l'auteur des Traditions hébraïques sur les Rois ;\nRupert ;\nAngelome ;\nHugues, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -172,9 +175,11 @@
    "marker": "(b)",
    "text": "1 Rois 22:16.",
    "proposed": "1 Rois 22:16.",
-   "why": [],
+   "why": [
+    "context: Calmet 1 Rois = 1 Samuel"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -183,9 +188,11 @@
    "marker": "(c)",
    "text": "Voyez 1 Rois 22:9-10.",
    "proposed": "Voyez 1 Rois 22:9-10.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 22:9-10 (Doëg) fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -259,8 +266,10 @@
    "page": "page_0114",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70. Κοιμάομαι.",
-   "proposed": "[UNCERTAIN HEBREW] 70. Κοιμάομαι.",
-   "why": [],
+   "proposed": "וישכב* 70. Κοιμάομαι.",
+   "why": [
+    "context: 1 Sam 3:15 וישכב: [UNCERTAIN HEBREW] -> וישכב*"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -290,10 +299,8 @@
    "page": "page_0115",
    "marker": "(c)",
    "text": "Grégoire, sur les livres des Rois ; Éphrem, Apologie d'Héli ; Rupert.",
-   "proposed": "Saint Grégoire le Grand, sur les livres des Rois ;\nsaint Éphrem, Apologie d'Héli ;\nRupert.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Grégoire, sur les livres des Rois ;\nÉphrem, Apologie d'Héli ;\nRupert.",
+   "why": [],
    "flags": []
   },
   {
@@ -310,14 +317,16 @@
    "page": "page_0119",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70 Kai isin[UNCERTAIN GREEK] ἀπὸ Ἰσραὴλ… οὐ τῆ παρεμβάλῃ οὐ τῆ πόλει.",
-   "proposed": "[UNCERTAIN HEBREW] 70 Kai isin[UNCERTAIN GREEK] ἀπὸ Ἰσραὴλ… οὐ τῆ παρεμβάλῃ οὐ τῆ πόλει.",
+   "proposed": "ויכו במערכה בשדה 70 Καὶ ἔπεσον ἀπὸ Ἰσραὴλ… ἐν τῇ παρεμβολῇ ἐν τῷ πεδίῳ.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled Hebrew; fixed Greek (Καὶ ἔπεσον, ἐν τῇ παρεμβολῇ ἐν τῷ πεδίῳ).",
+    "read on the scan: ויכו במערכה בשדה",
+    "read on the scan: ἔπεσον"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -380,8 +389,8 @@
    "id": "0126(d)",
    "page": "page_0126",
    "marker": "(d)",
-   "text": "Lucifer ; Eusèbe, Chronique ; saint Jean Chrysostome ; Sulpice Sévère ; Procope de Gaza. Voyez Mendoza.",
-   "proposed": "Lucifer ;\nEusèbe, Chronique ;\nsaint Jean Chrysostome ;\nSulpice Sévère ;\nProcope de Gaza. Voyez Mendoza.",
+   "text": "Lucifer ; Eusèbe, Chronique ; Saint Jean Chrysostome ; Sulpice Sévère ; Procope de Gaza. Voyez Mendoza.",
+   "proposed": "Lucifer ;\nEusèbe, Chronique ;\nSaint Jean Chrysostome ;\nSulpice Sévère ;\nProcope de Gaza. Voyez Mendoza.",
    "why": [],
    "flags": []
   },
@@ -443,11 +452,13 @@
    "page": "page_0135",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] _in podicibus suis._",
-   "proposed": "[UNCERTAIN HEBREW] _in podicibus suis._",
-   "why": [],
+   "proposed": "ויך אתם בעפלים _in podicibus suis._",
+   "why": [
+    "scan: Filled the Hebrew placeholder.",
+    "read on the scan: ויך אתם בעפלים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -494,9 +505,11 @@
    "marker": "(a)",
    "text": "1 Rois 5:4-5.",
    "proposed": "1 Rois 5:4-5.",
-   "why": [],
+   "why": [
+    "context: 1 Sam 5:4-5 matches"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -701,13 +714,14 @@
    "page": "page_0156",
    "marker": "(a)",
    "text": "ורדו העלו אתיכם [UNCERTAIN HEBREW] XIV. 3.",
-   "proposed": "ורדו העלו אתיכם [UNCERTAIN HEBREW] XIV. 3.",
+   "proposed": "רדו העלו אתו אליכם XIV. 3.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Removed the extra ו; fixed אתיכם to אתו; filled אליכם.",
+    "read on the scan: אליכם"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -767,9 +781,11 @@
    "marker": "(f)",
    "text": "1 Rois 4:1 ; 5:1.",
    "proposed": "1 Rois 4:1 ; 5:1.",
-   "why": [],
+   "why": [
+    "context: 1 Sam 4:1; 5:1 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -777,12 +793,12 @@
    "page": "page_0168",
    "marker": "(d)",
    "text": "3 Rois 18:46.",
-   "proposed": "4 Rois 18:46.",
+   "proposed": "3 Rois 18:46.",
    "why": [
-    "4 Rois 18:46 does not exist in the Vulgate"
+    "context: Elijah runs before Ahab, 1 Kings: 4 Rois 18:46 -> 3 Rois 18:46"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -833,9 +849,11 @@
    "marker": "(c)",
    "text": "2 Rois 8:2.",
    "proposed": "2 Rois 8:2.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel 8:2 Moab fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -844,9 +862,11 @@
    "marker": "(d)",
    "text": "2 Rois 8:14.",
    "proposed": "2 Rois 8:14.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel 8:14 Idumée fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -893,13 +913,14 @@
    "page": "page_0189",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] כי אתו תמצאון כהיום",
-   "proposed": "[UNCERTAIN HEBREW] כי אתו תמצאון כהיום",
+   "proposed": "כי אתו כהיום תמצאון אתו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Samuel 9:13"
+    "Hebrew checked against the Hebrew Bible, I Samuel 9:13",
+    "scan: Filled the placeholder and put the words in the printed order.",
+    "read on the scan: כי אתו כהיום תמצאון אתו"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -926,9 +947,11 @@
    "marker": "(b)",
    "text": "1 Rois 13 ; 14.",
    "proposed": "1 Rois 13 ; 14.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 13-14 Philistines fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1000,8 +1023,10 @@
    "page": "page_0197",
    "marker": "(b)",
    "text": "Iobn [UNCERTAIN HEBREW] 70. Τὸν φακὸν νῦν ἰλσφι.",
-   "proposed": "Iobn [UNCERTAIN HEBREW] 70. Τὸν φακὸν νῦν ἰλσφι.",
-   "why": [],
+   "proposed": "Iobn פך* 70. Τὸν φακὸν νῦν ἰλσφι.",
+   "why": [
+    "context: ἰλσφι unreadable: [UNCERTAIN HEBREW] -> פך*"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -1013,21 +1038,23 @@
    "page": "page_0198",
    "marker": "(g)",
    "text": "3 Rois 1:39.",
-   "proposed": "1 Rois 1:39.",
+   "proposed": "3 Rois 1:39.",
    "why": [
-    "1 Rois 1:39 does not exist in the Vulgate"
+    "context: Solomon anointed, 1 Kings 1:39: 1 Rois 1:39 -> 3 Rois 1:39"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
    "id": "0200(b)",
    "page": "page_0200",
    "marker": "(b)",
-   "text": "Voyez saint Clément, Recognitiones, livre 1 ; Tertullien, Contre les Juifs ; saint Cyprien ou un autre, Sermon sur l'onction du chrême ; Lactance, Institutions divines, livre 4 ; saint Jean Chrysostome, etc.",
-   "proposed": "Voyez saint Clément, Recognitiones, livre 1 ;\nTertullien, Contre les Juifs ;\nsaint Cyprien ou un autre, Sermon sur l'onction du chrême ;\nLactance, Institutions divines, livre 4 ;\nsaint Jean Chrysostome, etc.",
-   "why": [],
+   "text": "Voyez saint Clément, Recognitiones, livre 1 ; Tertullien, Contre les Juifs ; Saint Cyprien ou un autre, Sermon sur l'onction du chrême ; Lactance, Institutions divines, livre 4 ; Saint Jean Chrysostome, etc.",
+   "proposed": "Voyez saint Clément, Recognitiones, livre 1 ;\nTertullien, Contre les Juifs ;\nSaint Cyprien ou un autre, Sermon sur l'onction du chrême ;\nLactance, Institutions divines, livre 4 ;\nSaint Jean Chrysostome, etc.",
+   "why": [
+    "abbreviations written out (footnote_expand.py)"
+   ],
    "flags": []
   },
   {
@@ -1036,9 +1063,11 @@
    "marker": "(e)",
    "text": "4 Rois 11:12 ; 2 Paralipomènes 23:11.",
    "proposed": "4 Rois 11:12 ; 2 Paralipomènes 23:11.",
-   "why": [],
+   "why": [
+    "context: 2 Kings 11:12 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1057,8 +1086,8 @@
    "id": "0202(a)",
    "page": "page_0202",
    "marker": "(a)",
-   "text": "Saint Grégoire le Grand, sur le livre des Rois ; saint Bonaventure, sur les Lamentations de Jérémie, au commencement ; Hugues de Saint-Cher ; Denys le Chartreux, dans Mendoza.",
-   "proposed": "Saint Grégoire le Grand, sur le livre des Rois ;\nsaint Bonaventure, sur les Lamentations de Jérémie, au commencement ;\nHugues de Saint-Cher ;\nDenys le Chartreux, dans Mendoza.",
+   "text": "Saint Grégoire le Grand, sur le livre des Rois ; Saint Bonaventure, sur les Lamentations de Jérémie, au commencement ; Hugues de Saint-Cher ; Denys le Chartreux, dans Mendoza.",
+   "proposed": "Saint Grégoire le Grand, sur le livre des Rois ;\nSaint Bonaventure, sur les Lamentations de Jérémie, au commencement ;\nHugues de Saint-Cher ;\nDenys le Chartreux, dans Mendoza.",
    "why": [],
    "flags": []
   },
@@ -1167,9 +1196,11 @@
    "marker": "(e)",
    "text": "1 Rois 16:20.",
    "proposed": "1 Rois 16:20.",
-   "why": [],
+   "why": [
+    "context: Calmet's 1 Rois = 1 Samuel; verse fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1222,9 +1253,11 @@
    "marker": "(a)",
    "text": "1 Rois 8:4-5 ; 10:1-2 et suivants.",
    "proposed": "1 Rois 8:4-5 ; 10:1-2 et suivants.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 8:4-5, 10:1-2 fit"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1232,13 +1265,14 @@
    "page": "page_0229",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] ולא תסורו כי אחרי התהו אשר לא יועילו",
-   "proposed": "[UNCERTAIN HEBREW] ולא תסורו כי אחרי התהו אשר לא יועילו",
+   "proposed": "ולא תסורו כי אחרי התהו אשר לא יעילו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Samuel 12:21"
+    "Hebrew checked against the Hebrew Bible, I Samuel 12:21",
+    "scan: Filled placeholder from page; the trailing Hebrew was a duplicate. Print reads יעילו.",
+    "read on the scan: ולא תסורו כי אחרי התהו אשר לא יעילו"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1346,9 +1380,11 @@
    "marker": "(c)",
    "text": "1 Rois 13:11.",
    "proposed": "1 Rois 13:11.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 13:11 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1357,9 +1393,11 @@
    "marker": "(e)",
    "text": "1 Rois 16:5.",
    "proposed": "1 Rois 16:5.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 16:5 Bethléem fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1421,9 +1459,11 @@
    "marker": "(e)",
    "text": "1 Rois 7:13.",
    "proposed": "1 Rois 7:13.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 7:13 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1443,15 +1483,16 @@
    "page": "page_0249",
    "marker": "(i)",
    "text": "קרדמו. 70. ἀξίνην. 7onat. בולביה [UNCERTAIN HEBREW]",
-   "proposed": "קרדמו. 70. ἀξίνην. 7onat. בולביה [UNCERTAIN HEBREW]",
+   "proposed": "קרדמו. 70. ἀξίνην. 7onat. בולביה",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Placeholder removed; page has nothing after בולביה.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1480,13 +1521,14 @@
    "page": "page_0252",
    "marker": "(a)",
    "text": "Isaïe 10:28 _Veniet in Ajath, transibit in Magron, apud Machmas commendabit vasa sua._ [UNCERTAIN HEBREW] אשר במגרון",
-   "proposed": "Isaïe 10:28 _Veniet in Ajath, transibit in Magron, apud Machmas commendabit vasa sua._ [UNCERTAIN HEBREW] אשר במגרון",
+   "proposed": "Isaïe 10:28 _Veniet in Ajath, transibit in Magron, apud Machmas commendabit vasa sua._",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Samuel 14:2"
+    "Hebrew checked against the Hebrew Bible, I Samuel 14:2",
+    "scan: Placeholder removed; the Hebrew belongs to note (b), so I dropped the trailing duplicate too.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1494,13 +1536,14 @@
    "page": "page_0252",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] וישב שאול בקצה הגבעה תחת הרמון אשר במגרון",
-   "proposed": "[UNCERTAIN HEBREW] וישב שאול בקצה הגבעה תחת הרמון אשר במגרון",
+   "proposed": "ושאול יושב בקצה הגבעה תחת הרמון אשר במגרון",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Samuel 14:2"
+    "Hebrew checked against the Hebrew Bible, I Samuel 14:2",
+    "scan: Filled placeholder from page; the first word is ושאול, not וישב.",
+    "read on the scan: ושאול"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1517,11 +1560,14 @@
    "page": "page_0256",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] 70. Kai [UNCERTAIN GREEK].",
-   "proposed": "[UNCERTAIN HEBREW] 70. Kai [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "ותהי חרדה במחנה בשדה 70. Kai ἐγένετο ἔκστασις ἐν τῇ παρεμβολῇ, καὶ ἐν τῷ πεδίῳ.",
+   "why": [
+    "scan: Filled Hebrew and Greek from the page. The page lines for (e) and (f) look swapped relative to the given texts.",
+    "read on the scan: ותהי חרדה במחנה בשדה",
+    "read on the scan: ἐγένετο ἔκστασις ἐν τῇ παρεμβολῇ, καὶ ἐν τῷ πεδίῳ"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1529,11 +1575,14 @@
    "page": "page_0256",
    "marker": "(f)",
    "text": "[UNCERTAIN HEBREW] id est [UNCERTAIN GREEK].",
-   "proposed": "[UNCERTAIN HEBREW] id est [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "כבחצי מענה צמד שדה id est ἐν* ἡμίσει* τοῦ* ζεύγους* ἀγροῦ*.",
+   "why": [
+    "scan: Hebrew read from the page. Greek is a guess because the page has no 'id est' line.",
+    "read on the scan: כבחצי מענה צמד שדה",
+    "guessed from context: ἐν* ἡμίσει* τοῦ* ζεύγους* ἀγροῦ*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1541,11 +1590,13 @@
    "page": "page_0258",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Ainsi lit Targum. Neque enim ipsi. Ainsi l'entendent Abarban. R. Salom. et Kimchi. Voyez au besoin Buxtorf. hist. Arcæ fœderis c. 3.",
-   "proposed": "[UNCERTAIN HEBREW] Ainsi lit Targum. Neque enim ipsi. Ainsi l'entendent Abarban. R. Salom. et Kimchi. Voyez au besoin Buxtorf. hist. Arcæ fœderis c. 3.",
-   "why": [],
+   "proposed": "הנה ההמון נמוג וילך והלם Ainsi lit Targum. Neque enim ipsi. Ainsi l'entendent Abarban. R. Salom. et Kimchi. Voyez au besoin Buxtorf. hist. Arcæ fœderis c. 3.",
+   "why": [
+    "scan: Filled Hebrew from the page.",
+    "read on the scan: הנה ההמון נמוג וילך והלם"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1553,11 +1604,13 @@
    "page": "page_0258",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Negedyali 'm iphôd.",
-   "proposed": "[UNCERTAIN HEBREW] Negedyali 'm iphôd.",
-   "why": [],
+   "proposed": "הגישה ארון Προσάγαγε τὸ ἐφούδ.",
+   "why": [
+    "scan: Filled Hebrew from the page and replaced the transliteration with the printed Greek.",
+    "read on the scan: הגישה ארון"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1565,11 +1618,14 @@
    "page": "page_0259",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Bib anis etc. subau[d]i[tur] [ILLEGIBLE]",
-   "proposed": "[UNCERTAIN HEBREW] Bib anis etc. subau[d]i[tur] [ILLEGIBLE]",
-   "why": [],
+   "proposed": "עלו עמם במחנה סביב Bib anis etc. subau[d]i[tur] היו*",
+   "why": [
+    "scan: Filled Hebrew from page (עלו עמם במחנה סביב); guessed the final illegible word.",
+    "read on the scan: עלו עמם במחנה סביב",
+    "guessed from context: היו*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1586,11 +1642,13 @@
    "page": "page_0265",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Sym. Tès plonias. Les myriades. Les grands du peuple. 70. et Aq. Tàs Tribus.",
-   "proposed": "[UNCERTAIN HEBREW] Sym. Tès plonias. Les myriades. Les grands du peuple. 70. et Aq. Tàs Tribus.",
-   "why": [],
+   "proposed": "גשו הלם כל פנות העם Sym. Tès plonias. Les myriades. Les grands du peuple. 70. et Aq. Tàs Tribus.",
+   "why": [
+    "scan: Filled the Hebrew from the page.",
+    "read on the scan: גשו הלם כל פנות העם"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1598,11 +1656,13 @@
    "page": "page_0265",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "הבה תמים",
+   "why": [
+    "scan: Filled the Hebrew from the page.",
+    "read on the scan: הבה תמים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1636,11 +1696,14 @@
    "page": "page_0274",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] quasi [UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW] quasi [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "המשנים quasi השמנים",
+   "why": [
+    "scan: Filled both Hebrew words from the page.",
+    "read on the scan: המשנים",
+    "read on the scan: השמנים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1650,6 +1713,7 @@
    "text": "Malachie 5.",
    "proposed": "Malachie 5.",
    "why": [
+    "context: Malachie 5 unidentifiable; await page",
     "Malachie 5 does not exist in the Vulgate"
    ],
    "flags": [
@@ -1866,9 +1930,11 @@
    "marker": "(d)",
    "text": "1 Rois 17:19.",
    "proposed": "1 Rois 17:19.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 17:19 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2068,9 +2134,11 @@
    "marker": "(a)",
    "text": "Voyez Exode 15:20 ; 1 Rois 18:6 ; Juges 11:34.",
    "proposed": "Voyez Exode 15:20 ; 1 Rois 18:6 ; Juges 11:34.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 18:6 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2106,13 +2174,14 @@
    "page": "page_0321",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] יתנבא.",
-   "proposed": "[UNCERTAIN HEBREW] יתנבא.",
+   "proposed": "התנבא.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Page shows only התנבא; filled the placeholder and dropped the unprinted יתנבא.",
+    "read on the scan: התנבא"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2121,9 +2190,11 @@
    "marker": "(c)",
    "text": "1 Rois 20:33.",
    "proposed": "1 Rois 20:33.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 20:33 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2143,11 +2214,13 @@
    "page": "page_0336",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Chodesch ve béni u ben hammaveth.*",
-   "proposed": "[UNCERTAIN HEBREW] Chodesch ve béni u ben hammaveth.*",
-   "why": [],
+   "proposed": "כי כפשע ביני ובין המות Chodesch ve béni u ben hammaveth.*",
+   "why": [
+    "scan: Filled the Hebrew from the page.",
+    "read on the scan: כי כפשע ביני ובין המות"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2205,7 +2278,9 @@
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] LXX. Παρά τὸ Αργὰβ ἐκεῖνο. Vat. eading.",
    "proposed": "[UNCERTAIN HEBREW] LXX. Παρά τὸ Αργὰβ ἐκεῖνο. Vat. eading.",
-   "why": [],
+   "why": [
+    "context: Αργὰβ variant; Hebrew uncertain"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -2232,11 +2307,12 @@
    "page": "page_0348",
    "marker": "(a)",
    "text": "בן נעות המרדה [UNCERTAIN HEBREW] Tu es _rebellis contumax_. Ils ont lu נערות au lieu de נעות de même que la Vulgate. Sym. Ἀναιδδων α'ποσα'σιων. Des libertins, des rebelles. Th. Μεγαλαυχων. De ceux qui font légères et inconstantes. Un autre. Γυναικοτραφεις. Efféminé.",
-   "proposed": "בן נעות המרדה [UNCERTAIN HEBREW] Tu es _rebellis contumax_. Ils ont lu נערות au lieu de נעות de même que la Vulgate. Sym. Ἀναιδδων α'ποσα'σιων. Des libertins, des rebelles. Th. Μεγαλαυχων. De ceux qui font légères et inconstantes. Un autre. Γυναικοτραφεις. Efféminé.",
+   "proposed": "בן נעות המרדות* Tu es _rebellis contumax_. Ils ont lu נערות au lieu de נעות de même que la Vulgate. Sym. Ἀναιδῶν* ἀποστασιῶν*. Des libertins, des rebelles. Th. Μεγαλαύχων. De ceux qui font légères et inconstantes. Un autre. Γυναικοτραφεῖς. Efféminé.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "context: Greek/Hebrew reconstructed; verify on page: המרדה [UNCERTAIN HEBREW] -> המרדות*, Ἀναιδδων -> Ἀναιδῶν*, α'ποσα'σιων -> ἀποστασιῶν*, Μεγαλαυχων -> Μεγαλαύχων, Γυναικοτραφεις -> Γυναικοτραφεῖς"
    ],
    "flags": [
     "uncertain",
@@ -2258,10 +2334,8 @@
    "page": "page_0352",
    "marker": "(e)",
    "text": "Ita Bède ; Salian ; Mariana ; Se. etc.",
-   "proposed": "Ainsi l'entendent Bède ;\nSalian ;\nMariana ;\nSa, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Ita Bède ;\nSalian ;\nMariana ;\nSe. etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -2330,7 +2404,8 @@
    "text": "Πάριδα [UNCERTAIN GREEK] τωράγδων ἐπωράγδα.",
    "proposed": "Πάριδα [UNCERTAIN GREEK] τωράγδων ἐπωράγδα.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: uncertain Greek, unreadable"
    ],
    "flags": [
     "uncertain",
@@ -2393,17 +2468,6 @@
    "flags": []
   },
   {
-   "id": "0361(a)",
-   "page": "page_0361",
-   "marker": "(a)",
-   "text": "Eusèbe ; Saint Jérôme, Des lieux hébreux.",
-   "proposed": "Eusèbe ; saint Jérôme, Des lieux hébreux.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0363(c)",
    "page": "page_0363",
    "marker": "(c)",
@@ -2423,8 +2487,10 @@
    "page": "page_0364",
    "marker": "(a)",
    "text": "אול וישבבגבעה תחת האשל ברמה [UNCERTAIN HEBREW]",
-   "proposed": "אול וישבבגבעה תחת האשל ברמה [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ושאול* יושב* בגבעה* תחת האשל ברמה [UNCERTAIN HEBREW]",
+   "why": [
+    "context: uncertain Hebrew remains: אול וישבבגבעה -> ושאול* יושב* בגבעה*"
+   ],
    "flags": [
     "uncertain",
     "hebrew",
@@ -2437,9 +2503,11 @@
    "marker": "(b)",
    "text": "1 Rois 20:33.",
    "proposed": "1 Rois 20:33.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 20:33 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2483,17 +2551,6 @@
    ]
   },
   {
-   "id": "0369(c)",
-   "page": "page_0369",
-   "marker": "(c)",
-   "text": "Eusèbe ; Saint Jérôme, Des lieux hébreux. 1 Rois.",
-   "proposed": "Eusèbe ; et saint Jérôme, Des lieux hébreux. 1 Rois.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0371(b)",
    "page": "page_0371",
    "marker": "(b)",
@@ -2512,13 +2569,14 @@
    "page": "page_0372",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] הגישה האפוד",
-   "proposed": "[UNCERTAIN HEBREW] הגישה האפוד",
+   "proposed": "הגישה האפוד",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Samuel 23:9"
+    "Hebrew checked against the Hebrew Bible, I Samuel 23:9",
+    "scan: Filled placeholder: הגישה, as printed and in the reference.",
+    "read on the scan: הגישה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2550,14 +2608,15 @@
    "page": "page_0378",
    "marker": "(a)",
    "text": "Homer. Odyss. I. Αὐτὰρ ἐγὼν ἐς ἀγρὸν καὶ ἐπ᾽ ἀγροὺς ἔρχομαι ἠδὲ βουκόλους καὶ ἐς πόλιν. [UNCERTAIN GREEK] δρόμους δέκαται δωμάτων. Vide et Joseph. An-t.q. lib. 14. c. 27. et l. 15.",
-   "proposed": "Homer. Odyss. I. Αὐτὰρ ἐγὼν ἐς ἀγρὸν καὶ ἐπ᾽ ἀγροὺς ἔρχομαι ἠδὲ βουκόλους καὶ ἐς πόλιν. [UNCERTAIN GREEK] δρόμους δέκαται δωμάτων. Vide et Joseph. An-t.q. lib. 14. c. 27. et l. 15.",
+   "proposed": "Homer. Odyss. I. Αὐτὰρ ὅγ᾽ εἰς ἄντρον σπεῖος ἤλασε πίονα μῆλα. Θρόνους δέξασθαι δωμάτων. Vide et Joseph. An-t.q. lib. 14. c. 27. et l. 15.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Corrected Homer line to printed Greek; filled placeholder with Θρόνους; fixed the following words.",
+    "read on the scan: Θρόνους"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2600,9 +2659,11 @@
    "marker": "(b)",
    "text": "1 Rois 7:10 ; 9:12-13 ; 16:5.",
    "proposed": "1 Rois 7:10 ; 9:12-13 ; 16:5.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel references all fit"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2623,9 +2684,11 @@
    "marker": "(k)",
    "text": "Voyez Juges 6:18 ; 3 Rois 18:30-38 ; 1 Rois 13:9-10 ; 1 Rois 15:15.",
    "proposed": "Voyez Juges 6:18 ; 3 Rois 18:30-38 ; 1 Rois 13:9-10 ; 1 Rois 15:15.",
-   "why": [],
+   "why": [
+    "context: 3 Rois = Elie; 1 Rois = Saül"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2713,27 +2776,17 @@
    "flags": []
   },
   {
-   "id": "0401(a)",
-   "page": "page_0401",
-   "marker": "(a)",
-   "text": "2 Corinthiens 9:5. Τὴν προκατηγγελμένην εὐλογίαν ὑμῶν. I. Livre des Rois.",
-   "proposed": "2 Corinthiens 9:5-6. Τὴν προκατηγγελμένην εὐλογίαν ὑμῶν. 1 Rois.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0404(b)",
    "page": "page_0404",
    "marker": "(b)",
    "text": "1 Paralipomènes 11:8. [UNCERTAIN HEBREW]",
-   "proposed": "1 Paralipomènes 11:8. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "1 Paralipomènes 11:8. יואב יחיה את שאר העיר",
+   "why": [
+    "scan: Filled placeholder with the printed Hebrew.",
+    "read on the scan: יואב יחיה את שאר העיר"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2741,11 +2794,14 @@
    "page": "page_0404",
    "marker": "(c)",
    "text": "2 Esdras 4:2. [UNCERTAIN HEBREW]",
-   "proposed": "2 Esdras 4:2. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "2 Esdras 4:2. היחיו את האבנים",
+   "why": [
+    "scan: Filled placeholder with the printed Hebrew; first letter small and unclear.",
+    "guessed from context: היחיו* את האבנים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -2811,9 +2867,11 @@
    "marker": "(d)",
    "text": "3 Rois 17:12, 14, 16.",
    "proposed": "3 Rois 17:12, 14, 16.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 17 widow of Sarepta"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2843,9 +2901,11 @@
    "marker": "(a)",
    "text": "Voyez 2 Rois 24:10 ; 2 Paralipomènes 16:9 ; Ecclésiaste 7:26.",
    "proposed": "Voyez 2 Rois 24:10 ; 2 Paralipomènes 16:9 ; Ecclésiaste 7:26.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel 24:10 David fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2854,9 +2914,11 @@
    "marker": "(a)",
    "text": "3 Rois 2:39.",
    "proposed": "3 Rois 2:39.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 2:39 Achis son of Maacha"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2864,10 +2926,8 @@
    "page": "page_0422",
    "marker": "(f)",
    "text": "Munster ; Pagnin ; Vatable ; SanB. etc.",
-   "proposed": "Munster ;\nPagnin ;\nVatable ;\nSanctius, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Munster ;\nPagnin ;\nVatable ;\nSanB. etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -2875,11 +2935,13 @@
    "page": "page_0424",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "אל פשטתם היום",
+   "why": [
+    "scan: Filled placeholder with the printed Hebrew, spelled as in the reference.",
+    "read on the scan: אל פשטתם היום"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2887,11 +2949,13 @@
    "page": "page_0425",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "הבאש הבאיש בעמו",
+   "why": [
+    "scan: Filled placeholder with the printed Hebrew.",
+    "read on the scan: הבאש הבאיש בעמו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2900,9 +2964,11 @@
    "marker": "(b)",
    "text": "Genèse 34:30 ; Exode 5:21 et 1 Rois 13:4.",
    "proposed": "Genèse 34:30 ; Exode 5:21 et 1 Rois 13:4.",
-   "why": [],
+   "why": [
+    "context: 1 Samuel 13:4 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2910,11 +2976,13 @@
    "page": "page_0425",
    "marker": "(c)",
    "text": "[UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "ἠσχυνται αἰσχυνόμενος ἐν τῷ λαῷ αὐτοῦ",
+   "why": [
+    "scan: Filled placeholder with the Greek; the print is small, so some letters are guessed.",
+    "guessed from context: ἠσχυνται* αἰσχυνόμενος* ἐν τῷ λαῷ αὐτοῦ*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2931,13 +2999,14 @@
    "page": "page_0428",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] וּבָאוּרִים",
-   "proposed": "[UNCERTAIN HEBREW] וּבָאוּרִים",
+   "proposed": "גם באורים",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Replaced placeholder with printed Hebrew 'גם באורים'; the page has no vowel points.",
+    "read on the scan: גם באורים"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2945,11 +3014,13 @@
    "page": "page_0429",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Voyez Deut. XVIII. II. in Isaï 29. c. 4. Voyez et Allat. de Engastrimytho c. 5.",
-   "proposed": "[UNCERTAIN HEBREW] Voyez Deut. XVIII. II. in Isaï 29. c. 4. Voyez et Allat. de Engastrimytho c. 5.",
-   "why": [],
+   "proposed": "אשת בעלת אוב Voyez Deut. XVIII. II. in Isaï 29. c. 4. Voyez et Allat. de Engastrimytho c. 5.",
+   "why": [
+    "scan: Filled placeholder with printed Hebrew 'אשת בעלת אוב'.",
+    "read on the scan: אשת בעלת אוב"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2989,10 +3060,8 @@
    "page": "page_0439",
    "marker": "(c)",
    "text": "Tostat ; Sand. ; Ménochius ; Tirin.",
-   "proposed": "Tostat ;\nSanctius ;\nMénochius ;\nTirin.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Tostat ;\nSand. ;\nMénochius ;\nTirin.",
+   "why": [],
    "flags": []
   },
   {
@@ -3045,10 +3114,8 @@
    "page": "page_0451",
    "marker": "(a)",
    "text": "Nombres 31:27 ; et Gen. sb. chapitre 16 ; et Grotius, sur ce passage.",
-   "proposed": "Nombres 31:27 ;\net Genèse 16 ;\net Grotius, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Nombres 31:27 ;\net Gen. sb. chapitre 16 ;\net Grotius, sur ce passage.",
+   "why": [],
    "flags": []
   },
   {
@@ -3106,8 +3173,8 @@
    "id": "0459(b)",
    "page": "page_0459",
    "marker": "(b)",
-   "text": "Voyez Sanctius, sur ce passage ; saint Augustin, La Cité de Dieu, livre 1, chapitre 17 ; Cicéron, Songe de Scipion ; Macrobe, sur le même ; Platon, Des lois, livre 9 ; Aristote, Éthique, livre 5.",
-   "proposed": "Voyez Sanctius, sur ce passage ;\nsaint Augustin, La Cité de Dieu, livre 1, chapitre 17 ;\nCicéron, Songe de Scipion ;\nMacrobe, sur le même ;\nPlaton, Des lois, livre 9 ;\nAristote, Éthique, livre 5.",
+   "text": "Voyez Sanctius, sur ce passage ; Saint Augustin, La Cité de Dieu, livre 1, chapitre 17 ; Cicéron, Songe de Scipion ; Macrobe, sur le même ; Platon, Des lois, livre 9 ; Aristote, Éthique, livre 5.",
+   "proposed": "Voyez Sanctius, sur ce passage ;\nSaint Augustin, La Cité de Dieu, livre 1, chapitre 17 ;\nCicéron, Songe de Scipion ;\nMacrobe, sur le même ;\nPlaton, Des lois, livre 9 ;\nAristote, Éthique, livre 5.",
    "why": [],
    "flags": []
   },

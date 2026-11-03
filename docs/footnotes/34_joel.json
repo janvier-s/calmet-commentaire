@@ -1,12 +1,12 @@
 {
  "summary": {
   "notes": 210,
-  "changed": 21,
+  "changed": 23,
   "flags": {
-   "uncertain": 2,
-   "scan-unread": 10,
+   "scanned": 2,
    "greek": 6,
-   "ambiguous-name": 2,
+   "scan-unread": 8,
+   "context": 2,
    "hebrew": 2
   }
  },
@@ -34,13 +34,14 @@
    "page": "page_0007",
    "marker": "(f)",
    "text": "ילק. Psal. 78. [ILLEGIBLE].",
-   "proposed": "ילק. Psal. 78. [ILLEGIBLE].",
+   "proposed": "ילק. Psal. 78. Βροῦχος*.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled [ILLEGIBLE] with the Greek word, blurred on the page and guessed from the Septuagint.",
+    "guessed from context: Βροῦχος*"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -121,13 +122,14 @@
    "page": "page_0021",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] ובעד השלח יפלו לא יבצעו",
-   "proposed": "[UNCERTAIN HEBREW] ובעד השלח יפלו לא יבצעו",
+   "proposed": "ובעד השלח יפלו לא יבצעו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Joel 2:8"
+    "Hebrew checked against the Hebrew Bible, Joel 2:8",
+    "scan: The page has no extra word before ובעד, so the placeholder is removed. The rest matches the page.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -223,9 +225,11 @@
    "marker": "(e)",
    "text": "4 Rois 10:20.",
    "proposed": "4 Rois 10:20.",
-   "why": [],
+   "why": [
+    "context: 4 Rois = 2 Kings; 10:20 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -263,9 +267,11 @@
    "marker": "(d)",
    "text": "4 Rois 25 ; Daniel 5.",
    "proposed": "4 Rois 25 ; Daniel 5.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 25 = 2 Kings 25, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {

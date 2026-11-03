@@ -1,12 +1,11 @@
 {
  "summary": {
   "notes": 175,
-  "changed": 15,
+  "changed": 16,
   "flags": {
    "greek": 10,
-   "scan-unread": 13,
-   "expand-changed-numbers": 4,
-   "uncertain": 2,
+   "scan-unread": 11,
+   "scanned": 2,
    "hebrew": 1
   }
  },
@@ -26,17 +25,6 @@
    ]
   },
   {
-   "id": "0005(e)",
-   "page": "page_0005",
-   "marker": "(e)",
-   "text": "Voyez saint Augustin, livre 1, _Operis imperfecti contra Julian. chapitre_ 133 et 141 ; et livre 5, _Contre Julien, chapitre_ 4 ; et livre _de dono perseverantiæ, chapitre_ 14, _numéro_ 35. _Prædestinatio Sanctorum nihil aliud est : præscientia scilicet, et præparatio beneficiorum Dei, quibus certissimè liberantur, quicumque liberantur. cæteri autem ubi nisi in massa perditionis justo divino judicio relinquuntur ?_",
-   "proposed": "Voyez saint Augustin, livre 1, _Operis imperfecti Contre Julien, chapitre_ 133 et 141 ; et livre 5, _Contre Julien, chapitre_ 4 ; et livre _Du don de persévérance, chapitre_ 14, _numéro_ 35. _Prædestinatio Sanctorum nihil aliud est : præscientia scilicet, et præparatio beneficiorum Dei, quibus certissimè liberantur, quicumque liberantur. cæteri autem ubi nisi in massa perditionis justo divino judicio relinquuntur ?_",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0007(a)",
    "page": "page_0007",
    "marker": "(a)",
@@ -48,19 +36,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0009(a)",
-   "page": "page_0009",
-   "marker": "(a)",
-   "text": "Vide Levit. III. II. 16. Num. XXV. II. v. 24.",
-   "proposed": "Vide Levit. III. II. 16. Num. XXV. II. v. 24.",
-   "why": [
-    "written out, but a number changed or added: Voyez Lévitique 3:11, 16 ; Nombres 25:11, verset 24."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -82,13 +57,14 @@
    "page": "page_0013",
    "marker": "(a)",
    "text": "ואמרתם הנה מה תלאה והפחתם אותו [UNCERTAIN HEBREW] _Vide Exod._ XVI. 10. et Deutéronome 28:39.",
-   "proposed": "ואמרתם הנה מה תלאה והפחתם אותו [UNCERTAIN HEBREW] _Vide Exod._ XVI. 10. et Deutéronome 28:39.",
+   "proposed": "ואמרתם הנה מתלאה והפחתם אותו _Vide Exod._ XVI. 10. et Deutéronome 28:39.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Corrected 'מה תלאה' to 'מתלאה'. The placeholder is dropped because nothing more is printed after אותו.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -136,39 +112,14 @@
    "page": "page_0020",
    "marker": "(f)",
    "text": "[UNCERTAIN HEBREW] 70. Amà ἐθαυμάσατε πρόσωπα ἐν νόμῳ.",
-   "proposed": "[UNCERTAIN HEBREW] 70. Amà ἐθαυμάσατε πρόσωπα ἐν νόμῳ.",
+   "proposed": "ונשאים פנים בתורה 70. Ἀλλὰ ἐλάμβανετε πρόσωπα ἐν νόμῳ.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled the Hebrew placeholder. Corrected the Greek to the LXX reading (ἐλάμβανετε). The accents are a best reading of the small type.",
+    "read on the scan: ונשאים פנים בתורה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0022(c)",
-   "page": "page_0022",
-   "marker": "(c)",
-   "text": "Deut. v11. 3. Non inibis cum eis fœdus, nec misereberis eorum, neque sociabis cum eis con-",
-   "proposed": "Deut. v11. 3. Non inibis cum eis fœdus, nec misereberis eorum, neque sociabis cum eis con-",
-   "why": [
-    "written out, but a number changed or added: Deutéronome 7:3. Non inibis cum eis fœdus, nec misereberis eorum, neque sociabis cum eis con-"
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
-   "id": "0022(f)",
-   "page": "page_0022",
-   "marker": "(f)",
-   "text": "Vide Isai. xx1. 11. Custos quid de nocte ?",
-   "proposed": "Vide Isai. xx1. 11. Custos quid de nocte ?",
-   "why": [
-    "written out, but a number changed or added: Voyez Isaïe 21:11. Custos quid de nocte ?"
-   ],
-   "flags": [
-    "expand-changed-numbers"
+    "scanned"
    ]
   },
   {
@@ -288,21 +239,6 @@
    "proposed": "Saint Augustin, livre 20, La Cité de Dieu, chapitre 29 ;\nSaint Grégoire le Grand, Morales sur Job, livre 11, chapitre 10 ;\nSaint Jérôme, sur ce passage ;\nSanctius, numéro 19.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0042(c)",
-   "page": "page_0042",
-   "marker": "(c)",
-   "text": "Hebr. והשיב לב אבות על בנים La préposition על se prend souvent pour avec, par-dessus. Genes. XXXII. II.",
-   "proposed": "Hebr. והשיב לב אבות על בנים La préposition על se prend souvent pour avec, par-dessus. Genes. XXXII. II.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Malachi 4:6",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "written out, but a number changed or added: L'Hébreu : והשיב לב אבות על בנים La préposition על se prend souvent pour avec, par-dessus. Genèse 32:11."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   }
  ]
 }

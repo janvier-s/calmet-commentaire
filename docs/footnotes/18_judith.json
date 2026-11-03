@@ -1,14 +1,15 @@
 {
  "summary": {
   "notes": 444,
-  "changed": 15,
+  "changed": 14,
   "flags": {
-   "uncertain": 2,
-   "scan-unread": 50,
+   "uncertain-fill-asterisk-wrong": 1,
+   "scanned": 1,
    "greek": 48,
+   "scan-unread": 49,
    "hebrew": 1,
-   "ambiguous-name": 2,
-   "reference-not-in-vulgate": 1
+   "context": 3,
+   "uncertain": 1
   }
  },
  "notes": [
@@ -17,11 +18,14 @@
    "page": "page_0036",
    "marker": "(e)",
    "text": "Idem. lib. 1. cap. 102. [UNCERTAIN GREEK]",
-   "proposed": "Idem. lib. 1. cap. 102. [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "Idem. lib. 1. cap. 102. Στρατευσάμενος* ἐπὶ τὰς Πέρσας, πρώτους τε* προσεβάλετο*, καὶ πρώτους Μήδων ὑπηκόους ἐποίησε, Μετὰ δὲ ἔχων δύο ταῦτα ἔθνη.... κατεστρέφετο τὴν Ἀσίαν, ἀπ᾽ ἄλλου, ἐπ᾽ ἄλλο ἰὼν ἔθνος.",
+   "why": [
+    "scan: Filled the uncertain Greek, a Herodotus 1.102 passage. The print is blurry, so the first words are guessed.",
+    "guessed from context: Στρατευσάμενος* ἐπὶ τὰς Πέρσας, πρώτους τε* προσεβάλετο*, καὶ πρώτους Μήδων ὑπηκόους ἐποίησε, Μετὰ δὲ ἔχων δύο ταῦτα ἔθνη.... κατεστρέφετο τὴν Ἀσίαν, ἀπ᾽ ἄλλου, ἐπ᾽ ἄλλο ἰὼν ἔθνος."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -158,9 +162,11 @@
    "marker": "(d)",
    "text": "1 Rois 14:47 ; 2 Rois 8:3 ; 2 Rois 10:6 ; 2 Rois 23:36 ; 3 Rois 11:23 ; etc.",
    "proposed": "1 Rois 14:47 ; 2 Rois 8:3 ; 2 Rois 10:6 ; 2 Rois 23:36 ; 3 Rois 11:23 ; etc.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering; all refs fit Soba"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -203,8 +209,8 @@
    "id": "0062(a)",
    "page": "page_0062",
    "marker": "(a)",
-   "text": "Eusèbe, Chronique ; saint Augustin, La Cité de Dieu, livre 18, chapitre 16 ; Sulpice Sévère, livre 2 ; Nicolas de Lyre ; Estius ; Denys le Chartreux ; Sixte de Sienne ; Noël Alexandre, Histoire de l'Ancien Testament, tome s.",
-   "proposed": "Eusèbe, Chronique ;\nsaint Augustin, La Cité de Dieu, livre 18, chapitre 16 ;\nSulpice Sévère, livre 2 ;\nNicolas de Lyre ;\nEstius ;\nDenys le Chartreux ;\nSixte de Sienne ;\nNoël Alexandre, Histoire de l'Ancien Testament, tome s.",
+   "text": "Eusèbe, Chronique ; Saint Augustin, La Cité de Dieu, livre 18, chapitre 16 ; Sulpice Sévère, livre 2 ; Nicolas de Lyre ; Estius ; Denys le Chartreux ; Sixte de Sienne ; Noël Alexandre, Histoire de l'Ancien Testament, tome s.",
+   "proposed": "Eusèbe, Chronique ;\nSaint Augustin, La Cité de Dieu, livre 18, chapitre 16 ;\nSulpice Sévère, livre 2 ;\nNicolas de Lyre ;\nEstius ;\nDenys le Chartreux ;\nSixte de Sienne ;\nNoël Alexandre, Histoire de l'Ancien Testament, tome s.",
    "why": [],
    "flags": []
   },
@@ -250,17 +256,6 @@
    ]
   },
   {
-   "id": "0073(d)",
-   "page": "page_0073",
-   "marker": "(d)",
-   "text": "Voyez Serarius et Tirin, et dom Bernard de Montfaucon, Vérité de l'Histoire de Judith.",
-   "proposed": "Voyez Serarius ; Tirin ; et dom Bernard de Montfaucon, Vérité de l'Histoire de Judith.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0074(a)",
    "page": "page_0074",
    "marker": "(a)",
@@ -278,9 +273,11 @@
    "marker": "(d)",
    "text": "3 Rois 14:25-26.",
    "proposed": "3 Rois 14:25-26.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 14:25 = Sesac, Calmet numbering"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -393,7 +390,8 @@
    "text": "Πάταξον δῆλον οἰκ χαλκὸν ἀνδραγας [UNCERTAIN GREEK] ἄρχοντα, καὶ δεχόμενον ἐπὶ δεσπότην αὐτὸν.",
    "proposed": "Πάταξον δῆλον οἰκ χαλκὸν ἀνδραγας [UNCERTAIN GREEK] ἄρχοντα, καὶ δεχόμενον ἐπὶ δεσπότην αὐτὸν.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Garbled Greek, Judith 9:10; needs page"
    ],
    "flags": [
     "uncertain",
@@ -429,8 +427,8 @@
    "id": "0116(e)",
    "page": "page_0116",
    "marker": "(e)",
-   "text": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ; saint Clément de Rome, Première lettre aux Corinthiens ; Origène, Homélie 19 sur Jérémie ; Tertullien, livre De la monogamie, chapitre 17 ; saint Ambroise, Des devoirs, livre 3, chapitre 13 ; saint Jérôme, Lettre à Furia ; saint Fulgence, Lettre 2, à Galla, etc.",
-   "proposed": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ;\nsaint Clément de Rome, Première lettre aux Corinthiens ;\nOrigène, Homélie 19 sur Jérémie ;\nTertullien, livre De la monogamie, chapitre 17 ;\nsaint Ambroise, Des devoirs, livre 3, chapitre 13 ;\nsaint Jérôme, Lettre à Furia ;\nsaint Fulgence, Lettre 2, à Galla, etc.",
+   "text": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ; Saint Clément de Rome, Première lettre aux Corinthiens ; Origène, Homélie 19 sur Jérémie ; Tertullien, livre De la monogamie, chapitre 17 ; Saint Ambroise, Des devoirs, livre 3, chapitre 13 ; Saint Jérôme, Lettre à Furia ; Saint Fulgence, Lettre 2, à Galla, etc.",
+   "proposed": "Voyez au besoin saint Clément d'Alexandrie, Stromates, livre 4 ;\nSaint Clément de Rome, Première lettre aux Corinthiens ;\nOrigène, Homélie 19 sur Jérémie ;\nTertullien, livre De la monogamie, chapitre 17 ;\nSaint Ambroise, Des devoirs, livre 3, chapitre 13 ;\nSaint Jérôme, Lettre à Furia ;\nSaint Fulgence, Lettre 2, à Galla, etc.",
    "why": [],
    "flags": []
   },
@@ -542,12 +540,12 @@
    "page": "page_0122",
    "marker": "(d)",
    "text": "1 Rois 25:26.",
-   "proposed": "2 Rois 25:26.",
+   "proposed": "1 Rois 25:26.",
    "why": [
-    "2 Rois 25:26 does not exist in the Vulgate"
+    "context: Abigail: 1 Samuel 25:26: 2 Rois 25:26 -> 1 Rois 25:26"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {

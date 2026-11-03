@@ -1,12 +1,12 @@
 {
  "summary": {
   "notes": 84,
-  "changed": 10,
+  "changed": 9,
   "flags": {
-   "uncertain": 2,
-   "scan-unread": 4,
-   "expand-changed-numbers": 2,
-   "greek": 3
+   "scanned": 1,
+   "greek": 3,
+   "scan-unread": 3,
+   "uncertain": 1
   }
  },
  "notes": [
@@ -15,26 +15,14 @@
    "page": "page_0004",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Aqu. Sym. Theod. Ηγέμων Iudæ.",
-   "proposed": "[UNCERTAIN HEBREW] Aqu. Sym. Theod. Ἡγέμων Iudæ.",
+   "proposed": "פחת יהודה Aqu. Sym. Theod. Ἡγέμων Iudæ.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Ηγέμων -> Ἡγέμων"
+    "Greek spelling checked against a Greek dictionary: Ηγέμων -> Ἡγέμων",
+    "scan: Filled the placeholder with the printed פחת יהודה, which matches the reference.",
+    "read on the scan: פחת יהודה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0004(f)",
-   "page": "page_0004",
-   "marker": "(f)",
-   "text": "Zach. VI. II. 12. 13.",
-   "proposed": "Zach. VI. II. 12. 13.",
-   "why": [
-    "written out, but a number changed or added: Zacharie 6:11-13."
-   ],
-   "flags": [
-    "expand-changed-numbers"
+    "scanned"
    ]
   },
   {
@@ -56,29 +44,17 @@
    "page": "page_0009",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Alius : Et ἀγγελος το̃ Κυρίου. 70. Kaì ἀπήγγειλεν Αγγαιος ὁ ἀγγελος Κυρίου.",
-   "proposed": "[UNCERTAIN HEBREW] Alius : Et ἄγγελος το͂ Κυρίου. 70. Kaì ἀπήγγειλεν Αγγαιος ὁ ἀγγελος Κυρίου.",
+   "proposed": "במלאכות* Alius : Et ἄγγελος τοῦ Κυρίου. 70. Kaì ἀπήγγειλεν Αγγαιος ὁ ἀγγελος Κυρίου.",
    "why": [
     "Greek spelling checked against a Greek dictionary: το̃ -> το͂, ἀγγελος -> ἄγγελος",
-    "Greek checked against the Septuagint, Aggée 1:13"
+    "Greek checked against the Septuagint, Aggée 1:13",
+    "context: Hebrew word reconstructed from context: [UNCERTAIN HEBREW] -> במלאכות*, το͂ -> τοῦ"
    ],
    "flags": [
     "uncertain",
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0011(b)",
-   "page": "page_0011",
-   "marker": "(b)",
-   "text": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. Tigur. T.tt ij._",
-   "proposed": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. la Bible de Zurich T.tt ij._",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0013(a)",
@@ -111,19 +87,6 @@
    "proposed": "Pagnin ;\nArias Montanus ;\nMunster ;\nPiscator ;\nVatable ;\nMénochius.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0021(a)",
-   "page": "page_0021",
-   "marker": "(a)",
-   "text": "Agg. II. II. et 19.",
-   "proposed": "Agg. II. II. et 19.",
-   "why": [
-    "written out, but a number changed or added: Aggée 2:11 et 19."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   },
   {
    "id": "0022(a)",

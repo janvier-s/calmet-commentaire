@@ -1,15 +1,16 @@
 {
  "summary": {
   "notes": 1322,
-  "changed": 69,
+  "changed": 79,
   "flags": {
    "greek": 66,
-   "scan-unread": 86,
-   "reference-not-in-vulgate": 4,
+   "scan-unread": 78,
+   "reference-not-in-vulgate": 1,
    "hebrew": 14,
-   "uncertain": 14,
-   "expand-changed-hebrew-or-greek": 1,
-   "ambiguous-name": 3
+   "uncertain": 6,
+   "context": 5,
+   "scanned": 8,
+   "ambiguous-name": 1
   }
  },
  "notes": [
@@ -65,6 +66,7 @@
    "text": "Nombres 13:22 ; 19:38 ; Josué 19:28.",
    "proposed": "Nombres 13:22 ; 19:38 ; Josué 19:28.",
    "why": [
+    "context: Verse references not confirmable",
     "Nombres 19:38 does not exist in the Vulgate"
    ],
    "flags": [
@@ -150,10 +152,8 @@
    "page": "page_0057",
    "marker": "(b)",
    "text": "Josèphe ; Tostiel ; Salian.",
-   "proposed": "Josèphe ;\nTostat ;\nSalian.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Josèphe ;\nTostiel ;\nSalian.",
+   "why": [],
    "flags": []
   },
   {
@@ -186,8 +186,8 @@
    "id": "0074(d)",
    "page": "page_0074",
    "marker": "(d)",
-   "text": "Origène, Homélie 4 ; saint Basile, Ascétiques ; Anastase de Nicée, question 74 ; saint Augustin, Question 20 sur les Juges. Voyez Cornelius a Lapide sur Juges 3:19 ; et Serarius, question 23.",
-   "proposed": "Origène, Homélie 4 ;\nsaint Basile, Ascétiques ;\nAnastase de Nicée, question 74 ;\nsaint Augustin, Question 20 sur les Juges. Voyez Cornelius a Lapide sur Juges 3:19 ;\net Serarius, question 23.",
+   "text": "Origène, Homélie 4 ; Saint Basile, Ascétiques ; Anastase de Nicée, question 74 ; Saint Augustin, Question 20 sur les Juges. Voyez Cornelius a Lapide sur Juges 3:19 ; et Serarius, question 23.",
+   "proposed": "Origène, Homélie 4 ;\nSaint Basile, Ascétiques ;\nAnastase de Nicée, question 74 ;\nSaint Augustin, Question 20 sur les Juges. Voyez Cornelius a Lapide sur Juges 3:19 ;\net Serarius, question 23.",
    "why": [],
    "flags": []
   },
@@ -216,22 +216,11 @@
    ]
   },
   {
-   "id": "0079(f)",
-   "page": "page_0079",
-   "marker": "(f)",
-   "text": "Le Chaldéen ; le Syriaque ; l'Arabe ; Pagnin ; Vatable. Voyez 4 Rois 2:17.",
-   "proposed": "Le Chaldéen ; le Syriaque ; l'Arabe ; Pagnin ; Vatable. Voyez 3 Rois 2:17.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0081(c)",
    "page": "page_0081",
    "marker": "(c)",
-   "text": "Saint Clément d'Alexandrie, Stromates, livre 1 ; Eusèbe, Chronique ; Bède ; saint Isidore. Voyez Génébrard, Chronique ; et Serarius et Bonfrère sur ce passage.",
-   "proposed": "Saint Clément d'Alexandrie, Stromates, livre 1 ;\nEusèbe, Chronique ;\nBède ;\nsaint Isidore. Voyez Génébrard, Chronique ;\net Serarius et Bonfrère sur ce passage.",
+   "text": "Saint Clément d'Alexandrie, Stromates, livre 1 ; Eusèbe, Chronique ; Bède ; Saint Isidore. Voyez Génébrard, Chronique ; et Serarius et Bonfrère sur ce passage.",
+   "proposed": "Saint Clément d'Alexandrie, Stromates, livre 1 ;\nEusèbe, Chronique ;\nBède ;\nSaint Isidore. Voyez Génébrard, Chronique ;\net Serarius et Bonfrère sur ce passage.",
    "why": [],
    "flags": []
   },
@@ -266,11 +255,9 @@
    "id": "0088(a)",
    "page": "page_0088",
    "marker": "(a)",
-   "text": "Saint Jérôme, Lettre à Marcelle ; et Épitaphe de Paule ; saint Cyrille ; Bède, etc.",
-   "proposed": "Saint Jérôme, Lettre à Marcelle ;\net Épitaphe de Paule ;\nsaint Cyrille ;\nBède, etc.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
+   "text": "Saint Jérôme, Lettre à Marcelle ; et Épitaphe de Paule ; Saint Cyrille ; Bède, etc.",
+   "proposed": "Saint Jérôme, Lettre à Marcelle ;\net Épitaphe de Paule ;\nSaint Cyrille ;\nBède, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -300,8 +287,8 @@
    "id": "0094(a)",
    "page": "page_0094",
    "marker": "(a)",
-   "text": "Origène, Homélie 5 sur les Juges ; saint Augustin, Contre Fauste, livre 12, chapitre 32 ; saint Ambroise, Des veuves ; saint Pierre Damien, Sermon 40. Voyez Serarius, sur le chapitre 5, question 13.",
-   "proposed": "Origène, Homélie 5 sur les Juges ;\nsaint Augustin, Contre Fauste, livre 12, chapitre 32 ;\nsaint Ambroise, Des veuves ;\nsaint Pierre Damien, Sermon 40. Voyez Serarius, sur le chapitre 5, question 13.",
+   "text": "Origène, Homélie 5 sur les Juges ; Saint Augustin, Contre Fauste, livre 12, chapitre 32 ; Saint Ambroise, Des veuves ; Saint Pierre Damien, Sermon 40. Voyez Serarius, sur le chapitre 5, question 13.",
+   "proposed": "Origène, Homélie 5 sur les Juges ;\nSaint Augustin, Contre Fauste, livre 12, chapitre 32 ;\nSaint Ambroise, Des veuves ;\nSaint Pierre Damien, Sermon 40. Voyez Serarius, sur le chapitre 5, question 13.",
    "why": [],
    "flags": []
   },
@@ -310,10 +297,11 @@
    "page": "page_0094",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] ἐπιβόλαιον. Symmach. κοιμήτρον. Theod. et τῷ σάγῳ. Cod. Alex. Σιῤῥὶ, Lagerunt [UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW] ἐπιβόλαιον. Symmach. κοιμήτρον. Theod. et τῷ σάγῳ. Cod. Alex. Σιῤῥὶ, Lagerunt [UNCERTAIN HEBREW]",
+   "proposed": "שמיכה* ἐπιβόλαιον. Symmach. κοιμήτρον. Theod. et τῷ σάγῳ. Cod. Alex. Σιῤῥὶ, Lagerunt [UNCERTAIN HEBREW]",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Second Hebrew and Σιῤῥὶ unclear: [UNCERTAIN HEBREW] ἐπιβόλαιον -> שמיכה* ἐπιβόλαιον"
    ],
    "flags": [
     "uncertain",
@@ -336,19 +324,6 @@
    ]
   },
   {
-   "id": "0097(a)",
-   "page": "page_0097",
-   "marker": "(a)",
-   "text": "Voyez la nouvelle édition des Hexaples, O. G. ἐν τῷ ἄρξασθαι ἄρχοντὰς, ἐν τῷ ἑκουσιασθῆναι λαὸν, εὐλογεῖτε κύριον.",
-   "proposed": "Voyez la nouvelle édition des Hexaples, O. G. ἐν τῷ ἄρξασθαι ἄρχοντὰς, ἐν τῷ ἑκουσιασθῆναι λαὸν, εὐλογεῖτε κύριον.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-changed-hebrew-or-greek"
-   ]
-  },
-  {
    "id": "0101(c)",
    "page": "page_0101",
    "marker": "(c)",
@@ -367,12 +342,12 @@
    "page": "page_0102",
    "marker": "(a)",
    "text": "3 Rois 1:33, 38, 44.",
-   "proposed": "1 Rois 1:33, 38, 44.",
+   "proposed": "3 Rois 1:33, 38, 44.",
    "why": [
-    "1 Rois 1:33, 38, 44 does not exist in the Vulgate"
+    "context: 3 Rois 1: Solomon's mule: 1 Rois -> 3 Rois"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -451,12 +426,13 @@
    "page": "page_0110",
    "marker": "(a)",
    "text": "בחקקי לב גדולים וגובי [UNCERTAIN HEBREW] 70. in scriptionibus Τυβιγγράμμασι ἀναβαθμοὶ καρδίας. Aq. μεγάλοι ἀναλελογισμὸς καρδίας. Sym. μεγάλοι ἐξιχνιασμὸι καρδίας. De grandes profondeurs de cœur. Une sagesse que l'on ne peut persuader. Le mot בחקקי se prend pour les partages des familles. 2 Paralipomènes 35:8, 12. Esdr. vı. 18. Et בלב pour le partage des terres. Genèse 10:25.",
-   "proposed": "בחקקי לב גדולים וגובי [UNCERTAIN HEBREW] 70. in scriptionibus Τυβιγγράμμασι ἀναβαθμοὶ καρδίας. Aq. μεγάλοι ἀναλελογισμὸς καρδίας. Sym. μεγάλοι ἐξιχνιασμὸι καρδίας. De grandes profondeurs de cœur. Une sagesse que l'on ne peut persuader. Le mot בחקקי se prend pour les partages des familles. 2 Paralipomènes 35:8, 12. Esdr. vı. 18. Et בלב pour le partage des terres. Genèse 10:25.",
+   "proposed": "בחקקי לב גדולים וגובי [UNCERTAIN HEBREW] 70. in scriptionibus Τυβιγγράμμασι ἀναβαθμοὶ καρδίας. Aq. μεγάλοι ἀναλογισμὸς* καρδίας. Sym. μεγάλοι ἐξιχνιασμὸι καρδίας. De grandes profondeurs de cœur. Une sagesse que l'on ne peut persuader. Le mot בחקקי se prend pour les partages des familles. 2 Paralipomènes 35:8, 12. Esdr. vı. 18. Et בלב pour le partage des terres. Genèse 10:25.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek checked against the Septuagint, Juges 5:16"
+    "Greek checked against the Septuagint, Juges 5:16",
+    "context: Hebrew and Τυβιγγράμμασι unreadable: ἀναλελογισμὸς -> ἀναλογισμὸς*"
    ],
    "flags": [
     "uncertain",
@@ -469,13 +445,14 @@
    "page": "page_0110",
    "marker": "(b)",
    "text": "למה ישבת בין המשפתים לשמע שרקות עדרים [UNCERTAIN HEBREW]",
-   "proposed": "למה ישבת בין המשפתים לשמע שרקות עדרים [UNCERTAIN HEBREW]",
+   "proposed": "למה ישבת בין המשפתים לשמע שרקות עדרים",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Judges 5:16"
+    "Hebrew checked against the Hebrew Bible, Judges 5:16",
+    "scan: Removed the spurious placeholder; the Hebrew already ends with עדרים.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -584,12 +561,12 @@
    "page": "page_0123",
    "marker": "(b)",
    "text": "Nombres 13:300.",
-   "proposed": "Nombres 13:300.",
+   "proposed": "Nombres 13:30*.",
    "why": [
-    "Nombres 13:300 does not exist in the Vulgate"
+    "context: Amalec in the south, Vulgate 13:30: 13:300 -> 13:30*"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -615,10 +592,8 @@
    "page": "page_0127",
    "marker": "(b)",
    "text": "Ita Junius ; Pierre Martyr ; Brougton ; Chytreus et Habichorst, Dissertatio de altari Gedeon, etc.",
-   "proposed": "Ainsi l'entendent Junius ;\nPierre Martyr ;\nBrougton ;\nChytreus et Habichorst, Dissertatio de altari Gedeon, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Ita Junius ;\nPierre Martyr ;\nBrougton ;\nChytreus et Habichorst, Dissertatio de altari Gedeon, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -626,13 +601,14 @@
    "page": "page_0128",
    "marker": "(a)",
    "text": "לַאֲשֶׁר אֲנִי הַעֲנִי [UNCERTAIN HEBREW]",
-   "proposed": "לַאֲשֶׁר אֲנִי הַעֲנִי [UNCERTAIN HEBREW]",
+   "proposed": "ליואש אבי העזרי",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Replaced the wrong Hebrew with the printed ליואש אבי העזרי.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -763,8 +739,8 @@
    "id": "0141(e)",
    "page": "page_0141",
    "marker": "(e)",
-   "text": "Origène, Homélie 8 sur les Juges. Voyez aussi Théodoret, Question 14 sur les Juges ; saint Jérôme, Lettre à Paulin ; saint Augustin, De l'unité de l'Église, chapitre 5, et sur le Psaume 45 ; saint Ambroise, dans la préface du livre 1, Du Saint-Esprit.",
-   "proposed": "Origène, Homélie 8 sur les Juges. Voyez aussi Théodoret, Question 14 sur les Juges ;\nsaint Jérôme, Lettre à Paulin ;\nsaint Augustin, De l'unité de l'Église, chapitre 5, et sur le Psaume 45 ;\nsaint Ambroise, dans la préface du livre 1, Du Saint-Esprit.",
+   "text": "Origène, Homélie 8 sur les Juges. Voyez aussi Théodoret, Question 14 sur les Juges ; Saint Jérôme, Lettre à Paulin ; Saint Augustin, De l'unité de l'Église, chapitre 5, et sur le Psaume 45 ; Saint Ambroise, dans la préface du livre 1, Du Saint-Esprit.",
+   "proposed": "Origène, Homélie 8 sur les Juges. Voyez aussi Théodoret, Question 14 sur les Juges ;\nSaint Jérôme, Lettre à Paulin ;\nSaint Augustin, De l'unité de l'Église, chapitre 5, et sur le Psaume 45 ;\nSaint Ambroise, dans la préface du livre 1, Du Saint-Esprit.",
    "why": [],
    "flags": []
   },
@@ -791,12 +767,13 @@
    "page": "page_0147",
    "marker": "(b)",
    "text": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μάχλη Ἄρτε τ8 κρίθινε κυλιομ[ILLEGIBLE] εἰς τ[ILLEGIBLE] παρεμβολῶν, etc.",
-   "proposed": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μάχλη Ἄρτε τ8 κρίθινε κυλιομ[ILLEGIBLE] εἰς τ[ILLEGIBLE] παρεμβολῶν, etc.",
+   "proposed": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μάχλη Ἄρτε τ8 κρίθινε κυλιομένη* εἰς τ[ILLEGIBLE] παρεμβολῶν, etc.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Judges 7:13",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Second illegible remains: κυλιομ[ILLEGIBLE] -> κυλιομένη*"
    ],
    "flags": [
     "uncertain",
@@ -848,12 +825,12 @@
    "page": "page_0156",
    "marker": "(a)",
    "text": "1 Rois 25:10-11.",
-   "proposed": "2 Rois 25:10-11.",
+   "proposed": "1 Rois 25:10-11.",
    "why": [
-    "2 Rois 25:10-11 does not exist in the Vulgate"
+    "context: David and Nabal: 1 Sam 25: 2 Rois 25:10-11 -> 1 Rois 25:10-11"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -903,9 +880,11 @@
    "marker": "(b)",
    "text": "3 Rois 2:34.",
    "proposed": "3 Rois 2:34.",
-   "why": [],
+   "why": [
+    "context: 3 Rois = 1 Kings 2:34, Joab"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -934,13 +913,14 @@
    "page": "page_0165",
    "marker": "(f)",
    "text": "_Xénophon_ l. 3. _Anabas._ [UNCERTAIN GREEK] Σκυθῶν ἀμφιτρίτα τὰ ὦτα τετρυπημένα. _Vide et Macrob._ l. 7. c. 3. _Saturn. Cum Ostavius Ciceroni recitanti dixisset ; non audio quæ dicis ; ille respondit, certè solebas bene foratas habere aures._",
-   "proposed": "_Xénophon_ l. 3. _Anabas._ [UNCERTAIN GREEK] Σκυθῶν ἀμφιτρίτα τὰ ὦτα τετρυπημένα. _Vide et Macrob._ l. 7. c. 3. _Saturn. Cum Ostavius Ciceroni recitanti dixisset ; non audio quæ dicis ; ille respondit, certè solebas bene foratas habere aures._",
+   "proposed": "_Xénophon_ l. 3. _Anabas._ ἐπεὶ ἐγὼ αὐτὸν εἶδον ὥσπερ Λυδόν, ἀμφότερα τὰ ὦτα τετρυπημένον. _Vide et Macrob._ l. 7. c. 3. _Saturn. Cum Ostavius Ciceroni recitanti dixisset ; non audio quæ dicis ; ille respondit, certè solebas bene foratas habere aures._",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled the placeholder and replaced the wrong Scythian line with the printed Xenophon Greek.",
+    "read on the scan: ἐπεὶ ἐγὼ αὐτὸν εἶδον ὥσπερ Λυδόν, ἀμφότερα τὰ ὦτα τετρυπημένον"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -984,7 +964,8 @@
    "proposed": "[UNCERTAIN HEBREW] _Samar. iurati τῷ Baàl διαθήκην. Ils firent alliance ce avec Baal. Un autre interprète Συναπ. τῷ Baàl διαθήκ. Ils établirent Baal-Berith._",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Hebrew unreadable; abbreviations Συναπ./διαθήκ."
    ],
    "flags": [
     "uncertain",
@@ -1069,9 +1050,11 @@
    "marker": "(i)",
    "text": "2 Rois 18:15.",
    "proposed": "2 Rois 18:15.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Sam 18:15, Joab's armour-bearers"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1139,7 +1122,9 @@
    "marker": "(a)",
    "text": "Joseph. lib. 4. de Bello c. 25. Σάδων [UNCERTAIN GREEK] Γάδαρα μητρόπολιν τῆς περαίας παρτιεάν.",
    "proposed": "Joseph. lib. 4. de Bello c. 25. Σάδων [UNCERTAIN GREEK] Γάδαρα μητρόπολιν τῆς περαίας παρτιεάν.",
-   "why": [],
+   "why": [
+    "context: Josephus quotation unrecoverable"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -1151,9 +1136,10 @@
    "page": "page_0221",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] 70. _Genu flexisti me._ Th. _τετάραχας με._ Vous m'avez étranglé ; _Aq. περιέθηκας ἐπιβόλαιον ἐμοὶ._ Ms. Vous m'avez humilié abaissé etc. Sym. _ὑπέσκασάς με. εἰς σκᾶλον ἐγένου ἐν ὀφθαλμοῖς με._ Vous m'avez renversé ; vous avez été une pierre d'achoppement à mes yeux.",
-   "proposed": "[UNCERTAIN HEBREW] 70. _Genu flexisti me._ Th. _τετάραχας με._ Vous m'avez étranglé ; _Aq. περιέθηκας ἐπιβόλαιον ἐμοὶ._ Ms. Vous m'avez humilié abaissé etc. Sym. _ὑπέσκασάς με. εἰς σκᾶλον ἐγένου ἐν ὀφθαλμοῖς με._ Vous m'avez renversé ; vous avez été une pierre d'achoppement à mes yeux.",
+   "proposed": "הכרעתני* 70. _Genu flexisti me._ Th. _τετάραχας με._ Vous m'avez étranglé ; _Aq. περιέθηκας ἐπιβόλαιον ἐμοὶ._ Ms. Vous m'avez humilié abaissé etc. Sym. _ὑπεσκέλισάς* με. εἰς σκῶλον ἐγένου ἐν ὀφθαλμοῖς με._ Vous m'avez renversé ; vous avez été une pierre d'achoppement à mes yeux.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Symmachus form guessed: [UNCERTAIN HEBREW] -> הכרעתני*, σκᾶλον -> σκῶλον, ὑπέσκασάς -> ὑπεσκέλισάς*"
    ],
    "flags": [
     "uncertain",
@@ -1240,10 +1226,8 @@
    "page": "page_0240",
    "marker": "(c)",
    "text": "Voyez Exode 29:36 ; Exode 12:47 ; Genèse 18:7, etc. Virgile, Églogues, 3. Cras faciam vitulâ.",
-   "proposed": "Voyez Exode 29:36 ;\nExode 12:47 ;\nGenèse 18:7, etc. Virgile, Églogues 3. Cras faciam vitulâ.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Voyez Exode 29:36 ;\nExode 12:47 ;\nGenèse 18:7, etc. Virgile, Églogues, 3. Cras faciam vitulâ.",
+   "why": [],
    "flags": []
   },
   {
@@ -1375,10 +1359,8 @@
    "page": "page_0258",
    "marker": "(b)",
    "text": "Ita Vatable ; Drusius ; Junius ; Serarius ; Cornelius a Lapide ; Bonfrère ; Delrio, etc.",
-   "proposed": "Ainsi l'entendent Vatable ;\nDrusius ;\nJunius ;\nSerarius ;\nCornelius a Lapide ;\nBonfrère ;\nDelrio, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Ita Vatable ;\nDrusius ;\nJunius ;\nSerarius ;\nCornelius a Lapide ;\nBonfrère ;\nDelrio, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -1433,13 +1415,14 @@
    "page": "page_0267",
    "marker": "(g)",
    "text": "Vide Isaïe 17:6. 27:10. et maximè 53:5. [UNCERTAIN HEBREW] תחת סעיפיו חסויו Ézéchiel 31:6, 8.",
-   "proposed": "Vide Isaïe 17:6. 27:10. et maximè 53:5. [UNCERTAIN HEBREW] תחת סעיפיו חסויו Ézéchiel 31:6, 8.",
+   "proposed": "Vide Isaïe 17:6. 27:10. et maximè 53:5. תחת סעיפי הסלעים Ézéchiel 31:6, 8.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Removed the placeholder and corrected the Hebrew to תחת סעיפי הסלעים.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1577,14 +1560,15 @@
    "page": "page_0285",
    "marker": "(a)",
    "text": "Herodot. l. 4. c 2. τῆς δὲ Σκυθῶν [UNCERTAIN GREEK] τυφλῶν.",
-   "proposed": "Herodot. l. 4. c 2. τῆς δὲ Σκυθῶν [UNCERTAIN GREEK] τυφλῶν.",
+   "proposed": "Herodot. l. 4. c 2. τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Replaced the placeholder and the garbled Greek with Herodotus 4.2, partly guessed.",
+    "guessed from context: τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1755,13 +1739,14 @@
    "page": "page_0322",
    "marker": "(d)",
    "text": "עלי כל מחסורך עלי [UNCERTAIN HEBREW] ius.",
-   "proposed": "עלי כל מחסורך עלי [UNCERTAIN HEBREW] ius.",
+   "proposed": "כל מחסורך עלי πᾶν τὸ ὑστέρημά σου ἐπ᾽ ἐμέ.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Judges 19:20"
+    "Hebrew checked against the Hebrew Bible, Judges 19:20",
+    "scan: Dropped stray leading עלי; filled Greek (Septuagint wording, small print); 'ius' was the end of ἐμέ",
+    "guessed from context: πᾶν τὸ ὑστέρημά σου ἐπ᾽ ἐμέ*"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1812,14 +1797,15 @@
    "page": "page_0338",
    "marker": "(a)",
    "text": "עם האורב… ומוסר היה [UNCERTAIN HEBREW]",
-   "proposed": "עם האורב… ומוסר היה [UNCERTAIN HEBREW]",
+   "proposed": "והמועד היה… עם האורב הרב",
    "why": [
     "Hebrew checked against the Hebrew Bible, Judges 20:38",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Fixed word order and spelling to match print; filled placeholder",
+    "read on the scan: עם האורב הרב"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1827,13 +1813,14 @@
    "page": "page_0338",
    "marker": "(b)",
    "text": "καὶ ἡ ἀπόκρισις ἦν αὐτοῖς, [UNCERTAIN GREEK]",
-   "proposed": "καὶ ἡ ἀπόκρισις ἦν αὐτοῖς, [UNCERTAIN GREEK]",
+   "proposed": "καὶ ἡ σύνταξις τοῖς ἀνδράσιν Ἰσραήλ, πρὸς τὸ ἀνελθεῖν,",
    "why": [
-    "Greek checked against the Septuagint, Deutéronome 2:15"
+    "Greek checked against the Septuagint, Deutéronome 2:15",
+    "scan: Replaced wrong Greek with printed text; accents partly uncertain in small print",
+    "guessed from context: σύνταξις τοῖς ἀνδράσιν Ἰσραήλ, πρὸς τὸ ἀνελθεῖν*"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {

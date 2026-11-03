@@ -1,12 +1,12 @@
 {
  "summary": {
   "notes": 139,
-  "changed": 10,
+  "changed": 11,
   "flags": {
-   "ambiguous-name": 2,
+   "context": 2,
    "greek": 2,
-   "scan-unread": 6,
-   "uncertain": 3,
+   "scan-unread": 3,
+   "scanned": 3,
    "hebrew": 1
   }
  },
@@ -17,9 +17,11 @@
    "marker": "(c)",
    "text": "Juges 12:5 ; 1 Rois 1:1 ; 3 Rois 11:26.",
    "proposed": "Juges 12:5 ; 1 Rois 1:1 ; 3 Rois 11:26.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering; 1 Rois 1:1 Elcana Ephrathæus"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -53,38 +55,17 @@
    ]
   },
   {
-   "id": "0009(a)",
-   "page": "page_0009",
-   "marker": "(a)",
-   "text": "ובמתך. Les Septante : i simus ? ex.",
-   "proposed": "ובמתך. Les Septante : i simus ? d'après.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0011(c)",
-   "page": "page_0011",
-   "marker": "(c)",
-   "text": "Nicolas de Lyre, sur les chapitres 2 et 4, et sur Matthieu 1 ; quelques-uns dans Jarchi ; Catarin, livre contre Cajetan, etc.",
-   "proposed": "Nicolas de Lyre, sur les chapitres 2 et 4, et sur Matthieu 1 ; quelques-uns dans Rabbi Salomon Jarchi ; Catarin, livre contre Cajetan, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0014(a)",
    "page": "page_0014",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ותבוא ותעמוד מאז הבקר ועד עתה זה שבתה הבית מעט",
+   "why": [
+    "scan: Replaced placeholder with the printed Hebrew, using the reference spelling where the print is unclear",
+    "read on the scan: ותבוא ותעמוד מאז הבקר ועד עתה זה שבתה הבית מעט"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -125,17 +106,19 @@
    "marker": "(i)",
    "text": "1 Rois 17:17.",
    "proposed": "1 Rois 17:17.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering; 1 Sam 17:17 matches"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
    "id": "0024(a)",
    "page": "page_0024",
    "marker": "(a)",
-   "text": "Voyez saint Ambroise, à l'endroit cité ; Théodoret, Question 2 ; saint Jean Chrysostome, Homélie 3 sur saint Matthieu.",
-   "proposed": "Voyez saint Ambroise, à l'endroit cité ;\nThéodoret, Question 2 ;\nsaint Jean Chrysostome, Homélie 3 sur saint Matthieu.",
+   "text": "Voyez saint Ambroise, à l'endroit cité ; Théodoret, Question 2 ; Saint Jean Chrysostome, Homélie 3 sur saint Matthieu.",
+   "proposed": "Voyez saint Ambroise, à l'endroit cité ;\nThéodoret, Question 2 ;\nSaint Jean Chrysostome, Homélie 3 sur saint Matthieu.",
    "why": [],
    "flags": []
   },
@@ -162,13 +145,14 @@
    "page": "page_0034",
    "marker": "(b)",
    "text": "אחתה את נחלתי [UNCERTAIN HEBREW]",
-   "proposed": "אחתה את נחלתי [UNCERTAIN HEBREW]",
+   "proposed": "פן אשחית את נחלתי",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Corrected the Hebrew to the printed 'פן אשחית את נחלתי' and removed the placeholder",
+    "read on the scan: פן אשחית את נחלתי"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -176,13 +160,14 @@
    "page": "page_0034",
    "marker": "(c)",
    "text": "וזאת התעודה בישראל [UNCERTAIN HEBREW]",
-   "proposed": "וזאת התעודה בישראל [UNCERTAIN HEBREW]",
+   "proposed": "וזאת התעודה בישראל",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Ruth 4:7"
+    "Hebrew checked against the Hebrew Bible, Ruth 4:7",
+    "scan: Removed the placeholder; the printed text is just 'וזאת התעודה בישראל'",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {

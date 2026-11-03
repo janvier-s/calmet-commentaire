@@ -1,14 +1,15 @@
 {
  "summary": {
   "notes": 817,
-  "changed": 50,
+  "changed": 56,
   "flags": {
    "greek": 24,
-   "scan-unread": 37,
+   "scan-unread": 30,
    "hebrew": 8,
-   "ambiguous-name": 17,
+   "context": 17,
    "reference-mismatch": 1,
-   "uncertain": 8
+   "scanned": 7,
+   "uncertain": 1
   }
  },
  "notes": [
@@ -53,9 +54,11 @@
    "marker": "(a)",
    "text": "3 Rois 5:8.",
    "proposed": "3 Rois 5:8.",
-   "why": [],
+   "why": [
+    "context: 3 Rois = 1 Kings 5:8, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -75,9 +78,11 @@
    "marker": "(e)",
    "text": "3 Rois 7:14.",
    "proposed": "3 Rois 7:14.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 7:14 Hiram's mother, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -107,11 +112,13 @@
    "page": "page_0013",
    "marker": "(a)",
    "text": "3 Rois 5:9. [UNCERTAIN HEBREW]",
-   "proposed": "3 Rois 5:9. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "3 Rois 5:9. ואני אשימם דברות בים",
+   "why": [
+    "scan: Filled the Hebrew from the page, following the Kings verse.",
+    "read on the scan: ואני אשימם דברות בים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -128,15 +135,18 @@
    "page": "page_0016",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] מאה ועשרים 120. coudées. [UNCERTAIN HEBREW] עשר dix coudées ; ou [UNCERTAIN HEBREW] עשרים 20. coudées.",
-   "proposed": "[UNCERTAIN HEBREW] מאה ועשרים 120. coudées. [UNCERTAIN HEBREW] עשר dix coudées ; ou [UNCERTAIN HEBREW] עשרים 20. coudées.",
+   "proposed": "והגבה מאה ועשרים 120. coudées. אמה עשר dix coudées ; ou אמה עשרים 20. coudées.",
    "why": [
     "Hebrew checked against the Hebrew Bible, II Chronicles 3:4",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled the three Hebrew placeholders: והגבה, אמה, אמה.",
+    "read on the scan: והגבה",
+    "read on the scan: אמה",
+    "read on the scan: אמה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -225,9 +235,11 @@
    "marker": "(b)",
    "text": "3 Rois 4:12.",
    "proposed": "3 Rois 4:12.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 4:12 Bethsan, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -236,9 +248,11 @@
    "marker": "(c)",
    "text": "3 Rois 8:4.",
    "proposed": "3 Rois 8:4.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 8:4 matches Vulgate"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -270,9 +284,11 @@
    "marker": "(b)",
    "text": "3 Rois 8:37. _Pestilentia, aut corru_…",
    "proposed": "3 Rois 8:37. _Pestilentia, aut corru_…",
-   "why": [],
+   "why": [
+    "context: 3 Rois 8:37 pestilence, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -282,17 +298,6 @@
    "text": "Voyez Genèse 49:15 ; Exode 33:14 ; Deutéronome 3:20 ; Josué 1:13 ; Ruth 1:9, passim.",
    "proposed": "Voyez Genèse 49:15 ;\nExode 33:14 ;\nDeutéronome 3:20 ;\nJosué 1:13 ;\nRuth 1:9, passim.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0047(b)",
-   "page": "page_0047",
-   "marker": "(b)",
-   "text": "Voyez Psaumes 23:6 ; 26:8 ; 94:2 ; 104:4, etc. II. Livre des Paralipomènes.",
-   "proposed": "Voyez Psaumes 23:6 ; 26:8 ; 94:2 ; 104:4, etc. 2 Paralipomènes.",
-   "why": [
-    "abbreviations written out"
-   ],
    "flags": []
   },
   {
@@ -318,13 +323,15 @@
    "page": "page_0057",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70. [UNCERTAIN HEBREW] καὶ περὶ τῆς σοφίας σου.",
-   "proposed": "[UNCERTAIN HEBREW] 70. [UNCERTAIN HEBREW] καὶ περὶ τῆς σοφίας σου.",
+   "proposed": "על דבריך ועל חכמתך 70. περὶ τοῦ λόγου σου, ἢ περὶ τῆς σοφίας σου.",
    "why": [
-    "Greek checked against the Septuagint, 2 Paralipomènes 9:5"
+    "Greek checked against the Septuagint, 2 Paralipomènes 9:5",
+    "scan: Filled the Hebrew and the Greek placeholder; changed καὶ to ἢ as printed.",
+    "read on the scan: על דבריך ועל חכמתך",
+    "read on the scan: περὶ τοῦ λόγου σου,"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -333,9 +340,11 @@
    "marker": "(c)",
    "text": "3 Rois 14:25.",
    "proposed": "3 Rois 14:25.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 14:25 Sesac, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -352,11 +361,13 @@
    "page": "page_0074",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "וגם ביהודה היה דברים טובים",
+   "why": [
+    "scan: Filled the Hebrew placeholder from the page.",
+    "read on the scan: וגם ביהודה היה דברים טובים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -416,10 +427,8 @@
    "page": "page_0083",
    "marker": "(a)",
    "text": "Ita Seder Olam. Nicolas de Lyre ; Vatable ; Mariana ; Tirin.",
-   "proposed": "Ainsi l'entend le Seder Olam ;\nNicolas de Lyre ;\nVatable ;\nMariana ;\nTirin.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Ita Seder Olam. Nicolas de Lyre ;\nVatable ;\nMariana ;\nTirin.",
+   "why": [],
    "flags": []
   },
   {
@@ -436,11 +445,13 @@
    "page": "page_0089",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] 70. in, Vs, adiuvans est in robori et in nullo, et in paucis.",
-   "proposed": "[UNCERTAIN HEBREW] 70. in, Vs, adiuvans est in robori et in nullo, et in paucis.",
-   "why": [],
+   "proposed": "אין עמך לעזור בין רב לאין כוח 70. in, Vs, adiuvans est in robori et in nullo, et in paucis.",
+   "why": [
+    "scan: Filled the Hebrew placeholder, using the reference spelling לעזור.",
+    "read on the scan: אין עמך לעזור בין רב לאין כוח"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -448,11 +459,13 @@
    "page": "page_0089",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] 70. et induxit Dominus Æthiopes.",
-   "proposed": "[UNCERTAIN HEBREW] 70. et induxit Dominus Æthiopes.",
-   "why": [],
+   "proposed": "ויגף יהוה את הכושים 70. et induxit Dominus Æthiopes.",
+   "why": [
+    "scan: Filled the Hebrew placeholder from the page.",
+    "read on the scan: ויגף יהוה את הכושים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -461,7 +474,9 @@
    "marker": "(a)",
    "text": "70. ἡ τῆς ἀλιμαζονίας ἐπέκλειαν, ἡ ὅλα- | sens ; car souvent on trouve les _Minéens_, peuples Arabes, dans ces Livres. Voyez 1 Paralipomènes 4:41. Judic. X. II, 2. Par. XX. I. et XXVI. 7. Les tentes des _Minéens_ : ce qui fait un fort bon [UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW]",
    "proposed": "70. ἡ τῆς ἀλιμαζονίας ἐπέκλειαν, ἡ ὅλα- | sens ; car souvent on trouve les _Minéens_, peuples Arabes, dans ces Livres. Voyez 1 Paralipomènes 4:41. Judic. X. II, 2. Par. XX. I. et XXVI. 7. Les tentes des _Minéens_ : ce qui fait un fort bon [UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW]",
-   "why": [],
+   "why": [
+    "context: Hebrew and Greek unreadable; await page"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -481,8 +496,8 @@
    "id": "0094(a)",
    "page": "page_0094",
    "marker": "(a)",
-   "text": "Auteur du quatrième livre d'Esdras 14:43 ad Chilon. De même Nicolas de Lyre sur ce passage, etc. 44 et suivants. Saint Clément d'Alexandrie, Stromates, livre 1 ; Théodoret, sur les Psaumes et sur le Cantique des cantiques ; saint Basile, lettre.",
-   "proposed": "Auteur du quatrième livre d'Esdras 14:43 ad Chilon. De même Nicolas de Lyre sur ce passage, etc. 44 et suivants. Saint Clément d'Alexandrie, Stromates, livre 1 ;\nThéodoret, sur les Psaumes et sur le Cantique des cantiques ;\nsaint Basile, lettre.",
+   "text": "Auteur du quatrième livre d'Esdras 14:43 ad Chilon. De même Nicolas de Lyre sur ce passage, etc. 44 et suivants. Saint Clément d'Alexandrie, Stromates, livre 1 ; Théodoret, sur les Psaumes et sur le Cantique des cantiques ; Saint Basile, lettre.",
+   "proposed": "Auteur du quatrième livre d'Esdras 14:43 ad Chilon. De même Nicolas de Lyre sur ce passage, etc. 44 et suivants. Saint Clément d'Alexandrie, Stromates, livre 1 ;\nThéodoret, sur les Psaumes et sur le Cantique des cantiques ;\nSaint Basile, lettre.",
    "why": [],
    "flags": []
   },
@@ -531,9 +546,11 @@
    "marker": "(b)",
    "text": "3 Rois 22:44. Verumtamen excelsa non abstulit.",
    "proposed": "3 Rois 22:44. Verumtamen excelsa non abstulit.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 22:44 matches Vulgate"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -542,9 +559,11 @@
    "marker": "(a)",
    "text": "Voyez 2 Rois 8:1 ; Psaumes 59:10.",
    "proposed": "Voyez 2 Rois 8:1 ; Psaumes 59:10.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 8:1 David's Philistine victory"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -694,9 +713,11 @@
    "marker": "(a)",
    "text": "4 Rois 2 ; 3.",
    "proposed": "4 Rois 2 ; 3.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 2 is Elijah, Calmet numbering"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -746,10 +767,8 @@
    "page": "page_0151",
    "marker": "(c)",
    "text": "Grotius ; Junius ; Piscator, sur 4 Rois 11:5. II. Livre des Paralipomènes.",
-   "proposed": "Grotius ;\nJunius ;\nPiscator, sur 4 Rois 11:5. 2 Paralipomènes.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Grotius ;\nJunius ;\nPiscator, sur 4 Rois 11:5. II. Livre des Paralipomènes.",
+   "why": [],
    "flags": []
   },
   {
@@ -784,10 +803,8 @@
    "page": "page_0160",
    "marker": "(d)",
    "text": "Pagnin ; Arias Montanus ; Castalion ; Belg. Voyez Proverbes.",
-   "proposed": "Pagnin ; Arias Montanus ; Castalion ; la Bible flamande. Voyez Proverbes.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Pagnin ;\nArias Montanus ;\nCastalion ;\nBelg. Voyez Proverbes.",
+   "why": [],
    "flags": []
   },
   {
@@ -795,13 +812,14 @@
    "page": "page_0165",
    "marker": "(a)",
    "text": "בדמי בנו יהוידע [UNCERTAIN HEBREW]",
-   "proposed": "בדמי בנו יהוידע [UNCERTAIN HEBREW]",
+   "proposed": "בדמי בני יהוידע",
    "why": [
-    "Hebrew checked against the Hebrew Bible, II Chronicles 24:25"
+    "Hebrew checked against the Hebrew Bible, II Chronicles 24:25",
+    "scan: בנו corrected to בני; placeholder removed, as nothing further is printed after יהוידע",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -809,10 +827,8 @@
    "page": "page_0170",
    "marker": "(b)",
    "text": "Grotius ; Piscator, sur ce passage ; et Junius ; Malvenda, sur 4 Rois 14:7, etc.",
-   "proposed": "Grotius ;\nPiscator, sur ce passage ;\net Junius ;\nMalvenda, etc. sur 4 Rois 14:7.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Grotius ;\nPiscator, sur ce passage ;\net Junius ;\nMalvenda, sur 4 Rois 14:7, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -915,9 +931,11 @@
    "marker": "(a)",
    "text": "2 Rois 6:17.",
    "proposed": "2 Rois 6:17.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 6:17 ark, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -956,9 +974,11 @@
    "marker": "(c)",
    "text": "2 Paralipomènes 25:23 ; 4 Rois 14:13.",
    "proposed": "2 Paralipomènes 25:23 ; 4 Rois 14:13.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 14:13 Joas wall, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -967,9 +987,11 @@
    "marker": "(e)",
    "text": "Voyez 2 Rois 5:9 ; 3 Rois 9:15.",
    "proposed": "Voyez 2 Rois 5:9 ; 3 Rois 9:15.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 5:9, 3 Rois 9:15 Mello"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1031,9 +1053,11 @@
    "marker": "(e)",
    "text": "Voyez 4 Rois 23:6, 10, 11, 12 et suivants.",
    "proposed": "Voyez 4 Rois 23:6, 10, 11, 12 et suivants.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 23 is Josiah, Calmet numbering"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1042,9 +1066,11 @@
    "marker": "(a)",
    "text": "4 Rois 23:20. Occidit universos Sacerdotes excelsorum, qui erant ibi, super altaria.",
    "proposed": "4 Rois 23:20. Occidit universos Sacerdotes excelsorum, qui erant ibi, super altaria.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 23:20 exists, Josiah"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1053,9 +1079,11 @@
    "marker": "(a)",
    "text": "Voyez 1 Paralipomènes 9:26 ; 4 Rois 22:1, 4.",
    "proposed": "Voyez 1 Paralipomènes 9:26 ; 4 Rois 22:1, 4.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 22 is Josiah"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1088,9 +1116,11 @@
    "marker": "(d)",
    "text": "2 Rois 24:11. Sermo Domini factus est ad Gad Prophetam, et Videntem David.",
    "proposed": "2 Rois 24:11. Sermo Domini factus est ad Gad Prophetam, et Videntem David.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 24:11 Gad, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1108,9 +1138,11 @@
    "marker": "(c)",
    "text": "4 Rois 24:6.",
    "proposed": "4 Rois 24:6.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 24:6 Joakim, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {

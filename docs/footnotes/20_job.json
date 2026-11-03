@@ -1,16 +1,18 @@
 {
  "summary": {
   "notes": 1822,
-  "changed": 122,
+  "changed": 229,
   "flags": {
-   "uncertain": 129,
-   "scan-unread": 264,
+   "scanned": 107,
+   "uncertain": 22,
    "greek": 140,
+   "scan-unread": 157,
+   "context": 5,
    "reference-not-in-vulgate": 4,
-   "ambiguous-name": 4,
    "reference-mismatch": 1,
+   "uncertain-fill-asterisk-wrong": 5,
    "hebrew": 23,
-   "expand-changed-numbers": 2
+   "ambiguous-name": 1
   }
  },
  "notes": [
@@ -19,11 +21,14 @@
    "page": "page_0060",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] de [UNCERTAIN HEBREW] il a crié, hurlé, etc. Voyez Juges 5:28. et saint Jérôme trad. Hebr. _Job interpretatur ululatio_.",
-   "proposed": "[UNCERTAIN HEBREW] de [UNCERTAIN HEBREW] il a crié, hurlé, etc. Voyez Juges 5:28. et saint Jérôme trad. Hebr. _Job interpretatur ululatio_.",
-   "why": [],
+   "proposed": "איוב de יבב il a crié, hurlé, etc. Voyez Juges 5:28. et saint Jérôme trad. Hebr. _Job interpretatur ululatio_.",
+   "why": [
+    "scan: Filled the two Hebrew placeholders: איוב and יבב",
+    "read on the scan: איוב",
+    "read on the scan: יבב"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -32,7 +37,9 @@
    "marker": "(e)",
    "text": "Antiquit. lib. I. cap. 7. O'verse [UNCERTAIN GREEK] τῆς Τραχωνίτιδος, τῆς Δαμασκηνῆς, πλὴν δὲ ἐπὶ τῆς Παλαιστίνης, τῆς κοίλης συρίας.",
    "proposed": "Antiquit. lib. I. cap. 7. O'verse [UNCERTAIN GREEK] τῆς Τραχωνίτιδος, τῆς Δαμασκηνῆς, πλὴν δὲ ἐπὶ τῆς Παλαιστίνης, τῆς κοίλης συρίας.",
-   "why": [],
+   "why": [
+    "context: Josephus passage garbled; Παλαιστίνης valid"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -43,8 +50,8 @@
    "id": "0060(g)",
    "page": "page_0060",
    "marker": "(g)",
-   "text": "Ainsi l'entendent saint Jérôme, à l'endroit cité ; saint Isidore de Séville ; Bède, sur ce passage ; Junius ; Villat, sur la Genèse 32.",
-   "proposed": "Ainsi l'entendent saint Jérôme, à l'endroit cité ;\nsaint Isidore de Séville ;\nBède, sur ce passage ;\nJunius ;\nVillat, sur la Genèse 32.",
+   "text": "Ainsi l'entendent saint Jérôme, à l'endroit cité ; Saint Isidore de Séville ; Bède, sur ce passage ; Junius ; Villat, sur la Genèse 32.",
+   "proposed": "Ainsi l'entendent saint Jérôme, à l'endroit cité ;\nSaint Isidore de Séville ;\nBède, sur ce passage ;\nJunius ;\nVillat, sur la Genèse 32.",
    "why": [],
    "flags": []
   },
@@ -89,13 +96,14 @@
    "page": "page_0065",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] צאן",
-   "proposed": "[UNCERTAIN HEBREW] צאן",
+   "proposed": "שבעת אלפי צאן",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled the placeholder with שבעת אלפי",
+    "read on the scan: שבעת אלפי"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -103,14 +111,21 @@
    "page": "page_0065",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] עבדה רבה מאוד _Vide Mercer. hic, et Genèse 26:14. 70. hic, [UNCERTAIN GREEK]. Aqu. [UNCERTAIN GREEK]. Sym. [UNCERTAIN GREEK]._ ♁ _Genes. loco citato. 70. [UNCERTAIN GREEK]._",
-   "proposed": "[UNCERTAIN HEBREW] עבדה רבה מאוד _Vide Mercer. hic, et Genèse 26:14. 70. hic, [UNCERTAIN GREEK]. Aqu. [UNCERTAIN GREEK]. Sym. [UNCERTAIN GREEK]._ ♁ _Genes. loco citato. 70. [UNCERTAIN GREEK]._",
+   "proposed": "עבדה רבה מאוד _Vide Mercer. hic, et Genèse 26:14. 70. hic, ὑπηρεσία. Aqu. δουλεία. Sym. οἰκετία._ ♁ _Genes. loco citato. 70. γεωργία._",
    "why": [
     "Hebrew checked against the Hebrew Bible, Job 1:3",
+    "scan: Removed the duplicate Hebrew placeholder and filled the four Greek words. The Greek is partly hard to read.",
+    "read on the scan: ",
+    "read on the scan: ὑπηρεσία",
+    "read on the scan: δουλεία",
+    "read on the scan: οἰκετία",
+    "read on the scan: γεωργία",
+    "context: 70 = Septuagint; reference fine",
     "Genèse 26:14, 70 does not exist in the Vulgate"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread",
+    "scanned",
+    "context",
     "reference-not-in-vulgate"
    ]
   },
@@ -202,8 +217,8 @@
    "id": "0071(e)",
    "page": "page_0071",
    "marker": "(e)",
-   "text": "Ita Origène ; saint Augustin, Annotations sur Job ; Cajetan, Polycronius, Mariana, Scultet, Mercier, Grotius, Coci. Ita et saint Grégoire le Grand ; Salvien, livre 1 ; Philippus Presbyter ; saint Thomas ; Carthusianus ; Clarius, Titelman.",
-   "proposed": "Ita Origène ;\nsaint Augustin, Annotations sur Job ;\nCajetan, Polycronius, Mariana, Scultet, Mercier, Grotius, Coci. Ita et saint Grégoire le Grand ;\nSalvien, livre 1 ;\nPhilippus Presbyter ;\nsaint Thomas ;\nCarthusianus ;\nClarius, Titelman.",
+   "text": "Ita Origène ; Saint Augustin, Annotations sur Job ; Cajetan, Polycronius, Mariana, Scultet, Mercier, Grotius, Coci. Ita et saint Grégoire le Grand ; Salvien, livre 1 ; Philippus Presbyter ; Saint Thomas ; Carthusianus ; Clarius, Titelman.",
+   "proposed": "Ita Origène ;\nSaint Augustin, Annotations sur Job ;\nCajetan, Polycronius, Mariana, Scultet, Mercier, Grotius, Coci. Ita et saint Grégoire le Grand ;\nSalvien, livre 1 ;\nPhilippus Presbyter ;\nSaint Thomas ;\nCarthusianus ;\nClarius, Titelman.",
    "why": [],
    "flags": []
   },
@@ -213,9 +228,11 @@
    "marker": "(c)",
    "text": "3 Rois 22:19. Voyez aussi Zacharie 1:10-12.",
    "proposed": "3 Rois 22:19. Voyez aussi Zacharie 1:10-12.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 22:19 = 1 Kings, Micaiah"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -223,11 +240,16 @@
    "page": "page_0076",
    "marker": "(c)",
    "text": "Hebr. [UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]. Ils ont lu [UNCERTAIN HEBREW] Complut. [UNCERTAIN GREEK].",
-   "proposed": "Hebr. [UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]. Ils ont lu [UNCERTAIN HEBREW] Complut. [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "Hebr. כשדים 70. Οἱ ἱππεῖς. Ils ont lu פרשים Complut. Χαλδαῖοι.",
+   "why": [
+    "scan: Filled the two Hebrew and two Greek placeholders",
+    "read on the scan: כשדים",
+    "read on the scan: Οἱ ἱππεῖς",
+    "read on the scan: פרשים",
+    "read on the scan: Χαλδαῖοι"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -235,11 +257,13 @@
    "page": "page_0077",
    "marker": "(a)",
    "text": "In cap. XIX. 17. Vulg. _Orabam filios uteri mei_. 70. [UNCERTAIN GREEK] Vide et in Catena, ad ℣. 21. cap. XXII.",
-   "proposed": "In cap. XIX. 17. Vulg. _Orabam filios uteri mei_. 70. [UNCERTAIN GREEK] Vide et in Catena, ad ℣. 21. cap. XXII.",
-   "why": [],
+   "proposed": "In cap. XIX. 17. Vulg. _Orabam filios uteri mei_. 70. Καὶ προσεκαλούμην κολακεύων υἱοὺς παλλακίδων μου Vide et in Catena, ad ℣. 21. cap. XXII.",
+   "why": [
+    "scan: Filled the Greek placeholder with the LXX of Job 19:17 (the print is poor)",
+    "read on the scan: Καὶ προσεκαλούμην κολακεύων υἱοὺς παλλακίδων μου"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -247,21 +271,22 @@
    "page": "page_0077",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] ויגז את ראשו.",
-   "proposed": "[UNCERTAIN HEBREW] ויגז את ראשו.",
+   "proposed": "ויגז את ראשו.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 1:20"
+    "Hebrew checked against the Hebrew Bible, Job 1:20",
+    "scan: Removed the duplicate Hebrew placeholder; the printed note is ויגז את ראשו",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
    "id": "0080(a)",
    "page": "page_0080",
    "marker": "(a)",
-   "text": "Saint Jean Chrysostome ; Olympiodore, in Catena ; saint Grégoire le Grand.",
-   "proposed": "Saint Jean Chrysostome ;\nOlympiodore, in Catena ;\nsaint Grégoire le Grand.",
+   "text": "Saint Jean Chrysostome ; Olympiodore, in Catena ; Saint Grégoire le Grand.",
+   "proposed": "Saint Jean Chrysostome ;\nOlympiodore, in Catena ;\nSaint Grégoire le Grand.",
    "why": [],
    "flags": []
   },
@@ -279,11 +304,13 @@
    "page": "page_0081",
    "marker": "(b)",
    "text": "Les Lacédémoniens anciennement ont usé de cette sorte de monnaie, comme le marque Sénèque lib. 5. De Benefic. cap. 14. _Æs alienum habere dicitur, et qui aureos debet, et qui corium formâ publicâ percussum, quale apud Lacedemonios fuit, quod usum numeratæ pecuniæ præstinbat_. Et Donat sur cet endroit de Virgile, Æneide 1. _Taurino quantum possent circumdare tergo_, dit qu'on croit qu'en ce temps-là on se servait de monnaie de cuir. Cassiodore dérive _Pecunia_, à _pecudis tergo_, du cuir dont elle était faite _Cassi-dor. lib. 7. variar. Epist. ep. XXXII_. Voyez aussi Saint Isidore, et Suidas sur [UNCERTAIN GREEK]. Mais du temps de Job, dans l'Idumée, nous n'avons nulle preuve qu'on vît rien de semblable.",
-   "proposed": "Les Lacédémoniens anciennement ont usé de cette sorte de monnaie, comme le marque Sénèque lib. 5. De Benefic. cap. 14. _Æs alienum habere dicitur, et qui aureos debet, et qui corium formâ publicâ percussum, quale apud Lacedemonios fuit, quod usum numeratæ pecuniæ præstinbat_. Et Donat sur cet endroit de Virgile, Æneide 1. _Taurino quantum possent circumdare tergo_, dit qu'on croit qu'en ce temps-là on se servait de monnaie de cuir. Cassiodore dérive _Pecunia_, à _pecudis tergo_, du cuir dont elle était faite _Cassi-dor. lib. 7. variar. Epist. ep. XXXII_. Voyez aussi Saint Isidore, et Suidas sur [UNCERTAIN GREEK]. Mais du temps de Job, dans l'Idumée, nous n'avons nulle preuve qu'on vît rien de semblable.",
-   "why": [],
+   "proposed": "Les Lacédémoniens anciennement ont usé de cette sorte de monnaie, comme le marque Sénèque lib. 5. De Benefic. cap. 14. _Æs alienum habere dicitur, et qui aureos debet, et qui corium formâ publicâ percussum, quale apud Lacedemonios fuit, quod usum numeratæ pecuniæ præstinbat_. Et Donat sur cet endroit de Virgile, Æneide 1. _Taurino quantum possent circumdare tergo_, dit qu'on croit qu'en ce temps-là on se servait de monnaie de cuir. Cassiodore dérive _Pecunia_, à _pecudis tergo_, du cuir dont elle était faite _Cassi-dor. lib. 7. variar. Epist. ep. XXXII_. Voyez aussi Saint Isidore, et Suidas sur Ἀσσάρια*. Mais du temps de Job, dans l'Idumée, nous n'avons nulle preuve qu'on vît rien de semblable.",
+   "why": [
+    "scan: Filled the Greek placeholder with a guess (Suidas headword); the print is too small to read",
+    "guessed from context: Ἀσσάρια*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -309,11 +336,13 @@
    "page": "page_0081",
    "marker": "(e)",
    "text": "Vide Chrysost. Polychronius, Apollinaris plerique. Interp. Gr. [UNCERTAIN GREEK].",
-   "proposed": "Vide Chrysost. Polychronius, Apollinaris plerique. Interp. Gr. [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "Vide Chrysost. Polychronius, Apollinaris plerique. Interp. Gr. δέρμα* ὑπὲρ* δέρματος*.",
+   "why": [
+    "scan: Filled the Greek placeholder with a guess from the verse; the print is illegible",
+    "guessed from context: δέρμα* ὑπὲρ* δέρματος*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -346,21 +375,22 @@
    "page": "page_0083",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] עדך מחזיק בתמתך",
-   "proposed": "[UNCERTAIN HEBREW] עדך מחזיק בתמתך",
+   "proposed": "עודך מחזיק בתמתיך",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 2:9"
+    "Hebrew checked against the Hebrew Bible, Job 2:9",
+    "scan: Filled the Hebrew as printed: עודך with vav, בתמתיך with yod.",
+    "read on the scan: עודך"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
    "id": "0084(b)",
    "page": "page_0084",
    "marker": "(b)",
-   "text": "Tertullien ; saint Cyprien ; saint Augustin ; saint Jean Chrysostome ; saint Grégoire de Nazianze ; saint Prosper ; Gaudence, dans Pineda, sur ce passage.",
-   "proposed": "Tertullien ;\nsaint Cyprien ;\nsaint Augustin ;\nsaint Jean Chrysostome ;\nsaint Grégoire de Nazianze ;\nsaint Prosper ;\nGaudence, dans Pineda, sur ce passage.",
+   "text": "Tertullien ; Saint Cyprien ; Saint Augustin ; Saint Jean Chrysostome ; Saint Grégoire de Nazianze ; Saint Prosper ; Gaudence, dans Pineda, sur ce passage.",
+   "proposed": "Tertullien ;\nSaint Cyprien ;\nSaint Augustin ;\nSaint Jean Chrysostome ;\nSaint Grégoire de Nazianze ;\nSaint Prosper ;\nGaudence, dans Pineda, sur ce passage.",
    "why": [],
    "flags": []
   },
@@ -368,8 +398,8 @@
    "id": "0084(c)",
    "page": "page_0084",
    "marker": "(c)",
-   "text": "Saint Grégoire le Grand ; saint Basile ; saint Jean Chrysostome.",
-   "proposed": "Saint Grégoire le Grand ;\nsaint Basile ;\nsaint Jean Chrysostome.",
+   "text": "Saint Grégoire le Grand ; Saint Basile ; Saint Jean Chrysostome.",
+   "proposed": "Saint Grégoire le Grand ;\nSaint Basile ;\nSaint Jean Chrysostome.",
    "why": [],
    "flags": []
   },
@@ -387,11 +417,13 @@
    "page": "page_0085",
    "marker": "(c)",
    "text": "Grot. Drus. Cocce. Mercer. Aqu. Sts pln [UNCERTAIN GREEK]. Quasi una delirantium. Vide Psaumes 13:1. 73:18. Jérémie 29:23. Job. 1. 22.",
-   "proposed": "Grot. Drus. Cocce. Mercer. Aqu. Sts pln [UNCERTAIN GREEK]. Quasi una delirantium. Vide Psaumes 13:1. 73:18. Jérémie 29:23. Job. 1. 22.",
-   "why": [],
+   "proposed": "Grot. Drus. Cocce. Mercer. Aqu. Ὡς μία τῶν* ἀφρονευομένων*. Quasi una delirantium. Vide Psaumes 13:1. 73:18. Jérémie 29:23. Job. 1. 22.",
+   "why": [
+    "scan: Replaced 'Sts pln' and the placeholder with the Greek; the page is blurred after Ὡς μία.",
+    "guessed from context: Ὡς μία τῶν* ἀφρονευομένων*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -408,14 +440,17 @@
    "page": "page_0087",
    "marker": "(d)",
    "text": "Genèse 36:11. et 1 Paralipomènes 1:36. Sophi. 70. Σωφὰρ ὁ βασιλεὺς Βασιλίδος Hebr. [UNCERTAIN HEBREW]",
-   "proposed": "Genèse 36:11. et 1 Paralipomènes 1:36. Sophi. 70. Σωφὰρ ὁ βασιλεὺς Βασιλίδος Hebr. [UNCERTAIN HEBREW]",
+   "proposed": "Genèse 36:11. et 1 Paralipomènes 1:36. Sophi. 70. Σωφὰρ ὁ μιναίων Βασιλεὺς Hebr. צפר הנעמתי",
    "why": [
     "Greek spelling checked against a Greek dictionary",
+    "scan: Corrected the Greek to 'Σωφὰρ ὁ μιναίων Βασιλεὺς'. Filled the Hebrew as צפר הנעמתי.",
+    "read on the scan: צפר הנעמתי",
+    "context: 70 = Septuagint; forms valid",
     "Sophonie 1:70 does not exist in the Vulgate"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread",
+    "scanned",
+    "context",
     "reference-not-in-vulgate"
    ]
   },
@@ -433,11 +468,16 @@
    "page": "page_0088",
    "marker": "(b)",
    "text": "Hebr. [UNCERTAIN HEBREW] apud Polychron. [UNCERTAIN GREEK] [UNCERTAIN HEBREW] 70. Édit. Rom. et Complut. [UNCERTAIN GREEK] Quidam libri",
-   "proposed": "Hebr. [UNCERTAIN HEBREW] apud Polychron. [UNCERTAIN GREEK] [UNCERTAIN HEBREW] 70. Édit. Rom. et Complut. [UNCERTAIN GREEK] Quidam libri",
-   "why": [],
+   "proposed": "Hebr. ויזרקו עפר על ראשיהם apud Polychron. Καὶ ἀναβλέψαντες εἰς οὐρανόν השמימה 70. Édit. Rom. et Complut. Καταπασάμενοι γῆν Quidam libri",
+   "why": [
+    "scan: Filled the four placeholders from the page. The Greek 'εἰς οὐρανόν' is slightly blurred.",
+    "read on the scan: ויזרקו עפר על ראשיהם",
+    "read on the scan: Καὶ ἀναβλέψαντες εἰς οὐρανόν",
+    "read on the scan: השמימה",
+    "read on the scan: Καταπασάμενοι γῆν"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -454,11 +494,15 @@
    "page": "page_0094",
    "marker": "(a)",
    "text": "Hebr. [UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK] Sym. [UNCERTAIN GREEK].",
-   "proposed": "Hebr. [UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK] Sym. [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "Hebr. הלילה הוא יהי גלמוד 70. Ἀλλὰ ἡ νὺξ ἐκείνη εἴη ὀδύνη. Sym. ἐκβλητός.",
+   "why": [
+    "scan: Filled the Hebrew, the Septuagint Greek and the Symmachus Greek. The Greek is small and partly guessed from context.",
+    "read on the scan: הלילה הוא יהי גלמוד",
+    "read on the scan: Ἀλλὰ ἡ νὺξ ἐκείνη εἴη ὀδύνη",
+    "read on the scan: ἐκβλητός"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -466,11 +510,14 @@
    "page": "page_0094",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Exode 32:18. Isaïe 24:8. Jérémie 7:34 et 16:9. Apocalypse 18:23. [UNCERTAIN GREEK].",
-   "proposed": "[UNCERTAIN HEBREW] Exode 32:18. Isaïe 24:8. Jérémie 7:34 et 16:9. Apocalypse 18:23. [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "אל תבא רננה בו Exode 32:18. Isaïe 24:8. Jérémie 7:34 et 16:9. Apocalypse 18:23. Μὴ ἔλθοι ἐπ᾽ αὐτὴν εὐφροσύνη μηδὲ χαρμονή.",
+   "why": [
+    "scan: Filled the Hebrew and the Greek (Μὴ ἔλθοι … χαρμονή) from the page.",
+    "read on the scan: אל תבא רננה בו",
+    "read on the scan: Μὴ ἔλθοι ἐπ᾽ αὐτὴν εὐφροσύνη μηδὲ χαρμονή"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -514,13 +561,14 @@
    "page": "page_0102",
    "marker": "(a)",
    "text": "דבר אשר יגרתי ויבאני ויסר אלהים [ILLEGIBLE]",
-   "proposed": "דבר אשר יגרתי ויבאני ויסר אלהים [ILLEGIBLE]",
+   "proposed": "לגבר אשר דרכו נסתרת ויסך אלהים בעדי",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Replaced wrong Hebrew with the printed line; filled the illegible ending.",
+    "read on the scan: לגבר אשר דרכו נסתרת ויסך אלהים בעדי"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -554,13 +602,14 @@
    "page": "page_0104",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] חתת תחת חתה",
-   "proposed": "[UNCERTAIN HEBREW] חתת תחת חתה",
+   "proposed": "תגע עדיך ותבהל",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Replaced wrong Hebrew with the printed words; placeholder filled.",
+    "read on the scan: תגע עדיך ותבהל"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -581,11 +630,16 @@
    "page": "page_0106",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] dans l'Hébreu, [UNCERTAIN HEBREW] se prend souvent pour l'injustice. Nombres 23:21. Job 22:15. Psaumes 7:15. 9:7. etc.",
-   "proposed": "[UNCERTAIN HEBREW] dans l'Hébreu, [UNCERTAIN HEBREW] se prend souvent pour l'injustice. Nombres 23:21. Job 22:15. Psaumes 7:15. 9:7. etc.",
-   "why": [],
+   "proposed": "כאשר ראיתי חרשי און וזרעי עמל יקצרהו עמל מנשמת אלוה יאבדו dans l'Hébreu, און se prend souvent pour l'injustice. Nombres 23:21 ; Job 22:15 ; Psaumes 7:15 ; 9:7 etc.",
+   "why": [
+    "scan: Filled both Hebrew placeholders with the printed Hebrew (Job 4:8-9, then און).",
+    "read on the scan: כאשר ראיתי חרשי און וזרעי עמל יקצרהו עמל מנשמת אלוה יאבדו",
+    "guessed from context: און",
+    "abbreviations written out (footnote_expand.py)"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -619,8 +673,8 @@
    "id": "0108(b)",
    "page": "page_0108",
    "marker": "(b)",
-   "text": "Voyez saint Grégoire ; Philippus ; Pineda ; saint Thomas ; Mercier ; Scultet.",
-   "proposed": "Voyez saint Grégoire ;\nPhilippus ;\nPineda ;\nsaint Thomas ;\nMercier ;\nScultet.",
+   "text": "Voyez saint Grégoire ; Philippus ; Pineda ; Saint Thomas ; Mercier ; Scultet.",
+   "proposed": "Voyez saint Grégoire ;\nPhilippus ;\nPineda ;\nSaint Thomas ;\nMercier ;\nScultet.",
    "why": [],
    "flags": []
   },
@@ -752,13 +806,14 @@
    "page": "page_0126",
    "marker": "(b)",
    "text": "כאנה ללעוג נפשי הנה בדוי לחמי [UNCERTAIN HEBREW]",
-   "proposed": "כאנה ללעוג נפשי הנה בדוי לחמי [UNCERTAIN HEBREW]",
+   "proposed": "מאנה לנגוע נפשי המה כדוי לחמי",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Corrected the Hebrew to the printed line; the trailing placeholder is removed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -766,14 +821,15 @@
    "page": "page_0126",
    "marker": "(d)",
    "text": "Οὐ δύναται γὰρ παύσασθαι μου ἡ ὀργὴ; βέβρωμαι γὰρ ὁμοίως ὥσπερ ἄρτον ἀηδῆ. Plus res libri, Οὐ δύναται παύσασθαι ἡ ψυχή μου. Ita legit August. et antiq. vers. Latina, in Édit. nov. Saint Ieronym. [UNCERTAIN GREEK]",
-   "proposed": "Οὐ δύναται γὰρ παύσασθαι μου ἡ ὀργὴ; βέβρωμαι γὰρ ὁμοίως ὥσπερ ἄρτον ἀηδῆ. Plus res libri, Οὐ δύναται παύσασθαι ἡ ψυχή μου. Ita legit August. et antiq. vers. Latina, in Édit. nov. Saint Ieronym. [UNCERTAIN GREEK]",
+   "proposed": "Οὐ δύναται γὰρ παύσασθαι μου ἡ ὀργὴ; βέβρωμαι γὰρ ὁρῶ τὰ σῖτά μου ὥσπερ ὀσμὴν λέοντος. Plus res libri, Οὐ δύναται παύσασθαι ἡ ψυχή μου. Ita legit August. et antiq. vers. Latina, in Édit. nov. Saint Ieronym.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek checked against the Septuagint, Job 6:7"
+    "Greek checked against the Septuagint, Job 6:7",
+    "scan: Corrected the Greek of the Septuagint quotation; the trailing placeholder is removed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -793,8 +849,10 @@
    "page": "page_0131",
    "marker": "(a)",
    "text": "ולפתוח ארחות דרכם יעלו בתהו ויאבדו חתפתוח [ILLEGIBLE] תתוראו",
-   "proposed": "ולפתוח ארחות דרכם יעלו בתהו ויאבדו חתפתוח [ILLEGIBLE] תתוראו",
-   "why": [],
+   "proposed": "ילפתו ארחות דרכם יעלו בתהו ויאבדו חתפתוח [ILLEGIBLE] תתוראו",
+   "why": [
+    "context: Trailing Hebrew variant illegible: ולפתוח -> ילפתו"
+   ],
    "flags": [
     "uncertain",
     "hebrew",
@@ -833,13 +891,14 @@
    "page": "page_0135",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] הלא צבא לאנוש עלי ארץ",
-   "proposed": "[UNCERTAIN HEBREW] הלא צבא לאנוש עלי ארץ",
+   "proposed": "הלא צבא לאנוש עלי ארץ",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 7:1"
+    "Hebrew checked against the Hebrew Bible, Job 7:1",
+    "scan: Removed the leading placeholder; the Hebrew is as printed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -847,13 +906,14 @@
    "page": "page_0135",
    "marker": "(b)",
    "text": "[UNCERTAIN GREEK] Πότερον οὐχὶ πειρατήριόν ἐστιν ὁ βίος ἀνθρώπου ἐπὶ τῆς γῆς;",
-   "proposed": "[UNCERTAIN GREEK] Πότερον οὐχὶ πειρατήριόν ἐστιν ὁ βίος ἀνθρώπου ἐπὶ τῆς γῆς;",
+   "proposed": "Πότερον οὐχὶ πειρατήριόν ἐστιν ὁ βίος ἀνθρώπου ἐπὶ τῆς γῆς;",
    "why": [
-    "Greek checked against the Septuagint, Job 7:1"
+    "Greek checked against the Septuagint, Job 7:1",
+    "scan: Removed the leading placeholder; the Greek is as printed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -861,13 +921,14 @@
    "page": "page_0138",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] לבש בשרי ומה וגוש עפר עורי רגע וימאס",
-   "proposed": "[UNCERTAIN HEBREW] לבש בשרי ומה וגוש עפר עורי רגע וימאס",
+   "proposed": "לבש בשרי רמה גיש עפר עורי רגע וימאס",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 7:5"
+    "Hebrew checked against the Hebrew Bible, Job 7:5",
+    "scan: Filled placeholder; page reads רמה גיש (no ו), unlike the reference",
+    "read on the scan: לבש בשרי רמה גיש עפר עורי רגע וימאס"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -887,13 +948,14 @@
    "page": "page_0138",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] ימי קלו מני ארג ויכלו באפס תקוה. _Sim. Taxatiùs ipsóque ocyus._ Plus prompt qu'un tissu. Les Tetrapes, _Taxatiùs ocyus_, plus prompt qu'un coureur.",
-   "proposed": "[UNCERTAIN HEBREW] ימי קלו מני ארג ויכלו באפס תקוה. _Sim. Taxatiùs ipsóque ocyus._ Plus prompt qu'un tissu. Les Tetrapes, _Taxatiùs ocyus_, plus prompt qu'un coureur.",
+   "proposed": "ימי קלו מני ארג ויכלו באפס תקוה. _Sim. Taxatiùs ipsóque ocyus._ Plus prompt qu'un tissu. Les Tetrapes, _Taxatiùs ocyus_, plus prompt qu'un coureur.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 7:6"
+    "Hebrew checked against the Hebrew Bible, Job 7:6",
+    "scan: Placeholder was a duplicate of the printed Hebrew; kept a single copy",
+    "read on the scan: ימי קלו מני ארג ויכלו באפס תקוה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -933,11 +995,13 @@
    "page": "page_0141",
    "marker": "(b)",
    "text": "Agell. lib. 13. cap. 21. Ferocissimos, et immanes et alienos ab omni humanitate, [UNCERTAIN GREEK] quàm à mari genitos, Neptuni filios dixerunt.",
-   "proposed": "Agell. lib. 13. cap. 21. Ferocissimos, et immanes et alienos ab omni humanitate, [UNCERTAIN GREEK] quàm à mari genitos, Neptuni filios dixerunt.",
-   "why": [],
+   "proposed": "Agell. lib. 13. cap. 21. Ferocissimos, et immanes et alienos ab omni humanitate, tamquàm à mari genitos, Neptuni filios dixerunt.",
+   "why": [
+    "scan: Placeholder was Latin 'tam' (tam-quàm across the columns)",
+    "read on the scan: tam"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -945,8 +1009,10 @@
    "page": "page_0141",
    "marker": "(c)",
    "text": "[UNCERTAIN GREEK] _Ημ, η θαλάσσῃ, η γυνη, κακα τρία._",
-   "proposed": "[UNCERTAIN GREEK] _Ημ, η θαλάσσῃ, η γυνη, κακα τρία._",
-   "why": [],
+   "proposed": "_Πῦρ*, ἡ* θάλασσα*, ἡ* γυνή*, κακὰ* τρία._",
+   "why": [
+    "context: proverb: fire, sea, woman: [UNCERTAIN GREEK] _Ημ, η θαλάσσῃ, η γυνη, κακα τρία._ -> _Πῦρ*, ἡ* θάλασσα*, ἡ* γυνή*, κακὰ* τρία._"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -958,11 +1024,13 @@
    "page": "page_0141",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ותבחר מחנק נפשי מות מעצמותי",
+   "why": [
+    "scan: Filled the Hebrew; the first word is partly cropped, so I took it from the reference",
+    "read on the scan: ותבחר מחנק נפשי מות מעצמותי"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -970,13 +1038,14 @@
    "page": "page_0143",
    "marker": "(b)",
    "text": "Εἰ ἐγὼ ἥμαρτον, τὶ δυνήσομαι πρᾶξαι; [ILLEGIBLE]",
-   "proposed": "Εἰ ἐγὼ ἥμαρτον, τὶ δυνήσομαι πρᾶξαι; [ILLEGIBLE]",
+   "proposed": "Εἰ ἐγὼ ἥμαρτον, τὶ δυνήσομαι πρᾶξαι; ὁ ἐπιστάμενος τὸν νοῦν τῶν ἀνθρώπων,",
    "why": [
-    "Greek checked against the Septuagint, Job 7:20"
+    "Greek checked against the Septuagint, Job 7:20",
+    "scan: Filled the Greek continuation from the right column",
+    "read on the scan: ὁ ἐπιστάμενος τὸν νοῦν τῶν ἀνθρώπων,"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -984,11 +1053,13 @@
    "page": "page_0144",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] ut loqueretur adversus te, ut esset tibi oneri. Antiq. Vulg. Ut loquar adversum te, et sum tibi oneri.",
-   "proposed": "[UNCERTAIN HEBREW] ut loqueretur adversus te, ut esset tibi oneri. Antiq. Vulg. Ut loquar adversum te, et sum tibi oneri.",
-   "why": [],
+   "proposed": "למה שמתני למפגע לך ואהיה עלי למשא ut loqueretur adversus te, ut esset tibi oneri. Antiq. Vulg. Ut loquar adversum te, et sum tibi oneri.",
+   "why": [
+    "scan: Filled the Hebrew from the page",
+    "read on the scan: למה שמתני למפגע לך ואהיה עלי למשא"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -996,11 +1067,13 @@
    "page": "page_0144",
    "marker": "(b)",
    "text": "[UNCERTAIN GREEK] saint Aug. Quare constituisti hominem",
-   "proposed": "[UNCERTAIN GREEK] saint Aug. Quare constituisti hominem",
-   "why": [],
+   "proposed": "Διατί ἔθου με κατεναντίον σου; εἰμὶ δὲ ἐπὶ φορτίῳ* saint Aug. Quare constituisti hominem",
+   "why": [
+    "scan: Filled the Greek; the end of the line is small, so the last word is guessed",
+    "guessed from context: Διατί ἔθου με κατεναντίον σου; εἰμὶ δὲ ἐπὶ φορτίῳ*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1023,8 +1096,10 @@
    "page": "page_0147",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] _Sive ut Ausquæ indo msis. Aq. Sym. Éλos, uq ; marais, Th. A'χί._",
-   "proposed": "[UNCERTAIN HEBREW] _Sive ut Ausquæ indo msis. Aq. Sym. Éλos, uq ; marais, Th. A'χί._",
-   "why": [],
+   "proposed": "היגאה* גמא* בלא* בצה* _Sive ut Ausquæ indo msis. Aq. Sym. Ἕλος, uq ; marais, Th. Ἀχί._",
+   "why": [
+    "context: Latin and 'uq' garbled: [UNCERTAIN HEBREW] -> היגאה* גמא* בלא* בצה*, Éλos -> Ἕλος, A'χί -> Ἀχί"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -1036,11 +1111,14 @@
    "page": "page_0147",
    "marker": "(b)",
    "text": "[UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "καὶ θάλλει πάπυρος ἄνευ ὕδατος, ἢ ὑψω-",
+   "why": [
+    "scan: Filled the Greek from the page; the print is small and partly unclear",
+    "guessed from context: καὶ θάλλει πάπυρος ἄνευ ὕδατος, ἢ ὑψω-"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -1048,13 +1126,14 @@
    "page": "page_0152",
    "marker": "(c)",
    "text": "מי הקשה אליו וישלם [UNCERTAIN HEBREW]",
-   "proposed": "מי הקשה אליו וישלם [UNCERTAIN HEBREW]",
+   "proposed": "מי הקשה אליו וישלם",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 9:4"
+    "Hebrew checked against the Hebrew Bible, Job 9:4",
+    "scan: Placeholder removed; Hebrew is complete as printed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1062,10 +1141,11 @@
    "page": "page_0152",
    "marker": "(d)",
    "text": "70. Τίς σκληρός γέ. ἐφ᾽ ἑαυτῷ ἐναντίος αὐτῷ ἔμεινεν. Aquil. Εἰρηνεύσεν. Sym. Διεσώθη. [UNCERTAIN GREEK]",
-   "proposed": "70. Τίς σκληρός γέ. ἐφ᾽ ἑαυτῷ ἐναντίος αὐτῷ ἔμεινεν. Aquil. Εἰρηνεύσεν. Sym. Διεσώθη. [UNCERTAIN GREEK]",
+   "proposed": "70. Τίς σκληρός γέ. ἐφ᾽ ἑαυτῷ ἐναντίος αὐτῷ ἔμεινεν. Aquil. Εἰρήνευσεν. Sym. Διεσώθη. [UNCERTAIN GREEK]",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Final uncertain Greek remains: Εἰρηνεύσεν -> Εἰρήνευσεν"
    ],
    "flags": [
     "uncertain",
@@ -1106,8 +1186,8 @@
    "id": "0158(d)",
    "page": "page_0158",
    "marker": "(d)",
-   "text": "Voyez Rabbi Abraham ; saint Grégoire le Grand ; Pineda, sur ce passage, numéro 5.",
-   "proposed": "Voyez Rabbi Abraham ;\nsaint Grégoire le Grand ;\nPineda, sur ce passage, numéro 5.",
+   "text": "Voyez Rabbi Abraham ; Saint Grégoire le Grand ; Pineda, sur ce passage, numéro 5.",
+   "proposed": "Voyez Rabbi Abraham ;\nSaint Grégoire le Grand ;\nPineda, sur ce passage, numéro 5.",
    "why": [],
    "flags": []
   },
@@ -1125,13 +1205,14 @@
    "page": "page_0163",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] לא אם כן הוא מי",
-   "proposed": "[UNCERTAIN HEBREW] לא אם כן הוא מי",
+   "proposed": "אם לא אפוא מי הוא",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled the placeholder and put the Hebrew in logical order.",
+    "read on the scan: אם"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1139,13 +1220,14 @@
    "page": "page_0163",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] ולי עבר אניה אבה על כן 70. Et sic interpretatur in ix. edS. Vide Proverbes 30:19. Sagesse 5:10-12.",
-   "proposed": "[UNCERTAIN HEBREW] ולי עבר אניה אבה על כן 70. Et sic interpretatur in ix. edS. Vide Proverbes 30:19. Sagesse 5:10-12.",
+   "proposed": "חלפו עם אניות אבה כנשר יטוש עלי אכל 70. Et sic interpretatur in ix. edS. Vide Proverbes 30:19. Sagesse 5:10-12.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Hebrew restored in logical order. The small Greek after '70.' is unreadable, so I left it as given.",
+    "read on the scan: חלפו עם אניות אבה כנשר יטוש עלי אכל"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1162,11 +1244,13 @@
    "page": "page_0164",
    "marker": "(c)",
    "text": "Syr. ex [UNCERTAIN HEBREW] _hôtes_.",
-   "proposed": "Syr. ex [UNCERTAIN HEBREW] _hôtes_.",
-   "why": [],
+   "proposed": "Syr. ex איב _hôtes_.",
+   "why": [
+    "scan: Filled Hebrew איב.",
+    "read on the scan: איב"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1174,11 +1258,15 @@
    "page": "page_0164",
    "marker": "(d)",
    "text": "Sym. _[UNCERTAIN GREEK] ; et [UNCERTAIN GREEK]_.",
-   "proposed": "Sym. _[UNCERTAIN GREEK] ; et [UNCERTAIN GREEK]_.",
-   "why": [],
+   "proposed": "Sym. _Ἄκατοι* ὅμοιοι* ἀετοῖς* ; et ὡς ἀετὸς ἐκπετόμενος* ἐπὶ βορᾷν_.",
+   "why": [
+    "scan: Filled both Greek placeholders. The page is cut off and small, so both are partly guessed.",
+    "guessed from context: Ἄκατοι* ὅμοιοι* ἀετοῖς*",
+    "guessed from context: ὡς ἀετὸς ἐκπετόμενος* ἐπὶ βορᾷν"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -1186,11 +1274,13 @@
    "page": "page_0164",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "אם אמרי אשכחה שיחי אעזבה פני ואבליגה",
+   "why": [
+    "scan: Filled the Hebrew placeholder, using the reference spelling.",
+    "read on the scan: אם אמרי אשכחה שיחי אעזבה פני ואבליגה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1198,11 +1288,13 @@
    "page": "page_0166",
    "marker": "(a)",
    "text": "70. [UNCERTAIN GREEK]",
-   "proposed": "70. [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "70. ἐπειδὴ* δὲ* ἀσεβῶ* ἵνα* τί* οὐκ* ἀπέθανον*",
+   "why": [
+    "scan: Greek guessed from the LXX, because this note is not visible on the supplied pages.",
+    "guessed from context: ἐπειδὴ* δὲ* ἀσεβῶ* ἵνα* τί* οὐκ* ἀπέθανον*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1210,11 +1302,14 @@
    "page": "page_0166",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] [UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN HEBREW] [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "אם* התרחצתי* במי* שלג* ἐὰν* ἀπολούσωμαι* ἀπὸ* χιόνος*",
+   "why": [
+    "scan: Both guessed from the verse, because this note is not visible on the supplied pages.",
+    "guessed from context: אם* התרחצתי* במי* שלג*",
+    "guessed from context: ἐὰν* ἀπολούσωμαι* ἀπὸ* χιόνος*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1231,11 +1326,14 @@
    "page": "page_0166",
    "marker": "(f)",
    "text": "[UNCERTAIN HEBREW] _Aq. Et sim._ [UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN HEBREW] _Aq. Et sim._ [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "בשחת תטבלני _Aq. Et sim._ Ἐν διαφθορᾷ* βάψεις* με*",
+   "why": [
+    "scan: Filled the Hebrew. The Greek is mostly cut off at the page edge, so it is guessed.",
+    "read on the scan: בשחת תטבלני",
+    "guessed from context: Ἐν διαφθορᾷ* βάψεις* με*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1243,11 +1341,13 @@
    "page": "page_0169",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "הטוב לך כי תעשק כי תמאס יגיע כפיך",
+   "why": [
+    "scan: Filled the Hebrew placeholder.",
+    "read on the scan: הטוב לך כי תעשק כי תמאס יגיע כפיך"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1255,11 +1355,13 @@
    "page": "page_0169",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "הטוב לך כי תעשק כי תמאס יגיע כפיך",
+   "why": [
+    "scan: Filled the Hebrew placeholder.",
+    "read on the scan: הטוב לך כי תעשק כי תמאס יגיע כפיך"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1276,11 +1378,16 @@
    "page": "page_0172",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] H. [UNCERTAIN GREEK] i [UNCERTAIN GREEK] Aq [UNCERTAIN GREEK] _Mulsisti me et coagulasti._",
-   "proposed": "[UNCERTAIN HEBREW] H. [UNCERTAIN GREEK] i [UNCERTAIN GREEK] Aq [UNCERTAIN GREEK] _Mulsisti me et coagulasti._",
-   "why": [],
+   "proposed": "הלא כחלב תתיכני וכגבנה תקפיאני H. οὐχ ὥσπερ γάλα ἤμελξάς με, ἐτύρωσας* i με ἴσα τυρῷ* Aq Ἔπηξας* καὶ ἐπήξας με* _Mulsisti me et coagulasti._",
+   "why": [
+    "scan: Filled Hebrew from page; Greek of LXX and Aquila partly guessed, small type",
+    "read on the scan: הלא כחלב תתיכני וכגבנה תקפיאני",
+    "guessed from context: οὐχ* ὥσπερ* γάλα* ἤμελξάς* με,* ἐτύρωσας*",
+    "guessed from context: με* ἴσα* τυρῷ*",
+    "guessed from context: Ἔπηξας* καὶ* ἐπήξας* με*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1288,11 +1395,13 @@
    "page": "page_0172",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ואלה צפנת בלבבך ידעתי כי זאת עמך",
+   "why": [
+    "scan: Filled Hebrew from page",
+    "read on the scan: ואלה צפנת בלבבך ידעתי כי זאת עמך"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1300,11 +1409,13 @@
    "page": "page_0172",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ואלה צפנת בלבבך ידעתי כי זאת עמך",
+   "why": [
+    "scan: Filled Hebrew from page",
+    "read on the scan: ואלה צפנת בלבבך ידעתי כי זאת עמך"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1323,8 +1434,8 @@
    "id": "0175(c)",
    "page": "page_0175",
    "marker": "(c)",
-   "text": "Ainsi l'entendent saint Augustin, sur Job ; saint Grégoire le Grand, Morales sur Job, livre 9, à partir du chapitre 45 ; saint Thomas, Expositio 2 ; Sanctius.",
-   "proposed": "Ainsi l'entendent saint Augustin, sur Job ;\nsaint Grégoire le Grand, Morales sur Job, livre 9, à partir du chapitre 45 ;\nsaint Thomas, Expositio 2 ;\nSanctius.",
+   "text": "Ainsi l'entendent saint Augustin, sur Job ; Saint Grégoire le Grand, Morales sur Job, livre 9, à partir du chapitre 45 ; Saint Thomas, Expositio 2 ; Sanctius.",
+   "proposed": "Ainsi l'entendent saint Augustin, sur Job ;\nSaint Grégoire le Grand, Morales sur Job, livre 9, à partir du chapitre 45 ;\nSaint Thomas, Expositio 2 ;\nSanctius.",
    "why": [],
    "flags": []
   },
@@ -1357,8 +1468,8 @@
    "id": "0177(c)",
    "page": "page_0177",
    "marker": "(c)",
-   "text": "Saint Jean Chrysostome, dans la Chaîne ; saint Grégoire, sur ce passage ; Bède.",
-   "proposed": "Saint Jean Chrysostome, dans la Chaîne ;\nsaint Grégoire, sur ce passage ;\nBède.",
+   "text": "Saint Jean Chrysostome, dans la Chaîne ; Saint Grégoire, sur ce passage ; Bède.",
+   "proposed": "Saint Jean Chrysostome, dans la Chaîne ;\nSaint Grégoire, sur ce passage ;\nBède.",
    "why": [],
    "flags": []
   },
@@ -1391,13 +1502,14 @@
    "page": "page_0179",
    "marker": "(c)",
    "text": "Εἴθε ἀληθινὰ σοι ἀπήγγειλε, ὅτι δὶς ἄξια ὧν ἡμάρτηκας ἔσῃ; καὶ τότε γνώσῃ ὅτι ἄξια ὧν [UNCERTAIN GREEK]",
-   "proposed": "Εἴθε ἀληθινὰ σοι ἀπήγγειλε, ὅτι δὶς ἄξια ὧν ἡμάρτηκας ἔσῃ; καὶ τότε γνώσῃ ὅτι ἄξια ὧν [UNCERTAIN GREEK]",
+   "proposed": "Εἴθε ἀναγγελείη σοι ἀπόρρητα σοφίας, ὅτι διπλᾶ ἴσα τῷ κακῷ σου; καὶ τότε γνώσῃ ὅτι ἄξια σοι ἀπέβη παρὰ Κυρίου ὧν ἡμάρτηκας.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Corrected Greek beginning and filled ending from page",
+    "read on the scan: σοι ἀπέβη παρὰ Κυρίου ὧν ἡμάρτηκας."
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1425,10 +1537,12 @@
    "page": "page_0181",
    "marker": "(a)",
    "text": "Voyez 2 Rois 2:22. Noli me sequi, ne compellar consodere te in terram ; et levare non potero faciem meam ad Joab.",
-   "proposed": "Voyez 2 Rois 2:22. Noli me sequi, ne compellar consodere te in terram ; et levare non potero faciem meam ad Joab.",
-   "why": [],
+   "proposed": "Voyez 2 Rois 2:22. Noli me sequi, ne compellar confodere te in terram ; et levare non potero faciem meam ad Joab.",
+   "why": [
+    "context: 2 Rois 2:22 = 2 Samuel; Abner: consodere -> confodere"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1495,11 +1609,13 @@
    "page": "page_0191",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "והוכח אל אל אחפץ",
+   "why": [
+    "scan: Filled Hebrew from page",
+    "read on the scan: והוכח אל אל אחפץ"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1507,11 +1623,13 @@
    "page": "page_0191",
    "marker": "(b)",
    "text": "[UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "Ἐλέγξω δὲ ἐναντίον αὐτοῦ, ἐὰν βούληται",
+   "why": [
+    "scan: Filled Greek from page",
+    "read on the scan: Ἐλέγξω δὲ ἐναντίον αὐτοῦ, ἐὰν βούληται"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1519,11 +1637,14 @@
    "page": "page_0192",
    "marker": "(b)",
    "text": "[UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "Ὑμεῖς δὲ ἐστὲ ἰατροὶ ἄδικοι, καὶ ἰαταὶ κακῶν πάντες. Sym. Προσπλάσσεσθε ψεύσμασι, καὶ ἰατροὶ περὶ ἐπιπλάσεως μὴ κατασκευάζοντες ἄλογα.",
+   "why": [
+    "scan: Filled Greek (LXX and Symmachus) from page; Symmachus end partly uncertain",
+    "guessed from context: Ὑμεῖς δὲ ἐστὲ ἰατροὶ ἄδικοι, καὶ ἰαταὶ κακῶν πάντες. Sym. Προσπλάσσεσθε ψεύσμασι, καὶ ἰατροὶ περὶ ἐπιπλάσεως* μὴ* κατασκευάζοντες* ἄλογα."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -1531,11 +1652,13 @@
    "page": "page_0192",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ורבות שפתי הקשיבו",
+   "why": [
+    "scan: Filled Hebrew; page small, reference spelling used",
+    "read on the scan: ורבות שפתי הקשיבו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1543,13 +1666,14 @@
    "page": "page_0193",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] _Symm. Κρὶνεσθε τῷ Θεῷ λαλεῖτε. Parlez-vous pour Dieu, pour sa défense ?_",
-   "proposed": "[UNCERTAIN HEBREW] _Symm. Κρὶνεσθε τῷ Θεῷ λαλεῖτε. Parlez-vous pour Dieu, pour sa défense ?_",
+   "proposed": "הלאל תדברו עולה ולו תדברו רמיה _Symm. Ἆρα ὑπὲρ τῷ Θεῷ λαλεῖτε. Parlez-vous pour Dieu, pour sa défense ?_",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled Hebrew; Symmachus Greek corrected to Ἆρα ὑπὲρ τῷ Θεῷ",
+    "read on the scan: הלאל תדברו עולה ולו תדברו רמיה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1557,11 +1681,13 @@
    "page": "page_0193",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] _Hebra. apud H. Corruptum, opinor, et legendum ut Symmachus et Theodot._",
-   "proposed": "[UNCERTAIN HEBREW] _Hebra. apud H. Corruptum, opinor, et legendum ut Symmachus et Theodot._",
-   "why": [],
+   "proposed": "הפניו תשאון אם לאל תריבון _Hebra. apud H. Corruptum, opinor, et legendum ut Symmachus et Theodot._",
+   "why": [
+    "scan: Filled Hebrew from page",
+    "read on the scan: הפניו תשאון אם לאל תריבון"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1583,11 +1709,13 @@
    "page": "page_0194",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "הוכח יוכיח אתכם אם בסתר פנים תשאון",
+   "why": [
+    "scan: Filled placeholder with the Hebrew; spelling follows the reference",
+    "read on the scan: הוכח יוכיח אתכם אם בסתר פנים תשאון"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1595,11 +1723,13 @@
    "page": "page_0194",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "הוכח יוכיח אתכם אם בסתר פנים תשאון",
+   "why": [
+    "scan: Filled placeholder with the Hebrew; spelling follows the reference",
+    "read on the scan: הוכח יוכיח אתכם אם בסתר פנים תשאון"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1619,13 +1749,14 @@
    "page": "page_0196",
    "marker": "(a)",
    "text": "Λαλήσω καὶ ἀναπαύσομαι θυμῷ. [UNCERTAIN GREEK]",
-   "proposed": "Λαλήσω καὶ ἀναπαύσομαι θυμῷ. [UNCERTAIN GREEK]",
+   "proposed": "Λαλήσω καὶ ἀναπαύσομαι θυμῷ.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Removed the placeholder; the printed Greek is complete",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1633,14 +1764,15 @@
    "page": "page_0196",
    "marker": "(e)",
    "text": "אף יקטלני לו איחל Alii legunt, לא איחל [UNCERTAIN HEBREW]",
-   "proposed": "אף יקטלני לו איחל Alii legunt, לא איחל [UNCERTAIN HEBREW]",
+   "proposed": "הן יקטלני לו איחל Alii legunt, לא איחל",
    "why": [
     "Hebrew checked against the Hebrew Bible, Job 13:15",
-    "Hebrew checked against the Hebrew Bible, Job 13:15"
+    "Hebrew checked against the Hebrew Bible, Job 13:15",
+    "scan: אף corrected to הן; placeholder removed, nothing more printed",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1648,13 +1780,14 @@
    "page": "page_0196",
    "marker": "(f)",
    "text": "Εἴτε μὲ χειρώσηται ὁ δυνάστης, ἐπεὶ καὶ ἤρκται, λαλήσω. [UNCERTAIN GREEK]",
-   "proposed": "Εἴτε μὲ χειρώσηται ὁ δυνάστης, ἐπεὶ καὶ ἤρκται, λαλήσω. [UNCERTAIN GREEK]",
+   "proposed": "Ἐὰν με χειρώσηται ὁ δυνάστης, ἐπεὶ καὶ ἤρξατο,",
    "why": [
-    "Greek checked against the Septuagint, Job 13:15"
+    "Greek checked against the Septuagint, Job 13:15",
+    "scan: Corrected the Greek; removed λαλήσω, which isn't printed, and the placeholder",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1664,7 +1797,8 @@
    "text": "אחותי. Le 70. ἀχάβωθ. [ILLEGIBLE]",
    "proposed": "אחותי. Le 70. ἀχάβωθ. [ILLEGIBLE]",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "context: transliteration and gap unclear"
    ],
    "flags": [
     "uncertain",
@@ -1714,19 +1848,6 @@
    ]
   },
   {
-   "id": "0201(d)",
-   "page": "page_0201",
-   "marker": "(d)",
-   "text": "Voyez au besoin Aristote, L. Oss. v. Métaphysique, chapitre 9 ; et Cicéron, De la nature des dieux, livre 2.",
-   "proposed": "Voyez au besoin Aristote, L. Oss. v. Métaphysique, chapitre 9 ; et Cicéron, De la nature des dieux, livre 2.",
-   "why": [
-    "written out, but a number changed or added: Voyez au besoin Aristote, Métaphysique, livre 1, chapitre 9 ; et Cicéron, De la nature des dieux, livre 2."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0204(a)",
    "page": "page_0204",
    "marker": "(a)",
@@ -1743,13 +1864,14 @@
    "page": "page_0205",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] ויגוע אדם ויחלש ויוסף סתם איהו",
-   "proposed": "[UNCERTAIN HEBREW] ויגוע אדם ויחלש ויוסף סתם איהו",
+   "proposed": "וגבר ימות ויחלש ויגוע אדם ואיו",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled placeholder; corrected the Hebrew to the printed text",
+    "read on the scan: וגבר ימות"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1818,11 +1940,13 @@
    "page": "page_0212",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] _(a) Et quid si non invenirem verba, exercitus sit stipatus verbis inutilibus. Sym. Et dixit per epistolas amariis et Sjs._",
-   "proposed": "[UNCERTAIN HEBREW] _(a) Et quid si non invenirem verba, exercitus sit stipatus verbis inutilibus. Sym. Et dixit per epistolas amariis et Sjs._",
-   "why": [],
+   "proposed": "הוכח בדבר לא יסכון ומלים לא יועיל בם _(a) Et quid si non invenirem verba, exercitus sit stipatus verbis inutilibus. Sym. Et dixit per epistolas amariis et Sjs._",
+   "why": [
+    "scan: Filled placeholder with the Hebrew; Latin unchanged",
+    "read on the scan: הוכח בדבר לא יסכון ומלים לא יועיל בם"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1830,11 +1954,13 @@
    "page": "page_0212",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "אף אתה תפר יראה ותגרע שיחה לפני אל",
+   "why": [
+    "scan: Filled placeholder with the Hebrew; spelling follows the reference",
+    "read on the scan: אף אתה תפר יראה ותגרע שיחה לפני אל"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1842,11 +1968,13 @@
    "page": "page_0212",
    "marker": "(c)",
    "text": "[UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "Οὐ καὶ σὺ ἀπέστησας φόβον, συντετέλεκας δὲ ῥήματα τοιαῦτα ἐναντίον Κυρίου. Sym. Καὶ ἀνεῖδες ἀμελήσας ἐναντία τῷ Θεῷ.",
+   "why": [
+    "scan: Filled placeholder with the printed Greek",
+    "read on the scan: Οὐ καὶ σὺ ἀπέστησας φόβον, συντετέλεκας δὲ ῥήματα τοιαῦτα ἐναντίον Κυρίου. Sym. Καὶ ἀνεῖδες ἀμελήσας ἐναντία τῷ Θεῷ."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1866,13 +1994,14 @@
    "page": "page_0219",
    "marker": "(a)",
    "text": "כל ימי רשע הוא מתחולל ומספר שנים נצפנו לעריץ [UNCERTAIN HEBREW]",
-   "proposed": "כל ימי רשע הוא מתחולל ומספר שנים נצפנו לעריץ [UNCERTAIN HEBREW]",
+   "proposed": "כל ימי רשע הוא מתחולל ומספר שנים נצפנו לעריץ",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 15:20"
+    "Hebrew checked against the Hebrew Bible, Job 15:20",
+    "scan: Removed the placeholder; the Hebrew is complete",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1880,14 +2009,15 @@
    "page": "page_0219",
    "marker": "(b)",
    "text": "Πᾶς ὁ βίος ἀσεβῶν ἐν φροντίδι, ἔτη δὲ ἀριθμητὰ δεδομένα δυνάστη. Sym. Καὶ ἀριθμὸς ἐτῶν [UNCERTAIN GREEK]",
-   "proposed": "Πᾶς ὁ βίος ἀσεβῶν ἐν φροντίδι, ἔτη δὲ ἀριθμητὰ δεδομένα δυνάστη. Sym. Καὶ ἀριθμὸς ἐτῶν [UNCERTAIN GREEK]",
+   "proposed": "Πᾶς ὁ βίος ἀσεβοῦς ἐν φροντίδι, ἔτη δὲ ἀριθμητὰ δεδομένα δυνάστῃ. Sym. Καὶ ἀριθμὸς ἐτῶν κεκρυμμένος ἰσχυρῷ.",
    "why": [
     "Greek checked against the Septuagint, Job 15:20",
-    "Greek checked against the Septuagint, Job 36:26"
+    "Greek checked against the Septuagint, Job 36:26",
+    "scan: Corrected ἀσεβῶν and δυνάστη; filled in the Symmachus ending",
+    "read on the scan: κεκρυμμένος ἰσχυρῷ."
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1895,13 +2025,14 @@
    "page": "page_0219",
    "marker": "(c)",
    "text": "בשלום שוד יבואנו [UNCERTAIN HEBREW]",
-   "proposed": "בשלום שוד יבואנו [UNCERTAIN HEBREW]",
+   "proposed": "בשלום שדד יבואנו",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: שוד corrected to שדד; placeholder removed",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1909,13 +2040,14 @@
    "page": "page_0219",
    "marker": "(d)",
    "text": "Ὅταν δοκῇ ἤδη εἰρηνεύειν, τότε αὐτῷ ὁ ὄλεθρος ἐπέρχεται. [UNCERTAIN GREEK]",
-   "proposed": "Ὅταν δοκῇ ἤδη εἰρηνεύειν, τότε αὐτῷ ὁ ὄλεθρος ἐπέρχεται. [UNCERTAIN GREEK]",
+   "proposed": "Ὅταν δοκῇ ἤδη εἰρηνεύειν, ἥξει αὐτῷ ἡ καταστροφή.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Replaced the ending with the printed Greek",
+    "read on the scan: ἥξει αὐτῷ ἡ καταστροφή."
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1932,13 +2064,14 @@
    "page": "page_0221",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] ירוץ אליו בצואר בעבי גבי מגניו",
-   "proposed": "[UNCERTAIN HEBREW] ירוץ אליו בצואר בעבי גבי מגניו",
+   "proposed": "ירץ אליו בצואר בעבי גבי מגיניו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 15:26"
+    "Hebrew checked against the Hebrew Bible, Job 15:26",
+    "scan: Placeholder replaced; printed ירץ (no vav) and מגיניו",
+    "read on the scan: ירץ"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1946,9 +2079,10 @@
    "page": "page_0221",
    "marker": "(c)",
    "text": "70. Th. [UNCERTAIN GREEK] Ἐν πάχει νώτο ἀσπίδος αυτ8. [UNCERTAIN HEBREW] לא יטה לארץ סכלם",
-   "proposed": "70. Th. [UNCERTAIN GREEK] Ἐν πάχει νώτο ἀσπίδος αυτ8. [UNCERTAIN HEBREW] לא יטה לארץ סכלם",
+   "proposed": "70. Th. [UNCERTAIN GREEK] Ἐν πάχει νώτου ἀσπίδος αὐτοῦ. [UNCERTAIN HEBREW] לא יטה לארץ סכלם",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 15:29"
+    "Hebrew checked against the Hebrew Bible, Job 15:29",
+    "context: markers remain unreadable: νώτο  -> νώτου , αυτ8 -> αὐτοῦ"
    ],
    "flags": [
     "uncertain",
@@ -2013,8 +2147,8 @@
    "id": "0226(f)",
    "page": "page_0226",
    "marker": "(f)",
-   "text": "Ménochius ; saint Thomas ; Gracis.",
-   "proposed": "Ménochius ;\nsaint Thomas ;\nGracis.",
+   "text": "Ménochius ; Saint Thomas ; Gracis.",
+   "proposed": "Ménochius ;\nSaint Thomas ;\nGracis.",
    "why": [],
    "flags": []
   },
@@ -2037,11 +2171,13 @@
    "page": "page_0228",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "הכו לחיי יחד עלי יתמלאון",
+   "why": [
+    "scan: Filled placeholder from page",
+    "read on the scan: הכו לחיי יחד עלי יתמלאון"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2049,11 +2185,14 @@
    "page": "page_0228",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN HEBREW] 70. [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "ישפוך לארץ מררתי 70. Τὴν χολήν μου.",
+   "why": [
+    "scan: Filled Hebrew and Greek from page",
+    "read on the scan: ישפוך לארץ מררתי",
+    "read on the scan: Τὴν χολήν μου."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2100,11 +2239,13 @@
    "page": "page_0233",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "לחלק יגיד רעים ועיני בניו תכלנה",
+   "why": [
+    "scan: Filled placeholder from page",
+    "read on the scan: לחלק יגיד רעים ועיני בניו תכלנה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2219,7 +2360,8 @@
    "text": "[UNCERTAIN HEBREW] סל קצירו [UNCERTAIN GREEK] νεβρόμενος ἄνομος. Ita et Vulg.",
    "proposed": "[UNCERTAIN HEBREW] סל קצירו [UNCERTAIN GREEK] νεβρόμενος ἄνομος. Ita et Vulg.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "context: markers, νεβρόμενος unclear"
    ],
    "flags": [
     "uncertain",
@@ -2232,13 +2374,14 @@
    "page": "page_0245",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] לא שם לו על פני חוץ",
-   "proposed": "[UNCERTAIN HEBREW] לא שם לו על פני חוץ",
+   "proposed": "ולא שם לו על פני חוץ",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 18:17"
+    "Hebrew checked against the Hebrew Bible, Job 18:17",
+    "scan: Placeholder is the initial vav; printed ולא",
+    "read on the scan: ו"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2249,7 +2392,8 @@
    "proposed": "[UNCERTAIN GREEK] Καὶ τὸ ὄνομα αὐτῆς ἐπὶ γῆς ἐξαίφνης ἐξολεῖται- 70. Ils semblent qu'ils n'ont pas lu la négation N [UNCERTAIN HEBREW] ל Symmaque, [UNCERTAIN GREEK] Καὶ ἐπὶ γῆς ὄνομα αὐτῷ ἐπὶ",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Greek and Hebrew unrecoverable"
    ],
    "flags": [
     "uncertain",
@@ -2262,13 +2406,14 @@
    "page": "page_0245",
    "marker": "(e)",
    "text": "[UNCERTAIN GREEK] Οὐδὲ σωθήσεται τὸ ὑπάρχον τῆς οἰκίας αὐτοῦ",
-   "proposed": "[UNCERTAIN GREEK] Οὐδὲ σωθήσεται τὸ ὑπάρχον τῆς οἰκίας αὐτοῦ",
+   "proposed": "Οὐδὲ σωθήσεται ἐν τῇ ὑπ᾽ οὐρανὸν ὁ οἶκος αὐτοῦ",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Replaced placeholder and wrong Greek with printed text",
+    "read on the scan: Οὐδὲ σωθήσεται ἐν τῇ ὑπ᾽ οὐρανὸν ὁ οἶκος αὐτοῦ"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2276,13 +2421,14 @@
    "page": "page_0246",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] על יומו ישמו אחרונים וקדמונים אחזו שער",
-   "proposed": "[UNCERTAIN HEBREW] על יומו ישמו אחרונים וקדמונים אחזו שער",
+   "proposed": "על יומו נשמו אחרונים וקדמונים אחזו שער",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 18:20"
+    "Hebrew checked against the Hebrew Bible, Job 18:20",
+    "scan: Filled placeholder; corrected ישמו to נשמו, אחרונים, וקדמונים",
+    "read on the scan: על יומו נשמו אחרונים וקדמונים אחזו שער"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2299,14 +2445,15 @@
    "page": "page_0246",
    "marker": "(c)",
    "text": "[UNCERTAIN GREEK] Ἐν τοῖς αὐτῷ ζήσονται ἕτεροι, ἰδ᾽ αὐτὸ ἐξεπλάγησαν ἔσχατοι, πρῶτοι δὲ ἔχε θαῦμα, Aquil. Εἰς τὴν ἡμέραν αὐτῷ ἐθαυμάσθησαν ἔσχατοι.",
-   "proposed": "[UNCERTAIN GREEK] Ἐν τοῖς αὐτῷ ζήσονται ἕτεροι, ἰδ᾽ αὐτὸ ἐξεπλάγησαν ἔσχατοι, πρῶτοι δὲ ἔχε θαῦμα, Aquil. Εἰς τὴν ἡμέραν αὐτῷ ἐθαυμάσθησαν ἔσχατοι.",
+   "proposed": "Ἐν τοῖς αὐτοῦ ζήσονται ἕτεροι, ἐπ᾽ αὐτῷ ἐστέναξαν ἔσχατοι, πρῶτοι δὲ ἔσχε θαῦμα, Aquil. Ἐν τῇ ἡμέρᾳ αὐτοῦ ἀδημονήσουσι ὕστεροι.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled placeholder; corrected Septuagint and Aquila Greek from page",
+    "read on the scan: Ἐν τοῖς αὐτοῦ ζήσονται ἕτεροι, ἐπ᾽ αὐτῷ ἐστέναξαν ἔσχατοι, πρῶτοι δὲ ἔσχε θαῦμα, Aquil. Ἐν τῇ ἡμέρᾳ αὐτοῦ ἀδημονήσουσι ὕστεροι."
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2370,11 +2517,13 @@
    "page": "page_0251",
    "marker": "(c)",
    "text": "_Homer. Odyss. XIX._ [UNCERTAIN GREEK] _Voyez ce que nous avons dit sur Judith 9:3._",
-   "proposed": "_Homer. Odyss. XIX._ [UNCERTAIN GREEK] _Voyez ce que nous avons dit sur Judith 9:3._",
-   "why": [],
+   "proposed": "_Homer. Odyss. XIX._ Αὐτόλυκον πατέρ' ἐσθλὸν, ὃς ἀνθρώπους ἐκέκαστο, Κλεπτοσύνῃ θ' ὅρκῳ τε· θεὸς δέ οἱ αὐτὸς ἔδωκεν, Ἑρμείας. _Voyez ce que nous avons dit sur Judith 9:3._",
+   "why": [
+    "scan: Filled the Homer verses from the page; the small print is only partly clear.",
+    "read on the scan: Αὐτόλυκον πατέρ' ἐσθλὸν, ὃς ἀνθρώπους ἐκέκαστο, Κλεπτοσύνῃ θ' ὅρκῳ τε· θεὸς δέ οἱ αὐτὸς ἔδωκεν, Ἑρμείας."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2382,8 +2531,10 @@
    "page": "page_0251",
    "marker": "(d)",
    "text": "[UNCERTAIN GREEK] _Nonius croit que par_ Πειρατεία, _on peut entendre, des troupes de Pirates. Voyez Theodotion, question dernière sur les Rois. Mais Job était trop éloigné de la mer, pour craindre les Pirates. Theodot. Merôdemoi. Sym. Léxai._",
-   "proposed": "[UNCERTAIN GREEK] _Nonius croit que par_ Πειρατεία, _on peut entendre, des troupes de Pirates. Voyez Theodotion, question dernière sur les Rois. Mais Job était trop éloigné de la mer, pour craindre les Pirates. Theodot. Merôdemoi. Sym. Léxai._",
-   "why": [],
+   "proposed": "ὁμοθυμαδὸν* δὲ* ἦλθον* τὰ* πειρατήρια* αὐτοῦ* _Nonius croit que par_ Πειρατήρια, _on peut entendre, des troupes de Pirates. Voyez Theodotion, question dernière sur les Rois. Mais Job était trop éloigné de la mer, pour craindre les Pirates. Theodot. Merôdemoi. Sym. Léxai._",
+   "why": [
+    "context: Opening reconstructed from Septuagint: [UNCERTAIN GREEK] -> ὁμοθυμαδὸν* δὲ* ἦλθον* τὰ* πειρατήρια* αὐτοῦ*, Πειρατεία -> Πειρατήρια"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -2397,6 +2548,7 @@
    "text": "les Septante. Kalendiar inde wathaxldur pus. Voyez Sagesse 23:21 ; et au chapitre 1, verset 18.",
    "proposed": "les Septante. Kalendiar inde wathaxldur pus. Voyez Sagesse 23:21 ; et au chapitre 1, verset 18.",
    "why": [
+    "context: Sagesse reference unidentifiable",
     "Sagesse 23:21 does not exist in the Vulgate"
    ],
    "flags": [
@@ -2408,14 +2560,16 @@
    "page": "page_0252",
    "marker": "(e)",
    "text": "גם עולים מאסו בי [UNCERTAIN HEBREW] Th. Καιρὸς ἄφρων ἀπέρριψέ με. [UNCERTAIN GREEK]",
-   "proposed": "גם עולים מאסו בי [UNCERTAIN HEBREW] Th. Καιρὸς ἄφρων ἀπέρριψέ με. [UNCERTAIN GREEK]",
+   "proposed": "גם עולים מאסו בי Th. Καιροὶ ἄφρονες ἀπώσαντό με.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Job 19:18",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Removed both placeholders (nothing printed there); corrected the Theodotion Greek.",
+    "read on the scan: ",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2423,13 +2577,14 @@
    "page": "page_0252",
    "marker": "(f)",
    "text": "אקומה וידברו בי [UNCERTAIN HEBREW]",
-   "proposed": "אקומה וידברו בי [UNCERTAIN HEBREW]",
+   "proposed": "אקומה וידברו בי",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 19:18"
+    "Hebrew checked against the Hebrew Bible, Job 19:18",
+    "scan: Removed the placeholder; nothing more is printed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2437,13 +2592,14 @@
    "page": "page_0253",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] מתי סודי",
-   "proposed": "[UNCERTAIN HEBREW] מתי סודי",
+   "proposed": "מתי סודי",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 19:19"
+    "Hebrew checked against the Hebrew Bible, Job 19:19",
+    "scan: Removed the placeholder; nothing more is printed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2451,13 +2607,14 @@
    "page": "page_0253",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] בעורי ובבשרי דבקה עצמי ואתמלטה בעור שני",
-   "proposed": "[UNCERTAIN HEBREW] בעורי ובבשרי דבקה עצמי ואתמלטה בעור שני",
+   "proposed": "בעורי ובבשרי דבקה עצמי ואתמלטה בעור שני",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 19:20"
+    "Hebrew checked against the Hebrew Bible, Job 19:20",
+    "scan: Removed the placeholder; the Hebrew matches the page.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2513,13 +2670,14 @@
    "page": "page_0265",
    "marker": "(a)",
    "text": "בניו ירצו דלים [UNCERTAIN HEBREW]",
-   "proposed": "בניו ירצו דלים [UNCERTAIN HEBREW]",
+   "proposed": "בניו ירצו דלים",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 20:10"
+    "Hebrew checked against the Hebrew Bible, Job 20:10",
+    "scan: Removed the placeholder; nothing more is printed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2527,13 +2685,14 @@
    "page": "page_0265",
    "marker": "(c)",
    "text": "ידיו תשבנה לו [UNCERTAIN HEBREW]",
-   "proposed": "ידיו תשבנה לו [UNCERTAIN HEBREW]",
+   "proposed": "וידיו תשבנה אונו",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Page prints וידיו תשבנה אונו, not 'ידיו תשבנה לו'; removed the placeholder.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2541,13 +2700,14 @@
    "page": "page_0265",
    "marker": "(e)",
    "text": "עצמותיו מלאו עלומיו ועמו על עפר תשכב [UNCERTAIN HEBREW]",
-   "proposed": "עצמותיו מלאו עלומיו ועמו על עפר תשכב [UNCERTAIN HEBREW]",
+   "proposed": "עצמותיו מלאו עלומו ועמו על עפר תשכב",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 20:11"
+    "Hebrew checked against the Hebrew Bible, Job 20:11",
+    "scan: Corrected עלומיו to עלומו; removed the placeholder.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2583,9 +2743,11 @@
    "marker": "(a)",
    "text": "Exode 3:8 ; Exode 13:5 ; Exode 33:3 ; 4 Rois 18:32 ; Deutéronome 26:15 ; et passim.",
    "proposed": "Exode 3:8 ; Exode 13:5 ; Exode 33:3 ; 4 Rois 18:32 ; Deutéronome 26:15 ; et passim.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 18:32 = 2 Kings, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -2626,13 +2788,14 @@
    "page": "page_0273",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] שמעו שמוע מלתי ותהי זאת תנחומתיכם",
-   "proposed": "[UNCERTAIN HEBREW] שמעו שמוע מלתי ותהי זאת תנחומתיכם",
+   "proposed": "שמעו שמוע מלתי ותהי זאת תנחומתיכם",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 21:2"
+    "Hebrew checked against the Hebrew Bible, Job 21:2",
+    "scan: Removed the placeholder; the Hebrew matches the page.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -2783,12 +2946,13 @@
    "page": "page_0297",
    "marker": "(b)",
    "text": "Ἐκλαβεῖ ἐκ στόματ[UNCERTAIN GREEK] αὐτ[UNCERTAIN GREEK] ῥήματα Sym. Ἐξομολόγησιν. Ils ont lu רדה rhoda, etqu.",
-   "proposed": "Ἐκλαβεῖ ἐκ στόματ[UNCERTAIN GREEK] αὐτ[UNCERTAIN GREEK] ῥήματα Sym. Ἐξομολόγησιν. Ils ont lu רדה rhoda, etqu.",
+   "proposed": "Ἔκλαβε ἐκ στόματος* αὐτοῦ* ῥήματα Sym. Ἐξομολόγησιν. Ils ont lu רדה rhoda, etqu.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Hebrew 'rhoda, etqu.' doubtful: Ἐκλαβεῖ -> Ἔκλαβε, στόματ[UNCERTAIN GREEK] -> στόματος*, αὐτ[UNCERTAIN GREEK] -> αὐτοῦ*"
    ],
    "flags": [
     "uncertain",
@@ -2820,19 +2984,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0313(a)",
-   "page": "page_0313",
-   "marker": "(a)",
-   "text": "Judic. VI. II. 13.",
-   "proposed": "Judic. VI. II. 13.",
-   "why": [
-    "written out, but a number changed or added: Juges 6:11, 13."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -2906,9 +3057,9 @@
    "page": "page_0321",
    "marker": "(b)",
    "text": "Psaumes 17:14, 35. 2 Rois 22:14. Judic. 60. Job 38:22, 34. Psaumes 146:4.",
-   "proposed": "Psaumes 17:14, 35. 2 Rois 22:1. Juges 60. Job 38:22, 34. Psaumes 146:4.",
+   "proposed": "Psaumes 17:14, 35. 2 Rois 22:14. Judic. 5:20*. Job 38:22, 34. Psaumes 146:4.",
    "why": [
-    "abbreviations written out"
+    "context: 2 Rois 22:14 fine; Judic guessed: Judic. 60 -> Judic. 5:20*"
    ],
    "flags": [
     "ambiguous-name"
@@ -2979,11 +3130,13 @@
    "page": "page_0328",
    "marker": "(e)",
    "text": "[UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "Ἰσχύϊ κατέπαυσε τὴν θάλασσαν, ἐπιστήμῃ δὲ ἔτρωσε τὸ κῆτος.",
+   "why": [
+    "scan: Filled the Greek placeholder with the printed Septuagint line.",
+    "read on the scan: Ἰσχύϊ κατέπαυσε τὴν θάλασσαν, ἐπιστήμῃ δὲ ἔτρωσε τὸ κῆτος."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3076,6 +3229,7 @@
    "text": "_Voyez suprà Job_ 9:23 ; Deutéronome 32:61 ; Proverbes 1:26 ; Ézéchiel 5:13. _Voyez Pineda ; Scultet ; Junium sur ce passage._",
    "proposed": "_Voyez suprà Job_ 9:23 ;\nDeutéronome 32:61 ;\nProverbes 1:26 ;\nÉzéchiel 5:13. _Voyez Pineda ;\nScultet ;\nJunium sur ce passage._",
    "why": [
+    "context: Deut verse unidentifiable",
     "Deutéronome 32:61 does not exist in the Vulgate"
    ],
    "flags": [
@@ -3122,38 +3276,29 @@
    "page": "page_0349",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] ספנינים חכמה מבו",
-   "proposed": "[UNCERTAIN HEBREW] ספנינים חכמה מבו",
+   "proposed": "משך חכמה מפנינים",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Read the printed Hebrew: משך חכמה מפנינים; the old text was garbled.",
+    "read on the scan: משך"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
-  },
-  {
-   "id": "0349(d)",
-   "page": "page_0349",
-   "marker": "(d)",
-   "text": "Plin. IX. 35. et XXXVII. 4.",
-   "proposed": "Pline, livre 9, chapitre 35 ; et livre 37, chapitre 4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0349(f)",
    "page": "page_0349",
    "marker": "(f)",
    "text": "_Lamentations 4:7. Rubicundi pre peninim._ [UNCERTAIN HEBREW] אדמו עצם מפנינים",
-   "proposed": "_Lamentations 4:7. Rubicundi pre peninim._ [UNCERTAIN HEBREW] אדמו עצם מפנינים",
+   "proposed": "_Lamentations 4:7. Rubicundi pre peninim._ אדמו עצם מפנינים",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 4:7"
+    "Hebrew checked against the Hebrew Bible, Lamentations 4:7",
+    "scan: Removed the spurious placeholder; the printed Hebrew is אדמו עצם מפנינים.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3162,7 +3307,9 @@
    "marker": "(g)",
    "text": "Vide Androsthen. apud Athen. lib. 3. cap. 15. [UNCERTAIN GREEK] Καὶ ἔστι ὁ Δρ χρυσονδὴς σφίδεα, ὡς ἐπὶ ἰη διὰ-σίας διαγνῶναι ὄρος κατιδῆ παρὰ τὸ χρυσίον, ὃ δὲ ἀργυροειδὴς, ὃ δὲ νελίμῳ λευκῷ, ἐμεῖς τοῖς σφ-δαλμοῖς τῶν ἰχθύων",
    "proposed": "Vide Androsthen. apud Athen. lib. 3. cap. 15. [UNCERTAIN GREEK] Καὶ ἔστι ὁ Δρ χρυσονδὴς σφίδεα, ὡς ἐπὶ ἰη διὰ-σίας διαγνῶναι ὄρος κατιδῆ παρὰ τὸ χρυσίον, ὃ δὲ ἀργυροειδὴς, ὃ δὲ νελίμῳ λευκῷ, ἐμεῖς τοῖς σφ-δαλμοῖς τῶν ἰχθύων",
-   "why": [],
+   "why": [
+    "context: Athenaeus Greek too corrupt"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -3173,8 +3320,8 @@
    "id": "0350(d)",
    "page": "page_0350",
    "marker": "(d)",
-   "text": "Diodore de Sicile, livre 3, page 121 ; Pline, Histoire naturelle, livre 6, chapitre 29 ; Strabon, livre 10 ; saint Épiphane, Des pierres précieuses.",
-   "proposed": "Diodore de Sicile, livre 3, page 121 ;\nPline, Histoire naturelle, livre 6, chapitre 29 ;\nStrabon, livre 10 ;\nsaint Épiphane, Des pierres précieuses.",
+   "text": "Diodore de Sicile, livre 3, page 121 ; Pline, Histoire naturelle, livre 6, chapitre 29 ; Strabon, livre 10 ; Saint Épiphane, Des pierres précieuses.",
+   "proposed": "Diodore de Sicile, livre 3, page 121 ;\nPline, Histoire naturelle, livre 6, chapitre 29 ;\nStrabon, livre 10 ;\nSaint Épiphane, Des pierres précieuses.",
    "why": [],
    "flags": []
   },
@@ -3191,8 +3338,8 @@
    "id": "0354(a)",
    "page": "page_0354",
    "marker": "(a)",
-   "text": "Ainsi l'entendent Bède ; Philippe ; saint Thomas ; saint Jean Chrysostome ; Catena, et alii plerique.",
-   "proposed": "Ainsi l'entendent Bède ;\nPhilippe ;\nsaint Thomas ;\nsaint Jean Chrysostome ;\nCatena, et alii plerique.",
+   "text": "Ainsi l'entendent Bède ; Philippe ; Saint Thomas ; Saint Jean Chrysostome ; Catena, et alii plerique.",
+   "proposed": "Ainsi l'entendent Bède ;\nPhilippe ;\nSaint Thomas ;\nSaint Jean Chrysostome ;\nCatena, et alii plerique.",
    "why": [],
    "flags": []
   },
@@ -3260,15 +3407,17 @@
    "page": "page_0360",
    "marker": "(b)",
    "text": "Οὓς οὐκ ἡγούμην εἶναι ἀξίους κυνῶν τῶν ποιμνίων μου. [ILLEGIBLE] σωμάτων. Cateri, Μετὰ τῶν κυνῶν τῶν ποιμνίων μου.",
-   "proposed": "Οὓς οὐκ ἡγούμην εἶναι ἀξίους κυνῶν τῶν ποιμνίων μου. [ILLEGIBLE] σωμάτων. Cateri, Μετὰ τῶν κυνῶν τῶν ποιμνίων μου.",
+   "proposed": "Οὓς οὐχ ἡγούμην εἶναι ἀξίους κυνῶν τῶν ἐμῶν* νομάδων. Cateri, Μετὰ τῶν κυνῶν τῶν ποιμνίων μου.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Replaced the garbled Greek with 'ἐμῶν νομάδων'; οὐκ became οὐχ as printed.",
+    "guessed from context: ἐμῶν* νομάδων"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -3282,17 +3431,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0362(a)",
-   "page": "page_0362",
-   "marker": "(a)",
-   "text": "Solin. de Creta Insul. Herba ibi est quæ alimos dicitur, ea admorsa diurnam famem prohibet.",
-   "proposed": "Solin, De Creta Insula. Herba ibi est quæ alimos dicitur, ea admorsa diurnam famem prohibet.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0364(e)",
@@ -3430,8 +3568,8 @@
    "id": "0381(a)",
    "page": "page_0381",
    "marker": "(a)",
-   "text": "Cajetan ; saint Isidore de León ; Munster ; Scultet ; Tirin.",
-   "proposed": "Cajetan ;\nsaint Isidore de León ;\nMunster ;\nScultet ;\nTirin.",
+   "text": "Cajetan ; Saint Isidore de León ; Munster ; Scultet ; Tirin.",
+   "proposed": "Cajetan ;\nSaint Isidore de León ;\nMunster ;\nScultet ;\nTirin.",
    "why": [],
    "flags": []
   },
@@ -3513,7 +3651,8 @@
    "text": "ובמסרתם יחתם [UNCERTAIN GREEK] _Kulila' ἐπίθεμα σῶμα θεὸς δ' ἐπὶ δεσμὸν ἰδών, Ποιήσαι, ὃν ποτὲ ῥα δέμας φράξει δέσμια νύκτωρ._",
    "proposed": "ובמסרתם יחתם [UNCERTAIN GREEK] _Kulila' ἐπίθεμα σῶμα θεὸς δ' ἐπὶ δεσμὸν ἰδών, Ποιήσαι, ὃν ποτὲ ῥα δέμας φράξει δέσμια νύκτωρ._",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "context: uncertain Greek unrecoverable"
    ],
    "flags": [
     "uncertain",
@@ -3550,11 +3689,13 @@
    "page": "page_0404",
    "marker": "(a)",
    "text": "_Job._ xxvıı. 2. _Vivit Deus qui abstulit judicium meum._ Hebr. [UNCERTAIN HEBREW] _inime qu'tici._ Voyez aussi ℣ 7. _Sit ut impius inimicus meus, et adversarius meus, quasi iniquus._ Voyez aussi xvıı. 2. _Non peccavi et in amaritudinibus moratur oculus meus._",
-   "proposed": "_Job._ xxvıı. 2. _Vivit Deus qui abstulit judicium meum._ Hebr. [UNCERTAIN HEBREW] _inime qu'tici._ Voyez aussi ℣ 7. _Sit ut impius inimicus meus, et adversarius meus, quasi iniquus._ Voyez aussi xvıı. 2. _Non peccavi et in amaritudinibus moratur oculus meus._",
-   "why": [],
+   "proposed": "_Job._ xxvıı. 2. _Vivit Deus qui abstulit judicium meum._ Hebr. אל הסיר משפטי de même qu'ici. Voyez aussi ℣ 7. _Sit ut impius inimicus meus, et adversarius meus, quasi iniquus._ Voyez aussi xvıı. 2. _Non peccavi et in amaritudinibus moratur oculus meus._",
+   "why": [
+    "scan: Filled the Hebrew as אל הסיר משפטי; fixed the garbled French 'de même qu'ici' that followed it.",
+    "read on the scan: אל הסיר משפטי"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3562,11 +3703,13 @@
    "page": "page_0404",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "על משפטי אכזב אנוש חצי בלי פשע",
+   "why": [
+    "scan: Filled the Hebrew placeholder; the print is small, so I used the reference spelling אכזב.",
+    "read on the scan: על משפטי אכזב אנוש חצי בלי פשע"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3574,13 +3717,14 @@
    "page": "page_0406",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] כי אמר לא יסכן גבר ברצתו עם אלהים",
-   "proposed": "[UNCERTAIN HEBREW] כי אמר לא יסכן גבר ברצתו עם אלהים",
+   "proposed": "כי אמר לא יסכן גבר ברצותו עם אלהים",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 34:9"
+    "Hebrew checked against the Hebrew Bible, Job 34:9",
+    "scan: Removed the placeholder; the page prints ברצותו, not ברצתו.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3588,13 +3732,14 @@
    "page": "page_0406",
    "marker": "(c)",
    "text": "[UNCERTAIN GREEK] Μὴ γὰρ εἴπῃς, ὅτι οὐκ ἔσται ἐπισκοπὴ ἀνδρὸς, ἡ ἐπισκοπὴ αὐτῷ ἐν ὀργῇ.",
-   "proposed": "[UNCERTAIN GREEK] Μὴ γὰρ εἴπῃς, ὅτι οὐκ ἔσται ἐπισκοπὴ ἀνδρὸς, ἡ ἐπισκοπὴ αὐτῷ ἐν ὀργῇ.",
+   "proposed": "Μὴ γὰρ εἴπῃς, ὅτι οὐκ ἔσται ἐπισκοπὴ ἀνδρὸς, ἡ ἐπισκοπὴ αὐτῷ παρὰ Κυρίῳ.",
    "why": [
-    "Greek checked against the Septuagint, Job 34:9"
+    "Greek checked against the Septuagint, Job 34:9",
+    "scan: Removed the placeholder; the ending is 'παρὰ Κυρίῳ', not 'ἐν ὀργῇ'.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3603,7 +3748,9 @@
    "marker": "(d)",
    "text": "[UNCERTAIN GREEK] Ὅτι εἶπεν, ἐκ ἀκινδύνευτον ἀνὴρ ἐν τῷ εὐδοκιμῆσαι αὐτὸν μετὰ Θεοῦ.",
    "proposed": "[UNCERTAIN GREEK] Ὅτι εἶπεν, ἐκ ἀκινδύνευτον ἀνὴρ ἐν τῷ εὐδοκιμῆσαι αὐτὸν μετὰ Θεοῦ.",
-   "why": [],
+   "why": [
+    "context: uncertain Greek; ἀκινδύνευτον rare"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -3615,13 +3762,14 @@
    "page": "page_0406",
    "marker": "(e)",
    "text": "[UNCERTAIN GREEK] Ὁ μὴ σωθήσεται ἀνήρ.",
-   "proposed": "[UNCERTAIN GREEK] Ὁ μὴ σωθήσεται ἀνήρ.",
+   "proposed": "Οὐχὶ σωθήσεται ἀνήρ.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Replaced the placeholder and the wrong 'Ὁ μὴ' with the printed 'Οὐχὶ'.",
+    "read on the scan: Οὐχὶ"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3629,11 +3777,13 @@
    "page": "page_0409",
    "marker": "(a)",
    "text": "[UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "Ἴδε σὺ τὸν μισοῦντα ἄνομα, καὶ τὸν ὀλλύντα τοὺς πονηρούς, ὄντα αἰώνιον δίκαιον.",
+   "why": [
+    "scan: Filled the placeholder with the Greek read on the page.",
+    "read on the scan: Ἴδε σὺ τὸν μισοῦντα ἄνομα, καὶ τὸν ὀλλύντα τοὺς πονηρούς, ὄντα αἰώνιον δίκαιον."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3641,11 +3791,13 @@
    "page": "page_0409",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "האמר למלך בליעל רשע על נדיבים (19.) אשר לא נשא פני שרים ולא נכר שוע לפני דל",
+   "why": [
+    "scan: Filled the placeholder with the Hebrew of Job 34:18-19 as printed.",
+    "read on the scan: האמר למלך בליעל רשע על נדיבים (19.) אשר לא נשא פני שרים ולא נכר שוע לפני דל"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3653,13 +3805,14 @@
    "page": "page_0412",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] ממלך אדם חנף מעמל עם",
-   "proposed": "[UNCERTAIN HEBREW] ממלך אדם חנף מעמל עם",
+   "proposed": "ממלך אדם חנף ממקשי עם",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 34:30"
+    "Hebrew checked against the Hebrew Bible, Job 34:30",
+    "scan: Filled the placeholder with ממלך; corrected מעמל to ממקשי.",
+    "read on the scan: ממלך"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3667,13 +3820,14 @@
    "page": "page_0413",
    "marker": "(a)",
    "text": "כי אל אל האמר נשאתי לא אחבול [UNCERTAIN HEBREW]",
-   "proposed": "כי אל אל האמר נשאתי לא אחבול [UNCERTAIN HEBREW]",
+   "proposed": "כי אל אל האמר נשאתי לא אחבול",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 34:31"
+    "Hebrew checked against the Hebrew Bible, Job 34:31",
+    "scan: Removed the placeholder; the page shows nothing after אחבול.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3718,11 +3872,15 @@
    "page": "page_0424",
    "marker": "(c)",
    "text": "[UNCERTAIN GREEK] _Ismen de hoti Kyrios ou mé apodotai ton akakon, dynatés ischyï, kardias sophón ou mé zóopoiesei, to krima ptochón dósei._ Ils ont lu [UNCERTAIN HEBREW] _hen el tamim_, au lieu que [UNCERTAIN HEBREW] _hen el kabir_ semble manquer dans l'Hébreu.",
-   "proposed": "[UNCERTAIN GREEK] _Ismen de hoti Kyrios ou mé apodotai ton akakon, dynatés ischyï, kardias sophón ou mé zóopoiesei, to krima ptochón dósei._ Ils ont lu [UNCERTAIN HEBREW] _hen el tamim_, au lieu que [UNCERTAIN HEBREW] _hen el kabir_ semble manquer dans l'Hébreu.",
-   "why": [],
+   "proposed": "Γίνωσκε δὲ ὅτι ὁ Κύριος οὐ μὴ ἀποποιήσηται τὸν ἄκακον, δυνατὸς ἰσχύϊ, καρδίας ἀσεβῆ οὐ μὴ ζωοποιήσῃ, κρῖμα πτωχῶν δώσει. _Ismen de hoti Kyrios ou mé apodotai ton akakon, dynatés ischyï, kardias sophón ou mé zóopoiesei, to krima ptochón dósei._ Ils ont lu לא ימאס תם _hen el tamim_, au lieu que כביר* _hen el kabir_ semble manquer dans l'Hébreu.",
+   "why": [
+    "scan: Filled the Greek and both Hebrew placeholders; the second Hebrew word is guessed.",
+    "read on the scan: Γίνωσκε δὲ ὅτι ὁ Κύριος οὐ μὴ ἀποποιήσηται τὸν ἄκακον, δυνατὸς ἰσχύϊ, καρδίας ἀσεβῆ οὐ μὴ ζωοποιήσῃ, κρῖμα πτωχῶν δώσει.",
+    "read on the scan: לא ימאס תם",
+    "guessed from context: כביר*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3759,7 +3917,8 @@
    "proposed": "אף יבין מפרשי עב תשאות סכתו [UNCERTAIN HEBREW] ἀκρίτως δὲ διαρριφθήσεται νεφέλη ἴσα φωτὸς, ποιήσει δὲ ἐν γῇ (θαλάσσῃ) πηγὰς, ἵνα διυλίζεται ὕδωρ ἀπὸ γῆς, ἢ ἤξει γῆς πρὸς θαλάσσης. Ex Hesiod. Theogonia. v. 727. Λυρὶς ἐσχάτη.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Job 36:29",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Hebrew marker unrecoverable"
    ],
    "flags": [
     "uncertain",
@@ -3772,16 +3931,17 @@
    "page": "page_0432",
    "marker": "(b)",
    "text": "פרש עליו אורו ושרשי הים כסה [UNCERTAIN HEBREW] Les Septante ont lu אידו au lieu de אורו. Sa lumière. Exod. δὲ ἐπ' αὐτῶν ἀντὶ ἰδῶ.",
-   "proposed": "פרש עליו אורו ושרשי הים כסה [UNCERTAIN HEBREW] Les Septante ont lu אידו au lieu de אורו. Sa lumière. Exod. δὲ ἐπ' αὐτῶν ἀντὶ ἰδῶ.",
+   "proposed": "הן פרש עליו אורו ושרשי הים כסה Les Septante ont lu אידו au lieu de אורו. Sa lumière. Ἐκτενεῖ δὲ ἐπ' αὐτὸν ἰδώ.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Job 36:30",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled the placeholder with הן, placed at the start; corrected the Greek after 'Sa lumière.'",
+    "read on the scan: הן"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3797,28 +3957,18 @@
    ]
   },
   {
-   "id": "0433(b)",
-   "page": "page_0433",
-   "marker": "(b)",
-   "text": "Reg. XVIII. 44. Ecce nubecula parva",
-   "proposed": "3 Rois 18:44. Ecce nubecula parva",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0437(a)",
    "page": "page_0437",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] ביד כל אדם יחתום לדעת כל אנשי מעשהו",
-   "proposed": "[UNCERTAIN HEBREW] ביד כל אדם יחתום לדעת כל אנשי מעשהו",
+   "proposed": "ביד כל אדם יחתום לדעת כל אנשי מעשהו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 37:7"
+    "Hebrew checked against the Hebrew Bible, Job 37:7",
+    "scan: Filled placeholder with the Hebrew read on the page, spelled as in the reference.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3835,13 +3985,14 @@
    "page": "page_0437",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] וממזרים קרה",
-   "proposed": "[UNCERTAIN HEBREW] וממזרים קרה",
+   "proposed": "וממזרים קרה",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 37:9"
+    "Hebrew checked against the Hebrew Bible, Job 37:9",
+    "scan: Filled placeholder; the page prints only this Hebrew.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -3869,23 +4020,14 @@
    ]
   },
   {
-   "id": "0439(b)",
-   "page": "page_0439",
-   "marker": "(b)",
-   "text": "Grot. Codurc.",
-   "proposed": "Grotius ; Codurc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0439(d)",
    "page": "page_0439",
    "marker": "(d)",
    "text": "Καὶ ἐκλεκτὸν ποιεῖ νεφέλη. Αἰκασμ[UNCERTAIN GREEK]",
    "proposed": "Καὶ ἐκλεκτὸν ποιεῖ νεφέλη. Αἰκασμ[UNCERTAIN GREEK]",
-   "why": [],
+   "why": [
+    "context: Symmachus word truncated"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -3920,8 +4062,8 @@
    "id": "0446(b)",
    "page": "page_0446",
    "marker": "(b)",
-   "text": "Cajetan ; Vatable ; Clarius ; Titelman ; saint Thomas ; Denys le Chartreux ; Albert le Grand.",
-   "proposed": "Cajetan ;\nVatable ;\nClarius ;\nTitelman ;\nsaint Thomas ;\nDenys le Chartreux ;\nAlbert le Grand.",
+   "text": "Cajetan ; Vatable ; Clarius ; Titelman ; Saint Thomas ; Denys le Chartreux ; Albert le Grand.",
+   "proposed": "Cajetan ;\nVatable ;\nClarius ;\nTitelman ;\nSaint Thomas ;\nDenys le Chartreux ;\nAlbert le Grand.",
    "why": [],
    "flags": []
   },
@@ -3929,8 +4071,8 @@
    "id": "0446(e)",
    "page": "page_0446",
    "marker": "(e)",
-   "text": "Ainsi l'entendent saint Grégoire ; Philippe ; Bède ; saint Thomas ; Nicolas de Lyre ; Denys ; Titelman ; Codurcus ; Tirin, etc.",
-   "proposed": "Ainsi l'entendent saint Grégoire ;\nPhilippe ;\nBède ;\nsaint Thomas ;\nNicolas de Lyre ;\nDenys ;\nTitelman ;\nCodurcus ;\nTirin, etc.",
+   "text": "Ainsi l'entendent saint Grégoire ; Philippe ; Bède ; Saint Thomas ; Nicolas de Lyre ; Denys ; Titelman ; Codurcus ; Tirin, etc.",
+   "proposed": "Ainsi l'entendent saint Grégoire ;\nPhilippe ;\nBède ;\nSaint Thomas ;\nNicolas de Lyre ;\nDenys ;\nTitelman ;\nCodurcus ;\nTirin, etc.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
    ],
@@ -3940,8 +4082,8 @@
    "id": "0447(a)",
    "page": "page_0447",
    "marker": "(a)",
-   "text": "Saint Jean Chrysostome ; Julien, in Catena ; saint Augustin, sur Job ; Rabbi Moïse ; Cajetan ; Eugubinus ; saint Isidore ; Clarius ; Mercier ; Ménochius ; Scultet ; Pineda ; Piscator ; Cocceius.",
-   "proposed": "Saint Jean Chrysostome ;\nJulien, in Catena ;\nsaint Augustin, sur Job ;\nRabbi Moïse ;\nCajetan ;\nEugubinus ;\nsaint Isidore ;\nClarius ;\nMercier ;\nMénochius ;\nScultet ;\nPineda ;\nPiscator ;\nCocceius.",
+   "text": "Saint Jean Chrysostome ; Julien, in Catena ; Saint Augustin, sur Job ; Rabbi Moïse ; Cajetan ; Eugubinus ; Saint Isidore ; Clarius ; Mercier ; Ménochius ; Scultet ; Pineda ; Piscator ; Cocceius.",
+   "proposed": "Saint Jean Chrysostome ;\nJulien, in Catena ;\nSaint Augustin, sur Job ;\nRabbi Moïse ;\nCajetan ;\nEugubinus ;\nSaint Isidore ;\nClarius ;\nMercier ;\nMénochius ;\nScultet ;\nPineda ;\nPiscator ;\nCocceius.",
    "why": [],
    "flags": []
   },
@@ -3993,17 +4135,6 @@
    "flags": []
   },
   {
-   "id": "0454(a)",
-   "page": "page_0454",
-   "marker": "(a)",
-   "text": "Psaumes 134:7. _Qui producit ventos de Thesauris suis._ Et Psaumes 134:7. _Ponens in thesauris abyssos._ Jérémie 10:13 ; 50:25. Aperuit Dominus thesaurum suum, protulit vasa iræ suæ, etc.",
-   "proposed": "Psaumes 134:7. _Qui producit ventos de Thesauris suis._ Et Psaumes 134:7. _Ponens in thesauris abyssos._ Jérémie 10:13 ; Jérémie 50:25. Aperuit Dominus thesaurum suum, protulit vasa iræ suæ, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0454(b)",
    "page": "page_0454",
    "marker": "(b)",
@@ -4020,11 +4151,12 @@
    "page": "page_0456",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] התקשר מעדנות כימה. Comme s'ils avaient lu [UNCERTAIN HEBREW] מעדנים plenum, au lieu de [UNCERTAIN HEBREW] מעדנות. _Amenitates_. Le verbe _ligabis_, favorise la première leçon. Aq. et Sym. [UNCERTAIN GREEK] Ἠ συνδήσεις πέλειας πλειάδος. Joindrez-vous les parties de la Pleiade.",
-   "proposed": "[UNCERTAIN HEBREW] התקשר מעדנות כימה. Comme s'ils avaient lu [UNCERTAIN HEBREW] מעדנים plenum, au lieu de [UNCERTAIN HEBREW] מעדנות. _Amenitates_. Le verbe _ligabis_, favorise la première leçon. Aq. et Sym. [UNCERTAIN GREEK] Ἠ συνδήσεις πέλειας πλειάδος. Joindrez-vous les parties de la Pleiade.",
+   "proposed": "[UNCERTAIN HEBREW] התקשר מעדנות כימה. Comme s'ils avaient lu [UNCERTAIN HEBREW] מעדנים plenum, au lieu de [UNCERTAIN HEBREW] מעדנות. _Amenitates_. Le verbe _ligabis_, favorise la première leçon. Aq. et Sym. [UNCERTAIN GREEK] Ἦ συνδήσεις πέλειας πλειάδος. Joindrez-vous les parties de la Pleiade.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Job 38:31",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "context: Hebrew markers unrecoverable: Ἠ -> Ἦ"
    ],
    "flags": [
     "uncertain",
@@ -4037,13 +4169,14 @@
    "page": "page_0456",
    "marker": "(c)",
    "text": "[UNCERTAIN GREEK] Καὶ φαινομένων ἀστέρων ἡνιόχης.",
-   "proposed": "[UNCERTAIN GREEK] Καὶ φαινομένων ἀστέρων ἡνιόχης.",
+   "proposed": "Καὶ φραγμὸν Ὠρίωνος ἤνοιξας,",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Filled the Greek placeholder; the line matches the Septuagint (Job 38:31).",
+    "read on the scan: Καὶ φραγμὸν Ὠρίωνος ἤνοιξας,"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4051,13 +4184,14 @@
    "page": "page_0456",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] או מושכות כסיל תפתח.",
-   "proposed": "[UNCERTAIN HEBREW] או מושכות כסיל תפתח.",
+   "proposed": "או מושכות כסיל תפתח.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Job 38:31"
+    "Hebrew checked against the Hebrew Bible, Job 38:31",
+    "scan: Filled placeholder; read the Hebrew, spelled as in the reference.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4065,15 +4199,18 @@
    "page": "page_0456",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] התוציא מזרות בעתו. _Numquid educes Mazuroth in tempore suo ?_ Comme s'ils avaient lu [UNCERTAIN HEBREW] מזרותם au lieu de [UNCERTAIN HEBREW] מזרות. _Educens Mazuroth_. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule.",
-   "proposed": "[UNCERTAIN HEBREW] התוציא מזרות בעתו. _Numquid educes Mazuroth in tempore suo ?_ Comme s'ils avaient lu [UNCERTAIN HEBREW] מזרותם au lieu de [UNCERTAIN HEBREW] מזרות. _Educens Mazuroth_. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule.",
+   "proposed": "התציא מזרות בעתו. _Numquid educes Mazuroth in tempore suo ?_ Comme s'ils avaient lu מזרותם* מזרותם au lieu de מזרות* מזרות. _Educens Mazuroth_. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Job 38:32",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Hebrew spelled as in reference; the two inner placeholders are guessed, not on this page.",
+    "read on the scan: ",
+    "guessed from context: מזרותם*",
+    "guessed from context: מזרות*"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4081,10 +4218,11 @@
    "page": "page_0456",
    "marker": "(f)",
    "text": "[UNCERTAIN GREEK] Ἦ διανοίξεις μαζουρὼθ ἐν καιρῷ αὐτῶν. Chrys. sost. μαζουρὼθ τὰ συστήματα τῶν ἀστέρων, ἢ τὰ τῆς οἰκουμένης ζώδια καλέσαι. Ἤτοι δὲ φάινεσθαι… τὰ ἀστέρων χορεία. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule.",
-   "proposed": "[UNCERTAIN GREEK] Ἦ διανοίξεις μαζουρὼθ ἐν καιρῷ αὐτῶν. Chrys. sost. μαζουρὼθ τὰ συστήματα τῶν ἀστέρων, ἢ τὰ τῆς οἰκουμένης ζώδια καλέσαι. Ἤτοι δὲ φάινεσθαι… τὰ ἀστέρων χορεία. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule.",
+   "proposed": "70*. Ἦ διανοίξεις μαζουρὼθ ἐν καιρῷ αὐτῶν. Chrys. sost. μαζουρὼθ τὰ συστήματα τῶν ἀστέρων, ἢ τὰ τῆς οἰκουμένης ζώδια καλέσαι. Ἤτοι δὲ φαίνεσθαι… τὰ ἀστέρων χορεία. Mazuroth signifie, ou les signes du Zodiaque, ou le signe du Chien, ou de la Canicule.",
    "why": [
     "Greek checked against the Septuagint, Job 38:32",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Chrysostom quotation incomplete: [UNCERTAIN GREEK] -> 70*., φάινεσθαι -> φαίνεσθαι"
    ],
    "flags": [
     "uncertain",
@@ -4126,17 +4264,6 @@
    ]
   },
   {
-   "id": "0459(a)",
-   "page": "page_0459",
-   "marker": "(a)",
-   "text": "Voyez au besoin Cicer. in Somn. Scipion. Philon. de somniis, etc.",
-   "proposed": "Voyez au besoin Cicéron, Le Songe de Scipion ; Philon, Des songes, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0459(c)",
    "page": "page_0459",
    "marker": "(c)",
@@ -4163,17 +4290,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0460(a)",
-   "page": "page_0460",
-   "marker": "(a)",
-   "text": "Bibl. Sixti V.",
-   "proposed": "Bible de Sixte V.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0460(b)",
@@ -4210,8 +4326,10 @@
    "page": "page_0464",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] מלחחה",
-   "proposed": "[UNCERTAIN HEBREW] מלחחה",
-   "why": [],
+   "proposed": "[UNCERTAIN HEBREW] מלחה",
+   "why": [
+    "context: uncertain prefix remains: מלחחה -> מלחה"
+   ],
    "flags": [
     "uncertain",
     "hebrew",
@@ -4223,11 +4341,13 @@
    "page": "page_0465",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] _Mercer. Piscat._",
-   "proposed": "[UNCERTAIN HEBREW] _Mercer. Piscat._",
-   "why": [],
+   "proposed": "אם ישדד עמקים אחריך _Mercer. Piscat._",
+   "why": [
+    "scan: Filled placeholder with the Hebrew printed on the page.",
+    "read on the scan: אם ישדד עמקים אחריך"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4235,11 +4355,13 @@
    "page": "page_0465",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "כנף רננים נעלסה אם אברה חסידה ונצה",
+   "why": [
+    "scan: Filled placeholder with the Hebrew of the verse as printed.",
+    "read on the scan: כנף רננים נעלסה אם אברה חסידה ונצה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4270,28 +4392,6 @@
    "text": "Oppien, Halieutiques, livre 4, vers 630 ; Tertullien, Du voile des vierges, chapitre 17 ; Claudien, Contre Eutrope.",
    "proposed": "Oppien, Halieutiques, livre 4, vers 630 ;\nTertullien, Du voile des vierges, chapitre 17 ;\nClaudien, Contre Eutrope.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0469(b)",
-   "page": "page_0469",
-   "marker": "(b)",
-   "text": "Averroës. Alhazuin. Damir. etc.",
-   "proposed": "Averroès ;\nAlhazen ;\nDamir, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0469(c)",
-   "page": "page_0469",
-   "marker": "(c)",
-   "text": "Alex. Aphrodisæ. Gesner. Albert. Aldrovand.",
-   "proposed": "Alexandre d'Aphrise ;\nGesner ;\nAlbert ;\nAldrovandi.",
-   "why": [
-    "abbreviations written out"
-   ],
    "flags": []
   },
   {
@@ -4342,25 +4442,14 @@
    ]
   },
   {
-   "id": "0474(e)",
-   "page": "page_0474",
-   "marker": "(e)",
-   "text": "Sym. Οὐδὲ δὲ νεκροῖς προσβάλλειν ἀνέχεται. 70. οὐδ᾽ ἂν ἀνθρώπων γεύσαιτ᾽ ἂν σαρκῶν ἐναλίων.",
-   "proposed": "Symmaque : Οὐδὲ δὲ νεκροῖς προσβάλλειν ἀνέχεται. Les Septante : οὐδ᾽ ἂν ἀνθρώπων γεύσαιτ᾽ ἂν σαρκῶν ἐναλίων.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0478(b)",
    "page": "page_0478",
    "marker": "(b)",
    "text": "[UNCERTAIN GREEK] Ἀποσείλον δὲ Ἀγγέλους ὀργῇ, πᾶν δὲ ὑβριστὴν ταπείνωσον ; ὑπερήφανον δὲ σβέσον ; στέψον",
-   "proposed": "[UNCERTAIN GREEK] Ἀποσείλον δὲ Ἀγγέλους ὀργῇ, πᾶν δὲ ὑβριστὴν ταπείνωσον ; ὑπερήφανον δὲ σβέσον ; στέψον",
-   "why": [],
+   "proposed": "[UNCERTAIN GREEK] Ἀπόστειλον δὲ Ἀγγέλους ὀργῇ, πᾶν δὲ ὑβριστὴν ταπείνωσον ; ὑπερήφανον δὲ σβέσον ; στέψον",
+   "why": [
+    "context: Opening marker remains: Ἀποσείλον -> Ἀπόστειλον"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -4372,14 +4461,16 @@
    "page": "page_0478",
    "marker": "(c)",
    "text": "[UNCERTAIN GREEK] δὲ ἀσεβεῖς παραχρῆμα, κρύψον δὲ εἰς γῆν ὁμοθυμαδὸν, τὰ δὲ πρόσωπα αὐτῶν ἀτιμίας ἔμπλησον. [UNCERTAIN HEBREW] טמנם בעפר יחד פניהם חבוש בשק",
-   "proposed": "[UNCERTAIN GREEK] δὲ ἀσεβεῖς παραχρῆμα, κρύψον δὲ εἰς γῆν ὁμοθυμαδὸν, τὰ δὲ πρόσωπα αὐτῶν ἀτιμίας ἔμπλησον. [UNCERTAIN HEBREW] טמנם בעפר יחד פניהם חבוש בשק",
+   "proposed": "σῆψον δὲ ἀσεβεῖς παραχρῆμα, κρύψον δὲ εἰς γῆν ὁμοθυμαδὸν, τὰ δὲ πρόσωπα αὐτῶν ἀτιμίας ἔμπλησον. טמנם בעפר יחד פניהם חבוש בטמון",
    "why": [
     "Hebrew checked against the Hebrew Bible, Job 40:13",
-    "Greek checked against the Septuagint, Job 40:13"
+    "Greek checked against the Septuagint, Job 40:13",
+    "scan: Filled Greek and Hebrew placeholders; ending corrected from בשק to בטמון.",
+    "read on the scan: σῆψον",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4387,14 +4478,15 @@
    "page": "page_0480",
    "marker": "(f)",
    "text": "_Arist. lib._ 5. _cap._ 2. _Histor. Anim._ [UNCERTAIN GREEK] Ὀχεύεται μὲν ἡ θήλεια, συγκάμπτουσα, τῇ διαβαίνειν. Ὁ᷒ δὲ δι᾽ ἣν ἐπικαταβαίνειν ὀχέα.",
-   "proposed": "_Arist. lib._ 5. _cap._ 2. _Histor. Anim._ [UNCERTAIN GREEK] Ὀχεύεται μὲν ἡ θήλεια, συγκάμπτουσα, τῇ διαβαίνειν. Ὁ᷒ δὲ δι᾽ ἣν ἐπικαταβαίνειν ὀχέα.",
+   "proposed": "_Arist. lib._ 5. _cap._ 2. _Histor. Anim._ Ὀχεύεται μὲν ἡ θήλεια, συγκαθίζουσα, καὶ διαβαίνουσα. Ὁ δ᾽ ἄρρην ἐπικαταβαίνων ὀχεύει.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Removed placeholder; corrected the Greek to συγκαθίζουσα, καὶ διαβαίνουσα, ἄρρην ἐπικαταβαίνων ὀχεύει.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4402,8 +4494,10 @@
    "page": "page_0480",
    "marker": "(g)",
    "text": "_Arist. Histor. Animal. lib._ 2. _cap._ 1. [UNCERTAIN GREEK] Ἔχει δὲ ὁ ὄνθας τὸ αἰδοῖον, ὁμοίον μὲν ἵππω, μικρὸν δὲ, καὶ κατὰ λόγον τῷ σωματῷ. Τοὺς δὲ ὄρχεις ἐν τῷ θώρακι, ἀλλὰ ἐντὸς περὶ τὰς νέφους. _Vide Plin._ XI. 39.",
-   "proposed": "_Arist. Histor. Animal. lib._ 2. _cap._ 1. [UNCERTAIN GREEK] Ἔχει δὲ ὁ ὄνθας τὸ αἰδοῖον, ὁμοίον μὲν ἵππω, μικρὸν δὲ, καὶ κατὰ λόγον τῷ σωματῷ. Τοὺς δὲ ὄρχεις ἐν τῷ θώρακι, ἀλλὰ ἐντὸς περὶ τὰς νέφους. _Vide Plin._ XI. 39.",
-   "why": [],
+   "proposed": "_Arist. Histor. Animal. lib._ 2. _cap._ 1. [UNCERTAIN GREEK] Ἔχει δὲ ὁ ἐλέφας* τὸ αἰδοῖον, ὅμοιον μὲν ἵππω, μικρὸν δὲ, καὶ κατὰ λόγον τοῦ* σώματος*. Τοὺς δὲ ὄρχεις ἐν τῷ θώρακι, ἀλλὰ ἐντὸς περὶ τοὺς* νεφρούς*. _Vide Plin._ XI. 39.",
+   "why": [
+    "context: Aristotle HA 2.1 reconstructed: ὄνθας -> ἐλέφας*, ὁμοίον -> ὅμοιον, τῷ σωματῷ -> τοῦ* σώματος*, τὰς νέφους -> τοὺς* νεφρούς*"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -4445,17 +4539,6 @@
    ]
   },
   {
-   "id": "0482(b)",
-   "page": "page_0482",
-   "marker": "(b)",
-   "text": "Jun. Sculter. Pisc.",
-   "proposed": "Junius ;\nScultet ;\nPiscator.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0483(e)",
    "page": "page_0483",
    "marker": "(e)",
@@ -4474,11 +4557,15 @@
    "page": "page_0485",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW] [UNCERTAIN HEBREW] [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "בעיניו יקחנו במוקשים ינקב אף",
+   "why": [
+    "scan: Filled three Hebrew placeholders with Job 40:24 as printed",
+    "read on the scan: בעיניו",
+    "read on the scan: יקחנו",
+    "read on the scan: במוקשים ינקב אף"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4488,17 +4575,6 @@
    "text": "Aristote, livre 9, chapitre 1 ; Pline, Histoire naturelle, livre 8, chapitre 8 ; Solin, livre 7, chapitre 6.",
    "proposed": "Aristote, livre 9, chapitre 1 ;\nPline, Histoire naturelle, livre 8, chapitre 8 ;\nSolin, livre 7, chapitre 6.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0485(e)",
-   "page": "page_0485",
-   "marker": "(e)",
-   "text": "Judith 10:17. Genèse 39:7. Nombres 15:39 Job. XXXI. I. 7. Proverbes 23:33.",
-   "proposed": "Judith 10:17. Genèse 39:7. Nombres 15:39. Job 31:1, 7. Proverbes 23:33.",
-   "why": [
-    "abbreviations written out"
-   ],
    "flags": []
   },
   {
@@ -4515,9 +4591,10 @@
    "page": "page_0490",
    "marker": "(a)",
    "text": "Aristot. Histor. Anim. lib. 2. cap. 10. Oî δὲ Κροκόδειλοι ἰχθύσι ἀρθαλμίας μὲν οὐκ, ἀδο[ILLEGIBLE] δὲ μεγάλας, τὴ χανλιδοντας, τὴ ὄνυχας ἰχυρ[ILLEGIBLE] τὸ δέρμα ἄρρηκτον Φολιδωτόν. Plin. lib. 8. cap. 25. Unguibus hic armatus est, contra omnes istus cute invictâ.",
-   "proposed": "Aristot. Histor. Anim. lib. 2. cap. 10. Oî δὲ Κροκόδειλοι ἰχθύσι ἀρθαλμίας μὲν οὐκ, ἀδο[ILLEGIBLE] δὲ μεγάλας, τὴ χανλιδοντας, τὴ ὄνυχας ἰχυρ[ILLEGIBLE] τὸ δέρμα ἄρρηκτον Φολιδωτόν. Plin. lib. 8. cap. 25. Unguibus hic armatus est, contra omnes istus cute invictâ.",
+   "proposed": "Aristot. Histor. Anim. lib. 2. cap. 10. Oî δὲ Κροκόδειλοι ἰχθύσι ὀφθαλμίας μὲν οὐκ, ὀδόντας* δὲ μεγάλας, τοὺς χαυλιόδοντας, τοὺς ὄνυχας ἰσχυρούς* τὸ δέρμα ἄρρηκτον Φολιδωτόν. Plin. lib. 8. cap. 25. Unguibus hic armatus est, contra omnes istus cute invictâ.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Aristotle text partly reconstructed: ἀρθαλμίας -> ὀφθαλμίας, ἀδο[ILLEGIBLE] -> ὀδόντας*, τὴ χανλιδοντας -> τοὺς χαυλιόδοντας, τὴ ὄνυχας -> τοὺς ὄνυχας, ἰχυρ[ILLEGIBLE] -> ἰσχυρούς*"
    ],
    "flags": [
     "uncertain",
@@ -4526,27 +4603,18 @@
    ]
   },
   {
-   "id": "0491(e)",
-   "page": "page_0491",
-   "marker": "(e)",
-   "text": "Sym. Ἀλλὰ ἡ ἐλπὶς ἐπ' αὐτῷ ματαία.",
-   "proposed": "Symmaque : Ἀλλὰ ἡ ἐλπὶς ἐπ' αὐτῷ ματαία.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0495(a)",
    "page": "page_0495",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] rimi nishi. Ita et Herodot. et Arist.",
-   "proposed": "[UNCERTAIN HEBREW] rimi nishi. Ita et Herodot. et Arist.",
-   "why": [],
+   "proposed": "גאוה אפיקי מגינים סגור חותם צר rimi nishi. De même Hérodote ; et Aristote.",
+   "why": [
+    "scan: Filled Hebrew placeholder with Job 41:7 as printed",
+    "read on the scan: גאוה אפיקי מגינים סגור חותם צר",
+    "abbreviations written out (footnote_expand.py)"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4601,11 +4669,9 @@
    "id": "0498(c)",
    "page": "page_0498",
    "marker": "(c)",
-   "text": "rabbi Levi ; Munster ; Vatable ; Grotius ; Mariana ; Ménochius ; saint Isidore ; Sa ; Tirin.",
-   "proposed": "Rabbi Levi ;\nMunster ;\nVatable ;\nGrotius ;\nMariana ;\nMénochius ;\nsaint Isidore ;\nSa ;\nTirin.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "rabbi Levi ; Munster ; Vatable ; Grotius ; Mariana ; Ménochius ; Saint Isidore ; Sa ; Tirin.",
+   "proposed": "rabbi Levi ;\nMunster ;\nVatable ;\nGrotius ;\nMariana ;\nMénochius ;\nSaint Isidore ;\nSa ;\nTirin.",
+   "why": [],
    "flags": []
   },
   {
@@ -4634,13 +4700,14 @@
    "page": "page_0500",
    "marker": "(d)",
    "text": "[UNCERTAIN GREEK] Ἀναζεῖ τὸν ἄβυσσον ὥσπερ χαλκεῖον, ὣς",
-   "proposed": "[UNCERTAIN GREEK] Ἀναζεῖ τὸν ἄβυσσον ὥσπερ χαλκεῖον, ὣς",
+   "proposed": "Ἀναζεῖ τὴν ἄβυσσον ὥσπερ χαλκεῖον, ἥγεται δὲ τὴν θάλασσαν ὥσπερ ἐξάλειπτρον.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Removed placeholder, fixed τὴν, completed the Greek across the column break",
+    "read on the scan: Ἀναζεῖ"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -4662,10 +4729,8 @@
    "page": "page_0500",
    "marker": "(f)",
    "text": "Vincent le Blanc ; Jean de Laët ; Samuel Purcher ; Damir ; Alhaquin. Pierre Martyr et dans Bochart à l'endroit cité plus haut.",
-   "proposed": "Vincent Le Blanc ; Jean de Laët ; Samuel Purchas ; Damir ; Alhaquin. Pierre Martyr ; et dans Bochart à l'endroit cité plus haut.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Vincent le Blanc ;\nJean de Laët ;\nSamuel Purcher ;\nDamir ;\nAlhaquin. Pierre Martyr et dans Bochart à l'endroit cité plus haut.",
+   "why": [],
    "flags": []
   },
   {
@@ -4693,8 +4758,8 @@
    "id": "0504(a)",
    "page": "page_0504",
    "marker": "(a)",
-   "text": "Eusèbe, Démonstration évangélique, livre 1, chapitre 4 ; Denys ; Titelman ; saint Isidore ; Sculiet.",
-   "proposed": "Eusèbe, Démonstration évangélique, livre 1, chapitre 4 ;\nDenys ;\nTitelman ;\nsaint Isidore ;\nSculiet.",
+   "text": "Eusèbe, Démonstration évangélique, livre 1, chapitre 4 ; Denys ; Titelman ; Saint Isidore ; Sculiet.",
+   "proposed": "Eusèbe, Démonstration évangélique, livre 1, chapitre 4 ;\nDenys ;\nTitelman ;\nSaint Isidore ;\nSculiet.",
    "why": [],
    "flags": []
   },
@@ -4729,22 +4794,9 @@
    "id": "0512(d)",
    "page": "page_0512",
    "marker": "(d)",
-   "text": "Ainsi l'entendent saint Jean Chrysostome ; Olympiodore ; saint Isidore ; Suidas ; Torniel ; Génébrard ; Salian.",
-   "proposed": "Ainsi l'entendent saint Jean Chrysostome ;\nOlympiodore ;\nsaint Isidore ;\nSuidas ;\nTorniel ;\nGénébrard ;\nSalian.",
-   "why": [
-    "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0518(b)",
-   "page": "page_0518",
-   "marker": "(b)",
-   "text": "Le même, livre 3. Qui ost de interpellatione Job.",
-   "proposed": "Le même, livre 3. Qui est de interpellatione Job.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Ainsi l'entendent saint Jean Chrysostome ; Olympiodore ; Saint Isidore ; Suidas ; Torniel ; Génébrard ; Salian.",
+   "proposed": "Ainsi l'entendent saint Jean Chrysostome ;\nOlympiodore ;\nSaint Isidore ;\nSuidas ;\nTorniel ;\nGénébrard ;\nSalian.",
+   "why": [],
    "flags": []
   }
  ]

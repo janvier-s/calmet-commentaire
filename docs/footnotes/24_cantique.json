@@ -1,16 +1,14 @@
 {
  "summary": {
   "notes": 525,
-  "changed": 48,
+  "changed": 61,
   "flags": {
-   "expand-changed-numbers": 5,
    "greek": 44,
-   "scan-unread": 60,
-   "uncertain": 16,
-   "expand-changed-hebrew-or-greek": 1,
+   "scan-unread": 45,
+   "uncertain": 1,
+   "scanned": 14,
    "hebrew": 2,
-   "ambiguous-name": 1,
-   "expand-changed-italics": 1
+   "context": 2
   }
  },
  "notes": [
@@ -31,19 +29,6 @@
    "proposed": "2 Corinthiens 12:2-3 et suivants.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0027(g)",
-   "page": "page_0027",
-   "marker": "(g)",
-   "text": "Matt. XIII. II.",
-   "proposed": "Matt. XIII. II.",
-   "why": [
-    "written out, but a number changed or added: Matthieu 13:11."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   },
   {
    "id": "0028(c)",
@@ -85,10 +70,8 @@
    "page": "page_0033",
    "marker": "(b)",
    "text": "Voyez Origène, sur ce passage ; Saint Bernard ; Saint Augustin, Sermon 50, De verbis Domini, etc.",
-   "proposed": "Voyez Origène, sur ce passage ;\nsaint Bernard ;\nsaint Augustin, Sermon 50, De verbis Domini, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Voyez Origène, sur ce passage ;\nSaint Bernard ;\nSaint Augustin, Sermon 50, De verbis Domini, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -96,10 +79,11 @@
    "page": "page_0034",
    "marker": "(a)",
    "text": "אם לא תדעי לך היפה בנשים צאי לך בעקבי הצאן [UNCERTAIN HEBREW] _Si ignoras tibi, vade tibi post vestigia gregum._ Aqu. Ἔξελθε σιαυτῆ. Sym. Ἔξελθε σαυτὴν πορεύου.",
-   "proposed": "אם לא תדעי לך היפה בנשים צאי לך בעקבי הצאן [UNCERTAIN HEBREW] _Si ignoras tibi, vade tibi post vestigia gregum._ Aqu. Ἔξελθε σιαυτῆ. Sym. Ἔξελθε σαυτὴν πορεύου.",
+   "proposed": "אם לא תדעי לך היפה בנשים צאי לך בעקבי הצאן [UNCERTAIN HEBREW] _Si ignoras tibi, vade tibi post vestigia gregum._ Aqu. Ἔξελθε σεαυτῇ. Sym. Ἔξελθε σαυτὴν πορεύου.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Song of Solomon 1:8",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Hebrew tail still uncertain: σιαυτῆ -> σεαυτῇ"
    ],
    "flags": [
     "uncertain",
@@ -223,10 +207,8 @@
    "page": "page_0041",
    "marker": "(c)",
    "text": "Origène ; Théodoret ; Apponius ; Bède ; Cassiodore ; Saint Anselme ; Rupert, etc.",
-   "proposed": "Origène ;\nThéodoret ;\nApponius ;\nBède ;\nCassiodore ;\nsaint Anselme ;\nRupert, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Origène ;\nThéodoret ;\nApponius ;\nBède ;\nCassiodore ;\nSaint Anselme ;\nRupert, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -288,11 +270,13 @@
    "page": "page_0045",
    "marker": "(d)",
    "text": "Cassiod. Beda. Carpat. Bern. [ILLEGIBLE].",
-   "proposed": "Cassiod. Beda. Carpat. Bern. [ILLEGIBLE].",
-   "why": [],
+   "proposed": "Cassiod. Beda. Carpat. Bern.",
+   "why": [
+    "scan: Placeholder removed; page reads Cassiod. Beda. Carpat. Bern.",
+    "read on the scan: Bern."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -300,10 +284,8 @@
    "page": "page_0046",
    "marker": "(a)",
    "text": "Saint Grégoire ; Saint Anselme ; Juste d'Urgel ; Bède, etc.",
-   "proposed": "Saint Grégoire ;\nsaint Anselme ;\nJuste d'Urgel ;\nBède, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Saint Grégoire ;\nSaint Anselme ;\nJuste d'Urgel ;\nBède, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -335,13 +317,14 @@
    "page": "page_0048",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] דלג על ההרים מקפץ על הגבעות",
-   "proposed": "[UNCERTAIN HEBREW] דלג על ההרים מקפץ על הגבעות",
+   "proposed": "מדלג על ההרים מקפץ על הגבעות",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Song of Solomon 2:8"
+    "Hebrew checked against the Hebrew Bible, Song of Solomon 2:8",
+    "scan: Filled מדלג, as printed",
+    "read on the scan: מדלג"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -395,19 +378,6 @@
    ]
   },
   {
-   "id": "0053(c)",
-   "page": "page_0053",
-   "marker": "(c)",
-   "text": "Homer. Illiad. xx. _Ὥστε πέλεια, ἣ ῥά θ᾽ ὑπ᾽ ἴρηκος κοίλην εἰσέπτατο πέτρην._",
-   "proposed": "Homer. Illiad. xx. _Ὥστε πέλεια, ἣ ῥά θ᾽ ὑπ᾽ ἴρηκος κοίλην εἰσέπτατο πέτρην._",
-   "why": [
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-changed-hebrew-or-greek"
-   ]
-  },
-  {
    "id": "0053(f)",
    "page": "page_0053",
    "marker": "(f)",
@@ -456,12 +426,13 @@
    "page": "page_0056",
    "marker": "(i)",
    "text": "[UNCERTAIN HEBREW] 70. Ἐπὶ ὄρη κοιλημάτων",
-   "proposed": "[UNCERTAIN HEBREW] 70. Ἐπὶ ὄρη κοιλημάτων",
-   "why": [],
+   "proposed": "על* הרי* בתר* 70. Ἐπὶ ὄρη κοιλωμάτων",
+   "why": [
+    "context: Song 2:17 Hebrew; LXX spelling: [UNCERTAIN HEBREW] -> על* הרי* בתר*, κοιλημάτων -> κοιλωμάτων"
+   ],
    "flags": [
-    "uncertain",
     "greek",
-    "scan-unread"
+    "context"
    ]
   },
   {
@@ -502,11 +473,13 @@
    "page": "page_0063",
    "marker": "(a)",
    "text": "Dilecta [UNCERTAIN HEBREW] Vide Cantique des cantiques 2:7. 3:5. 8:4. etc.",
-   "proposed": "Dilecta [UNCERTAIN HEBREW] Vide Cantique des cantiques 2:7. 3:5. 8:4. etc.",
-   "why": [],
+   "proposed": "Dilecta אהבה Vide Cantique des cantiques 2:7. 3:5. 8:4. etc.",
+   "why": [
+    "scan: Filled Hebrew word אהבה",
+    "read on the scan: אהבה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -541,9 +514,11 @@
    "marker": "(c)",
    "text": "3 Rois 1:5-6 et suivants.",
    "proposed": "3 Rois 1:5-6 et suivants.",
-   "why": [],
+   "why": [
+    "context: 3 Rois = 1 Kings; Adonias correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -600,13 +575,14 @@
    "page": "page_0070",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] כעדר הקצובות שעלו מן הרחצה",
-   "proposed": "[UNCERTAIN HEBREW] כעדר הקצובות שעלו מן הרחצה",
+   "proposed": "שניך כעדר הקצובות שעלו מן הרחצה שכלם מתאימות",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Song of Solomon 4:2"
+    "Hebrew checked against the Hebrew Bible, Song of Solomon 4:2",
+    "scan: Filled שניך; added printed continuation שכלם מתאימות",
+    "read on the scan: שניך"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -623,13 +599,14 @@
    "page": "page_0070",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] כפלח הרמון רקתך",
-   "proposed": "[UNCERTAIN HEBREW] כפלח הרמון רקתך",
+   "proposed": "כפלח הרמון רקתך",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Song of Solomon 4:3"
+    "Hebrew checked against the Hebrew Bible, Song of Solomon 4:3",
+    "scan: Placeholder resolved; page shows only כפלח הרמון רקתך",
+    "read on the scan: כפלח הרמון רקתך"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -637,11 +614,14 @@
    "page": "page_0072",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 2. Ezech. III. 15. [UNCERTAIN HEBREW] Un défilé. Exode 14:2.",
-   "proposed": "[UNCERTAIN HEBREW] 2. Ezech. III. 15. [UNCERTAIN HEBREW] Un défilé. Exode 14:2.",
-   "why": [],
+   "proposed": "כמגדל דויד צוארך בנוי לתלפיות אלף המגן תלוי עליו וגו' 2. Ezech. III. 15. פי Un défilé. Exode 14:2.",
+   "why": [
+    "scan: Filled both Hebrew placeholders: the full quotation and פי",
+    "read on the scan: כמגדל דויד צוארך בנוי לתלפיות אלף המגן תלוי עליו וגו'",
+    "read on the scan: פי"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -661,11 +641,13 @@
    "page": "page_0072",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] Une hauteur. Deutéronome 13:16. Josué 8:28. Jérémie 30:18. Jérémie 49.",
-   "proposed": "[UNCERTAIN HEBREW] Une hauteur. Deutéronome 13:16. Josué 8:28. Jérémie 30:18. Jérémie 49.",
-   "why": [],
+   "proposed": "תל Une hauteur. Deutéronome 13:16. Josué 8:28. Jérémie 30:18. Jérémie 49.",
+   "why": [
+    "scan: Filled תל",
+    "read on the scan: תל"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -676,19 +658,6 @@
    "proposed": "Ainsi l'entendent la plupart des Pères ;\nSanctius ;\nCornelius a Lapide.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0073(e)",
-   "page": "page_0073",
-   "marker": "(e)",
-   "text": "Cantique des cantiques 2:7. III. s.",
-   "proposed": "Cantique des cantiques 2:7. III. s.",
-   "why": [
-    "written out, but a number changed or added: Cantique des cantiques 2:7 ; 3:5."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   },
   {
    "id": "0073(f)",
@@ -707,44 +676,6 @@
    "proposed": "Saint Grégoire de Nysse ;\nThéodoret ;\nPsellus ;\nRupert.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0074(b)",
-   "page": "page_0074",
-   "marker": "(b)",
-   "text": "Cant. III. II.",
-   "proposed": "Cant. III. II.",
-   "why": [
-    "written out, but a number changed or added: Cantique des cantiques 3:11."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
-   "id": "0075(f)",
-   "page": "page_0075",
-   "marker": "(f)",
-   "text": "Voyez saint Augustin, sur le Psaume 67 ; trois Pères dans la Chaîne ; Carpathius ; Saint Ambroise, Des vierges, chapitre 3 ; et De Isaac, chapitre 5, etc.",
-   "proposed": "Voyez saint Augustin, sur le Psaume 67 ; trois Pères dans la Chaîne ; Carpathius ; saint Ambroise, Des vierges, chapitre 3 ; et De Isaac, chapitre 5, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0076(a)",
-   "page": "page_0076",
-   "marker": "(a)",
-   "text": "לבבתני אחותי כלה 70. _Exastimaras me._ Édit. _ÉSaponas µe._ Vous m'avez donné du cœur. _Ita Sym apud Theodoret._",
-   "proposed": "לבבתני אחותי כלה 70. _Exastimaras me._ Édit. _ÉSaponas µe._ Vous m'avez donné du cœur. _Ita Sym apud Theodoret._",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Song of Solomon 4:9",
-    "written out, but the italics changed: לבבתני אחותי כלה les Septante. _Exastimaras me._ Édit. _ÉSaponas µe._ Vous m'avez donné du cœur. Ainsi lit Symmaque dans Théodoret."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
   },
   {
    "id": "0076(c)",
@@ -826,10 +757,8 @@
    "page": "page_0081",
    "marker": "(e)",
    "text": "Voyez saint Grégoire de Nysse ; Rupert ; Saint Anselme ; Théodoret ; Psellus, etc.",
-   "proposed": "Voyez saint Grégoire de Nysse ;\nRupert ;\nsaint Anselme ;\nThéodoret ;\nPsellus, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Voyez saint Grégoire de Nysse ;\nRupert ;\nSaint Anselme ;\nThéodoret ;\nPsellus, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -902,14 +831,15 @@
    "page": "page_0088",
    "marker": "(c)",
    "text": "קמתי אני לפתוח לדודי וידי נטפו מור ואצבעותי מור עבר על כפות המנעול. [UNCERTAIN HEBREW] ἐγὼ ἀνέστην τ. ἀδελφιδῷ μου ; χεῖρές μου ἔσταξαν σμύρναν. Δάκτυλοί μου σμύρνης πλήρεις ἐπὶ χεῖρας τῆ κλήθρας. θεοῦ ἤνοιξα ἐγώ.",
-   "proposed": "קמתי אני לפתוח לדודי וידי נטפו מור ואצבעותי מור עבר על כפות המנעול. [UNCERTAIN HEBREW] ἐγὼ ἀνέστην τ. ἀδελφιδῷ μου ; χεῖρές μου ἔσταξαν σμύρναν. Δάκτυλοί μου σμύρνης πλήρεις ἐπὶ χεῖρας τῆ κλήθρας. θεοῦ ἤνοιξα ἐγώ.",
+   "proposed": "קמתי אני לפתוח לדוד וידי נטפו מור ואצבעותי מור עבר על כפות המנעול. 70. Ἀνέστην ἐγὼ ἀνοῖξαι τ. ἀδελφιδῷ μου ; χεῖρές μου ἔσταξαν σμύρναν. Δάκτυλοί μου σμύρνης πλήρεις ἐπὶ χεῖρας τοῦ κλείθρου ἤνοιξα ἐγώ.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Song of Solomon 5:5",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Hebrew לדודי→לדוד; filled placeholder; fixed Greek ending and ἀνοῖξαι",
+    "read on the scan: 70. Ἀνέστην"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -995,16 +925,19 @@
    "page": "page_0093",
    "marker": "(c)",
    "text": "Σιαγόνες αὐτ[ILLEGIBLE] ὡς φιάλαι τ[ILLEGIBLE] ἀρώματ[ILLEGIBLE] φύουσαι μυρεψικά.",
-   "proposed": "Σιαγόνες αὐτ[ILLEGIBLE] ὡς φιάλαι τ[ILLEGIBLE] ἀρώματ[ILLEGIBLE] φύουσαι μυρεψικά.",
+   "proposed": "Σιαγόνες αὐτοῦ ὡς φιάλαι τοῦ ἀρώματος φύουσαι μυρεψικά.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "Greek checked against the Septuagint, Cantique des cantiques 5:13"
+    "Greek checked against the Septuagint, Cantique des cantiques 5:13",
+    "scan: Filled ligature endings: αὐτοῦ, τοῦ, ἀρώματος",
+    "read on the scan: οῦ",
+    "read on the scan: οῦ",
+    "read on the scan: ος"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1026,10 +959,8 @@
    "page": "page_0095",
    "marker": "(f)",
    "text": "Saint Ambroise sur le Psaume 118 ; Saint Grégoire de Nysse ; Philon de Carpasia sur ce passage, etc.",
-   "proposed": "Saint Ambroise sur le Psaume 118 ;\nsaint Grégoire de Nysse ;\nPhilon de Carpasia sur ce passage, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Saint Ambroise sur le Psaume 118 ;\nSaint Grégoire de Nysse ;\nPhilon de Carpasia sur ce passage, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -1037,13 +968,14 @@
    "page": "page_0097",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70. Ποιμαίνειν ἐν κήποις.",
-   "proposed": "[UNCERTAIN HEBREW] 70. Ποιμαίνειν ἐν κήποις.",
+   "proposed": "לרעות בגנים 70. Ποιμαίνειν ἐν κήποις.",
    "why": [
-    "Greek checked against the Septuagint, Cantique des cantiques 6:2"
+    "Greek checked against the Septuagint, Cantique des cantiques 6:2",
+    "scan: Filled Hebrew placeholder: לרעות בגנים",
+    "read on the scan: לרעות בגנים"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1051,24 +983,13 @@
    "page": "page_0098",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
-   "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0100(b)",
-   "page": "page_0100",
-   "marker": "(b)",
-   "text": "Voyez Proverbes 7:10. Osée. IX. II. Isai. XXX. 20. où l'on trouve des expressions à peu près semblables.",
-   "proposed": "Voyez Proverbes 7:10. Osée. IX. II. Isai. XXX. 20. où l'on trouve des expressions à peu près semblables.",
+   "proposed": "יפה את רעיתי כתרצה נאוה כירושלם",
    "why": [
-    "written out, but a number changed or added: Voyez Proverbes 7:10 ; Osée 9:11 ; Isaïe 30:20, où l'on trouve des expressions à peu près semblables."
+    "scan: Filled Hebrew placeholder from page",
+    "read on the scan: יפה את רעיתי כתרצה נאוה כירושלם"
    ],
    "flags": [
-    "expand-changed-numbers"
+    "scanned"
    ]
   },
   {
@@ -1141,10 +1062,8 @@
    "page": "page_0109",
    "marker": "(c)",
    "text": "Saint Grégoire ; Cassiodore ; Bède ; Saint Anselme, etc.",
-   "proposed": "Saint Grégoire ;\nCassiodore ;\nBède ;\nsaint Anselme, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Saint Grégoire ;\nCassiodore ;\nBède ;\nSaint Anselme, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -1177,19 +1096,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0111(h)",
-   "page": "page_0111",
-   "marker": "(h)",
-   "text": "Homer. Odyss. Z. v. 4.",
-   "proposed": "Homer. Odyss. Z. v. 4.",
-   "why": [
-    "written out, but a number changed or added: Homère, Odyssée, chant 6, vers 4."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -1242,11 +1148,13 @@
    "page": "page_0118",
    "marker": "(c)",
    "text": "Osée 14:8. [UNCERTAIN HEBREW]",
-   "proposed": "Osée 14:8. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "Osée 14:8. יין הלבנון",
+   "why": [
+    "scan: Filled Hebrew placeholder: יין הלבנון",
+    "read on the scan: יין הלבנון"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1254,11 +1162,13 @@
    "page": "page_0118",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] _Nectar. Suffiri, fumigari, suavi perfundi._",
-   "proposed": "[UNCERTAIN HEBREW] _Nectar. Suffiri, fumigari, suavi perfundi._",
-   "why": [],
+   "proposed": "נקטר _Nectar. Suffiri, fumigari, suavi perfundi._",
+   "why": [
+    "scan: Filled Hebrew placeholder: נקטר",
+    "read on the scan: נקטר"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1266,11 +1176,13 @@
    "page": "page_0118",
    "marker": "(e)",
    "text": "Athen. l. 1. c. 2. p. 38. [UNCERTAIN GREEK]",
-   "proposed": "Athen. l. 1. c. 2. p. 38. [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "Athen. l. 1. c. 2. p. 38. Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη.",
+   "why": [
+    "scan: Filled Greek placeholder with the printed Athenaeus passage",
+    "read on the scan: Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1304,17 +1216,6 @@
    ]
   },
   {
-   "id": "0121(a)",
-   "page": "page_0121",
-   "marker": "(a)",
-   "text": "Martial. de Curione.\n…_Dum prandia portat avanti_\n_Hirsutâ peperit rubicunda sub ilice conjux._",
-   "proposed": "Martial, de Curione.\n…_Dum prandia portat avanti_\n_Hirsutâ peperit rubicunda sub ilice conjux._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0121(d)",
    "page": "page_0121",
    "marker": "(d)",
@@ -1338,25 +1239,12 @@
    ]
   },
   {
-   "id": "0127(c)",
-   "page": "page_0127",
-   "marker": "(c)",
-   "text": "Ainsi l'entendent les Pères saint Ambroise ; Saint Grégoire le Grand ; Cassiodore ; Aponius ; Just d'Urgell ; Bède ; Saint Anselme, etc. Quamquam non omnes eodem modo.",
-   "proposed": "Ainsi l'entendent les Pères saint Ambroise ; saint Grégoire le Grand ; Cassiodore ; Aponius ; Just d'Urgell ; Bède ; saint Anselme, etc. Quamquam non omnes eodem modo.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0128(a)",
    "page": "page_0128",
    "marker": "(a)",
    "text": "Voyez Bède ; Cassiodore ; Just d'Urgell ; Aponius ; Saint Bernard, Sermon 9 sur le Psaume Qui habitat, etc.",
-   "proposed": "Voyez Bède ;\nCassiodore ;\nJust d'Urgell ;\nAponius ;\nsaint Bernard, Sermon 9 sur le Psaume Qui habitat, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Voyez Bède ;\nCassiodore ;\nJust d'Urgell ;\nAponius ;\nSaint Bernard, Sermon 9 sur le Psaume Qui habitat, etc.",
+   "why": [],
    "flags": []
   }
  ]

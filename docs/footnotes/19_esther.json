@@ -1,13 +1,15 @@
 {
  "summary": {
   "notes": 478,
-  "changed": 18,
+  "changed": 21,
   "flags": {
-   "uncertain": 4,
-   "scan-unread": 65,
+   "scanned": 3,
    "greek": 59,
+   "scan-unread": 62,
+   "uncertain": 1,
    "hebrew": 3,
-   "reference-not-in-vulgate": 2
+   "context": 2,
+   "uncertain-fill-asterisk-wrong": 1
   }
  },
  "notes": [
@@ -34,13 +36,14 @@
    "page": "page_0056",
    "marker": "(b)",
    "text": "שש ודר [UNCERTAIN HEBREW]",
-   "proposed": "שש ודר [UNCERTAIN HEBREW]",
+   "proposed": "עמודי שש",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Esther 1:6"
+    "Hebrew checked against the Hebrew Bible, Esther 1:6",
+    "scan: Printed note is 'עמודי שש'; replaced the wrong text and placeholder",
+    "read on the scan: עמודי"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -182,27 +185,16 @@
    "flags": []
   },
   {
-   "id": "0071(b)",
-   "page": "page_0071",
-   "marker": "(b)",
-   "text": "Josèphe, Antiquités judaïques, livre 11, chapitre 6. Παρὰ τῶ Σαου Μαρδοχαίῳ. Ainsi l'entend Aben Ezra, le Syriaque, l'ancienne version latine : filiæ fratris ejus. Suyátris. Ita et Syr.",
-   "proposed": "Josèphe, Antiquités judaïques, livre 11, chapitre 6. Παρὰ τῶ Σαου Μαρδοχαίῳ. Ainsi l'entend Aben Ezra, le Syriaque, l'ancienne version latine : filiæ fratris ejus. Suyátris. De même le Syriaque.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0071(d)",
    "page": "page_0071",
    "marker": "(d)",
    "text": "Θυγάτηρ ἀμιναδαβ ἀδελφõ πατρὸς αὐτõ, ἣ ὄνομα ἀυτῆ Εσθηρ. Ει δῑ τῆ με[ILLEGIBLE] ἀυτῆς. εἰς γυναῖκα. Codex Origen. Usser. Ἐπαιδεύετο ἀυτὴν ἑαυτῶ εἰς γυναῖκα. Ita et Syr.",
-   "proposed": "Θυγάτηρ ἀμιναδαβ ἀδελφõ πατρὸς αὐτõ, ἣ ὄνομα ἀυτῆ Εσθηρ. Ει δῑ τῆ με[ILLEGIBLE] ἀυτῆς. εἰς γυναῖκα. Codex Origen. Usser. Ἐπαιδεύετο ἀυτὴν ἑαυτῶ εἰς γυναῖκα. Ita et Syr.",
+   "proposed": "Θυγάτηρ ἀμιναδαβ ἀδελφοῦ πατρὸς αὐτοῦ, ἣ ὄνομα ἀυτῆ Εσθηρ. Ει δῑ τῆ μεταλλάξαι* ἀυτῆς. εἰς γυναῖκα. Codex Origen. Usser. Ἐπαιδεύετο ἀυτὴν ἑαυτῶ εἰς γυναῖκα. Ita et Syr.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Ει δῑ τῆ still doubtful: ἀδελφõ -> ἀδελφοῦ, αὐτõ -> αὐτοῦ, με[ILLEGIBLE] -> μεταλλάξαι*"
    ],
    "flags": [
     "uncertain",
@@ -323,10 +315,8 @@
    "page": "page_0079",
    "marker": "(b)",
    "text": "Pagnin ; Inn. ; Piscator ; Vatable.",
-   "proposed": "Pagnin ;\nJunius ;\nPiscator ;\nVatable.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Pagnin ;\nInn. ;\nPiscator ;\nVatable.",
+   "why": [],
    "flags": []
   },
   {
@@ -360,12 +350,12 @@
    "page": "page_0086",
    "marker": "(a)",
    "text": "Ézéchiel 21:211. In capite duarum viarum divinationem quærens, commiscens sagittas.",
-   "proposed": "Ézéchiel 21:211. In capite duarum viarum divinationem quærens, commiscens sagittas.",
+   "proposed": "Ézéchiel 21:21. In capite duarum viarum divinationem quærens, commiscens sagittas.",
    "why": [
-    "Ézéchiel 21:211 does not exist in the Vulgate"
+    "context: Stray digit; Latin is Ezek 21:21: 21:211. -> 21:21."
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -477,12 +467,12 @@
    "page": "page_0094",
    "marker": "(b)",
    "text": "3 Rois 20:31-32.",
-   "proposed": "4 Rois 20:31-32.",
+   "proposed": "3 Rois 20:31-32.",
    "why": [
-    "4 Rois 20:31-32 does not exist in the Vulgate"
+    "context: Benhadad sackcloth is 3 Rois 20: 4 Rois -> 3 Rois"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -816,11 +806,14 @@
    "page": "page_0138",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "מצות לשתות ולהשתכר מתוך* מפורים* ושלא יכיר בין ארור המן וברוך מרדכי",
+   "why": [
+    "scan: Filled placeholder; the middle words are smudged, so they are guessed",
+    "guessed from context: מצות לשתות ולהשתכר מתוך* מפורים* ושלא יכיר בין ארור המן וברוך מרדכי"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -843,13 +836,14 @@
    "page": "page_0142",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] שם מס על הארץ ואיי הים",
-   "proposed": "[UNCERTAIN HEBREW] שם מס על הארץ ואיי הים",
+   "proposed": "וישם מס על הארץ ואיי הים",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Esther 10:1"
+    "Hebrew checked against the Hebrew Bible, Esther 10:1",
+    "scan: Filled placeholder with וישם",
+    "read on the scan: וישם"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {

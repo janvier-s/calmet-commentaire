@@ -1,29 +1,17 @@
 {
  "summary": {
   "notes": 595,
-  "changed": 77,
+  "changed": 91,
   "flags": {
    "greek": 52,
-   "scan-unread": 83,
-   "ambiguous-name": 6,
-   "uncertain": 25,
+   "scan-unread": 61,
+   "context": 7,
+   "uncertain": 3,
    "hebrew": 12,
-   "expand-changed-italics": 3,
-   "expand-changed-numbers": 4
+   "scanned": 21
   }
  },
  "notes": [
-  {
-   "id": "0102(d)",
-   "page": "page_0102",
-   "marker": "(d)",
-   "text": "Voyez saint Basile, sur Isaïe 1:1 ; Saint Jérôme, sur le même passage et sur ce passage ; les Hébreux ; Ribera, etc.",
-   "proposed": "Voyez saint Basile, sur Isaïe 1:1 ; saint Jérôme, sur le même passage et sur ce passage ; l'Hébreu ; Ribera, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
   {
    "id": "0103(c)",
    "page": "page_0103",
@@ -31,17 +19,6 @@
    "text": "Lévitique 17:7. Nombres 15:39. Juges 2:17. et 1 Paralipomènes 5:25. Jérémie 3:1. Ézéchiel 16:15 et 23:3. et seqq.",
    "proposed": "Lévitique 17:7 ; Nombres 15:39 ; Juges 2:17 ; 1 Paralipomènes 5:25 ; Jérémie 3:1 ; Ézéchiel 16:15 ; 23:3 et suivants.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0103(g)",
-   "page": "page_0103",
-   "marker": "(g)",
-   "text": "Saint Jérôme, sur ce passage ; Aben Ezra ; Kimhi ; Junius ; Polus ; Haclpan ; d'autres dans Théodoret ; Haymon ; Saint Isidore ; Vatable ; la Bible de Zurich ; Paul de Burgos, etc.",
-   "proposed": "Saint Jérôme, sur ce passage ; Aben Ezra ; Kimhi ; Junius ; Polus ; Haclpan ; d'autres dans Théodoret ; Haymon ; saint Isidore ; Vatable ; la Bible de Zurich ; Paul de Burgos, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
    "flags": []
   },
   {
@@ -66,12 +43,12 @@
    "page": "page_0106",
    "marker": "(b)",
    "text": "Ibid. ℣. 29.",
-   "proposed": "4 Rois 15:29.",
+   "proposed": "Ibid. ℣. 29.",
    "why": [
-    "abbreviations written out"
+    "context: Ibid.; 4 Rois 15:29 fits"
    ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -79,9 +56,10 @@
    "page": "page_0110",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] סרי. καὶ παύσω τὴν πορνείαν αὐτῆς ἀπ' ἐμᾶυ, καὶ τὴν μοιχείαν αὐτῆς, ἐκ μέσου μαστῶν αὐτῆς.",
-   "proposed": "[UNCERTAIN HEBREW] סרי. καὶ παύσω τὴν πορνείαν αὐτῆς ἀπ' ἐμᾶυ, καὶ τὴν μοιχείαν αὐτῆς, ἐκ μέσου μαστῶν αὐτῆς.",
+   "proposed": "[UNCERTAIN HEBREW] סרי. καὶ παύσω τὴν πορνείαν αὐτῆς ἀπ' ἐμοῦ, καὶ τὴν μοιχείαν αὐτῆς, ἐκ μέσου μαστῶν αὐτῆς.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "context: Hebrew word still uncertain: ἐμᾶυ -> ἐμοῦ"
    ],
    "flags": [
     "uncertain",
@@ -143,11 +121,13 @@
    "page": "page_0119",
    "marker": "(a)",
    "text": "70. [UNCERTAIN HEBREW] Qui aime le mal. L'Hébreu peut signifier le mal, ou un ami.",
-   "proposed": "70. [UNCERTAIN HEBREW] Qui aime le mal. L'Hébreu peut signifier le mal, ou un ami.",
-   "why": [],
+   "proposed": "70. אהבת רע Qui aime le mal. L'Hébreu peut signifier le mal, ou un ami.",
+   "why": [
+    "scan: Filled the Hebrew placeholder with אהבת רע, as printed.",
+    "read on the scan: אהבת רע"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -187,45 +167,6 @@
    ]
   },
   {
-   "id": "0121(c)",
-   "page": "page_0121",
-   "marker": "(c)",
-   "text": "_Vide_ Brisson. _de formulis Roman._",
-   "proposed": "_Vide_ Brisson. _de formulis Roman._",
-   "why": [
-    "written out, but the italics changed: Voyez Brisson, De formulis Romanis."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
-  },
-  {
-   "id": "0122(b)",
-   "page": "page_0122",
-   "marker": "(b)",
-   "text": "_Vide_ Theodoret. _hic._ et Ieronym. _in fine cap._ Theophylact. Rusin. Sanƈt. _p._ 55.",
-   "proposed": "_Vide_ Theodoret. _hic._ et Ieronym. _in fine cap._ Theophylact. Rusin. Sanƈt. _p._ 55.",
-   "why": [
-    "written out, but the italics changed: Voyez Théodoret, sur ce passage ; et saint Jérôme, à la fin du chapitre ; Théophylacte ; Rufin ; Sanctius, page 55."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
-  },
-  {
-   "id": "0122(c)",
-   "page": "page_0122",
-   "marker": "(c)",
-   "text": "_Ita_ PP. _passim._ Origen. Philocal. _c._ 1. Ieronym. _hic._ Cyrill. Albert. Hugo. Dionys. Lyr. Ribera, _etc._",
-   "proposed": "_Ita_ PP. _passim._ Origen. Philocal. _c._ 1. Ieronym. _hic._ Cyrill. Albert. Hugo. Dionys. Lyr. Ribera, _etc._",
-   "why": [
-    "written out, but the italics changed: Ainsi l'entendent les Pères passim. Origène, Philocalie, chapitre 1 ; saint Jérôme, sur ce passage ; saint Cyrille ; Albert le Grand ; Hugues de Saint-Cher ; Denys ; Nicolas de Lyre ; Ribera, etc."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
-  },
-  {
    "id": "0122(f)",
    "page": "page_0122",
    "marker": "(f)",
@@ -260,13 +201,14 @@
    "page": "page_0125",
    "marker": "(a)",
    "text": "דמים בדמים נגעו [UNCERTAIN HEBREW]",
-   "proposed": "דמים בדמים נגעו [UNCERTAIN HEBREW]",
+   "proposed": "דמים בדמים נגעו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Hosea 4:2"
+    "Hebrew checked against the Hebrew Bible, Hosea 4:2",
+    "scan: Placeholder was only a blot after נגעו; removed it.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -286,17 +228,6 @@
    "proposed": "Saint Jérôme, sur ce passage ;\nSaint Grégoire le Grand, Homélie 17 sur les Évangiles ;\nVatable, etc.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0129(c)",
-   "page": "page_0129",
-   "marker": "(c)",
-   "text": "24 ; et 2 Corinthiens 5:21. Voyez au besoin Théodoret ; Saint Cyrille ; Théophylacte ; Albert le Grand ; Ribera ; Sanctius, etc.",
-   "proposed": "24 ; et 2 Corinthiens 5:21. Voyez au besoin Théodoret ; saint Cyrille ; Théophylacte ; Albert le Grand ; Ribera ; Sanctius, etc.",
-   "why": [
-    "abbreviations written out"
    ],
    "flags": []
   },
@@ -345,11 +276,13 @@
    "page": "page_0133",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] ubi erant idola.",
-   "proposed": "[UNCERTAIN HEBREW] ubi erant idola.",
-   "why": [],
+   "proposed": "ועם לא יבין ילבט ubi erant idola.",
+   "why": [
+    "scan: Filled the placeholder with ועם לא יבין ילבט, as printed.",
+    "read on the scan: ועם לא יבין ילבט"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -371,16 +304,16 @@
    "page": "page_0133",
    "marker": "(h)",
    "text": "Συ δε Ισραηλ, μη ἀγνόει, και Ιυδα, μη πορευεσθε εἰς Γαλγαλα, και μη ἀναβαινετε εἰς τον οικον ὠν. Aqu. et Sym. Οικον ἀνωφελῆ. Heb. [UNCERTAIN HEBREW] Theodot. Οικον ἀδικιας. Domum iniquitatis.",
-   "proposed": "Σὺ δὲ Ισραηλ, μὴ ἀγνόει, καὶ Ιουδα, μὴ πορεύεσθε εἰς Γαλγαλα, καὶ μὴ ἀναβαίνετε εἰς τὸν οἶκον ὠν. Aqu. et Sym. Οἶκον ἀνωφελῆ. Heb. [UNCERTAIN HEBREW] Theodot. Οἶκον ἀδικίας. Domum iniquitatis.",
+   "proposed": "Σὺ δὲ Ισραηλ, μὴ ἀγνόει, καὶ Ιουδα, μὴ πορεύεσθε εἰς Γαλγαλα, καὶ μὴ ἀναβαίνετε εἰς τὸν οἶκον Ων. Aqu. et Sym. Οἶκον ἀνωφελῆ. Heb. בית* און* Theodot. Οἶκον ἀδικίας. Domum iniquitatis.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Συ -> Σὺ, δε -> δὲ, μη -> μὴ, και -> καὶ, πορευεσθε -> πορεύεσθε, τον -> τὸν, οικον -> οἶκον, Ιυδα -> Ιουδα, ἀναβαινετε -> ἀναβαίνετε",
     "Greek spelling checked against a Greek dictionary: Οικον -> Οἶκον",
-    "Greek spelling checked against a Greek dictionary: Οικον -> Οἶκον, ἀδικιας -> ἀδικίας"
+    "Greek spelling checked against a Greek dictionary: Οικον -> Οἶκον, ἀδικιας -> ἀδικίας",
+    "context: Beth-On, LXX Ων: ὠν -> Ων, [UNCERTAIN HEBREW] -> בית* און*"
    ],
    "flags": [
-    "uncertain",
     "greek",
-    "scan-unread"
+    "context"
    ]
   },
   {
@@ -430,14 +363,15 @@
    "page": "page_0135",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] סבאם סר",
-   "proposed": "[UNCERTAIN HEBREW] סר סבאם",
+   "proposed": "סר סבאם",
    "why": [
     "Hebrew word order reversed: סבאם סר -> סר סבאם",
-    "Hebrew checked against the Hebrew Bible, Hosea 4:18"
+    "Hebrew checked against the Hebrew Bible, Hosea 4:18",
+    "scan: Placeholder was only a blot before סר סבאם; removed it.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -454,13 +388,14 @@
    "page": "page_0135",
    "marker": "(f)",
    "text": "[UNCERTAIN HEBREW] אהבו הבו קלון מגניהם",
-   "proposed": "[UNCERTAIN HEBREW] אהבו הבו קלון מגניהם",
+   "proposed": "אהבו הבו קלון מגניהם",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Placeholder was only a blot; removed it. Kept the reference spelling מגניהם.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -468,36 +403,28 @@
    "page": "page_0137",
    "marker": "(a)",
    "text": "Cyrill. Ieron. Theodoret. hic. S'ege di vûm [UNCERTAIN GREEK], is û dieges diasolen paròn. Ita Grot. Vat.",
-   "proposed": "Cyrill. Ieron. Theodoret. hic. S'ege di vûm [UNCERTAIN GREEK], is û dieges diasolen paròn. Ita Grot. Vat.",
-   "why": [],
-   "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0137(b)",
-   "page": "page_0137",
-   "marker": "(b)",
-   "text": "Ainsi Junius ; Arias Montanus ; Piscator ; la Bible de Zurich ; Mercier ; Grotius ; Drusius ; Rivet ; etc.",
-   "proposed": "Ainsi l'entendent Junius ; Arias Montanus ; Piscator ; la Bible de Zurich ; Mercier ; Grotius ; Drusius ; Rivet ; etc.",
+   "proposed": "Cyrill. Ieron. Theodoret. hic. Ὁ ἄγρας δὲ τῶν (ἀγρευτής,)* ἐστι θήρας διαφόρου μέρος. Ita Grot. Vat.",
    "why": [
-    "abbreviations written out"
+    "scan: Rewrote the Greek and filled the placeholder; the small Greek print is hard to read.",
+    "guessed from context: (ἀγρευτής,)*"
    ],
-   "flags": []
+   "flags": [
+    "scanned"
+   ]
   },
   {
    "id": "0137(c)",
    "page": "page_0137",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] כי פח הייתם למצפה ורשת פרושה על תבור",
-   "proposed": "[UNCERTAIN HEBREW] כי פח הייתם למצפה ורשת פרושה על תבור",
+   "proposed": "כי פח הייתם למצפה ורשת פרושה על תבור",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Hosea 5:1"
+    "Hebrew checked against the Hebrew Bible, Hosea 5:1",
+    "scan: Removed the placeholder (a blot); wrote הייתם as in the reference.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -505,13 +432,14 @@
    "page": "page_0137",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] שחטה העמיקו",
-   "proposed": "[UNCERTAIN HEBREW] שחטה העמיקו",
+   "proposed": "שחטה שטים העמיקו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Hosea 5:2"
+    "Hebrew checked against the Hebrew Bible, Hosea 5:2",
+    "scan: Filled the placeholder with the missing word שטים.",
+    "read on the scan: שטים"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -519,13 +447,14 @@
    "page": "page_0137",
    "marker": "(e)",
    "text": "En lisant [UNCERTAIN HEBREW] העמיקו שחטים",
-   "proposed": "En lisant [UNCERTAIN HEBREW] העמיקו שחטים",
+   "proposed": "En lisant שחתת העמיקו",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Replaced the placeholder and the misread word with the printed שחתת העמיקו.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -538,19 +467,6 @@
    "flags": [
     "hebrew",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0138(d)",
-   "page": "page_0138",
-   "marker": "(d)",
-   "text": "Isai. I. II.",
-   "proposed": "Isai. I. II.",
-   "why": [
-    "written out, but a number changed or added: Isaïe 1:11."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -583,9 +499,11 @@
    "marker": "(d)",
    "text": "4 Rois 17:4.",
    "proposed": "4 Rois 17:4.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 17:4 correct (Calmet)"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -594,9 +512,11 @@
    "marker": "(f)",
    "text": "4 Rois 16:7.",
    "proposed": "4 Rois 16:7.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 16:7 correct (Calmet)"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -655,10 +575,8 @@
    "page": "page_0145",
    "marker": "(f)",
    "text": "Saint Jérôme, sur ce passage ; Saint Augustin, De la Trinité, livre 18, chapitre 28 ; Lactance, De la divine sagesse, livre 4, chapitre 84 ; Saint Grégoire le Grand, Homélie 20 sur Ézéchiel ; Saint Cyprien, Contre les Juifs, livre 2, chapitre 24 ; Hervé sur 1 aux Corinthiens ; Saint Bernard, Sermon 1 sur la Résurrection ; Origène, Homélie 5 sur l'Exode ; Tertullien, Contre les Juifs, chapitre 13 ; Théodoret et Théophylacte, sur ce passage ; Saint Cyrille d'Alexandrie, sur 2 Jean, chapitre 26. Voyez Sanctius, numéro 9, etc.",
-   "proposed": "Saint Jérôme, sur ce passage ;\nsaint Augustin, De la Trinité, livre 18, chapitre 28 ;\nLactance, De la divine sagesse, livre 4, chapitre 84 ;\nsaint Grégoire le Grand, Homélie 20 sur Ézéchiel ;\nsaint Cyprien, Contre les Juifs, livre 2, chapitre 24 ;\nHervé sur 1 aux Corinthiens ;\nsaint Bernard, Sermon 1 sur la Résurrection ;\nOrigène, Homélie 5 sur l'Exode ;\nTertullien, Contre les Juifs, chapitre 13 ;\nThéodoret et Théophylacte, sur ce passage ;\nsaint Cyrille d'Alexandrie, sur 2 Jean, chapitre 26. Voyez Sanctius, numéro 9, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Saint Jérôme, sur ce passage ;\nSaint Augustin, De la Trinité, livre 18, chapitre 28 ;\nLactance, De la divine sagesse, livre 4, chapitre 84 ;\nSaint Grégoire le Grand, Homélie 20 sur Ézéchiel ;\nSaint Cyprien, Contre les Juifs, livre 2, chapitre 24 ;\nHervé sur 1 aux Corinthiens ;\nSaint Bernard, Sermon 1 sur la Résurrection ;\nOrigène, Homélie 5 sur l'Exode ;\nTertullien, Contre les Juifs, chapitre 13 ;\nThéodoret et Théophylacte, sur ce passage ;\nSaint Cyrille d'Alexandrie, sur 2 Jean, chapitre 26. Voyez Sanctius, numéro 9, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -683,19 +601,6 @@
    "proposed": "TBM Voyez Grotius ;\nDrusius ;\nLouis de Dieu.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0148(a)",
-   "page": "page_0148",
-   "marker": "(a)",
-   "text": "Levit. XXIII. II.",
-   "proposed": "Levit. XXIII. II.",
-   "why": [
-    "written out, but a number changed or added: Lévitique 23:11."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   },
   {
    "id": "0148(b)",
@@ -872,13 +777,14 @@
    "page": "page_0164",
    "marker": "(e)",
    "text": "70. Ηῤξαν ἐξ ἑαυτῶν, καὶ οὐ δι᾽ ἐμοῦ. Heb. [UNCERTAIN HEBREW]",
-   "proposed": "70. Ἦρξαν ἐξ ἑαυτῶν, καὶ οὐ δι᾽ ἐμοῦ. Heb. [UNCERTAIN HEBREW]",
+   "proposed": "70. Ἤρξαν, καὶ οὐκ ἐγνώρισάν μοι. Heb. השירו ולא ידעתי",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Ηῤξαν -> Ἦρξαν"
+    "Greek spelling checked against a Greek dictionary: Ηῤξαν -> Ἦρξαν",
+    "scan: Corrected the Greek to the printed text; filled the Hebrew from the page.",
+    "read on the scan: השירו ולא ידעתי"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -890,7 +796,8 @@
    "why": [
     "Hebrew checked against the Hebrew Bible, Hosea 8:6: שכבים -> שבבים",
     "Greek spelling checked against a Greek dictionary: Ἀκαλυμμάτων -> Καλυμμάτων",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Hebrew and Ριμβόων need page"
    ],
    "flags": [
     "uncertain",
@@ -924,23 +831,16 @@
    "page": "page_0172",
    "marker": "(a)",
    "text": "Heb. [UNCERTAIN HEBREW] certa fides mea. LXX. Area et amis ex ipsorum auleis, et vinum ipsorum auleis. Ils ont lu [UNCERTAIN HEBREW] au lieu de [UNCERTAIN HEBREW].",
-   "proposed": "Heb. [UNCERTAIN HEBREW] certa fides mea. LXX. Area et amis ex ipsorum auleis, et vinum ipsorum auleis. Ils ont lu [UNCERTAIN HEBREW] au lieu de [UNCERTAIN HEBREW].",
-   "why": [],
-   "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0175(a)",
-   "page": "page_0175",
-   "marker": "(a)",
-   "text": "Vide sup. VII. v. 10. Jérémie 8:2. Ézéchiel 29:5. etc.",
-   "proposed": "Voyez supra 7:10 ; Jérémie 8:2 ; Ézéchiel 29:5 ; etc.",
+   "proposed": "Heb. גרן ויקב לא ירעם ותירוש יכחש בה certa fides mea. LXX. Area et amis ex ipsorum auleis, et vinum ipsorum auleis. Ils ont lu ידעם au lieu de ירעם.",
    "why": [
-    "abbreviations written out"
+    "scan: Filled the three Hebrew placeholders from the page.",
+    "read on the scan: גרן ויקב לא ירעם ותירוש יכחש בה",
+    "read on the scan: ידעם",
+    "read on the scan: ירעם"
    ],
-   "flags": []
+   "flags": [
+    "scanned"
+   ]
   },
   {
    "id": "0175(b)",
@@ -962,9 +862,11 @@
    "marker": "(b)",
    "text": "4 Rois 9:11.",
    "proposed": "4 Rois 9:11.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 9:11 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -993,13 +895,14 @@
    "page": "page_0181",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] אפרים כאשר ראיתי לצור שתולה לנוה",
-   "proposed": "[UNCERTAIN HEBREW] אפרים כאשר ראיתי לצור שתולה לנוה",
+   "proposed": "אפרים כאשר ראיתי לצור שתולה לנוה",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Hosea 9:13"
+    "Hebrew checked against the Hebrew Bible, Hosea 9:13",
+    "scan: Placeholder was a duplicate of the printed אפרים; the line now matches the page.",
+    "read on the scan: אפרים"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1068,19 +971,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0187(a)",
-   "page": "page_0187",
-   "marker": "(a)",
-   "text": "Vide Genèse 35:5. et Isai. vııı. 13. Dominum exercituum ipsum sanctificate : ipse pavor vester, et ipse terror vester.",
-   "proposed": "Vide Genèse 35:5. et Isai. vııı. 13. Dominum exercituum ipsum sanctificate : ipse pavor vester, et ipse terror vester.",
-   "why": [
-    "written out, but a number changed or added: Voyez Genèse 35:5 ; et Isaïe 8:13. Dominum exercituum ipsum sanctificate : ipse pavor vester, et ipse terror vester."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -1167,13 +1057,14 @@
    "page": "page_0193",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] דרוש את יהוה עד בוא ויורה צדק לכם",
-   "proposed": "[UNCERTAIN HEBREW] דרוש את יהוה עד בוא ויורה צדק לכם",
+   "proposed": "עת לדרוש את יהוה עד יבא ויורה צדק לכם",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Hosea 10:12"
+    "Hebrew checked against the Hebrew Bible, Hosea 10:12",
+    "scan: Filled the opening עת ל and corrected בוא to יבא.",
+    "read on the scan: עת ל"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1181,13 +1072,14 @@
    "page": "page_0193",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] שאון בעמים",
-   "proposed": "[UNCERTAIN HEBREW] שאון בעמים",
+   "proposed": "וקאם שאון בעמיך",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled וקאם; corrected בעמים to בעמיך.",
+    "read on the scan: וקאם"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1261,9 +1153,11 @@
    "marker": "(g)",
    "text": "2 Rois 7:19.",
    "proposed": "2 Rois 7:19.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 7:19 lex Adam correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1281,19 +1175,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0200(a)",
-   "page": "page_0200",
-   "marker": "(a)",
-   "text": "Ieronym. Haimo. Drus. Confer Osée VII. II. VIII. I 3 IX. 3.",
-   "proposed": "Ieronym. Haimo. Drus. Confer Osée VII. II. VIII. I 3 IX. 3.",
-   "why": [
-    "written out, but a number changed or added: Saint Jérôme ; Haymon ; Drusius. Comparez Osée 7:11 ; 8:13 ; 9:3."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -1412,11 +1293,14 @@
    "page": "page_0209",
    "marker": "(a)",
    "text": "Ils lisent [UNCERTAIN HEBREW] Himmeno, au lieu de Himmanu. Le premier est mis pour [UNCERTAIN HEBREW] Immo.",
-   "proposed": "Ils lisent [UNCERTAIN HEBREW] Himmeno, au lieu de Himmanu. Le premier est mis pour [UNCERTAIN HEBREW] Immo.",
-   "why": [],
+   "proposed": "Ils lisent עמנו Himmeno, au lieu de Himmanu. Le premier est mis pour עמו Immo.",
+   "why": [
+    "scan: Filled the two Hebrew placeholders from the page.",
+    "read on the scan: עמנו",
+    "read on the scan: עמו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1424,11 +1308,14 @@
    "page": "page_0209",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Vide Exode 3:15. Psaumes 101:13. 134:13, 70. Hæsione græce [UNCERTAIN GREEK].",
-   "proposed": "[UNCERTAIN HEBREW] Vide Exode 3:15. Psaumes 101:13. 134:13, 70. Hæsione græce [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "יהוה זכרו Vide Exode 3:15. Psaumes 101:13. 134:13, 70. Hæsione græce Παντοκράτωρ ἔσται μνημόσυνον αὐτοῦ.",
+   "why": [
+    "scan: Filled the Hebrew and Greek placeholders. The Greek is the printed 70 reading.",
+    "read on the scan: יהוה זכרו",
+    "read on the scan: Παντοκράτωρ ἔσται μνημόσυνον αὐτοῦ"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1436,11 +1323,13 @@
    "page": "page_0209",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] p 70. Kala duratius byrsam.",
-   "proposed": "[UNCERTAIN HEBREW] p 70. Kala duratius byrsam.",
-   "why": [],
+   "proposed": "לעשק אהב p 70. Kala duratius byrsam.",
+   "why": [
+    "scan: Filled the Hebrew placeholder with לעשק אהב.",
+    "read on the scan: לעשק אהב"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1448,13 +1337,14 @@
    "page": "page_0210",
    "marker": "(a)",
    "text": "אך עשרתי מצאתי און לי [UNCERTAIN HEBREW]",
-   "proposed": "אך עשרתי מצאתי און לי [UNCERTAIN HEBREW]",
+   "proposed": "אך עשרתי מצאתי און לי",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Hosea 12:8"
+    "Hebrew checked against the Hebrew Bible, Hosea 12:8",
+    "scan: Removed the trailing placeholder; the page shows nothing after לי.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1515,9 +1405,11 @@
    "marker": "(d)",
    "text": "Psaumes 105 ; 3 Rois 12 et 21.",
    "proposed": "Psaumes 105 ; 3 Rois 12 et 21.",
-   "why": [],
+   "why": [
+    "context: 3 Rois = 1 Kings, fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1548,13 +1440,14 @@
    "page": "page_0216",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] מארבה",
-   "proposed": "[UNCERTAIN HEBREW] מארבה",
+   "proposed": "כעשן מארבה",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled the placeholder with כעשן, which is printed on the page.",
+    "read on the scan: כעשן"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1562,11 +1455,13 @@
    "page": "page_0217",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "כמו שחל",
+   "why": [
+    "scan: Filled the placeholder with כמו שחל. The first word is small, so I used the reference spelling.",
+    "read on the scan: כמו שחל"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1574,11 +1469,13 @@
    "page": "page_0220",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] _Quidam vertunt : Filius non sapiens Éphraïm, quia nunc non staret in angustiâ partis._",
-   "proposed": "[UNCERTAIN HEBREW] _Quidam vertunt : Filius non sapiens Éphraïm, quia nunc non staret in angustiâ partis._",
-   "why": [],
+   "proposed": "הוא בן לא חכם כי עת לא יעמד במשבר בנים _Quidam vertunt : Filius non sapiens Éphraïm, quia nunc non staret in angustiâ partis._",
+   "why": [
+    "scan: Filled the placeholder with the Hebrew of Hosea 13:13, which is printed on the page.",
+    "read on the scan: הוא בן לא חכם כי עת לא יעמד במשבר בנים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1610,7 +1507,9 @@
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] Sym. Μιζαμδριον. Pœnitentiam aget Samaria,",
    "proposed": "[UNCERTAIN HEBREW] Sym. Μιζαμδριον. Pœnitentiam aget Samaria,",
-   "why": [],
+   "why": [
+    "context: Hebrew and Μιζαμδριον unreadable"
+   ],
    "flags": [
     "uncertain",
     "greek",

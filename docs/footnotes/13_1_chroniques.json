@@ -1,14 +1,15 @@
 {
  "summary": {
   "notes": 859,
-  "changed": 32,
+  "changed": 45,
   "flags": {
    "hebrew": 10,
-   "scan-unread": 42,
-   "uncertain": 16,
+   "scan-unread": 27,
+   "uncertain-fill-unclear": 1,
+   "scanned": 14,
    "greek": 20,
-   "ambiguous-name": 20,
-   "expand-changed-numbers": 1
+   "context": 21,
+   "uncertain": 1
   }
  },
  "notes": [
@@ -31,11 +32,13 @@
    "page": "page_0068",
    "marker": "(a)",
    "text": "Genèse 36:12. Erat autem Thamna concubina Eliphaz, quæ peperit ei Amalec. [UNCERTAIN HEBREW]",
-   "proposed": "Genèse 36:12. Erat autem Thamna concubina Eliphaz, quæ peperit ei Amalec. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "Genèse 36:12. Erat autem Thamna concubina Eliphaz, quæ peperit ei Amalec.",
+   "why": [
+    "scan: Removed stray placeholder; the Hebrew belongs to note (b), not (a)"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-unclear",
+    "scanned"
    ]
   },
   {
@@ -43,11 +46,13 @@
    "page": "page_0068",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "קנז ותמנע ועמלק",
+   "why": [
+    "scan: Filled placeholder from page, with ז as in the reference",
+    "read on the scan: קנז ותמנע ועמלק"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -55,11 +60,14 @@
    "page": "page_0068",
    "marker": "(c)",
    "text": "Genèse 36:23. [UNCERTAIN HEBREW] Hic autem [UNCERTAIN HEBREW]",
-   "proposed": "Genèse 36:23. [UNCERTAIN HEBREW] Hic autem [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "Genèse 36:23. עלון Hic autem עלין",
+   "why": [
+    "scan: Filled both Hebrew placeholders: Genesis form, then Chronicles form",
+    "read on the scan: עלון",
+    "read on the scan: עלין"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -67,11 +75,14 @@
    "page": "page_0068",
    "marker": "(e)",
    "text": "Genèse 36:26. [UNCERTAIN HEBREW] Chemdam. Hic autem [UNCERTAIN HEBREW]",
-   "proposed": "Genèse 36:26. [UNCERTAIN HEBREW] Chemdam. Hic autem [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "Genèse 36:26. חמדן Chemdam. Hic autem חמרם",
+   "why": [
+    "scan: Filled both Hebrew placeholders from page",
+    "read on the scan: חמדן",
+    "read on the scan: חמרם"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -92,8 +103,8 @@
    "id": "0071(a)",
    "page": "page_0071",
    "marker": "(a)",
-   "text": "Voyez saint Jérôme, Traditions hébraïques sur la Genèse ; Aristée, dans Eusèbe, Préparation évangélique, livre 9, dernier chapitre ; saint Athanase, Synopsis ; saint Jean Chrysostome, Homélie 21 sur Job ; saint Augustin, La Cité de Dieu, livre 18, chapitre 47 ; Théodoret, question 92 sur la Genèse.",
-   "proposed": "Voyez saint Jérôme, Traditions hébraïques sur la Genèse ;\nAristée, dans Eusèbe, Préparation évangélique, livre 9, dernier chapitre ;\nsaint Athanase, Synopsis ;\nsaint Jean Chrysostome, Homélie 21 sur Job ;\nsaint Augustin, La Cité de Dieu, livre 18, chapitre 47 ;\nThéodoret, question 92 sur la Genèse.",
+   "text": "Voyez saint Jérôme, Traditions hébraïques sur la Genèse ; Aristée, dans Eusèbe, Préparation évangélique, livre 9, dernier chapitre ; Saint Athanase, Synopsis ; Saint Jean Chrysostome, Homélie 21 sur Job ; Saint Augustin, La Cité de Dieu, livre 18, chapitre 47 ; Théodoret, question 92 sur la Genèse.",
+   "proposed": "Voyez saint Jérôme, Traditions hébraïques sur la Genèse ;\nAristée, dans Eusèbe, Préparation évangélique, livre 9, dernier chapitre ;\nSaint Athanase, Synopsis ;\nSaint Jean Chrysostome, Homélie 21 sur Job ;\nSaint Augustin, La Cité de Dieu, livre 18, chapitre 47 ;\nThéodoret, question 92 sur la Genèse.",
    "why": [],
    "flags": []
   },
@@ -130,9 +141,11 @@
    "marker": "(c)",
    "text": "1 Rois 16:10. Adduxit itaque Isaï septem filios suos coram Samuele, et ait Samuel : Non elegit Dominus ex istis… et respondit (Isaï :) Adhuc reliquus est parvulus, et pascit oves.",
    "proposed": "1 Rois 16:10. Adduxit itaque Isaï septem filios suos coram Samuele, et ait Samuel : Non elegit Dominus ex istis… et respondit (Isaï :) Adhuc reliquus est parvulus, et pascit oves.",
-   "why": [],
+   "why": [
+    "context: 1 Rois = 1 Samuel; matches"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -141,9 +154,11 @@
    "marker": "(d)",
    "text": "1 Rois 17:12. David erat filius viri Ephratæi… qui habebat octo filios.",
    "proposed": "1 Rois 17:12. David erat filius viri Ephratæi… qui habebat octo filios.",
-   "why": [],
+   "why": [
+    "context: 1 Rois = 1 Samuel; matches"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -185,9 +200,11 @@
    "marker": "(b)",
    "text": "4 Rois 10:15. _Invenerit Ionadab filium Rechab in occursum sibi, et benedixit ei, etc._",
    "proposed": "4 Rois 10:15. _Invenerit Ionadab filium Rechab in occursum sibi, et benedixit ei, etc._",
-   "why": [],
+   "why": [
+    "context: 4 Rois 10:15 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -216,9 +233,11 @@
    "marker": "(a)",
    "text": "4 Rois 23:35.",
    "proposed": "4 Rois 23:35.",
-   "why": [],
+   "why": [
+    "context: 4 Rois = 2 Kings; verse exists"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -253,27 +272,16 @@
    "page": "page_0093",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] Les Septante ont lu בני filii, au lieu de בן filius.",
-   "proposed": "[UNCERTAIN HEBREW] Les Septante ont lu בני filii, au lieu de בן filius.",
+   "proposed": "ובן חנניה פלטיה וישעיה בני רפיה Les Septante ont lu בני filii, au lieu de בן filius.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled placeholder with the Hebrew of the verse as printed",
+    "read on the scan: ובן חנניה פלטיה וישעיה בני רפיה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
-  },
-  {
-   "id": "0093(d)",
-   "page": "page_0093",
-   "marker": "(d)",
-   "text": "Ainsi les manuscrits. Codices tres vel quatuor in édition mov. Oper. Saint Jérôme. Ainsi et variæ Editiones Bibliorum Gothicè, et aliæ ut Bibl. Roberti Steph. et Polyglott. Antuerp. et Bibl. Sixti V. etc. Nomen _Sesa_, vel _Sesa factum_ ex l'Hébreu ששה _sex_ quod pro nomine proprio malè usurpatum.",
-   "proposed": "Ainsi les manuscrits. Codices tres vel quatuor in édition mov. Oper. Saint Jérôme. Ainsi et variæ Editiones Bibliorum Gothicè, et aliæ ut Bibliothèque Roberti Steph. et Polyglotte d'Anvers et Bibliothèque Sixti V. etc. Nomen _Sesa_, vel _Sesa factum_ ex l'Hébreu ששה _sex_ quod pro nomine proprio malè usurpatum.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0095(d)",
@@ -298,14 +306,15 @@
    "page": "page_0111",
    "marker": "(a)",
    "text": "מלחמתם עם הגראים 70. πόλεμον ἐποίησαν πρὸς τοὺς τρωγλοδύτας. Comme s'ils avaient [UNCERTAIN HEBREW] des étrangers.",
-   "proposed": "מלחמתם עם הגראים 70. πόλεμον ἐποίησαν πρὸς τοὺς τρωγλοδύτας. Comme s'ils avaient [UNCERTAIN HEBREW] des étrangers.",
+   "proposed": "עשו מלחמה עם ההגראים 70. ἐποίησαν πόλεμον πρὸς τοὺς παροίκους. Comme s'ils avaient חגרים des étrangers.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Fixed Hebrew phrase, corrected the Greek, filled placeholder חגרים",
+    "read on the scan: חגרים"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -314,9 +323,11 @@
    "marker": "(a)",
    "text": "Voyez 1 Paralipomènes 5:6 et 4 Rois 15:29.",
    "proposed": "Voyez 1 Paralipomènes 5:6 et 4 Rois 15:29.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 15:29 Téglatphalassar"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -369,9 +380,11 @@
    "marker": "(c)",
    "text": "2 Rois 24. et 1 Paralipomènes 21.",
    "proposed": "2 Rois 24. et 1 Paralipomènes 21.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 24 = 2 Sam census"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -415,11 +428,13 @@
    "page": "page_0141",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Ita Syr. Inn. Malv. | est servile.",
-   "proposed": "[UNCERTAIN HEBREW] Ita Syr. Inn. Malv. | est servile.",
-   "why": [],
+   "proposed": "לעדן בנו עמיהוד Ita Syr. Inn. Malv. | est servile.",
+   "why": [
+    "scan: Filled placeholder with the Hebrew phrase",
+    "read on the scan: לעדן בנו עמיהוד"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -427,11 +442,13 @@
    "page": "page_0145",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Postquam dimisit eos, nempe Naaman, Ahia, et Géra.",
-   "proposed": "[UNCERTAIN HEBREW] Postquam dimisit eos, nempe Naaman, Ahia, et Géra.",
-   "why": [],
+   "proposed": "בשדה מואב מן שלחו אתם Postquam dimisit eos, nempe Naaman, Ahia, et Géra.",
+   "why": [
+    "scan: Filled placeholder with the Hebrew phrase",
+    "read on the scan: בשדה מואב מן שלחו אתם"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -439,11 +456,13 @@
    "page": "page_0145",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "מחשים הוליד את אביטוב",
+   "why": [
+    "scan: Filled placeholder with the Hebrew phrase",
+    "read on the scan: מחשים הוליד את אביטוב"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -452,9 +471,11 @@
    "marker": "(a)",
    "text": "1 Rois 9:1.",
    "proposed": "1 Rois 9:1.",
-   "why": [],
+   "why": [
+    "context: 1 Sam 9:1 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -469,30 +490,18 @@
    "flags": []
   },
   {
-   "id": "0156(a)",
-   "page": "page_0156",
-   "marker": "(a)",
-   "text": "Iliad. E.",
-   "proposed": "Iliad. E.",
-   "why": [
-    "written out, but a number changed or added: Iliade, chant 5."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0162(b)",
    "page": "page_0162",
    "marker": "(b)",
    "text": "על מעשה הבתים [UNCERTAIN HEBREW]",
-   "proposed": "על מעשה הבתים [UNCERTAIN HEBREW]",
+   "proposed": "על מעשה הבתים",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Hebrew already matches print; removed stray placeholder (nothing further printed)",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -500,40 +509,15 @@
    "page": "page_0162",
    "marker": "(c)",
    "text": "ἐπὶ τὰ ἔργα τῆς θυσίας τὸ τηγάνου ἐν μεγάλῳ ἱερέως. [UNCERTAIN GREEK]",
-   "proposed": "ἐπὶ τὰ ἔργα τῆς θυσίας τὸ τηγάνου ἐν μεγάλῳ ἱερέως. [UNCERTAIN GREEK]",
+   "proposed": "ἐπὶ τὰ ἔργα τῆς θυσίας τοῦ τηγάνου τοῦ μεγάλου ἱερέως.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Fixed Greek words (τοῦ, τοῦ μεγάλου) and removed placeholder",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
-  },
-  {
-   "id": "0162(e)",
-   "page": "page_0162",
-   "marker": "(e)",
-   "text": "Lévitique 2:4. Lagana azyma oleo lita. Item Lévitique 6:21 et 7:9, etc.",
-   "proposed": "Lévitique 2:4. Lagana azyma oleo lita. De même Lévitique 6:21 et 7:9, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0163(b)",
-   "page": "page_0163",
-   "marker": "(b)",
-   "text": "Les Septante : l'on met τῆς τραπέζης τῆς προθέσεως, _de la table de proposition_, etc. Alii libri, de superpositionis τῆς τραπέζης. Il semble qu'ils ont lu מקדש, au lieu de מערכת.",
-   "proposed": "Les Septante : l'on met τῆς τραπέζης τῆς προθέσεως, _de la table de proposition_, etc. D'autres livres, de superpositionis τῆς τραπέζης. Il semble qu'ils ont lu מקדש, au lieu de מערכת.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek checked against the Septuagint, Exode 26:35",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0165(a)",
@@ -564,9 +548,11 @@
    "marker": "(e)",
    "text": "2 Rois 21:19.",
    "proposed": "2 Rois 21:19.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Samuel; Elchanan"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -575,9 +561,11 @@
    "marker": "(c)",
    "text": "2 Rois 23:32-33.",
    "proposed": "2 Rois 23:32-33.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Samuel; Jonathan"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -586,9 +574,11 @@
    "marker": "(e)",
    "text": "2 Rois 23:25.",
    "proposed": "2 Rois 23:25.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Samuel; Elica"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -606,9 +596,11 @@
    "marker": "(a)",
    "text": "Voyez 2 Rois 5:6 jusqu'à la fin, et 1 Paralipomènes 14.",
    "proposed": "Voyez 2 Rois 5:6 jusqu'à la fin, et 1 Paralipomènes 14.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Samuel; David"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -640,9 +632,11 @@
    "marker": "(b)",
    "text": "2 Rois 7:2.",
    "proposed": "2 Rois 7:2.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 7:2 Nathan"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -829,11 +823,13 @@
    "page": "page_0262",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70. servire ei et benedicere nomini ejus.",
-   "proposed": "[UNCERTAIN HEBREW] 70. servire ei et benedicere nomini ejus.",
-   "why": [],
+   "proposed": "לברך בשמו עד עולם 70. servire ei et benedicere nomini ejus.",
+   "why": [
+    "scan: Filled Hebrew from page",
+    "read on the scan: לברך בשמו עד עולם"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -859,8 +855,10 @@
    "page": "page_0271",
    "marker": "(b)",
    "text": "vid Exod. A'μασία ὁ δεύτερ[UNCERTAIN GREEK].",
-   "proposed": "vid Exod. A'μασία ὁ δεύτερ[UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "vid Exod. A'μασία ὁ δεύτερος*.",
+   "why": [
+    "context: Ἀμασία form unclear; check page: [UNCERTAIN GREEK] -> ος*"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -872,12 +870,13 @@
    "page": "page_0271",
    "marker": "(e)",
    "text": "υἱοὶ Οζία τῆ Μισαεὶ τῆ Οζία, υἱοὶ αὐτ[UNCERTAIN GREEK] Ισοὰμ, καὶ Ζακχὺρ, καὶ Ἀβαί. In Editio Romana.",
-   "proposed": "υἱοὶ Οζία τῆ Μισαεὶ τῆ Οζία, υἱοὶ αὐτ[UNCERTAIN GREEK] Ισοὰμ, καὶ Ζακχὺρ, καὶ Ἀβαί. In Editio Romana.",
-   "why": [],
+   "proposed": "υἱοὶ Οζία τῆ Μισαεὶ τῆ Οζία, υἱοὶ αὐτοῦ* Ισοὰμ, καὶ Ζακχὺρ, καὶ Ἀβαί. In Editio Romana.",
+   "why": [
+    "context: αὐτοῦ; Roman edition readings: [UNCERTAIN GREEK] -> οῦ*"
+   ],
    "flags": [
-    "uncertain",
     "greek",
-    "scan-unread"
+    "context"
    ]
   },
   {
@@ -907,9 +906,11 @@
    "marker": "(c)",
    "text": "3 Rois 10:12 ; 4 Rois 12:10. Voyez aussi 2 Paralipomènes 9:11.",
    "proposed": "3 Rois 10:12 ; 4 Rois 12:10. Voyez aussi 2 Paralipomènes 9:11.",
-   "why": [],
+   "why": [
+    "context: 3-4 Rois = Kings; correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -939,9 +940,11 @@
    "marker": "(a)",
    "text": "2 Rois 23:20-21 ; 1 Paralipomènes 11:22-23.",
    "proposed": "2 Rois 23:20-21 ; 1 Paralipomènes 11:22-23.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Samuel; Banaïas"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -950,9 +953,11 @@
    "marker": "(e)",
    "text": "2 Rois 23:25.",
    "proposed": "2 Rois 23:25.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Samuel; Harodi"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -961,9 +966,11 @@
    "marker": "(c)",
    "text": "2 Rois 23:27.",
    "proposed": "2 Rois 23:27.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Samuel; Mebonnaï"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -972,9 +979,11 @@
    "marker": "(e)",
    "text": "2 Rois 21:18.",
    "proposed": "2 Rois 21:18.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Samuel; Saph"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -992,9 +1001,11 @@
    "marker": "(b)",
    "text": "Voyez Juges 1:1 ; 1 Rois 16:1-2 ; 2 Rois 3:18 ; 2 Rois 5:1 ; 2 Rois 7:13.",
    "proposed": "Voyez Juges 1:1 ; 1 Rois 16:1-2 ; 2 Rois 3:18 ; 2 Rois 5:1 ; 2 Rois 7:13.",
-   "why": [],
+   "why": [
+    "context: All Samuel references match"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1025,9 +1036,11 @@
    "marker": "(a)",
    "text": "3 Rois 6:23 ; 8:7.",
    "proposed": "3 Rois 6:23 ; 8:7.",
-   "why": [],
+   "why": [
+    "context: 3 Rois = 1 Kings; Cherubim"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1044,11 +1057,13 @@
    "page": "page_0315",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "אבני פוך",
+   "why": [
+    "scan: Filled Hebrew from page",
+    "read on the scan: אבני פוך"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1057,9 +1072,11 @@
    "marker": "(b)",
    "text": "Vide 4 Rois 9:30. Jérémie 4:30.",
    "proposed": "Vide 4 Rois 9:30. Jérémie 4:30.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 9:30 Jezebel's eyes"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1067,11 +1084,13 @@
    "page": "page_0315",
    "marker": "(d)",
    "text": "Isaïe 54:11. Ego sternam per ordinem lapides tuos. Hebr. [UNCERTAIN HEBREW]",
-   "proposed": "Isaïe 54:11. Ego sternam per ordinem lapides tuos. Hebr. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "Isaïe 54:11. Ego sternam per ordinem lapides tuos. Hebr. הנני מרביץ בפוך אבניך",
+   "why": [
+    "scan: Filled Hebrew from page",
+    "read on the scan: הנני מרביץ בפוך אבניך"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {

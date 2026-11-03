@@ -1,14 +1,15 @@
 {
  "summary": {
   "notes": 984,
-  "changed": 60,
+  "changed": 73,
   "flags": {
-   "ambiguous-name": 15,
-   "reference-not-in-vulgate": 2,
+   "context": 17,
    "greek": 45,
-   "scan-unread": 65,
+   "scan-unread": 51,
    "hebrew": 8,
-   "uncertain": 15
+   "scanned": 14,
+   "uncertain": 1,
+   "uncertain-fill-asterisk-wrong": 1
   }
  },
  "notes": [
@@ -18,9 +19,11 @@
    "marker": "(a)",
    "text": "2 Rois 1:3.",
    "proposed": "2 Rois 1:3.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel 1:3 matches passage"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -29,9 +32,11 @@
    "marker": "(b)",
    "text": "2 Rois 1:13.",
    "proposed": "2 Rois 1:13.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel 1:13 matches passage"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -77,12 +82,12 @@
    "page": "page_0007",
    "marker": "(e)",
    "text": "2 Rois 3:33.",
-   "proposed": "3 Rois 3:33.",
+   "proposed": "2 Rois 3:33.",
    "why": [
-    "3 Rois 3:33 does not exist in the Vulgate"
+    "context: Lament for Abner, 2 Sam 3:33: 3 Rois 3:33 -> 2 Rois 3:33"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -178,9 +183,11 @@
    "marker": "(a)",
    "text": "Voyez 1 Rois 13:3 ; et 1 Rois 18:16 ; 9:1.",
    "proposed": "Voyez 1 Rois 13:3 ; et 1 Rois 18:16 ; 9:1.",
-   "why": [],
+   "why": [
+    "context: Samuel references fit trumpet context"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -189,9 +196,11 @@
    "marker": "(b)",
    "text": "1 Rois 24:15 ; et 2 Rois 9:8 ; 16:9 ; Job 30:1 ; Ecclésiaste 9:4.",
    "proposed": "1 Rois 24:15 ; et 2 Rois 9:8 ; 16:9 ; Job 30:1 ; Ecclésiaste 9:4.",
-   "why": [],
+   "why": [
+    "context: All Samuel references, dead dog"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -270,13 +279,14 @@
    "page": "page_0043",
    "marker": "(a)",
    "text": "בחדר משכבו [UNCERTAIN HEBREW]",
-   "proposed": "בחדר משכבו [UNCERTAIN HEBREW]",
+   "proposed": "בחדר משכבו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, II Samuel 4:7"
+    "Hebrew checked against the Hebrew Bible, II Samuel 4:7",
+    "scan: Removed the placeholder; the page prints only בחדר משכבו.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -285,9 +295,11 @@
    "marker": "(d)",
    "text": "Voyez 1 Rois 16:13 ; 2 Rois 2:4.",
    "proposed": "Voyez 1 Rois 16:13 ; 2 Rois 2:4.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering fits (David's anointings)"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -326,13 +338,14 @@
    "page": "page_0058",
    "marker": "(b)",
    "text": "1 Machabées 14:34. Γάζαρα τὴν ἰσί [ILLEGIBLE]",
-   "proposed": "1 Machabées 14:34. Γάζαρα τὴν ἰσί [ILLEGIBLE]",
+   "proposed": "1 Machabées 14:34. Γάζαρα τὴν ἐπὶ τῶν ὁρίων Ἀζώτου",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Corrected ἰσί to ἐπὶ and filled in the rest of the Greek.",
+    "read on the scan: τῶν ὁρίων Ἀζώτου"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -361,11 +374,13 @@
    "page": "page_0065",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70. 1. _Ainsworth diacowit._",
-   "proposed": "[UNCERTAIN HEBREW] 70. 1. _Ainsworth diacowit._",
-   "why": [],
+   "proposed": "על אשר פרץ יהוה פרץ בעזה 70. 1. _Ainsworth diacowit._",
+   "why": [
+    "scan: Filled in the Hebrew placeholder.",
+    "read on the scan: על אשר פרץ יהוה פרץ בעזה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -506,11 +521,13 @@
    "page": "page_0090",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "גיא מלח",
+   "why": [
+    "scan: Filled in the Hebrew placeholder, following the reference spelling.",
+    "read on the scan: גיא מלח"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -559,9 +576,11 @@
    "marker": "(c)",
    "text": "2 Rois 9:10.",
    "proposed": "2 Rois 9:10.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel 9:10 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -668,9 +687,11 @@
    "marker": "(b)",
    "text": "2 Rois 3:7.",
    "proposed": "2 Rois 3:7.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering; Respha, Saul's concubine"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -715,9 +736,11 @@
    "marker": "(c)",
    "text": "3 Rois 7:9.",
    "proposed": "3 Rois 7:9.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 7:9 = sawn stones, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -751,11 +774,13 @@
    "page": "page_0130",
    "marker": "(d)",
    "text": "Vide ad ℣. 9. Joseph Antiq. lib. 7. c. 7. Ap. 25 [ILLEGIBLE]",
-   "proposed": "Vide ad ℣. 9. Joseph Antiq. lib. 7. c. 7. Ap. 25 [ILLEGIBLE]",
-   "why": [],
+   "proposed": "Vide ad ℣. 9. Joseph Antiq. lib. 7. c. 7. Ἄρτους ἠρτυμένους*",
+   "why": [
+    "scan: Corrected 'Ap. 25' to Ἄρτους and filled in the illegible Greek word as a guess.",
+    "guessed from context: ἠρτυμένους*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -788,9 +813,11 @@
    "marker": "(b)",
    "text": "Voyez Exode 8:3 ; Juges 15:1 et 16:9 ; 2 Rois 4:7 ; 4 Rois 11:2 ; Ecclésiaste 10:20 ; Cantique des cantiques 1:3 ; Joël 2:16.",
    "proposed": "Voyez Exode 8:3 ; Juges 15:1 et 16:9 ; 2 Rois 4:7 ; 4 Rois 11:2 ; Ecclésiaste 10:20 ; Cantique des cantiques 1:3 ; Joël 2:16.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 4:7 conclave; 4 Rois 11:2 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -822,13 +849,14 @@
    "page": "page_0137",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] עד היום ההוא",
-   "proposed": "[UNCERTAIN HEBREW] עד היום ההוא",
+   "proposed": "איש על פרדו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Judges 18:1"
+    "Hebrew checked against the Hebrew Bible, Judges 18:1",
+    "scan: Replaced placeholder and extra words with the printed איש על פרדו",
+    "read on the scan: איש על פרדו"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -887,9 +915,11 @@
    "marker": "(b)",
    "text": "2 Rois 14:22.",
    "proposed": "2 Rois 14:22.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel 14:22 fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -939,12 +969,12 @@
    "page": "page_0150",
    "marker": "(a)",
    "text": "Exode 13:10. Voyez aussi Juges 11:400.",
-   "proposed": "Exode 13:10. Voyez aussi Juges 11:400.",
+   "proposed": "Exode 13:10. Voyez aussi Juges 11:40.",
    "why": [
-    "Juges 11:400 does not exist in the Vulgate"
+    "context: Stray zero; v.40 annual custom: Juges 11:400 -> Juges 11:40"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -992,26 +1022,17 @@
    "flags": []
   },
   {
-   "id": "0159(a)",
-   "page": "page_0159",
-   "marker": "(a)",
-   "text": "Grotius ; Capellus ; Castalion ; etc.",
-   "proposed": "Grotius ; Cappel ; Castalion ; etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0163(a)",
    "page": "page_0163",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70. Hæcses in Tit.",
-   "proposed": "[UNCERTAIN HEBREW] 70. Hæcses in Tit.",
-   "why": [],
+   "proposed": "אשר באו ברגלו 70. Ἥκοντες ἐκ Γὲθ πεζοί.",
+   "why": [
+    "scan: Filled Hebrew and Greek from page; removed garbled Latin-looking text",
+    "read on the scan: אשר באו ברגלו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1019,11 +1040,13 @@
    "page": "page_0163",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "שב עם המלך",
+   "why": [
+    "scan: Filled placeholder from page",
+    "read on the scan: שב עם המלך"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1180,9 +1203,11 @@
    "marker": "(b)",
    "text": "1 Rois 14:1.",
    "proposed": "1 Rois 14:1.",
-   "why": [],
+   "why": [
+    "context: 1 Sam 14:1, Jonathan's armour-bearer"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1226,8 +1251,10 @@
    "page": "page_0205",
    "marker": "(a)",
    "text": "Virgil. Eclog. V. et Bionis Idyll. 1. ¦ [UNCERTAIN GREEK] Αἰάζω τῷ Ἄδωνιν. Αἰάζειν καλὸς Ἄδωνις. Ω- ¦ Ita sapius in hoc poëma",
-   "proposed": "Virgil. Eclog. V. et Bionis Idyll. 1. ¦ [UNCERTAIN GREEK] Αἰάζω τῷ Ἄδωνιν. Αἰάζειν καλὸς Ἄδωνις. Ω- ¦ Ita sapius in hoc poëma",
-   "why": [],
+   "proposed": "Virgil. Eclog. V. et Bionis Idyll. 1. ¦ [UNCERTAIN GREEK] Αἰάζω τὸν* Ἄδωνιν. Αἰάζειν καλὸς Ἄδωνις. Ω- ¦ Ita sapius in hoc poëma",
+   "why": [
+    "context: Bion quote garbled; await page: Αἰάζω τῷ Ἄδωνιν -> Αἰάζω τὸν* Ἄδωνιν"
+   ],
    "flags": [
     "uncertain",
     "greek",
@@ -1270,9 +1297,11 @@
    "marker": "(d)",
    "text": "2 Rois 9:10, 12.",
    "proposed": "2 Rois 9:10, 12.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering; Siba and Miphiboseth"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1338,9 +1367,11 @@
    "marker": "(d)",
    "text": "Voyez 1 Rois 10:5.",
    "proposed": "Voyez 1 Rois 10:5.",
-   "why": [],
+   "why": [
+    "context: 1 Rois 10:5 prophets at hill, fits"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1391,9 +1422,11 @@
    "marker": "(f)",
    "text": "2 Rois 23:24.",
    "proposed": "2 Rois 23:24.",
-   "why": [],
+   "why": [
+    "context: 2 Sam 23:24 Elchanan"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1410,17 +1443,19 @@
    "page": "page_0251",
    "marker": "(a)",
    "text": "Je lis ainsi dans le passage des Rois : ויסב עץ חניתו על שלש מאות חלל את [UNCERTAIN HEBREW] Le Cophte a lu וידכר, au lieu de ויסב, et ויסב au lieu de וידכר. Le nombre de trois cens, tuez par un seul homme dans une seule rencontre, est plus croyable, que celui de huit cens.",
-   "proposed": "Je lis ainsi dans le passage des Rois : ויסב עץ חניתו על שלש מאות חלל את [UNCERTAIN HEBREW] Le Cophte a lu וידכר, au lieu de ויסב, et ויסב au lieu de וידכר. Le nombre de trois cens, tuez par un seul homme dans une seule rencontre, est plus croyable, que celui de huit cens.",
+   "proposed": "Je lis ainsi dans le passage des Rois : ישבעם בן חכמני ראש השלישי הוא ערר את העץ החניתר על שלש מאות חלל Le Cophte a lu עדינו, au lieu de ערר, et העצני au lieu de העץ החניתר. Le nombre de trois cens, tuez par un seul homme dans une seule rencontre, est plus croyable, que celui de huit cens.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Corrected the Hebrew quotation and the variants; filled placeholder",
+    "guessed from context: ישבעם בן חכמני ראש השלישי הוא ערר את העץ החניתר על שלש מאות חלל"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "uncertain-fill-asterisk-wrong",
+    "scanned"
    ]
   },
   {
@@ -1477,9 +1512,11 @@
    "marker": "(b)",
    "text": "1 Rois 7:6.",
    "proposed": "1 Rois 7:6.",
-   "why": [],
+   "why": [
+    "context: 1 Sam 7:6 water poured"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1487,11 +1524,13 @@
    "page": "page_0265",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "הבה תמים",
+   "why": [
+    "scan: Filled the Hebrew from the page.",
+    "read on the scan: הבה תמים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1513,11 +1552,13 @@
    "page": "page_0265",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "הבה תמים",
+   "why": [
+    "scan: Filled the Hebrew from the page.",
+    "read on the scan: הבה תמים"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1534,11 +1575,15 @@
    "page": "page_0265",
    "marker": "(f)",
    "text": "[UNCERTAIN HEBREW] Saint. Jérôme a lu [UNCERTAIN HEBREW] ; au. lieu de [UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW] Saint. Jérôme a lu [UNCERTAIN HEBREW] ; au. lieu de [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ויבאו דנה יען Saint. Jérôme a lu יער ; au. lieu de יען",
+   "why": [
+    "scan: Filled three placeholders from page",
+    "read on the scan: ויבאו דנה יען",
+    "read on the scan: יער",
+    "read on the scan: יען"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1546,11 +1591,14 @@
    "page": "page_0266",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] : Une fontaine, au lieu de [UNCERTAIN HEBREW], qui ne signifie rien.",
-   "proposed": "[UNCERTAIN HEBREW] : Une fontaine, au lieu de [UNCERTAIN HEBREW], qui ne signifie rien.",
-   "why": [],
+   "proposed": "עין : Une fontaine, au lieu de יען, qui ne signifie rien.",
+   "why": [
+    "scan: Filled two placeholders from page",
+    "read on the scan: עין",
+    "read on the scan: יען"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1558,11 +1606,13 @@
    "page": "page_0266",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ויבאו מבצר צר",
+   "why": [
+    "scan: Filled placeholder from page",
+    "read on the scan: ויבאו מבצר צר"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1600,18 +1650,6 @@
    "proposed": "Tostat ;\nMénochius ;\nCornelius a Lapide ;\nTirin ;\nMalvenda ;\nSalian.",
    "why": [
     "abbreviations written out (footnote_expand.py)"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0272(e)",
-   "page": "page_0272",
-   "marker": "(e)",
-   "text": "Ἀπὸ πρωΐθεν ἕως ὥρας ἀρίστου. Ainsi l'entendent Théodoret, question 37 ; Saint Ambroise, sur le Psaume 37 ; Josèphe, livre 7, chapitre 10 ; Origène, Homélie 16 sur les Nombres.",
-   "proposed": "Ἀπὸ πρωΐθεν ἕως ὥρας ἀρίστου. Ainsi l'entendent Théodoret, question 37 ; saint Ambroise, sur le Psaume 37 ; Josèphe, livre 7, chapitre 10 ; Origène, Homélie 16 sur les Nombres.",
-   "why": [
-    "Greek checked against the Septuagint, 2 Rois 24:15",
-    "abbreviations written out"
    ],
    "flags": []
   }

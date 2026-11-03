@@ -1,13 +1,13 @@
 {
  "summary": {
   "notes": 133,
-  "changed": 21,
+  "changed": 24,
   "flags": {
    "greek": 8,
-   "scan-unread": 14,
-   "uncertain": 2,
+   "scan-unread": 12,
+   "scanned": 2,
    "hebrew": 4,
-   "reference-not-in-vulgate": 2
+   "context": 2
   }
  },
  "notes": [
@@ -83,11 +83,13 @@
    "page": "page_0011",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] in convalle.",
-   "proposed": "[UNCERTAIN HEBREW] in convalle.",
-   "why": [],
+   "proposed": "הממלאים בית אדניהם חמס ומרמה in convalle.",
+   "why": [
+    "scan: Filled placeholder with the Hebrew of note (b) as printed, using the reference spelling אדניהם.",
+    "read on the scan: הממלאים בית אדניהם חמס ומרמה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -136,13 +138,14 @@
    "page": "page_0013",
    "marker": "(a)",
    "text": "כספו נשוי [UNCERTAIN HEBREW].",
-   "proposed": "כספו נשוי [UNCERTAIN HEBREW].",
+   "proposed": "כל נטילי כסף.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Corrected the Hebrew to the printed text and filled the placeholder.",
+    "read on the scan: כסף"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -250,12 +253,12 @@
    "page": "page_0021",
    "marker": "(b)",
    "text": "Jérémie 48:477. 49:6.",
-   "proposed": "Jérémie 48:477. 49:6.",
+   "proposed": "Jérémie 48:47. 49:6.",
    "why": [
-    "Jérémie 48:477 does not exist in the Vulgate"
+    "context: Doubled digit; Moab's return, Jer 48:47: 48:477. -> 48:47."
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {
@@ -277,12 +280,12 @@
    "page": "page_0026",
    "marker": "(b)",
    "text": "Vide Juges 20:1. et 1 Rois 14:38. Isaïe 19:13.",
-   "proposed": "Voyez Juges 20:1 ; 3 Rois 14:38 ; Isaïe 19:13.",
+   "proposed": "Voyez Juges 20:1 ; 1 Rois 14:38 ; Isaïe 19:13.",
    "why": [
-    "3 Rois 14:38 does not exist in the Vulgate"
+    "context: Anguli populi is 1 Sam 14:38: 3 Rois 14:38 -> 1 Rois 14:38"
    ],
    "flags": [
-    "reference-not-in-vulgate"
+    "context"
    ]
   },
   {

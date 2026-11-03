@@ -1,14 +1,15 @@
 {
  "summary": {
   "notes": 395,
-  "changed": 32,
+  "changed": 37,
   "flags": {
+   "context": 1,
    "reference-not-in-vulgate": 2,
    "greek": 13,
-   "scan-unread": 19,
-   "expand-changed-numbers": 1,
+   "scan-unread": 17,
    "hebrew": 4,
-   "uncertain": 4
+   "uncertain": 2,
+   "scanned": 2
   }
  },
  "notes": [
@@ -19,9 +20,11 @@
    "text": "Xénophon, Cyropédie, livre 8 ; Quinte-Curce, livre 5, chapitre 8 ; Plutarque, De l'exil.",
    "proposed": "Xénophon, Cyropédie, livre 8 ;\nQuinte-Curce, livre 5, chapitre 8 ;\nPlutarque, De l'exil.",
    "why": [
+    "context: No Exode reference; false positive",
     "Exode 49 does not exist in the Vulgate"
    ],
    "flags": [
+    "context",
     "reference-not-in-vulgate"
    ]
   },
@@ -144,19 +147,6 @@
    "flags": []
   },
   {
-   "id": "0023(i)",
-   "page": "page_0023",
-   "marker": "(i)",
-   "text": "Isai. XXII. II. Lacum fecistis inter duos muros, ad aquam Piscinæ veteris.",
-   "proposed": "Isai. XXII. II. Lacum fecistis inter duos muros, ad aquam Piscinæ veteris.",
-   "why": [
-    "written out, but a number changed or added: Isaïe 22:11. Lacum fecistis inter duos muros, ad aquam Piscinæ veteris."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0025(a)",
    "page": "page_0025",
    "marker": "(a)",
@@ -214,9 +204,10 @@
    "page": "page_0039",
    "marker": "(a)",
    "text": "70. Complut. _Kmp_, καὶ ἴκασον ἀυτῶ iis τὸ ὕδωρ. Malv.",
-   "proposed": "70. Complut. _Kmp_, καὶ ἴκασον ἀυτῶ iis τὸ ὕδωρ. Malv.",
+   "proposed": "70. Complut. _Kmp_, καὶ ἕκαστον* ἀυτῶ εἰς* τὸ ὕδωρ. Malv.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
+    "context: Malv. is Malvenda; Greek doubtful: ἴκασον -> ἕκαστον*, iis -> εἰς*",
     "Malachie 5 does not exist in the Vulgate"
    ],
    "flags": [
@@ -262,8 +253,10 @@
    "page": "page_0043",
    "marker": "(c)",
    "text": "חצני נעךתי [UNCERTAIN HEBREW]",
-   "proposed": "חצני נעךתי [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "חצני נערתי [UNCERTAIN HEBREW]",
+   "why": [
+    "context: UNCERTAIN marker remains: נעךתי -> נערתי"
+   ],
    "flags": [
     "uncertain",
     "hebrew",
@@ -284,8 +277,10 @@
    "page": "page_0047",
    "marker": "(a)",
    "text": "בכפירים בבקת אונו [UNCERTAIN HEBREW]",
-   "proposed": "בכפירים בבקת אונו [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "בכפירים בבקעת אונו [UNCERTAIN HEBREW]",
+   "why": [
+    "context: UNCERTAIN marker remains: בבקת -> בבקעת"
+   ],
    "flags": [
     "uncertain",
     "hebrew",
@@ -432,13 +427,14 @@
    "page": "page_0085",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] אל הלשכות לבית האוצר",
-   "proposed": "[UNCERTAIN HEBREW] אל הלשכות לבית האוצר",
+   "proposed": "אל הלשכות לבית האוצר",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Nehemiah 10:38"
+    "Hebrew checked against the Hebrew Bible, Nehemiah 10:38",
+    "scan: Removed the duplicate placeholder; the page shows only this Hebrew phrase, spelled as in the reference.",
+    "read on the scan: אל הלשכות לבית האוצר"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -446,11 +442,13 @@
    "page": "page_0087",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "השלני",
+   "why": [
+    "scan: Filled the placeholder with the Hebrew printed on the page.",
+    "read on the scan: השלני"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -497,10 +495,8 @@
    "page": "page_0094",
    "marker": "(a)",
    "text": "Ita Nicolas de Lyre ; Sanctius ; Malvenda ; Cornelius a Lapide ; Vvlph. ; Minor. ; Tostat.",
-   "proposed": "Ainsi l'entendent Nicolas de Lyre ;\nSanctius ;\nMalvenda ;\nCornelius a Lapide ;\nVvlph. ;\nMinor. ;\nTostat.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Ita Nicolas de Lyre ;\nSanctius ;\nMalvenda ;\nCornelius a Lapide ;\nVvlph. ;\nMinor. ;\nTostat.",
+   "why": [],
    "flags": []
   },
   {

@@ -1,14 +1,13 @@
 {
  "summary": {
   "notes": 122,
-  "changed": 19,
+  "changed": 18,
   "flags": {
    "greek": 13,
-   "scan-unread": 15,
-   "uncertain": 2,
+   "scan-unread": 13,
+   "scanned": 2,
    "garbled-reference": 1,
-   "expand-changed-numbers": 2,
-   "ambiguous-name": 1,
+   "context": 1,
    "hebrew": 1
   }
  },
@@ -131,14 +130,15 @@
    "page": "page_0015",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] סבבוני מים",
-   "proposed": "[UNCERTAIN HEBREW] מים סבבוני",
+   "proposed": "אפפוני מים עד נפש",
    "why": [
     "Hebrew word order reversed: סבבוני מים -> מים סבבוני",
-    "Hebrew checked against the Hebrew Bible, Jonah 2:3"
+    "Hebrew checked against the Hebrew Bible, Jonah 2:3",
+    "scan: Replaced the placeholder and the following Hebrew with the printed 'אפפוני מים עד נפש' (Jonah 2:6).",
+    "read on the scan: אפפוני"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -147,12 +147,9 @@
    "marker": "(c)",
    "text": "Voyez notre Commentaire sur Osée 1v. 46 Lud. de Dieu, et Munster.",
    "proposed": "Voyez notre Commentaire sur Osée 1v. 46 Lud. de Dieu, et Munster.",
-   "why": [
-    "written out, but a number changed or added: Voyez notre Commentaire sur Osée 4:14. Louis de Dieu ; et Munster."
-   ],
+   "why": [],
    "flags": [
-    "garbled-reference",
-    "expand-changed-numbers"
+    "garbled-reference"
    ]
   },
   {
@@ -197,12 +194,12 @@
    "page": "page_0021",
    "marker": "(c)",
    "text": "4 Rois 15:1, 19. Par. v. 26.",
-   "proposed": "4 Rois 15:19 ; et 1 Paralipomènes 5:26.",
+   "proposed": "4 Rois 15:1, 19. Par. v. 26.",
    "why": [
-    "abbreviations written out"
+    "context: 4 Rois 15:19 is Phul/Manahem; correct"
    ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -210,13 +207,14 @@
    "page": "page_0021",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] Souvent l'on met en Hébreu la troisième personne de l'actif, dans un sens impersonnel pour le passif : il dit, il cria, pour, on cria ; on dit, 70. Εκηρύχθη, etc.",
-   "proposed": "[UNCERTAIN HEBREW] Souvent l'on met en Hébreu la troisième personne de l'actif, dans un sens impersonnel pour le passif : il dit, il cria, pour, on cria ; on dit, 70. Ἐκηρύχθη, etc.",
+   "proposed": "ויזעק ויאמר מטעם המלך וגדוליו Souvent l'on met en Hébreu la troisième personne de l'actif, dans un sens impersonnel pour le passif : il dit, il cria, pour, on cria ; on dit, 70. Ἐκηρύχθη, etc.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Εκηρύχθη -> Ἐκηρύχθη"
+    "Greek spelling checked against a Greek dictionary: Εκηρύχθη -> Ἐκηρύχθη",
+    "scan: Filled the placeholder with the printed Hebrew; the page omits בנינוה. Greek kept as given.",
+    "read on the scan: ויזעק ויאמר מטעם המלך וגדוליו"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -315,19 +313,6 @@
     "hebrew",
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0030(a)",
-   "page": "page_0030",
-   "marker": "(a)",
-   "text": "_Vide Aug. ep. c11. nov. edit. qu. 6. de Jona Propheta, et Chrysolog. homil. 37. Cyrill. Præfat. Comment. in Jonam._ Prosper. _de prædestin._ Paulin. _ep. 33._ Tertull. _de Baptismo, c. 1._ Ieronym.",
-   "proposed": "_Vide Aug. ep. c11. nov. edit. qu. 6. de Jona Propheta, et Chrysolog. homil. 37. Cyrill. Præfat. Comment. in Jonam._ Prosper. _de prædestin._ Paulin. _ep. 33._ Tertull. _de Baptismo, c. 1._ Ieronym.",
-   "why": [
-    "written out, but a number changed or added: _Voyez saint Augustin, lettre 102, nouvelle édition, question 6, sur le prophète Jonas ; et saint Pierre Chrysologue, homélie 37 ; saint Cyrille d'Alexandrie, Préface du Commentaire sur Jonas._ Saint "
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {

@@ -1,16 +1,15 @@
 {
  "summary": {
   "notes": 284,
-  "changed": 41,
+  "changed": 48,
   "flags": {
    "reference-mismatch": 2,
    "greek": 26,
-   "scan-unread": 42,
-   "uncertain": 12,
+   "scan-unread": 31,
+   "scanned": 10,
    "hebrew": 6,
-   "expand-changed-numbers": 4,
-   "reference-not-in-vulgate": 1,
-   "ambiguous-name": 1
+   "context": 2,
+   "uncertain": 1
   }
  },
  "notes": [
@@ -46,13 +45,14 @@
    "page": "page_0008",
    "marker": "(e)",
    "text": "ושמתי שומרון לעי השדה למטעי כרם. [UNCERTAIN HEBREW]",
-   "proposed": "ושמתי שומרון לעי השדה למטעי כרם. [UNCERTAIN HEBREW]",
+   "proposed": "ושמתי שומרון לעי השדה למטעי כרם.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Micah 1:6"
+    "Hebrew checked against the Hebrew Bible, Micah 1:6",
+    "scan: Removed the placeholder; nothing more is printed after כרם.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -60,14 +60,15 @@
    "page": "page_0008",
    "marker": "(f)",
    "text": "וכל אתנניה ישרפו באש. [UNCERTAIN HEBREW] ἀυτῆς.",
-   "proposed": "וכל אתנניה ישרפו באש. [UNCERTAIN HEBREW] ἀυτῆς.",
+   "proposed": "כל אתנניה ישרפו באש. 70. Τὰ μισθώματα ἀυτῆς.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Micah 1:7",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Dropped the initial ו (not printed); filled the placeholder with '70. Τὰ μισθώματα'.",
+    "read on the scan: 70. Τὰ μισθώματα"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -139,11 +140,13 @@
    "page": "page_0014",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ותבוא ותעמוד מאז הבקר ועד עתה זה שבתה הבית מעט",
+   "why": [
+    "scan: Replaced placeholder with the printed Hebrew, using the reference spelling where the print is unclear",
+    "read on the scan: ותבוא ותעמוד מאז הבקר ועד עתה זה שבתה הבית מעט"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -151,11 +154,13 @@
    "page": "page_0014",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ותבוא ותעמוד מאז הבקר ועד עתה זה שבתה הבית מעט",
+   "why": [
+    "scan: Replaced placeholder with the printed Hebrew, using the reference spelling where the print is unclear",
+    "read on the scan: ותבוא ותעמוד מאז הבקר ועד עתה זה שבתה הבית מעט"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -196,20 +201,6 @@
    "flags": [
     "hebrew",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0019(a)",
-   "page": "page_0019",
-   "marker": "(a)",
-   "text": "משל ונהה נהי נהיה אשר אמר Ezech. XIX. I. XXVIII. II. XXXII. 16. Amos V. I.",
-   "proposed": "משל ונהה נהי נהיה אשר אמר Ezech. XIX. I. XXVIII. II. XXXII. 16. Amos V. I.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Micah 2:4",
-    "written out, but a number changed or added: משל ונהה נהי נהיה אשר אמר Ézéchiel 19:1 ; 28:11 ; 32:16. Amos 5:1."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -284,9 +275,8 @@
    "page": "page_0027",
    "marker": "(a)",
    "text": "Jérémie 9:24 et 24:7. _Dabo eis cor ut sciant quia ego sum Dominus, etc. Osée_ VI. 3. _Sciemus sequemurque ut cognoscamus Dominum._",
-   "proposed": "Jérémie 9:24 et 24:7. _Dabo eis cor ut sciant quia ego sum Dominus, etc. Osée_ 6:3. _Sciemus sequemurque ut cognoscamus Dominum._",
+   "proposed": "Jérémie 9:24 et 24:7. _Dabo eis cor ut sciant quia ego sum Dominus, etc. Osée_ VI. 3. _Sciemus sequemurque ut cognoscamus Dominum._",
    "why": [
-    "abbreviations written out",
     "the Latin next to the call is Osée 6:3, not Jérémie 9:24, Jérémie 24:7"
    ],
    "flags": [
@@ -326,20 +316,6 @@
    ]
   },
   {
-   "id": "0031(b)",
-   "page": "page_0031",
-   "marker": "(b)",
-   "text": "Jerom. XXVI. 38. Vide sup. Cap. II. ℣. 11.",
-   "proposed": "Jérémie 26:38. Voyez plus haut chapitre 2, verset 11.",
-   "why": [
-    "abbreviations written out",
-    "Jérémie 26:38 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
-  },
-  {
    "id": "0032(a)",
    "page": "page_0032",
    "marker": "(a)",
@@ -362,11 +338,13 @@
    "page": "page_0034",
    "marker": "(a)",
    "text": "Vide 1 Rois 13:20-21. [UNCERTAIN HEBREW]",
-   "proposed": "Vide 1 Rois 13:20-21. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "Vide 1 Rois 13:20-21. את מחרשתו ואת אתו",
+   "why": [
+    "scan: Filled the placeholder with the Hebrew words printed on the page.",
+    "read on the scan: את מחרשתו ואת אתו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -494,31 +472,18 @@
    ]
   },
   {
-   "id": "0041(e)",
-   "page": "page_0041",
-   "marker": "(e)",
-   "text": "1. Esdr. 2. §. II. 2.",
-   "proposed": "1. Esdr. 2. §. II. 2.",
-   "why": [
-    "written out, but a number changed or added: 1 Esdras 2:11-12."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
-  },
-  {
    "id": "0042(a)",
    "page": "page_0042",
    "marker": "(a)",
    "text": "Zacharie 9:7. [UNCERTAIN HEBREW] 70 Ω'ς χιλιαρχος εν Ιυδα. Vulg. Erit quasi dux in Juda. monstr. cap. 2. Ieronym. hic. Theodoret Cyrill. Chrysost. lib. quod Christus sit Deus, et in Psal.",
-   "proposed": "Zacharie 9:7. [UNCERTAIN HEBREW] 70 Ὠς χιλίαρχος ἐν Ιουδα. Vulg. Erit quasi dux in Juda. monstr. cap. 2. Ieronym. hic. Theodoret Cyrill. Chrysost. lib. quod Christus sit Deus, et in Psal.",
+   "proposed": "Zacharie 9:7. והיה* כאלף* ביהודה* 70 Ὡς χιλίαρχος ἐν Ιουδα. Vulg. Erit quasi dux in Juda. monstr. cap. 2. Ieronym. hic. Theodoret Cyrill. Chrysost. lib. quod Christus sit Deus, et in Psal.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Ω'ς -> Ὠς, χιλιαρχος -> χιλίαρχος, εν -> ἐν, Ιυδα -> Ιουδα"
+    "Greek spelling checked against a Greek dictionary: Ω'ς -> Ὠς, χιλιαρχος -> χιλίαρχος, εν -> ἐν, Ιυδα -> Ιουδα",
+    "context: Zech 9:7 Hebrew; breathing fixed: [UNCERTAIN HEBREW] -> והיה* כאלף* ביהודה*, Ὠς -> Ὡς"
    ],
    "flags": [
-    "uncertain",
     "greek",
-    "scan-unread"
+    "context"
    ]
   },
   {
@@ -526,11 +491,16 @@
    "page": "page_0042",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] Jérémie 48:4. Chald. [UNCERTAIN HEBREW] Et XLIX. 20. Heb. [UNCERTAIN HEBREW] Chald. [UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW] Jérémie 48:4. Chald. [UNCERTAIN HEBREW] Et XLIX. 20. Heb. [UNCERTAIN HEBREW] Chald. [UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "צעיר Jérémie 48:4. Chald. שלוטני Et XLIX. 20. Heb. צעירי הצאן Chald. יתקפי עמם",
+   "why": [
+    "scan: Filled the four placeholders from the page; the Chaldean word in 48:4 is hard to read.",
+    "read on the scan: צעיר",
+    "read on the scan: שלוטני",
+    "read on the scan: צעירי הצאן",
+    "read on the scan: יתקפי עמם"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -541,30 +511,6 @@
    "proposed": "Saint Jérôme, sur ce passage, Exposition 2 ;\nEusèbe, livre 7, Démonstration évangélique, chapitre 1 ;\nHaymon ;\nRemi ;\nHugues ;\nMénochius ;\nTirin ;\nCalovius.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0044(d)",
-   "page": "page_0044",
-   "marker": "(d)",
-   "text": "Romains 15:33. _Deus pacis._ Voyez aussi 16:20. 1 Corinthiens 14:33. 2 Corinthiens 13:11. Philippiens 4:9. 1 Thessaloniciens 5:23, etc.",
-   "proposed": "Romains 15:33. _Deus pacis._ Voyez aussi Romains 16:20 ; 1 Corinthiens 14:33 ; 2 Corinthiens 13:11 ; Philippiens 4:9 ; 1 Thessaloniciens 5:23, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0045(a)",
-   "page": "page_0045",
-   "marker": "(a)",
-   "text": "Esdr. 1v. 7.",
-   "proposed": "Esdr. 1v. 7.",
-   "why": [
-    "written out, but a number changed or added: 1 Esdras 4:7."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   },
   {
    "id": "0045(b)",
@@ -656,13 +602,14 @@
    "page": "page_0054",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] והצנע לכת עם אלהיך",
-   "proposed": "[UNCERTAIN HEBREW] והצנע לכת עם אלהיך",
+   "proposed": "והצנע לכת עם אלהיך",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Micah 6:8"
+    "Hebrew checked against the Hebrew Bible, Micah 6:8",
+    "scan: Removed the placeholder; nothing else is printed before the Hebrew.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -670,12 +617,13 @@
    "page": "page_0054",
    "marker": "(e)",
    "text": "Quinta Édit. Θεοδοτίων. [UNCERTAIN HEBREW] קול יהוה לעיר יקרא ותושיה יראה שמך 70. ἑτοιμ Κυρίω πόλιν ἐπισκέψασθαι, καὶ σώσει φοβουμίνες τὸ ὄνομα αὐτοῦ. Ils ont lu : יראה",
-   "proposed": "Quinta Édit. Θεοδοτίων. [UNCERTAIN HEBREW] קול יהוה לעיר יקרא ותושיה יראה שמך 70. ἑτοιμῶ Κυρίω πόλιν ἐπισκέψασθαι, καὶ σώσει φοβουμίνες τὸ ὄνομα αὐτοῦ. Ils ont lu : יראה",
+   "proposed": "Quinta Édit. Θεοδοτίων. [UNCERTAIN HEBREW] קול יהוה לעיר יקרא ותושיה יראה שמך 70. ἑτοιμῶ Κυρίω πόλιν ἐπισκέψασθαι, καὶ σώσει φοβουμένους τὸ ὄνομα αὐτοῦ. Ils ont lu : יראה",
    "why": [
     "Hebrew checked against the Hebrew Bible, Micah 6:9",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary: ἑτοιμ -> ἑτοιμῶ"
+    "Greek spelling checked against a Greek dictionary: ἑτοιμ -> ἑτοιμῶ",
+    "context: UNCERTAIN HEBREW content unknown: φοβουμίνες -> φοβουμένους"
    ],
    "flags": [
     "uncertain",
@@ -688,13 +636,14 @@
    "page": "page_0055",
    "marker": "(a)",
    "text": "שמעו מטה ומי יעדה [UNCERTAIN HEBREW]",
-   "proposed": "שמעו מטה ומי יעדה [UNCERTAIN HEBREW]",
+   "proposed": "שמעו מטה ומי יעדה.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Micah 6:9"
+    "Hebrew checked against the Hebrew Bible, Micah 6:9",
+    "scan: Placeholder was only the final printed full stop.",
+    "read on the scan: ."
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -716,14 +665,15 @@
    "page": "page_0055",
    "marker": "(c)",
    "text": "איפת רזון זעומה 70. Καὶ μετὰ ὕβρεως [UNCERTAIN GREEK].",
-   "proposed": "איפת רזון זעומה 70. Καὶ μετὰ ὕβρεως [UNCERTAIN GREEK].",
+   "proposed": "ואיפת רזון זעומה 70. Καὶ μετὰ ὕβρεως ἀδικίας.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Micah 6:10",
-    "Greek checked against the Septuagint, Michée 6:10"
+    "Greek checked against the Septuagint, Michée 6:10",
+    "scan: Added the initial ו; filled the Greek with ἀδικίας.",
+    "read on the scan: ἀδικίας"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -740,13 +690,14 @@
    "page": "page_0055",
    "marker": "(e)",
    "text": "ואבני מרמה בכיס [UNCERTAIN HEBREW]",
-   "proposed": "ואבני מרמה בכיס [UNCERTAIN HEBREW]",
+   "proposed": "האזכה בכיס אבני מרמה",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Word order corrected to what is printed; placeholder filled.",
+    "read on the scan: אבני מרמה"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -764,9 +715,11 @@
    "marker": "(a)",
    "text": "3 Rois 16:30. Et fecit Achab filius Amri malum in conspectu Domini super omnes qui fuerunt ante eum… et servivit Baal, et adoravit eum, etc.",
    "proposed": "3 Rois 16:30. Et fecit Achab filius Amri malum in conspectu Domini super omnes qui fuerunt ante eum… et servivit Baal, et adoravit eum, etc.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 16:30 = Kings, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -856,19 +809,6 @@
    "proposed": "Isaïe 11 ; 43:16-19.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0066(b)",
-   "page": "page_0066",
-   "marker": "(b)",
-   "text": "Zach. X. II.",
-   "proposed": "Zach. X. II.",
-   "why": [
-    "written out, but a number changed or added: Zacharie 10:11."
-   ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
   },
   {
    "id": "0067(b)",

@@ -1,13 +1,13 @@
 {
  "summary": {
   "notes": 1454,
-  "changed": 69,
+  "changed": 85,
   "flags": {
-   "ambiguous-name": 37,
+   "context": 37,
    "hebrew": 8,
    "greek": 47,
-   "scan-unread": 72,
-   "uncertain": 19,
+   "scan-unread": 53,
+   "scanned": 19,
    "garbled-reference": 1
   }
  },
@@ -18,9 +18,11 @@
    "marker": "(a)",
    "text": "2 Rois 5:4. Filius triginta annorum erat David cùm regnare cœpisset, et quadraginta annis regnavit. III. Livre des Rois.",
    "proposed": "2 Rois 5:4. Filius triginta annorum erat David cùm regnare cœpisset, et quadraginta annis regnavit. III. Livre des Rois.",
-   "why": [],
+   "why": [
+    "context: 2 Samuel 5:4, Calmet numbering"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -63,9 +65,11 @@
    "marker": "(c)",
    "text": "3 Rois 1:20.",
    "proposed": "3 Rois 1:20.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 1:20 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -91,15 +95,16 @@
    "page": "page_0067",
    "marker": "(a)",
    "text": "ויזבח צאן ובקר ומריא [UNCERTAIN HEBREW] TM, et βίας, et ἄρνας.",
-   "proposed": "ויזבח צאן ובקר ומריא [UNCERTAIN HEBREW] TM, et βίας, et ἄρνας.",
+   "proposed": "יזבח צאן ובקר ומרי τα, et βόας, et ἄρνας.",
    "why": [
     "Hebrew checked against the Hebrew Bible, I Kings 1:9",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Hebrew spelled as printed; placeholder replaced; τα and βόας corrected",
+    "read on the scan: ומרי"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -108,9 +113,11 @@
    "marker": "(c)",
    "text": "1 Paralipomènes 22:10 ; 1 Paralipomènes 28:5 ; 2 Rois 7:12-13.",
    "proposed": "1 Paralipomènes 22:10 ; 1 Paralipomènes 28:5 ; 2 Rois 7:12-13.",
-   "why": [],
+   "why": [
+    "context: 2 Rois = 2 Samuel 7, matches Vulgate"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -118,11 +125,13 @@
    "page": "page_0069",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ותקד ותשתחו",
+   "why": [
+    "scan: Placeholder filled with the printed Hebrew",
+    "read on the scan: ותקד ותשתחו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -139,13 +148,14 @@
    "page": "page_0076",
    "marker": "(c)",
    "text": "וישתחו המלך על המשכב [UNCERTAIN HEBREW]",
-   "proposed": "וישתחו המלך על המשכב [UNCERTAIN HEBREW]",
+   "proposed": "וישתחו המלך על המשכב",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Kings 1:47"
+    "Hebrew checked against the Hebrew Bible, I Kings 1:47",
+    "scan: Placeholder removed; nothing further is printed",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -165,13 +175,14 @@
    "page": "page_0079",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] שמרת את משמרת יהוה",
-   "proposed": "[UNCERTAIN HEBREW] שמרת את משמרת יהוה",
+   "proposed": "שמרת את משמרת יהוה",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Kings 2:3"
+    "Hebrew checked against the Hebrew Bible, I Kings 2:3",
+    "scan: Placeholder removed; nothing further is printed",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -179,13 +190,14 @@
    "page": "page_0079",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] למען תשכיל את כל אשר תעשה 70. _Ut conserves, ut intelligas_. Aliàs, _ègas_",
-   "proposed": "[UNCERTAIN HEBREW] למען תשכיל את כל אשר תעשה 70. _Ut conserves, ut intelligas_. Aliàs, _ègas_",
+   "proposed": "למען תשכיל את כל אשר תעשה 70. ἵνα συνέχῃς, ut intelligas. Aliàs, ἵνα γνῷς",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Kings 2:3"
+    "Hebrew checked against the Hebrew Bible, I Kings 2:3",
+    "scan: Placeholder removed; Greek supplied for 'Ut conserves' and 'ègas'",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -193,13 +205,14 @@
    "page": "page_0079",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] דברו אשר דבר עלי iudæus wdsn. à wolnæus. Ut prosperè cédant omnia quæ facies.",
-   "proposed": "[UNCERTAIN HEBREW] דברו אשר דבר עלי iudæus wdsn. à wolnæus. Ut prosperè cédant omnia quæ facies.",
+   "proposed": "דברו אשר דבר עלי εὐοδωθῇ πάντα ἃ ποιήσεις. Ut prosperè cédant omnia quæ facies.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Kings 2:4"
+    "Hebrew checked against the Hebrew Bible, I Kings 2:4",
+    "scan: Placeholder removed; garbled Greek corrected",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -207,11 +220,13 @@
    "page": "page_0081",
    "marker": "(a)",
    "text": "Vide Cap. V. 4. [ILLEGIBLE]",
-   "proposed": "Vide Cap. V. 4. [ILLEGIBLE]",
-   "why": [],
+   "proposed": "Vide Cap. V. 4. Et* cap.* IV.* 24.*",
+   "why": [
+    "scan: Illegible remainder guessed from context",
+    "guessed from context: Et* cap.* IV.* 24.*"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -219,13 +234,14 @@
    "page": "page_0083",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] קללה נמרצת",
-   "proposed": "[UNCERTAIN HEBREW] קללה נמרצת",
+   "proposed": "קללה נמרצת",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Kings 2:8"
+    "Hebrew checked against the Hebrew Bible, I Kings 2:8",
+    "scan: Removed spurious placeholder; page prints only קללה נמרצת",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -252,9 +268,11 @@
    "marker": "(a)",
    "text": "3 Rois 1:46-48.",
    "proposed": "3 Rois 1:46-48.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 1 fits Calmet numbering"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -263,9 +281,11 @@
    "marker": "(b)",
    "text": "3 Rois 1:52-53.",
    "proposed": "3 Rois 1:52-53.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 1:52-53 fits Solomon"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -318,13 +338,14 @@
    "page": "page_0114",
    "marker": "(a)",
    "text": "בר אחימעץ כהן [UNCERTAIN HEBREW]",
-   "proposed": "בר אחימעץ כהן [UNCERTAIN HEBREW]",
+   "proposed": "בן אחימעץ הכהן",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Fixed בר→בן, filled הכהן (ה before כהן)",
+    "read on the scan: הכהן"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -357,9 +378,11 @@
    "marker": "(f)",
    "text": "Voyez 4 Rois 17:6 ; 18:11 ; 19:12.",
    "proposed": "Voyez 4 Rois 17:6 ; 18:11 ; 19:12.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 17:6 Gozan, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -407,9 +430,11 @@
    "marker": "(a)",
    "text": "3 Rois 5:7.",
    "proposed": "3 Rois 5:7.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 5:7 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -484,11 +509,13 @@
    "page": "page_0157",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] _Fecit et in introitu templi postes de lignis olivarum, poste quintuplici._",
-   "proposed": "[UNCERTAIN HEBREW] _Fecit et in introitu templi postes de lignis olivarum, poste quintuplici._",
-   "why": [],
+   "proposed": "ואת פתח הדביר עשה דלתות עצי שמן האיל מזוזות חמשית _Fecit et in introitu templi postes de lignis olivarum, poste quintuplici._",
+   "why": [
+    "scan: Filled Hebrew placeholder from the page",
+    "read on the scan: ואת פתח הדביר עשה דלתות עצי שמן האיל מזוזות חמשית"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -496,11 +523,13 @@
    "page": "page_0157",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "ועשה לפתח ההיכל מזוזות עצי שמן מאת הרבעית",
+   "why": [
+    "scan: Filled Hebrew placeholder from the page",
+    "read on the scan: ועשה לפתח ההיכל מזוזות עצי שמן מאת הרבעית"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -545,9 +574,11 @@
    "marker": "(d)",
    "text": "3 Rois 2:11 comparé avec 2 Rois 5:5.",
    "proposed": "3 Rois 2:11 comparé avec 2 Rois 5:5.",
-   "why": [],
+   "why": [
+    "context: 2 Rois 5:5 David's reign, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -715,9 +746,11 @@
    "marker": "(a)",
    "text": "Voyez 3 Rois 8:1. _Ut deferrent Arcam Domini, de civitate David, id est, de Sion._",
    "proposed": "Voyez 3 Rois 8:1. _Ut deferrent Arcam Domini, de civitate David, id est, de Sion._",
-   "why": [],
+   "why": [
+    "context: 3 Rois 8:1 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -737,9 +770,11 @@
    "marker": "(a)",
    "text": "2 Rois 6:13 Cumque transcendissent qui portabant Arcam Domini, sex passus, immolabant bovem et arietem.",
    "proposed": "2 Rois 6:13 Cumque transcendissent qui portabant Arcam Domini, sex passus, immolabant bovem et arietem.",
-   "why": [],
+   "why": [
+    "context: Latin quote matches 2 Rois 6:13"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -769,9 +804,11 @@
    "marker": "(a)",
    "text": "3 Rois 8:12.",
    "proposed": "3 Rois 8:12.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 8:12 nebula, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -798,9 +835,11 @@
    "marker": "(b)",
    "text": "3 Rois 6:11. Factus est sermo Domini ad Salomonem, dicens, etc.",
    "proposed": "3 Rois 6:11. Factus est sermo Domini ad Salomonem, dicens, etc.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 6:11 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -809,9 +848,11 @@
    "marker": "(a)",
    "text": "Voyez 3 Rois 7:1 ; 9:10 ; 2 Paralipomènes 8:1.",
    "proposed": "Voyez 3 Rois 7:1 ; 9:10 ; 2 Paralipomènes 8:1.",
-   "why": [],
+   "why": [
+    "context: Refs correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -868,9 +909,11 @@
    "marker": "(e)",
    "text": "3 Rois 7:2.",
    "proposed": "3 Rois 7:2.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 7:2 Lebanon house, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1003,22 +1046,11 @@
    ]
   },
   {
-   "id": "0256(e)",
-   "page": "page_0256",
-   "marker": "(e)",
-   "text": "4 Rois 18:24. Voyez Isaïe 31:1. Væ qui descendunt in Ægyptum, in equis sperantes, etc.",
-   "proposed": "4 Rois 18:24. Voyez Isaïe 30:1. Væ qui descendunt in Ægyptum, in equis sperantes, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0256(f)",
    "page": "page_0256",
    "marker": "(f)",
-   "text": "Aristote, Histoire des animaux, livre 5, chapitre 19 ; et Pline, livre 11, chapitre 21 ; saint Isidore, Origines, livre 14, chapitre 6.",
-   "proposed": "Aristote, Histoire des animaux, livre 5, chapitre 19 ;\net Pline, livre 11, chapitre 21 ;\nsaint Isidore, Origines, livre 14, chapitre 6.",
+   "text": "Aristote, Histoire des animaux, livre 5, chapitre 19 ; et Pline, livre 11, chapitre 21 ; Saint Isidore, Origines, livre 14, chapitre 6.",
+   "proposed": "Aristote, Histoire des animaux, livre 5, chapitre 19 ;\net Pline, livre 11, chapitre 21 ;\nSaint Isidore, Origines, livre 14, chapitre 6.",
    "why": [],
    "flags": []
   },
@@ -1064,9 +1096,11 @@
    "marker": "(c)",
    "text": "3 Rois 9:1.",
    "proposed": "3 Rois 9:1.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 9:1 second apparition"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1074,11 +1108,13 @@
    "page": "page_0265",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] _tuitra misa oë._",
-   "proposed": "[UNCERTAIN HEBREW] _tuitra misa oë._",
-   "why": [],
+   "proposed": "יען אשר היתה זאת עמך ἀνθ᾽ ὧν ἐγένετο _ταῦτα μετὰ σοῦ._",
+   "why": [
+    "scan: Filled Hebrew; corrected garbled Greek to ταῦτα μετὰ σοῦ",
+    "read on the scan: יען אשר היתה זאת עמך ἀνθ᾽ ὧν ἐγένετο"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1102,9 +1138,11 @@
    "marker": "(b)",
    "text": "4 Rois 15 ; 16.",
    "proposed": "4 Rois 15 ; 16.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 15-16 fits Razin and Achaz"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1112,12 +1150,12 @@
    "page": "page_0271",
    "marker": "(b)",
    "text": "Voyez 3 Rois 15:18, 20 ; 20:1 ; et 4 Rois 6:24 ; 8:7 ; 13:3 etc.",
-   "proposed": "Voyez 3 Rois 15:18-20 ; 20:1 ; et 4 Rois 4:24 ; 8:7 ; 13:3 etc.",
+   "proposed": "Voyez 3 Rois 15:18, 20 ; 20:1 ; et 4 Rois 6:24 ; 8:7 ; 13:3 etc.",
    "why": [
-    "abbreviations written out"
+    "context: Ben-Adad passages, Calmet numbering"
    ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1135,9 +1173,11 @@
    "marker": "(c)",
    "text": "3 Rois 11:11.",
    "proposed": "3 Rois 11:11.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 11:11 reproaches, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1146,9 +1186,11 @@
    "marker": "(c)",
    "text": "3 Rois 22:11.",
    "proposed": "3 Rois 22:11.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 22:11 is Sedecias' horns"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1157,21 +1199,12 @@
    "marker": "(a)",
    "text": "4 Rois 8:19 ; 2 Rois 21:17.",
    "proposed": "4 Rois 8:19 ; 2 Rois 21:17.",
-   "why": [],
-   "flags": [
-    "ambiguous-name"
-   ]
-  },
-  {
-   "id": "0277(f)",
-   "page": "page_0277",
-   "marker": "(f)",
-   "text": "Mémoire de Trévoux, 1702. 1703. Pezron, Blanchini, etc.",
-   "proposed": "Mémoires de Trévoux, 1702, 1703 ;\nPezron ;\nBlanchini, etc.",
    "why": [
-    "abbreviations written out"
+    "context: Lucerna passages, both correct"
    ],
-   "flags": []
+   "flags": [
+    "context"
+   ]
   },
   {
    "id": "0280(b)",
@@ -1179,9 +1212,11 @@
    "marker": "(b)",
    "text": "3 Rois 11:43. _Dormivit Salomon cum patribus suis, et sepultus est in civitate David patris sui._",
    "proposed": "3 Rois 11:43. _Dormivit Salomon cum patribus suis, et sepultus est in civitate David patris sui._",
-   "why": [],
+   "why": [
+    "context: 3 Rois 11:43 is Solomon's death"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1190,9 +1225,11 @@
    "marker": "(b)",
    "text": "Voyez 3 Rois 11:11-13, 34.",
    "proposed": "Voyez 3 Rois 11:11-13, 34.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 11:11-13, 34 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1201,9 +1238,11 @@
    "marker": "(b)",
    "text": "Voyez 3 Rois 4:11, 15.",
    "proposed": "Voyez 3 Rois 4:11, 15.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 4:11,15 daughters, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1229,19 +1268,21 @@
    "page": "page_0293",
    "marker": "(h)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "התאמץ לעלות במרכבה",
+   "why": [
+    "scan: Filled Hebrew placeholder from the page",
+    "read on the scan: התאמץ לעלות במרכבה"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
    "id": "0297(a)",
    "page": "page_0297",
    "marker": "(a)",
-   "text": "Lactance, livre 4, chapitre 10 ; saint Ambroise, De la pénitence, livre 1, chapitre 10 ; saint Augustin, sur le Psaume 73 ; saint Jérôme, sur Osée, chapitre 7.",
-   "proposed": "Lactance, livre 4, chapitre 10 ;\nsaint Ambroise, De la pénitence, livre 1, chapitre 10 ;\nsaint Augustin, sur le Psaume 73 ;\nsaint Jérôme, sur Osée, chapitre 7.",
+   "text": "Lactance, livre 4, chapitre 10 ; Saint Ambroise, De la pénitence, livre 1, chapitre 10 ; Saint Augustin, sur le Psaume 73 ; Saint Jérôme, sur Osée, chapitre 7.",
+   "proposed": "Lactance, livre 4, chapitre 10 ;\nSaint Ambroise, De la pénitence, livre 1, chapitre 10 ;\nSaint Augustin, sur le Psaume 73 ;\nSaint Jérôme, sur Osée, chapitre 7.",
    "why": [],
    "flags": []
   },
@@ -1260,9 +1301,11 @@
    "marker": "(e)",
    "text": "3 Rois 15:34 ; 16:2, 19, 26, etc., passim.",
    "proposed": "3 Rois 15:34 ; 16:2, 19, 26, etc., passim.",
-   "why": [],
+   "why": [
+    "context: 3 Rois references fit Jeroboam formula"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1271,9 +1314,11 @@
    "marker": "(b)",
    "text": "3 Rois 13:33.",
    "proposed": "3 Rois 13:33.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 13:33 implebat manum"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1294,9 +1339,11 @@
    "marker": "(b)",
    "text": "3 Rois 14:1.",
    "proposed": "3 Rois 14:1.",
-   "why": [],
+   "why": [
+    "context: Valid 3 Rois reference; unconfirmed alternative"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1335,9 +1382,11 @@
    "marker": "(d)",
    "text": "4 Rois 20:13. Voyez au besoin Cassien, Conférence 7, chapitres 25, 26 et 27 ; et Sanctius, sur ce passage.",
    "proposed": "4 Rois 20:13. Voyez au besoin Cassien, Conférence 7, chapitres 25, 26 et 27 ; et Sanctius, sur ce passage.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 20:13 Ezechias, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1391,9 +1440,11 @@
    "marker": "(d)",
    "text": "1 Rois 9:7.",
    "proposed": "1 Rois 9:7.",
-   "why": [],
+   "why": [
+    "context: 1 Rois 9:7 Saul, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1402,9 +1453,11 @@
    "marker": "(e)",
    "text": "3 Rois 13:7.",
    "proposed": "3 Rois 13:7.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 13:7 gifts offered, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1426,11 +1479,13 @@
    "page": "page_0323",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] _en d'autres de MSS sequitur versio Targum._",
-   "proposed": "[UNCERTAIN HEBREW] _en d'autres de MSS sequitur versio Targum._",
-   "why": [],
+   "proposed": "כאשר יבער הגלל עד תמו _en d'autres de MSS sequitur versio Targum._",
+   "why": [
+    "scan: Filled the Hebrew placeholder with the printed phrase, spelled as in the reference.",
+    "read on the scan: כאשר יבער הגלל עד תמו"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1438,11 +1493,14 @@
    "page": "page_0323",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW] _Græci :_ [UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN HEBREW] _Græci :_ [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "ונמצא בו דבר טוב אל יהוה _Græci :_ ὅτι εὑρέθη ἐν αὐτῷ ῥῆμα καλὸν περὶ τοῦ κυρίου.",
+   "why": [
+    "scan: Filled the Hebrew and the Greek from the printed note.",
+    "read on the scan: ונמצא בו דבר טוב אל יהוה",
+    "read on the scan: ὅτι εὑρέθη ἐν αὐτῷ ῥῆμα καλὸν περὶ τοῦ κυρίου."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1451,9 +1509,11 @@
    "marker": "(a)",
    "text": "3 Rois 11:40.",
    "proposed": "3 Rois 11:40.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 11:40 Jeroboam in Egypt"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1522,9 +1582,11 @@
    "marker": "(h)",
    "text": "3 Rois 16:23.",
    "proposed": "3 Rois 16:23.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 16:23 Amri, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1533,9 +1595,11 @@
    "marker": "(i)",
    "text": "3 Rois 16:29.",
    "proposed": "3 Rois 16:29.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 16:29 Achab, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1592,32 +1656,31 @@
    "page": "page_0352",
    "marker": "(a)",
    "text": "ויקן את ההר שמרון [UNCERTAIN HEBREW]",
-   "proposed": "ויקן את ההר שמרון [UNCERTAIN HEBREW]",
+   "proposed": "ויקן את ההר שמרון",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Kings 16:24"
+    "Hebrew checked against the Hebrew Bible, I Kings 16:24",
+    "scan: The page shows nothing after שמרון, so the placeholder is removed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
    "id": "0357(a)",
    "page": "page_0357",
    "marker": "(a)",
-   "text": "Voyez au besoin Métaphraste, dans Surius ; Pseudo-Doxath., Synopsis ; Jean de Jérusalem, chapitre 1, tome 9, Bibliothèque des Pères ; saint Isidore, De vita et morte sanctorum ; saint Épiphane, De vita et interitu sanctorum ; et Sanctius sur ce passage, etc.",
-   "proposed": "Voyez au besoin Métaphraste, dans Surius ;\nPseudo-Dorothée, Synopsis ;\nJean de Jérusalem, chapitre 1, tome 9, Bibliothèque des Pères ;\nsaint Isidore, De vita et morte sanctorum ;\nsaint Épiphane, De vita et interitu sanctorum ;\net Sanctius sur ce passage, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Voyez au besoin Métaphraste, dans Surius ; Pseudo-Doxath., Synopsis ; Jean de Jérusalem, chapitre 1, tome 9, Bibliothèque des Pères ; Saint Isidore, De vita et morte sanctorum ; Saint Épiphane, De vita et interitu sanctorum ; et Sanctius sur ce passage, etc.",
+   "proposed": "Voyez au besoin Métaphraste, dans Surius ;\nPseudo-Doxath., Synopsis ;\nJean de Jérusalem, chapitre 1, tome 9, Bibliothèque des Pères ;\nSaint Isidore, De vita et morte sanctorum ;\nSaint Épiphane, De vita et interitu sanctorum ;\net Sanctius sur ce passage, etc.",
+   "why": [],
    "flags": []
   },
   {
    "id": "0357(b)",
    "page": "page_0357",
    "marker": "(b)",
-   "text": "Saint Jean Chrysostome, Homélie 3 sur Élie ; Sedulius ; Bède ; saint Anselme.",
-   "proposed": "Saint Jean Chrysostome, Homélie 3 sur Élie ;\nSedulius ;\nBède ;\nsaint Anselme.",
+   "text": "Saint Jean Chrysostome, Homélie 3 sur Élie ; Sedulius ; Bède ; Saint Anselme.",
+   "proposed": "Saint Jean Chrysostome, Homélie 3 sur Élie ;\nSedulius ;\nBède ;\nSaint Anselme.",
    "why": [],
    "flags": []
   },
@@ -1638,19 +1701,23 @@
    "page": "page_0360",
    "marker": "(a)",
    "text": "Oi xipanes [UNCERTAIN GREEK] aptus [UNCERTAIN GREEK], xpia [UNCERTAIN GREEK].",
-   "proposed": "Oi xipanes [UNCERTAIN GREEK] aptus [UNCERTAIN GREEK], xpia [UNCERTAIN GREEK].",
-   "why": [],
+   "proposed": "Οἱ κόρακες ἔφερον αὐτῷ ἄρτους τὸ πρωΐ καὶ κρέα τὸ δείλης.",
+   "why": [
+    "scan: Corrected the Latin-letter transliteration to Greek and filled the three placeholders.",
+    "read on the scan: ἔφερον αὐτῷ",
+    "read on the scan: τὸ πρωΐ καὶ",
+    "read on the scan: τὸ δείλης"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
    "id": "0360(b)",
    "page": "page_0360",
    "marker": "(b)",
-   "text": "Ainsi l'entendent saint Athanase, Synopsis ; Théodoret, sur 3 Rois, question 52 ; saint Augustin, sermon 146 de tempore, dans la nouvelle édition 259…",
-   "proposed": "Ainsi l'entendent saint Athanase, Synopsis ;\nThéodoret, sur 3 Rois, question 52 ;\nsaint Augustin, sermon 146 de tempore, dans la nouvelle édition 259…",
+   "text": "Ainsi l'entendent saint Athanase, Synopsis ; Théodoret, sur 3 Rois, question 52 ; Saint Augustin, sermon 146 de tempore, dans la nouvelle édition 259…",
+   "proposed": "Ainsi l'entendent saint Athanase, Synopsis ;\nThéodoret, sur 3 Rois, question 52 ;\nSaint Augustin, sermon 146 de tempore, dans la nouvelle édition 259…",
    "why": [],
    "flags": []
   },
@@ -1669,9 +1736,11 @@
    "marker": "(b)",
    "text": "4 Rois 4:34.",
    "proposed": "4 Rois 4:34.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 4:34 Elisha, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1689,9 +1758,11 @@
    "marker": "(a)",
    "text": "3 Rois 18:19.",
    "proposed": "3 Rois 18:19.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 18:19 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1700,9 +1771,11 @@
    "marker": "(b)",
    "text": "3 Rois 22:6.",
    "proposed": "3 Rois 22:6.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 22:6 four hundred prophets"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1783,10 +1856,8 @@
    "page": "page_0390",
    "marker": "(c)",
    "text": "Ita l'auteur de l'Histoire scolastique ; Raban Maur ; Denys le Chartreux ; Nicolas de Lyre ; Tostat ; Piscator, etc.",
-   "proposed": "Ainsi l'auteur de l'Histoire scolastique ;\nRaban Maur ;\nDenys le Chartreux ;\nNicolas de Lyre ;\nTostat ;\nPiscator, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Ita l'auteur de l'Histoire scolastique ;\nRaban Maur ;\nDenys le Chartreux ;\nNicolas de Lyre ;\nTostat ;\nPiscator, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -1816,9 +1887,11 @@
    "marker": "(c)",
    "text": "3 Rois 22:25.",
    "proposed": "3 Rois 22:25.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 22:25 Micheas, correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1862,9 +1935,11 @@
    "marker": "(g)",
    "text": "1 Rois 10:5 ; 13:3-4 ; 14:1, 4 ; et 2 Rois 23:11.",
    "proposed": "1 Rois 10:5 ; 13:3-4 ; 14:1, 4 ; et 2 Rois 23:11.",
-   "why": [],
+   "why": [
+    "context: Philistine garrisons, Calmet numbering correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1893,13 +1968,14 @@
    "page": "page_0416",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] שני אנשים בני בליעל",
-   "proposed": "[UNCERTAIN HEBREW] שני אנשים בני בליעל",
+   "proposed": "שני אנשים בני בליעל",
    "why": [
-    "Hebrew checked against the Hebrew Bible, I Kings 21:10"
+    "Hebrew checked against the Hebrew Bible, I Kings 21:10",
+    "scan: The page shows only this Hebrew, so the leading placeholder is removed.",
+    "read on the scan: "
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1959,13 +2035,14 @@
    "page": "page_0433",
    "marker": "(d)",
    "text": "[UNCERTAIN HEBREW] לתמו קשתו",
-   "proposed": "[UNCERTAIN HEBREW] לתמו קשתו",
+   "proposed": "משך בקשת לתמו",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "scan: Filled the placeholder with the printed phrase. Replaced קשתו with the reference's spelling.",
+    "read on the scan: משך בקשת"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {

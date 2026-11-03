@@ -1,62 +1,30 @@
 {
  "summary": {
   "notes": 289,
-  "changed": 52,
+  "changed": 55,
   "flags": {
-   "expand-unread": 33,
-   "ambiguous-name": 8,
+   "context": 9,
    "greek": 30,
-   "scan-unread": 40,
+   "scan-unread": 37,
    "reference-corrected": 1,
-   "uncertain": 5,
+   "uncertain": 2,
    "reference-not-in-vulgate": 2,
-   "hebrew": 7,
-   "expand-changed-numbers": 1
+   "scanned": 3,
+   "hebrew": 7
   }
  },
  "notes": [
-  {
-   "id": "0006(a)",
-   "page": "page_0006",
-   "marker": "(a)",
-   "text": "Sand. Calv. Franc. Lucas Cornel. Et quotquot Hebræos sequuntur. Usser ad an. M. 3394.",
-   "proposed": "Sand. Calv. Franc. Lucas Cornel. Et quotquot Hebræos sequuntur. Usser ad an. M. 3394.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0006(b)",
-   "page": "page_0006",
-   "marker": "(b)",
-   "text": "Gretser. t. 1. deffens. Bellarm. lib. I. c. 14.",
-   "proposed": "Gretser. t. 1. deffens. Bellarm. lib. I. c. 14.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0006(c)",
-   "page": "page_0006",
-   "marker": "(c)",
-   "text": "Voyez notre Préface sur les Lamentations.",
-   "proposed": "Voyez notre Préface sur les Lamentations.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
   {
    "id": "0007(b)",
    "page": "page_0007",
    "marker": "(b)",
    "text": "4 Rois 16:7. et 2 Paralipomènes 28:21.",
    "proposed": "4 Rois 16:7. et 2 Paralipomènes 28:21.",
-   "why": [],
+   "why": [
+    "context: 4 Rois = 2 Kings 16:7, Achaz"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -65,9 +33,11 @@
    "marker": "(c)",
    "text": "4 Rois 24:1.",
    "proposed": "4 Rois 24:1.",
-   "why": [],
+   "why": [
+    "context: 4 Rois = 2 Kings 24:1, Joakim"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -87,32 +57,6 @@
    "proposed": "Sophonie 2:8 ;\nÉzéchiel 25:3 ;\nJérémie 48:26-27 ;\nAbdias 1:10.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0008(f)",
-   "page": "page_0008",
-   "marker": "(f)",
-   "text": "Jérémie 40:7. Cumque audissent omnes Principes exercitûs qui dispersi fuerant per regiones, ipsi et socii eorum, quòd præfecisset Rex Babylonis Godoliam terræ ; venerunt ad Godoliam, etc. ℣. 11. Sed et omnes Judæi qui erant in Moab, et in filiis Ammon, et in Idumæa, et in universis regionibus… reversi sunt.",
-   "proposed": "Jérémie 40:7. Cumque audissent omnes Principes exercitûs qui dispersi fuerant per regiones, ipsi et socii eorum, quòd præfecisset Rex Babylonis Godoliam terræ ; venerunt ad Godoliam, etc. ℣. 11. Sed et omnes Judæi qui erant in Moab, et in filiis Ammon, et in Idumæa, et in universis regionibus… reversi sunt.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0011(a)",
-   "page": "page_0011",
-   "marker": "(a)",
-   "text": "וזכרה ירושלם ימי עניה ומרודיה כל מחמדיה Ita Hebræi quidem, et alii apud Sanct. hic. αὐτῆς δέ, etc. ἧς ἐν τῇ ἡμερῶν ἀρχαίων.",
-   "proposed": "וזכרה ירושלם ימי עניה ומרודיה כל מחמדיה Ita Hebræi quidem, et alii apud Sanct. hic. αὐτῆς δέ, etc. ἧς ἐν τῇ ἡμερῶν ἀρχαίων.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 1:7",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
   },
   {
    "id": "0011(b)",
@@ -159,17 +103,6 @@
    "flags": []
   },
   {
-   "id": "0013(c)",
-   "page": "page_0013",
-   "marker": "(c)",
-   "text": "Munster ; Pagnin ; Arias Montanus ; la Bible de Zurich, etc. Voyez Exode 28:33-34 ; 39:24-26.",
-   "proposed": "Munster ; Pagnin ; Arias Montanus ; la Bible de Zurich, etc. Voyez Exode 28:33-34 ; 39:24-26.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0014(b)",
    "page": "page_0014",
    "marker": "(b)",
@@ -198,39 +131,6 @@
    ]
   },
   {
-   "id": "0015(a)",
-   "page": "page_0015",
-   "marker": "(a)",
-   "text": "Mont. Tig. Jun. Caluin. Pisc.",
-   "proposed": "Mont. Tig. Jun. Caluin. Pisc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0015(b)",
-   "page": "page_0015",
-   "marker": "(b)",
-   "text": "Vat. Mari.",
-   "proposed": "Vat. Mari.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0015(c)",
-   "page": "page_0015",
-   "marker": "(c)",
-   "text": "Castal. Grot. Buxtorf. Vindicia lib. 2. c. II. etc.",
-   "proposed": "Castal. Grot. Buxtorf. Vindicia lib. 2. c. II. etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0015(f)",
    "page": "page_0015",
    "marker": "(f)",
@@ -241,17 +141,6 @@
     "Greek spelling checked against a Greek dictionary: Εταπείνωσέ -> Ἐταπείνωσέ"
    ],
    "flags": []
-  },
-  {
-   "id": "0016(a)",
-   "page": "page_0016",
-   "marker": "(a)",
-   "text": "Theodoret. hic. Sanst. Anglic.",
-   "proposed": "Theodoret. hic. Sanst. Anglic.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
   },
   {
    "id": "0016(b)",
@@ -279,17 +168,6 @@
    "flags": []
   },
   {
-   "id": "0017(a)",
-   "page": "page_0017",
-   "marker": "(a)",
-   "text": "Aben Ezra dans Buxtorf ; les Hébreux dans Vatable vertunt : Acceleratum est.",
-   "proposed": "Aben Ezra dans Buxtorf ; les Hébreux dans Vatable vertunt : Acceleratum est.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0017(c)",
    "page": "page_0017",
    "marker": "(c)",
@@ -303,11 +181,12 @@
    "page": "page_0017",
    "marker": "(e)",
    "text": "[UNCERTAIN HEBREW] סלה כל אבירי אדני 70. Εξῆρεν [UNCERTAIN GREEK] τός. ἰσχύ, etς με.",
-   "proposed": "[UNCERTAIN HEBREW] סלה כל אבירי אדני 70. Ἐξῆρεν [UNCERTAIN GREEK] τός. ἰσχύ, etς με.",
+   "proposed": "[UNCERTAIN HEBREW] סלה כל אבירי אדני 70. Ἐξῆρεν πάντας* τός. ἰσχύ, etς με.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Lamentations 1:15",
     "Greek spelling checked against a Greek dictionary: Εξῆρεν -> Ἐξῆρεν",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "context: Hebrew and abbreviated Greek unclear: [UNCERTAIN GREEK] -> πάντας*"
    ],
    "flags": [
     "uncertain",
@@ -322,24 +201,11 @@
    "text": "Vide Jérémie 48:45 et 50:16.Lamentations 4:18. et Isai. LXVI. 30. et Sanct. in hec loca.",
    "proposed": "Vide Jérémie 48:45 et 50:16.Lamentations 4:18. et Isai. LXVI. 30. et Sanct. in hec loca.",
    "why": [
+    "context: Isaïe 66:30 unverifiable; needs page",
     "Isaïe 66:30 does not exist in the Vulgate"
    ],
    "flags": [
-    "expand-unread",
     "reference-not-in-vulgate"
-   ]
-  },
-  {
-   "id": "0020(c)",
-   "page": "page_0020",
-   "marker": "(c)",
-   "text": "Eutlym. in Ps. IX. Salmeron. Prolegem. 16.p.414 נהפך לבי בקרבי כי מרו מריתי.",
-   "proposed": "Eutlym. in Ps. IX. Salmeron. Prolegem. 16.p.414 נהפך לבי בקרבי כי מרו מריתי.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 1:20"
-   ],
-   "flags": [
-    "expand-unread"
    ]
   },
   {
@@ -370,28 +236,6 @@
    ]
   },
   {
-   "id": "0024(c)",
-   "page": "page_0024",
-   "marker": "(c)",
-   "text": "Origen. Theodorst. Bonavent. Hugo. Grot.",
-   "proposed": "Origen. Theodorst. Bonavent. Hugo. Grot.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0024(d)",
-   "page": "page_0024",
-   "marker": "(d)",
-   "text": "Castr. Sanct.",
-   "proposed": "Castr. Sanct.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0025(d)",
    "page": "page_0025",
    "marker": "(d)",
@@ -401,9 +245,7 @@
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary: ταπεινωμένην -> ταπεινουμένην"
    ],
-   "flags": [
-    "expand-unread"
-   ]
+   "flags": []
   },
   {
    "id": "0025(f)",
@@ -415,28 +257,16 @@
    "flags": []
   },
   {
-   "id": "0026(a)",
-   "page": "page_0026",
-   "marker": "(a)",
-   "text": "Διεσκέδασεν ὡς ἄμπελον τὸ σκήνωμα αὐτοῦ. Heb. חמס כגן שכו",
-   "proposed": "Διεσκέδασεν ὡς ἄμπελον τὸ σκήνωμα αὐτοῦ. Heb. חמס כגן שכו",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 2:6",
-    "Greek checked against the Septuagint, Lamentations 2:6"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0026(d)",
    "page": "page_0026",
    "marker": "(d)",
    "text": "4 Rois 25:21. et Jérémie 52:10-11.",
    "proposed": "4 Rois 25:21. et Jérémie 52:10-11.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 25:21 correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -452,25 +282,16 @@
    "flags": []
   },
   {
-   "id": "0028(a)",
-   "page": "page_0028",
-   "marker": "(a)",
-   "text": "Isai. XXXIV. II.",
-   "proposed": "Isai. XXXIV. II.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0028(b)",
    "page": "page_0028",
    "marker": "(b)",
    "text": "4 Rois 21:13.",
    "proposed": "4 Rois 21:13.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 21:13 Samaria line"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -485,69 +306,16 @@
    "flags": []
   },
   {
-   "id": "0028(d)",
-   "page": "page_0028",
-   "marker": "(d)",
-   "text": "Ammian. Rer. XXI.",
-   "proposed": "Ammian. Rer. XXI.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0028(e)",
-   "page": "page_0028",
-   "marker": "(e)",
-   "text": "Plutarch. in Pelopida. Ælian. Var. lib. 7.",
-   "proposed": "Plutarch. in Pelopida. Ælian. Var. lib. 7.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0028(f)",
-   "page": "page_0028",
-   "marker": "(f)",
-   "text": "Voyez Jerem. XIV. I. Luxit Judæa, et portæ ejus obscuratæ sunt in terra.",
-   "proposed": "Voyez Jerem. XIV. I. Luxit Judæa, et portæ ejus obscuratæ sunt in terra.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0029(a)",
-   "page": "page_0029",
-   "marker": "(a)",
-   "text": "Theodoret. Bonav. Raban. Dionys. Vatab. Chaldaus.",
-   "proposed": "Theodoret. Bonav. Raban. Dionys. Vatab. Chaldaus.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0029(b)",
-   "page": "page_0029",
-   "marker": "(b)",
-   "text": "Theodoret. hic, et alii sup. citati. Vide et ℣. 14. et Sanct. hic.",
-   "proposed": "Theodoret. hic, et alii sup. citati. Vide et ℣. 14. et Sanct. hic.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0030(a)",
    "page": "page_0030",
    "marker": "(a)",
    "text": "Vide 3 Rois 21:27. Job 42:6. Jérémie 6:26. et alibi passim.",
    "proposed": "Vide 3 Rois 21:27. Job 42:6. Jérémie 6:26. et alibi passim.",
-   "why": [],
+   "why": [
+    "context: 3 Rois 21:27 Achab's sackcloth"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -587,17 +355,6 @@
    "flags": []
   },
   {
-   "id": "0030(f)",
-   "page": "page_0030",
-   "marker": "(f)",
-   "text": "Ita Jun. Piscat. Angl. Glassius.",
-   "proposed": "Ita Jun. Piscat. Angl. Glassius.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0031(b)",
    "page": "page_0031",
    "marker": "(b)",
@@ -619,17 +376,6 @@
    "proposed": "Sanctius, numéro 56 ;\nStrigelius ;\nPiscator.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0033(a)",
-   "page": "page_0033",
-   "marker": "(a)",
-   "text": "Grot. initio Comment. in Thren. Jerem.",
-   "proposed": "Grot. initio Comment. in Thren. Jerem.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
   },
   {
    "id": "0034(b)",
@@ -661,24 +407,14 @@
    "page": "page_0038",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] אני הגבר ראה עני בשבט עברתו",
-   "proposed": "[UNCERTAIN HEBREW] אני הגבר ראה עני בשבט עברתו",
+   "proposed": "אני הגבר ראה עני בשבט עברתו",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 3:1"
+    "Hebrew checked against the Hebrew Bible, Lamentations 3:1",
+    "scan: Filled placeholder with Hebrew printed on page",
+    "read on the scan: אני הגבר ראה עני בשבט עברתו"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
-   ]
-  },
-  {
-   "id": "0039(a)",
-   "page": "page_0039",
-   "marker": "(a)",
-   "text": "Zacharie 11:7. Assumpsi mihi duas virgas ; unam vocavi decorem, et alteram vocavi funis | calum, et parvi gregem, etc.",
-   "proposed": "Zacharie 11:7. Assumpsi mihi duas virgas ; unam vocavi decorem, et alteram vocavi funis | calum, et parvi gregem, etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
+    "scanned"
    ]
   },
   {
@@ -686,9 +422,10 @@
    "page": "page_0040",
    "marker": "(c)",
    "text": "Εὐδοκλαων κεφαλὴν μυ, καὶ εμεχϑη. [UNCERTAIN HEBREW] Vide Deut.",
-   "proposed": "Εὐδοκλαων κεφαλὴν μου, καὶ εμεχθη. [UNCERTAIN HEBREW] Vide Deut.",
+   "proposed": "Ἐκύκλωσεν* κεφαλὴν μου, καὶ ἐμόχθησεν*. [UNCERTAIN HEBREW] Vide Deut.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: εμεχϑη -> εμεχθη, μυ -> μου"
+    "Greek spelling checked against a Greek dictionary: εμεχϑη -> εμεχθη, μυ -> μου",
+    "context: Hebrew still uncertain: Εὐδοκλαων -> Ἐκύκλωσεν*, εμεχθη -> ἐμόχθησεν*"
    ],
    "flags": [
     "uncertain",
@@ -702,20 +439,11 @@
    "marker": "(a)",
    "text": "1 Rois 20:36-37.",
    "proposed": "1 Rois 20:36-37.",
-   "why": [],
+   "why": [
+    "context: 1 Rois = 1 Samuel 20, Jonathas"
+   ],
    "flags": [
-    "ambiguous-name"
-   ]
-  },
-  {
-   "id": "0042(b)",
-   "page": "page_0042",
-   "marker": "(b)",
-   "text": "Job. XVI. II. 14.",
-   "proposed": "Job. XVI. II. 14.",
-   "why": [],
-   "flags": [
-    "expand-unread"
+    "context"
    ]
   },
   {
@@ -746,11 +474,14 @@
    "page": "page_0045",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] | sonibus : [UNCERTAIN GREEK]",
-   "proposed": "[UNCERTAIN HEBREW] | sonibus : [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "חסדי יהוה כי לא תמנו כי לא תמו רחמו | sonibus : Μνήας εἰς τὰς πρωΐας ἔλεος σου, κύριε, ὅτι οὐ συνετελέσθημεν, ὅτι οὐ συνετελέσθησαν οἱ οἰκτιρμοὶ αὐτοῦ. Καινὰ εἰς τὰς πρωΐας, πολλὴ ἡ πίστις σου.",
+   "why": [
+    "scan: Filled Hebrew and Greek placeholders from page",
+    "read on the scan: חסדי יהוה כי לא תמנו כי לא תמו רחמו",
+    "read on the scan: Μνήας εἰς τὰς πρωΐας ἔλεος σου, κύριε, ὅτι οὐ συνετελέσθημεν, ὅτι οὐ συνετελέσθησαν οἱ οἰκτιρμοὶ αὐτοῦ. Καινὰ εἰς τὰς πρωΐας, πολλὴ ἡ πίστις σου."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -758,11 +489,14 @@
    "page": "page_0045",
    "marker": "(b)",
    "text": "[UNCERTAIN HEBREW] | 70. [UNCERTAIN GREEK]. Édit. Rom. quædam habet admixta ex alienis ver-",
-   "proposed": "[UNCERTAIN HEBREW] | 70. [UNCERTAIN GREEK]. Édit. Rom. quædam habet admixta ex alienis ver-",
-   "why": [],
+   "proposed": "חדשים לבקרים רבה אמונתך | 70. Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου. Édit. Rom. quædam habet admixta ex alienis ver-",
+   "why": [
+    "scan: Filled Hebrew and Greek placeholders from page",
+    "read on the scan: חדשים לבקרים רבה אמונתך",
+    "read on the scan: Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου."
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -911,20 +645,6 @@
    "flags": []
   },
   {
-   "id": "0055(d)",
-   "page": "page_0055",
-   "marker": "(d)",
-   "text": "Chald. 70. Vulg. Buxtorf. Rab. quidam, _quasi esset_ חלתא, _pro_ תלתא",
-   "proposed": "Chald. 70. Vulg. Buxtorf. Rab. quidam, _quasi esset_ חלתא, _pro_ תלתא",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
-   ],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0056(a)",
    "page": "page_0056",
    "marker": "(a)",
@@ -996,28 +716,6 @@
    ]
   },
   {
-   "id": "0057(d)",
-   "page": "page_0057",
-   "marker": "(d)",
-   "text": "Voyez Ovid. Fast. lib. 6. Petron. Satyric. Apul. Metamorphoj. lib. 1. Philostrat. vit. Apollon. lib. 4. etc.",
-   "proposed": "Voyez Ovid. Fast. lib. 6. Petron. Satyric. Apul. Metamorphoj. lib. 1. Philostrat. vit. Apollon. lib. 4. etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
-   "id": "0057(e)",
-   "page": "page_0057",
-   "marker": "(e)",
-   "text": "Leges Salic. c. 67.",
-   "proposed": "Leges Salic. c. 67.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0059(b)",
    "page": "page_0059",
    "marker": "(b)",
@@ -1062,9 +760,11 @@
    "marker": "(a)",
    "text": "4 Rois 6:25.",
    "proposed": "4 Rois 6:25.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 6:25 Samaria siege"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1073,9 +773,11 @@
    "marker": "(b)",
    "text": "4 Rois 18:27.",
    "proposed": "4 Rois 18:27.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 18:27 Rabsacès"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1134,12 +836,9 @@
    "text": "Joseph. de Bello lib. 7. c. 8. in Lat. Kα, in Græc.",
    "proposed": "Joseph. de Bello lib. 7. c. 8. in Lat. Kἃ, in Græc.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: α -> ἃ",
-    "written out, but a number changed or added: Josèphe, Guerre des Juifs, livre 7, chapitre 8, en latin, chap. 21, en grec."
+    "Greek spelling checked against a Greek dictionary: α -> ἃ"
    ],
-   "flags": [
-    "expand-changed-numbers"
-   ]
+   "flags": []
   },
   {
    "id": "0066(d)",
@@ -1149,17 +848,6 @@
    "proposed": "Judith 13:14.",
    "why": [],
    "flags": []
-  },
-  {
-   "id": "0066(e)",
-   "page": "page_0066",
-   "marker": "(e)",
-   "text": "Voyez Jérémie 2:26 ; 4:9 ; 5:31. Prophetæ prophetabant mendacium, et Sacerdotes applaudebant manibus suis, et populus meus dilexit talia. etc.",
-   "proposed": "Voyez Jérémie 2:26 ; 4:9 ; 5:31. Prophetæ prophetabant mendacium, et Sacerdotes applaudebant manibus suis, et populus meus dilexit talia. etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
   },
   {
    "id": "0067(a)",
@@ -1299,17 +987,6 @@
    ]
   },
   {
-   "id": "0076(b)",
-   "page": "page_0076",
-   "marker": "(b)",
-   "text": "1 Esdras 9:6-7. Iniquitates nostræ multiplicate sunt super caput nostrum, et delicta nostra creverunt usque ad Cœlum, à diebus patrum nostrorum : sed et nos ipsi peccavimus graviter. Néhémie 1:6. Confiteor pro peccatis filiorum Israël quibus peccaverunt tibi ; ego et domus patris mei peccavimus, etc. Néhémie 9:29-31 ; Esther 14:6 ; Psaumes 105:6 ; Baruch 2:11-12 ; Daniel 3:29, 31. Omnia quæ induxisti super nos, et universa quæ fecisti nobis, in vero judicio fecisti, etc.",
-   "proposed": "1 Esdras 9:6-7. Iniquitates nostræ multiplicate sunt super caput nostrum, et delicta nostra creverunt usque ad Cœlum, à diebus patrum nostrorum : sed et nos ipsi peccavimus graviter. Néhémie 1:6. Confiteor pro peccatis filiorum Israël quibus peccaverunt tibi ; ego et domus patris mei peccavimus, etc. Néhémie 9:29-31 ; Esther 14:6 ; Psaumes 105:6 ; Baruch 2:11-12 ; Daniel 3:29, 31. Omnia quæ induxisti super nos, et universa quæ fecisti nobis, in vero judicio fecisti, etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
-   ]
-  },
-  {
    "id": "0078(a)",
    "page": "page_0078",
    "marker": "(a)",
@@ -1329,21 +1006,12 @@
    "proposed": "Jérémie 52:11. 70. Καὶ ἤγαγεν αὐτὸν (Σεδεκίαν) εἰς Βαβυλῶνα καὶ ἔδωκεν αὐτὸν εἰς οἰκίαν μύλωνος, ἕως ἡμέρας ἧς ἀπέθανε.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
+    "context: 70 means Septuagint; Greek fine",
     "Jérémie 52:11, 70 does not exist in the Vulgate"
    ],
    "flags": [
+    "context",
     "reference-not-in-vulgate"
-   ]
-  },
-  {
-   "id": "0079(d)",
-   "page": "page_0079",
-   "marker": "(d)",
-   "text": "Horace, Satires, livre 1, satire 2. Alienas permolere uxores, etc.",
-   "proposed": "Horace, Satires, livre 1, satire 2. Alienas permolere uxores, etc.",
-   "why": [],
-   "flags": [
-    "expand-unread"
    ]
   },
   {

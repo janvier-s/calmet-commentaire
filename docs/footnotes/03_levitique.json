@@ -1,13 +1,15 @@
 {
  "summary": {
   "notes": 1260,
-  "changed": 28,
+  "changed": 32,
   "flags": {
    "greek": 70,
-   "scan-unread": 85,
+   "scan-unread": 81,
    "hebrew": 13,
-   "ambiguous-name": 11,
-   "uncertain": 5
+   "context": 10,
+   "ambiguous-name": 1,
+   "scanned": 4,
+   "uncertain": 1
   }
  },
  "notes": [
@@ -375,9 +377,11 @@
    "marker": "(a)",
    "text": "1 Rois 6:19.",
    "proposed": "1 Rois 6:19.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering; 1 Sam 6:19 Bethsamites"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -386,9 +390,11 @@
    "marker": "(b)",
    "text": "2 Rois 6:7.",
    "proposed": "2 Rois 6:7.",
-   "why": [],
+   "why": [
+    "context: Calmet numbering; 2 Sam 6:7 Oza"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -422,8 +428,8 @@
    "id": "0132(a)",
    "page": "page_0132",
    "marker": "(a)",
-   "text": "Diodore, livre 2 ; saint Jérôme, Contre Jovinien, livre 2 ; Thévenot, partie 1, livre 2, chapitre 32.",
-   "proposed": "Diodore, livre 2 ;\nsaint Jérôme, Contre Jovinien, livre 2 ;\nThévenot, partie 1, livre 2, chapitre 32.",
+   "text": "Diodore, livre 2 ; Saint Jérôme, Contre Jovinien, livre 2 ; Thévenot, partie 1, livre 2, chapitre 32.",
+   "proposed": "Diodore, livre 2 ;\nSaint Jérôme, Contre Jovinien, livre 2 ;\nThévenot, partie 1, livre 2, chapitre 32.",
    "why": [],
    "flags": []
   },
@@ -451,20 +457,20 @@
    "marker": "(d)",
    "text": "4 Rois 1:8.",
    "proposed": "4 Rois 1:8.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 1:8 Elijah's hairy garment"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
    "id": "0151(a)",
    "page": "page_0151",
    "marker": "(a)",
-   "text": "Origène, Homélie 8 sur le Lévitique ; saint Basile, sur le verset 141 sac. ; Euthyme ; Radulph. ; Bède, sur Luc 2 ; saint Bernard, chapitre 7 d'Isaïe ; saint Jean Chrysostome, homélie sur la Rencontre du Seigneur ; saint Cyrille, livre 2, De fide ad Reginas, etc. ; Procope de Gaza ; Théophylacte.",
-   "proposed": "Origène, Homélie 8 sur le Lévitique ;\nsaint Basile, sur le verset 141 sac. ;\nEuthyme ;\nRadulphe ;\nBède, sur Luc 2 ;\nsaint Bernard, chapitre 7 d'Isaïe ;\nsaint Jean Chrysostome, homélie sur la Rencontre du Seigneur ;\nsaint Cyrille, livre 2, De fide ad Reginas, etc. ;\nProcope de Gaza ;\nThéophylacte.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "text": "Origène, Homélie 8 sur le Lévitique ; Saint Basile, sur le verset 141 sac. ; Euthyme ; Radulph. ; Bède, sur Luc 2 ; Saint Bernard, chapitre 7 d'Isaïe ; Saint Jean Chrysostome, homélie sur la Rencontre du Seigneur ; Saint Cyrille, livre 2, De fide ad Reginas, etc. ; Procope de Gaza ; Théophylacte.",
+   "proposed": "Origène, Homélie 8 sur le Lévitique ;\nSaint Basile, sur le verset 141 sac. ;\nEuthyme ;\nRadulph. ;\nBède, sur Luc 2 ;\nSaint Bernard, chapitre 7 d'Isaïe ;\nSaint Jean Chrysostome, homélie sur la Rencontre du Seigneur ;\nSaint Cyrille, livre 2, De fide ad Reginas, etc. ;\nProcope de Gaza ;\nThéophylacte.",
+   "why": [],
    "flags": []
   },
   {
@@ -473,9 +479,11 @@
    "marker": "(a)",
    "text": "1 Rois 1:21-23.",
    "proposed": "1 Rois 1:21-23.",
-   "why": [],
+   "why": [
+    "context: 1 Sam 1:21-23 Hannah correct"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -484,9 +492,11 @@
    "marker": "(c)",
    "text": "4 Rois 5:14. Restituta est caro ejus, sicut caro pueri parvuli.",
    "proposed": "4 Rois 5:14. Restituta est caro ejus, sicut caro pueri parvuli.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 5:14 Naaman; Latin quoted"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -507,9 +517,11 @@
    "marker": "(a)",
    "text": "2 Rois 19:24.",
    "proposed": "2 Rois 19:24.",
-   "why": [],
+   "why": [
+    "context: 2 Sam 19:24 Miphiboseth's beard"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -518,7 +530,9 @@
    "marker": "(i)",
    "text": "Voyez 4 Rois 7:3. et.",
    "proposed": "Voyez 4 Rois 7:3. et.",
-   "why": [],
+   "why": [
+    "context: Ref fine; trailing 'et.' incomplete"
+   ],
    "flags": [
     "ambiguous-name"
    ]
@@ -651,17 +665,6 @@
    "text": "Saint Augustin, Traité 49 sur saint Jean, numéro 27 ; et Question 185 sur l'Exode ; et Question 33 sur le Lévitique.",
    "proposed": "Saint Augustin, Traité 49 sur saint Jean, numéro 27 ;\net Question 185 sur l'Exode ;\net Question 33 sur le Lévitique.",
    "why": [],
-   "flags": []
-  },
-  {
-   "id": "0198(e)",
-   "page": "page_0198",
-   "marker": "(e)",
-   "text": "Tertullien, livre Contre les Juifs, chapitre 14 ; et livre 3, Contre Marcion, chapitre 7 ; Saint Justin, Dialogue avec Tryphon ; Origène, Homélie 9 sur le Lévitique.",
-   "proposed": "Tertullien, livre Contre les Juifs, chapitre 14 ; et livre 3, Contre Marcion, chapitre 7 ; saint Justin, Dialogue avec Tryphon ; Origène, Homélie 9 sur le Lévitique.",
-   "why": [
-    "abbreviations written out"
-   ],
    "flags": []
   },
   {
@@ -833,9 +836,11 @@
    "marker": "(d)",
    "text": "4 Rois 16:3 comparé à 4 Rois 18:1.",
    "proposed": "4 Rois 16:3 comparé à 4 Rois 18:1.",
-   "why": [],
+   "why": [
+    "context: 4 Rois 16:3, 18:1 Achaz, Ezechias"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -902,8 +907,8 @@
    "id": "0244(d)",
    "page": "page_0244",
    "marker": "(d)",
-   "text": "Voyez Théodoret, Question 27 sur le Lévitique (Lévitique 19:19) ; Guillaume de Paris, livre Des lois, chapitre 12 ; saint Thomas, Somme théologique, 2-2, question 102, article 6, réponse à la 8e objection.",
-   "proposed": "Voyez Théodoret, Question 27 sur le Lévitique (Lévitique 19:19) ;\nGuillaume de Paris, livre Des lois, chapitre 12 ;\nsaint Thomas, Somme théologique, 2-2, question 102, article 6, réponse à la 8e objection.",
+   "text": "Voyez Théodoret, Question 27 sur le Lévitique (Lévitique 19:19) ; Guillaume de Paris, livre Des lois, chapitre 12 ; Saint Thomas, Somme théologique, 2-2, question 102, article 6, réponse à la 8e objection.",
+   "proposed": "Voyez Théodoret, Question 27 sur le Lévitique (Lévitique 19:19) ;\nGuillaume de Paris, livre Des lois, chapitre 12 ;\nSaint Thomas, Somme théologique, 2-2, question 102, article 6, réponse à la 8e objection.",
    "why": [],
    "flags": []
   },
@@ -913,9 +918,11 @@
    "marker": "(c)",
    "text": "Voyez 2 Rois 13:29 ; 18:9 ; 3 Rois 1:33.",
    "proposed": "Voyez 2 Rois 13:29 ; 18:9 ; 3 Rois 1:33.",
-   "why": [],
+   "why": [
+    "context: Mules: 2 Sam, 3 Rois 1:33"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -999,9 +1006,11 @@
    "marker": "(a)",
    "text": "2 Rois 10:4.",
    "proposed": "2 Rois 10:4.",
-   "why": [],
+   "why": [
+    "context: 2 Sam 10:4 Hanon shaved envoys"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1046,9 +1055,11 @@
    "marker": "(b)",
    "text": "3 Rois 14:24. Effæminati fuerant in terra, fecerúntque omnes abominationes gentium. 4 Rois 23:7. Destruxit ædiculas effæminatorum pro quibus mulieres texebant quasi domunculas luci. Voyez Osée 4:14 et Baruch 6:42. Mulieres circumdatæ funibus, in viis sedent, comburentes olivarum.",
    "proposed": "3 Rois 14:24. Effæminati fuerant in terra, fecerúntque omnes abominationes gentium. 4 Rois 23:7. Destruxit ædiculas effæminatorum pro quibus mulieres texebant quasi domunculas luci. Voyez Osée 4:14 et Baruch 6:42. Mulieres circumdatæ funibus, in viis sedent, comburentes olivarum.",
-   "why": [],
+   "why": [
+    "context: modern Kings numbering, matches Latin"
+   ],
    "flags": [
-    "ambiguous-name"
+    "context"
    ]
   },
   {
@@ -1080,11 +1091,13 @@
    "page": "page_0264",
    "marker": "(a)",
    "text": "Herodot. l. 2. c. 46. Egylto d' eè tà te-rò tèla in' imù tèlo tò riegos. Funaixì roiny@[UNCERTAIN GREEK] imioyiro ànafaidòn. Tàlo di' ùs isidùlys àidéxanto axinixo.",
-   "proposed": "Herodot. l. 2. c. 46. Egylto d' eè tà te-rò tèla in' imù tèlo tò riegos. Funaixì roiny@[UNCERTAIN GREEK] imioyiro ànafaidòn. Tàlo di' ùs isidùlys àidéxanto axinixo.",
-   "why": [],
+   "proposed": "Herodot. l. 2. c. 46. Ἐγύπτῳ δὲ ἐν τῷ νομῷ τῷ ἐπ' ἐμοῦ τοῦτο τὸ τέρας. Γυναικὶ τράγος ἐμίσγετο ἀναφανδόν. Τοῦτο δὲ ἐς ἐπίδειξιν ἀνθρώπων ἀπίκετο.",
+   "why": [
+    "scan: Rewrote Greek from print; filled placeholder (τράγος)",
+    "read on the scan: ος"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1145,11 +1158,13 @@
    "page": "page_0277",
    "marker": "(c)",
    "text": "[UNCERTAIN HEBREW]",
-   "proposed": "[UNCERTAIN HEBREW]",
-   "why": [],
+   "proposed": "פסח או חרם או שרוע",
+   "why": [
+    "scan: Filled Hebrew from print: פסח או חרם או שרוע",
+    "read on the scan: פסח או חרם או שרוע"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1157,11 +1172,13 @@
    "page": "page_0277",
    "marker": "(d)",
    "text": "70. [UNCERTAIN GREEK]",
-   "proposed": "70. [UNCERTAIN GREEK]",
-   "why": [],
+   "proposed": "70. Κολοβόρριν ἢ ὠτότμητος, ou κολοβόχειρ ἢ ὠτότμητος",
+   "why": [
+    "scan: Filled Greek from print (Κολοβόρριν… ὠτότμητος)",
+    "read on the scan: Κολοβόρριν ἢ ὠτότμητος, ou κολοβόχειρ ἢ ὠτότμητος"
+   ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1314,13 +1331,14 @@
    "page": "page_0323",
    "marker": "(a)",
    "text": "כל ארץ אחזתכם גאלה תתנו לארץ. [UNCERTAIN HEBREW] sdem-ris yis.",
-   "proposed": "כל ארץ אחזתכם גאלה תתנו לארץ. [UNCERTAIN HEBREW] sdem-ris yis.",
+   "proposed": "כל ארץ אחזתכם גאלה תתנו לארץ. δόσετε τῆς γῆς",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Leviticus 25:24"
+    "Hebrew checked against the Hebrew Bible, Leviticus 25:24",
+    "scan: Placeholder and garbled Latin-letter tail replaced by printed Greek δόσετε τῆς γῆς",
+    "read on the scan: δόσετε τῆς γῆς"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
@@ -1328,8 +1346,10 @@
    "page": "page_0324",
    "marker": "(a)",
    "text": "[UNCERTAIN HEBREW] 70. Ἐνιαυτὸς ἀμώμ. Annus integer. Alius : Ἐνιαυτὸς ἀμώμ. Annus immaculatus.",
-   "proposed": "[UNCERTAIN HEBREW] 70. Ἐνιαυτὸς ἀμώμ. Annus integer. Alius : Ἐνιαυτὸς ἀμώμ. Annus immaculatus.",
-   "why": [],
+   "proposed": "שנה* תמימה* 70. Ἐνιαυτὸς ἀμώμ. Annus integer. Alius : Ἐνιαυτὸς ἀμώμ. Annus immaculatus.",
+   "why": [
+    "context: Lev 25:30; Greek forms doubtful: [UNCERTAIN HEBREW] -> שנה* תמימה*"
+   ],
    "flags": [
     "uncertain",
     "greek",

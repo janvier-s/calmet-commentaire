@@ -1,15 +1,12 @@
 {
  "summary": {
   "notes": 192,
-  "changed": 27,
+  "changed": 25,
   "flags": {
    "hebrew": 1,
-   "scan-unread": 31,
+   "scan-unread": 30,
    "greek": 29,
-   "reference-not-in-vulgate": 1,
-   "expand-changed-italics": 3,
-   "expand-changed-numbers": 1,
-   "uncertain": 1
+   "scanned": 1
   }
  },
  "notes": [
@@ -83,20 +80,6 @@
    ]
   },
   {
-   "id": "0012(c)",
-   "page": "page_0012",
-   "marker": "(c)",
-   "text": "Voyez Nicolas de Lyre, in uit. Jerem. ; comparez Tostat, in Reg. 25:9, 37, d'après les traditions hébraïques ; Sanctius, sur ce passage ; et nous, Préface sur Daniel.",
-   "proposed": "Voyez Nicolas de Lyre, sur la vie de Jérémie ; comparez Tostat, sur 3 Rois 25:9, 37, d'après les traditions hébraïques ; Sanctius, sur ce passage ; et nous, Préface sur Daniel.",
-   "why": [
-    "abbreviations written out",
-    "3 Rois 25:9, 37 does not exist in the Vulgate"
-   ],
-   "flags": [
-    "reference-not-in-vulgate"
-   ]
-  },
-  {
    "id": "0013(b)",
    "page": "page_0013",
    "marker": "(b)",
@@ -108,60 +91,6 @@
    "flags": [
     "greek",
     "scan-unread"
-   ]
-  },
-  {
-   "id": "0014(a)",
-   "page": "page_0014",
-   "marker": "(a)",
-   "text": "_Voyez_ Dan. III. _insra_.",
-   "proposed": "_Voyez_ Dan. III. _insra_.",
-   "why": [
-    "written out, but the italics changed: Voyez Daniel 3 ci-dessous."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
-  },
-  {
-   "id": "0014(b)",
-   "page": "page_0014",
-   "marker": "(b)",
-   "text": "_Vide_ Sanct. hic. Ribull. Tunc operata Deo quibus discumbeo in herba.",
-   "proposed": "_Vide_ Sanct. hic. Ribull. Tunc operata Deo quibus discumbeo in herba.",
-   "why": [
-    "written out, but the italics changed: Voyez Sanctius, sur ce passage ; Ribera. Tunc operata Deo quibus discumbeo in herba."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
-  },
-  {
-   "id": "0014(c)",
-   "page": "page_0014",
-   "marker": "(c)",
-   "text": "עבד _habad_. Ministrare, operari. Il se prend très souvent pour le culte qu'on rend au Seigneur. Exode 10:26. 2:9. 4:12, 25. etc.",
-   "proposed": "עבד _habad_. Ministrare, operari. Il se prend très souvent pour le culte qu'on rend au Seigneur. Exode 10:26. 2:9. 4:12, 25. etc.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "written out, but the italics changed: עבד habad. Ministrare, operari. Il se prend très souvent pour le culte qu'on rend au Seigneur. Exode 10:26 ; 2:9 ; 4:12, 25, etc."
-   ],
-   "flags": [
-    "expand-changed-italics"
-   ]
-  },
-  {
-   "id": "0017(b)",
-   "page": "page_0017",
-   "marker": "(b)",
-   "text": "Theodor. hic. Ἐγρήγορεν Θεὸς τιμωρίαν καλὴν. Τῆς δὲ μακαριότητος αἰτία, ὅτι ὅσα τῆς θείας χάριτος κατῆρξεν. Vide Ierem. I. II. XXXI. 28. XLIV. 29. Lamentations 1:14. Daniel 9:14.",
-   "proposed": "Theodor. hic. Ἐγρήγορεν Θεὸς τιμωρίαν καλὴν. Τῆς δὲ μακαριότητος αἰτία, ὅτι ὅσα τῆς θείας χάριτος κατῆρξεν. Vide Ierem. I. II. XXXI. 28. XLIV. 29. Lamentations 1:14. Daniel 9:14.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "written out, but a number changed or added: Théodoret, sur ce passage. Ἐγρήγορεν Θεὸς τιμωρίαν καλὴν. Τῆς δὲ μακαριότητος αἰτία, ὅτι ὅσα τῆς θείας χάριτος κατῆρξεν. Voyez Jérémie 1:11 ; 31:28 ; 44:29 ; Lamentations 1:14 ; Daniel 9:14."
-   ],
-   "flags": [
-    "expand-changed-numbers"
    ]
   },
   {
@@ -313,17 +242,6 @@
    "flags": []
   },
   {
-   "id": "0032(d)",
-   "page": "page_0032",
-   "marker": "(d)",
-   "text": "Saint Augustin, livre 18, La Cité de Dieu, chapitre 33 ; Saint Bernard, Sermon 13 sur le Cantique des cantiques ; et d'autres ; Hugues de Saint-Cher ; Nicolas de Lyre ; Denys le Chartreux ; Cornelius a Lapide ; Sanctius ; Baduellus, etc.",
-   "proposed": "Saint Augustin, La Cité de Dieu, livre 18, chapitre 33 ; saint Bernard, Sermon 13 sur le Cantique des cantiques ; et d'autres ; Hugues de Saint-Cher ; Nicolas de Lyre ; Denys le Chartreux ; Cornelius a Lapide ; Sanctius ; Baduellus, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0036(e)",
    "page": "page_0036",
    "marker": "(e)",
@@ -383,25 +301,12 @@
    "flags": []
   },
   {
-   "id": "0045(a)",
-   "page": "page_0045",
-   "marker": "(a)",
-   "text": "Édition de Complute et Polyglotte de Paris ; et Huet ; Nicolas de Lyre. Ce n'est pas dans l'édition romaine, ni dans Théodoret.",
-   "proposed": "L'édition de Complute et Polyglotte de Paris ; et Huet ; Nicolas de Lyre. Ce n'est pas dans l'édition romaine, ni dans Théodoret.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0046(d)",
    "page": "page_0046",
    "marker": "(d)",
    "text": "Voyez Amos 5:26 ; Isaïe 46:1 ; Jérémie 10:5 ; Saint Clément d'Alexandrie, Protreptique, page 49 ; Apulée, livre 11, etc.",
-   "proposed": "Voyez Amos 5:26 ;\nIsaïe 46:1 ;\nJérémie 10:5 ;\nsaint Clément d'Alexandrie, Protreptique, page 49 ;\nApulée, livre 11, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
+   "proposed": "Voyez Amos 5:26 ;\nIsaïe 46:1 ;\nJérémie 10:5 ;\nSaint Clément d'Alexandrie, Protreptique, page 49 ;\nApulée, livre 11, etc.",
+   "why": [],
    "flags": []
   },
   {
@@ -438,13 +343,15 @@
    "page": "page_0049",
    "marker": "(c)",
    "text": "quas Græci Σκεύεα dixêre. Quod [ILLEGIBLE] de armis [ILLEGIBLE]",
-   "proposed": "quas Græci Σκεύεα dixêre. Quod [ILLEGIBLE] de armis [ILLEGIBLE]",
+   "proposed": "quas Græci Σκεύεα dixêre. Quod dicitur* de armis usurpatur*",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "scan: Greek Σκεύεα kept as printed; the page does not show the text after 'dixêre', so both placeholders are guessed",
+    "guessed from context: dicitur*",
+    "guessed from context: usurpatur*"
    ],
    "flags": [
-    "uncertain",
-    "scan-unread"
+    "scanned"
    ]
   },
   {
