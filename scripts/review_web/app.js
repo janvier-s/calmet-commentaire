@@ -107,6 +107,7 @@ function layoutScan(focus) {
   const view = $("scan-view"), img = $("scan-img");
   if (!img.naturalWidth) return;
   const before = { w: img.width || 1, x: view.scrollLeft, y: view.scrollTop };
+  if (S.fitV) S.zoom = Math.max(0.1, (view.clientHeight - 2) * img.naturalWidth / img.naturalHeight / (view.clientWidth - 2));  // Fit ↕, kept on resize
   const w = Math.round((view.clientWidth - 2) * S.zoom);
   img.style.width = `${w}px`;
   // zoomed out: the scan centred across the pane (the dim and the OCR layer follow by --scan-x)
@@ -122,9 +123,11 @@ function layoutScan(focus) {
 }
 
 function zoomStep(dir, focus) {
+  if (dir < 0 && S.zoom < ZOOM_STEPS[0] - 1e-6) return;  // already smaller (Fit ↕ on a tall page)
   const i = ZOOM_STEPS.findIndex((z) => z >= S.zoom - 1e-6);
   const j = Math.max(0, Math.min(ZOOM_STEPS.length - 1, (i < 0 ? ZOOM_STEPS.length - 1 : i) + dir));
   S.zoom = ZOOM_STEPS[j];
+  S.fitV = false;
   layoutScan(focus);
 }
 
@@ -132,9 +135,11 @@ function setupScan() {
   const view = $("scan-view");
   $("zoom-in").onclick = () => zoomStep(1);
   $("zoom-out").onclick = () => zoomStep(-1);
-  $("zoom-fit").onclick = () => { S.zoom = 1; layoutScan(); };
+  $("zoom-fit").onclick = () => { S.zoom = 1; S.fitV = false; layoutScan(); };
+  $("zoom-fit-v").onclick = () => { S.fitV = true; layoutScan(); };
   $("zoom-1").onclick = () => {
     const img = $("scan-img");
+    S.fitV = false;
     if (img.naturalWidth) S.zoom = Math.min(5, Math.max(0.5, img.naturalWidth / (view.clientWidth - 2)));
     layoutScan();
   };
