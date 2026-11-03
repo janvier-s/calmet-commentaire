@@ -1,11 +1,12 @@
 {
  "summary": {
   "notes": 175,
-  "changed": 9,
+  "changed": 10,
   "flags": {
    "expand-unread": 10,
    "greek": 10,
    "scan-unread": 11,
+   "expand-changed-numbers": 4,
    "scanned": 2,
    "hebrew": 1
   }
@@ -41,8 +42,10 @@
    "page": "page_0005",
    "marker": "(e)",
    "text": "Voyez saint Augustin, livre 1, _Operis imperfecti contra Julian. chapitre_ 133 et 141 ; et livre 5, _Contre Julien, chapitre_ 4 ; et livre _de dono perseverantiæ, chapitre_ 14, _numéro_ 35. _Prædestinatio Sanctorum nihil aliud est : præscientia scilicet, et præparatio beneficiorum Dei, quibus certissimè liberantur, quicumque liberantur. cæteri autem ubi nisi in massa perditionis justo divino judicio relinquuntur ?_",
-   "proposed": "Voyez saint Augustin, livre 1, _Operis imperfecti contra Julian. chapitre_ 133 et 141 ; et livre 5, _Contre Julien, chapitre_ 4 ; et livre _de dono perseverantiæ, chapitre_ 14, _numéro_ 35. _Prædestinatio Sanctorum nihil aliud est : præscientia scilicet, et præparatio beneficiorum Dei, quibus certissimè liberantur, quicumque liberantur. cæteri autem ubi nisi in massa perditionis justo divino judicio relinquuntur ?_",
-   "why": [],
+   "proposed": "Voyez saint Augustin, livre 1, _Operis imperfecti contra Julianum, chapitre_ 133 et 141 ; et livre 5, _Contre Julien, chapitre_ 4 ; et livre _de dono perseverantiæ, chapitre_ 14, _numéro_ 35. _Prædestinatio Sanctorum nihil aliud est : præscientia scilicet, et præparatio beneficiorum Dei, quibus certissimè liberantur, quicumque liberantur. cæteri autem ubi nisi in massa perditionis justo divino judicio relinquuntur ?_",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -67,9 +70,12 @@
    "marker": "(a)",
    "text": "Vide Levit. III. II. 16. Num. XXV. II. v. 24.",
    "proposed": "Vide Levit. III. II. 16. Num. XXV. II. v. 24.",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: Voyez Lévitique 3:11, 16 ; Nombres 25:11 ; verset 24."
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -186,9 +192,12 @@
    "marker": "(c)",
    "text": "Deut. v11. 3. Non inibis cum eis fœdus, nec misereberis eorum, neque sociabis cum eis con-",
    "proposed": "Deut. v11. 3. Non inibis cum eis fœdus, nec misereberis eorum, neque sociabis cum eis con-",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: Deutéronome 7:3. Non inibis cum eis fœdus, nec misereberis eorum, neque sociabis cum eis con-"
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -197,9 +206,12 @@
    "marker": "(f)",
    "text": "Vide Isai. xx1. 11. Custos quid de nocte ?",
    "proposed": "Vide Isai. xx1. 11. Custos quid de nocte ?",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: Voyez Isaïe 21:11. Custos quid de nocte ?"
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -309,10 +321,12 @@
    "proposed": "Hebr. והשיב לב אבות על בנים La préposition על se prend souvent pour avec, par-dessus. Genes. XXXII. II.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Malachi 4:6",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "written out, but a number changed or added: L'Hébreu : והשיב לב אבות על בנים La préposition על se prend souvent pour avec, par-dessus. Genèse 32:11."
    ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   }
  ]

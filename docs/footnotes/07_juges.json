@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 1322,
-  "changed": 6,
+  "changed": 7,
   "flags": {
    "greek": 64,
    "scan-unread": 76,
@@ -13,6 +13,7 @@
    "context": 5,
    "scanned": 10,
    "expand-changed-numbers": 1,
+   "expand-changed-italics": 1,
    "ambiguous-name": 1
   }
  },
@@ -61,6 +62,7 @@
    "proposed": "Nombres 13:22 ; 19:38 ; Josué 19:28.",
    "why": [
     "context: Verse references not confirmable",
+    "Nombres 19:38 does not exist in the Vulgate",
     "Nombres 19:38 does not exist in the Vulgate",
     "Nombres 19:38 does not exist in the Vulgate"
    ],
@@ -193,17 +195,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0079(f)",
-   "page": "page_0079",
-   "marker": "(f)",
-   "text": "Le Chaldéen ; le Syriaque ; l'Arabe ; Pagnin ; Vatable. Voyez 4 Rois 2:17.",
-   "proposed": "Le Chaldéen ; le Syriaque ; l'Arabe ; Pagnin ; Vatable. Voyez 3 Rois 2:17.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0088(a)",
@@ -590,14 +581,15 @@
    "page": "page_0147",
    "marker": "(b)",
    "text": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μάχλη Ἄρτε τ8 κρίθινε κυλιομ[ILLEGIBLE] εἰς τ[ILLEGIBLE] παρεμβολῶν, etc.",
-   "proposed": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 70. μαγὶς ἄρτου τοῦ κριθίνου κυλιομένη ἐν τῇ παρεμβολῇ, etc.",
+   "proposed": "והנה צלול לחם שעורים מתהפך במחנה מדין\n133 les Septante : μαγὶς ἄρτου τοῦ κριθίνου κυλιομένη ἐν τῇ παρεμβολῇ, etc.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Judges 7:13",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
     "context: Second illegible remains: κυλιομ[ILLEGIBLE] -> κυλιομένη*",
-    "scan (agy flash): Corrected Greek words and filled ἐν τῇ"
+    "scan (agy flash): Corrected Greek words and filled ἐν τῇ",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -696,11 +688,13 @@
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "scan: Filled the placeholder and replaced the wrong Scythian line with the printed Xenophon Greek.",
-    "read on the scan: ἐπεὶ ἐγὼ αὐτὸν εἶδον ὥσπερ Λυδόν, ἀμφότερα τὰ ὦτα τετρυπημένον"
+    "read on the scan: ἐπεὶ ἐγὼ αὐτὸν εἶδον ὥσπερ Λυδόν, ἀμφότερα τὰ ὦτα τετρυπημένον",
+    "written out, but the italics changed: Xénophon, Anabase, livre 3. ἐπεὶ ἐγὼ αὐτὸν εἶδον ὥσπερ Λυδόν, ἀμφότερα τὰ ὦτα τετρυπημένον. Voyez aussi Macrobe, Saturnales, livre 7, chapitre 3. Cum Ostavius Ciceroni recitanti dixisset ; non audio q"
    ],
    "flags": [
     "scanned",
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-italics"
    ]
   },
   {
@@ -828,10 +822,11 @@
    "page": "page_0220",
    "marker": "(a)",
    "text": "Joseph. lib. 4. de Bello c. 25. ἐλθόντι ἐπὶ τὰ Γάδαρα μητρόπολιν τῆς περαίας καρτεράν.",
-   "proposed": "Joseph. lib. 4. de Bello c. 25. ἐλθόντι ἐπὶ τὰ Γάδαρα μητρόπολιν τῆς περαίας καρτεράν.",
+   "proposed": "Josèphe, Guerre des Juifs, livre 4, chapitre 25. ἐλθόντι ἐπὶ τὰ Γάδαρα μητρόπολιν τῆς περαίας καρτεράν.",
    "why": [
     "context: Josephus quotation unrecoverable",
-    "scan (agy flash): Filled Greek placeholder and corrected καρτεράν"
+    "scan (agy flash): Filled Greek placeholder and corrected καρτεράν",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -1178,12 +1173,13 @@
    "page": "page_0285",
    "marker": "(a)",
    "text": "Herodot. l. 4. c 2. τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*.",
-   "proposed": "Herodot. l. 4. c 2. τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*.",
+   "proposed": "Hérodote, livre 4, chapitre 2. τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
     "scan: Replaced the placeholder and the garbled Greek with Herodotus 4.2, partly guessed.",
-    "guessed from context: τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*"
+    "guessed from context: τοὺς* δὲ δούλους* οἱ Σκύθαι πάντας τυφλοῦσι*",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",

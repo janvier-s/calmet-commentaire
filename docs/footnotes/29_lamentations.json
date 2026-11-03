@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 289,
-  "changed": 44,
+  "changed": 21,
   "flags": {
    "context": 9,
    "greek": 30,
@@ -17,28 +17,6 @@
   }
  },
  "notes": [
-  {
-   "id": "0006(a)",
-   "page": "page_0006",
-   "marker": "(a)",
-   "text": "Sand. Calv. Franc. Lucas Cornel. Et quotquot Hebræos sequuntur. Usser ad an. M. 3394.",
-   "proposed": "Sanderus ;\nCalvin ;\nFrançois Lucas ;\nCornelius a Lapide. Et quotquot Hebræos sequuntur. Ussérius, à l'année du monde 3394.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0006(b)",
-   "page": "page_0006",
-   "marker": "(b)",
-   "text": "Gretser. t. 1. deffens. Bellarm. lib. I. c. 14.",
-   "proposed": "Gretser, tome 1, Défense ; Bellarmin, livre 1, chapitre 14.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
   {
    "id": "0007(b)",
    "page": "page_0007",
@@ -64,31 +42,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0008(f)",
-   "page": "page_0008",
-   "marker": "(f)",
-   "text": "Jérémie 40:7. Cumque audissent omnes Principes exercitûs qui dispersi fuerant per regiones, ipsi et socii eorum, quòd præfecisset Rex Babylonis Godoliam terræ ; venerunt ad Godoliam, etc. ℣. 11. Sed et omnes Judæi qui erant in Moab, et in filiis Ammon, et in Idumæa, et in universis regionibus… reversi sunt.",
-   "proposed": "Jérémie 40:7. Cumque audissent omnes Principes exercitûs qui dispersi fuerant per regiones, ipsi et socii eorum, quòd præfecisset Rex Babylonis Godoliam terræ ; venerunt ad Godoliam, etc. Jérémie 40:11. Sed et omnes Judæi qui erant in Moab, et in filiis Ammon, et in Idumæa, et in universis regionibus… reversi sunt.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0011(a)",
-   "page": "page_0011",
-   "marker": "(a)",
-   "text": "וזכרה ירושלם ימי עניה ומרודיה כל מחמדיה Ita Hebræi quidem, et alii apud Sanct. hic. αὐτῆς δέ, etc. ἧς ἐν τῇ ἡμερῶν ἀρχαίων.",
-   "proposed": "וזכרה ירושלם ימי עניה ומרודיה כל מחמדיה Ainsi lisent en effet les Hébreux, et d'autres dans Sanctius sur ce passage. αὐτῆς δέ, etc. ἧς ἐν τῇ ἡμερῶν ἀρχαίων.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 1:7",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0014(b)",
@@ -119,50 +72,18 @@
    ]
   },
   {
-   "id": "0015(a)",
-   "page": "page_0015",
-   "marker": "(a)",
-   "text": "Mont. Tig. Jun. Caluin. Pisc.",
-   "proposed": "Arias Montanus ; la Bible de Zurich ; Junius ; Calvin ; Piscator.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0015(b)",
-   "page": "page_0015",
-   "marker": "(b)",
-   "text": "Vat. Mari.",
-   "proposed": "Vatable ; Mariana.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0015(c)",
    "page": "page_0015",
    "marker": "(c)",
    "text": "Castal. Grot. Buxtorf. Vindicia lib. 2. c. II. etc.",
    "proposed": "Castal. Grot. Buxtorf. Vindicia lib. 2. c. II. etc.",
    "why": [
+    "written out, but a number changed or added: Castalion ; Grotius ; Buxtorf, Vindiciæ, livre 2, chapitre 11, etc.",
     "written out, but a number changed or added: Castalion ; Grotius ; Buxtorf, Vindiciæ, livre 2, chapitre 11, etc."
    ],
    "flags": [
     "expand-changed-numbers"
    ]
-  },
-  {
-   "id": "0016(a)",
-   "page": "page_0016",
-   "marker": "(a)",
-   "text": "Theodoret. hic. Sanst. Anglic.",
-   "proposed": "Théodoret sur ce passage ; Sanctius ; les Anglais.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0016(b)",
@@ -217,23 +138,12 @@
     "context: Isaïe 66:30 unverifiable; needs page",
     "Isaïe 66:30 does not exist in the Vulgate",
     "abbreviations written out",
+    "Isaïe 66:30 does not exist in the Vulgate",
     "Isaïe 66:30 does not exist in the Vulgate"
    ],
    "flags": [
     "reference-not-in-vulgate"
    ]
-  },
-  {
-   "id": "0020(c)",
-   "page": "page_0020",
-   "marker": "(c)",
-   "text": "Eutlym. in Ps. IX. Salmeron. Prolegem. 16.p.414 נהפך לבי בקרבי כי מרו מריתי.",
-   "proposed": "Euthymius sur le Psaume 9 ; Salmeron, Prolégomènes 16, page 414 נהפך לבי בקרבי כי מרו מריתי.",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 1:20",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0024(a)",
@@ -252,54 +162,6 @@
    ]
   },
   {
-   "id": "0024(c)",
-   "page": "page_0024",
-   "marker": "(c)",
-   "text": "Origen. Theodorst. Bonavent. Hugo. Grot.",
-   "proposed": "Origène ;\nThéodoret ;\nsaint Bonaventure ;\nHugues de Saint-Cher ;\nGrotius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0024(d)",
-   "page": "page_0024",
-   "marker": "(d)",
-   "text": "Castr. Sanct.",
-   "proposed": "Castro ; Sanctius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0025(d)",
-   "page": "page_0025",
-   "marker": "(d)",
-   "text": "καὶ ἐπλήθυνεν τῇ θυγατρὶ Ἰούδα ταπεινὸν καὶ ταπεινήν. Compl. Ταπεινώσει, καὶ ταπεινώσει. ταπεινουμένην. Ut Vulg. Ita et Theodoret. et Alexandri.",
-   "proposed": "καὶ ἐπλήθυνεν τῇ θυγατρὶ Ἰούδα ταπεινὸν καὶ ταπεινήν. L'édition de Complute : Ταπεινώσει, καὶ ταπεινώσει. ταπεινουμένην. Comme la Vulgate. De même Théodoret et le manuscrit d'Alexandrie.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary: ταπεινωμένην -> ταπεινουμένην",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0026(a)",
-   "page": "page_0026",
-   "marker": "(a)",
-   "text": "Διεσκέδασεν ὡς ἄμπελον τὸ σκήνωμα αὐτοῦ. Heb. חמס כגן שכו",
-   "proposed": "Διεσκέδασεν ὡς ἄμπελον τὸ σκήνωμα αὐτοῦ. L'Hébreu : חמס כגן שכו",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Lamentations 2:6",
-    "Greek checked against the Septuagint, Lamentations 2:6",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0026(d)",
    "page": "page_0026",
    "marker": "(d)",
@@ -313,17 +175,6 @@
    ]
   },
   {
-   "id": "0028(a)",
-   "page": "page_0028",
-   "marker": "(a)",
-   "text": "Isai. XXXIV. II.",
-   "proposed": "Isaïe 34:11.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0028(b)",
    "page": "page_0028",
    "marker": "(b)",
@@ -335,61 +186,6 @@
    "flags": [
     "context"
    ]
-  },
-  {
-   "id": "0028(d)",
-   "page": "page_0028",
-   "marker": "(d)",
-   "text": "Ammian. Rer. XXI.",
-   "proposed": "Ammien Marcellin, Res gestæ, livre 21.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0028(e)",
-   "page": "page_0028",
-   "marker": "(e)",
-   "text": "Plutarch. in Pelopida. Ælian. Var. lib. 7.",
-   "proposed": "Plutarque, Vie de Pélopidas ; Élien, Histoires variées, livre 7.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0028(f)",
-   "page": "page_0028",
-   "marker": "(f)",
-   "text": "Voyez Jerem. XIV. I. Luxit Judæa, et portæ ejus obscuratæ sunt in terra.",
-   "proposed": "Voyez Jérémie 14:1. Luxit Judæa, et portæ ejus obscuratæ sunt in terra.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0029(a)",
-   "page": "page_0029",
-   "marker": "(a)",
-   "text": "Theodoret. Bonav. Raban. Dionys. Vatab. Chaldaus.",
-   "proposed": "Théodoret ; saint Bonaventure ; Raban Maur ; Denys le Chartreux ; Vatable ; le Chaldéen.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0029(b)",
-   "page": "page_0029",
-   "marker": "(b)",
-   "text": "Theodoret. hic, et alii sup. citati. Vide et ℣. 14. et Sanct. hic.",
-   "proposed": "Théodoret sur ce passage, et d'autres cités plus haut. Voyez aussi Lamentations 2:14 et Sanctius sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0030(a)",
@@ -432,17 +228,6 @@
    ]
   },
   {
-   "id": "0030(f)",
-   "page": "page_0030",
-   "marker": "(f)",
-   "text": "Ita Jun. Piscat. Angl. Glassius.",
-   "proposed": "Ainsi l'entendent Junius ; Piscator ; les Anglais ; Glassius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0031(b)",
    "page": "page_0031",
    "marker": "(b)",
@@ -455,17 +240,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0033(a)",
-   "page": "page_0033",
-   "marker": "(a)",
-   "text": "Grot. initio Comment. in Thren. Jerem.",
-   "proposed": "Grotius, au commencement du Commentaire sur les Lamentations de Jérémie.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0037(a)",
@@ -535,6 +309,7 @@
    "text": "Job. XVI. II. 14.",
    "proposed": "Job. XVI. II. 14.",
    "why": [
+    "written out, but a number changed or added: Job 16:11, 14.",
     "written out, but a number changed or added: Job 16:11, 14."
    ],
    "flags": [
@@ -573,11 +348,12 @@
    "page": "page_0045",
    "marker": "(b)",
    "text": "חדשים לבקרים רבה אמונתך | 70. Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου. Édit. Rom. quædam habet admixta ex alienis ver-",
-   "proposed": "חדשים לבקרים רבה אמונתך | 70. Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου. Édit. Rom. quædam habet admixta ex alienis ver-",
+   "proposed": "חדשים לבקרים רבה אמונתך | Les Septante : Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου. Édition romaine quædam habet admixta ex alienis ver-",
    "why": [
     "scan: Filled Hebrew and Greek placeholders from page",
     "read on the scan: חדשים לבקרים רבה אמונתך",
-    "read on the scan: Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου."
+    "read on the scan: Τὰ καινὰ ὡς τοῦ ὄρθρου. Πολλὴ ἡ πίστις σου.",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -690,19 +466,6 @@
    ]
   },
   {
-   "id": "0055(d)",
-   "page": "page_0055",
-   "marker": "(d)",
-   "text": "Chald. 70. Vulg. Buxtorf. Rab. quidam, _quasi esset_ חלתא, _pro_ תלתא",
-   "proposed": "Le Chaldéen ; les Septante ; la Vulgate ; Buxtorf ; quelques rabbins, _quasi esset_ חלתא, _pro_ תלתא",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0056(a)",
    "page": "page_0056",
    "marker": "(a)",
@@ -752,28 +515,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0057(d)",
-   "page": "page_0057",
-   "marker": "(d)",
-   "text": "Voyez Ovid. Fast. lib. 6. Petron. Satyric. Apul. Metamorphoj. lib. 1. Philostrat. vit. Apollon. lib. 4. etc.",
-   "proposed": "Voyez Ovide, Fastes, livre 6 ;\nPétrone, Satyricon ;\nApulée, Métamorphoses, livre 1 ;\nPhilostrate, Vie d'Apollonius, livre 4, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0057(e)",
-   "page": "page_0057",
-   "marker": "(e)",
-   "text": "Leges Salic. c. 67.",
-   "proposed": "Loi salique, chapitre 67.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0059(b)",
@@ -879,18 +620,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0065(d)",
-   "page": "page_0065",
-   "marker": "(d)",
-   "text": "Joseph. de Bello lib. 7. c. 8. in Lat. Kἃ, in Græc.",
-   "proposed": "Josèphe, Guerre des Juifs, livre 7, chapitre 8, dans le Latin Kἃ, dans le Grec.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: α -> ἃ",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0067(a)",
@@ -1032,6 +761,7 @@
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "context: 70 means Septuagint; Greek fine",
+    "Jérémie 52:11, 70 does not exist in the Vulgate",
     "Jérémie 52:11, 70 does not exist in the Vulgate",
     "Jérémie 52:11, 70 does not exist in the Vulgate"
    ],

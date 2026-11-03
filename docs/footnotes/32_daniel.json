@@ -1,14 +1,14 @@
 {
  "summary": {
   "notes": 858,
-  "changed": 51,
+  "changed": 43,
   "flags": {
    "expand-unread": 17,
    "hebrew": 17,
    "scan-unread": 69,
    "scanned": 27,
    "greek": 55,
-   "expand-changed-numbers": 5,
+   "expand-changed-numbers": 7,
    "context": 1,
    "uncertain": 2,
    "scan-agy-changed-text": 2,
@@ -22,8 +22,10 @@
    "page": "page_0048",
    "marker": "(c)",
    "text": "Ussérius, ad an. m. 3397 ;\nVatable ;\nGrotius, etc.",
-   "proposed": "Ussérius, ad an. m. 3397 ;\nVatable ;\nGrotius, etc.",
-   "why": [],
+   "proposed": "Ussérius, à l'an du monde 3397 ;\nVatable ;\nGrotius, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -68,17 +70,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0054(a)",
-   "page": "page_0054",
-   "marker": "(a)",
-   "text": "Vide, si placet, Judith 12:2. Aß. xx. 18. xI. 3. Jean 4:9. etc.",
-   "proposed": "Voyez au besoin Judith 12:2 ; Actes 20:18 ; 11:3 ; Jean 4:9, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0054(c)",
@@ -186,17 +177,6 @@
    ]
   },
   {
-   "id": "0059(h)",
-   "page": "page_0059",
-   "marker": "(h)",
-   "text": "Homer. Odyss. K.",
-   "proposed": "Homère, Odyssée, livre K.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0060(a)",
    "page": "page_0060",
    "marker": "(a)",
@@ -263,6 +243,7 @@
    "text": "1. Esdr. VI. II.",
    "proposed": "1. Esdr. VI. II.",
    "why": [
+    "written out, but a number changed or added: 1 Esdras 6:11.",
     "written out, but a number changed or added: 1 Esdras 6:11."
    ],
    "flags": [
@@ -312,7 +293,7 @@
    "id": "0065(d)",
    "page": "page_0065",
    "marker": "(d)",
-   "text": "Ibid. ℣. 25.",
+   "text": "Daniel 2:25.",
    "proposed": "Daniel 2:25.",
    "why": [
     "context: No Rois reference in this note",
@@ -400,11 +381,13 @@
    "proposed": "Ludovic. de Dieu. Vide Genes. II. s. III, 23. etc. עבד את האדמה",
    "why": [
     "scan: Filled the Hebrew placeholder with the printed phrase from Genesis 3:23.",
-    "read on the scan: עבד את האדמה"
+    "read on the scan: עבד את האדמה",
+    "written out, but a number changed or added: Louis de Dieu. Voyez Genèse 2:5 ; 3:23, etc. עבד את האדמה"
    ],
    "flags": [
     "scanned",
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -423,11 +406,12 @@
    "page": "page_0084",
    "marker": "(a)",
    "text": "אחשדרפניא Theod. Τυράννους.",
-   "proposed": "אחשדרפניא Theod. Τυράννους.",
+   "proposed": "אחשדרפניא Théodotion : Τυράννους.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Τυράνους -> Τυράννους",
     "scan: Filled the Hebrew placeholder with the printed word.",
-    "read on the scan: אחשדרפניא"
+    "read on the scan: אחשדרפניא",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -444,6 +428,7 @@
     "scan: Filled both Hebrew placeholders; the second phrase is partly blotted, so I guessed it.",
     "read on the scan: אחש",
     "guessed from context: דרי* פנים*",
+    "abbreviations written out (footnote_expand.py)",
     "abbreviations written out (footnote_expand.py)",
     "abbreviations written out (footnote_expand.py)"
    ],
@@ -470,11 +455,12 @@
    "page": "page_0084",
    "marker": "(f)",
    "text": "אחש Dignitas, seu Majestas, et דרבאן Darban, janua, Ita Hotting. et Geier.",
-   "proposed": "אחש Dignitas, seu Majestas, et דרבאן Darban, janua, Ita Hotting. et Geier.",
+   "proposed": "אחש Dignitas, seu Majestas, et דרבאן Darban, janua, ainsi l'entendent Hottinger et Geier.",
    "why": [
     "scan: Filled both Hebrew placeholders with the printed words.",
     "read on the scan: אחש",
-    "read on the scan: דרבאן"
+    "read on the scan: דרבאן",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -504,11 +490,13 @@
    "why": [
     "scan: Filled both Hebrew placeholders with the two printed forms of the word.",
     "read on the scan: סגנים",
-    "read on the scan: סגניא"
+    "read on the scan: סגניא",
+    "written out, but a number changed or added: סגנים ou סגניא Seganim en Hébreu. Voyez 1 Esdras 9:2 ; et 2 Esdras 2:16 ; 4:14 ; 5:7 ; 12:40 ; 13:11 ; et Daniel 2:48 ; 3:27 ; 6:7 ; Isaïe 41:25 ; Jérémie 51:23, 28, 57 ; Ézéchiel 23:6, 23."
    ],
    "flags": [
     "scanned",
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -560,20 +548,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0085(i)",
-   "page": "page_0085",
-   "marker": "(i)",
-   "text": "Daniel 2:27. 4:4. 5:7. II. גזרין Vulg. Aruspices. Theodot. Θύται, ou Θύτας, ap'ud Ieren.",
-   "proposed": "Daniel 2:27. 4:4. 5:7. II. גזרין la Vulgate : Aruspices. Théodotion : Θύται, ou Θύτας, dans saint Irénée.",
-   "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0086(a)",
@@ -667,23 +641,12 @@
    "text": "4. Reg. ult. ℣. 27. Sublevavit Evilmerodach Rex Babylonis caput Joachin Regis Juda de carcere.",
    "proposed": "4. Reg. ult. ℣. 27. Sublevavit Evilmerodach Rex Babylonis caput Joachin Regis Juda de carcere.",
    "why": [
+    "written out, but a number changed or added: 4 Rois 25:27. Sublevavit Evilmerodach Rex Babylonis caput Joachin Regis Juda de carcere.",
     "written out, but a number changed or added: 4 Rois 25:27. Sublevavit Evilmerodach Rex Babylonis caput Joachin Regis Juda de carcere."
    ],
    "flags": [
     "expand-changed-numbers"
    ]
-  },
-  {
-   "id": "0097(c)",
-   "page": "page_0097",
-   "marker": "(c)",
-   "text": "Ψῦχος καὶ καῦμα. Édition romaine, etc. Voyez Pererius, in textu huj. vers.",
-   "proposed": "Ψῦχος καὶ καῦμα. Édition romaine, etc. Voyez Pererius, dans le texte de ce verset.",
-   "why": [
-    "Greek checked against the Septuagint, Genèse 8:22",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0103(b)",
@@ -763,12 +726,13 @@
    "page": "page_0111",
    "marker": "(b)",
    "text": "אשתומם כשעה חדה Theodot. Κωφός-γε ὡς ὥρα μίαν. Grot. Modico tempore ; aliàs horam unam.",
-   "proposed": "אשתומם כשעה חדה Theodot. Κωφός-γε ὡς ὥρα μίαν. Grot. Modico tempore ; aliàs horam unam.",
+   "proposed": "אשתומם כשעה חדה Théodotion : Κωφός-γε ὡς ὥρα μίαν ; Grotius : Modico tempore ; aliàs horam unam.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
     "scan: Filled the Hebrew placeholder with the printed phrase, using the reference spelling.",
-    "read on the scan: אשתומם כשעה חדה"
+    "read on the scan: אשתומם כשעה חדה",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -806,10 +770,11 @@
    "page": "page_0112",
    "marker": "(a)",
    "text": "חטיך בצדקה פרק ועויתך במחן ענין Castal. Perer. Sanct. Cornel. Catholici passim.",
-   "proposed": "חטיך בצדקה פרק ועויתך במחן ענין Castal. Perer. Sanct. Cornel. Catholici passim.",
+   "proposed": "חטיך בצדקה פרק ועויתך במחן ענין Castalion ; Pererius ; Sanctius ; Cornelius a Lapide ; Catholici passim.",
    "why": [
     "scan: Filled the Hebrew placeholder with the printed phrase from Daniel 4:27.",
-    "read on the scan: חטיך בצדקה פרק ועויתך במחן ענין"
+    "read on the scan: חטיך בצדקה פרק ועויתך במחן ענין",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -832,23 +797,13 @@
    ]
   },
   {
-   "id": "0117(a)",
-   "page": "page_0117",
-   "marker": "(a)",
-   "text": "Joseph. lib 10 contra Apion. pag. 1045. ex Beroso. Item lib. x. Antiq. cap. 11. Et ex eo Ieronym. hic.",
-   "proposed": "Josèphe, Contre Apion, livre 10, page 1045, d'après Bérose. De même Antiquités judaïques, livre 10, chapitre 11. Et d'après lui saint Jérôme, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0117(c)",
    "page": "page_0117",
    "marker": "(c)",
    "text": "Malden. Perer. Polan. Geier. Usser. Vide Ieronym. In Isai. x I I I. 17.",
    "proposed": "Malden. Perer. Polan. Geier. Usser. Vide Ieronym. In Isai. x I I I. 17.",
    "why": [
+    "written out, but a number changed or added: Maldonat ; Pererius ; Polanus ; Geier ; Ussérius. Voyez saint Jérôme, sur Isaïe 13:17.",
     "written out, but a number changed or added: Maldonat ; Pererius ; Polanus ; Geier ; Ussérius. Voyez saint Jérôme, sur Isaïe 13:17."
    ],
    "flags": [
@@ -869,28 +824,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0121(a)",
-   "page": "page_0121",
-   "marker": "(a)",
-   "text": "Homer. Odyss. H. vers. 190.",
-   "proposed": "Homère, Odyssée, livre H, vers 190.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0125(b)",
-   "page": "page_0125",
-   "marker": "(b)",
-   "text": "Chardin, Voyage de Perse, pag. 228. t. III ij.",
-   "proposed": "Chardin, Voyage de Perse, page 228, tome III ij.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0127(a)",
@@ -949,28 +882,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0128(c)",
-   "page": "page_0128",
-   "marker": "(c)",
-   "text": "Isai. XIII. XIV. et XLV. XLVI. XLVII.",
-   "proposed": "Isaïe 13 et 14 ; 45, 46 et 47.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0128(d)",
-   "page": "page_0128",
-   "marker": "(d)",
-   "text": "Jerem. L. LI.",
-   "proposed": "Jérémie 50 et 51.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0130(c)",
@@ -1199,17 +1110,6 @@
    ]
   },
   {
-   "id": "0163(f)",
-   "page": "page_0163",
-   "marker": "(f)",
-   "text": "1 Machabées 1:34-35. et sequ. Item. ℣. 50. 51. et sequ.",
-   "proposed": "1 Machabées 1:34-35 et suivants. De même 1 Machabées 1:50-51 et suivants.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0166(h)",
    "page": "page_0166",
    "marker": "(h)",
@@ -1262,17 +1162,6 @@
    ]
   },
   {
-   "id": "0176(f)",
-   "page": "page_0176",
-   "marker": "(f)",
-   "text": "Dan. X. II.",
-   "proposed": "Daniel 10:11.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0177(c)",
    "page": "page_0177",
    "marker": "(c)",
@@ -1294,6 +1183,7 @@
    "text": "Jérémie 23:6 et 33:16. Dominus justus noster. Isaïe 53:11. Justificabit ipse servus meus multos.",
    "proposed": "Jérémie 23:6 et 33:16. Dominus justus noster. Isaïe 53:11. Justificabit ipse servus meus multos.",
    "why": [
+    "the Latin next to the call is 1 Corinthiens 1:30, not Jérémie 23:6, Jérémie 33:16, Isaïe 53:11",
     "the Latin next to the call is 1 Corinthiens 1:30, not Jérémie 23:6, Jérémie 33:16, Isaïe 53:11",
     "the Latin next to the call is 1 Corinthiens 1:30, not Jérémie 23:6, Jérémie 33:16, Isaïe 53:11"
    ],
@@ -1422,17 +1312,6 @@
    ]
   },
   {
-   "id": "0205(b)",
-   "page": "page_0205",
-   "marker": "(b)",
-   "text": "_Vid._ Appian. Syriac. pag. 92. Polyb. lib. 3. Justin. lib. 30. et 32. Liv. lib. 35.",
-   "proposed": "_Voyez_ Appien, Guerres de Syrie, page 92 ;\nPolybe, livre 3 ;\nJustin, livres 30 et 32 ;\nTite-Live, livre 35.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0211(a)",
    "page": "page_0211",
    "marker": "(a)",
@@ -1495,6 +1374,7 @@
    "proposed": "Voyez Psaumes 26:1 ; 27:8 ; 30:3 ; 45:36 ; Proverbes 10:29 ; Isaïe 17:9",
    "why": [
     "abbreviations written out",
+    "Psaumes 45:36 does not exist in the Vulgate",
     "Psaumes 45:36 does not exist in the Vulgate"
    ],
    "flags": [
@@ -1563,6 +1443,7 @@
    "text": "Genèse 14:22. Exod. v1. 8. Nombres 14:30. Deutéronome 32:40. 2 Esdras 9:15. etc.",
    "proposed": "Genèse 14:22. Exod. v1. 8. Nombres 14:30. Deutéronome 32:40. 2 Esdras 9:15. etc.",
    "why": [
+    "written out, but a number changed or added: Genèse 14:22 ; Exode 6:8 ; Nombres 14:30 ; Deutéronome 32:40 ; 2 Esdras 9:15, etc.",
     "written out, but a number changed or added: Genèse 14:22 ; Exode 6:8 ; Nombres 14:30 ; Deutéronome 32:40 ; 2 Esdras 9:15, etc."
    ],
    "flags": [
@@ -1590,6 +1471,7 @@
    "text": "Voyez 1. Macc. VI. s… 16. et 2 Machabées 9:3. et sequ.",
    "proposed": "Voyez 1. Macc. VI. s… 16. et 2 Machabées 9:3. et sequ.",
    "why": [
+    "written out, but a number changed or added: Voyez 1 Machabées 6:5…16 et 2 Machabées 9:3 et suivants.",
     "written out, but a number changed or added: Voyez 1 Machabées 6:5…16 et 2 Machabées 9:3 et suivants."
    ],
    "flags": [

@@ -1,13 +1,14 @@
 {
  "summary": {
   "notes": 426,
-  "changed": 17,
+  "changed": 61,
   "flags": {
    "expand-unread": 54,
    "greek": 27,
    "scan-unread": 28,
    "scanned": 7,
    "hebrew": 3,
+   "expand-changed-italics": 2,
    "context": 2,
    "reference-mismatch": 1
   }
@@ -18,8 +19,10 @@
    "page": "page_0008",
    "marker": "(b)",
    "text": "Concil. Trid sess. 6. cap. 5.",
-   "proposed": "Concil. Trid sess. 6. cap. 5.",
-   "why": [],
+   "proposed": "Concile de Trente, session 6, chapitre 5.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -29,8 +32,10 @@
    "page": "page_0010",
    "marker": "(a)",
    "text": "Ita Hebræi, Ieron. Theodoret. Patres, et Interpp. passim. Vide ℣. sequ. Dixit ad me Angelus.",
-   "proposed": "Ita Hebræi, Ieron. Theodoret. Patres, et Interpp. passim. Vide ℣. sequ. Dixit ad me Angelus.",
-   "why": [],
+   "proposed": "Ainsi l'entendent les Hébreux ; saint Jérôme ; Théodoret ; les Pères, et les interprètes passim. Voyez le verset suivant. Dixit ad me Angelus.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -54,11 +59,12 @@
    "page": "page_0010",
    "marker": "(e)",
    "text": "70. Ποικίλοι. שְׂרֻקִּים Vulg. Varii. Itq Syr. Arab. Munst. Tig. Pag. Cast. Aqu. Ξανθοὶ, Nigri.",
-   "proposed": "70. Ποικίλοι. שְׂרֻקִּים Vulg. Varii. Itq Syr. Arab. Munst. Tig. Pag. Cast. Aqu. Ξανθοὶ, Nigri.",
+   "proposed": "Les Septante : Ποικίλοι. שְׂרֻקִּים la Vulgate : Varii. Ainsi lisent le Syriaque ; l'Arabe ; Munster ; la Tigurine ; Pagnin ; Castalion ; Aquila : Ξανθοὶ, Nigri.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -69,8 +75,10 @@
    "page": "page_0012",
    "marker": "(e)",
    "text": "Ieronym. Remig. Albert. Hugo. Liran.",
-   "proposed": "Ieronym. Remig. Albert. Hugo. Liran.",
-   "why": [],
+   "proposed": "Saint Jérôme ;\nRemi ;\nAlbert le Grand ;\nHugues ;\nNicolas de Lyre.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -80,8 +88,10 @@
    "page": "page_0012",
    "marker": "(f)",
    "text": "Chald. Theodoret. Vat. Vide sup. Habacuc 2:2. et infra Zacharie 4:1, 4-5. 5:10. 6:4.",
-   "proposed": "Chald. Theodoret. Vat. Vide sup. Habacuc 2:2. et infra Zacharie 4:1, 4-5. 5:10. 6:4.",
-   "why": [],
+   "proposed": "Le Chaldéen ; Théodoret ; Vatable. Voyez supra Habacuc 2:2 ; et infra Zacharie 4:1, 4-5 ; 5:10 ; 6:4.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -91,10 +101,11 @@
    "page": "page_0016",
    "marker": "(a)",
    "text": "ארבעה חרשים 70. _Tlorages tisroteus._ Chald. ארבעה חרשיא",
-   "proposed": "ארבעה חרשים 70. _Tlorages tisroteus._ Chald. ארבעה חרשיא",
+   "proposed": "ארבעה חרשים les Septante : _Tlorages tisroteus._ ; le Chaldéen : ארבעה חרשיא",
    "why": [
     "Hebrew checked against the Hebrew Bible, Zechariah 1:20",
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -135,8 +146,10 @@
    "page": "page_0020",
    "marker": "(c)",
    "text": "Herodot. lib 3 : c. 150. et sequ. Justin. lib. 1. ad fin. Vide Usser. ad an. 3489.",
-   "proposed": "Herodot. lib 3 : c. 150. et sequ. Justin. lib. 1. ad fin. Vide Usser. ad an. 3489.",
-   "why": [],
+   "proposed": "Hérodote, livre 3, chapitre 150 et suivants ; Justin, livre 1, à la fin. Voyez Ussérius, ad an. 3489.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -146,8 +159,10 @@
    "page": "page_0022",
    "marker": "(f)",
    "text": "Hieronym. et Hebræi apud eundem.",
-   "proposed": "Hieronym. et Hebræi apud eundem.",
-   "why": [],
+   "proposed": "Saint Jérôme et les Hébreux dans le même.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -157,8 +172,10 @@
    "page": "page_0023",
    "marker": "(a)",
    "text": "Chald. ad ℣. 3. Lir. Tir. Grot. Drus. Sanst. tull. contra Jud. ad finem. Ambros. de fide lib. 3. c. 4. Chrysost. homil. 5. ex variis in Matt. locis. Greg. Mag. lib. 2. Moral. c. 20. Lactant. lib. 4. c. 14.",
-   "proposed": "Chald. ad ℣. 3. Lir. Tir. Grot. Drus. Sanst. tull. contra Jud. ad finem. Ambros. de fide lib. 3. c. 4. Chrysost. homil. 5. ex variis in Matt. locis. Greg. Mag. lib. 2. Moral. c. 20. Lactant. lib. 4. c. 14.",
-   "why": [],
+   "proposed": "Le Chaldéen, au verset 3 ;\nNicolas de Lyre ;\nTirin ;\nGrotius ;\nDrusius ;\nSanctius ;\nTertullien, Contre les Juifs, à la fin ;\nsaint Ambroise, De la foi, livre 3, chapitre 4 ;\nsaint Jean Chrysostome, Homélie 5 ex variis in Matthaeum locis ;\nsaint Grégoire le Grand, Morales sur Job, livre 2, chapitre 20 ;\nLactance, livre 4, chapitre 14.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -168,8 +185,10 @@
    "page": "page_0023",
    "marker": "(c)",
    "text": "1 Esdras 4:1, 4. et seq. ℣. et vi.",
-   "proposed": "1 Esdras 4:1, 4. et seq. ℣. et vi.",
-   "why": [],
+   "proposed": "1 Esdras 4:1, 4 et versets suivants ; et chapitre 6.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -179,8 +198,10 @@
    "page": "page_0023",
    "marker": "(d)",
    "text": "Vide Origen. homil. ix. in Levit. et xiv. in Luc. Justin. Mart. in dialog. cum Tryph. Ter-",
-   "proposed": "Vide Origen. homil. ix. in Levit. et xiv. in Luc. Justin. Mart. in dialog. cum Tryph. Ter-",
-   "why": [],
+   "proposed": "Voyez Origène, Homélie 9 sur le Lévitique et 14 sur Luc ;\nsaint Justin, Dialogue avec Tryphon ;\nTertullien",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -205,8 +226,10 @@
    "page": "page_0024",
    "marker": "(b)",
    "text": "Vide Sanet. hic. n. 7. Albert. Stunica, Mont. Valquek. Saint Thom. disp. 112. c. 4. Drus.",
-   "proposed": "Vide Sanet. hic. n. 7. Albert. Stunica, Mont. Valquek. Saint Thom. disp. 112. c. 4. Drus.",
-   "why": [],
+   "proposed": "Voyez Sanctius, sur ce passage, numéro 7 ;\nAlbert le Grand ;\nStunica ;\nArias Montanus ;\nValquek ;\nsaint Thomas, dispute 112, chapitre 4 ;\nDrusius.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -216,8 +239,10 @@
    "page": "page_0024",
    "marker": "(e)",
    "text": "Genèse 26:2. 35:9. Exode 16:10. Juges 6:12. 13:1, 3, 9. 1 Rois 3:21. etc.",
-   "proposed": "Genèse 26:2. 35:9. Exode 16:10. Juges 6:12. 13:1, 3, 9. 1 Rois 3:21. etc.",
-   "why": [],
+   "proposed": "Genèse 26:2 ; 35:9 ; Exode 16:10 ; Josué 6:12 ; 13:1, 3, 9 ; 1 Rois 3:21, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -267,8 +292,10 @@
    "page": "page_0027",
    "marker": "(c)",
    "text": "Vide Chald. et Grot. hic. et ad Aggée 2:8.",
-   "proposed": "Vide Chald. et Grot. hic. et ad Aggée 2:8.",
-   "why": [],
+   "proposed": "Voyez le Chaldéen et Grotius sur ce passage, et sur Aggée 2:8.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -278,8 +305,10 @@
    "page": "page_0027",
    "marker": "(d)",
    "text": "Theodoret. Euseb. lib. 4. Demonstr. Ita et Hebræi recentiores, et Grot. hic.",
-   "proposed": "Theodoret. Euseb. lib. 4. Demonstr. Ita et Hebræi recentiores, et Grot. hic.",
-   "why": [],
+   "proposed": "Théodoret ; Eusèbe, Démonstration évangélique, livre 4. De même les Hébreux récents, et Grotius sur ce passage.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -289,8 +318,10 @@
    "page": "page_0027",
    "marker": "(e)",
    "text": "2. Esdr. II. III. IV. et seq.",
-   "proposed": "2. Esdr. II. III. IV. et seq.",
-   "why": [],
+   "proposed": "2 Esdras 2 ; 3 ; 4 et suivants.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -300,9 +331,10 @@
    "page": "page_0028",
    "marker": "(c)",
    "text": "Vide 1 Rois 2:2. Reg. XXII. 3. ולהיות צור XXII. 3. Psaumes 17:3. 17:31. 18:15. et passim.",
-   "proposed": "Vide 1 Rois 2:2. Reg. XXII. 3. ולהיות צור XXII. 3. Psaumes 17:3. 17:31. 18:15. et passim.",
+   "proposed": "Voyez 1 Rois 2:2 ; 2 Rois 22:3 ; ולהיות צור 22:3 ; Psaumes 17:3 ; 17:31 ; 18:15 ; et passim.",
    "why": [
-    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon"
+    "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -313,8 +345,10 @@
    "page": "page_0029",
    "marker": "(b)",
    "text": "Vide Levit. XIII. f. 37. 55. Nombres 11:7. Ézéchiel 1:7. 10:9. Daniel 10:6.",
-   "proposed": "Vide Levit. XIII. f. 37. 55. Nombres 11:7. Ézéchiel 1:7. 10:9. Daniel 10:6.",
-   "why": [],
+   "proposed": "Voyez Lévitique 13:37, 55 ; Nombres 11:7 ; Ézéchiel 1:7 ; 10:9 ; Daniel 10:6.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -359,10 +393,11 @@
    "page": "page_0033",
    "marker": "(b)",
    "text": "70. Τίς εἶ σὺ τὸ ὄρος τὸ μέγα πρὸ προσώπου Ζοροβάβελ τοῦ κατορθῶσαι; Héb. וְהוֹצִיא",
-   "proposed": "70. Τίς εἶ σὺ τὸ ὄρος τὸ μέγα πρὸ προσώπου Ζοροβάβελ τοῦ κατορθῶσαι; Héb. וְהוֹצִיא",
+   "proposed": "Les Septante : Τίς εἶ σὺ τὸ ὄρος τὸ μέγα πρὸ προσώπου Ζοροβάβελ τοῦ κατορθῶσαι; l'Hébreu : וְהוֹצִיא",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek checked against the Septuagint, Zacharie 4:7: τῶ -> τοῦ"
+    "Greek checked against the Septuagint, Zacharie 4:7: τῶ -> τοῦ",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -388,11 +423,12 @@
    "page": "page_0036",
    "marker": "(c)",
    "text": "Aqu. Υἱοὶ τῆς στιλπνότητος. Theodot. Τῆς λαμπρότητος. Heb. שׁני בני היצהר Sym. Duo filii olei.",
-   "proposed": "Aqu. Υἱοὶ τῆς στιλπνότητος. Theodot. Τῆς λαμπρότητος. Heb. שׁני בני היצהר Sym. Duo filii olei.",
+   "proposed": "Aquila : Υἱοὶ τῆς στιλπνότητος ; Théodotion : Τῆς λαμπρότητος ; l'Hébreu : שׁני בני היצהר ; Symmaque : Duo filii olei.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Zechariah 4:14",
     "Greek spelling checked against a Greek dictionary: σιλπνότητος -> στιλπνότητος",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -403,11 +439,12 @@
    "page": "page_0036",
    "marker": "(d)",
    "text": "Id. 70. Καὶ ἰδοὺ δρέπανον πετόμενον. Ils ont lu חרמש au lieu de מגלה",
-   "proposed": "Id. 70. Καὶ ἰδοὺ δρέπανον πετόμενον. Ils ont lu חרמש au lieu de מגלה",
+   "proposed": "De même les Septante : Καὶ ἰδοὺ δρέπανον πετόμενον. Ils ont lu חרמש au lieu de מגלה",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek checked against the Septuagint, Zacharie 5:1: ἰδὲ -> ἰδοὺ"
+    "Greek checked against the Septuagint, Zacharie 5:1: ἰδὲ -> ἰδοὺ",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -418,10 +455,11 @@
    "page": "page_0037",
    "marker": "(a)",
    "text": "Aqu. 𝔖 Theodot. Διφθέρα. Sym. Κεφαλίς.",
-   "proposed": "Aqu. 𝔖 Theodot. Διφθέρα. Sym. Κεφαλίς.",
+   "proposed": "Aquila et Théodotion : Διφθέρα ; Symmaque : Κεφαλίς.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -432,8 +470,10 @@
    "page": "page_0039",
    "marker": "(f)",
    "text": "Voyez Vaillant, _hist. Reg. Ægypt. Appendic._",
-   "proposed": "Voyez Vaillant, _hist. Reg. Ægypt. Appendic._",
-   "why": [],
+   "proposed": "Voyez Vaillant, _Historia Regum Ægypti, Appendice._",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -443,8 +483,10 @@
    "page": "page_0040",
    "marker": "(b)",
    "text": "Vide Sanct. hic. v. 27. 28.",
-   "proposed": "Vide Sanct. hic. v. 27. 28.",
-   "why": [],
+   "proposed": "Voyez Sanctius, sur ce passage, versets 27-28.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -455,9 +497,12 @@
    "marker": "(c)",
    "text": "_Ass._ XXI. 9. _Vir Macedo quidam erat : Idem, etc. Apoc._ I. 20. II. 1. _et sequ._",
    "proposed": "_Ass._ XXI. 9. _Vir Macedo quidam erat : Idem, etc. Apoc._ I. 20. II. 1. _et sequ._",
-   "why": [],
+   "why": [
+    "written out, but the italics changed: Actes 16:9. _Vir Macedo quidam erat : Idem, etc._ Apocalypse 1:20 ; 2:1 et suivants."
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-italics"
    ]
   },
   {
@@ -481,10 +526,11 @@
    "page": "page_0046",
    "marker": "(a)",
    "text": "Αὐτὸς λήψεται ἀρετὴν, καὶ καθίσεται, etc. Heb. וְנָשָׂא הוֹד",
-   "proposed": "Αὐτὸς λήψεται ἀρετὴν, καὶ καθίσεται, etc. Heb. וְנָשָׂא הוֹד",
+   "proposed": "Αὐτὸς λήψεται ἀρετὴν, καὶ καθίσεται, etc. l'Hébreu : וְנָשָׂא הוֹד",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -509,8 +555,10 @@
    "page": "page_0048",
    "marker": "(f)",
    "text": "Usser. ad an. M. 3416.",
-   "proposed": "Usser. ad an. M. 3416.",
-   "why": [],
+   "proposed": "Ussérius, ad an. M. 3416.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -520,8 +568,10 @@
    "page": "page_0050",
    "marker": "(c)",
    "text": "Sixti V. et Édit. Polyglott. Antuerp.",
-   "proposed": "Sixti V. et Édit. Polyglott. Antuerp.",
-   "why": [],
+   "proposed": "Sixte V et l'édition polyglotte d'Anvers.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -532,9 +582,12 @@
    "marker": "(b)",
    "text": "_Vide Jerem._ XVII. I. Ezech. III. 9.",
    "proposed": "_Vide Jerem._ XVII. I. Ezech. III. 9.",
-   "why": [],
+   "why": [
+    "written out, but the italics changed: Voyez Jérémie 17:1 ; Ézéchiel 3:9."
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-italics"
    ]
   },
   {
@@ -542,8 +595,10 @@
    "page": "page_0052",
    "marker": "(a)",
    "text": "Vide Ézéchiel 16. et Osée II. V.",
-   "proposed": "Vide Ézéchiel 16. et Osée II. V.",
-   "why": [],
+   "proposed": "Voyez Ézéchiel 16 ; et Osée 2 ; 5.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -567,8 +622,10 @@
    "page": "page_0056",
    "marker": "(b)",
    "text": "Voyez Buxtorf. Synag. Jud. chapitre 25. et Usser. ad an. 3414. 3416. et 3417. et Basnage, hist. des Juifs, liv. 5. chapitre 16. art. 2.",
-   "proposed": "Voyez Buxtorf. Synag. Jud. chapitre 25. et Usser. ad an. 3414. 3416. et 3417. et Basnage, hist. des Juifs, liv. 5. chapitre 16. art. 2.",
-   "why": [],
+   "proposed": "Voyez Buxtorf, Synagogue judaïque, chapitre 25 ;\net Ussérius, ad an. 3414, 3416 et 3417 ;\net Basnage, Histoire des Juifs, livre 5, chapitre 16, article 2.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -578,8 +635,10 @@
    "page": "page_0056",
    "marker": "(c)",
    "text": "Ierom. hic. Haïmo. Rupert. Hugo. Dionys.",
-   "proposed": "Ierom. hic. Haïmo. Rupert. Hugo. Dionys.",
-   "why": [],
+   "proposed": "Saint Jérôme, sur ce passage ;\nHaymon ;\nRupert ;\nHugues ;\nDenis le Chartreux.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -603,8 +662,10 @@
    "page": "page_0059",
    "marker": "(d)",
    "text": "Herodian. lib. 3. c. 9. Zonar. p. 226. Vide Cellar. lib. 3. c. 15. ad finem.",
-   "proposed": "Herodian. lib. 3. c. 9. Zonar. p. 226. Vide Cellar. lib. 3. c. 15. ad finem.",
-   "why": [],
+   "proposed": "Hérodien, livre 3, chapitre 9 ; Zonaras, page 226. Voyez Cellarius, livre 3, chapitre 15, à la fin.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -614,8 +675,10 @@
    "page": "page_0059",
    "marker": "(e)",
    "text": "Curt. lib. 4. c. 8. Arrian. Plutar. Polyæn. lib. 4. Stratagem.",
-   "proposed": "Curt. lib. 4. c. 8. Arrian. Plutar. Polyæn. lib. 4. Stratagem.",
-   "why": [],
+   "proposed": "Quinte-Curce, livre 4, chapitre 8 ;\nArrien ;\nPlutarque ;\nPolyen, Stratagèmes, livre 4.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -625,8 +688,10 @@
    "page": "page_0059",
    "marker": "(f)",
    "text": "Plutarch. in Alex. Curt. lib. 3.",
-   "proposed": "Plutarch. in Alex. Curt. lib. 3.",
-   "why": [],
+   "proposed": "Plutarque, dans la Vie d'Alexandre ; Quinte-Curce, livre 3.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -636,8 +701,10 @@
    "page": "page_0059",
    "marker": "(h)",
    "text": "Justin. lib. XI. c. 10.",
-   "proposed": "Justin. lib. XI. c. 10.",
-   "why": [],
+   "proposed": "Justin, livre 11, chapitre 10.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -647,8 +714,10 @@
    "page": "page_0060",
    "marker": "(d)",
    "text": "Vide Arrian. lib. 2 Curt. lib. 4 Justin. lib XI.",
-   "proposed": "Vide Arrian. lib. 2 Curt. lib. 4 Justin. lib XI.",
-   "why": [],
+   "proposed": "Voyez Arrien, livre 2 ;\nQuinte-Curce, livre 4 ;\nJustin, livre 11.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -658,8 +727,10 @@
    "page": "page_0060",
    "marker": "(e)",
    "text": "Vide Usser. ad an. 3672.",
-   "proposed": "Vide Usser. ad an. 3672.",
-   "why": [],
+   "proposed": "Voyez Ussérius, ad an. 3672.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -669,8 +740,10 @@
    "page": "page_0061",
    "marker": "(e)",
    "text": "Vide Curt. lib. 4. Diodor. Olymp. 112. an. 1. Joseph. Antiq. lib. XI. ult.",
-   "proposed": "Vide Curt. lib. 4. Diodor. Olymp. 112. an. 1. Joseph. Antiq. lib. XI. ult.",
-   "why": [],
+   "proposed": "Voyez Quinte-Curce, livre 4 ;\nDiodore de Sicile, olympiade 112, an 1 ;\nJosèphe, Antiquités judaïques, livre 11, dernier chapitre.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -694,8 +767,10 @@
    "page": "page_0062",
    "marker": "(b)",
    "text": "Vide Lyr. Dionys. Menoch. Tyr.",
-   "proposed": "Vide Lyr. Dionys. Menoch. Tyr.",
-   "why": [],
+   "proposed": "Voyez Nicolas de Lyre ;\nDenis le Chartreux ;\nMénochius ;\nTirin.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -705,8 +780,10 @@
    "page": "page_0062",
    "marker": "(c)",
    "text": "Justin. lib. XI. Plut. in Alex. alii.",
-   "proposed": "Justin. lib. XI. Plut. in Alex. alii.",
-   "why": [],
+   "proposed": "Justin, livre 11 ; Plutarque, dans la Vie d'Alexandre ; et d'autres.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -716,9 +793,10 @@
    "page": "page_0062",
    "marker": "(d)",
    "text": "Plutarch. in Alex. Οὐ παύσεται με δια-",
-   "proposed": "Plutarch. in Alex. Οὐ παύσεται με δια-",
+   "proposed": "Plutarque, dans la Vie d'Alexandre : Οὐ παύσεται με δια-",
    "why": [
-    "Greek checked against the Septuagint, Isaïe 1:24: Ου -> Οὐ"
+    "Greek checked against the Septuagint, Isaïe 1:24: Ου -> Οὐ",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -729,8 +807,10 @@
    "page": "page_0062",
    "marker": "(f)",
    "text": "Voyez le Commentaire sur Genèse 9:4. p. 209.",
-   "proposed": "Voyez le Commentaire sur Genèse 9:4. p. 209.",
-   "why": [],
+   "proposed": "Voyez le Commentaire sur Genèse 9:4, page 209.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -740,8 +820,10 @@
    "page": "page_0063",
    "marker": "(c)",
    "text": "1 Machabées 5:66, 68. 10:78-79. et sequ. XI. 4. et sequ. et Joseph. Antiq. lib. XII. c. 22.",
-   "proposed": "1 Machabées 5:66, 68. 10:78-79. et sequ. XI. 4. et sequ. et Joseph. Antiq. lib. XII. c. 22.",
-   "why": [],
+   "proposed": "1 Machabées 5:66, 68 ; 10:78-79 et suivants ; 11:4 et suivants ; et Josèphe, Antiquités judaïques, livre 12, chapitre 22.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -911,9 +993,10 @@
    "page": "page_0087",
    "marker": "(a)",
    "text": "שלשים כסף On sous-entend ordinairement le nom de sicle, quand l'Écriture ne marque pas la nature de la monnaie. Les 30. sicles font 34. liv. et quelques deniers.",
-   "proposed": "שלשים כסף On sous-entend ordinairement le nom de sicle, quand l'Écriture ne marque pas la nature de la monnaie. Les 30. sicles font 34. liv. et quelques deniers.",
+   "proposed": "שלשים כסף On sous-entend ordinairement le nom de sicle, quand l'Écriture ne marque pas la nature de la monnaie. Les 30 sicles font 34 livres et quelques deniers.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Zechariah 11:12"
+    "Hebrew checked against the Hebrew Bible, Zechariah 11:12",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -1090,11 +1173,13 @@
    "page": "page_0106",
    "marker": "(a)",
    "text": "Couper, dit un margen l'Hébreu ידו על העניים Vide et Michée 5:2. et Grot. hic. se dit du petit, du faible, et d'un petit nombre. Voyez 2 Paralipomènes 24:24. במעט אנשים et Arab.",
-   "proposed": "Couper, dit un margen l'Hébreu ידו על העניים Vide et Michée 5:2. et Grot. hic. se dit du petit, du faible, et d'un petit nombre. Voyez 2 Paralipomènes 24:24. במעט אנשים et Arab.",
+   "proposed": "Couper, dit un margen l'Hébreu ידו על העניים Voyez et Michée 5:2. et Grotius, sur ce passage. se dit du petit, du faible, et d'un petit nombre. Voyez 2 Paralipomènes 24:24. במעט אנשים et l'Arabe.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "the Latin next to the call is Exode 3:20, not Michée 5:2, 2 Paralipomènes 24:24",
+    "the Latin next to the call is Exode 3:20, not Michée 5:2, 2 Paralipomènes 24:24",
+    "abbreviations written out",
     "the Latin next to the call is Exode 3:20, not Michée 5:2, 2 Paralipomènes 24:24"
    ],
    "flags": [

@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 1260,
-  "changed": 2,
+  "changed": 5,
   "flags": {
    "greek": 70,
    "scan-unread": 81,
@@ -343,8 +343,10 @@
    "page": "page_0151",
    "marker": "(a)",
    "text": "Origène, Homélie 8 sur le Lévitique ;\nSaint Basile, sur le verset 141 sac. ;\nEuthyme ;\nRadulph. ;\nBède, sur Luc 2 ;\nSaint Bernard, chapitre 7 d'Isaïe ;\nSaint Jean Chrysostome, homélie sur la Rencontre du Seigneur ;\nSaint Cyrille, livre 2, De fide ad Reginas, etc. ;\nProcope de Gaza ;\nThéophylacte.",
-   "proposed": "Origène, Homélie 8 sur le Lévitique ;\nSaint Basile, sur le verset 141 sac. ;\nEuthyme ;\nRadulph. ;\nBède, sur Luc 2 ;\nSaint Bernard, chapitre 7 d'Isaïe ;\nSaint Jean Chrysostome, homélie sur la Rencontre du Seigneur ;\nSaint Cyrille, livre 2, De fide ad Reginas, etc. ;\nProcope de Gaza ;\nThéophylacte.",
-   "why": [],
+   "proposed": "Origène, Homélie 8 sur le Lévitique ;\nSaint Basile, sur le verset 141 sac. ;\nEuthyme ;\nRadulphe ;\nBède, sur Luc 2 ;\nSaint Bernard, chapitre 7 d'Isaïe ;\nSaint Jean Chrysostome, homélie sur la Rencontre du Seigneur ;\nSaint Cyrille, livre 2, De fide ad Reginas, etc. ;\nProcope de Gaza ;\nThéophylacte.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -458,9 +460,10 @@
    "page": "page_0173",
    "marker": "(f)",
    "text": "Ménochius ;\nNicolas de Lyre ;\nTirin.",
-   "proposed": "Ménochius ;\nNicolas de Lyre ;\nTirin.",
+   "proposed": "Ménochius ;\nNicolas de Lyre ;\nTirin",
    "why": [
-    "abbreviations written out (footnote_expand.py)"
+    "abbreviations written out (footnote_expand.py)",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -915,10 +918,11 @@
    "page": "page_0264",
    "marker": "(a)",
    "text": "Herodot. l. 2. c. 46. Ἐγύπτῳ δὲ ἐν τῷ νομῷ τῷ ἐπ' ἐμοῦ τοῦτο τὸ τέρας. Γυναικὶ τράγος ἐμίσγετο ἀναφανδόν. Τοῦτο δὲ ἐς ἐπίδειξιν ἀνθρώπων ἀπίκετο.",
-   "proposed": "Herodot. l. 2. c. 46. Ἐγύπτῳ δὲ ἐν τῷ νομῷ τῷ ἐπ' ἐμοῦ τοῦτο τὸ τέρας. Γυναικὶ τράγος ἐμίσγετο ἀναφανδόν. Τοῦτο δὲ ἐς ἐπίδειξιν ἀνθρώπων ἀπίκετο.",
+   "proposed": "Hérodote, livre 2, chapitre 46. Ἐγύπτῳ δὲ ἐν τῷ νομῷ τῷ ἐπ' ἐμοῦ τοῦτο τὸ τέρας. Γυναικὶ τράγος ἐμίσγετο ἀναφανδόν. Τοῦτο δὲ ἐς ἐπίδειξιν ἀνθρώπων ἀπίκετο.",
    "why": [
     "scan: Rewrote Greek from print; filled placeholder (τράγος)",
-    "read on the scan: ος"
+    "read on the scan: ος",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",

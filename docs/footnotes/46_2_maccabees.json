@@ -1,12 +1,14 @@
 {
  "summary": {
   "notes": 507,
-  "changed": 34,
+  "changed": 42,
   "flags": {
    "greek": 62,
    "scan-unread": 63,
    "expand-unread": 36,
    "hebrew": 1,
+   "expand-changed-numbers": 4,
+   "expand-changed-italics": 1,
    "reference-not-in-vulgate": 2,
    "context": 1,
    "scanned": 1
@@ -71,8 +73,10 @@
    "page": "page_0008",
    "marker": "(a)",
    "text": "Senec. pater. Suasoriar. 1. et Dion. epitom. in _Augusto_.",
-   "proposed": "Senec. pater. Suasoriar. 1. et Dion. epitom. in _Augusto_.",
-   "why": [],
+   "proposed": "Sénèque le père, Suasoires, 1 ; et Dion Cassius, Épitome, in _Augusto_.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -137,9 +141,12 @@
    "marker": "(c)",
    "text": "Vide Jerem. XXXIX II 12.",
    "proposed": "Vide Jerem. XXXIX II 12.",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: Voyez Jérémie 39:11-12."
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -171,9 +178,12 @@
    "marker": "(a)",
    "text": "On peut voir sur le Canon des Juifs, _du V. T. l. 1. c. 1._ Genebr. _Chronolog._ Serar. Simon. _hist. critiq._",
    "proposed": "On peut voir sur le Canon des Juifs, _du V. T. l. 1. c. 1._ Genebr. _Chronolog._ Serar. Simon. _hist. critiq._",
-   "why": [],
+   "why": [
+    "written out, but the italics changed: On peut voir sur le Canon des Juifs, _de l'Ancien Testament, livre 1, chapitre 1_ ; Génébrard, Chronologie ; Serarius ; Simon, Histoire critique."
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-italics"
    ]
   },
   {
@@ -301,10 +311,12 @@
    "page": "page_0032",
    "marker": "(b)",
    "text": "Voyez ci-devant ℣. 15. et Joseph, en plusieurs endroits, et Judith 4:9 et 7:4. et 1 Machabées 17:32. etc.",
-   "proposed": "Voyez ci-devant ℣. 15. et Joseph, en plusieurs endroits, et Judith 4:9 et 7:4. et 1 Machabées 17:32. etc.",
+   "proposed": "Voyez ci-devant 2 Machabées 3:15 ; et Josèphe, en plusieurs endroits ; et Judith 4:9 et 7:4 ; et 1 Machabées 17:32, etc.",
    "why": [
     "context: reference unclear; await printed page",
     "1 Machabées 17:32 does not exist in the Vulgate",
+    "1 Machabées 17:32 does not exist in the Vulgate",
+    "abbreviations written out",
     "1 Machabées 17:32 does not exist in the Vulgate"
    ],
    "flags": [
@@ -373,9 +385,10 @@
    "page": "page_0041",
    "marker": "(c)",
    "text": "Homer. Odyss. Θ. Voyez aussi Ovide Métamorphos. l 10. La description de ce Jeu.",
-   "proposed": "Homer. Odyss. Θ. Voyez aussi Ovide Métamorphos. l 10. La description de ce Jeu.",
+   "proposed": "Homère, Odyssée, Θ. Voyez aussi Ovide, Métamorphoses, livre 10. La description de ce Jeu.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -575,10 +588,12 @@
    "text": "Τοὺς ἐλθόντας καὶ τὰς ἀγέλας ἐπὶ τὴν θεωρίαν. Vide supra ad cap. 1v. 19.",
    "proposed": "Τοὺς ἐλθόντας καὶ τὰς ἀγέλας ἐπὶ τὴν θεωρίαν. Vide supra ad cap. 1v. 19.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: Τὲς -> Τοὺς"
+    "Greek spelling checked against a Greek dictionary: Τὲς -> Τοὺς",
+    "written out, but a number changed or added: Τοὺς ἐλθόντας καὶ τὰς ἀγέλας ἐπὶ τὴν θεωρίαν. Voyez plus haut au chapitre 4:19."
    ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -706,9 +721,12 @@
    "marker": "(b)",
    "text": "It. Geronid Liv. in. Serar. Tir. Martyrol. Rom. et alia Martyrologia.",
    "proposed": "It. Geronid Liv. in. Serar. Tir. Martyrol. Rom. et alia Martyrologia.",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: De même le Gorionide, livre 3 ; Serarius ; Tirin ; le Martyrologe romain, et d'autres martyrologes."
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -716,8 +734,10 @@
    "page": "page_0077",
    "marker": "(d)",
    "text": "Aug. Ser. 1. de Macc. 30. Nov. Édit.",
-   "proposed": "Aug. Ser. 1. de Macc. 30. Nov. Édit.",
-   "why": [],
+   "proposed": "Saint Augustin, Sermon 1 sur les Machabées, 30, nouvelle édition.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -728,9 +748,12 @@
    "marker": "(a)",
    "text": "Joan. XIX. II.",
    "proposed": "Joan. XIX. II.",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: Jean 19:11."
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -766,8 +789,10 @@
    "page": "page_0085",
    "marker": "(a)",
    "text": "2. Macc. VIII. §. et 27.",
-   "proposed": "2. Macc. VIII. §. et 27.",
-   "why": [],
+   "proposed": "2 Machabées 8:8 et 27.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -777,9 +802,10 @@
    "page": "page_0085",
    "marker": "(b)",
    "text": "Joseph. libel. de Macc. c. Iva μὴ ψαύσῃ αὐτῆς τίς ἀνδρῶν αὐτὸς ἑαυτὴν ἔρριψε καὶ τῆς πυρᾶς.",
-   "proposed": "Joseph. libel. de Macc. c. Iva μὴ ψαύσῃ αὐτῆς τίς ἀνδρῶν αὐτὸς ἑαυτὴν ἔρριψε καὶ τῆς πυρᾶς.",
+   "proposed": "Josèphe, livret des Machabées, chapitre Iva μὴ ψαύσῃ αὐτῆς τίς ἀνδρῶν αὐτὸς ἑαυτὴν ἔρριψε καὶ τῆς πυρᾶς.",
    "why": [
-    "Greek spelling checked against a Greek dictionary: τις -> τίς, ἀυτὸς -> αὐτὸς, αυτῆς -> αὐτῆς, ἐρριψε -> ἔρριψε"
+    "Greek spelling checked against a Greek dictionary: τις -> τίς, ἀυτὸς -> αὐτὸς, αυτῆς -> αὐτῆς, ἐρριψε -> ἔρριψε",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -889,10 +915,12 @@
    "page": "page_0099",
    "marker": "(b)",
    "text": "Voyez Thévenot, Herbert, Figueroa, Mandsloe Mallet, Description de l'Univers, tom. 2. pag. 172. 173 Chevreau hist. du Monde, tom. 4. c. 1.",
-   "proposed": "Voyez Thévenot, Herbert, Figueroa, Mandsloe Mallet, Description de l'Univers, tom. 2. pag. 172. 173 Chevreau hist. du Monde, tom. 4. c. 1.",
+   "proposed": "Voyez Thévenot ;\nHerbert ;\nFigueroa ;\nMandsloe ;\nMallet, Description de l'Univers, tome 2, page 172, 173 ;\nChevreau, Histoire du monde, tome 4, chapitre 1.",
    "why": [
     "context: Mallet is an author, not Malachie",
     "Malachie 50 does not exist in the Vulgate",
+    "Malachie 50 does not exist in the Vulgate",
+    "abbreviations written out",
     "Malachie 50 does not exist in the Vulgate"
    ],
    "flags": [
@@ -1268,9 +1296,10 @@
    "page": "page_0174",
    "marker": "(a)",
    "text": "Xénophon lib. 1. Κύρου παιδείας. Vide Brisson lib. 1. de Reg. p. 118. 119.",
-   "proposed": "Xénophon lib. 1. Κύρου παιδείας. Vide Brisson lib. 1. de Reg. p. 118. 119.",
+   "proposed": "Xénophon, livre 1, Κύρου παιδείας. Voyez Brisson, Du royaume des Perses, livre 1, page 118, 119.",
    "why": [
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"

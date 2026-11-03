@@ -1,10 +1,11 @@
 {
  "summary": {
   "notes": 84,
-  "changed": 3,
+  "changed": 5,
   "flags": {
    "scanned": 1,
    "expand-unread": 9,
+   "expand-changed-numbers": 2,
    "greek": 3,
    "scan-unread": 3
   }
@@ -15,11 +16,12 @@
    "page": "page_0004",
    "marker": "(b)",
    "text": "פחת יהודה Aqu. Sym. Theod. Ἡγέμων Iudæ.",
-   "proposed": "פחת יהודה Aqu. Sym. Theod. Ἡγέμων Iudæ.",
+   "proposed": "פחת יהודה Aquila ; Symmaque ; Théodotion : Ἡγέμων Iudæ.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Ηγέμων -> Ἡγέμων",
     "scan: Filled the placeholder with the printed פחת יהודה, which matches the reference.",
-    "read on the scan: פחת יהודה"
+    "read on the scan: פחת יהודה",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -32,9 +34,12 @@
    "marker": "(f)",
    "text": "Zach. VI. II. 12. 13.",
    "proposed": "Zach. VI. II. 12. 13.",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: Zacharie 6:11-13"
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -83,10 +88,11 @@
    "page": "page_0011",
    "marker": "(b)",
    "text": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. Tigur. T.tt ij._",
-   "proposed": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. Tigur. T.tt ij._",
+   "proposed": "Les Septante : Ἔτι ἅπας, _i.q._ ἔτι μία, _etc. Ludov. la Bible de Zurich T.tt ij._",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary"
+    "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out"
    ],
    "flags": [
     "expand-unread"
@@ -134,9 +140,12 @@
    "marker": "(a)",
    "text": "Agg. II. II. et 19.",
    "proposed": "Agg. II. II. et 19.",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: Aggée 2:11 et 19"
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {

@@ -9,7 +9,8 @@
    "scanned": 24,
    "expand-changed-numbers": 5,
    "expand-unread": 16,
-   "hebrew": 12
+   "hebrew": 12,
+   "expand-changed-hebrew-or-greek": 1
   }
  },
  "notes": [
@@ -34,7 +35,7 @@
    "id": "0106(b)",
    "page": "page_0106",
    "marker": "(b)",
-   "text": "Ibid. ℣. 29.",
+   "text": "4 Rois 15:29.",
    "proposed": "4 Rois 15:29.",
    "why": [
     "context: Ibid.; 4 Rois 15:29 fits",
@@ -107,10 +108,11 @@
    "page": "page_0119",
    "marker": "(a)",
    "text": "70. אהבת רע Qui aime le mal. L'Hébreu peut signifier le mal, ou un ami.",
-   "proposed": "70. אהבת רע Qui aime le mal. L'Hébreu peut signifier le mal, ou un ami.",
+   "proposed": "Les Septante : אהבת רע Qui aime le mal. L'Hébreu peut signifier le mal, ou un ami.",
    "why": [
     "scan: Filled the Hebrew placeholder with אהבת רע, as printed.",
-    "read on the scan: אהבת רע"
+    "read on the scan: אהבת רע",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -154,39 +156,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0121(c)",
-   "page": "page_0121",
-   "marker": "(c)",
-   "text": "_Vide_ Brisson. _de formulis Roman._",
-   "proposed": "_Voyez_ Brisson, _De formulis Romanorum._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0122(b)",
-   "page": "page_0122",
-   "marker": "(b)",
-   "text": "_Vide_ Theodoret. _hic._ et Ieronym. _in fine cap._ Theophylact. Rusin. Sanƈt. _p._ 55.",
-   "proposed": "_Voyez_ Théodoret, _sur ce passage_ ; et saint Jérôme, _à la fin du chapitre_ ; Théophylacte ; Rufin ; Sanctius, _page_ 55.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0122(c)",
-   "page": "page_0122",
-   "marker": "(c)",
-   "text": "_Ita_ PP. _passim._ Origen. Philocal. _c._ 1. Ieronym. _hic._ Cyrill. Albert. Hugo. Dionys. Lyr. Ribera, _etc._",
-   "proposed": "_Ainsi l'entendent_ les Pères, _passim._ Origène, Philocalie, _chapitre_ 1 ;\nsaint Jérôme, _sur ce passage_ ;\nsaint Cyrille ;\nAlbert le Grand ;\nHugues de Saint-Cher ;\nDenys le Chartreux ;\nNicolas de Lyre ;\nRibera, _etc._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0122(f)",
@@ -406,10 +375,11 @@
    "page": "page_0137",
    "marker": "(a)",
    "text": "Cyrill. Ieron. Theodoret. hic. Ὁ ἄγρας δὲ τῶν (ἀγρευτής,)* ἐστι θήρας διαφόρου μέρος. Ita Grot. Vat.",
-   "proposed": "Cyrill. Ieron. Theodoret. hic. Ὁ ἄγρας δὲ τῶν (ἀγρευτής,)* ἐστι θήρας διαφόρου μέρος. Ita Grot. Vat.",
+   "proposed": "Saint Cyrille ; saint Jérôme ; Théodoret, sur ce passage. Ὁ ἄγρας δὲ τῶν (ἀγρευτής,)* ἐστι θήρας διαφόρου μέρος. Ainsi l'entendent Grotius ; Vatable.",
    "why": [
     "scan: Rewrote the Greek and filled the placeholder; the small Greek print is hard to read.",
-    "guessed from context: (ἀγρευτής,)*"
+    "guessed from context: (ἀγρευτής,)*",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -480,6 +450,7 @@
    "text": "Isai. I. II.",
    "proposed": "Isai. I. II.",
    "why": [
+    "written out, but a number changed or added: Isaïe 1:11.",
     "written out, but a number changed or added: Isaïe 1:11."
    ],
    "flags": [
@@ -590,6 +561,7 @@
    "text": "Levit. XXIII. II.",
    "proposed": "Levit. XXIII. II.",
    "why": [
+    "written out, but a number changed or added: Lévitique 23:11.",
     "written out, but a number changed or added: Lévitique 23:11."
    ],
    "flags": [
@@ -734,7 +706,8 @@
    ],
    "flags": [
     "scanned",
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-hebrew-or-greek"
    ]
   },
   {
@@ -742,13 +715,14 @@
    "page": "page_0165",
    "marker": "(e)",
    "text": "כי שבבים יהיה עגל שמרון 70. Πλανῶν ἦν ὁ μόσχος τῆς Σαμαρείας. Sym. Ἀκαταστασιῶν. Theodot. Πλανῶν. Quinta Édit. Ῥιμβόων. Aqu. Errantibus sive conversis. Vide Ieronym. hic.",
-   "proposed": "כי שבבים יהיה עגל שמרון 70. Πλανῶν ἦν ὁ μόσχος τῆς Σαμαρείας. Sym. Ἀκαταστασιῶν. Theodot. Πλανῶν. Quinta Édit. Ῥιμβόων. Aqu. Errantibus sive conversis. Vide Ieronym. hic.",
+   "proposed": "כי שבבים יהיה עגל שמרון Les Septante : Πλανῶν ἦν ὁ μόσχος τῆς Σαμαρείας. Symmaque : Ἀκαταστασιῶν. Théodotion : Πλανῶν. Quinta édition : Ῥιμβόων. Aquila : Errantibus sive conversis. Voyez saint Jérôme, sur ce passage.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Hosea 8:6: שכבים -> שבבים",
     "Greek spelling checked against a Greek dictionary: Ἀκαλυμμάτων -> Καλυμμάτων",
     "Greek spelling checked against a Greek dictionary",
     "context: Hebrew and Ριμβόων need page",
-    "scan (agy flash): Removed placeholder and corrected Greek Septuagint and Symmachus"
+    "scan (agy flash): Removed placeholder and corrected Greek Septuagint and Symmachus",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -772,28 +746,18 @@
    "page": "page_0172",
    "marker": "(a)",
    "text": "Heb. גרן ויקב לא ירעם ותירוש יכחש בה certa fides mea. LXX. Area et amis ex ipsorum auleis, et vinum ipsorum auleis. Ils ont lu ידעם au lieu de ירעם.",
-   "proposed": "Heb. גרן ויקב לא ירעם ותירוש יכחש בה certa fides mea. LXX. Area et amis ex ipsorum auleis, et vinum ipsorum auleis. Ils ont lu ידעם au lieu de ירעם.",
+   "proposed": "L'Hébreu : גרן ויקב לא ירעם ותירוש יכחש בה certa fides mea. Les Septante : Area et amis ex ipsorum auleis, et vinum ipsorum auleis. Ils ont lu ידעם au lieu de ירעם.",
    "why": [
     "scan: Filled the three Hebrew placeholders from the page.",
     "read on the scan: גרן ויקב לא ירעם ותירוש יכחש בה",
     "read on the scan: ידעם",
-    "read on the scan: ירעם"
+    "read on the scan: ירעם",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
     "expand-unread"
    ]
-  },
-  {
-   "id": "0175(a)",
-   "page": "page_0175",
-   "marker": "(a)",
-   "text": "Vide sup. VII. v. 10. Jérémie 8:2. Ézéchiel 29:5. etc.",
-   "proposed": "Voyez Supra 7:10 ; Jérémie 8:2 ; Ézéchiel 29:5 ; etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0175(b)",
@@ -941,6 +905,7 @@
    "text": "Vide Genèse 35:5. et Isai. vııı. 13. Dominum exercituum ipsum sanctificate : ipse pavor vester, et ipse terror vester.",
    "proposed": "Vide Genèse 35:5. et Isai. vııı. 13. Dominum exercituum ipsum sanctificate : ipse pavor vester, et ipse terror vester.",
    "why": [
+    "written out, but a number changed or added: Voyez Genèse 35:5 ; et Isaïe 8:13. Dominum exercituum ipsum sanctificate : ipse pavor vester, et ipse terror vester.",
     "written out, but a number changed or added: Voyez Genèse 35:5 ; et Isaïe 8:13. Dominum exercituum ipsum sanctificate : ipse pavor vester, et ipse terror vester."
    ],
    "flags": [
@@ -1140,6 +1105,7 @@
    "text": "Ieronym. Haimo. Drus. Confer Osée VII. II. VIII. I 3 IX. 3.",
    "proposed": "Ieronym. Haimo. Drus. Confer Osée VII. II. VIII. I 3 IX. 3.",
    "why": [
+    "written out, but a number changed or added: Saint Jérôme ; Haymon ; Drusius. Confer Osée 7:11 ; Osée 8:13 ; Osée 9:3.",
     "written out, but a number changed or added: Saint Jérôme ; Haymon ; Drusius. Confer Osée 7:11 ; Osée 8:13 ; Osée 9:3."
    ],
    "flags": [
@@ -1439,10 +1405,11 @@
    "page": "page_0223",
    "marker": "(a)",
    "text": "תאשם שמרון Sym. Μεταμελήσει. Pœnitentiam aget Samaria,",
-   "proposed": "תאשם שמרון Sym. Μεταμελήσει. Pœnitentiam aget Samaria,",
+   "proposed": "תאשם שמרון Symmaque : Μεταμελήσει. Pœnitentiam aget Samaria,",
    "why": [
     "context: Hebrew and Μιζαμδριον unreadable",
-    "scan (agy flash): Filled Hebrew citation and corrected Symmachus Greek"
+    "scan (agy flash): Filled Hebrew citation and corrected Symmachus Greek",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",

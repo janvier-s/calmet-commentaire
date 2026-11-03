@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 525,
-  "changed": 5,
+  "changed": 7,
   "flags": {
    "expand-changed-numbers": 4,
    "greek": 43,
@@ -21,6 +21,7 @@
    "text": "Matt. XIII. II.",
    "proposed": "Matt. XIII. II.",
    "why": [
+    "written out, but a number changed or added: Matthieu 13:11.",
     "written out, but a number changed or added: Matthieu 13:11."
    ],
    "flags": [
@@ -69,12 +70,13 @@
    "page": "page_0034",
    "marker": "(a)",
    "text": "אם לא תדעי לך היפה בנשים צאי לך בעקבי הצאן _Si ignoras tibi, vade tibi post vestigia gregum._ Aqu. Ἔξελθε σεαυτῇ. Sym. Ἐξελθοῦσα πορεύου.",
-   "proposed": "אם לא תדעי לך היפה בנשים צאי לך בעקבי הצאן _Si ignoras tibi, vade tibi post vestigia gregum._ Aqu. Ἔξελθε σεαυτῇ. Sym. Ἐξελθοῦσα πορεύου.",
+   "proposed": "אם לא תדעי לך היפה בנשים צאי לך בעקבי הצאן _Si ignoras tibi, vade tibi post vestigia gregum._ Aquila : Ἔξελθε σεαυτῇ ; Symmaque : Ἐξελθοῦσα πορεύου.",
    "why": [
     "Hebrew checked against the Hebrew Bible, Song of Solomon 1:8",
     "Greek spelling checked against a Greek dictionary",
     "context: Hebrew tail still uncertain: σιαυτῆ -> σεαυτῇ",
-    "scan (agy flash): Corrected Symmachus Greek and removed placeholder"
+    "scan (agy flash): Corrected Symmachus Greek and removed placeholder",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -195,18 +197,6 @@
    ]
   },
   {
-   "id": "0043(a)",
-   "page": "page_0043",
-   "marker": "(a)",
-   "text": "Ruth 3:9. _Expande pallium tuum super famulam tuam_, etc. Théocrite, Idylles, 18, _Epithal. Helenæ. Ζηνὸς τοι θυγάτηρ ὑπὸ τὰν μίαν ἤλυθε χλαῖναν._",
-   "proposed": "Ruth 3:9. _Expande pallium tuum super famulam tuam_, etc. Théocrite, Idylles, 18, _Epithalamium Helenæ. Ζηνὸς τοι θυγάτηρ ὑπὸ τὰν μίαν ἤλυθε χλαῖναν._",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0043(b)",
    "page": "page_0043",
    "marker": "(b)",
@@ -247,10 +237,11 @@
    "page": "page_0045",
    "marker": "(d)",
    "text": "Cassiod. Beda. Carpat. Bern.",
-   "proposed": "Cassiod. Beda. Carpat. Bern.",
+   "proposed": "Cassiodore ;\nBède ;\nPhilon de Carpasia ;\nsaint Bernard.",
    "why": [
     "scan: Placeholder removed; page reads Cassiod. Beda. Carpat. Bern.",
-    "read on the scan: Bern."
+    "read on the scan: Bern.",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -320,18 +311,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0053(c)",
-   "page": "page_0053",
-   "marker": "(c)",
-   "text": "Homer. Illiad. xx. _Ὥστε πέλεια, ἣ ῥά θ᾽ ὑπ᾽ ἴρηκος κοίλην εἰσέπτατο πέτρην._",
-   "proposed": "Homère, Iliade, livre 20. _Ὥστε πέλεια, ἣ ῥά θ᾽ ὑπ᾽ ἴρηκος κοίλην εἰσέπτατο πέτρην._",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0055(a)",
@@ -404,8 +383,10 @@
    "page": "page_0062",
    "marker": "(b)",
    "text": "Saint Grégoire ;\nCassiodore ;\nBède ;\nThéodoret ;\nCaspat., etc.",
-   "proposed": "Saint Grégoire ;\nCassiodore ;\nBède ;\nThéodoret ;\nCaspat., etc.",
-   "why": [],
+   "proposed": "Saint Grégoire ;\nCassiodore ;\nBède ;\nThéodoret ;\nPhilon de Carpasia, etc.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -415,10 +396,11 @@
    "page": "page_0063",
    "marker": "(a)",
    "text": "Dilecta אהבה Vide Cantique des cantiques 2:7. 3:5. 8:4. etc.",
-   "proposed": "Dilecta אהבה Vide Cantique des cantiques 2:7. 3:5. 8:4. etc.",
+   "proposed": "Dilecta אהבה Voyez Cantique des cantiques 2:7 ; 3:5 ; 8:4, etc.",
    "why": [
     "scan: Filled Hebrew word אהבה",
-    "read on the scan: אהבה"
+    "read on the scan: אהבה",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -539,11 +521,12 @@
    "page": "page_0072",
    "marker": "(a)",
    "text": "כמגדל דויד צוארך בנוי לתלפיות אלף המגן תלוי עליו וגו' 2. Ezech. III. 15. פי Un défilé. Exode 14:2.",
-   "proposed": "כמגדל דויד צוארך בנוי לתלפיות אלף המגן תלוי עליו וגו' 2. Ezech. III. 15. פי Un défilé. Exode 14:2.",
+   "proposed": "כמגדל דויד צוארך בנוי לתלפיות אלף המגן תלוי עליו וגו' 2. Ézéchiel 3:15. פי Un défilé. Exode 14:2.",
    "why": [
     "scan: Filled both Hebrew placeholders: the full quotation and פי",
     "read on the scan: כמגדל דויד צוארך בנוי לתלפיות אלף המגן תלוי עליו וגו'",
-    "read on the scan: פי"
+    "read on the scan: פי",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -583,6 +566,7 @@
    "text": "Cantique des cantiques 2:7. III. s.",
    "proposed": "Cantique des cantiques 2:7. III. s.",
    "why": [
+    "written out, but a number changed or added: Cantique des cantiques 2:7 ; 3:5.",
     "written out, but a number changed or added: Cantique des cantiques 2:7 ; 3:5."
    ],
    "flags": [
@@ -607,6 +591,7 @@
    "text": "Cant. III. II.",
    "proposed": "Cant. III. II.",
    "why": [
+    "written out, but a number changed or added: Cantique des cantiques 3:11.",
     "written out, but a number changed or added: Cantique des cantiques 3:11."
    ],
    "flags": [
@@ -621,6 +606,7 @@
    "proposed": "לבבתני אחותי כלה 70. _Exastimaras me._ Édit. _ÉSaponas µe._ Vous m'avez donné du cœur. _Ita Sym apud Theodoret._",
    "why": [
     "Hebrew checked against the Hebrew Bible, Song of Solomon 4:9",
+    "written out, but the italics changed: לבבתני אחותי כלה 70. _Exastimaras me._ Édition _ÉSaponas µe._ Vous m'avez donné du cœur. Ainsi lit Symmaque, dans Théodoret.",
     "written out, but the italics changed: לבבתני אחותי כלה 70. _Exastimaras me._ Édition _ÉSaponas µe._ Vous m'avez donné du cœur. Ainsi lit Symmaque, dans Théodoret."
    ],
    "flags": [
@@ -894,6 +880,7 @@
    "text": "Voyez Proverbes 7:10. Osée. IX. II. Isai. XXX. 20. où l'on trouve des expressions à peu près semblables.",
    "proposed": "Voyez Proverbes 7:10. Osée. IX. II. Isai. XXX. 20. où l'on trouve des expressions à peu près semblables.",
    "why": [
+    "written out, but a number changed or added: Voyez Proverbes 7:10 ; Osée 9:11 ; Isaïe 30:20, où l'on trouve des expressions à peu près semblables.",
     "written out, but a number changed or added: Voyez Proverbes 7:10 ; Osée 9:11 ; Isaïe 30:20, où l'on trouve des expressions à peu près semblables."
    ],
    "flags": [
@@ -964,17 +951,6 @@
    ]
   },
   {
-   "id": "0111(h)",
-   "page": "page_0111",
-   "marker": "(h)",
-   "text": "Homer. Odyss. Z. v. 4.",
-   "proposed": "Homère, Odyssée, livre Z, vers 4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0111(m)",
    "page": "page_0111",
    "marker": "(m)",
@@ -1034,10 +1010,11 @@
    "page": "page_0118",
    "marker": "(e)",
    "text": "Athen. l. 1. c. 2. p. 38. Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη.",
-   "proposed": "Athen. l. 1. c. 2. p. 38. Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη.",
+   "proposed": "Athénée, livre 1, chapitre 2, page 38. Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη.",
    "why": [
     "scan: Filled Greek placeholder with the printed Athenaeus passage",
-    "read on the scan: Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη."
+    "read on the scan: Διὸ καὶ τὸ καλούμενον νέκταρ κατασκευάζειν τινὰς περὶ τὸν Λυδίας ὄλυμπον, οἶνον καὶ κηρία συγκιρνάντας εἰς πύελον, καὶ τὰ τῶν ἀνθῶν εὐώδη.",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -1066,17 +1043,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0121(a)",
-   "page": "page_0121",
-   "marker": "(a)",
-   "text": "Martial. de Curione.\n…_Dum prandia portat avanti_\n_Hirsutâ peperit rubicunda sub ilice conjux._",
-   "proposed": "Martial, De Curione.\n…_Dum prandia portat avanti_\n_Hirsutâ peperit rubicunda sub ilice conjux._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0123(c)",

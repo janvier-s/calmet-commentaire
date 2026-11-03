@@ -1,15 +1,17 @@
 {
  "summary": {
   "notes": 122,
-  "changed": 7,
+  "changed": 9,
   "flags": {
    "greek": 13,
    "scan-unread": 13,
    "expand-unread": 16,
    "scanned": 2,
    "garbled-reference": 1,
+   "expand-changed-numbers": 1,
    "context": 1,
-   "hebrew": 1
+   "hebrew": 1,
+   "expand-changed-italics": 1
   }
  },
  "notes": [
@@ -151,10 +153,13 @@
    "marker": "(c)",
    "text": "Voyez notre Commentaire sur Osée 1v. 46 Lud. de Dieu, et Munster.",
    "proposed": "Voyez notre Commentaire sur Osée 1v. 46 Lud. de Dieu, et Munster.",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: Voyez notre Commentaire sur Osée 4:6 ; Louis de Dieu ; et Munster."
+   ],
    "flags": [
     "garbled-reference",
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -212,9 +217,10 @@
    "page": "page_0021",
    "marker": "(c)",
    "text": "4 Rois 15:1, 19. Par. v. 26.",
-   "proposed": "4 Rois 15:1, 19. Par. v. 26.",
+   "proposed": "4 Rois 15:19 ; 1 Paralipomènes 5:26.",
    "why": [
-    "context: 4 Rois 15:19 is Phul/Manahem; correct"
+    "context: 4 Rois 15:19 is Phul/Manahem; correct",
+    "abbreviations written out"
    ],
    "flags": [
     "context",
@@ -226,11 +232,12 @@
    "page": "page_0021",
    "marker": "(e)",
    "text": "ויזעק ויאמר מטעם המלך וגדוליו Souvent l'on met en Hébreu la troisième personne de l'actif, dans un sens impersonnel pour le passif : il dit, il cria, pour, on cria ; on dit, 70. Ἐκηρύχθη, etc.",
-   "proposed": "ויזעק ויאמר מטעם המלך וגדוליו Souvent l'on met en Hébreu la troisième personne de l'actif, dans un sens impersonnel pour le passif : il dit, il cria, pour, on cria ; on dit, 70. Ἐκηρύχθη, etc.",
+   "proposed": "ויזעק ויאמר מטעם המלך וגדוליו Souvent l'on met en Hébreu la troisième personne de l'actif, dans un sens impersonnel pour le passif : il dit, il cria, pour, on cria ; on dit, les Septante : Ἐκηρύχθη, etc.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Εκηρύχθη -> Ἐκηρύχθη",
     "scan: Filled the placeholder with the printed Hebrew; the page omits בנינוה. Greek kept as given.",
-    "read on the scan: ויזעק ויאמר מטעם המלך וגדוליו"
+    "read on the scan: ויזעק ויאמר מטעם המלך וגדוליו",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -385,9 +392,12 @@
    "marker": "(a)",
    "text": "_Vide Aug. ep. c11. nov. edit. qu. 6. de Jona Propheta, et Chrysolog. homil. 37. Cyrill. Præfat. Comment. in Jonam._ Prosper. _de prædestin._ Paulin. _ep. 33._ Tertull. _de Baptismo, c. 1._ Ieronym.",
    "proposed": "_Vide Aug. ep. c11. nov. edit. qu. 6. de Jona Propheta, et Chrysolog. homil. 37. Cyrill. Præfat. Comment. in Jonam._ Prosper. _de prædestin._ Paulin. _ep. 33._ Tertull. _de Baptismo, c. 1._ Ieronym.",
-   "why": [],
+   "why": [
+    "written out, but the italics changed: Voyez saint Augustin, lettre 102, nouvelle édition, question 6, de Jona Propheta ; et saint Pierre Chrysologue, Homélie 37 ; saint Cyrille, Préface du Commentaire sur Jonas ; saint Prosper, De prædest"
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-italics"
    ]
   },
   {

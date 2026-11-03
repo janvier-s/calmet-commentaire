@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 284,
-  "changed": 17,
+  "changed": 23,
   "flags": {
    "reference-mismatch": 2,
    "greek": 25,
@@ -9,6 +9,8 @@
    "scanned": 11,
    "hebrew": 6,
    "expand-unread": 16,
+   "expand-changed-numbers": 2,
+   "reference-not-in-vulgate": 1,
    "context": 2
   }
  },
@@ -20,6 +22,7 @@
    "text": "Deutéronome 12:5-7.",
    "proposed": "Deutéronome 12:5-7.",
    "why": [
+    "the Latin next to the call is Isaïe 36:7, not Deutéronome 12:5-7",
     "the Latin next to the call is Isaïe 36:7, not Deutéronome 12:5-7",
     "the Latin next to the call is Isaïe 36:7, not Deutéronome 12:5-7"
    ],
@@ -222,10 +225,12 @@
    "text": "משל ונהה נהי נהיה אשר אמר Ezech. XIX. I. XXVIII. II. XXXII. 16. Amos V. I.",
    "proposed": "משל ונהה נהי נהיה אשר אמר Ezech. XIX. I. XXVIII. II. XXXII. 16. Amos V. I.",
    "why": [
-    "Hebrew checked against the Hebrew Bible, Micah 2:4"
+    "Hebrew checked against the Hebrew Bible, Micah 2:4",
+    "written out, but a number changed or added: משל ונהה נהי נהיה אשר אמר Ézéchiel 19:1 ; 28:11 ; 32:16 ; Amos 5:1."
    ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -273,10 +278,11 @@
    "page": "page_0027",
    "marker": "(a)",
    "text": "Jérémie 9:24 et 24:7. _Dabo eis cor ut sciant quia ego sum Dominus, etc. Osée_ VI. 3. _Sciemus sequemurque ut cognoscamus Dominum._",
-   "proposed": "Jérémie 9:24 et 24:7. _Dabo eis cor ut sciant quia ego sum Dominus, etc. Osée_ VI. 3. _Sciemus sequemurque ut cognoscamus Dominum._",
+   "proposed": "Jérémie 9:24 et 24:7. _Dabo eis cor ut sciant quia ego sum Dominus, etc._ Osée 6:3. _Sciemus sequemurque ut cognoscamus Dominum._",
    "why": [
     "the Latin next to the call is Osée 6:3, not Jérémie 9:24, Jérémie 24:7",
-    "the Latin next to the call is Osée 6:3, not Jérémie 9:24, Jérémie 24:7"
+    "the Latin next to the call is Osée 6:3, not Jérémie 9:24, Jérémie 24:7",
+    "abbreviations written out"
    ],
    "flags": [
     "reference-mismatch",
@@ -302,10 +308,14 @@
    "page": "page_0031",
    "marker": "(b)",
    "text": "Jerom. XXVI. 38. Vide sup. Cap. II. ℣. 11.",
-   "proposed": "Jerom. XXVI. 38. Vide sup. Cap. II. ℣. 11.",
-   "why": [],
+   "proposed": "Jérémie 26:38. Voyez supra, chapitre 2, verset 11.",
+   "why": [
+    "abbreviations written out",
+    "Jérémie 26:38 does not exist in the Vulgate"
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "reference-not-in-vulgate"
    ]
   },
   {
@@ -455,8 +465,10 @@
    "page": "page_0041",
    "marker": "(e)",
    "text": "1. Esdr. 2. §. II. 2.",
-   "proposed": "1. Esdr. 2. §. II. 2.",
-   "why": [],
+   "proposed": "1 Esdras 2, § 2, 2.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
@@ -481,13 +493,14 @@
    "page": "page_0042",
    "marker": "(b)",
    "text": "צעיר Jérémie 48:4. Chald. שלוטני Et XLIX. 20. Heb. צעירי הצאן Chald. יתקפי עמם",
-   "proposed": "צעיר Jérémie 48:4. Chald. שלוטני Et XLIX. 20. Heb. צעירי הצאן Chald. יתקפי עמם",
+   "proposed": "צעיר Jérémie 48:4. Le Chaldéen : שלוטני. Et Jérémie 49:20. L'Hébreu : צעירי הצאן ; le Chaldéen : יתקפי עמם",
    "why": [
     "scan: Filled the four placeholders from the page; the Chaldean word in 48:4 is hard to read.",
     "read on the scan: צעיר",
     "read on the scan: שלוטני",
     "read on the scan: צעירי הצאן",
-    "read on the scan: יתקפי עמם"
+    "read on the scan: יתקפי עמם",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -511,9 +524,12 @@
    "marker": "(a)",
    "text": "Esdr. 1v. 7.",
    "proposed": "Esdr. 1v. 7.",
-   "why": [],
+   "why": [
+    "written out, but a number changed or added: 1 Esdras 4:7."
+   ],
    "flags": [
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {
@@ -605,14 +621,15 @@
    "page": "page_0054",
    "marker": "(e)",
    "text": "Quinta Édit. Φροντίζειν. קול יהוה לעיר יקרא ותושיה יראה שמך 70. Φωνὴ Κυρίου πόλει ἐπικληθήσεται, καὶ σώσει φοβουμένους τὸ ὄνομα αὐτοῦ. Ils ont lu : תושיע יראי שמו",
-   "proposed": "Quinta Édit. Φροντίζειν. קול יהוה לעיר יקרא ותושיה יראה שמך 70. Φωνὴ Κυρίου πόλει ἐπικληθήσεται, καὶ σώσει φοβουμένους τὸ ὄνομα αὐτοῦ. Ils ont lu : תושיע יראי שמו",
+   "proposed": "Cinquième édition : Φροντίζειν. קול יהוה לעיר יקרא ותושיה יראה שמך les Septante : Φωνὴ Κυρίου πόλει ἐπικληθήσεται, καὶ σώσει φοβουμένους τὸ ὄνομα αὐτοῦ. Ils ont lu : תושיע יראי שמו",
    "why": [
     "Hebrew checked against the Hebrew Bible, Micah 6:9",
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary: ἑτοιμ -> ἑτοιμῶ",
     "context: UNCERTAIN HEBREW content unknown: φοβουμίνες -> φοβουμένους",
-    "scan (agy flash): Corrected Greek and Hebrew citations and removed placeholder"
+    "scan (agy flash): Corrected Greek and Hebrew citations and removed placeholder",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -768,8 +785,10 @@
    "page": "page_0066",
    "marker": "(b)",
    "text": "Zach. X. II.",
-   "proposed": "Zach. X. II.",
-   "why": [],
+   "proposed": "Zacharie 10:11.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]

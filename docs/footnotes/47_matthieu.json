@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 3334,
-  "changed": 557,
+  "changed": 114,
   "flags": {
    "hebrew": 9,
    "scan-unread": 160,
@@ -38,6 +38,7 @@
    "why": [
     "Greek spelling checked against a Greek dictionary: πνευμα -> πνεῦμα",
     "Greek spelling checked against a Greek dictionary: ιησου -> ἰησοῦ",
+    "abbreviations written out (footnote_expand.py)",
     "abbreviations written out (footnote_expand.py)",
     "abbreviations written out (footnote_expand.py)"
    ],
@@ -244,18 +245,6 @@
    ]
   },
   {
-   "id": "0199(f)",
-   "page": "page_0199",
-   "marker": "(f)",
-   "text": "Mich. ℣. 2 ואתה בית־לחם אפרתה צעיר להיות באלפי יהודה ממך לי יצא להיות מושל בישראל",
-   "proposed": "Michée 5:2 ואתה בית־לחם אפרתה צעיר להיות באלפי יהודה ממך לי יצא להיות מושל בישראל",
-   "why": [
-    "Hebrew checked against the Hebrew Bible, Micah 5:2",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0200(f)",
    "page": "page_0200",
    "marker": "(f)",
@@ -310,28 +299,6 @@
    "flags": [
     "expand-unread"
    ]
-  },
-  {
-   "id": "0209(c)",
-   "page": "page_0209",
-   "marker": "(c)",
-   "text": "Euthym. Strabus, Maldon. _Jans. Estius Sa, Brug._",
-   "proposed": "Euthyme ; Strabus ; Maldonat ; _Jansénius ; Estius ; Sa ; Lucas de Bruges._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0213(c)",
-   "page": "page_0213",
-   "marker": "(c)",
-   "text": "Epist. Judæ ℣ 14.",
-   "proposed": "Épître de Jude, verset 14.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0213(l)",
@@ -470,6 +437,7 @@
     "context: Psalm 75:17 unclear; needs page",
     "Psaumes 75:17 does not exist in the Vulgate",
     "abbreviations written out",
+    "Psaumes 75:17 does not exist in the Vulgate",
     "Psaumes 75:17 does not exist in the Vulgate"
    ],
    "flags": [
@@ -490,17 +458,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0250(h)",
-   "page": "page_0250",
-   "marker": "(h)",
-   "text": "Voyez Basnage l. v. 7. chapitre 6. Hist. des Juifs, art. II. 12. 13.",
-   "proposed": "Voyez Basnage, livre 5, 7, chapitre 6, Histoire des Juifs, article 2, 12, 13.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0260(c)",
@@ -591,163 +548,10 @@
    "id": "0277(f)",
    "page": "page_0277",
    "marker": "(f)",
-   "text": "Petr. var. Lect. §. Confer Jérémie 22:19. Joseph. de Bello l. 5. c. 1.",
-   "proposed": "Petr. var. Lect. §. Confer Jérémie 22:19. Josèphe, Guerre des Juifs, livre 5, chapitre 1.",
+   "text": "Petr. var. Lect. §. Confer Jérémie 22:19. Josèphe, Guerre des Juifs, livre 5, chapitre 1.",
+   "proposed": "Pierre Victoire, Variæ lectiones, §. Confer Jérémie 22:19 ; Josèphe, Guerre des Juifs, livre 5, chapitre 1.",
    "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0278(b)",
-   "page": "page_0278",
-   "marker": "(b)",
-   "text": "Ierom. in Matt. x. Nomen gehennæ in veteribus libris non invenitur, sed primùm à Salvatore ponitur.",
-   "proposed": "Saint Jérôme, sur Matthieu 10. Nomen gehennæ in veteribus libris non invenitur, sed primùm à Salvatore ponitur.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0278(c)",
-   "page": "page_0278",
-   "marker": "(c)",
-   "text": "Vide Spanb. et Ligfoot. hic. et Chald. Paraph. ad Isaïe 26:15. 33:14, 17. in Ruth 2:12. et Rab. Salom. in Isaïe 29:22. et Baal Tur. in Genèse 50:1.",
-   "proposed": "Voyez Spanheim et Lightfoot, sur ce passage ; et la paraphrase chaldaïque sur Isaïe 26:15 ; 33:14, 17 ; sur Ruth 2:12 ; et Rabbi Salomon, sur Isaïe 29:22 ; et Baal Tur, sur Genèse 50:1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0278(e)",
-   "page": "page_0278",
-   "marker": "(e)",
-   "text": "Tertull. de Orat. c. X.",
-   "proposed": "Tertullien, De l'oraison, chapitre 10.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0278(f)",
-   "page": "page_0278",
-   "marker": "(f)",
-   "text": "Maldon. Grot.",
-   "proposed": "Maldonat ; Grotius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0279(a)",
-   "page": "page_0279",
-   "marker": "(a)",
-   "text": "_Vide Chrysost. et Ierom. et Auth. Operis imperfect. hic. et Aug. l. 1. de Serm. Domini in monte. n. 27._ mihi satisfacere debet, non ego illi. _Si pro gloria salutis tuæ jubet te Dominus amicitiam facere, magis ne itum debes rogare, ut duplicem gloriam consequaris : unam, quia nocitus es ; alteram, quia prior rogasti._",
-   "proposed": "_Voyez saint Jean Chrysostome ; saint Jérôme ; l'auteur de l'Ouvrage imparfait, sur ce passage ; et saint Augustin, Sur le Sermon du Seigneur sur la montagne, livre 1, numéro 27._ mihi satisfacere debet, non ego illi. _Si pro gloria salutis tuæ jubet te Dominus amicitiam facere, magis ne itum debes rogare, ut duplicem gloriam consequaris : unam, quia nocitus es ; alteram, quia prior rogasti._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0280(a)",
-   "page": "page_0280",
-   "marker": "(a)",
-   "text": "Ambros. l. 7. in Luc. Vide et Chrysost. ad ℣. 23. 24.",
-   "proposed": "Saint Ambroise, Sur saint Luc, livre 7. Voyez aussi saint Jean Chrysostome, sur les versets 23 et 24.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0280(b)",
-   "page": "page_0280",
-   "marker": "(b)",
-   "text": "Origen. in Jerem. Homil. 18. Vide et Aug l. 1. de Serm. Domini in monte n. 24.",
-   "proposed": "Origène, Sur Jérémie, Homélie 18. Voyez aussi saint Augustin, Sur le Sermon du Seigneur sur la montagne, livre 1, numéro 24.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0280(c)",
-   "page": "page_0280",
-   "marker": "(c)",
-   "text": "Aug. l. 1. de Serm Domini in monte.",
-   "proposed": "Saint Augustin, Sur le Sermon du Seigneur sur la montagne, livre 1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0280(d)",
-   "page": "page_0280",
-   "marker": "(d)",
-   "text": "Clem. Alex. l. 4. Strom. Tertull. l. de anima. Quidam apud Ieron. et apud Chrysost.",
-   "proposed": "Saint Clément d'Alexandrie, Stromates, livre 4 ;\nTertullien, De l'âme ;\nQuidam, dans saint Jérôme et dans saint Jean Chrysostome.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0280(e)",
-   "page": "page_0280",
-   "marker": "(e)",
-   "text": "Athan. qu. 69. Juvincus et quidam apud Ieron. et apud Hil. et apud Aug.",
-   "proposed": "Saint Athanase, question 69 ; Juvincus ; et quidam, dans saint Jérôme, dans saint Hilaire et dans saint Augustin.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0280(f)",
-   "page": "page_0280",
-   "marker": "(f)",
-   "text": "Aug. l. 1. de Serm. Domini. Bern. Serm. 124. de Divers. Anselm. et Beda hic.",
-   "proposed": "Saint Augustin, Sur le Sermon du Seigneur, livre 1 ;\nsaint Bernard, Sermon 124, Des divers ;\nsaint Anselme ;\net Bède, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0280(g)",
-   "page": "page_0280",
-   "marker": "(g)",
-   "text": "Basil, Regul. brevior. Chrysost. hic.",
-   "proposed": "Saint Basile, Règles abrégées ; saint Jean Chrysostome, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0280(i)",
-   "page": "page_0280",
-   "marker": "(i)",
-   "text": "Leges XII. Tabul. aliàs. Si vis vocationi fiat, antestaminor ; ni it, aurem capito antestatiq Horat. Sat. l. 1. Sat. X… Licet antestari ? Ego verò Oppono auriculam rapit in jus clamor utrinque.",
-   "proposed": "Lois des Douze Tables, aliàs. Si vis vocationi fiat, antestaminor ; ni it, aurem capito antestatiq Horace, Satires, livre 1, satire 10… Licet antestari ? Ego verò Oppono auriculam rapit in jus clamor utrinque.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0281(b)",
-   "page": "page_0281",
-   "marker": "(b)",
-   "text": "Vide Grot. ad explicat. Decalogi. Exod. XX. Scalig. animadv. ad Euseb. p. 149. Maimon. more Neboch. p. 3. Selden. de jure N. et Gent. l. 6. c. 12. et l. 7. c. 5.",
-   "proposed": "Voyez Grotius, sur l'explication du Décalogue, Exode 20 ;\nScaliger, Animadversions sur Eusèbe, page 149 ;\nMaïmonide, More Nebochim, page 3 ;\nSelden, Du droit naturel et des gens, livre 6, chapitre 12, et livre 7, chapitre 5.",
-   "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -767,117 +571,6 @@
    ]
   },
   {
-   "id": "0282(b)",
-   "page": "page_0282",
-   "marker": "(b)",
-   "text": "Propert. Eleg. 2.",
-   "proposed": "Properce, Élégie 2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0282(c)",
-   "page": "page_0282",
-   "marker": "(c)",
-   "text": "Vide Chrysost. ad ℣. 28. et August. et Ierom. ibidem.",
-   "proposed": "Voyez saint Jean Chrysostome, sur le verset 28 ; saint Augustin ; et saint Jérôme, au même endroit.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0282(e)",
-   "page": "page_0282",
-   "marker": "(e)",
-   "text": "Chrysost. hic, et Author Oper. imperfesti.",
-   "proposed": "Saint Jean Chrysostome, sur ce passage ; et l'auteur de l'Ouvrage imparfait.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0283(b)",
-   "page": "page_0283",
-   "marker": "(b)",
-   "text": "August. l. 1. de Serm. Domini in monte. Fide et Origen. in Matt.",
-   "proposed": "Saint Augustin, Sur le Sermon du Seigneur sur la montagne, livre 1. Voyez aussi Origène, sur saint Matthieu.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0284(a)",
-   "page": "page_0284",
-   "marker": "(a)",
-   "text": "Proverbes 18:22. Ὁ κατέχων μοιχαλίδα, ἄφρων, καὶ ἀσεβὴς; Vulg. Qui tenet adulteram, stultus est et insipiens.",
-   "proposed": "Proverbes 18:22. Ὁ κατέχων μοιχαλίδα, ἄφρων, καὶ ἀσεβὴς; la Vulgate : Qui tenet adulteram, stultus est et insipiens.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Ο -> Ὁ, ϰατέχων -> κατέχων",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0284(c)",
-   "page": "page_0284",
-   "marker": "(c)",
-   "text": "Vide Selden. uxor. Hebr. l. 3. c. 13.",
-   "proposed": "Voyez Selden, Uxor hebraica, livre 3, chapitre 13.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0284(d)",
-   "page": "page_0284",
-   "marker": "(d)",
-   "text": "Concil. Neocæsar. can. 8. Eliberit. c. 65. in Trullo. c. 87.",
-   "proposed": "Concile de Néocésarée, canon 8 ; concile d'Elvire, chapitre 65 ; concile in Trullo, chapitre 87.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0284(e)",
-   "page": "page_0284",
-   "marker": "(e)",
-   "text": "Hermas l. 2. Pastor. mand. 4.",
-   "proposed": "Hermas, Le Pasteur, livre 2, commandement 4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0284(f)",
-   "page": "page_0284",
-   "marker": "(f)",
-   "text": "Basil. can. 9. et 21.",
-   "proposed": "Saint Basile, canon 9 et 21.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0284(g)",
-   "page": "page_0284",
-   "marker": "(g)",
-   "text": "Chrysostom. in c. XIX. Matth.",
-   "proposed": "Saint Jean Chrysostome, sur le chapitre 19 de saint Matthieu.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0284(k)",
    "page": "page_0284",
    "marker": "(k)",
@@ -890,94 +583,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0284(l)",
-   "page": "page_0284",
-   "marker": "(l)",
-   "text": "Lege V. C. tit. Eodem C. præter DD. Qui adulterii damnatam, si quocumque modo pœnam capitalem evaserit, sciens duxerit, vel reduxerit, lege Julia, ex causa Lenocinii punitur.",
-   "proposed": "Lege V. Code, titre Eodem Code, præter DD. Qui adulterii damnatam, si quocumque modo pœnam capitalem evaserit, sciens duxerit, vel reduxerit, lege Julia, ex causa Lenocinii punitur.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0284(m)",
-   "page": "page_0284",
-   "marker": "(m)",
-   "text": "August. apud Mill. hic.",
-   "proposed": "Saint Augustin, dans Mill, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0285(f)",
-   "page": "page_0285",
-   "marker": "(f)",
-   "text": "Vide Selden. de Synedriis lib 2. cap. 11. art. 7. Grot. hic. Vide infra. Matthieu 23:16-18.",
-   "proposed": "Voyez Selden, Des Sanhédrins, livre 2, chapitre 11, article 7 ; Grotius, sur ce passage. Voyez plus bas Matthieu 23:16-18.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0286(a)",
-   "page": "page_0286",
-   "marker": "(a)",
-   "text": "Tertull. l. de Idolol.",
-   "proposed": "Tertullien, De l'idolâtrie.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0286(b)",
-   "page": "page_0286",
-   "marker": "(b)",
-   "text": "Chrysost. Homil. IX in Acta. Homil. in Genes. et Homil. XVII. in Matt. et passim.",
-   "proposed": "Saint Jean Chrysostome, Homélie 9 sur les Actes ; Homélie sur la Genèse ; et Homélie 17 sur saint Matthieu ; et passim.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0286(g)",
-   "page": "page_0286",
-   "marker": "(g)",
-   "text": "Apud August. Ep. olim 88. nunc 156. et 157.",
-   "proposed": "Dans saint Augustin, Lettre, autrefois 88, maintenant 156 et 157.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0286(h)",
-   "page": "page_0286",
-   "marker": "(h)",
-   "text": "Vide Hilar. in Matt. et Not. Coutantii.",
-   "proposed": "Voyez saint Hilaire, sur saint Matthieu, et les notes de Coutant.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0286(i)",
-   "page": "page_0286",
-   "marker": "(i)",
-   "text": "Aug. in Ep. ad Galat. cap 1. ℣. 20. Non est contra præceptum juratio qua à malo est, non jurantis, sed incredulitatis ejus, cui jurare cogitur.",
-   "proposed": "Saint Augustin, sur Galates 1:20. Non est contra præceptum juratio qua à malo est, non jurantis, sed incredulitatis ejus, cui jurare cogitur.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0286(m)",
@@ -994,51 +599,6 @@
    ]
   },
   {
-   "id": "0287(a)",
-   "page": "page_0287",
-   "marker": "(a)",
-   "text": "Epictet. Enchirid. Pythagor. apud Laërt lib. 8.",
-   "proposed": "Épictète, Enchiridion ; Pythagore, dans Diogène Laërce, livre 8.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0287(b)",
-   "page": "page_0287",
-   "marker": "(b)",
-   "text": "Chæril. apud Stobæum Serm. 29. Οὔκουν ἐπίορκον χρήσαι, οὔτ᾽ εὔορκον.",
-   "proposed": "Chærilus, dans Stobée, Sermon 29. Οὔκουν ἐπίορκον χρήσαι, οὔτ᾽ εὔορκον.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Οὔκεν -> Οὔκουν",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0287(d)",
-   "page": "page_0287",
-   "marker": "(d)",
-   "text": "Athan. Apolog. ad Const. Imper. Ieron. nonnullis in locis.",
-   "proposed": "Saint Athanase, Apologie à l'empereur Constance ; saint Jérôme, en plusieurs endroits.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0287(e)",
-   "page": "page_0287",
-   "marker": "(e)",
-   "text": "Vide August. in Epist. ad Galates 1:20 et l. 1. de Serm. Domini in monte, n. 51.",
-   "proposed": "Voyez saint Augustin, sur Galates 1:20, et Sur le Sermon du Seigneur sur la montagne, livre 1, numéro 51.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0287(h)",
    "page": "page_0287",
    "marker": "(h)",
@@ -1053,29 +613,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0288(a)",
-   "page": "page_0288",
-   "marker": "(a)",
-   "text": "Justin. Martyr. Exhort. ad Græc. p. 16. Ex Orpheo. Οὐρανὸν ὁρκίζω σὲ Θεοῦ μεγάλου σοφοῦ ἔργον.",
-   "proposed": "Saint Justin, Exhortation aux Grecs, page 16. D'après Orphée. Οὐρανὸν ὁρκίζω σὲ Θεοῦ μεγάλου σοφοῦ ἔργον.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Θεῦ -> Θεοῦ",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0288(b)",
-   "page": "page_0288",
-   "marker": "(b)",
-   "text": "Rabb. Raba Berachoth, fol. 55. Talmud. tract. Schebuoth. c. 4. Vide Maim. et Lightfoot. Hor. Hebr. et Sanhedr. c. 3. halac. 2.",
-   "proposed": "Les rabbins, Raba, Berachoth, folio 55 ; le Talmud, traité Schebuoth, chapitre 4. Voyez Maïmonide ; et Lightfoot, Horae hebraicae ; et Sanhédrin, chapitre 3, halakha 2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0289(d)",
@@ -1102,17 +639,6 @@
    ]
   },
   {
-   "id": "0289(h)",
-   "page": "page_0289",
-   "marker": "(h)",
-   "text": "Vide August. l. 1. de Serm. Domini in monte.",
-   "proposed": "Voyez saint Augustin, Sur le Sermon du Seigneur sur la montagne, livre 1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0289(i)",
    "page": "page_0289",
    "marker": "(i)",
@@ -1123,74 +649,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0289(k)",
-   "page": "page_0289",
-   "marker": "(k)",
-   "text": "Épiphane. lib. 1. Panar. Chrysost. in Psaumes 5. et Homil. XIX. ad Popul. Antioch. et alibi. Græc. Ἐκ τοῦ πονηροῦ ἐστιν. Cod. Bodl. Seld. 2. Clem. Alex. Padag. l. 2. c. 10. Nyssen. Ἐκ τῆς διαβολικῆς.",
-   "proposed": "Saint Épiphane, Panarion, livre 1 ; saint Jean Chrysostome, sur Psaumes 5, et Homélie 19 au peuple d'Antioche, et ailleurs. Le Grec : Ἐκ τοῦ πονηροῦ ἐστιν. Manuscrit de la Bodléienne, Selden 2. Saint Clément d'Alexandrie, Pédagogue, livre 2, chapitre 10 ; saint Grégoire de Nysse : Ἐκ τῆς διαβολικῆς.",
-   "why": [
-    "Greek checked against the Septuagint, Genèse 21:17: Εκ -> Ἐκ, ἐςιν -> ἐστιν",
-    "Greek spelling checked against a Greek dictionary: Εκ -> Ἐκ",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0289(l)",
-   "page": "page_0289",
-   "marker": "(l)",
-   "text": "Plato, de Legib. l. XI.",
-   "proposed": "Platon, Des lois, livre 11.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0290(b)",
-   "page": "page_0290",
-   "marker": "(b)",
-   "text": "Chrysost. in Matt. hic. Vide Tertull. contra Marcion. Libb. 4. c. 9.",
-   "proposed": "Saint Jean Chrysostome, sur saint Matthieu, sur ce passage. Voyez Tertullien, Contre Marcion, livre 4, chapitre 9.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0291(a)",
-   "page": "page_0291",
-   "marker": "(a)",
-   "text": "Vide August. l. 2. de Serm. Domini in monte. Et Ep. 138. Ad Marcell. et Maldonat. ad ℣. 39. et Jans. ad ℣. 40. 41.",
-   "proposed": "Voyez saint Augustin, Sur le Sermon du Seigneur sur la montagne, livre 2 ;\net Lettre 138, À Marcellin ;\net Maldonat, sur le verset 39 ;\net Jansénius, sur les versets 40 et 41.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0292(b)",
-   "page": "page_0292",
-   "marker": "(b)",
-   "text": "Erasm. Grot. Ham.",
-   "proposed": "Érasme ;\nGrotius ;\nHammond.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0292(c)",
-   "page": "page_0292",
-   "marker": "(c)",
-   "text": "August. l. 1. de Serm. Domini. et Chrysost. Homil. 18.",
-   "proposed": "Saint Augustin, Sur le Sermon du Seigneur, livre 1 ; et saint Jean Chrysostome, Homélie 18.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0297(c)",
@@ -1264,12 +722,13 @@
    "page": "page_0303",
    "marker": "(b)",
    "text": "Chrysost. hic Homil. 19. Οὐκ ἄρα δοῦναι, ἐλεημοσύνη, ἀλλὰ τὸ ὡς χρὴ δοῦναι ἔστι τὸ ζητούμενον, καὶ διὰ τοῦτο δοῦναι.",
-   "proposed": "Chrysost. hic Homil. 19. Οὐκ ἄρα δοῦναι, ἐλεημοσύνη, ἀλλὰ τὸ ὡς χρὴ δοῦναι ἔστι τὸ ζητούμενον, καὶ διὰ τοῦτο δοῦναι.",
+   "proposed": "Saint Jean Chrysostome, sur ce passage, Homélie 19. Οὐκ ἄρα δοῦναι, ἐλεημοσύνη, ἀλλὰ τὸ ὡς χρὴ δοῦναι ἔστι τὸ ζητούμενον, καὶ διὰ τοῦτο δοῦναι.",
    "why": [
     "Greek spelling checked against a Greek dictionary: Ουϰ -> Οὐκ",
     "Greek spelling checked against a Greek dictionary: τι -> τί, Τῦτο -> Τοῦτο",
     "context: Greek unreadable; cannot reconstruct",
-    "scan (agy flash): Corrected patristic quotation from Chrysostom and filled placeholder"
+    "scan (agy flash): Corrected patristic quotation from Chrysostom and filled placeholder",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -1338,28 +797,6 @@
    ]
   },
   {
-   "id": "0317(e)",
-   "page": "page_0317",
-   "marker": "(e)",
-   "text": "Aug. l. de pe catorum meritis. c. 4. Tertull. l. de Orat. Dominica, Maldon.",
-   "proposed": "Saint Augustin, De peccatorum meritis, chapitre 4 ;\nTertullien, De l'oraison dominicale ;\nMaldonat.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0318(c)",
-   "page": "page_0318",
-   "marker": "(c)",
-   "text": "Drus. XXVII. l. 15. 16. 17 XXV. 26. et Esdr. VIII. 6. et 2 Esdras 5:1, 13, Cor, XIV. 16.",
-   "proposed": "Drusius, XXVII. l. 15. 16. 17 XXV. 26. et 1 Esdras 8:6 ; et 2 Esdras 5:1, 13 ; 1 Corinthiens 14:16.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0319(e)",
    "page": "page_0319",
    "marker": "(e)",
@@ -1392,12 +829,13 @@
    "page": "page_0323",
    "marker": "(b)",
    "text": "ממונה Mammona. Syr. מטמון Maimon, Hebr. מכמוני Maemoni. Cald.",
-   "proposed": "ממונה Mammona. Syr. מטמון Maimon, Hebr. מכמוני Maemoni. Cald.",
+   "proposed": "ממונה Mammona, le Syriaque ; מטמון Maimon, l'Hébreu ; מכמוני Maemoni, le Chaldéen.",
    "why": [
     "scan: Filled three Hebrew placeholders: ממונה, מטמון, מכמוני. The first and third are small print and less sure.",
     "read on the scan: ממונה",
     "read on the scan: מטמון",
-    "read on the scan: מכמוני"
+    "read on the scan: מכמוני",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -1443,19 +881,6 @@
    ]
   },
   {
-   "id": "0331(b)",
-   "page": "page_0331",
-   "marker": "(b)",
-   "text": "Grec. Μὴ δῶς τὸ ἅγιον τοῖς κυσὶ. Alii in Ταὐτὰ Irenæi, et Tertull. et S. Cyprian. et alii très apud Mill. et Chrysost. hic.",
-   "proposed": "Grec. Μὴ δῶς τὸ ἅγιον τοῖς κυσὶ. D'autres dans Ταὐτὰ Irenæi, et Tertullien et saint Cyprien et d'autres très dans Mill. et saint Jean Chrysostome sur ce passage.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary: Ταυτὰ -> Ταὐτὰ",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0335(a)",
    "page": "page_0335",
    "marker": "(a)",
@@ -1470,28 +895,6 @@
    ]
   },
   {
-   "id": "0344(f)",
-   "page": "page_0344",
-   "marker": "(f)",
-   "text": "Isai. LXI. I. Matt XI. 5.",
-   "proposed": "Isaïe 61:1 ; Matthieu 11:5.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0346(c)",
-   "page": "page_0346",
-   "marker": "(c)",
-   "text": "Luc. vII. §. 4.",
-   "proposed": "Luc 7:4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0347(h)",
    "page": "page_0347",
    "marker": "(h)",
@@ -1503,35 +906,14 @@
    ]
   },
   {
-   "id": "0349(d)",
-   "page": "page_0349",
-   "marker": "(d)",
-   "text": "Vide Bartholocci Bibl. Rabb. tom. 1 pag. 107.",
-   "proposed": "Voyez Bartholocci, Bibliotheca rabbinica, tome 1, page 107.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0349(e)",
-   "page": "page_0349",
-   "marker": "(e)",
-   "text": "4 Esdr. c. VI.",
-   "proposed": "4 Esdras 6.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0349(g)",
    "page": "page_0349",
    "marker": "(g)",
-   "text": "Ἀνακλιθήσονται ἐν τοῖς κόλποις τῶ Αβραὰμ, Vide C. r. soft. hic.",
-   "proposed": "Ἀνακλιθήσονται ἐν τοῖς κόλποις τῶ Αβραὰμ, Voyez C. r. soft. sur ce passage.",
+   "text": "Ἀνακλιθήσονται ἐν τοῖς κόλποις τῶ Αβραὰμ, Voyez C. r. soft. sur ce passage.",
+   "proposed": "Ἀνακλιθήσονται ἐν τοῖς κόλποις τῶ Αβραὰμ, Voyez saint Jean Chrysostome, sur ce passage.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -1543,177 +925,12 @@
    "text": "Tobie 4:13. Petri II. 27. Jud. ℣. 6.",
    "proposed": "Tobie 4:13. Petri II. 27. Jud. ℣. 6.",
    "why": [
+    "written out, but a number changed or added: Tobie 4:13. 2 Pierre 2:27. Jude 1:6.",
     "written out, but a number changed or added: Tobie 4:13. 2 Pierre 2:27. Jude 1:6."
    ],
    "flags": [
     "expand-changed-numbers"
    ]
-  },
-  {
-   "id": "0350(e)",
-   "page": "page_0350",
-   "marker": "(e)",
-   "text": "Vide N. Test. Oxon. Nov. Mill.",
-   "proposed": "Voyez Novum Testamentum, Oxford, Mill.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0351(d)",
-   "page": "page_0351",
-   "marker": "(d)",
-   "text": "Voyez Tillemont. Hist. Eccl. tom. 1. en la vie de saint Pierre art. 40.",
-   "proposed": "Voyez Tillemont, Histoire ecclésiastique, tome 1, en la vie de saint Pierre, article 40.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0352(b)",
-   "page": "page_0352",
-   "marker": "(b)",
-   "text": "Vide Chrysost. Euthym. Carmel. à Lapide, Jans. Grot.",
-   "proposed": "Voyez saint Jean Chrysostome ;\nEuthyme ;\nCarmel. ;\nCornelius a Lapide ;\nJansénius ;\nGrotius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0352(g)",
-   "page": "page_0352",
-   "marker": "(g)",
-   "text": "Serm. olim 32. de Verbis Domini, nunc 100. n. 1.",
-   "proposed": "Sermon olim 32, De Verbis Domini, nunc 100, numéro 1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0353(b)",
-   "page": "page_0353",
-   "marker": "(b)",
-   "text": "Daniel 7:13. Confer Apocalypse 14:14. Épiphane. hæres. 57. Theodoret. in c. 7. Dan.",
-   "proposed": "Daniel 7:13. Confer Apocalypse 14:14. Épiphane, Hérésie 57 ; Théodoret, sur Daniel, chapitre 7.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0353(f)",
-   "page": "page_0353",
-   "marker": "(f)",
-   "text": "Clem. Alex. l. 3. Strom. Grot. hic. De Cive.",
-   "proposed": "Saint Clément d'Alexandrie, Stromates, livre 3 ; Grotius, sur ce passage. De Cive.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0354(a)",
-   "page": "page_0354",
-   "marker": "(a)",
-   "text": "Liran. Brugens. Mariana, Le Clerc, Marianay, Cyrill.",
-   "proposed": "Nicolas de Lyre ;\nBrugensis ;\nMariana ;\nLe Clerc ;\nMarianay ;\nsaint Cyrille.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0354(b)",
-   "page": "page_0354",
-   "marker": "(b)",
-   "text": "Chrysost. Homil. 28. in Matt. Basil. de Constitut. Mon. c. 21. Theophyl. et Euthym. hic. Aug. Serm. olim 7. nunc 100. Hilar. in Matt. Ieron hic. Maldon. alii.",
-   "proposed": "Saint Jean Chrysostome, Homélie 28 sur saint Matthieu ; saint Basile, De Constitutione monachorum, chapitre 21 ; Théophylacte et Euthyme, sur ce passage ; saint Augustin, Sermon olim 7, nunc 100 ; saint Hilaire, sur saint Matthieu ; saint Jérôme, sur ce passage ; Maldonat ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0354(c)",
-   "page": "page_0354",
-   "marker": "(c)",
-   "text": "Tertull. l. de Idolat.",
-   "proposed": "Tertullien, De l'idolâtrie.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0354(d)",
-   "page": "page_0354",
-   "marker": "(d)",
-   "text": "Aug lib. IV de Trinit. c. 3. et xx. de Civitate c. 20. Drusmar. hic. Ambros. l. de Abraham. c. 8. Maldon. Alii.",
-   "proposed": "Saint Augustin, De la Trinité, livre 4, chapitre 3, et La Cité de Dieu, livre 20, chapitre 20 ; Drusmar., sur ce passage ; saint Ambroise, D'Abraham, chapitre 8 ; Maldonat ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0354(e)",
-   "page": "page_0354",
-   "marker": "(e)",
-   "text": "Chrysost. hic. August Serm. 100. novæ Édit. Hilar. hic. Ambros. in Psalm. XLVIII. Euthym. hic.",
-   "proposed": "Saint Jean Chrysostome, sur ce passage ;\nsaint Augustin, Sermon 100, nouvelle édition ;\nsaint Hilaire, sur ce passage ;\nsaint Ambroise, sur le Psaume 48 ;\nEuthyme, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0354(f)",
-   "page": "page_0354",
-   "marker": "(f)",
-   "text": "Clem. Alex. l. 5. Strom. Διὸ κἀν βαρβάροις φιλοσοφίας νεκρὸς κληθεὶς τῆς ἀκοσμίας τῶν δηγμάτων, ἀναθεματισθείς τῆς ἀκοῆς αὐτῶν τοῖς ψόφοις.",
-   "proposed": "Saint Clément d'Alexandrie, Stromates, livre 5. Διὸ κἀν βαρβάροις φιλοσοφίας νεκρὸς κληθεὶς τῆς ἀκοσμίας τῶν δηγμάτων, ἀναθεματισθείς τῆς ἀκοῆς αὐτῶν τοῖς ψόφοις.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: δόγμάτων -> δηγμάτων, κἀναθεματισθεὶς -> ἀναθεματισθείς",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0355(b)",
-   "page": "page_0355",
-   "marker": "(b)",
-   "text": "Vide Maldon. Menoch.",
-   "proposed": "Voyez Maldonat ; Ménochius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0355(c)",
-   "page": "page_0355",
-   "marker": "(c)",
-   "text": "Tertull. lib. de Baptismo c. 12. Auiber",
-   "proposed": "Tertullien, Du baptême, chapitre 12. Auiber",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0355(d)",
-   "page": "page_0355",
-   "marker": "(d)",
-   "text": "Aug. Enarr. 2. in Psaumes 25.",
-   "proposed": "Saint Augustin, Enarratio 2 sur le Psaume 25.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0356(d)",
@@ -1738,72 +955,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0356(f)",
-   "page": "page_0356",
-   "marker": "(f)",
-   "text": "Euseb. et Ierom. in locis.",
-   "proposed": "Eusèbe et saint Jérôme, Des lieux hébreux.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0357(b)",
-   "page": "page_0357",
-   "marker": "(b)",
-   "text": "Jambli. Comment. in N comachi Arimetic. Vide not. in Stephan. By zant.",
-   "proposed": "Jamblique, Commentaire sur l'Arithmétique de Nicomaque. Voyez la note sur Étienne de Byzance.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0357(c)",
-   "page": "page_0357",
-   "marker": "(c)",
-   "text": "Joseph de bello l 2. c. 15.",
-   "proposed": "Josèphe, Guerre des Juifs, livre 2, chapitre 15.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0357(e)",
-   "page": "page_0357",
-   "marker": "(e)",
-   "text": "Casaubon adversus Baron. Exercit. 13 an. 31. n. 69.",
-   "proposed": "Casaubon, Contre Baronius, Exercitation 13, année 31, numéro 69.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0357(i)",
-   "page": "page_0357",
-   "marker": "(i)",
-   "text": "Crysost. Theoph l. Euthym.",
-   "proposed": "Saint Jean Chrysostome ;\nThéophylacte ;\nEuthyme.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0357(k)",
-   "page": "page_0357",
-   "marker": "(k)",
-   "text": "Aug. l. 3. de Consens. Evang. c. 24. Beda et Strabus hic.",
-   "proposed": "Saint Augustin, De l'accord des évangélistes, livre 3, chapitre 24 ; Bède et Strabus, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0357(l)",
@@ -1832,83 +983,18 @@
    ]
   },
   {
-   "id": "0358(b)",
-   "page": "page_0358",
-   "marker": "(b)",
-   "text": "Plato in Phædone. Vide Aug. l. 9. de Civit. c. 11.",
-   "proposed": "Platon, Phédon. Voyez saint Augustin, La Cité de Dieu, livre 9, chapitre 11.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0358(c)",
-   "page": "page_0358",
-   "marker": "(c)",
-   "text": "Apul. de Dogmate. Platonis.",
-   "proposed": "Apulée, De Dogmate Platonis.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0358(d)",
-   "page": "page_0358",
-   "marker": "(d)",
-   "text": "Origen. l. 2. p. 97. Édit. Cantabrig. et lib. de Orig. animæ.",
-   "proposed": "Origène, livre 2, page 97, édition de Cambridge, et livre De l'origine de l'âme.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0359(b)",
-   "page": "page_0359",
-   "marker": "(b)",
-   "text": "Iren. hic. Aug. l. 9 de Civit. c. 21. Remig. et alii plures.",
-   "proposed": "Saint Irénée, sur ce passage ;\nsaint Augustin, La Cité de Dieu, livre 9, chapitre 21 ;\nRemi et plusieurs autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0359(d)",
-   "page": "page_0359",
-   "marker": "(d)",
-   "text": "Hilar. can. 8. in Matt. Quidam apud Chrysost. Aug. de Civit. l. 8 c. 23. Vide et Origen. Homil. 8. in XX. Exod.",
-   "proposed": "Saint Hilaire, canon 8 sur saint Matthieu. Quidam dans saint Jean Chrysostome ; saint Augustin, La Cité de Dieu, livre 8, chapitre 23. Voyez aussi Origène, Homélie 8 sur l'Exode 20.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0359(f)",
    "page": "page_0359",
    "marker": "(f)",
    "text": "Jud. ℣ 6.",
    "proposed": "Jud. ℣ 6.",
    "why": [
+    "written out, but a number changed or added: Jude 1:6.",
     "written out, but a number changed or added: Jude 1:6."
    ],
    "flags": [
     "expand-changed-numbers"
    ]
-  },
-  {
-   "id": "0359(g)",
-   "page": "page_0359",
-   "marker": "(g)",
-   "text": "Aug. l. 8. de Civit. c. 23. _Quia subitum illuxit, quod subitum quidem, sed serius opinabantur… et hoc erat ante tempus, id est, ante tempus judicii, quo æterna damnatione puniendi sunt._",
-   "proposed": "Saint Augustin, La Cité de Dieu, livre 8, chapitre 23. _Quia subitum illuxit, quod subitum quidem, sed serius opinabantur… et hoc erat ante tempus, id est, ante tempus judicii, quo æterna damnatione puniendi sunt._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0359(k)",
@@ -1954,116 +1040,6 @@
    ]
   },
   {
-   "id": "0361(f)",
-   "page": "page_0361",
-   "marker": "(f)",
-   "text": "Ieron. in vita S. Hilarionis.",
-   "proposed": "Saint Jérôme, Vie de saint Hilarion.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0361(g)",
-   "page": "page_0361",
-   "marker": "(g)",
-   "text": "Chrysost. Euthym. Theophyl. Athanas. in vita Antonii.",
-   "proposed": "Saint Jean Chrysostome ;\nEuthyme ;\nThéophylacte ;\nsaint Athanase, Vie d'Antoine.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0362(c)",
-   "page": "page_0362",
-   "marker": "(c)",
-   "text": "Theophyl. Euthym. hic Ambros. in Luc. l. 6. Vide Luc 8:37. Maldon. Grot. Brug.",
-   "proposed": "Théophylacte ;\nEuthyme, sur ce passage ;\nsaint Ambroise, sur saint Luc, livre 6. Voyez Luc 8:37. Maldonat ;\nGrotius ;\nBrugensis.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0363(b)",
-   "page": "page_0363",
-   "marker": "(b)",
-   "text": "Sédul. l. 3. Carmin.",
-   "proposed": "Sédulius, Carmina, livre 3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0363(c)",
-   "page": "page_0363",
-   "marker": "(c)",
-   "text": "Toinard, Concord. Evangel. pag. 24.",
-   "proposed": "Toinard, Concordance des évangiles, page 24.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0363(d)",
-   "page": "page_0363",
-   "marker": "(d)",
-   "text": "La Clerc, pag. 83.",
-   "proposed": "La Clerc, page 83.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0363(e)",
-   "page": "page_0363",
-   "marker": "(e)",
-   "text": "Cyprian. l. de Orat. Dominica. Arnaud. pag. 73.",
-   "proposed": "Saint Cyprien, livre De oratione dominica ; Arnaud, page 73.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0364(c)",
-   "page": "page_0364",
-   "marker": "(c)",
-   "text": "Vide Cyrill. Jerosolym. Cathech. 3. Ambros. l. 3. in Luc. Chrysost. Homil. 30. Ieronym. hic. Maldon.",
-   "proposed": "Voyez saint Cyrille de Jérusalem, Catéchèse 3 ;\nsaint Ambroise, livre 3 sur saint Luc ;\nsaint Jean Chrysostome, Homélie 30 ;\nsaint Jérôme, sur ce passage ;\nMaldonat.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0366(a)",
-   "page": "page_0366",
-   "marker": "(a)",
-   "text": "Aug. Tract. in Joann. 72. n. 7.",
-   "proposed": "Saint Augustin, Traité 72 sur saint Jean, numéro 7.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0366(b)",
-   "page": "page_0366",
-   "marker": "(b)",
-   "text": "Ieron. hic. Et sicut carnis summum est probatur spirituali : quæcunque ejusdem virtutis sit, et corporum, et animæ vitia dimiserit.",
-   "proposed": "Saint Jérôme, sur ce passage. Et sicut carnis summum est probatur spirituali : quæcunque ejusdem virtutis sit, et corporum, et animæ vitia dimiserit.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0366(c)",
    "page": "page_0366",
    "marker": "(c)",
@@ -2076,51 +1052,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0366(d)",
-   "page": "page_0366",
-   "marker": "(d)",
-   "text": "Brug. Est. Natal. Alexand. Grot. Hammond. alii.",
-   "proposed": "Brugensis ; Estius ; Noël Alexandre ; Grotius ; Hammond ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0367(b)",
-   "page": "page_0367",
-   "marker": "(b)",
-   "text": "August. de Gratia Christi contra Pelag. et Cælest. cap. 30. et lib. de Gestis Pelag. contra Joann. alii passim.",
-   "proposed": "Saint Augustin, De gratia Christi contra Pelagium et Cælestium, chapitre 30 ; et livre De gestis Pelagii, contre Jean ; et d'autres, passim.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0367(e)",
-   "page": "page_0367",
-   "marker": "(e)",
-   "text": "Chrysost. Homil. 29. et 30. Gregor. et Zéno, etc. alii.",
-   "proposed": "Saint Jean Chrysostome, Homélie 29 et 30 ; Grégoire et Zénon, etc. et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0367(g)",
-   "page": "page_0367",
-   "marker": "(g)",
-   "text": "Chrysost. Homil. 29. Τῷ τῆς χάριτος ἀξιωθέντι, etc.",
-   "proposed": "Saint Jean Chrysostome, Homélie 29. Τῷ τῆς χάριτος ἀξιωθέντι, etc.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0368(c)",
@@ -2163,48 +1094,16 @@
    ]
   },
   {
-   "id": "0370(b)",
-   "page": "page_0370",
-   "marker": "(b)",
-   "text": "Vide Hilar. hic Chrysost. Homil. 31. in Matt. Iren. Bedam, Theophyl. etc.",
-   "proposed": "Voyez saint Hilaire, sur ce passage ; saint Jean Chrysostome, Homélie 31 sur saint Matthieu ; saint Irénée ; Bède ; Théophylacte ; etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0370(d)",
-   "page": "page_0370",
-   "marker": "(d)",
-   "text": "Vide Aug. tract. 7. in Joan. et Enarr. in Psaumes 58. et Serm. 278 nov. Édit.",
-   "proposed": "Voyez saint Augustin, Traité 7 sur saint Jean ;\net Enarrationes sur Psaumes 58 ;\net Sermon 278, nouvelle édition.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0370(i)",
-   "page": "page_0370",
-   "marker": "(i)",
-   "text": "Maldon. Menoc.",
-   "proposed": "Maldonat ; Ménochius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0371(d)",
    "page": "page_0371",
    "marker": "(d)",
    "text": "Marc 2:19. Υἱοὶ τοῦ νυμφῶνος. Vulg. Filii nuptiarum.",
-   "proposed": "Marc 2:19. Υἱοὶ τοῦ νυμφῶνος. Vulg. Filii nuptiarum.",
+   "proposed": "Marc 2:19. Υἱοὶ τοῦ νυμφῶνος. La Vulgate : Filii nuptiarum.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "scan: Changed τῶ to τοῦ (printed τῦ, the ου ligature). Filled the ending with ος.",
-    "read on the scan: ος"
+    "read on the scan: ος",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -2212,45 +1111,13 @@
    ]
   },
   {
-   "id": "0372(b)",
-   "page": "page_0372",
-   "marker": "(b)",
-   "text": "Vide Chrysostom. Homil. 31. Euthym. Theophyl. Ieronym. Maldon. alios.",
-   "proposed": "Voyez saint Jean Chrysostome, Homélie 31 ; Euthyme ; Théophylacte ; saint Jérôme ; Maldonat ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0373(a)",
-   "page": "page_0373",
-   "marker": "(a)",
-   "text": "Vide Ieronym. hic. Tertull. contra Mar-cion. Épiphane. Hæres. 42. August. lib. 8. contra Faust.",
-   "proposed": "Voyez saint Jérôme, sur ce passage ;\nTertullien, Contre Marcion ;\nÉpiphane, Hérésie 42 ;\nsaint Augustin, livre 8 Contre Fauste.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0373(b)",
-   "page": "page_0373",
-   "marker": "(b)",
-   "text": "Vide Tertull. lib. 3. et 4. contra Mar-",
-   "proposed": "Voyez Tertullien, livres 3 et 4 Contre Mar-",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0373(d)",
    "page": "page_0373",
    "marker": "(d)",
-   "text": "Chrys. s. hic.",
-   "proposed": "Saint Jean Chrysostome, s. sur ce passage.",
+   "text": "Saint Jean Chrysostome, s. sur ce passage.",
+   "proposed": "Saint Jean Chrysostome, supra sur ce passage.",
    "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -2269,366 +1136,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0374(b)",
-   "page": "page_0374",
-   "marker": "(b)",
-   "text": "Marc 5:23. Τὸ θυγάτριόν με ἐσχάτως ἔχει. Luc 8:42. Αὕτη ἀπέθνησκεν. Matt. ἐτελεύτησεν.",
-   "proposed": "Marc 5:23. Τὸ θυγάτριόν με ἐσχάτως ἔχει. Luc 8:42. Αὕτη ἀπέθνησκεν. Matthieu : ἐτελεύτησεν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0374(d)",
-   "page": "page_0374",
-   "marker": "(d)",
-   "text": "Grot. Ligfoot. Maldon. Camer. alii passim.",
-   "proposed": "Grotius ; Lightfoot ; Maldonat ; Camerarius ; et d'autres, passim.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0374(f)",
-   "page": "page_0374",
-   "marker": "(f)",
-   "text": "August. lib. 2. de Consensu Evangel. c. 28. Chrysost. in Matt. Beda, Euthym. Theophylact.",
-   "proposed": "Saint Augustin, De consensu evangelistarum, livre 2, chapitre 28 ;\nsaint Jean Chrysostome, sur saint Matthieu ;\nBède ;\nEuthyme ;\nThéophylacte.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0374(g)",
-   "page": "page_0374",
-   "marker": "(g)",
-   "text": "Vide Maldonat. hic et Toinard Harm. Evang. p. 44. 45. Jansen. Gand c. 34. Arnauld Concord. c. 35. Le Roux, sect. 3.",
-   "proposed": "Voyez Maldonat, sur ce passage ;\net Toinard, Harmonie évangélique, pages 44, 45 ;\nJansénius de Gand, chapitre 34 ;\nArnauld, Concorde, chapitre 35 ;\nLe Roux, section 3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0375(a)",
-   "page": "page_0375",
-   "marker": "(a)",
-   "text": "Matthieu 9:19 20. 21. Marc. V. 27. et sequ. Luc 8:41, 51.",
-   "proposed": "Matthieu 9:19-21 ;\nMarc 5:27 et suivants ;\nLuc 8:41, 51.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0375(c)",
-   "page": "page_0375",
-   "marker": "(c)",
-   "text": "Chrysost. et Theophyl hic. Ader. de Morbis Evangel. c. 12. Maldon. Bez. Piscat.",
-   "proposed": "Saint Jean Chrysostome et Théophylacte, sur ce passage ;\nAder, De morbis evangelicis, chapitre 12 ;\nMaldonat ;\nBèze ;\nPiscator.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0375(d)",
-   "page": "page_0375",
-   "marker": "(d)",
-   "text": "Vide Serm. 47. in Appendice nov. Édit. Saint Ambros. olim Libell. de Salom. c. 5.",
-   "proposed": "Voyez Sermon 47, dans l'Appendice, nouvelle édition. Saint Ambroise, autrefois Libellus de Salomone, chapitre 5.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0375(e)",
-   "page": "page_0375",
-   "marker": "(e)",
-   "text": "Euseb. Hist. Ecclesiol. VII. c. 18. Sozomen. lib. 5. c. 21. Q. C.",
-   "proposed": "Eusèbe, Histoire ecclésiastique, livre 7, chapitre 18 ;\nSozomène, livre 5, chapitre 21 ;\nQuinte-Curce.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0376(b)",
-   "page": "page_0376",
-   "marker": "(b)",
-   "text": "Optatus lib. 5. contra Parmen. Et Auth. Serm. 47. in append, novæ Édit. Saint August Petr. ] Chrysolog. Serm. 33.",
-   "proposed": "Saint Optat, livre 5 Contre Parménien. Et l'auteur, Sermon 47, dans l'appendice de la nouvelle édition. Saint Augustin ; ] saint Pierre Chrysologue, Sermon 33.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0377(d)",
-   "page": "page_0377",
-   "marker": "(d)",
-   "text": "Joseph. de Bello, l. 3. cap. 15. Πλείονας ἢ τριάκοντα ἡμέρας τὸν θρῆνον ἐπέσχον αὐτοῖς.",
-   "proposed": "Josèphe, Guerre des Juifs, livre 3, chapitre 15. Πλείονας ἢ τριάκοντα ἡμέρας τὸν θρῆνον ἐπέσχον αὐτοῖς.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0377(e)",
-   "page": "page_0377",
-   "marker": "(e)",
-   "text": "Vide Selden. uxor Hebr. lib. 3. c. 8.",
-   "proposed": "Voyez Selden, Uxor hebraica, livre 3, chapitre 8.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0377(g)",
-   "page": "page_0377",
-   "marker": "(g)",
-   "text": "Servius in Æneid. v. ad hæc verba : _Landumque arrecta cupido. Majoris ætatis funera ad tubam proserebantur, Minoris ad tibiam._",
-   "proposed": "Servius, sur l'Énéide, livre 5, à ces mots : _Landumque arrecta cupido. Majoris ætatis funera ad tubam proserebantur, Minoris ad tibiam._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0377(h)",
-   "page": "page_0377",
-   "marker": "(h)",
-   "text": "Statius Thibaid. l. 6. Vide et Propert. _Tibia funerej à tristior illa sui à. Et Ovid. Tibia Funeribus convenit ista meis._",
-   "proposed": "Stace, Thébaïde, livre 6. Voyez aussi Properce : _Tibia funerej à tristior illa sui à. Et Ovide : Tibia Funeribus convenit ista meis._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0378(c)",
-   "page": "page_0378",
-   "marker": "(c)",
-   "text": "Maldonat. Tirin.",
-   "proposed": "Maldonat ; Tirin.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0378(d)",
-   "page": "page_0378",
-   "marker": "(d)",
-   "text": "Ieronym. Chrysost. Theophylact. Bragens. Piscat.",
-   "proposed": "Saint Jérôme ;\nsaint Jean Chrysostome ;\nThéophylacte ;\nBragensis ;\nPiscator.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0378(f)",
-   "page": "page_0378",
-   "marker": "(f)",
-   "text": "Homer. Iliad. E. Ενθ' ὕπνῳ ξύμβλητο κασιγνήτῳ θανάτοιο.",
-   "proposed": "Homère, Iliade, E. Ενθ' ὕπνῳ ξύμβλητο κασιγνήτῳ θανάτοιο.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0380(b)",
-   "page": "page_0380",
-   "marker": "(b)",
-   "text": "Chrysost. et Theop ylact. et Ieronym. et Beda in hunc loc. Gregor. Magn. moral. l. XIX. cap. 28.",
-   "proposed": "Saint Jean Chrysostome ;\nThéophylacte ;\nsaint Jérôme ;\net Bède, sur ce passage. Saint Grégoire le Grand, Morales sur Job, livre 19, chapitre 28.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0380(f)",
-   "page": "page_0380",
-   "marker": "(f)",
-   "text": "August. lib. 2. de Consensu. Maldonat. Menoch. hic.",
-   "proposed": "Saint Augustin, livre 2 De consensu evangelistarum ;\nMaldonat ;\nMénochius, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0381(a)",
-   "page": "page_0381",
-   "marker": "(a)",
-   "text": "Voyez Toynard, Harmon. pag. 68. Jansen. Gandav. Concord. Chapitre 49. Ainaud, Chapitre 49 Le Roux, Réf. S. n 14.. Le Clerc pag. 141.",
-   "proposed": "Voyez Toynard, Harmonie, page 68. Jansénius de Gand, Concorde, Chapitre 49. Ainaud, Chapitre 49 Le Roux, Réf. S. numéro 14.. Le Clerc, page 141.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0382(b)",
-   "page": "page_0382",
-   "marker": "(b)",
-   "text": "Comparez Matthieu 10:1-2. et seq. Marc 6:7-9. Luc 9:1-2. et seq.",
-   "proposed": "Comparez Matthieu 10:1-2 et suivants ;\nMarc 6:7-9 ;\nLuc 9:1-2 et suivants.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0382(d)",
-   "page": "page_0382",
-   "marker": "(d)",
-   "text": "Ὅτι ἦσαν ἐσκυλμένοι, καὶ ἐρριμμένοι, ἀλλὰ Codd. Eorusdem, et Ismaël. Ita quam plurimi apud Mill. Ita et Gothica. Syr Eth. Persica vers. Ita et Hilar. Ieron. Basil. Chrysost. Theophil. Vide et Hamm. hic.",
-   "proposed": "Ὅτι ἦσαν ἐσκυλμένοι, καὶ ἐρριμμένοι, ἀλλὰ Manuscrits Eorusdem, et Ismaël. Ainsi lisent un très grand nombre, dans Mill. Ainsi lit aussi la version gothique, le Syriaque, l'Éthiopien, la version persane. Ainsi lisent aussi saint Hilaire, saint Jérôme, saint Basile, saint Jean Chrysostome, Théophile. Voyez aussi Hammond, sur ce passage.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Οτι -> Ὅτι, κὶ -> καὶ, σκυλμένοι -> ἐσκυλμένοι, ἐῤῥιμμένοι -> ἐρριμμένοι",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0384(a)",
-   "page": "page_0384",
-   "marker": "(a)",
-   "text": "Matthieu 5:1-2. Comparé à Luc 6:13. et s.",
-   "proposed": "Matthieu 5:1-2. Comparé à Luc 6:13 et suivants.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0384(c)",
-   "page": "page_0384",
-   "marker": "(c)",
-   "text": "Irenæus l. 2. c. 37. Tertull. l. 4. contra Marcion. Græci sæpiùs.",
-   "proposed": "Saint Irénée, livre 2, chapitre 37 ; Tertullien, livre 4 Contre Marcion ; les Grecs, plus souvent.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0385(a)",
-   "page": "page_0385",
-   "marker": "(a)",
-   "text": "In Codice Theodos. lib. 16. tit. 8. de Judæis, lege 4. _Quos ipsi Apostolos vocant, qui ad exigendum aurum, atque argentum à Patriarcha certo tempore designantur, à singulis Synagogis exactam summam atque susceptam ad eumdem reportant._",
-   "proposed": "Dans le Code Théodosien, livre 16, titre 8, De Judæis, loi 4. _Quos ipsi Apostolos vocant, qui ad exigendum aurum, atque argentum à Patriarcha certo tempore designantur, à singulis Synagogis exactam summam atque susceptam ad eumdem reportant._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0385(d)",
-   "page": "page_0385",
-   "marker": "(d)",
-   "text": "Vide Cyprian. de Unitate Ecclesiæ. Aug. l. 2. de Bapt contra Donat c. 1. Cyrill. in Joan. l. 12. Grot. hic. Belarm. alios.",
-   "proposed": "Voyez saint Cyprien, De l'unité de l'Église ; saint Augustin, livre 2 Du baptême contre les donatistes, chapitre 1 ; saint Cyrille, sur saint Jean, livre 12 ; Grotius, sur ce passage ; Bellarmin ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0386(g)",
-   "page": "page_0386",
-   "marker": "(g)",
-   "text": "Ep phan. Hæres. 51.",
-   "proposed": "Saint Épiphane, Hérésie 51.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0386(h)",
-   "page": "page_0386",
-   "marker": "(h)",
-   "text": "Chrysost. in Matt. Homil. 59. Πρωτότοκος.",
-   "proposed": "Saint Jean Chrysostome, sur saint Matthieu, Homélie 59. Πρωτότοκος.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0386(i)",
-   "page": "page_0386",
-   "marker": "(i)",
-   "text": "Proclus Orat. 10. p 553.",
-   "proposed": "Proclus, Discours 10, page 553.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0386(k)",
-   "page": "page_0386",
-   "marker": "(k)",
-   "text": "Cassian. in Nestor. l. 3. c. 12.",
-   "proposed": "Cassien, Contre Nestorius, livre 3, chapitre 12.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0386(l)",
-   "page": "page_0386",
-   "marker": "(l)",
-   "text": "Dionis. de Divinis nominib c. 3. §. 2. Η κορυφαία, καὶ πρεσβυτάτη τῶν θεολόγων ἀκρότης",
-   "proposed": "Saint Denys, Des noms divins, chapitre 3, §. 2. Η κορυφαία, καὶ πρεσβυτάτη τῶν θεολόγων ἀκρότης",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: των -> τῶν, ακρότης -> ἀκρότης",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0388(k)",
-   "page": "page_0388",
-   "marker": "(k)",
-   "text": "Rupert. in cap. X. Joan. Osor. Serm. de S. Joanne.",
-   "proposed": "Rupert, sur le chapitre 10 de saint Jean ; Osorius, Sermon sur saint Jean.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0389(f)",
-   "page": "page_0389",
-   "marker": "(f)",
-   "text": "Euseb. H s. Eccl. l. 1. c. 13.",
-   "proposed": "Eusèbe, Histoire ecclésiastique, livre 1, chapitre 13.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0390(b)",
@@ -2653,28 +1160,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0390(d)",
-   "page": "page_0390",
-   "marker": "(d)",
-   "text": "Desit in Ms. Cantabrig. Copht. aliis, teste. Aug l 2. de Consensu, c. 30.",
-   "proposed": "Desit in manuscrit de Cambridge ; le Copte ; aliis, teste saint Augustin, De l'accord des évangélistes, livre 2, chapitre 30.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0390(g)",
-   "page": "page_0390",
-   "marker": "(g)",
-   "text": "Hegesipp. apud Euseb. Histor. Eccles. l. 3. c. 20.",
-   "proposed": "Hégésippe, dans Eusèbe, Histoire ecclésiastique, livre 3, chapitre 20.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0390(i)",
@@ -2705,28 +1190,6 @@
    ]
   },
   {
-   "id": "0391(a)",
-   "page": "page_0391",
-   "marker": "(a)",
-   "text": "Hammond. Hic. Stalig. Grot. Vide et Lightfoot. et Drusium.",
-   "proposed": "Hammond, sur ce passage ;\nStalig. ;\nGrotius. Voyez aussi Lightfoot et Drusius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0391(g)",
-   "page": "page_0391",
-   "marker": "(g)",
-   "text": "Euseb. in Isaïe 28:1. Ieron. in eundem Isaiæ locum.",
-   "proposed": "Eusèbe, sur Isaïe 28:1 ; saint Jérôme, sur le même passage d'Isaïe.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0391(l)",
    "page": "page_0391",
    "marker": "(l)",
@@ -2742,78 +1205,11 @@
    "id": "0392(a)",
    "page": "page_0392",
    "marker": "(a)",
-   "text": "Or gen Ms. C ntabrig. G. L Syr. Codd. Σ. ms 2. vetust sim. Biblio h. Bodlei. In ivitatem : Comme s'il voulait désigner Saemari.",
-   "proposed": "Or gen manuscrit C ntabrig. G. L le Syriaque Codd. Σ. manuscrit 2. vetust sim. Biblio h. Bodlei. In ivitatem : Comme s'il voulait désigner Saemari.",
+   "text": "Or gen manuscrit C ntabrig. G. L le Syriaque Codd. Σ. manuscrit 2. vetust sim. Biblio h. Bodlei. In ivitatem : Comme s'il voulait désigner Saemari.",
+   "proposed": "Origène, manuscrit Cantabrig. Gr. Lat., le Syriaque, manuscrits Σ., manuscrit 2 très ancien, Bibliothèque Bodléienne. In civitatem : Comme s'il voulait désigner Saemari.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0392(c)",
-   "page": "page_0392",
-   "marker": "(c)",
-   "text": "Græc. Εἰς πόλιν Σαμαρειτῶν μὴ εἰσέλθητε.",
-   "proposed": "Le Grec : Εἰς πόλιν Σαμαρειτῶν μὴ εἰσέλθητε.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0393(c)",
-   "page": "page_0393",
-   "marker": "(c)",
-   "text": "Non legunt Steph. Ms. 9. Barber. 9. Colbert. 3. Bodleian. 6. Selden. 4. Usser. 2. Alii quàmplurimi. Vide Var. Lect. Mill.",
-   "proposed": "Non legunt Étienne, manuscrits 9 ; Barberini 9 ; Colbert 3 ; Bodleian 6 ; Selden 4 ; Ussérius 2 ; et d'autres quàmplurimi. Voyez Variae lectiones, Mill.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0394(a)",
-   "page": "page_0394",
-   "marker": "(a)",
-   "text": "Maldon. Grot. Menoc. Brug.",
-   "proposed": "Maldonat ;\nGrotius ;\nMénochius ;\nBrugensis.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0394(c)",
-   "page": "page_0394",
-   "marker": "(c)",
-   "text": "Vide August. de Consensu Evang. lib. 2. cap. 30.",
-   "proposed": "Voyez saint Augustin, De l'accord des évangélistes, livre 2, chapitre 30.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0394(d)",
-   "page": "page_0394",
-   "marker": "(d)",
-   "text": "Μὴ κτήσησθε χρυσὸν, vide Chrysost. hic.",
-   "proposed": "Μὴ κτήσησθε χρυσὸν, voyez saint Jean Chrysostome, sur ce passage.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0394(f)",
-   "page": "page_0394",
-   "marker": "(f)",
-   "text": "Horat. Epist. l. 1. Ep. 1.",
-   "proposed": "Horace, Épîtres, livre 1, lettre 1.",
-   "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -2831,62 +1227,6 @@
    ]
   },
   {
-   "id": "0394(h)",
-   "page": "page_0394",
-   "marker": "(h)",
-   "text": "Apud Aul. Gell. l. 15. c. 12. Zonas quas plenas argenti extuli, eas ex provincia inanes retuli.",
-   "proposed": "Dans Aulu-Gelle, livre 15, chapitre 12. Zonas quas plenas argenti extuli, eas ex provincia inanes retuli.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0395(a)",
-   "page": "page_0395",
-   "marker": "(a)",
-   "text": "Horat. l. Ep. 2. Ibis eò quò vis qui zonam perdidit.",
-   "proposed": "Horace, livre 1, lettre 2. Ibis eò quò vis qui zonam perdidit.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0395(b)",
-   "page": "page_0395",
-   "marker": "(b)",
-   "text": "Sueton. in Vitellio. Zonâ se aureorum plenâ circumdedit, confugitque in sellam janitoris.",
-   "proposed": "Suétone, Vitellius. Zonâ se aureorum plenâ circumdedit, confugitque in sellam janitoris.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0395(e)",
-   "page": "page_0395",
-   "marker": "(e)",
-   "text": "Græc. Μὴ πήραν εἰς ὁδὸν,",
-   "proposed": "Le Grec : Μὴ πήραν εἰς ὁδὸν,",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0396(a)",
-   "page": "page_0396",
-   "marker": "(a)",
-   "text": "Ita ferè Ieron. hoc loco. Et August. lib. 2. de Consens. c. 30. Salmas. ad Tertull. Pall. C. 3. Buidun. de Calceo antiquo, c. 12. Lightfoot. Hor. Hebr. in Matt. alii.",
-   "proposed": "C'est à peu près ainsi que saint Jérôme, à cet endroit ; et saint Augustin, De l'accord des évangélistes, livre 2, chapitre 30 ; Saumaise, sur Tertullien, Du manteau, chapitre 3 ; Baudouin, De calceo antiquo, chapitre 12 ; Lightfoot, Horae hebraicae sur Matthieu ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0396(b)",
    "page": "page_0396",
    "marker": "(b)",
@@ -2901,84 +1241,6 @@
    ]
   },
   {
-   "id": "0396(d)",
-   "page": "page_0396",
-   "marker": "(d)",
-   "text": "Paschas. Radbert. l. 6. in Matt.",
-   "proposed": "Paschase Radbert, livre 6, sur Matthieu.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0396(e)",
-   "page": "page_0396",
-   "marker": "(e)",
-   "text": "Maldouat Paul. Burg. Caietan. Gagn. Gui land Suarez, Ribera, Conizen, Piscat. Grot. Erasm. Beza. Vincent. Reginus. Vide Bynæum de calceis, Hebr. l. 1. t. 6.",
-   "proposed": "Maldonat ;\nPaul de Burgos ;\nCajetan ;\nGagnée ;\nGui land ;\nSuarez ;\nRibera ;\nConizen ;\nPiscator ;\nGrotius ;\nÉrasme ;\nBèze ;\nVincent ;\nReginus. Voyez Bynæus, De calceis Hebraeorum, livre 1, chapitre 6.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0396(f)",
-   "page": "page_0396",
-   "marker": "(f)",
-   "text": "Juvencus, l. 2.",
-   "proposed": "Juvencus, livre 2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0396(h)",
-   "page": "page_0396",
-   "marker": "(h)",
-   "text": "Brugens. Piscat. Menoc. Hamm.",
-   "proposed": "Brugensis ;\nPiscator ;\nMénochius ;\nHammond.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0397(b)",
-   "page": "page_0397",
-   "marker": "(b)",
-   "text": "Grot. Beza, hic, Byneus de Calceo, l. 1. c. 6. Natal. Alex in hunc locum.",
-   "proposed": "Grotius ;\nBèze, sur ce passage ;\nBynæus, De calceo, livre 1, chapitre 6 ;\nNoël Alexandre, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0397(c)",
-   "page": "page_0397",
-   "marker": "(c)",
-   "text": "ῥάβδος, legunt Steph. Codd. 10. Bodl. 4. Vesul. 1. hunt. 1. Usser. 2. Laud. 2. alii pluri mi. Vide Mill.",
-   "proposed": "ῥάβδος, legunt Étienne ; manuscrits 10 ; Bodleian 4 ; Vesul. 1 ; hunt. 1 ; Ussérius 2 ; Laud 2 ; alii pluri mi. Voyez Mill.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0397(h)",
-   "page": "page_0397",
-   "marker": "(h)",
-   "text": "Ierom. Mald. Est. alii",
-   "proposed": "Saint Jérôme ; Maldonat ; Estius ; et d'autres",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0399(a)",
    "page": "page_0399",
    "marker": "(a)",
@@ -2991,127 +1253,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0400(a)",
-   "page": "page_0400",
-   "marker": "(a)",
-   "text": "Aug. de Correp. et Grat. c. 15. Ad nos revertetur, id est, nobis proderit ista prædicatio, non et illi ; si autem super eum pax prædicata requieverit, et nobis et illi. Vide et Ieronym. hic. thym. hic. Hilar. in Matt. Tertull. l. 4. contra Marcion. Græc. alii.",
-   "proposed": "Saint Augustin, De la correction et de la grâce, chapitre 15. Ad nos revertetur, id est, nobis proderit ista prædicatio, non et illi ; si autem super eum pax prædicata requieverit, et nobis et illi. Voyez aussi saint Jérôme, sur ce passage ; thym. sur ce passage ; saint Hilaire, sur Matthieu ; Tertullien, livre 4 Contre Marcion ; le Grec ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0400(b)",
-   "page": "page_0400",
-   "marker": "(b)",
-   "text": "Maldonat. Grot. Menoch.",
-   "proposed": "Maldonat ;\nGrotius ;\nMénochius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0400(d)",
-   "page": "page_0400",
-   "marker": "(d)",
-   "text": "Chrysost. Ieronym. et Theophilact. hic. August. qu. 7. in Matt. Ambros. in Luc. Em-",
-   "proposed": "Saint Jean Chrysostome ;\nsaint Jérôme ;\net Théophylacte, sur ce passage ;\nsaint Augustin, question 7 sur Matthieu ;\nsaint Ambroise, sur Luc ;\nEm-",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0400(f)",
-   "page": "page_0400",
-   "marker": "(f)",
-   "text": "Origen. Homil. 18. in Genes. Hilar. hic, Maldonat. Menoc.",
-   "proposed": "Origène, Homélie 18 sur la Genèse ;\nsaint Hilaire, sur ce passage ;\nMaldonat ;\nMénochius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0401(a)",
-   "page": "page_0401",
-   "marker": "(a)",
-   "text": "Vide Chrysost. serm. Redam. hic ; Aug. qu. 7. in Matt.",
-   "proposed": "Voyez saint Jean Chrysostome, Sermon Redam, sur ce passage ; saint Augustin, question 7 sur Matthieu.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0402(d)",
-   "page": "page_0402",
-   "marker": "(d)",
-   "text": "Author Oper. imperfect. Tertull. lib. contra Valentin. Nazianz. Orat. 19. Isidor. Pelus. l. 3. Ep. 175. Greg. in Job. l. 1. c. 1.",
-   "proposed": "L'auteur de l'Ouvrage imparfait ;\nTertullien, livre Contre Valentin ;\nsaint Grégoire de Nazianze, Discours 19 ;\nsaint Isidore de Péluse, livre 3, lettre 175 ;\nsaint Grégoire le Grand, sur Job, livre 1, chapitre 1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0402(e)",
-   "page": "page_0402",
-   "marker": "(e)",
-   "text": "Author Oper. imperfect. Theophyl. hîc.",
-   "proposed": "L'auteur de l'Ouvrage imparfait ; Théophylacte, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0403(a)",
-   "page": "page_0403",
-   "marker": "(a)",
-   "text": "Épiphane. Phisolog. c. 15. Et hæres. 37. Chrysost. in Psal. CXIV. Isidor. Pelus. l. I. Ep. 226. Isidor. Hispal. l. 12. c. 4. alii passim.",
-   "proposed": "Épiphane, Physiologus, chapitre 15, et Hérésie 37 ; saint Jean Chrysostome, sur le Psaume 114 ; saint Isidore de Péluse, livre 1, lettre 226 ; saint Isidore de Séville, livre 12, chapitre 4 ; et d'autres passim.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0403(b)",
-   "page": "page_0403",
-   "marker": "(b)",
-   "text": "Épiphane. Hæres. 37. Cæsar. Dialog. 4. qu. 190. Eusthat. in Hexaëmer. Petr. Damian. Ieronym. seu alius Ep. ad Præsidium.",
-   "proposed": "Épiphane, Hérésie 37 ;\nCésaire, Dialogue 4, question 190 ;\nEustathe, sur l'Hexaméron ;\nPierre Damien ;\nsaint Jérôme, ou un autre, Lettre à Præsidium.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0403(k)",
-   "page": "page_0403",
-   "marker": "(k)",
-   "text": "Aristot. Histor. l. 1. c. 1.",
-   "proposed": "Aristote, Histoire des animaux, livre 1, chapitre 1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0404(b)",
-   "page": "page_0404",
-   "marker": "(b)",
-   "text": "Theodoret. in Osée 7:11. et Iovinian. Ibid. Theophyl. hic.",
-   "proposed": "Théodoret, sur Osée 7:11 ;\net Jovinien, au même endroit ;\nThéophylacte, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0404(c)",
@@ -3144,6 +1285,7 @@
    "text": "Sap. xij. 8. 23. 24. 27.",
    "proposed": "Sap. xij. 8. 23. 24. 27.",
    "why": [
+    "written out, but a number changed or added: Sagesse 12:8 ; 12:23-24 ; 12:27.",
     "written out, but a number changed or added: Sagesse 12:8 ; 12:23-24 ; 12:27."
    ],
    "flags": [
@@ -3167,10 +1309,11 @@
    "page": "page_0411",
    "marker": "(d)",
    "text": "Gemarr. tractat. Sanhédrin. c. 1. §. 7. et Barachoth. c. 9. et Elias in Thisbi. voce תרגום",
-   "proposed": "Gemarr. tractat. Sanhédrin. c. 1. §. 7. et Barachoth. c. 9. et Elias in Thisbi. voce תרגום",
+   "proposed": "Gémara, traité Sanhédrin, chapitre 1, § 7, et Barachoth, chapitre 9 ; et Élie dans le Thisbi, au mot תרגום.",
    "why": [
     "scan: Filled the Hebrew placeholder with תרגום.",
-    "read on the scan: תרגום"
+    "read on the scan: תרגום",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -3225,22 +1368,12 @@
    "text": "Voyez Joseph. Mede, triga Dissert. Eccles. p. 25. et Lightfoot. Hor. Hebr. ad Luc. xij. 26.",
    "proposed": "Voyez Joseph. Mede, triga Dissert. Eccles. p. 25. et Lightfoot. Hor. Hebr. ad Luc. xij. 26.",
    "why": [
+    "written out, but a number changed or added: Voyez Joseph Mede, Triga dissertationum ecclesiasticarum, page 25 ; et Lightfoot, Horae hebraicae sur Luc 12:26.",
     "written out, but a number changed or added: Voyez Joseph Mede, Triga dissertationum ecclesiasticarum, page 25 ; et Lightfoot, Horae hebraicae sur Luc 12:26."
    ],
    "flags": [
     "expand-changed-numbers"
    ]
-  },
-  {
-   "id": "0429(e)",
-   "page": "page_0429",
-   "marker": "(e)",
-   "text": "Hippolit. l. de Consum. mundi. Orig. Tract. 3. in Matt. Chrys. Homil. 4. in 2. Thessal. Aug. l. LXXXII. quæstionum, qu. 58. et tract. 4. in Joan. Iren. in Matt. XVII. Greg. in Job. Theodoret. in Malachie 4. et alii.",
-   "proposed": "Hippolyte, livre De la consommation du monde ; Origène, Traité 3 sur Matthieu ; saint Jean Chrysostome, Homélie 4 sur 2 Thessaloniciens ; saint Augustin, livre 82 des Questions, question 58, et Traité 4 sur saint Jean ; saint Irénée, sur Matthieu 17 ; saint Grégoire le Grand, sur Job ; Théodoret, sur Malachie 4 ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0434(c)",
@@ -3325,88 +1458,12 @@
    "proposed": "Jérémie 14:14-16. 23:25. 27:10, 14. 29:9. Isaïe 59:13.",
    "why": [
     "the Latin next to the call is Ézéchiel 13:3, not Jérémie 14:14-16, Isaïe 59:13",
+    "the Latin next to the call is Ézéchiel 13:3, not Jérémie 14:14-16, Isaïe 59:13",
     "the Latin next to the call is Ézéchiel 13:3, not Jérémie 14:14-16, Isaïe 59:13"
    ],
    "flags": [
     "reference-mismatch"
    ]
-  },
-  {
-   "id": "0482(a)",
-   "page": "page_0482",
-   "marker": "(a)",
-   "text": "Vide Var. Lect. Mill. in hunc loc.",
-   "proposed": "Voyez Variæ lectiones, Mill, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0484(a)",
-   "page": "page_0484",
-   "marker": "(a)",
-   "text": "Vide Aug. l. 1. Quæst. Evangel. cap. 13. Ambros. in Psalm. CXVIII. Serm. 1. Euthym. Theophyl. Beda, Gregor. Magn. Homil. XI. in Evangel.",
-   "proposed": "Voyez saint Augustin, Questions sur l'Évangile, livre 1, chapitre 13 ;\nsaint Ambroise, sur le Psaume 118, Sermon 1 ;\nEuthyme ;\nThéophylacte ;\nBède ;\nsaint Grégoire le Grand, Homélie 11 sur l'Évangile.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0484(f)",
-   "page": "page_0484",
-   "marker": "(f)",
-   "text": "Gregor. Magn. Homil. XI. in Evangel. Basil. Regul. Fus. disput. qu. 8.",
-   "proposed": "Saint Grégoire le Grand, Homélie 11 sur l'Évangile ; saint Basile, Regulæ fusius tractatæ, question 8.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0485(a)",
-   "page": "page_0485",
-   "marker": "(a)",
-   "text": "Aug. Serm. 361. Aliàs 111. de Diversis. Vide Greg. Homil. XI. in Evang.",
-   "proposed": "Saint Augustin, Sermon 361, autrement 111, De diversis. Voyez saint Grégoire le Grand, Homélie 11 sur l'Évangile.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0485(b)",
-   "page": "page_0485",
-   "marker": "(b)",
-   "text": "Natal Alex. Brug.",
-   "proposed": "Noël Alexandre ; Lucas de Bruges.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0486(a)",
-   "page": "page_0486",
-   "marker": "(a)",
-   "text": "Aug. Quæst. in Matt. c. 16. Maldon. hic. Mimoch.",
-   "proposed": "Saint Augustin, Questions sur Matthieu, chapitre 16 ;\nMaldonat, sur ce passage ;\nMénochius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0486(d)",
-   "page": "page_0486",
-   "marker": "(d)",
-   "text": "Hilar. Chrysost. Ieron. Beda, Theophyl. Euthym. in hunc loc. Aug. l. Quæstionum in Matt. c. 16.",
-   "proposed": "Saint Hilaire ;\nsaint Jean Chrysostome ;\nsaint Jérôme ;\nBède ;\nThéophylacte ;\nEuthyme, sur ce passage ;\nsaint Augustin, livre des Questions sur Matthieu, chapitre 16.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0487(b)",
@@ -3423,142 +1480,22 @@
    ]
   },
   {
-   "id": "0487(e)",
-   "page": "page_0487",
-   "marker": "(e)",
-   "text": "Author Oper. imperfecti, ℣. 18. Homil. 1. in Matt.",
-   "proposed": "L'auteur de l'Opus imperfectum, Matthieu 13:18, Homélie 1 sur Matthieu.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0488(a)",
    "page": "page_0488",
    "marker": "(a)",
    "text": "Theodoret. Histor. Eccles. l. 3. c. 18. Sozomin. l. 6. c. 2. Hist. Eccl. Osor. j in Οὗτος ὁ τίκτων υἱὸς Sæculo θήκην αὐτῷ ξυλίνην πρὸς θάνατον κατασκευάζει.",
-   "proposed": "Theodoret. Histor. Eccles. l. 3. c. 18. Sozomin. l. 6. c. 2. Hist. Eccl. Osor. j in Οὗτος ὁ τίκτων υἱὸς Sæculo θήκην αὐτῷ ξυλίνην πρὸς θάνατον κατασκευάζει.",
+   "proposed": "Théodoret, Histoire ecclésiastique, livre 3, chapitre 18 ; Sozomène, livre 6, chapitre 2, Histoire ecclésiastique ; Osor. j in Οὗτος ὁ τίκτων υἱὸς Sæculo θήκην αὐτῷ ξυλίνην πρὸς θάνατον κατασκευάζει.",
    "why": [
     "scan: Filled three Greek placeholders from the printed Greek line. The Latin around them is garbled and left as given.",
     "read on the scan: Οὗτος ὁ τίκτων υἱὸς",
     "read on the scan: θήκην αὐτῷ ξυλίνην",
-    "read on the scan: πρὸς θάνατον κατασκευάζει"
+    "read on the scan: πρὸς θάνατον κατασκευάζει",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
     "expand-unread"
    ]
-  },
-  {
-   "id": "0488(c)",
-   "page": "page_0488",
-   "marker": "(c)",
-   "text": "Justin Dialog. cum Tryphone.",
-   "proposed": "Saint Justin, Dialogue avec Tryphon.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0488(g)",
-   "page": "page_0488",
-   "marker": "(g)",
-   "text": "Bedd. in Marc. c. 6.",
-   "proposed": "Bède, sur Marc, chapitre 6.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0488(h)",
-   "page": "page_0488",
-   "marker": "(h)",
-   "text": "Or gen contra Cels. l. 6.",
-   "proposed": "Origène, Contre Celse, livre 6.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0488(i)",
-   "page": "page_0488",
-   "marker": "(i)",
-   "text": "Liran. Maldon. Grot. alii.",
-   "proposed": "Nicolas de Lyre ; Maldonat ; Grotius ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0488(k)",
-   "page": "page_0488",
-   "marker": "(k)",
-   "text": "Aug. l. 2. de Consensu Evangel. c. 4.",
-   "proposed": "Saint Augustin, De consensu evangelistarum, livre 2, chapitre 4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0489(a)",
-   "page": "page_0489",
-   "marker": "(a)",
-   "text": "Vide Mill. Par. Lat. bis.",
-   "proposed": "Voyez Mill. Par. Lat. deux fois.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0489(b)",
-   "page": "page_0489",
-   "marker": "(b)",
-   "text": "Marc 6:3. in Græco, l'on. Vulg. Joseph Alii l'ont vu. Josephus, hic et Marc 15:40.",
-   "proposed": "Marc 6:3. dans le Grec, l'on. la Vulgate Josèphe D'autres l'ont vu. Josèphe, sur ce passage et Marc 15:40.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0489(c)",
-   "page": "page_0489",
-   "marker": "(c)",
-   "text": "Vide Ierom. op. 150. Theodoret. ad Galat. I. Chrysost. alii.",
-   "proposed": "Voyez saint Jérôme, lettre 150 ; Théodoret, sur Galates 1 ; saint Jean Chrysostome ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0489(e)",
-   "page": "page_0489",
-   "marker": "(e)",
-   "text": "Ieronym. in Matthieu 12. et in Helvid. c. 9. Nicephor. lib. 2. cap. 1. Hilar. in Matt. 1. Nyssen. Homil. 2. de Resurr. Ambros. Instit. virg. c. 6. Ambrosiaster ad Galat. 1. Origen in Matthieu 13.",
-   "proposed": "Saint Jérôme, sur Matthieu 12, et Contre Helvidius, chapitre 9 ; Nicéphore, livre 2, chapitre 1 ; saint Hilaire, sur Matthieu 1 ; saint Grégoire de Nysse, Homélie 2 sur la résurrection ; saint Ambroise, De l'institution des vierges, chapitre 6 ; l'Ambrosiaster, sur Galates 1 ; Origène, sur Matthieu 13.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0489(h)",
-   "page": "page_0489",
-   "marker": "(h)",
-   "text": "Ierom. in Helvid. c. 9. Petr. Damian. Opuscul. 17. c. 3.",
-   "proposed": "Saint Jérôme, Contre Helvidius, chapitre 9 ; Pierre Damien, Opuscule 17, chapitre 3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0490(a)",
@@ -3567,22 +1504,12 @@
    "text": "Ieron. in Matt. xıı. in Helvid. c. 9.",
    "proposed": "Ieron. in Matt. xıı. in Helvid. c. 9.",
    "why": [
+    "written out, but a number changed or added: Saint Jérôme, sur Matthieu 12, Contre Helvidius, chapitre 9.",
     "written out, but a number changed or added: Saint Jérôme, sur Matthieu 12, Contre Helvidius, chapitre 9."
    ],
    "flags": [
     "expand-changed-numbers"
    ]
-  },
-  {
-   "id": "0490(b)",
-   "page": "page_0490",
-   "marker": "(b)",
-   "text": "Euseb. Hist. lib. Eccles. Vide not. Valesii, et Scaliger. in Euseb. p. 188.",
-   "proposed": "Eusèbe, Histoire ecclésiastique. Voyez les notes de Valois ; et Scaliger, sur Eusèbe, page 188.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0490(d)",
@@ -3591,6 +1518,7 @@
    "text": "Marc. vı. 5.",
    "proposed": "Marc. vı. 5.",
    "why": [
+    "written out, but a number changed or added: Marc 6:5.",
     "written out, but a number changed or added: Marc 6:5."
    ],
    "flags": [
@@ -3625,149 +1553,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0493(d)",
-   "page": "page_0493",
-   "marker": "(d)",
-   "text": "Joseph. Antiq. lib. XVIII cap 7 Les Juifs eux-mêmes l'appellent Philippe Vide Jesipp. Gorionid. et verba Regum Israël, et Tzemach David.",
-   "proposed": "Josèphe, Antiquités judaïques, livre 18, chapitre 7 Les Juifs eux-mêmes l'appellent Philippe Voyez Jesippus Gorionides, et verba Regum Israël, et Tzemach David.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0494(c)",
-   "page": "page_0494",
-   "marker": "(c)",
-   "text": "Aug. de F. et Operib. c. 19.",
-   "proposed": "Saint Augustin, De la foi et des œuvres, chapitre 19.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0495(f)",
-   "page": "page_0495",
-   "marker": "(f)",
-   "text": "Chrysost. in Matt. Homil. 49. Ieronym. hic. Ambros. l. 3. de Virgin.",
-   "proposed": "Saint Jean Chrysostome, sur Matthieu, Homélie 49 ;\nsaint Jérôme, sur ce passage ;\nsaint Ambroise, livre 3, Des vierges.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0496(a)",
-   "page": "page_0496",
-   "marker": "(a)",
-   "text": "Fulvia. Vide Heins. Exercit. Sacr. pag. 48.",
-   "proposed": "Fulvia. Voyez Heinsius, Exercitationes sacræ, page 48.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0496(e)",
-   "page": "page_0496",
-   "marker": "(e)",
-   "text": "Ambros. l. de Virginib.",
-   "proposed": "Saint Ambroise, livre Des vierges.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0497(d)",
-   "page": "page_0497",
-   "marker": "(d)",
-   "text": "Chrysost. Euthym. Theophylact. Maldem. Grot. alii.",
-   "proposed": "Saint Jean Chrysostome ; Euthyme ; Théophylacte ; Maldonat ; Grotius ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0498(a)",
-   "page": "page_0498",
-   "marker": "(a)",
-   "text": "Ieron. contra Rufin. l. 3. c. 11.",
-   "proposed": "Saint Jérôme, Contre Rufin, livre 3, chapitre 11.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0498(b)",
-   "page": "page_0498",
-   "marker": "(b)",
-   "text": "Joseph. Antiq. l. XVIII. 7. Vide Chrysost. in Act. Homil. 26.",
-   "proposed": "Josèphe, Antiquités judaïques, livre 18, chapitre 7. Voyez saint Jean Chrysostome, sur les Actes, Homélie 26.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0498(d)",
-   "page": "page_0498",
-   "marker": "(d)",
-   "text": "Niceph. l. 1 c. 20. Hist. Eccles.",
-   "proposed": "Nicéphore, livre 1, chapitre 20, Histoire ecclésiastique.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0499(a)",
-   "page": "page_0499",
-   "marker": "(a)",
-   "text": "Sous Ju'ien l'Apostat, vers l'an 362. les Païens ouvrirent son tombeau, et brûlèrent une partie de ses os. Theodoret. l. 3. c. 3.",
-   "proposed": "Sous Ju'ien l'Apostat, vers l'an 362. les Païens ouvrirent son tombeau, et brûlèrent une partie de ses os. Théodoret, livre 3, chapitre 3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0499(b)",
-   "page": "page_0499",
-   "marker": "(b)",
-   "text": "Chrysost. Homil. 5. Euthym. Græt. Brug. Teynard. Harmon. p. 51.",
-   "proposed": "Saint Jean Chrysostome, Homélie 5 ;\nEuthyme ;\nGræt. ;\nLucas de Bruges ;\nTeynard, Harmonie, page 51.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0499(c)",
-   "page": "page_0499",
-   "marker": "(c)",
-   "text": "Aug. l. 2. de Consensu c. 45. Euthym. Theophylact. Maldon.",
-   "proposed": "Saint Augustin, De consensu evangelistarum, livre 2, chapitre 45 ;\nEuthyme ;\nThéophylacte ;\nMaldonat.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0499(f)",
-   "page": "page_0499",
-   "marker": "(f)",
-   "text": "Joseph. l. 2. de Bello, c. 13. et Antiq. l. 18. c. 3. Plin. l. V. c. 15. Vide Cs.lar. Geograph. Antiq. l. 3. c. 13. p. 387.",
-   "proposed": "Josèphe, livre 2, Guerre des Juifs, chapitre 13, et Antiquités judaïques, livre 18, chapitre 3 ; Pline, livre 5, chapitre 15. Voyez Cellarius, Géographie ancienne, livre 3, chapitre 13, page 387.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0500(c)",
@@ -3810,33 +1595,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0501(e)",
-   "page": "page_0501",
-   "marker": "(e)",
-   "text": "Chrysost. Theophyl. Leont. Theodor. Mops. Ammon.",
-   "proposed": "Saint Jean Chrysostome ;\nThéophylacte ;\nLéonce ;\nThéodore de Mopsueste ;\nAmmonius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0502(c)",
-   "page": "page_0502",
-   "marker": "(c)",
-   "text": "Κλῖναι τὰς ὄχλους ἀνακλιθῆναι. _Marc._ Ἀνακλῖναι. _Luc._ Κλίναι. _ut et Joan._ Ποιήσατε ἀνακλῖναι… ἀνέπεσον ἐν τῇ ἀνδράσι, etc.",
-   "proposed": "Κλῖναι τὰς ὄχλους ἀνακλιθῆναι. _Marc._ Ἀνακλῖναι. _Luc._ Κλίναι. _ut et Jean._ Ποιήσατε ἀνακλῖναι… ἀνέπεσον ἐν τῇ ἀνδράσι, etc.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: Κλιναι -> Κλῖναι, ὄχλες -> ὄχλους",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0502(e)",
@@ -3889,17 +1647,6 @@
    ]
   },
   {
-   "id": "0506(a)",
-   "page": "page_0506",
-   "marker": "(a)",
-   "text": "Genes. XVIII. XIX. XXXII. 24. 25. Exode 3:4. etc.",
-   "proposed": "Genèse 18 ; 19 ; 32:24-25 ; Exode 3:4. etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0507(d)",
    "page": "page_0507",
    "marker": "(d)",
@@ -3915,17 +1662,6 @@
    ]
   },
   {
-   "id": "0508(c)",
-   "page": "page_0508",
-   "marker": "(c)",
-   "text": "Grot. hic. Ieron. in locis. Cellar. Geogr. l. 3. c. 13. p. 298. Ligfoot. Chorograph. in Matt. c. 71. Talmudistæ apud eundem.",
-   "proposed": "Grotius, sur ce passage ; saint Jérôme, Des lieux hébreux ; Cellarius, Géographie, livre 3, chapitre 13, page 298 ; Lightfoot, Chorographie sur Matthieu, chapitre 71 ; les talmudistes, dans le même auteur.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0508(f)",
    "page": "page_0508",
    "marker": "(f)",
@@ -3936,119 +1672,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0510(a)",
-   "page": "page_0510",
-   "marker": "(a)",
-   "text": "Voyez Toynard Harm. pag. 56. 57. Le Clerc Harm. p. 198.",
-   "proposed": "Voyez Toynard, Harmonie, pages 56-57 ; Le Clerc, Harmonie, page 198.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0510(b)",
-   "page": "page_0510",
-   "marker": "(b)",
-   "text": "Voyez Ligfoot, Hor. Hebr. et le supplément aux Cérémonies des Juifs par M. Simon.",
-   "proposed": "Voyez Lightfoot, Horæ hebraicæ, et le supplément aux Cérémonies des Juifs par M. Simon.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0510(c)",
-   "page": "page_0510",
-   "marker": "(c)",
-   "text": "Chapitre 1. Ieron. Ep. 151. Epipham. Hæresi 33. (d) Thessal. II. 15. Kai κρατεῖτε τὰς παραδόσεις. Et III. 6. Καὶ μὴ κατὰ τὴν παράδοσιν.",
-   "proposed": "Chapitre 1. Saint Jérôme, lettre 151 ; saint Épiphane, hérésie 33. (d) 2 Thessaloniciens 2:15. Kai κρατεῖτε τὰς παραδόσεις. Et 2 Thessaloniciens 3:6. Καὶ μὴ κατὰ τὴν παράδοσιν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0511(a)",
-   "page": "page_0511",
-   "marker": "(a)",
-   "text": "Vide Maldon. et Jans. et Natal. Alex. hic ad ℣. 9.",
-   "proposed": "Voyez Maldonat ;\nJansénius ;\net Noël Alexandre, sur ce passage, Matthieu 15:9.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0511(d)",
-   "page": "page_0511",
-   "marker": "(d)",
-   "text": "Vide Origem. in hunc loc. tom. XI. in Matt. Chrysost. Homil. 51. etc.",
-   "proposed": "Voyez Origène, sur ce passage, tome 11 sur Matthieu ; saint Jean Chrysostome, Homélie 51, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0511(e)",
-   "page": "page_0511",
-   "marker": "(e)",
-   "text": "Vide Drus. Lightfoot. Buxtorf. Synag. c. 6.",
-   "proposed": "Voyez Drusius ;\nLightfoot ;\nBuxtorf, Synagogue judaïque, chapitre 6.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0512(a)",
-   "page": "page_0512",
-   "marker": "(a)",
-   "text": "Vide Ieronym. hic. et Nombres 22:17. ℣. 3. 17. et Rabbin. apud Selden. de Jure N. XXIV. 11, Tobie 1:16. Proverbes 3:9. et 1 Timothée 5 et I. 1. 7. c. 2.",
-   "proposed": "Voyez saint Jérôme, sur ce passage, et Nombres 22:17. Matthieu 15:3 ; 15:17 et les rabbins, dans Selden, Du droit naturel et des gens, 24, 11, Tobie 1:16. Proverbes 3:9. et 1 Timothée 5 et le même, livre 7, chapitre 2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0513(a)",
-   "page": "page_0513",
-   "marker": "(a)",
-   "text": "_Ita Chrysost. Euthym. Theophyl. Ambros. l. 8. in Luc. n. 78. 79._ ἀντὶ τῶ εἰπεῖν, δῶρον ἐστὶν ὃ ἐξ ἐμοῦ λαμβάνεις, ἔλεγον, Κορβᾶν, ὅ ἐστιν δῶρον.",
-   "proposed": "_Ainsi l'entendent saint Jean Chrysostome ; Euthyme ; Théophylacte ; saint Ambroise, livre 8, sur saint Luc, numéros 78 et 79._ ἀντὶ τῶ εἰπεῖν, δῶρον ἐστὶν ὃ ἐξ ἐμοῦ λαμβάνεις, ἔλεγον, Κορβᾶν, ὅ ἐστιν δῶρον.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ἐμᾶ -> ἐμοῦ",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0513(b)",
-   "page": "page_0513",
-   "marker": "(b)",
-   "text": "Hugo, Strabus, Liran. Vat. Mald. Ita et ferè Ludou. de Dieu. Vide Ieron. in Matt. Ep. ad Ageruchiam.",
-   "proposed": "Hugues ;\nStrabus ;\nNicolas de Lyre ;\nVatable ;\nMaldonat. De même, à peu près, Louis de Dieu. Voyez saint Jérôme, sur Matthieu, lettre à Ageruchia.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0513(c)",
-   "page": "page_0513",
-   "marker": "(c)",
-   "text": "Origen. tom. XI. in Matt. pag. 245. Édit. Huët.",
-   "proposed": "Origène, tome 11 sur saint Matthieu, page 245, édition Huët.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0513(d)",
@@ -4079,28 +1702,6 @@
    ]
   },
   {
-   "id": "0513(i)",
-   "page": "page_0513",
-   "marker": "(i)",
-   "text": "Grot. l. 2. de jure belli et pacis c. 13. et in hunc loc. Vide Brugens. Montan. Masium, Capell. Ligfoot. Seldin. alios.",
-   "proposed": "Grotius, Du droit de la guerre et de la paix, livre 2, chapitre 13, et sur ce passage. Voyez Brugensis ; Arias Montanus ; Masius ; Cappel ; Lightfoot ; Selden ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0514(b)",
-   "page": "page_0514",
-   "marker": "(b)",
-   "text": "Theophrast. l. de Legib. apud Joseph. l. 1. contra Apion, p. 1047. 2.",
-   "proposed": "Théophraste, Des lois, dans Josèphe, Contre Apion, livre 1, page 1047. 2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0514(d)",
    "page": "page_0514",
    "marker": "(d)",
@@ -4113,39 +1714,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0514(e)",
-   "page": "page_0514",
-   "marker": "(e)",
-   "text": "Ludov. Capell. Dissert. in hunc loc.",
-   "proposed": "Louis Cappel, Dissertation sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0514(f)",
-   "page": "page_0514",
-   "marker": "(f)",
-   "text": "Joan. Selden. l. 7. c 2. de Jure Nat. et Gentium.",
-   "proposed": "Jean Selden, Du droit naturel et des gens, livre 7, chapitre 2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0514(g)",
-   "page": "page_0514",
-   "marker": "(g)",
-   "text": "Ligfoot. Hor. Talm. in Matt.",
-   "proposed": "Lightfoot, Horae talmudicae sur saint Matthieu.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0514(h)",
@@ -4172,39 +1740,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0517(a)",
-   "page": "page_0517",
-   "marker": "(a)",
-   "text": "Hilar. Theophylact. Eutym. hic. Theophyl. Alexand. Homil. 1. Paschali. Ignat. Ep. ad Trallian.",
-   "proposed": "Saint Hilaire ;\nThéophylacte ;\nEuthyme, sur ce passage ;\nThéophile d'Alexandrie, Homélie 1 pascale ;\nsaint Ignace, Lettre aux Tralliens.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0517(c)",
-   "page": "page_0517",
-   "marker": "(c)",
-   "text": "Origen. Homil. 1. in Jerem. Iren. hic. Maldon.",
-   "proposed": "Origène, Homélie 1 sur Jérémie ;\nsaint Irénée, sur ce passage ;\nMaldonat.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0517(d)",
-   "page": "page_0517",
-   "marker": "(d)",
-   "text": "Bernard. Ep. 34. nov. Édit. et Epist. 78. Gregor. Magn. Homil. 7. in Ezech. et Aug. l. de Libero arbitr. et Prædestin. SS. Vide Chrysost. Homil. 52.",
-   "proposed": "Saint Bernard, Lettre 34, nouvelle édition, et Lettre 78 ; saint Grégoire le Grand, Homélie 7 sur Ézéchiel ; et saint Augustin, Du libre arbitre et De la prédestination des saints. Voyez saint Jean Chrysostome, Homélie 52.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0520(a)",
@@ -4240,33 +1775,12 @@
    "text": "Joan. vıı. 35. Aß. xıv. 1. xvıı. 14. Rom. 1. 14. et passim.",
    "proposed": "Joan. vıı. 35. Aß. xıv. 1. xvıı. 14. Rom. 1. 14. et passim.",
    "why": [
+    "written out, but a number changed or added: Jean 7:35 ; Actes 14:1 ; Actes 17:14 ; Romains 1:14 ; et passim.",
     "written out, but a number changed or added: Jean 7:35 ; Actes 14:1 ; Actes 17:14 ; Romains 1:14 ; et passim."
    ],
    "flags": [
     "expand-changed-numbers"
    ]
-  },
-  {
-   "id": "0520(g)",
-   "page": "page_0520",
-   "marker": "(g)",
-   "text": "Marc. vıı. 24.",
-   "proposed": "Marc 7:24.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0521(a)",
-   "page": "page_0521",
-   "marker": "(a)",
-   "text": "Origen. Ierom. hic. Ambros. in Psal. XLIII. Saint Chrysost. Homil. 52. Hilar. hic. etc.",
-   "proposed": "Origène ; saint Jérôme, sur ce passage ; saint Ambroise, sur le Psaume 43 ; saint Jean Chrysostome, Homélie 52 ; saint Hilaire, sur ce passage ; etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0524(a)",
@@ -4281,39 +1795,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0524(e)",
-   "page": "page_0524",
-   "marker": "(e)",
-   "text": "Vide Reland. Palestin. tom. 1. cap. 41. pag. 265.",
-   "proposed": "Voyez Reland, Palæstina, tome 1, chapitre 41, page 265.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0525(a)",
-   "page": "page_0525",
-   "marker": "(a)",
-   "text": "Sanutus de Secretis fidel. crucif. pag. 246.",
-   "proposed": "Sanutus, De secretis fidelium crucis, page 246.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0525(b)",
-   "page": "page_0525",
-   "marker": "(b)",
-   "text": "Hegesyp p. 108.",
-   "proposed": "Hégésippe, page 108.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0525(c)",
@@ -4354,28 +1835,6 @@
    ]
   },
   {
-   "id": "0528(c)",
-   "page": "page_0528",
-   "marker": "(c)",
-   "text": "Ieron. in hunc loc.",
-   "proposed": "Saint Jérôme, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0529(d)",
-   "page": "page_0529",
-   "marker": "(d)",
-   "text": "Ita Cleric. hic, ad Hammond. Harduin, de Nummis Herodiod.",
-   "proposed": "Ainsi l'entendent Le Clerc, sur ce passage, sur Hammond ; Harduin, De nummis Herodiadum.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0531(c)",
    "page": "page_0531",
    "marker": "(c)",
@@ -4388,172 +1847,18 @@
    ]
   },
   {
-   "id": "0531(f)",
-   "page": "page_0531",
-   "marker": "(f)",
-   "text": "Aug. lib. 2. de Consensu Evang. c. 53.",
-   "proposed": "Saint Augustin, De l'accord des évangélistes, livre 2, chapitre 53.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0531(g)",
-   "page": "page_0531",
-   "marker": "(g)",
-   "text": "Ita Latini Codd. plerique. Aug. Ieron. Copht. Arab. Æthiop.",
-   "proposed": "Ainsi lisent la plupart des manuscrits latins ; saint Augustin ; saint Jérôme ; le copte ; l'arabe ; l'éthiopien.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0531(h)",
-   "page": "page_0531",
-   "marker": "(h)",
-   "text": "Ita Græc. Τίνα με λέγουσι οἱ ἄνθρωποι εἶναι, τὸν υἱὸν τοῦ ἀνθρώπου. Épiphane. Theophyl. Hilar. Aug. l. 2. de Cons. Greg. Mag. in ms.",
-   "proposed": "Ainsi lit le Grec : Τίνα με λέγουσι οἱ ἄνθρωποι εἶναι, τὸν υἱὸν τοῦ ἀνθρώπου. Épiphane ; Théophylacte ; saint Hilaire ; saint Augustin, De l'accord des évangélistes, livre 2 ; saint Grégoire le Grand, dans un manuscrit.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0532(b)",
-   "page": "page_0532",
-   "marker": "(b)",
-   "text": "Cyrill. Jerosol. Cathech. XI.",
-   "proposed": "Saint Cyrille de Jérusalem, Catéchèse 11.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0532(c)",
-   "page": "page_0532",
-   "marker": "(c)",
-   "text": "Vide Hilar. hic. et l. 6. de Trinit. n. 36. 37. Athanas. pluribus in locis.",
-   "proposed": "Voyez saint Hilaire, sur ce passage, et De la Trinité, livre 6, numéros 36 et 37 ; saint Athanase, pluribus in locis.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0533(e)",
-   "page": "page_0533",
-   "marker": "(e)",
-   "text": "Galat. II. IX.",
-   "proposed": "Galates 2:9.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0533(g)",
-   "page": "page_0533",
-   "marker": "(g)",
-   "text": "Vide. Hilar. l. 6. de Trinit. n. 36. 37. Greg. Nyss. contra Judæos. Chrysost. Homil. 55. in Matt. et orat. 2. contra Jud. Cyril. Alex. l. 4. de Trinit. Ambros. in Luc. l. 6. Gregor. Magnus.",
-   "proposed": "Voyez saint Hilaire, De la Trinité, livre 6, numéros 36 et 37 ;\nsaint Grégoire de Nysse, Contre les Juifs ;\nsaint Jean Chrysostome, Homélie 55 sur saint Matthieu, et Discours 2 Contre les Juifs ;\nsaint Cyrille d'Alexandrie, De la Trinité, livre 4 ;\nsaint Ambroise, sur saint Luc, livre 6 ;\nsaint Grégoire le Grand.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0534(a)",
-   "page": "page_0534",
-   "marker": "(a)",
-   "text": "Aug. pluribus in locis. ut tract. 124. in euan. Vide et Orig. tom. 12. in Édit. Huëtii.",
-   "proposed": "Saint Augustin, pluribus in locis, ut traité 124 sur l'Évangile. Voyez aussi Origène, tome 12, édition Huëtii.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0534(b)",
-   "page": "page_0534",
-   "marker": "(b)",
-   "text": "Hilar. hic, et in Psal. CXXXI. n. 4.",
-   "proposed": "Saint Hilaire, sur ce passage, et sur le Psaume 131, numéro 4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0534(d)",
-   "page": "page_0534",
-   "marker": "(d)",
-   "text": "Augus. l. contra Epist. Donati, et alibi passim. Vide Maldon. hic.",
-   "proposed": "Saint Augustin, livre Contre la lettre de Donat, et ailleurs passim. Voyez Maldonat, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0534(e)",
-   "page": "page_0534",
-   "marker": "(e)",
-   "text": "Camero Prælect. in hunc locum. Grot. hic, not. ad Hamon. Hammond, hic. Grotius in Matthieu 16.",
-   "proposed": "Cameron, Prælectiones sur ce passage ;\nGrotius, sur ce passage, note sur Hammond ;\nHammond, sur ce passage ;\nGrotius sur Matthieu 16.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0535(a)",
-   "page": "page_0535",
-   "marker": "(a)",
-   "text": "Aug. l. 1. de Symbolo ad Catechum. Épiphane. Ancherat. Euthym. Theophylacte.",
-   "proposed": "Saint Augustin, Du symbole aux catéchumènes, livre 1 ;\nÉpiphane, Ancoratus ;\nEuthyme ;\nThéophylacte.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0535(b)",
    "page": "page_0535",
    "marker": "(b)",
    "text": "Psaumes 9:15. 106:18. Sagesse 16:13. Isaï. HI. 26. XXXVIII. 10.",
    "proposed": "Psaumes 9:15. 106:18. Sagesse 16:13. Isaï. HI. 26. XXXVIII. 10.",
    "why": [
+    "written out, but a number changed or added: Psaumes 9:15 ; Psaumes 106:18 ; Sagesse 16:13 ; Isaïe 3:26 ; Isaïe 38:10.",
     "written out, but a number changed or added: Psaumes 9:15 ; Psaumes 106:18 ; Sagesse 16:13 ; Isaïe 3:26 ; Isaïe 38:10."
    ],
    "flags": [
     "expand-changed-numbers"
    ]
-  },
-  {
-   "id": "0535(e)",
-   "page": "page_0535",
-   "marker": "(e)",
-   "text": "Vide Grot. Cameron. Le Clerc.",
-   "proposed": "Voyez Grotius ;\nCameron ;\nLe Clerc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0536(b)",
-   "page": "page_0536",
-   "marker": "(b)",
-   "text": "Vide Maldon. Menoch. Brugens. Grot. Le Clerc. hic.",
-   "proposed": "Voyez Maldonat ;\nMénochius ;\nBrugensis ;\nGrotius ;\nLe Clerc, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0538(a)",
@@ -4605,6 +1910,7 @@
    "proposed": "Matthieu 17:70. Ad' Osée 5:1. Josèphe, Guerre des Juifs, livre 4, chapitre 6 ; Polybe, livre 5, chapitre 70.",
    "why": [
     "abbreviations written out",
+    "Matthieu 17:70 does not exist in the Vulgate",
     "Matthieu 17:70 does not exist in the Vulgate"
    ],
    "flags": [
@@ -4619,22 +1925,12 @@
    "proposed": "1 Paralipomènes 5:77.",
    "why": [
     "abbreviations written out",
+    "1 Paralipomènes 5:77 does not exist in the Vulgate",
     "1 Paralipomènes 5:77 does not exist in the Vulgate"
    ],
    "flags": [
     "reference-not-in-vulgate"
    ]
-  },
-  {
-   "id": "0546(d)",
-   "page": "page_0546",
-   "marker": "(d)",
-   "text": "_Hilar. Chrysost. Eutym._ hic.",
-   "proposed": "_saint Hilaire ;\nsaint Jean Chrysostome ;\nEuthyme_, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0547(c)",
@@ -4647,17 +1943,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0552(d)",
-   "page": "page_0552",
-   "marker": "(d)",
-   "text": "Eccli. XLVIII. _Qui scriptus est in judiciis temporum lenire iracundiam Domini, conciliare cor patris ad filium, etc._",
-   "proposed": "Ecclésiastique 48. _Qui scriptus est in judiciis temporum lenire iracundiam Domini, conciliare cor patris ad filium, etc._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0556(b)",
@@ -4701,111 +1986,13 @@
    ]
   },
   {
-   "id": "0558(e)",
-   "page": "page_0558",
-   "marker": "(e)",
-   "text": "Joseph. Antiq. l. 18. c. 12 et l. 7. de Bello c. 26. 27. et Dio-Cassius l. 66.",
-   "proposed": "Josèphe, Antiquités judaïques, livre 18, chapitre 12, et Guerre des Juifs, livre 7, chapitres 26 et 27 ; et Dion Cassius, livre 66.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0558(f)",
-   "page": "page_0558",
-   "marker": "(f)",
-   "text": "Schikard. Jur. Reg. c. 3.",
-   "proposed": "Schickard, Jus regium, chapitre 3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0558(h)",
-   "page": "page_0558",
-   "marker": "(h)",
-   "text": "Sueton. in Domitiano c. 12. Præter cæteros Judaïcus fiscus acerbissimè actus est.",
-   "proposed": "Suétone, Domitien, chapitre 12. Præter cæteros Judaïcus fiscus acerbissimè actus est.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0559(a)",
-   "page": "page_0559",
-   "marker": "(a)",
-   "text": "Schikard. Orat. in fest. Purim.",
-   "proposed": "Schickard, Discours sur la fête de Purim.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0559(b)",
-   "page": "page_0559",
-   "marker": "(b)",
-   "text": "Toynard. Harmon. p. 64. 66. art. 220.",
-   "proposed": "Toynard, Harmonie, pages 64 et 66, article 220.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0559(c)",
-   "page": "page_0559",
-   "marker": "(c)",
-   "text": "Chrysost. Euthym. Theoph. l.",
-   "proposed": "Saint Jean Chrysostome ;\nEuthyme ;\nThéophylacte, livre.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0559(e)",
    "page": "page_0559",
    "marker": "(e)",
-   "text": "Ierom. in hunc loc. Selden. l. 6. c. 18. de jure nat. et gent. Samuel Petit Var. Lect. l. 2. c. 1. aliis.",
-   "proposed": "Saint Jérôme, sur ce passage ; Selden, Du droit naturel et des gens, livre 6, chapitre 18 ; Samuel Petit, Variae lectiones, livre 2, chapitre 1 ; et d'autres.",
+   "text": "Saint Jérôme, sur ce passage ; Selden, Du droit naturel et des gens, livre 6, chapitre 18 ; Samuel Petit, Variae lectiones, livre 2, chapitre 1 ; et d'autres.",
+   "proposed": "Saint Jérôme, sur ce passage ; Selden, Du droit naturel et des gens, livre 6, chapitre 18 ; Samuel Petit, Variæ lectiones, livre 2, chapitre 1 ; et d'autres.",
    "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0559(f)",
-   "page": "page_0559",
-   "marker": "(f)",
-   "text": "Vide Joseph. l. 1. de Bello. c. 5. et Antiq. l. 14. c. 8. Ierom. ad Matthieu 23.",
-   "proposed": "Voyez Josèphe, Guerre des Juifs, livre 1, chapitre 5, et Antiquités judaïques, livre 14, chapitre 8 ; saint Jérôme sur Matthieu 23.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0559(g)",
-   "page": "page_0559",
-   "marker": "(g)",
-   "text": "Joseph. Antiq. l. 18. c. 1. et de Bello l. 2. c. 7. Ieron. et Maldon. hic.",
-   "proposed": "Josèphe, Antiquités judaïques, livre 18, chapitre 1 ;\net Guerre des Juifs, livre 2, chapitre 7 ;\nsaint Jérôme ;\net Maldonat, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0559(h)",
-   "page": "page_0559",
-   "marker": "(h)",
-   "text": "Samuel Petit, loc. cit.",
-   "proposed": "Samuel Petit, à l'endroit cité.",
-   "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -4814,207 +2001,10 @@
    "id": "0559(l)",
    "page": "page_0559",
    "marker": "(l)",
-   "text": "Ita Hilar. hist. Grot. Camero, Brugens. Baron. Annal. t. 1. Beza, Hamm. Villalp. Casaubon. alii passim.",
-   "proposed": "Ainsi l'entendent saint Hilaire, hist. ; Grotius ; Cameron ; Lucas de Bruges ; Baronius, Annales, tome 1 ; Bèze ; Hammond ; Villalpand ; Casaubon ; et d'autres, passim.",
+   "text": "Ainsi l'entendent saint Hilaire, hist. ; Grotius ; Cameron ; Lucas de Bruges ; Baronius, Annales, tome 1 ; Bèze ; Hammond ; Villalpand ; Casaubon ; et d'autres, passim.",
+   "proposed": "Ainsi l'entendent saint Hilaire, Histoire ; Grotius ; Cameron ; Lucas de Bruges ; Baronius, Annales, tome 1 ; Bèze ; Hammond ; Villalpand ; Casaubon ; et d'autres, passim.",
    "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0560(a)",
-   "page": "page_0560",
-   "marker": "(a)",
-   "text": "Ita Chrysost. Ieron. Beda, Theophyl. Euphym. alii.",
-   "proposed": "Ainsi l'entendent saint Jean Chrysostome ; saint Jérôme ; Bède ; Théophylacte ; Euthyme ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0560(b)",
-   "page": "page_0560",
-   "marker": "(b)",
-   "text": "Ita Ieron. Ligfoot, etc.",
-   "proposed": "Ainsi l'entendent saint Jérôme ; Lightfoot ; etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0560(d)",
-   "page": "page_0560",
-   "marker": "(d)",
-   "text": "Vide 3 Rois 9:21. 2 Paralipomènes 8:9. Diodor. Sicul, l. 1. de Sesostri.",
-   "proposed": "Voyez 3 Rois 9:21 ; 2 Paralipomènes 8:9. Diodore de Sicile, livre 1, de Sesostri.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0563(c)",
-   "page": "page_0563",
-   "marker": "(c)",
-   "text": "Ambros. lib. VIII. in Luc. _Non igitur pueritia, sed amula puerilis simplicitatis bonitas designatur._",
-   "proposed": "Saint Ambroise, livre 8, sur saint Luc. _Non igitur pueritia, sed amula puerilis simplicitatis bonitas designatur._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0563(d)",
-   "page": "page_0563",
-   "marker": "(d)",
-   "text": "Græci quid. apud Anastas. Bibliothec.",
-   "proposed": "Græci quid. dans Anastase, Bibliothèque historique.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0564(a)",
-   "page": "page_0564",
-   "marker": "(a)",
-   "text": "Leo Magn. Serm. 36. de Épiphane. 7. c. 6. 7.",
-   "proposed": "Saint Léon le Grand, Sermon 36, de Épiphane 7, chapitre 6, 7.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0566(b)",
-   "page": "page_0566",
-   "marker": "(b)",
-   "text": "Ita Hilar. hic. Ambros. Maldon, Grot. Boch. de Animal. part. 1. l. 2. c. 13.",
-   "proposed": "Ainsi l'entendent saint Hilaire, sur ce passage ;\nsaint Ambroise ;\nMaldonat ;\nGrotius ;\nBochart, De animalibus sacris, partie 1, livre 2, chapitre 13.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0566(c)",
-   "page": "page_0566",
-   "marker": "(c)",
-   "text": "Ieron. hic. Erasm. Mald.",
-   "proposed": "Saint Jérôme, sur ce passage ;\nÉrasme ;\nMaldonat.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0566(d)",
-   "page": "page_0566",
-   "marker": "(d)",
-   "text": "Ligfoot. Liran. Grot. Ham. Le Clerc.",
-   "proposed": "Lightfoot ;\nNicolas de Lyre ;\nGrotius ;\nHammond ;\nLe Clerc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0566(e)",
-   "page": "page_0566",
-   "marker": "(e)",
-   "text": "Vide Grot. hic. et Casaubon in Sueton Aug. c. 67.",
-   "proposed": "Voyez Grotius, sur ce passage ; et Casaubon sur Suétone, Auguste, chapitre 67.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0567(a)",
-   "page": "page_0567",
-   "marker": "(a)",
-   "text": "Philastr. hæresi eorum qui Judæ proditionem laudabant. Ieronym. Beda, hic. Author Comment. in 1. Cor. XI. sub nomine Ambros.",
-   "proposed": "Saint Philastre, hæresi eorum qui Judæ proditionem laudabant ; saint Jérôme ; Bède, sur ce passage. Auteur du Commentaire sur 1 Corinthiens 11, sous le nom de saint Ambroise.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0568(a)",
-   "page": "page_0568",
-   "marker": "(a)",
-   "text": "Ambros. l. 8. in Luc. Hilar. bis.",
-   "proposed": "Saint Ambroise, livre 8, sur saint Luc ; saint Hilaire, bis.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0568(l)",
-   "page": "page_0568",
-   "marker": "(l)",
-   "text": "Origen. lib. 1. in Epist. ad Rom. Homil. 23. in Josue lib 3. de Princip. cap. 3. Homil. 35. in Luc.",
-   "proposed": "Origène, livre 1, sur l'Épître aux Romains. Homélie 23 sur Josué, livre 3, Des principes, chapitre 3. Homélie 35 sur saint Luc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0569(a)",
-   "page": "page_0569",
-   "marker": "(a)",
-   "text": "Vide Origen. Homil. 11. et 23. in Numer. et 21. in Iosue.",
-   "proposed": "Voyez Origène, Homélie 11 et 23 sur les Nombres, et 21 sur Josué.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0569(b)",
-   "page": "page_0569",
-   "marker": "(b)",
-   "text": "Greg. Nyssen. in Vita Mosis.",
-   "proposed": "Saint Grégoire de Nysse, Vie de Moïse.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0569(c)",
-   "page": "page_0569",
-   "marker": "(c)",
-   "text": "Author Operis imperf. S. Homil. 9. in Matt.",
-   "proposed": "Auteur de l'Ouvrage imparfait, S. Homélie 9 sur saint Matthieu.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0569(d)",
-   "page": "page_0569",
-   "marker": "(d)",
-   "text": "Beda, in c. 22. Act. Apost.",
-   "proposed": "Bède, sur le chapitre 22 des Actes des apôtres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0569(e)",
-   "page": "page_0569",
-   "marker": "(e)",
-   "text": "Cassian. Coll. VIII. c. 17. et lib. 13. c. 12.",
-   "proposed": "Cassien, Conférence 8, chapitre 17 ; et livre 13, chapitre 12.",
-   "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -5048,151 +2038,20 @@
    ]
   },
   {
-   "id": "0571(a)",
-   "page": "page_0571",
-   "marker": "(a)",
-   "text": "Vide, si lubet, Irenæ lib. 3. cap. 21. et 39. Origen. homil. IX. in Genes. et homil. vII. in Josue. Cyrill. Cathech. 15. Hilar. hic. Ambros. in Apolog. David. cap. 5. Greg. Mag. homil. 34. in Evangel.",
-   "proposed": "Voyez au besoin saint Irénée, livre 3, chapitre 21 et 39 ;\nOrigène, Homélie 9 sur la Genèse, et Homélie 7 sur Josué ;\nsaint Cyrille, Catéchèse 15 ;\nsaint Hilaire, sur ce passage ;\nsaint Ambroise, Apologie de David, chapitre 5 ;\nsaint Grégoire le Grand, Homélie 34 sur l'Évangile.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0571(e)",
-   "page": "page_0571",
-   "marker": "(e)",
-   "text": "Hilar. Chrysost. Ieronym. hic. Ambros. in cap. XVII. Lucæ. Theophyl. Euthym. in hunc loc. August. serm. olim 36. de Verbis Domini ; nunc 82. c. 7.",
-   "proposed": "Saint Hilaire ; saint Jean Chrysostome ; saint Jérôme, sur ce passage ; saint Ambroise, sur le chapitre 17 de saint Luc ; Théophylacte ; Euthyme, sur ce passage ; saint Augustin, Sermon autrefois 36, De Verbis Domini ; maintenant 82, chapitre 7.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0572(b)",
-   "page": "page_0572",
-   "marker": "(b)",
-   "text": "Basnage, Histoire des Juifs, livre v. chapitre 18.",
-   "proposed": "Basnage, Histoire des Juifs, livre 5, chapitre 18.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0574(a)",
-   "page": "page_0574",
-   "marker": "(a)",
-   "text": "Chrysost. et Euthym. hic. Iac. Capell.",
-   "proposed": "Saint Jean Chrysostome ;\net Euthyme, sur ce passage ;\nJacques Cappel.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0574(c)",
-   "page": "page_0574",
-   "marker": "(c)",
-   "text": "Chrysost. hic. August. serm. 82. olim 16.",
-   "proposed": "Saint Jean Chrysostome, sur ce passage ; saint Augustin, Sermon 82, autrefois 16.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0574(d)",
-   "page": "page_0574",
-   "marker": "(d)",
-   "text": "Ieronym. hic. Theophyl. Mald. Grot. Matthieu 7:6.",
-   "proposed": "Saint Jérôme, sur ce passage ;\nThéophylacte ;\nMaldonat ;\nGrotius. Matthieu 7:6.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0575(b)",
-   "page": "page_0575",
-   "marker": "(b)",
-   "text": "Vide 1. Cor. ℣. 11. Tit. III. 10. et 2. Johan. ℣. 11. et Comment. nostr. ad Matth. ℣. 46. 47.",
-   "proposed": "Voyez 1 Corinthiens, verset 11 ; Tite 3:10 ; 2 Jean, verset 11 ; et notre Commentaire sur Matthieu, versets 46, 47.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0575(c)",
-   "page": "page_0575",
-   "marker": "(c)",
-   "text": "Irenæ. lib. 3. cap. 3. Vide Grot. et Jac. Capell. et Maldon. hic.",
-   "proposed": "Saint Irénée, livre 3, chapitre 3. Voyez Grotius ;\nJacques Cappel ;\net Maldonat, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0576(a)",
-   "page": "page_0576",
-   "marker": "(a)",
-   "text": "Selden. lib. 1. de Synedriis. Hebræorum cap. 9.",
-   "proposed": "Selden, livre 1, Des Sanhédrins des Hébreux, chapitre 9.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0576(b)",
    "page": "page_0576",
    "marker": "(b)",
    "text": "Vide Baba Sanhedr. fol 26. Maimon. in אישות c. 12. et 14. Lightfoot. hòc.",
-   "proposed": "Vide Baba Sanhedr. fol 26. Maimon. in אישות c. 12. et 14. Lightfoot. hòc.",
+   "proposed": "Voyez Baba Sanhedrin, folio 26 ; Maïmonide, dans אישות, chapitres 12 et 14 ; Lightfoot, sur ce passage.",
    "why": [
     "scan: Filled Hebrew 'אישות'",
-    "read on the scan: אישות"
+    "read on the scan: אישות",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
     "expand-unread"
    ]
-  },
-  {
-   "id": "0577(a)",
-   "page": "page_0577",
-   "marker": "(a)",
-   "text": "C'est de son aveu, Chapitre x. p. 325. du premier Livre _De Synedriis_.",
-   "proposed": "C'est de son aveu, Chapitre 10, page 325, du premier Livre _De Synedriis_.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0577(b)",
-   "page": "page_0577",
-   "marker": "(b)",
-   "text": "Voyez le même Selden liv. 1 chapitre 10. du même Ouvrage.",
-   "proposed": "Voyez le même Selden livre 1, chapitre 10, du même Ouvrage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0578(b)",
-   "page": "page_0578",
-   "marker": "(b)",
-   "text": "Vide Bilson. _apud Jac. Capel. in Synopsi Critic. Grot. hic._",
-   "proposed": "Voyez Bilson, _dans Jacques Cappel, in Synopsi Critic. ; Grotius, sur ce passage._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0578(c)",
@@ -5205,50 +2064,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0578(d)",
-   "page": "page_0578",
-   "marker": "(d)",
-   "text": "Aug. _Serm. 81. N°. 7. p. 442. C._",
-   "proposed": "Saint Augustin, _Sermon 81, numéro 7, page 442, C._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0579(d)",
-   "page": "page_0579",
-   "marker": "(d)",
-   "text": "Orig. tom. 14. in Matt. Ambros. de Instit. Virg. c. 2. et in cap. XIV. Luc. Ieronym. Beda, et Theophyl. hic.",
-   "proposed": "Origène, tome 14, sur saint Matthieu ;\nsaint Ambroise, De Institutione virginis, chapitre 2, et sur le chapitre 14 de saint Luc ;\nsaint Jérôme ;\nBède ;\net Théophylacte, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0581(a)",
-   "page": "page_0581",
-   "marker": "(a)",
-   "text": "Aug. 83. de verbis Evang. n. 7. Ieronym. hic : Ut toties peccanti fratri dimitteret in die, quoties ille peccare possit.",
-   "proposed": "Saint Augustin, Sermon 83, de verbis Evangelii, numéro 7 ; saint Jérôme, sur ce passage : Ut toties peccanti fratri dimitteret in die, quoties ille peccare possit.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0581(b)",
-   "page": "page_0581",
-   "marker": "(b)",
-   "text": "Apud Ieronym. l. 3. contra Pelag c. 1.",
-   "proposed": "Dans saint Jérôme, Contre les pélagiens, livre 3, chapitre 1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0586(a)",
@@ -5292,36 +2107,13 @@
    ]
   },
   {
-   "id": "0608(a)",
-   "page": "page_0608",
-   "marker": "(a)",
-   "text": "Gr. H' de ἐκ τῶv ἰδίων μοι ποιῆσαι ὁ θέλω. Ita Syr. et Antiqu. Vulg. Aut non licet mihi quod volo facere de re mea. August. serm. 87. Non licet mihi quod volo facere de meo.",
-   "proposed": "Le Grec : H' de ἐκ τῶv ἰδίων μοι ποιῆσαι ὁ θέλω. Ainsi lisent le Syriaque et l'ancienne Vulgate : Aut non licet mihi quod volo facere de re mea. Saint Augustin, Sermon 87 : Non licet mihi quod volo facere de meo.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary: ἰδίων -> ἰδίων, θέλω -> θέλω",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0615(d)",
-   "page": "page_0615",
-   "marker": "(d)",
-   "text": "Tertull. l. 2. de Præscrip.ionib. Euseb. l. c. 31. Hist. Eccles.",
-   "proposed": "Tertullien, De la prescription, livre 2 ; Eusèbe, Histoire ecclésiastique, à l'endroit cité, chapitre 31.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0617(a)",
    "page": "page_0617",
    "marker": "(a)",
    "text": "Hébreux 9:28. Matthieu 26:28. Isai. LIII. II. 12.",
    "proposed": "Hébreux 9:28. Matthieu 26:28. Isai. LIII. II. 12.",
    "why": [
+    "written out, but a number changed or added: Hébreux 9:28. Matthieu 26:28. Isaïe 53:11-12.",
     "written out, but a number changed or added: Hébreux 9:28. Matthieu 26:28. Isaïe 53:11-12."
    ],
    "flags": [
@@ -5378,6 +2170,7 @@
    "text": "Isai. LXII. II.",
    "proposed": "Isai. LXII. II.",
    "why": [
+    "written out, but a number changed or added: Isaïe 62:11.",
     "written out, but a number changed or added: Isaïe 62:11."
    ],
    "flags": [
@@ -5495,6 +2288,7 @@
    "proposed": "Romains 13:14. Induimini Dominum Jesum Christum.",
    "why": [
     "the Latin next to the call is Galates 3:27, not Romains 13:14",
+    "the Latin next to the call is Galates 3:27, not Romains 13:14",
     "the Latin next to the call is Galates 3:27, not Romains 13:14"
    ],
    "flags": [
@@ -5544,134 +2338,13 @@
    ]
   },
   {
-   "id": "0648(a)",
-   "page": "page_0648",
-   "marker": "(a)",
-   "text": "Maimonid. Hal. Siclim. c. 1 §. 3.",
-   "proposed": "Maïmonide, Halachot Siclim, chapitre 1, § 3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0648(b)",
-   "page": "page_0648",
-   "marker": "(b)",
-   "text": "Seld. de Jure N. et G. l. 6. c. 17.",
-   "proposed": "Selden, Du droit naturel et des gens, livre 6, chapitre 17.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0648(c)",
-   "page": "page_0648",
-   "marker": "(c)",
-   "text": "Baron. Annal. t. 1. an. Christi 34. Brug. hic. Hesych. in Κῆνσος.",
-   "proposed": "Baronius, Annales, tome 1, année 34 du Christ ; Brugensis, sur ce passage ; Hésychius, au mot Κῆνσος.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0648(d)",
-   "page": "page_0648",
-   "marker": "(d)",
-   "text": "Vide Selden loco citato, Freher. Dissert. de Numism. census, Casaub. Exercit. 16. Salmas. ad Lamprid. Vales. de nummis Hebr. l. 2. c. 10. Grot. hic, alios.",
-   "proposed": "Voyez Selden, à l'endroit cité ; Freher, Dissertation De numismate census ; Casaubon, Exercitation 16 ; Saumaise sur Lampride ; Valois, Des monnaies hébraïques, livre 2, chapitre 10 ; Grotius, sur ce passage ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0650(a)",
    "page": "page_0650",
    "marker": "(a)",
-   "text": "Ieronym. hic, et Ep. 27. ad Eustoch. et Aug. l. 12. la Civit. c. 27. Corporibus vitiis trahentur, natura servabitur. Quelques Anciens ont été d'un sentiment contraire. Ils ont cru que les femmes ne ressusciteraient pas dans leur propre sexe. Origen. in Matt. Édit. Huët. pag. 487. et 495. Tertull. de Cultu femin. l. 1. c. 2. Hilar. in Matt. c. 23. Rufin reproche à saint Jérôme d'avoir dit la même chose sur le Chapitre v. de l'Épître aux Éphésiens ; mais saint Jérôme s'en défend au Chapitre 6. de son Apologie contre Rufin. Origènes à l'endroit cité, enseigne, qu'au siècle futur il n'y aura plus aucune distinction de sexe, ni d'homme, ni de femme, et qu'ils seront tous comme des Anges.",
-   "proposed": "Saint Jérôme, sur ce passage, et Lettre 27 à Eustochium ; et saint Augustin, La Cité de Dieu, livre 12, chapitre 27. Corporibus vitiis trahentur, natura servabitur. Quelques Anciens ont été d'un sentiment contraire. Ils ont cru que les femmes ne ressusciteraient pas dans leur propre sexe. Origène sur saint Matthieu, édition de Huet, pages 487 et 495 ; Tertullien, De la parure des femmes, livre 1, chapitre 2 ; saint Hilaire sur saint Matthieu, chapitre 23. Rufin reproche à saint Jérôme d'avoir dit la même chose sur le Chapitre v. de l'Épître aux Éphésiens ; mais saint Jérôme s'en défend au Chapitre 6. de son Apologie contre Rufin. Origènes à l'endroit cité, enseigne, qu'au siècle futur il n'y aura plus aucune distinction de sexe, ni d'homme, ni de femme, et qu'ils seront tous comme des Anges.",
+   "text": "Saint Jérôme, sur ce passage, et Lettre 27 à Eustochium ; et saint Augustin, La Cité de Dieu, livre 12, chapitre 27. Corporibus vitiis trahentur, natura servabitur. Quelques Anciens ont été d'un sentiment contraire. Ils ont cru que les femmes ne ressusciteraient pas dans leur propre sexe. Origène sur saint Matthieu, édition de Huet, pages 487 et 495 ; Tertullien, De la parure des femmes, livre 1, chapitre 2 ; saint Hilaire sur saint Matthieu, chapitre 23. Rufin reproche à saint Jérôme d'avoir dit la même chose sur le Chapitre v. de l'Épître aux Éphésiens ; mais saint Jérôme s'en défend au Chapitre 6. de son Apologie contre Rufin. Origènes à l'endroit cité, enseigne, qu'au siècle futur il n'y aura plus aucune distinction de sexe, ni d'homme, ni de femme, et qu'ils seront tous comme des Anges.",
+   "proposed": "Saint Jérôme, sur ce passage, et Lettre 27 à Eustochium ; et saint Augustin, La Cité de Dieu, livre 12, chapitre 27. Corporibus vitiis trahentur, natura servabitur. Quelques Anciens ont été d'un sentiment contraire. Ils ont cru que les femmes ne ressusciteraient pas dans leur propre sexe. Origène sur saint Matthieu, édition de Huet, pages 487 et 495 ; Tertullien, De la parure des femmes, livre 1, chapitre 2 ; saint Hilaire sur saint Matthieu, chapitre 23. Rufin reproche à saint Jérôme d'avoir dit la même chose sur le chapitre 5 de l'Épître aux Éphésiens ; mais saint Jérôme s'en défend au chapitre 6 de son Apologie contre Rufin. Origène à l'endroit cité, enseigne, qu'au siècle futur il n'y aura plus aucune distinction de sexe, ni d'homme, ni de femme, et qu'ils seront tous comme des Anges.",
    "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0652(a)",
-   "page": "page_0652",
-   "marker": "(a)",
-   "text": "Vide Origen. in Matth. Ieronym. et Beda hic. alios recentiores.",
-   "proposed": "Voyez Origène sur saint Matthieu ; saint Jérôme ; et Bède, sur ce passage ; et d'autres auteurs plus récents.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0652(d)",
-   "page": "page_0652",
-   "marker": "(d)",
-   "text": "Vide Grot. et Maldon. hic. Vide et Hebr.",
-   "proposed": "Voyez Grotius ; et Maldonat, sur ce passage. Voyez aussi l'Hébreu.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0653(b)",
-   "page": "page_0653",
-   "marker": "(b)",
-   "text": "Joseph. lib. 1. _contra Apion_. pag. 1036. 1037.",
-   "proposed": "Josèphe, livre 1, _Contre Apion_, pages 1036 et 1037.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0653(e)",
-   "page": "page_0653",
-   "marker": "(e)",
-   "text": "Beda _in Marc_. XII. Grot. _hic_.",
-   "proposed": "Bède, _sur Marc_ 12 ; Grotius, _sur ce passage_.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0654(a)",
-   "page": "page_0654",
-   "marker": "(a)",
-   "text": "Aug. lib. 1. cap. 6. et 42. de Doctrina Christ. Vide et lib. x de Civit. cap. 3. et lib. de Morib. Eccles. Cathol. cap. 26. _Quod ergo agis tecum, id agendum cum proximo est ; hoc est ut ipse perfecto amore diligat Deum. Non enim eum diligis sicut teipsum, si non ad id bonum ad quod tendis, adducere satagis._",
-   "proposed": "Saint Augustin, De la doctrine chrétienne, livre 1, chapitres 6 et 42. Voyez aussi La Cité de Dieu, livre 10, chapitre 3 ; et Des mœurs de l'Église catholique, chapitre 26. _Quod ergo agis tecum, id agendum cum proximo est ; hoc est ut ipse perfecto amore diligat Deum. Non enim eum diligis sicut teipsum, si non ad id bonum ad quod tendis, adducere satagis._",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0654(b)",
-   "page": "page_0654",
-   "marker": "(b)",
-   "text": "August. de Perfectione justitiæ hominis, cap. 5.",
-   "proposed": "Saint Augustin, De la perfection de la justice de l'homme, chapitre 5.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0654(c)",
-   "page": "page_0654",
-   "marker": "(c)",
-   "text": "August. Serm. 350. olim 39. de temp.",
-   "proposed": "Saint Augustin, Sermon 350, autrefois 39, De tempore.",
-   "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -5691,61 +2364,6 @@
    ]
   },
   {
-   "id": "0658(a)",
-   "page": "page_0658",
-   "marker": "(a)",
-   "text": "Vide Hilar. et August. Serm. olim 49. nunc 117. cap. 5. 6. 7. Ieronym. et Mald. hic.",
-   "proposed": "Voyez saint Hilaire ; et saint Augustin, Sermon autrefois 49, maintenant 117, chapitres 5, 6, 7 ; saint Jérôme ; et Maldonat, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0658(b)",
-   "page": "page_0658",
-   "marker": "(b)",
-   "text": "℣. 20. sq.",
-   "proposed": "Matthieu 23:20 et suivants.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0658(c)",
-   "page": "page_0658",
-   "marker": "(c)",
-   "text": "Chapitre XVI. 6. et ℣. 20. 21. et seq. et VI. 1. 2. etc.",
-   "proposed": "Matthieu 16:6 ;\nMatthieu 23:20-21 et suivants ;\nMatthieu 6:1-2, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0658(d)",
-   "page": "page_0658",
-   "marker": "(d)",
-   "text": "Talmud. tract. Sota. c. 3. §. 4.",
-   "proposed": "Le Talmud, traité Sota, chapitre 3, § 4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0659(c)",
-   "page": "page_0659",
-   "marker": "(c)",
-   "text": "Ita Grot. Camer.",
-   "proposed": "Ainsi l'entendent Grotius ; Camerarius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0659(e)",
    "page": "page_0659",
    "marker": "(e)",
@@ -5756,28 +2374,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0659(g)",
-   "page": "page_0659",
-   "marker": "(g)",
-   "text": "Ligfoot. Scalig. Maldon. alii.",
-   "proposed": "Lightfoot ; Scaliger ; Maldonat ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0659(h)",
-   "page": "page_0659",
-   "marker": "(h)",
-   "text": "Vide Ieronym. Grot. Sculter.",
-   "proposed": "Voyez saint Jérôme ;\nGrotius ;\nScultet.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0660(b)",
@@ -5793,17 +2389,6 @@
     "hebrew",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0661(a)",
-   "page": "page_0661",
-   "marker": "(a)",
-   "text": "Léon de Modéne, Cérémonies des Juifs, hap. 6. et 11. Voyez Buxtorf, Synag. Jud. ap. 4.",
-   "proposed": "Léon de Modène, Cérémonies des Juifs, chapitres 6 et 11. Voyez Buxtorf, Synagogue judaïque, chapitre 4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0662(a)",
@@ -5835,202 +2420,13 @@
    ]
   },
   {
-   "id": "0664(a)",
-   "page": "page_0664",
-   "marker": "(a)",
-   "text": "Origen. Hilar. Jeronym. Author Oper. imperfec‍t. Beda in hunc loc. Brug. Grot. Tir.",
-   "proposed": "Origène ; saint Hilaire ; saint Jérôme ; l'auteur de l'Ouvrage imparfait ; Bède, sur ce passage ; Brugensis ; Grotius ; Tirin.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0664(b)",
-   "page": "page_0664",
-   "marker": "(b)",
-   "text": "Chrysost. hic. Mald.",
-   "proposed": "Saint Jean Chrysostome, sur ce passage ; Maldonat.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0664(e)",
-   "page": "page_0664",
-   "marker": "(e)",
-   "text": "August. lib. 2. de Consensu, cap. 75. Ità Toynard, et le Clerc, Harmon. Evang.",
-   "proposed": "Saint Augustin, De l'accord des évangélistes, livre 2, chapitre 75. Ainsi l'entendent Toynard et Le Clerc, Harmonie des Évangiles.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0664(g)",
-   "page": "page_0664",
-   "marker": "(g)",
-   "text": "Ita Cantabrig. Cod. G. L. Colb. 2. Sax. Codd. Mss. Arab. Quid. antiq. Codd. Lat. Vide Martian. et Brug. hic.",
-   "proposed": "Ainsi lisent le manuscrit de Cambridge ; le Codex G ; L ; Colbert 2 ; Saxon ; les codex manuscrits ; l'Arabe ; quelques anciens codex latins. Voyez Martianay ; et Brugensis, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0665(a)",
-   "page": "page_0665",
-   "marker": "(a)",
-   "text": "Gregor. Moral. lib. 33. in c. xli. Job. c. 23. ὡς βλασφημίας εἰς τὸ ὄνομα αὐτῷ, καὶ ἡμᾶς εἰς κακίαν πιστώσας, καὶ φονέας, καὶ αἰσχρὰν βουλήν, καὶ κατ' ἐξουσίαν ὁμοίω σπουδήν.",
-   "proposed": "Saint Grégoire le Grand, Morales sur Job, livre 33, sur le chapitre 41 de Job, chapitre 23. ὡς βλασφημίας εἰς τὸ ὄνομα αὐτῷ, καὶ ἡμᾶς εἰς κακίαν πιστώσας, καὶ φονέας, καὶ αἰσχρὰν βουλήν, καὶ κατ' ἐξουσίαν ὁμοίω σπουδήν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0665(d)",
-   "page": "page_0665",
-   "marker": "(d)",
-   "text": "Justin. Mart. Dial. cum Tryph. Οὐ δι' ἀγνοήσαντος ὁ μόνον μισοῦντος, ἀλλὰ διασύροντος.",
-   "proposed": "Saint Justin, Dialogue avec Tryphon. Οὐ δι' ἀγνοήσαντος ὁ μόνον μισοῦντος, ἀλλὰ διασύροντος.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0665(e)",
-   "page": "page_0665",
-   "marker": "(e)",
-   "text": "Voyez Cardoso, Las excellentias, etc. Et Basnage, Histoire des Juifs, tom. 5. l. 7. c. 11. art. 3.",
-   "proposed": "Voyez Cardoso, Las excellentias, etc. Et Basnage, Histoire des Juifs, tome 5, livre 7, chapitre 11, article 3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0666(b)",
-   "page": "page_0666",
-   "marker": "(b)",
-   "text": "Basnage liv. VII. chapitre 8. art. 8. Édit. de Paris.",
-   "proposed": "Basnage, livre 7, chapitre 8, article 8, édition de Paris.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0666(c)",
-   "page": "page_0666",
-   "marker": "(c)",
-   "text": "Horat. Satyr. 4. sub finem.",
-   "proposed": "Horace, Satire 4, à la fin.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0667(a)",
-   "page": "page_0667",
-   "marker": "(a)",
-   "text": "Philo de Spécial. Legib.",
-   "proposed": "Philon, Des lois spéciales.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0668(a)",
-   "page": "page_0668",
-   "marker": "(a)",
-   "text": "Philo de Spécial. Legib.",
-   "proposed": "Philon, Des lois spéciales.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0668(c)",
-   "page": "page_0668",
-   "marker": "(c)",
-   "text": "Juvénal. Satyr. 14. v. 97. Nil prater nubes, et cœli numen adorat.",
-   "proposed": "Juvénal, Satire 14, vers 97. Nil prater nubes, et cœli numen adorat.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0668(d)",
-   "page": "page_0668",
-   "marker": "(d)",
-   "text": "Aristophan. Pluto. Act. 1. serm. 2. et Act. 2. serm. 1. Νὴ τὸν οὐρανὸν.",
-   "proposed": "Aristophane, Plutus, acte 1, scène 2, et acte 2, scène 1. Νὴ τὸν οὐρανὸν.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0669(a)",
-   "page": "page_0669",
-   "marker": "(a)",
-   "text": "Talmud tr. Maasarot. cap. 1. hal. 1. et Talmud. Seder-zeraïm Massec. Macser.",
-   "proposed": "Le Talmud, traité Maasarot, chapitre 1, halakha 1 ; et le Talmud, Seder Zeraïm, traité Macser.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0673(c)",
-   "page": "page_0673",
-   "marker": "(c)",
-   "text": "Vide Chrysost. Theophil. Auth. Oper. imperfecti, et Ieronym. Bedam, et Maldon. hic.",
-   "proposed": "Voyez saint Jean Chrysostome ; Théophile ; l'auteur de l'Ouvrage imparfait ; saint Jérôme ; Bède ; et Maldonat, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0673(d)",
-   "page": "page_0673",
-   "marker": "(d)",
-   "text": "Cajet. Grot. Gerhard. Le Clerc, Simon.",
-   "proposed": "Cajetan ;\nGrotius ;\nGerhard ;\nLe Clerc ;\nSimon.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0674(a)",
-   "page": "page_0674",
-   "marker": "(a)",
-   "text": "SAmb. ad Zacharie 1:1. n. 9. Natal. Alex. his. in Dissert. 6. Ætat. 6. V. T. Strabuski.",
-   "proposed": "Saint Ambroise, sur Zacharie 1:1, numéro 9 ;\nNoël Alexandre, Histoire, Dissertation 6, âge 6 du Vieux Testament ;\nStrabuski.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0674(b)",
    "page": "page_0674",
    "marker": "(b)",
-   "text": "Origen. Chrysost. in Matt. Basil. homil. de hum. Christ. gener. Theophyl. et Euthym. in hunc loc. Baron. Terin'l. Scorpiac. Petr. Alex. Épiphane. etc. Ex Pro-evangel. Jacobi.",
-   "proposed": "Origène ; saint Jean Chrysostome, sur saint Matthieu ; saint Basile, Homélie De humana Christi generatione ; Théophylacte et Euthyme, sur ce passage ; Baronius ; Tertullien, Scorpiaque ; Pierre d'Alexandrie ; Épiphane ; etc. D'après le Protévangile de Jacques.",
+   "text": "Origène ; saint Jean Chrysostome, sur saint Matthieu ; saint Basile, Homélie De humana Christi generatione ; Théophylacte et Euthyme, sur ce passage ; Baronius ; Tertullien, Scorpiaque ; Pierre d'Alexandrie ; Épiphane ; etc. D'après le Protévangile de Jacques.",
+   "proposed": "Origène ; saint Jean Chrysostome, sur saint Matthieu ; saint Basile, Homélie De humana Christi generatione ; Théophylacte et Euthyme, sur ce passage ; Baronius ; Tertullien, Scorpiaque ; Pierre d'Alexandrie ; saint Épiphane ; etc. D'après le Protévangile de Jacques.",
    "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -6039,9 +2435,10 @@
    "id": "0674(f)",
    "page": "page_0674",
    "marker": "(f)",
-   "text": "Grot. Hammond. L'Emper. Louis de Dieu sur S. Matt. M. de Tillemont tit. 1. des Emper. art. 54. Voyez aussi Jans. sur cet endroit-ci.",
-   "proposed": "Grotius ;\nHammond ;\nL'Empereur ;\nLouis de Dieu sur saint Matthieu. M. de Tillemont, titre 1 des Empereurs, article 54. Voyez aussi Jansénius sur cet endroit-ci.",
+   "text": "Grotius ;\nHammond ;\nL'Empereur ;\nLouis de Dieu sur saint Matthieu. M. de Tillemont, titre 1 des Empereurs, article 54. Voyez aussi Jansénius sur cet endroit-ci.",
+   "proposed": "Grotius ;\nHammond ;\nL'Empereur ;\nLouis de Dieu sur saint Matthieu ;\nM. de Tillemont, tome 1 des Empereurs, article 54. Voyez aussi Jansénius sur cet endroit-ci.",
    "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -6061,67 +2458,13 @@
    ]
   },
   {
-   "id": "0676(a)",
-   "page": "page_0676",
-   "marker": "(a)",
-   "text": "Joseph de bello, l. 4. c. 19. in Lat. l. 5. p 883. f. et seq.",
-   "proposed": "Josèphe, Guerre des Juifs, livre 4, chapitre 19 ; en latin, livre 5, page 883, f. et suivants.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0676(c)",
    "page": "page_0676",
    "marker": "(c)",
-   "text": "Origen. in Matt. tom. XI. Édit. Huët.",
-   "proposed": "Origène, sur saint Matthieu, tome 11, édition Huët.",
+   "text": "Origène, sur saint Matthieu, tome 11, édition Huët.",
+   "proposed": "Origène, sur saint Matthieu, tome 11, édition Huet.",
    "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0676(d)",
-   "page": "page_0676",
-   "marker": "(d)",
-   "text": "Vide Maldon. hic, Brug. Grot.",
-   "proposed": "Voyez Maldonat sur ce passage ;\nBrugensis ;\nGrotius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0676(e)",
-   "page": "page_0676",
-   "marker": "(e)",
-   "text": "Aug. lib. 1. Oper. novissimi contra Julianum, Natal. Alex. et Jans. hic.",
-   "proposed": "Saint Augustin, livre 1, Operis novissimi contra Julianum ; Noël Alexandre et Jansénius sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0677(a)",
-   "page": "page_0677",
-   "marker": "(a)",
-   "text": "Ieronym Theophyl. Euthym. alii plerique. Vide Jérémie 7:4.",
-   "proposed": "Saint Jérôme ; Théophylacte ; Euthyme ; et la plupart des autres. Voyez Jérémie 7:4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0677(b)",
-   "page": "page_0677",
-   "marker": "(b)",
-   "text": "Beda, Grot. Cleric. Brug. Mald.",
-   "proposed": "Bède ;\nGrotius ;\nLe Clerc ;\nBrugensis ;\nMaldonat.",
-   "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -6203,18 +2546,6 @@
    ]
   },
   {
-   "id": "0695(f)",
-   "page": "page_0695",
-   "marker": "(f)",
-   "text": "Homer. Iliad. Σ.\nΝεκρὸν ἐὸντ᾽ ἀτίμητον· ὅτι Μενοίτιον ἀμφὶ, ἕλκουσιν νεκροὶ μίμνειν ἐνὶ νηυσὶν ἀνάκτων.",
-   "proposed": "Homère, Iliade, Σ.\nΝεκρὸν ἐὸντ᾽ ἀτίμητον· ὅτι Μενοίτιον ἀμφὶ, ἕλκουσιν νεκροὶ μίμνειν ἐνὶ νηυσὶν ἀνάκτων.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0698(d)",
    "page": "page_0698",
    "marker": "(d)",
@@ -6254,34 +2585,13 @@
    ]
   },
   {
-   "id": "0703(d)",
-   "page": "page_0703",
-   "marker": "(d)",
-   "text": "Athanas. serm. 4. _contra Arian._ Ambr. l. 8. _in Lucam_, Nazianz. Orat. 4. _de Theologia_, Theodoret. Anathem. 4. _contra Cyrill._ Cyrill. l. 9. _Thesauri_ c. 4. Author Op. r. imperf. Iren. lib. 4. c. 48. 49. Vide Grot. _in Marc_ XIII. 32. etc.",
-   "proposed": "Saint Athanase, Sermon 4 _Contre les ariens_ ; saint Ambroise, livre 8, _sur saint Luc_ ; saint Grégoire de Nazianze, Discours 4, _De Theologia_ ; Théodoret, Anathème 4, _Contre Cyrille_ ; saint Cyrille, livre 9, _Thesauri_, chapitre 4 ; l'auteur de l'Opus imperfectum ; saint Irénée, livre 4, chapitres 48 et 49. Voyez Grotius _sur Marc_ 13:32, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0703(f)",
-   "page": "page_0703",
-   "marker": "(f)",
-   "text": "Origen. _in Matt._ et Épiphane. hæresi 69. Chrysost. homil. _de Trinitate_ ; Bern. c. 3. trastat. _de Humilit._",
-   "proposed": "Origène, _sur saint Matthieu_ ; et saint Épiphane, hérésie 69 ; saint Jean Chrysostome, homélie _De Trinitate_ ; saint Bernard, chapitre 3, traité _De Humilitate_.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0715(a)",
    "page": "page_0715",
    "marker": "(a)",
    "text": "1 Cor X I. 4. 5. et seq. Divisiones gratiarum sunt… et divisiones operationum sunt ; idem autem Deus qui operatur omnia in omnibus.",
    "proposed": "1 Cor X I. 4. 5. et seq. Divisiones gratiarum sunt… et divisiones operationum sunt ; idem autem Deus qui operatur omnia in omnibus.",
    "why": [
+    "written out, but a number changed or added: 1 Corinthiens 12:4-5 et suivants. Divisiones gratiarum sunt… et divisiones operationum sunt ; idem autem Deus qui operatur omnia in omnibus.",
     "written out, but a number changed or added: 1 Corinthiens 12:4-5 et suivants. Divisiones gratiarum sunt… et divisiones operationum sunt ; idem autem Deus qui operatur omnia in omnibus."
    ],
    "flags": [
@@ -6317,17 +2627,6 @@
    ]
   },
   {
-   "id": "0728(c)",
-   "page": "page_0728",
-   "marker": "(c)",
-   "text": "Le Clerc hic. Vadian. Ep. de Insul. Medit. apud Hamm. Vat. Erasm. Capell. de Dieu.",
-   "proposed": "Le Clerc sur ce passage. Vadian, Lettre De insulis Mediterranei, dans Hammond ;\nVatable ;\nÉrasme ;\nCappel ;\nLouis de Dieu.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0728(d)",
    "page": "page_0728",
    "marker": "(d)",
@@ -6341,39 +2640,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0728(e)",
-   "page": "page_0728",
-   "marker": "(e)",
-   "text": "Erasm. Grot. Hamm. Brug. Bez. Camero.",
-   "proposed": "Érasme ;\nGrotius ;\nHammond ;\nBrugensis ;\nBèze ;\nCamerarius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0728(f)",
-   "page": "page_0728",
-   "marker": "(f)",
-   "text": "Plin. l. XII. c. 12. Cacumina nardi in aristas se spargunt, ideò geminâ dote nardi spicati, et foliæ célébrant.",
-   "proposed": "Pline, Histoire naturelle, livre 12, chapitre 12. Cacumina nardi in aristas se spargunt, ideò geminâ dote nardi spicati, et foliæ célébrant.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0729(a)",
-   "page": "page_0729",
-   "marker": "(a)",
-   "text": "Vide Hamm. hic. Syr. Copticam vers. Toynard. not. p.149. Lud. de Dieu, Drus. Grot.",
-   "proposed": "Voyez Hammond sur ce passage. le Syriaque ;\nCopticam versionem ;\nToynard, note, page 149 ;\nLouis de Dieu ;\nDrusius ;\nGrotius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0729(c)",
@@ -6402,28 +2668,6 @@
    ]
   },
   {
-   "id": "0729(f)",
-   "page": "page_0729",
-   "marker": "(f)",
-   "text": "Ambros. in Psal. XL n. 3.",
-   "proposed": "Saint Ambroise, sur le Psaume 40, numéro 3.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0730(c)",
-   "page": "page_0730",
-   "marker": "(c)",
-   "text": "Vide Baron. t. 1. Annal. an. 34. et Selden de Jure N. et G. l. 2. c. 6.",
-   "proposed": "Voyez Baronius, tome 1, Annales, an 34 ; et Selden, Du droit naturel et des gens, livre 2, chapitre 6.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0731(c)",
    "page": "page_0731",
    "marker": "(c)",
@@ -6440,177 +2684,13 @@
    ]
   },
   {
-   "id": "0731(d)",
-   "page": "page_0731",
-   "marker": "(d)",
-   "text": "Codd. Joma fol. 11. a. Gemarr. Megill. fol. 26. a, et Glossa ibid.",
-   "proposed": "Codices Joma, folio 11 a ; Gemara, Megilla, folio 26 a, et Glossa au même endroit.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0731(f)",
-   "page": "page_0731",
-   "marker": "(f)",
-   "text": "Apollinarius in Catenâ Gr. in Jean 18:28. in cod. Reg. 247. apud Toynard. not. in Harm. p. 149. Colossiens 1.",
-   "proposed": "Apollinaire, dans la Chaîne grecque sur Jean 18:28, dans le codex Regius 247, dans Toynard, note sur l'Harmonie, page 149. Colonne 1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0732(c)",
-   "page": "page_0732",
-   "marker": "(c)",
-   "text": "Nicephor. l. 1. c. 18. Cedren. alii Græci apud Baron. an. 34.",
-   "proposed": "Nicéphore, livre 1, chapitre 18 ; Cédrène ; et d'autres Grecs, dans Baronius, an 34.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0732(f)",
-   "page": "page_0732",
-   "marker": "(f)",
-   "text": "Toynard. not. in harmon. p. 151.",
-   "proposed": "Toynard, note sur l'Harmonie, page 151.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0733(e)",
-   "page": "page_0733",
-   "marker": "(e)",
-   "text": "Saint Chrysost. Théophyl. et quelques autres croient qu'il mangea d'abord l'agneau pascal debout selon la Loi, et qu'ensuite il prit un souper ordinaire, couché à table.",
-   "proposed": "Saint Jean Chrysostome, Théophylacte et quelques autres croient qu'il mangea d'abord l'agneau pascal debout selon la Loi, et qu'ensuite il prit un souper ordinaire, couché à table.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0733(f)",
-   "page": "page_0733",
-   "marker": "(f)",
-   "text": "vide Pesachim c. 10. Halach : 1. Buxtorf. D sert. de Cœna Domini.",
-   "proposed": "voyez Pesachim chapitre 10, Halacha : 1. Buxtorf, Dissertation de Cœna Domini.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0733(g)",
-   "page": "page_0733",
-   "marker": "(g)",
-   "text": "Scalig. l. 1. de Emend. temp. Tremel. et Pareus ad Matthieu 26:20. etc.",
-   "proposed": "Scaliger, livre 1, De emendatione temporum ; Tremellius et Pareus sur Matthieu 26:20, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0734(a)",
-   "page": "page_0734",
-   "marker": "(a)",
-   "text": "Matt. hic, Marc 14:18.",
-   "proposed": "Matthieu sur ce passage, Marc 14:18.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0734(d)",
-   "page": "page_0734",
-   "marker": "(d)",
-   "text": "Vide Maldon. Jans. alios.",
-   "proposed": "Voyez Maldonat ; Jansénius ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0734(e)",
-   "page": "page_0734",
-   "marker": "(e)",
-   "text": "Vide Chrysost. Euthym. Theophyl. Ieron. Bedam.",
-   "proposed": "Voyez saint Jean Chrysostome ;\nEuthyme ;\nThéophylacte ;\nsaint Jérôme ;\nBède.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0734(f)",
-   "page": "page_0734",
-   "marker": "(f)",
-   "text": "Constit. Apost. lib. 5. cap. 13. Innocent III. lib. 4. cap. 11. de Myst. altaris. Hilar. in Matth. cap. 30. Rupert. in Johan. lib. XII. et in Matth. lib. X. Vide et Theophyl. hic, et Victor. Antioch. ad Marc 14.",
-   "proposed": "Constitutions apostoliques, livre 5, chapitre 13 ;\nInnocent III, livre 4, chapitre 11, De mysterio altaris ;\nsaint Hilaire, sur saint Matthieu, chapitre 30 ;\nRupert, sur saint Jean, livre 12, et sur saint Matthieu, livre 10. Voyez aussi Théophylacte sur ce passage, et Victor d'Antioche sur Marc 14.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0734(g)",
-   "page": "page_0734",
-   "marker": "(g)",
-   "text": "Origen. homil. 35. in Matth. Victor. Antioch. in Marc. XIV. Cyrill. Jerosol. Cathech. 13. Cyrill. in Johan. l. 9. c. 13. Chrysost homil. 82. et 83. in Matth. Theodoret. ad 1 Corinthiens 11:23. Ep. 44. n. 10. Ieron. lib. 2. contra Jovin. etc.",
-   "proposed": "Origène, Homélie 35 sur saint Matthieu ;\nVictor d'Antioche, sur Marc 14 ;\nsaint Cyrille de Jérusalem, Catéchèse 13 ;\nsaint Cyrille, sur saint Jean, livre 9, chapitre 13 ;\nsaint Jean Chrysostome, Homélies 82 et 83 sur saint Matthieu ;\nThéodoret, sur 1 Corinthiens 11:23, Lettre 44, numéro 10 ;\nsaint Jérôme, Contre Jovinien, livre 2, etc.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0734(h)",
    "page": "page_0734",
    "marker": "(h)",
-   "text": "Abælard serm. de Pass. Domini Petr. Lombard. l. 6. 4. sent. dist. 11. Alens. parte 4. qn. 11. D. Thom. sent. 4. dist. 11. art. 2. Soto ad sent. 4. dist. 12. q. 2. art. 2. etc.",
-   "proposed": "Abælard, Sermon De Passione Domini ;\nPierre Lombard, livre 6, 4 Sentences, distinction 11 ;\nAlensis, partie 4, question 11 ;\nsaint Thomas, Sentences 4, distinction 11, article 2 ;\nSoto sur les Sentences 4, distinction 12, question 2, article 2, etc.",
+   "text": "Abælard, Sermon De Passione Domini ;\nPierre Lombard, livre 6, 4 Sentences, distinction 11 ;\nAlensis, partie 4, question 11 ;\nsaint Thomas, Sentences 4, distinction 11, article 2 ;\nSoto sur les Sentences 4, distinction 12, question 2, article 2, etc.",
+   "proposed": "Abælard, Sermon De Passione Domini ;\nPierre Lombard, livre 4 des Sentences, distinction 11 ;\nAlensis, partie 4, question 11 ;\nsaint Thomas, Sentences 4, distinction 11, article 2 ;\nSoto sur les Sentences 4, distinction 12, question 2, article 2, etc.",
    "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0735(b)",
-   "page": "page_0735",
-   "marker": "(b)",
-   "text": "Vide Concil. Bracar. 3. cap. 1. 2. Ful. Pe-pa Ep. ad Episcopos per Ægyp. dist. 2. de Consecr. cap. 7. Burcard. décret. 5. 1. sive parte 2. cap. 11.",
-   "proposed": "Voyez le concile de Braga 3, chapitres 1 et 2 ;\nFul. Pe-pa Lettre aux évêques d'Égypte, distinction 2, De Consecratione, chapitre 7 ;\nBurcard, Décret 5, 1, ou partie 2, chapitre 11.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0736(a)",
-   "page": "page_0736",
-   "marker": "(a)",
-   "text": "Iren. lib. I. cap. 35. contra Hæf.",
-   "proposed": "Saint Irénée, livre 1, chapitre 35, Contre les hérésies.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0736(c)",
-   "page": "page_0736",
-   "marker": "(c)",
-   "text": "Theodoret. Hæretic. fab. l. 1. c. 25.",
-   "proposed": "Théodoret, Fables hérétiques, livre 1, chapitre 25.",
-   "why": [
+    "abbreviations written out",
     "abbreviations written out"
    ],
    "flags": []
@@ -6619,120 +2699,11 @@
    "id": "0736(e)",
    "page": "page_0736",
    "marker": "(e)",
-   "text": "In Chrysost. et Origen.",
-   "proposed": "Dans saint Jean Chrysostome et Origène.",
+   "text": "Dans saint Jean Chrysostome et Origène.",
+   "proposed": "Dans saint Jean Chrysostome ; et Origène.",
    "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0737(a)",
-   "page": "page_0737",
-   "marker": "(a)",
-   "text": "Cyrill. Jerosolym. Cathech. 4.",
-   "proposed": "Saint Cyrille de Jérusalem, Catéchèse 4.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0737(c)",
-   "page": "page_0737",
-   "marker": "(c)",
-   "text": "Ambros. de his qui Mysteriis initiantur, cap. 9.",
-   "proposed": "Saint Ambroise, De his qui Mysteriis initiantur, chapitre 9.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0737(d)",
-   "page": "page_0737",
-   "marker": "(d)",
-   "text": "Hilar. lib. 8. de Trinit. De veritate carnis et sanguinis non relictus est ambigendi locus ; nunc enim et ipsius Domini professione, et fide nostra verè caro est, et verè sanguis est. Et hæc accepta atque hausta id efficiunt ut et nos in Christo, et Christus in nobis sit.",
-   "proposed": "Saint Hilaire, De la Trinité, livre 8. De veritate carnis et sanguinis non relictus est ambigendi locus ; nunc enim et ipsius Domini professione, et fide nostra verè caro est, et verè sanguis est. Et hæc accepta atque hausta id efficiunt ut et nos in Christo, et Christus in nobis sit.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0738(f)",
-   "page": "page_0738",
-   "marker": "(f)",
-   "text": "Horn. lib. 3. cap. 18. de Origin. Gent. Americ.",
-   "proposed": "Horn, livre 3, chapitre 18, De originibus gentium Americanarum.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0739(d)",
-   "page": "page_0739",
-   "marker": "(d)",
-   "text": "Chrysost. Theophyl. Euthym. Vide et Origen. Ieronym. Bedam.",
-   "proposed": "Saint Jean Chrysostome ;\nThéophylacte ;\nEuthyme. Voyez aussi Origène ;\nsaint Jérôme ;\nBède.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0739(e)",
-   "page": "page_0739",
-   "marker": "(e)",
-   "text": "Vide Brug. in Psalm. CXII. Drus. Observ. lib. 7. cap. 15. Buxtorf. Lex. Talmud.",
-   "proposed": "Voyez Brugensis, sur le Psaume 112 ; Drusius, Observations, livre 7, chapitre 15 ; Buxtorf, Lexicon ; le Talmud.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0739(f)",
-   "page": "page_0739",
-   "marker": "(f)",
-   "text": "Vide Bedam et Grot. hic.",
-   "proposed": "Voyez Bède et Grotius, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0739(g)",
-   "page": "page_0739",
-   "marker": "(g)",
-   "text": "Vide August. Ep. 237. ad Ceretium Episcop. n. 2. et 4. in nov. Édit.",
-   "proposed": "Voyez saint Augustin, Lettre 237 à Ceretius, évêque, numéro 2 et 4, dans la nouvelle édition.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0740(a)",
-   "page": "page_0740",
-   "marker": "(a)",
-   "text": "Johan. XVII. I. per totum.",
-   "proposed": "Jean 17:1, d'un bout à l'autre.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0740(b)",
-   "page": "page_0740",
-   "marker": "(b)",
-   "text": "Johan. XVIII. I.",
-   "proposed": "Jean 18:1.",
-   "why": [
-    "abbreviations written out"
+    "abbreviations written out",
+    "abbreviations written out (footnote_expand.py)"
    ],
    "flags": []
   },
@@ -6752,17 +2723,6 @@
    ]
   },
   {
-   "id": "0743(c)",
-   "page": "page_0743",
-   "marker": "(c)",
-   "text": "Matthieu 17:1. Vide Hilar. Chrysost. Theophyl. alios.",
-   "proposed": "Matthieu 17:1. Voyez saint Hilaire ; saint Jean Chrysostome ; Théophylacte ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0743(d)",
    "page": "page_0743",
    "marker": "(d)",
@@ -6777,61 +2737,6 @@
    "flags": [
     "scanned"
    ]
-  },
-  {
-   "id": "0743(e)",
-   "page": "page_0743",
-   "marker": "(e)",
-   "text": "August. in Psalm. XL. Vide et in Psaumes 87. et tract. 60 in Johan.",
-   "proposed": "Saint Augustin, sur le Psaume 40. Voyez aussi sur le Psaume 87, et Traité 60 sur saint Jean.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0744(b)",
-   "page": "page_0744",
-   "marker": "(b)",
-   "text": "Vide Sup. xx. 22. Psaumes 10:7. 74:9. Isaïe 51:17. alibi passim.",
-   "proposed": "Voyez plus haut Matthieu 20:22 ; Psaumes 10:7 ; 74:9 ; Isaïe 51:17 ; souvent ailleurs, passim.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0746(a)",
-   "page": "page_0746",
-   "marker": "(a)",
-   "text": "Chrysost. Euthym. Theophylast. Maldon. Erasm. Munst. Pisc. aliis.",
-   "proposed": "Saint Jean Chrysostome ; Euthyme ; Théophylacte ; Maldonat ; Érasme ; Munster ; Piscator ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0746(c)",
-   "page": "page_0746",
-   "marker": "(c)",
-   "text": "Ita Henric. Steph. et Colomiez Observ. S. pag. 44. Gerhard. Harmon. Evangel. in Passion. cap. 2",
-   "proposed": "Ainsi l'entendent Henri Estienne et Colomiès, Observations sacrées, page 44 ; Gerhard, Harmonie évangélique, sur la Passion, chapitre 2",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0747(a)",
-   "page": "page_0747",
-   "marker": "(a)",
-   "text": "Leontius in Jean 18:5. Theodor. Heracl. in Catena. Chrysost. Theophyl. Cyrill. sn Jean 18:5.",
-   "proposed": "Léonce, sur Jean 18:5 ;\nThéodore d'Héraclée, dans la Chaîne ;\nsaint Jean Chrysostome ;\nThéophylacte ;\nsaint Cyrille, sur Jean 18:5.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0753(c)",
@@ -6855,6 +2760,7 @@
    "text": "Matt. XXVI I. 1. Marc. XV. I. Luc. XXI I. 66.",
    "proposed": "Matt. XXVI I. 1. Marc. XV. I. Luc. XXI I. 66.",
    "why": [
+    "written out, but a number changed or added: Matthieu 27:1 ; Marc 15:1 ; Luc 22:66.",
     "written out, but a number changed or added: Matthieu 27:1 ; Marc 15:1 ; Luc 22:66."
    ],
    "flags": [
@@ -6871,17 +2777,6 @@
    "flags": [
     "expand-unread"
    ]
-  },
-  {
-   "id": "0759(a)",
-   "page": "page_0759",
-   "marker": "(a)",
-   "text": "Ligfoot, _Hor. Heb. ad Marc._ xv. 25.",
-   "proposed": "Lightfoot, _Horæ hebraicæ sur Marc_ 15:25.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0762(e)",
@@ -6931,83 +2826,6 @@
    ]
   },
   {
-   "id": "0766(g)",
-   "page": "page_0766",
-   "marker": "(g)",
-   "text": "Med. lib. 4. Ep. 31.",
-   "proposed": "Mede, livre 4, lettre 31.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0766(h)",
-   "page": "page_0766",
-   "marker": "(h)",
-   "text": "Hamm. ad Hébreux 8:1.",
-   "proposed": "Hammond sur Hébreux 8:1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0767(a)",
-   "page": "page_0767",
-   "marker": "(a)",
-   "text": "August. lib. 3. de Consensu, cap. 7. Heinsius, Exercit. sacr. in Matthieu 27. et Sanctius ad Zacharie 11:12. et ad Jérémie 32:14. et Glass. Philol. sacr. l. 1. tract. 2.",
-   "proposed": "Saint Augustin, De l'accord des évangélistes, livre 3, chapitre 7 ;\nHeinsius, Exercitationes sacræ sur Matthieu 27 ;\nSanctius sur Zacharie 11:12 et sur Jérémie 32:14 ;\nGlassius, Philologia sacra, livre 1, traité 2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0767(d)",
-   "page": "page_0767",
-   "marker": "(d)",
-   "text": "Ieronym. lib. 2. in Amos, c. V. In omnibus Scripturis sanctis observandum est, Apostolicos viros in ponendis testimoniis de veteri Testamento, non verba considerare, sed sensum.",
-   "proposed": "Saint Jérôme, livre 2 sur Amos, chapitre 5. In omnibus Scripturis sanctis observandum est, Apostolicos viros in ponendis testimoniis de veteri Testamento, non verba considerare, sed sensum.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0769(a)",
-   "page": "page_0769",
-   "marker": "(a)",
-   "text": "Luc. XXIII. §. 6. 7.",
-   "proposed": "Luc 23:6-7.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0770(a)",
-   "page": "page_0770",
-   "marker": "(a)",
-   "text": "Author Epistol. sub nomine Ignat. ad Philippins. Author serm. de Pass.ne sub nomine Cypriani. Beda, Anselm. Hist. Scolast. Anastas. tract. ad Maximum. lib. 1. p. 163.",
-   "proposed": "L'auteur de la Lettre aux Philippiens sous le nom de saint Ignace ; l'auteur du Sermon sur la Passion sous le nom de saint Cyprien ; Bède ; saint Anselme ; Histoire scolastique ; Anastase, Traité à Maxime, livre 1, page 163.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0770(b)",
-   "page": "page_0770",
-   "marker": "(b)",
-   "text": "Ambros. lib. x. in Luc. Origen. Ieronym. Chrysost. Euthym. theophyl. Leo Magn. serm. XI. de Passione. Grot. Mald. Brug.",
-   "proposed": "Saint Ambroise sur saint Luc, livre 10 ;\nOrigène ;\nsaint Jérôme ;\nsaint Jean Chrysostome ;\nEuthyme ;\nThéophylacte ;\nsaint Léon le Grand, sermon 11 sur la Passion ;\nGrotius ;\nMaldonat ;\nBrugensis.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0771(b)",
    "page": "page_0771",
    "marker": "(b)",
@@ -7032,61 +2850,6 @@
    ]
   },
   {
-   "id": "0772(a)",
-   "page": "page_0772",
-   "marker": "(a)",
-   "text": "Vide Bynæum, lib. 3. cap. 4. art. 51.",
-   "proposed": "Voyez Bynæus, livre 3, chapitre 4, article 51.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0773(d)",
-   "page": "page_0773",
-   "marker": "(d)",
-   "text": "Ieronym. Ep. 27. Prudentius, alii.",
-   "proposed": "Saint Jérôme, Lettre 27 ; Prudence ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0773(g)",
-   "page": "page_0773",
-   "marker": "(g)",
-   "text": "Ieronym. hic. Vide et Drus. et Vatab. apud Bynæ. l. 3. c. 4. art. 4. de morte Christi, et Lips. de Cruce lib. 2. c. 2.",
-   "proposed": "Saint Jérôme, sur ce passage. Voyez aussi Drusius et Vatable, dans Bynæus, livre 3, chapitre 4, article 4, De morte Christi ; et Lipse, De cruce, livre 2, chapitre 2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0773(h)",
-   "page": "page_0773",
-   "marker": "(h)",
-   "text": "Chrysost. orat. de Eleemosyna. Lastant. lib. 4. Instit. c. 8.",
-   "proposed": "Saint Jean Chrysostome, Discours sur l'aumône ; Lactance, Institutions divines, livre 4, chapitre 8.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0774(b)",
-   "page": "page_0774",
-   "marker": "(b)",
-   "text": "Vide Bynæ. lib. 1. c. 1. Art. 37. de mort. Christi.",
-   "proposed": "Voyez Bynæus, livre 1, chapitre 1, article 37, De morte Christi.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0774(c)",
    "page": "page_0774",
    "marker": "(c)",
@@ -7103,17 +2866,6 @@
    ]
   },
   {
-   "id": "0774(d)",
-   "page": "page_0774",
-   "marker": "(d)",
-   "text": "Maim. Halac. Sanhedr. c. 14.",
-   "proposed": "Maïmonide, Halachot Sanhédrin, chapitre 14.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0775(b)",
    "page": "page_0775",
    "marker": "(b)",
@@ -7126,17 +2878,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0775(c)",
-   "page": "page_0775",
-   "marker": "(c)",
-   "text": "Nonius ex Plauto. Patibulum ferat per urbem ; deinde affigatur cruci. Vide et Artemidorum. et Grot. hic. et Hamm.",
-   "proposed": "Nonius, d'après Plaute. Patibulum ferat per urbem ; deinde affigatur cruci. Voyez aussi Artémidore ; Grotius, sur ce passage ; et Hammond.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0776(a)",
@@ -7154,17 +2895,6 @@
    ]
   },
   {
-   "id": "0776(b)",
-   "page": "page_0776",
-   "marker": "(b)",
-   "text": "Chrysost. Ieronym. Beda, Theophyl. Euthym. hic. Athanas. serm. de Passione Domini. August. lib. 3. cap. 10. de Consensu. Ambros. in Luc. alii.",
-   "proposed": "Saint Jean Chrysostome ; saint Jérôme ; Bède ; Théophylacte ; Euthyme, sur ce passage ; saint Athanase, Sermon sur la Passion du Seigneur ; saint Augustin, De l'accord des évangélistes, livre 3, chapitre 10 ; saint Ambroise sur saint Luc ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0776(e)",
    "page": "page_0776",
    "marker": "(e)",
@@ -7175,263 +2905,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0776(f)",
-   "page": "page_0776",
-   "marker": "(f)",
-   "text": "Hesiod Theogon. v. 520. Δῆσεν δ᾽ ἀλυκτοπέδῃσι Προμηθέα ποικιλόβουλον, Δεσμοῖς ἀργαλέοισι μέσον διὰ κίον᾽ ἐλάσσας.",
-   "proposed": "Hésiode, Théogonie, vers 520. Δῆσεν δ᾽ ἀλυκτοπέδῃσι Προμηθέα ποικιλόβουλον, Δεσμοῖς ἀργαλέοισι μέσον διὰ κίον᾽ ἐλάσσας.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary: ποικιλόβυλον -> ποικιλόβουλον, ἀργαλίοισι -> ἀργαλέοισι",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0777(a)",
-   "page": "page_0777",
-   "marker": "(a)",
-   "text": "Voyez Bynæus de morte Christi, lib. 3. c. 6. art. 7. Lips. de cruce, lib. 1. c. 7.",
-   "proposed": "Voyez Bynæus, De morte Christi, livre 3, chapitre 6, article 7 ; Lipse, De cruce, livre 1, chapitre 7.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0777(b)",
-   "page": "page_0777",
-   "marker": "(b)",
-   "text": "Homer Iliad. κ. et Odyss. ξ. v. 11. Estasan d' enèsi stauroùs diamperesi pisda, etc. Vide Didym. et Eustat. ibidem.",
-   "proposed": "Homère, Iliade, chant κ, et Odyssée, chant ξ, vers 11. Estasan d' enèsi stauroùs diamperesi pisda, etc. Voyez Didyme et Eustathe, au même endroit.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0777(c)",
-   "page": "page_0777",
-   "marker": "(c)",
-   "text": "Justin. Dialog. cum Tryphone. Tertull. contra Judæos, et alibi non semel.",
-   "proposed": "Saint Justin, Dialogue avec Tryphon ; Tertullien, Contre les Juifs, et ailleurs plus d'une fois.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0777(e)",
-   "page": "page_0777",
-   "marker": "(e)",
-   "text": "Isidor. lib. 1. Orig. cap. 3. Vide Lips. de cruce, lib. 1. cap. 7.",
-   "proposed": "Saint Isidore, Origines, livre 1, chapitre 3. Voyez Lipse, De cruce, livre 1, chapitre 7.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0777(g)",
-   "page": "page_0777",
-   "marker": "(g)",
-   "text": "Justin. Dialog. cum Tryphone. Tertull. advers. Gentes lib. I. c. 12. Scalig. ad Eus. n. 1617. in lib. X.",
-   "proposed": "Saint Justin, Dialogue avec Tryphon ;\nTertullien, Contre les Gentils, livre 1, chapitre 12 ;\nScaliger, sur Eusèbe, numéro 1617, livre 10.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0777(h)",
-   "page": "page_0777",
-   "marker": "(h)",
-   "text": "Nanfius ad Nonni Paraphr. in Jean 19:18. Fenardint. not. ad Irenæ lib. 2. cap. 42. Lips. not. in lib. 2. de Cruce. cap. 10.",
-   "proposed": "Nanfius, sur la Paraphrase de Nonnus, sur Jean 19:18 ;\nFenardint, note sur saint Irénée, livre 2, chapitre 42 ;\nLipse, note sur le livre 2 De cruce, chapitre 10.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0777(i)",
-   "page": "page_0777",
-   "marker": "(i)",
-   "text": "Gregor. Turon. lib. 1. de Gloria Martyrum. cap. 6.",
-   "proposed": "Saint Grégoire de Tours, De la gloire des martyrs, livre 1, chapitre 6.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0778(a)",
-   "page": "page_0778",
-   "marker": "(a)",
-   "text": "Scaliger. animadv. in Euseb. Digress. de litt. Ionic. orig. littera T. Bynæ. lib. 3. cap. 5. art. 11. 12. 13.",
-   "proposed": "Scaliger, Animadversiones sur Eusèbe, Digression sur l'origine des lettres ioniennes, lettre T ; Bynæus, livre 3, chapitre 5, articles 11, 12, 13.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0778(b)",
-   "page": "page_0778",
-   "marker": "(b)",
-   "text": "Justin. Martyr. Dialog. cum Tryphone. Οὐδὲ γὰρ τὸ ἐν τῇ ἐρήμῳ ὑπὸ Μωσέως γενόμενον σημεῖον, δι' ἰφίων καὶ ἀσπίδων ἀναιρουμένων τῶν ἀνθρώπων, καὶ δι' ὧν τύπων πάντων τῶν παθημάτων Χριστοῦ ἀπόδειξις ἐγίνετο, ὅτι μέλλει ἀναιρεῖσθαι, εἰ μὴ διὰ τοῦ σημείου ἐκείνου, τοῦ τὸν τύπον τοῦ σταυροῦ μηνύοντος, ἐγένετο· ὃ καὶ αὐτὸ Μωσῆς ἐποίησε, λαβὼν χαλκὸν εἰς τύπον τοῦ σταυροῦ, καὶ τοῦτο στήσας ἐπὶ τῇ ἁγίᾳ σκηνῇ, εἶπε τῷ λαῷ· Ἐὰν προσβλέπητε τῷ τύπῳ τούτῳ, καὶ πιστεύητε, ἐν αὐτῷ σωθήσεσθε.",
-   "proposed": "Saint Justin, Dialogue avec Tryphon. Οὐδὲ γὰρ τὸ ἐν τῇ ἐρήμῳ ὑπὸ Μωσέως γενόμενον σημεῖον, δι' ἰφίων καὶ ἀσπίδων ἀναιρουμένων τῶν ἀνθρώπων, καὶ δι' ὧν τύπων πάντων τῶν παθημάτων Χριστοῦ ἀπόδειξις ἐγίνετο, ὅτι μέλλει ἀναιρεῖσθαι, εἰ μὴ διὰ τοῦ σημείου ἐκείνου, τοῦ τὸν τύπον τοῦ σταυροῦ μηνύοντος, ἐγένετο· ὃ καὶ αὐτὸ Μωσῆς ἐποίησε, λαβὼν χαλκὸν εἰς τύπον τοῦ σταυροῦ, καὶ τοῦτο στήσας ἐπὶ τῇ ἁγίᾳ σκηνῇ, εἶπε τῷ λαῷ· Ἐὰν προσβλέπητε τῷ τύπῳ τούτῳ, καὶ πιστεύητε, ἐν αὐτῷ σωθήσεσθε.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0778(d)",
-   "page": "page_0778",
-   "marker": "(d)",
-   "text": "Irenæ. lib. 1. cap. 46. contra Hæres. Ipse habitus crucis fines et summitates habet quinque ; duos in longitudine, et duos in latitudine, et unum in medio, ubi requiescit qui clavis assigitur.",
-   "proposed": "Saint Irénée, livre 1, chapitre 46, Contre les hérésies. Ipse habitus crucis fines et summitates habet quinque ; duos in longitudine, et duos in latitudine, et unum in medio, ubi requiescit qui clavis assigitur.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0778(e)",
-   "page": "page_0778",
-   "marker": "(e)",
-   "text": "Tertull. lib. 2. advers. Nationes.",
-   "proposed": "Tertullien, livre 2, Aux nations.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0778(f)",
-   "page": "page_0778",
-   "marker": "(f)",
-   "text": "Idem, adversus Judæos cap. 10.",
-   "proposed": "Le même, Contre les Juifs, chapitre 10.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0778(g)",
-   "page": "page_0778",
-   "marker": "(g)",
-   "text": "Salmas. de Cruce, pag. 232. et 242.",
-   "proposed": "Saumaise, De cruce, pages 232 et 242.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0779(a)",
-   "page": "page_0779",
-   "marker": "(a)",
-   "text": "Vide Lips. de Cruce, lib. 3. cap. 14.",
-   "proposed": "Voyez Juste Lipse, De cruce, livre 3, chapitre 14.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0779(b)",
-   "page": "page_0779",
-   "marker": "(b)",
-   "text": "Scalig. loco citato in Euseb.",
-   "proposed": "Scaliger, à l'endroit cité, sur Eusèbe.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0779(c)",
-   "page": "page_0779",
-   "marker": "(c)",
-   "text": "Th. Bartholin de Latere Christi aperto, cap. 9. et Hypomn. 1. de Cruce. §. 13.",
-   "proposed": "Thomas Bartholin, De latere Christi aperto, chapitre 9 ; et Hypomnème 1, De cruce, paragraphe 13.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0779(d)",
-   "page": "page_0779",
-   "marker": "(d)",
-   "text": "Bynæ. lib. 3. cap. 5. art. 12.",
-   "proposed": "Bynæus, livre 3, chapitre 5, article 12.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0779(f)",
-   "page": "page_0779",
-   "marker": "(f)",
-   "text": "Harmon. Evang. lib. 2. cap. 7. §. 28.",
-   "proposed": "Harmonie évangélique, livre 2, chapitre 7, paragraphe 28.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0779(g)",
-   "page": "page_0779",
-   "marker": "(g)",
-   "text": "Vide Nisum Ep. de Cruce, et Nicol. Femsan. de hac re singulari opusculo.",
-   "proposed": "Voyez Nisus, évêque, De cruce, et Nicolas Femsan, de hac re singulari opusculo.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0779(k)",
-   "page": "page_0779",
-   "marker": "(k)",
-   "text": "Greg. Turon. lib. 1. de Gloria Martyr. cap. 6.",
-   "proposed": "Saint Grégoire de Tours, livre 1, De la gloire des martyrs, chapitre 6.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0780(a)",
-   "page": "page_0780",
-   "marker": "(a)",
-   "text": "Mald. Brug. Grot. Jansen.",
-   "proposed": "Maldonat ;\nBrugensis ;\nGrotius ;\nJansénius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0780(g)",
-   "page": "page_0780",
-   "marker": "(g)",
-   "text": "Origen. in Matth. Ambros. lib. x. in Luc. Épiphane. Hæresi 46. Ieronym. hic. Athanas. serm. de Passione Domini. Basil. in Isai. v. Chrysost. in Joan. homil. 84. August. lib. 16. de Civit. cap. 32° alii.",
-   "proposed": "Origène, sur saint Matthieu ; saint Ambroise, livre 10 sur saint Luc ; saint Épiphane, Hérésie 46 ; saint Jérôme, sur ce passage ; saint Athanase, Sermon sur la Passion du Seigneur ; saint Basile, sur Isaïe, chapitre 5 ; saint Jean Chrysostome, sur saint Jean, Homélie 84 ; saint Augustin, La Cité de Dieu, livre 16, chapitre 32 ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0781(a)",
@@ -7446,18 +2919,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0781(b)",
-   "page": "page_0781",
-   "marker": "(b)",
-   "text": "Ita Cantabrig. Armen. Copt. Æthiop. Hilat. August. Sedul. Juvincus. Vulg. alii apud Mill. hic. et Teynard. Εδωκαν αὐτοῦ πιεῖν οἶνον.",
-   "proposed": "Ainsi lisent le manuscrit de Cambridge, l'arménien, le copte, l'éthiopien, saint Hilaire, saint Augustin, Sedulius, Juvencus, la Vulgate, et d'autres, dans Mill, sur ce passage, et dans Toynard. Εδωκαν αὐτοῦ πιεῖν οἶνον.",
-   "why": [
-    "Greek checked against the Septuagint, Jérémie 42:14: αυτῶ -> αὐτοῦ",
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0781(c)",
@@ -7494,28 +2955,6 @@
    "flags": [
     "expand-unread"
    ]
-  },
-  {
-   "id": "0781(h)",
-   "page": "page_0781",
-   "marker": "(h)",
-   "text": "Talmud. Liran. Brug. Hammon. Ligfoot.",
-   "proposed": "Le Talmud ;\nNicolas de Lyre ;\nBrugensis ;\nHammond ;\nLightfoot.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0781(k)",
-   "page": "page_0781",
-   "marker": "(k)",
-   "text": "Galatin. lib. 8. cap. 19. Casauben. in Baron.",
-   "proposed": "Galatin, livre 8, chapitre 19 ; Casaubon, sur Baronius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0782(c)",
@@ -7592,6 +3031,7 @@
    "text": "_Vide Act._ III. 1. _x._ 3. Matth. XX. 3. 5. _Ieronym. et Cyprian. apud Grot. hic._",
    "proposed": "_Vide Act._ III. 1. _x._ 3. Matth. XX. 3. 5. _Ieronym. et Cyprian. apud Grot. hic._",
    "why": [
+    "written out, but the italics changed: _Voyez Actes_ 3:1 ; 10:3 ; Matthieu 20:3-5 ; _saint Jérôme et saint Cyprien, dans Grotius, sur ce passage._",
     "written out, but the italics changed: _Voyez Actes_ 3:1 ; 10:3 ; Matthieu 20:3-5 ; _saint Jérôme et saint Cyprien, dans Grotius, sur ce passage._"
    ],
    "flags": [
@@ -7649,149 +3089,6 @@
    ]
   },
   {
-   "id": "0796(h)",
-   "page": "page_0796",
-   "marker": "(h)",
-   "text": "Euseb. Hieronym. Author Mirabil. sacr. script. l. 2. c. 3. aliis.",
-   "proposed": "Eusèbe ; saint Jérôme ; l'auteur des Merveilles de l'Écriture sainte, livre 2, chapitre 3 ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0796(l)",
-   "page": "page_0796",
-   "marker": "(l)",
-   "text": "Cyrill. Jerosolym. Cathech. communi 13.",
-   "proposed": "Saint Cyrille de Jérusalem, Catéchèse commune 13.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0797(b)",
-   "page": "page_0797",
-   "marker": "(b)",
-   "text": "Maldon. et alii hic, et in Cor. xv. 20. et in Colossiens 1:18.",
-   "proposed": "Maldonat et d'autres, sur ce passage, et sur 1 Corinthiens 15:20 et sur Colossiens 1:18.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0797(c)",
-   "page": "page_0797",
-   "marker": "(c)",
-   "text": "Hilar. in Matth. Euseb. Demonstrat. lib. x. c. 8. Origen. in Cantica. Ignatius ad Magnesian. Epiphæn. hæresi 75.",
-   "proposed": "Saint Hilaire, sur saint Matthieu ;\nEusèbe, Démonstration évangélique, livre 10, chapitre 8 ;\nOrigène, sur le Cantique ;\nsaint Ignace, Aux Magnésiens ;\nsaint Épiphane, Hérésie 75.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0797(d)",
-   "page": "page_0797",
-   "marker": "(d)",
-   "text": "Maldon. Cornel. Ians. Tirin. Beza.",
-   "proposed": "Maldonat ;\nCornelius a Lapide ;\nJansénius ;\nTirin ;\nBèze.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0797(g)",
-   "page": "page_0797",
-   "marker": "(g)",
-   "text": "Voyez ci-devant chapitre XX. 11. 12. et seq. August. tract. 124. in Ioan. n. 2. Ep. 164. alias 99. Theodoret. in c. XI. Ep. ad Hebr. Chrysost. homil. 28. in Ep. ad Hebr.",
-   "proposed": "Voyez ci-devant chapitre 20:11-12 et suivants. Saint Augustin, Traité 124 sur saint Jean, numéro 2 ;\nLettre 164, autrement 99 ;\nThéodoret, sur le chapitre 11 de l'Épître aux Hébreux ;\nsaint Jean Chrysostome, Homélie 28 sur l'Épître aux Hébreux.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0797(h)",
-   "page": "page_0797",
-   "marker": "(h)",
-   "text": "Vide Chrysost. in prim. ad Corinth. homil. 40. Ambros. l. 6. in Luc. n. 60. auct. in fragmentis. Saint Thom. 3. parte, q. 53. art. 3. ad 2. Aug. in Ioan. tract. 124.",
-   "proposed": "Voyez saint Jean Chrysostome, sur la première Épître aux Corinthiens, Homélie 40 ; saint Ambroise, livre 6 sur saint Luc, numéro 60 ; auteur, dans les fragments ; saint Thomas, 3e partie, question 53, article 3, réponse à la 2e objection ; saint Augustin, sur saint Jean, Traité 124.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0798(c)",
-   "page": "page_0798",
-   "marker": "(c)",
-   "text": "Cyril. l. XII. Thesauri c. 14. Basil. in Gordian. Mart.",
-   "proposed": "Saint Cyrille d'Alexandrie, Trésor, livre 12, chapitre 14 ; saint Basile, sur le martyr Gordien.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0798(e)",
-   "page": "page_0798",
-   "marker": "(e)",
-   "text": "Quid. apud Chrysost. homil. 88. Jans.",
-   "proposed": "Quelques-uns, dans saint Jean Chrysostome, Homélie 88 ; Jansénius.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0799(h)",
-   "page": "page_0799",
-   "marker": "(h)",
-   "text": "Hegesipp. apud Euseb. l. 3. hist. Eccl. c. 11. et l. 4. c. 22.",
-   "proposed": "Hégésippe, dans Eusèbe, Histoire ecclésiastique, livre 3, chapitre 11, et livre 4, chapitre 22.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0802(a)",
-   "page": "page_0802",
-   "marker": "(a)",
-   "text": "4 Rois 13:21. Vide Ieronym. hic. ad ℣. 60. et Ambros. in Luc. Beda, Euthym. Theophyl. hic.",
-   "proposed": "4 Rois 13:21. Voyez saint Jérôme, sur ce passage, au verset 60 ; et saint Ambroise, sur saint Luc ; Bède ; Euthyme ; Théophylacte, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0803(a)",
-   "page": "page_0803",
-   "marker": "(a)",
-   "text": "Voyez M. Toynard, harmon. p. 131.",
-   "proposed": "Voyez M. Toynard, Harmonie, page 131.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0803(e)",
-   "page": "page_0803",
-   "marker": "(e)",
-   "text": "I. Par. XXVI. I. et seq.",
-   "proposed": "1 Paralipomènes 26:1 et suivants.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0804(b)",
    "page": "page_0804",
    "marker": "(b)",
@@ -7804,28 +3101,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0804(c)",
-   "page": "page_0804",
-   "marker": "(c)",
-   "text": "Joseph. de Bello, l. V. c. 15. in Græco. p. 919. Et in Latino, l. VI. c. 6. et Antiq. l. XX. c. 4. Ita Grot. Le Clerc, Natal. Alex.",
-   "proposed": "Josèphe, Guerre des Juifs, livre 5, chapitre 15, dans le Grec, page 919, et dans le Latin, livre 6, chapitre 6 ;\net Antiquités judaïques, livre 20, chapitre 4. Ainsi l'entendent Grotius ;\nLe Clerc ;\nNoël Alexandre.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0804(e)",
-   "page": "page_0804",
-   "marker": "(e)",
-   "text": "Chrysost. Euthym. Brug.",
-   "proposed": "Saint Jean Chrysostome ;\nEuthyme ;\nBrugensis.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0805(a)",
@@ -7878,17 +3153,6 @@
    ]
   },
   {
-   "id": "0806(b)",
-   "page": "page_0806",
-   "marker": "(b)",
-   "text": "Vide Grot. hic, et Lud. de Dieu. Vide et Bedam, Rupert. Strab. Liran.",
-   "proposed": "Voyez Grotius, sur ce passage, et Louis de Dieu. Voyez aussi Bède ;\nRupert ;\nStrabon ;\nNicolas de Lyre.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0807(a)",
    "page": "page_0807",
    "marker": "(a)",
@@ -7901,72 +3165,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0807(b)",
-   "page": "page_0807",
-   "marker": "(b)",
-   "text": "Vide Ieron. ad Hedibiam, et Euthym. hic.",
-   "proposed": "Voyez saint Jérôme, À Hédibie, et Euthyme, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0807(c)",
-   "page": "page_0807",
-   "marker": "(c)",
-   "text": "Dionys. Alexandr. Ep. ad Basilidem.",
-   "proposed": "Denys d'Alexandrie, Lettre à Basilide.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0807(d)",
-   "page": "page_0807",
-   "marker": "(d)",
-   "text": "V. de Dionys. Episc. suprà citatâ, Synod. in Trullo c. 89.",
-   "proposed": "Voyez Denys, évêque, à l'endroit cité plus haut ; Synode in Trullo, chapitre 89.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0807(e)",
-   "page": "page_0807",
-   "marker": "(e)",
-   "text": "Vide Gregor. Nissen. orat. 2. de Resurrect. Euthym. hic, Dionys. Ep. suprà citat. Maldon. hic.",
-   "proposed": "Voyez saint Grégoire de Nysse, Discours 2 sur la résurrection ;\nEuthyme, sur ce passage ;\nDenys, Lettre citée plus haut ;\nMaldonat, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0808(a)",
-   "page": "page_0808",
-   "marker": "(a)",
-   "text": "Hilar. hic. Leo Ep. 83. ad Monachos Palæst. Vide Gret. et Maldon. hic.",
-   "proposed": "Saint Hilaire, sur ce passage. Saint Léon le Grand, Lettre 83 aux moines de Palestine. Voyez Gretser et Maldonat, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0808(b)",
-   "page": "page_0808",
-   "marker": "(b)",
-   "text": "Author quæst. ad Orthodox. sub nomine Justini qu. 127. Chrysost. homil. 1. de Johan. Basil. Nazianz. Tragæd. de Christo patiente. Jeronym. qu. 6. ad Hedibiam. Aug. seu alius Serm. olim 159. nunc 169. Append. Alii.",
-   "proposed": "L'auteur des Questions aux orthodoxes, sous le nom de saint Justin, question 127 ; saint Jean Chrysostome, Homélie 1 sur Jean ; saint Basile ; saint Grégoire de Nazianze, Tragédie sur le Christ souffrant ; saint Jérôme, question 6 à Hédibie ; saint Augustin ou un autre, Sermon autrefois 159, maintenant 169, Appendice ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   },
   {
    "id": "0808(e)",
@@ -7993,150 +3191,6 @@
     "greek",
     "scan-unread"
    ]
-  },
-  {
-   "id": "0812(c)",
-   "page": "page_0812",
-   "marker": "(c)",
-   "text": "August. in Psal. LXIII. serm. 2.",
-   "proposed": "Saint Augustin, sur le Psaume 63, sermon 2.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0813(a)",
-   "page": "page_0813",
-   "marker": "(a)",
-   "text": "Vide Chrysost. et Sedul. et Grot. hic.",
-   "proposed": "Voyez saint Jean Chrysostome ;\nSédulius ;\net Grotius, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0813(b)",
-   "page": "page_0813",
-   "marker": "(b)",
-   "text": "Hilar. de Trin. Grot. Heins. Hammon. Vat. Erasm. Vide Galates 1:10.",
-   "proposed": "Saint Hilaire, De la Trinité ;\nGrotius ;\nHeinsius ;\nHammond ;\nVatable ;\nÉrasme. Voyez Galates 1:10.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0813(c)",
-   "page": "page_0813",
-   "marker": "(c)",
-   "text": "Tertull. in Apolog. Ex omnia super Christo Pilatus, et ipse jam pro sua conscientia Christianus, Cæsari tunc Tiberio nuntiavit.",
-   "proposed": "Tertullien, Apologétique. Ex omnia super Christo Pilatus, et ipse jam pro sua conscientia Christianus, Cæsari tunc Tiberio nuntiavit.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0814(a)",
-   "page": "page_0814",
-   "marker": "(a)",
-   "text": "Chrysost. Euthym. Sever. Raban. alii.",
-   "proposed": "Saint Jean Chrysostome ; Euthyme ; Sévère ; Raban ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0814(c)",
-   "page": "page_0814",
-   "marker": "(c)",
-   "text": "Justin. Dialog. cum Tryphone.",
-   "proposed": "Saint Justin, Dialogue avec Tryphon.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0814(e)",
-   "page": "page_0814",
-   "marker": "(e)",
-   "text": "Euseb. in Isai. XVIII. I. Ieronym. in eundem lsai. XVIII. I.",
-   "proposed": "Eusèbe, sur Isaïe 18:1 ; saint Jérôme, sur le même Isaïe 18:1.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0814(f)",
-   "page": "page_0814",
-   "marker": "(f)",
-   "text": "Toldos. Jesu ab Huldric. p. 96.",
-   "proposed": "Toldos Jesu, d'Huldric, page 96.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0815(b)",
-   "page": "page_0815",
-   "marker": "(b)",
-   "text": "Negrixuμevoi d'eorę, ň di idisacar. Vide Theophylact. hic, Grot. Brug. Maldon. Estium.",
-   "proposed": "Negrixuμevoi d'eorę, ň di idisacar. Voyez Théophylacte sur ce passage ; Grotius ; Brugensis ; Maldonat ; Estius.",
-   "why": [
-    "Greek spelling checked against a Greek dictionary",
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0815(c)",
-   "page": "page_0815",
-   "marker": "(c)",
-   "text": "M. le Clerc, Notes sur le nouveau Testament. Grot. Brug.",
-   "proposed": "M. Le Clerc, Notes sur le nouveau Testament. Grotius ; Brugensis.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0817(b)",
-   "page": "page_0817",
-   "marker": "(b)",
-   "text": "Basil. lib. 3. contra Eunom. Ambros. lib 1. de Spiritu Sancto. Alii passim. Vide Maldon.",
-   "proposed": "Saint Basile, Contre Eunome, livre 3 ; saint Ambroise, Du Saint-Esprit, livre 1 ; et d'autres, passim. Voyez Maldonat.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0817(c)",
-   "page": "page_0817",
-   "marker": "(c)",
-   "text": "Chrisost. homil. 91. et Ieronym. hic.",
-   "proposed": "Saint Jean Chrysostome, Homélie 91 ; et saint Jérôme, sur ce passage.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
-   "id": "0818(a)",
-   "page": "page_0818",
-   "marker": "(a)",
-   "text": "Vide Chrysost. hic. Ieronym. Ep. ad Damas. Bedam, Euthym. Præf. lib. 1. de Vocat. Bapt. cap. 3. aliosq.",
-   "proposed": "Voyez saint Jean Chrysostome sur ce passage ; saint Jérôme, Lettre à Damase ; Bède ; Euthyme, Préface, livre 1, De la vocation du baptême, chapitre 3 ; et d'autres.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
   }
  ]
 }

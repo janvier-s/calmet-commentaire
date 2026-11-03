@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 1577,
-  "changed": 5,
+  "changed": 9,
   "flags": {
    "context": 26,
    "hebrew": 10,
@@ -10,7 +10,9 @@
    "greek": 107,
    "expand-unread": 8,
    "reference-not-in-vulgate": 1,
-   "uncertain-fill-asterisk-wrong": 1
+   "expand-changed-hebrew-or-greek": 1,
+   "uncertain-fill-asterisk-wrong": 1,
+   "expand-changed-numbers": 1
   }
  },
  "notes": [
@@ -567,6 +569,15 @@
    ]
   },
   {
+   "id": "0189(c)",
+   "page": "page_0189",
+   "marker": "(c)",
+   "text": "Voyez Genèse 31:54 ; 43:16 ; 1 Rois 28:24 ; 1 Rois 19:21.",
+   "proposed": "Voyez Genèse 31:54 ; 43:16 ; 1 Rois 28:24 ; 19:21.",
+   "why": [],
+   "flags": []
+  },
+  {
    "id": "0189(e)",
    "page": "page_0189",
    "marker": "(e)",
@@ -1036,10 +1047,11 @@
    "page": "page_0258",
    "marker": "(a)",
    "text": "הנה ההמון נמוג וילך והלם Ainsi lit Targum. Neque enim ipsi. Ainsi l'entendent Abarban. R. Salom. et Kimchi. Voyez au besoin Buxtorf. hist. Arcæ fœderis c. 3.",
-   "proposed": "הנה ההמון נמוג וילך והלם Ainsi lit Targum. Neque enim ipsi. Ainsi l'entendent Abarban. R. Salom. et Kimchi. Voyez au besoin Buxtorf. hist. Arcæ fœderis c. 3.",
+   "proposed": "הנה ההמון נמוג וילך והלם Ainsi lit le Targum. Neque enim ipsi. Ainsi l'entendent Abarbanel ; Rabbi Salomon ; et Kimhi. Voyez au besoin Buxtorf, Historia Arcæ fœderis, chapitre 3.",
    "why": [
     "scan: Filled Hebrew from the page.",
-    "read on the scan: הנה ההמון נמוג וילך והלם"
+    "read on the scan: הנה ההמון נמוג וילך והלם",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -1081,10 +1093,11 @@
    "page": "page_0265",
    "marker": "(a)",
    "text": "גשו הלם כל פנות העם Sym. Tès plonias. Les myriades. Les grands du peuple. 70. et Aq. Tàs Tribus.",
-   "proposed": "גשו הלם כל פנות העם Sym. Tès plonias. Les myriades. Les grands du peuple. 70. et Aq. Tàs Tribus.",
+   "proposed": "גשו הלם כל פנות העם Symmaque : Tès plonias. Les myriades. Les grands du peuple. Les Septante ; et Aquila : Tàs Tribus.",
    "why": [
     "scan: Filled the Hebrew from the page.",
-    "read on the scan: גשו הלם כל פנות העם"
+    "read on the scan: גשו הלם כל פנות העם",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -1145,6 +1158,7 @@
    "proposed": "Malachie 5.",
    "why": [
     "context: Malachie 5 unidentifiable; await page",
+    "Malachie 5 does not exist in the Vulgate",
     "Malachie 5 does not exist in the Vulgate",
     "Malachie 5 does not exist in the Vulgate"
    ],
@@ -1640,7 +1654,8 @@
    ],
    "flags": [
     "scanned",
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-hebrew-or-greek"
    ]
   },
   {
@@ -1916,12 +1931,13 @@
    "page": "page_0378",
    "marker": "(a)",
    "text": "Homer. Odyss. I. Αὐτὰρ ὅγ᾽ εἰς ἄντρον σπεῖος ἤλασε πίονα μῆλα. Θρόνους δέξασθαι δωμάτων. Vide et Joseph. An-t.q. lib. 14. c. 27. et l. 15.",
-   "proposed": "Homer. Odyss. I. Αὐτὰρ ὅγ᾽ εἰς ἄντρον σπεῖος ἤλασε πίονα μῆλα. Θρόνους δέξασθαι δωμάτων. Vide et Joseph. An-t.q. lib. 14. c. 27. et l. 15.",
+   "proposed": "Homère, Odyssée, livre 1 : Αὐτὰρ ὅγ᾽ εἰς ἄντρον σπεῖος ἤλασε πίονα μῆλα. Θρόνους δέξασθαι δωμάτων. Voyez et Josèphe, Antiquités judaïques, livre 14, chapitre 27, et livre 15.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
     "scan: Corrected Homer line to printed Greek; filled placeholder with Θρόνους; fixed the following words.",
-    "read on the scan: Θρόνους"
+    "read on the scan: Θρόνους",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -2265,11 +2281,13 @@
    "proposed": "אשת בעלת אוב Voyez Deut. XVIII. II. in Isaï 29. c. 4. Voyez et Allat. de Engastrimytho c. 5.",
    "why": [
     "scan: Filled placeholder with printed Hebrew 'אשת בעלת אוב'.",
-    "read on the scan: אשת בעלת אוב"
+    "read on the scan: אשת בעלת אוב",
+    "written out, but a number changed or added: אשת בעלת אוב Voyez Deutéronome 18:11 ; sur Isaïe 29:4. Voyez et Allatius, De Engastrimytho, chapitre 5."
    ],
    "flags": [
     "scanned",
-    "expand-unread"
+    "expand-unread",
+    "expand-changed-numbers"
    ]
   },
   {

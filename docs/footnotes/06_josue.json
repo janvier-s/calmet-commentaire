@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 1505,
-  "changed": 2,
+  "changed": 3,
   "flags": {
    "greek": 51,
    "scan-unread": 55,
@@ -103,10 +103,11 @@
    "page": "page_0103",
    "marker": "(c)",
    "text": "נטבלו בקצה המים Ita et Sytar. et Menoch.",
-   "proposed": "נטבלו בקצה המים Ita et Sytar. et Menoch.",
+   "proposed": "נטבלו בקצה המים De même Sytar. ; et Ménochius.",
    "why": [
     "scan: Filled Hebrew from the page",
-    "read on the scan: נטבלו בקצה המים"
+    "read on the scan: נטבלו בקצה המים",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -861,6 +862,7 @@
    "text": "I. Reg. XXIII. XIVI.",
    "proposed": "I. Reg. XXIII. XIVI.",
    "why": [
+    "written out, but a number changed or added: 1 Rois 23:14, 16.",
     "written out, but a number changed or added: 1 Rois 23:14, 16."
    ],
    "flags": [
@@ -954,6 +956,7 @@
    "proposed": "Συριῶ αλ גבול סב. περιόδευεται τὸ ὅριον. Voyez Serarius ; Bonfrère ; Vatable.",
    "why": [
     "Hebrew words found in the Hebrew Bible, the Targums or Strong's lexicon",
+    "abbreviations written out (footnote_expand.py)",
     "abbreviations written out (footnote_expand.py)",
     "abbreviations written out (footnote_expand.py)"
    ],

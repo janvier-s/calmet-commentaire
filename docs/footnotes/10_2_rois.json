@@ -1,12 +1,12 @@
 {
  "summary": {
   "notes": 984,
-  "changed": 2,
+  "changed": 1,
   "flags": {
    "context": 17,
    "greek": 44,
    "scan-unread": 50,
-   "expand-unread": 5,
+   "expand-unread": 6,
    "hebrew": 8,
    "scanned": 15,
    "uncertain-fill-asterisk-wrong": 1
@@ -1164,13 +1164,15 @@
    "id": "0272(e)",
    "page": "page_0272",
    "marker": "(e)",
-   "text": "Ἀπὸ πρωΐθεν ἕως ὥρας ἀρίστου. Ainsi l'entendent Théodoret, question 37 ; Saint Ambroise, sur le Psaume 37 ; Josèphe, livre 7, chapitre 10 ; Origène, Homélie 16 sur les Nombres.",
+   "text": "Ἀπὸ πρωΐθεν ἕως ὥρας ἀρίστου. Ainsi l'entendent Théodoret, question 37 ; saint Ambroise, sur le Psaume 37 ; Josèphe, livre 7, chapitre 10 ; Origène, Homélie 16 sur les Nombres.",
    "proposed": "Ἀπὸ πρωΐθεν ἕως ὥρας ἀρίστου. Ainsi l'entendent Théodoret, question 37 ; saint Ambroise, sur le Psaume 37 ; Josèphe, livre 7, chapitre 10 ; Origène, Homélie 16 sur les Nombres.",
    "why": [
     "Greek checked against the Septuagint, 2 Rois 24:15",
     "abbreviations written out"
    ],
-   "flags": []
+   "flags": [
+    "expand-unread"
+   ]
   }
  ]
 }

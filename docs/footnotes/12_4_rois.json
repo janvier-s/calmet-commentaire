@@ -1,7 +1,7 @@
 {
  "summary": {
   "notes": 1282,
-  "changed": 1,
+  "changed": 3,
   "flags": {
    "scanned": 19,
    "expand-unread": 7,
@@ -19,10 +19,11 @@
    "page": "page_0046",
    "marker": "(a)",
    "text": "המים רעים והארץ משכלת 70. etc. Zébara manuscr. et saint Jérôme, utrumque.",
-   "proposed": "המים רעים והארץ משכלת 70. etc. Zébara manuscr. et saint Jérôme, utrumque.",
+   "proposed": "המים רעים והארץ משכלת les Septante, etc. ; Zébara manuscrit ; et saint Jérôme, utrumque.",
    "why": [
     "scan: Filled the placeholder with the Hebrew printed at the start of the note.",
-    "read on the scan: המים רעים והארץ משכלת"
+    "read on the scan: המים רעים והארץ משכלת",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -541,17 +542,6 @@
    ]
   },
   {
-   "id": "0187(c)",
-   "page": "page_0187",
-   "marker": "(c)",
-   "text": "Adric. hom.",
-   "proposed": "Adrichomius, homélie.",
-   "why": [
-    "abbreviations written out"
-   ],
-   "flags": []
-  },
-  {
    "id": "0191(c)",
    "page": "page_0191",
    "marker": "(c)",
@@ -829,6 +819,7 @@
    "why": [
     "context: not a Bible reference; book citation",
     "Malachie 50 does not exist in the Vulgate",
+    "Malachie 50 does not exist in the Vulgate",
     "Malachie 50 does not exist in the Vulgate"
    ],
    "flags": [
@@ -954,14 +945,15 @@
    "page": "page_0289",
    "marker": "(a)",
    "text": "Vide Joseph. lib. X. c. 2. δι' ὧν φυγαδευθέντες ἐπὶ τῷ φόνῳ τοῦ πατρὸς ὑπὸ τῶν πολιτῶν εἰς τὴν Ἀρμενίαν ἀπῆραν.",
-   "proposed": "Vide Joseph. lib. X. c. 2. δι' ὧν φυγαδευθέντες ἐπὶ τῷ φόνῳ τοῦ πατρὸς ὑπὸ τῶν πολιτῶν εἰς τὴν Ἀρμενίαν ἀπῆραν.",
+   "proposed": "Voyez Josèphe, livre 10, chapitre 2. δι' ὧν φυγαδευθέντες ἐπὶ τῷ φόνῳ τοῦ πατρὸς ὑπὸ τῶν πολιτῶν εἰς τὴν Ἀρμενίαν ἀπῆραν.",
    "why": [
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
     "Greek spelling checked against a Greek dictionary",
     "scan: Replaced the garbled Greek with the printed Josephus Greek; filled both placeholders.",
     "read on the scan: φυγαδευθέντες",
-    "read on the scan: ὑπὸ τῶν πολιτῶν"
+    "read on the scan: ὑπὸ τῶν πολιτῶν",
+    "abbreviations written out"
    ],
    "flags": [
     "scanned",
@@ -973,8 +965,10 @@
    "page": "page_0304",
    "marker": "(a)",
    "text": "Voyez Tertullien, Du traité de la patience, chapitre 14 ;\nSaint Augustin, La Cité de Dieu, livre 18, chapitre 24 ;\nThéodoret, question 54 sur 4 Rois.",
-   "proposed": "Voyez Tertullien, Du traité de la patience, chapitre 14 ;\nSaint Augustin, La Cité de Dieu, livre 18, chapitre 24 ;\nThéodoret, question 54 sur 4 Rois.",
-   "why": [],
+   "proposed": "Voyez Tertullien, De la patience, chapitre 14 ;\nsaint Augustin, La Cité de Dieu, livre 18, chapitre 24 ;\nThéodoret, question 54 sur 4 Rois.",
+   "why": [
+    "abbreviations written out"
+   ],
    "flags": [
     "expand-unread"
    ]
