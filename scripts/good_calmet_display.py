@@ -3,6 +3,7 @@ crops): data/good_calmet_display/<pdf>/page_NNNN.png, same size, no pixel moved 
 
     python3 good_calmet_display.py <pdf> [first-last]   the display copies of a PDF's crops not yet made
     python3 good_calmet_display.py --vol 01_genese      every PDF of that volume
+    python3 good_calmet_display.py --all                every crop in crops.json
     python3 good_calmet_display.py ... --force          made again (after a change to the curve)
 
 The curve, per page (its paper and ink vary): the darkest LO % of the pixels to black, the lightest
@@ -10,7 +11,9 @@ The curve, per page (its paper and ink vary): the darkest LO % of the pixels to 
 whatever is lighter than KNEE[1] (show-through and paper grain, the gamma darkened them too) with a
 smooth ramp from KNEE[0], so the letters' edges stay soft. Chosen on contact sheets (variant F).
 """
+import os
 import sys
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 from PIL import Image
@@ -36,6 +39,10 @@ def _percentile(hist, q):
     return 255
 
 
+# optimize=True cost ~10x the time for ~2 % smaller files; level 6 is the speed/size sweet spot.
+SAVE = {"compress_level": 6}
+
+
 def curve(lo, hi):
     lut = []
     k0, k1 = KNEE
@@ -51,7 +58,11 @@ def make(src, out):
     im = Image.open(src).convert("L")
     h = im.histogram()
     out.parent.mkdir(parents=True, exist_ok=True)
-    im.point(curve(_percentile(h, LO), _percentile(h, HI))).save(out, optimize=True)
+    im.point(curve(_percentile(h, LO), _percentile(h, HI))).save(out, **SAVE)
+
+
+def _job(job):
+    make(*job)
 
 
 def main(argv):
@@ -60,7 +71,9 @@ def main(argv):
     if not argv or (argv[0] == "--vol" and len(argv) < 2):
         sys.exit(__doc__)
     recs = crops()
-    if argv[0] == "--vol":
+    if argv[0] == "--all":
+        jobs = [(r["pdf"], r["pdf_page"]) for r in recs]
+    elif argv[0] == "--vol":
         jobs = [(r["pdf"], r["pdf_page"]) for r in recs if r["vol"] == argv[1]]
     else:
         jobs = [(r["pdf"], r["pdf_page"]) for r in recs if r["pdf"] == argv[0]]
@@ -69,13 +82,16 @@ def main(argv):
             jobs = [(pdf, p) for pdf, p in jobs if int(a) <= p <= int(b or a)]
     if not jobs:
         sys.exit(f"no crop of {argv[-1]} in crops.json")
-    made = 0
-    for pdf, p in sorted(jobs):
+    todo = []
+    for pdf, p in sorted(set(jobs)):
         src, out = crop_path(pdf, p), display_path(pdf, p)
         if src.exists() and (force or not out.exists()):
-            make(src, out)
-            made += 1
-    print(f"{made} display copies made, {len(jobs) - made} already there or without a crop")
+            todo.append((src, out))
+    with ProcessPoolExecutor(os.cpu_count()) as ex:
+        for i, _ in enumerate(ex.map(_job, todo, chunksize=16), 1):
+            if i % 500 == 0:
+                print(f"  {i}/{len(todo)}", flush=True)
+    print(f"{len(todo)} display copies made, {len(set(jobs)) - len(todo)} already there or without a crop")
 
 
 if __name__ == "__main__":
