@@ -86,15 +86,20 @@ def kraken(vol, scans, cache=cache_path):
         pairs = [a for page, scan in scans for a in ("-i", str(scan), str(Path(tmp) / f"{page}.xml"))]
         subprocess.run([str(KRAKEN), "-a", "-d", "mps", "--threads", "8", *pairs, "segment", "-bl",
                         "ocr", "-B", "64", "-m", str(MODEL)], check=True, capture_output=True)
-        for page, _ in scans:
-            out = cache(vol, page)
-            out.parent.mkdir(parents=True, exist_ok=True)
-            try:
-                data = parse_alto((Path(tmp) / f"{page}.xml").read_bytes())
-            except (OSError, ET.ParseError, TypeError, ValueError) as e:
-                print(f"  {vol} p.{page}: no OCR ({type(e).__name__}: {e})", flush=True)
-                continue
-            out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        cache_alto(vol, scans, lambda page: Path(tmp) / f"{page}.xml", cache)
+
+
+def cache_alto(vol, scans, alto, cache=cache_path):
+    """Cache the ALTO `alto(page)` of each of [(page, image)], then measure its slant."""
+    for page, _ in scans:
+        out = cache(vol, page)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            data = parse_alto(alto(page).read_bytes())
+        except (OSError, ET.ParseError, TypeError, ValueError) as e:
+            print(f"  {vol} p.{page}: no OCR ({type(e).__name__}: {e})", flush=True)
+            continue
+        out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     slants(vol, [(page, scan) for page, scan in scans if cache(vol, page).exists()], cache)
 
 

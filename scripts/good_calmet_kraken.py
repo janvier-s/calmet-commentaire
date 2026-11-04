@@ -8,8 +8,11 @@ pixels, in cache/good_ocr/<pdf>/page_NNNN.json (cache/ocr is never touched).
                                                        the plain crop against it upscaled 2x, set against
                                                        the source scan's OCR and the normalized JSON
 """
+import collections
+import concurrent.futures
 import datetime
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -78,27 +81,89 @@ def read(pdf, pages, cache=cache_path, scale=1):
             _downscale(cache(pdf, p), scale)
 
 
-def run(pdf, pages, cache=cache_path, scale=1, label=None):
-    """OCR the pages not yet cached, CHUNK a Kraken run (resumable), with a progress line a chunk."""
-    todo = [p for p in pages if not cache(pdf, p).exists()]
+# Pipelined: segmentation is ~80% of a combined run and almost all single-threaded Python (blla's line
+# vectorisation), so SEG_WORKERS CPU processes segment chunks ahead while one MPS process reads the
+# chunks already segmented (OCR from the saved ALTO: same lines and words, a few word boxes 1-3 px off).
+# On this Mac (6P+2E cores): ~13 s a page combined → segmentation ~4 s a page with 4 workers, reading ~3.
+# Several segmenters on MPS are slower than one; on the CPU they give the same text.
+SEG_WORKERS = 4
+SEG_THREADS = 2
+
+
+def _segment(pdf, pages, tmp, scale):
+    """Segment the crops (enlarged first if scale > 1) on the CPU into tmp/<page>.seg.xml; [(page, image)].
+    Absolute image paths: the ALTO refers to its image, and kraken resolves it from the ALTO's folder."""
+    scans = [(p, crop_path(pdf, p).resolve()) for p in pages]
+    if scale != 1:
+        scans = _upscale(scans, tmp, scale)
+    pairs = [a for p, img in scans for a in ("-i", str(Path(img).resolve()), str(Path(tmp) / f"{p}.seg.xml"))]
+    subprocess.run([str(scan_ocr.KRAKEN), "-a", "-d", "cpu", "--threads", str(SEG_THREADS), *pairs, "segment", "-bl"],
+                   check=True, capture_output=True)
+    return scans
+
+
+def _recognize(pdf, scans, tmp, cache, scale):
+    """Read the segmented crops in one MPS run and cache them (scan_ocr.cache_alto: slant included)."""
+    pairs = [a for p, _ in scans for a in ("-i", str(Path(tmp) / f"{p}.seg.xml"), str(Path(tmp) / f"{p}.xml"))]
+    subprocess.run([str(scan_ocr.KRAKEN), "-f", "alto", "-a", "-d", "mps", "--threads", "8", *pairs,
+                    "ocr", "-B", "64", "-m", str(scan_ocr.MODEL)], check=True, capture_output=True)
+    scan_ocr.cache_alto(pdf, scans, lambda p: Path(tmp) / f"{p}.xml", cache)
+    if scale != 1:
+        for p, _ in scans:
+            if cache(pdf, p).exists():
+                _downscale(cache(pdf, p), scale)
+
+
+def _one_by_one(pdf, chunk, cache, scale, e):
+    """A chunk that failed, page by page in single combined runs, to find the page that fails."""
+    print(f"  {pdf} p.{chunk[0]}-{chunk[-1]}: Kraken failed, page by page: {e.stderr.decode(errors='replace')[-200:]}", flush=True)
+    for p in chunk:
+        if not cache(pdf, p).exists():
+            try:
+                read(pdf, [p], cache, scale)
+            except subprocess.CalledProcessError:
+                print(f"  {pdf} p.{p}: Kraken failed", flush=True)
+
+
+def run_jobs(jobs, cache=cache_path, scale=1, label=None):
+    """OCR the pages {pdf: pages} not yet cached, CHUNK pages a Kraken run (resumable), pipelined across
+    the PDFs, with a progress line a chunk. The number of pages OCR'd."""
     now = lambda: datetime.datetime.now().strftime("%H:%M:%S")
-    print(f"[{now()}] {label or pdf}: {len(pages) - len(todo)} pages cached, {len(todo)} to OCR", flush=True)
-    t0 = time.time()
-    for n in range(0, len(todo), scan_ocr.CHUNK):
-        chunk = todo[n:n + scan_ocr.CHUNK]
-        try:
-            read(pdf, chunk, cache, scale)
-        except subprocess.CalledProcessError as e:  # page by page, to find the one that fails
-            print(f"  p.{chunk[0]}-{chunk[-1]}: Kraken failed, page by page: {e.stderr.decode(errors='replace')[-200:]}", flush=True)
-            for p in chunk:
+    chunks = []
+    for pdf, pages in jobs.items():
+        todo = [p for p in pages if not cache(pdf, p).exists()]
+        print(f"[{now()}] {label or ''}{' ' if label else ''}{pdf}: {len(pages) - len(todo)} pages cached, {len(todo)} to OCR", flush=True)
+        chunks += [(pdf, todo[n:n + scan_ocr.CHUNK]) for n in range(0, len(todo), scan_ocr.CHUNK)]
+    total, done, t0 = sum(len(c) for _, c in chunks), 0, time.time()
+    ahead = collections.deque()  # (pdf, pages, tmp, future): at most SEG_WORKERS + 1 chunks segmented ahead
+    queue = iter(chunks)
+    try:
+        with concurrent.futures.ThreadPoolExecutor(SEG_WORKERS) as pool:
+            while True:
+                while len(ahead) <= SEG_WORKERS and (nxt := next(queue, None)):
+                    tmp = tempfile.mkdtemp(prefix="good_kraken_")
+                    ahead.append((*nxt, tmp, pool.submit(_segment, *nxt, tmp, scale)))
+                if not ahead:
+                    break
+                pdf, chunk, tmp, fut = ahead.popleft()
                 try:
-                    read(pdf, [p], cache, scale)
-                except subprocess.CalledProcessError:
-                    print(f"  p.{p}: Kraken failed", flush=True)
-        done, el = n + len(chunk), time.time() - t0
-        left = f", ~{scan_ocr._fmt_duration(el / done * (len(todo) - done))} left" if done < len(todo) else ""
-        print(f"[{now()}]   {done}/{len(todo)} (p.{chunk[-1]}) · {scan_ocr._fmt_duration(el)} elapsed{left}", flush=True)
-    return len(todo)
+                    _recognize(pdf, fut.result(), tmp, cache, scale)
+                except subprocess.CalledProcessError as e:
+                    _one_by_one(pdf, chunk, cache, scale, e)
+                finally:
+                    shutil.rmtree(tmp, ignore_errors=True)
+                done, el = done + len(chunk), time.time() - t0
+                left = f", ~{scan_ocr._fmt_duration(el / done * (total - done))} left" if done < total else ""
+                print(f"[{now()}]   {done}/{total} ({pdf} p.{chunk[-1]}) · {scan_ocr._fmt_duration(el)} elapsed{left}", flush=True)
+    finally:  # interrupted: the chunks segmented ahead are dropped (their pages are not cached)
+        for *_, tmp, fut in ahead:
+            fut.cancel()
+            shutil.rmtree(tmp, ignore_errors=True)
+    return total
+
+
+def run(pdf, pages, cache=cache_path, scale=1, label=None):
+    return run_jobs({pdf: pages}, cache, scale, label)
 
 
 # --- A/B ---
@@ -129,7 +194,7 @@ def ab(n=10):
     for name, scale in variants.items():
         cache = cache_in(AB_OCR / name)
         for pdf in sorted({r["pdf"] for r in picked}):
-            run(pdf, sorted(r["pdf_page"] for r in picked if r["pdf"] == pdf), cache, scale, f"{name} {pdf}")
+            run(pdf, sorted(r["pdf_page"] for r in picked if r["pdf"] == pdf), cache, scale, name)
     tot = {k: [0, 0, 0] for k in ["source", *variants]}
     print(f"\n{'page':28} {'source scan':>18} " + " ".join(f"{k:>18}" for k in variants))
     for r in picked:
@@ -174,9 +239,8 @@ def main(argv):
             a, _, b = argv[1].partition("-")
             pages = [p for p in pages if int(a) <= p <= int(b or a)]
         jobs = {argv[0]: pages}
-    t0, total = time.time(), 0
-    for pdf, pages in sorted(jobs.items()):
-        total += run(pdf, sorted(p for p in pages if crop_path(pdf, p).exists()))
+    t0 = time.time()
+    total = run_jobs({pdf: sorted(p for p in pages if crop_path(pdf, p).exists()) for pdf, pages in sorted(jobs.items())})
     if total:
         took = time.time() - t0
         print(f"{total} pages OCR'd in {scan_ocr._fmt_duration(took)} ({took / total:.1f}s/page)", flush=True)
