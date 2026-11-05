@@ -1,0 +1,216 @@
+"""The Good_Calmet footnotes read by agy (Gemini Flash) from a crop of each page's note block.
+
+    uv run --with pillow python3 good_notes_read.py <vol> <chapter>[-<chapter>] [--jobs N] [--redo]
+    uv run --with pillow python3 good_notes_read.py --page <pdf> <pdf_page>     one page (prints it)
+
+Kraken misreads small type (XIIX, I7, X1) and reads Latin letters only; Flash reads the notes, Hebrew and
+Greek included. Each Good page with notes (Kraken's marks, or footnotes on its source page in the JSON)
+is cropped from a little above the first note (or from 70% down) to the foot, the crop sent to agy with
+an @ mention, the answer parsed into notes [{mark, text}] and cached per page in cache/good_notes_agy/
+(the crop beside it, for the review editor). About one call in six reaches for a tool and fails: it is
+tried again, up to --tries times. good_notes.py reads these instead of Kraken's text where they exist,
+keeping Kraken's boxes to locate each note.
+"""
+import asyncio
+import json
+import os
+import re
+import sys
+
+from paths import SCRIPTS
+import good_calmet_kraken as gk
+import good_variants as gv
+
+CACHE = SCRIPTS / "cache" / "good_notes_agy"
+MODEL = os.environ.get("GOOD_NOTES_MODEL", "gemini-3.8-flash-medium")
+VERSION = 1  # bump when the prompt or the crop changes
+
+PROMPT = """The image is the foot of a page of an 18th-century French Bible commentary (Dom Calmet). Under the body text \
+(larger type), usually below a horizontal rule, are the footnotes: small type, mostly in two columns, each note opening \
+with a mark such as (a), (b), (c).
+
+Transcribe the footnotes only, the left column first, then the right column. Write one note per line, starting with \
+its mark in parentheses, for example:
+(a) Exod. XXXII. 25.
+(b) S. Aug. de Genes. ad litt. l. XI. c. 39.
+
+Join each note's lines into one line and rejoin a word hyphenated at a line's end. Keep the spelling, abbreviations, \
+punctuation and numbers exactly as printed (roman numerals as letters, upper or lower case as printed: XIV, xiv; the \
+long s as s). Write Hebrew in Hebrew letters, with the vowel points only if printed; Greek in Greek letters with its \
+accents and breathings. Leave out the body text above the notes, the catchword at the bottom right and the \
+gathering's signature (such as B ij). Do not use any tool: answer with the transcription only. If the image has no \
+footnotes, answer NONE."""
+
+LINE = re.compile(r"^\s*[(\[]\s*([a-zA-Z*†]{1,2}|\d{1,2})\s*[)\]]\s*(.*)$")
+
+
+def src(vol):
+    """The `pdf` name standing for a volume's source scans (the third witness): src:<vol>."""
+    return f"src:{vol}"
+
+
+def path(pdf, page, ext="json"):
+    return CACHE / pdf.replace(":", "_") / f"page_{page:04d}.{ext}"
+
+
+def image(pdf, page):
+    import scan_ocr
+    return scan_ocr.scan_path(pdf[4:], page) if pdf.startswith("src:") else gk.crop_path(pdf, page)
+
+
+def kraken_ocr(pdf, page):
+    import scan_ocr
+    if pdf.startswith("src:"):
+        return scan_ocr.ocr(pdf[4:], page, run=False)
+    p = gk.cache_path(pdf, page)
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+
+
+def cached(pdf, page):
+    p = path(pdf, page)
+    if p.exists():
+        d = json.loads(p.read_text(encoding="utf-8"))
+        if d.get("version") == VERSION and d.get("notes") is not None:
+            return d
+    return None
+
+
+def block_top(pdf, page):
+    """The crop's top: two lines above Kraken's first note mark, else 70% down the page."""
+    import good_notes as gn
+    o = kraken_ocr(pdf, page)
+    if o is None:
+        return None, False
+    h = o["size"][1]
+    ns = gn.page_notes(pdf, page, o)
+    ys = [x["box"][1] for n in ns for x in n["words"]]
+    if ys:
+        return max(0, min(ys) - max(60, int(0.045 * h))), True
+    return int(0.7 * h), False
+
+
+def make_crop(pdf, page, top):
+    from PIL import Image
+    im = Image.open(image(pdf, page))
+    out = path(pdf, page, "png")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    im.crop((0, top, im.size[0], im.size[1])).save(out)
+    return out
+
+
+def parse(text):
+    """[{mark, text}] from the answer; [] for NONE; None when it is not a transcription."""
+    t = text.strip()
+    if re.fullmatch(r"NONE\.?", t, re.I):
+        return []
+    notes = []
+    for ln in t.splitlines():
+        ln = ln.strip().strip("`")
+        if not ln:
+            continue
+        m = LINE.match(ln)
+        if m:
+            notes.append({"mark": m.group(1), "text": m.group(2).strip()})
+        elif notes:
+            notes[-1]["text"] += " " + ln  # a note's line the model left apart
+    return notes or None
+
+
+async def call(crop, sem):
+    args = ["agy", "--print-timeout", "300s", "--disable-slash-commands", "--output-format", "json",
+            "--model", MODEL, "-p", f"@{crop.name} {PROMPT}"]
+    async with sem:
+        proc = await asyncio.create_subprocess_exec(*args, cwd=str(crop.parent), stdout=asyncio.subprocess.PIPE,
+                                                    stderr=asyncio.subprocess.PIPE)
+        try:
+            out, err = await asyncio.wait_for(proc.communicate(), 360)
+        except asyncio.TimeoutError:
+            proc.kill()
+            return None, "timed out"
+    try:
+        d = json.loads(out.decode())
+    except json.JSONDecodeError:
+        return None, (err or out).decode()[:300]
+    if d.get("status") != "SUCCESS":
+        return None, str(d.get("response") or err.decode())[:300]
+    return str(d.get("response") or ""), None
+
+
+QUOTA = {"hit": False}
+
+
+async def read_page(pdf, page, sem, tries=4, redo=False):
+    if not redo and (d := cached(pdf, page)):
+        return d
+    top, kraken = block_top(pdf, page)
+    if top is None:
+        return None
+    crop = make_crop(pdf, page, top)
+    raw, err = None, None
+    for _ in range(tries):
+        if QUOTA["hit"]:
+            return None
+        raw, err = await call(crop, sem)
+        notes = parse(raw) if raw is not None else None
+        if notes is not None:
+            d = {"version": VERSION, "model": MODEL, "pdf": pdf, "pdf_page": page, "top": top,
+                 "top_from": "kraken" if kraken else "70%", "raw": raw, "notes": notes}
+            path(pdf, page).write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+            return d
+        if err and re.search(r"quota|exhausted|429|rate limit", err, re.I):
+            QUOTA["hit"] = True
+            print(f"  agy quota: {err[:120]}", file=sys.stderr, flush=True)
+    print(f"  {pdf} p.{page}: no transcription after {tries} tries: {(err or raw or '')[:150]!r}", file=sys.stderr, flush=True)
+    return None
+
+
+def pages_for(vol, chs):
+    """The Good pages of these chapters worth a call: Kraken found a note mark, or the source page has footnotes."""
+    import good_notes as gn
+    pages = gv.chapter_pages(vol, chs)
+    recs = sorted((r for r in gk.crops() if r["vol"] == vol and r.get("source") and pages[0] <= int(r["source"][5:]) <= pages[-1]),
+                  key=lambda r: (r["pdf"], r["pdf_page"]))
+    out = []
+    for r in recs:
+        src = int(r["source"][5:])
+        has_json = bool((gv.norm(vol, src) or {}).get("footnotes"))
+        has_kraken = gk.cache_path(r["pdf"], r["pdf_page"]).exists() and bool(gn.page_notes(r["pdf"], r["pdf_page"]))
+        if has_json or has_kraken:
+            out.append((r["pdf"], r["pdf_page"]))
+    return out
+
+
+async def run(jobs, n, tries, redo):
+    sem = asyncio.Semaphore(n)
+    done = {"n": 0}
+
+    async def one(pdf, page):
+        d = await read_page(pdf, page, sem, tries, redo)
+        done["n"] += 1
+        if done["n"] % 10 == 0:
+            print(f"  {done['n']}/{len(jobs)}", file=sys.stderr, flush=True)
+        return d
+    return await asyncio.gather(*(one(p, g) for p, g in jobs))
+
+
+def main(argv):
+    if not argv:
+        sys.exit(__doc__)
+    opt = lambda f, d: type(d)(argv[argv.index(f) + 1]) if f in argv else d
+    n, tries, redo = opt("--jobs", 6), opt("--tries", 4), "--redo" in argv
+    if argv[0] == "--page":
+        d = asyncio.run(run([(argv[1], int(argv[2]))], 1, tries, redo))[0]
+        for x in (d or {}).get("notes") or []:
+            print(f"({x['mark']}) {x['text']}")
+        return
+    vol, spec = argv[0], argv[1]
+    a, _, b = spec.partition("-")
+    jobs = pages_for(vol, set(range(int(a), int(b or a) + 1)))
+    todo = sum(1 for j in jobs if not cached(*j))
+    print(f"{vol} ch. {spec}: {len(jobs)} pages with notes, {todo} to read", file=sys.stderr, flush=True)
+    res = asyncio.run(run(jobs, n, tries, redo))
+    print(f"read {sum(1 for d in res if d)}/{len(jobs)}; {sum(len(d['notes']) for d in res if d)} notes", file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

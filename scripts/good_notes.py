@@ -30,6 +30,7 @@ import unicodedata
 from paths import DATA
 import good_calmet_kraken as gk
 import good_variants as gv
+import good_notes_read as gr
 import scan_ocr
 
 MARK = re.compile(r"[(\[{C]\s*[a-zA-Z]{1,2}\s*[)\]}]?|[a-z][)\]]|\d\d?\)")  # (a) (b) Ce) (ch b] 66): a note's mark
@@ -87,6 +88,42 @@ def page_notes(pdf, page, o=None):
     return notes
 
 
+def mark_key(m):
+    """A mark's letter or number, lower case: (a) a) ca) [b] -> a, b; Kraken's c( or t( prefix dropped."""
+    t = re.sub(r"[^\w]", "", m or "").lower()
+    return t[-1:] if len(t) == 2 and t[0] in "ct" and t[1].isalpha() else t
+
+
+def agy_notes(pdf, page, o=None):
+    """A Good page's notes as Flash read them (good_notes_read.py's cache), each given the boxes of the
+    Kraken note with its mark (in order), else the crop's whole block; None when the page is not read."""
+    d = gr.cached(pdf, page)
+    if d is None:
+        return None
+    o = o or gr.kraken_ocr(pdf, page)
+    ks = page_notes(pdf, page, o) if o else []
+    used, out = set(), []
+    w = h = None
+    for i, a in enumerate(d["notes"]):
+        k = next((j for j, kn in enumerate(ks) if j not in used and mark_key(kn["mark"]) == mark_key(a["mark"])), None)
+        if k is None and len(ks) == len(d["notes"]) and i not in used:
+            k = i  # same count, marks misread: by order
+        if k is not None:
+            used.add(k)
+            words, col, from_ = ks[k]["words"], ks[k]["col"], "kraken"
+        else:
+            if w is None:
+                w, h = o["size"] if o else (0, 0)
+            words, col, from_ = [{"t": "", "box": [0, d["top"], w, h - d["top"]]}], None, "block"
+        out.append({"mark": f"({a['mark']})", "text": a["text"], "words": words, "col": col, "page": page, "pdf": pdf,
+                    "agy": True, "box_from": from_})
+    return out
+
+
+AFTER_ABBR = re.compile(r"(?:^|[\s(])(?:l|lib|liv|livre|c|cap|ser|serm|hom|homil|tom|t|quæst|quaest|q|part|n|num|v|vers|p|pag|"
+                        r"dist|epist|ep|tract|sect|art|cant|psal|ps|et|&)\.?,?\s*$", re.I)  # where a lowercase roman number may stand
+
+
 def numbers(text):
     """The numbers in order, arabic or roman; a roman number misread with 1 for I (111, 1v, x1) set right."""
     toks = []
@@ -94,8 +131,8 @@ def numbers(text):
         t = m.group()
         if not re.fullmatch(r"[0-9IVXLCivxlc]+", t):
             continue
-        if not re.search(r"\d", t) and not t.isupper() and text[m.end():m.end() + 1] != ".":
-            continue  # a lowercase roman number only as an abbreviation's (lib. v.): not "ci", "vi"
+        if not re.search(r"\d", t) and not t.isupper() and not AFTER_ABBR.search(text[:m.start()]):
+            continue  # a lowercase roman number only after an abbreviation (lib. v., l. xi): not "ci", "vi"
         if t == "111":
             t = "I" * len(t)  # l. 111. : III
         elif re.search(r"\d", t) and re.fullmatch(r"[\dIil]+", t) and sum(c.isdigit() for c in t) >= len(t) / 2:
@@ -106,7 +143,7 @@ def numbers(text):
     out = []
     for t in toks:
         n = gv.number(t)
-        if n is not None and not (t.lower() in ("l", "c", "i", "v") and not t.isupper()):
+        if n is not None:
             out.append(n)
     return out
 
@@ -130,9 +167,9 @@ def readings(text):
     out = []
     for m in re.finditer(r"[^\W_]+", text):
         t = m.group()
-        if not re.fullmatch(r"[0-9IVXLCivxlc]+", t) or (t.lower() in ("l", "c", "i", "v") and not t.isupper()):
+        if not re.fullmatch(r"[0-9IVXLCivxlc]+", t):
             continue
-        if not re.search(r"\d", t) and not t.isupper() and text[m.end():m.end() + 1] != ".":
+        if not re.search(r"\d", t) and not t.isupper() and not AFTER_ABBR.search(text[:m.start()]):
             continue
         vals = set()
         for u in {t, t.replace("1", "I"), re.sub(r"[Iil]", "1", t)}:
@@ -147,12 +184,24 @@ def readings(text):
 def same_numbers(good_text, json_nums):
     """Whether the JSON's numbers are, in order, among the Good note's readings (extra Good numbers, an
     edition's year, allowed)."""
-    rs = readings(good_text) if isinstance(good_text, str) else good_text
+    rs = readings(good_text) if isinstance(good_text, str) else good_text  # [{n}] lists: read exactly
     i = 0
     for n in json_nums:
         while i < len(rs) and n not in rs[i]:
             i += 1
         if i == len(rs):
+            return False
+        i += 1
+    return True
+
+
+def covered(rs, nums):
+    """Whether every one of a note's readings (in order) is one of these numbers: Good adds none."""
+    i = 0
+    for r in rs:
+        while i < len(nums) and nums[i] not in r:
+            i += 1
+        if i == len(nums):
             return False
         i += 1
     return True
@@ -178,6 +227,8 @@ def _abbr_share(gw, jw):
 
 
 def junk_share(g, lex):
+    if g.get("agy"):
+        return 0.0  # Flash writes Hebrew and Greek in their letters: no junk to read them by
     ws = [x["t"] for x in g["words"] if plain(x["t"])]
     if not ws:
         return 0.0
@@ -198,9 +249,13 @@ def likeness(g, j):
         score = wd * (0.8 if (gn or jn) else 1.0)
     else:
         score = 0.0
-    if (j["script"]["hebrew"] or j["script"]["greek"]) and g["junk"] >= 0.4:
+    if g.get("agy"):
+        gs, js = g["script"], j["script"]
+        if (gs["hebrew"] and js["hebrew"]) or (gs["greek"] and js["greek"]):
+            score = max(score, 0.5 if not j["aw"] else score + 0.2)
+    elif (j["script"]["hebrew"] or j["script"]["greek"]) and g["junk"] >= 0.4:
         score = max(score, 0.5 if not j["aw"] else score + 0.2)
-    if g["mark"].strip("(). ,").lower()[:1] == (j["mark"] or "").strip("() ").lower()[:1] and g["src_page"] == j["page"]:
+    if mark_key(g["mark"]) == mark_key(j["mark"]) and g["src_page"] == j["page"]:
         score += 0.15
     return min(score, 1.0)
 
@@ -253,10 +308,13 @@ def compare(vol, chs):
                    and pages[0] <= int(r["source"][5:]) <= pages[-1]
                    and gk.cache_path(r["pdf"], r["pdf_page"]).exists()), key=lambda r: (r["pdf"], r["pdf_page"]))
     goods = []
+    read = 0
     for r in recs:
-        for n in page_notes(r["pdf"], r["pdf_page"]):
+        ns = agy_notes(r["pdf"], r["pdf_page"])
+        read += ns is not None
+        for n in ns if ns is not None else page_notes(r["pdf"], r["pdf_page"]):
             n.update(src_page=int(r["source"][5:]), nums=numbers(n["text"]), lw=long_words(n["text"], lex),
-                     aw=abbr_words(n["text"]), printed=gv.printed_page(r["pdf"], r["pdf_page"]))
+                     aw=abbr_words(n["text"]), printed=gv.printed_page(r["pdf"], r["pdf_page"]), script=script(n["text"]))
             n["junk"] = junk_share(n, lex)
             goods.append(n)
     jsons = json_notes(vol, pages)
@@ -266,7 +324,9 @@ def compare(vol, chs):
         js = [j for j in jsons if j["page"] == p]
         if o is None or not js:
             continue
-        ss = page_notes(vol, p, o)
+        ss = agy_notes(gr.src(vol), p, o)
+        if ss is None:
+            ss = page_notes(vol, p, o)
         for n in ss:
             n.update(src_page=p, nums=numbers(n["text"]), aw=abbr_words(n["text"]))
             n["junk"] = junk_share(n, lex)
@@ -274,13 +334,15 @@ def compare(vol, chs):
         for si, ji in sp:
             if si is not None and ji is not None:
                 js[ji]["source_text"] = ss[si]["text"]
+    print(f"  {read}/{len(recs)} Good pages read by Flash, the rest by Kraken", file=sys.stderr)
     pairs, sim = pair(goods, jsons)
     out, hg = [], []
 
     def where(g):
         return {"pdf": g["pdf"], "pdf_page": g["page"], "printed": g["printed"],
                 "crop": f"data/good_calmet/{g['pdf']}/page_{g['page']:04d}.png",
-                "boxes": [b for x in g["words"] for b in x.get("boxes", [x["box"]])]}
+                "boxes": [b for x in g["words"] for b in x.get("boxes", [x["box"]])],
+                "reader": "flash" if g.get("agy") else "kraken", "box_from": g.get("box_from", "kraken")}
 
     def rec(kind, g=None, j=None, **kw):
         r = {"kind": kind, "vol": vol, "page": j["page"] if j else g["src_page"],
@@ -303,7 +365,9 @@ def compare(vol, chs):
             rec("note_dropped", j=j)
         else:
             s = sim[gi][ji]
-            if (g["nums"] or j["nums"]) and not same_numbers(g["text"], j["nums"]):
+            gr_ = readings(g["text"])  # Flash, like Kraken, reads II as 11: an I/1 swap is no difference
+            if (g["nums"] or j["nums"]) and (not same_numbers(gr_, j["nums"])
+                                             or (g.get("agy") and not covered(gr_, j["nums"]))):
                 st = j.get("source_text")
                 if st is None:
                     origin = "no_source"
@@ -313,10 +377,17 @@ def compare(vol, chs):
                     origin = "both_scans"  # both scans read alike, the JSON otherwise: the JSON's slip
                 else:
                     origin = "unsure"
+                rel = "good_extra" if same_numbers(gr_, j["nums"]) else "differ"  # Good adds numbers / they differ
                 rec("refs_changed", g, j, likeness=round(s, 2), json_nums=j["nums"], good_nums=g["nums"],
-                    origin=origin, source_raw=st)
+                    origin=origin, source_raw=st, numbers=rel)
             elif len(j["lw"]) >= 8 and len(g["lw"]) >= 8 and len(g["lw"] & j["lw"]) < 0.5 * min(len(g["lw"]), len(j["lw"])):
                 rec("text_changed", g, j, likeness=round(s, 2))
+            if g.get("agy"):
+                gs, js = g["script"], j["script"]
+                if gs != js:
+                    rec("script_changed", g, j, good_script=[k for k, v in gs.items() if v],
+                        json_script=[k for k, v in js.items() if v])
+                continue
             junk = sum(1 for x in g["words"] if plain(x["t"]) and scan_ocr.key(x["t"]) not in lex
                        and gv.number(x["t"].strip(".,")) is None and len(plain(x["t"])) >= 3)
             if not (j["script"]["hebrew"] or j["script"]["greek"]) and junk >= 3 and junk >= 0.4 * len(g["words"]):
@@ -333,7 +404,15 @@ def main(argv):
         return
     vol, spec = argv[0], argv[1]
     a, _, b = spec.partition("-")
-    out, hg = compare(vol, set(range(int(a), int(b or a) + 1)))
+    chs = set(range(int(a), int(b or a) + 1))
+    out, hg = compare(vol, chs)
+    if "--read-sources" in argv:  # the source scan's notes read by Flash too, where a difference was found
+        import asyncio
+        want = sorted({r["page"] for r in out if r["kind"] in ("refs_changed", "text_changed", "note_added", "note_dropped")
+                       and not gr.cached(gr.src(vol), r["page"])})
+        print(f"  reading {len(want)} source pages with Flash", file=sys.stderr)
+        asyncio.run(gr.run([(gr.src(vol), p) for p in want], 6, 4, False))
+        out, hg = compare(vol, chs)
     for flag, data in (("--out", out), ("--hg", hg)):
         if flag in argv:
             with open(argv[argv.index(flag) + 1], "w", encoding="utf-8") as fh:
