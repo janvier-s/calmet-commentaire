@@ -10,6 +10,7 @@ between two unmatched ones does not cut a run), each anchored between the matche
   replace           Good words where the JSON has other words (old: the JSON's)
   only_normalized   JSON words (3+) no Good word is linked to, not part of a replace
   unclear           the anchors are out of order (a moved block, a page-break mix-up)
+  moved             8+ words one text lacks here but holds elsewhere in the run (4-grams, half or more)
 `origin`: only_good (the source scan agrees with the JSON: the edition differs), both_scans (the source
 scan has the Good words too: the JSON dropped them), normalized_differs (neither scan has the JSON's words).
 Each record names where to find it in Good_Calmet: `good`: [{pdf, pdf_page, printed, crop, boxes}]
@@ -22,6 +23,7 @@ import hashlib
 import json
 import re
 import sys
+import unicodedata
 
 from paths import DATA, SCRIPTS
 import good_calmet_kraken as gk
@@ -31,6 +33,16 @@ RANK = {"ok": 3, "near": 2}
 NOTE_OPEN = re.compile(r"[(\[{]\s*[a-z]\w?\)?|[a-z][)\]]")  # (a) (b) (ch a) b]: a note's first word
 # the margin's and the lemmas' references, the verses' heading: Chap. III. v. 15, ŷ. 6, COMMENTAIRE (misread)
 REF_WORD = re.compile(r"(?i)chap|[vyŷ]|[ivxlc]+|\d+|comment\w*|commentalre")
+# the margin's chronology and the chapters' headings: "An. du M. 2315", "A. N. du Monde 1, avant J. C. 4000,
+# avant l'Ere vulgaire 4004", "CHAPITRE XXXVII"
+CHRONO = {"an", "ans", "ars", "au", "du", "m", "me", "monde", "avant", "j", "c", "l", "ere", "vulgaire",
+          "chapitre", "chap", "commentaire", "n", "a"}
+STRONG = {"an", "ans", "ars", "monde", "avant", "vulgaire", "chapitre", "chap", "commentaire"}
+# the scan's short book names in references, against the text's full ones (others match by their start)
+BOOK = {"reg": "rois", "paral": "chroniques", "esdr": "esdras", "pseaume": "psaume", "ps": "psaume",
+        "psal": "psaume", "joan": "jean", "johan": "jean", "matth": "matthieu", "act": "actes", "apoc": "apocalypse",
+        "apocal": "apocalypse", "eccli": "ecclesiastique", "eccl": "ecclesiaste", "cant": "cantique",
+        "deut": "deuteronome", "num": "nombres", "levit": "levitique", "exod": "exode", "genes": "genese"}
 ROMAN = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100, "d": 500, "m": 1000}
 
 
@@ -194,7 +206,7 @@ def source_view(job):
     vol, p, d = job
     o = scan_ocr.ocr(vol, p, run=False)
     if o is None or d is None:
-        return p, None, set()
+        return p, None, set(), {}
     res = scan_ocr.align(o, d, fix=True)
     held = {(w["path"], w["a"]) for w in res["words"] if w["s"] in RANK}
     loose = {scan_ocr.key(w["t"]) for w in res["words"] if w["s"] in ("missing", "diff")}
@@ -340,6 +352,18 @@ def variants(vol, chs, workers=8):
         if rec:
             out.append(rec)
     out = [r for r in out if real(r, jt, stream, lexicon(vol))]
+    # a passage of 8 words or more the other text holds elsewhere (beyond the pages near by): moved
+    g4 = _grams([w["k"] for w in stream if w["s"] != "skip"])
+    j4 = _grams([t["k"] for t in jt])
+    for r in out:
+        if r["kind"] == "only_normalized" and r["old_words"] >= 8:
+            k = [scan_ocr.key(t) for t in scan_ocr.TOKEN.findall(r["old"])]
+            if _share(k, g4) >= 0.5:
+                r["kind"] = "moved"
+        elif r["kind"] in ("insert", "unclear") and r["words"] >= 8:
+            k = [scan_ocr.key(t) for t in scan_ocr.OCR_TOKEN.findall(r["good_raw"])]
+            if _share(k, j4) >= 0.5:
+                r["kind"] = "moved"
     for r in out:
         r.pop("_span", None)
         # low: a word or two read out of order, mostly a page's or column's edge (3 real in 20 on Genèse 3, 49)
@@ -405,6 +429,11 @@ def record(c, vol, jt, stream, src, pages, linked):
         return None
     if c["g0"] is not None and not ws and kind != "only_normalized":
         return None
+    if ws and all(w["k"] in CHRONO or number(w["t"]) is not None for w in ws) and any(
+            w["k"] in STRONG or number(w["t"]) is not None for w in ws):
+        return None  # the margin's chronology, a chapter's heading
+    if olds and ws and same_reference([t["t"] for t in olds], [w["t"] for w in ws]):
+        return None  # a reference written otherwise (4 Reg. XIX. 37 for 4 Rois 19:37)
     on, gn = [number(t["t"]) for t in olds], [number(w["t"]) for w in ws]
     if olds and ws and on == gn and None not in on:
         return None  # a reference's numbers, written in figures in the JSON (4 for IV): the same numbers
@@ -475,6 +504,24 @@ def record(c, vol, jt, stream, src, pages, linked):
     return rec
 
 
+def same_reference(old, new):
+    """Whether two runs are the same references written otherwise: the same numbers in order, and each
+    other word the same book (one name the start of the other, or a known short name) or "et"."""
+    num = lambda ws: [n for n in map(number, ws) if n is not None]
+    if not num(old) or num(old) != num(new):
+        return False
+    plain = lambda w: "".join(c for c in unicodedata.normalize("NFD", w.lower()) if c.isalpha())
+    words = lambda ws: [plain(w) for w in ws if number(w) is None and plain(w) not in ("et", "")]
+    a, b = words(old), words(new)
+    if len(a) != len(b):
+        return False
+    for x, y in zip(a, b):
+        x, y = BOOK.get(x, x), BOOK.get(y, y)
+        if not (x == y or (min(len(x), len(y)) >= 3 and (x.startswith(y) or y.startswith(x)))):
+            return False
+    return True
+
+
 def field_text(d, path):
     x = d
     for part in path.split("/"):
@@ -535,6 +582,16 @@ def lexicon(vol=None):
             _lex["all"] = {k for k, c in n.items() if c >= 3}  # a word cut at a page turn (roient) is rare
             LEXICON.write_text(json.dumps(sorted(_lex["all"]), ensure_ascii=False), encoding="utf-8")
     return _lex["all"]
+
+
+def _grams(keys, n=4):
+    return set(zip(*(keys[i:] for i in range(n))))
+
+
+def _share(keys, grams, n=4):
+    """The share of a run's word 4-grams found in `grams`."""
+    g = list(zip(*(keys[i:] for i in range(n))))
+    return sum(x in grams for x in g) / len(g) if g else 0
 
 
 def _pairs(keys):
