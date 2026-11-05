@@ -28,6 +28,23 @@ import good_calmet_kraken as gk
 import scan_ocr
 
 RANK = {"ok": 3, "near": 2}
+NOTE_OPEN = re.compile(r"[(\[{]\s*[a-z]\w?\)?|[a-z][)\]]")  # (a) (b) (ch a) b]: a note's first word
+# the margin's and the lemmas' references, the verses' heading: Chap. III. v. 15, ŷ. 6, COMMENTAIRE (misread)
+REF_WORD = re.compile(r"(?i)chap|[vyŷ]|[ivxlc]+|\d+|comment\w*|commentalre")
+ROMAN = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100, "d": 500, "m": 1000}
+
+
+def number(t):
+    """A word's value as a number, arabic or roman (IV, xxxiv), else None."""
+    t = t.lower().strip(".")
+    if t.isdigit():
+        return int(t)
+    if t and all(c in ROMAN for c in t):
+        n = 0
+        for a, b in zip(t, t[1:] + " "):
+            n += -ROMAN[a] if b != " " and ROMAN[a] < ROMAN[b] else ROMAN[a]
+        return n
+    return None
 SHORT = 3  # a matched word this short between unmatched ones is taken as a chance pairing
 
 
@@ -125,6 +142,7 @@ def label(job):
     if not runs:
         return rec, None, []
     words = next(iter(runs.values()))
+    cols = scan_ocr.split_columns(go)  # the lines align() read, which the words' `src` index
     # the page each line agrees with most
     votes = collections.defaultdict(collections.Counter)
     for p, ws in runs.items():
@@ -137,10 +155,17 @@ def label(job):
         order = [p for p, _ in votes[line].most_common()] + [p for p in runs if p not in votes[line]]
         best = next(((p, runs[p][i]) for p in order if runs[p][i]["s"] in RANK), None)
         r = {"t": w["t"], "k": scan_ocr.key(w["t"]), "wc": w["wc"], "boxes": w["boxes"]}
+        li, wi = w["src"][0]
+        if len(w["t"]) == 1 and re.search(r"[()]", cols["lines"][li]["words"][wi]["t"]):
+            r["s"] = "skip"  # a note's mark: the later edition letters its notes otherwise
+            out.append(r)
+            continue
         if best:
             r.update(s="match", page=best[0], path=best[1]["path"], a=best[1]["a"], b=best[1]["b"])
         else:
-            r["s"] = "skip" if any(runs[p][i]["s"] == "skip" for p in runs) else "gap"
+            # align()'s own skips (a band by the notes, the page's foot) would hide a changed passage: only
+            # an unsure reading is left out here (the notes' block and the header are, below and before)
+            r["s"] = "skip" if w["wc"] < 0.5 else "gap"
         out.append(r)
     # the footnotes' block (not compared): from the highest of the words linked to a footnote, in the
     # page's lower half, down
@@ -150,6 +175,11 @@ def label(job):
     linked = sorted((r["boxes"][0][1], r["path"].startswith("footnotes/")) for r in out if r["s"] == "match")
     top = next((y for y in fy if len([1 for yy, f in linked if yy >= y]) >= 3
                 and sum(f for yy, f in linked if yy >= y) >= 0.8 * len([1 for yy, f in linked if yy >= y])), None)
+    # or from the first line in the lower part that opens with a note's mark, "(a)"
+    marked = [ln["box"][1] for ln in go["lines"] if ln["box"][1] > 0.6 * h and ln["words"]
+              and NOTE_OPEN.match(ln["words"][0]["t"])]
+    if marked:
+        top = min(top, marked[0] + 5) if top is not None else min(marked) + 5
     if top is not None:
         top -= 5
         for r in out:
@@ -224,6 +254,7 @@ def variants(vol, chs, workers=8):
             for t in scan_ocr.json_tokens(data[p]):
                 at[(p, t["path"], t["a"])] = len(jt)
                 jt.append(dict(t, page=p))
+    join_seams(jt, data)
     stream = []
     for rec, printed, ws in labelled:
         for w in ws:
@@ -237,63 +268,42 @@ def variants(vol, chs, workers=8):
     for w in stream:
         if w["s"] == "gap":
             w["j"] = None
+    relink_seams(stream, jt)
     linked = {w["j"] for w in stream if w["j"] is not None}
+    for j, t in enumerate(jt):  # the JSON's note marks, ^{(a)}: left out as on the scan
+        f = field_text(data[t["page"]], t["path"]) if t["page"] in data else None
+        if f and len(t["t"]) == 1 and f[max(0, t["a"] - 1):t["a"]] == "(":
+            linked.add(j)
+    linked |= {j for j, t in enumerate(jt) if t.get("seamed")}
 
-    out, claimed = [], set()
+    pieces, claimed = [], set()
     for gaps, after in runs_of(stream):
         before = next((stream[i] for i in range(gaps[0] - 1, -1, -1) if stream[i]["s"] == "match"), None)
         nxt = stream[after] if after is not None else None
         L, R = (before or {}).get("j"), (nxt or {}).get("j")
         if L is None and R is None:
             continue
-        anchor = jt[L] if L is not None else jt[R]
-        if anchor["page"] not in pages or anchor["path"].startswith("footnotes/"):
-            continue
         between = list(range(L + 1, R)) if L is not None and R is not None and L < R else []
         between = [j for j in between if j not in linked]
         if L is not None and R is not None and R <= L:
-            kind = "unclear"
-        elif between and len(between) <= 3 * len(gaps) + 5:
-            kind = "replace"
+            kind, j0 = "unclear", L + 1
+            j1 = j0
+        elif between and R - L - 1 <= 3 * len(gaps) + 5:
+            kind, j0, j1 = "replace", between[0], between[-1] + 1
+        elif L is not None and R is not None and R - L - 1 > 50:
+            kind, j0 = "unclear", L + 1  # anchors far apart: the words between are matched elsewhere
+            j1 = j0
+            between = []
         else:
             kind, between = "insert", []
-        claimed.update(between)
-        ws = [stream[i] for i in gaps]
-        raw = " ".join(w["t"] for w in ws)
-        old = " ".join(jt[j]["t"] for j in between)
-        if kind == "replace" and len(ws) <= 2 and scan_ocr.similar(" ".join(w["k"] for w in ws),
-                                                                    " ".join(jt[j]["k"] for j in between)) > 0.6:
+            j0 = j1 = L + 1 if L is not None else R
+        if kind == "replace" and len(gaps) <= 2 and scan_ocr.similar(
+                " ".join(stream[i]["k"] for i in gaps), " ".join(jt[j]["k"] for j in between)) > 0.6:
             continue  # a misreading of the same words
-        content = [w for w in ws if len(w["k"]) > 2]
-        if not content:
-            continue
-        # the third witness: the source scan's view of the anchor's page (and the next)
-        sp = anchor["page"]
-        held, loose = src.get(sp, (None, set()))
-        loose = loose | src.get(sp + 1, (None, set()))[1] | src.get(sp - 1, (None, set()))[1]
-        if kind == "replace" and held is not None and not any((jt[j]["path"], jt[j]["a"]) in held for j in between):
-            origin = "normalized_differs"
-        elif kind != "replace" and sum(w["k"] in loose for w in content) >= max(2, 0.6 * len(content)):
-            origin = "both_scans"
-        else:
-            origin = "only_good"
-        where = collections.OrderedDict()
-        for w in ws:
-            g = where.setdefault((w["pdf"], w["pdf_page"]), {
-                "pdf": w["pdf"], "pdf_page": w["pdf_page"], "printed": w["printed"],
-                "crop": f"data/good_calmet/{w['pdf']}/page_{w['pdf_page']:04d}.png", "boxes": []})
-            g["boxes"] += w["boxes"]
-        ctx_l = " ".join(t["t"] for t in jt[max(0, (L if L is not None else R) - 6):(L + 1 if L is not None else R)])
-        ctx_r = " ".join(t["t"] for t in jt[(R if R is not None else L + 1):(R if R is not None else L + 1) + 6])
-        rec = {"kind": kind, "origin": origin, "vol": vol, "page": anchor["page"], "path": anchor["path"],
-               "at": (jt[between[0]]["a"] if between else (jt[L]["b"] if L is not None else jt[R]["a"])),
-               "old": old, "good_raw": raw, "good_modern": modern(raw), "words": len(ws),
-               "wc_min": round(min(w["wc"] for w in ws), 3), "before": ctx_l, "after": ctx_r,
-               "good": list(where.values())}
-        rec["id"] = hashlib.md5(json.dumps([vol, kind, rec["path"], [w["k"] for w in ws], old]).encode()).hexdigest()[:10]
-        out.append(rec)
+        claimed.update(between)
+        pieces.append({"kind": kind, "j0": j0, "j1": j1, "g0": gaps[0], "g1": gaps[-1] + 1})
 
-    # JSON words no Good word holds (3 or more in a row, in the chapter's pages, not footnotes)
+    # JSON words no Good word holds (in the chapter's pages, not footnotes)
     covered = {(r["page"]) for _, _, ws in labelled for r in ws if r.get("page")}
     run = []
     for j, t in enumerate(jt + [None]):
@@ -302,17 +312,158 @@ def variants(vol, chs, workers=8):
         if lone and (not run or (run[-1] == j - 1 and jt[run[-1]]["path"] == t["path"])):
             run.append(j)
             continue
-        if len(run) >= 3:
-            held = src.get(jt[run[0]]["page"], (None, set()))[0]
-            origin = "normalized_differs" if held is not None and not any((jt[k]["path"], jt[k]["a"]) in held for k in run) else "only_good"
-            old = " ".join(jt[k]["t"] for k in run)
-            out.append({"kind": "only_normalized", "origin": origin, "vol": vol, "page": jt[run[0]]["page"],
-                        "path": jt[run[0]]["path"], "at": jt[run[0]]["a"], "old": old, "words": len(run),
-                        "id": hashlib.md5(json.dumps([vol, "only_normalized", jt[run[0]]["path"], old]).encode()).hexdigest()[:10]})
+        if run:
+            pieces.append({"kind": "only_normalized", "j0": run[0], "j1": run[-1] + 1, "g0": None, "g1": None})
         run = [j] if lone else []
+
+    out = []
+    for c in merge(pieces, linked):
+        rec = record(c, vol, jt, stream, src, pages, linked)
+        if rec:
+            out.append(rec)
     out = [r for r in out if real(r, jt, stream, lexicon(vol))]
+    for r in out:
+        r.pop("_span", None)
     out.sort(key=lambda r: (r["page"], r["path"], r["at"]))
     return out
+
+
+def merge(pieces, linked, reach=2, g_reach=4):
+    """Pieces next to each other (no more than `reach` JSON words, `g_reach` Good words apart) made one: a
+    reworded passage comes out as some JSON words alone, some Good words alone, side by side."""
+    keep = [p for p in pieces if p["kind"] == "unclear"]
+    rest = sorted((p for p in pieces if p["kind"] != "unclear"), key=lambda p: (p["j0"], p["j1"]))
+    cur = None
+    for p in rest:
+        a, b = (cur["j0"], max(cur["j1"], p["j1"])) if cur else (0, 0)
+        if cur is not None and p["j0"] - cur["j1"] <= reach and (
+                p["g0"] is None or cur["g1"] is None or p["g0"] - cur["g1"] <= g_reach) \
+                and sum(j not in linked for j in range(a, b)) >= 0.5 * (b - a):
+            cur["j1"] = max(cur["j1"], p["j1"])
+            if p["g0"] is not None:
+                cur["g0"] = p["g0"] if cur["g0"] is None else min(cur["g0"], p["g0"])
+                cur["g1"] = p["g1"] if cur["g1"] is None else max(cur["g1"], p["g1"])
+            cur["n"] += 1
+            continue
+        if cur:
+            keep.append(cur)
+        cur = dict(p, n=1)
+    if cur:
+        keep.append(cur)
+    return keep
+
+
+def record(c, vol, jt, stream, src, pages, linked):
+    """A merged piece as a candidate (None when out of the chapter, in the footnotes, or too slight)."""
+    j0, j1 = c["j0"], c["j1"]
+    ws = [w for w in stream[c["g0"]:c["g1"]] if w["s"] != "skip"] if c["g0"] is not None else []
+    while ws and REF_WORD.fullmatch(ws[-1]["t"]):  # "… expressément. V. 9.": the next lemma's reference
+        ws.pop()
+    while ws and REF_WORD.fullmatch(ws[0]["t"]):
+        ws.pop(0)
+    olds = jt[j0:j1]
+    if c["kind"] == "unclear":
+        kind = "unclear"
+    elif ws and olds:
+        kind = "replace"
+    elif ws:
+        kind = "insert"
+    else:
+        kind = "only_normalized"
+    anchor = olds[0] if olds else (jt[j0 - 1] if j0 > 0 else jt[j0]) if j0 < len(jt) or j0 > 0 else None
+    if anchor is None or anchor["page"] not in pages or anchor["path"].startswith("footnotes/"):
+        return None
+    if kind == "only_normalized" and len(olds) < 3:
+        return None
+    if ws and not olds and not any(len(w["k"]) > 2 for w in ws):
+        return None
+    if not ws and c["g0"] is not None and not olds:
+        return None
+    if c["g0"] is not None and not ws and kind != "only_normalized":
+        return None
+    nums = [number(t["t"]) for t in olds] + [number(w["t"]) for w in ws]
+    if olds and ws and all(n is not None for n in nums):
+        return None  # a reference's numbers, written in figures in the JSON (4 for IV)
+    if all(len(t["k"]) <= 2 for t in olds) and all(len(w["k"]) <= 2 for w in ws):
+        return None  # an elision or a letter (l' for I, s'): no word changed
+    sp = anchor["page"]
+    held, loose = src.get(sp, (None, set()))
+    loose = loose | src.get(sp + 1, (None, set()))[1] | src.get(sp - 1, (None, set()))[1]
+    lone = [t for j, t in zip(range(j0, j1), olds) if j not in linked]
+    content = [w for w in ws if len(w["k"]) > 2]
+    if lone and held is not None and not any((t["path"], t["a"]) in held for t in lone):
+        origin = "normalized_differs"
+    elif not olds and content and sum(w["k"] in loose for w in content) >= max(2, 0.6 * len(content)):
+        origin = "both_scans"
+    else:
+        origin = "only_good"
+    where = collections.OrderedDict()
+    for w in ws:
+        g = where.setdefault((w["pdf"], w["pdf_page"]), {
+            "pdf": w["pdf"], "pdf_page": w["pdf_page"], "printed": w["printed"],
+            "crop": f"data/good_calmet/{w['pdf']}/page_{w['pdf_page']:04d}.png", "boxes": []})
+        g["boxes"] += w["boxes"]
+    raw = " ".join(w["t"] for w in ws)
+    old = " ".join(t["t"] for t in olds)
+    if olds:
+        at = olds[0]["a"]
+    else:
+        at = jt[j0 - 1]["b"] if j0 > 0 and jt[j0 - 1] is anchor else anchor["a"]
+    rec = {"kind": kind, "origin": origin, "vol": vol, "page": anchor["page"], "path": anchor["path"], "at": at,
+           "old": old, "good_raw": raw, "good_modern": modern(raw) if raw else None,
+           "words": len(ws), "old_words": len(olds), "pieces": c.get("n", 1),
+           "before": " ".join(t["t"] for t in jt[max(0, j0 - 6):j0]), "after": " ".join(t["t"] for t in jt[j1:j1 + 6]),
+           "good": list(where.values())}
+    paths = list(dict.fromkeys(f"{t['page']}:{t['path']}" for t in olds))
+    if len(paths) > 1:
+        rec["spans"] = paths
+    if ws:
+        rec["wc_min"] = round(min(w["wc"] for w in ws), 3)
+    rec["id"] = hashlib.md5(json.dumps([vol, kind, rec["path"], [w["k"] for w in ws], old]).encode()).hexdigest()[:10]
+    rec["_span"] = (j0, j1)
+    return rec
+
+
+def field_text(d, path):
+    x = d
+    for part in path.split("/"):
+        x = x[int(part)] if part.isdigit() else (x or {}).get(part)
+        if x is None:
+            return None
+    return x if isinstance(x, str) else None
+
+
+def join_seams(jt, data):
+    """A word the JSON cuts at a page turn (préam- | bulle) made one token, kept at the first page; the
+    second half is marked `seamed`."""
+    last = {}
+    for i, t in enumerate(jt):
+        if not t["path"].startswith("footnotes/") and t["path"] != "book_end_marker":
+            last[t["page"]] = i
+    firsts = {}
+    for i, t in enumerate(jt):
+        if t["page"] not in firsts and t["a"] == 0 and not t["path"].startswith(("footnotes/", "verses/")):
+            firsts[t["page"]] = i
+    for p, i in last.items():
+        k = firsts.get(p + 1)
+        f = field_text(data[p], jt[i]["path"]) or ""
+        if k is None or not f.rstrip().endswith("-") or not jt[k]["t"][:1].islower():
+            continue
+        jt[i] = dict(jt[i], t=jt[i]["t"] + jt[k]["t"], k=scan_ocr.key(jt[i]["t"] + jt[k]["t"]), seam=k)
+        jt[k] = dict(jt[k], seamed=True)
+
+
+def relink_seams(stream, jt, near=6):
+    """A Good word left unmatched that is a joined seam word, between matches close to it, linked to it."""
+    seams = {t["k"]: j for j, t in enumerate(jt) if "seam" in t}
+    ms = [i for i, w in enumerate(stream) if w["s"] == "match"]
+    for i, w in enumerate(stream):
+        j = seams.get(w["k"]) if w["s"] == "gap" else None
+        if j is None:
+            continue
+        nb = [stream[m]["j"] for m in ms if abs(m - i) <= 3]
+        if any(abs(x - j) <= near for x in nb):
+            w.update(s="match", j=j)
 
 
 _lex = {}
@@ -351,7 +502,8 @@ def real(r, jt, stream, lex, reach=2):
     if len(new) <= 2 and any(k not in lex for k in new if len(k) > 1):
         return False
     if len(new) >= 3:
-        pool = _pairs([t["k"] for t in jt if t["page"] in near])
+        a, b = r.get("_span", (0, 0))
+        pool = _pairs([t["k"] for j, t in enumerate(jt) if t["page"] in near and not a <= j < b])
         return _held(new, pool) < 0.5
     return True
 
