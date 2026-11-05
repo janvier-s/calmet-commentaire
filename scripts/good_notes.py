@@ -380,7 +380,7 @@ def compare(vol, chs):
         if ss is None:
             ss = page_notes(vol, p, o)
         for n in ss:
-            n.update(src_page=p, nums=numbers(n["text"]), aw=abbr_words(n["text"]))
+            n.update(src_page=p, nums=numbers(n["text"]), aw=abbr_words(n["text"]), script=script(n["text"]))
             n["junk"] = junk_share(n, lex)
         sp, ssim = pair(ss, js)
         for si, ji, _ in sp:
