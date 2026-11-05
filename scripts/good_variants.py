@@ -161,7 +161,8 @@ def label(job):
             out.append(r)
             continue
         if best:
-            r.update(s="match", page=best[0], path=best[1]["path"], a=best[1]["a"], b=best[1]["b"])
+            r.update(s="match", page=best[0], path=best[1]["path"], a=best[1]["a"], b=best[1]["b"],
+                     near=best[1]["s"] == "near")
         else:
             # align()'s own skips (a band by the notes, the page's foot) would hide a changed passage: only
             # an unsure reading is left out here (the notes' block and the header are, below and before)
@@ -197,7 +198,9 @@ def source_view(job):
     res = scan_ocr.align(o, d, fix=True)
     held = {(w["path"], w["a"]) for w in res["words"] if w["s"] in RANK}
     loose = {scan_ocr.key(w["t"]) for w in res["words"] if w["s"] in ("missing", "diff")}
-    return p, held, loose
+    exact = {(w["path"], w["a"]): None for w in res["words"] if w["s"] == "ok"}
+    exact.update({(w["path"], w["a"]): w["t"] for w in res["words"] if w["s"] == "near"})
+    return p, held, loose, exact  # exact: the JSON words the scan reads the same (None), or nearly (its reading)
 
 
 def runs_of(stream):
@@ -245,7 +248,9 @@ def variants(vol, chs, workers=8):
         jobs.append((r, [(p, data[p]) for p in range(s - 2, s + 3) if p in data]))
     with concurrent.futures.ProcessPoolExecutor(workers) as ex:
         labelled = list(ex.map(label, jobs))
-        src = {p: (h, l) for p, h, l in ex.map(source_view, [(vol, p, data.get(p)) for p in range(lo, hi + 1)])}
+        views = list(ex.map(source_view, [(vol, p, data.get(p)) for p in range(lo, hi + 1)]))
+    src = {p: (h, l) for p, h, l, _ in views}
+    src_ok = {p: e for p, _, _, e in views}
 
     # the JSON's words in order, and the Good words in order with where they come from
     jt, at = [], {}
@@ -299,9 +304,21 @@ def variants(vol, chs, workers=8):
             j0 = j1 = L + 1 if L is not None else R
         if kind == "replace" and len(gaps) <= 2 and scan_ocr.similar(
                 " ".join(stream[i]["k"] for i in gaps), " ".join(jt[j]["k"] for j in between)) > 0.6:
-            continue  # a misreading of the same words
+            held = src_ok.get(jt[between[0]]["page"]) or {}
+            if not held or any(held.get((jt[j]["path"], jt[j]["a"]), 1) is None for j in between):
+                continue  # a misreading of the same words (unless the source scan reads otherwise too)
         claimed.update(between)
         pieces.append({"kind": kind, "j0": j0, "j1": j1, "g0": gaps[0], "g1": gaps[-1] + 1})
+
+    # a word both scans read alike, nearly the JSON's but not it (once modernized): the JSON's own slip
+    for i, w in enumerate(stream):
+        if not w.get("near") or w["j"] is None:
+            continue
+        t = jt[w["j"]]
+        sw = (src_ok.get(t["page"]) or {}).get((t["path"], t["a"]))
+        lig = lambda x: x.replace("æ", "ae").replace("Æ", "Ae").replace("œ", "oe").replace("Œ", "Oe")
+        if sw and scan_ocr.key(sw) == w["k"] and scan_ocr.modern_key(lig(w["t"])) != scan_ocr.key(lig(t["t"])):
+            pieces.append({"kind": "replace", "j0": w["j"], "j1": w["j"] + 1, "g0": i, "g1": i + 1, "agree": True})
 
     # JSON words no Good word holds (in the chapter's pages, not footnotes)
     covered = {(r["page"]) for _, _, ws in labelled for r in ws if r.get("page")}
@@ -331,8 +348,8 @@ def variants(vol, chs, workers=8):
 def merge(pieces, linked, reach=2, g_reach=4):
     """Pieces next to each other (no more than `reach` JSON words, `g_reach` Good words apart) made one: a
     reworded passage comes out as some JSON words alone, some Good words alone, side by side."""
-    keep = [p for p in pieces if p["kind"] == "unclear"]
-    rest = sorted((p for p in pieces if p["kind"] != "unclear"), key=lambda p: (p["j0"], p["j1"]))
+    keep = [p for p in pieces if p["kind"] == "unclear" or p.get("agree")]
+    rest = sorted((p for p in pieces if p["kind"] != "unclear" and not p.get("agree")), key=lambda p: (p["j0"], p["j1"]))
     cur = None
     for p in rest:
         a, b = (cur["j0"], max(cur["j1"], p["j1"])) if cur else (0, 0)
@@ -381,9 +398,13 @@ def record(c, vol, jt, stream, src, pages, linked):
         return None
     if c["g0"] is not None and not ws and kind != "only_normalized":
         return None
-    nums = [number(t["t"]) for t in olds] + [number(w["t"]) for w in ws]
-    if olds and ws and all(n is not None for n in nums):
-        return None  # a reference's numbers, written in figures in the JSON (4 for IV)
+    on, gn = [number(t["t"]) for t in olds], [number(w["t"]) for w in ws]
+    if olds and ws and on == gn and None not in on:
+        return None  # a reference's numbers, written in figures in the JSON (4 for IV): the same numbers
+    if anchor["path"].startswith("verses/") and anchor["path"].endswith(("/latin", "/annotations")):
+        return None  # the verses' Latin column: not compared (its misreads outnumber its changes)
+    if olds and len(ws) == 1 and len(ws[0]["k"]) <= 1 and ws[0]["t"] not in ("à", "a", "y", "ô", "o"):
+        return None  # a lone letter for words (an italic misread)
     if all(len(t["k"]) <= 2 for t in olds) and all(len(w["k"]) <= 2 for w in ws):
         return None  # an elision or a letter (l' for I, s'): no word changed
     sp = anchor["page"]
@@ -391,7 +412,9 @@ def record(c, vol, jt, stream, src, pages, linked):
     loose = loose | src.get(sp + 1, (None, set()))[1] | src.get(sp - 1, (None, set()))[1]
     lone = [t for j, t in zip(range(j0, j1), olds) if j not in linked]
     content = [w for w in ws if len(w["k"]) > 2]
-    if lone and held is not None and not any((t["path"], t["a"]) in held for t in lone):
+    if c.get("agree"):
+        origin = "both_scans"  # both scans read the Good word: the JSON's is a slip
+    elif lone and held is not None and not any((t["path"], t["a"]) in held for t in lone):
         origin = "normalized_differs"
     elif not olds and content and sum(w["k"] in loose for w in content) >= max(2, 0.6 * len(content)):
         origin = "both_scans"
@@ -412,15 +435,30 @@ def record(c, vol, jt, stream, src, pages, linked):
     rec = {"kind": kind, "origin": origin, "vol": vol, "page": anchor["page"], "path": anchor["path"], "at": at,
            "old": old, "good_raw": raw, "good_modern": modern(raw) if raw else None,
            "words": len(ws), "old_words": len(olds), "pieces": c.get("n", 1),
-           "before": " ".join(t["t"] for t in jt[max(0, j0 - 6):j0]), "after": " ".join(t["t"] for t in jt[j1:j1 + 6]),
+           "before": " ".join(t["t"] for t in jt[max(0, j0 - 8):j0]), "after": " ".join(t["t"] for t in jt[j1:j1 + 8]),
            "good": list(where.values())}
     paths = list(dict.fromkeys(f"{t['page']}:{t['path']}" for t in olds))
     if len(paths) > 1:
         rec["spans"] = paths
+    if ws and len(ws) <= 2:
+        g0, g1 = stream.index(ws[0]), stream.index(ws[-1]) + 1
+        near_j = {t["k"] for t in jt[max(0, j0 - 2):j1 + 2]}
+        nb = [w["k"] for w in stream[max(0, g0 - 1):g0]] + [""], [w["k"] for w in stream[g1:g1 + 1]] + [""]
+        mid = "".join(w["k"] for w in ws)
+        lex = lexicon(vol)
+        if any(k in near_j for k in (nb[0][0] + mid, mid + nb[1][0], nb[0][0] + mid + nb[1][0])) or any(
+                len(t) >= 3 and t != mid and t not in lex and (mid.startswith(t) or mid.endswith(t)) for t in near_j) \
+                or (mid not in lex and any(len(mid) >= 2 and t != mid and t.startswith(mid) for t in near_j)):
+            rec["split"] = True  # a word cut at a line's end (ani|maux) or the JSON's at a page turn (Créa|teur)
     if ws:
         rec["wc_min"] = round(min(w["wc"] for w in ws), 3)
+        g0, g1 = stream.index(ws[0]), stream.index(ws[-1]) + 1
+        rec["good_before"] = " ".join(w["t"] for w in stream[max(0, g0 - 10):g0] if w["s"] != "skip")
+        rec["good_after"] = " ".join(w["t"] for w in stream[g1:g1 + 10] if w["s"] != "skip")
     rec["id"] = hashlib.md5(json.dumps([vol, kind, rec["path"], [w["k"] for w in ws], old]).encode()).hexdigest()[:10]
     rec["_span"] = (j0, j1)
+    if c.get("agree"):
+        rec["agree"] = True
     return rec
 
 
@@ -469,12 +507,21 @@ def relink_seams(stream, jt, near=6):
 _lex = {}
 
 
-def lexicon(vol):
-    """The keys of every word of the volume's normalized text."""
-    if vol not in _lex:
-        _lex[vol] = {t["k"] for f in (DATA / vol / "normalized").glob("page_*.json")
-                     for t in scan_ocr.json_tokens(json.loads(f.read_text(encoding="utf-8")))}
-    return _lex[vol]
+LEXICON = SCRIPTS / "cache" / "good_variants_lexicon.json"
+
+
+def lexicon(vol=None):
+    """The keys of the words of the normalized text, all volumes, met 3 times or more (cached in LEXICON;
+    delete it to remake)."""
+    if "all" not in _lex:
+        if LEXICON.exists():
+            _lex["all"] = set(json.loads(LEXICON.read_text(encoding="utf-8")))
+        else:
+            n = collections.Counter(t["k"] for f in DATA.glob("*/normalized/page_*.json")
+                                    for t in scan_ocr.json_tokens(json.loads(f.read_text(encoding="utf-8"))))
+            _lex["all"] = {k for k, c in n.items() if c >= 3}  # a word cut at a page turn (roient) is rare
+            LEXICON.write_text(json.dumps(sorted(_lex["all"]), ensure_ascii=False), encoding="utf-8")
+    return _lex["all"]
 
 
 def _pairs(keys):
@@ -491,6 +538,8 @@ def real(r, jt, stream, lex, reach=2):
     """A candidate is kept when its words are not found near by on the other side (a block read in another
     order, a page's edge, a pairing gone astray), a replace is not the same words misread, and a run of one
     or two words holds only real words (not a piece of a word cut at the line's end, a header's "Chap")."""
+    if r.get("agree"):
+        return True
     near = range(r["page"] - reach, r["page"] + reach + 1)
     old = [scan_ocr.key(t) for t in scan_ocr.TOKEN.findall(r.get("old") or "")]
     new = [scan_ocr.key(t) for t in scan_ocr.OCR_TOKEN.findall(r.get("good_raw") or "")]
@@ -499,8 +548,14 @@ def real(r, jt, stream, lex, reach=2):
         return _held(old, pool) < 0.5
     if r["kind"] == "replace" and scan_ocr.similar(" ".join(old), " ".join(new)) >= 0.75:
         return False
-    if len(new) <= 2 and any(k not in lex for k in new if len(k) > 1):
+    if r["kind"] == "unclear" and len(new) <= 2 and any(k not in lex for k in new if len(k) > 1):
+        return False  # a piece of a word cut at a column's or page's end, a header, read out of order
+    if len(new) <= 2 and r.get("split"):
         return False
+    if len(new) <= 2 and any(k not in lex and r.get("wc_min", 1) < 0.8 for k in new if len(k) > 1):
+        return False
+    if len(new) >= 3 and sum(k in lex for k in new if len(k) > 2) < 0.5 * max(1, sum(len(k) > 2 for k in new)):
+        return False  # mostly not words: a note's or a margin's text read into the body
     if len(new) >= 3:
         a, b = r.get("_span", (0, 0))
         pool = _pairs([t["k"] for j, t in enumerate(jt) if t["page"] in near and not a <= j < b])

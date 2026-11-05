@@ -1,0 +1,2082 @@
+{
+ "vol": "01_genese",
+ "chapters": [
+  3
+ ],
+ "missed": [
+  {
+   "page": 198,
+   "path": "commentary/0/french_commentary",
+   "kind": "insert",
+   "old": "",
+   "good": "ou vous sifflerez contre son talon",
+   "note": "dropped by the lexicon rule (sifflerez)"
+  },
+  {
+   "page": 198,
+   "path": "commentary",
+   "kind": "replace",
+   "old": "interficies",
+   "good": "interficiet",
+   "note": "Isa 11:4 quote; Good matches the Vulgate, normalized wrong; not detectable: scan_ocr treats t/s as look-alikes, so both read as the same word"
+  }
+ ],
+ "items": [
+  {
+   "label": "unsure",
+   "note": "Good may lack 'Les Stoïciens et'",
+   "kind": "only_normalized",
+   "page": 184,
+   "path": "commentary/0/french_commentary",
+   "at": 0,
+   "old": "blés et policés Les Stoïciens et",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "real insertion; span should be insert after 'de honte'",
+   "kind": "replace",
+   "page": 184,
+   "path": "commentary/0/french_commentary",
+   "at": 87,
+   "old": "de honte",
+   "good": "& Platon semble ne l en avoir pas assez distingué dans ce que nous venons de voir de lui Aller nud quoi qu on en puisse dire a quelque chose de honteux & de contraire au bon ordre & à la raison & il a fallu que ceux qui les premiers se sont mis audessus de cette bienséance ayent combattu & la pudeur & les sentimens de la nature",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     11,
+     91
+    ]
+   ]
+  },
+  {
+   "label": "unsure",
+   "note": "Latin gloss absent in Good?",
+   "kind": "only_normalized",
+   "page": 184,
+   "path": "commentary/0/french_commentary",
+   "at": 243,
+   "old": "et aperti sunt oculi eorum",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 184,
+   "path": "commentary/1/french_commentary",
+   "at": 151,
+   "old": "",
+   "good": "qu il ne l est à present",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     12,
+     92
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 184,
+   "path": "commentary/1/french_commentary",
+   "at": 259,
+   "old": "pour",
+   "good": "afin de",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     12,
+     92
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "normalized seam typo préambulle",
+   "kind": "replace",
+   "page": 184,
+   "path": "commentary/1/french_commentary",
+   "at": 537,
+   "old": "préambulle",
+   "good": "préambule voulant par-là nous insimuer",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     12,
+     92
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "Latin quote heading misread in Good (NERPENSERAT)",
+   "kind": "only_normalized",
+   "page": 184,
+   "path": "commentary/1/latin_quote",
+   "at": 0,
+   "old": "SERPENS ERAT CALLIDOR CUNCTIS ANIMANTIBUS TERRÆ ETC",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 185,
+   "path": "commentary/0/french_commentary",
+   "at": 290,
+   "old": "à fait particulière",
+   "good": "remarquable",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     12,
+     92
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "footnote text leaked into body",
+   "kind": "unclear",
+   "page": 185,
+   "path": "commentary/0/french_commentary",
+   "at": 677,
+   "old": "",
+   "good": "ca Psal EVTI",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     12,
+     92
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 185,
+   "path": "commentary/0/french_commentary",
+   "at": 1317,
+   "old": "cette histoire",
+   "good": "cet évenement",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     13,
+     93
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 185,
+   "path": "commentary/0/french_commentary",
+   "at": 1579,
+   "old": "",
+   "good": "qui fut homicide dés le commencement comme dit J C by",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     13,
+     93
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 185,
+   "path": "commentary/0/french_commentary",
+   "at": 1887,
+   "old": "soutient",
+   "good": "défend",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     13,
+     93
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 185,
+   "path": "commentary/0/french_commentary",
+   "at": 1928,
+   "old": "dit",
+   "good": "soûtient",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     13,
+     93
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 186,
+   "path": "commentary/0/french_commentary",
+   "at": 199,
+   "old": "",
+   "good": "Philon explique aussi d une maniere figurative cette séduction de la femme par le serpent Le plaisir ou la volupté charnelle est selon lui le veritable serpent qui séduisit nos premiers peres trop sensibles aux impressions",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     13,
+     93
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 186,
+   "path": "commentary/0/french_commentary",
+   "at": 207,
+   "old": "",
+   "good": "quelques-uns dans",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     14,
+     94
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 186,
+   "path": "commentary/0/french_commentary",
+   "at": 642,
+   "old": "entendait",
+   "good": "connoissoit",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     14,
+     94
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "normalized error: Prophètes for Profanes (source scan agrees with Good)",
+   "kind": "replace",
+   "page": 186,
+   "path": "commentary/0/french_commentary",
+   "at": 754,
+   "old": "Prophètes",
+   "good": "Profanes",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     14,
+     94
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 187,
+   "path": "commentary/0/french_commentary",
+   "at": 567,
+   "old": "fatals",
+   "good": "funestes",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     15,
+     95
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 187,
+   "path": "commentary/0/french_commentary",
+   "at": 612,
+   "old": "",
+   "good": "incontinent",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     15,
+     95
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "Good line-break split Seroit|il",
+   "kind": "insert",
+   "page": 187,
+   "path": "commentary/1/french_commentary",
+   "at": 376,
+   "old": "",
+   "good": "Seroit",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     15,
+     95
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 187,
+   "path": "commentary/1/french_translation",
+   "at": 43,
+   "old": "",
+   "good": "du fruit",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     15,
+     95
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 187,
+   "path": "commentary/1/french_translation",
+   "at": 58,
+   "old": "sortes de fruits",
+   "good": "arbres",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     15,
+     95
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "only_normalized",
+   "page": 188,
+   "path": "commentary/0/french_commentary",
+   "at": 1592,
+   "old": "ni de Dieu dont la protection lui était promise",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 188,
+   "path": "commentary/0/french_commentary",
+   "at": 1694,
+   "old": "laissé entrer",
+   "good": "donné entrée à quelques nuages",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     16,
+     96
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 188,
+   "path": "commentary/0/french_commentary",
+   "at": 1724,
+   "old": "quelques nuages et",
+   "good": "à",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     16,
+     96
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 188,
+   "path": "commentary/0/french_commentary",
+   "at": 1774,
+   "old": "",
+   "good": "qui diminuerent la crainte & l amour qu elle devoit à Dieu",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     16,
+     96
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 188,
+   "path": "commentary/0/french_commentary",
+   "at": 2075,
+   "old": "",
+   "good": "par une",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     16,
+     96
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 188,
+   "path": "commentary/0/french_commentary",
+   "at": 2080,
+   "old": "",
+   "good": "grande",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     16,
+     96
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 188,
+   "path": "commentary/0/french_commentary",
+   "at": 2394,
+   "old": "d obéir à Dieu",
+   "good": "à luy",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     16,
+     96
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "margin reference Chap. VII",
+   "kind": "unclear",
+   "page": 189,
+   "path": "commentary/0/french_commentary",
+   "at": 283,
+   "old": "",
+   "good": "YII",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     60,
+     97
+    ]
+   ]
+  },
+  {
+   "label": "unsure",
+   "note": "reference maybe moved to footnote",
+   "kind": "only_normalized",
+   "page": 189,
+   "path": "commentary/0/french_commentary",
+   "at": 736,
+   "old": "III du libre arbitre",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 189,
+   "path": "commentary/3/french_translation",
+   "at": 28,
+   "old": "sachant le bien et le",
+   "good": "du",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     60,
+     97
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 190,
+   "path": "commentary/0/french_commentary",
+   "at": 381,
+   "old": "",
+   "good": "Les Hébreux racontent que l Ange Raziel apporta à Adam un Livre où étoient renfermez les plus grands Mysteres jusques-là que les Anges accoururent pour en entendre lire quelque chose Mais l Ange Adarniel dit à Adam Songez à adorer vôtre Dieu & scêllez ce Livre car il n est donné qu à vous seul de pénétrer tous ces secrets Adam donc le garda & ne le consultoit que pour connoître les choses les plus cachées C est-là où il découvrit la forme du Chariot du Seigneur les fondemens des Cieux leurs mouvemens toutes les Langues de l Univers la connoissance de tous les Anges bons & mauvais l Astronomie la science des tems & des saisons l influence des Astres & la maniere de faire des Talismans & generalement tous les cultes tant sacrez que profanes Voilà quelle étoit la science d Adam selon les Juifs Joseph semble croire que nos premiers Peres devinrent en effet plus éclairez aprés avoir mangé du fruit défendu & qu ils découvrirent des choses qu ils n avoient pas remarquées jusqu alors par exemple leur propre nudité & que cette connoissance étoit l effet du fruit qu ils avoient mangé",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     61,
+     98
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "only_normalized",
+   "page": 191,
+   "path": "commentary/0/french_commentary",
+   "at": 555,
+   "old": "Plusieurs sont devenus pécheurs par la désobéissance d un seul",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 191,
+   "path": "commentary/0/french_commentary",
+   "at": 955,
+   "old": "l égard de son Créateur elle",
+   "good": "égard",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     65,
+     99
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 191,
+   "path": "commentary/2/french_commentary",
+   "at": 409,
+   "old": "",
+   "good": "s",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     66,
+     100
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 191,
+   "path": "commentary/2/french_commentary",
+   "at": 535,
+   "old": "voyant",
+   "good": "vit",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     66,
+     100
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 192,
+   "path": "commentary/0/french_commentary",
+   "at": 249,
+   "old": "",
+   "good": "nous",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     66,
+     100
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 193,
+   "path": "commentary/0/french_commentary",
+   "at": 168,
+   "old": "",
+   "good": "environ",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     67,
+     101
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 193,
+   "path": "commentary/1/french_commentary",
+   "at": 339,
+   "old": "",
+   "good": "Saint Jerôme le dit expressément",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     68,
+     102
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 193,
+   "path": "verses/2/french",
+   "at": 65,
+   "old": "de ce",
+   "good": "parce",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     68,
+     102
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "Good line-break split êtes|vous",
+   "kind": "insert",
+   "page": 194,
+   "path": "commentary/0/french_commentary",
+   "at": 185,
+   "old": "",
+   "good": "êtes",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     68,
+     102
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 194,
+   "path": "commentary/1/french_commentary",
+   "at": 335,
+   "old": "cherche",
+   "good": "emploïe",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     84,
+     103
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "Good line-break split ani|maux",
+   "kind": "insert",
+   "page": 194,
+   "path": "commentary/2/french_commentary",
+   "at": 71,
+   "old": "",
+   "good": "ani",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     84,
+     103
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 194,
+   "path": "commentary/2/french_commentary",
+   "at": 128,
+   "old": "",
+   "good": "est pour ainsi dire le symbole de la haine ou d une chose souverainement odieuse",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     84,
+     103
+    ]
+   ]
+  },
+  {
+   "label": "unsure",
+   "note": "not verified",
+   "kind": "only_normalized",
+   "page": 195,
+   "path": "commentary/1/french_commentary",
+   "at": 454,
+   "old": "leur queue d autres rampent de tout",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "noise",
+   "note": "Good line-break split par|tout",
+   "kind": "insert",
+   "page": 195,
+   "path": "commentary/1/french_commentary",
+   "at": 684,
+   "old": "",
+   "good": "par",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     85,
+     104
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "unclear",
+   "page": 195,
+   "path": "commentary/1/french_commentary",
+   "at": 912,
+   "old": "",
+   "good": "Cet ennemi du genre humain rampe en quelque sorte sur le ventre par la confusion & l opprobre où il est réduit & par l employ",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     85,
+     104
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "Good line-break split mal|propre",
+   "kind": "insert",
+   "page": 196,
+   "path": "commentary/0/french_commentary",
+   "at": 229,
+   "old": "",
+   "good": "mal",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     85,
+     104
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 196,
+   "path": "commentary/1/french_commentary",
+   "at": 45,
+   "old": "",
+   "good": "comme naturellement",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 196,
+   "path": "commentary/1/french_translation",
+   "at": 30,
+   "old": "vous",
+   "good": "toy",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 196,
+   "path": "commentary/1/french_translation",
+   "at": 73,
+   "old": "vôtre",
+   "good": "tienne",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 196,
+   "path": "commentary/2/french_commentary",
+   "at": 286,
+   "old": "qui a triomphé",
+   "good": "vainqueur",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "lone letter: italic Latin misread",
+   "kind": "replace",
+   "page": 196,
+   "path": "commentary/2/french_commentary",
+   "at": 532,
+   "old": "ipsum supple semen conteret tibi caput",
+   "good": "J",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 196,
+   "path": "commentary/2/french_commentary",
+   "at": 605,
+   "old": "vous",
+   "good": "te",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 196,
+   "path": "commentary/2/french_translation",
+   "at": 5,
+   "old": "vous brisera",
+   "good": "t écrasera",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 196,
+   "path": "commentary/2/french_translation",
+   "at": 30,
+   "old": "vous",
+   "good": "tu",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 196,
+   "path": "verses/0/french",
+   "at": 11,
+   "old": "des",
+   "good": "une",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 197,
+   "path": "commentary/0/french_commentary",
+   "at": 80,
+   "old": "les Bibles de Sixte V et de Clément VIII",
+   "good": "saint Pierre Chrysologue saint Léon Pape",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ],
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 197,
+   "path": "commentary/0/french_commentary",
+   "at": 181,
+   "old": "sont aussi pour",
+   "good": "suivent",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "unclear",
+   "page": 197,
+   "path": "commentary/0/french_commentary",
+   "at": 216,
+   "old": "",
+   "good": "on la trouve dans Lipoman dans les versions d Isidore Clarius de Pagnin d Arias Montanus & dans",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 197,
+   "path": "commentary/0/french_commentary",
+   "at": 504,
+   "old": "",
+   "good": "par",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 197,
+   "path": "commentary/0/french_commentary",
+   "at": 536,
+   "old": "etc Il y a même apparence que Joseph l avait lu dans les 70 puisqu on lit",
+   "good": "& par prefque tous les Peres Rufin",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 197,
+   "path": "commentary/0/french_commentary",
+   "at": 628,
+   "old": "traduction de son Histoire par Rufin",
+   "good": "version qu il a faite de Josepkr traduit",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 197,
+   "path": "commentary/0/french_commentary",
+   "at": 724,
+   "old": "Ce que l on a depuis changé en ôtant Mulier Il",
+   "good": "Dieu",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 197,
+   "path": "commentary/0/french_commentary",
+   "at": 800,
+   "old": "blessât ou lui écrasât la tête",
+   "good": "brisât la teste Mais le grec est fort different Il dit que Dieu mit le venin du serpent sous sa langue & le declara ennemi de l homme voulant que celui-ci attaquât principalement sa teste tant à cause que c étoit cette partie qui étoit la cause du malheur de l homme que parce que c étoit le moyen le plus aisé de tuer cet animal",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 197,
+   "path": "commentary/1/french_commentary",
+   "at": 950,
+   "old": "traduit",
+   "good": "rendu icy",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "unclear",
+   "page": 198,
+   "path": "commentary/0/french_commentary",
+   "at": 249,
+   "old": "",
+   "good": "comme un chien suit une bête",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     88,
+     107
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "only_normalized",
+   "page": 198,
+   "path": "commentary/1/french_commentary",
+   "at": 755,
+   "old": "Voyez le livre XIV de la Cité de Dieu chapitre 26",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "only_normalized",
+   "page": 198,
+   "path": "commentary/2/french_commentary",
+   "at": 237,
+   "old": "vous vivrez à son égard dans une dépendance toute entière vous chercherez dans lui votre appui votre",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "only_normalized",
+   "page": 199,
+   "path": "commentary/0/french_commentary",
+   "at": 4,
+   "old": "secours Vous serez soumise et obéissante à votre époux et",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 199,
+   "path": "commentary/0/french_commentary",
+   "at": 781,
+   "old": "réciproquement son bien-aimé est tout à elle",
+   "good": "est toute dans sa dépendance",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     89,
+     108
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 199,
+   "path": "commentary/0/french_commentary",
+   "at": 936,
+   "old": "réciproque et l égalité que l amitié avait mise entre elle et son bien-aimé fort différents de l assujettissement où",
+   "good": "que",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     89,
+     108
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 199,
+   "path": "commentary/0/french_commentary",
+   "at": 1075,
+   "old": "mettent",
+   "good": "exigent de",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     89,
+     108
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "verse Latin misread",
+   "kind": "unclear",
+   "page": 199,
+   "path": "verses/0/latin",
+   "at": 190,
+   "old": "",
+   "good": "Spinas e",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     90,
+     109
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 200,
+   "path": "commentary/0/french_commentary",
+   "at": 224,
+   "old": "",
+   "good": "Symmaque",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     90,
+     109
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 200,
+   "path": "commentary/1/french_commentary",
+   "at": 212,
+   "old": "",
+   "good": "auparavant",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     90,
+     109
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 200,
+   "path": "commentary/1/french_commentary",
+   "at": 476,
+   "old": "nouvelle bénédiction",
+   "good": "bénédiction",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     90,
+     109
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "only_normalized",
+   "page": 200,
+   "path": "commentary/2/french_commentary",
+   "at": 68,
+   "old": "selon plusieurs Interprètes",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 200,
+   "path": "commentary/2/french_commentary",
+   "at": 161,
+   "old": "mais dans cet endroit il signifie",
+   "good": "&",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     91,
+     110
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 200,
+   "path": "commentary/2/french_commentary",
+   "at": 576,
+   "old": "",
+   "good": "Ce ne fut que",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     91,
+     110
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 200,
+   "path": "commentary/2/french_commentary",
+   "at": 594,
+   "old": "",
+   "good": "que",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     91,
+     110
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "verse Latin misread",
+   "kind": "unclear",
+   "page": 200,
+   "path": "verses/0/latin",
+   "at": 53,
+   "old": "",
+   "good": "terra E",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     90,
+     109
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 201,
+   "path": "commentary/0/french_commentary",
+   "at": 190,
+   "old": "Panis",
+   "good": "Le pain",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     91,
+     110
+    ]
+   ]
+  },
+  {
+   "label": "unsure",
+   "note": "not verified",
+   "kind": "only_normalized",
+   "page": 201,
+   "path": "commentary/0/french_commentary",
+   "at": 1154,
+   "old": "à qui voudrait",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 202,
+   "path": "commentary/3/french_commentary",
+   "at": 10,
+   "old": "dit",
+   "good": "ordonna",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     93,
+     112
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 203,
+   "path": "commentary/1/french_commentary",
+   "at": 145,
+   "old": "s adresse",
+   "good": "parle",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     133,
+     113
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 203,
+   "path": "verses/0/french",
+   "at": 22,
+   "old": "",
+   "good": "qui est",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     93,
+     112
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 204,
+   "path": "commentary/0/french_commentary",
+   "at": 2220,
+   "old": "cela peut",
+   "good": "elles peuvent",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     134,
+     114
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 205,
+   "path": "commentary/0/french_commentary",
+   "at": 11,
+   "old": "marquer",
+   "good": "signifier",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     134,
+     114
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 205,
+   "path": "commentary/1/french_commentary",
+   "at": 792,
+   "old": "Palestine",
+   "good": "Judée",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     134,
+     114
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "real; span messy",
+   "kind": "replace",
+   "page": 205,
+   "path": "commentary/1/french_commentary",
+   "at": 884,
+   "old": "Nous",
+   "good": "où Moïse insinuë qu il se retira puisque Dieu mit de ce côté là le Cherubin",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     134,
+     114
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 205,
+   "path": "commentary/1/french_commentary",
+   "at": 905,
+   "old": "se retira",
+   "good": "alla",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     135,
+     115
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "normalized error: assez for aîlez (ailés)",
+   "kind": "replace",
+   "page": 206,
+   "path": "commentary/0/french_commentary",
+   "at": 1614,
+   "old": "assez",
+   "good": "aîlez",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     136,
+     116
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 206,
+   "path": "commentary/0/french_commentary",
+   "at": 1983,
+   "old": "composées",
+   "good": "hyeroglyphes",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     136,
+     116
+    ]
+   ]
+  },
+  {
+   "label": "unsure",
+   "note": "real clause may follow 'Cherubs'",
+   "kind": "unclear",
+   "page": 206,
+   "path": "commentary/0/french_commentary",
+   "at": 2329,
+   "old": "",
+   "good": "Cherubs",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     136,
+     116
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 207,
+   "path": "commentary/0/french_commentary",
+   "at": 757,
+   "old": "",
+   "good": "le moyen",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     136,
+     116
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 207,
+   "path": "commentary/0/french_commentary",
+   "at": 2187,
+   "old": "",
+   "good": "à son avis",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     137,
+     117
+    ]
+   ]
+  },
+  {
+   "label": "unsure",
+   "note": "page-start run, not verified",
+   "kind": "only_normalized",
+   "page": 208,
+   "path": "commentary/0/french_commentary",
+   "at": 0,
+   "old": "et saint Rupert",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 208,
+   "path": "commentary/0/french_commentary",
+   "at": 556,
+   "old": "quelquefois",
+   "good": "aisément",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     137,
+     117
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 208,
+   "path": "commentary/0/french_commentary",
+   "at": 1050,
+   "old": "dans le voisinage",
+   "good": "à portée de ce lieu",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     138,
+     118
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "unclear",
+   "page": 208,
+   "path": "commentary/0/french_commentary",
+   "at": 1293,
+   "old": "",
+   "good": "Nous avons encore parlé assez au long des Cherubins",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     138,
+     118
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "only_normalized",
+   "page": 208,
+   "path": "commentary/0/french_commentary",
+   "at": 1295,
+   "old": "il n eût rien de fort propre à y attirer personne",
+   "good": "",
+   "good_page": []
+  },
+  {
+   "label": "noise",
+   "note": "JSON page-seam fragment Créa|teur",
+   "kind": "unclear",
+   "page": 208,
+   "path": "commentary/0/french_commentary",
+   "at": 2656,
+   "old": "",
+   "good": "Créateur",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     138,
+     118
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 209,
+   "path": "commentary/0/french_commentary",
+   "at": 252,
+   "old": "d où",
+   "good": "dont",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     139,
+     119
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "Good line-break split par|ens",
+   "kind": "insert",
+   "page": 209,
+   "path": "commentary/1/french_commentary",
+   "at": 44,
+   "old": "",
+   "good": "par",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     139,
+     119
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "unclear",
+   "page": 209,
+   "path": "commentary/1/french_commentary",
+   "at": 355,
+   "old": "",
+   "good": "Auteur de",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     139,
+     119
+    ]
+   ]
+  },
+  {
+   "page": 204,
+   "path": "commentary/0/french_commentary",
+   "kind": "replace",
+   "old": "23 27",
+   "good": "XXII 29",
+   "note": "Lev 23:27 is right; Good 'XXII 29' may be an OCR misread of XXIII. 27",
+   "label": "unsure",
+   "at": -1
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 184,
+   "path": "commentary/0/french_commentary",
+   "at": 62,
+   "old": "",
+   "good": "mal-à-propos",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     11,
+     91
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "Latin heading misread",
+   "kind": "unclear",
+   "page": 184,
+   "path": "verses/0/french",
+   "at": 205,
+   "old": "",
+   "good": "NERPENSERAT",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     12,
+     92
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 185,
+   "path": "commentary/0/french_commentary",
+   "at": 637,
+   "old": "",
+   "good": "sur bui-même",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     12,
+     92
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 186,
+   "path": "commentary/0/french_commentary",
+   "at": 2071,
+   "old": "Éva",
+   "good": "Evoé",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     14,
+     94
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "fragment at column end",
+   "kind": "unclear",
+   "page": 187,
+   "path": "commentary/0/french_commentary",
+   "at": 63,
+   "old": "",
+   "good": "honoa",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     14,
+     94
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "fragment at column end",
+   "kind": "unclear",
+   "page": 187,
+   "path": "verses/0/french",
+   "at": 91,
+   "old": "",
+   "good": "roient",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     15,
+     95
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 189,
+   "path": "commentary/1/french_commentary",
+   "at": 251,
+   "old": "diabolus",
+   "good": "Sathan",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     60,
+     97
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "fragment at page end",
+   "kind": "replace",
+   "page": 189,
+   "path": "commentary/3/french_commentary",
+   "at": 286,
+   "old": "connaissance que vous",
+   "good": "cona",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     60,
+     97
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 192,
+   "path": "commentary/0/french_commentary",
+   "at": 345,
+   "old": "",
+   "good": "& effectif",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     66,
+     100
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "unclear",
+   "page": 192,
+   "path": "commentary/1/french_commentary",
+   "at": 420,
+   "old": "",
+   "good": "bouclier des",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     66,
+     100
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "insert",
+   "page": 195,
+   "path": "commentary/1/french_commentary",
+   "at": 224,
+   "old": "",
+   "good": "déslors",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     85,
+     104
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 196,
+   "path": "commentary/2/french_commentary",
+   "at": 347,
+   "old": "qui a détruit le",
+   "good": "destructeur du",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     86,
+     105
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "fragment",
+   "kind": "unclear",
+   "page": 197,
+   "path": "commentary/1/french_commentary",
+   "at": 1019,
+   "old": "",
+   "good": "aupaa",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     87,
+     106
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "fragment",
+   "kind": "unclear",
+   "page": 198,
+   "path": "verses/0/french",
+   "at": 200,
+   "old": "",
+   "good": "ravant",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     88,
+     107
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "fragment",
+   "kind": "unclear",
+   "page": 200,
+   "path": "verses/1/french",
+   "at": 175,
+   "old": "",
+   "good": "bam",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     91,
+     110
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "misplaced fragment",
+   "kind": "unclear",
+   "page": 202,
+   "path": "verses/0/french",
+   "at": 92,
+   "old": "",
+   "good": "la miscre",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     92,
+     111
+    ]
+   ]
+  },
+  {
+   "label": "noise",
+   "note": "running header",
+   "kind": "unclear",
+   "page": 203,
+   "path": "commentary/1/latin_quote",
+   "at": 40,
+   "old": "",
+   "good": "SSUR",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     133,
+     113
+    ]
+   ]
+  },
+  {
+   "label": "real",
+   "note": "",
+   "kind": "replace",
+   "page": 204,
+   "path": "commentary/0/french_commentary",
+   "at": 850,
+   "old": "Parents",
+   "good": "Peres",
+   "good_page": [
+    [
+     "02_Genèse_3-7",
+     134,
+     114
+    ]
+   ]
+  }
+ ]
+}
