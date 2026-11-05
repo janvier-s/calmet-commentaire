@@ -46,6 +46,10 @@ def score(f):
     print(f"   noise left   {sum(hit[i] is not None for i in noise)}/{len(noise)}")
     print(f"   unsure       {sum(hit[i] is not None for i, g in enumerate(items) if g['label'] == 'unsure')}")
     print(f"   new          {len(new)}")
+    for tier in ("high", "low"):
+        cs = [c for c in got if c.get("confidence", "high") == tier]
+        lab = [next((g["label"] for g in items if same(c, g)), "new") for c in cs]
+        print(f"   {tier:5} {len(cs):4} candidates: " + ", ".join(f"{k} {lab.count(k)}" for k in ("real", "noise", "unsure", "new")))
     for i in real:
         if hit[i] is None:
             g = items[i]

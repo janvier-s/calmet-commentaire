@@ -317,7 +317,8 @@ def variants(vol, chs, workers=8):
         t = jt[w["j"]]
         sw = (src_ok.get(t["page"]) or {}).get((t["path"], t["a"]))
         lig = lambda x: x.replace("æ", "ae").replace("Æ", "Ae").replace("œ", "oe").replace("Œ", "Oe")
-        if sw and scan_ocr.key(sw) == w["k"] and scan_ocr.modern_key(lig(w["t"])) != scan_ocr.key(lig(t["t"])):
+        if sw and scan_ocr.key(sw) == w["k"] and w["k"] in lexicon() \
+                and scan_ocr.modern_key(lig(w["t"])) != scan_ocr.key(lig(t["t"])):  # (écheoir: old spelling)
             pieces.append({"kind": "replace", "j0": w["j"], "j1": w["j"] + 1, "g0": i, "g1": i + 1, "agree": True})
 
     # JSON words no Good word holds (in the chapter's pages, not footnotes)
@@ -341,6 +342,8 @@ def variants(vol, chs, workers=8):
     out = [r for r in out if real(r, jt, stream, lexicon(vol))]
     for r in out:
         r.pop("_span", None)
+        # low: a word or two read out of order, mostly a page's or column's edge (3 real in 20 on Genèse 3, 49)
+        r["confidence"] = "low" if r["kind"] == "unclear" and r["words"] <= 2 else "high"
     out.sort(key=lambda r: (r["page"], r["path"], r["at"]))
     return out
 
@@ -374,6 +377,10 @@ def record(c, vol, jt, stream, src, pages, linked):
     """A merged piece as a candidate (None when out of the chapter, in the footnotes, or too slight)."""
     j0, j1 = c["j0"], c["j1"]
     ws = [w for w in stream[c["g0"]:c["g1"]] if w["s"] != "skip"] if c["g0"] is not None else []
+    for i in range(len(ws) - 2, 0, -1):  # the margin's year heading, "An. du M." (Ars du M)
+        if i + 1 < len(ws) and ws[i]["t"] == "du" and ws[i + 1]["t"][:1] == "M" and len(ws[i + 1]["t"]) <= 2 \
+                and re.fullmatch(r"A\w{0,2}", ws[i - 1]["t"]):
+            del ws[i - 1:i + 2]
     while ws and REF_WORD.fullmatch(ws[-1]["t"]):  # "… expressément. V. 9.": the next lemma's reference
         ws.pop()
     while ws and REF_WORD.fullmatch(ws[0]["t"]):
@@ -440,6 +447,12 @@ def record(c, vol, jt, stream, src, pages, linked):
     paths = list(dict.fromkeys(f"{t['page']}:{t['path']}" for t in olds))
     if len(paths) > 1:
         rec["spans"] = paths
+    if ws and len(ws) <= 2 and not olds:
+        # the same words just across the JSON's page turn (its notes between): a page's edge read twice
+        body = [t["k"] for t in jt[max(0, j0 - 30):j0] if not t["path"].startswith("footnotes/")][-4:] + \
+               [t["k"] for t in jt[j0:j0 + 30] if not t["path"].startswith("footnotes/")][:4]
+        if all(w["k"] in body for w in ws):
+            return None
     if ws and len(ws) <= 2:
         g0, g1 = stream.index(ws[0]), stream.index(ws[-1]) + 1
         near_j = {t["k"] for t in jt[max(0, j0 - 2):j1 + 2]}
@@ -552,8 +565,8 @@ def real(r, jt, stream, lex, reach=2):
         return False  # a piece of a word cut at a column's or page's end, a header, read out of order
     if len(new) <= 2 and r.get("split"):
         return False
-    if len(new) <= 2 and any(k not in lex and r.get("wc_min", 1) < 0.8 for k in new if len(k) > 1):
-        return False
+    if len(new) <= 2 and any(k not in lex and (r.get("wc_min", 1) < 0.8 or r["kind"] == "replace") for k in new if len(k) > 1):
+        return False  # a misreading (fodueut for fondant), or an unsure reading
     if len(new) >= 3 and sum(k in lex for k in new if len(k) > 2) < 0.5 * max(1, sum(len(k) > 2 for k in new)):
         return False  # mostly not words: a note's or a margin's text read into the body
     if len(new) >= 3:
