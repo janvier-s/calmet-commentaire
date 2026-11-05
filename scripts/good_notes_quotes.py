@@ -11,8 +11,9 @@ ones beside it. For each Hebrew or Greek note good_notes.py pairs on Good:
     (Hebrew unpointed; Greek accented as the Septuagint has it); a proposal when normalized differs from it;
   - not found (a root, a rabbinic or classical quotation): a proposal of Good's reading only when Good
     differs from normalized, for review with the crop, never applied by itself.
-Kinds: quote_fix (the Bible text settles it: normalized wrong), quote_good (Good differs, nothing settles
-it), and quote_both (normalized and Good alike, both off the Bible text: a slip in both printings, or
+Each proposal's `new`: the right text, Good's own where it agrees (keeping its vowel points). Kinds:
+quote_fix (the Bible text settles it: normalized wrong), quote_good (Good differs, nothing settles it),
+quote_points (the same letters, Good's pointed: a low-priority proposal), and quote_both (normalized and Good alike, both off the Bible text: a slip in both printings, or
 Calmet's own text).
 """
 import difflib
@@ -27,6 +28,10 @@ import good_variants as gv
 
 HEB_WORD = re.compile(r"[א-ת][֑-ׇא-ת]*")
 GRK_WORD = re.compile(r"[Ͱ-Ͽἀ-῿][̀-ͯͰ-Ͽἀ-῿]*")
+
+
+def pointed(ws):
+    return any(re.search(r"[\u05b0-\u05bc\u05c1\u05c2\u05c7]", w) for w in ws)
 
 
 def heb_plain(w):
@@ -180,10 +185,16 @@ def check(vol, chs):
                         gl = locate(g, vs, plain) if g and len(g) >= 2 else None
                         g_ok = bool(gl and gl[3] >= 0.6 and not word_errors(g, gl[2], plain, acc))
                         rec.update(ref=f"{book_of(vol)} {loc[0]}:{loc[1]}", right=" ".join(right), errors=errs,
-                                   kind="quote_fix" if g_ok else "quote_both", good_agrees=g_ok)
+                                   kind="quote_fix" if g_ok else "quote_both", good_agrees=g_ok,
+                                   new=" ".join(g) if g_ok and g and pointed(g) else " ".join(right))
                         out.append(rec)
-                elif g and not same_words(j, g, plain):
-                    rec["kind"] = "quote_good"
+                        continue
+                if g and not same_words(j, g, plain):
+                    if not right:
+                        rec.update(kind="quote_good", new=" ".join(g))
+                        out.append(rec)
+                elif g and not greek and pointed(g) and not pointed(j):
+                    rec.update(kind="quote_points", new=" ".join(g))  # the same letters, Good's with their points
                     out.append(rec)
     return out
 
