@@ -147,9 +147,14 @@ async def read_page(pdf, page, sem, tries=4, redo=False):
         return None
     crop = make_crop(pdf, page, top)
     raw, err = None, None
-    for _ in range(tries):
+    for t in range(tries):
         if QUOTA["hit"]:
             return None
+        if t == tries // 2:  # a crop Flash keeps reaching for a tool on (to zoom?): sent at twice the size
+            from PIL import Image
+            im = Image.open(crop)
+            crop = crop.with_name(crop.stem + "_x2.png")
+            im.resize((im.size[0] * 2, im.size[1] * 2), Image.LANCZOS).save(crop)
         raw, err = await call(crop, sem)
         notes = parse(raw) if raw is not None else None
         if notes is not None:

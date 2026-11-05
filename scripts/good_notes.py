@@ -21,6 +21,7 @@ note with Hebrew or Greek, when paired, gives the Good note's boxes (--hg FILE):
 reading of the cleaner Good scan should look.
 """
 import collections
+import difflib
 import hashlib
 import json
 import re
@@ -29,6 +30,7 @@ import unicodedata
 
 from paths import DATA
 import good_calmet_kraken as gk
+import bible_refs
 import good_variants as gv
 import good_notes_read as gr
 import scan_ocr
@@ -207,10 +209,22 @@ def covered(rs, nums):
     return True
 
 
+ALIAS = {"hieron": "jerome", "hieronym": "jerome", "hieronymus": "jerome", "quaest": "questions", "quæst": "questions",
+         "quaestiones": "questions", "hebr": "hebraiques", "targ": "targum", "aqu": "aquila", "sym": "symmaque",
+         "symm": "symmaque", "theod": "theodotion", "chald": "chaldeen", "syr": "syriaque", "vulg": "vulgate"}
+
+
 def abbr_words(text, lex=None):
     """Its words in Latin letters, unaccented, three letters or more, not the commonest (to match by start)."""
     ws = [plain(t) for t in re.findall(r"[^\W\d_]+", text) if not (HEBREW.search(t) or GREEK.search(t))]
-    return [w for w in ws if len(w) >= 3 and w not in STOP]
+    ws = [ALIAS.get(w, w) for w in ws if len(w) >= 3 and w not in STOP]
+    try:  # a Bible reference's book, whatever its spelling (Judic., Juges): its canonical name
+        ws += [plain(r.book) for r in bible_refs.find_refs(text)]
+    except Exception:
+        pass
+    if re.search(r"(?:^|[\s(])70\s*\.", text):
+        ws.append("septante")  # the Septuagint, as the scans cite it
+    return ws
 
 
 def _abbr_share(gw, jw):
@@ -221,7 +235,8 @@ def _abbr_share(gw, jw):
     short, long_ = (gw, jw) if len(gw) <= len(jw) else (jw, gw)
     def same(x, y):  # one the start of the other, or a long start in common (Celsum, Celse)
         n = next((i for i, (a, b) in enumerate(zip(x, y)) if a != b), min(len(x), len(y)))
-        return x == y or (min(len(x), len(y)) >= 3 and n == min(len(x), len(y))) or n >= 4
+        return (x == y or (min(len(x), len(y)) >= 3 and n == min(len(x), len(y))) or n >= 4
+                or (min(len(x), len(y)) >= 5 and difflib.SequenceMatcher(None, x, y).ratio() >= 0.8))  # Capell., Cappel.
     hit = sum(any(same(x, y) for y in long_) for x in short)
     return hit / len(short)
 
@@ -260,12 +275,27 @@ def likeness(g, j):
     return min(score, 1.0)
 
 
-def pair(goods, jsons, least=0.34, gap=0.3):
-    """The monotone alignment of the two lists most alike in all: [(gi or None, ji or None)]."""
+def joined(a, b, good):
+    """Two consecutive notes as one (a note Good merged, or split)."""
+    text = a["text"] + " " + b["text"]
+    out = dict(a, text=text, nums=a["nums"] + b["nums"], aw=a["aw"] + b["aw"], parts=[a, b], script=script(text))
+    if "lw" in a and "lw" in b:
+        out["lw"] = a["lw"] | b["lw"]
+    if good:
+        out["words"] = a["words"] + b["words"]
+        out["junk"] = (a.get("junk", 0) + b.get("junk", 0)) / 2
+    return out
+
+
+def pair(goods, jsons, least=0.34, part=0.4):
+    """The monotone alignment of the two lists most alike in all: [(g, j, likeness)], g and j an index,
+    None, or a pair of consecutive indices (a Good note that holds two JSON notes, or two Good notes one
+    JSON note: allowed when the two as one are liker than either alone, each alike in part)."""
     n, m = len(goods), len(jsons)
     sim = [[likeness(g, j) for j in jsons] for g in goods]
     best = [[0.0] * (m + 1) for _ in range(n + 1)]
     move = [[None] * (m + 1) for _ in range(n + 1)]
+    merged = {}
     for i in range(n + 1):
         for k in range(m + 1):
             if i == 0 and k == 0:
@@ -273,8 +303,18 @@ def pair(goods, jsons, least=0.34, gap=0.3):
             opts = []
             if i and k and sim[i - 1][k - 1] >= least:
                 opts.append((best[i - 1][k - 1] + sim[i - 1][k - 1], "pair"))
+            if i and k >= 2 and sim[i - 1][k - 1] >= part and sim[i - 1][k - 2] >= part:
+                s2 = likeness(goods[i - 1], joined(jsons[k - 2], jsons[k - 1], False))
+                if s2 >= least and s2 > max(sim[i - 1][k - 1], sim[i - 1][k - 2]) + 0.15:
+                    merged[(i, k, "jj")] = s2
+                    opts.append((best[i - 1][k - 2] + 1.5 * s2, "jj"))
+            if i >= 2 and k and sim[i - 1][k - 1] >= part and sim[i - 2][k - 1] >= part:
+                s2 = likeness(joined(goods[i - 2], goods[i - 1], True), jsons[k - 1])
+                if s2 >= least and s2 > max(sim[i - 1][k - 1], sim[i - 2][k - 1]) + 0.15:
+                    merged[(i, k, "gg")] = s2
+                    opts.append((best[i - 2][k - 1] + 1.5 * s2, "gg"))
             if i:
-                opts.append((best[i - 1][k] - gap * 0 , "good"))
+                opts.append((best[i - 1][k], "good"))
             if k:
                 opts.append((best[i][k - 1], "json"))
             best[i][k], move[i][k] = max(opts)
@@ -282,12 +322,24 @@ def pair(goods, jsons, least=0.34, gap=0.3):
     while i or k:
         mv = move[i][k]
         if mv == "pair":
-            out.append((i - 1, k - 1)); i -= 1; k -= 1
+            out.append((i - 1, k - 1, sim[i - 1][k - 1])); i -= 1; k -= 1
+        elif mv == "jj":
+            out.append((i - 1, (k - 2, k - 1), merged[(i, k, "jj")])); i -= 1; k -= 2
+        elif mv == "gg":
+            out.append(((i - 2, i - 1), k - 1, merged[(i, k, "gg")])); i -= 2; k -= 1
         elif mv == "good":
-            out.append((i - 1, None)); i -= 1
+            out.append((i - 1, None, None)); i -= 1
         else:
-            out.append((None, k - 1)); k -= 1
+            out.append((None, k - 1, None)); k -= 1
     return out[::-1], sim
+
+
+def pick(xs, ix, good):
+    if ix is None:
+        return None
+    if isinstance(ix, tuple):
+        return joined(xs[ix[0]], xs[ix[1]], good)
+    return xs[ix]
 
 
 def json_notes(vol, pages):
@@ -331,7 +383,9 @@ def compare(vol, chs):
             n.update(src_page=p, nums=numbers(n["text"]), aw=abbr_words(n["text"]))
             n["junk"] = junk_share(n, lex)
         sp, ssim = pair(ss, js)
-        for si, ji in sp:
+        for si, ji, _ in sp:
+            if isinstance(ji, tuple) or isinstance(si, tuple):
+                continue
             if si is not None and ji is not None:
                 js[ji]["source_text"] = ss[si]["text"]
     print(f"  {read}/{len(recs)} Good pages read by Flash, the rest by Kraken", file=sys.stderr)
@@ -352,9 +406,11 @@ def compare(vol, chs):
         r["id"] = hashlib.md5(json.dumps([vol, kind, r["page"], r["json_text"], r["good_raw"]]).encode()).hexdigest()[:10]
         out.append(r)
 
-    for gi, ji in pairs:
-        g = goods[gi] if gi is not None else None
-        j = jsons[ji] if ji is not None else None
+    for gi, ji, s in pairs:
+        g, j = pick(goods, gi, True), pick(jsons, ji, False)
+        if isinstance(gi, tuple) or isinstance(ji, tuple):
+            rec("note_split" if isinstance(gi, tuple) else "notes_merged", g, j, likeness=round(s, 2),
+                json_parts=[x["text"] for x in j.get("parts", [j])], good_parts=[x["text"] for x in g.get("parts", [g])])
         if j and (j["script"]["hebrew"] or j["script"]["greek"]) and g:
             hg.append({"vol": vol, "page": j["page"], "path": j["path"], "json_text": j["text"],
                        "script": [s for s, v in j["script"].items() if v], "good_raw": g["text"], **where(g)})
@@ -364,7 +420,6 @@ def compare(vol, chs):
         elif j and not g:
             rec("note_dropped", j=j)
         else:
-            s = sim[gi][ji]
             gr_ = readings(g["text"])  # Flash, like Kraken, reads II as 11: an I/1 swap is no difference
             if (g["nums"] or j["nums"]) and (not same_numbers(gr_, j["nums"])
                                              or (g.get("agy") and not covered(gr_, j["nums"]))):
