@@ -137,8 +137,12 @@ async def call(crop, sem, prompt=PROMPT):
         return await agy(crop, prompt)
 
 
+CALLS = {"n": 0}  # agy calls made by this process
+
+
 async def agy(crop, prompt=PROMPT):
     """`call` without the semaphore (the caller holds it)."""
+    CALLS["n"] += 1
     if crop is None:
         cwd = CACHE / "_empty"
         cwd.mkdir(parents=True, exist_ok=True)
@@ -247,7 +251,8 @@ def main(argv):
     todo = sum(1 for j in jobs if not cached(*j))
     print(f"{vol} ch. {spec}: {len(jobs)} pages with notes, {todo} to read", file=sys.stderr, flush=True)
     res = asyncio.run(run(jobs, n, tries, redo))
-    print(f"read {sum(1 for d in res if d)}/{len(jobs)}; {sum(len(d['notes']) for d in res if d)} notes", file=sys.stderr)
+    print(f"read {sum(1 for d in res if d)}/{len(jobs)}; {sum(len(d['notes']) for d in res if d)} notes; "
+          f"{CALLS['n']} agy calls; NONE on {sum(1 for d in res if d and not d['notes'])} pages", file=sys.stderr)
 
 
 if __name__ == "__main__":

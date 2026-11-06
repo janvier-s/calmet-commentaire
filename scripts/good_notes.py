@@ -675,6 +675,7 @@ def main(argv):
                        and not gr.cached(gr.src(vol), r["page"])})
         print(f"  reading {len(want)} source pages with Flash", file=sys.stderr)
         asyncio.run(gr.run([(gr.src(vol), p) for p in want], 6, 4, False))
+        print(f"  {gr.CALLS['n']} agy calls", file=sys.stderr)
         out, hg = compare(vol, chs)
     norm_errs = [r for r in out if r["cause"] == "normalization"]
     for flag, data in (("--out", out), ("--hg", hg), ("--normalization", norm_errs)):
