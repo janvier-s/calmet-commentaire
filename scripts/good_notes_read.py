@@ -91,10 +91,25 @@ def block_top(pdf, page):
 
 def make_crop(pdf, page, top):
     from PIL import Image
-    im = Image.open(image(pdf, page))
     out = path(pdf, page, "png")
     out.parent.mkdir(parents=True, exist_ok=True)
-    im.crop((0, top, im.size[0], im.size[1])).save(out)
+    with Image.open(image(pdf, page)) as im:
+        im.crop((0, top, im.size[0], im.size[1])).save(out)
+    return out
+
+
+def prepare(pdf, page):
+    """(crop, top, kraken) for a page, or None when it has no OCR. Blocking: run off the event loop."""
+    top, kraken = block_top(pdf, page)
+    return None if top is None else (make_crop(pdf, page, top), top, kraken)
+
+
+def enlarge(crop):
+    """The crop at twice the size, beside it."""
+    from PIL import Image
+    out = crop.with_name(crop.stem + "_x2.png")
+    with Image.open(crop) as im:
+        im.resize((im.size[0] * 2, im.size[1] * 2), Image.LANCZOS).save(out)
     return out
 
 
@@ -118,6 +133,12 @@ def parse(text):
 
 async def call(crop, sem, prompt=PROMPT):
     """One agy Flash call: (answer, None) or (None, error). `crop`: the image it reads (None: text only)."""
+    async with sem:
+        return await agy(crop, prompt)
+
+
+async def agy(crop, prompt=PROMPT):
+    """`call` without the semaphore (the caller holds it)."""
     if crop is None:
         cwd = CACHE / "_empty"
         cwd.mkdir(parents=True, exist_ok=True)
@@ -126,14 +147,14 @@ async def call(crop, sem, prompt=PROMPT):
         cwd, text = crop.parent, f"@{crop.name} {prompt}"
     args = ["agy", "--print-timeout", "300s", "--disable-slash-commands", "--output-format", "json",
             "--model", MODEL, "-p", text]
-    async with sem:
-        proc = await asyncio.create_subprocess_exec(*args, cwd=str(cwd), stdout=asyncio.subprocess.PIPE,
-                                                    stderr=asyncio.subprocess.PIPE)
-        try:
-            out, err = await asyncio.wait_for(proc.communicate(), 360)
-        except asyncio.TimeoutError:
-            proc.kill()
-            return None, "timed out"
+    proc = await asyncio.create_subprocess_exec(*args, cwd=str(cwd), stdout=asyncio.subprocess.PIPE,
+                                                stderr=asyncio.subprocess.PIPE)
+    try:
+        out, err = await asyncio.wait_for(proc.communicate(), 360)
+    except asyncio.TimeoutError:
+        proc.kill()
+        await proc.wait()
+        return None, "timed out"
     try:
         d = json.loads(out.decode())
     except json.JSONDecodeError:
@@ -149,20 +170,24 @@ QUOTA = {"hit": False}
 async def read_page(pdf, page, sem, tries=4, redo=False):
     if not redo and (d := cached(pdf, page)):
         return d
-    top, kraken = block_top(pdf, page)
-    if top is None:
+    async with sem:  # the whole page: its crop is made only when a slot is free, and off the event loop
+        return await _read_page(pdf, page, tries)
+
+
+async def _read_page(pdf, page, tries):
+    if QUOTA["hit"]:
         return None
-    crop = make_crop(pdf, page, top)
+    prep = await asyncio.to_thread(prepare, pdf, page)
+    if prep is None:
+        return None
+    crop, top, kraken = prep
     raw, err = None, None
     for t in range(tries):
         if QUOTA["hit"]:
             return None
         if t == tries // 2:  # a crop Flash keeps reaching for a tool on (to zoom?): sent at twice the size
-            from PIL import Image
-            im = Image.open(crop)
-            crop = crop.with_name(crop.stem + "_x2.png")
-            im.resize((im.size[0] * 2, im.size[1] * 2), Image.LANCZOS).save(crop)
-        raw, err = await call(crop, sem)
+            crop = await asyncio.to_thread(enlarge, crop)
+        raw, err = await agy(crop)
         notes = parse(raw) if raw is not None else None
         if notes == [] and kraken and t < tries - 1:
             notes = None  # NONE where Kraken saw a note's mark: Flash missed them, ask again (accepted at the last try)
@@ -187,9 +212,8 @@ def pages_for(vol, chs):
     out = []
     for r in recs:
         src = int(r["source"][5:])
-        has_json = bool((gv.norm(vol, src) or {}).get("footnotes"))
-        has_kraken = gk.cache_path(r["pdf"], r["pdf_page"]).exists() and bool(gn.page_notes(r["pdf"], r["pdf_page"]))
-        if has_json or has_kraken:
+        if (gv.norm(vol, src) or {}).get("footnotes") or (  # Kraken's OCR read only when the JSON has no footnotes
+                gk.cache_path(r["pdf"], r["pdf_page"]).exists() and gn.page_notes(r["pdf"], r["pdf_page"])):
             out.append((r["pdf"], r["pdf_page"]))
     return out
 
