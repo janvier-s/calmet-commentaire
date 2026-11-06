@@ -7,6 +7,7 @@ page, json_mark, pdf, pdf_page, good_mark, note}], missed: [real differences not
 is an item when kind and JSON page agree and either the JSON note (its mark) or the Good note (pdf, page,
 mark) is the same. Prints the real ones found, the noise still reported, and the new candidates.
 """
+import collections
 import json
 import sys
 
@@ -40,6 +41,10 @@ def score(f):
     real = [i for i, it in enumerate(items) if it["label"] == "real"]
     found = [i for i in real if hit[i]]
     noise = [i for i, it in enumerate(items) if it["label"] == "noise" and hit[i]]
+    caused = [(items[i]["cause"], hit[i]["cause"]) for i in found if items[i].get("cause")]
+    agree = sum(a == b for a, b in caused)
+    wrong = collections.Counter(f"{a}->{b}" for a, b in caused if a != b)
+    print(f"{f.name}: cause right {agree}/{len(caused)} {dict(wrong)}")
     print(f"{f.name}: real found {len(found)}/{len(real)}; noise reported {len(noise)}/"
           f"{sum(it['label'] == 'noise' for it in items)}; new {len(new)}")
     for i in real:

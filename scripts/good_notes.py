@@ -1,6 +1,6 @@
 """The footnotes of the Good_Calmet edition (cache/good_ocr) set against the normalized JSON's.
 
-    python3 good_notes.py <vol> <chapter>[-<chapter>] [--out FILE] [--hg FILE]
+    python3 good_notes.py <vol> <chapter>[-<chapter>] [--out FILE] [--hg FILE] [--normalization FILE] [--read-sources]
     python3 good_notes.py --page <pdf> <pdf_page>      the notes read on one Good page (a check)
 
 The JSON writes its references out ("Saint Augustin, De la Genèse à la lettre, livre 11, chapitre 39"),
@@ -495,7 +495,22 @@ def compare(vol, chs):
              "json_text": j["text"] if j else None, "good_mark": g["mark"] if g else None,
              "good_raw": g["text"] if g else None, "good": [where(g)] if g else [], **kw}
         r["id"] = hashlib.md5(json.dumps([vol, kind, r["page"], r["json_text"], r["good_raw"]]).encode()).hexdigest()[:10]
+        r["cause"] = cause_of(r, g, j)
         out.append(r)
+
+    def cause_of(r, g, j):
+        """normalization (normalized differs from both printings: its own error), edition (Good differs from
+        the first printing), or unsure."""
+        o = r.get("origin")
+        if o in ("edition", "normalization"):
+            return o
+        if o == "both_scans":
+            return "normalization"
+        if o == "only_good" or r["kind"] == "text_added":
+            return "edition"
+        if r["kind"] == "script_changed" and j and j.get("source_text") and g:
+            return "normalization" if script(j["source_text"]) == g["script"] else "edition"
+        return "unsure"
 
     for gi, ji, s in pairs:
         g, j = pick(goods, gi, True), pick(jsons, ji, False)
@@ -570,17 +585,18 @@ def main(argv):
     out, hg = compare(vol, chs)
     if "--read-sources" in argv:  # the source scan's notes read by Flash too, where a difference was found
         import asyncio
-        want = sorted({r["page"] for r in out if r["kind"] in ("refs_changed", "text_changed", "note_added", "note_dropped")
+        want = sorted({r["page"] for r in out if (r["cause"] != "edition" or r.get("origin") in (None, "no_source"))
                        and not gr.cached(gr.src(vol), r["page"])})
         print(f"  reading {len(want)} source pages with Flash", file=sys.stderr)
         asyncio.run(gr.run([(gr.src(vol), p) for p in want], 6, 4, False))
         out, hg = compare(vol, chs)
-    for flag, data in (("--out", out), ("--hg", hg)):
+    norm_errs = [r for r in out if r["cause"] == "normalization"]
+    for flag, data in (("--out", out), ("--hg", hg), ("--normalization", norm_errs)):
         if flag in argv:
             with open(argv[argv.index(flag) + 1], "w", encoding="utf-8") as fh:
                 json.dump(data, fh, ensure_ascii=False, indent=1)
     print(f"{vol} ch. {spec}: {len(out)} note differences {dict(collections.Counter(r['kind'] for r in out))}; "
-          f"{len(hg)} Hebrew/Greek notes located on Good")
+          f"{len(hg)} Hebrew/Greek notes located on Good; by cause {dict(collections.Counter(r['cause'] for r in out))}")
     for r in out:
         g = r["good"][0] if r["good"] else {}
         print(f"\n[{r['id']}] {r['kind']} p{r['page']} {r.get('json_mark') or ''}  Good {g.get('pdf', '')} p.{g.get('pdf_page', '')} (printed {g.get('printed', '')})")
