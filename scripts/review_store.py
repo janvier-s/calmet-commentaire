@@ -440,6 +440,7 @@ KIND_LABELS = {
     "ocr_word": "WORD DIFFERS (SCAN)",
     "ocr_unscanned": "NOT ON SCAN",
     "good_variant": "GOOD_CALMET READING",
+    "good_note": "GOOD_CALMET NOTE PAIRING",
 }
 
 VERSE_KINDS = {
@@ -476,7 +477,7 @@ KIND_THEMES = [
     ("Typography", ["spaced_letters", "leading_punctuation", "leading_call", "etc_for_et", "stray_underscore",
                     "caps_in_commentary"]),
     ("Scan (OCR)", ["ocr_gap", "ocr_italic", "ocr_both", "ocr_word", "ocr_unscanned"]),
-    ("Good_Calmet edition", ["good_variant"]),
+    ("Good_Calmet edition", ["good_variant", "good_note"]),
     ("To-dos", ["todo"]),
 ]
 
@@ -856,7 +857,7 @@ AUDIT_KINDS = frozenset(KIND_LABELS) - {
     "todo", "psalm_missing_verse", "psalm_missing_title", "psalm_number", "psalm_wrong_psalm",
     "psalm_unmatched", "chapter_vulgate", "chapter_heading", "hebrew_recheck", "latin_long_s",
     "seam_missing", "seam_repeat", "seam_unclear", "duplicate_verse", "footnote_writeout", "ref_candidate", "ref_context", "ref_unsure",
-    "ocr_gap", "ocr_italic", "ocr_both", "ocr_word", "ocr_unscanned", "good_variant"}
+    "ocr_gap", "ocr_italic", "ocr_both", "ocr_word", "ocr_unscanned", "good_variant", "good_note"}
 
 
 def book_volumes(vol):

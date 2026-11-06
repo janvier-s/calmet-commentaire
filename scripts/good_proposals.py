@@ -1,6 +1,6 @@
 """Good_Calmet differences turned into proposals for the review editor (docs/good_proposals/<vol>.json).
 
-    uv run --with pillow python3 good_proposals.py <vol> <chapter>[-<chapter>] [--jobs N] [--no-llm]
+    uv run --with pillow python3 good_proposals.py <vol> <chapter>[-<chapter>] [--jobs N] [--no-llm]   (--no-llm: the rewrites already cached only)
 
 Footnotes, from good_notes.py and good_notes_quotes.py:
   - a Hebrew or Greek quotation the Bible settles (quote_fix, quote_both, quote_points): the run replaced
@@ -9,6 +9,8 @@ Footnotes, from good_notes.py and good_notes_quotes.py:
     note, the note rewritten by agy Flash (text only) to say what Good says, in normalized's style, the
     Bible text given where it settles a quotation. Cached per note and Good text (cache/good_proposals/).
 Notes Good adds or drops are listed (`deferred`) but not proposed: they wait for the body text's merge.
+Notes added, dropped, merged or split that no hand link settles (`pairing`) become the editor's good_note
+items, where a note is linked by hand (good_links.py) when the pairing got it wrong.
 
 A proposal: {id, item, title, why, flags, sure, options: [{label, changes: [{vol, page, path, old, new}]}],
 good: [{pdf, pdf_page, printed, crop, boxes}], cause, kinds, good_text, source_text}: the shape
@@ -21,14 +23,15 @@ import json
 import re
 import sys
 
-from paths import SCRIPTS, STUDIUM
+from paths import DOCS, SCRIPTS
 import good_notes as gn
 import good_notes_quotes as gq
 import good_notes_read as gr
 
-OUT = STUDIUM / "docs" / "good_proposals"
+OUT = DOCS / "good_proposals"
 CACHE = SCRIPTS / "cache" / "good_proposals"
 QUOTE_KINDS = ("quote_fix", "quote_both", "quote_points")
+PAIRING_KINDS = ("note_added", "note_dropped", "notes_merged", "note_split")
 NOTE_KINDS = ("refs_changed", "script_text_changed", "text_added", "script_changed", "text_changed", "notes_merged")
 
 REWRITE = """You edit a modern French edition of Dom Calmet's Bible commentary (1707-1716). Its footnotes were \
@@ -106,7 +109,7 @@ def quote_proposals(vol, quotes, notes_by_path):
     return out
 
 
-async def rewrite_all(groups, n):
+async def rewrite_all(groups, n, llm=True):
     sem = asyncio.Semaphore(n)
 
     async def one(g):
@@ -114,6 +117,8 @@ async def rewrite_all(groups, n):
         f = CACHE / g["vol"] / f"{key}.json"
         if f.exists():
             return json.loads(f.read_text(encoding="utf-8"))["new"]
+        if not llm:
+            return None  # --no-llm: the rewrites already made only
         first = f"\nTHE FIRST PRINTING (as read from its scan):\n{g['source_text']}\n" if g.get("source_text") else ""
         bible = f"\nTHE BIBLE TEXT of its quotation: {g['bible']}\n" if g.get("bible") else ""
         prompt = REWRITE.format(modern=g["old"], good=g["good_text"], first=first, bible=bible,
@@ -143,6 +148,8 @@ def build(vol, chs, jobs=6, llm=True):
     bible = {(q["page"], q["path"]): f"{q['ref']}: {q['right']}" for q in quotes if q.get("right")}
     groups = collections.OrderedDict()
     deferred = []
+    pairing = [{k: d[k] for k in ("id", "kind", "vol", "page", "cause", "origin", "likeness", "notes") if k in d}
+               for d in diffs if d["kind"] in PAIRING_KINDS and not d.get("linked")]
     for d in diffs:
         if d["kind"] in ("note_added", "note_dropped"):
             deferred.append(d)
@@ -156,7 +163,7 @@ def build(vol, chs, jobs=6, llm=True):
         g["kinds"].append(d["kind"])
         g["causes"].add(d.get("cause") or "unsure")
     groups = [g for g in groups.values() if g["good_text"]]
-    news = asyncio.run(rewrite_all(groups, jobs)) if llm else [None] * len(groups)
+    news = asyncio.run(rewrite_all(groups, jobs, llm))
     for g, new in zip(groups, news):
         if not new or new == g["old"]:
             continue
@@ -178,7 +185,7 @@ def build(vol, chs, jobs=6, llm=True):
                     "good_text": p.get("good_text"), "source_text": p.get("source_text"),
                     "options": [{"label": "Good_Calmet", "changes": [
                         {"vol": vol, "page": p["page"], "path": ["footnotes", i, "text"], "old": p["old"], "new": p["new"]}]}]})
-    return out, deferred
+    return out, deferred, pairing
 
 
 def main(argv):
@@ -188,17 +195,19 @@ def main(argv):
     a, _, b = spec.partition("-")
     chs = set(range(int(a), int(b or a) + 1))
     jobs = int(argv[argv.index("--jobs") + 1]) if "--jobs" in argv else 6
-    props, deferred = build(vol, chs, jobs, "--no-llm" not in argv)
+    props, deferred, pairing = build(vol, chs, jobs, "--no-llm" not in argv)
     OUT.mkdir(parents=True, exist_ok=True)
     f = OUT / f"{vol}.json"
     old = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {"proposals": [], "deferred": []}
     pages = {p for p in range(min(gn.gv.chapter_pages(vol, chs)), max(gn.gv.chapter_pages(vol, chs)) + 1)}
     keep = [p for p in old["proposals"] if p["page"] not in pages]  # other chapters' proposals stay
     keep_d = [d for d in old.get("deferred", []) if d["page"] not in pages]
+    keep_p = [d for d in old.get("pairing", []) if d["page"] not in pages]
     f.write_text(json.dumps({"proposals": sorted(keep + props, key=lambda p: (p["page"], p["id"])),
-                             "deferred": keep_d + deferred}, ensure_ascii=False, indent=1), encoding="utf-8")
+                             "deferred": keep_d + deferred, "pairing": keep_p + pairing},
+                            ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{vol} ch. {spec}: {len(props)} proposals {dict(collections.Counter(p['cause'] for p in props))}; "
-          f"{len(deferred)} added/dropped notes deferred -> {f}")
+          f"{len(deferred)} added/dropped notes deferred; {len(pairing)} pairings to check by hand -> {f}")
     for p in props:
         c = p["options"][0]["changes"][0]
         print(f"\n[{p['cause']}] p{p['page']} {c['path']} {', '.join(p['kinds'])}")

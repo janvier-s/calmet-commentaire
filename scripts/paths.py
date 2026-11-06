@@ -6,8 +6,9 @@ from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
 STUDIUM = SCRIPTS.parent
-DATA = STUDIUM / "data"                      # DATA/<volume>/normalized/page_NNNN.json: the definitive text
-DOCS = STUDIUM / "docs"
+# CALMET_DATA, CALMET_DOCS: another copy (a scratch one, to try a tool on), else the repository's
+DATA = Path(os.environ.get("CALMET_DATA") or STUDIUM / "data")  # DATA/<volume>/normalized/page_NNNN.json: the definitive text
+DOCS = Path(os.environ.get("CALMET_DOCS") or STUDIUM / "docs")
 # the website's data (export.py writes it): CALMET_WEB, else dom-calmet-web cloned beside this repository
 WEB = Path(os.environ.get("CALMET_WEB") or STUDIUM.parent / "dom-calmet-web" / "src" / "lib" / "data")
 # the Clementine Vulgate, one JSON per book (from janvier-s/douayrheimsbible): CALMET_VULGATE, else scripts/vulgate

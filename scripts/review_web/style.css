@@ -498,3 +498,11 @@ body:not(.no-ul) .f[data-name="french_commentary"] .it { text-decoration: underl
 .goodband img { position: absolute; left: 0; width: 100%; }
 .goodbox { position: absolute; border: 2px solid #e8a400; background: rgba(255, 200, 0, 0.18); pointer-events: none; }
 .goodtext { margin-top: 3px; white-space: pre-wrap; }
+/* a Good_Calmet note pairing (goodlinks.js): the notes, the hand links, the picker */
+.goodnote .gn-json { margin: 4px 0; padding: 4px 6px; border: 1px solid var(--border); white-space: pre-wrap; }
+.goodnote .gn-link { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 3px 0; }
+.goodnote .gn-picker { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border); max-height: 60vh; overflow-y: auto; }
+.goodnote .gn-pick { padding: 4px 0; border-bottom: 1px solid var(--border); }
+.goodnote .gn-pick.here .gn-pick-head b { text-decoration: underline; }
+.goodnote .gn-pick .goodfig { max-width: 420px; }
+.goodnote .gn-also { margin-top: 8px; }

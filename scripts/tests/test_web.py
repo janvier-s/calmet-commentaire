@@ -519,3 +519,53 @@ def test_italics_entry_found_again_when_marks_come_into_its_context():
     o = "_suite_ du commentaire."
     a, b = _locate(o, r)
     assert o[a:b] == "commentaire"
+
+
+def test_good_note_link_closes_and_unlink_reopens(data_dir):
+    """good_note items (good_proposals.py's pairing): a hand link closes the items of its notes at once,
+    written to docs/good_notes_links/<vol>.json; unlinking opens them again."""
+    from conftest import dump
+    docs = data_dir.parent / "docs"
+    g = {"pdf": "P", "pdf_page": 3, "mark": "(a)", "n": 0, "text": "Prov. 17. 2.", "boxes": [[1, 2, 3, 4]], "printed": 9}
+    j = {"page": 194, "marker": "(a)", "index": 0, "text": "Prov. 17. 2."}
+    dump(docs / "good_proposals" / f"{VOL}.json", {"proposals": [], "deferred": [], "pairing": [
+        {"id": "aaaa", "kind": "note_added", "vol": VOL, "page": 194, "cause": "edition", "notes": {"good": [g], "json": []}},
+        {"id": "bbbb", "kind": "note_dropped", "vol": VOL, "page": 194, "cause": "unsure", "notes": {"good": [], "json": [j]}}]})
+    server, token = make_server(Store(data_dir, docs), docs / "review_queue.json", port=0)
+    threading.Thread(target=server.serve_forever, args=(0.02,), daemon=True).start()
+    base = f"http://127.0.0.1:{server.server_address[1]}"
+
+    def call(path, body=None, tok=token):
+        req = urllib.request.Request(base + path, data=None if body is None else json.dumps(body).encode(),
+                                     headers={"X-Token": tok, "Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req) as r:
+                return r.status, json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            return e.code, e.read()
+
+    open_ = lambda: call("/api/queue?kind=good_note&status=open")[1]["items"]
+    items = open_()
+    assert sorted(it["id"] for it in items) == [f"{VOL}/0194/good_note/aaaa", f"{VOL}/0194/good_note/bbbb"]
+    dropped = next(it for it in items if it["id"].endswith("bbbb"))
+    assert dropped["where"] == {"section": "footnotes", "index": 0, "field": "text"} and "good_note" not in dropped
+    st, d = call(f"/api/good_note?id={urllib.parse.quote(dropped['id'])}")
+    assert st == 200 and d["entry"]["kind"] == "note_dropped" and d["links"] == []
+    st, c = call(f"/api/good_note/candidates?vol={VOL}&page=194&side=json")
+    assert [(n["page"], n["index"]) for n in c["notes"]] == [(194, 0)]
+
+    assert call("/api/good_link", {"vol": VOL, "op": "link", "good": [g], "json": [j]}, tok="bad")[0] in (401, 403)
+    assert call("/api/good_link", {"vol": VOL, "op": "link", "good": [g], "json": []})[0] == 400
+    st, r = call("/api/good_link", {"vol": VOL, "op": "link", "good": [g], "json": [j], "page": 194})
+    assert st == 200 and r["link"]["kind"] == "same" and r["fixed"] == 2 and r["issues"]
+    links = json.loads((docs / "good_notes_links" / f"{VOL}.json").read_text())["links"]
+    assert links[0]["good"] == {"pdf": "P", "pdf_page": 3, "mark": "(a)", "n": 0}
+    assert links[0]["json"] == {"page": 194, "marker": "(a)", "index": 0}
+    assert open_() == []
+    assert len(call(f"/api/good_note?id={urllib.parse.quote(dropped['id'])}")[1]["links"]) == 1
+
+    call("/api/good_link", {"vol": VOL, "op": "unlink", "good": [g], "json": [j]})
+    assert len(open_()) == 2
+    st, r = call("/api/good_link", {"vol": VOL, "op": "none", "json": [j]})
+    assert r["link"]["kind"] == "none" and [it["id"][-4:] for it in open_()] == ["aaaa"]
+    server.shutdown()

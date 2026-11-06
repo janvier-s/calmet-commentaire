@@ -198,7 +198,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if q.get("counts_only"):  # the filters' numbers after a mark: not the whole list again
             return {"counts": counts}
         sel = rs.select(items, progress, status, **f)
-        return {"items": [dict({k: v for k, v in it.items() if k != "proposal"}, status=progress.status(it["id"]))
+        return {"items": [dict({k: v for k, v in it.items() if k not in ("proposal", "good_note")}, status=progress.status(it["id"]))
                           for it in sel],
                 "counts": counts}
 
@@ -412,7 +412,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return it
 
     def turn_issues(vol, a, b):
-        return [dict({k: v for k, v in it.items() if k != "proposal"}, status=progress.status(it["id"]))
+        return [dict({k: v for k, v in it.items() if k not in ("proposal", "good_note")}, status=progress.status(it["id"]))
                 for it in items if it["book_dir"] == vol and it["page"] in (a, b) and it["kind"] in rt.TURN_KINDS
                 and rt.turn_of(store, it) == (vol, a, b)]
 
@@ -436,6 +436,78 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 raise ApiError(404, {"error": f"no page turn after {vol} p.{a}"})
             b = later[0]
         return dict(rt.turn(store, vol, a, b), issues=turn_issues(vol, a, b), around=turn_around(vol, a))
+
+    def good_note(q):
+        """A good_note item's difference, the hand links that take in its notes, and its status."""
+        import good_links as gl
+        it = item_of(q.get("id"))
+        d = it.get("good_note")
+        if d is None:
+            raise ApiError(400, {"error": "not a Good_Calmet note pairing"})
+        ns = d.get("notes") or {}
+        links = [e for e in gl.load(it["book_dir"], store.docs) if gl.touches(e, ns.get("good") or [], ns.get("json") or [])]
+        return {"entry": d, "links": links, "status": progress.status(it["id"])}
+
+    def good_note_candidates(q):
+        """The notes a note may be linked to: the other side's on the pages around (±2), each with the links
+        it is already in."""
+        import good_links as gl
+        vol, page = vol_page(q)
+        side = q.get("side")
+        if side not in ("json", "good"):
+            raise ApiError(400, {"error": "side: json or good"})
+        notes = rp.json_notes_near(store, vol, page) if side == "json" else rp.good_notes_near(store, vol, page)
+        links = gl.load(vol, store.docs)
+        for n in notes:
+            n["linked"] = [e["kind"] for e in links
+                           if gl.touches(e, *(([n], []) if side == "good" else ([], [n])))]
+        return {"notes": notes}
+
+    def good_link(body):
+        """Write a hand link (good_links.py) and close the good_note items it settles: op link (the notes of
+        both sides, one note on at least one), none (one note alone: no counterpart), unlink (the links of
+        these notes go). The items come back open on an unlink."""
+        import good_links as gl
+        vol = body.get("vol")
+        if vol not in store.volumes():
+            raise ApiError(404, {"error": f"no volume {vol}"})
+        op, goods, jsons = body.get("op"), body.get("good") or [], body.get("json") or []
+        try:
+            goods = [gl.good_id(g) for g in goods]
+            jsons = [gl.json_id(j) for j in jsons]
+            for g in goods:
+                int(g["pdf_page"]); str(g["pdf"]); str(g["mark"])
+            for j in jsons:
+                int(j["page"]); int(j["index"])
+        except (KeyError, TypeError, ValueError, AttributeError):
+            raise ApiError(400, {"error": "bad note"})
+        with lock:
+            links = gl.load(vol, store.docs)
+            try:
+                if op == "link":
+                    if not goods or not jsons:
+                        raise ValueError("a link needs a note on each side")
+                    links, e = gl.link(links, goods, jsons)
+                elif op == "none":
+                    if len(goods) + len(jsons) != 1:
+                        raise ValueError("no counterpart: one note")
+                    links, e = gl.link(links, goods, jsons)
+                elif op == "unlink":
+                    links, e = gl.unlink(links, goods, jsons), None
+                else:
+                    raise ValueError("op: link, none or unlink")
+            except ValueError as err:
+                raise ApiError(400, {"error": str(err)})
+            gl.save(vol, links, store.docs)
+            # the items whose notes these are: their pages made again (closed, or back open on an unlink)
+            pages = {d["page"] for d in rp.good_note_entries(store, vol) if gl.touches({"good": goods, "json": jsons},
+                     (d.get("notes") or {}).get("good") or [], (d.get("notes") or {}).get("json") or [])}
+            gen = refresh_generated([vol], sorted(pages)) if pages else {"fixed": [], "added": []}
+            by_id.update({it["id"]: it for it in items})
+            page = body.get("page") if isinstance(body.get("page"), int) else None
+            return {"link": e, "fixed": len(gen["fixed"]), "added": len(gen["added"]), "fixed_ids": gen["fixed"],
+                    **({"issues": rs.page_issues(items, progress, vol, page),
+                        "around": rs.neighbour_issue_pages(items, progress, vol, page)} if page else {})}
 
     def get_proposal(q):
         return {"proposal": rp.proposal_for(store, progress, item_of(q.get("id")))}
@@ -670,13 +742,14 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
               "turn_kinds": sorted(rt.TURN_KINDS), "todo_presets": todo_presets()}
     GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
-           "/api/proposal": get_proposal, "/api/batch": batch, "/api/search": search, "/api/versions": versions}
+           "/api/proposal": get_proposal, "/api/good_note": good_note, "/api/good_note/candidates": good_note_candidates,
+           "/api/batch": batch, "/api/search": search, "/api/versions": versions}
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/proposal/accept_page": accept_page, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
             "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
-            "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit}
+            "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit, "/api/good_link": good_link}
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *a):

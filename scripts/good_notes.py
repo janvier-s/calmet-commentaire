@@ -16,6 +16,9 @@ on their likeness. Kinds:
   refs_changed    a pair whose numbers differ (a reference changed)
   text_changed    a pair of prose notes (8+ long words each) sharing under half their long words
   script_changed  a pair where one note has Hebrew or Greek and the other has none
+Hand links (good_links.py, docs/good_notes_links/<vol>.json, written by the review editor's good_note cards)
+are read first: their notes are fixed pairs (or, for "none", fixed singles), the pairing fills in the rest
+in the gaps between them, and what they make is reported like any other pair, marked linked: true.
 Hebrew and Greek: Kraken reads Latin letters only, so on Good they come out as non-words. Every JSON
 note with Hebrew or Greek, when paired, gives the Good note's boxes (--hg FILE): where a Hebrew or Greek
 reading of the cleaner Good scan should look.
@@ -361,12 +364,14 @@ def joined(a, b, good):
     return out
 
 
-def pair(goods, jsons, least=0.3, part=0.4):
+def pair(goods, jsons, least=0.3, part=0.4, sim=None):
     """The monotone alignment of the two lists most alike in all: [(g, j, likeness)], g and j an index,
     None, or a pair of consecutive indices (a Good note that holds two JSON notes, or two Good notes one
-    JSON note: allowed when the two as one are liker than either alone, each alike in part)."""
+    JSON note: allowed when the two as one are liker than either alone, each alike in part). `sim`: the
+    likenesses, when already worked out."""
     n, m = len(goods), len(jsons)
-    sim = [[likeness(g, j) for j in jsons] for g in goods]
+    if sim is None:
+        sim = [[likeness(g, j) for j in jsons] for g in goods]
     best = [[0.0] * (m + 1) for _ in range(n + 1)]
     move = [[None] * (m + 1) for _ in range(n + 1)]
     merged = {}
@@ -408,6 +413,52 @@ def pair(goods, jsons, least=0.3, part=0.4):
     return out[::-1], sim
 
 
+def chain(anchors):
+    """The longest run of links in order on both sides (each after the last on both): the gaps between them
+    are where the pairing fills in. anchors: [(good indices, json indices)], neither side empty."""
+    a = sorted(anchors)
+    best = [1] * len(a)
+    prev = [None] * len(a)
+    for i in range(len(a)):
+        for k in range(i):
+            if a[k][0][-1] < a[i][0][0] and a[k][1][-1] < a[i][1][0] and best[k] + 1 > best[i]:
+                best[i], prev[i] = best[k] + 1, k
+    i = max(range(len(a)), key=best.__getitem__, default=None)
+    out = []
+    while i is not None:
+        out.append(a[i])
+        i = prev[i]
+    return out[::-1]
+
+
+def pair_linked(goods, jsons, fixed=()):
+    """pair() then rescue(), the hand links (`fixed`: [(good indices, json indices)], one side empty for a
+    note with no counterpart) kept as they are: the rest paired in the gaps between the links in order, so
+    the order holds. Returns (pairs, sim, linked): linked, the pairs the links made."""
+    sim = [[likeness(g, j) for j in jsons] for g in goods]
+    if not fixed:
+        pairs, _ = pair(goods, jsons, sim=sim)
+        return rescue(pairs, sim, goods, jsons), sim, set()
+    fg = {i for gs, _ in fixed for i in gs}
+    fj = {k for _, js in fixed for k in js}
+    bounds = [((-1,), (-1,))] + chain([(gs, js) for gs, js in fixed if gs and js]) + [((len(goods),), (len(jsons),))]
+    pairs, seen_g, seen_j = [], set(), set()
+    for (ga, ja), (gb, jb) in zip(bounds, bounds[1:]):
+        gi = [i for i in range(ga[-1] + 1, gb[0]) if i not in fg]
+        ji = [k for k in range(ja[-1] + 1, jb[0]) if k not in fj]
+        seen_g.update(gi), seen_j.update(ji)
+        sub, _ = pair([goods[i] for i in gi], [jsons[k] for k in ji], sim=[[sim[i][k] for k in ji] for i in gi])
+        back = lambda x, ix: None if x is None else tuple(ix[y] for y in x) if isinstance(x, tuple) else ix[x]
+        pairs += [(back(g, gi), back(j, ji), s) for g, j, s in sub]
+    # notes inside a link's span that the link leaves out (a merge of the first and third): alone, to rescue
+    pairs += [(i, None, None) for i in range(len(goods)) if i not in fg and i not in seen_g]
+    pairs += [(None, k, None) for k in range(len(jsons)) if k not in fj and k not in seen_j]
+    pairs = rescue(pairs, sim, goods, jsons)
+    one = lambda xs: None if not xs else xs[0] if len(xs) == 1 else tuple(xs)
+    linked = [(one(gs), one(js), None) for gs, js in fixed]
+    return pairs + linked, sim, {(g, j) for g, j, _ in linked}
+
+
 def rescue(pairs, sim, goods, jsons, least=0.65, reach=3):
     """Notes the monotone alignment left alone on both sides (Good moved a note past another, or across a
     page turn), paired when alike enough and near: within `reach` pages, likest first."""
@@ -427,7 +478,10 @@ def pick(xs, ix, good):
     if ix is None:
         return None
     if isinstance(ix, tuple):
-        return joined(xs[ix[0]], xs[ix[1]], good)
+        out = xs[ix[0]]
+        for k in ix[1:]:
+            out = joined(out, xs[k], good)
+        return dict(out, parts=[xs[k] for k in ix])
     return xs[ix]
 
 
@@ -442,7 +496,9 @@ def json_notes(vol, pages):
     return out
 
 
-def compare(vol, chs):
+def compare(vol, chs, links=None):
+    """The differences of the chapters' notes, and the Hebrew and Greek notes located on Good. `links`: the
+    hand links (good_links.py), else the volume's link file."""
     pages = gv.chapter_pages(vol, chs)
     lex = gv.lexicon()
     recs = sorted((r for r in gk.crops() if r["vol"] == vol and r.get("source")
@@ -453,8 +509,8 @@ def compare(vol, chs):
     for r in recs:
         ns = agy_notes(r["pdf"], r["pdf_page"])
         read += ns is not None
-        for n in ns if ns is not None else page_notes(r["pdf"], r["pdf_page"]):
-            n.update(src_page=int(r["source"][5:]), nums=numbers(n["text"]), lw=long_words(n["text"], lex),
+        for k, n in enumerate(ns if ns is not None else page_notes(r["pdf"], r["pdf_page"])):
+            n.update(n=k, src_page=int(r["source"][5:]), nums=numbers(n["text"]), lw=long_words(n["text"], lex),
                      aw=abbr_words(n["text"]), printed=gv.printed_page(r["pdf"], r["pdf_page"]), script=script(n["text"]))
             n["junk"] = junk_share(n, lex)
             goods.append(n)
@@ -482,8 +538,11 @@ def compare(vol, chs):
             if si is not None and ji is not None:
                 js[ji]["source_text"] = ss[si]["text"]
     print(f"  {read}/{len(recs)} Good pages read by Flash, the rest by Kraken", file=sys.stderr)
-    pairs, sim = pair(goods, jsons)
-    pairs = rescue(pairs, sim, goods, jsons)
+    import good_links as gl
+    fixed, stale = gl.resolve(gl.load(vol) if links is None else links, goods, jsons)
+    for e in stale:
+        print(f"  a link whose notes are not all found (index or mark moved?): {json.dumps(e, ensure_ascii=False)}", file=sys.stderr)
+    pairs, sim, linked = pair_linked(goods, jsons, [(gs, js) for gs, js, _ in fixed])
     out, hg = [], []
 
     def in_source(g, j):
@@ -512,7 +571,12 @@ def compare(vol, chs):
         r = {"kind": kind, "vol": vol, "page": j["page"] if j else g["src_page"],
              "path": j["path"] if j else None, "json_mark": j["mark"] if j else None,
              "json_text": j["text"] if j else None, "good_mark": g["mark"] if g else None,
-             "good_raw": g["text"] if g else None, "good": [where(g)] if g else [], **kw}
+             "good_raw": g["text"] if g else None, "good": [where(g)] if g else [],
+             "notes": {"json": [dict(gl.json_id(x), text=x["text"]) for x in (j.get("parts", [j]) if j else [])],
+                       "good": [dict(gl.good_id(x), text=x["text"], **where(x)) for x in (g.get("parts", [g]) if g else [])]},
+             **kw}
+        if is_linked:
+            r["linked"] = True
         r["id"] = hashlib.md5(json.dumps([vol, kind, r["page"], r["json_text"], r["good_raw"]]).encode()).hexdigest()[:10]
         r["cause"] = cause_of(r, g, j)
         out.append(r)
@@ -533,6 +597,9 @@ def compare(vol, chs):
 
     for gi, ji, s in pairs:
         g, j = pick(goods, gi, True), pick(jsons, ji, False)
+        is_linked = (gi, ji) in linked
+        if is_linked and g and j:
+            s = likeness(g, j)
         if isinstance(gi, tuple) or isinstance(ji, tuple):
             rec("note_split" if isinstance(gi, tuple) else "notes_merged", g, j, likeness=round(s, 2),
                 json_parts=[x["text"] for x in j.get("parts", [j])], good_parts=[x["text"] for x in g.get("parts", [g])])

@@ -6,6 +6,7 @@ import "./entries.js";
 import "./point.js";
 import "./turn.js";
 import "./proposal.js";
+import "./goodlinks.js";
 import "./batch.js";
 import "./search.js";
 import "./tags.js";

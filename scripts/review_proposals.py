@@ -380,8 +380,86 @@ def _good_items(store, volumes, pages=None):
     return sorted(out, key=lambda it: it["page"])
 
 
+def _good_note_msg(d):
+    ns = d.get("notes") or {}
+    gs, js = ns.get("good") or [], ns.get("json") or []
+    cut = lambda t: (t or "").replace("\n", " ")[:80]
+    marks = lambda xs: " + ".join((x.get("marker") or x.get("mark") or "?") for x in xs)
+    if d["kind"] == "note_added":
+        return f"Good adds a note {marks(gs)}: {cut(gs[0]['text'] if gs else '')}"
+    if d["kind"] == "note_dropped":
+        return f"Good has no note {marks(js)}: {cut(js[0]['text'] if js else '')}"
+    if d["kind"] == "notes_merged":
+        return f"Good merges notes {marks(js)} into {marks(gs)}"
+    return f"Good splits note {marks(js)} into {marks(gs)}"
+
+
+def good_note_entries(store, vol):
+    """good_proposals.py's pairing differences of a volume (notes Good adds, drops, merges, splits)."""
+    report = _read_json(store.docs / "good_proposals" / f"{vol}.json")
+    return (report or {}).get("pairing") or []
+
+
+def good_note_settled(d, links):
+    """Whether a hand link takes in one of the difference's notes (the rest waits for good_notes.py's rerun)."""
+    import good_links as gl
+    ns = d.get("notes") or {}
+    return any(gl.touches(e, ns.get("good") or [], ns.get("json") or []) for e in links)
+
+
+def _good_note_items(store, volumes, pages=None):
+    """Notes the Good_Calmet pairing found added, dropped, merged or split (good_proposals.py's `pairing`), as
+    good_note items until a hand link (docs/good_notes_links/<vol>.json, good_links.py) settles one of their
+    notes: linking closes the item at once, no rerun of good_notes.py needed."""
+    import good_links as gl
+    out = []
+    for vol in volumes:
+        entries = good_note_entries(store, vol)
+        links = gl.load(vol, store.docs) if entries else []
+        for d in entries:
+            if (pages is not None and d["page"] not in pages) or good_note_settled(d, links):
+                continue
+            js = [j for j in (d.get("notes") or {}).get("json") or [] if j["page"] == d["page"]]
+            it = {"id": f"{vol}/{d['page']:04d}/good_note/{d['id']}", "book_dir": vol, "page": d["page"],
+                  "kind": "good_note", "optional": False, "msg": _good_note_msg(d), "good_note": d}
+            if js:
+                it["where"] = {"section": "footnotes", "index": js[0]["index"], "field": "text"}
+            out.append(it)
+    return sorted(out, key=lambda it: it["page"])
+
+
+def json_notes_near(store, vol, page, reach=2):
+    """The normalized footnotes of the pages around `page`: [{page, index, marker, text}]."""
+    out = []
+    for p in range(page - reach, page + reach + 1):
+        for i, fn in enumerate((store._load(vol, p) or {}).get("footnotes") or []) if p >= 1 else []:
+            out.append({"page": p, "index": i, "marker": fn.get("marker"), "text": fn.get("text") or ""})
+    return out
+
+
+def good_notes_near(store, vol, page, reach=2):
+    """The Good_Calmet notes of the Good pages matched to the scan pages around `page`, as good_notes.py reads
+    them (Flash's transcription, else Kraken's): [{pdf, pdf_page, mark, n, text, src_page, printed, boxes}]."""
+    import good_notes as gn
+    out, seen = [], set()
+    for p in range(page - reach, page + reach + 1):
+        for crop in store.good_pages(vol, p) if p >= 1 else []:
+            pdf, pp = crop.parent.name, int(crop.stem[5:9])
+            if (pdf, pp) in seen:
+                continue
+            seen.add((pdf, pp))
+            ns = gn.agy_notes(pdf, pp)
+            if ns is None:
+                ns = gn.page_notes(pdf, pp) if gn.gk.cache_path(pdf, pp).exists() else []
+            for k, n in enumerate(ns):
+                out.append({"pdf": pdf, "pdf_page": pp, "mark": n["mark"], "n": k, "text": n["text"], "src_page": p,
+                            "printed": gn.gv.printed_page(pdf, pp),
+                            "boxes": [b for x in n["words"] for b in x.get("boxes", [x["box"]])]})
+    return out
+
+
 ITALIC_KINDS = ("ocr_italic",)
-GENERATED_KINDS = ("good_variant", "footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned")
+GENERATED_KINDS = ("good_note", "good_variant", "footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned")
 
 
 class _Snapshot:
@@ -411,7 +489,8 @@ def generated_items(store, volumes=None, pages=None):
         out += _footnote_items(store, vol, pset)
     vset = set(volumes)
     return (out + _ref_items(store, vset, pset) + _context_items(store, vset, pset) + _gap_items(store, vset, pset) + _italic_items(store, vset, pset)
-            + _differ_items(store, vset, pset) + _unscanned_items(store, vset, pset) + _good_items(store, vset, pset))
+            + _differ_items(store, vset, pset) + _unscanned_items(store, vset, pset) + _good_items(store, vset, pset)
+            + _good_note_items(store, vset, pset))
 
 
 

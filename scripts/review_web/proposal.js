@@ -38,7 +38,7 @@ export function diffLine(c) {
 }
 
 /** A Good_Calmet crop's band around the boxes, the boxes highlighted, with its PDF and printed page. */
-function goodFigure(g, goodText) {
+export function goodFigure(g, goodText) {
   const url = `/goodcrop/${encodeURIComponent(g.pdf)}/${g.pdf_page}`;
   const bs = g.boxes || [];
   const pad = 30;
