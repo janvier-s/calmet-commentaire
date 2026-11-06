@@ -132,6 +132,7 @@ def _fill(u, ws):
 
 
 HEAD_SIM = 0.6
+HEAD_MIN = 3  # words: "Chapitre II." alone is too slight to look for
 SHORT_UNIT = 60  # words: a longer unit with no linked word is left alone
 HEADING_WORD = re.compile(r"(?i)chap\w*|[ivxlc]+|\d+")
 
@@ -148,6 +149,8 @@ def _head_window(run, heads, got):
     for u in cands:
         target = " ".join(scan_ocr.key(t) for t in scan_ocr.OCR_TOKEN.findall(u["old"]))
         n = len(target.split())
+        if n < HEAD_MIN:
+            continue
         for s in range(0, max(1, len(run) - n + 1)):
             sim = scan_ocr.similar(" ".join(keys[s:s + n]), target)
             if sim >= HEAD_SIM and (best is None or sim > best[0]):
@@ -160,69 +163,112 @@ def _head_window(run, heads, got):
     return uid, s, e
 
 
+LONG_RUN = 40  # unlinked words: a run this long the old text holds elsewhere is not given to a neighbour
+BARRIER = "#"  # owner of a word linked to a footnote: the unlinked words next to it are the note's
+
+
+def covered_pages(ctx):
+    """The source pages some Good word is linked to (a page with a Good scan but no link is not covered)."""
+    jt = ctx["jt"]
+    return {jt[w["j"]]["page"] for w in ctx["stream"] if w.get("j") is not None and w["s"] != "skip"}
+
+
 def project(units, ctx):
     """Give each unit Good's words for it (`good`, `good_where`, `good_words`). A Good word linked to a JSON
     word goes to that word's unit; unlinked words between two words of one unit go to it, between two
-    units to the earlier one, except from a lemma Good alone has (lemma_start): those become a unit of their
-    own, returned (uid good:<chapter>:<verse>:<n>, `after`: the unit it follows)."""
+    units to the earlier one, except: a short unit no word is linked to, found among them (_head_window); a
+    lemma Good alone has (lemma_start), made a unit of its own (uid good:<chapter>:<verse>:<n>); a run of
+    LONG_RUN words or more the old text holds elsewhere (the aligner missed it), made an `unaligned` unit.
+    Unlinked words next to a word linked to a footnote are left out. Returns the new units (`after`: the
+    unit each follows)."""
+    import good_variants as gv
     idx = unit_index(units)
     by_uid = {u["uid"]: u for u in units}
     jt = ctx["jt"]
-    # words linked to a field no unit holds (footnotes, the verses' Latin) belong to no unit
-    ws = [w for w in ctx["stream"] if w["s"] != "skip"
-          and (w.get("j") is None or (jt[w["j"]]["page"], jt[w["j"]]["path"]) in idx)]
-    owner = [idx.get((jt[w["j"]]["page"], jt[w["j"]]["path"])) if w.get("j") is not None else None for w in ws]
+    ws, owner = [], []
+    for w in ctx["stream"]:
+        if w["s"] == "skip":
+            continue
+        if w.get("j") is None:
+            ws.append(w), owner.append(None)
+            continue
+        at = (jt[w["j"]]["page"], jt[w["j"]]["path"])
+        if at in idx:
+            ws.append(w), owner.append(idx[at])
+        elif at[1].startswith("footnotes/"):
+            ws.append(w), owner.append(BARRIER)
+        # linked to another field no unit holds (the verses' Latin): left out, the run goes on
     got = collections.defaultdict(list)
     # page -> its short units no Good word is linked to (a chapter's heading, a verse Kraken read inside
     # another): looked for among the unlinked words
-    linked_uids = {idx[(jt[w["j"]]["page"], jt[w["j"]]["path"])] for w in ws if w.get("j") is not None}
+    linked_uids = set(owner) - {None, BARRIER}
     heads = collections.defaultdict(list)
     for u in units:
         if u["parts"] and u["uid"] not in linked_uids and len(u["old"].split()) <= SHORT_UNIT:
             heads[u["parts"][0]["page"]].append(u)
+    old_grams = gv._grams([k for u in units for k in _keys(u["old"])])
     new, count = [], collections.Counter()
+
+    def unit(prefix, typ, chapter, verse, words, after, lemma=None):
+        key = (prefix, str(chapter), str(verse))
+        uid = f"{prefix}:{chapter}:{verse}:{count[key]}" if verse is not None or prefix == "good" else f"{prefix}:{chapter}:{count[key]}"
+        count[key] += 1
+        u = {"uid": uid, "type": typ, "chapter": chapter, "verse": verse, "lemma": lemma, "parts": [], "old": "",
+             "notes": [], "after": after}
+        _fill(u, words)
+        new.append(u)
+
+    def place(seg, host, chapter, split):
+        """Unlinked words `seg` whose default unit is `host`."""
+        start = lemma_start([w["t"] for w in seg]) if split else None
+        if start:
+            s, verse = start
+            if host:
+                got[host] += seg[:s]
+            unit("good", "commentary", chapter, verse, seg[s:], host, lemma=" ".join(w["t"] for w in seg[s + 2:s + 8]))
+        elif split and len(seg) >= LONG_RUN and gv._share([scan_ocr_key(w["t"]) for w in seg], old_grams) >= 0.5:
+            unit("unaligned", "unaligned", chapter, None, seg, host)
+        elif host:
+            got[host] += seg
+
     i = 0
     while i < len(ws):
         if owner[i] is not None:
-            got[owner[i]].append(ws[i])
+            if owner[i] != BARRIER:
+                got[owner[i]].append(ws[i])
             i += 1
             continue
         k = i
         while k < len(ws) and owner[k] is None:
             k += 1
-        prev = next((owner[m] for m in range(i - 1, -1, -1) if owner[m]), None)
-        nxt = owner[k] if k < len(ws) else None
-        run = ws[i:k]
-        head = _head_window(run, heads, got)
-        if head:
-            uid, s, e = head
-            if prev or nxt:
-                got[prev or nxt] += run[:s]
-            got[uid] += run[s:e]
-            if nxt or prev:
-                got[nxt or prev] += run[e:]  # after a chapter's heading: the new chapter's text
-            i = k
+        before = next((owner[m] for m in range(i - 1, -1, -1) if owner[m]), None)
+        after = owner[k] if k < len(ws) else None
+        if BARRIER in ((owner[i - 1] if i else None), after):
+            i = k  # next to a footnote's linked words: the note's own
             continue
-        start = lemma_start([w["t"] for w in run]) if prev != nxt else None
-        host = prev or nxt
-        if start:
-            s, verse = start
-            if host:
-                got[host] += run[:s]
-            chapter = by_uid[host]["chapter"] if host else None
-            key = (str(chapter), str(verse))
-            u = {"uid": f"good:{chapter}:{verse}:{count[key]}", "type": "commentary", "chapter": chapter,
-                 "verse": verse, "lemma": " ".join(w["t"] for w in run[s + 2:s + 8]), "parts": [], "old": "",
-                 "notes": [], "after": host}
-            count[key] += 1
-            _fill(u, run[s:])
-            new.append(u)
-        elif host:
-            got[host] += run
+        prev, nxt = before, after
+        run, host = ws[i:k], prev or nxt
+        chapter = by_uid[host]["chapter"] if host else None
+        split = prev != nxt
+        while True:
+            head = _head_window(run, heads, got)
+            if not head:
+                place(run, host, chapter, split)
+                break
+            uid, s, e = head
+            place(run[:s], host, chapter, split)
+            got[uid] += run[s:e]
+            # after a chapter's heading: the new chapter's text
+            run, host, chapter, split = run[e:], nxt or prev, by_uid[uid]["chapter"], True
         i = k
     for u in units:
         _fill(u, got.get(u["uid"], []))
     return new
+
+
+def scan_ocr_key(t):
+    import scan_ocr
+    return scan_ocr.key(t)
 
 
 COSMETIC_SIM = 0.8
@@ -245,10 +291,12 @@ def classify(r):
 
 
 def status(u, covered):
-    """only_good, uncovered (no page of it has a Good match: a missing scan, not a cut), only_old (Good has
+    """only_good, unaligned (Good text the aligner placed nowhere), uncovered (no page of it has a Good match: a missing scan, not a cut), only_old (Good has
     no word of it), substantive, cosmetic, identical."""
     if u["uid"].startswith("good:"):
         return "only_good"
+    if u["uid"].startswith("unaligned:"):
+        return "unaligned"
     if not any(p["page"] in covered for p in u["parts"]):
         return "uncovered"
     if not u.get("good_words"):
@@ -308,9 +356,7 @@ def build(vol, chs):
     ctx = gv.align(vol, chs)
     units = old_units(ctx["data"])
     new = project(units, ctx)  # over the neighbouring chapters' pages too, so their words don't fall in here
-    jt = ctx["jt"]
-    covered = {w["src_page"] for w in ctx["stream"] if w.get("src_page") is not None}
-    covered |= {jt[w["j"]]["page"] for w in ctx["stream"] if w.get("j") is not None}
+    covered = covered_pages(ctx)
     summary = attach(units + new, gv.variants(vol, chs, ctx=ctx), covered)
     after = collections.defaultdict(list)
     for n in new:

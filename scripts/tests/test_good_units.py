@@ -265,3 +265,63 @@ def test_unlinked_verse_read_inside_another():
     by = {u["uid"]: u for u in units}
     assert by["verse:49:2:0"]["good"] == "Assemblez-vous et écoutez enfants de Jacob"
     assert by["verse:49:1:0"]["good"] == "Jacob appela ses enfants"
+
+
+# the whole-branch review's findings
+LONG = ("les notes sur les versets huit à douze que le Commentaire place ici après le verset dix-neuf parlent de "
+        "Nemrod le puissant chasseur devant le Seigneur et des villes de Babylone Arach Achad et Chalanne dans la "
+        "terre de Sennaar puis de Ninive et de Chalé et de Résen la grande ville entre Ninive et Chalé dont "
+        "Moïse rapporte la fondation par Assur sorti de ce pays selon la plupart des interprètes anciens et modernes")
+
+
+def test_long_unaligned_run_not_given_to_neighbour():
+    units = gu.old_units({5: page([note(10, 19, "alpha beta", lq="FACTIQUE"), note(10, 20, "delta epsilon", lq="HI FILII")]),
+                          6: page([note(10, 8, LONG, lq="PORRO CHUS")])})
+    words = [("alpha", A, None)] + [(t, None, None) for t in LONG.split()] + [("delta", B, None)]
+    new = gu.project(units, ctx_of(words))
+    assert good_of(units, "commentary:10:19:0") == "alpha"
+    assert [(n["uid"], n["type"], n["after"]) for n in new] == [("unaligned:10:0", "unaligned", "commentary:10:19:0")]
+    assert new[0]["good_words"] == len(LONG.split())
+    assert gu.status(new[0], {5}) == "unaligned"
+
+
+def test_covered_pages_are_linked_pages():
+    ctx = ctx_of([("alpha", A, None), ("orphan", None, None)])
+    for w in ctx["stream"]:
+        w["src_page"] = 7
+    assert gu.covered_pages(ctx) == {5}
+
+
+def test_footnote_linked_word_is_a_barrier():
+    units = units_ab()
+    gu.project(units, ctx_of([("alpha", A, None), ("Joseph", None, None), ("Hebr", "footnotes/0/text", None),
+                              ("lib", None, None), ("delta", B, None)]))
+    assert good_of(units, "commentary:1:6:0") == "alpha"
+    assert good_of(units, "commentary:1:8:0") == "delta"
+
+
+def test_lemma_after_heading_still_found():
+    units = gu.old_units({5: page([note(1, 31, "alpha beta", lq="VIDIT")], chapter_summary="Création du monde, repos de Dieu.",
+                                  chapter_number=2),
+                          6: page([note(2, 2, "delta epsilon", lq="COMPLEVIT")])})
+    ctx = ctx_of([("alpha", A, None)] + [(t, None, None) for t in
+                  "CHAPITRE II Création du monde repos de Dieu ŷ. 1. IGITUR PERFECTI SUNT texte".split()])
+    ctx["jt"].append({"t": "delta", "k": "delta", "page": 6, "path": A, "a": 0, "b": 5})
+    ctx["stream"].append(dict(ctx["stream"][0], t="delta", k="delta", j=len(ctx["jt"]) - 1))
+    for w in ctx["stream"]:
+        w["src_page"] = 5
+    new = gu.project(units, ctx)
+    by = {u["uid"]: u for u in units}
+    assert by["summary:2:None:0"]["good"] == "CHAPITRE II Création du monde repos de Dieu"
+    assert [n["uid"] for n in new] == ["good:2:1:0"]
+    assert new[0]["good"].startswith("ŷ. 1. IGITUR")
+
+
+def test_heading_window_needs_three_words():
+    units = gu.old_units({5: page([note(1, 31, "alpha beta", lq="VIDIT"), note(1, 32, "delta", lq="FIAT")],
+                                  chapter_title="Chapitre II.", chapter_number=2)})
+    ctx = ctx_of([("alpha", A, None), ("Chapitre", None, None), ("II", None, None), ("delta", B, None)])
+    for w in ctx["stream"]:
+        w["src_page"] = 5
+    gu.project(units, ctx)
+    assert next(u for u in units if u["type"] == "title")["good"] == ""
