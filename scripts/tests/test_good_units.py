@@ -292,6 +292,21 @@ def test_covered_pages_are_linked_pages():
     assert gu.covered_pages(ctx) == {5}
 
 
+def test_page_with_stray_links_not_covered():
+    ctx = ctx_of([("alpha", A, None)])
+    ctx["jt"] += [{"t": f"w{n}", "k": f"w{n}", "page": 5, "path": A, "a": 0, "b": 2} for n in range(9)]
+    assert gu.covered_pages(ctx) == set()  # 1 word of 10 linked: the page was not aligned
+
+
+def test_long_run_next_to_footnote_link_kept():
+    units = gu.old_units({5: page([note(10, 19, "alpha beta", lq="FACTIQUE"), note(10, 20, "delta epsilon", lq="HI FILII")]),
+                          6: page([note(10, 8, LONG, lq="PORRO CHUS")])})
+    words = [("alpha", A, None), ("Hebr", "footnotes/0/text", None)] + [(t, None, None) for t in LONG.split()] + \
+        [("delta", B, None)]
+    new = gu.project(units, ctx_of(words))
+    assert [n["type"] for n in new] == ["unaligned"]
+
+
 def test_footnote_linked_word_is_a_barrier():
     units = units_ab()
     gu.project(units, ctx_of([("alpha", A, None), ("Joseph", None, None), ("Hebr", "footnotes/0/text", None),

@@ -164,13 +164,21 @@ def _head_window(run, heads, got):
 
 
 LONG_RUN = 40  # unlinked words: a run this long the old text holds elsewhere is not given to a neighbour
+COVER_SHARE = 0.3
 BARRIER = "#"  # owner of a word linked to a footnote: the unlinked words next to it are the note's
 
 
 def covered_pages(ctx):
-    """The source pages some Good word is linked to (a page with a Good scan but no link is not covered)."""
+    """The source pages a share (COVER_SHARE) of whose words some Good word is linked to: a page with a Good
+    scan but no link, or a few stray ones, was not aligned (its units are `uncovered`, not `only_old`)."""
     jt = ctx["jt"]
-    return {jt[w["j"]]["page"] for w in ctx["stream"] if w.get("j") is not None and w["s"] != "skip"}
+    linked = {w["j"] for w in ctx["stream"] if w.get("j") is not None and w["s"] != "skip"}
+    total, held = collections.Counter(), collections.Counter()
+    for j, t in enumerate(jt):
+        if not t["path"].startswith("footnotes/"):
+            total[t["page"]] += 1
+            held[t["page"]] += j in linked
+    return {p for p in total if held[p] >= COVER_SHARE * total[p] and held[p]}
 
 
 def project(units, ctx):
@@ -241,12 +249,12 @@ def project(units, ctx):
         k = i
         while k < len(ws) and owner[k] is None:
             k += 1
-        before = next((owner[m] for m in range(i - 1, -1, -1) if owner[m]), None)
         after = owner[k] if k < len(ws) else None
-        if BARRIER in ((owner[i - 1] if i else None), after):
+        if BARRIER in ((owner[i - 1] if i else None), after) and k - i < LONG_RUN:
             i = k  # next to a footnote's linked words: the note's own
             continue
-        prev, nxt = before, after
+        prev = next((owner[m] for m in range(i - 1, -1, -1) if owner[m] not in (None, BARRIER)), None)
+        nxt = next((owner[m] for m in range(k, len(ws)) if owner[m] not in (None, BARRIER)), None)
         run, host = ws[i:k], prev or nxt
         chapter = by_uid[host]["chapter"] if host else None
         split = prev != nxt
