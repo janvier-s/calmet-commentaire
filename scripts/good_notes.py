@@ -90,6 +90,10 @@ def page_notes(pdf, page, o=None):
     return notes
 
 
+def gn_plain(t):
+    return "".join(c for c in unicodedata.normalize("NFD", t.lower()) if c.isalnum())
+
+
 def mark_key(m):
     """A mark's letter or number, lower case: (a) a) ca) [b] -> a, b; Kraken's c( or t( prefix dropped."""
     t = re.sub(r"[^\w]", "", m or "").lower()
@@ -123,7 +127,21 @@ def agy_notes(pdf, page, o=None):
 
 
 AFTER_ABBR = re.compile(r"(?:^|[\s(])(?:l|lib|liv|livre|c|cap|ser|serm|hom|homil|tom|t|quæst|quaest|q|part|n|num|v|vers|p|pag|"
-                        r"dist|epist|ep|tract|sect|art|cant|psal|ps|et|&)\.?,?\s*$", re.I)  # where a lowercase roman number may stand
+                        r"dist|epist|ep|tract|sect|art|cant|psal|ps)\.?,?\s*$", re.I)  # where a lowercase roman number may stand
+
+
+def roman_here(text, m):
+    """Whether a lowercase roman number stands as one: after an abbreviation (lib. v.), after a Bible
+    book's name (Matth. x., Isai xi.), or as a chapter before its verse (x. 16); never &c."""
+    before = text[:m.start()]
+    if re.search(r"&\s*$", before):
+        return False
+    if m.group().lower() in ("l", "c"):  # c. and l. are chapter and book: a number only as a psalm's (Psal. c.)
+        return bool(re.search(r"\bps(?:al)?\.?\s*$", before, re.I))
+    if AFTER_ABBR.search(before) or (m.group().lower() not in ("l", "c") and re.match(r"\.?\s*,?\s*\d", text[m.end():])):
+        return True
+    w = re.search(r"([^\W\d_]+)\.?\s*$", before)
+    return bool(w and gn_plain(w.group(1)) in bible_refs.ABBR)
 
 
 def numbers(text):
@@ -133,7 +151,7 @@ def numbers(text):
         t = m.group()
         if not re.fullmatch(r"[0-9IVXLCivxlc]+", t):
             continue
-        if not re.search(r"\d", t) and not t.isupper() and not AFTER_ABBR.search(text[:m.start()]):
+        if not re.search(r"\d", t) and not t.isupper() and not roman_here(text, m):
             continue  # a lowercase roman number only after an abbreviation (lib. v., l. xi): not "ci", "vi"
         if t == "111":
             t = "I" * len(t)  # l. 111. : III
@@ -171,7 +189,7 @@ def readings(text):
         t = m.group()
         if not re.fullmatch(r"[0-9IVXLCivxlc]+", t):
             continue
-        if not re.search(r"\d", t) and not t.isupper() and not AFTER_ABBR.search(text[:m.start()]):
+        if not re.search(r"\d", t) and not t.isupper() and not roman_here(text, m):
             continue
         vals = set()
         for u in {t, t.replace("1", "I"), re.sub(r"[Iil]", "1", t)}:
@@ -251,6 +269,20 @@ def junk_share(g, lex):
     return bad / len(ws)
 
 
+def script_letters(text):
+    """Its Hebrew and Greek letters only, unpointed and unaccented, final forms plain: what a slip changes."""
+    t = unicodedata.normalize("NFD", text.lower())
+    t = "".join(c for c in t if ("\u05d0" <= c <= "\u05ea") or ("\u0370" <= c <= "\u03ff") or ("\u1f00" <= c <= "\u1fff"))
+    return t.translate(str.maketrans("ךםןףץς", "כמנפצσ"))
+
+
+def script_like(a, b):
+    x, y = script_letters(a), script_letters(b)
+    if len(x) < 2 or len(y) < 2:
+        return None
+    return difflib.SequenceMatcher(None, x, y, autojunk=False).ratio()
+
+
 def likeness(g, j):
     """0..1: how far a Good note and a JSON note are the same note: their numbers (the references), their
     words matched by their start (the scans abbreviate), a Hebrew or Greek note against a note of
@@ -268,6 +300,9 @@ def likeness(g, j):
         gs, js = g["script"], j["script"]
         if (gs["hebrew"] and js["hebrew"]) or (gs["greek"] and js["greek"]):
             score = max(score, 0.5 if not j["aw"] else score + 0.2)
+            sl = script_like(g["text"], j["text"])
+            if sl is not None:  # the letters themselves: the same Hebrew word, the same Greek phrase
+                score = max(score, sl if not j["aw"] else 0.5 * sl + 0.5 * score)
     elif (j["script"]["hebrew"] or j["script"]["greek"]) and g["junk"] >= 0.4:
         score = max(score, 0.5 if not j["aw"] else score + 0.2)
     if mark_key(g["mark"]) == mark_key(j["mark"]) and g["src_page"] == j["page"]:
@@ -287,7 +322,7 @@ def joined(a, b, good):
     return out
 
 
-def pair(goods, jsons, least=0.34, part=0.4):
+def pair(goods, jsons, least=0.3, part=0.4):
     """The monotone alignment of the two lists most alike in all: [(g, j, likeness)], g and j an index,
     None, or a pair of consecutive indices (a Good note that holds two JSON notes, or two Good notes one
     JSON note: allowed when the two as one are liker than either alone, each alike in part)."""
@@ -452,12 +487,23 @@ def compare(vol, chs):
                 else:
                     origin = "unsure"
                 rel = "good_extra" if same_numbers(gr_, j["nums"]) else "differ"  # Good adds numbers / they differ
+                if rel == "good_extra" and st is not None:
+                    origin = "both_scans" if same_numbers(readings(st), g["nums"]) else "only_good"
                 rec("refs_changed", g, j, likeness=round(s, 2), json_nums=j["nums"], good_nums=g["nums"],
                     origin=origin, source_raw=st, numbers=rel)
-            elif len(j["lw"]) >= 8 and len(g["lw"]) >= 8 and len(g["lw"] & j["lw"]) < 0.5 * min(len(g["lw"]), len(j["lw"])):
+            elif len(j["lw"]) >= 8 and len(g["lw"]) >= 8 and len(g["lw"] & j["lw"]) < 0.5 * min(len(g["lw"]), len(j["lw"])) \
+                    and (_abbr_share(g["aw"], j["aw"]) or 0) < 0.5:  # not normalized's French for the scan's Latin
                 rec("text_changed", g, j, likeness=round(s, 2))
             if g.get("agy"):
                 gs, js = g["script"], j["script"]
+                sl = script_like(g["text"], j["text"])
+                if sl is not None and sl < 1.0:
+                    st = j.get("source_text")
+                    ss_ = script_like(st, g["text"]) if st else None
+                    sj_ = script_like(st, j["text"]) if st else None
+                    origin = ("no_source" if ss_ is None or sj_ is None else
+                              "both_scans" if ss_ > sj_ else "only_good" if sj_ > ss_ else "unsure")
+                    rec("script_text_changed", g, j, likeness=round(sl, 2), origin=origin, source_raw=st)
                 if gs != js:
                     rec("script_changed", g, j, good_script=[k for k, v in gs.items() if v],
                         json_script=[k for k, v in js.items() if v])
