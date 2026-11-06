@@ -3,6 +3,9 @@ summary or introduction), the Good_Calmet text on each, their changes and a stat
 
 Good's OCR is not cut into units on its own: good_variants.align links each Good word to a word of the
 normalized JSON, and a Good word goes to the unit that holds its linked word.
+
+    python3 good_units.py <vol> <chapter>[-<chapter>] [--out FILE]    (default: data/<vol>/good_units.json,
+                                                                       its other chapters' units kept)
 """
 import collections
 import re
@@ -244,3 +247,76 @@ def attach(units, records, covered):
     for u in units:
         u["status"] = status(u, covered)
     return {"unattached": unattached}
+
+
+def _chapter_key(u):
+    try:
+        return int(u.get("chapter"))
+    except (TypeError, ValueError):
+        return 10 ** 6
+
+
+def build(vol, chs):
+    """The units of chapters `chs`, with Good's text, their changes and status."""
+    import good_variants as gv
+    ctx = gv.align(vol, chs)
+    units = old_units(ctx["data"])
+    new = project(units, ctx)  # over the neighbouring chapters' pages too, so their words don't fall in here
+    jt = ctx["jt"]
+    covered = {w["src_page"] for w in ctx["stream"] if w.get("src_page") is not None}
+    covered |= {jt[w["j"]]["page"] for w in ctx["stream"] if w.get("j") is not None}
+    summary = attach(units + new, gv.variants(vol, chs, ctx=ctx), covered)
+    after = collections.defaultdict(list)
+    for n in new:
+        after[n["after"]].append(n)
+    out = []
+    for u in units:
+        out.append(u)
+        out += after.get(u["uid"], [])
+    out += after.get(None, [])
+    out = [u for u in out if u.get("chapter") is not None and _chapter_key(u) in chs]
+    return {"vol": vol, "chapters": sorted(chs), "units": out, "summary": summary}
+
+
+def _summary(units, unattached):
+    s = dict(collections.Counter(u["status"] for u in units))
+    s["unattached"] = unattached
+    return s
+
+
+def write(vol, chs, out):
+    """Build chapters `chs` into the file `out`, keeping its units of other chapters."""
+    import json
+    from pathlib import Path
+    out = Path(out)
+    res = build(vol, chs)
+    old = json.loads(out.read_text(encoding="utf-8")) if out.exists() else {"units": [], "chapters": [], "unattached": {}}
+    kept = [u for u in old["units"] if _chapter_key(u) not in chs]
+    units = sorted(kept + res["units"], key=_chapter_key)  # stable: reading order within a chapter
+    unattached = dict(old.get("unattached") or {})
+    unattached[",".join(map(str, sorted(chs)))] = res["summary"]["unattached"]
+    merged = {"vol": vol, "chapters": sorted(set(old["chapters"]) | set(chs)), "units": units,
+              "unattached": unattached, "summary": _summary(units, sum(unattached.values()))}
+    out.write_text(json.dumps(merged, ensure_ascii=False, indent=1), encoding="utf-8")
+    return merged
+
+
+def main(argv):
+    import sys
+    from paths import DATA
+    if len(argv) < 2:
+        sys.exit(__doc__)
+    vol, spec = argv[0], argv[1]
+    a, _, b = spec.partition("-")
+    chs = set(range(int(a), int(b or a) + 1))
+    out = argv[argv.index("--out") + 1] if "--out" in argv else DATA / vol / "good_units.json"
+    res = write(vol, chs, out)
+    mine = [u for u in res["units"] if _chapter_key(u) in chs]
+    print(f"{vol} ch. {spec}: {len(mine)} units  " + str(dict(collections.Counter(u["status"] for u in mine))))
+    print("  by type: " + str(dict(collections.Counter((u["type"], u["status"]) for u in mine))))
+    print(f"  file {out}: {res['summary']}")
+
+
+if __name__ == "__main__":
+    import sys
+    main(sys.argv[1:])

@@ -217,3 +217,18 @@ def test_footnote_record_unattached():
     assert summary["unattached"] == 1
     assert units[0]["changes"][0]["gap_in_normalized"] is True
     assert units[0]["status"] == "substantive"
+
+
+def test_build_merges_chapters(tmp_path, monkeypatch):
+    def fake_build(vol, chs):
+        units = [{"uid": f"verse:{c}:1:0", "type": "verse", "chapter": c, "status": "identical", "v": len(chs)}
+                 for c in sorted(chs)]
+        return {"vol": vol, "chapters": sorted(chs), "units": units, "summary": {"unattached": 0}}
+    monkeypatch.setattr(gu, "build", fake_build)
+    out = tmp_path / "good_units.json"
+    gu.write("01_genese", {1, 2}, out)
+    res = gu.write("01_genese", {3}, out)
+    assert res["chapters"] == [1, 2, 3]
+    assert [u["uid"] for u in res["units"]] == ["verse:1:1:0", "verse:2:1:0", "verse:3:1:0"]
+    assert [u["v"] for u in res["units"]] == [2, 2, 1]  # chapters 1-2 as written by the first run
+    assert res["summary"] == {"identical": 3, "unattached": 0}
