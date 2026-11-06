@@ -406,6 +406,21 @@ def pair(goods, jsons, least=0.3, part=0.4):
     return out[::-1], sim
 
 
+def rescue(pairs, sim, goods, jsons, least=0.65, reach=3):
+    """Notes the monotone alignment left alone on both sides (Good moved a note past another, or across a
+    page turn), paired when alike enough and near: within `reach` pages, likest first."""
+    gl = [gi for gi, ji, _ in pairs if ji is None and isinstance(gi, int)]
+    jl = [ji for gi, ji, _ in pairs if gi is None and isinstance(ji, int)]
+    cand = sorted(((sim[gi][ji], gi, ji) for gi in gl for ji in jl
+                   if sim[gi][ji] >= least and abs(goods[gi]["src_page"] - jsons[ji]["page"]) <= reach), reverse=True)
+    got, ug, uj = [], set(), set()
+    for sc, gi, ji in cand:
+        if gi not in ug and ji not in uj:
+            got.append((gi, ji, sc)); ug.add(gi); uj.add(ji)
+    keep = [t for t in pairs if not ((t[1] is None and t[0] in ug) or (t[0] is None and t[1] in uj))]
+    return keep + got
+
+
 def pick(xs, ix, good):
     if ix is None:
         return None
@@ -465,6 +480,7 @@ def compare(vol, chs):
                 js[ji]["source_text"] = ss[si]["text"]
     print(f"  {read}/{len(recs)} Good pages read by Flash, the rest by Kraken", file=sys.stderr)
     pairs, sim = pair(goods, jsons)
+    pairs = rescue(pairs, sim, goods, jsons)
     out, hg = [], []
 
     def in_source(g, j):

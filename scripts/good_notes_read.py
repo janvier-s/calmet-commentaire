@@ -116,11 +116,18 @@ def parse(text):
     return notes or None
 
 
-async def call(crop, sem):
+async def call(crop, sem, prompt=PROMPT):
+    """One agy Flash call: (answer, None) or (None, error). `crop`: the image it reads (None: text only)."""
+    if crop is None:
+        cwd = CACHE / "_empty"
+        cwd.mkdir(parents=True, exist_ok=True)
+        text = "Answer directly, with text only: do not use any tool, do not run commands, do not read or write files.\n\n" + prompt
+    else:
+        cwd, text = crop.parent, f"@{crop.name} {prompt}"
     args = ["agy", "--print-timeout", "300s", "--disable-slash-commands", "--output-format", "json",
-            "--model", MODEL, "-p", f"@{crop.name} {PROMPT}"]
+            "--model", MODEL, "-p", text]
     async with sem:
-        proc = await asyncio.create_subprocess_exec(*args, cwd=str(crop.parent), stdout=asyncio.subprocess.PIPE,
+        proc = await asyncio.create_subprocess_exec(*args, cwd=str(cwd), stdout=asyncio.subprocess.PIPE,
                                                     stderr=asyncio.subprocess.PIPE)
         try:
             out, err = await asyncio.wait_for(proc.communicate(), 360)
@@ -157,6 +164,8 @@ async def read_page(pdf, page, sem, tries=4, redo=False):
             im.resize((im.size[0] * 2, im.size[1] * 2), Image.LANCZOS).save(crop)
         raw, err = await call(crop, sem)
         notes = parse(raw) if raw is not None else None
+        if notes == [] and kraken and t < tries - 1:
+            notes = None  # NONE where Kraken saw a note's mark: Flash missed them, ask again (accepted at the last try)
         if notes is not None:
             d = {"version": VERSION, "model": MODEL, "pdf": pdf, "pdf_page": page, "top": top,
                  "top_from": "kraken" if kraken else "70%", "raw": raw, "notes": notes}

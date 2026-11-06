@@ -492,3 +492,9 @@ body:not(.no-ul) .f[data-name="french_commentary"] .it { text-decoration: underl
 
 #scan-view.good #ocr-layer { display: none; }
 #good-toggle.on { background: var(--save); color: #fff; }
+/* a Good_Calmet proposal: the crop's band around its boxes */
+.goodfig { margin: 4px 0 6px; }
+.goodband { position: relative; overflow: hidden; width: 100%; border: 1px solid var(--border); background: #fff; }
+.goodband img { position: absolute; left: 0; width: 100%; }
+.goodbox { position: absolute; border: 2px solid #e8a400; background: rgba(255, 200, 0, 0.18); pointer-events: none; }
+.goodtext { margin-top: 3px; white-space: pre-wrap; }

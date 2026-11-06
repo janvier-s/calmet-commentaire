@@ -4,7 +4,8 @@ A proposal is {id, item, title, why, flags, sure, options: [{label, changes: [{v
 new}]}]}: each change sets one field (path = [section, index, field]) that must still read `old`.
 They come from footnotes.py's held write-outs (docs/footnotes/<vol>.json) and ref_check.py's candidates
 (docs/ref_check.json), which become queue items of their own kinds, and from seam_join.py at a page
-turn (review_turns.py), computed from the pages as they are now.
+turn (review_turns.py), computed from the pages as they are now; and from good_proposals.py
+(docs/good_proposals/<vol>.json): the Good_Calmet edition's readings, with the Good crop and its boxes.
 """
 import hashlib
 import json
@@ -356,8 +357,31 @@ def _context_items(store, volumes, pages=None):
     return out
 
 
+def _good_items(store, volumes, pages=None):
+    """good_proposals.py's proposals (docs/good_proposals/<vol>.json) whose fields still read `old`; each
+    carries its Good_Calmet crop and boxes (proposal["good"]) for the card to show."""
+    out = []
+    for vol in volumes:
+        report = _read_json(store.docs / "good_proposals" / f"{vol}.json")
+        for p in (report or {}).get("proposals") or []:
+            c = p["options"][0]["changes"][0]
+            page = c["page"]
+            if pages is not None and page not in pages:
+                continue
+            section, i, name = c["path"]
+            entries = (store._load(vol, page) or {}).get(section) or []
+            if i >= len(entries) or entries[i].get(name) != c["old"]:
+                continue  # edited or written since
+            out.append({"id": p["item"], "book_dir": vol, "page": page, "kind": "good_variant", "optional": False,
+                        "msg": f"{c['old'][:70]} → {c['new'][:70]}",
+                        "where": {"section": section, "index": i, "field": name},
+                        "proposal": {k: p[k] for k in ("id", "item", "title", "why", "flags", "sure", "options", "good")
+                                     if k in p} | {"good_text": p.get("good_text")}})
+    return sorted(out, key=lambda it: it["page"])
+
+
 ITALIC_KINDS = ("ocr_italic",)
-GENERATED_KINDS = ("footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned")
+GENERATED_KINDS = ("good_variant", "footnote_writeout", "ref_candidate", "ref_context", "ref_unsure", "ocr_gap", "ocr_italic", "ocr_italic_word", "ocr_both", "ocr_word", "ocr_unscanned")
 
 
 class _Snapshot:
@@ -387,7 +411,7 @@ def generated_items(store, volumes=None, pages=None):
         out += _footnote_items(store, vol, pset)
     vset = set(volumes)
     return (out + _ref_items(store, vset, pset) + _context_items(store, vset, pset) + _gap_items(store, vset, pset) + _italic_items(store, vset, pset)
-            + _differ_items(store, vset, pset) + _unscanned_items(store, vset, pset))
+            + _differ_items(store, vset, pset) + _unscanned_items(store, vset, pset) + _good_items(store, vset, pset))
 
 
 
