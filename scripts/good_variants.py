@@ -244,7 +244,9 @@ def modern(text):
         return None
 
 
-def variants(vol, chs, workers=8):
+def align(vol, chs, workers=8):
+    """The chapters' alignment: the JSON's words (`jt`), the Good words in Good's order linked to them
+    (`stream`), the pages, their JSON (`data`), the source scans' views (`src`, `src_ok`), the linked JSON words."""
     pages = chapter_pages(vol, chs)
     if not pages:
         sys.exit(f"{vol}: no page holds chapter(s) {sorted(chs)}")
@@ -292,6 +294,14 @@ def variants(vol, chs, workers=8):
         if f and len(t["t"]) == 1 and f[max(0, t["a"] - 1):t["a"]] == "(":
             linked.add(j)
     linked |= {j for j, t in enumerate(jt) if t.get("seamed")}
+    return {"vol": vol, "pages": pages, "data": data, "jt": jt, "stream": stream, "labelled": labelled,
+            "src": src, "src_ok": src_ok, "linked": linked}
+
+
+def variants(vol, chs, workers=8, ctx=None):
+    ctx = ctx or align(vol, chs, workers)
+    pages, data, jt, stream = ctx["pages"], ctx["data"], ctx["jt"], ctx["stream"]
+    labelled, src, src_ok, linked = ctx["labelled"], ctx["src"], ctx["src_ok"], ctx["linked"]
 
     pieces, claimed = [], set()
     for gaps, after in runs_of(stream):
