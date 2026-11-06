@@ -151,3 +151,69 @@ def test_words_linked_outside_units_dropped():
     gu.project(units, ctx_of([("alpha", A, None), ("Hebr.", "footnotes/0/text", None), ("Lux", "verses/0/latin", None),
                               ("gamma", A, None), ("delta", B, None)]))
     assert good_of(units, "commentary:1:6:0") == "alpha gamma"
+
+
+def rec(**kw):
+    r = {"id": "x", "kind": "insert", "origin": "only_good", "page": 5, "path": A, "old": "", "good_raw": "",
+         "good_modern": "", "words": 0, "old_words": 0, "confidence": "high", "good": []}
+    r.update(kw)
+    return r
+
+
+def test_classify_rules():
+    assert gu.classify(rec(confidence="low", words=5)) == "noise"
+    assert gu.classify(rec(split=True, words=1)) == "noise"
+    assert gu.classify(rec(kind="moved", words=12)) == "moved"
+    assert gu.classify(rec(kind="replace", old="vos", good_raw="vous", good_modern="vous", words=1, old_words=1)) == "cosmetic"
+    long_old = "les anciens Juifs croyaient que le serpent avait des pieds"
+    assert gu.classify(rec(kind="replace", old=long_old, good_modern=long_old + "s", good_raw=long_old + "s",
+                           words=10, old_words=10)) == "cosmetic"
+    new = "Philon dit que ce livre fut écrit par Adam lui-même avant le déluge"
+    assert gu.classify(rec(kind="insert", good_raw=new, good_modern=new, words=12)) == "substantive"
+
+
+def test_status_order():
+    u = units_ab()[0]
+    u.update(good="alpha", good_words=1, changes=[dict(rec(), **{"class": "noise"}), dict(rec(), **{"class": "cosmetic"})])
+    assert gu.status(u, {5}) == "cosmetic"
+    u["changes"].append(dict(rec(), **{"class": "substantive"}))
+    assert gu.status(u, {5}) == "substantive"
+    u["changes"] = []
+    assert gu.status(u, {5}) == "identical"
+
+
+def test_uncovered_not_only_old():
+    u = units_ab()[0]
+    u.update(good="", good_words=0, changes=[])
+    assert gu.status(u, {9}) == "uncovered"
+    assert gu.status(u, {5}) == "only_old"
+
+
+def test_partial_cover_is_paired():
+    data = {10: page([note(1, 1, "Il a créé le monde", lq="In principio")]), 11: page([note(1, None, "est créé.")])}
+    u = gu.old_units(data)[0]
+    u.update(good="In principio créa", good_words=3, changes=[])
+    assert gu.status(u, {10}) == "identical"
+    assert gu.status({"uid": "good:1:7:0", "parts": [], "changes": []}, {10}) == "only_good"
+
+
+def test_moved_links_both_units():
+    units = units_ab()
+    moved = "les eaux supérieures sont séparées des inférieures par le firmament"
+    units[0].update(good="alpha", good_words=1)
+    units[1].update(good="delta " + moved, good_words=11)
+    gu.attach(units, [rec(kind="moved", path=A, old=moved, old_words=10, words=0)], covered={5})
+    c = units[0]["changes"][0]
+    assert c["class"] == "moved" and c["moved_with"] == "commentary:1:8:0"
+    assert c["gap_in_normalized"] is False
+
+
+def test_footnote_record_unattached():
+    units = units_ab()
+    for u in units:
+        u.update(good="alpha a b c", good_words=4)
+    summary = gu.attach(units, [rec(path="footnotes/0/text", words=3), rec(origin="both_scans", words=3, good_raw="a b c")],
+                        covered={5})
+    assert summary["unattached"] == 1
+    assert units[0]["changes"][0]["gap_in_normalized"] is True
+    assert units[0]["status"] == "substantive"

@@ -174,3 +174,73 @@ def project(units, ctx):
     for u in units:
         _fill(u, got.get(u["uid"], []))
     return new
+
+
+COSMETIC_SIM = 0.8
+
+
+def classify(r):
+    """noise (a misreading, a word cut at a line's end), moved, cosmetic (a word or two, or nearly the
+    same words once modernized), substantive."""
+    import scan_ocr
+    if r.get("confidence") == "low" or r.get("split"):
+        return "noise"
+    if r["kind"] == "moved":
+        return "moved"
+    if max(r.get("words", 0), r.get("old_words", 0)) <= 2:
+        return "cosmetic"
+    good = r.get("good_modern") or r.get("good_raw") or ""
+    if r.get("old") and good and scan_ocr.similar(r["old"], good) >= COSMETIC_SIM:
+        return "cosmetic"
+    return "substantive"
+
+
+def status(u, covered):
+    """only_good, uncovered (no page of it has a Good match: a missing scan, not a cut), only_old (Good has
+    no word of it), substantive, cosmetic, identical."""
+    if u["uid"].startswith("good:"):
+        return "only_good"
+    if not any(p["page"] in covered for p in u["parts"]):
+        return "uncovered"
+    if not u.get("good_words"):
+        return "only_old"
+    classes = {c["class"] for c in u.get("changes") or []}
+    if classes & {"substantive", "moved"}:
+        return "substantive"
+    if "cosmetic" in classes:
+        return "cosmetic"
+    return "identical"
+
+
+def _keys(text):
+    import scan_ocr
+    return [scan_ocr.key(t) for t in scan_ocr.OCR_TOKEN.findall(text or "")]
+
+
+def attach(units, records, covered):
+    """Put good_variants' records on the units holding their field (each with its `class`,
+    `gap_in_normalized`: both scans have Good's words, and `moved_with`: the unit the moved words come from or
+    go to) and set each unit's `status`. Returns {"unattached": records on no unit (footnotes, Latin)}."""
+    import good_variants as gv
+    idx = unit_index(units)
+    by_uid = {u["uid"]: u for u in units}
+    for u in units:
+        u["changes"] = []
+    unattached = 0
+    for r in records:
+        where = [(r["page"], r["path"])] + [tuple((int(s.split(":", 1)[0]), s.split(":", 1)[1])) for s in r.get("spans", [])]
+        uid = next((idx[w] for w in where if w in idx), None)
+        if uid is None:
+            unattached += 1
+            continue
+        c = dict(r, **{"class": classify(r), "gap_in_normalized": r.get("origin") == "both_scans", "moved_with": None})
+        if c["class"] == "moved":
+            mine = _keys(r.get("old") or r.get("good_raw"))
+            side = "good" if r.get("old") else "old"  # the words left here are found in another unit's Good text
+            best = max(((gv._share(mine, gv._grams(_keys(o.get(side)))), o["uid"]) for o in units if o["uid"] != uid),
+                       default=(0, None))
+            c["moved_with"] = best[1] if best[0] >= 0.5 else None
+        by_uid[uid]["changes"].append(c)
+    for u in units:
+        u["status"] = status(u, covered)
+    return {"unattached": unattached}
