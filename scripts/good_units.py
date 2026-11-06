@@ -90,3 +90,87 @@ def old_units(data):
 def unit_index(units):
     """(page, path) -> the uid of the unit holding that field."""
     return {(p["page"], p["path"]): u["uid"] for u in units for p in u["parts"]}
+
+
+def _number(t):
+    t = t.strip(".,;:")
+    if t.isdigit():
+        return int(t)
+    import good_variants
+    return good_variants.number(t)
+
+
+def lemma_start(words):
+    """Where a lemma only Good has opens in `words` (texts): a verse mark (ŷ. 7., V. 7) then, within 2
+    words, two words in capitals. (index, verse) or None."""
+    for i in range(len(words) - 1):
+        if words[i].strip(".").lower() not in ("v", "y", "ŷ") or _number(words[i + 1]) is None:
+            continue
+        rest = [w.strip(".,;:") for w in words[i + 2:i + 5]]
+        if any(a.isupper() and b.isupper() and len(a) >= 2 and len(b) >= 2 for a, b in zip(rest, rest[1:])):
+            return i, _number(words[i + 1])
+    return None
+
+
+def _where(ws):
+    where = collections.OrderedDict()
+    for w in ws:
+        g = where.setdefault((w["pdf"], w["pdf_page"]), {
+            "pdf": w["pdf"], "pdf_page": w["pdf_page"], "printed": w.get("printed"),
+            "crop": f"data/good_calmet/{w['pdf']}/page_{w['pdf_page']:04d}.png", "boxes": []})
+        g["boxes"] += w["boxes"]
+    return list(where.values())
+
+
+def _fill(u, ws):
+    u["good"] = " ".join(w["t"] for w in ws)
+    u["good_where"] = _where(ws)
+    u["good_words"] = len(ws)
+
+
+def project(units, ctx):
+    """Give each unit Good's words for it (`good`, `good_where`, `good_words`). A Good word linked to a JSON
+    word goes to that word's unit; unlinked words between two words of one unit go to it, between two
+    units to the earlier one, except from a lemma Good alone has (lemma_start): those become a unit of their
+    own, returned (uid good:<chapter>:<verse>:<n>, `after`: the unit it follows)."""
+    idx = unit_index(units)
+    by_uid = {u["uid"]: u for u in units}
+    jt = ctx["jt"]
+    # words linked to a field no unit holds (footnotes, the verses' Latin) belong to no unit
+    ws = [w for w in ctx["stream"] if w["s"] != "skip"
+          and (w.get("j") is None or (jt[w["j"]]["page"], jt[w["j"]]["path"]) in idx)]
+    owner = [idx.get((jt[w["j"]]["page"], jt[w["j"]]["path"])) if w.get("j") is not None else None for w in ws]
+    got = collections.defaultdict(list)
+    new, count = [], collections.Counter()
+    i = 0
+    while i < len(ws):
+        if owner[i] is not None:
+            got[owner[i]].append(ws[i])
+            i += 1
+            continue
+        k = i
+        while k < len(ws) and owner[k] is None:
+            k += 1
+        prev = next((owner[m] for m in range(i - 1, -1, -1) if owner[m]), None)
+        nxt = owner[k] if k < len(ws) else None
+        run = ws[i:k]
+        start = lemma_start([w["t"] for w in run]) if prev != nxt else None
+        host = prev or nxt
+        if start:
+            s, verse = start
+            if host:
+                got[host] += run[:s]
+            chapter = by_uid[host]["chapter"] if host else None
+            key = (str(chapter), str(verse))
+            u = {"uid": f"good:{chapter}:{verse}:{count[key]}", "type": "commentary", "chapter": chapter,
+                 "verse": verse, "lemma": " ".join(w["t"] for w in run[s + 2:s + 8]), "parts": [], "old": "",
+                 "notes": [], "after": host}
+            count[key] += 1
+            _fill(u, run[s:])
+            new.append(u)
+        elif host:
+            got[host] += run
+        i = k
+    for u in units:
+        _fill(u, got.get(u["uid"], []))
+    return new

@@ -75,3 +75,79 @@ def test_uids_unique_when_verse_ref_types_mix():
     data = {5: page([note(3, 14, "Un.", lq="AIT"), note(3, "14", "Deux.", lq="SUPER PECTUS")])}
     uids = [u["uid"] for u in gu.old_units(data)]
     assert uids == ["commentary:3:14:0", "commentary:3:14:1"]
+
+
+# Good's side: a hand-made alignment of two notes on page 5 (A: commentary/0, B: commentary/1)
+A, B = "commentary/0/french_commentary", "commentary/1/french_commentary"
+
+
+def units_ab():
+    return gu.old_units({5: page([note(1, 6, "alpha beta gamma", lq="FIAT"), note(1, 8, "delta epsilon", lq="VIDIT")])})
+
+
+def ctx_of(words):
+    """words: (text, path or None, s) in Good's order; a path links the word to a JSON word of that field."""
+    jt, stream = [], []
+    for t, path, s in words:
+        j = None
+        if path:
+            j = len(jt)
+            jt.append({"t": t, "k": t.lower(), "page": 5, "path": path, "a": 0, "b": len(t)})
+        stream.append({"t": t, "k": t.lower(), "s": s or ("match" if path else "gap"), "j": j, "pdf": "P",
+                       "pdf_page": 9, "printed": 12, "boxes": [[0, 0, 1, 1]], "wc": 0.9})
+    return {"jt": jt, "stream": stream}
+
+
+def good_of(units, uid):
+    return next(u for u in units if u["uid"] == uid)["good"]
+
+
+def test_match_words_go_to_their_unit():
+    units = units_ab()
+    gu.project(units, ctx_of([("alpha", A, None), ("gamma", A, None), ("delta", B, None)]))
+    assert good_of(units, "commentary:1:6:0") == "alpha gamma"
+    assert good_of(units, "commentary:1:8:0") == "delta"
+    u = units[0]
+    assert u["good_words"] == 2
+    assert u["good_where"] == [{"pdf": "P", "pdf_page": 9, "printed": 12, "crop": "data/good_calmet/P/page_0009.png",
+                                "boxes": [[0, 0, 1, 1], [0, 0, 1, 1]]}]
+
+
+def test_gap_inside_unit_stays():
+    units = units_ab()
+    gu.project(units, ctx_of([("alpha", A, None), ("nouveau", None, None), ("gamma", A, None), ("delta", B, None)]))
+    assert good_of(units, "commentary:1:6:0") == "alpha nouveau gamma"
+
+
+def test_gap_between_units_goes_to_earlier():
+    units = units_ab()
+    gu.project(units, ctx_of([("alpha", A, None), ("ajout", None, None), ("delta", B, None)]))
+    assert good_of(units, "commentary:1:6:0") == "alpha ajout"
+    assert good_of(units, "commentary:1:8:0") == "delta"
+
+
+def test_lemma_start_makes_good_only_unit():
+    units = units_ab()
+    new = gu.project(units, ctx_of([("alpha", A, None), ("fin", None, None), ("ŷ.", None, None), ("7.", None, None),
+                                    ("ET", None, None), ("DIXIT", None, None), ("DEUS", None, None),
+                                    ("texte", None, None), ("delta", B, None)]))
+    assert good_of(units, "commentary:1:6:0") == "alpha fin"
+    assert len(new) == 1
+    n = new[0]
+    assert n["uid"] == "good:1:7:0"
+    assert n["good"].startswith("ŷ. 7. ET DIXIT")
+    assert (n["type"], n["chapter"], n["verse"], n["parts"], n["old"], n["after"]) == \
+        ("commentary", 1, 7, [], "", "commentary:1:6:0")
+
+
+def test_skip_words_ignored():
+    units = units_ab()
+    gu.project(units, ctx_of([("alpha", A, None), ("(b)", None, "skip"), ("gamma", A, None), ("delta", B, None)]))
+    assert all("(b)" not in u["good"] for u in units)
+
+
+def test_words_linked_outside_units_dropped():
+    units = units_ab()
+    gu.project(units, ctx_of([("alpha", A, None), ("Hebr.", "footnotes/0/text", None), ("Lux", "verses/0/latin", None),
+                              ("gamma", A, None), ("delta", B, None)]))
+    assert good_of(units, "commentary:1:6:0") == "alpha gamma"
