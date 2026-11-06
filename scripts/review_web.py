@@ -745,8 +745,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 root = (store.data / "good_calmet").resolve()
                 if len(parts) != 4 or not parts[3].isdigit():
                     return self._send(404, b"not found", "text/plain")
-                crop = (root / parts[2] / f"page_{int(parts[3]):04d}.png").resolve()
-                ok = crop.parent.parent == root and crop.exists()
+                crop = store.data / "good_calmet" / parts[2] / f"page_{int(parts[3]):04d}.png"
+                ok = crop.resolve().parent.parent == root and crop.exists()  # no way out of good_calmet/
                 return self._file(store.good_shown(crop) if ok else None)
             if path.startswith("/scan/"):
                 parts = path.split("/")
