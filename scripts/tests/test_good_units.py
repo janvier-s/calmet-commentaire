@@ -232,3 +232,36 @@ def test_build_merges_chapters(tmp_path, monkeypatch):
     assert [u["uid"] for u in res["units"]] == ["verse:1:1:0", "verse:2:1:0", "verse:3:1:0"]
     assert [u["v"] for u in res["units"]] == [2, 2, 1]  # chapters 1-2 as written by the first run
     assert res["summary"] == {"identical": 3, "unattached": 0}
+
+
+def test_unlinked_heading_goes_to_its_unit():
+    units = gu.old_units({5: page([note(1, 31, "alpha beta", lq="VIDIT")], chapter_summary="Création du monde, repos de Dieu.",
+                                  chapter_number=2),
+                          6: page([note(2, 1, "delta epsilon", lq="IGITUR")])})
+    ctx = ctx_of([("alpha", A, None), ("CHAPITRE", None, None), ("II", None, None), ("Création", None, None),
+                  ("du", None, None), ("monde", None, None), ("repos", None, None), ("de", None, None),
+                  ("Dieu", None, None), ("Ajouté", None, None)])
+    ctx["jt"].append({"t": "delta", "k": "delta", "page": 6, "path": A, "a": 0, "b": 5})
+    ctx["stream"].append(dict(ctx["stream"][0], t="delta", k="delta", j=len(ctx["jt"]) - 1))
+    for w in ctx["stream"]:
+        w["src_page"] = 5
+    gu.project(units, ctx)
+    by = {u["uid"]: u for u in units}
+    assert by["summary:2:None:0"]["good"] == "CHAPITRE II Création du monde repos de Dieu"
+    assert by["commentary:1:31:0"]["good"] == "alpha"
+    assert by["commentary:2:1:0"]["good"] == "Ajouté delta"
+
+
+def test_unlinked_verse_read_inside_another():
+    V1, V2 = "verses/0/french", "verses/1/french"
+    units = gu.old_units({5: page(verses=[verse(49, 1, "Jacob appela ses enfants"),
+                                          verse(49, 2, "Assemblez-vous et écoutez enfants de Jacob")])})
+    ctx = ctx_of([("Jacob", V1, None), ("appela", V1, None), ("Assemblez-vous", None, None), ("et", None, None),
+                  ("écoutez", None, None), ("enfants", None, None), ("de", None, None), ("Jacob", None, None),
+                  ("ses", V1, None), ("enfants", V1, None)])
+    for w in ctx["stream"]:
+        w["src_page"] = 5
+    gu.project(units, ctx)
+    by = {u["uid"]: u for u in units}
+    assert by["verse:49:2:0"]["good"] == "Assemblez-vous et écoutez enfants de Jacob"
+    assert by["verse:49:1:0"]["good"] == "Jacob appela ses enfants"

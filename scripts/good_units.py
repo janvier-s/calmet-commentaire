@@ -131,6 +131,35 @@ def _fill(u, ws):
     u["good_words"] = len(ws)
 
 
+HEAD_SIM = 0.6
+SHORT_UNIT = 60  # words: a longer unit with no linked word is left alone
+HEADING_WORD = re.compile(r"(?i)chap\w*|[ivxlc]+|\d+")
+
+
+def _head_window(run, heads, got):
+    """A short unit no Good word is linked to (`heads`: page -> units), not found yet, read in `run`
+    (unlinked words) on its page or one either side: (uid, start, end) of its words ("CHAPITRE III"
+    before a heading included), or None."""
+    import scan_ocr
+    pages = {w.get("src_page") for w in run} - {None}
+    cands = [u for p in pages for q in (p - 1, p, p + 1) for u in heads.get(q, []) if not got.get(u["uid"])]
+    keys = [scan_ocr.key(w["t"]) for w in run]
+    best = None
+    for u in cands:
+        target = " ".join(scan_ocr.key(t) for t in scan_ocr.OCR_TOKEN.findall(u["old"]))
+        n = len(target.split())
+        for s in range(0, max(1, len(run) - n + 1)):
+            sim = scan_ocr.similar(" ".join(keys[s:s + n]), target)
+            if sim >= HEAD_SIM and (best is None or sim > best[0]):
+                best = (sim, u["uid"], s, min(len(run), s + n))
+    if not best:
+        return None
+    _, uid, s, e = best
+    while s > 0 and HEADING_WORD.fullmatch(run[s - 1]["t"].strip(".")):
+        s -= 1
+    return uid, s, e
+
+
 def project(units, ctx):
     """Give each unit Good's words for it (`good`, `good_where`, `good_words`). A Good word linked to a JSON
     word goes to that word's unit; unlinked words between two words of one unit go to it, between two
@@ -144,6 +173,13 @@ def project(units, ctx):
           and (w.get("j") is None or (jt[w["j"]]["page"], jt[w["j"]]["path"]) in idx)]
     owner = [idx.get((jt[w["j"]]["page"], jt[w["j"]]["path"])) if w.get("j") is not None else None for w in ws]
     got = collections.defaultdict(list)
+    # page -> its short units no Good word is linked to (a chapter's heading, a verse Kraken read inside
+    # another): looked for among the unlinked words
+    linked_uids = {idx[(jt[w["j"]]["page"], jt[w["j"]]["path"])] for w in ws if w.get("j") is not None}
+    heads = collections.defaultdict(list)
+    for u in units:
+        if u["parts"] and u["uid"] not in linked_uids and len(u["old"].split()) <= SHORT_UNIT:
+            heads[u["parts"][0]["page"]].append(u)
     new, count = [], collections.Counter()
     i = 0
     while i < len(ws):
@@ -157,6 +193,16 @@ def project(units, ctx):
         prev = next((owner[m] for m in range(i - 1, -1, -1) if owner[m]), None)
         nxt = owner[k] if k < len(ws) else None
         run = ws[i:k]
+        head = _head_window(run, heads, got)
+        if head:
+            uid, s, e = head
+            if prev or nxt:
+                got[prev or nxt] += run[:s]
+            got[uid] += run[s:e]
+            if nxt or prev:
+                got[nxt or prev] += run[e:]  # after a chapter's heading: the new chapter's text
+            i = k
+            continue
         start = lemma_start([w["t"] for w in run]) if prev != nxt else None
         host = prev or nxt
         if start:
