@@ -371,6 +371,7 @@ def compare(vol, chs):
             goods.append(n)
     jsons = json_notes(vol, pages)
     # the source scan's notes, page by page, paired with the JSON's of that page: the third witness
+    src_notes = {}
     for p in pages:
         o = scan_ocr.ocr(vol, p, run=False)
         js = [j for j in jsons if j["page"] == p]
@@ -383,6 +384,8 @@ def compare(vol, chs):
             n.update(src_page=p, nums=numbers(n["text"]), aw=abbr_words(n["text"]), script=script(n["text"]))
             n["junk"] = junk_share(n, lex)
         sp, ssim = pair(ss, js)
+        paired = {si for si, ji, _ in sp if si is not None and ji is not None and not isinstance(si, tuple)}
+        src_notes[p] = ([n for i, n in enumerate(ss) if i not in paired], agy_notes(gr.src(vol), p, o) is not None)
         for si, ji, _ in sp:
             if isinstance(ji, tuple) or isinstance(si, tuple):
                 continue
@@ -391,6 +394,22 @@ def compare(vol, chs):
     print(f"  {read}/{len(recs)} Good pages read by Flash, the rest by Kraken", file=sys.stderr)
     pairs, sim = pair(goods, jsons)
     out, hg = [], []
+
+    def in_source(g, j):
+        """Where an added or dropped note comes from. Added: the source holds a note normalized lacks (one
+        the source-JSON pairing left over) like it, normalized lost it (normalization), else the edition
+        added it. Dropped: the source holds the JSON note (paired), the edition dropped it, else normalized
+        has a note the source lacks (normalization, or a pairing slip)."""
+        p = g["src_page"] if g else j["page"]
+        if p not in src_notes:
+            return {"origin": "no_source"}
+        reader = "flash" if src_notes[p][1] else "kraken"
+        if j:
+            return {"origin": "edition" if j.get("source_text") else "normalization", "source_reader": reader}
+        left = [n for q in (p - 1, p, p + 1) for n in src_notes.get(q, ([], False))[0]]
+        best = max((likeness(g, n) for n in left), default=0)
+        return {"origin": "normalization" if best >= 0.5 else "edition", "source_likeness": round(best, 2),
+                "source_reader": "flash" if src_notes[p][1] else "kraken"}
 
     def where(g):
         return {"pdf": g["pdf"], "pdf_page": g["page"], "printed": g["printed"],
@@ -416,9 +435,9 @@ def compare(vol, chs):
                        "script": [s for s, v in j["script"].items() if v], "good_raw": g["text"], **where(g)})
         if g and not j:
             if len(g["text"]) >= 3:
-                rec("note_added", g)
+                rec("note_added", g, **in_source(g, None))
         elif j and not g:
-            rec("note_dropped", j=j)
+            rec("note_dropped", j=j, **in_source(None, j))
         else:
             gr_ = readings(g["text"])  # Flash, like Kraken, reads II as 11: an I/1 swap is no difference
             if (g["nums"] or j["nums"]) and (not same_numbers(gr_, j["nums"])
