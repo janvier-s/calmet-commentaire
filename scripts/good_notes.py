@@ -22,6 +22,7 @@ reading of the cleaner Good scan should look.
 """
 import collections
 import difflib
+import functools
 import hashlib
 import json
 import re
@@ -261,10 +262,15 @@ def abbr_words(text, lex=None):
     return ws
 
 
+@functools.lru_cache(maxsize=None)
 def _same_word(x, y):
-    n = next((i for i, (a, b) in enumerate(zip(x, y)) if a != b), min(len(x), len(y)))
-    return (x == y or (min(len(x), len(y)) >= 3 and n == min(len(x), len(y))) or n >= 4
-            or (min(len(x), len(y)) >= 5 and difflib.SequenceMatcher(None, x, y).ratio() >= 0.8))
+    """One the start of the other, or a long start in common (Celsum, Celse), or near alike (Capell., Cappel.)."""
+    lo = min(len(x), len(y))
+    n = next((i for i, (a, b) in enumerate(zip(x, y)) if a != b), lo)
+    if x == y or (lo >= 3 and n == lo) or n >= 4:
+        return True
+    # the ratio is at most 2*lo/(len(x)+len(y)): skip difflib when even that falls short
+    return lo >= 5 and 2 * lo >= 0.8 * (len(x) + len(y)) and difflib.SequenceMatcher(None, x, y).ratio() >= 0.8
 
 
 def added_words(gw, sw):
@@ -278,11 +284,7 @@ def _abbr_share(gw, jw):
     if not gw or not jw:
         return None
     short, long_ = (gw, jw) if len(gw) <= len(jw) else (jw, gw)
-    def same(x, y):  # one the start of the other, or a long start in common (Celsum, Celse)
-        n = next((i for i, (a, b) in enumerate(zip(x, y)) if a != b), min(len(x), len(y)))
-        return (x == y or (min(len(x), len(y)) >= 3 and n == min(len(x), len(y))) or n >= 4
-                or (min(len(x), len(y)) >= 5 and difflib.SequenceMatcher(None, x, y).ratio() >= 0.8))  # Capell., Cappel.
-    hit = sum(any(same(x, y) for y in long_) for x in short)
+    hit = sum(any(_same_word(x, y) for y in long_) for x in short)
     return hit / len(short)
 
 
@@ -465,6 +467,7 @@ def compare(vol, chs):
         if o is None or not js:
             continue
         ss = agy_notes(gr.src(vol), p, o)
+        by_flash = ss is not None
         if ss is None:
             ss = page_notes(vol, p, o)
         for n in ss:
@@ -472,7 +475,7 @@ def compare(vol, chs):
             n["junk"] = junk_share(n, lex)
         sp, ssim = pair(ss, js)
         paired = {si for si, ji, _ in sp if si is not None and ji is not None and not isinstance(si, tuple)}
-        src_notes[p] = ([n for i, n in enumerate(ss) if i not in paired], agy_notes(gr.src(vol), p, o) is not None)
+        src_notes[p] = ([n for i, n in enumerate(ss) if i not in paired], by_flash)
         for si, ji, _ in sp:
             if isinstance(ji, tuple) or isinstance(si, tuple):
                 continue
