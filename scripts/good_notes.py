@@ -144,6 +144,18 @@ def roman_here(text, m):
     return bool(w and gn_plain(w.group(1)) in bible_refs.ABBR)
 
 
+def is_siglum(text, m):
+    """Whether this 70 is the Septuagint's siglum (70. Ἐπὶ..., 70. Targ.): a 70 followed by its dot, not
+    after an abbreviation or a book's name (c. 70., Psal. 70.)."""
+    before = text[:m.start()]
+    if re.search(r"\b(?:des|les|aux|ces)\s*$", before, re.I):
+        return True  # la leçon des 70
+    if not re.match(r"\s*\.", text[m.end():]):
+        return False
+    w = re.search(r"([^\W\d_]+)\.?\s*$", before)
+    return not (AFTER_ABBR.search(before) or (w and gn_plain(w.group(1)) in bible_refs.ABBR))
+
+
 def numbers(text):
     """The numbers in order, arabic or roman; a roman number misread with 1 for I (111, 1v, x1) set right."""
     toks = []
@@ -153,6 +165,8 @@ def numbers(text):
             continue
         if not re.search(r"\d", t) and not t.isupper() and not roman_here(text, m):
             continue  # a lowercase roman number only after an abbreviation (lib. v., l. xi): not "ci", "vi"
+        if t == "70" and is_siglum(text, m):
+            continue  # 70. : the Septuagint, not a number
         if t == "111":
             t = "I" * len(t)  # l. 111. : III
         elif re.search(r"\d", t) and re.fullmatch(r"[\dIil]+", t) and sum(c.isdigit() for c in t) >= len(t) / 2:
@@ -191,6 +205,8 @@ def readings(text):
             continue
         if not re.search(r"\d", t) and not t.isupper() and not roman_here(text, m):
             continue
+        if t == "70" and is_siglum(text, m):
+            continue  # 70. : the Septuagint, not a number
         vals = set()
         for u in {t, t.replace("1", "I"), re.sub(r"[Iil]", "1", t)}:
             n = gv.number(u)
@@ -245,6 +261,17 @@ def abbr_words(text, lex=None):
     return ws
 
 
+def _same_word(x, y):
+    n = next((i for i, (a, b) in enumerate(zip(x, y)) if a != b), min(len(x), len(y)))
+    return (x == y or (min(len(x), len(y)) >= 3 and n == min(len(x), len(y))) or n >= 4
+            or (min(len(x), len(y)) >= 5 and difflib.SequenceMatcher(None, x, y).ratio() >= 0.8))
+
+
+def added_words(gw, sw):
+    """Good's words the source note has none like (both in the scans' language)."""
+    return [x for x in gw if not any(_same_word(x, y) for y in sw)]
+
+
 def _abbr_share(gw, jw):
     """The share of the shorter list's words the other holds, one word the start of the other (Fag. for
     Fagius, Hesiod. for Hésiode)."""
@@ -276,7 +303,17 @@ def script_letters(text):
     return t.translate(str.maketrans("ךםןףץς", "כמנפצσ"))
 
 
+def unabbreviate(g, j):
+    """Good's Hebrew or Greek word cut short with a dot (באח.) given the JSON word it starts (באחרית)."""
+    jw = re.findall(r"[\u05d0-\u05ea\u0370-\u03ff\u1f00-\u1fff][\u0591-\u05c7\u05d0-\u05ea\u0300-\u036f\u0370-\u03ff\u1f00-\u1fff]*", j)
+    def full(m):
+        k = script_letters(m.group(1))
+        return next((w for w in jw if script_letters(w).startswith(k) and len(script_letters(w)) > len(k)), m.group(0))
+    return re.sub(r"([\u05d0-\u05ea\u0370-\u03ff\u1f00-\u1fff][\u0591-\u05c7\u05d0-\u05ea\u0300-\u036f\u0370-\u03ff\u1f00-\u1fff]*)\.", full, g)
+
+
 def script_like(a, b):
+    a = unabbreviate(a, b)
     x, y = script_letters(a), script_letters(b)
     if len(x) < 2 or len(y) < 2:
         return None
@@ -494,6 +531,11 @@ def compare(vol, chs):
             elif len(j["lw"]) >= 8 and len(g["lw"]) >= 8 and len(g["lw"] & j["lw"]) < 0.5 * min(len(g["lw"]), len(j["lw"])) \
                     and (_abbr_share(g["aw"], j["aw"]) or 0) < 0.5:  # not normalized's French for the scan's Latin
                 rec("text_changed", g, j, likeness=round(s, 2))
+            st = j.get("source_text")
+            if g.get("agy") and st:
+                extra = added_words(g["aw"], abbr_words(st))
+                if len(extra) >= 4 and len(extra) >= 0.3 * len(g["aw"]):
+                    rec("text_added", g, j, words=extra, origin="only_good", source_raw=st)
             if g.get("agy"):
                 gs, js = g["script"], j["script"]
                 sl = script_like(g["text"], j["text"])
