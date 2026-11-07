@@ -1023,10 +1023,22 @@ def italics(o, data, res=None):
     res = res or align(o, data)["words"]
     fields = dict(_fields(data))
     marks = {path: {i for a, b in italic_runs(s)[0] for i in range(a, b)} for path, s in fields.items()}
+    mid = gutter(o)
+
+    def across(w):
+        """A verse's word read in the other column (the Latin's Israël, italic, paired with the French's
+        Israël, the same word): its slant is the other column's, it neither votes nor is taken in."""
+        path = w.get("path") or ""
+        if not path.startswith("verses/") or not w["src"]:
+            return False
+        li, wi = w["src"][0]
+        right = o["lines"][li]["words"][wi]["box"][0] >= mid
+        return path.endswith("/french") and not right or path.endswith("/latin") and right
+
     votes = []  # (index in res, the scan's italic?, the JSON's italic?, slant)
     for i, w in enumerate(res):
         path = w.get("path")
-        if not path or w["s"] == "skip" or path.rsplit("/", 1)[-1] not in ITALIC_CHECKED:
+        if not path or w["s"] == "skip" or path.rsplit("/", 1)[-1] not in ITALIC_CHECKED or across(w):
             continue
         if any(re.fullmatch(r"\(\w\)\W*", o["lines"][li]["words"][wi]["t"]) for li, wi in w["src"]):
             continue  # a note's letter
@@ -1066,7 +1078,7 @@ def italics(o, data, res=None):
             if not 0 <= m < len(res) or m in voters:
                 break
             w = res[m]
-            if w.get("path") != path or w["s"] == "skip" or (w["a"] in marks[path]) != js:
+            if w.get("path") != path or w["s"] == "skip" or (w["a"] in marks[path]) != js or across(w):
                 break
             f = fields[path]
             if numeral(w["t"]) and not any(c.isalpha() for c in f[w["a"]:w["b"]]):
@@ -1090,7 +1102,7 @@ def italics(o, data, res=None):
         if m < 0:
             return n
         w, path = res[m], res[n]["path"]
-        if w.get("path") != path or w["s"] == "skip" or w["a"] in marks[path]:
+        if w.get("path") != path or w["s"] == "skip" or w["a"] in marks[path] or across(w):
             return n
         f = fields[path]
         word = f[w["a"]:w["b"]]

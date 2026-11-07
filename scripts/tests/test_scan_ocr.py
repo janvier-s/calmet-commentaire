@@ -113,6 +113,16 @@ def test_italics_the_scan_has_and_the_text_lacks_and_the_other_way():
     assert r[1]["new"] == "Il vint dans Aïalon, puis il dit : _Je suis,_ dit-il à tous ici_, votre Dieu_"
 
 
+def test_no_italics_from_the_latin_column_onto_the_french_verse():
+    # the Latin's Israël, italic, paired with the French's (the same word may cross the gutter)
+    right = {"box": [800, 340, 300, 30], "words": [{"t": "marcha", "box": [800, 340, 120, 30], "wc": .99, "sl": 0},
+                                                   {"t": "contre", "box": [940, 340, 120, 30], "wc": .99, "sl": 0}]}
+    o = ocr(line(300, "Quod", "audissent", "filii", "Israël.", sl=[15, 16, 15, 16]), right)
+    d = verses_page(latin="Quod audissent filii", french="Il marcha contre Israël.")
+    assert any(w.get("path") == "verses/0/french" and w["t"] == "Israël" for w in O.align(O.split_columns(o), d, fix=True)["words"])
+    assert O.italics(o, d, O.align(O.split_columns(o), d, fix=True)["words"]) == []
+
+
 def test_no_italics_for_a_lone_word_that_leans_anyway_or_hardly():
     o = ocr(line(300, "les", "voyes", "du", "Seigneur", "sont", "droites", sl=[0, 15, 0, 10, 0, 1]))
     assert O.italics(o, page("les voies du Seigneur sont droites")) == []
