@@ -372,10 +372,10 @@ def bare_french_words():
     return frozenset(bare(w) for w in french_words())
 
 
-def old_spelling(wl):
+def old_spelling(wl, known=None):
     """The modern word wl is, one or two old letter groups changed (OLD_SPELLINGS), if hunspell
-    knows it from the text; None if none or several."""
-    known = bare_french_words()
+    knows it from the text (or `known` has it); None if none or several."""
+    known = bare_french_words() if known is None else known
 
     def step(w):
         for old, new in OLD_SPELLINGS:

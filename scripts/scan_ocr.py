@@ -245,9 +245,28 @@ def modern(text):
     try:
         from clean_mechanical import fix_spelling
         from modernize_inplace import modernize_text
-        return modernize_text(fix_spelling(text.replace("ſ", "s").replace("&", "et").replace("’", "'")))[0]
+        return modern_words(modernize_text(fix_spelling(text.replace("ſ", "s").replace("&", "et").replace("’", "'")))[0])
     except Exception:
         return None
+
+
+def modern_words(text, known=None):
+    """Old spellings the modernization left (confondoient, connoissance) as the modern word normalized uses,
+    one or two letter groups changed (spellcheck.old_spelling); a word French already knows stays (lois, fois)."""
+    import spellcheck
+    known = spellcheck.bare_french_words() if known is None else known
+    if not known:
+        return text
+
+    def one(m):
+        w = m.group()
+        if w.lower() in known or len(w) < 4 or w.lower() in PRINTED_ABBREV:  # Matth. is not Math.
+            return w
+        new = spellcheck.old_spelling(w.lower(), known)
+        if not new:
+            return w
+        return new.upper() if w.isupper() else new[0].upper() + new[1:] if w[0].isupper() else new
+    return re.sub(r"[^\W\d_]+", one, text)
 
 
 # words a stop may close without ending the sentence: Saint, chapters, books of the Bible, sources
@@ -272,6 +291,11 @@ def printed(words, closes=False):
     text = modern(raw) if raw else ""
     if text is None:
         text = raw
+    return {"text": text, "flags": flags_of(text, [w.get("wc", 1) for w in words for _ in MARK.findall(w.get("pt") or "")], closes)}
+
+
+def flags_of(text, marks_wc=None, closes=False):
+    """printed()'s flags on a modern text; `marks_wc`: the confidence of each printed mark, in order."""
     flags = []
     for m in re.finditer(r"(\S*?)\.(\s+)(?=[^\W\d_])", text):
         nxt = text[m.end()]
@@ -286,16 +310,16 @@ def printed(words, closes=False):
         if m.group() != "...":
             flags.append({"a": m.start(), "b": m.end(), "why": "doubled"})
     # the k-th mark of the text is the k-th printed one, when the modernization kept their number
-    marks_raw = [w.get("wc", 1) for w in words for _ in MARK.findall(w.get("pt") or "")]
+    marks_raw = marks_wc or []
     marks = list(MARK.finditer(text))
-    if len(marks) == len(marks_raw):
+    if marks_wc and len(marks) == len(marks_raw):
         taken = {f["a"] for f in flags}
         for m, wc in zip(marks, marks_raw):
             if wc < WC_LOW and m.start() not in taken:
                 flags.append({"a": m.start(), "b": m.end(), "why": "low_conf"})
     if closes and text and not re.search(r"[.?!:;][»)\]]*\s*$", text):
         flags.append({"a": len(text), "b": len(text), "why": "no_end"})
-    return {"text": text, "flags": sorted(flags, key=lambda f: f["a"])}
+    return sorted(flags, key=lambda f: f["a"])
 
 
 HEAD_FIELDS = ["book_title", "chapter_title", "chapter_summary", "chapter_argument", "chapter_intro"]
@@ -638,7 +662,7 @@ def align(o, data, fix=False, tess=None):
     skip = skipped_lines(o, fix)
     ot = [t for t in ocr_tokens(o) if t["line"] not in skip]
     jt = json_tokens(data)
-    res = [dict(t=t["t"], boxes=t["boxes"], s="missing", src=t["src"], wc=t["wc"]) for t in ot]
+    res = [dict(t=t["t"], pt=t["pt"], boxes=t["boxes"], s="missing", src=t["src"], wc=t["wc"]) for t in ot]
 
     allow = _allow(o) if fix else None
     used, at = set(), {}  # at: a JSON word's index -> the scan's word linked to it
@@ -866,7 +890,7 @@ def gaps(o, data, res=None, least=3):
                     i = j + 1  # out in the JSON (Judic. XVII. 4.: Juges 17:4); the heading misread (C.OM MENT.AIRE.)
                     continue
                 note = bool(LEMMA.match(ocr))  # a whole note: a block of its own, not words in a field
-                out.append(dict(g, ocr=ocr, text=text, words=[i, j], **({"note": True} if note else {})))
+                out.append(dict(g, ocr=ocr, text=text, flags=flags_of(text), words=[i, j], **({"note": True} if note else {})))
         i = j + 1
     return out
 

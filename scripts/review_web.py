@@ -289,6 +289,13 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         res["italics"] = [{k: r[k] for k in ("path", "a", "b", "to", "words", "slant")} for r in scan_ocr.italics(o, data, res["words"])]  # the fixed alignment: the columns kept apart
         return {"ocr": res, **({"tess_error": tess_error} if tess_error else {})}
 
+    def printed(body):
+        """The scan's words (their printed surfaces `pt`) as modern punctuated text, with the marks to check."""
+        ws = body.get("words")
+        if not isinstance(ws, list) or not all(isinstance(w, dict) for w in ws):
+            raise ApiError(400, {"error": "words: a list of {pt, wc}"})
+        return scan_ocr.printed(ws, closes=bool(body.get("closes")))
+
     def delete_todo(body):
         it = by_id.get(body.get("id"))
         if not it or it["kind"] != "todo":
@@ -785,7 +792,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/proposal/accept_page": accept_page, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
-            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/todo/delete": delete_todo,
+            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
             "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit, "/api/good_link": good_link}
 

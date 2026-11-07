@@ -60,3 +60,10 @@ def test_merge_errors(web):
 
 def test_merge_vols(web):
     assert web("/api/merge/vols")[1]["vols"][0]["vol"] == "22_proverbes"
+
+
+def test_api_printed(web):
+    st, r = web("/api/printed", {"words": [{"pt": "l’"}, {"pt": "Homme"}, {"pt": "&"}, {"pt": "Terre."}]})
+    assert st == 200 and r == {"text": "l'Homme et Terre.", "flags": []}
+    assert web("/api/printed", {"words": []}, token=None)[0] == 403
+    assert web("/api/printed", {"words": "x"})[0] == 400

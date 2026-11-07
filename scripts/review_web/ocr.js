@@ -528,16 +528,32 @@ function extrasAt(i, j, loc) {
   return out;
 }
 
+/** The scan's words i..j as modern text with their printed punctuation (server side: the modernization is
+ * Python's), the marks to check said in a toast; the bare words when the server can't. */
+async function printedWords(i, j) {
+  const ws = res.words.slice(i, j + 1);
+  const r = await api("/api/printed", { words: ws.map((w) => ({ pt: w.pt || w.t, wc: w.wc })) });
+  if (r.status !== 200) return ws.map((w) => w.t).join(" ");
+  const { text, flags } = r.body, WHY = { stop_lower: "stop then lowercase", inner: "mark inside a word",
+    doubled: "two marks", low_conf: "mark read unsure", no_end: "no closing mark" };
+  if (flags.length) toast("Check: " + flags.map((g) => `«${text.slice(Math.max(0, g.a - 8), g.b + 6)}» (${WHY[g.why] || g.why})`).join("; "));
+  return text;
+}
+
 /** Put the scan's words i..j into the text where they belong: over the text's red words there, if any
  * (when i..j is the whole missing run), else between the words around. */
-function insertWords(i, j) {
-  const loc = placeWord(i, j), f = loc && fieldOf(loc.path)?.field;
+async function insertWords(i, j) {
+  if (!placeWord(i, j)) { toast("No place found in the text for it"); return; }
+  const t = await printedWords(i, j);
+  const loc = placeWord(i, j), f = loc && fieldOf(loc.path)?.field;  // placed again: the text may have moved meanwhile
   if (!f) { toast("No place found in the text for it"); return; }
-  const t = res.words.slice(i, j + 1).map((w) => w.t).join(" "), s = f.text;
+  const s = f.text;
   const [ra, rb] = runOf(i), ex = ra === i && rb === j ? extrasAt(i, j, loc) : [];
-  if (ex.length) {
+  if (ex.length) {  // the text's own marks around the red words stay, unless the scan prints its own there
     const a = ex[0].a, b = ex[ex.length - 1].b, old = s.slice(a, b);
-    f.edit(a, b, old.match(/^[^\p{L}\p{N}]*/u)[0] + core(t) + old.match(/[^\p{L}\p{N}]*$/u)[0]);
+    const lead = t.match(/^[^\p{L}\p{N}]*/u)[0] ? "" : old.match(/^[^\p{L}\p{N}]*/u)[0];
+    const trail = t.match(/[^\p{L}\p{N}]*$/u)[0] ? "" : old.match(/[^\p{L}\p{N}]*$/u)[0];
+    f.edit(a, b, lead + t + trail);
     return;
   }
   if (/^\s+$/.test(s.slice(loc.start, loc.end))) {

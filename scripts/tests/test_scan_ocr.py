@@ -739,3 +739,24 @@ def test_printed_low_confidence_mark_and_open_end():
     assert [f["why"] for f in r["flags"]] == ["low_conf"]
     assert [f["why"] for f in O.printed([tok("la"), tok("Terre")], closes=True)["flags"]] == ["no_end"]
     assert O.printed([tok("la"), tok("Terre")])["flags"] == []
+
+
+def test_aligned_words_carry_their_printed_surface():
+    r = O.align(ocr(line(300, "ou", "Ajoth,", "comme")), page("ou Ajoth comme"), fix=True)
+    assert [w["pt"] for w in r["words"]] == ["ou", "Ajoth,", "comme"]
+
+
+def test_gap_text_is_punctuated_and_flagged():
+    o = ocr(line(300, "ou", "Ajoth,", "comme", "Terre.", "des", "eaux", "&", "l’Homme.", "comme"),
+            line(340, "lit", "Joſeph,", "étoit"))
+    d = page("ou _Ajoth_, comme comme lit Joseph, était")
+    [g] = O.gaps(o, d)
+    assert g["text"] == "Terre. des eaux et l'Homme."
+    assert [f["why"] for f in g["flags"]] == ["stop_lower"]
+
+
+def test_old_spellings_modernized_only_to_known_words():
+    known = frozenset({"les", "cyniques", "la", "confondaient", "il", "avait", "lois", "lais", "connaissance"})
+    assert O.modern_words("Les Cyniques la confondoient, il avoit des lois; Connoissance", known) \
+        == "Les Cyniques la confondaient, il avait des lois; Connaissance"
+    assert O.modern_words("des Xyzoient", known) == "des Xyzoient"
