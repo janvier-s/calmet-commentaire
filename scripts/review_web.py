@@ -27,6 +27,7 @@ import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+import merge_build
 import merge_decisions
 import merge_view
 import review_proposals as rp
@@ -789,6 +790,15 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return {"decision": {"choice": rec.get("choice"), "text": rec.get("text"), "mark": rec.get("mark"), "state": state},
                 "progress": merge_decisions.unit_progress(dec, u)}
 
+    def merge_rebuild(vol, doc, u, out):
+        """data/<vol>/merged/ rebuilt for the unit's pages; a failure is reported, the decision stays."""
+        try:
+            merge_build.build_pages(store, vol, doc, merge_decisions.load(store.docs, vol), merge_build.unit_pages(u))
+        except Exception as e:  # noqa: BLE001 - the decision is saved; merged is rebuilt by good_merge_apply.py
+            print(f"merged rebuild failed for {vol} {u['uid']}: {e!r}", file=sys.stderr)
+            out["merged_error"] = str(e)
+        return out
+
     def merge_decide(body):
         vol, doc, u, c = merge_target(body)
         try:
@@ -796,7 +806,41 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                                          unit_changes=u.get("changes") or [])
         except ValueError as e:
             raise ApiError(400, {"error": str(e)})
-        return merge_answer(vol, u, c, rec)
+        return merge_rebuild(vol, doc, u, merge_answer(vol, u, c, rec))
+
+    def merge_edit(body):
+        """Text typed in the merged column: field span (a, b) of normalized becomes `text`. Inside a change's
+        segment it is that change's edit; in plain text a free edit, narrowed to the words that differ."""
+        vol, doc, u = merge_target(body)[:3]
+        try:
+            page, a, b, path, text = int(body["page"]), int(body["a"]), int(body["b"]), str(body["path"]), str(body["text"])
+        except (KeyError, TypeError, ValueError):
+            raise ApiError(400, {"error": "page, path, a, b and text are needed"})
+        parts = u.get("parts") or []
+        part = next((k for k, p in enumerate(parts) if (p["page"], p["path"]) == (page, path)), None)
+        texts = merge_view._part_texts(store, vol, parts) if parts else None
+        if part is None or texts is None or not 0 <= a <= b <= len(texts[part]):
+            raise ApiError(400, {"error": "no such span in this unit's fields"})
+        r = merge_build.unit_ops(u, texts, merge_decisions.load(store.docs, vol))
+        if r["pieces"] is None:
+            raise ApiError(409, {"error": "normalized changed since good_units ran: re-run good_units.py"})
+        inside = [p for p in r["pieces"] if p["part"] == part and p["a"] <= a and b <= p["b"]]
+        ch = next((p for p in inside if p["kind"] == "change"), None)
+        if ch is not None:
+            c = next(x for x in u.get("changes") or [] if merge_decisions.change_key(x) == ch["id"])
+            rec = merge_decisions.decide(store.docs, vol, u["uid"], c, "edit", text.strip(),
+                                         unit_changes=u.get("changes") or [])
+            out = merge_answer(vol, u, c, rec)
+        elif inside:
+            at, old, new = merge_build.narrow(texts[part], a, b, text)
+            merge_decisions.free_edit(store.docs, vol, u["uid"], page, path, at, old, new)
+            dec = merge_decisions.load(store.docs, vol)
+            out = {"progress": merge_decisions.unit_progress(dec, u)}
+        else:
+            raise ApiError(400, {"error": "an edit stays within one segment of the text"})
+        merge_rebuild(vol, doc, u, out)
+        out["view"] = merge_view.unit_view(doc, u["uid"], store, merge_decisions.load(store.docs, vol))
+        return out
 
     def merge_mark(body):
         vol, doc, u, c = merge_target(body)
@@ -832,7 +876,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/proposal/accept_page": accept_page, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
-            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/merge/decide": merge_decide, "/api/merge/mark": merge_mark, "/api/todo/delete": delete_todo,
+            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/merge/decide": merge_decide, "/api/merge/edit": merge_edit, "/api/merge/mark": merge_mark, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
             "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit, "/api/good_link": good_link}
 

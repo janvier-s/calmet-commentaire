@@ -116,3 +116,42 @@ def test_decide_errors(web):
     assert web("/api/merge/decide", {**base, "uid": "nope", "key": k["c1"], "choice": "good"})[0] == 404
     assert web("/api/merge/mark", {**base, "key": k["c1"], "label": "maybe"})[0] == 400
     assert web("/api/merge/decide", {**base, "key": k["c1"], "choice": "good"}, token=None)[0] == 403
+
+
+T2 = "commentary/1/french_commentary"
+
+
+def test_merge_edit_free_and_on_change(web):
+    base = {"vol": "22_proverbes", "uid": UID}
+    # plain text: "de la" (17..22) -> "de toute la"
+    code, r = web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 16, "b": 22, "text": " de toute la"})
+    assert code == 200, r
+    dec = json.loads((web.data.parent / "docs" / "good_merge" / "22_proverbes.json").read_text())["decisions"]
+    rec = next(v for k, v in dec.items() if k.startswith("edit@"))
+    assert (rec["old"], rec["text"]) == ("de", "de toute")
+    merged = json.loads((web.data / "22_proverbes" / "merged" / "page_0194.json").read_text())
+    assert merged["commentary"][1]["french_commentary"] == "Un esclave qui a de toute la sagesse ^{(a)}."
+    assert any(s["kind"] == "edit" for s in r["view"]["merged"])
+    # inside the change on "sagesse": an edit decision on it
+    seg = next(s for s in r["view"]["merged"] if s.get("id", "").startswith("c2@"))
+    code, r = web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": seg["a"], "b": seg["b"],
+                              "text": " savoir ^{(a)}."})
+    assert code == 200, r
+    seg = next(s for s in r["view"]["merged"] if s.get("id", "").startswith("c2@"))
+    assert seg["choice"] == "edit" and seg["t"] == " savoir ^{(a)}."
+    merged = json.loads((web.data / "22_proverbes" / "merged" / "page_0194.json").read_text())
+    assert merged["commentary"][1]["french_commentary"] == "Un esclave qui a de toute la savoir ^{(a)}."
+
+
+def test_merge_edit_errors(web):
+    base = {"vol": "22_proverbes", "uid": UID}
+    assert web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 5, "b": 2, "text": "x"})[0] == 400
+    assert web("/api/merge/edit", {**base, "page": 999, "path": T2, "a": 0, "b": 1, "text": "x"})[0] == 400
+
+
+def test_merge_decide_rebuilds_page(web):
+    k = keys(web)
+    code, _ = web("/api/merge/decide", {"vol": "22_proverbes", "uid": UID, "key": k["c1"], "choice": "good"})
+    assert code == 200
+    merged = json.loads((web.data / "22_proverbes" / "merged" / "page_0194.json").read_text())
+    assert "prudent" in merged["commentary"][1]["french_commentary"]

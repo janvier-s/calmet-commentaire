@@ -6,7 +6,9 @@ so no old note is lost; markers are renumbered per page when a page's set of the
 normalized.
 """
 import copy
+import os
 import re
+from pathlib import Path
 
 from good_units import CALL
 
@@ -333,3 +335,106 @@ def merged_segments(u, texts, r, decisions):
             if pos < p["b"] or not own:
                 out.append({**base, "kind": kind, "t": uncovered(pos, p["b"])})
     return out
+
+
+# --- the merged pages: data/<vol>/merged/page_NNNN.json ---
+
+def merged_dir(data, vol):
+    return Path(data) / vol / "merged"
+
+
+def unit_pages(u):
+    return {p["page"] for p in u.get("parts") or []}
+
+
+def _set_field(page, path, value):
+    *head, last = path.split("/")
+    x = page
+    for part in head:
+        x = x[int(part)] if part.isdigit() else x[part]
+    x[int(last) if last.isdigit() else last] = value
+
+
+def merged_pages(store, vol, units_doc, decisions, pages=None):
+    """{page: (normalized page, merged page)} for those pages (None: every normalized page), and the report
+    {"skipped": [{uid, key, why}], "reopened": n} of what could not be applied."""
+    import merge_decisions as md
+    import merge_view
+    every = store.pages(vol)
+    pages = sorted(every if pages is None else set(pages) & set(every))
+    cache = {}
+
+    def read(p):
+        if p not in cache:
+            try:
+                cache[p] = store.read(vol, p)[0]
+            except (FileNotFoundError, ValueError):
+                cache[p] = None
+        return cache[p]
+
+    want = set(pages)
+    ops, report = {}, {"skipped": [], "reopened": 0}
+    for u in units_doc.get("units") or []:
+        if not unit_pages(u) & want:
+            continue
+        texts = merge_view._part_texts(store, vol, u["parts"], cache)
+        if texts is None:
+            continue
+        r = unit_ops(u, texts, decisions)
+        for (page, path), v in r["ops"].items():
+            if page in want:
+                ops.setdefault((page, path), []).extend(v)
+        report["skipped"] += [dict(s, uid=u["uid"]) for s in r["skipped"]]
+        found = md._matches(decisions, u["uid"], u.get("changes") or [])
+        report["reopened"] += sum(1 for rec, state in found.values() if state == "reopened" and rec.get("choice"))
+    out = {}
+    for p in pages:
+        before = read(p)
+        if before is None:
+            continue
+        page = copy.deepcopy(before)
+        for (pg, path), v in ops.items():
+            if pg == p:
+                _set_field(page, path, apply_ops(merge_view.field(before, path) or "", v))
+        out[p] = (before, renumber(page, before))
+    return out, report
+
+
+def build_pages(store, vol, units_doc, decisions, pages=None):
+    """Rebuild data/<vol>/merged/ for those pages (None: all): normalized + decisions + free edits; never writes
+    normalized. -> {"written": [pages], "skipped", "reopened"}."""
+    import review_store
+    built, report = merged_pages(store, vol, units_doc, decisions, pages)
+    folder = merged_dir(store.data, vol)
+    folder.mkdir(parents=True, exist_ok=True)
+    for p, (_, page) in built.items():
+        f = folder / f"page_{p:04d}.json"
+        tmp = f.with_name(f.name + ".tmp")
+        tmp.write_text(review_store.dumps(page), encoding="utf-8")
+        os.replace(tmp, f)
+    return {"written": sorted(built), **report}
+
+
+def narrow(field, a, b, text):
+    """A free edit of field[a:b] into `text`, narrowed to the words that differ (at least one old word kept,
+    so the edit has a place): -> (at, old, new)."""
+    old = field[a:b]
+    ow = [(m.start(), m.end(), m.group()) for m in re.finditer(r"\S+", old)]
+    nw = [(m.start(), m.end(), m.group()) for m in re.finditer(r"\S+", text)]
+    if not ow:
+        return a, old, text
+    p = 0
+    while p < min(len(ow), len(nw)) and ow[p][2] == nw[p][2]:
+        p += 1
+    q = 0
+    while q < min(len(ow), len(nw)) - p and ow[-1 - q][2] == nw[-1 - q][2]:
+        q += 1
+    if len(ow) - p - q == 0:  # only words added: keep the word before them (else the one after)
+        if p:
+            p -= 1
+        else:
+            q -= 1
+    o0, o1 = ow[p][0], ow[len(ow) - q - 1][1]
+    ns = nw[p:len(nw) - q]
+    new = text[ns[0][0]:ns[-1][1]] if ns else ""
+    return a + o0, old[o0:o1], new

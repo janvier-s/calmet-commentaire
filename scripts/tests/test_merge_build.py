@@ -116,3 +116,83 @@ def test_spans_cut_then_insert_at_its_end():
 def test_spans_two_cuts_at_a_field_start():
     t = "pître aux Éphésiens nous a"
     assert merge_build.apply_ops(t, [{"a": 0, "b": 5, "new": ""}, {"a": 6, "b": 19, "new": ""}]) == "nous a"
+
+
+# --- the merged pages ---
+
+from review_store import Store  # noqa: E402
+
+VOL = "22_proverbes"
+
+
+def _setup(data_dir):
+    doc = json.loads(make_units(data_dir).read_text())
+    return doc, data_dir.parent / "docs", Store(data_dir, data_dir.parent / "docs")
+
+
+def test_build_pages_writes_merged_not_normalized(data_dir):
+    doc, docs, st = _setup(data_dir)
+    u = doc["units"][0]
+    before = st.path(VOL, 194).read_bytes()
+    md.decide(docs, VOL, u["uid"], u["changes"][0], "good")
+    r = merge_build.build_pages(st, VOL, doc, md.load(docs, VOL))
+    assert r["written"] == [193, 194, 195]
+    assert st.path(VOL, 194).read_bytes() == before
+    out = json.loads((merge_build.merged_dir(data_dir, VOL) / "page_0194.json").read_text())
+    assert out["commentary"][1]["french_commentary"] == "Un esclave prudent qui a de la sagesse ^{(a)}."
+    assert json.loads((merge_build.merged_dir(data_dir, VOL) / "page_0193.json").read_text()) == \
+        json.loads(st.path(VOL, 193).read_text())
+
+
+def test_build_keeps_marker_and_footnote(data_dir):
+    doc, docs, st = _setup(data_dir)
+    u = doc["units"][0]
+    u["changes"][2].update(old="la sagesse", at=20, good_raw="le savoir", good_modern="le savoir")
+    md.decide(docs, VOL, u["uid"], u["changes"][2], "good")
+    merge_build.build_pages(st, VOL, doc, md.load(docs, VOL), pages={194})
+    out = json.loads((merge_build.merged_dir(data_dir, VOL) / "page_0194.json").read_text())
+    assert out["commentary"][1]["french_commentary"] == "Un esclave qui a de le savoir ^{(a)}."
+    assert out["footnotes"] == [{"marker": "(a)", "text": "Prov. 17. 2."}]
+
+
+def test_build_drops_note_whose_marker_an_edit_removed(data_dir):
+    doc, docs, st = _setup(data_dir)
+    u = doc["units"][0]
+    md.decide(docs, VOL, u["uid"], u["changes"][1], "edit", "sagesse.")  # its span runs to the field's end
+    merge_build.build_pages(st, VOL, doc, md.load(docs, VOL), pages={194})
+    out = json.loads((merge_build.merged_dir(data_dir, VOL) / "page_0194.json").read_text())
+    assert out["commentary"][1]["french_commentary"] == "Un esclave qui a de la sagesse."
+    assert out["footnotes"] == []
+
+
+def test_build_reports_reopened(data_dir):
+    doc, docs, st = _setup(data_dir)
+    u = doc["units"][0]
+    md.decide(docs, VOL, u["uid"], u["changes"][1], "good")
+    u["changes"][1]["good_raw"] = "sagesses"  # good_units re-ran and read it otherwise
+    r = merge_build.build_pages(st, VOL, doc, md.load(docs, VOL), pages={194})
+    assert r["reopened"] == 1
+    out = json.loads((merge_build.merged_dir(data_dir, VOL) / "page_0194.json").read_text())
+    assert out["commentary"][1]["french_commentary"] == FIELDS[("194", T2)]
+
+
+def test_apply_cli_dry_run_writes_nothing(data_dir, monkeypatch, capsys):
+    import good_merge_apply
+    doc, docs, st = _setup(data_dir)
+    u = doc["units"][0]
+    md.decide(docs, VOL, u["uid"], u["changes"][0], "good")
+    monkeypatch.setattr(good_merge_apply, "DATA", data_dir)
+    monkeypatch.setattr(good_merge_apply, "DOCS", docs)
+    good_merge_apply.main([VOL, "--dry-run"])
+    out = capsys.readouterr().out
+    assert not merge_build.merged_dir(data_dir, VOL).exists()
+    assert "--- normalized/page_0194.json" in out and "+++ merged/page_0194.json" in out and "prudent" in out
+    good_merge_apply.main([VOL])
+    assert (merge_build.merged_dir(data_dir, VOL) / "page_0194.json").exists()
+
+
+def test_narrow_to_the_words_that_differ():
+    f = "Un esclave qui a de la sagesse"
+    assert merge_build.narrow(f, 16, 22, " de toute la") == (17, "de", "de toute")
+    assert merge_build.narrow(f, 0, len(f), "Un esclave qui a la sagesse") == (17, "de", "")
+    assert merge_build.narrow(f, 0, 10, "Un esclave") == (3, "esclave", "esclave")
