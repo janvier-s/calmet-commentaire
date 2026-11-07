@@ -5,7 +5,7 @@ scan beside text. The review itself (statuses, false positives, to-dos) is in da
 
 Usage: python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters] [--port N (8642)] [--no-open]
   with neither VOLUME nor --fresh it resumes where the last session stopped: its page, and (no filters
-  given) its filters and issue; --fresh starts at the first open issue (--resume: the default, kept)
+  given) its filters and issue; --fresh starts on the first page of the first book, on no issue (--resume: the default, kept)
   filters  --all (optional items too), --kind K, --category C, --type T, --book B,
            --skipped | --resolved | --false-positive | --all-status (the view to start in)
   --queue PATH, --data DIR, --docs DIR   other files (a copy for testing)
@@ -1381,7 +1381,7 @@ def main(argv):
                 start.update(status=f.get("status") or "open", cat=f.get("cat"), kind=f.get("kind"), book=f.get("book"))
                 start["issue"] = saved.get("issue")
             print(f"Resuming at {start['vol']} p.{start['page']}"
-                  + (f" ({start['kind']})" if start.get("kind") else "") + " (--fresh: from the first open issue)")
+                  + (f" ({start['kind']})" if start.get("kind") else "") + " (--fresh: the first page, no issue)")
     # always the same address, so that the browser keeps what it was allowed (pasting from the clipboard)
     try:
         server, token = make_server(store, queue_path, int(opt("--port", PORT)), None, "--all" in argv, start)

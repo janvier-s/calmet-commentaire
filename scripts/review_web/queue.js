@@ -259,7 +259,9 @@ function renderIssues() {
   const away = cur && !here ? el("div", { className: "away" },
     `You have left this issue's page (${cur.book_dir} p.${cur.page}). `,
     el("button", { className: "link", textContent: "Back to it", onclick: () => go(cur.book_dir, cur.page) })) : null;
-  $("current").replaceChildren(...(cur ? [card(cur, true)] : [el("div", { className: "muted", textContent: "No issue selected" })]),
+  const none = cur ? el("button", { className: "link", textContent: "Deselect issue", title: "Work on the page with no issue selected",
+    onclick: () => { Q.current = null; renderIssues(); remember(); } }) : null;
+  $("current").replaceChildren(...(cur ? [card(cur, true), none] : [el("div", { className: "muted", textContent: "No issue selected" })]),
                                ...(away ? [away] : []));
   if (hooks.afterIssues) hooks.afterIssues(cur, here);
   const here_ = S.issues.filter(inFilters), hidden = S.issues.length - here_.length;
@@ -551,7 +553,9 @@ boot.start = async () => {
     if (here >= 0) Q.idx = here;  // Issue › goes on from this page
     return go(st.vol, st.page ?? null);
   }
-  if (Q.items.length) return goItem(0);
-  const s = (await api("/api/state")).body;
-  return go(s.vol || S.config.volumes[0], s.page);
+  // nothing to resume: the book's first page, on no issue (the queue is one click away)
+  const r2 = await go(f.book || S.config.volumes[0], null);
+  Q.current = null;  // go() picked the page's first issue: a clean start has none
+  renderIssues(); remember();
+  return r2;
 };
