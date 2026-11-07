@@ -306,3 +306,13 @@ def test_merged_edited_flag(web):
     code, m = web("/api/merged?vol=22_proverbes&page=194")
     assert code == 200 and "italics" in m
     assert web("/api/good_step?vol=22_proverbes&key=nope&dir=1")[0] == 404
+
+
+def test_merged_pages_list(web):
+    assert web("/api/merged/pages?vol=22_proverbes") == (200, {"pages": []})
+    k = keys(web)
+    web("/api/merge/decide", {"vol": "22_proverbes", "uid": UID, "key": k["c1"], "choice": "good"})
+    web("/api/merge/decide", {"vol": "22_proverbes", "uid": UID, "key": k["c2"], "choice": "old"})
+    st, r = web("/api/merged/pages?vol=22_proverbes")
+    assert st == 200 and r["pages"] == [{"page": 194, "changes": 1, "kept": 1, "hand": 0}]
+    assert web("/api/merged/pages?vol=nope")[0] == 404

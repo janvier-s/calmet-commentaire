@@ -3,7 +3,7 @@
 // it at every rebuild. When normalized, Good or a decision changes a hand-edited field underneath, the field is
 // flagged: keep yours or take the rebuilt text. Every state is kept: ↶ brings the previous one back.
 // The header's [Old | Merged] switch picks the text; a page opens on Merged when /merge changed it, else on Old.
-import { S, api, hooks, renderPage, scanDefault, toast } from "./app.js";
+import { S, api, go, hooks, renderPage, scanDefault, toast } from "./app.js";
 import { Field, render } from "./field.js";
 import { save, setDirty, wireField } from "./edit.js";
 
@@ -37,12 +37,51 @@ async function setMode(merged) {
 }
 for (const b of document.querySelectorAll("#mode-seg button")) b.onclick = () => setMode(b.dataset.mode === "merged");
 let modeFor = null;  // the page the mode was chosen for: the same page loaded again keeps it
+let wantMerged = false;  // opened from the merged pages' list: on Merged whatever the page
 hooks.pageLoaded.push((body) => {
+  loadList();
   if (modeFor === ck()) return;
   modeFor = ck();
-  on = !!body.merged_edited;
+  on = !!body.merged_edited || wantMerged;
+  wantMerged = false;
   showMode();
 });
+
+// --- the book's pages /merge changed, a list that opens one on Merged ---
+const pick = $("merged-pages");
+let listed = [];
+const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+function fillList() {
+  const opts = [new Option(listed.length ? `Merged pages (${listed.length})` : "No merged pages", "")];
+  for (const r of listed) {
+    const bits = [plural(r.changes, "change")];
+    if (r.kept) bits.push(`${r.kept} kept old`);
+    if (r.hand) bits.push(`${r.hand} typed`);
+    opts.push(new Option(`p.${r.page} · ${bits.join(" · ")}`, String(r.page)));
+  }
+  pick.replaceChildren(...opts);
+  pick.value = listed.some((r) => r.page === S.page) ? String(S.page) : "";
+  pick.disabled = !listed.length;
+}
+let listing = 0;
+export async function loadList() {
+  if (!S.vol) return;
+  const n = ++listing, vol = S.vol;
+  const r = await api(`/api/merged/pages?vol=${encodeURIComponent(vol)}`);
+  if (n !== listing || vol !== S.vol) return;  // a later call is on its way
+  listed = r.status === 200 ? r.body.pages : [];
+  fillList();
+}
+pick.onchange = async () => {
+  const p = parseInt(pick.value, 10);
+  fillList();  // shows the page actually open until the move is through
+  if (!p) return;
+  if (p === S.page) { setMode(true); return; }
+  wantMerged = true;
+  await go(S.vol, p);
+  wantMerged = false;
+};
+window.addEventListener("focus", () => loadList());  // back from /merge: its new decisions
 showMode();
 
 const prevAfterSave = hooks.afterSave;

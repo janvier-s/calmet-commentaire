@@ -746,6 +746,7 @@ body.merged-view .f.mv .git { text-decoration: underline wavy var(--wave-good-it
 .seg button.on { background: var(--accent); color: #fff; }
 .seg button:disabled { opacity: .4; cursor: default; }
 #mode-seg button[data-mode="merged"].on { background: var(--mv-blue); }
+#merged-pages { max-width: 11em; font-size: 12px; }
 .seg-note { font-size: 12px; padding: 3px 8px; color: var(--mv-blue); border-left: 1px solid var(--border); white-space: nowrap; }
 #edit-label { font-size: 10.5px; letter-spacing: .08em; font-weight: 700; color: var(--muted); padding: 1px 6px;
   border: 1px solid var(--border); border-radius: 4px; }

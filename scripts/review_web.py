@@ -1075,6 +1075,31 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             merged_rebuild_page(vol, page)
         return get_merged({"vol": vol, "page": page})
 
+    def merged_pages_list(q):
+        """The book's pages /merge touched, in order: [{page, changes, kept, hand}]: its decisions that change
+        the text (Good taken, both, edited, free edits), those that keep old, and its fields typed in Merged."""
+        vol = q.get("vol")
+        if vol not in store.volumes():
+            raise ApiError(404, {"error": f"no volume {vol}"})
+        out = {}
+        row = lambda p: out.setdefault(int(p), {"page": int(p), "changes": 0, "kept": 0, "hand": 0})  # noqa: E731
+        doc = None
+        for r in merge_decisions.load(store.docs, vol)["decisions"].values():
+            pages = [r["page"]] if str(r.get("page") or "").isdigit() else []
+            if not pages and str(r.get("key", "")).startswith("unit@"):  # a whole unit kept or left out
+                doc = doc or merge_view.load(store.data, vol, store.docs) or {}
+                u = next((u for u in doc.get("units") or [] if u.get("uid") == r.get("uid")), None)
+                pages = sorted(merge_build.unit_pages(u)) if u else []
+            for p in pages:
+                if r.get("kind") == "edit" or r.get("choice") in ("good", "both", "edit", "drop"):
+                    row(p)["changes"] += 1
+                elif r.get("choice"):
+                    row(p)["kept"] += 1
+        for r in merged_hand.load(store.docs, vol)["fields"].values():
+            if r.get("text") is not None:
+                row(r["page"])["hand"] += 1
+        return {"pages": [out[p] for p in sorted(out)]}
+
     def merged_flags(q):
         vol = q.get("vol")
         if vol not in store.volumes():
@@ -1104,7 +1129,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                         out.setdefault(str(crops.index(crop)), []).extend(g.get("boxes") or [])
         return out
 
-    GET = {"/api/config": lambda q: config, "/api/merged": get_merged, "/api/merged/flags": merged_flags, "/api/good_step": good_step, "/api/page": get_page, "/api/queue": queue,
+    GET = {"/api/config": lambda q: config, "/api/merged": get_merged, "/api/merged/flags": merged_flags, "/api/merged/pages": merged_pages_list, "/api/good_step": good_step, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
            "/api/proposal": get_proposal, "/api/good_note": good_note, "/api/good_note/candidates": good_note_candidates,
            "/api/batch": batch, "/api/search": search, "/api/versions": versions,
