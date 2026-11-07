@@ -143,3 +143,17 @@ test("cutToNext returns null on empty or whitespace selection", () => {
   assert.equal(cutToNext("abc def", 3, 4, "xyz", false), null);
   assert.equal(cutToNext("abc def", 2, 2, "xyz", false), null);
 });
+
+test("shiftSpans: marks move with their words, a word rewritten whole loses its mark", async () => {
+  const { shiftSpans, mapSpans } = await import("../../review_web/text.js");
+  const sp = [[3, 6], [10, 14]];  // "un mot ici gare"
+  assert.deepEqual(shiftSpans(sp, 0, 0, 2), [[5, 8], [12, 16]]);      // typed before
+  assert.deepEqual(shiftSpans(sp, 4, 5, 2), [[3, 7], [11, 15]]);      // a letter inside replaced by two
+  assert.deepEqual(shiftSpans(sp, 6, 6, 1), [[3, 6], [11, 15]]);      // typed right after the word
+  assert.deepEqual(shiftSpans(sp, 3, 6, 3), [[10, 14]]);              // the word typed over
+  assert.deepEqual(shiftSpans(sp, 5, 8, 0), [[3, 5], [7, 11]]);       // its end cut away
+  assert.deepEqual(mapSpans([[3, 6]], "un mot ici", "un _mot_ ici"), [[4, 7]]);
+  assert.deepEqual(mapSpans([[4, 7]], "un _mot_ ici", "un mot ici"), [[3, 6]]);
+  assert.deepEqual(mapSpans([[3, 6]], "un mot ici", "UN mot ici"), [[3, 6]]);
+  assert.deepEqual(mapSpans([[3, 6]], "un mot ici", "deux un mot ici"), [[8, 11]]);
+});

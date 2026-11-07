@@ -14,16 +14,17 @@
 //  - latin_quote in small caps but for the first letter and the Vulgate's proper nouns
 //  - Hebrew stays right-to-left; no U+200E reaches the file
 //  - empty french_commentary has room for four lines
-import { italicRuns, toggleItalics, toUpper } from "./text.js";
+import { italicRuns, mapSpans, shiftSpans, toggleItalics, toUpper } from "./text.js";
 
 export const ITALIC_FIELDS = new Set(["chapter_summary", "latin", "french_translation"]);
 const HEBREW = /[֐-׿יִ-ﭏ]+(?:[  ]+[֐-׿יִ-ﭏ]+)*/g;
 
 /** Per character: is it italic, is it a mark, is it the unpaired mark, is it small caps. */
-function styles(s, smallcaps, highlight) {
+function styles(s, smallcaps, highlight, goodIt) {
   const { runs, marks, openAt } = italicRuns(s);
-  const st = Array.from(s, () => ({ it: false, mk: false, open: false, sc: false, he: false, hl: false }));
+  const st = Array.from(s, () => ({ it: false, mk: false, open: false, sc: false, he: false, hl: false, gi: false }));
   if (highlight) for (const [a, b] of highlight) for (let i = a; i < b && i < s.length; i++) st[i].hl = true;
+  if (goodIt) for (const [a, b] of goodIt) for (let i = a; i < b && i < s.length; i++) st[i].gi = true;
   for (const [a, b] of runs) for (let i = a; i < b; i++) st[i].it = true;
   for (const i of marks) st[i].mk = true;
   if (openAt) st[openAt === "start" ? marks[0] : marks[marks.length - 1]].open = true;
@@ -33,22 +34,24 @@ function styles(s, smallcaps, highlight) {
 }
 
 /** Fill `el` with `s` as styled spans. `smallcaps`: indexes set in small caps; `highlight`: [a, b]
- *  spans drawn as <mark> (the words an issue points at). */
-export function render(el, s, smallcaps = null, highlight = null) {
+ *  spans drawn as <mark> (the words an issue points at); `goodIt`: [a, b] spans whose italics came from Good
+ *  (class "git", the Merged view's). */
+export function render(el, s, smallcaps = null, highlight = null, goodIt = null) {
   el.textContent = "";
   if (!s) return;
-  const st = styles(s, smallcaps, highlight);
+  const st = styles(s, smallcaps, highlight, goodIt);
   let i = 0;
   while (i < s.length) {
     const k = st[i];
     let j = i + 1;
     while (j < s.length && st[j].it === k.it && st[j].mk === k.mk && st[j].open === k.open
-           && st[j].sc === k.sc && st[j].he === k.he && st[j].hl === k.hl) j++;
+           && st[j].sc === k.sc && st[j].he === k.he && st[j].hl === k.hl && st[j].gi === k.gi) j++;
     const piece = s.slice(i, j);
+    const gi = k.gi && k.it;
     if (!k.it && !k.mk && !k.sc && !k.he && !k.hl) el.append(piece);
     else {
       const span = document.createElement(k.hl ? "mark" : "span");
-      span.className = [k.it && "it", k.mk && "mk", k.open && "open", k.sc && "sc"].filter(Boolean).join(" ");
+      span.className = [k.it && "it", gi && "git", k.mk && "mk", k.open && "open", k.sc && "sc"].filter(Boolean).join(" ");
       if (k.he) span.dir = "rtl";
       span.textContent = piece;
       el.append(span);
@@ -135,16 +138,27 @@ export class Field {
     if (this.latinCase && this.text && !this.isNull()) {
       sc = this.latinCase(this.text, () => { if (!this.composing) this.draw(this.selection()); });
     }
-    render(this.el, this.text, sc, this.marks);
+    render(this.el, this.text, sc, this.marks, this.goodIt);
     if (sel) this.select(...sel);
   }
 
-  /** Mark the words an issue points at (until the next edit); `flag` outlines the field. */
-  setMarks(spans, flag = false) {
-    this.marks = spans && spans.length ? spans : null;
+  /** Mark the words an issue points at (until the next edit); `flag` outlines the field. `keep`: the marks
+   *  stay through edits, moved with their words (the Merged view's words taken from Good). */
+  setMarks(spans, flag = false, keep = false) {
+    this.marks = spans && spans.length ? spans.map((x) => [...x]) : null;
+    this.keep = keep;
     this.el.classList.toggle("flagged", flag);
     this.draw(document.activeElement === this.el ? this.selection() : null);
   }
+
+  /** The italics taken from Good (the Merged view), kept through edits like kept marks. */
+  setGoodItalics(spans) {
+    this.goodIt = spans && spans.length ? spans.map((x) => [...x]) : null;
+    this.draw(document.activeElement === this.el ? this.selection() : null);
+  }
+
+  /** The text as it is, for undo: with the spans that go with it. */
+  snap(sel) { return { text: this.text, sel, marks: this.marks, goodIt: this.goodIt }; }
 
   selection() {
     const s = getSelection();
@@ -166,22 +180,29 @@ export class Field {
   edit(a, b, ins, kind = "other") {
     const now = Date.now();
     if (!(kind === "type" && this.lastKind === "type" && now - this.lastEdit < 1000)) {
-      this.undo.push({ text: this.text, sel: this.selection() || [a, b] });
+      this.undo.push(this.snap(this.selection() || [a, b]));
       if (this.undo.length > 200) this.undo.shift();
     }
     this.redo = [];
     this.lastEdit = now;
     this.lastKind = kind;
     if (this.isNull()) { a = 0; b = this.text.length; }
-    this.unmark();
+    this.unmark(null, [a, b, ins.length]);
     this.text = this.text.slice(0, a) + ins + this.text.slice(b);
     this.draw([a + ins.length, a + ins.length]);
     this.onChange(this);
   }
 
-  /** The issue's marks go with the first change to the text (their offsets no longer hold). */
-  unmark() {
-    this.marks = null;
+  /** Before the text becomes `next` (or text[a:b] becomes n characters, `at` [a, b, n]): an issue's marks go
+   *  with the first change (their offsets no longer hold); kept marks and Good's italics move with their words. */
+  unmark(next = null, at = null) {
+    const move = (sp) => {
+      if (!sp) return null;
+      const out = at ? shiftSpans(sp, ...at) : next != null ? mapSpans(sp, this.text, next) : null;
+      return out && out.length ? out : null;
+    };
+    this.marks = this.keep ? move(this.marks) : null;
+    this.goodIt = move(this.goodIt);
     this.el.classList.remove("flagged");
   }
 
@@ -190,8 +211,8 @@ export class Field {
     const sel = this.selection();
     const t = this.domText();
     if (t === this.text) return;
-    this.unmark();
-    this.undo.push({ text: this.text, sel: sel || [0, 0] });
+    this.undo.push(this.snap(sel || [0, 0]));
+    this.unmark(t);
     this.redo = [];
     this.lastKind = "other";
     this.text = t;
@@ -202,8 +223,10 @@ export class Field {
   history(from, to) {
     const h = from.pop();
     if (!h) return;
-    to.push({ text: this.text, sel: this.selection() || [0, 0] });
+    to.push(this.snap(this.selection() || [0, 0]));
     this.unmark();
+    if (this.keep) this.marks = h.marks;
+    this.goodIt = h.goodIt;
     this.text = h.text;
     this.lastKind = "other";
     this.draw(h.sel);
@@ -215,10 +238,10 @@ export class Field {
     if (!sel || sel[0] === sel[1]) return;
     const r = toggleItalics(this.text, sel[0], sel[1]);
     if (!r) return;
-    this.undo.push({ text: this.text, sel });
+    this.undo.push(this.snap(sel));
     this.redo = [];
     this.lastKind = "other";
-    this.unmark();
+    this.unmark(r.text);
     this.text = r.text;
     this.draw([r.start, r.end]);
     this.onChange(this);
@@ -228,10 +251,10 @@ export class Field {
     if (!sel || sel[0] === sel[1]) return;
     const r = toUpper(this.text, sel[0], sel[1]);
     if (!r) return;
-    this.undo.push({ text: this.text, sel });
+    this.undo.push(this.snap(sel));
     this.redo = [];
     this.lastKind = "other";
-    this.unmark();
+    this.unmark(r.text);
     this.text = r.text;
     this.draw([r.start, r.end]);
     this.onChange(this);

@@ -185,3 +185,38 @@ export function wordDiff(a, b) {
   }
   return out;
 }
+
+/** Spans [a, b] after text[a0:b0] was replaced by `n` characters: moved, stretched or shrunk with their
+ *  words; a span the edit takes in whole (its word rewritten) is dropped. */
+export function shiftSpans(spans, a0, b0, n) {
+  const d = n - (b0 - a0), out = [];
+  for (const [s, e] of spans || []) {
+    if (b0 <= s) out.push([s + d, e + d]);
+    else if (a0 >= e) out.push([s, e]);
+    else if (a0 <= s && b0 >= e) continue;
+    else {
+      const ns = a0 < s ? a0 + n : s, ne = b0 > e ? a0 + n : e + d;
+      if (ne > ns) out.push([ns, ne]);
+    }
+  }
+  return out;
+}
+
+/** Spans of `old` carried over to `neu` when only the change is known: italics marks put or taken away
+ *  (the letters the same), a change of case, else the one stretch that differs (shiftSpans). */
+export function mapSpans(spans, old, neu) {
+  if (!spans || !spans.length || old === neu) return spans;
+  if (old.length === neu.length && old.toLowerCase() === neu.toLowerCase()) return spans.map((x) => [...x]);
+  if (old.replace(/_/g, "") === neu.replace(/_/g, "")) {
+    const rank = [0];  // letters (not marks) before each offset of old
+    for (let i = 0; i < old.length; i++) rank.push(rank[i] + (old[i] === "_" ? 0 : 1));
+    const at = [];  // offset in neu of each letter
+    for (let i = 0; i < neu.length; i++) if (neu[i] !== "_") at.push(i);
+    const start = (k) => (k < at.length ? at[k] : neu.length), end = (k) => (k > 0 ? at[k - 1] + 1 : 0);
+    return spans.map(([a, b]) => [start(rank[a]), end(rank[b])]).filter(([a, b]) => b > a);
+  }
+  let p = 0, q = 0;
+  while (p < old.length && p < neu.length && old[p] === neu[p]) p++;
+  while (q < old.length - p && q < neu.length - p && old[old.length - 1 - q] === neu[neu.length - 1 - q]) q++;
+  return shiftSpans(spans, p, old.length - q, neu.length - q - p);
+}
