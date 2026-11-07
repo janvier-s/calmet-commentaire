@@ -63,3 +63,56 @@ def test_renumber_untouched_when_markers_same():
     p = {"commentary": [{"french_commentary": "x ^{(b)}"}],
          "footnotes": [{"marker": "(a)", "text": "prev page"}, {"marker": "(b)", "text": "B"}]}
     assert merge_build.renumber(p, p) == p
+
+
+# --- unit_ops: the unit's decisions as operations on its fields ---
+
+import json  # noqa: E402
+
+import merge_decisions as md  # noqa: E402
+from test_merge_view import FIELDS, T2, make_units  # noqa: E402
+
+TEXTS = list(FIELDS.values())
+
+
+def _unit(data_dir, c3=None):
+    doc = json.loads(make_units(data_dir).read_text())
+    u = doc["units"][0]
+    if c3:
+        u["changes"][2].update(c3)
+    return u
+
+
+def test_unit_ops_unplaced_decided_change_by_tokens(data_dir):
+    docs = data_dir.parent / "docs"
+    u = _unit(data_dir, {"old": "a de", "at": 15, "good_raw": "avec", "good_modern": "avec"})
+    md.decide(docs, "22_proverbes", u["uid"], u["changes"][2], "good")
+    r = merge_build.unit_ops(u, TEXTS, md.load(docs, "22_proverbes"))
+    ops = r["ops"][(194, T2)]
+    assert [(o["a"], o["b"], o["new"]) for o in ops] == [(15, 19, "avec")]
+    md.decide(docs, "22_proverbes", u["uid"], u["changes"][2], None)
+    u["changes"][2]["at"] = 30
+    md.decide(docs, "22_proverbes", u["uid"], u["changes"][2], "good")
+    r = merge_build.unit_ops(u, TEXTS, md.load(docs, "22_proverbes"))
+    assert r["ops"].get((194, T2), []) == [] and [s["why"] for s in r["skipped"]] == ["not found"]
+
+
+def test_unit_ops_overlap_skipped(data_dir):
+    docs = data_dir.parent / "docs"
+    u = _unit(data_dir, {"old": "de la sagesse", "at": 17, "good_raw": "du savoir", "good_modern": "du savoir"})
+    md.decide(docs, "22_proverbes", u["uid"], u["changes"][1], "good")
+    md.decide(docs, "22_proverbes", u["uid"], u["changes"][2], "good")
+    r = merge_build.unit_ops(u, TEXTS, md.load(docs, "22_proverbes"))
+    assert [o["key"].split("@")[0] for o in r["ops"][(194, T2)]] == ["c2"]
+    assert [(s["key"].split("@")[0], s["why"]) for s in r["skipped"]] == [("c3", "overlap")]
+
+
+def test_spans_cut_then_insert_at_its_end():
+    t = "les mots coupés suivis"
+    ops = [{"a": 0, "b": 15, "new": ""}, {"a": 15, "b": 15, "new": "Nouveau texte"}]
+    assert merge_build.apply_ops(t, ops) == "Nouveau texte suivis"
+
+
+def test_spans_two_cuts_at_a_field_start():
+    t = "pître aux Éphésiens nous a"
+    assert merge_build.apply_ops(t, [{"a": 0, "b": 5, "new": ""}, {"a": 6, "b": 19, "new": ""}]) == "nous a"

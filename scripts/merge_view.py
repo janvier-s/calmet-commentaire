@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 import good_units
+import merge_build
 import merge_decisions
 import good_variants
 import scan_ocr
@@ -270,12 +271,9 @@ def _place(u, otoks, gtoks):
     return changes, placed
 
 
-def unit_view(doc, uid, store=None, decisions=None):
-    """The unit `uid` of a good_units document, ready to draw; None if there is no such unit. With `decisions`
-    (merge_decisions.load), each change carries its `decision` and the view the unit's `progress`."""
-    u = next((x for x in doc.get("units") or [] if x.get("uid") == uid), None)
-    if u is None:
-        return None
+def segments(u):
+    """The unit's two columns as segment lists (old, Good modern, Good as printed), the k-th of each standing
+    against each other, with its changes in order and the placed ones' token spans."""
     old, good = u.get("old") or "", u.get("good") or ""
     otoks, gtoks = _old_tokens(old), tokens(good)
     ob, gb = _bounds(old, otoks), _bounds(good, gtoks)
@@ -342,6 +340,20 @@ def unit_view(doc, uid, store=None, decisions=None):
     if not good:
         gsegs, psegs = [], []
 
+    return {"old": osegs, "good": gsegs, "printed": psegs, "changes": changes, "placed": placed,
+            "by_key": by_key, "counts": counts, "gtoks": gtoks}
+
+
+def unit_view(doc, uid, store=None, decisions=None):
+    """The unit `uid` of a good_units document, ready to draw; None if there is no such unit. With `decisions`
+    (merge_decisions.load), each change carries its `decision` and the view the unit's `progress`."""
+    u = next((x for x in doc.get("units") or [] if x.get("uid") == uid), None)
+    if u is None:
+        return None
+    sg = segments(u)
+    osegs, gsegs, psegs, changes, placed, by_key, counts = (
+        sg[k] for k in ("old", "good", "printed", "changes", "placed", "by_key", "counts"))
+    gtoks, old = sg["gtoks"], u.get("old") or ""
     stale, seams = False, []
     if store is not None and u.get("parts"):
         texts = _part_texts(store, doc.get("vol"), u["parts"])
@@ -349,6 +361,16 @@ def unit_view(doc, uid, store=None, decisions=None):
         if texts is not None:
             seams = _seams(u["parts"], texts, old)
             osegs = _insert_seams(osegs, seams)
+
+    merged, editable, edits = [], False, []
+    if store is not None and u.get("parts"):
+        texts = _part_texts(store, doc.get("vol"), u["parts"])
+        if texts is not None:
+            dec = decisions if decisions is not None else {"decisions": {}}
+            r = merge_build.unit_ops(u, texts, dec)
+            edits = r["edits"]
+            if r["pieces"] is not None:
+                merged, editable = merge_build.merged_segments(u, texts, r, dec), True
 
     unit = {k: u.get(k) for k in ("uid", "type", "chapter", "verse", "lemma", "status", "parts", "good_where",
                                     "after")}
@@ -366,6 +388,7 @@ def unit_view(doc, uid, store=None, decisions=None):
         extra = {"progress": merge_decisions.unit_progress(decisions, u),
                  "unit_decision": (decisions["decisions"].get(merge_decisions.unit_key(uid)) or {}).get("choice")}
     return {"unit": unit, "old": osegs, "good": gsegs, "good_printed": psegs, **extra,
+            "merged": merged, "editable": editable, "edits": edits,
             "changes": out_changes,
             "good_tokens": len(gtoks),
             "unplaced": [c["key"] for c in changes if c["key"] not in placed],

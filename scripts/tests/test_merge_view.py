@@ -313,3 +313,90 @@ def test_scan_boxes_insert_at_a_line_end_stays_after_the_word(data_dir, monkeypa
     words[2]["boxes"] = [[1, 9, 3, 2]]  # "qui" on the next line
     monkeypatch.setattr(merge_view.scan_ocr, "align", lambda o, d, fix=False: {"size": [100, 200], "words": words})
     assert merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 10, 0)["caret"] == [10, 1, 2]
+
+
+# --- the merged column: normalized + decisions + free edits, on normalized's own offsets ---
+
+T2 = "commentary/1/french_commentary"
+T1 = "commentary/1/french_translation"
+FIELDS = {("194", "commentary/1/latin_quote"): "SERVUS SAPIENS DOMINABITUR FILIIS STULTIS.",
+          ("194", T1): "Le serviteur sage dominera les enfants insensés.",
+          ("194", T2): "Un esclave qui a de la sagesse ^{(a)}."}
+
+
+def _merged(data_dir, decide=None, edit=None, changes=None):
+    import merge_decisions as md
+    path = make_units(data_dir)
+    doc = json.loads(path.read_text())
+    u = doc["units"][0]
+    if changes is not None:
+        u["changes"] = changes
+        path.write_text(json.dumps(doc, ensure_ascii=False))
+    docs = data_dir.parent / "docs"
+    for i, choice in (decide or {}).items():
+        md.decide(docs, "22_proverbes", u["uid"], u["changes"][i], choice)
+    if edit:
+        md.free_edit(docs, "22_proverbes", u["uid"], *edit)
+    st = Store(data_dir, docs)
+    return merge_view.unit_view(merge_view.load(data_dir, "22_proverbes"), u["uid"], st, md.load(docs, "22_proverbes"))
+
+
+def _texts(v):
+    out = {}
+    for s in v["merged"]:
+        if s["kind"] != "seam":
+            out[(str(s["page"]), s["path"])] = out.get((str(s["page"]), s["path"]), "") + s["t"]
+    return out
+
+
+def test_merged_column_reassembles_normalized(data_dir):
+    v = _merged(data_dir)
+    assert v["editable"] is True
+    assert _texts(v) == FIELDS
+    assert all({"k", "page", "path", "a", "b"} <= set(s) for s in v["merged"] if s["kind"] != "seam")
+
+
+def test_merged_take_good_applied(data_dir):
+    v = _merged(data_dir, decide={0: "good"})
+    assert _texts(v)[("194", T2)] == "Un esclave prudent qui a de la sagesse ^{(a)}."
+    seg = next(s for s in v["merged"] if s.get("id", "").startswith("c1@"))
+    assert seg["choice"] == "good" and seg["state"] == "current" and not seg.get("ghost")
+
+
+def test_merged_insert_undecided_is_ghost(data_dir):
+    v = _merged(data_dir)
+    seg = next(s for s in v["merged"] if s.get("id", "").startswith("c1@"))
+    assert seg["t"] == "" and seg["ghost"].strip() == "prudent" and seg["choice"] is None
+
+
+def test_merged_cut_is_ghost(data_dir):
+    cut = _change(id="c4", kind="only_normalized", old="qui a", good_raw="", good_modern="", words=0, old_words=2,
+                  before="Un esclave", after="de la", good_before=None, good_after=None, at=11)
+    v = _merged(data_dir, decide={0: "good"}, changes=[cut])
+    assert _texts(v)[("194", T2)] == "Un esclave de la sagesse ^{(a)}."
+    seg = next(s for s in v["merged"] if s.get("id", "").startswith("c4@"))
+    assert seg["ghost"].strip() == "qui a" and seg["choice"] == "good"
+
+
+def test_merged_free_edit_applied_and_reopened(data_dir):
+    v = _merged(data_dir, edit=(194, T1, 13, "sage", "très sage"))
+    assert _texts(v)[("194", T1)] == "Le serviteur très sage dominera les enfants insensés."
+    assert any(s["kind"] == "edit" and s["t"].strip() == "très sage" for s in v["merged"])
+    st = Store(data_dir, data_dir.parent / "docs")
+    p = st.path("22_proverbes", 194); d = json.loads(p.read_text())
+    d["commentary"][1]["french_translation"] = "Le serviteur prudent dominera les enfants insensés."
+    p.write_text(json.dumps(d))
+    import merge_decisions as md
+    v = merge_view.unit_view(merge_view.load(data_dir, "22_proverbes"), "commentary:17:2:0", st,
+                             md.load(data_dir.parent / "docs", "22_proverbes"))
+    assert [(e["state"], e["text"]) for e in v["edits"]] == [("reopened", "très sage")]
+
+
+def test_merged_not_editable_when_stale(data_dir):
+    make_units(data_dir)
+    st = Store(data_dir, data_dir.parent / "docs")
+    p = st.path("22_proverbes", 194); d = json.loads(p.read_text())
+    d["commentary"][1]["french_commentary"] = "Un esclave sage qui a de la sagesse ^{(a)}."
+    p.write_text(json.dumps(d))
+    v = merge_view.unit_view(merge_view.load(data_dir, "22_proverbes"), "commentary:17:2:0", st, {"decisions": {}})
+    assert v["stale"] is True and v["editable"] is False
