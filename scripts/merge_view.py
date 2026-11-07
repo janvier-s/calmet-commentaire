@@ -127,7 +127,7 @@ def _insert_seams(segs, seams):
             if cut > len(s["t"]) - len(s["t"].lstrip()) and s["kind"] != "change":
                 out.append({**s, "t": s["t"][:cut]})
                 s, pos = {**s, "t": s["t"][cut:]}, seam["at"]
-            out.append({"kind": "seam", "t": "", "page": seam["page"]})
+            out.append({"kind": "seam", "t": "", "page": seam["page"], "k": s.get("k")})
         out.append(s)
         pos += len(s["t"])
     return out
@@ -329,6 +329,9 @@ def unit_view(doc, uid, store=None):
     if not gtoks and good:
         psegs.append({"t": good, "kind": "same"})
         gsegs.append({"t": good, "kind": "same"})
+    for segs in (osegs, gsegs, psegs):  # built side by side: the k-th of each column stand against each other
+        for k, seg in enumerate(segs):
+            seg["k"] = k
     if not old:
         osegs = []
     if not good:
@@ -345,14 +348,16 @@ def unit_view(doc, uid, store=None):
     unit = {k: u.get(k) for k in ("uid", "type", "chapter", "verse", "lemma", "status", "parts", "good_where",
                                     "after")}
     return {"unit": unit, "old": osegs, "good": gsegs, "good_printed": psegs,
-            "changes": [{**c, "placed": c["key"] in placed} for c in changes],
+            "changes": [{**c, "placed": c["key"] in placed, "good_at": placed[c["key"]][2] if c["key"] in placed else None}
+                        for c in changes],
+            "good_tokens": len(gtoks),
             "unplaced": [c["key"] for c in changes if c["key"] not in placed],
             "counts": counts, "empty": _empty_note(u), "stale": stale, "seams": seams}
 
 
 def scan_boxes(store, vol, page, path, at, n):
     """The source scan's boxes of the first max(n, 1) words of field `path` from offset `at` on, found through
-    the page's cached OCR set against the page (never running Kraken): {"boxes", "size"}, or
+    the page's cached OCR set against the page (never running Kraken): {"boxes", "size", "crop"}, or
     {"boxes": [], "reason"} when there is no scan, no cached OCR, or the words are not found."""
     scan = store.scan(vol, page)
     if scan is None:
@@ -369,4 +374,5 @@ def scan_boxes(store, vol, page, path, at, n):
                     and w["a"] >= at and w.get("boxes")), key=lambda w: w["a"])[:max(n, 1)]
     if not words:
         return {"boxes": [], "reason": "words not found"}
-    return {"boxes": [b for w in words for b in w["boxes"]], "size": res.get("size")}
+    return {"boxes": [b for w in words for b in w["boxes"]], "size": res.get("size"),
+            "crop": store.scan_crop(vol, page)[1]}  # /scan/ shows this part of the scan, when there is a crop

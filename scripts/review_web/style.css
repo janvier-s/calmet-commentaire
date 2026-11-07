@@ -540,3 +540,50 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 .mg-s-identical { color: var(--ok); border-color: var(--ok); }
 .mg-stale { color: var(--warn); border-color: var(--warn); }
 .mg-error { color: var(--danger); padding: 12px; }
+/* the unit view */
+.mg-title { font-weight: 600; font-size: 13px; }
+.mg-serif { font-family: "Iowan Old Style", Georgia, serif; }
+.mg-lemma { color: var(--lemma); font-size: 15px; }
+.mg-counts { font-size: 12px; }
+.mg-c-s { color: var(--danger); } .mg-c-c { color: var(--quote); } .mg-c-m { color: var(--info); }
+.mg-toggle { font-size: 12px; display: inline-flex; align-items: center; gap: 2px; }
+.mg-progress { min-width: 1px; }
+.mg-banner { margin: 8px 12px 0; padding: 4px 10px; border-radius: 6px; color: var(--warn); border: 1px solid var(--warn); background: var(--accent-weak); font-size: 13px; }
+.mg-after { padding: 6px 12px 0; }
+.mg-cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 22px; padding: 6px 12px 10px; }
+.mg-colhead { position: sticky; top: 41px; z-index: 5; background: var(--bg); color: var(--muted); font-size: 12px;
+              padding: 4px 0; border-bottom: 1px solid var(--border); }
+.mg-col { font-size: 16px; line-height: 1.6; padding: 6px 0; border-bottom: 1px dotted var(--border); white-space: pre-wrap; }
+.mg-empty { font-family: var(--font); font-size: 13px; color: var(--muted); font-style: italic; padding: 8px; border: 1px dashed var(--border); border-radius: 6px; }
+.mg-ch { border-radius: 3px; padding: 0 1px; cursor: pointer; }
+.mg-substantive { background: color-mix(in srgb, var(--danger) 22%, transparent); }
+.mg-cosmetic { background: color-mix(in srgb, #e8c400 35%, transparent); }
+.mg-moved { background: color-mix(in srgb, var(--c-verse) 25%, transparent); }
+.mg-noise { background: color-mix(in srgb, var(--muted) 22%, transparent); }
+.mg-ch.open { outline: 2px solid var(--accent); }
+.mg-mark { font: 10.5px var(--font); padding: 0 5px; margin: 0 2px; background: none; border: 1px dashed currentColor; vertical-align: 1px; }
+.mg-mark.mg-substantive { color: var(--danger); } .mg-mark.mg-cosmetic { color: var(--quote); }
+.mg-mark.mg-moved { color: var(--info); } .mg-mark.mg-noise { color: var(--muted); }
+.mg-gap { text-decoration: underline dotted var(--danger) 2px; text-underline-offset: 3px; }
+.mg-gaplabel { font: 10.5px var(--font); color: var(--danger); margin: 0 3px; }
+.mg-unrec { color: var(--muted); background: color-mix(in srgb, var(--muted) 14%, transparent); border-radius: 3px; }
+.mg-seam { font: 10px var(--font); color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 0 3px; margin: 0 3px; vertical-align: 2px; }
+.mg-panel { grid-column: 1 / -1; margin: 6px 0 10px; padding: 8px 12px; background: var(--surface); border: 1px solid var(--border);
+            border-left: 4px solid var(--muted); border-radius: 6px; font-size: 13px; }
+.mg-p-substantive { border-left-color: var(--danger); } .mg-p-cosmetic { border-left-color: #e8c400; } .mg-p-moved { border-left-color: var(--c-verse); }
+.mg-panel-head, .mg-panel-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.mg-panel-body { margin: 6px 0; display: grid; gap: 2px; }
+.mg-panel-body .mg-serif { font-size: 15px; }
+.mg-k { display: inline-block; min-width: 96px; color: var(--muted); font-size: 12px; }
+.mg-ctx { color: var(--muted); font-family: "Iowan Old Style", Georgia, serif; }
+.mg-ctx b { color: var(--text); font-weight: normal; background: var(--hi); }
+.mg-tag { font-size: 11px; border-radius: 4px; padding: 0 6px; }
+.mg-panel-actions button[disabled] { opacity: .45; cursor: not-allowed; }
+.mg-scan { margin-top: 6px; }
+.mg-scan:empty { display: none; }
+.mg-fullscan { width: 100%; border: 1px solid var(--border); }
+.mg-srcbox { border-color: var(--danger); background: color-mix(in srgb, var(--danger) 15%, transparent); }
+.mg-unplaced { padding: 0 12px 40px; }
+.mg-uitem { padding: 3px 6px; border-radius: 5px; cursor: pointer; }
+.mg-uitem:hover, .mg-uitem.open { background: var(--accent-weak); }
+.mg-banner.mg-info { color: var(--info); border-color: var(--info-border); background: var(--info-bg); }

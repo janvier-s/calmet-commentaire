@@ -1,6 +1,7 @@
 // The /merge screen's entry: the state lives in the URL hash; the list or one unit is drawn from it.
 import { el } from "./goodfig.js";
 import { renderList } from "./merge_list.js";
+import { renderUnit } from "./merge_unit.js";
 import { filterRows, neighbours, parseHash, sortRows, toHash } from "./merge_state.js";
 
 const root = document.getElementById("mg-root");
@@ -24,13 +25,17 @@ function fail(e) {
     el("a", { href: "/", textContent: "Back to the queue" }));
 }
 
-let renderUnit = (r, view) => r.replaceChildren(el("p", { className: "muted", textContent: "unit view coming" }));
-export function setUnitRenderer(fn) { renderUnit = fn; }
-
 let drawn = 0;  // the latest draw wins when hash changes overtake slow fetches
+let unitCache = null;  // [vol, uid, view]: toggles and panels redraw without fetching again
+let last = null;  // the state drawn before
+const listScroll = new Map();  // list hash -> scroll, so going back to the list keeps the place
+
 async function draw() {
   const me = ++drawn;
   const state = parseHash(location.hash);
+  const prev = last;
+  last = state;
+  if (prev && !prev.uid) listScroll.set(toHash({ ...prev, open: null }), window.scrollY);
   try {
     if (!vols) vols = (await get("/api/merge/vols")).vols;
     if (!vols.length) {
@@ -44,16 +49,29 @@ async function draw() {
     const l = await list(state.vol);
     if (me !== drawn) return;
     if (!state.uid) {
+      document.onkeydown = null;
       renderList(root, l, vols, state);
+      window.scrollTo(0, listScroll.get(toHash({ ...state, open: null })) || 0);
       document.title = `${state.vol} · Calmet Merge`;
       return;
     }
-    const view = await get(`/api/merge/unit?vol=${encodeURIComponent(state.vol)}&uid=${encodeURIComponent(state.uid)}`);
-    if (me !== drawn) return;
+    let view;
+    if (unitCache && unitCache[0] === state.vol && unitCache[1] === state.uid) view = unitCache[2];
+    else {
+      view = await get(`/api/merge/unit?vol=${encodeURIComponent(state.vol)}&uid=${encodeURIComponent(state.uid)}`);
+      if (me !== drawn) return;
+      unitCache = [state.vol, state.uid, view];
+    }
+    const sameUnit = prev && prev.uid === state.uid && prev.vol === state.vol;
+    state._scrollTo = sameUnit && prev.open !== state.open;
     const rows = sortRows(filterRows(l.rows, state));
     const nav = { ...neighbours(rows, state.uid), rows, list: l,
       openUnit: (uid, open) => { location.hash = toHash({ ...state, uid, open }); } };
+    const y = window.scrollY;
     renderUnit(root, view, state, nav);
+    window.scrollTo(0, sameUnit ? y : 0);
+    const opened = (state._scrollTo || (state.open || "").startsWith("moved:")) && root.querySelector(".mg-panel");
+    if (opened) opened.scrollIntoView({ block: "nearest" });
     document.title = `${state.uid} · Calmet Merge`;
   } catch (e) {
     if (me === drawn) fail(e);

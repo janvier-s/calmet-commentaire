@@ -191,4 +191,36 @@ def test_scan_boxes_found(data_dir, monkeypatch):
              {"t": "qui", "boxes": [[11, 1, 3, 2]], "path": "commentary/1/french_commentary", "a": 11, "b": 14}]
     monkeypatch.setattr(merge_view.scan_ocr, "align", lambda o, d, fix=False: {"size": [100, 200], "words": words})
     assert merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 3, 2) == {
-        "boxes": [[4, 1, 6, 2], [11, 1, 3, 2]], "size": [100, 200]}
+        "boxes": [[4, 1, 6, 2], [11, 1, 3, 2]], "size": [100, 200], "crop": None}
+
+
+def test_scan_boxes_carry_the_margin_crop(data_dir, monkeypatch):
+    """/scan/ serves the margin crop when there is one; the boxes stay in the scan's pixels, so the crop's
+    place in the scan comes with them."""
+    st = Store(data_dir, data_dir.parent / "docs")
+    monkeypatch.setattr(merge_view.scan_ocr, "ocr", lambda *a, **k: {"fake": 1})
+    words = [{"t": "Un", "boxes": [[50, 60, 2, 2]], "path": "commentary/1/french_commentary", "a": 0, "b": 2}]
+    monkeypatch.setattr(merge_view.scan_ocr, "align", lambda o, d, fix=False: {"size": [100, 200], "words": words})
+    monkeypatch.setattr(st, "scan_crop", lambda vol, page: ("crop.png", [10, 20, 90, 180]))
+    assert merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 0, 1)["crop"] == [10, 20, 90, 180]
+    monkeypatch.setattr(st, "scan_crop", lambda vol, page: (None, None))
+    assert merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 0, 1)["crop"] is None
+
+
+def test_segments_pair_up_across_columns(data_dir):
+    """Each old segment and the Good segment(s) it stands against share `k`, so the browser can cut both
+    columns into rows at the same places; a seam takes the k of the text after it."""
+    v = view(data_dir, "commentary:17:2:0")
+    ks = [s["k"] for s in v["good"]]
+    assert ks == list(range(len(ks))) and [s["k"] for s in v["good_printed"]] == ks
+    assert sorted({s["k"] for s in v["old"]}) == ks
+    by_k = {s["k"]: s for s in v["good"] if s["kind"] == "change"}
+    assert {s["k"]: s["id"] for s in v["old"] if s["kind"] == "change"} == {k: s["id"] for k, s in by_k.items()}
+
+
+def test_good_position_of_placed_changes(data_dir):
+    """A placed change knows its Good word index (a cut's Good crop is drawn around it); unplaced ones don't."""
+    v = view(data_dir, "commentary:17:2:0")
+    at = {c["key"]: c["good_at"] for c in v["changes"]}
+    assert at == {"c1": 13, "c2": 18, "c3": None}
+    assert v["good_tokens"] == 19
