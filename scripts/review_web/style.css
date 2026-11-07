@@ -712,8 +712,8 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 
 /* Merged view: the words taken from Good, a thin light-blue wave on the text and on the Good scan (one set of
    variables for both); the italics taken from Good, a blue-green wave */
-:root { --mv-blue: #2f6fd6; --wave: #5c9df2; --wave-op: .55; --wave-w: 1px; --wave-good-it: #129e93; }
-:root[data-theme="dark"] { --mv-blue: #6da3ff; --wave: #8dbcff; --wave-good-it: #3fd1c4; }
+:root { --mv-blue: #2f6fd6; --wave: #8db8f0; --wave-op: .4; --wave-w: 1px; --wave-good-it: #129e93; }
+:root[data-theme="dark"] { --mv-blue: #6da3ff; --wave: #7aa8e6; --wave-op: .45; --wave-good-it: #3fd1c4; }
 body.merged-view .f.mv-ro { cursor: default; }
 body.merged-view .f.mv-hand { box-shadow: inset 3px 0 0 var(--accent); }
 body.merged-view .f.mv-conflict { box-shadow: inset 3px 0 0 var(--danger); background: color-mix(in srgb, var(--danger) 7%, var(--field)); }
