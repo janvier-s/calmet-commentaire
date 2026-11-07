@@ -12,8 +12,11 @@ const el = (tag, props = {}, ...kids) => {
 
 export const S = {
   config: null, vol: null, page: null, pages: [], chapters: [], data: null, version: null,
-  ctx: null, issues: [], around: null, reviewed: {}, section: "all",
-  zoom: 1, dim: 10, posting: 0,
+  ctx: null, issues: [], around: null, reviewed: {},
+  secs: new Set(["heading", "verses", "commentary", "footnotes"]),
+  /** "all", the one part shown, or "mixed": what the old single-section code compares against. */
+  get section() { return this.secs.size === 4 ? "all" : this.secs.size === 1 && !this.secs.has("heading") ? [...this.secs][0] : "mixed"; },
+  zoom: 1, fitV: true, dim: 10, posting: 0,
 };
 
 // --- server ---
@@ -389,14 +392,14 @@ export function renderPage() {
   if (hooks.beforeRender) hooks.beforeRender();
   const d = S.data;
   if (!d) return;
-  const sec = S.section;
-  if (sec === "all") root.append(headingBlock(d));
-  if (sec === "all" || sec === "verses") {
+  const on = (k) => S.secs.has(k);
+  if (on("heading")) root.append(headingBlock(d));
+  if (on("verses")) {
     root.append(h2("verses", ` Verses (${(d.verses || []).length})`));
     (d.verses || []).forEach((v, i) => root.append(verseBlock(v, i)));
     if (hooks.addEnd) root.append(hooks.addEnd("verses"));
   }
-  if (sec === "all" || sec === "commentary") {
+  if (on("commentary")) {
     root.append(h2("commentary", ` Commentary (${(d.commentary || []).length})`));
     root.append(prevStrip() || "");
     if (hooks.addTop) root.append(hooks.addTop());
@@ -406,13 +409,16 @@ export function renderPage() {
     });
     root.append(nextStrip() || "");
   }
-  if (sec === "all" || sec === "footnotes") {
+  if (on("footnotes")) {
     root.append(h2("footnotes", ` Footnotes (${(d.footnotes || []).length})`));
     (d.footnotes || []).forEach((n, i) => root.append(footnoteBlock(n, i)));
     if (hooks.addEnd) root.append(hooks.addEnd("footnotes"));
   }
   for (const f of hooks.afterRender) f(root);
 }
+
+/** Every part of the page shown again (set up with the page). */
+export let showAllSections = () => {};
 
 // --- top bar basics ---
 function setTheme(t) {
@@ -457,14 +463,18 @@ function setupTop() {
   $("theme").value = document.documentElement.dataset.theme;
   $("menu-btn").onclick = () => { $("menu").hidden = !$("menu").hidden; };
   document.addEventListener("click", (e) => { if (!e.target.closest(".menu")) $("menu").hidden = true; });
-  for (const b of document.querySelectorAll("#sections button[data-sec]")) {
-    b.onclick = () => {
-      if (hooks.collect) hooks.collect();
-      S.section = b.dataset.sec;
-      document.querySelectorAll("#sections button[data-sec]").forEach((x) => x.classList.toggle("on", x === b));
-      renderPage();
-    };
-  }
+  const boxes = [...document.querySelectorAll("#sec-pop input")];
+  const applySecs = () => {
+    if (hooks.collect) hooks.collect();
+    S.secs = new Set(boxes.filter((x) => x.checked).map((x) => x.value));
+    $("sec-btn").textContent = (S.secs.size === 4 ? "All" : S.secs.size ? boxes.filter((x) => x.checked).map((x) => x.parentNode.textContent.trim()).join(" · ") : "Nothing") + " ▾";
+    renderPage();
+    $("sections").dispatchEvent(new Event("secs"));
+  };
+  boxes.forEach((x) => { x.onchange = applySecs; });
+  showAllSections = () => { boxes.forEach((x) => { x.checked = true; }); applySecs(); };
+  $("sec-btn").onclick = (e) => { e.stopPropagation(); $("sec-pop").hidden = !$("sec-pop").hidden; };
+  document.addEventListener("click", (e) => { if (!e.target.closest(".msel")) $("sec-pop").hidden = true; });
   document.addEventListener("keydown", (e) => {
     const typing = e.target.closest("input, select, textarea, [contenteditable]");
     if (!typing && !e.metaKey && !e.ctrlKey && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {

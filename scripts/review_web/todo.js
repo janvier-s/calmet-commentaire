@@ -68,7 +68,7 @@ hooks.deleteTodo = async (it) => {
 // "+ To-do" for the page, beside the page's issues
 const pageBtn = el("button", { id: "todo-page", className: "link", title: "Add a to-do for this page (something no check finds)",
                                onclick: () => todoPrompt(null) }, icon("plus", 12), "To-do");
-$("pageinfo").append(pageBtn);
+$("sections").insertBefore(pageBtn, $("sections").querySelector(".grow"));
 
 // "To-do": a "+" on every field, for a to-do about that field
 let on = false;

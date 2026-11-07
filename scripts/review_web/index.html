@@ -34,6 +34,7 @@
   <span class="grow"></span>
   <span id="rechecking" class="muted small"></span>
   <span id="dirty" class="muted"></span>
+  <a href="/merge" class="mg-toplink" title="The Good_Calmet merge screen (read-only)">Merge</a>
   <button id="italic" class="icon" data-icon="italic" title="Italics on the selection (⌘I)"></button>
   <button id="undo-all" data-icon="undo" title="Put the page back as it was when you opened it">Undo all</button>
   <button id="save" data-icon="save" title="Save (⌘S)">Save</button>
@@ -42,12 +43,13 @@
     <span id="counter" class="muted"></span>
     <button id="issue-next" class="icon-after" data-icon="fwd" title="Next issue (⌘])">Issue</button>
   </div>
+  <div id="markrow">
+  <div id="filters">
+    <select id="f-kind" title="Type of issue"></select>
+    <select id="f-status" title="Status"></select>
+    <select id="f-cat" title="Category"></select>
+  </div>
   <div id="marks">
-    <div class="group">
-      <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
-      <button id="mark-resolved-recheck" class="ok recheck" data-icon="check" title="Resolved after the page's re-check has finished, so the issues your edits fixed are already closed in the list (Alt+⏎)">Resolved + re-check</button>
-      <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to the next issue at once; the re-check runs in the background (⌘⏎ / Ctrl+⏎)">Resolved</button>
-    </div>
     <div class="group">
       <div class="menu">
         <button id="menu-btn" class="icon" data-icon="more" title="More"></button>
@@ -68,42 +70,50 @@
       <button id="mark-hold" data-icon="pause" title="On hold: neither resolved nor a false positive; it waits for something done elsewhere (a to-do added while it is open puts it on hold, and frees it once done)">On hold</button>
       <button id="mark-reopen" data-icon="reopen" title="Reopen the issue you last marked resolved, false positive or skipped, and go back to it">Reopen</button>
     </div>
+    <div class="group">
+      <button id="mark-fp" class="warn" data-icon="flag" title="False positive (⌘P)">False positive</button>
+      <button id="mark-resolved-recheck" class="ok recheck" data-icon="check" title="Resolved after the page's re-check has finished, so the issues your edits fixed are already closed in the list (Alt+⏎)">Resolved + re-check</button>
+      <button id="mark-resolved" class="ok" data-icon="check" title="Resolved, go to the next issue at once; the re-check runs in the background (⌘⏎ / Ctrl+⏎)">Resolved</button>
+    </div>
   </div>
-  <a href="/merge" class="mg-toplink" title="The Good_Calmet merge screen (read-only)">Merge</a>
+  </div>
 </header>
 <section id="issuebar">
-  <div id="filters">
-    <select id="f-status" title="Status"></select>
-    <select id="f-cat" title="Category"></select>
-    <select id="f-kind" title="Type of issue"></select>
-  </div>
   <div id="current"></div>
+  <div id="type-pages"></div>
   <div id="pageinfo">
     <div id="pills"></div>
     <div id="around"></div>
-    <div id="type-pages"></div>
   </div>
 </section>
 <section id="page-issues" hidden></section>
 <main id="cols">
   <section id="scan-pane">
     <div id="scan-tools">
-      <button id="zoom-out" title="Zoom out">−</button><span id="zoom-label">100%</span><button id="zoom-in" title="Zoom in">+</button>
-      <button id="zoom-fit" title="Fit the page's width to the pane">Fit ↔︎</button><button id="zoom-fit-v" title="Fit the whole page's height to the pane">Fit ↕︎</button><button id="zoom-1">1:1</button>
-      <button id="good-toggle" title="Show the Good_Calmet rescan of this page instead of the scan (G); click again for the next page if it spans two" hidden>Good_Calmet</button>
-      <label class="muted" title="Darken the scan">Dim <input type="range" id="dim" min="0" max="100" value="10"></label>
-      <label class="muted dark-only" title="Show the scan light-on-dark in the dark theme"><input type="checkbox" id="invert" checked> Invert</label>
-      <span class="grow"></span><span class="muted small">drag to pan · ⌘ scroll to zoom</span>
+      <span class="menu"><button id="scan-menu-btn" class="icon" data-icon="more" title="Zoom, dimming, OCR and the other scan settings"></button>
+        <div id="scan-menu" hidden>
+          <button id="zoom-out" title="Zoom out">−</button><span id="zoom-label">100%</span><button id="zoom-in" title="Zoom in">+</button>
+          <button id="zoom-fit" title="Fit the page's width to the pane">Fit ↔︎</button><button id="zoom-fit-v" title="Fit the whole page's height to the pane">Fit ↕︎</button><button id="zoom-1">1:1</button>
+          <button id="good-toggle" title="Show the Good_Calmet rescan of this page instead of the scan (G); click again for the next page if it spans two" hidden>Good_Calmet</button>
+          <label class="muted" title="Darken the scan">Dim <input type="range" id="dim" min="0" max="100" value="10"></label>
+          <label class="muted dark-only" title="Show the scan light-on-dark in the dark theme"><input type="checkbox" id="invert" checked> Invert</label>
+        </div></span>
+      <span class="grow"></span>
     </div>
     <div id="scan-view"><img id="scan-img" alt="" draggable="false"><div id="scan-dim"></div><p id="no-scan" hidden>No scan for this page</p></div>
   </section>
   <div id="divider" title="Drag to resize"></div>
   <section id="text-pane">
     <div id="sections">
-      <button data-sec="all" class="on">All</button><button data-sec="verses" class="k-verse" data-icon="verses">Verses</button>
-      <button data-sec="commentary" class="k-note" data-icon="commentary">Commentary</button><button data-sec="footnotes" class="k-fn" data-icon="footnotes">Footnotes</button>
+      <span class="msel"><button id="sec-btn" title="Which parts of the page to show">All ▾</button>
+        <div id="sec-pop" hidden>
+          <label><input type="checkbox" value="heading" checked> Heading</label>
+          <label><input type="checkbox" value="verses" checked> Verses</label>
+          <label><input type="checkbox" value="commentary" checked> Commentary</label>
+          <label><input type="checkbox" value="footnotes" checked> Footnotes</label>
+        </div></span>
       <span class="grow"></span>
-      <span id="shelf" title="Click: insert at the cursor (or copy if no field is active)"></span>
+      <select id="shelf" title="Insert at the cursor (or copy if no field is active)"></select>
     </div>
     <div id="page-text"></div>
   </section>

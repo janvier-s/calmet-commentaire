@@ -594,3 +594,69 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 .mg-uitem:hover, .mg-uitem.open { background: var(--accent-weak); }
 .mg-banner.mg-info { color: var(--info); border-color: var(--info-border); background: var(--info-bg); }
 .mg-unitscans { grid-column: 1 / -1; margin: 6px 0 10px; }
+
+/* compact chrome: filters and marks share the top bar; the page-info block and the scan toolbar's wrap are gone */
+#filters { display: flex; gap: 4px; align-items: center; }
+#filters #f-kind { grid-column: auto; font-size: 13px; font-weight: 600; padding: 4px 28px 4px 10px; border-radius: 8px; }
+#filters select { width: auto; max-width: 190px; }
+#marks { flex-direction: row; align-items: center; margin-left: auto; }
+#pageinfo { display: none; }
+#issuebar { grid-template-columns: 1fr; }
+#scan-tools { flex-wrap: nowrap; overflow: visible; position: relative; z-index: 6; }
+
+/* the shelf stays one row of buttons; if the pane is narrow the whole shelf drops below the tabs */
+#sections { flex-wrap: wrap; }
+#sections button { white-space: nowrap; }
+#shelf { flex-wrap: nowrap; flex-shrink: 0; }
+.shelf-item { white-space: nowrap; flex-shrink: 0; }
+
+/* the section picker (multi-select) and the insert menu */
+.msel { position: relative; }
+#sec-pop { position: absolute; left: 0; top: 110%; z-index: 20; background: var(--surface); border: 1px solid var(--border);
+           border-radius: 7px; padding: 8px; display: flex; flex-direction: column; gap: 6px; min-width: 150px; box-shadow: 0 6px 24px #0003; }
+#sec-pop label { display: flex; gap: 6px; align-items: center; cursor: pointer; }
+#shelf { font-size: 12.5px; padding: 2px 4px; }
+
+/* the type of issue (the one used most) and its pages sit on the left of the top bar */
+#top > #f-kind { font-size: 13px; font-weight: 600; padding: 4px 28px 4px 10px; border-radius: 8px; max-width: 220px; }
+
+/* book over issue type on the left; the marks over the page navigator on the right */
+#bookcol { display: flex; flex-direction: column; gap: 4px; align-items: stretch; }
+#bookcol select { max-width: 220px; }
+#markcol { margin-left: auto; display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+#markrow { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+#markrow #marks { margin-left: 0; }
+
+/* one row: book and issue type side by side; the page navigator on the marks' row, larger */
+#bookcol { flex-direction: row; align-items: center; }
+#markcol { flex-direction: row; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+#type-pages { gap: 6px; }
+#type-pages button { font-size: 14px; padding: 4px 10px; }
+#type-pages select { font-size: 14px; padding: 4px 6px; max-width: 240px; }
+
+/* second row: the three dropdowns, the issue, and the page navigator on the issue's line */
+#issuebar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: start; }
+#issuebar #filters { display: flex; flex-direction: row; gap: 4px; align-items: center; }
+#issuebar #filters #f-kind { font-size: 14px; font-weight: 600; padding: 4px 28px 4px 10px; border-radius: 8px; max-width: 260px; }
+#issuebar #type-pages { align-self: start; }
+
+/* the three dropdowns share the marks' row (never wrapping apart) */
+#issuebar { grid-template-columns: minmax(0, 1fr) auto; }
+#markrow { display: flex; flex-wrap: nowrap; align-items: center; gap: 8px; margin-left: auto; }
+#markrow #marks { margin-left: 0; }
+#markrow #filters { display: flex; flex-direction: row; gap: 4px; align-items: center; }
+
+/* the dropdowns sit at the left of the top bar, the marks stay on the right of the same row */
+#top > #filters { display: flex; flex-direction: row; gap: 4px; align-items: center; }
+
+/* the dropdowns' row: dropdowns at its left, the marks at its right */
+#markrow { flex: 1 1 100%; display: flex; flex-wrap: nowrap; align-items: center; gap: 8px; margin-left: 0; }
+#markrow #filters { margin-right: auto; }
+#markrow #marks { margin-left: auto; }
+
+/* the scan's settings in one small menu */
+#scan-menu { position: absolute; left: 0; top: 110%; z-index: 30; background: var(--surface); border: 1px solid var(--border);
+             border-radius: 7px; padding: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; width: 340px;
+             box-shadow: 0 6px 24px #0003; }
+#scan-menu .ocr-phase { margin-left: 0; }
+#scan-tools #ocr-filters { flex-wrap: wrap; }

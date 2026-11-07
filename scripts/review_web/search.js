@@ -1,6 +1,6 @@
 // Word search, from the ch:v box: every place in the book (or every book) where the words occur,
 // accents and case aside; a hit opens its page with the words marked.
-import { S, api, hooks, nav } from "./app.js";
+import { S, api, hooks, nav, showAllSections } from "./app.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => {
@@ -65,7 +65,7 @@ function markPage() {
   if (!h || h.vol !== S.vol || h.page !== S.page || !S.fields) return;
   const key = (path) => path.join("/");
   if (S.section !== "all" && !S.fields.some((x) => key(x.path) === key(h.path))) {
-    document.querySelector('#sections button[data-sec="all"]').click();  // the field is hidden by the section filter
+    showAllSections();  // the field is hidden by the section filter
   }
   const spans = new Map();
   for (const x of R.hits) {

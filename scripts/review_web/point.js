@@ -1,6 +1,6 @@
 // Pointing at an issue: its quoted words marked in the fields of its entry (or the page), the field
 // it names outlined, scrolled into view and its block flashed.
-import { S } from "./app.js";
+import { S, showAllSections } from "./app.js";
 import { findSpans, snippets } from "./text.js";
 
 const $ = (id) => document.getElementById(id);
@@ -13,8 +13,8 @@ export function point(item) {
   clearPoint();
   if (!item || item.book_dir !== S.vol || item.page !== S.page || !S.fields) return;
   const w = item.where;
-  if (w && S.section !== "all" && S.section !== w.section) {  // the entry is hidden by the section filter
-    document.querySelector('#sections button[data-sec="all"]').click();
+  if (w && !S.secs.has(w.section)) {  // the entry is hidden by the section filter
+    showAllSections();
   }
   const needles = snippets(item.msg, item.kind);
   const prefix = w ? `${w.section}/${w.index}/` : "";

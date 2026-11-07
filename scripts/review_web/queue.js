@@ -332,8 +332,7 @@ function renderTypePages() {
                                          onclick: () => goTypePage(p.page) },
                              ...(dir < 0 ? [icon("prev", 12), "Page"] : ["Page", icon("next", 12)]));
   $("type-pages").replaceChildren(
-    btn(before, -1), sel, btn(after, 1),
-    el("span", { className: "muted small", textContent: ` ${pages.length} pages · ${open} with open ${typeName().toLowerCase()}` }));
+    btn(before, -1), sel, btn(after, 1));
 }
 
 /** Open a page of the menu, its first open issue of the type selected (else its first one). */

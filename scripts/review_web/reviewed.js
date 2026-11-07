@@ -12,7 +12,7 @@ const el = (tag, props = {}, ...kids) => {
   return e;
 };
 const SECTIONS = [["commentary", "Commentary"], ["verses", "Verses"], ["footnotes", "Footnotes"]];
-const focus = () => (S.section === "all" || !S.section ? "commentary" : S.section);
+const focus = () => (["verses", "commentary", "footnotes"].includes(S.section) ? S.section : "commentary");
 const done = (sec) => S.reviewed[sec] || new Set();
 
 async function send(sec, body) {
@@ -101,7 +101,7 @@ function draw() {
 }
 
 hooks.afterRender.push(draw);
-$("sections").addEventListener("click", () => setTimeout(draw));
+$("sections").addEventListener("secs", () => setTimeout(draw));
 document.addEventListener("keydown", (e) => {
   if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === "Enter") { e.preventDefault(); markAndNext(); }
 });

@@ -285,18 +285,27 @@ document.getElementById("text-pane").addEventListener("scroll", () => { selMenu.
 document.getElementById("turn").addEventListener("scroll", () => { selMenu.hidden = true; }, true);
 
 // --- the shelf: one click puts a symbol at the cursor (or copies it) ---
-const SHELF = ["℣", "^{(a)}", "^{(b)}", "^{(c)}", "^{(d)}", "^{(e)}", "^{(f)}", "«", "»"];
-for (const t of SHELF) {
-  const b = Object.assign(document.createElement("button"), { className: "shelf-item", textContent: t, title: `Insert ${t}` });
-  b.addEventListener("mousedown", (e) => e.preventDefault());  // the field keeps its cursor
-  b.onclick = async () => {
+const SHELF = ["℣.","^{(a)}", "^{(b)}", "^{(c)}", "^{(d)}", "^{(e)}", "^{(f)}", "«", "»"];
+{
+  const sel = $("shelf");
+  sel.append(Object.assign(document.createElement("option"), { value: "", textContent: "Insert…" }));
+  for (const t of SHELF) sel.append(Object.assign(document.createElement("option"), { value: t, textContent: t }));
+  let at = null;  // the field and selection from before the menu took the focus
+  const remember = () => {
     const s = getSelection();
     const f = s.rangeCount ? fieldAt(s.anchorNode) : null;
-    const sel = f && f.selection();
-    if (f && sel && document.activeElement === f.el) { f.edit(sel[0], sel[1], t); return; }
-    try { await navigator.clipboard.writeText(t); toast(`Copied ${t}`); } catch (e) { toast("Could not copy"); }
+    const r = f && f.selection();
+    at = f && r && document.activeElement === f.el ? { f, r } : null;
   };
-  $("shelf").append(b);
+  sel.addEventListener("pointerdown", remember);
+  sel.addEventListener("keydown", remember);
+  sel.onchange = async () => {
+    const t = sel.value;
+    sel.value = "";
+    if (!t) return;
+    if (at) { at.f.edit(at.r[0], at.r[1], t); at.f.el.focus(); at = null; return; }
+    try { await navigator.clipboard.writeText(t); toast(`Copied ${t}`); } catch (err) { toast("Could not copy"); }
+  };
 }
 
 // italics underlined in the commentary, and saving on page change (the menu's choices are kept)

@@ -103,7 +103,10 @@ const run = Object.assign(document.createElement("button"), { textContent: "Read
 const tessBtn = Object.assign(document.createElement("button"), { textContent: "Tesseract", hidden: true, className: "small",
                                                                  title: "Read this page with Tesseract too (a few seconds), to settle the red words" });
 const region = Object.assign(document.createElement("button"), { textContent: "Box", title: "Drag a region on the scan for a to-do (or Shift-drag)" });
-$("scan-tools").querySelector(".grow").before(box, filterBar, count, tessBtn, run, region);
+$("scan-tools").querySelector(".grow").before(filterBar);  // the chips show with the OCR on; everything else is in the menu
+$("scan-menu").append(box, count, tessBtn, run, region, ...filterBar.querySelectorAll(".ocr-phase"));
+$("scan-menu-btn").onclick = (e) => { e.stopPropagation(); $("scan-menu").hidden = !$("scan-menu").hidden; };
+document.addEventListener("click", (e) => { if (!e.target.closest("#scan-tools .menu")) $("scan-menu").hidden = true; });
 check.onchange = () => {
   on = check.checked;
   try { localStorage.setItem("rw-ocr", on ? "1" : "0"); } catch (e) {}
