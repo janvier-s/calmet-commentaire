@@ -50,6 +50,14 @@ class ApiError(Exception):
         self.code, self.body = code, body
 
 
+def img_version(path):
+    """An image's version for its URL (?v=): its mtime, 0 when there is none."""
+    try:
+        return path.stat().st_mtime_ns // 1_000_000 if path else 0
+    except OSError:
+        return 0
+
+
 def make_server(store, queue_path, port=0, token=None, include_optional=False, start=None, recheck=None, notes=None):
     """The HTTP server over `store` and the queue at `queue_path`, not yet serving."""
     notes_path = Path(notes or os.environ.get("CALMET_NOTES") or Path(__file__).resolve().parents[2] / "NOTES.md")
@@ -156,6 +164,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 "scan_crop": store.scan_crop(vol, page)[1],
                 "good": len(store.good_pages(vol, page)),
                 "good_keys": [store.good_key(c) for c in store.good_pages(vol, page)],
+                "scan_v": img_version(store.scan_shown(vol, page)),  # in the images' URLs: a re-crop is fetched anew
+                "good_v": [img_version(c) for c in store.good_pages(vol, page)],
                 "merged_edited": merged_edited(vol, page, data),
                 "context": store.context(vol, page), "pages": store.pages(vol),
                 "chapters": store.chapters(vol),
@@ -772,9 +782,27 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 "status_order": list(merge_view.STATUS_ORDER),
                 "rows": merge_view.rows(doc, store, merge_decisions.load(store.docs, vol))}
 
+    def good_shift(x):
+        """x (a unit view, a change's `good`) with every Good box moved onto its crop as it is now (a crop
+        trimmed after its OCR: store.good_offset); a copy, the cached units are not touched."""
+        if isinstance(x, list):
+            return [good_shift(v) for v in x]
+        if not isinstance(x, dict):
+            return x
+        out = {k: good_shift(v) for k, v in x.items()}
+        if isinstance(x.get("crop"), str) and isinstance(x.get("boxes"), list):
+            dx, dy = store.good_offset(store.data.parent / x["crop"])
+            if dx or dy:
+                out["boxes"] = [[b[0] - dx, b[1] - dy, *b[2:]] for b in x["boxes"]]
+        return out
+
+    def unit_view(doc, uid, st, dec):
+        view = merge_view.unit_view(doc, uid, st, dec)
+        return None if view is None else good_shift(view)
+
     def merge_unit(q):
         vol, doc = merge_doc(q)
-        view = merge_view.unit_view(doc, q.get("uid"), store, merge_decisions.load(store.docs, vol))
+        view = unit_view(doc, q.get("uid"), store, merge_decisions.load(store.docs, vol))
         if view is None:
             raise ApiError(404, {"error": "no such unit"})
         return view
@@ -826,7 +854,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         doc = merge_view.load(store.data, vol, store.docs)
         u = next(x for x in doc["units"] if x["uid"] == u["uid"])
         out = merge_rebuild(vol, doc, u, {})
-        out["view"] = merge_view.unit_view(doc, u["uid"], store, merge_decisions.load(store.docs, vol))
+        out["view"] = unit_view(doc, u["uid"], store, merge_decisions.load(store.docs, vol))
         return out
 
     def merge_edit(body):
@@ -837,7 +865,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             if not merge_decisions.drop_edit(store.docs, vol, u["uid"], str(body["drop"])):
                 raise ApiError(404, {"error": "no such edit in this unit"})
             out = merge_rebuild(vol, doc, u, {"progress": merge_decisions.unit_progress(merge_decisions.load(store.docs, vol), u)})
-            out["view"] = merge_view.unit_view(doc, u["uid"], store, merge_decisions.load(store.docs, vol))
+            out["view"] = unit_view(doc, u["uid"], store, merge_decisions.load(store.docs, vol))
             return out
         try:
             page, a, b, path, text = int(body["page"]), int(body["a"]), int(body["b"]), str(body["path"]), str(body["text"])
@@ -873,7 +901,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         else:
             raise ApiError(400, {"error": "an edit stays within one segment of the text"})
         merge_rebuild(vol, doc, u, out)
-        out["view"] = merge_view.unit_view(doc, u["uid"], store, merge_decisions.load(store.docs, vol))
+        out["view"] = unit_view(doc, u["uid"], store, merge_decisions.load(store.docs, vol))
         return out
 
     def merge_mark(body):
@@ -1070,7 +1098,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 rec, state = merge_decisions.lookup(dec, u["uid"], c, u.get("changes") or [])
                 if not rec or state == "reopened" or rec.get("choice") not in ("good", "both"):
                     continue
-                for g in c.get("good") or []:
+                for g in good_shift(c.get("good") or []):
                     crop = (store.data.parent / g["crop"]).resolve() if g.get("crop") else None
                     if crop in crops:
                         out.setdefault(str(crops.index(crop)), []).extend(g.get("boxes") or [])

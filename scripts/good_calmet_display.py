@@ -1,7 +1,7 @@
 """The Good_Calmet crops with their contrast raised, for the review editor only (Kraken reads the plain
 crops): data/good_calmet_display/<pdf>/page_NNNN.png, same size, no pixel moved (the OCR boxes hold).
 
-    python3 good_calmet_display.py <pdf> [first-last]   the display copies of a PDF's crops not yet made
+    python3 good_calmet_display.py <pdf> [first-last]   the display copies of a PDF's crops not yet made (or older than their crop)
     python3 good_calmet_display.py --vol 01_genese      every PDF of that volume
     python3 good_calmet_display.py --all                every crop in crops.json
     python3 good_calmet_display.py ... --force          made again (after a change to the curve)
@@ -85,7 +85,7 @@ def main(argv):
     todo = []
     for pdf, p in sorted(set(jobs)):
         src, out = crop_path(pdf, p), display_path(pdf, p)
-        if src.exists() and (force or not out.exists()):
+        if src.exists() and (force or not out.exists() or out.stat().st_mtime_ns < src.stat().st_mtime_ns):  # re-cropped since
             todo.append((src, out))
     with ProcessPoolExecutor(os.cpu_count()) as ex:
         for i, _ in enumerate(ex.map(_job, todo, chunksize=16), 1):

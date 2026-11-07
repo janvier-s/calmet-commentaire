@@ -201,7 +201,8 @@ class Store:
                 self._good = (mt, {}, {})
                 import good_calmet_kraken as gk
                 mv = gk.moved(self.data / "good_calmet")
-                for key, rec in sorted(json.loads(f.read_text()).items()):
+                self._good_recs = json.loads(f.read_text())
+                for key, rec in sorted(self._good_recs.items()):
                     v = rec.get("vol") or "01_genese"
                     self._good[2].setdefault(v, []).append(key)
                     for s in ([rec["source"]] if rec.get("source") else []) + mv.get(key, []):
@@ -221,9 +222,54 @@ class Store:
 
     def good_shown(self, crop):
         """The image the editor shows for a Good_Calmet crop: its contrast-raised copy
-        (data/good_calmet_display/, good_calmet_display.py) when there is one, else the crop."""
+        (data/good_calmet_display/, good_calmet_display.py), made again when the crop is newer (re-cropped,
+        good_calmet_tighten*.py), else the crop."""
         shown = self.data / "good_calmet_display" / crop.relative_to(self.data / "good_calmet")
-        return shown if shown.exists() else crop
+        try:
+            if shown.exists() and shown.stat().st_mtime_ns >= crop.stat().st_mtime_ns:
+                return shown
+            if not shown.exists() and not shown.parent.exists():
+                return crop  # no display copies for this PDF: the crop as it is
+            import good_calmet_display
+            tmp = shown.with_name(shown.stem + ".tmp.png")
+            good_calmet_display.make(crop, tmp)
+            os.replace(tmp, shown)
+            return shown
+        except Exception:  # noqa: BLE001 - the plain crop rather than nothing
+            return crop
+
+    def good_offset(self, crop):
+        """(dx, dy): where the crop now starts in the pixels its Good Kraken OCR (scripts/cache/good_ocr/) and
+        the boxes made from it were read in: a crop trimmed after its OCR (good_calmet_tighten*.py record the
+        trims in crops.json) shifts them by its top / left trim. (0, 0) when they still match or nothing
+        tells by how much."""
+        import good_calmet_kraken as gk
+        try:
+            key = self.good_key(crop)
+            pdf, name = key.split("/", 1)
+            ocr = gk.cache_path(pdf, int(name[5:]))
+            sig = (crop.stat().st_mtime_ns, ocr.stat().st_mtime_ns if ocr.exists() else 0)
+        except (OSError, ValueError):
+            return (0, 0)
+        self._good_off = getattr(self, "_good_off", {})
+        hit = self._good_off.get(key)
+        if hit and hit[0] == sig:
+            return hit[1]
+        off = (0, 0)
+        if sig[1]:
+            from PIL import Image
+            try:
+                ow, oh = json.loads(ocr.read_text())["size"]
+                with Image.open(crop) as im:
+                    w, h = im.size
+            except (OSError, ValueError, KeyError):
+                ow, oh = w, h = 0, 0
+            self.good_pages("01_genese", 1)
+            rec = getattr(self, "_good_recs", {}).get(key) or {}
+            tx, ty = rec.get("tightened_x") or [0, 0], rec.get("tightened") or [0, 0]
+            off = (tx[0] if ow != w and ow - w == sum(tx) else 0, ty[0] if oh != h and oh - h == sum(ty) else 0)
+        self._good_off[key] = (sig, off)
+        return off
 
     def scan_shown(self, vol, page):
         """The image the editor shows: the crop when there is one, else the scan."""

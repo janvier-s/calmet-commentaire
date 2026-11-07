@@ -75,6 +75,8 @@ export async function loadPage(vol, page) {
   S.opened = { vol, page, data: structuredClone(r.body.data) };  // for Undo all
   S.good = r.body.good || 0;
   S.goodKeys = r.body.good_keys || [];
+  S.goodV = r.body.good_v || [];
+  S.scanV = r.body.scan_v || 0;
   S.scanHas = !!r.body.scan;
   if (S.goodIdx >= S.good) S.goodIdx = 0;
   Object.assign(S, { vol, page, data: r.body.data, version: r.body.version, ctx: r.body.context,
@@ -110,7 +112,7 @@ function goodUrl() {
     const [pdf, p] = S.goodKey.split("/");
     return `/goodcrop/${encodeURIComponent(pdf)}/${parseInt(p.replace(/\D/g, ""), 10)}`;
   }
-  return `/good/${encodeURIComponent(S.vol)}/${S.page}/${S.goodIdx || 0}`;
+  return `/good/${encodeURIComponent(S.vol)}/${S.page}/${S.goodIdx || 0}?v=${(S.goodV || [])[S.goodIdx || 0] || 0}`;
 }
 
 /** The scan the text's mode starts with: Good's matching page in Merged, the scan in Old. */
@@ -177,7 +179,7 @@ export function showScan(has = S.scanHas) {
   $("scan-dim").hidden = !has;
   if (has) {
     img.onload = () => layoutScan();
-    img.src = g ? goodUrl() : `/scan/${encodeURIComponent(S.vol)}/${S.page}`;
+    img.src = g ? goodUrl() : `/scan/${encodeURIComponent(S.vol)}/${S.page}?v=${S.scanV || 0}`;
   }
 }
 
