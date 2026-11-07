@@ -146,10 +146,42 @@ def _in_order(stream, idx, near):
             stream[i]["s"] = "gap"
 
 
+def margin_words(lines, size):
+    """(line, word) indexes of the words in Good's margins (the chronology "Monde I. avant J.C. 4000", the
+    references): a narrow line standing at or beyond the body column's right edge (or wholly left of its left
+    edge), or a word of a body line set out past it ("tems Acos avant": Kraken runs the margin into the line).
+    The column's edges are the median ends and the 20th-percentile starts of the lines half the page wide."""
+    wide = [ln["box"] for ln in lines if ln["box"][2] >= 0.5 * size[0]]
+    if len(wide) < 3:
+        return set()
+    right = sorted(b[0] + b[2] for b in wide)[len(wide) // 2]
+    left = sorted(b[0] for b in wide)[len(wide) // 5]
+    out = set()
+    for li, ln in enumerate(lines):
+        x, _, w, _ = ln["box"]
+        narrow = w < 0.25 * size[0]
+        for wi, wd in enumerate(ln["words"]):
+            x0, x1 = wd["box"][0], wd["box"][0] + wd["box"][2]
+            if narrow and (x >= right - 10 or x + w <= left + 4) or x0 > right + 4 or x1 < left - 4:
+                out.add((li, wi))
+    return out
+
+
+def without_margin(o):
+    """The page's OCR with its margin words left out (and the lines left empty), the cache untouched."""
+    drop = margin_words(o["lines"], o["size"])
+    lines = []
+    for li, ln in enumerate(o["lines"]):
+        ws = [w for wi, w in enumerate(ln["words"]) if (li, wi) not in drop]
+        if ws:
+            lines.append(dict(ln, words=ws) if len(ws) < len(ln["words"]) else ln)
+    return dict(o, lines=lines)
+
+
 def label(job):
     """One Good page's words, each linked (or not) to a JSON word: {t, k, wc, boxes, s, page?, path?, a?, b?}."""
     rec, cand = job
-    go = json.loads(gk.cache_path(rec["pdf"], rec["pdf_page"]).read_text(encoding="utf-8"))
+    go = without_margin(json.loads(gk.cache_path(rec["pdf"], rec["pdf_page"]).read_text(encoding="utf-8")))
     runs = {p: scan_ocr.align(go, d, fix=True)["words"] for p, d in cand}
     if not runs:
         return rec, None, []
