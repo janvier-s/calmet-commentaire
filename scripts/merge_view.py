@@ -8,6 +8,7 @@ import difflib
 import json
 from pathlib import Path
 
+import good_italics
 import good_units
 import merge_build
 import merge_decisions
@@ -316,12 +317,12 @@ def segments(u):
         cls = c.get("class")
         counts[cls] = counts.get(cls, 0) + 1
         seg = {"kind": "change", "id": cid, "cls": cls}
-        modern = next((c[k] for k in ("good_punct", "good_modern") if c.get(k) is not None), c.get("good_raw") or "")
+        modern = next((c[k] for k in ("good_italic", "good_punct", "good_modern") if c.get(k) is not None), c.get("good_raw") or "")
         osegs.append({**seg, "t": oslice(os_, oe)})
         lead = " " if gs > 0 and modern else ""
         gseg = {**seg, "t": lead + modern if modern else ""}
         if c.get("good_punct") is not None and c.get("good_flags"):  # the marks to check, on the text shown
-            gseg["flags"] = [dict(f, a=f["a"] + len(lead), b=f["b"] + len(lead)) for f in c["good_flags"]]
+            gseg["flags"] = [dict(f, a=f["a"] + len(lead), b=f["b"] + len(lead)) for f in good_italics.shift(c["good_flags"], modern)]
         gsegs.append(gseg)
         psegs.append({**seg, "t": gslice(gs, ge)})
         oc, gc = oe, ge

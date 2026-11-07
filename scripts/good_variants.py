@@ -27,6 +27,7 @@ import unicodedata
 
 from paths import DATA, SCRIPTS
 import good_calmet_kraken as gk
+import good_italics
 import scan_ocr
 
 RANK = {"ok": 3, "near": 2}
@@ -233,6 +234,9 @@ def label(job):
         order = [p for p, _ in votes[line].most_common()] + [p for p in runs if p not in votes[line]]
         best = next(((p, runs[p][i]) for p in order if runs[p][i]["s"] in RANK), None)
         r = {"t": w["t"], "pt": w.get("pt") or w["t"], "k": scan_ocr.key(w["t"]), "wc": w["wc"], "boxes": w["boxes"]}
+        sl = scan_ocr.word_slant(cols, w)
+        if sl is not None:
+            r["sl"] = round(sl, 1)  # degrees: italic from ITALIC_AT
         li, wi = w["src"][0]
         if len(w["t"]) == 1 and re.search(r"[()]", cols["lines"][li]["words"][wi]["t"]):
             r["s"] = "skip"  # a note's mark: the later edition letters its notes otherwise
@@ -573,6 +577,12 @@ def record(c, vol, jt, stream, src, pages, linked):
            "words": len(ws), "old_words": len(olds), "pieces": c.get("n", 1),
            "before": " ".join(t["t"] for t in jt[max(0, j0 - 8):j0]), "after": " ".join(t["t"] for t in jt[j1:j1 + 8]),
            "good": list(where.values())}
+    it = good_italics.runs(ws)
+    if it:  # the words printed in italics, as _marks_ in the text Good's wording is taken as
+        final = next((rec[k] for k in ("good_punct", "good_modern") if rec.get(k) is not None), raw)
+        marked = good_italics.apply(final, raw, it)
+        if marked != final:
+            rec["good_italic"] = marked
     paths = list(dict.fromkeys(f"{t['page']}:{t['path']}" for t in olds))
     if len(paths) > 1:
         rec["spans"] = paths
