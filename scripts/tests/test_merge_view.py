@@ -296,7 +296,7 @@ def test_scan_boxes_insert_point_follows_the_word_before(data_dir, monkeypatch):
     st = Store(data_dir, data_dir.parent / "docs")
     _three_words(monkeypatch)
     got = merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 10, 0)
-    assert got["caret"] == [10, 1, 2] and got["boxes"] == [[4, 1, 6, 2]]
+    assert got["caret"] == [10.5, 1, 2] and got["boxes"] == [[4, 1, 6, 2]]  # midway to the next word on its line
 
 
 def test_scan_boxes_insert_at_a_field_start_goes_before_its_first_word(data_dir, monkeypatch):
@@ -304,3 +304,12 @@ def test_scan_boxes_insert_at_a_field_start_goes_before_its_first_word(data_dir,
     _three_words(monkeypatch)
     got = merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 0, 0)
     assert got["caret"] == [1, 1, 2] and got["boxes"] == [[1, 1, 2, 2]]
+
+
+def test_scan_boxes_insert_at_a_line_end_stays_after_the_word(data_dir, monkeypatch):
+    st = Store(data_dir, data_dir.parent / "docs")
+    _three_words(monkeypatch)
+    words = merge_view.scan_ocr.align(None, None)["words"]
+    words[2]["boxes"] = [[1, 9, 3, 2]]  # "qui" on the next line
+    monkeypatch.setattr(merge_view.scan_ocr, "align", lambda o, d, fix=False: {"size": [100, 200], "words": words})
+    assert merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 10, 0)["caret"] == [10, 1, 2]

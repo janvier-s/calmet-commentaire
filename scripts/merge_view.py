@@ -396,7 +396,12 @@ def scan_boxes(store, vol, page, path, at, n):
         nxt = [w for w in mine if w["a"] >= at]
         if prev:
             x, y, bw, h = prev[-1]["boxes"][-1]
-            return {"boxes": [prev[-1]["boxes"][-1]], "caret": [x + bw, y, h], "size": res.get("size"), "crop": crop}
+            cx = x + bw
+            if nxt:  # midway to the next word when it is on the same line (a box can miss part of a word: &c.)
+                nx, ny, _, nh = nxt[0]["boxes"][0]
+                if abs(ny - y) < min(h, nh) / 2 and nx > cx:
+                    cx = (cx + nx) / 2
+            return {"boxes": [prev[-1]["boxes"][-1]], "caret": [cx, y, h], "size": res.get("size"), "crop": crop}
         if nxt:
             x, y, bw, h = nxt[0]["boxes"][0]
             return {"boxes": [nxt[0]["boxes"][0]], "caret": [x, y, h], "size": res.get("size"), "crop": crop}
