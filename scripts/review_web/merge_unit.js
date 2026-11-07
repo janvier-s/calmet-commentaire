@@ -3,7 +3,7 @@
 // Read-only: the decision buttons are drawn disabled (part 3).
 import { el, goodFigure } from "./goodfig.js";
 import { badge, ref } from "./merge_list.js";
-import { BOOK_TITLES, toHash } from "./merge_state.js";
+import { BOOK_TITLES, toHash, unitScans } from "./merge_state.js";
 
 const CLS_SHOWN = new Set(["substantive", "cosmetic", "moved"]);
 const ROW_WORDS = 40;  // a row closes after a run that agrees on both sides, once it holds this many words
@@ -159,6 +159,22 @@ function goodCrop(box, c, view) {
     ...(page ? [goodFigure({ ...page, boxes: [] }, null)] : []));
 }
 
+/** One-sided units have no change to open a panel on: the side with text gets its scans here. */
+function unitScanBar(view, state) {
+  const { sources, good } = unitScans(view);
+  const bar = el("div", { className: "mg-panel-actions" }), boxes = el("div");
+  const add = (label, load) => {
+    const box = el("div", { className: "mg-scan" });
+    boxes.append(box);
+    bar.append(el("button", { textContent: label, onclick: () => { if (box.childNodes.length) box.replaceChildren(); else load(box); } }));
+  };
+  for (const s of sources) {
+    add(`Source scan p.${s.page}`, (box) => sourceScan(box, state.vol, { page: s.page, path: s.path, at: s.at, old_words: s.n }));
+  }
+  for (const g of good) add(`Good crop ${g.pdf} p.${g.pdf_page}`, (box) => box.replaceChildren(goodFigure(g, null)));
+  return sources.length || good.length ? el("div", { className: "mg-unitscans" }, bar, boxes) : null;
+}
+
 // --- the panel ---
 
 function panel(c, view, state, nav) {
@@ -266,6 +282,8 @@ export function renderUnit(root, view, state, nav) {
     if (goodSegs.length) fill(g, goodSegs, "good", state, byKey, nav.pick);
     else g.append(el("div", { className: "mg-empty", textContent: view.empty.good || "No Good text." }));
     addRow(o, g, new Set([...keysIn(oldSegs), ...keysIn(goodSegs)]));
+    const scans = unitScanBar(view, state);
+    if (scans) grid.append(scans);
   } else {
     for (const [a, b] of rowsOf(oldSegs, goodSegs)) {
       const os = oldSegs.filter((s) => s.k >= a && s.k < b), gs = goodSegs.filter((s) => s.k >= a && s.k < b);

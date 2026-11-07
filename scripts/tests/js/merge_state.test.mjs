@@ -30,3 +30,12 @@ test("counter", () => {
 test("neighbours", () => {
   assert.deepEqual(neighbours(sortRows(filterRows(R, parseHash(""))), "d"), { prev: "c", next: "b" });
 });
+test("a unit's own scans: one source band per normalized page, its Good pages", async () => {
+  const { unitScans } = await import("../../review_web/merge_state.js");
+  const view = { unit: { parts: [{ page: 235, path: "verses/1/french" }, { page: 235, path: "verses/1/latin" }, { page: 236, path: "verses/0/french" }],
+    good_where: [{ pdf: "X", pdf_page: 9, boxes: [[1, 2, 3, 4]] }] } };
+  assert.deepEqual(unitScans(view), {
+    sources: [{ page: 235, path: "verses/1/french", at: 0, n: 12 }, { page: 236, path: "verses/0/french", at: 0, n: 12 }],
+    good: [{ pdf: "X", pdf_page: 9, boxes: [[1, 2, 3, 4]] }] });
+  assert.deepEqual(unitScans({ unit: { parts: [], good_where: [] } }), { sources: [], good: [] });
+});

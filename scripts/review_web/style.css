@@ -587,3 +587,4 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 .mg-uitem { padding: 3px 6px; border-radius: 5px; cursor: pointer; }
 .mg-uitem:hover, .mg-uitem.open { background: var(--accent-weak); }
 .mg-banner.mg-info { color: var(--info); border-color: var(--info-border); background: var(--info-bg); }
+.mg-unitscans { grid-column: 1 / -1; margin: 6px 0 10px; }

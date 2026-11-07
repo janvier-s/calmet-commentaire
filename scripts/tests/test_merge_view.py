@@ -224,3 +224,19 @@ def test_good_position_of_placed_changes(data_dir):
     at = {c["key"]: c["good_at"] for c in v["changes"]}
     assert at == {"c1": 13, "c2": 18, "c3": None}
     assert v["good_tokens"] == 19
+
+
+def test_overlapping_and_crossing_changes_go_unplaced(data_dir):
+    """A change whose span overlaps one already placed, or whose Good order crosses the old order, is listed in
+    `unplaced`, never drawn: the columns would no longer reassemble."""
+    doc = json.loads(make_units(data_dir).read_text())
+    doc["units"][0]["changes"] += [
+        _change(id="c5", kind="replace", old="de la sagesse", good_raw="de la sagese", good_modern="de la sagese",
+                before="qui a", after="", good_before="qui a", good_after="", at=40),       # overlaps c2
+        _change(id="c6", kind="replace", old="serviteur", good_raw="qui", good_modern="qui", before="STULTIS Le",
+                after="sage dominera", good_before="esclave prudent", good_after="a de la", at=41),  # crosses c1
+    ]
+    v = merge_view.unit_view(doc, "commentary:17:2:0")
+    assert v["unplaced"] == ["c3", "c5", "c6"]
+    assert "".join(s["t"] for s in v["old"]) == doc["units"][0]["old"]
+    assert "".join(s["t"] for s in v["good_printed"]).split() == doc["units"][0]["good"].split()

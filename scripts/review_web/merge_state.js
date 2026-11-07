@@ -62,3 +62,16 @@ export function neighbours(rows, uid) {
   if (k < 0) return { prev: null, next: null };
   return { prev: k > 0 ? rows[k - 1].uid : null, next: k + 1 < rows.length ? rows[k + 1].uid : null };
 }
+
+/** A unit's own scans, for a side with no change to open a panel on: the source scan's first words on each
+ * normalized page the unit has text on, and its Good pages. */
+export function unitScans(view) {
+  const u = view.unit || {};
+  const seen = new Set(), sources = [];
+  for (const p of u.parts || []) {
+    if (seen.has(p.page)) continue;
+    seen.add(p.page);
+    sources.push({ page: p.page, path: p.path, at: 0, n: 12 });
+  }
+  return { sources, good: [...(u.good_where || [])] };
+}
