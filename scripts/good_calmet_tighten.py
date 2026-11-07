@@ -20,6 +20,11 @@ def band(g):
         else:
             i += 1
     runs = [r for r in runs if not (r[1] - r[0] < 0.006 * h and (r[1] < .2 * h or r[0] > .8 * h))]
+    # edge shadow: short run (<4 % h) hugging an edge, isolated from the body by a blank gap > 6 % h
+    while len(runs) > 1 and runs[-1][1] - runs[-1][0] < .04 * h and h - runs[-1][1] < .1 * h and runs[-1][0] - runs[-2][1] > .06 * h:
+        runs.pop()
+    while len(runs) > 1 and runs[0][1] - runs[0][0] < .04 * h and runs[0][0] < .1 * h and runs[1][0] - runs[0][1] > .06 * h:
+        runs.pop(0)
     return (runs[0][0], runs[-1][1]) if runs else (0, h)
 
 def tighten(pdf, dry=False):
