@@ -8,6 +8,7 @@ import difflib
 import json
 from pathlib import Path
 
+from paths import DOCS
 import good_italics
 import good_units
 import merge_build
@@ -20,18 +21,24 @@ NOTES = Path(__file__).resolve().parent / "good_merge_notes.json"
 _docs = {}  # good_units.json path -> ((mtime, size), parsed)
 
 
-def load(data, vol):
-    """data/<vol>/good_units.json, parsed once and again whenever the file changes; None if absent."""
+def load(data, vol, docs=None):
+    """data/<vol>/good_units.json, parsed once and again whenever it, the good_normalized store or the
+    undone records change (good_normalized.overlay puts the cleaned text on the changes); None if absent."""
+    import good_normalized
     path = Path(data) / vol / "good_units.json"
     try:
         st = path.stat()
     except (FileNotFoundError, NotADirectoryError):
         return None
-    sig = (st.st_mtime_ns, st.st_size)
+    store_p, undo_p = good_normalized.store_path(data, vol), good_normalized.undone_path(docs or DOCS, vol)
+    sig = (st.st_mtime_ns, st.st_size) + tuple(
+        (s.st_mtime_ns, s.st_size) if (s := (p.stat() if p.exists() else None)) else None for p in (store_p, undo_p))
     hit = _docs.get(path)
     if hit and hit[0] == sig:
         return hit[1]
     doc = json.loads(path.read_text(encoding="utf-8"))
+    if store_p.exists():
+        good_normalized.overlay(doc, good_normalized.load_json(store_p, {}), good_normalized.load_json(undo_p, {}).get("undone"))
     _docs[path] = (sig, doc)
     return doc
 
@@ -317,12 +324,12 @@ def segments(u):
         cls = c.get("class")
         counts[cls] = counts.get(cls, 0) + 1
         seg = {"kind": "change", "id": cid, "cls": cls}
-        modern = next((c[k] for k in ("good_italic", "good_punct", "good_modern") if c.get(k) is not None), c.get("good_raw") or "")
+        modern = next((c[k] for k in ("good_normalized", "good_italic", "good_punct", "good_modern") if c.get(k) is not None), c.get("good_raw") or "")
         osegs.append({**seg, "t": oslice(os_, oe)})
         lead = " " if gs > 0 and modern else ""
         gseg = {**seg, "t": lead + modern if modern else ""}
         if c.get("good_punct") is not None and c.get("good_flags"):  # the marks to check, on the text shown
-            gseg["flags"] = [dict(f, a=f["a"] + len(lead), b=f["b"] + len(lead)) for f in good_italics.shift(c["good_flags"], modern)]
+            gseg["flags"] = [dict(f, a=f["a"] + len(lead), b=f["b"] + len(lead)) for f in good_italics.shift(c.get("good_flags_normalized") or c["good_flags"], modern)]
         gsegs.append(gseg)
         psegs.append({**seg, "t": gslice(gs, ge)})
         oc, gc = oe, ge

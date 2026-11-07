@@ -13,6 +13,8 @@ FRENCH = {"french", "french_translation", "french_commentary", "chapter_summary"
 def fix(s):
     s = s.replace("ſ", "s")
     s = re.sub(r"&\s*c\.", "etc.", s)
+    s = re.sub(r"\bet c(?:\.|(?![\w'’]))", "etc.", s)  # Good's & c. read as et c.
+    s = re.sub(r"\b(mon)(oye|noye)\b", "monnaie", s)
     return re.sub(r"&(?![a-z]+;)", "et", s)
 
 

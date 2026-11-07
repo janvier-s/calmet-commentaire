@@ -49,8 +49,8 @@ def text_map(texts):
 
 
 def good_text(c):
-    """Good's wording for take Good: punctuated, else modern, else as read."""
-    return next((c[k] for k in ("good_italic", "good_punct", "good_modern") if c.get(k) is not None), c.get("good_raw") or "")
+    """Good's wording for take Good: cleaned (good_normalized), else italicized, punctuated, modern, else as read."""
+    return next((c[k] for k in ("good_normalized", "good_italic", "good_punct", "good_modern") if c.get(k) is not None), c.get("good_raw") or "")
 
 
 def change_text(c, old_slice, choice, text):

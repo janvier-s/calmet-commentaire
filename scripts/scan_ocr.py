@@ -245,8 +245,8 @@ def modern(text):
     try:
         from clean_mechanical import fix_spelling
         from modernize_inplace import modernize_text
-        text = re.sub(r"\bet c(?:\.|(?![\w'’]))", "etc.", text.replace("ſ", "s").replace("&", "et").replace("’", "'"))
-        text = re.sub(r"\b(mon)(oye|noye)\b", "monnaie", text)
+        import fix_typography  # the typography rules normalized has (long s, & c., et c., monnaie, &)
+        text = fix_typography.fix(text.replace("’", "'"))
         return modern_words(modernize_text(fix_spelling(text))[0])
     except Exception:
         return None
