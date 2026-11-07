@@ -27,6 +27,7 @@ import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+import merge_view
 import review_proposals as rp
 import review_store as rs
 import review_turns as rt
@@ -740,10 +741,47 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
               "kind_category": {k: rs.kind_category(k) for k in rs.KIND_LABELS}, "themes": rs.KIND_THEMES, "categories": list(rs.CATEGORIES),
               "statuses": list(rs.STATUSES), "volumes": store.volumes(), "start": start or {},
               "turn_kinds": sorted(rt.TURN_KINDS), "todo_presets": todo_presets()}
+    def merge_doc(q):
+        """The volume's good_units.json, for the read-only /merge screen."""
+        vol = q.get("vol")
+        doc = merge_view.load(store.data, vol) if vol in merge_view.merge_vols(store.data) else None
+        if doc is None:
+            raise ApiError(404, {"error": "no good_units for this book"})
+        return vol, doc
+
+    def merge_list(q):
+        vol, doc = merge_doc(q)
+        return {"vol": vol, "summary": doc.get("summary") or {},
+                "unattached": (doc.get("summary") or {}).get("unattached") or 0, "notes": merge_view.notes(vol),
+                "status_order": list(merge_view.STATUS_ORDER), "rows": merge_view.rows(doc, store)}
+
+    def merge_unit(q):
+        vol, doc = merge_doc(q)
+        view = merge_view.unit_view(doc, q.get("uid"), store)
+        if view is None:
+            raise ApiError(404, {"error": "no such unit"})
+        return view
+
+    def merge_scanwords(q):
+        vol = q.get("vol")
+        if vol not in store.volumes():
+            raise ApiError(404, {"error": f"no volume {vol}"})
+        try:
+            page, at, n = int(q.get("page")), int(q.get("at")), int(q.get("n"))
+        except (TypeError, ValueError):
+            raise ApiError(400, {"error": "page, at and n must be numbers"})
+        return merge_view.scan_boxes(store, vol, page, q.get("path") or "", at, n)
+
+    def merge_vols(q):
+        return {"vols": [{"vol": v, "summary": (merge_view.load(store.data, v) or {}).get("summary") or {}}
+                         for v in merge_view.merge_vols(store.data)]}
+
     GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
            "/api/proposal": get_proposal, "/api/good_note": good_note, "/api/good_note/candidates": good_note_candidates,
-           "/api/batch": batch, "/api/search": search, "/api/versions": versions}
+           "/api/batch": batch, "/api/search": search, "/api/versions": versions,
+           "/api/merge/vols": merge_vols, "/api/merge/list": merge_list, "/api/merge/unit": merge_unit,
+           "/api/merge/scanwords": merge_scanwords}
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/proposal/accept_page": accept_page, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
@@ -793,15 +831,15 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         def do_GET(self):
             url = urllib.parse.urlsplit(self.path)
             path = urllib.parse.unquote(url.path)
-            if path == "/":
+            if path in ("/", "/merge"):  # the queue, and the read-only Good_Calmet merge screen
                 key = urllib.parse.parse_qs(url.query).get("key", [""])[0]
                 if key and secrets.compare_digest(key, token):
                     return self._send(303, b"", "text/plain", [
-                        ("Location", "/"), ("Set-Cookie", f"rw_key={token}; Path=/; HttpOnly; SameSite=Strict")])
+                        ("Location", path), ("Set-Cookie", f"rw_key={token}; Path=/; HttpOnly; SameSite=Strict")])
                 if not self._authorized():
                     return self._send(403, b"Open the link printed by review_web.py (it carries the key).",
                                       "text/plain; charset=utf-8")
-                return self._file(STATIC / "index.html")
+                return self._file(STATIC / ("index.html" if path == "/" else "merge.html"))
             if path.startswith("/static/"):
                 target = (STATIC / path[len("/static/"):]).resolve()
                 return self._file(target if STATIC.resolve() in target.parents else None)

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calmet Merge</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23c27a12'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='21' font-weight='bold' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/style.css">
+<script>
+  // theme before first paint: saved choice, else the Mac's setting (light → paper)
+  (() => {
+    let t = null;
+    try { t = localStorage.getItem("rw-theme"); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "paper";
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<script type="module" src="/static/merge_main.js"></script>
+</head>
+<body>
+<div id="mg-root"></div>
+</body>
+</html>
