@@ -827,6 +827,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         texts = merge_view._part_texts(store, vol, parts) if parts else None
         if part is None or texts is None or not 0 <= a <= b <= len(texts[part]):
             raise ApiError(400, {"error": "no such span in this unit's fields"})
+        if body.get("h") is not None and body["h"] != merge_build.field_hash(texts[part]):
+            raise ApiError(409, {"error": "normalized changed here since the page loaded: reload the unit"})
         r = merge_build.unit_ops(u, texts, merge_decisions.load(store.docs, vol))
         if r["pieces"] is None:
             raise ApiError(409, {"error": "normalized changed since good_units ran: re-run good_units.py"})

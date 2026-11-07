@@ -3,7 +3,7 @@
 import { el } from "./goodfig.js";
 import { badge, ref } from "./merge_list.js";
 import { BOOK_TITLES, toHash, undecided, unitScans } from "./merge_state.js";
-import { diffClass, segmentEdits, toNodes, undoKey } from "./merge_edit.js";
+import { cellTexts, diffClass, segmentEdits, toNodes, undoKey } from "./merge_edit.js";
 import { fitHeight, nextZoom } from "./scan_zoom.js";
 
 const CLS_SHOWN = new Set(["substantive", "cosmetic", "moved"]);
@@ -169,14 +169,22 @@ function mergedNode(s, i, state, byKey, nav) {
 }
 
 /** Text typed in the merged column, sent when the caret leaves the cell (or on Enter). */
-function editable(cell, merged, nav) {
+function editable(cell, merged, indexes, nav) {
   cell.contentEditable = "true";
   cell.spellcheck = false;
+  const kidsOf = (node) => [...node.childNodes].map((ch) => {
+    if (ch.nodeType === 3) return { kind: "loose", text: ch.nodeValue.replace(/\u00a0/g, " ") };
+    if (ch.nodeType !== 1 || ch.dataset.noser) return { kind: "skip" };
+    if (ch.classList.contains("mg-seg") && ch.dataset.i) return { kind: "seg", i: +ch.dataset.i, text: serial(ch) };
+    return { kind: "loose", text: serial(ch) };  // an element the browser put in while typing
+  });
+  let busy = false;
   const commit = () => {
-    const spans = [...cell.querySelectorAll(".mg-seg[data-i]")];
-    const before = spans.map((sp) => ({ ...merged[+sp.dataset.i], key: merged[+sp.dataset.i].id || null }));
-    const edits = segmentEdits(before, spans.map(serial));
-    if (edits.length) nav.typed(edits);
+    if (busy) return;  // Enter blurs: one commit, not two
+    const texts = cellTexts(kidsOf(cell), indexes);
+    const before = indexes.map((i) => ({ ...merged[i], key: merged[i].id || null }));
+    const edits = segmentEdits(before, indexes.map((i) => texts[i]));
+    if (edits.length) { busy = true; nav.typed(edits); }
   };
   cell.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); cell.blur(); }
@@ -468,9 +476,10 @@ export function renderUnit(root, view, state, nav) {
           nav.undo.push({ kind: "decide", vol: state.vol, uid: u.uid, key: seg.id,
             before: { choice: isLive ? d.choice : null, text: isLive ? d.text : null }, after: { choice: "edit", text: e.text } });
         } else {
-          nav.undo.push({ kind: "edit", vol: state.vol, uid: u.uid, page: e.page, path: e.path, a: e.a, b: e.b, before: e.before, after: e.text });
+          nav.undo.push({ kind: "edit", vol: state.vol, uid: u.uid, page: e.page, path: e.path, a: e.a, b: e.b, before: e.before, after: e.text,
+            h: (view.fields || {})[`${e.page}:${e.path}`] });
         }
-        await nav.edit(e.page, e.path, e.a, e.b, e.text);
+        await nav.edit(e.page, e.path, e.a, e.b, e.text, (view.fields || {})[`${e.page}:${e.path}`]);
       }
     } catch (err) { nav.fail(err); }
     nav.redraw();
@@ -517,7 +526,7 @@ export function renderUnit(root, view, state, nav) {
   const fillOld = (cell, segs) => {
     if (!live) return fill(cell, segs, "old", state, byKey, nav.pick);
     for (const s of segs) cell.append(...[].concat(mergedNode(s, index.get(s), state, byKey, nav)).filter(Boolean));
-    editable(cell, oldSegs, nav);
+    editable(cell, oldSegs, segs.filter((s) => s.kind !== "seam" && s.kind !== "join").map((s) => index.get(s)), nav);
   };
   const grid = el("div", { className: "mg-cols" },
     el("div", { className: "mg-colhead" }, live ? `Merged · normalized ${pages(u.parts)} with your decisions (type to edit)` : `Old · normalized ${pages(u.parts)}`),

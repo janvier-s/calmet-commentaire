@@ -51,7 +51,7 @@ async function undoLast() {
   const inv = inverse(x);
   try {
     if (inv.kind === "decide") await send("/api/merge/decide", inv.vol, inv.uid, { key: inv.key, choice: inv.choice, text: inv.text });
-    else await sendEdit(inv.vol, inv.uid, { page: inv.page, path: inv.path, a: inv.a, b: inv.b, text: inv.text });
+    else await sendEdit(inv.vol, inv.uid, { page: inv.page, path: inv.path, a: inv.a, b: inv.b, text: inv.text, h: x.h });
   } catch (e) {
     alert(`Not undone: ${e.message}`);
   }
@@ -113,7 +113,7 @@ async function draw() {
       openUnit: (uid, open) => { location.hash = toHash({ ...state, uid, open }); },
       decide: (key, choice, text) => send("/api/merge/decide", state.vol, state.uid, { key, choice, text }),
       mark: (key, label) => send("/api/merge/mark", state.vol, state.uid, { key, label }),
-      edit: (page, path, a, b, text) => sendEdit(state.vol, state.uid, { page, path, a, b, text }),
+      edit: (page, path, a, b, text, h) => sendEdit(state.vol, state.uid, { page, path, a, b, text, h }),
       dropEdit: (key) => sendEdit(state.vol, state.uid, { drop: key }).then(() => draw(), (e) => alert(`Not saved: ${e.message}`)),
       undo, undoLast,
       redraw: draw, fail: (e) => alert(`Not saved: ${e.message}`) };

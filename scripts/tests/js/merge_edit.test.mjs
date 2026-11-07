@@ -1,7 +1,7 @@
 // The /merge merged column's pure helpers: raw text <-> nodes, the segments edited, undo, the Ctrl+Z gate.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { Undo, diffClass, inverse, segmentEdits, toNodes, toRaw, undoKey } from "../../review_web/merge_edit.js";
+import { Undo, cellTexts, diffClass, inverse, segmentEdits, toNodes, toRaw, undoKey } from "../../review_web/merge_edit.js";
 
 test("raw text round-trips through nodes, markers atomic, italics marked", () => {
   const raw = "Son Verbe ^{(a)} et _sa_ sagesse.";
@@ -52,4 +52,10 @@ test("diffClass: colour by kind, strength by class, decided faded", () => {
   assert.equal(diffClass({ kind: "unclear", class: "substantive" }, false), "mg-k-swap mg-s-sub");
   assert.equal(diffClass({ kind: "replace", class: "moved" }, false), "mg-k-move mg-s-sub");
   assert.equal(diffClass({ kind: "moved", class: "cosmetic" }, false), "mg-k-move mg-s-cos");
+});
+
+test("cellTexts: a segment deleted whole is empty; loose text goes to the segment before it", () => {  // I2
+  const kids = [{ kind: "seg", i: 3, text: " Un" }, { kind: "skip" }, { kind: "loose", text: " mot" }, { kind: "seg", i: 5, text: " fin" }];
+  assert.deepEqual(cellTexts(kids, [3, 4, 5]), { 3: " Un mot", 4: "", 5: " fin" });
+  assert.deepEqual(cellTexts([{ kind: "loose", text: "Avant " }, { kind: "seg", i: 0, text: "tout" }], [0]), { 0: "Avant tout" });
 });

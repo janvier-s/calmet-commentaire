@@ -196,3 +196,21 @@ def test_narrow_to_the_words_that_differ():
     assert merge_build.narrow(f, 16, 22, " de toute la") == (17, "de", "de toute")
     assert merge_build.narrow(f, 0, len(f), "Un esclave qui a la sagesse") == (17, "de", "")
     assert merge_build.narrow(f, 0, 10, "Un esclave") == (3, "esclave", "esclave")
+
+
+def test_take_good_keeps_marker_before_closing_punctuation():  # I4
+    assert merge_build.change_text({"good_raw": "sagese"}, "sagesse ^{(a)}.", "good", None) == "sagese ^{(a)}."
+
+
+def test_unit_drop_cuts_its_fields_keep_leaves_them(data_dir):  # I3
+    doc, docs, st = _setup(data_dir)
+    md.decide(docs, VOL, "verse:17:4:0", None, "drop")
+    md.decide(docs, VOL, "good:17:5:0", None, "keep")
+    r = merge_build.build_pages(st, VOL, doc, md.load(docs, VOL))
+    out = json.loads((merge_build.merged_dir(data_dir, VOL) / "page_0195.json").read_text())
+    assert out["verses"][0]["french"] == ""
+    assert {"uid": "good:17:5:0", "key": "unit@good:17:5:0", "why": "no place in normalized"} in r["skipped"]
+    md.decide(docs, VOL, "verse:17:4:0", None, "keep")
+    merge_build.build_pages(st, VOL, doc, md.load(docs, VOL), pages={195})
+    out = json.loads((merge_build.merged_dir(data_dir, VOL) / "page_0195.json").read_text())
+    assert out["verses"][0]["french"] == "Le méchant obéit à la langue injuste."

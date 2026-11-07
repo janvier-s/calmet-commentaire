@@ -176,3 +176,38 @@ def test_merge_edit_reverting_a_segment_removes_its_edit(web):
     assert any(k.startswith("edit@") for k in json.loads(f.read_text())["decisions"])
     code, _ = web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 10, "b": 22, "text": " qui a de la"})
     assert code == 200 and not any(k.startswith("edit@") for k in json.loads(f.read_text())["decisions"])
+
+
+# --- final review fixes ---
+
+def test_second_edit_beside_a_free_edit_keeps_it(web):  # C1
+    base = {"vol": "22_proverbes", "uid": UID}
+    _, r = web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 10, "b": 22, "text": " lequel a de la"})
+    after = next(s for s in r["view"]["merged"] if s["kind"] == "same" and s["path"] == T2 and s["t"] == " a de la")
+    assert (after["a"], after["b"]) == (14, 22)
+    edit = next(s for s in r["view"]["merged"] if s["kind"] == "edit")
+    assert (edit["a"], edit["b"]) == (11, 14)
+    code, r = web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 14, "b": 22, "text": " a de toute la"})
+    assert code == 200
+    merged = json.loads((web.data / "22_proverbes" / "merged" / "page_0194.json").read_text())
+    assert merged["commentary"][1]["french_commentary"] == "Un esclave lequel a de toute la sagesse ^{(a)}."
+
+
+def test_edit_refused_when_the_field_changed_since_the_view(web):  # I1
+    base = {"vol": "22_proverbes", "uid": UID}
+    _, v = web(f"/api/merge/unit?vol=22_proverbes&uid={UID}")
+    h = v["fields"][f"194:{T2}"]
+    p = web.data / "22_proverbes" / "normalized" / "page_0194.json"
+    d = json.loads(p.read_text())
+    d["commentary"][1]["french_commentary"] = "Un ^{(b)} esclave qui a de la sagesse ^{(a)}."
+    p.write_text(json.dumps(d))
+    code, _ = web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 0, "b": 10, "text": "Un serviteur", "h": h})
+    assert code == 409
+
+
+def test_edit_accepted_with_the_fields_hash(web):
+    base = {"vol": "22_proverbes", "uid": UID}
+    _, v = web(f"/api/merge/unit?vol=22_proverbes&uid={UID}")
+    code, _ = web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 10, "b": 22, "text": " lequel a de la",
+                                      "h": v["fields"][f"194:{T2}"]})
+    assert code == 200

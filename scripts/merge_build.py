@@ -6,6 +6,7 @@ so no old note is lost; markers are renumbered per page when a page's set of the
 normalized.
 """
 import copy
+import hashlib
 import os
 import re
 from pathlib import Path
@@ -64,10 +65,11 @@ def change_text(c, old_slice, choice, text):
         return " ".join(x for x in (old_slice.strip(), good) if x)
     bare = CALL.sub("", old_slice).rstrip()
     tail = TAIL_PUNCT.search(bare)
-    if good and tail and good[-1].isalnum():
-        good += tail.group()
     marks = [m.group() for m in CALL.finditer(old_slice) if m.group() not in good]
-    return " ".join([good] + marks if good else marks)
+    out = " ".join([good] + marks if good else marks)
+    if good and tail and good[-1].isalnum():  # the closing mark after the kept markers, as normalized has it
+        out += tail.group()
+    return out
 
 
 def spans(text, ops):
@@ -229,6 +231,14 @@ def unit_ops(u, texts, decisions):
     def add(part, op):
         taken.setdefault(part, []).append(op)
 
+    unit_choice = (decisions["decisions"].get(md.unit_key(u.get("uid"))) or {}).get("choice")
+    if unit_choice == "drop" and parts:  # the unit left out of the merge: its fields cut whole
+        ops = {(p["page"], p["path"]): [{"a": 0, "b": len(texts[k]), "new": "", "key": md.unit_key(u.get("uid")),
+                                         "kind": "unit", "choice": "drop", "lead": 0, "state": "current"}]
+               for k, p in enumerate(parts)}
+        return {"ops": ops, "skipped": [], "pieces": ps, "edits": edits}
+    if unit_choice == "keep" and not parts:
+        skipped.append({"key": md.unit_key(u.get("uid")), "why": "no place in normalized"})
     for r in md.free_edits(decisions, u.get("uid")):  # free edits first: they win over changes
         part = next((k for k, p in enumerate(parts) if (p["page"], p["path"]) == (r["page"], r["path"])), None)
         span, state = md.locate_edit(r, texts[part]) if part is not None else (None, "reopened")
@@ -328,18 +338,23 @@ def merged_segments(u, texts, r, decisions):
                 out.append(seg)
                 continue
             pos, kind = p["a"], "same" if p["kind"] == "seam" else p["kind"]
-            for a, b, new, op in own:  # free edits (and unplaced changes) inside a plain piece
-                if pos < a:
-                    out.append({**base, "kind": kind, "t": uncovered(pos, a)})
+            for a, b, new, op in own:  # free edits (and unplaced changes) inside a plain piece: each part
+                if pos < a:            # keeps its own span of normalized, so an edit there touches only it
+                    out.append({**base, "kind": kind, "a": pos, "b": a, "t": uncovered(pos, a)})
                 out.append({**base, "kind": op["kind"], "key": op["key"], "a": op["a"], "b": op["b"], "t": new,
                             "choice": op["choice"]})
                 pos = max(pos, b)
             if pos < p["b"] or not own:
-                out.append({**base, "kind": kind, "t": uncovered(pos, p["b"])})
+                out.append({**base, "kind": kind, "a": pos, "b": p["b"], "t": uncovered(pos, p["b"])})
     return out
 
 
 # --- the merged pages: data/<vol>/merged/page_NNNN.json ---
+
+def field_hash(text):
+    """What the screen sends back with an edit, so a field changed since it loaded is refused."""
+    return hashlib.md5((text or "").encode()).hexdigest()[:10]
+
 
 def merged_dir(data, vol):
     return Path(data) / vol / "merged"
@@ -377,6 +392,10 @@ def merged_pages(store, vol, units_doc, decisions, pages=None):
     want = set(pages)
     ops, report = {}, {"skipped": [], "reopened": 0}
     for u in units_doc.get("units") or []:
+        if not u.get("parts"):  # Good-only text: kept, it has no place in normalized yet (reported)
+            if pages is None or set(pages) == set(every):
+                report["skipped"] += [dict(x, uid=u["uid"]) for x in unit_ops(u, [], decisions)["skipped"]]
+            continue
         if not unit_pages(u) & want:
             continue
         texts = merge_view._part_texts(store, vol, u["parts"], cache)

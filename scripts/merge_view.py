@@ -362,10 +362,11 @@ def unit_view(doc, uid, store=None, decisions=None):
             seams = _seams(u["parts"], texts, old)
             osegs = _insert_seams(osegs, seams)
 
-    merged, editable, edits = [], False, []
+    merged, editable, edits, fields = [], False, [], {}
     if store is not None and u.get("parts"):
         texts = _part_texts(store, doc.get("vol"), u["parts"])
         if texts is not None:
+            fields = {f"{p['page']}:{p['path']}": merge_build.field_hash(t) for p, t in zip(u["parts"], texts)}
             dec = decisions if decisions is not None else {"decisions": {}}
             r = merge_build.unit_ops(u, texts, dec)
             edits = r["edits"]
@@ -388,7 +389,7 @@ def unit_view(doc, uid, store=None, decisions=None):
         extra = {"progress": merge_decisions.unit_progress(decisions, u),
                  "unit_decision": (decisions["decisions"].get(merge_decisions.unit_key(uid)) or {}).get("choice")}
     return {"unit": unit, "old": osegs, "good": gsegs, "good_printed": psegs, **extra,
-            "merged": merged, "editable": editable, "edits": edits,
+            "merged": merged, "editable": editable, "edits": edits, "fields": fields,
             "changes": out_changes,
             "good_tokens": len(gtoks),
             "unplaced": [c["key"] for c in changes if c["key"] not in placed],

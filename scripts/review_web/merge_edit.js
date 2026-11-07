@@ -60,3 +60,23 @@ export function diffClass(c, decided) {
   const k = c.class === "moved" ? "move" : KIND[c.kind] || "swap";
   return `mg-k-${k} mg-s-${STRENGTH[c.class] || "noise"}${decided ? " mg-decided" : ""}`;
 }
+
+/** What a typing session left in a cell, by segment index: kids are the cell's children in order, {kind: "seg",
+ * i, text} | {kind: "loose", text} (typed outside any segment: it goes to the segment before, else the first) |
+ * {kind: "skip"} (buttons, joins); a segment the browser removed (its whole text deleted) comes back "". */
+export function cellTexts(kids, indexes) {
+  const out = Object.fromEntries(indexes.map((i) => [i, ""]));
+  let cur = null, pending = "";
+  for (const k of kids) {
+    if (k.kind === "seg") {
+      out[k.i] = pending + k.text;
+      pending = "";
+      cur = k.i;
+    } else if (k.kind === "loose") {
+      if (cur === null) pending += k.text;
+      else out[cur] += k.text;
+    }
+  }
+  if (pending && indexes.length) out[indexes[0]] = pending + out[indexes[0]];
+  return out;
+}
