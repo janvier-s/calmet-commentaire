@@ -128,6 +128,7 @@ ABBREV = {"s": "saint", "ste": "sainte", "st": "saint", "tems": "temps", "longte
 SPELLING = SCRIPTS / "ocr_spelling.txt"  # "old modern" a line: what the scan prints and the text has
 
 
+@functools.cache
 def key(t):
     """A word's spelling-blind key: no accents or case; ſ, &, y, j, v, oi as in the modernized text; the
     pairs of ocr_spelling.txt (loix: lois, Caldéen: Chaldéen, Iraël: Israël)."""
@@ -154,6 +155,7 @@ def modern_key(t):
     return "".join(key(w) for w in TOKEN.findall(m))
 
 
+@functools.cache
 def _key(t):
     t = re.sub(r"\btems\b", "temps", t.lower())  # même-tems
     t = unicodedata.normalize("NFKD", t.replace("ſ", "s").replace("æ", "e").replace("œ", "e"))  # æ, œ mixed up
@@ -240,6 +242,7 @@ def _surfaces(text, spans):
     return [text[cuts[i]:cuts[i + 1]] for i in range(len(spans))]
 
 
+@functools.lru_cache(maxsize=1 << 14)  # good_variants.record asks a third of its texts again (via printed())
 def modern(text):
     """The modernized text (as normalized is), or None when the modernization fails."""
     try:
@@ -395,6 +398,7 @@ def json_tokens(data):
     return out
 
 
+@functools.lru_cache(maxsize=1 << 20)  # _pair asks the same pairs again: a Good page against 5 pages
 def similar(a, b):
     return difflib.SequenceMatcher(None, a, b, autojunk=False).ratio()
 
@@ -402,6 +406,7 @@ def similar(a, b):
 CONFUSED = [set("tlrfsi"), set("ceo"), set("nu")]  # letters Kraken mistakes for each other in this type
 
 
+@functools.cache
 def slip(o, j):
     """Two keys that differ only as Kraken's slips or old spelling do: a doubled letter (jetter, AAn), or
     one letter for a look-alike (salte, traduite)."""
@@ -454,6 +459,9 @@ def _pair(ocr_run, json_run, allow=None, least=0.5, skip_least=None):
                     continue  # a piece with no key ("" + sedenti is sedenti): no join
                 k = "".join(t["k"] for t in ocr_run[i:i + take])
                 jk = "".join(t["k"] for t in json_run[jj:jj + jtake])
+                r = similar(k, jk) - 0.05 * (jj - j) - 0.02 * (take + jtake - 2)
+                if r < least or best is not None and r <= best[0]:
+                    continue  # it could not be kept (the tests below only refuse): spared them
                 if allow and not allow(ocr_run[i], json_run[jj], k == jk):
                     continue
                 same = _joined_same(ocr_run[i:i + take], json_run[jj:jj + jtake], k, jk)
@@ -465,9 +473,7 @@ def _pair(ocr_run, json_run, allow=None, least=0.5, skip_least=None):
                     continue  # deux colomnes: colonnes (colomnes alone is likelier); répom dent: répondent joins
                 if skip_least is not None and jj > j and not same and similar(k, jk) < skip_least:
                     continue  # nostrum: not past "in" to a nostram further on (a slip-equal one, nostrums, still pairs: a known limit)
-                r = similar(k, jk) - 0.05 * (jj - j) - 0.02 * (take + jtake - 2)
-                if best is None or r > best[0]:
-                    best = (r, jj, take, jtake, k, jk)
+                best = (r, jj, take, jtake, k, jk)
         if best and best[0] >= least:
             r, jj, take, jtake, k, jk = best
             ae = "".join(_key(t["t"].replace("æ", "a").replace("Æ", "A")) for t in json_run[jj:jj + jtake])  # quæ read qua

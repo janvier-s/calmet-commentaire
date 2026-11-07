@@ -17,9 +17,11 @@ Each record names where to find it in Good_Calmet: `good`: [{pdf, pdf_page, prin
 (boxes in the crop's pixels). Footnotes are not compared (expanded in the JSON by design), nor the verses'
 Latin column (the fixed alignment leaves its misreads out).
 """
+import bisect
 import collections
 import concurrent.futures
 import hashlib
+import itertools
 import json
 import re
 import sys
@@ -377,8 +379,8 @@ def unclear_anchor(stream, gaps, after, jt, reach=8):
     phrase matched far off (Good's "le Ciel & la Terre" in a note, linked to the verse's), so the run goes to the
     field (page, path) most of its `reach` matched neighbours on each side hold: after the last of them before
     the run, else before the first after it."""
-    before = [stream[i]["j"] for i in range(gaps[0] - 1, -1, -1) if stream[i]["s"] == "match"][:reach]
-    nxt = [stream[i]["j"] for i in range(after, len(stream)) if stream[i]["s"] == "match"][:reach] \
+    before = list(itertools.islice((stream[i]["j"] for i in range(gaps[0] - 1, -1, -1) if stream[i]["s"] == "match"), reach))
+    nxt = list(itertools.islice((stream[i]["j"] for i in range(after, len(stream)) if stream[i]["s"] == "match"), reach)) \
         if after is not None else []
     field = lambda j: (jt[j]["page"], jt[j]["path"])
     votes = collections.Counter(field(j) for j in before + nxt)
@@ -454,7 +456,8 @@ def variants(vol, chs, workers=8, ctx=None):
         rec = record(c, vol, jt, stream, src, pages, linked)
         if rec:
             out.append(rec)
-    out = [r for r in out if real(r, jt, stream, lexicon(vol))]
+    pools = {}
+    out = [r for r in out if real(r, jt, stream, lexicon(vol), pools=pools)]
     # a passage of 8 words or more the other text holds elsewhere (beyond the pages near by): moved
     g4 = _grams([w["k"] for w in stream if w["s"] != "skip"])
     j4 = _grams([t["k"] for t in jt])
@@ -592,8 +595,10 @@ def record(c, vol, jt, stream, src, pages, linked):
                [t["k"] for t in jt[j0:j0 + 30] if not t["path"].startswith("footnotes/")][:4]
         if all(w["k"] in body for w in ws):
             return None
+    if ws:  # ws: words of stream[g0:g1], found by identity (list.index compares the dicts, from the start)
+        at = lambda w: next(i for i in range(c["g0"], c["g1"]) if stream[i] is w)
+        g0, g1 = at(ws[0]), at(ws[-1]) + 1
     if ws and len(ws) <= 2:
-        g0, g1 = stream.index(ws[0]), stream.index(ws[-1]) + 1
         near_j = {t["k"] for t in jt[max(0, j0 - 2):j1 + 2]}
         nb = [w["k"] for w in stream[max(0, g0 - 1):g0]] + [""], [w["k"] for w in stream[g1:g1 + 1]] + [""]
         mid = "".join(w["k"] for w in ws)
@@ -604,7 +609,6 @@ def record(c, vol, jt, stream, src, pages, linked):
             rec["split"] = True  # a word cut at a line's end (ani|maux) or the JSON's at a page turn (Créa|teur)
     if ws:
         rec["wc_min"] = round(min(w["wc"] for w in ws), 3)
-        g0, g1 = stream.index(ws[0]), stream.index(ws[-1]) + 1
         rec["good_before"] = " ".join(w["t"] for w in stream[max(0, g0 - 10):g0] if w["s"] != "skip")
         rec["good_after"] = " ".join(w["t"] for w in stream[g1:g1 + 10] if w["s"] != "skip")
     rec["id"] = hashlib.md5(json.dumps([vol, kind, rec["path"], [w["k"] for w in ws], old]).encode()).hexdigest()[:10]
@@ -714,18 +718,21 @@ def _held(keys, pool):
     return len(p & pool) / len(p) if p else 0
 
 
-def real(r, jt, stream, lex, reach=2):
+def real(r, jt, stream, lex, reach=2, pools=None):
     """A candidate is kept when its words are not found near by on the other side (a block read in another
     order, a page's edge, a pairing gone astray), a replace is not the same words misread, and a run of one
-    or two words holds only real words (not a piece of a word cut at the line's end, a header's "Chap")."""
+    or two words holds only real words (not a piece of a word cut at the line's end, a header's "Chap").
+    `pools`: a dict kept across the calls, the word pairs near each page (made once a page)."""
     if r.get("agree"):
         return True
+    pools = {} if pools is None else pools
     near = range(r["page"] - reach, r["page"] + reach + 1)
     old = [scan_ocr.key(t) for t in scan_ocr.TOKEN.findall(r.get("old") or "")]
     new = [scan_ocr.key(t) for t in scan_ocr.OCR_TOKEN.findall(r.get("good_raw") or "")]
     if r["kind"] == "only_normalized":
-        pool = _pairs([w["k"] for w in stream if w["src_page"] in near])
-        return _held(old, pool) < 0.5
+        if ("good", r["page"]) not in pools:
+            pools["good", r["page"]] = _pairs([w["k"] for w in stream if w["src_page"] in near])
+        return _held(old, pools["good", r["page"]]) < 0.5
     if r["kind"] == "replace" and scan_ocr.similar(" ".join(old), " ".join(new)) >= 0.75:
         return False
     if r["kind"] == "unclear" and len(new) <= 2 and any(k not in lex for k in new if len(k) > 1):
@@ -737,9 +744,22 @@ def real(r, jt, stream, lex, reach=2):
     if len(new) >= 3 and sum(k in lex for k in new if len(k) > 2) < 0.5 * max(1, sum(len(k) > 2 for k in new)):
         return False  # mostly not words: a note's or a margin's text read into the body
     if len(new) >= 3:
+        # the JSON's word pairs near by, the record's own span [a, b) left out: a pair is held when it stands
+        # somewhere with neither word in the span, or is the one the span's removal makes (its two sides)
         a, b = r.get("_span", (0, 0))
-        pool = _pairs([t["k"] for j, t in enumerate(jt) if t["page"] in near and not a <= j < b])
-        return _held(new, pool) < 0.5
+        if ("json", r["page"]) not in pools:
+            js = [j for j, t in enumerate(jt) if t["page"] in near]
+            sites = collections.defaultdict(list)
+            for x, y in zip(js, js[1:]):
+                sites[jt[x]["k"], jt[y]["k"]].append((x, y))
+            pools["json", r["page"]] = js, sites
+        js, sites = pools["json", r["page"]]
+        lo, hi = bisect.bisect_left(js, a), bisect.bisect_left(js, b)
+        bridge = (jt[js[lo - 1]]["k"], jt[js[hi]]["k"]) if 0 < lo < hi < len(js) else None
+        outside = lambda j: not a <= j < b
+        p = _pairs(new)
+        held = sum(q == bridge or any(outside(x) and outside(y) for x, y in sites.get(q, ())) for q in p)
+        return (held / len(p) if p else 0) < 0.5
     return True
 
 
