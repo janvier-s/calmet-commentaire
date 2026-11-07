@@ -30,6 +30,15 @@ function tally(rows, key) {
   return out;
 }
 
+/** A row's review progress: done, n left, reopened decisions. */
+function progressCell(p) {
+  if (!p) return el("span", { className: "mg-progress" });
+  if (p.reopened) return el("span", { className: "mg-progress mg-reopened", title: "decisions made against a text that has changed since",
+    textContent: `${num(p.reopened)} reopened` });
+  if (p.done) return el("span", { className: "mg-progress mg-done", title: p.decided ? `${p.decided} decided` : "nothing to decide", textContent: "✓ done" });
+  return el("span", { className: "mg-progress", title: `${p.decided} decided, ${p.todo} to decide`, textContent: `${num(p.todo)} left` });
+}
+
 /** The list: `list` is /api/merge/list's answer, `vols` /api/merge/vols's. */
 export function renderList(root, list, vols, state) {
   const rows = list.rows;
@@ -55,7 +64,7 @@ export function renderList(root, list, vols, state) {
   const statuses = chips("status", STATUS_ORDER, tally(rows, "status"), state.statuses,
     (v) => go(state, { statuses: toggleIn(state.statuses, STATUS_ORDER, v) }));
 
-  const count = el("div", { className: "mg-counter" }, counter(list.vol, rows, list.summary),
+  const count = el("div", { className: "mg-counter" }, counter(list.vol, rows),
     stale ? el("span", { className: "mg-stale-n", title: "normalized changed since good_units ran: re-run good_units.py",
       textContent: ` · ${num(stale)} stale` }) : null,
     list.unattached ? el("span", { className: "muted", title: "Good blocks good_units could not attach to any unit: they have no row",
@@ -63,7 +72,11 @@ export function renderList(root, list, vols, state) {
 
   const top = el("header", { className: "mg-top" }, book, count, el("span", { className: "grow" }),
     el("a", { href: "/", className: "mg-toplink", textContent: "Queue" }));
-  const filters = el("div", { className: "mg-filters" }, types, statuses, chapter,
+  const progress = el("select", { title: "Review progress",
+    onchange: () => go(state, { progress: progress.value || null }) },
+    ...[["", "Done and to do"], ["todo", "To do"], ["done", "Done"]].map(([v, t]) =>
+      el("option", { value: v, textContent: t, selected: (state.progress || "") === v })));
+  const filters = el("div", { className: "mg-filters" }, types, statuses, chapter, progress,
     el("span", { className: "muted small", textContent: `${num(shown.length)} shown` }));
 
   const body = el("div", { className: "mg-list" });
@@ -82,7 +95,7 @@ export function renderList(root, list, vols, state) {
       el("span", { className: `mg-words${r.lemma ? " lemma" : ""}`, textContent: words }),
       badge(r.status),
       el("span", { className: "mg-n", title: "changes (noise left out)", textContent: r.n ? num(r.n) : "" }),
-      el("span", { className: "mg-progress", title: "review progress (part 3)" }),
+      progressCell(r.progress),
       r.stale ? el("span", { className: "mg-badge mg-stale", title: "normalized changed since good_units ran: re-run good_units.py", textContent: "stale" }) : el("span")));
   }
   if (!shown.length) body.append(el("p", { className: "muted", textContent: "No unit passes these filters." }));

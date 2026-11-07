@@ -13,6 +13,11 @@ GOOD_17_2 = ("SERVUS SAPIENS DOMINABITUR FILIIS STULTIS Le serviteur dominera le
              "Un esclave prudent qui a de la sagese")
 
 
+def short(key):
+    """A change key's id (keys are id@page:path:at)."""
+    return (key or "").split("@")[0]
+
+
 def _change(**kw):
     c = {"id": "c1", "kind": "insert", "class": "substantive", "origin": "only_good", "vol": "22_proverbes",
          "page": 194, "path": "commentary/1/french_commentary", "at": 11, "old": "", "good_raw": "prudent",
@@ -74,11 +79,11 @@ def test_columns_reassemble(data_dir):
 
 def test_changes_placed_both_sides(data_dir):
     v = view(data_dir, "commentary:17:2:0")
-    ch = {s["id"]: s for s in v["good"] if s["kind"] == "change"}
+    ch = {short(s["id"]): s for s in v["good"] if s["kind"] == "change"}
     assert ch["c1"]["t"].strip() == "prudent" and ch["c1"]["cls"] == "substantive"
-    assert [s for s in v["old"] if s.get("id") == "c1"][0]["t"] == ""        # insert: empty on old side
+    assert [s for s in v["old"] if short(s.get("id")) == "c1"][0]["t"] == ""        # insert: empty on old side
     assert ch["c2"]["t"].strip() == "sagese"                                  # highlight shows the record, not old's punctuation
-    assert v["unplaced"] == ["c3"]
+    assert [short(k) for k in v["unplaced"]] == ["c3"]
     assert {c["id"]: c["placed"] for c in v["changes"]} == {"c1": True, "c2": True, "c3": False}
 
 
@@ -115,8 +120,10 @@ def test_duplicate_ids_kept_apart(data_dir):
     for k in ("good_before", "good_after"):
         del doc["units"][0]["changes"][-1][k]
     v = merge_view.unit_view(doc, "commentary:17:2:0")
-    assert sorted(c["key"] for c in v["changes"] if c["placed"]) == ["c1", "c2", "c2~2"]
-    assert [s["id"] for s in v["old"] if s["kind"] == "change"] == ["c2~2", "c1", "c2"]
+    k1, k2, k2b = "c1@194:commentary/1/french_commentary:11", "c2@194:commentary/1/french_commentary:26", \
+        "c2@194:commentary/1/french_translation:13"
+    assert sorted(c["key"] for c in v["changes"] if c["placed"]) == sorted([k1, k2, k2b])
+    assert [s["id"] for s in v["old"] if s["kind"] == "change"] == [k2b, k1, k2]
     assert v["counts"]["substantive"] == 2 and v["counts"]["cosmetic"] == 1 and v["counts"]["unrecorded"] == 0
 
 
@@ -221,7 +228,7 @@ def test_segments_pair_up_across_columns(data_dir):
 def test_good_position_of_placed_changes(data_dir):
     """A placed change knows its Good word index (a cut's Good crop is drawn around it); unplaced ones don't."""
     v = view(data_dir, "commentary:17:2:0")
-    at = {c["key"]: c["good_at"] for c in v["changes"]}
+    at = {short(c["key"]): c["good_at"] for c in v["changes"]}
     assert at == {"c1": 13, "c2": 18, "c3": None}
     assert v["good_tokens"] == 19
 
@@ -237,6 +244,40 @@ def test_overlapping_and_crossing_changes_go_unplaced(data_dir):
                 after="sage dominera", good_before="esclave prudent", good_after="a de la", at=41),  # crosses c1
     ]
     v = merge_view.unit_view(doc, "commentary:17:2:0")
-    assert v["unplaced"] == ["c3", "c5", "c6"]
+    assert [short(k) for k in v["unplaced"]] == ["c3", "c5", "c6"]
     assert "".join(s["t"] for s in v["old"]) == doc["units"][0]["old"]
     assert "".join(s["t"] for s in v["good_printed"]).split() == doc["units"][0]["good"].split()
+
+
+def test_change_shows_punctuated_text_and_flags(data_dir):
+    path = make_units(data_dir)
+    doc = json.loads(path.read_text())
+    c1 = doc["units"][0]["changes"][0]
+    c1.update(good_punct="prudent.", good_flags=[{"a": 7, "b": 8, "why": "low_conf"}])
+    v = merge_view.unit_view(doc, "commentary:17:2:0")
+    [seg] = [s for s in v["good"] if short(s.get("id")) == "c1"]
+    assert seg["t"].strip() == "prudent."
+    lead = len(seg["t"]) - len(seg["t"].lstrip())
+    assert seg["flags"] == [{"a": 7 + lead, "b": 8 + lead, "why": "low_conf"}]
+    assert seg["t"][seg["flags"][0]["a"]] == "."
+    [old_seg] = [s for s in v["old"] if short(s.get("id")) == "c1"]
+    assert "flags" not in old_seg
+
+
+def test_decisions_on_view_and_rows(data_dir):
+    import merge_decisions as md
+    doc = json.loads(make_units(data_dir).read_text())
+    docs = data_dir.parent / "docs"
+    u = doc["units"][0]
+    c1, c2, c3 = u["changes"]
+    md.decide(docs, "22_proverbes", u["uid"], c1, "good")
+    md.mark(docs, "22_proverbes", u["uid"], c2, "noise")
+    dec = md.load(docs, "22_proverbes")
+    v = merge_view.unit_view(doc, u["uid"], decisions=dec)
+    by = {c["id"]: c for c in v["changes"]}
+    assert by["c1"]["decision"] == {"choice": "good", "text": None, "mark": None, "state": "current"}
+    assert by["c2"]["decision"]["mark"] == "noise" and by["c3"]["decision"]["state"] == "none"
+    assert v["progress"] == {"done": False, "decided": 1, "todo": 1, "reopened": 0}
+    r = merge_view.rows(doc, None, decisions=dec)
+    assert r[0]["progress"]["todo"] == 1 and r[1]["progress"]["done"] is False and r[3]["progress"]["done"] is True
+    assert "progress" not in merge_view.rows(doc, None)[0]

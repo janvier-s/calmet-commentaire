@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 import good_units
+import merge_decisions
 import good_variants
 import scan_ocr
 
@@ -87,8 +88,8 @@ def _stale(store, vol, u, cache=None):
     return live_old(store, vol, u["parts"], cache) != (u.get("old") or "")
 
 
-def rows(doc, store):
-    """One light row per unit, in book (file) order: no texts, no boxes."""
+def rows(doc, store, decisions=None):
+    """One light row per unit, in book (file) order: no texts, no boxes; with `decisions`, its `progress`."""
     vol, cache, out = doc.get("vol"), {}, []
     for i, u in enumerate(doc.get("units") or []):
         first = None
@@ -97,7 +98,8 @@ def rows(doc, store):
         out.append({"uid": u.get("uid"), "type": u.get("type"), "chapter": u.get("chapter"),
                     "verse": u.get("verse"), "lemma": u.get("lemma"), "first": first, "status": u.get("status"),
                     "n": sum(1 for c in u.get("changes") or [] if c.get("class") != "noise"),
-                    "after": u.get("after"), "stale": _stale(store, vol, u, cache), "i": i})
+                    "after": u.get("after"), "stale": _stale(store, vol, u, cache), "i": i,
+                    **({"progress": merge_decisions.unit_progress(decisions, u)} if decisions is not None else {})})
     return out
 
 
@@ -245,10 +247,8 @@ def _place(u, otoks, gtoks):
     okeys, gkeys = [t[2] for t in otoks], [t[2] for t in gtoks]
     blocks = difflib.SequenceMatcher(None, okeys, gkeys, autojunk=False).get_matching_blocks()
     order = {(p["page"], p["path"]): k for k, p in enumerate(u.get("parts") or [])}
-    seen, keyed = {}, []
-    for c in u.get("changes") or []:  # ids hash words, not places: the same change twice shares one
-        seen[c["id"]] = seen.get(c["id"], 0) + 1
-        keyed.append({**c, "key": c["id"] if seen[c["id"]] == 1 else f"{c['id']}~{seen[c['id']]}"})
+    # ids hash words, not places: the same change twice shares one, so changes are keyed by their place
+    keyed = [{**c, "key": merge_decisions.change_key(c)} for c in u.get("changes") or []]
     changes = sorted(keyed,
                      key=lambda c: (order.get((c.get("page"), c.get("path")), len(order)), c.get("at") or 0))
     taken, placed = [], {}
@@ -270,8 +270,9 @@ def _place(u, otoks, gtoks):
     return changes, placed
 
 
-def unit_view(doc, uid, store=None):
-    """The unit `uid` of a good_units document, ready to draw; None if there is no such unit."""
+def unit_view(doc, uid, store=None, decisions=None):
+    """The unit `uid` of a good_units document, ready to draw; None if there is no such unit. With `decisions`
+    (merge_decisions.load), each change carries its `decision` and the view the unit's `progress`."""
     u = next((x for x in doc.get("units") or [] if x.get("uid") == uid), None)
     if u is None:
         return None
@@ -317,9 +318,13 @@ def unit_view(doc, uid, store=None):
         cls = c.get("class")
         counts[cls] = counts.get(cls, 0) + 1
         seg = {"kind": "change", "id": cid, "cls": cls}
-        modern = c.get("good_modern") if c.get("good_modern") is not None else c.get("good_raw") or ""
+        modern = next((c[k] for k in ("good_punct", "good_modern") if c.get(k) is not None), c.get("good_raw") or "")
         osegs.append({**seg, "t": oslice(os_, oe)})
-        gsegs.append({**seg, "t": ((" " if gs > 0 else "") + modern) if modern else ""})
+        lead = " " if gs > 0 and modern else ""
+        gseg = {**seg, "t": lead + modern if modern else ""}
+        if c.get("good_punct") is not None and c.get("good_flags"):  # the marks to check, on the text shown
+            gseg["flags"] = [dict(f, a=f["a"] + len(lead), b=f["b"] + len(lead)) for f in c["good_flags"]]
+        gsegs.append(gseg)
         psegs.append({**seg, "t": gslice(gs, ge)})
         oc, gc = oe, ge
     gap(oc, len(otoks), gc, len(gtoks))
@@ -347,9 +352,21 @@ def unit_view(doc, uid, store=None):
 
     unit = {k: u.get(k) for k in ("uid", "type", "chapter", "verse", "lemma", "status", "parts", "good_where",
                                     "after")}
-    return {"unit": unit, "old": osegs, "good": gsegs, "good_printed": psegs,
-            "changes": [{**c, "placed": c["key"] in placed, "good_at": placed[c["key"]][2] if c["key"] in placed else None}
-                        for c in changes],
+    out_changes = [{**c, "placed": c["key"] in placed, "good_at": placed[c["key"]][2] if c["key"] in placed else None}
+                   for c in changes]
+    extra = {}
+    if decisions is not None:
+        raw = u.get("changes") or []
+        for c in out_changes:
+            rec, state = merge_decisions.lookup(decisions, uid, c, raw)
+            c["decision"] = {"choice": rec and rec.get("choice"), "text": rec and rec.get("text"),
+                             "mark": rec and rec.get("mark"), "state": state}
+            if state == "reopened":  # what it was decided on
+                c["decision"]["was"] = {"old": rec.get("old"), "good_raw": rec.get("good_raw")}
+        extra = {"progress": merge_decisions.unit_progress(decisions, u),
+                 "unit_decision": (decisions["decisions"].get(merge_decisions.unit_key(uid)) or {}).get("choice")}
+    return {"unit": unit, "old": osegs, "good": gsegs, "good_printed": psegs, **extra,
+            "changes": out_changes,
             "good_tokens": len(gtoks),
             "unplaced": [c["key"] for c in changes if c["key"] not in placed],
             "counts": counts, "empty": _empty_note(u), "stale": stale, "seams": seams}

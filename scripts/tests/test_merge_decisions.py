@@ -1,0 +1,126 @@
+"""The /merge decisions store (docs/good_merge/<vol>.json): keys, re-attach, reopen, done state, gold export."""
+import json
+
+import pytest
+
+import merge_decisions as md
+
+VOL = "22_proverbes"
+
+
+def ch(**kw):
+    c = {"id": "c1", "kind": "insert", "class": "substantive", "page": 194, "path": "commentary/1/french_commentary",
+         "at": 11, "old": "", "good_raw": "prudent", "good_modern": "prudent",
+         "good": [{"pdf": "X", "pdf_page": 9, "printed": 12, "boxes": [[5, 6, 7, 8]]}]}
+    c.update(kw)
+    return c
+
+
+def unit(changes, status="substantive", uid="commentary:17:2:0", chapter="17"):
+    return {"uid": uid, "chapter": chapter, "status": status, "changes": changes}
+
+
+@pytest.fixture
+def docs(tmp_path):
+    return tmp_path / "docs"
+
+
+def test_same_id_two_keys(docs):
+    a, b = ch(at=11), ch(at=40)
+    assert md.change_key(a) != md.change_key(b)
+    u = unit([a, b])
+    md.decide(docs, VOL, u["uid"], a, "good")
+    doc = md.load(docs, VOL)
+    assert md.lookup(doc, u["uid"], a, u["changes"])[1] == "current"
+    assert md.lookup(doc, u["uid"], b, u["changes"])[1] == "none"
+    assert md.unit_progress(doc, u) == {"done": False, "decided": 1, "todo": 1, "reopened": 0}
+
+
+def test_reattach_when_at_shifts(docs):
+    a = ch(at=11)
+    md.decide(docs, VOL, "u", a, "old")
+    moved = ch(at=19)
+    rec, state = md.lookup(md.load(docs, VOL), "u", moved, [moved])
+    assert state == "reattached" and rec["choice"] == "old"
+
+
+def test_no_reattach_when_id_repeats_in_unit(docs):
+    md.decide(docs, VOL, "u", ch(at=11), "old")
+    a, b = ch(at=19), ch(at=50)
+    assert md.lookup(md.load(docs, VOL), "u", a, [a, b])[1] == "none"
+
+
+def test_reopen_when_text_changes(docs):
+    md.decide(docs, VOL, "u", ch(), "good")
+    changed = ch(good_raw="prudents")
+    rec, state = md.lookup(md.load(docs, VOL), "u", changed, [changed])
+    assert state == "reopened" and rec["good_raw"] == "prudent"
+    u = unit([changed], uid="u")
+    assert md.unit_progress(md.load(docs, VOL), u) == {"done": False, "decided": 0, "todo": 1, "reopened": 1}
+
+
+def test_mark_noise_removes_need(docs):
+    a = ch()
+    u = unit([a])
+    md.mark(docs, VOL, u["uid"], a, "noise")
+    assert md.unit_progress(md.load(docs, VOL), u)["done"] is True
+
+
+def test_mark_real_promotes_noise(docs):
+    n = ch(**{"class": "noise"})
+    u = unit([n], status="cosmetic")
+    assert md.unit_progress(md.load(docs, VOL), u)["done"] is True
+    md.mark(docs, VOL, u["uid"], n, "real")
+    assert md.unit_progress(md.load(docs, VOL), u)["done"] is False
+    md.decide(docs, VOL, u["uid"], n, "both")
+    assert md.unit_progress(md.load(docs, VOL), u)["done"] is True
+
+
+def test_done_rules_for_changeless_units(docs):
+    doc = md.load(docs, VOL)
+    assert md.unit_progress(doc, unit([], status="identical"))["done"] is True
+    lone = unit([], status="only_old", uid="verse:17:4:0")
+    assert md.unit_progress(doc, lone) == {"done": False, "decided": 0, "todo": 1, "reopened": 0}
+    md.decide(docs, VOL, lone["uid"], None, "keep")
+    assert md.unit_progress(md.load(docs, VOL), lone)["done"] is True
+
+
+def test_bad_choices(docs):
+    with pytest.raises(ValueError):
+        md.decide(docs, VOL, "u", ch(), "edit")
+    with pytest.raises(ValueError):
+        md.decide(docs, VOL, "u", ch(), "keep")
+    with pytest.raises(ValueError):
+        md.decide(docs, VOL, "u", None, "good")
+    with pytest.raises(ValueError):
+        md.mark(docs, VOL, "u", ch(), "maybe")
+
+
+def test_clearing_and_file_roundtrip(docs):
+    a = ch()
+    md.decide(docs, VOL, "u", a, "edit", "prudent et sage")
+    md.mark(docs, VOL, "u", a, "real")
+    on_disk = json.loads((docs / "good_merge" / f"{VOL}.json").read_text(encoding="utf-8"))
+    rec = on_disk["decisions"][md.change_key(a)]
+    assert (rec["choice"], rec["text"], rec["mark"], rec["uid"]) == ("edit", "prudent et sage", "real", "u")
+    md.decide(docs, VOL, "u", a, None)
+    md.mark(docs, VOL, "u", a, None)
+    assert md.load(docs, VOL)["decisions"] == {}
+
+
+def test_export_gold(docs, tmp_path):
+    import good_variants_eval as ev
+    data = tmp_path / "data"
+    a, b = ch(), ch(id="c2", at=40, kind="replace", old="sagesse", good_raw="sagese", **{"class": "cosmetic"})
+    units = {"vol": VOL, "units": [unit([a, b])]}
+    md.mark(docs, VOL, "commentary:17:2:0", a, "real", data=data, units_doc=units)
+    md.mark(docs, VOL, "commentary:17:2:0", b, "noise", data=data, units_doc=units)
+    f = data / "good_variants_gold" / f"{VOL}_merge.json"
+    ref = json.loads(f.read_text(encoding="utf-8"))
+    assert ref["vol"] == VOL and ref["chapters"] == [17] and ref["missed"] == []
+    assert [(i["label"], i["kind"], i["old"], i["good"]) for i in ref["items"]] == \
+        [("real", "insert", "", "prudent"), ("noise", "replace", "sagesse", "sagese")]
+    assert ref["items"][0]["good_page"] == [["X", 9, 12]] and ref["items"][0]["note"] == "merge commentary:17:2:0 substantive"
+    assert ev.same({**a, "good_raw": a["good_raw"]}, ref["items"][0])
+    md.mark(docs, VOL, "commentary:17:2:0", a, None, data=data, units_doc=units)
+    assert [i["label"] for i in json.loads(f.read_text(encoding="utf-8"))["items"]] == ["noise"]

@@ -27,6 +27,7 @@ import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+import merge_decisions
 import merge_view
 import review_proposals as rp
 import review_store as rs
@@ -760,14 +761,51 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         vol, doc = merge_doc(q)
         return {"vol": vol, "summary": doc.get("summary") or {},
                 "unattached": (doc.get("summary") or {}).get("unattached") or 0, "notes": merge_view.notes(vol),
-                "status_order": list(merge_view.STATUS_ORDER), "rows": merge_view.rows(doc, store)}
+                "status_order": list(merge_view.STATUS_ORDER),
+                "rows": merge_view.rows(doc, store, merge_decisions.load(store.docs, vol))}
 
     def merge_unit(q):
         vol, doc = merge_doc(q)
-        view = merge_view.unit_view(doc, q.get("uid"), store)
+        view = merge_view.unit_view(doc, q.get("uid"), store, merge_decisions.load(store.docs, vol))
         if view is None:
             raise ApiError(404, {"error": "no such unit"})
         return view
+
+    def merge_target(body):
+        """The unit and change (None: the unit itself) a decision or mark names."""
+        vol, doc = merge_doc(body)
+        u = next((x for x in doc.get("units") or [] if x.get("uid") == body.get("uid")), None)
+        if u is None:
+            raise ApiError(404, {"error": "no such unit"})
+        key = body.get("key")
+        c = None if key is None else next((x for x in u.get("changes") or [] if merge_decisions.change_key(x) == key), None)
+        if key is not None and c is None:
+            raise ApiError(404, {"error": "no such change in this unit"})
+        return vol, doc, u, c
+
+    def merge_answer(vol, u, c, rec):
+        dec = merge_decisions.load(store.docs, vol)
+        state = merge_decisions.lookup(dec, u["uid"], c, u.get("changes") or [])[1] if c is not None else "current"
+        return {"decision": {"choice": rec.get("choice"), "text": rec.get("text"), "mark": rec.get("mark"), "state": state},
+                "progress": merge_decisions.unit_progress(dec, u)}
+
+    def merge_decide(body):
+        vol, doc, u, c = merge_target(body)
+        try:
+            rec = merge_decisions.decide(store.docs, vol, u["uid"], c, body.get("choice"), body.get("text"))
+        except ValueError as e:
+            raise ApiError(400, {"error": str(e)})
+        return merge_answer(vol, u, c, rec)
+
+    def merge_mark(body):
+        vol, doc, u, c = merge_target(body)
+        if c is None:
+            raise ApiError(400, {"error": "a mark is on a change"})
+        try:
+            rec = merge_decisions.mark(store.docs, vol, u["uid"], c, body.get("label"), store.data, doc)
+        except ValueError as e:
+            raise ApiError(400, {"error": str(e)})
+        return merge_answer(vol, u, c, rec)
 
     def merge_scanwords(q):
         vol = q.get("vol")
@@ -792,7 +830,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/proposal/accept_page": accept_page, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
-            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/todo/delete": delete_todo,
+            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/merge/decide": merge_decide, "/api/merge/mark": merge_mark, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
             "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit, "/api/good_link": good_link}
 

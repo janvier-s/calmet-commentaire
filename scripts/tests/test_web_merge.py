@@ -49,7 +49,7 @@ def test_merge_list_and_unit(web):
     assert code == 200 and l["unattached"] == 1 and l["status_order"][0] == "substantive"
     assert [r["uid"] for r in l["rows"]][0] == "commentary:17:2:0"
     code, u = web("/api/merge/unit?vol=22_proverbes&uid=commentary:17:2:0")
-    assert code == 200 and u["unplaced"] == ["c3"]
+    assert code == 200 and [k.split("@")[0] for k in u["unplaced"]] == ["c3"]
 
 
 def test_merge_errors(web):
@@ -67,3 +67,51 @@ def test_api_printed(web):
     assert st == 200 and r == {"text": "l'Homme et Terre.", "flags": []}
     assert web("/api/printed", {"words": []}, token=None)[0] == 403
     assert web("/api/printed", {"words": "x"})[0] == 400
+
+
+UID = "commentary:17:2:0"
+
+
+def keys(web):
+    _, u = web(f"/api/merge/unit?vol=22_proverbes&uid={UID}")
+    return {c["id"]: c["key"] for c in u["changes"]}
+
+
+def test_decide_then_unit_shows_it(web):
+    k = keys(web)
+    st, r = web("/api/merge/decide", {"vol": "22_proverbes", "uid": UID, "key": k["c1"], "choice": "good"})
+    assert st == 200 and r["decision"]["choice"] == "good" and r["progress"]["todo"] == 2
+    _, u = web(f"/api/merge/unit?vol=22_proverbes&uid={UID}")
+    assert {c["id"]: c["decision"]["choice"] for c in u["changes"]} == {"c1": "good", "c2": None, "c3": None}
+    assert u["progress"]["decided"] == 1
+    assert (web.data.parent / "docs" / "good_merge" / "22_proverbes.json").exists()
+
+
+def test_marks_finish_a_unit_and_export_gold(web):
+    k = keys(web)
+    web("/api/merge/decide", {"vol": "22_proverbes", "uid": UID, "key": k["c1"], "choice": "edit", "text": "prudent."})
+    web("/api/merge/mark", {"vol": "22_proverbes", "uid": UID, "key": k["c2"], "label": "noise"})
+    st, r = web("/api/merge/mark", {"vol": "22_proverbes", "uid": UID, "key": k["c3"], "label": "noise"})
+    assert st == 200 and r["progress"]["done"] is True
+    _, l = web("/api/merge/list?vol=22_proverbes")
+    assert l["rows"][0]["progress"]["done"] is True
+    gold = json.loads((web.data / "good_variants_gold" / "22_proverbes_merge.json").read_text(encoding="utf-8"))
+    assert [i["label"] for i in gold["items"]] == ["noise", "noise"]
+
+
+def test_unit_decision_for_a_one_sided_unit(web):
+    st, r = web("/api/merge/decide", {"vol": "22_proverbes", "uid": "verse:17:4:0", "key": None, "choice": "keep"})
+    assert st == 200 and r["progress"]["done"] is True
+    _, u = web("/api/merge/unit?vol=22_proverbes&uid=verse:17:4:0")
+    assert u["unit_decision"] == "keep"
+
+
+def test_decide_errors(web):
+    k = keys(web)
+    base = {"vol": "22_proverbes", "uid": UID}
+    assert web("/api/merge/decide", {**base, "key": k["c1"], "choice": "maybe"})[0] == 400
+    assert web("/api/merge/decide", {**base, "key": k["c1"], "choice": "edit"})[0] == 400
+    assert web("/api/merge/decide", {**base, "key": "nope@1:x:0", "choice": "good"})[0] == 404
+    assert web("/api/merge/decide", {**base, "uid": "nope", "key": k["c1"], "choice": "good"})[0] == 404
+    assert web("/api/merge/mark", {**base, "key": k["c1"], "label": "maybe"})[0] == 400
+    assert web("/api/merge/decide", {**base, "key": k["c1"], "choice": "good"}, token=None)[0] == 403

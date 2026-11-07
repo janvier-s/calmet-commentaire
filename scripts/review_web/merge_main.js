@@ -15,6 +15,23 @@ async function get(path) {
   return body;
 }
 
+async function post(path, body) {
+  const r = await fetch(path, { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body) });
+  const out = await r.json().catch(() => ({ error: `${r.status} ${r.statusText}` }));
+  if (!r.ok) throw new Error(out.error || `${r.status}`);
+  return out;
+}
+
+/** A decision or mark sent (key null: the unit's own); the unit fetched again, the list row's progress updated. */
+async function send(path, vol, uid, body) {
+  const r = await post(path, { vol, uid, ...body });
+  unitCache = null;
+  const row = lists.get(vol)?.rows.find((x) => x.uid === uid);
+  if (row) row.progress = r.progress;
+  return r;
+}
+
 async function list(vol) {
   if (!lists.has(vol)) lists.set(vol, await get(`/api/merge/list?vol=${encodeURIComponent(vol)}`));
   return lists.get(vol);
@@ -66,7 +83,10 @@ async function draw() {
     state._scrollTo = sameUnit && prev.open !== state.open;
     const rows = sortRows(filterRows(l.rows, state));
     const nav = { ...neighbours(rows, state.uid), rows, list: l,
-      openUnit: (uid, open) => { location.hash = toHash({ ...state, uid, open }); } };
+      openUnit: (uid, open) => { location.hash = toHash({ ...state, uid, open }); },
+      decide: (key, choice, text) => send("/api/merge/decide", state.vol, state.uid, { key, choice, text }),
+      mark: (key, label) => send("/api/merge/mark", state.vol, state.uid, { key, label }),
+      redraw: draw, fail: (e) => alert(`Not saved: ${e.message}`) };
     const y = window.scrollY;
     renderUnit(root, view, state, nav);
     window.scrollTo(0, sameUnit ? y : 0);

@@ -5,10 +5,14 @@ export const DEFAULT_STATUSES = STATUS_ORDER.filter((s) => s !== "identical");
 export const TYPES = ["commentary", "verse", "summary", "intro", "title", "unaligned"];
 export const BOOK_TITLES = { "01_genese": "Genèse" };
 
-/** The rows that pass the filters: `types` null = every type; `chapter` null = every chapter. */
+const isDone = (r) => !!(r.progress && r.progress.done);
+
+/** The rows that pass the filters: `types` null = every type; `chapter` null = every chapter; `progress`
+ * "todo" / "done" / null = both. */
 export function filterRows(rows, f) {
   return rows.filter((r) => (!f.types || f.types.has(r.type)) && f.statuses.has(r.status)
-    && (f.chapter == null || r.chapter === f.chapter));
+    && (f.chapter == null || r.chapter === f.chapter)
+    && (!f.progress || (f.progress === "done") === isDone(r)));
 }
 
 /** Grouped by status in STATUS_ORDER, book order within a group. */
@@ -33,6 +37,7 @@ export function parseHash(hash) {
     noise: q.get("noise") === "1",
     printed: q.get("printed") === "1",
     open: q.get("open") || null,
+    progress: ["todo", "done"].includes(q.get("pr")) ? q.get("pr") : null,
   };
 }
 
@@ -46,14 +51,16 @@ export function toHash(s) {
   if (s.noise) q.set("noise", "1");
   if (s.printed) q.set("printed", "1");
   if (s.open) q.set("open", s.open);
+  if (s.progress) q.set("pr", s.progress);
   return "#" + q.toString();
 }
 
 const num = (n) => Number(n || 0).toLocaleString("en-US");
 
-/** "Genèse: 0 of 2,958 reviewed · 672 substantive left" (reviewed counts come with part 3). */
-export function counter(vol, rows, summary) {
-  return `${BOOK_TITLES[vol] || vol}: 0 of ${num(rows.length)} reviewed · ${num((summary || {}).substantive)} substantive left`;
+/** "Genèse: 212 of 2,958 done · 640 substantive left". */
+export function counter(vol, rows) {
+  const done = rows.filter(isDone).length, left = rows.filter((r) => r.status === "substantive" && !isDone(r)).length;
+  return `${BOOK_TITLES[vol] || vol}: ${num(done)} of ${num(rows.length)} done · ${num(left)} substantive left`;
 }
 
 /** The units before and after `uid` in the given (filtered, sorted) rows. */
@@ -75,3 +82,12 @@ export function unitScans(view) {
   }
   return { sources, good: [...(u.good_where || [])] };
 }
+/** Whether change c still needs a decision (marked noise: no; marked real or not noise: until decided). */
+export function undecided(c) {
+  const d = c.decision || {};
+  const live = d.state === "current" || d.state === "reattached";
+  const m = live ? d.mark : null;
+  const needs = m ? m === "real" : c.class !== "noise";
+  return needs && !(live && d.choice);
+}
+

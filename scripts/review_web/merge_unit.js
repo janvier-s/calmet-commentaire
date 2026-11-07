@@ -1,9 +1,8 @@
 // The /merge unit view: old (left) and Good (right), the whole unit, the recorded changes highlighted in
 // place; a change's panel opens under its passage, with the source scan and the Good crop on demand.
-// Read-only: the decision buttons are drawn disabled (part 3).
 import { el, goodFigure } from "./goodfig.js";
 import { badge, ref } from "./merge_list.js";
-import { BOOK_TITLES, toHash, unitScans } from "./merge_state.js";
+import { BOOK_TITLES, toHash, undecided, unitScans } from "./merge_state.js";
 
 const CLS_SHOWN = new Set(["substantive", "cosmetic", "moved"]);
 const ROW_WORDS = 40;  // a row closes after a run that agrees on both sides, once it holds this many words
@@ -42,7 +41,7 @@ function segNode(s, side, state, byKey, onPick) {
   const lead = s.t.match(/^\s*/)[0];
   const body = s.t.slice(lead.length);
   const node = body
-    ? el("span", { className: `mg-ch mg-${cls}${gap}${open}`, textContent: body })
+    ? el("span", { className: `mg-ch mg-${cls}${gap}${open}` }, ...flagged(body, s.flags || [], lead.length))
     : el("span", { className: `mg-ch mg-mark mg-${cls}${open}`, textContent: side === "good" ? "cut" : "added",
       title: side === "good" ? "Good has nothing here" : "only Good has words here" });
   node.dataset.id = s.id;
@@ -50,6 +49,25 @@ function segNode(s, side, state, byKey, onPick) {
   node.onclick = (e) => { e.stopPropagation(); onPick(s.id); };
   const out = [lead ? document.createTextNode(lead) : null, node];
   if (gap && side === "old") out.push(el("span", { className: "mg-gaplabel", textContent: "normalized lost this" }));
+  return out;
+}
+
+const FLAG_WHY = { stop_lower: "a stop, then a lowercase word", inner: "a mark inside a word", doubled: "two marks",
+  low_conf: "Kraken read this mark unsure", no_end: "no closing mark" };
+
+/** text with its flagged marks (offsets into the segment, `off` before text starts) dotted, to check on the scan. */
+function flagged(text, flags, off) {
+  const out = [];
+  let at = 0;
+  for (const f of flags) {
+    const a = f.a - off, b = Math.max(f.b - off, a + (f.why === "no_end" ? 0 : 1));
+    if (a < at || a > text.length) continue;
+    if (a > at) out.push(document.createTextNode(text.slice(at, a)));
+    out.push(el("span", { className: "mg-flag", title: `check on the scan: ${FLAG_WHY[f.why] || f.why}`,
+      textContent: text.slice(a, b) || "␣" }));
+    at = b;
+  }
+  if (at < text.length) out.push(document.createTextNode(text.slice(at)));
   return out;
 }
 
@@ -145,7 +163,7 @@ function around(view, c, reach = 4) {
 function goodCrop(box, c, view) {
   const gs = (c.good || []).filter((g) => g.boxes && g.boxes.length);
   if (gs.length) {
-    box.replaceChildren(...gs.map((g) => goodFigure(g, c.good_modern || c.good_raw)));
+    box.replaceChildren(...gs.map((g) => goodFigure(g, c.good_punct || c.good_modern || c.good_raw)));
     return;
   }
   const near = around(view, c);
@@ -177,6 +195,21 @@ function unitScanBar(view, state) {
 
 // --- the panel ---
 
+const DECISIONS = [["good", "take Good", "g"], ["old", "keep old", "o"], ["both", "keep both", "b"], ["edit", "edit", "e"]];
+const ONE_SIDED = new Set(["only_old", "only_good", "uncovered", "unaligned"]);
+
+/** The hand edit: Good's wording to start from; Enter saves, Shift+Enter a new line, Esc cancels. */
+function openEdit(box, c, nav) {
+  const d = c.decision || {};
+  const ta = el("textarea", { className: "mg-edit mg-serif", value: d.text || c.good_punct || c.good_modern || c.good_raw || "" });
+  ta.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); if (ta.value.trim()) nav.choose(c, "edit", ta.value.trim()); }
+    else if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); box.replaceChildren(); }
+  });
+  box.replaceChildren(el("div", { className: "muted small", textContent: "Enter saves · Shift+Enter: new line · Esc cancels" }), ta);
+  ta.focus();
+}
+
 function panel(c, view, state, nav) {
   const vol = state.vol;
   const row = (k, v) => (v === null || v === undefined || v === "" ? null : el("div", {}, el("span", { className: "mg-k", textContent: k }), v));
@@ -187,11 +220,29 @@ function panel(c, view, state, nav) {
       : el("span", { className: "muted", textContent: "moved · partner not found" }))
     : null;
   const ctx = c.good_before || c.good_after
-    ? el("span", { className: "mg-ctx" }, `… ${c.good_before || ""} `, el("b", { textContent: c.good_modern || c.good_raw || "∅" }), ` ${c.good_after || ""} …`)
+    ? el("span", { className: "mg-ctx" }, `… ${c.good_before || ""} `, el("b", { textContent: c.good_punct || c.good_modern || c.good_raw || "∅" }), ` ${c.good_after || ""} …`)
     : null;
   const srcBox = el("div", { className: "mg-scan" }), goodBox = el("div", { className: "mg-scan" });
   const toggle = (box, load) => () => { if (box.childNodes.length) box.replaceChildren(); else load(); };
-  const decide = ["take Good", "keep old", "keep both", "edit"].map((t) => el("button", { textContent: t, disabled: true, title: "part 3" }));
+  const d = c.decision || {};
+  const live = d.state === "current" || d.state === "reattached";
+  const editBox = el("div");
+  const decide = DECISIONS.map(([choice, label, key]) => el("button", {
+    className: live && d.choice === choice ? "on" : "", textContent: label,
+    title: live && d.choice === choice ? `Chosen: click to clear (${key})` : `${label} (${key})`,
+    onclick: () => (choice === "edit" && !(live && d.choice === "edit") ? openEdit(editBox, c, nav) : nav.choose(c, live && d.choice === choice ? null : choice)),
+  }));
+  const marks = ["noise", "real"].map((m) => el("button", {
+    className: `mg-markbtn${live && d.mark === m ? " on" : ""}`, textContent: m,
+    title: live && d.mark === m ? "Marked: click to clear" : `Mark ${m}: kept as a good_variants reference item`,
+    onclick: () => nav.markIt(c, live && d.mark === m ? null : m),
+  }));
+  const reopened = d.state === "reopened"
+    ? el("div", { className: "mg-reopen" }, `Reopened: “${d.choice || d.mark}” was decided on `,
+      el("span", { className: "mg-serif", textContent: `${(d.was || {}).old || "∅"} → ${(d.was || {}).good_raw || "∅"}` }),
+      ", and the texts have changed since.")
+    : null;
+  const edited = live && d.choice === "edit" ? row("edited", el("span", { className: "mg-serif", textContent: d.text })) : null;
   return el("div", { className: `mg-panel mg-p-${CLS_SHOWN.has(c.class) ? c.class : "noise"}` },
     el("div", { className: "mg-panel-head" },
       el("span", { className: `mg-tag mg-${CLS_SHOWN.has(c.class) ? c.class : "noise"}`, textContent: c.class }),
@@ -204,18 +255,37 @@ function panel(c, view, state, nav) {
       el("button", { className: "link", textContent: "close", title: "Close (Esc)", onclick: () => nav.pick(null) })),
     el("div", { className: "mg-panel-body" },
       row("old", el("span", { className: "mg-serif", textContent: c.old || "∅" })),
-      row("Good", el("span", { className: "mg-serif", textContent: (state.printed ? c.good_raw : c.good_modern || c.good_raw) || "∅" })),
+      row("Good", el("span", { className: "mg-serif", textContent: (state.printed ? c.good_raw : c.good_punct || c.good_modern || c.good_raw) || "∅" })),
       row("where", `p.${c.page} ${c.path}`),
       row("Good context", ctx),
-      row("moved", moved)),
-    el("div", { className: "mg-panel-actions" },
+      row("moved", moved), edited),
+    reopened,
+    el("div", { className: "mg-panel-actions mg-dec" },
       el("button", { textContent: "Source scan", onclick: toggle(srcBox, () => sourceScan(srcBox, vol, c)) }),
       el("button", { textContent: "Good crop", onclick: toggle(goodBox, () => goodCrop(goodBox, c, view)) }),
-      el("span", { className: "grow" }), ...decide),
-    srcBox, goodBox);
+      el("span", { className: "grow" }), ...decide, el("span", { className: "muted small", textContent: " · " }), ...marks),
+    editBox, srcBox, goodBox);
 }
 
 // --- the view ---
+
+function progressBadge(p) {
+  if (!p) return el("span");
+  if (p.done) return el("span", { className: "mg-progress mg-done", textContent: "✓ done" });
+  return el("span", { className: `mg-progress${p.reopened ? " mg-reopened" : ""}`,
+    textContent: `${p.todo} to decide${p.reopened ? ` (${p.reopened} reopened)` : ""}` });
+}
+
+/** keep / drop for a one-sided unit with no change to decide on. */
+function unitDecision(view, nav) {
+  if (!view.progress || view.changes.length || !ONE_SIDED.has(view.unit.status)) return [];
+  const now = view.unit_decision;
+  return [["keep", "keep"], ["drop", "drop"]].map(([choice, label]) => el("button", {
+    className: now === choice ? "on" : "", textContent: label,
+    title: now === choice ? "Chosen: click to clear" : choice === "keep" ? "Keep this unit's text in the merge" : "Leave it out of the merge",
+    onclick: () => nav.choose(null, now === choice ? null : choice),
+  }));
+}
 
 /** `nav` = {prev, next, rows, list, openUnit(uid, open)}. */
 export function renderUnit(root, view, state, nav) {
@@ -231,6 +301,16 @@ export function renderUnit(root, view, state, nav) {
   }
   const go = (patch) => { location.hash = toHash({ ...state, ...patch }); };
   nav.pick = (key) => go({ open: key });
+  // a decision made: the next change still to decide opens (in the j/k order), else the view redraws
+  const after = (key) => () => {
+    const k = order.indexOf(key);
+    const next = [...order.slice(k + 1), ...order.slice(0, Math.max(0, k))].find((x) => byKey.get(x) && undecided(byKey.get(x)));
+    if (key !== null && next && next !== state.open) go({ open: next });
+    else nav.redraw();
+  };
+  nav.choose = (c, choice, text) => nav.decide(c ? c.key : null, choice, text).then(after(c ? c.key : null), nav.fail);
+  nav.markIt = (c, label) => nav.mark(c.key, label).then(() => nav.redraw(), nav.fail);
+  let order = [];
   const listHash = toHash({ ...state, uid: null, open: null });
 
   const counts = view.counts || {};
@@ -251,7 +331,7 @@ export function renderUnit(root, view, state, nav) {
       el("span", { className: "muted", textContent: `${hidden} noise ${state.noise ? "shown" : "hidden"}` })),
     el("span", { className: "grow" }),
     cb("show noise", state.noise, "noise"), cb("Good as printed", state.printed, "printed"),
-    el("span", { className: "mg-progress", title: "done / unreviewed (part 3)" }));
+    progressBadge(view.progress), ...unitDecision(view, nav));
 
   const banners = [];
   if (movedFrom) {
@@ -302,7 +382,7 @@ export function renderUnit(root, view, state, nav) {
     for (const c of unplaced) {
       ul.append(el("div", { className: `mg-uitem${state.open === c.key ? " open" : ""}`, onclick: () => nav.pick(c.key) },
         el("span", { className: `mg-tag mg-${CLS_SHOWN.has(c.class) ? c.class : "noise"}`, textContent: c.class }),
-        el("span", { className: "mg-serif", textContent: ` ${c.old || "∅"} → ${c.good_modern || c.good_raw || "∅"}` }),
+        el("span", { className: "mg-serif", textContent: ` ${c.old || "∅"} → ${c.good_punct || c.good_modern || c.good_raw || "∅"}` }),
         el("span", { className: "muted small", textContent: ` · ${c.kind} · p.${c.page}` })));
       if (state.open === c.key) ul.append(panel(c, view, state, nav));
     }
@@ -312,7 +392,7 @@ export function renderUnit(root, view, state, nav) {
   root.replaceChildren(top, ...banners, grid, ...below);
 
   // j/k: next/previous change (in the old column's order, unplaced last); n/p: unit; Esc: list
-  const order = [...new Set([...root.querySelectorAll(".mg-col .mg-ch")].map((n) => n.dataset.id)), ...unplaced.map((c) => c.key)];
+  order = [...new Set([...root.querySelectorAll(".mg-col .mg-ch")].map((n) => n.dataset.id)), ...unplaced.map((c) => c.key)];
   document.onkeydown = (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey || /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
     const k = order.indexOf(state.open);
@@ -320,6 +400,12 @@ export function renderUnit(root, view, state, nav) {
     else if (e.key === "k" && order.length) go({ open: order[k <= 0 ? 0 : k - 1] });
     else if (e.key === "n" && nav.next) go({ uid: nav.next, open: null });
     else if (e.key === "p" && nav.prev) go({ uid: nav.prev, open: null });
+    else if (state.open && byKey.get(state.open) && DECISIONS.some(([, , key]) => key === e.key)) {
+      const [choice] = DECISIONS.find(([, , key]) => key === e.key);
+      const c = byKey.get(state.open);
+      if (choice === "edit") { const box = root.querySelector(".mg-panel .mg-dec + div"); if (box) openEdit(box, c, nav); }
+      else nav.choose(c, choice);
+    }
     else if (e.key === "Escape") { if (state.open) go({ open: null }); else location.hash = listHash; }
     else return;
     e.preventDefault();
