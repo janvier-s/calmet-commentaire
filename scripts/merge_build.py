@@ -161,21 +161,51 @@ def renumber(page, before):
 
 # --- a unit's operations ---
 
+CONTEXT_WORDS = 4  # the words before / after a change that place it again when normalized moved it
+
+
 def _token_span(field, c):
     """An unplaced change's span in its field: its old words read from `at` on (with the punctuation glued to
-    the last), or None when the field no longer has them there."""
+    the last), an insert at `at` (the end of the word before it); when an edit of normalized moved it, the one
+    other place where its words are, with the change's words before or after them (if it has any); else None."""
     import merge_view
     need = merge_view._keys(c.get("old"))
     at = c.get("at") or 0
-    if not need:
-        return (at, at) if at <= len(field) else None
-    toks = [t for t in merge_view.tokens(field) if t[0] >= at][:len(need)]
-    if [t[2] for t in toks] != need or toks[0][0] != at and field[at:toks[0][0]].strip():
-        return None
-    end = toks[-1][1]
+    toks = merge_view.tokens(field)
+    keys = [t[2] for t in toks]
+    before = merge_view._keys(c.get("before"))[-CONTEXT_WORDS:]
+    after = merge_view._keys(c.get("after"))[:CONTEXT_WORDS]
+
+    def in_context(i, j):  # the change on toks[i:j]: its words before or after are there
+        if not before and not after:
+            return True
+        return bool(before) and keys[max(0, i - len(before)):i] == before \
+            or bool(after) and keys[j:j + len(after)] == after
+
+    def glued(k):  # past the punctuation glued to the word before (as pieces() puts an insert)
+        while k < len(field) and not field[k].isspace() and not field[k].isalnum():
+            k += 1
+        return k, k
+
+    if not need:  # an insert: after the word before it
+        if at > len(field):
+            return None
+        ends = [i for i in range(len(toks) + 1) if (toks[i - 1][1] if i else 0) == at]
+        if ends and in_context(ends[0], ends[0]) or not before and not after:
+            return glued(at)
+        hits = [i for i in range(1, len(toks) + 1) if in_context(i, i)]
+        return glued(toks[hits[0] - 1][1]) if len(hits) == 1 else None
+    run = [t for t in toks if t[0] >= at][:len(need)]
+    if [t[2] for t in run] != need or run[0][0] != at and field[at:run[0][0]].strip():
+        hits = [i for i in range(len(keys) - len(need) + 1) if keys[i:i + len(need)] == need
+                and in_context(i, i + len(need))]
+        if len(hits) != 1:
+            return None
+        run = toks[hits[0]:hits[0] + len(need)]
+    end = run[-1][1]
     while end < len(field) and not field[end].isspace() and not field[end].isalnum():
         end += 1
-    return toks[0][0], end
+    return run[0][0], end
 
 
 def pieces(u, texts):

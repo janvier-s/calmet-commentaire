@@ -214,3 +214,25 @@ def test_unit_drop_cuts_its_fields_keep_leaves_them(data_dir):  # I3
     merge_build.build_pages(st, VOL, doc, md.load(docs, VOL), pages={195})
     out = json.loads((merge_build.merged_dir(data_dir, VOL) / "page_0195.json").read_text())
     assert out["verses"][0]["french"] == "Le méchant obéit à la langue injuste."
+
+
+def test_token_span_reattaches_moved_words():
+    c = {"old": "de la sagesse", "at": 10, "before": "qui a", "after": "et"}
+    assert merge_build._token_span("Un homme qui a de la sagesse et", c) == (15, 28)  # moved by 5: found again
+    assert merge_build._token_span("de la sagesse, qui a de la sagesse et", c) == (21, 34)  # the one in context
+    assert merge_build._token_span("de la sagesse ou de la sagesse", c) is None  # two, neither in context
+    assert merge_build._token_span("Ici de la sagesse", c) is None  # one, but out of its context
+    assert merge_build._token_span("rien ici", c) is None
+
+
+def test_token_span_insert_placed_by_its_context():
+    c = {"old": "", "at": 13, "before": "ces paroles in principio", "after": "le Fils"}
+    f = "par ces paroles, _in principio_, le Fils"
+    c["at"] = f.index("principio") + len("principio")
+    k = c["at"] + 2  # after "_," as pieces() puts it
+    assert merge_build._token_span(f, c) == (k, k)  # where it was
+    g = "Changé. " + f
+    assert merge_build._token_span(g, c) == (k + 8, k + 8)  # moved: found again by its words
+    assert merge_build._token_span("in principio, et in principio", c) is None  # two places
+    assert merge_build._token_span("rien à voir ici du tout", c) is None
+    assert merge_build._token_span("abc", {"old": "", "at": 1}) == (1, 1)  # no context: as stored
