@@ -40,7 +40,7 @@ def tighten(pdf, dry=False):
         if dry: print(k.split("/")[1], f"top {t/h:.2f} bot {1-b/h:.2f}"); continue
         im.crop((0, t, w, b)).save(D / f"{k}.png")
         x0, y0, x1, y1 = r["box"]; r["box"] = [x0, y0 + t, x1, y0 + b]
-        r["tightened"] = [t, h - b]
+        r["tightened"] = [a + c for a, c in zip(r.get("tightened", [0, 0]), [t, h - b])]  # cumulative since the OCR
     if not dry: (D / "crops.json").write_text(json.dumps(recs, indent=0))
     print(pdf, n, "pages trimmed")
 
