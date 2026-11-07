@@ -150,7 +150,7 @@ def rows(doc, store, decisions=None):
         out.append({"uid": u.get("uid"), "type": u.get("type"), "chapter": u.get("chapter"),
                     "verse": u.get("verse"), "lemma": u.get("lemma"), "first": first, "status": u.get("status"),
                     "n": sum(1 for c in u.get("changes") or [] if c.get("class") != "noise"),
-                    "after": u.get("after"), "stale": _stale(store, vol, u, cache), "i": i,
+                    "after": u.get("after"), "unplaced": u.get("unplaced") or 0, "via": u.get("via") or [], "stale": _stale(store, vol, u, cache), "i": i,
                     **({"progress": merge_decisions.unit_progress(decisions, u)} if decisions is not None else {})})
     return out
 

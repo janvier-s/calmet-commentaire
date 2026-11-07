@@ -78,7 +78,12 @@ export function renderList(root, list, vols, state) {
     onchange: () => go(state, { progress: progress.value || null }) },
     ...[["", "Done and to do"], ["todo", "To do"], ["done", "Done"]].map(([v, t]) =>
       el("option", { value: v, textContent: t, selected: (state.progress || "") === v })));
-  const filters = el("div", { className: "mg-filters" }, types, statuses, chapter, progress,
+  const nUn = rows.filter((r) => r.unplaced > 0).length, nVia = rows.filter((r) => r.via && r.via.length).length;
+  const check = el("select", { title: "Alignment to check by hand",
+    onchange: () => go(state, { check: check.value || null }) },
+    ...[["", "Any alignment"], ["unplaced", `Changes not placed (${num(nUn)})`], ["via", `Found by a second pass (${num(nVia)})`]].map(([v, t]) =>
+      el("option", { value: v, textContent: t, selected: (state.check || "") === v })));
+  const filters = el("div", { className: "mg-filters" }, types, statuses, chapter, progress, check,
     el("span", { className: "muted small", textContent: `${num(shown.length)} shown` }));
 
   const body = el("div", { className: "mg-list" });
@@ -97,6 +102,8 @@ export function renderList(root, list, vols, state) {
       el("span", { className: `mg-words${r.lemma ? " lemma" : ""}`, textContent: words }),
       badge(r.status),
       el("span", { className: "mg-n", title: "changes (noise left out)", textContent: r.n ? num(r.n) : "" }),
+      r.unplaced ? el("span", { className: "mg-badge mg-stale", title: `${r.unplaced} change(s) not placed in the columns: check this unit's alignment`, textContent: `${r.unplaced} unplaced` })
+        : r.via && r.via.length ? el("span", { className: "mg-badge", title: "Good's text found by a second pass (" + r.via.join(", ") + "): check it", textContent: r.via.join(" + ") }) : el("span"),
       progressCell(r.progress),
       r.stale ? el("span", { className: "mg-badge mg-stale", title: "normalized changed since good_units ran: re-run good_units.py", textContent: "stale" }) : el("span")));
   }

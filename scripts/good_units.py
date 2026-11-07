@@ -4,10 +4,11 @@ summary or introduction), the Good_Calmet text on each, their changes and a stat
 Good's OCR is not cut into units on its own: good_variants.align links each Good word to a word of the
 normalized JSON, and a Good word goes to the unit that holds its linked word.
 
-    python3 good_units.py <vol> <chapter>[-<chapter>] [--out FILE]    (default: data/<vol>/good_units.json,
+    python3 good_units.py <vol> <chapter>[-<chapter>] [--out FILE] [--flags]    (default: data/<vol>/good_units.json,
                                                                        its other chapters' units kept)
 """
 import collections
+import functools
 import re
 
 from continuations import continues
@@ -144,11 +145,12 @@ def _head_window(run, heads, got):
     import scan_ocr
     pages = {w.get("src_page") for w in run} - {None}
     cands = [u for p in pages for q in (p - 1, p, p + 1) for u in heads.get(q, []) if not got.get(u["uid"])]
-    keys = [scan_ocr.key(w["t"]) for w in run]
+    keys = [scan_ocr_key(w["t"]) for w in run]
     best = None
     for u in cands:
-        target = " ".join(scan_ocr.key(t) for t in scan_ocr.OCR_TOKEN.findall(u["old"]))
-        n = len(target.split())
+        tk = _keys(u["old"])
+        n = len(tk)
+        target = " ".join(tk)
         if n < HEAD_MIN:
             continue
         for s in range(0, max(1, len(run) - n + 1)):
@@ -219,13 +221,14 @@ def _find_verses(units, ws, owner, got):
     of an earlier page (up to a dozen pages off), so the aligner's window (a few pages round the one Good's
     page matches) never holds it, and Kraken reads it between the commentary's lines. A verse unit left with
     little Good text is looked for in the whole of Good's words, by the word pairs it shares with a stretch of
-    them: the words found go to it, from whichever unit had them (`got`, edited)."""
+    them: the words found go to it, from whichever unit had them (`got`, edited). Returns the uids found."""
     by_uid = {u["uid"]: u for u in units}
     pairs = collections.defaultdict(list)
     keys = [scan_ocr_key(w["t"]) for w in ws]
     for p, ab in enumerate(zip(keys, keys[1:])):
         pairs[ab].append(p)
     taken = set()  # words given to a verse here
+    found = set()
     for u in units:
         if u["type"] != "verse":
             continue
@@ -258,6 +261,8 @@ def _find_verses(units, ws, owner, got):
         have = {id(w) for w in got.get(u["uid"], [])} | moved
         got[u["uid"]] = [w for w in ws if id(w) in have]
         taken |= set(span)
+        found.add(u["uid"])
+    return found
 
 
 DISPLACED_RUN = 30  # words: an unlinked run this long, on either side, may be a passage the editions order differently
@@ -297,6 +302,7 @@ def relink_displaced(ctx):
         for i, j in zip(good[a:a + size], old[b:b + size]):
             t = jt[j]
             stream[i].update(s="match", j=j, page=t["page"], path=t["path"], a=t["a"], b=t["b"], near=False)
+            stream[i]["relinked"] = True
             linked.add(j)
             n += 1
     return n
@@ -362,6 +368,14 @@ def project(units, ctx):
         elif host:
             got[host] += seg
 
+    prev_owner, last = [None] * len(ws), None  # the last linked owner before each word
+    for m, o in enumerate(owner):
+        prev_owner[m] = last
+        last = o if o is not None else last
+    next_owner, last = [None] * len(ws), None  # the first linked owner from each word on
+    for m in range(len(ws) - 1, -1, -1):
+        last = owner[m] if owner[m] is not None else last
+        next_owner[m] = last
     i = 0
     while i < len(ws):
         if owner[i] is not None:
@@ -372,8 +386,8 @@ def project(units, ctx):
         while k < len(ws) and owner[k] is None:
             k += 1
         after = owner[k] if k < len(ws) else None
-        prev = next((owner[m] for m in range(i - 1, -1, -1) if owner[m] is not None), None)
-        nxt = next((owner[m] for m in range(k, len(ws)) if owner[m] is not None), None)
+        prev = prev_owner[i]
+        nxt = next_owner[k] if k < len(ws) else None
         run, host = ws[i:k], prev or nxt
         chapter = by_uid[host]["chapter"] if host else None
         split = prev != nxt
@@ -388,12 +402,16 @@ def project(units, ctx):
             # after a chapter's heading: the new chapter's text
             run, host, chapter, split = run[e:], nxt or prev, by_uid[uid]["chapter"], True
         i = k
-    _find_verses(units, ws, owner, got)
+    found = _find_verses(units, ws, owner, got)
     for u in units:
         _fill(u, got.get(u["uid"], []))
+        via = (["verse search"] if u["uid"] in found else []) + (["relinked"] if any(w.get("relinked") for w in got.get(u["uid"], [])) else [])
+        if via:
+            u["via"] = via
     return new
 
 
+@functools.cache
 def scan_ocr_key(t):
     import scan_ocr
     return scan_ocr.key(t)
@@ -437,9 +455,17 @@ def status(u, covered):
     return "identical"
 
 
+@functools.lru_cache(maxsize=None)
 def _keys(text):
+    """The keys of `text`'s words (a tuple: cached, the same texts are keyed again and again)."""
     import scan_ocr
-    return [scan_ocr.key(t) for t in scan_ocr.OCR_TOKEN.findall(text or "")]
+    return tuple(scan_ocr_key(t) for t in scan_ocr.OCR_TOKEN.findall(text or ""))
+
+
+@functools.lru_cache(maxsize=None)
+def _text_grams(text):
+    import good_variants as gv
+    return gv._grams(_keys(text))
 
 
 def attach(units, records, covered):
@@ -452,7 +478,7 @@ def attach(units, records, covered):
     for u in units:
         u["changes"] = []
     unattached = 0
-    verses = {u["uid"]: gv._grams(_keys(u.get("good"))) for u in units if u["type"] == "verse" and u.get("good")}
+    verses = {u["uid"]: _text_grams(u.get("good")) for u in units if u["type"] == "verse" and u.get("good")}
     for r in records:
         where = [(r["page"], r["path"])] + [tuple((int(s.split(":", 1)[0]), s.split(":", 1)[1])) for s in r.get("spans", [])]
         uid = next((idx[w] for w in where if w in idx), None)
@@ -469,7 +495,7 @@ def attach(units, records, covered):
         if c["class"] == "moved":
             mine = _keys(r.get("old") or r.get("good_raw"))
             side = "good" if r.get("old") else "old"  # the words left here are found in another unit's Good text
-            best = max(((gv._share(mine, gv._grams(_keys(o.get(side)))), o["uid"]) for o in units if o["uid"] != uid),
+            best = max(((gv._share(mine, _text_grams(o.get(side))), o["uid"]) for o in units if o["uid"] != uid),
                        default=(0, None))
             c["moved_with"] = best[1] if best[0] >= 0.5 else None
         by_uid[uid]["changes"].append(c)
@@ -494,7 +520,7 @@ def _link_back(units, by_uid):
             free = [o for o in other["changes"] if o["class"] == "moved" and not o.get("moved_with")]
             if free:
                 side = "good_raw" if c.get("old") else "old"
-                best = max(free, key=lambda o: gv._share(mine, gv._grams(_keys(o.get(side)))))
+                best = max(free, key=lambda o: gv._share(mine, _text_grams(o.get(side))))
                 best["moved_with"] = u["uid"]
 
 
@@ -526,6 +552,18 @@ def build(vol, chs):
     return {"vol": vol, "chapters": sorted(chs), "units": out, "summary": summary}
 
 
+def flag_unplaced(units):
+    """Each unit's `unplaced`: its changes (noise left out) merge_view cannot place in the two columns, the
+    ones to check by hand (their Good words usually sit in a neighbouring unit)."""
+    import merge_view
+    for u in units:
+        if u.get("changes"):
+            sg = merge_view.segments(u)
+            u["unplaced"] = sum(1 for c in sg["changes"] if c["class"] != "noise" and c["key"] not in sg["placed"])
+        else:
+            u["unplaced"] = 0
+
+
 def _summary(units, unattached):
     s = dict(collections.Counter(u["status"] for u in units))
     s["unattached"] = unattached
@@ -538,6 +576,7 @@ def write(vol, chs, out):
     from pathlib import Path
     out = Path(out)
     res = build(vol, chs)
+    flag_unplaced(res["units"])
     old = json.loads(out.read_text(encoding="utf-8")) if out.exists() else {"units": [], "chapters": [], "unattached": {}}
     kept = [u for u in old["units"] if _chapter_key(u) not in chs]
     units = sorted(kept + res["units"], key=_chapter_key)  # stable: reading order within a chapter
@@ -558,6 +597,13 @@ def main(argv):
     a, _, b = spec.partition("-")
     chs = set(range(int(a), int(b or a) + 1))
     out = argv[argv.index("--out") + 1] if "--out" in argv else DATA / vol / "good_units.json"
+    if "--flags" in argv:  # only the `unplaced` counts, on the file as it is (no 6-minute rebuild)
+        import json
+        doc = json.loads(open(out, encoding="utf-8").read())
+        flag_unplaced([u for u in doc["units"] if _chapter_key(u) in chs])
+        open(out, "w", encoding="utf-8").write(json.dumps(doc, ensure_ascii=False, indent=1))
+        print(f"{out}: unplaced flags set, {sum(1 for u in doc['units'] if u.get('unplaced'))} units")
+        return
     res = write(vol, chs, out)
     mine = [u for u in res["units"] if _chapter_key(u) in chs]
     print(f"{vol} ch. {spec}: {len(mine)} units  " + str(dict(collections.Counter(u["status"] for u in mine))))

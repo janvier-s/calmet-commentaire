@@ -12,7 +12,8 @@ const isDone = (r) => !!(r.progress && r.progress.done);
 export function filterRows(rows, f, keep = null) {
   return rows.filter((r) => r.uid === keep || (!f.types || f.types.has(r.type)) && f.statuses.has(r.status)
     && (f.chapter == null || r.chapter === f.chapter)
-    && (!f.progress || (f.progress === "done") === isDone(r)));
+    && (!f.progress || (f.progress === "done") === isDone(r))
+    && (!f.check || (f.check === "unplaced" ? r.unplaced > 0 : !!(r.via && r.via.length))));
 }
 
 /** Grouped by status in STATUS_ORDER, book order within a group. */
@@ -23,7 +24,7 @@ export function sortRows(rows) {
 
 const sameSet = (a, b) => a.size === b.size && [...a].every((x) => b.has(x));
 
-/** The state a hash ("#vol=…&uid=…&types=…&st=…&ch=…&noise=1&printed=1&open=…") stands for. */
+/** The state a hash ("#vol=…&uid=…&types=…&st=…&ch=…&noise=1&printed=1&open=…&ck=…") stands for. */
 export function parseHash(hash) {
   const q = new URLSearchParams((hash || "").replace(/^#/, ""));
   const list = (k) => new Set(q.get(k).split(",").filter(Boolean));
@@ -38,6 +39,7 @@ export function parseHash(hash) {
     printed: q.get("printed") === "1",
     open: q.get("open") || null,
     progress: ["todo", "done"].includes(q.get("pr")) ? q.get("pr") : null,
+    check: ["unplaced", "via"].includes(q.get("ck")) ? q.get("ck") : null,
   };
 }
 
@@ -52,6 +54,7 @@ export function toHash(s) {
   if (s.printed) q.set("printed", "1");
   if (s.open) q.set("open", s.open);
   if (s.progress) q.set("pr", s.progress);
+  if (s.check) q.set("ck", s.check);
   return "#" + q.toString();
 }
 

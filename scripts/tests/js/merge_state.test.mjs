@@ -56,6 +56,18 @@ test("progress filter and its hash", () => {
   assert.equal(parseHash("").progress, null);
 });
 
+test("alignment check filter and its hash", () => {
+  const rows = [{ uid: "a", type: "verse", status: "substantive", unplaced: 2, via: [] },
+    { uid: "b", type: "verse", status: "substantive", unplaced: 0, via: ["relinked"] },
+    { uid: "c", type: "verse", status: "substantive", unplaced: 0, via: [] }];
+  const f = { types: null, statuses: new Set(["substantive"]), chapter: null };
+  assert.deepEqual(filterRows(rows, { ...f, check: "unplaced" }).map((r) => r.uid), ["a"]);
+  assert.deepEqual(filterRows(rows, { ...f, check: "via" }).map((r) => r.uid), ["b"]);
+  assert.equal(filterRows(rows, { ...f, check: null }).length, 3);
+  assert.equal(parseHash(toHash({ ...parseHash(""), check: "via" })).check, "via");
+  assert.equal(parseHash("#ck=bogus").check, null);
+});
+
 test("undecided: noise needs nothing unless marked real; a reopened choice counts as undecided", async () => {
   const { undecided } = await import("../../review_web/merge_state.js");
   const dec = (d) => ({ state: "current", choice: null, mark: null, ...d });
