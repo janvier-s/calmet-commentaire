@@ -182,7 +182,7 @@ async function changeScans(box, vol, c, view) {
   loading.replaceWith(await oldPage(vol, c.page, c.path, c.at, c.old_words || 0));
 }
 
-/** One-sided units have no change to open a panel on: their pages, side by side, here. */
+/** The unit's old and Good pages, side by side, under its text. */
 function unitScanBar(view, state) {
   const { sources, good } = unitScans(view);
   if (!sources.length && !good.length) return null;
@@ -367,8 +367,6 @@ export function renderUnit(root, view, state, nav) {
     if (goodSegs.length) fill(g, goodSegs, "good", state, byKey, nav.pick);
     else g.append(el("div", { className: "mg-empty", textContent: view.empty.good || "No Good text." }));
     addRow(o, g, new Set([...keysIn(oldSegs), ...keysIn(goodSegs)]));
-    const scans = unitScanBar(view, state);
-    if (scans) grid.append(scans);
   } else {
     for (const [a, b] of rowsOf(oldSegs, goodSegs)) {
       const os = oldSegs.filter((s) => s.k >= a && s.k < b), gs = goodSegs.filter((s) => s.k >= a && s.k < b);
@@ -394,7 +392,8 @@ export function renderUnit(root, view, state, nav) {
     below.push(ul);
   }
 
-  root.replaceChildren(top, ...banners, grid, ...below);
+  const scans = unitScanBar(view, state);  // every unit: its old and Good pages side by side, under the text
+  root.replaceChildren(top, ...banners, grid, ...(scans ? [scans] : []), ...below);
 
   // j/k: next/previous change (in the old column's order, unplaced last); n/p: unit; Esc: list
   order = [...new Set([...root.querySelectorAll(".mg-col .mg-ch")].map((n) => n.dataset.id)), ...unplaced.map((c) => c.key)];
