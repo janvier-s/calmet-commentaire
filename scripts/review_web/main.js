@@ -16,6 +16,7 @@ import "./reviewed.js";
 import "./watch.js";
 import "./ocr.js";
 import { decorate } from "./icons.js";
+import "./alive.js";
 
 decorate();
 

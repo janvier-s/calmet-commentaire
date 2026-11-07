@@ -1,5 +1,6 @@
 // The /merge screen's entry: the state lives in the URL hash; the list or one unit is drawn from it.
 import { el } from "./goodfig.js";
+import "./alive.js";
 import { renderList } from "./merge_list.js";
 import { renderUnit } from "./merge_unit.js";
 import { filterRows, neighbours, parseHash, sortRows, toHash } from "./merge_state.js";

@@ -10,6 +10,8 @@ Usage: python3 review_web.py [VOLUME [PAGE]] [--fresh] [filters] [--port N (8642
            --skipped | --resolved | --false-positive | --all-status (the view to start in)
   --queue PATH, --data DIR, --docs DIR   other files (a copy for testing)
   --list-fp  print the issues marked false positive and exit
+  --no-autoexit (or REVIEW_NO_AUTOEXIT=1)  keep serving when the last editor / merge tab is closed (by
+           default it stops then, as Ctrl+C would, once no tab has come back for GRACE seconds)
 
 Serves on 127.0.0.1 only; the printed link carries the session key.
 """
@@ -22,6 +24,7 @@ import shutil
 import subprocess
 import sys
 import threading
+import time
 import urllib.parse
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -48,6 +51,55 @@ class ApiError(Exception):
     def __init__(self, code, body):
         super().__init__(body)
         self.code, self.body = code, body
+
+
+class Presence:
+    """The browser tabs open on the server (editor and /merge): each says it is alive every few seconds
+    (POST /api/alive) and goodbye when it goes (a beacon on pagehide, POST /api/bye). `idle()`: a tab came
+    once, none is left, and none came back for GRACE seconds (a reload or Review <-> Merge comes back
+    sooner). A tab that stops beating without a goodbye (the browser killed) counts gone after STALE
+    seconds: hidden tabs' timers are slowed to one a minute, so STALE is longer than that."""
+    GRACE, STALE = 12, 90
+
+    def __init__(self, clock=time.monotonic):
+        self.clock, self.lock = clock, threading.Lock()
+        self.tabs, self.gone, self.ever, self.quiet_since = {}, set(), False, None
+
+    def hello(self, tab):
+        with self.lock:
+            if tab and tab not in self.gone:
+                self.tabs[tab] = self.clock()
+                self.ever = True
+
+    def bye(self, tab):
+        with self.lock:
+            if tab in self.tabs:
+                del self.tabs[tab]
+                self.gone.add(tab)
+                self.quiet_since = self.clock()
+
+    def idle(self):
+        with self.lock:
+            now = self.clock()
+            for tab, seen in list(self.tabs.items()):
+                if now - seen > self.STALE:
+                    del self.tabs[tab]
+                    self.gone.add(tab)
+                    self.quiet_since = max(self.quiet_since or 0, seen + self.STALE)
+            return self.ever and not self.tabs and self.quiet_since is not None and now - self.quiet_since >= self.GRACE
+
+
+def stop_when_idle(presence, stop, every=1.0):
+    """A thread that calls stop() (the server's shutdown: serve_forever returns, main() ends as on Ctrl+C)
+    once `presence` is idle."""
+    def run():
+        while not presence.idle():
+            time.sleep(every)
+        print("All the editor's tabs are closed: stopping (REVIEW_NO_AUTOEXIT=1 or --no-autoexit to keep it)", flush=True)
+        stop()
+    t = threading.Thread(target=run, daemon=True, name="autoexit")
+    t.start()
+    return t
 
 
 def img_version(path):
@@ -1129,13 +1181,23 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                         out.setdefault(str(crops.index(crop)), []).extend(g.get("boxes") or [])
         return out
 
+    presence = Presence()
+
+    def alive(body):
+        presence.hello(str(body.get("tab") or ""))
+        return {}
+
+    def bye(body):
+        presence.bye(str(body.get("tab") or ""))
+        return {}
+
     GET = {"/api/config": lambda q: config, "/api/merged": get_merged, "/api/merged/flags": merged_flags, "/api/merged/pages": merged_pages_list, "/api/good_step": good_step, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
            "/api/proposal": get_proposal, "/api/good_note": good_note, "/api/good_note/candidates": good_note_candidates,
            "/api/batch": batch, "/api/search": search, "/api/versions": versions,
            "/api/merge/vols": merge_vols, "/api/merge/list": merge_list, "/api/merge/unit": merge_unit,
            "/api/merge/scanwords": merge_scanwords}
-    POST = {"/api/page": save_page,
+    POST = {"/api/page": save_page, "/api/alive": alive, "/api/bye": bye,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/proposal/accept_page": accept_page, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
             "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/merge/decide": merge_decide, "/api/merge/edit": merge_edit, "/api/merge/cleanup": merge_cleanup, "/api/merge/mark": merge_mark, "/api/merged/save": merged_save, "/api/merged/resolve": merged_resolve, "/api/merged/restore": merged_restore, "/api/todo/delete": delete_todo,
@@ -1229,7 +1291,9 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                 return self._send(400, {"error": "bad JSON"})
             self._route(POST, lambda u: body)
 
-    return ThreadingHTTPServer(("127.0.0.1", port), Handler), token
+    server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    server.presence = presence
+    return server, token
 
 
 def list_fp(data):
@@ -1328,10 +1392,14 @@ def main(argv):
     print(f"Review editor: {url}\n(Ctrl+C to stop)")
     if "--no-open" not in argv:
         webbrowser.open(url)
+    if "--no-autoexit" not in argv and os.environ.get("REVIEW_NO_AUTOEXIT", "") in ("", "0"):
+        stop_when_idle(server.presence, server.shutdown)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
         pass
+    finally:
+        server.server_close()
 
 
 if __name__ == "__main__":
