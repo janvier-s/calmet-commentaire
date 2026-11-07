@@ -348,3 +348,25 @@ def unit_view(doc, uid, store=None):
             "changes": [{**c, "placed": c["key"] in placed} for c in changes],
             "unplaced": [c["key"] for c in changes if c["key"] not in placed],
             "counts": counts, "empty": _empty_note(u), "stale": stale, "seams": seams}
+
+
+def scan_boxes(store, vol, page, path, at, n):
+    """The source scan's boxes of the first max(n, 1) words of field `path` from offset `at` on, found through
+    the page's cached OCR set against the page (never running Kraken): {"boxes", "size"}, or
+    {"boxes": [], "reason"} when there is no scan, no cached OCR, or the words are not found."""
+    scan = store.scan(vol, page)
+    if scan is None:
+        return {"boxes": [], "reason": "no scan"}
+    try:
+        o = scan_ocr.ocr(vol, page, run=False, scan=scan)
+    except Exception:  # the cache unreadable, the slant measure failing: as good as no OCR
+        o = None
+    if o is None:
+        return {"boxes": [], "reason": "no cached OCR"}
+    data = store.read(vol, page)[0] if store.path(vol, page).exists() else {}
+    res = scan_ocr.align(o, data, fix=True)
+    words = sorted((w for w in res.get("words") or [] if w.get("path") == path and w.get("a") is not None
+                    and w["a"] >= at and w.get("boxes")), key=lambda w: w["a"])[:max(n, 1)]
+    if not words:
+        return {"boxes": [], "reason": "words not found"}
+    return {"boxes": [b for w in words for b in w["boxes"]], "size": res.get("size")}

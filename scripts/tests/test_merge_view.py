@@ -168,3 +168,27 @@ def test_seams_mark_page_turns(data_dir):
     assert len(seam) == 1 and v["old"][seam[0]]["page"] == 194
     assert v["old"][seam[0] + 1]["t"].lstrip().startswith("suite")
     assert "".join(s["t"] for s in v["old"]) == old
+
+
+def test_scan_boxes_no_scan(data_dir):
+    st = Store(data_dir, data_dir.parent / "docs")
+    assert merge_view.scan_boxes(st, "22_proverbes", 193, "commentary/0/french_commentary", 0, 2) == {"boxes": [], "reason": "no scan"}
+
+
+def test_scan_boxes_never_runs_kraken(data_dir, monkeypatch):
+    st = Store(data_dir, data_dir.parent / "docs")
+    seen = []
+    monkeypatch.setattr(merge_view.scan_ocr, "ocr", lambda vol, page, run=True, scan=None: seen.append(run))
+    assert merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 0, 2)["reason"] == "no cached OCR"
+    assert seen == [False]
+
+
+def test_scan_boxes_found(data_dir, monkeypatch):
+    st = Store(data_dir, data_dir.parent / "docs")
+    monkeypatch.setattr(merge_view.scan_ocr, "ocr", lambda *a, **k: {"fake": 1})
+    words = [{"t": "Un", "boxes": [[1, 1, 2, 2]], "path": "commentary/1/french_commentary", "a": 0, "b": 2},
+             {"t": "esclave", "boxes": [[4, 1, 6, 2]], "path": "commentary/1/french_commentary", "a": 3, "b": 10},
+             {"t": "qui", "boxes": [[11, 1, 3, 2]], "path": "commentary/1/french_commentary", "a": 11, "b": 14}]
+    monkeypatch.setattr(merge_view.scan_ocr, "align", lambda o, d, fix=False: {"size": [100, 200], "words": words})
+    assert merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 3, 2) == {
+        "boxes": [[4, 1, 6, 2], [11, 1, 3, 2]], "size": [100, 200]}
