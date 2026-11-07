@@ -144,6 +144,23 @@ def test_build_pages_writes_merged_not_normalized(data_dir):
         json.loads(st.path(VOL, 193).read_text())
 
 
+def test_build_follows_an_entry_inserted_above(data_dir):
+    """A commentary added above the unit's on its page (in the editor): its decisions land on the shifted one."""
+    doc, docs, st = _setup(data_dir)
+    u = doc["units"][0]
+    page = json.loads(st.path(VOL, 194).read_text())
+    page["commentary"].insert(0, {"commentary_id": 0, "latin_quote": None, "french_translation": None,
+                                  "french_commentary": ""})
+    st.path(VOL, 194).write_text(json.dumps(page, ensure_ascii=False))
+    md.decide(docs, VOL, u["uid"], u["changes"][0], "good")
+    merge_build.build_pages(st, VOL, doc, md.load(docs, VOL), pages={194})
+    out = json.loads((merge_build.merged_dir(data_dir, VOL) / "page_0194.json").read_text())
+    assert out["commentary"][2]["french_commentary"] == "Un esclave prudent qui a de la sagesse ^{(a)}."
+    assert out["commentary"][0]["french_commentary"] == ""
+    import merge_view
+    assert not merge_view._stale(st, VOL, u)
+
+
 def test_build_keeps_marker_and_footnote(data_dir):
     doc, docs, st = _setup(data_dir)
     u = doc["units"][0]

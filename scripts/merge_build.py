@@ -509,13 +509,15 @@ def merged_pages(store, vol, units_doc, decisions, pages=None):
             continue
         if not unit_pages(u) & want:
             continue
-        texts = merge_view._part_texts(store, vol, u["parts"], cache)
+        live = merge_view.resolve_parts(store, vol, u["parts"], u.get("old"), cache) or u["parts"]
+        texts = merge_view._part_texts(store, vol, live, cache)
         if texts is None:
             continue
         r = unit_ops(u, texts, decisions)
+        at = {(p["page"], p["path"]): q["path"] for p, q in zip(u["parts"], live)}  # an entry inserted above: moved
         for (page, path), v in r["ops"].items():
             if page in want:
-                ops.setdefault((page, path), []).extend(v)
+                ops.setdefault((page, at.get((page, path), path)), []).extend(v)
         report["skipped"] += [dict(s, uid=u["uid"]) for s in r["skipped"]]
         found = md._matches(decisions, u["uid"], u.get("changes") or [])
         report["reopened"] += sum(1 for rec, state in found.values() if state == "reopened" and rec.get("choice"))

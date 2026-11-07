@@ -68,8 +68,51 @@ def field(page_data, path):
     return x if isinstance(x, str) else None
 
 
-def _part_texts(store, vol, parts, cache=None):
+SHIFTS = (1, -1, 2, -2, 3, -3)  # an entry added or removed above a unit's on its page (a commentary inserted)
+
+
+def resolve_parts(store, vol, parts, old, cache=None):
+    """The unit's parts where normalized has them now: as recorded when their text still gives `old`, else
+    with the list index of a page's parts shifted ("commentary/1/..." -> "commentary/2/...") when an entry
+    was added or removed above them, if that gives `old` back exactly; None when neither does."""
+    import itertools
+    import re
     cache = {} if cache is None else cache
+    texts = _part_texts(store, vol, parts, cache)
+    if texts is not None and good_units._text(" ".join(texts)) == (old or ""):
+        return parts
+    if old is None:
+        return None
+    pages = sorted({p["page"] for p in parts if re.match(r"[a-z_]+/\d+/", p["path"])})
+    if not pages or len(pages) > 3:
+        return None
+
+    def shifted(p, d):
+        m = re.match(r"([a-z_]+)/(\d+)/(.*)", p["path"])
+        if not m or not d:
+            return p
+        i = int(m.group(2)) + d
+        return None if i < 0 else {**p, "path": f"{m.group(1)}/{i}/{m.group(3)}"}
+
+    for ds in itertools.product((0,) + SHIFTS, repeat=len(pages)):
+        if not any(ds):
+            continue
+        by = dict(zip(pages, ds))
+        moved = [shifted(p, by.get(p["page"], 0)) for p in parts]
+        if None in moved:
+            continue
+        t = _part_texts(store, vol, moved, cache)
+        if t is not None and good_units._text(" ".join(t)) == old:
+            return moved
+    return None
+
+
+def _part_texts(store, vol, parts, cache=None, old=None):
+    """The parts' texts in normalized (None if one is missing); with the unit's `old`, read where
+    resolve_parts finds them (an entry inserted above them on the page)."""
+    cache = {} if cache is None else cache
+    if old is not None:
+        parts = resolve_parts(store, vol, parts, old, cache) or parts
     out = []
     for p in parts:
         if p["page"] not in cache:
@@ -94,7 +137,7 @@ def live_old(store, vol, parts, cache=None):
 def _stale(store, vol, u, cache=None):
     if store is None or not u.get("parts"):
         return False
-    return live_old(store, vol, u["parts"], cache) != (u.get("old") or "")
+    return resolve_parts(store, vol, u["parts"], u.get("old") or "", cache) is None
 
 
 def rows(doc, store, decisions=None):
@@ -364,7 +407,7 @@ def unit_view(doc, uid, store=None, decisions=None):
     gtoks, old = sg["gtoks"], u.get("old") or ""
     stale, seams = False, []
     if store is not None and u.get("parts"):
-        texts = _part_texts(store, doc.get("vol"), u["parts"])
+        texts = _part_texts(store, doc.get("vol"), u["parts"], old=u.get("old"))
         stale = texts is None or good_units._text(" ".join(texts)) != old
         if texts is not None:
             seams = _seams(u["parts"], texts, old)
@@ -372,7 +415,7 @@ def unit_view(doc, uid, store=None, decisions=None):
 
     merged, editable, edits, fields = [], False, [], {}
     if store is not None and u.get("parts"):
-        texts = _part_texts(store, doc.get("vol"), u["parts"])
+        texts = _part_texts(store, doc.get("vol"), u["parts"], old=u.get("old"))
         if texts is not None:
             fields = {f"{p['page']}:{p['path']}": merge_build.field_hash(t) for p, t in zip(u["parts"], texts)}
             dec = decisions if decisions is not None else {"decisions": {}}

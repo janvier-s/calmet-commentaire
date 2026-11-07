@@ -845,7 +845,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             raise ApiError(400, {"error": "page, path, a, b and text are needed"})
         parts = u.get("parts") or []
         part = next((k for k, p in enumerate(parts) if (p["page"], p["path"]) == (page, path)), None)
-        texts = merge_view._part_texts(store, vol, parts) if parts else None
+        texts = merge_view._part_texts(store, vol, parts, old=u.get("old")) if parts else None
         if part is None or texts is None or not 0 <= a <= b <= len(texts[part]):
             raise ApiError(400, {"error": "no such span in this unit's fields"})
         if body.get("h") is not None and body["h"] != merge_build.field_hash(texts[part]):
