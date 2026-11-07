@@ -631,7 +631,17 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
           background: var(--surface); color: var(--muted); cursor: pointer; }
 .mg-btn:hover { color: var(--text); border-color: var(--accent); }
 .mg-btn.on { color: var(--ok-text); background: var(--ok); border-color: var(--ok); }
-.mg-btn-old.on { background: var(--muted); border-color: var(--muted); }
+.mg-btn-good { color: var(--ok); border-color: var(--ok); }
+.mg-btn-old { color: var(--danger); border-color: var(--danger); }
+.mg-btn-both { color: var(--warn); border-color: var(--warn); }
+.mg-btn-noise { color: var(--translation); border-color: var(--translation); }
+.mg-btn-good:hover { background: var(--ok); color: var(--ok-text); }
+.mg-btn-old:hover { background: var(--danger); color: #fff; }
+.mg-btn-both:hover { background: var(--warn); color: #fff; }
+.mg-btn-noise:hover { background: var(--translation); color: #fff; }
+.mg-btn-old.on { background: var(--danger); border-color: var(--danger); color: #fff; }
+.mg-btn-both.on { background: var(--warn); border-color: var(--warn); color: #fff; }
+.mg-btn-noise.on { background: var(--translation); border-color: var(--translation); color: #fff; }
 .mg-btn-info { border-style: dashed; }
 
 /* compact chrome: filters and marks share the top bar; the page-info block and the scan toolbar's wrap are gone */

@@ -542,6 +542,8 @@ boot.start = async () => {
   const r = await query(f);
   Object.assign(Q, f, { items: r.body.items, counts: r.body.counts });
   fillFilters();
+  const ed = /^#edit=([^:]+):(\d*)$/.exec(location.hash);  // from /merge: this page, in the editor
+  if (ed) { st.vol = decodeURIComponent(ed[1]); st.page = ed[2] ? +ed[2] : null; st.issue = null; history.replaceState(null, "", "/"); }
   if (st.vol) {  // a page asked for, or where the last session stopped: open it, the queue alongside
     const i = st.issue ? Q.items.findIndex((x) => x.id === st.issue && x.book_dir === st.vol && x.page === st.page) : -1;
     if (i >= 0) return goItem(i);  // the very issue it was on

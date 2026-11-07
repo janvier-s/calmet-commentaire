@@ -163,6 +163,9 @@ function mergedNode(s, i, state, byKey, nav) {
         nav.choose(c, choice);
       },
     })),
+    el("button", { className: `mg-btn mg-btn-noise${c && c.decision && c.decision.mark === "noise" ? " on" : ""}`, textContent: "≈",
+      title: "Accept as noise: the difference is not a real one (click again to undo)",
+      onclick: (e) => { e.preventDefault(); e.stopPropagation(); if (c) nav.markIt(c, c.decision && c.decision.mark === "noise" ? null : "noise"); } }),
     el("button", { className: "mg-btn mg-btn-info", textContent: "ⓘ", title: "Details, scans, noise/real (click the change too)",
       onclick: (e) => { e.preventDefault(); e.stopPropagation(); nav.pick(state.open === s.id ? null : s.id); } }));
   return [span, btns];
@@ -503,6 +506,15 @@ export function renderUnit(root, view, state, nav) {
     el("input", { type: "checkbox", checked: on, onchange: (e) => go({ [key]: e.target.checked }) }), ` ${label}`);
   const top = el("header", { className: "mg-top" },
     el("a", { href: listHash, className: "mg-toplink", textContent: "← list", title: "Back to the list (Esc)" }),
+    el("button", { textContent: "✎ editor", title: "Open the page of the text you are editing in the regular editor (new tab)",
+      onclick: () => {
+        const sel = window.getSelection(), n = sel && sel.anchorNode;
+        const seg = n && (n.nodeType === 1 ? n : n.parentElement) && (n.nodeType === 1 ? n : n.parentElement).closest(".mg-seg");
+        const open = state.open && view.changes.find((x) => x.key === state.open);
+        const m = seg ? view.merged[+seg.dataset.i] : null;
+        const page = (m && m.page) || (open && open.page) || (view.merged.find((x) => x.page) || {}).page;
+        window.open(`/#edit=${encodeURIComponent(state.vol)}:${page || ""}`, "_blank");
+      } }),
     el("button", { textContent: "‹ prev", disabled: !nav.prev, title: "Previous unit in the list (p)", onclick: () => go({ uid: nav.prev, open: null }) }),
     el("button", { textContent: "next ›", disabled: !nav.next, title: "Next unit in the list (n)", onclick: () => go({ uid: nav.next, open: null }) }),
     el("span", { className: "mg-title" }, `${BOOK_TITLES[state.vol] || state.vol} · ${u.type} ${ref(u)}`),
