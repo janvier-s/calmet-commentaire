@@ -70,16 +70,21 @@ export async function loadPage(vol, page) {
   if (r.status === 404 && r.body.missing) return { missing: true, ...r.body };
   if (r.status !== 200) { toast(r.body.error || "Could not load the page"); return null; }
   page = r.body.page;
+  const moved = vol !== S.vol || page !== S.page;  // another page (not the same one again): its scan anew
   S.reveal = new Set();
   S.opened = { vol, page, data: structuredClone(r.body.data) };  // for Undo all
   S.good = r.body.good || 0;
+  S.goodKeys = r.body.good_keys || [];
+  S.scanHas = !!r.body.scan;
   if (S.goodIdx >= S.good) S.goodIdx = 0;
   Object.assign(S, { vol, page, data: r.body.data, version: r.body.version, ctx: r.body.context,
                      pages: r.body.pages, chapters: r.body.chapters || [],
                      issues: r.body.issues, around: r.body.around, scanCrop: r.body.scan_crop || null,
                      reviewed: Object.fromEntries(Object.entries(r.body.reviewed).map(([k, v]) => [k, new Set(v)])) });
   if (!hooks.remember) api("/api/state", { vol, page });  // the queue saves it with its filters and issue
-  showScan(r.body.scan);
+  for (const f of hooks.pageLoaded) f(r.body, moved);
+  if (moved) scanDefault();  // Merged: Good's page that matches this one; Old: the scan
+  else showScan();
   renderPage();
   updateTop();
   $("text-pane").scrollTop = 0;
@@ -98,22 +103,73 @@ export function updateTop() {
 // --- the scan ---
 export { ZOOM_STEPS };
 
-function goodUrl() { return `/good/${encodeURIComponent(S.vol)}/${S.page}/${S.goodIdx || 0}`; }
+// S.goodOn: a Good_Calmet page shown, the page's own S.goodIdx-th, or S.goodKey ("<pdf>/page_NNNN") when
+// stepped away from them with ◀ ▶ (Good's pages do not fall as the scan's do; the text stays).
+function goodUrl() {
+  if (S.goodKey) {
+    const [pdf, p] = S.goodKey.split("/");
+    return `/goodcrop/${encodeURIComponent(pdf)}/${parseInt(p.replace(/\D/g, ""), 10)}`;
+  }
+  return `/good/${encodeURIComponent(S.vol)}/${S.page}/${S.goodIdx || 0}`;
+}
+
+/** The scan the text's mode starts with: Good's matching page in Merged, the scan in Old. */
+export function scanDefault() {
+  S.goodKey = null;
+  S.goodIdx = 0;
+  S.goodOn = !!(S.merged && S.good);
+  showScan();
+}
+
+/** Show the scan (`idx` null) or the page's idx-th Good page. */
+export function pickScan(idx) {
+  S.goodKey = null;
+  if (idx == null || !S.good) S.goodOn = false;
+  else { S.goodOn = true; S.goodIdx = Math.min(idx, S.good - 1); }
+  showScan();
+}
 
 export function toggleGood(next) {
   if (!S.good) return;
-  if (!S.goodOn) S.goodOn = true;
-  else if (next && S.good > 1 && (S.goodIdx || 0) < S.good - 1) S.goodIdx = (S.goodIdx || 0) + 1;
-  else { S.goodOn = false; S.goodIdx = 0; }
-  showScan(true);
+  if (!S.goodOn || S.goodKey) pickScan(S.goodKey ? 0 : S.goodIdx || 0);
+  else if (next && S.good > 1 && (S.goodIdx || 0) < S.good - 1) pickScan((S.goodIdx || 0) + 1);
+  else pickScan(null);
 }
 
-export function showScan(has) {
+/** ◀ ▶: Good's previous or next page in the book's Good order, whatever page the text is on. */
+export async function goodStep(dir) {
+  const from = S.goodKey || (S.goodOn && S.goodKeys[S.goodIdx || 0]) || S.goodKeys[0];
+  if (!from) return;
+  if (!S.goodOn) { pickScan(0); return; }  // the scan shown: Good's matching page first
+  const r = await api(`/api/good_step?vol=${encodeURIComponent(S.vol)}&key=${encodeURIComponent(from)}&dir=${dir}`);
+  if (r.status !== 200 || !r.body.key) { toast(r.status === 200 ? "No other Good_Calmet page that way" : r.body.error || "Could not step"); return; }
+  const own = S.goodKeys.indexOf(r.body.key);  // back on one of this page's own: its overlay comes back
+  S.goodOn = true;
+  if (own >= 0) { S.goodKey = null; S.goodIdx = own; } else S.goodKey = r.body.key;
+  showScan();
+}
+
+function scanSeg() {
+  const seg = $("scan-seg");
+  const b = (text, on, fn, title, disabled = false) => el("button", { textContent: text, className: on ? "on" : "", onclick: fn, title, disabled });
+  const g = !!(S.goodOn && S.good);
+  const kids = [b("Original", !g, () => pickScan(null), "The scan of this page", !S.scanHas)];
+  for (let i = 0; i < S.good; i++) {
+    kids.push(b(S.good > 1 ? `Good ${i + 1}` : "Good", g && !S.goodKey && (S.goodIdx || 0) === i, () => pickScan(i),
+      `The Good_Calmet rescan of this page${S.good > 1 ? ` (${i + 1} of the ${S.good} it spans)` : ""} (G)`));
+  }
+  if (g && S.goodKey) kids.push(el("span", { className: "seg-note", textContent: `Good ${S.goodKey.replace(/\/page_0*/, " p.")}`,
+    title: "A Good_Calmet page stepped to with ◀ ▶; Good 1 brings this page's back" }));
+  seg.replaceChildren(...kids);
+  seg.hidden = !S.good && !S.scanHas;
+  $("good-step").hidden = !(S.merged && S.good);
+}
+
+export function showScan(has = S.scanHas) {
   const img = $("scan-img");
   const g = !!(S.goodOn && S.good);
-  $("good-toggle").hidden = $("good-open").hidden = !S.good;
-  $("good-toggle").classList.toggle("on", g);
-  $("good-toggle").textContent = g && S.good > 1 ? `Good_Calmet ${(S.goodIdx || 0) + 1}/${S.good}` : "Good_Calmet";
+  $("good-open").hidden = !S.good;
+  scanSeg();
   $("scan-view").classList.toggle("good", g);
   has = has || g;
   $("no-scan").hidden = has;
@@ -157,11 +213,17 @@ function setupScan() {
   $("zoom-out").onclick = () => zoomStep(-1);
   $("zoom-fit").onclick = () => { S.zoom = 1; S.fitV = false; layoutScan(); };
   $("zoom-fit-v").onclick = () => { S.fitV = true; layoutScan(); };
-  $("good-toggle").onclick = () => toggleGood(true);
+  $("good-prev").onclick = () => goodStep(-1);
+  $("good-next").onclick = () => goodStep(1);
   $("good-open").onclick = () => { $("menu").hidden = true; if (S.good) window.open(goodUrl(), "_blank"); };
   addEventListener("keydown", e => {
     if ((e.key === "g" || e.key === "G") && !e.metaKey && !e.ctrlKey && !e.altKey &&
         !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName) && !document.activeElement.isContentEditable) toggleGood(true);
+    if ((e.key === "," || e.key === ".") && S.merged && S.good && !e.metaKey && !e.ctrlKey && !e.altKey &&
+        !e.target.closest("input, select, textarea, [contenteditable]") && !$("dialog").open) {
+      e.preventDefault();
+      goodStep(e.key === "," ? -1 : 1);
+    }
   });
   $("zoom-1").onclick = () => {
     const img = $("scan-img");
@@ -224,7 +286,7 @@ const TAGS = { chapter: "ch", verse_number: "v", commentary_id: "#", verse_ref: 
  *  text as typed. */
 export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [], valueAt: null, afterSave: null,
                        blockTools: null, addTop: null, addBelow: null, addEnd: null, footnoteTags: null,
-                       remember: null, volShown: null, saveMerged: null };
+                       remember: null, volShown: null, saveMerged: null, pageLoaded: [] };
 
 S.reveal = new Set();  // empty optional fields the user asked to see ("+ annotations")
 const key = (path) => path.join("/");
@@ -461,6 +523,12 @@ function setupTop() {
   $("theme").onchange = (e) => setTheme(e.target.value);
   $("theme").value = document.documentElement.dataset.theme;
   $("menu-btn").onclick = () => { $("menu").hidden = !$("menu").hidden; };
+  $("menu").addEventListener("click", (e) => { if (e.target.closest("button")) $("menu").hidden = true; });
+  $("merge-tab").onclick = () => {  // back where /merge was left, if it was on this book
+    let h = "";
+    try { h = localStorage.getItem("rw-merge-hash") || ""; } catch (e) {}
+    $("merge-tab").href = "/merge" + (h && new URLSearchParams(h.slice(1)).get("vol") === S.vol ? h : `#vol=${encodeURIComponent(S.vol)}`);
+  };
   document.addEventListener("click", (e) => { if (!e.target.closest(".menu")) $("menu").hidden = true; });
   const boxes = [...document.querySelectorAll("#sec-pop input")];
   const applySecs = () => {

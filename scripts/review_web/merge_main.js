@@ -77,6 +77,7 @@ const listScroll = new Map();  // list hash -> scroll, so going back to the list
 async function draw() {
   const me = ++drawn;
   const state = parseHash(location.hash);
+  try { localStorage.setItem("rw-merge-hash", location.hash); } catch (e) {}  // the editor's Merge tab comes back here
   const prev = last;
   last = state;
   if (prev && !prev.uid) listScroll.set(toHash({ ...prev, open: null }), window.scrollY);

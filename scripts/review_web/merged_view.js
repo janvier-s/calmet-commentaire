@@ -2,36 +2,48 @@
 // blue and wavy; what is typed here is kept apart from the build (docs/good_merge/<vol>.hand.json) and laid over
 // it at every rebuild. When normalized, Good or a decision changes a hand-edited field underneath, the field is
 // flagged: keep yours or take the rebuilt text. Every state is kept: ↶ brings the previous one back.
-import { S, api, hooks, renderPage, showScan, toast } from "./app.js";
+// The header's [Old | Merged] switch picks the text; a page opens on Merged when /merge changed it, else on Old.
+import { S, api, hooks, renderPage, scanDefault, toast } from "./app.js";
 import { Field, render } from "./field.js";
 import { save, setDirty, wireField } from "./edit.js";
 
 const $ = (id) => document.getElementById(id);
 
 let on = false;
-try { on = localStorage.getItem("rw-merged") === "1"; } catch (e) {}
 const cache = new Map();  // "vol:page" -> {data, marks, scan, hand} | "loading"
 let mfields = [];  // [{path, field, was}] of the merged text drawn
 const ck = () => `${S.vol}:${S.page}`;
 
-const btn = document.createElement("button");
-Object.assign(btn, { id: "merged-btn", textContent: "Merged", className: on ? "on" : "",
-  title: "Edit the page as /merge built it; the words taken from Good are underlined in blue; the scan switches to Good_Calmet. Your typing here is kept over every rebuild." });
-$("sections").insertBefore(btn, $("sections").querySelector(".grow"));
-btn.onclick = async () => {
-  if (S.dirty && !(await save({ redraw: false }))) return;  // the text of the view being left first
-  on = !on;
+/** The switch and the editing pane's look follow `on`. */
+function showMode() {
+  S.merged = on;
   hooks.saveMerged = on ? saveMerged : null;
-  btn.classList.toggle("on", on);
-  try { localStorage.setItem("rw-merged", on ? "1" : "0"); } catch (e) {}
+  for (const b of document.querySelectorAll("#mode-seg button")) b.classList.toggle("on", (b.dataset.mode === "merged") === on);
+  document.body.classList.toggle("merged-view", on);
+  $("edit-label").textContent = on ? "EDITING MERGED" : "EDITING OLD";
+}
+
+async function setMode(merged) {
+  if (merged === on) return;
+  if (S.dirty && !(await save({ redraw: false }))) return;  // the text of the view being left first
+  on = merged;
+  showMode();
   if (hooks.collect) hooks.collect();
   const top = $("text-pane").scrollTop;
-  scanTo(on);  // the scan of Good_Calmet beside its text
+  scanDefault();  // Merged: Good_Calmet's page beside its text; Old: the scan
   cache.delete(ck());  // fresh: a decision may have been made since
   renderPage();
   $("text-pane").scrollTop = top;
-};
-hooks.saveMerged = on ? saveMerged : null;
+}
+for (const b of document.querySelectorAll("#mode-seg button")) b.onclick = () => setMode(b.dataset.mode === "merged");
+let modeFor = null;  // the page the mode was chosen for: the same page loaded again keeps it
+hooks.pageLoaded.push((body) => {
+  if (modeFor === ck()) return;
+  modeFor = ck();
+  on = !!body.merged_edited;
+  showMode();
+});
+showMode();
 
 const prevAfterSave = hooks.afterSave;
 hooks.afterSave = () => { cache.delete(ck()); return prevAfterSave && prevAfterSave(); };  // normalized saved: merged rebuilt
@@ -55,7 +67,8 @@ hooks.makeField = (f, name, value, path) => {
   f.classList.toggle("mv-hand", !!h.edited);
   if (h.conflict) { f.contentEditable = "false"; f.classList.add("mv-ro", "mv-conflict"); }
   else wireField(field, name, () => mfields.map((x) => x.field));
-  if (hit.marks[k]) field.setMarks(hit.marks[k]);
+  if (hit.marks[k]) field.setMarks(hit.marks[k], false, true);  // kept through typing, moved with the words
+  if (hit.italics && hit.italics[k]) field.setGoodItalics(hit.italics[k]);
   mfields.push({ path: k, field, was: v });
 };
 const plainBefore = hooks.beforeRender;
@@ -143,13 +156,6 @@ function at(data, path) {
   return x;
 }
 
-let plain = true;  // the ordinary scan existed when Good_Calmet was put on by this toggle
-function scanTo(good) {
-  if (!S.good) return;
-  if (good && !S.goodOn) { plain = !$("no-scan").hidden; S.goodOn = true; showScan(true); }
-  else if (!good && S.goodOn) { S.goodOn = false; S.goodIdx = 0; showScan(plain); }
-}
-
 // --- the words taken from Good, wavy blue on the Good scan ---
 const NS = "http://www.w3.org/2000/svg";
 const layer = document.createElementNS(NS, "svg");
@@ -173,7 +179,7 @@ function lines(boxes) {
 function drawScan() {
   const img = $("scan-img");
   layer.replaceChildren();
-  const boxes = on && S.goodOn && shown && shown.scan[String(S.goodIdx || 0)];
+  const boxes = on && S.goodOn && !S.goodKey && shown && shown.scan[String(S.goodIdx || 0)];
   if (!boxes || !img.naturalWidth) { layer.style.display = "none"; return; }
   layer.style.display = "";
   layer.setAttribute("viewBox", `0 0 ${img.naturalWidth} ${img.naturalHeight}`);
@@ -192,9 +198,7 @@ $("scan-img").addEventListener("load", drawScan);
 new ResizeObserver(drawScan).observe($("scan-img"));
 
 hooks.afterRender.push((root) => {
-  document.body.classList.toggle("merged-view", on);
   if (!on) { shown = null; drawScan(); return; }
-  scanTo(true);
   const k = `${S.vol}:${S.page}`;
   const hit = cache.get(k);
   if (!hit) {

@@ -285,8 +285,16 @@ async function settle() {
   return true;
 }
 
+/** Turn in the top bar only while it is open or the issue on this page is a page-turn one (T opens it anyway). */
+function turnButton() {
+  const it = currentItem();
+  $("turn-btn").hidden = !(T.open || (it && it.book_dir === S.vol && it.page === S.page && S.config.turn_kinds.includes(it.kind)));
+}
+hooks.afterRender.push(turnButton);
+
 function show(on) {
   T.open = on;
+  turnButton();
   $("turn").hidden = !on;
   $("cols").hidden = on;
   document.body.classList.toggle("turn-open", on);
@@ -385,6 +393,7 @@ export async function reloadFromDisk(pages) {
 
 // --- wiring ---
 hooks.showTurn = async (it) => {
+  turnButton();
   if (S.config.turn_kinds.includes(it.kind)) return openTurn({ id: it.id });
   if (T.open) return closeTurn();
 };

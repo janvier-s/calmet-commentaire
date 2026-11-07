@@ -710,7 +710,10 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 #scan-menu .ocr-phase { margin-left: 0; }
 #scan-tools #ocr-filters { flex-wrap: wrap; }
 
-/* Merged view: read-only; the words taken from Good, blue and wavy */
+/* Merged view: the words taken from Good, a thin light-blue wave on the text and on the Good scan (one set of
+   variables for both); the italics taken from Good, a blue-green wave */
+:root { --mv-blue: #2f6fd6; --wave: #5c9df2; --wave-op: .55; --wave-w: 1px; --wave-good-it: #129e93; }
+:root[data-theme="dark"] { --mv-blue: #6da3ff; --wave: #8dbcff; --wave-good-it: #3fd1c4; }
 body.merged-view .f.mv-ro { cursor: default; }
 body.merged-view .f.mv-hand { box-shadow: inset 3px 0 0 var(--accent); }
 body.merged-view .f.mv-conflict { box-shadow: inset 3px 0 0 var(--danger); background: color-mix(in srgb, var(--danger) 7%, var(--field)); }
@@ -719,8 +722,32 @@ body.merged-view .f.mv-conflict { box-shadow: inset 3px 0 0 var(--danger); backg
 .mv-bar button { font-size: 12px; padding: 1px 8px; }
 .mv-diff { flex-basis: 100%; padding: 6px 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; color: var(--text); white-space: pre-wrap; }
 .mv-diff b { color: var(--muted); font-weight: 600; }
-body.merged-view .f.mv mark { background: none; border: 0; outline: 0; box-shadow: none; padding: 0; color: inherit; text-decoration: underline wavy #2f6fd6; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
-#merged-btn.on { background: #2f6fd6; color: #fff; border-color: #2f6fd6; }
+body.merged-view .f.mv mark { background: none; border: 0; outline: 0; box-shadow: none; padding: 0; color: inherit;
+  text-decoration: underline wavy color-mix(in srgb, var(--wave) calc(var(--wave-op) * 100%), transparent);
+  text-decoration-thickness: var(--wave-w); text-underline-offset: 3px; }
+body.merged-view .f.mv .git { text-decoration: underline wavy var(--wave-good-it); text-decoration-thickness: var(--wave-w); text-underline-offset: 3px; }
 #merged-scan { position: absolute; left: var(--scan-x, 0px); top: 0; pointer-events: none; overflow: visible; }
-#merged-scan path { fill: none; stroke: #2f6fd6; stroke-width: 1.75; vector-effect: non-scaling-stroke; stroke-linecap: round; }
-:root[data-theme="dark"] #merged-scan path { stroke: #6da3ff; }
+#merged-scan path { fill: none; stroke: var(--wave); stroke-opacity: var(--wave-op); stroke-width: var(--wave-w); vector-effect: non-scaling-stroke; stroke-linecap: round; }
+
+/* the shared bar (editor and /merge): Book › Issue › Page, then the Review / Merge tabs */
+.nav-crumbs { display: flex; align-items: center; gap: 5px; }
+.nav-sep { color: var(--muted); font-size: 15px; }
+.nav-tabs { display: inline-flex; gap: 2px; margin: 0 6px; }
+.nav-tab { padding: 3px 10px; text-decoration: none; color: var(--muted); border-bottom: 2px solid transparent; font-weight: 600; font-size: 13px; }
+.nav-tab:hover { color: var(--accent); }
+.nav-tab.on { color: var(--text); border-bottom-color: var(--accent); }
+.nav-crumb { font-size: 13px; }
+.nav-crumb.muted { color: var(--muted); }
+
+/* segmented switches: [Old | Merged], [Original / Good 1 / Good 2] */
+.seg { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; border-radius: 0; padding: 3px 9px; background: none; }
+.seg button + button { border-left: 1px solid var(--border); }
+.seg button.on { background: var(--accent); color: #fff; }
+.seg button:disabled { opacity: .4; cursor: default; }
+#mode-seg button[data-mode="merged"].on { background: var(--mv-blue); }
+.seg-note { font-size: 12px; padding: 3px 8px; color: var(--mv-blue); border-left: 1px solid var(--border); white-space: nowrap; }
+#edit-label { font-size: 10.5px; letter-spacing: .08em; font-weight: 700; color: var(--muted); padding: 1px 6px;
+  border: 1px solid var(--border); border-radius: 4px; }
+body.merged-view #edit-label { color: var(--mv-blue); border-color: var(--mv-blue); }
+body.merged-view #text-pane { box-shadow: inset 0 0 0 2px var(--mv-blue); background: color-mix(in srgb, var(--mv-blue) 6%, var(--bg)); }

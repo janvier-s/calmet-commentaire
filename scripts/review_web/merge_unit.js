@@ -1,6 +1,7 @@
 // The /merge unit view: old (left) and Good (right), the whole unit, the recorded changes highlighted in
 // place; a change's panel opens under its passage, with the old and Good pages side by side on demand.
 import { el } from "./goodfig.js";
+import { navBar, reviewHref } from "./navbar.js";
 import { badge, ref } from "./merge_list.js";
 import { BOOK_TITLES, toHash, undecided, unitScans } from "./merge_state.js";
 import { cellTexts, diffClass, segmentEdits, toNodes, undoKey } from "./merge_edit.js";
@@ -512,20 +513,25 @@ export function renderUnit(root, view, state, nav) {
   const hidden = (counts.noise || 0) + (counts.unrecorded || 0);
   const cb = (label, on, key) => el("label", { className: "mg-toggle" },
     el("input", { type: "checkbox", checked: on, onchange: (e) => go({ [key]: e.target.checked }) }), ` ${label}`);
+  // the page of the text being edited (the caret's, else the open change's, else the unit's first)
+  const editPage = () => {
+    const sel = window.getSelection(), n = sel && sel.anchorNode;
+    const e = n && (n.nodeType === 1 ? n : n.parentElement);
+    const seg = e && e.closest(".mg-seg");
+    const open = state.open && view.changes.find((x) => x.key === state.open);
+    const m = seg ? view.merged[+seg.dataset.i] : null;
+    return (m && m.page) || (open && open.page) || ((view.merged || []).find((x) => x.page) || {}).page
+      || ((u.parts || [])[0] || {}).page;
+  };
+  const pg = editPage();
   const top = el("header", { className: "mg-top" },
+    ...navBar([BOOK_TITLES[state.vol] || state.vol, `${u.type} ${ref(u)}`, pg ? `p.${pg}` : null], "merge",
+      { href: reviewHref(state.vol, pg), title: "This page in the review editor (the caret's page)",
+        onclick: (ev) => { ev.currentTarget.href = reviewHref(state.vol, editPage()); } },
+      { href: location.hash || "#" }),
     el("a", { href: listHash, className: "mg-toplink", textContent: "← list", title: "Back to the list (Esc)" }),
-    el("button", { textContent: "✎ editor", title: "Open the page of the text you are editing in the regular editor (new tab)",
-      onclick: () => {
-        const sel = window.getSelection(), n = sel && sel.anchorNode;
-        const seg = n && (n.nodeType === 1 ? n : n.parentElement) && (n.nodeType === 1 ? n : n.parentElement).closest(".mg-seg");
-        const open = state.open && view.changes.find((x) => x.key === state.open);
-        const m = seg ? view.merged[+seg.dataset.i] : null;
-        const page = (m && m.page) || (open && open.page) || (view.merged.find((x) => x.page) || {}).page;
-        window.open(`/#edit=${encodeURIComponent(state.vol)}:${page || ""}`, "_blank");
-      } }),
     el("button", { textContent: "‹ prev", disabled: !nav.prev, title: "Previous unit in the list (p)", onclick: () => go({ uid: nav.prev, open: null }) }),
     el("button", { textContent: "next ›", disabled: !nav.next, title: "Next unit in the list (n)", onclick: () => go({ uid: nav.next, open: null }) }),
-    el("span", { className: "mg-title" }, `${BOOK_TITLES[state.vol] || state.vol} · ${u.type} ${ref(u)}`),
     u.lemma ? el("span", { className: "mg-serif mg-lemma", textContent: u.lemma }) : null,
     badge(u.status),
     el("span", { className: "mg-counts" },

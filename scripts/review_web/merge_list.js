@@ -1,5 +1,6 @@
 // The /merge list view: a volume's good_units, filtered, grouped by status.
 import { el } from "./goodfig.js";
+import { navBar } from "./navbar.js";
 import { STATUS_ORDER, TYPES, counter, filterRows, sortRows, toHash } from "./merge_state.js";
 
 const num = (n) => Number(n || 0).toLocaleString("en-US");
@@ -70,8 +71,9 @@ export function renderList(root, list, vols, state) {
     list.unattached ? el("span", { className: "muted", title: "Good blocks good_units could not attach to any unit: they have no row",
       textContent: ` · ${num(list.unattached)} unattached Good block${list.unattached > 1 ? "s" : ""}` }) : null);
 
-  const top = el("header", { className: "mg-top" }, book, count, el("span", { className: "grow" }),
-    el("a", { href: "/", className: "mg-toplink", textContent: "Queue" }));
+  const top = el("header", { className: "mg-top" },
+    ...navBar([book], "merge", { href: "/", title: "The review editor, where you left it" }, { href: location.hash || "#" }),
+    count, el("span", { className: "grow" }));
   const progress = el("select", { title: "Review progress",
     onchange: () => go(state, { progress: progress.value || null }) },
     ...[["", "Done and to do"], ["todo", "To do"], ["done", "Done"]].map(([v, t]) =>
