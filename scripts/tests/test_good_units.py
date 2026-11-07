@@ -358,3 +358,25 @@ def test_heading_window_needs_three_words():
         w["src_page"] = 5
     gu.project(units, ctx)
     assert next(u for u in units if u["type"] == "title")["good"] == ""
+
+
+def test_verse_printed_far_off_is_found_in_all_of_goods_words():
+    VERSE = "Dieu dit aussi que les eaux qui sont sous le Ciel se rassemblent en un seul lieu"
+    units = gu.old_units({3: page(verses=[verse(1, 9, VERSE + ".")]), 8: page([note(1, 6, "alpha beta gamma", lq="FIAT")])})
+    # Good's page of the note (source page 8) has the verse inline, unlinked but for two words that went to the note
+    words = [("alpha", "commentary/0/french_commentary", None)] + \
+        [(t, None, None) for t in VERSE.split()[:9]] + [("le", "commentary/0/french_commentary", None)] + \
+        [(t, None, None) for t in VERSE.split()[10:]] + [("gamma", "commentary/0/french_commentary", None)]
+    gu.project(units, ctx_of(words))
+    verse_unit = next(u for u in units if u["type"] == "verse")
+    assert verse_unit["good"].startswith("Dieu dit aussi") and verse_unit["good"].endswith("seul lieu")
+    assert "Dieu" not in good_of(units, "commentary:1:6:0")
+
+
+def test_insert_the_verse_unit_holds_is_noise():
+    units = units_ab()
+    units[0]["good"] = "alpha"
+    verse_u = {"uid": "verse:1:9:0", "type": "verse", "parts": [], "old": "", "good": "Dieu dit aussi que les eaux qui sont sous le Ciel"}
+    r = rec(good_raw="Dieu dit aussi que les eaux qui sont", words=7)
+    gu.attach(units + [verse_u], [r], {5})
+    assert units[0]["changes"][0]["class"] == "noise"

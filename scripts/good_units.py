@@ -209,6 +209,57 @@ def _mend_strays(owner, ws, jt):
             groups[k][0] = prev
 
 
+VERSE_FOUND = 0.5  # a verse with fewer Good words than this share of its own is looked for in all of Good's text
+VERSE_VOTES = 0.5  # the share of a verse's word pairs a stretch of Good's words must hold to be taken for it
+QUOTE = 0.4  # a stretch linked, for more than this share, to notes is a note quoting the verse, not the verse
+
+
+def _find_verses(units, ws, owner, got):
+    """Good prints a verse's French inline, before its commentary, where the old edition has it at the top
+    of an earlier page (up to a dozen pages off), so the aligner's window (a few pages round the one Good's
+    page matches) never holds it, and Kraken reads it between the commentary's lines. A verse unit left with
+    little Good text is looked for in the whole of Good's words, by the word pairs it shares with a stretch of
+    them: the words found go to it, from whichever unit had them (`got`, edited)."""
+    by_uid = {u["uid"]: u for u in units}
+    pairs = collections.defaultdict(list)
+    keys = [scan_ocr_key(w["t"]) for w in ws]
+    for p, ab in enumerate(zip(keys, keys[1:])):
+        pairs[ab].append(p)
+    taken = set()  # words given to a verse here
+    for u in units:
+        if u["type"] != "verse":
+            continue
+        ok = _keys(u["old"])
+        n = len(ok)
+        if n < 6 or len(got.get(u["uid"], [])) >= VERSE_FOUND * n:
+            continue
+        votes = collections.Counter()
+        for i, ab in enumerate(zip(ok, ok[1:])):
+            for p in pairs.get(ab, ()):
+                votes[p - i] += 1
+        best = max(votes, key=lambda st: sum(votes.get(st + d, 0) for d in range(-3, 4)), default=None)
+        if best is None:
+            continue
+        hits = sorted(p for i, ab in enumerate(zip(ok, ok[1:])) for p in pairs.get(ab, ())
+                      if best - 3 <= p - i <= best + 3)
+        if len(set(hits)) < VERSE_VOTES * (n - 1):
+            continue
+        a, b = max(0, min(hits)), min(len(ws), max(hits) + 2)
+        span = range(a, b)
+        if any(i in taken for i in span):
+            continue
+        mine = [i for i in span if owner[i] is None or by_uid[owner[i]]["type"] == "verse"]
+        if len(span) - len(mine) > QUOTE * len(span):
+            continue  # linked to notes for the most part: a note quoting the verse
+        moved = {id(ws[i]) for i in mine}
+        for uid in list(got):
+            got[uid] = [w for w in got[uid] if id(w) not in moved]
+        # what the verse already held stays (the unlinked words after it): the unit before gets nothing back
+        have = {id(w) for w in got.get(u["uid"], [])} | moved
+        got[u["uid"]] = [w for w in ws if id(w) in have]
+        taken |= set(span)
+
+
 def project(units, ctx):
     """Give each unit Good's words for it (`good`, `good_where`, `good_words`). A Good word linked to a JSON
     word goes to that word's unit; unlinked words between two words of one unit go to it, between two
@@ -295,6 +346,7 @@ def project(units, ctx):
             # after a chapter's heading: the new chapter's text
             run, host, chapter, split = run[e:], nxt or prev, by_uid[uid]["chapter"], True
         i = k
+    _find_verses(units, ws, owner, got)
     for u in units:
         _fill(u, got.get(u["uid"], []))
     return new
@@ -358,6 +410,7 @@ def attach(units, records, covered):
     for u in units:
         u["changes"] = []
     unattached = 0
+    verses = {u["uid"]: gv._grams(_keys(u.get("good"))) for u in units if u["type"] == "verse" and u.get("good")}
     for r in records:
         where = [(r["page"], r["path"])] + [tuple((int(s.split(":", 1)[0]), s.split(":", 1)[1])) for s in r.get("spans", [])]
         uid = next((idx[w] for w in where if w in idx), None)
@@ -365,6 +418,12 @@ def attach(units, records, covered):
             unattached += 1
             continue
         c = dict(r, **{"class": classify(r), "gap_in_normalized": r.get("origin") == "both_scans", "moved_with": None})
+        if not r.get("old") and r.get("words", 0) >= 5 and c["class"] != "noise":
+            # Good words with nothing of the old text against them that a verse unit holds: the verse's French,
+            # printed inline in the commentary, found by _find_verses, not an insertion
+            mine = _keys(r.get("good_raw"))
+            if any(gv._share(mine, g) >= 0.6 for v, g in verses.items() if v != uid):
+                c["class"], c["in_verse"] = "noise", True
         if c["class"] == "moved":
             mine = _keys(r.get("old") or r.get("good_raw"))
             side = "good" if r.get("old") else "old"  # the words left here are found in another unit's Good text
