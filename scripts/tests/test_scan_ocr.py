@@ -783,3 +783,12 @@ def test_modern_words_leaves_correct_words_names_and_latin():
 def test_printed_without_modernizing_for_latin():
     r = O.printed([tok("Dixit"), tok("Deus:"), tok("fiat"), tok("lux.")], latin=True)
     assert r["text"] == "Dixit Deus: fiat lux."
+
+
+def test_modern_etc_monnaie_and_imparfait():
+    m = scan_ocr.modern
+    assert m("les Hébreux, & c. Mais") == "les Hébreux, etc. Mais"
+    assert m("et c'est tout") == "et c'est tout"
+    assert m("la monoye") == "la monnaie"
+    assert m("il tueroit et connoissoit") == "il tuerait et connaissait"
+    assert m("il croit, l endroit, il reçoit") == "il croit, l'endroit, il reçoit"

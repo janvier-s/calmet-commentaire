@@ -245,7 +245,9 @@ def modern(text):
     try:
         from clean_mechanical import fix_spelling
         from modernize_inplace import modernize_text
-        return modern_words(modernize_text(fix_spelling(text.replace("ſ", "s").replace("&", "et").replace("’", "'")))[0])
+        text = re.sub(r"\bet c(?:\.|(?![\w'’]))", "etc.", text.replace("ſ", "s").replace("&", "et").replace("’", "'"))
+        text = re.sub(r"\b(mon)(oye|noye)\b", "monnaie", text)
+        return modern_words(modernize_text(fix_spelling(text))[0])
     except Exception:
         return None
 
@@ -275,11 +277,35 @@ def modern_words(text, known=None):
                 if v in known:
                     found.add(v)
                 i = wl.find(old, i + 1)
+            if not found and wl.count(old) > 1 and old in ("oi", "oî"):  # connoissoit: every oi is an ai
+                v = wl.replace(old, new)
+                if v in known:
+                    found.add(v)
         if len(found) != 1:
             return w
         v = found.pop()
         return v.upper() if w.isupper() else v[0].upper() + v[1:] if w[0].isupper() else v
-    return re.sub(r"[^\W\d_]+", one, text)
+    # the imparfait and conditionnel in -oit/-oient hunspell does not know, whose -ait/-aient form it does
+    # (the word list above only holds words the text has): tendoit, possedoient, connoissoit
+    cands = {}
+    for m in re.finditer(r"[^\W\d_]+", text):
+        w = m.group()
+        wl = w.lower()
+        if len(w) >= 5 and wl not in known and re.search(r"o[iî]t$|o[iî]ent$", wl):
+            cands[w] = wl.replace("oî", "aî").replace("oi", "ai")
+    if cands:
+        bad = spellcheck.check(sorted(set(cands) | set(c.lower() for c in cands.values())))
+        ok = {w for w, v in cands.items() if w.lower() in bad and v not in bad}
+    else:
+        ok = set()
+
+    def two(m):
+        w = m.group()
+        if w not in ok:
+            return one(m)
+        v = cands[w]
+        return v.upper() if w.isupper() else v[0].upper() + v[1:] if w[0].isupper() else v
+    return re.sub(r"[^\W\d_]+", two, text)
 
 
 # words a stop may close without ending the sentence: Saint, chapters, books of the Bible, sources
