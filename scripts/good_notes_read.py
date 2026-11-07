@@ -140,16 +140,16 @@ def parse(text):
     return notes or None
 
 
-async def call(crop, sem, prompt=PROMPT):
+async def call(crop, sem, prompt=PROMPT, model=None):
     """One agy Flash call: (answer, None) or (None, error). `crop`: the image it reads (None: text only)."""
     async with sem:
-        return await agy(crop, prompt)
+        return await agy(crop, prompt, model)
 
 
 CALLS = {"n": 0}  # agy calls made by this process
 
 
-async def agy(crop, prompt=PROMPT):
+async def agy(crop, prompt=PROMPT, model=None):
     """`call` without the semaphore (the caller holds it)."""
     CALLS["n"] += 1
     if crop is None:
@@ -159,7 +159,7 @@ async def agy(crop, prompt=PROMPT):
     else:
         cwd, text = crop.parent, f"@{crop.name} {prompt}"
     args = ["agy", "--print-timeout", "300s", "--disable-slash-commands", "--output-format", "json",
-            "--model", MODEL, "-p", text]
+            "--model", model or MODEL, "-p", text]
     proc = await asyncio.create_subprocess_exec(*args, cwd=str(cwd), stdout=asyncio.subprocess.PIPE,
                                                 stderr=asyncio.subprocess.PIPE)
     try:

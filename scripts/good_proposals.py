@@ -20,6 +20,7 @@ import asyncio
 import collections
 import hashlib
 import json
+import os
 import re
 import sys
 
@@ -30,6 +31,9 @@ import good_notes_read as gr
 
 OUT = DOCS / "good_proposals"
 CACHE = SCRIPTS / "cache" / "good_proposals"
+# the rewrites: Flash without thinking. "medium" took 10-300 s a note (thousands of thinking tokens for a
+# one-line answer) and was no more accurate; "low" takes about 5 s, and its style was preferred
+REWRITE_MODEL = os.environ.get("GOOD_REWRITE_MODEL", "gemini-3.8-flash-low")
 QUOTE_KINDS = ("quote_fix", "quote_both", "quote_points")
 PAIRING_KINDS = ("note_added", "note_dropped", "notes_merged", "note_split")
 NOTE_KINDS = ("refs_changed", "script_text_changed", "text_added", "script_changed", "text_changed", "notes_merged")
@@ -113,7 +117,7 @@ async def rewrite_all(groups, n, llm=True):
     sem = asyncio.Semaphore(n)
 
     async def one(g):
-        key = _id(g["old"], g["good_text"], g.get("bible") or "", REWRITE)
+        key = _id(g["old"], g["good_text"], g.get("bible") or "", REWRITE, REWRITE_MODEL)
         f = CACHE / g["vol"] / f"{key}.json"
         if f.exists():
             return json.loads(f.read_text(encoding="utf-8"))["new"]
@@ -126,7 +130,7 @@ async def rewrite_all(groups, n, llm=True):
         for _ in range(4):
             if gr.QUOTA["hit"]:
                 return None
-            ans, err = await gr.call(None, sem, prompt)
+            ans, err = await gr.call(None, sem, prompt, REWRITE_MODEL)
             if ans and ans.strip() and "\n\n" not in ans.strip():
                 new = tidy(ans.strip().strip("`").strip())
                 f.parent.mkdir(parents=True, exist_ok=True)
@@ -194,7 +198,7 @@ def main(argv):
     vol, spec = argv[0], argv[1]
     a, _, b = spec.partition("-")
     chs = set(range(int(a), int(b or a) + 1))
-    jobs = int(argv[argv.index("--jobs") + 1]) if "--jobs" in argv else 6
+    jobs = int(argv[argv.index("--jobs") + 1]) if "--jobs" in argv else 12
     props, deferred, pairing = build(vol, chs, jobs, "--no-llm" not in argv)
     OUT.mkdir(parents=True, exist_ok=True)
     f = OUT / f"{vol}.json"
