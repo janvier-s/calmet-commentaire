@@ -95,7 +95,7 @@ def decide(docs, vol, uid, c, choice, text=None, unit_changes=None):
         raise ValueError(f"a unit decision is keep or drop, not {choice!r}")
     if c is not None and choice not in CHOICES | {None}:
         raise ValueError(f"a change decision is one of {sorted(CHOICES)}, not {choice!r}")
-    if choice == "edit" and not (text or "").strip():
+    if choice == "edit" and text is None:
         raise ValueError("edit needs the text")
     return _update(docs, vol, uid, c, {"choice": choice, "text": text if choice == "edit" else None}, unit_changes)[1]
 
@@ -141,6 +141,49 @@ def export_gold(docs, data, vol, units_doc):
     return f
 
 
+def edit_key(uid, page, path, at):
+    return f"edit@{uid}:{page}:{path}:{at}"
+
+
+def free_edits(doc, uid):
+    """The unit's free edits, in field order."""
+    return sorted((r for r in doc["decisions"].values() if r.get("kind") == "edit" and r.get("uid") == uid),
+                  key=lambda r: (r.get("page"), r.get("path"), r.get("at")))
+
+
+def free_edit(docs, vol, uid, page, path, at, old, text):
+    """A free edit: `old` (normalized's text at `at` of the field) becomes `text`. It replaces the unit's free
+    edits it overlaps on that field; `text` == `old` takes it back (None)."""
+    with _lock:
+        doc = load(docs, vol)
+        for r in free_edits(doc, uid):
+            if (r["page"], r["path"]) == (page, path) and r["at"] < at + max(len(old), 1) \
+                    and at < r["at"] + max(len(r["old"]), 1):
+                doc["decisions"].pop(r["key"], None)
+        rec = None
+        if text != old:
+            key = edit_key(uid, page, path, at)
+            rec = {"uid": uid, "key": key, "kind": "edit", "page": page, "path": path, "at": at, "old": old,
+                   "text": text, "hash": hashlib.md5(old.encode()).hexdigest()[:10],
+                   "t": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
+            doc["decisions"][key] = rec
+        doc.pop("_by_uid", None)
+        _save(docs, vol, doc)
+        return rec
+
+
+def locate_edit(rec, field_text):
+    """((start, end) or None, state) of a free edit in the field's live text: current where it was made;
+    reattached when its old text is now at exactly one other place; else reopened."""
+    at, old = rec["at"], rec["old"]
+    if field_text[at:at + len(old)] == old:
+        return (at, at + len(old)), "current"
+    k = field_text.find(old) if old else -1
+    if k >= 0 and field_text.find(old, k + 1) < 0:
+        return (k, k + len(old)), "reattached"
+    return None, "reopened"
+
+
 def lookup(doc, uid, c, unit_changes):
     """(record or None, state) for change c among its unit's changes: current; reattached (key gone, id unique in
     the unit, same texts); reopened (the texts it was made against changed: same key, or an orphaned record at
@@ -156,7 +199,8 @@ def _matches(doc, uid, unit_changes):
         for r in doc["decisions"].values():
             doc["_by_uid"].setdefault(r.get("uid"), []).append(r)
     live = {change_key(x) for x in unit_changes}
-    orphans = [r for r in doc["_by_uid"].get(uid, []) if r["key"] not in live and not r["key"].startswith("unit@")]
+    orphans = [r for r in doc["_by_uid"].get(uid, []) if r["key"] not in live
+               and not r["key"].startswith(("unit@", "edit@"))]
     ids = collections.Counter(x.get("id") for x in unit_changes)
     out, used = {}, set()
     for c in unit_changes:

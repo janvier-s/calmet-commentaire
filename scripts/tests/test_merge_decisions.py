@@ -174,3 +174,46 @@ def test_marks_from_two_threads_keep_the_gold_file_whole(docs, tmp_path):
     assert errors == []
     ref = json.loads((data / "good_variants_gold" / f"{VOL}_merge.json").read_text(encoding="utf-8"))
     assert len(ref["items"]) == 40
+
+
+# --- free edits: typed in the merged text, keyed by place ---
+
+P = "commentary/1/french_commentary"
+
+
+def test_free_edit_stored_and_replaced(docs):
+    md.free_edit(docs, VOL, "u1", 194, P, 10, "le Monde", "la Terre")
+    md.free_edit(docs, VOL, "u1", 194, P, 13, "Monde et", "Terre ici")
+    edits = md.free_edits(md.load(docs, VOL), "u1")
+    assert [(e["at"], e["old"], e["text"]) for e in edits] == [(13, "Monde et", "Terre ici")]
+    assert edits[0]["key"] == md.edit_key("u1", 194, P, 13) == f"edit@u1:194:{P}:13"
+
+
+def test_free_edit_back_to_old_removes(docs):
+    md.free_edit(docs, VOL, "u1", 194, P, 10, "le Monde", "la Terre")
+    assert md.free_edit(docs, VOL, "u1", 194, P, 10, "le Monde", "le Monde") is None
+    assert md.free_edits(md.load(docs, VOL), "u1") == []
+
+
+def test_locate_edit_current_reattached_reopened():
+    rec = {"at": 2, "old": "b"}
+    assert md.locate_edit(rec, "a b c") == ((2, 3), "current")
+    assert md.locate_edit(rec, "x a b c") == ((4, 5), "reattached")
+    assert md.locate_edit(rec, "a B c") == (None, "reopened")
+    assert md.locate_edit(rec, "b a b") == (None, "reopened")  # twice elsewhere: no telling which
+
+
+def test_edit_records_not_orphans(docs):
+    a = ch(at=11)
+    u = unit([a])
+    md.free_edit(docs, VOL, u["uid"], 194, P, 11, "x", "y")
+    doc = md.load(docs, VOL)
+    assert md.lookup(doc, u["uid"], a, u["changes"]) == (None, "none")
+    assert md.unit_progress(doc, u)["todo"] == 1
+
+
+def test_edit_to_empty_text_allowed(docs):
+    rec = md.decide(docs, VOL, "u1", ch(), "edit", "")
+    assert rec["choice"] == "edit" and rec["text"] == ""
+    with pytest.raises(ValueError):
+        md.decide(docs, VOL, "u1", ch(), "edit", None)
