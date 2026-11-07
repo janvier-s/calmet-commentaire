@@ -301,6 +301,25 @@ def align(vol, chs, workers=8):
             "src": src, "src_ok": src_ok, "linked": linked}
 
 
+def unclear_anchor(stream, gaps, after, jt, reach=8):
+    """The JSON index an `unclear` Good-only run goes before. Its nearest matched neighbour can be a short
+    phrase matched far off (Good's "le Ciel & la Terre" in a note, linked to the verse's), so the run goes to the
+    field (page, path) most of its `reach` matched neighbours on each side hold: after the last of them before
+    the run, else before the first after it."""
+    before = [stream[i]["j"] for i in range(gaps[0] - 1, -1, -1) if stream[i]["s"] == "match"][:reach]
+    nxt = [stream[i]["j"] for i in range(after, len(stream)) if stream[i]["s"] == "match"][:reach] \
+        if after is not None else []
+    field = lambda j: (jt[j]["page"], jt[j]["path"])
+    votes = collections.Counter(field(j) for j in before + nxt)
+    if not votes:
+        return None
+    best = votes.most_common(1)[0][0]
+    j = next((j for j in before if field(j) == best), None)
+    if j is not None:
+        return j + 1
+    return next(j for j in nxt if field(j) == best)
+
+
 def variants(vol, chs, workers=8, ctx=None):
     ctx = ctx or align(vol, chs, workers)
     pages, data, jt, stream = ctx["pages"], ctx["data"], ctx["jt"], ctx["stream"]
@@ -321,8 +340,8 @@ def variants(vol, chs, workers=8, ctx=None):
         elif between and R - L - 1 <= 3 * len(gaps) + 5:
             kind, j0, j1 = "replace", between[0], between[-1] + 1
         elif L is not None and R is not None and R - L - 1 > 50:
-            kind, j0 = "unclear", L + 1  # anchors far apart: the words between are matched elsewhere
-            j1 = j0
+            kind, j0 = "unclear", unclear_anchor(stream, gaps, after, jt)  # anchors far apart: the words
+            j1 = j0  # between are matched elsewhere
             between = []
         else:
             kind, between = "insert", []
