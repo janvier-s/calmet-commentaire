@@ -786,7 +786,7 @@ def test_printed_without_modernizing_for_latin():
 
 
 def test_modern_etc_monnaie_and_imparfait():
-    m = scan_ocr.modern
+    m = O.modern
     assert m("les Hébreux, & c. Mais") == "les Hébreux, etc. Mais"
     assert m("et c'est tout") == "et c'est tout"
     assert m("la monoye") == "la monnaie"
