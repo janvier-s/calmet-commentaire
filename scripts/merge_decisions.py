@@ -226,6 +226,15 @@ def _matches(doc, uid, unit_changes):
             if r is not None:
                 used.add(r["key"])
                 out[change_key(c)] = (r, "reattached")
+    for c in unit_changes:  # then by page, offset and texts, the path ignored (a note inserted before moves its index)
+        if change_key(c) in out:
+            continue
+        h = text_hash(c)
+        r = next((r for r in orphans if r["key"] not in used and r.get("hash") == h
+                  and (r.get("page"), r.get("at")) == (c.get("page"), c.get("at"))), None)
+        if r is not None:
+            used.add(r["key"])
+            out[change_key(c)] = (r, "reattached")
     for c in unit_changes:  # then the orphans left, by place
         if change_key(c) in out:
             continue

@@ -346,9 +346,29 @@ def attach(units, records, covered):
                        default=(0, None))
             c["moved_with"] = best[1] if best[0] >= 0.5 else None
         by_uid[uid]["changes"].append(c)
+    _link_back(units, by_uid)
     for u in units:
         u["status"] = status(u, covered)
     return {"unattached": unattached}
+
+
+def _link_back(units, by_uid):
+    """moved_with is found from one side only; the unit it names gets the link back on its moved change that
+    names nobody (the one with the most words in common, when several), so both ends open each other."""
+    import good_variants as gv
+    for u in units:
+        for c in u["changes"]:
+            other = by_uid.get(c.get("moved_with"))
+            if c["class"] != "moved" or other is None:
+                continue
+            if any(o.get("moved_with") == u["uid"] for o in other["changes"]):
+                continue
+            mine = _keys(c.get("old") or c.get("good_raw"))
+            free = [o for o in other["changes"] if o["class"] == "moved" and not o.get("moved_with")]
+            if free:
+                side = "good_raw" if c.get("old") else "old"
+                best = max(free, key=lambda o: gv._share(mine, gv._grams(_keys(o.get(side)))))
+                best["moved_with"] = u["uid"]
 
 
 def _chapter_key(u):
