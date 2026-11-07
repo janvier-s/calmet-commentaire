@@ -4,6 +4,7 @@ import { el } from "./goodfig.js";
 import { badge, ref } from "./merge_list.js";
 import { BOOK_TITLES, toHash, undecided, unitScans } from "./merge_state.js";
 import { diffClass, segmentEdits, toNodes, undoKey } from "./merge_edit.js";
+import { fitHeight, nextZoom } from "./scan_zoom.js";
 
 const CLS_SHOWN = new Set(["substantive", "cosmetic", "moved"]);
 const ROW_WORDS = 40;  // a row closes after a run that agrees on both sides, once it holds this many words
@@ -216,6 +217,8 @@ function fullPage(caption, url, boxes, { caret = null, off = [0, 0], cls = "", n
       const [x, y, h] = caret;
       sheet.append(el("div", { className: "mg-caret", title: "Good's text goes here", style: `left:${pct(x - cx, W)};top:${pct(y - cy - h * 0.4, H)};height:${pct(h * 1.8, H)}` }));
     }
+    const box = pane.closest(".mg-sidebyside");
+    if (box && box.mgLayout) box.mgLayout();
     const ys = boxes.map((b) => b[1]).concat(caret ? [caret[1]] : []);
     if (ys.length) pane.scrollTop = Math.max(0, ((Math.min(...ys) - cy) / H) * sheet.clientHeight - pane.clientHeight / 3);
   };
@@ -266,9 +269,49 @@ function goodPagesOf(c, view) {
     : [el("div", { className: "mg-pagecol muted small", textContent: "Good has nothing here, and the unit has no Good page." })];
 }
 
+const scanView = { zoom: 1, fitV: false, marks: true };  // kept from one opening of the scans to the next
+
+/** The scans' toolbar, as the review editor's scan pane has it: zoom out/in, Fit ↔, Fit ↕, the marks on or
+ * off; it drives both pages together (Ctrl/Cmd+wheel over a page too). */
+function scanTools(box) {
+  const label = el("span", { className: "mg-zoom", textContent: "100%" });
+  const layout = () => {
+    box.classList.toggle("mg-nomarks", !scanView.marks);
+    for (const pane of box.querySelectorAll(".mg-pagepane")) {
+      const sheet = pane.querySelector(".mg-sheet"), img = sheet && sheet.querySelector("img");
+      if (!sheet) continue;
+      const z = scanView.fitV && img && img.naturalWidth
+        ? fitHeight(pane.clientHeight, pane.clientWidth, img.naturalWidth, img.naturalHeight) : scanView.zoom;
+      const keep = [(pane.scrollLeft + pane.clientWidth / 2) / (pane.scrollWidth || 1), (pane.scrollTop + pane.clientHeight / 2) / (pane.scrollHeight || 1)];
+      sheet.style.width = `${Math.round(z * 1000) / 10}%`;
+      sheet.style.margin = z < 1 ? "0 auto" : "";
+      pane.scrollLeft = keep[0] * pane.scrollWidth - pane.clientWidth / 2;
+      pane.scrollTop = keep[1] * pane.scrollHeight - pane.clientHeight / 2;
+    }
+    label.textContent = scanView.fitV ? "Fit ↕" : `${Math.round(scanView.zoom * 100)}%`;
+  };
+  const step = (dir) => { scanView.zoom = nextZoom(scanView.fitV ? Math.min(1, scanView.zoom) : scanView.zoom, dir); scanView.fitV = false; layout(); };
+  box.mgLayout = layout;
+  box.addEventListener("wheel", (e) => {
+    if (!(e.metaKey || e.ctrlKey) || !e.target.closest(".mg-pagepane")) return;
+    e.preventDefault();
+    step(e.deltaY < 0 ? 1 : -1);
+  }, { passive: false });
+  const marks = el("input", { type: "checkbox", checked: scanView.marks, onchange: (e) => { scanView.marks = e.target.checked; layout(); } });
+  return el("div", { className: "mg-scantools" },
+    el("button", { textContent: "−", title: "Zoom out (Ctrl/Cmd+wheel)", onclick: () => step(-1) }), label,
+    el("button", { textContent: "+", title: "Zoom in (Ctrl/Cmd+wheel)", onclick: () => step(1) }),
+    el("button", { textContent: "Fit ↔︎", title: "Fit the page's width to the pane", onclick: () => { scanView.zoom = 1; scanView.fitV = false; layout(); } }),
+    el("button", { textContent: "Fit ↕︎", title: "Fit the whole page's height to the pane", onclick: () => { scanView.fitV = true; layout(); } }),
+    el("label", { className: "mg-toggle", title: "Show the change's marks on the pages" }, marks, " marks"));
+}
+
 function sideBySide(left, right) {
   const l = el("div", { className: "mg-side" }, ...left), r = el("div", { className: "mg-side" }, ...right);
-  return el("div", { className: "mg-sidebyside" }, l, r);
+  const box = el("div", { className: "mg-sidebyside" }, l, r);
+  box.prepend(scanTools(box));
+  requestAnimationFrame(() => box.mgLayout());
+  return box;
 }
 
 async function changeScans(box, vol, c, view) {

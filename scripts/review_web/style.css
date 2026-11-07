@@ -593,7 +593,10 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 .mg-sidebyside { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 800px) { .mg-sidebyside { grid-template-columns: 1fr; } }
 .mg-side { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
-.mg-pagepane { max-height: 85vh; overflow: auto; border: 1px solid var(--border); background: #fff; }
+.mg-pagepane { height: 80vh; overflow: auto; border: 1px solid var(--border); background: var(--scan-bg); }
+.mg-scantools { grid-column: 1 / -1; display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.mg-zoom { min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; color: var(--muted); }
+.mg-nomarks .goodbox, .mg-nomarks .mg-caret { display: none; }
 .mg-sheet { position: relative; }
 .mg-sheet img { display: block; width: 100%; }
 .mg-caret { position: absolute; width: 4px; margin-left: -2px; background: var(--danger); box-shadow: 0 0 0 2px rgba(255, 255, 255, .85); pointer-events: none; }

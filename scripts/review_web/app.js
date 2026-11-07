@@ -2,6 +2,7 @@
 import { render, ITALIC_FIELDS } from "./field.js";
 import { parseRef } from "./text.js";
 import { icon } from "./icons.js";
+import { ZOOM_STEPS, fitHeight, nextZoom } from "./scan_zoom.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, props = {}, ...kids) => {
@@ -95,7 +96,7 @@ export function updateTop() {
 }
 
 // --- the scan ---
-export const ZOOM_STEPS = [0.5, 0.65, 0.8, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0];
+export { ZOOM_STEPS };
 
 function goodUrl() { return `/good/${encodeURIComponent(S.vol)}/${S.page}/${S.goodIdx || 0}`; }
 
@@ -128,7 +129,7 @@ function layoutScan(focus) {
   const view = $("scan-view"), img = $("scan-img");
   if (!img.naturalWidth) return;
   const before = { w: img.width || 1, x: view.scrollLeft, y: view.scrollTop };
-  if (S.fitV) S.zoom = Math.max(0.1, (view.clientHeight - 2) * img.naturalWidth / img.naturalHeight / (view.clientWidth - 2));  // Fit ↕, kept on resize
+  if (S.fitV) S.zoom = fitHeight(view.clientHeight, view.clientWidth, img.naturalWidth, img.naturalHeight);  // Fit ↕, kept on resize
   const w = Math.round((view.clientWidth - 2) * S.zoom);
   img.style.width = `${w}px`;
   // zoomed out: the scan centred across the pane (the dim and the OCR layer follow by --scan-x)
@@ -145,9 +146,7 @@ function layoutScan(focus) {
 
 function zoomStep(dir, focus) {
   if (dir < 0 && S.zoom < ZOOM_STEPS[0] - 1e-6) return;  // already smaller (Fit ↕ on a tall page)
-  const i = ZOOM_STEPS.findIndex((z) => z >= S.zoom - 1e-6);
-  const j = Math.max(0, Math.min(ZOOM_STEPS.length - 1, (i < 0 ? ZOOM_STEPS.length - 1 : i) + dir));
-  S.zoom = ZOOM_STEPS[j];
+  S.zoom = nextZoom(S.zoom, dir);
   S.fitV = false;
   layoutScan(focus);
 }
