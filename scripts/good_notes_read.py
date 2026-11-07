@@ -211,12 +211,11 @@ def pages_for(vol, chs):
     """The Good pages of these chapters worth a call: Kraken found a note mark, or the source page has footnotes."""
     import good_notes as gn
     pages = gv.chapter_pages(vol, chs)
-    recs = sorted((r for r in gk.crops() if r["vol"] == vol and r.get("source") and pages[0] <= int(r["source"][5:]) <= pages[-1]),
-                  key=lambda r: (r["pdf"], r["pdf_page"]))
+    recs = sorted((r for r in gk.crops() if r["vol"] == vol and r.get("source")
+                   and any(pages[0] <= s <= pages[-1] for s in gk.sources(r))), key=lambda r: (r["pdf"], r["pdf_page"]))
     out = []
     for r in recs:
-        src = int(r["source"][5:])
-        if (gv.norm(vol, src) or {}).get("footnotes") or (  # Kraken's OCR read only when the JSON has no footnotes
+        if any((gv.norm(vol, s) or {}).get("footnotes") for s in gk.sources(r)) or (  # Kraken's OCR read only when the JSON has no footnotes
                 gk.cache_path(r["pdf"], r["pdf_page"]).exists() and gn.page_notes(r["pdf"], r["pdf_page"])):
             out.append((r["pdf"], r["pdf_page"]))
     return out

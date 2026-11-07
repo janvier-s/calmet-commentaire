@@ -9,12 +9,17 @@ then pick the best order-preserving assignment.
 Usage:
   uv run --with numpy --with scikit-learn scripts/good_calmet_match.py \
       <work_dir> <book_dir> <out.json> <manifest.json>...
+  uv run --with numpy scripts/good_calmet_match.py --strays <alignment.json> [crops.json]
+      the stray rule (bracket_strays) on an existing alignment, and the crops.json records it changes
+
+A stray: a page whose best match breaks the page order alone (not in a run of out-of-order pages, which is
+a passage the edition moved) and far from the in-order pages around it. Its OCR matched an unrelated page
+weakly (an added passage of Good's); it takes the sources of the pages around it instead.
 """
 import json, re, sys, unicodedata
 from pathlib import Path
 
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 TEXT_TYPES = {"commentary"}  # dissertation and front matter are under raw_json/intro and fin
 THETA = 0.30     # a page must beat this similarity to count as a match (noise is ~0.12-0.17)
@@ -78,7 +83,65 @@ def load_text(f: Path) -> str:
         return raw          # still fine for n-gram matching
 
 
+def _num(source):
+    return int(source[5:])
+
+
+def bracket_strays(rows, reach=5):
+    """Strays (see the module's doc) given the sources of the in-order pages before and after them, in
+    place: source the one before, also the one after, the old match kept as stray: {source, sim}. rows: one
+    book's alignment rows in PDF order. Returns the rows changed."""
+    m = [r for r in rows if r.get("source")]
+    changed = []
+    for i, r in enumerate(m):
+        if not r.get("out_of_order") or any(x.get("out_of_order") and x["pdf"] == r["pdf"]
+                                            for x in (m[i - 1] if i else {}, m[i + 1] if i + 1 < len(m) else {})):
+            continue
+        before = next((x for x in reversed(m[:i]) if not x.get("out_of_order") and x["pdf"] == r["pdf"]), None)
+        after = next((x for x in m[i + 1:] if not x.get("out_of_order") and x["pdf"] == r["pdf"]), None)
+        if not before or not after:
+            continue
+        lo, hi, s = _num(before["source"]), _num(after["source"]), _num(r["source"])
+        if lo - reach <= s <= hi + reach:
+            continue
+        r["stray"] = {"source": r["source"], "sim": r.get("sim")}
+        for k in ("sim", "out_of_order", "also", "also_sim"):
+            r.pop(k, None)
+        r["source"] = before["source"]
+        if after["source"] != before["source"]:
+            r["also"] = after["source"]
+        changed.append(r)
+    return changed
+
+
+def strays_cli(argv):
+    """--strays <alignment.json> [crops.json]: the rule on an existing alignment (per book, in its order)."""
+    al = Path(argv[0])
+    rows = json.loads(al.read_text())
+    changed = []
+    for vol in dict.fromkeys(r.get("vol") for r in rows):
+        changed += bracket_strays([r for r in rows if r.get("vol") == vol])
+    for r in changed:
+        print(f"stray {r['pdf']} p.{r['pdf_page']}: {r['stray']['source']} ({r['stray']['sim']}) -> {r['source']}"
+              + (f" (also {r['also']})" if r.get("also") else ""))
+    if not changed:
+        return
+    al.write_text(json.dumps(rows, indent=1, ensure_ascii=False))
+    if len(argv) > 1:
+        cp = Path(argv[1])
+        crops = json.loads(cp.read_text(encoding="utf-8"))
+        for r in changed:
+            rec = crops.get(f"{r['pdf']}/page_{r['pdf_page']:04d}")
+            if rec is not None:
+                rec.update(source=r["source"], stray=r["stray"])
+                if r.get("also"):
+                    rec["also"] = r["also"]
+        cp.write_text(json.dumps(crops, indent=0), encoding="utf-8")  # crops.json's own format
+
+
 def main():
+    if sys.argv[1:2] == ["--strays"]:
+        return strays_cli(sys.argv[2:])
     work, book, out = Path(sys.argv[1]), Path(sys.argv[2]), Path(sys.argv[3])
     pdf_pages, pdf_txt = [], []
     for m in sys.argv[4:]:
@@ -93,6 +156,7 @@ def main():
     src_txt = [norm(load_text(f)) for f in src_files]
     print(len(pdf_txt), "pdf pages,", len(src_txt), "source pages")
 
+    from sklearn.feature_extraction.text import TfidfVectorizer
     vec = TfidfVectorizer(analyzer="char_wb", ngram_range=(4, 5), sublinear_tf=True, min_df=2)
     vec.fit(src_txt + pdf_txt)
     A, B = vec.transform(pdf_txt), vec.transform(src_txt)
@@ -112,6 +176,8 @@ def main():
             if s2 > 0.6 * S[k, j] and s2 > THETA:
                 row.update(also=src_files[x2].stem, also_sim=round(float(s2), 3))
         rows.append(row)
+    for r in bracket_strays(rows):
+        print(f"  stray {r['pdf']} p.{r['pdf_page']}: {r['stray']['source']} -> {r['source']}")
     out.write_text(json.dumps(rows, indent=1, ensure_ascii=False))
     matched = [r for r in rows if "source" in r]
     sims = np.array([r["sim"] for r in matched])

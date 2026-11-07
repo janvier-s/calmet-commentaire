@@ -191,14 +191,17 @@ class Store:
         """Good_Calmet crops (data/good_calmet/, good_calmet_crop.py) matched to this scan page,
         in PDF order. A record's "vol" names its volume (Genèse's, from before it, has none)."""
         f = self.data / "good_calmet" / "crops.json"
+        mf = self.data / "good_calmet" / "moved.json"  # passages Good moved: a Good page shown on those pages too
         try:
-            mt = f.stat().st_mtime
+            mt = (f.stat().st_mtime, mf.stat().st_mtime if mf.exists() else 0)
             if getattr(self, "_good", (0,))[0] != mt:
                 self._good = (mt, {})
+                import good_calmet_kraken as gk
+                mv = gk.moved(self.data / "good_calmet")
                 for key, rec in sorted(json.loads(f.read_text()).items()):
-                    if rec.get("source"):
-                        v = rec.get("vol") or "01_genese"
-                        self._good[1].setdefault((v, rec["source"]), []).append(self.data / "good_calmet" / f"{key}.png")
+                    v = rec.get("vol") or "01_genese"
+                    for s in ([rec["source"]] if rec.get("source") else []) + mv.get(key, []):
+                        self._good[1].setdefault((v, s), []).append(self.data / "good_calmet" / f"{key}.png")
         except OSError:
             return []
         return [p for p in self._good[1].get((vol, f"page_{page:04d}"), []) if p.exists()]

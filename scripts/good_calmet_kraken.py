@@ -28,9 +28,24 @@ AB_OCR = SCRIPTS / "cache" / "good_ocr_ab"  # the A/B's variants: <variant>/<pdf
 DEFAULT_VOL = "01_genese"  # a crops.json record without "vol"
 
 
+def moved(root=None):
+    """The passages Good moved (data/good_calmet/moved.json, by hand): {crops.json key: [source pages]}."""
+    f = (root or GOOD) / "moved.json"
+    if not f.exists():
+        return {}
+    return {k: v["moved"] for k, v in json.loads(f.read_text(encoding="utf-8")).items() if not k.startswith("_")}
+
+
 def crops():
-    recs = json.loads((GOOD / "crops.json").read_text(encoding="utf-8")).values()
-    return [{**r, "vol": r.get("vol") or DEFAULT_VOL} for r in recs]
+    """crops.json's records, each with its vol, and moved: the source pages it also holds, out of their order."""
+    mv = moved()
+    return [{**r, "vol": r.get("vol") or DEFAULT_VOL, **({"moved": mv[k]} if k in mv else {})}
+            for k, r in json.loads((GOOD / "crops.json").read_text(encoding="utf-8")).items()]
+
+
+def sources(rec):
+    """The source pages (numbers) a crop record holds: its match, then the passages Good moved onto it."""
+    return [int(s[5:]) for s in [rec.get("source")] + rec.get("moved", []) if s]
 
 
 def crop_path(pdf, page):

@@ -465,7 +465,8 @@ def rescue(pairs, sim, goods, jsons, least=0.65, reach=3):
     gl = [gi for gi, ji, _ in pairs if ji is None and isinstance(gi, int)]
     jl = [ji for gi, ji, _ in pairs if gi is None and isinstance(ji, int)]
     cand = sorted(((sim[gi][ji], gi, ji) for gi in gl for ji in jl
-                   if sim[gi][ji] >= least and abs(goods[gi]["src_page"] - jsons[ji]["page"]) <= reach), reverse=True)
+                   if sim[gi][ji] >= least and min(abs(s - jsons[ji]["page"]) for s in goods[gi].get("src_pages") or
+                                                   [goods[gi]["src_page"]]) <= reach), reverse=True)
     got, ug, uj = [], set(), set()
     for sc, gi, ji in cand:
         if gi not in ug and ji not in uj:
@@ -485,6 +486,22 @@ def pick(xs, ix, good):
     return xs[ix]
 
 
+def good_order(pages, recs):
+    """The pages in the order Good gives their text: in order, but a passage Good moved (a record's moved
+    pages, data/good_calmet/moved.json) right after the page of the Good page that holds it."""
+    moved = {}
+    for r in recs:
+        if r.get("moved") and r.get("source"):
+            moved.setdefault(int(r["source"][5:]), []).extend(int(m[5:]) for m in r["moved"])
+    late = {m for ms in moved.values() for m in ms}
+    out = []
+    for p in pages:
+        if p not in late:
+            out.append(p)
+            out += [m for m in moved.get(p, []) if m in pages and m not in out]
+    return out + [p for p in pages if p not in out]
+
+
 def json_notes(vol, pages):
     out = []
     for p in pages:
@@ -502,7 +519,7 @@ def compare(vol, chs, links=None):
     pages = gv.chapter_pages(vol, chs)
     lex = gv.lexicon()
     recs = sorted((r for r in gk.crops() if r["vol"] == vol and r.get("source")
-                   and pages[0] <= int(r["source"][5:]) <= pages[-1]
+                   and any(pages[0] <= s <= pages[-1] for s in gk.sources(r))
                    and gk.cache_path(r["pdf"], r["pdf_page"]).exists()), key=lambda r: (r["pdf"], r["pdf_page"]))
     goods = []
     read = 0
@@ -510,11 +527,11 @@ def compare(vol, chs, links=None):
         ns = agy_notes(r["pdf"], r["pdf_page"])
         read += ns is not None
         for k, n in enumerate(ns if ns is not None else page_notes(r["pdf"], r["pdf_page"])):
-            n.update(n=k, src_page=int(r["source"][5:]), nums=numbers(n["text"]), lw=long_words(n["text"], lex),
+            n.update(n=k, src_page=int(r["source"][5:]), src_pages=gk.sources(r), nums=numbers(n["text"]), lw=long_words(n["text"], lex),
                      aw=abbr_words(n["text"]), printed=gv.printed_page(r["pdf"], r["pdf_page"]), script=script(n["text"]))
             n["junk"] = junk_share(n, lex)
             goods.append(n)
-    jsons = json_notes(vol, pages)
+    jsons = json_notes(vol, good_order(pages, recs))
     # the source scan's notes, page by page, paired with the JSON's of that page: the third witness
     src_notes = {}
     for p in pages:
@@ -551,12 +568,13 @@ def compare(vol, chs, links=None):
         added it. Dropped: the source holds the JSON note (paired), the edition dropped it, else normalized
         has a note the source lacks (normalization, or a pairing slip)."""
         p = g["src_page"] if g else j["page"]
+        near = sorted({q for x in (g["src_pages"] if g else [p]) for q in (x - 1, x, x + 1)})
         if p not in src_notes:
             return {"origin": "no_source"}
         reader = "flash" if src_notes[p][1] else "kraken"
         if j:
             return {"origin": "edition" if j.get("source_text") else "normalization", "source_reader": reader}
-        left = [n for q in (p - 1, p, p + 1) for n in src_notes.get(q, ([], False))[0]]
+        left = [n for q in near for n in src_notes.get(q, ([], False))[0]]
         best = max((likeness(g, n) for n in left), default=0)
         return {"origin": "normalization" if best >= 0.5 else "edition", "source_likeness": round(best, 2),
                 "source_reader": "flash" if src_notes[p][1] else "kraken"}
