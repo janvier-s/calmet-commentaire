@@ -50,6 +50,15 @@ spelling_words.txt) for OCR garble such as `Acos`, doubled words ("la Terre ov l
 and context errors ("As commencement"): preserves `_italics_` and ^{(a)} markers, returns changes, never applies
 silently; same record/Undo format as step 2.
 
+## Steps 1-3: done (Sonnet, 2026-11-07)
+- `good_clean.py` (pipeline, records, remap_flags), `good_normalized.py` (store `data/<vol>/good_normalized.json`,
+  undo kept in `docs/good_merge/<vol>_normalized.json`, `overlay()` called by `merge_view.load`),
+  `good_spell.py` (rules), `good_spell_agent.py` (prepare/import, agent records). Merge view lists records with
+  undo/redo (`/api/merge/cleanup`). Run `python3 good_normalized.py <vol> [--preview]` after any rule change or
+  `good_units.py` rebuild; `good_merge_apply.py` then builds merged from `good_normalized`.
+- Agent pass: only the 337 replace-type changes of Genese were read (nothing to fix); the 2046 only_good texts
+  (108k chars) are not run: `good_spell_agent.py prepare`.
+
 ## Step 4 (Opus): editable merged, auto-updating
 Requirements: (a) the editor edits merged text (Merged view currently read-only: merged_view.js sets
 contentEditable false); (b) rebuild merged for the affected pages whenever old normalized is saved (hook in

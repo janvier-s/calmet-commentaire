@@ -9,7 +9,7 @@
 The pipeline is modernize_inplace.modernize_page's, field by field: Latin spans (marked _..._) and the halves of
 words broken at a page turn stay as printed (clean_mechanical.keep_printed); then spaced letters, spelling,
 modernization (modernize_text, shared with normalized), old forms hunspell knows (scan_ocr.modern_words), and
-the typography of fix_typography (& c. -> etc., long s). One rule set for both layers: a new rule added to those
+the typography of fix_typography (& c. -> etc., long s), and last the OCR garble of good_spell. One rule set for both layers: a new rule added to those
 tables reaches Good's text on the next `good_normalize.py` run.
 """
 import difflib
@@ -18,6 +18,7 @@ import re
 import clean_mechanical
 import fix_typography
 import modernize_inplace
+import good_spell
 import scan_ocr
 
 
@@ -36,6 +37,7 @@ STAGES = [
     ("spelling", lambda t: clean_mechanical.keep_printed(clean_mechanical.fix_spelling, t)),
     ("modernize", lambda t: clean_mechanical.keep_printed(_mod, t)),
     ("old-forms", lambda t: clean_mechanical.keep_printed(scan_ocr.modern_words, t)),
+    ("ocr-spelling", lambda t: clean_mechanical.keep_printed(good_spell.fix, t)),  # OCR garble: good_spell.py
 ]
 
 

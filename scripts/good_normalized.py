@@ -55,7 +55,11 @@ def load_json(path, default):
 def compute(doc, old=None):
     """{"changes": {id: {src, records[, agent]}}}: records for every change the cleaning alters. The agent
     records of `old` (another pass's, not recomputable) are kept while the source text is the same."""
+    import re
+    import good_spell
     out = {}
+    good_spell.warm(w for u in doc.get("units") or [] for c in u.get("changes") or []
+                    for w in re.findall(r"[\wÀ-ÿœ]+", source(c) or ""))  # one hunspell call for the whole volume
     for u in doc.get("units") or []:
         for c in u.get("changes") or []:
             text = source(c)
