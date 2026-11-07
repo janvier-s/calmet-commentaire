@@ -712,5 +712,8 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 
 /* Merged view: read-only; the words taken from Good, blue and wavy */
 body.merged-view .f.mv { cursor: default; }
-body.merged-view .f.mv mark { background: none; color: inherit; text-decoration: underline wavy #2f6fd6; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+body.merged-view .f.mv mark { background: none; border: 0; outline: 0; box-shadow: none; padding: 0; color: inherit; text-decoration: underline wavy #2f6fd6; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 #merged-btn.on { background: #2f6fd6; color: #fff; border-color: #2f6fd6; }
+#merged-scan { position: absolute; left: var(--scan-x, 0px); top: 0; pointer-events: none; overflow: visible; }
+#merged-scan path { fill: none; stroke: #2f6fd6; stroke-width: 1.75; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+:root[data-theme="dark"] #merged-scan path { stroke: #6da3ff; }

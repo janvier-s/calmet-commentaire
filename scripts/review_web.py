@@ -888,7 +888,30 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             return {"data": None, "marks": {}}
         merged = json.loads(mp.read_text(encoding="utf-8"))
         old = store.read(vol, page)[0]
-        return {"data": merged, "marks": merge_build.page_marks(old, merged)}
+        return {"data": merged, "marks": merge_build.page_marks(old, merged), "scan": good_taken(vol, page)}
+
+    def good_taken(vol, page):
+        """{index of the page's Good crop: [boxes]}: Good's words on the crops the /merge decisions took."""
+        doc = merge_view.load(store.data, vol)
+        if doc is None:
+            return {}
+        crops = [Path(c).resolve() for c in store.good_pages(vol, page)]
+        dec = merge_decisions.load(store.docs, vol)
+        out = {}
+        for u in doc.get("units") or []:
+            if not any(p.get("page") == page for p in u.get("parts") or []):
+                continue
+            for c in u.get("changes") or []:
+                if str(c.get("page")) != str(page):
+                    continue
+                rec, state = merge_decisions.lookup(dec, u["uid"], c, u.get("changes") or [])
+                if not rec or state == "reopened" or rec.get("choice") not in ("good", "both"):
+                    continue
+                for g in c.get("good") or []:
+                    crop = (store.data.parent / g["crop"]).resolve() if g.get("crop") else None
+                    if crop in crops:
+                        out.setdefault(str(crops.index(crop)), []).extend(g.get("boxes") or [])
+        return out
 
     GET = {"/api/config": lambda q: config, "/api/merged": get_merged, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
