@@ -1,28 +1,168 @@
 {
- "false_positives": {},
+ "false_positives": {
+  "08_ruth/0003/ocr_gap/7f58aa4a": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_gap",
+   "msg": "The scan has “de Bethpoint conSs ij” after “…ays, pendant laquelle un homme”",
+   "page": 3
+  },
+  "08_ruth/0003/ocr_italic/10280777": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_italic",
+   "msg": "The scan prints “de Bethléem” in italics; the text has it in roman",
+   "page": 3
+  },
+  "08_ruth/0006/ocr_italic/93c08235": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_italic",
+   "msg": "The scan prints “Juda” in italics; the text has it in roman",
+   "page": 6
+  },
+  "08_ruth/0007/ocr_word/1f3d6961": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_word",
+   "msg": "The scan has “dons” where the text has “dans”",
+   "page": 7
+  },
+  "08_ruth/0008/ocr_word/94dc3397": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_word",
+   "msg": "The scan has “soient” where the text has “fussent”",
+   "page": 8
+  },
+  "08_ruth/0011/ocr_gap/300c2f43": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_gap",
+   "msg": "The scan has “ma-1 ¿narum” after “…ERAT”",
+   "page": 11
+  },
+  "08_ruth/0011/ocr_italic/30b2c0b0": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_italic",
+   "msg": "The scan prints “Or il y avait un homme puissant et extrêmement riche, appelé” in italics; the text has it in roman",
+   "page": 11
+  },
+  "08_ruth/0016/ocr_word/3c147e4b": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_word",
+   "msg": "The scan has “li” where the text has “la”",
+   "page": 16
+  },
+  "08_ruth/0019/hebrew_in_translation/2d6bcd74": {
+   "book_dir": "08_ruth",
+   "kind": "hebrew_in_translation",
+   "msg": "“c'est-à-dire” in the translation of “QUASI EPHI MENSURAM, ID EST TRES MODIOS.”: “Environ la mesure d'un éphi, c'est-à-dire trois boisseaux.…”: commentary or a variant run into the translation?",
+   "page": 19
+  },
+  "08_ruth/0034/ocr_word/5dd823ec": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_word",
+   "msg": "The scan has “Fun” where the text has “un”",
+   "page": 34
+  },
+  "08_ruth/0035/ocr_word/c82ffefa": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_word",
+   "msg": "The scan has “revivre” where the text has “revive”",
+   "page": 35
+  },
+  "08_ruth/0038/ocr_italic/9503031b": {
+   "book_dir": "08_ruth",
+   "kind": "ocr_italic",
+   "msg": "The scan prints “Obed d'Isaï, et Isaï fut père de David” in italics; the text has it in roman",
+   "page": 38
+  }
+ },
+ "reviewed": {
+  "commentary": [],
+  "footnotes": [],
+  "verses": []
+ },
  "status": {
+  "08_ruth/0003/ocr_gap/7f58aa4a": "false_positive",
+  "08_ruth/0003/ocr_italic/10280777": "false_positive",
   "08_ruth/0003/period_seam/c7193a47": "resolved",
+  "08_ruth/0004/hebrew_in_translation/5f2c4aa0": "resolved",
+  "08_ruth/0005/ocr_italic/0af5a902": "resolved",
+  "08_ruth/0005/ocr_italic/8b2059e5": "resolved",
+  "08_ruth/0005/ocr_italic/d55d51fe": "resolved",
   "08_ruth/0006/footnote_asterisk/662559ec": "resolved",
+  "08_ruth/0006/ocr_italic/93c08235": "false_positive",
+  "08_ruth/0007/ocr_word/1f3d6961": "false_positive",
+  "08_ruth/0008/ocr_italic/14c613ae": "resolved",
+  "08_ruth/0008/ocr_word/94dc3397": "false_positive",
+  "08_ruth/0009/ocr_italic/98a24e52": "resolved",
+  "08_ruth/0009/ocr_italic/c02d211c": "resolved",
+  "08_ruth/0009/ocr_italic/fdf6c8ec": "resolved",
+  "08_ruth/0010/ocr_italic/7d12c4fc": "resolved",
+  "08_ruth/0010/ocr_italic/8f48c2a4": "resolved",
+  "08_ruth/0010/stray_underscore/63c64cb7": "resolved",
+  "08_ruth/0011/ocr_gap/300c2f43": "false_positive",
+  "08_ruth/0011/ocr_italic/30b2c0b0": "false_positive",
+  "08_ruth/0013/ocr_italic/ba42441e": "resolved",
+  "08_ruth/0013/ocr_italic/d2b39913": "resolved",
+  "08_ruth/0014/ocr_italic/a86eddab": "resolved",
   "08_ruth/0015/italic_seam/4b81af14": "resolved",
   "08_ruth/0015/long_translation/a1d26140": "resolved",
   "08_ruth/0015/long_translation/a9ec02f6": "resolved",
+  "08_ruth/0016/ocr_italic/d938f06b": "resolved",
+  "08_ruth/0016/ocr_word/3c147e4b": "false_positive",
   "08_ruth/0017/footnote_writeout/a988c521": "resolved",
+  "08_ruth/0017/ocr_italic/3bfc0aae": "resolved",
   "08_ruth/0018/footnote_asterisk/b78ad7d9": "resolved",
+  "08_ruth/0018/ocr_italic/5f2707df": "resolved",
+  "08_ruth/0018/ocr_italic/bf1eb87c": "resolved",
+  "08_ruth/0019/hebrew_in_translation/2d6bcd74": "false_positive",
+  "08_ruth/0019/ocr_italic/1ab1670b": "resolved",
+  "08_ruth/0019/ocr_italic/4c1edb62": "resolved",
+  "08_ruth/0019/stray_underscore/b9a7f584": "resolved",
+  "08_ruth/0020/ocr_italic/1af58e8e": "resolved",
   "08_ruth/0020/seam_repeat/0019": "resolved",
+  "08_ruth/0021/ocr_italic/cf2b51d1": "resolved",
+  "08_ruth/0023/ocr_italic/70f20f90": "resolved",
   "08_ruth/0025/italic_seam/7caf2d5d": "resolved",
+  "08_ruth/0025/ocr_italic/17fa2a87": "resolved",
+  "08_ruth/0025/ocr_italic/1b279406": "resolved",
+  "08_ruth/0025/ocr_italic/393b5d3c": "resolved",
+  "08_ruth/0025/ocr_italic/7445bdee": "resolved",
+  "08_ruth/0025/ocr_italic/c27540d4": "resolved",
+  "08_ruth/0025/ocr_italic/e1cab639": "resolved",
   "08_ruth/0025/period_seam/097877c5": "resolved",
   "08_ruth/0025/seam_repeat/0024": "resolved",
+  "08_ruth/0026/ocr_italic/6ac65198": "resolved",
+  "08_ruth/0027/ocr_italic/d717898d": "resolved",
+  "08_ruth/0028/ocr_italic/95eec84f": "resolved",
+  "08_ruth/0029/empty_commentary/448b6916": "resolved",
+  "08_ruth/0029/ocr_gap/51f22c15": "resolved",
+  "08_ruth/0029/ocr_italic/1ecd7c96": "resolved",
+  "08_ruth/0029/ocr_italic/39be4c6b": "resolved",
+  "08_ruth/0029/ocr_italic/65a4eb73": "resolved",
+  "08_ruth/0029/ocr_italic/87ba6e6c": "resolved",
+  "08_ruth/0029/ocr_italic/a3ff4316": "resolved",
+  "08_ruth/0029/ocr_italic/a42cb733": "resolved",
+  "08_ruth/0029/ocr_italic/eed6084c": "resolved",
+  "08_ruth/0029/ocr_italic/f81427a4": "resolved",
   "08_ruth/0030/caps_in_commentary/980edfa2": "resolved",
   "08_ruth/0030/chapter_vulgate/74ba0f84": "resolved",
   "08_ruth/0030/seam_missing/0029": "resolved",
   "08_ruth/0031/footnote_no_period/97bd5fa0": "resolved",
   "08_ruth/0031/footnote_no_period/d8d811e2": "resolved",
   "08_ruth/0031/ref_order/6796c6c7": "resolved",
+  "08_ruth/0034/ocr_italic/9c6201c8": "resolved",
+  "08_ruth/0034/ocr_word/5dd823ec": "false_positive",
   "08_ruth/0035/etc_for_et/3e5b4447": "resolved",
+  "08_ruth/0035/ocr_word/c82ffefa": "false_positive",
   "08_ruth/0036/italic_seam/2a7dafd0": "resolved",
+  "08_ruth/0036/ocr_italic/21396faf": "resolved",
+  "08_ruth/0036/ocr_italic/37627b5f": "resolved",
+  "08_ruth/0036/ocr_italic/4e55def1": "resolved",
+  "08_ruth/0036/ocr_italic/76372afe": "resolved",
+  "08_ruth/0036/ocr_italic/e711272a": "resolved",
   "08_ruth/0038/empty_commentary/6b9f55aa": "resolved",
   "08_ruth/0038/extra_footnotes/7f783dd9": "resolved",
-  "08_ruth/0038/missing_footnote/575243f0": "resolved"
+  "08_ruth/0038/missing_footnote/575243f0": "resolved",
+  "08_ruth/0038/ocr_italic/76af8a4c": "resolved",
+  "08_ruth/0038/ocr_italic/9503031b": "false_positive"
  },
  "todos": []
 }
