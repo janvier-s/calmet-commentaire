@@ -189,15 +189,18 @@ def ocr_tokens(o):
             text, (x, y, bw, bh) = unicodedata.normalize("NFC", w["t"]), w["box"]
             n = max(1, len(text))
             year = re.fullmatch(r"(.+?)-?An\.?-?\d{3,4}\.?", text)  # ren-An.2784: the year is glued to a cut word
-            for m in OCR_TOKEN.finditer(year.group(1) + "-" if year else text):
+            body_text = year.group(1) + "-" if year else text
+            ms = list(OCR_TOKEN.finditer(body_text))
+            for m, pt in zip(ms, _surfaces(body_text, [m.span() for m in ms])):
                 a, b = m.span()
                 tok = {"t": m.group(), "boxes": [[x + round(bw * a / n), y, max(1, round(bw * (b - a) / n)), bh]],
-                       "wc": w["wc"], "line": li, "src": [[li, wi]]}
+                       "wc": w["wc"], "line": li, "src": [[li, wi]], "pt": pt}
                 if wi >= body and body and ws[body - 1]["t"].endswith(("¬", "-")):
                     held.append(tok)  # the year goes on after the word it interrupts
                     continue
                 if carry and li == carry_to:  # the first word after a cut
                     carry["t"] += tok["t"]
+                    carry["pt"] = carry["pt"].rstrip("-¬") + tok["pt"]
                     carry["boxes"] += tok["boxes"]
                     carry["src"] += tok["src"]
                     carry["wc"] = min(carry["wc"], tok["wc"])
@@ -216,6 +219,83 @@ def ocr_tokens(o):
     for t in out:
         t["k"] = key(t["t"])
     return out
+
+
+OPENING = "(«[{“‘¿¡"
+
+
+def _surfaces(text, spans):
+    """Each token's printed surface in a String: its letters and the marks touching them (l’|Homme.,
+    21.|Et, (Gen.): an apostrophe and closing marks go with the word before, opening marks with the word after."""
+    if not spans:
+        return []
+    cuts = [0]
+    for (_, b), (a, _) in zip(spans, spans[1:]):
+        gap = text[b:a]
+        k = len(gap)
+        while k and gap[k - 1] in OPENING:
+            k -= 1
+        cuts.append(b + k)
+    cuts.append(len(text))
+    return [text[cuts[i]:cuts[i + 1]] for i in range(len(spans))]
+
+
+def modern(text):
+    """The modernized text (as normalized is), or None when the modernization fails."""
+    try:
+        from clean_mechanical import fix_spelling
+        from modernize_inplace import modernize_text
+        return modernize_text(fix_spelling(text.replace("ſ", "s").replace("&", "et").replace("’", "'")))[0]
+    except Exception:
+        return None
+
+
+# words a stop may close without ending the sentence: Saint, chapters, books of the Bible, sources
+PRINTED_ABBREV = set("""s st ste ch chap cap liv lib art comm vers tom pag ibid etc cf voy ant antiq hist epist
+ep serm quaest hom sup inf gen exod exo levit lev num deut jos judic jud reg paral esdr tob judith esth job psal
+ps prov eccl eccle cant sap eccli isai is jerem jer baruc bar ezech dan ose osee joel abd jon mich nah habac soph
+agg zach malach mal mach matth matt marc luc joan act rom cor galat gal ephes eph philip phil coloss col thess tim
+tit philem hebr heb jac petr pet joann apoc""".split())
+MARK = re.compile(r"[.,;:!?]")
+WC_LOW = 0.6  # a mark from a word Kraken read below this is to check
+
+
+def printed(words, closes=False):
+    """The words' printed surfaces (`pt`, else `t`) as modern text: {text, flags}. Flags point at marks to check
+    against the scan, as offsets into text: {a, b, why}; why: stop_lower (a stop, then a lowercase word),
+    inner (a mark inside a word), doubled (two marks), low_conf (a mark Kraken read unsure), no_end (`closes`:
+    the text should end a sentence and has no mark)."""
+    raw = ""
+    for w in words:
+        p = w.get("pt") or w.get("t") or ""
+        raw = raw + p if not raw or raw.endswith(("’", "'")) else raw + " " + p
+    text = modern(raw) if raw else ""
+    if text is None:
+        text = raw
+    flags = []
+    for m in re.finditer(r"(\S*?)\.(\s+)(?=[^\W\d_])", text):
+        nxt = text[m.end()]
+        word = re.sub(r"[^\w]", "", m.group(1).split(".")[-1]).lower()
+        if nxt.islower() and len(word) > 2 and word not in PRINTED_ABBREV:
+            a = m.start() + len(m.group(1))
+            flags.append({"a": a, "b": a + 1, "why": "stop_lower"})
+    for m in re.finditer(r"(?<=[^\W\d_])[.,;:](?=[^\W\d_])", text):
+        if not (text[m.start() - 1].isupper() and text[m.end()].isupper()):
+            flags.append({"a": m.start(), "b": m.end(), "why": "inner"})
+    for m in re.finditer(r"[.,;:]{2,}", text):
+        if m.group() != "...":
+            flags.append({"a": m.start(), "b": m.end(), "why": "doubled"})
+    # the k-th mark of the text is the k-th printed one, when the modernization kept their number
+    marks_raw = [w.get("wc", 1) for w in words for _ in MARK.findall(w.get("pt") or "")]
+    marks = list(MARK.finditer(text))
+    if len(marks) == len(marks_raw):
+        taken = {f["a"] for f in flags}
+        for m, wc in zip(marks, marks_raw):
+            if wc < WC_LOW and m.start() not in taken:
+                flags.append({"a": m.start(), "b": m.end(), "why": "low_conf"})
+    if closes and text and not re.search(r"[.?!:;][»)\]]*\s*$", text):
+        flags.append({"a": len(text), "b": len(text), "why": "no_end"})
+    return {"text": text, "flags": sorted(flags, key=lambda f: f["a"])}
 
 
 HEAD_FIELDS = ["book_title", "chapter_title", "chapter_summary", "chapter_argument", "chapter_intro"]

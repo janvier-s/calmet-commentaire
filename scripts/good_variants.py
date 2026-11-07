@@ -236,12 +236,7 @@ def runs_of(stream):
 
 
 def modern(text):
-    try:
-        from clean_mechanical import fix_spelling
-        from modernize_inplace import modernize_text
-        return modernize_text(fix_spelling(text.replace("ſ", "s").replace("&", "et").replace("’", "'")))[0]
-    except Exception:
-        return None
+    return scan_ocr.modern(text)
 
 
 def align(vol, chs, workers=8):

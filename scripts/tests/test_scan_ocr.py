@@ -699,3 +699,43 @@ def test_italics_leave_out_an_ampersand_measured_roman():  # 1 Chroniques p. 154
 def test_italics_leave_a_short_roman_word_inside_a_sentence():
     o = ocr(line(300, "voici", "le", "Serpent", "tortueux,", "que", sl=[0, -2, 16, 17, 0]))
     assert [x["old"] for x in O.italics(o, page("voici le Serpent tortueux, que"))] == ["Serpent tortueux"]
+
+
+# --- the printed surface of the scan's words, and printed(): modern text with its punctuation ---
+
+def tok(pt, wc=0.9):
+    return {"t": O.TOKEN.sub(lambda m: m.group(), pt), "pt": pt, "wc": wc}
+
+
+def test_tokens_keep_printed_surface():
+    o = ocr(line(300, "l’Homme.", "Terre,", "com-"), line(340, "mencement", "du", "(Gen.", "21.Et"))
+    ws = O.ocr_tokens(o)
+    assert [w["pt"] for w in ws] == ["l’", "Homme.", "Terre,", "commencement", "du", "(Gen.", "21.", "Et"]
+
+
+def test_printed_modernizes_and_glues_elisions():
+    ws = [tok("l’"), tok("Homme"), tok("&"), tok("avoit,"), tok("ſes")]
+    assert O.printed(ws)["text"] == "l'Homme et avait, ses"
+
+
+def test_printed_flags():
+    r = O.printed([tok("Firmament."), tok("des"), tok("Eaux,,")])
+    assert [f["why"] for f in r["flags"]] == ["stop_lower", "doubled"]
+    assert r["text"][r["flags"][0]["a"]:r["flags"][0]["b"]] == "."
+
+
+def test_printed_inner_mark_flagged_but_not_initials():
+    assert [f["why"] for f in O.printed([tok("Firm.ament")])["flags"]] == ["inner"]
+    assert O.printed([tok("J.C."), tok("4000")])["flags"] == []
+
+
+def test_printed_abbreviations_not_flagged():
+    for t in (["S.", "Augustin"], ["ch.", "iii"], ["Exod.", "xx"], ["etc.", "et"], ["Matth.", "v"]):
+        assert O.printed([tok(x) for x in t])["flags"] == [], t
+
+
+def test_printed_low_confidence_mark_and_open_end():
+    r = O.printed([tok("Dieu", wc=0.9), tok("créa;", wc=0.4), tok("le"), tok("Ciel.")], closes=True)
+    assert [f["why"] for f in r["flags"]] == ["low_conf"]
+    assert [f["why"] for f in O.printed([tok("la"), tok("Terre")], closes=True)["flags"]] == ["no_end"]
+    assert O.printed([tok("la"), tok("Terre")])["flags"] == []
