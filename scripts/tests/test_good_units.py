@@ -380,3 +380,18 @@ def test_insert_the_verse_unit_holds_is_noise():
     r = rec(good_raw="Dieu dit aussi que les eaux qui sont", words=7)
     gu.attach(units + [verse_u], [r], {5})
     assert units[0]["changes"][0]["class"] == "noise"
+
+
+def test_displaced_passage_is_relinked():
+    LONGTXT = " ".join(f"mot{n}" for n in range(40))
+    units = gu.old_units({5: page([note(1, 6, "alpha beta", lq="FIAT")]), 9: page([note(1, 8, LONGTXT, lq="VIDIT")])})
+    ctx = ctx_of([("alpha", A, None)] + [(t, None, None) for t in LONGTXT.split()])
+    ctx["jt"] += [{"t": t, "k": t, "page": 9, "path": A, "a": 0, "b": 1} for t in LONGTXT.split()]
+    for w in ctx["stream"]:
+        w["k"] = w["t"]
+    ctx["linked"] = {0}
+    n = gu.relink_displaced(ctx)
+    assert n == 40
+    assert {w["j"] for w in ctx["stream"][1:]} == set(range(1, 41))
+    gu.project(units, ctx)
+    assert good_of(units, "commentary:1:8:0") == LONGTXT

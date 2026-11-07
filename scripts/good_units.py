@@ -260,6 +260,48 @@ def _find_verses(units, ws, owner, got):
         taken |= set(span)
 
 
+DISPLACED_RUN = 30  # words: an unlinked run this long, on either side, may be a passage the editions order differently
+DISPLACED_BLOCK = 6  # words in a row two such runs share to be linked
+
+
+def relink_displaced(ctx):
+    """A passage the old edition prints elsewhere (Genèse 10: the notes on v.8-12, deferred "jusqu'à
+    présent", stand after v.19's) is outside every page window the aligner reads Good's page against: its Good
+    words and its JSON words are both left unlinked, in long runs. The words of such runs, in order, are
+    matched against each other (blocks of DISPLACED_BLOCK words or more) and linked as the aligner's own
+    matches are (`ctx` edited; returns the number of words linked)."""
+    import difflib
+    stream, jt, linked = ctx["stream"], ctx["jt"], ctx["linked"]
+
+    def runs(items, free, minimum):
+        out, cur = [], []
+        for i in items:
+            if free(i):
+                cur.append(i)
+            elif cur:
+                out += cur if len(cur) >= minimum else []
+                cur = []
+        return out + (cur if len(cur) >= minimum else [])
+
+    good = [i for i in runs([i for i, w in enumerate(stream) if w["s"] != "skip"],
+                            lambda i: stream[i].get("j") is None, DISPLACED_RUN)]
+    old = runs([j for j, t in enumerate(jt) if not t["path"].startswith("footnotes/")],
+               lambda j: j not in linked, DISPLACED_RUN)
+    if not good or not old:
+        return 0
+    n = 0
+    sm = difflib.SequenceMatcher(None, [stream[i]["k"] for i in good], [jt[j]["k"] for j in old])
+    for a, b, size in sm.get_matching_blocks():
+        if size < DISPLACED_BLOCK:
+            continue
+        for i, j in zip(good[a:a + size], old[b:b + size]):
+            t = jt[j]
+            stream[i].update(s="match", j=j, page=t["page"], path=t["path"], a=t["a"], b=t["b"], near=False)
+            linked.add(j)
+            n += 1
+    return n
+
+
 def project(units, ctx):
     """Give each unit Good's words for it (`good`, `good_where`, `good_words`). A Good word linked to a JSON
     word goes to that word's unit; unlinked words between two words of one unit go to it, between two
@@ -467,6 +509,7 @@ def build(vol, chs):
     """The units of chapters `chs`, with Good's text, their changes and status."""
     import good_variants as gv
     ctx = gv.align(vol, chs)
+    relink_displaced(ctx)
     units = old_units(ctx["data"])
     new = project(units, ctx)  # over the neighbouring chapters' pages too, so their words don't fall in here
     covered = covered_pages(ctx)
