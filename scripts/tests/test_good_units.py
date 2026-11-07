@@ -148,7 +148,7 @@ def test_skip_words_ignored():
 
 def test_words_linked_outside_units_dropped():
     units = units_ab()
-    gu.project(units, ctx_of([("alpha", A, None), ("Hebr.", "footnotes/0/text", None), ("Lux", "verses/0/latin", None),
+    gu.project(units, ctx_of([("alpha", A, None), ("Lux", "verses/0/latin", None),
                               ("gamma", A, None), ("delta", B, None)]))
     assert good_of(units, "commentary:1:6:0") == "alpha gamma"
 
@@ -307,12 +307,30 @@ def test_long_run_next_to_footnote_link_kept():
     assert [n["type"] for n in new] == ["unaligned"]
 
 
-def test_footnote_linked_word_is_a_barrier():
+def test_footnote_linked_word_counts_as_unlinked():
     units = units_ab()
     gu.project(units, ctx_of([("alpha", A, None), ("Joseph", None, None), ("Hebr", "footnotes/0/text", None),
                               ("lib", None, None), ("delta", B, None)]))
-    assert good_of(units, "commentary:1:6:0") == "alpha"
+    assert good_of(units, "commentary:1:6:0") == "alpha Joseph Hebr lib"
     assert good_of(units, "commentary:1:8:0") == "delta"
+
+
+def test_stray_link_far_off_stays_with_its_neighbours():
+    units = units_ab()
+    ctx = ctx_of([("alpha", A, None), ("&", B, None), ("la", B, None), ("gamma", A, None), ("delta", B, None)])
+    for w in ctx["stream"]:
+        w["src_page"] = 9  # the JSON words are on page 5: four pages off
+    gu.project(units, ctx)
+    assert good_of(units, "commentary:1:6:0") == "alpha & la gamma"
+
+
+def test_short_group_on_its_own_page_is_no_stray():
+    units = units_ab()
+    ctx = ctx_of([("alpha", A, None), ("&", B, None), ("gamma", A, None), ("delta", B, None)])
+    for w in ctx["stream"]:
+        w["src_page"] = 5
+    gu.project(units, ctx)
+    assert good_of(units, "commentary:1:8:0") == "& delta"
 
 
 def test_lemma_after_heading_still_found():

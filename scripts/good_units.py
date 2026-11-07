@@ -165,7 +165,6 @@ def _head_window(run, heads, got):
 
 LONG_RUN = 40  # unlinked words: a run this long the old text holds elsewhere is not given to a neighbour
 COVER_SHARE = 0.3
-BARRIER = "#"  # owner of a word linked to a footnote: the unlinked words next to it are the note's
 
 
 def covered_pages(ctx):
@@ -181,13 +180,43 @@ def covered_pages(ctx):
     return {p for p in total if held[p] >= COVER_SHARE * total[p] and held[p]}
 
 
+STRAY_PAGES = 2
+STRAY = 4  # linked words: a group this short, linked to another unit than the same one on both sides, is a mislink
+
+
+def _mend_strays(owner, ws, jt):
+    """The aligner sometimes links a word or two ("& la") to a similar place far off, inside a stretch of
+    Good text linked to one unit. Such a short group of words (at most STRAY, the unlinked words between
+    them aside) whose unit differs from the one the words before and after it are linked to (the same on
+    both sides) and whose words are linked more than a page away from the Good word's own page (STRAY_PAGES)
+    goes to that unit: the Good words then stay with the text around them. Edits `owner`."""
+    groups = []  # [owner, [indexes]] of the linked words, in order
+    for i, o in enumerate(owner):
+        if o is None:
+            continue
+        if groups and groups[-1][0] == o:
+            groups[-1][1].append(i)
+        else:
+            groups.append([o, [i]])
+    for k in range(1, len(groups) - 1):
+        o, ix = groups[k]
+        prev, nxt = groups[k - 1][0], groups[k + 1][0]
+        far = all(ws[i].get("src_page") is not None and ws[i].get("j") is not None
+                  and abs(jt[ws[i]["j"]]["page"] - ws[i]["src_page"]) >= STRAY_PAGES for i in ix)
+        if len(ix) <= STRAY and far and prev == nxt != o:
+            for i in ix:
+                owner[i] = prev
+            groups[k][0] = prev
+
+
 def project(units, ctx):
     """Give each unit Good's words for it (`good`, `good_where`, `good_words`). A Good word linked to a JSON
     word goes to that word's unit; unlinked words between two words of one unit go to it, between two
     units to the earlier one, except: a short unit no word is linked to, found among them (_head_window); a
     lemma Good alone has (lemma_start), made a unit of its own (uid good:<chapter>:<verse>:<n>); a run of
     LONG_RUN words or more the old text holds elsewhere (the aligner missed it), made an `unaligned` unit.
-    Unlinked words next to a word linked to a footnote are left out. Returns the new units (`after`: the
+    A word linked to a footnote counts as unlinked (the footnotes' block is already cut off in good_variants,
+    so what is left of it is a mislink). Returns the new units (`after`: the
     unit each follows)."""
     import good_variants as gv
     idx = unit_index(units)
@@ -204,12 +233,13 @@ def project(units, ctx):
         if at in idx:
             ws.append(w), owner.append(idx[at])
         elif at[1].startswith("footnotes/"):
-            ws.append(w), owner.append(BARRIER)
+            ws.append(w), owner.append(None)
         # linked to another field no unit holds (the verses' Latin): left out, the run goes on
+    _mend_strays(owner, ws, jt)
     got = collections.defaultdict(list)
     # page -> its short units no Good word is linked to (a chapter's heading, a verse Kraken read inside
     # another): looked for among the unlinked words
-    linked_uids = set(owner) - {None, BARRIER}
+    linked_uids = set(owner) - {None}
     heads = collections.defaultdict(list)
     for u in units:
         if u["parts"] and u["uid"] not in linked_uids and len(u["old"].split()) <= SHORT_UNIT:
@@ -242,19 +272,15 @@ def project(units, ctx):
     i = 0
     while i < len(ws):
         if owner[i] is not None:
-            if owner[i] != BARRIER:
-                got[owner[i]].append(ws[i])
+            got[owner[i]].append(ws[i])
             i += 1
             continue
         k = i
         while k < len(ws) and owner[k] is None:
             k += 1
         after = owner[k] if k < len(ws) else None
-        if BARRIER in ((owner[i - 1] if i else None), after) and k - i < LONG_RUN:
-            i = k  # next to a footnote's linked words: the note's own
-            continue
-        prev = next((owner[m] for m in range(i - 1, -1, -1) if owner[m] not in (None, BARRIER)), None)
-        nxt = next((owner[m] for m in range(k, len(ws)) if owner[m] not in (None, BARRIER)), None)
+        prev = next((owner[m] for m in range(i - 1, -1, -1) if owner[m] is not None), None)
+        nxt = next((owner[m] for m in range(k, len(ws)) if owner[m] is not None), None)
         run, host = ws[i:k], prev or nxt
         chapter = by_uid[host]["chapter"] if host else None
         split = prev != nxt
