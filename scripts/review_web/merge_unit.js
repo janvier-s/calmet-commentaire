@@ -1,6 +1,6 @@
 // The /merge unit view: old (left) and Good (right), the whole unit, the recorded changes highlighted in
-// place; a change's panel opens under its passage, with the source scan and the Good crop on demand.
-import { el, goodFigure } from "./goodfig.js";
+// place; a change's panel opens under its passage, with the old and Good pages side by side on demand.
+import { el } from "./goodfig.js";
 import { badge, ref } from "./merge_list.js";
 import { BOOK_TITLES, toHash, undecided, unitScans } from "./merge_state.js";
 
@@ -100,53 +100,53 @@ function fill(cell, segs, side, state, byKey, onPick) {
   }
 }
 
-// --- the scans ---
+// --- the scans: the old page and the Good page side by side, whole, the change marked on both ---
 
-function scanBand(vol, page, res) {
-  const url = `/scan/${encodeURIComponent(vol)}/${page}`;
-  const wrap = el("div", { className: "goodfig" },
-    el("div", { className: "muted small" }, el("a", { href: url, target: "_blank", textContent: `Source scan ${vol} p.${page}` })));
-  const img = el("img", { src: url, alt: "source scan", draggable: false });
-  if (!res.boxes || !res.boxes.length) {
-    img.className = "mg-fullscan";
-    wrap.append(el("div", { className: "muted small", textContent: `Whole page: ${res.reason || "the words were not found"}.` }), img);
-    return wrap;
-  }
-  const [cx, cy] = res.crop ? res.crop : [0, 0];  // /scan/ shows the margin crop; the boxes are the scan's
-  const bs = res.boxes.map(([x, y, w, h]) => [x - cx, y - cy, w, h]);
-  const pad = 40;
-  const y0 = Math.max(0, Math.min(...bs.map((b) => b[1])) - pad);
-  const y1 = Math.max(...bs.map((b) => b[1] + b[3])) + pad;
-  const band = el("div", { className: "goodband" });
-  band.append(img);
+const pct = (v, total) => `${(100 * v) / total}%`;
+
+/** A whole page, its boxes (and an insert's caret) drawn on it in percent of the image, in a pane that scrolls
+ * to them. `off`: where the served image starts in the boxes' pixels (the source scan's margin crop). */
+function fullPage(caption, url, boxes, { caret = null, off = [0, 0], cls = "", note = null } = {}) {
+  const pane = el("div", { className: "mg-pagepane" });
+  const sheet = el("div", { className: "mg-sheet" });
+  const img = el("img", { src: url, alt: caption, draggable: false });
+  sheet.append(img);
+  pane.append(sheet);
   img.onload = () => {
-    const k = band.clientWidth / img.naturalWidth;
-    band.style.height = `${Math.max(40, (y1 - y0) * k)}px`;
-    img.style.top = `${-y0 * k}px`;
-    for (const [x, y, w, h] of bs) {
-      band.append(el("div", { className: "goodbox mg-srcbox", style: `left:${x * k}px;top:${(y - y0) * k}px;width:${w * k}px;height:${h * k}px` }));
+    const W = img.naturalWidth, H = img.naturalHeight, [cx, cy] = off;
+    for (const [x, y, w, h] of boxes) {
+      sheet.append(el("div", { className: `goodbox ${cls}`, style: `left:${pct(x - cx, W)};top:${pct(y - cy, H)};width:${pct(w, W)};height:${pct(h, H)}` }));
     }
+    if (caret) {
+      const [x, y, h] = caret;
+      sheet.append(el("div", { className: "mg-caret", title: "Good's text goes here", style: `left:${pct(x - cx, W)};top:${pct(y - cy - h * 0.4, H)};height:${pct(h * 1.8, H)}` }));
+    }
+    const ys = boxes.map((b) => b[1]).concat(caret ? [caret[1]] : []);
+    if (ys.length) pane.scrollTop = Math.max(0, ((Math.min(...ys) - cy) / H) * sheet.clientHeight - pane.clientHeight / 3);
   };
-  wrap.append(band);
-  return wrap;
+  return el("div", { className: "mg-pagecol" },
+    el("div", { className: "muted small" }, el("a", { href: url, target: "_blank", textContent: caption })),
+    note ? el("div", { className: "muted small", textContent: note }) : null, pane);
 }
 
-async function sourceScan(box, vol, c) {
-  box.replaceChildren(el("div", { className: "muted small", textContent: "Loading the source scan…" }));
-  const q = new URLSearchParams({ vol, page: c.page, path: c.path, at: c.at || 0, n: Math.max(c.old_words || 0, 1) });
+/** The old page of a change, from /api/merge/scanwords: its old words boxed, or for an insert a caret. */
+async function oldPage(vol, page, path, at, n) {
+  const q = new URLSearchParams({ vol, page, path, at: at || 0, n });
+  const url = `/scan/${encodeURIComponent(vol)}/${page}`;
   try {
     const r = await fetch(`/api/merge/scanwords?${q}`, { credentials: "same-origin" });
     const res = await r.json();
     if (!r.ok) throw new Error(res.error || r.status);
-    if (res.reason === "no scan") {
-      box.replaceChildren(el("div", { className: "muted small", textContent: `No scan for p.${c.page}.` }));
-      return;
-    }
-    box.replaceChildren(scanBand(vol, c.page, res));
+    if (res.reason === "no scan") return el("div", { className: "mg-pagecol muted small", textContent: `No scan for p.${page}.` });
+    const note = res.reason ? `Not marked: ${res.reason}.` : res.caret ? "The red bar marks where Good's text would go." : null;
+    return fullPage(`Old · source scan p.${page}`, url, res.boxes || [], { caret: res.caret, off: res.crop || [0, 0], cls: "mg-srcbox", note });
   } catch (e) {
-    box.replaceChildren(el("div", { className: "mg-error small", textContent: `Source scan: ${e.message}` }));
+    return el("div", { className: "mg-pagecol mg-error small", textContent: `Source scan p.${page}: ${e.message}` });
   }
 }
+
+const goodUrl = (g) => `/goodcrop/${encodeURIComponent(g.pdf)}/${g.pdf_page}`;
+const goodCaption = (g) => `Good · ${g.pdf} p.${g.pdf_page}${g.printed ? ` (printed ${g.printed})` : ""}`;
 
 /** Where a change with no Good words of its own sits in Good: the unit's word boxes around its Good word index.
  * Boxes run a little ahead of words (a word cut at a line's end has two), so this is an estimate. */
@@ -160,37 +160,43 @@ function around(view, c, reach = 4) {
   return { ...where[w], boxes: near };
 }
 
-function goodCrop(box, c, view) {
+/** The Good page(s) of a change, whole, its words boxed. */
+function goodPagesOf(c, view) {
   const gs = (c.good || []).filter((g) => g.boxes && g.boxes.length);
-  if (gs.length) {
-    box.replaceChildren(...gs.map((g) => goodFigure(g, c.good_punct || c.good_modern || c.good_raw)));
-    return;
-  }
+  if (gs.length) return gs.map((g) => fullPage(goodCaption(g), goodUrl(g), g.boxes));
   const near = around(view, c);
-  if (near) {
-    box.replaceChildren(el("div", { className: "muted small", textContent: "Good has nothing here; the Good words around where it would be (approximate):" }),
-      goodFigure(near, null));
-    return;
-  }
+  if (near) return [fullPage(goodCaption(near), goodUrl(near), near.boxes, { note: "Good has nothing here; the words around where it would be (approximate)." })];
   const page = (view.unit.good_where || [])[0];
-  box.replaceChildren(el("div", { className: "muted small", textContent: page ? "Good has nothing here; the unit's first Good page:" : "Good has nothing here, and the unit has no Good page." }),
-    ...(page ? [goodFigure({ ...page, boxes: [] }, null)] : []));
+  return page ? [fullPage(goodCaption(page), goodUrl(page), [], { note: "Good has nothing here: the unit's first Good page." })]
+    : [el("div", { className: "mg-pagecol muted small", textContent: "Good has nothing here, and the unit has no Good page." })];
 }
 
-/** One-sided units have no change to open a panel on: the side with text gets its scans here. */
+function sideBySide(left, right) {
+  const l = el("div", { className: "mg-side" }, ...left), r = el("div", { className: "mg-side" }, ...right);
+  return el("div", { className: "mg-sidebyside" }, l, r);
+}
+
+async function changeScans(box, vol, c, view) {
+  const loading = el("div", { className: "muted small", textContent: "Loading the source scan…" });
+  box.replaceChildren(sideBySide([loading], goodPagesOf(c, view)));
+  loading.replaceWith(await oldPage(vol, c.page, c.path, c.at, c.old_words || 0));
+}
+
+/** One-sided units have no change to open a panel on: their pages, side by side, here. */
 function unitScanBar(view, state) {
   const { sources, good } = unitScans(view);
-  const bar = el("div", { className: "mg-panel-actions" }), boxes = el("div");
-  const add = (label, load) => {
-    const box = el("div", { className: "mg-scan" });
-    boxes.append(box);
-    bar.append(el("button", { textContent: label, onclick: () => { if (box.childNodes.length) box.replaceChildren(); else load(box); } }));
+  if (!sources.length && !good.length) return null;
+  const box = el("div", { className: "mg-scan" });
+  const open = async () => {
+    if (box.childNodes.length) return box.replaceChildren();
+    const goods = good.map((g) => fullPage(goodCaption(g), goodUrl(g), g.boxes || []));
+    const slots = sources.map(() => el("div", { className: "muted small", textContent: "Loading the source scan…" }));
+    box.replaceChildren(sideBySide(slots.length ? slots : [el("div", { className: "muted small", textContent: "No old text." })],
+      goods.length ? goods : [el("div", { className: "muted small", textContent: "No Good page." })]));
+    await Promise.all(sources.map(async (s, k) => slots[k].replaceWith(await oldPage(state.vol, s.page, s.path, s.at, s.n))));
   };
-  for (const s of sources) {
-    add(`Source scan p.${s.page}`, (box) => sourceScan(box, state.vol, { page: s.page, path: s.path, at: s.at, old_words: s.n }));
-  }
-  for (const g of good) add(`Good crop ${g.pdf} p.${g.pdf_page}`, (box) => box.replaceChildren(goodFigure(g, null)));
-  return sources.length || good.length ? el("div", { className: "mg-unitscans" }, bar, boxes) : null;
+  return el("div", { className: "mg-unitscans" },
+    el("div", { className: "mg-panel-actions" }, el("button", { textContent: "Scans", onclick: open })), box);
 }
 
 // --- the panel ---
@@ -222,7 +228,7 @@ function panel(c, view, state, nav) {
   const ctx = c.good_before || c.good_after
     ? el("span", { className: "mg-ctx" }, `… ${c.good_before || ""} `, el("b", { textContent: c.good_punct || c.good_modern || c.good_raw || "∅" }), ` ${c.good_after || ""} …`)
     : null;
-  const srcBox = el("div", { className: "mg-scan" }), goodBox = el("div", { className: "mg-scan" });
+  const scanBox = el("div", { className: "mg-scan" });
   const toggle = (box, load) => () => { if (box.childNodes.length) box.replaceChildren(); else load(); };
   const d = c.decision || {};
   const live = d.state === "current" || d.state === "reattached";
@@ -261,10 +267,9 @@ function panel(c, view, state, nav) {
       row("moved", moved), edited),
     reopened,
     el("div", { className: "mg-panel-actions mg-dec" },
-      el("button", { textContent: "Source scan", onclick: toggle(srcBox, () => sourceScan(srcBox, vol, c)) }),
-      el("button", { textContent: "Good crop", onclick: toggle(goodBox, () => goodCrop(goodBox, c, view)) }),
+      el("button", { textContent: "Scans", title: "The old and the Good page side by side", onclick: toggle(scanBox, () => changeScans(scanBox, vol, c, view)) }),
       el("span", { className: "grow" }), ...decide, el("span", { className: "muted small", textContent: " · " }), ...marks),
-    editBox, srcBox, goodBox);
+    editBox, scanBox);
 }
 
 // --- the view ---

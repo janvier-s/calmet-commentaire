@@ -373,7 +373,8 @@ def unit_view(doc, uid, store=None, decisions=None):
 
 
 def scan_boxes(store, vol, page, path, at, n):
-    """The source scan's boxes of the first max(n, 1) words of field `path` from offset `at` on, found through
+    """The source scan's boxes of the first n words of field `path` from offset `at` on (n 0, an insert: the
+    word next to it and a `caret` [x, y, h] where Good's text would go), found through
     the page's cached OCR set against the page (never running Kraken): {"boxes", "size", "crop"}, or
     {"boxes": [], "reason"} when there is no scan, no cached OCR, or the words are not found."""
     scan = store.scan(vol, page)
@@ -387,9 +388,21 @@ def scan_boxes(store, vol, page, path, at, n):
         return {"boxes": [], "reason": "no cached OCR"}
     data = store.read(vol, page)[0] if store.path(vol, page).exists() else {}
     res = scan_ocr.align(o, data, fix=True)
+    crop = store.scan_crop(vol, page)[1]  # /scan/ shows this part of the scan, when there is a crop
+    if n == 0:  # an insert: the point Good's text would go, after the word ending at `at` (else before the next)
+        mine = sorted((w for w in res.get("words") or [] if w.get("path") == path and w.get("a") is not None
+                       and w.get("boxes")), key=lambda w: w["a"])
+        prev = [w for w in mine if w.get("b") is not None and w["b"] <= at]
+        nxt = [w for w in mine if w["a"] >= at]
+        if prev:
+            x, y, bw, h = prev[-1]["boxes"][-1]
+            return {"boxes": [prev[-1]["boxes"][-1]], "caret": [x + bw, y, h], "size": res.get("size"), "crop": crop}
+        if nxt:
+            x, y, bw, h = nxt[0]["boxes"][0]
+            return {"boxes": [nxt[0]["boxes"][0]], "caret": [x, y, h], "size": res.get("size"), "crop": crop}
+        return {"boxes": [], "reason": "words not found"}
     words = sorted((w for w in res.get("words") or [] if w.get("path") == path and w.get("a") is not None
                     and w["a"] >= at and w.get("boxes")), key=lambda w: w["a"])[:max(n, 1)]
     if not words:
         return {"boxes": [], "reason": "words not found"}
-    return {"boxes": [b for w in words for b in w["boxes"]], "size": res.get("size"),
-            "crop": store.scan_crop(vol, page)[1]}  # /scan/ shows this part of the scan, when there is a crop
+    return {"boxes": [b for w in words for b in w["boxes"]], "size": res.get("size"), "crop": crop}

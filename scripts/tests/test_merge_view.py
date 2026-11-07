@@ -281,3 +281,26 @@ def test_decisions_on_view_and_rows(data_dir):
     r = merge_view.rows(doc, None, decisions=dec)
     assert r[0]["progress"]["todo"] == 1 and r[1]["progress"]["done"] is False and r[3]["progress"]["done"] is True
     assert "progress" not in merge_view.rows(doc, None)[0]
+
+
+def _three_words(monkeypatch):
+    monkeypatch.setattr(merge_view.scan_ocr, "ocr", lambda *a, **k: {"fake": 1})
+    words = [{"t": "Un", "boxes": [[1, 1, 2, 2]], "path": "commentary/1/french_commentary", "a": 0, "b": 2},
+             {"t": "esclave", "boxes": [[4, 1, 6, 2]], "path": "commentary/1/french_commentary", "a": 3, "b": 10},
+             {"t": "qui", "boxes": [[11, 1, 3, 2]], "path": "commentary/1/french_commentary", "a": 11, "b": 14}]
+    monkeypatch.setattr(merge_view.scan_ocr, "align", lambda o, d, fix=False: {"size": [100, 200], "words": words})
+
+
+def test_scan_boxes_insert_point_follows_the_word_before(data_dir, monkeypatch):
+    """An insert (no old words): where Good's text would go, after the word that ends at `at`."""
+    st = Store(data_dir, data_dir.parent / "docs")
+    _three_words(monkeypatch)
+    got = merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 10, 0)
+    assert got["caret"] == [10, 1, 2] and got["boxes"] == [[4, 1, 6, 2]]
+
+
+def test_scan_boxes_insert_at_a_field_start_goes_before_its_first_word(data_dir, monkeypatch):
+    st = Store(data_dir, data_dir.parent / "docs")
+    _three_words(monkeypatch)
+    got = merge_view.scan_boxes(st, "22_proverbes", 194, "commentary/1/french_commentary", 0, 0)
+    assert got["caret"] == [1, 1, 2] and got["boxes"] == [[1, 1, 2, 2]]

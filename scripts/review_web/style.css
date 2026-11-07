@@ -587,7 +587,13 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 .mg-panel-actions button[disabled] { opacity: .45; cursor: not-allowed; }
 .mg-scan { margin-top: 6px; }
 .mg-scan:empty { display: none; }
-.mg-fullscan { width: 100%; border: 1px solid var(--border); }
+.mg-sidebyside { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 800px) { .mg-sidebyside { grid-template-columns: 1fr; } }
+.mg-side { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.mg-pagepane { max-height: 85vh; overflow: auto; border: 1px solid var(--border); background: #fff; }
+.mg-sheet { position: relative; }
+.mg-sheet img { display: block; width: 100%; }
+.mg-caret { position: absolute; width: 4px; margin-left: -2px; background: var(--danger); box-shadow: 0 0 0 2px rgba(255, 255, 255, .85); pointer-events: none; }
 .mg-srcbox { border-color: var(--danger); background: color-mix(in srgb, var(--danger) 15%, transparent); }
 .mg-unplaced { padding: 0 12px 40px; }
 .mg-uitem { padding: 3px 6px; border-radius: 5px; cursor: pointer; }
