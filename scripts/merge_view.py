@@ -5,9 +5,132 @@ in `unplaced`), the differences good_variants dropped without a record are marke
 runs that agree with old carry old's surface (punctuation, apostrophes, accents). Nothing here writes.
 """
 import difflib
+import json
+from pathlib import Path
 
+import good_units
 import good_variants
 import scan_ocr
+
+STATUS_ORDER = ("substantive", "only_old", "only_good", "uncovered", "unaligned", "cosmetic", "identical")
+NOTES = Path(__file__).resolve().parent / "good_merge_notes.json"
+_docs = {}  # good_units.json path -> ((mtime, size), parsed)
+
+
+def load(data, vol):
+    """data/<vol>/good_units.json, parsed once and again whenever the file changes; None if absent."""
+    path = Path(data) / vol / "good_units.json"
+    try:
+        st = path.stat()
+    except (FileNotFoundError, NotADirectoryError):
+        return None
+    sig = (st.st_mtime_ns, st.st_size)
+    hit = _docs.get(path)
+    if hit and hit[0] == sig:
+        return hit[1]
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    _docs[path] = (sig, doc)
+    return doc
+
+
+def merge_vols(data):
+    return sorted(p.parent.name for p in Path(data).glob("*/good_units.json"))
+
+
+def notes(vol):
+    """The hand-kept data-issue notes for a volume, by status."""
+    try:
+        return json.loads(NOTES.read_text(encoding="utf-8")).get(vol, {})
+    except FileNotFoundError:
+        return {}
+
+
+def field(page_data, path):
+    """A text field by path ("commentary/1/french_commentary", "verses/0/french", "chapter_summary")."""
+    x = page_data
+    for part in path.split("/"):
+        if part.isdigit():
+            x = x[int(part)] if isinstance(x, list) and int(part) < len(x) else None
+        else:
+            x = x.get(part) if isinstance(x, dict) else None
+        if x is None:
+            return None
+    return x if isinstance(x, str) else None
+
+
+def _part_texts(store, vol, parts, cache=None):
+    cache = {} if cache is None else cache
+    out = []
+    for p in parts:
+        if p["page"] not in cache:
+            try:
+                cache[p["page"]] = store.read(vol, p["page"])[0]
+            except (FileNotFoundError, ValueError):
+                cache[p["page"]] = None
+        d = cache[p["page"]]
+        t = field(d, p["path"]) if d is not None else None
+        if t is None:
+            return None
+        out.append(t)
+    return out
+
+
+def live_old(store, vol, parts, cache=None):
+    """The unit's old text as normalized has it now; None if a page or field is missing."""
+    texts = _part_texts(store, vol, parts, cache)
+    return None if texts is None else good_units._text(" ".join(texts))
+
+
+def _stale(store, vol, u, cache=None):
+    if store is None or not u.get("parts"):
+        return False
+    return live_old(store, vol, u["parts"], cache) != (u.get("old") or "")
+
+
+def rows(doc, store):
+    """One light row per unit, in book (file) order: no texts, no boxes."""
+    vol, cache, out = doc.get("vol"), {}, []
+    for i, u in enumerate(doc.get("units") or []):
+        first = None
+        if not u.get("lemma"):
+            first = " ".join((u.get("old") or u.get("good") or "").split()[:8])
+        out.append({"uid": u.get("uid"), "type": u.get("type"), "chapter": u.get("chapter"),
+                    "verse": u.get("verse"), "lemma": u.get("lemma"), "first": first, "status": u.get("status"),
+                    "n": sum(1 for c in u.get("changes") or [] if c.get("class") != "noise"),
+                    "after": u.get("after"), "stale": _stale(store, vol, u, cache), "i": i})
+    return out
+
+
+def _seams(parts, texts, old):
+    """[{page, at}]: where in `old` each part on a new page starts, found by its text, in order."""
+    out, cur, prev = [], 0, None
+    for p, t in zip(parts, texts):
+        t = good_units._text(t)
+        if t:
+            k = old.find(t, cur)
+            if k >= 0:
+                if prev is not None and p["page"] != prev:
+                    out.append({"page": p["page"], "at": k})
+                cur = k + len(t)
+        prev = p["page"]
+    return out
+
+
+def _insert_seams(segs, seams):
+    """A seam segment before the text at each seam's offset; a plain segment is split there if need be
+    (a change is never split: the seam goes before it)."""
+    out, pos, todo = [], 0, list(seams)
+    for s in segs:
+        while todo and todo[0]["at"] < pos + len(s["t"]):
+            seam = todo.pop(0)
+            cut = seam["at"] - pos
+            if cut > len(s["t"]) - len(s["t"].lstrip()) and s["kind"] != "change":
+                out.append({**s, "t": s["t"][:cut]})
+                s, pos = {**s, "t": s["t"][cut:]}, seam["at"]
+            out.append({"kind": "seam", "t": "", "page": seam["page"]})
+        out.append(s)
+        pos += len(s["t"])
+    return out
 
 
 def tokens(text):
@@ -211,9 +334,17 @@ def unit_view(doc, uid, store=None):
     if not good:
         gsegs, psegs = [], []
 
+    stale, seams = False, []
+    if store is not None and u.get("parts"):
+        texts = _part_texts(store, doc.get("vol"), u["parts"])
+        stale = texts is None or good_units._text(" ".join(texts)) != old
+        if texts is not None:
+            seams = _seams(u["parts"], texts, old)
+            osegs = _insert_seams(osegs, seams)
+
     unit = {k: u.get(k) for k in ("uid", "type", "chapter", "verse", "lemma", "status", "parts", "good_where",
                                     "after")}
     return {"unit": unit, "old": osegs, "good": gsegs, "good_printed": psegs,
             "changes": [{**c, "placed": c["key"] in placed} for c in changes],
             "unplaced": [c["key"] for c in changes if c["key"] not in placed],
-            "counts": counts, "empty": _empty_note(u), "stale": False, "seams": []}
+            "counts": counts, "empty": _empty_note(u), "stale": stale, "seams": seams}

@@ -118,3 +118,53 @@ def test_duplicate_ids_kept_apart(data_dir):
     assert sorted(c["key"] for c in v["changes"] if c["placed"]) == ["c1", "c2", "c2~2"]
     assert [s["id"] for s in v["old"] if s["kind"] == "change"] == ["c2~2", "c1", "c2"]
     assert v["counts"]["substantive"] == 2 and v["counts"]["cosmetic"] == 1 and v["counts"]["unrecorded"] == 0
+
+
+def test_rows(data_dir):
+    make_units(data_dir)
+    st = Store(data_dir, data_dir.parent / "docs")
+    r = merge_view.rows(merge_view.load(data_dir, "22_proverbes"), st)
+    assert [x["uid"] for x in r] == ["commentary:17:2:0", "verse:17:4:0", "good:17:5:0", "commentary:17:3:0"]
+    assert r[0]["n"] == 3 and r[0]["stale"] is False and r[0]["lemma"].startswith("SERVUS")
+    assert r[3]["first"] == "Texte pareil." and r[2]["after"] == "verse:17:4:0"
+
+
+def test_stale_after_hand_fix(data_dir):
+    make_units(data_dir)
+    st = Store(data_dir, data_dir.parent / "docs")
+    p = st.path("22_proverbes", 194); d = json.loads(p.read_text())
+    d["commentary"][1]["french_commentary"] = "Un esclave sage qui a de la sagesse ^{(a)}."
+    p.write_text(json.dumps(d))
+    doc = merge_view.load(data_dir, "22_proverbes")
+    assert merge_view.rows(doc, st)[0]["stale"] is True
+    assert merge_view.unit_view(doc, "commentary:17:2:0", st)["stale"] is True
+
+
+def test_reload_on_rewrite(data_dir):
+    path = make_units(data_dir)
+    assert len(merge_view.load(data_dir, "22_proverbes")["units"]) == 4
+    doc = json.loads(path.read_text()); doc["units"] = doc["units"][:1]
+    path.write_text(json.dumps(doc))
+    assert len(merge_view.load(data_dir, "22_proverbes")["units"]) == 1
+
+
+def test_vols_and_notes(data_dir):
+    make_units(data_dir)
+    assert merge_view.merge_vols(data_dir) == ["22_proverbes"]
+    assert merge_view.load(data_dir, "01_nothing") is None
+    assert "interleaved" in merge_view.notes("01_genese")["only_old"]
+
+
+def test_seams_mark_page_turns(data_dir):
+    st = Store(data_dir, data_dir.parent / "docs")
+    parts = [{"page": 193, "path": "commentary/0/french_commentary"},
+             {"page": 194, "path": "commentary/0/french_commentary"}]
+    old = good_units._text("Il vaut mieux vivre en paix\nque la maison pleine de victimes. suite du commentaire.")
+    doc = {"vol": "22_proverbes", "units": [{"uid": "commentary:17:1:0", "type": "commentary", "status": "identical", "parts": parts,
+                      "old": old, "good": old, "changes": []}]}
+    v = merge_view.unit_view(doc, "commentary:17:1:0", st)
+    assert v["stale"] is False and v["seams"] == [{"page": 194, "at": old.index("suite")}]
+    seam = [k for k, s in enumerate(v["old"]) if s["kind"] == "seam"]
+    assert len(seam) == 1 and v["old"][seam[0]]["page"] == 194
+    assert v["old"][seam[0] + 1]["t"].lstrip().startswith("suite")
+    assert "".join(s["t"] for s in v["old"]) == old
