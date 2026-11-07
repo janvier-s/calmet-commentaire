@@ -561,6 +561,12 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 .mg-moved { background: color-mix(in srgb, var(--c-verse) 25%, transparent); }
 .mg-noise { background: color-mix(in srgb, var(--muted) 22%, transparent); }
 .mg-ch.open { outline: 2px solid var(--accent); }
+.mg-progress.mg-done { color: var(--ok, #2e7d32); }
+.mg-progress.mg-reopened { color: var(--warn, #b26a00); font-weight: 600; }
+.mg-dec button.on { outline: 2px solid var(--accent); font-weight: 600; }
+.mg-reopen { color: var(--warn, #b26a00); }
+.mg-edit { width: 100%; min-height: 4em; font: inherit; }
+.mg-flag { text-decoration: underline dotted 2px; text-underline-offset: 3px; cursor: help; }
 .mg-mark { font: 10.5px var(--font); padding: 0 5px; margin: 0 2px; background: none; border: 1px dashed currentColor; vertical-align: 1px; }
 .mg-mark.mg-substantive { color: var(--danger); } .mg-mark.mg-cosmetic { color: var(--quote); }
 .mg-mark.mg-moved { color: var(--info); } .mg-mark.mg-noise { color: var(--muted); }

@@ -166,7 +166,7 @@ def label(job):
         line = w["src"][0][0]
         order = [p for p, _ in votes[line].most_common()] + [p for p in runs if p not in votes[line]]
         best = next(((p, runs[p][i]) for p in order if runs[p][i]["s"] in RANK), None)
-        r = {"t": w["t"], "k": scan_ocr.key(w["t"]), "wc": w["wc"], "boxes": w["boxes"]}
+        r = {"t": w["t"], "pt": w.get("pt") or w["t"], "k": scan_ocr.key(w["t"]), "wc": w["wc"], "boxes": w["boxes"]}
         li, wi = w["src"][0]
         if len(w["t"]) == 1 and re.search(r"[()]", cols["lines"][li]["words"][wi]["t"]):
             r["s"] = "skip"  # a note's mark: the later edition letters its notes otherwise
@@ -237,6 +237,14 @@ def runs_of(stream):
 
 def modern(text):
     return scan_ocr.modern(text)
+
+
+def _punct(ws):
+    """The Good words as modern text with their printed punctuation, and the marks to check (scan_ocr.printed)."""
+    if not ws:
+        return {"good_punct": None, "good_flags": []}
+    r = scan_ocr.printed(ws)
+    return {"good_punct": r["text"], "good_flags": r["flags"]}
 
 
 def align(vol, chs, workers=8):
@@ -475,6 +483,7 @@ def record(c, vol, jt, stream, src, pages, linked):
         at = jt[j0 - 1]["b"] if j0 > 0 and jt[j0 - 1] is anchor else anchor["a"]
     rec = {"kind": kind, "origin": origin, "vol": vol, "page": anchor["page"], "path": anchor["path"], "at": at,
            "old": old, "good_raw": raw, "good_modern": modern(raw) if raw else None,
+           **_punct(ws),
            "words": len(ws), "old_words": len(olds), "pieces": c.get("n", 1),
            "before": " ".join(t["t"] for t in jt[max(0, j0 - 8):j0]), "after": " ".join(t["t"] for t in jt[j1:j1 + 8]),
            "good": list(where.values())}
