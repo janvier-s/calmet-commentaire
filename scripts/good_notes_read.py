@@ -149,8 +149,15 @@ async def call(crop, sem, prompt=PROMPT, model=None):
 CALLS = {"n": 0}  # agy calls made by this process
 
 
+FOLLOW_UP = ("No command or tool can be run here. Answer now, from the image you already have, with the "
+             "transcription only (or NONE).")
+
+
 async def agy(crop, prompt=PROMPT, model=None):
-    """`call` without the semaphore (the caller holds it)."""
+    """`call` without the semaphore (the caller holds it). A turn that ends empty because Flash reached for a
+    command (denied: agy runs no tools here) is followed up once in the same conversation, which answers from
+    the image already read; a fresh try thinks the whole page over again, and on some pages reaches for the
+    tool every time."""
     CALLS["n"] += 1
     if crop is None:
         cwd = CACHE / "_empty"
@@ -158,9 +165,20 @@ async def agy(crop, prompt=PROMPT, model=None):
         text = "Answer directly, with text only: do not use any tool, do not run commands, do not read or write files.\n\n" + prompt
     else:
         cwd, text = crop.parent, f"@{crop.name} {prompt}"
-    args = ["agy", "--print-timeout", "300s", "--disable-slash-commands", "--output-format", "json",
-            "--model", model or MODEL, "-p", text]
-    proc = await asyncio.create_subprocess_exec(*args, cwd=str(cwd), stdout=asyncio.subprocess.PIPE,
+    d, e = await _agy_turn(cwd, text, model or MODEL)
+    if d and not str(d.get("response") or "").strip() and d.get("denied_actions") and d.get("conversation_id"):
+        CALLS["n"] += 1
+        d, e = await _agy_turn(cwd, FOLLOW_UP, model or MODEL, d["conversation_id"])
+    if d is None:
+        return None, e
+    return str(d.get("response") or ""), None
+
+
+async def _agy_turn(cwd, text, model, conversation=None):
+    """One agy turn: (its JSON, None) or (None, error)."""
+    args = ["agy", "--print-timeout", "300s", "--disable-slash-commands", "--output-format", "json", "--model", model]
+    args += ["--conversation", conversation] if conversation else []
+    proc = await asyncio.create_subprocess_exec(*args, "-p", text, cwd=str(cwd), stdout=asyncio.subprocess.PIPE,
                                                 stderr=asyncio.subprocess.PIPE)
     try:
         out, err = await asyncio.wait_for(proc.communicate(), 360)
@@ -174,7 +192,7 @@ async def agy(crop, prompt=PROMPT, model=None):
         return None, (err or out).decode()[:300]
     if d.get("status") != "SUCCESS":
         return None, str(d.get("response") or err.decode())[:300]
-    return str(d.get("response") or ""), None
+    return d, None
 
 
 QUOTA = {"hit": False}

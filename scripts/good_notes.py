@@ -28,6 +28,7 @@ import difflib
 import functools
 import hashlib
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -692,7 +693,7 @@ def main(argv):
         want = sorted({r["page"] for r in out if (r["cause"] != "edition" or r.get("origin") in (None, "no_source"))
                        and not gr.cached(gr.src(vol), r["page"])})
         print(f"  reading {len(want)} source pages with Flash", file=sys.stderr)
-        asyncio.run(gr.run([(gr.src(vol), p) for p in want], 6, 4, False))
+        asyncio.run(gr.run([(gr.src(vol), p) for p in want], int(os.environ.get("GOOD_READ_JOBS", 16)), 4, False))
         print(f"  {gr.CALLS['n']} agy calls", file=sys.stderr)
         out, hg = compare(vol, chs)
     norm_errs = [r for r in out if r["cause"] == "normalization"]
