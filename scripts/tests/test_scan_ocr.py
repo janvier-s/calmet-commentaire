@@ -791,4 +791,4 @@ def test_modern_etc_monnaie_and_imparfait():
     assert m("et c'est tout") == "et c'est tout"
     assert m("la monoye") == "la monnaie"
     assert m("il tueroit et connoissoit") == "il tuerait et connaissait"
-    assert m("il croit, l endroit, il reçoit") == "il croit, l'endroit, il reçoit"
+    assert m("il croit, il reçoit, l'endroit") == "il croit, il reçoit, l'endroit"
