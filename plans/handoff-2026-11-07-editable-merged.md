@@ -20,3 +20,18 @@ for the user, never overwrite. (d) Undo via versions. Build on `merge_decisions`
 - Agent pass not run on the 2046 only_good Genese texts (`good_spell_agent.py prepare`).
 - Undo/redo buttons in merge_unit.js untested in a browser (headless check recipe in the other handoff).
 - Possible false positive: `dela` -> `delà`.
+
+## Step 4 done (93d8cc8e3, 3cc3aee74)
+- `merged_hand.py`: Merged-view typing in `docs/good_merge/<vol>.hand.json` (per field: text, built text + hash it
+  was typed on, versions). `build_pages` overlays it; built text moved underneath -> flagged, never overwritten.
+- merged/ rebuilt on every normalized save in the web app (`Store.saved`), stale merged page rebuilt on GET.
+- Endpoints `/api/merged/save|resolve|restore|flags`; UI in merged_view.js (Keep mine / Take rebuilt / ↶).
+- Fix: stale-unit inserts were placed at stale offsets (garbled merged on any normalized edit); now placed by
+  context words or skipped. Genese merged/ rebuilt (1 word: litterales -> littérales).
+- Checked headless (playwright, system Chrome, scratch data copy): type+save, flag, take rebuilt, undo, keep mine.
+  Harness note: `server.socket.listen(128)` or the ~25 parallel module loads get ERR_CONNECTION_RESET.
+
+## Still open
+- `docs/good_merge/` (decisions AND hand edits) is untracked: decide whether to commit it; hand edits are the only copy.
+- The /merge unit view does not show Merged-view hand edits (it shows the build); its writes still keep them.
+- Agent pass on the 2046 only_good texts, merge_unit.js undo/redo browser check, `dela` -> `delà`: as above.
