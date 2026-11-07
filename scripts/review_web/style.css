@@ -516,6 +516,7 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
           padding: 7px 12px; background: var(--panel); border-bottom: 1px solid var(--border); }
 .mg-counter { font-size: 13px; }
 .mg-stale-n { color: var(--warn); font-weight: 600; }
+:where(body.mg) a { color: var(--accent); }  /* the browser's own link blue is unreadable on the dark theme */
 .mg-toplink { color: var(--muted); text-decoration: none; font-size: 13px; }
 .mg-toplink:hover { color: var(--accent); }
 .mg-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; padding: 8px 12px;

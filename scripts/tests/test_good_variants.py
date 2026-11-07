@@ -65,3 +65,51 @@ def test_without_margin_drops_the_words_and_empty_lines():
     assert len(out["lines"]) == 5
     assert [w["t"] for w in out["lines"][0]["words"]] == ["N", "PRINCIPIO,", "tems"]
     assert len(o["lines"]) == 11  # the cached OCR itself untouched
+
+
+def _w(j, path, page=154):
+    return {"s": "match" if j is not None else "gap", "j": j, "path": path, "pdf_page": page, "t": "x", "k": "x"}
+
+
+def test_strays_between_neighbouring_body_words_made_gaps():
+    """Genèse 1:1: Good's own sentence ("la Terre. Mais ces explications ... la langue Hebraïque.") between
+    "créé" (j 289) and "Aquila" (j 291): its words paired with the verse's "la Terre" and a note's words."""
+    body, verse, fn = "commentary/0/french_commentary", "verses/0/french", "footnotes/1/text"
+    gap = lambda n: [_w(None, None) for _ in range(n)]
+    s = [_w(289, body), *gap(2), _w(74, verse), _w(75, verse), *gap(12), _w(1121, fn), _w(1122, fn), _w(638, fn),
+         *gap(12), _w(641, fn), _w(291, body)]
+    gv.strays(s)
+    assert [w["s"] for w in s] == ["match"] + ["gap"] * (len(s) - 2) + ["match"]
+
+
+def test_a_page_s_notes_between_body_words_across_pages_kept():
+    body, fn = "commentary/0/french_commentary", "footnotes/0/text"
+    s = [_w(289, body, 153), _w(900, fn, 153), _w(901, fn, 153), _w(290, body, 154)]
+    gv.strays(s)
+    assert [w["s"] for w in s] == ["match"] * 4
+
+
+def test_a_long_run_elsewhere_kept():
+    body, verse = "commentary/0/french_commentary", "verses/1/french"
+    s = [_w(289, body)] + [_w(80 + k, verse) for k in range(gv.STRAY_MAX + 1)] + [_w(290, body)]
+    gv.strays(s)
+    assert all(w["s"] == "match" for w in s)
+
+
+def test_a_verse_set_between_commentary_lines_kept():
+    """Genèse 1:23, "Et du soir & du matin se fit le", between two neighbouring commentary words: mostly linked."""
+    body, verse = "commentary/0/french_commentary", "verses/22/french"
+    s = [_w(500, body)] + [_w(80 + k, verse) for k in range(6)] + [_w(None, None), _w(501, body)]
+    gv.strays(s)
+    assert all(w["s"] == "match" for w in s if w["j"] is not None)
+
+
+def test_the_french_column_read_between_the_latin_s_words_kept():
+    """Genèse 34:1: "Egressa est autem Dina | A Lors Dina fille de Lia fartit | ut videret": the French verse,
+    6 matches in 13 words but in the JSON's order."""
+    lat, verse = "commentary/1/latin_quote", "verses/0/french"
+    gap = lambda n: [_w(None, None) for _ in range(n)]
+    s = [_w(1150, lat), *gap(6), _w(1024, verse), _w(1024, verse), _w(1025, verse), _w(1026, verse),
+         _w(1027, verse), _w(1028, verse), *gap(1), _w(1151, lat)]
+    gv.strays(s)
+    assert all(w["s"] == "match" for w in s if w["j"] is not None)

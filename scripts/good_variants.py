@@ -113,6 +113,40 @@ def in_order(stream, near=4):
         _in_order(stream, [i for i, w in enumerate(stream) if w["s"] == "match" and section(w["path"]) == sec], near)
 
 
+STRAY_MAX = 8  # matches: a longer run into another field is a real passage of it (a page's notes, a verse)
+
+
+def strays(stream, near=4):
+    """Matches into another field between two body matches on one Good page whose JSON words are neighbours
+    (`near`), STRAY_MAX of them at most, made gaps: the JSON has nothing between those words, so Good's own
+    passage there was paired, word by word, with a verse's or a note's same words (Genèse 1:1, "la Terre.
+    Mais ces explications... la langue Hebraïque"). A run mostly linked is kept: a verse Good sets between two
+    lines of the commentary ("Et du soir & du matin se fit le", 1:23), and so is one holding RUN_MIN matches
+    in a row in the JSON's order: the French column Kraken read between the Latin's words, line by line
+    ("Lors Dina fille de Lia", 34:1)."""
+    body = [i for i, w in enumerate(stream) if w["s"] == "match" and section(w["path"]) == "body"]
+    for a, b in zip(body, body[1:]):
+        if stream[a].get("pdf_page") != stream[b].get("pdf_page") or not 0 < stream[b]["j"] - stream[a]["j"] <= near:
+            continue
+        other = [i for i in range(a + 1, b) if stream[i]["s"] == "match"]
+        if 0 < len(other) <= STRAY_MAX and len(other) < 0.5 * (b - a - 1) and not _has_run(stream, other):
+            for i in other:
+                stream[i]["s"] = "gap"
+
+
+RUN_MIN = 3
+
+
+def _has_run(stream, idx):
+    """RUN_MIN of the matches `idx` in a row: each a word or two after the last, its JSON word just after."""
+    n = 1
+    for p, q in zip(idx, idx[1:]):
+        n = n + 1 if q - p <= 2 and 0 <= stream[q]["j"] - stream[p]["j"] <= 2 else 1
+        if n >= RUN_MIN:
+            return True
+    return False
+
+
 def section(path):
     """The stream a field is read in: the verses' Latin column, their French one, the rest of the text
     (headings and commentary); the scan and the JSON order each the same way, but not across them."""
@@ -319,6 +353,7 @@ def align(vol, chs, workers=8):
                 w["s"] = "skip"  # linked to a page outside the stream
             stream.append(w)
     in_order(stream)
+    strays(stream)
     for w in stream:
         if w["s"] == "gap":
             w["j"] = None

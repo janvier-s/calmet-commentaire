@@ -278,6 +278,8 @@ function goodPagesOf(c, view) {
 }
 
 const scanView = { zoom: 1, fitV: false, marks: true };  // kept from one opening of the scans to the next
+// the scans left open stay open when the view redraws (an edit, a decision, the next change opened)
+const scansOpen = { change: false, unit: false };
 
 /** The scans' toolbar, as the review editor's scan pane has it: zoom out/in, Fit ↔, Fit ↕, the marks on or
  * off; it drives both pages together (Ctrl/Cmd+wheel over a page too). */
@@ -334,15 +336,18 @@ function unitScanBar(view, state) {
   if (!sources.length && !good.length) return null;
   const box = el("div", { className: "mg-scan" });
   const open = async () => {
-    if (box.childNodes.length) return box.replaceChildren();
+    if (box.childNodes.length) { scansOpen.unit = false; return box.replaceChildren(); }
+    scansOpen.unit = true;
     const goods = good.map((g) => fullPage(goodCaption(g), goodUrl(g), g.boxes || []));
     const slots = sources.map(() => el("div", { className: "muted small", textContent: "Loading the source scan…" }));
     box.replaceChildren(sideBySide(slots.length ? slots : [el("div", { className: "muted small", textContent: "No old text." })],
       goods.length ? goods : [el("div", { className: "muted small", textContent: "No Good page." })]));
     await Promise.all(sources.map(async (s, k) => slots[k].replaceWith(await oldPage(state.vol, s.page, s.path, s.at, s.n))));
   };
-  return el("div", { className: "mg-unitscans" },
+  const bar = el("div", { className: "mg-unitscans" },
     el("div", { className: "mg-panel-actions" }, el("button", { textContent: "Scans", onclick: open })), box);
+  if (scansOpen.unit) open();
+  return bar;
 }
 
 // --- the panel ---
@@ -375,7 +380,10 @@ function panel(c, view, state, nav) {
     ? el("span", { className: "mg-ctx" }, `… ${c.good_before || ""} `, el("b", { textContent: c.good_punct || c.good_modern || c.good_raw || "∅" }), ` ${c.good_after || ""} …`)
     : null;
   const scanBox = el("div", { className: "mg-scan" });
-  const toggle = (box, load) => () => { if (box.childNodes.length) box.replaceChildren(); else load(); };
+  const toggleScans = () => {
+    scansOpen.change = !scanBox.childNodes.length;
+    if (scansOpen.change) changeScans(scanBox, vol, c, view); else scanBox.replaceChildren();
+  };
   const d = c.decision || {};
   const live = d.state === "current" || d.state === "reattached";
   const editBox = el("div");
@@ -395,6 +403,7 @@ function panel(c, view, state, nav) {
       ", and the texts have changed since.")
     : null;
   const edited = live && d.choice === "edit" ? row("edited", el("span", { className: "mg-serif", textContent: d.text })) : null;
+  if (scansOpen.change) changeScans(scanBox, vol, c, view);
   return el("div", { className: `mg-panel mg-p-${CLS_SHOWN.has(c.class) ? c.class : "noise"}` },
     el("div", { className: "mg-panel-head" },
       el("span", { className: `mg-tag mg-${CLS_SHOWN.has(c.class) ? c.class : "noise"}`, textContent: c.class }),
@@ -413,7 +422,7 @@ function panel(c, view, state, nav) {
       row("moved", moved), edited),
     reopened,
     el("div", { className: "mg-panel-actions mg-dec" },
-      el("button", { textContent: "Scans", title: "The old and the Good page side by side", onclick: toggle(scanBox, () => changeScans(scanBox, vol, c, view)) }),
+      el("button", { textContent: "Scans", title: "The old and the Good page side by side", onclick: toggleScans }),
       el("span", { className: "grow" }), ...decide, el("span", { className: "muted small", textContent: " · " }), ...marks),
     editBox, scanBox);
 }
