@@ -344,7 +344,7 @@ def _merged(data_dir, decide=None, edit=None, changes=None):
 def _texts(v):
     out = {}
     for s in v["merged"]:
-        if s["kind"] != "seam":
+        if s["kind"] not in ("seam", "join"):
             out[(str(s["page"]), s["path"])] = out.get((str(s["page"]), s["path"]), "") + s["t"]
     return out
 
@@ -353,7 +353,7 @@ def test_merged_column_reassembles_normalized(data_dir):
     v = _merged(data_dir)
     assert v["editable"] is True
     assert _texts(v) == FIELDS
-    assert all({"k", "page", "path", "a", "b"} <= set(s) for s in v["merged"] if s["kind"] != "seam")
+    assert all({"k", "page", "path", "a", "b"} <= set(s) for s in v["merged"] if s["kind"] not in ("seam", "join"))
 
 
 def test_merged_take_good_applied(data_dir):
@@ -400,3 +400,11 @@ def test_merged_not_editable_when_stale(data_dir):
     p.write_text(json.dumps(d))
     v = merge_view.unit_view(merge_view.load(data_dir, "22_proverbes"), "commentary:17:2:0", st, {"decisions": {}})
     assert v["stale"] is True and v["editable"] is False
+
+
+def test_merged_fields_joined_by_a_space_outside_the_text(data_dir):
+    v = _merged(data_dir)
+    kinds = [s["kind"] for s in v["merged"]]
+    assert kinds.count("join") == 2  # three fields
+    j = next(s for s in v["merged"] if s["kind"] == "join")
+    assert j["t"] == " " and "page" not in j

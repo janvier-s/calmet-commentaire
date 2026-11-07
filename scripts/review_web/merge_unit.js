@@ -3,6 +3,7 @@
 import { el } from "./goodfig.js";
 import { badge, ref } from "./merge_list.js";
 import { BOOK_TITLES, toHash, undecided, unitScans } from "./merge_state.js";
+import { segmentEdits, toNodes, undoKey } from "./merge_edit.js";
 
 const CLS_SHOWN = new Set(["substantive", "cosmetic", "moved"]);
 const ROW_WORDS = 40;  // a row closes after a run that agrees on both sides, once it holds this many words
@@ -91,6 +92,101 @@ function rowsOf(old, good) {
   }
   if (start < n || !out.length) out.push([start, n]);
   return out;
+}
+
+// --- the merged column: normalized with the decisions applied, editable, buttons after every change ---
+
+const BTNS = [["good", "✓", "take Good (g)"], ["old", "✗", "keep old (o)"], ["both", "✎", "keep both, then edit (e)"]];
+let pendingFocus = null;  // a change whose text the caret goes to after the redraw (✎)
+
+/** normalized's raw text as DOM: markers as superscripts (atomic), _italics_ as <em>. */
+function rawNodes(t) {
+  return toNodes(t).map((n) => n.kind === "text" ? document.createTextNode(n.t)
+    : n.kind === "marker" ? el("sup", { className: "mg-marker", contentEditable: "false", textContent: n.t.slice(2, -1), dataset: { raw: n.t } })
+      : el("em", { textContent: n.t }));
+}
+
+/** A segment's text as normalized writes it, from its DOM (ghosts and buttons left out). */
+export function serial(node) {
+  let out = "";
+  for (const ch of node.childNodes) {
+    if (ch.nodeType === 3) out += ch.nodeValue;
+    else if (ch.nodeType !== 1 || ch.dataset.noser) continue;
+    else if (ch.dataset.raw) out += ch.dataset.raw;
+    else if (ch.tagName === "EM" || ch.tagName === "I") out += `_${serial(ch)}_`;
+    else if (ch.tagName === "BR") out += " ";
+    else out += serial(ch);
+  }
+  return out.replace(/\u00a0/g, " ");
+}
+
+function mergedNode(s, i, state, byKey, nav) {
+  if (s.kind === "join") return el("span", { contentEditable: "false", textContent: " ", dataset: { noser: "1" } });
+  if (s.kind === "seam") {
+    return el("span", { className: "mg-seam", contentEditable: "false", title: `normalized: page ${s.page} starts here`, textContent: `p.${s.page}`, dataset: { noser: "1" } });
+  }
+  const span = el("span", { className: "mg-seg", dataset: { i: String(i) } }, ...rawNodes(s.t));
+  if (s.kind === "edit") {
+    span.classList.add("mg-edited");
+    span.title = "your edit";
+    return span;
+  }
+  if (s.kind === "unrecorded" && state.noise && s.t.trim()) {
+    span.classList.add("mg-unrec");
+    span.title = "unrecorded: good_variants dropped this difference without a record (not a decision target)";
+  }
+  if (s.kind !== "change") return span;
+  const c = byKey.get(s.id);
+  if (!(CLS_SHOWN.has(s.cls) || state.noise)) return span;
+  const cls = CLS_SHOWN.has(s.cls) ? s.cls : "noise";
+  span.classList.add("mg-ch", `mg-${cls}`);
+  if (s.choice) span.classList.add("mg-decided");
+  if (state.open === s.id) span.classList.add("open");
+  span.dataset.id = span.dataset.key = s.id;
+  span.title = `${s.cls} · ${s.ckind}${s.choice ? ` · decided: ${s.choice}` : ""}`;
+  if (s.ghost) {
+    const cut = !!s.choice;  // a decision cut these old words; else Good's words of an insert, not yet taken
+    span.append(el("span", { className: `mg-ghost ${cut ? "mg-ghost-cut" : "mg-ghost-add"}`, contentEditable: "false",
+      textContent: s.ghost, title: cut ? "cut by the decision (not in the text)" : "Good adds these words: ✓ takes them",
+      dataset: { noser: "1" } }));
+  }
+  const pressed = (choice) => s.choice === choice || (choice === "both" && s.choice === "edit");
+  const btns = el("span", { className: "mg-btns", contentEditable: "false", dataset: { noser: "1" } },
+    ...BTNS.map(([choice, label, title]) => el("button", {
+      className: `mg-btn mg-btn-${choice}${pressed(choice) ? " on" : ""}`, textContent: label,
+      title: pressed(choice) ? `${title}: chosen, click to undo` : title,
+      onclick: (e) => {
+        e.preventDefault(); e.stopPropagation();
+        if (!c) return;
+        if (pressed(choice)) return nav.choose(c, null);
+        if (choice === "both") pendingFocus = s.id;
+        nav.choose(c, choice);
+      },
+    })),
+    el("button", { className: "mg-btn mg-btn-info", textContent: "ⓘ", title: "Details, scans, noise/real (click the change too)",
+      onclick: (e) => { e.preventDefault(); e.stopPropagation(); nav.pick(state.open === s.id ? null : s.id); } }));
+  return [span, btns];
+}
+
+/** Text typed in the merged column, sent when the caret leaves the cell (or on Enter). */
+function editable(cell, merged, nav) {
+  cell.contentEditable = "true";
+  cell.spellcheck = false;
+  const commit = () => {
+    const spans = [...cell.querySelectorAll(".mg-seg[data-i]")];
+    const before = spans.map((sp) => ({ ...merged[+sp.dataset.i], key: merged[+sp.dataset.i].id || null }));
+    const edits = segmentEdits(before, spans.map(serial));
+    if (edits.length) nav.typed(edits);
+  };
+  cell.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); cell.blur(); }
+    else if (e.key === "Escape") { e.preventDefault(); nav.redraw(); }
+  });
+  cell.addEventListener("focusout", (e) => { if (!cell.contains(e.relatedTarget)) commit(); });
+  cell.addEventListener("paste", (e) => {  // plain text only
+    e.preventDefault();
+    document.execCommand("insertText", false, (e.clipboardData || window.clipboardData).getData("text/plain").replace(/\s+/g, " "));
+  });
 }
 
 function fill(cell, segs, side, state, byKey, onPick) {
@@ -313,7 +409,30 @@ export function renderUnit(root, view, state, nav) {
     if (key !== null && next && next !== state.open) go({ open: next });
     else nav.redraw();
   };
-  nav.choose = (c, choice, text) => nav.decide(c ? c.key : null, choice, text).then(after(c ? c.key : null), nav.fail);
+  nav.choose = (c, choice, text) => {
+    if (c) {
+      const d = c.decision || {}, isLive = d.state === "current" || d.state === "reattached";
+      nav.undo.push({ kind: "decide", vol: state.vol, uid: u.uid, key: c.key,
+        before: { choice: isLive ? d.choice : null, text: isLive ? d.text : null }, after: { choice, text } });
+    }
+    return nav.decide(c ? c.key : null, choice, text).then(state.open && choice && c && choice !== "both" ? after(c.key) : () => nav.redraw(), nav.fail);
+  };
+  nav.typed = async (edits) => {
+    try {
+      for (const e of edits) {
+        const seg = view.merged.find((s) => s.page === e.page && s.path === e.path && s.a === e.a && s.b === e.b && (s.id || null) === e.key);
+        if (seg && seg.kind === "change") {
+          const c = byKey.get(seg.id), d = (c && c.decision) || {}, isLive = d.state === "current" || d.state === "reattached";
+          nav.undo.push({ kind: "decide", vol: state.vol, uid: u.uid, key: seg.id,
+            before: { choice: isLive ? d.choice : null, text: isLive ? d.text : null }, after: { choice: "edit", text: e.text } });
+        } else {
+          nav.undo.push({ kind: "edit", vol: state.vol, uid: u.uid, page: e.page, path: e.path, a: e.a, b: e.b, before: e.before, after: e.text });
+        }
+        await nav.edit(e.page, e.path, e.a, e.b, e.text);
+      }
+    } catch (err) { nav.fail(err); }
+    nav.redraw();
+  };
   nav.markIt = (c, label) => nav.mark(c.key, label).then(() => nav.redraw(), nav.fail);
   let order = [];
   const listHash = toHash({ ...state, uid: null, open: null });
@@ -350,9 +469,16 @@ export function renderUnit(root, view, state, nav) {
       el("a", { href: toHash({ ...state, uid: u.after, open: null }), textContent: u.after })));
   }
 
-  const oldSegs = view.old || [], goodSegs = (state.printed ? view.good_printed : view.good) || [];
+  const live = !!view.editable;
+  const oldSegs = (live ? view.merged : view.old) || [], goodSegs = (state.printed ? view.good_printed : view.good) || [];
+  const index = new Map(oldSegs.map((s, i) => [s, i]));
+  const fillOld = (cell, segs) => {
+    if (!live) return fill(cell, segs, "old", state, byKey, nav.pick);
+    for (const s of segs) cell.append(...[].concat(mergedNode(s, index.get(s), state, byKey, nav)).filter(Boolean));
+    editable(cell, oldSegs, nav);
+  };
   const grid = el("div", { className: "mg-cols" },
-    el("div", { className: "mg-colhead" }, `Old · normalized ${pages(u.parts)}`),
+    el("div", { className: "mg-colhead" }, live ? `Merged · normalized ${pages(u.parts)} with your decisions (type to edit)` : `Old · normalized ${pages(u.parts)}`),
     el("div", { className: "mg-colhead" }, `Good · ${goodPages(u.good_where)}${state.printed ? " · as printed" : ""}`));
   const openC = state.open ? byKey.get(state.open) : null;
   const addRow = (oldCell, goodCell, keys) => {
@@ -360,9 +486,14 @@ export function renderUnit(root, view, state, nav) {
     if (openC && openC.placed && keys.has(openC.key)) grid.append(panel(openC, view, state, nav));
   };
   const keysIn = (segs) => new Set(segs.filter((s) => s.kind === "change").map((s) => s.id));
+  for (const e of view.edits || []) {  // free edits that no longer fit normalized
+    banners.push(el("div", { className: "mg-banner" }, `Your edit “${e.old.trim() || "∅"} → ${e.text.trim() || "∅"}” (p.${e.page}) `,
+      e.state === "overlap" ? "now runs across a change, " : "no longer finds its words in normalized, ", "so it is not applied. ",
+      el("button", { className: "link", textContent: "drop it", onclick: () => nav.dropEdit(e.key) })));
+  }
   if (!oldSegs.length || !goodSegs.length) {  // one side empty: its explanation, the other side whole
     const o = el("div", { className: "mg-col mg-serif" }), g = el("div", { className: "mg-col mg-serif" });
-    if (oldSegs.length) fill(o, oldSegs, "old", state, byKey, nav.pick);
+    if (oldSegs.length) fillOld(o, oldSegs);
     else o.append(el("div", { className: "mg-empty", textContent: view.empty.old || "No old text." }));
     if (goodSegs.length) fill(g, goodSegs, "good", state, byKey, nav.pick);
     else g.append(el("div", { className: "mg-empty", textContent: view.empty.good || "No Good text." }));
@@ -371,7 +502,7 @@ export function renderUnit(root, view, state, nav) {
     for (const [a, b] of rowsOf(oldSegs, goodSegs)) {
       const os = oldSegs.filter((s) => s.k >= a && s.k < b), gs = goodSegs.filter((s) => s.k >= a && s.k < b);
       const o = el("div", { className: "mg-col mg-serif" }), g = el("div", { className: "mg-col mg-serif" });
-      fill(o, os, "old", state, byKey, nav.pick);
+      fillOld(o, os);
       fill(g, gs, "good", state, byKey, nav.pick);
       addRow(o, g, keysIn(os));
     }
@@ -394,11 +525,23 @@ export function renderUnit(root, view, state, nav) {
 
   const scans = unitScanBar(view, state);  // every unit: its old and Good pages side by side, under the text
   root.replaceChildren(top, ...banners, grid, ...(scans ? [scans] : []), ...below);
+  if (pendingFocus) {  // ✎: the caret at the end of that change's text, to edit it
+    const sp = root.querySelector(`.mg-seg[data-key="${CSS.escape(pendingFocus)}"]`);
+    pendingFocus = null;
+    if (sp) {
+      const r = document.createRange(), last = [...sp.childNodes].filter((n) => !(n.dataset && n.dataset.noser)).pop();
+      if (last) r.setStartAfter(last); else r.setStart(sp, 0);
+      r.collapse(true);
+      sp.closest(".mg-col").focus();
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    }
+  }
 
   // j/k: next/previous change (in the old column's order, unplaced last); n/p: unit; Esc: list
   order = [...new Set([...root.querySelectorAll(".mg-col .mg-ch")].map((n) => n.dataset.id)), ...unplaced.map((c) => c.key)];
   document.onkeydown = (e) => {
-    if (e.metaKey || e.ctrlKey || e.altKey || /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if (undoKey(e)) { e.preventDefault(); nav.undoLast(); return; }
+    if (e.metaKey || e.ctrlKey || e.altKey || e.target.isContentEditable || /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
     const k = order.indexOf(state.open);
     if (e.key === "j" && order.length) go({ open: order[k < 0 ? 0 : Math.min(order.length - 1, k + 1)] });
     else if (e.key === "k" && order.length) go({ open: order[k <= 0 ? 0 : k - 1] });

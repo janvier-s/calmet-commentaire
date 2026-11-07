@@ -600,6 +600,19 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 .mg-uitem:hover, .mg-uitem.open { background: var(--accent-weak); }
 .mg-banner.mg-info { color: var(--info); border-color: var(--info-border); background: var(--info-bg); }
 .mg-unitscans { grid-column: 1 / -1; margin: 6px 0 10px; }
+/* the merged column: editable text, a change's buttons after it, ghosts (shown, not in the text) */
+.mg-col[contenteditable="true"] { outline: none; caret-color: var(--accent); }
+.mg-col[contenteditable="true"]:focus { box-shadow: inset 2px 0 0 var(--accent); }
+.mg-marker { font: 10px var(--font); color: var(--c-fn); vertical-align: super; padding: 0 1px; user-select: none; }
+.mg-edited { text-decoration: underline dashed var(--accent) 1px; text-underline-offset: 3px; }
+.mg-ghost { user-select: none; }
+.mg-btns { display: inline-flex; gap: 1px; margin: 0 3px 0 1px; vertical-align: 1px; user-select: none; white-space: nowrap; }
+.mg-btn { font: 11px/1 var(--font); padding: 1px 4px; min-width: 18px; border: 1px solid var(--border); border-radius: 4px;
+          background: var(--surface); color: var(--muted); cursor: pointer; }
+.mg-btn:hover { color: var(--text); border-color: var(--accent); }
+.mg-btn.on { color: var(--ok-text); background: var(--ok); border-color: var(--ok); }
+.mg-btn-old.on { background: var(--muted); border-color: var(--muted); }
+.mg-btn-info { border-style: dashed; }
 
 /* compact chrome: filters and marks share the top bar; the page-info block and the scan toolbar's wrap are gone */
 #filters { display: flex; gap: 4px; align-items: center; }

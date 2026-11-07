@@ -172,6 +172,18 @@ def free_edit(docs, vol, uid, page, path, at, old, text):
         return rec
 
 
+def drop_edit(docs, vol, uid, key):
+    """Take back the unit's free edit `key`; False when it has none such."""
+    with _lock:
+        doc = load(docs, vol)
+        rec = doc["decisions"].get(key)
+        if not rec or rec.get("kind") != "edit" or rec.get("uid") != uid:
+            return False
+        del doc["decisions"][key]
+        _save(docs, vol, doc)
+        return True
+
+
 def locate_edit(rec, field_text):
     """((start, end) or None, state) of a free edit in the field's live text: current where it was made;
     reattached when its old text is now at exactly one other place; else reopened."""

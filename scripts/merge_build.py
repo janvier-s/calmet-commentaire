@@ -301,9 +301,11 @@ def merged_segments(u, texts, r, decisions):
         def uncovered(x, y):
             return "".join(field[i] for i in range(x, y) if not any(a <= i < b for a, b, _, _ in sp))
 
-        for p in mine:
+        for n, p in enumerate(mine):
             if last_page is not None and page != last_page:
                 out.append({"kind": "seam", "t": "", "page": page, "k": p["k"]})
+            elif n == 0 and part:  # the space between two fields: shown, not part of either
+                out.append({"kind": "join", "t": " ", "k": p["k"]})
             last_page = page
             base = {"k": p["k"], "page": page, "path": path, "a": p["a"], "b": p["b"]}
             own = [x for x in sp if owner[id(x[3])] == id(p)]

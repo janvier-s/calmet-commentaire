@@ -3,10 +3,12 @@ import { el } from "./goodfig.js";
 import { renderList } from "./merge_list.js";
 import { renderUnit } from "./merge_unit.js";
 import { filterRows, neighbours, parseHash, sortRows, toHash } from "./merge_state.js";
+import { Undo, inverse } from "./merge_edit.js";
 
 const root = document.getElementById("mg-root");
 const lists = new Map();  // vol -> /api/merge/list answer
 let vols = null;
+const undo = new Undo();  // the screen's decisions and edits, for Ctrl/Cmd+Z
 
 async function get(path) {
   const r = await fetch(path, { credentials: "same-origin" });
@@ -30,6 +32,31 @@ async function send(path, vol, uid, body) {
   const row = lists.get(vol)?.rows.find((x) => x.uid === uid);
   if (row) row.progress = r.progress;
   return r;
+}
+
+/** Text typed in the merged column (or a free edit dropped): the answer carries the unit's fresh view. */
+async function sendEdit(vol, uid, body) {
+  const r = await post("/api/merge/edit", { vol, uid, ...body });
+  unitCache = r.view ? [vol, uid, r.view] : null;
+  const row = lists.get(vol)?.rows.find((x) => x.uid === uid);
+  if (row && r.progress) row.progress = r.progress;
+  if (r.merged_error) console.warn("merged not rebuilt:", r.merged_error);
+  return r;
+}
+
+/** Ctrl/Cmd+Z: the last decision or edit put back as it was. */
+async function undoLast() {
+  const x = undo.pop();
+  if (!x) return;
+  const inv = inverse(x);
+  try {
+    if (inv.kind === "decide") await send("/api/merge/decide", inv.vol, inv.uid, { key: inv.key, choice: inv.choice, text: inv.text });
+    else await sendEdit(inv.vol, inv.uid, { page: inv.page, path: inv.path, a: inv.a, b: inv.b, text: inv.text });
+  } catch (e) {
+    alert(`Not undone: ${e.message}`);
+  }
+  unitCache = null;
+  draw();
 }
 
 async function list(vol) {
@@ -86,6 +113,9 @@ async function draw() {
       openUnit: (uid, open) => { location.hash = toHash({ ...state, uid, open }); },
       decide: (key, choice, text) => send("/api/merge/decide", state.vol, state.uid, { key, choice, text }),
       mark: (key, label) => send("/api/merge/mark", state.vol, state.uid, { key, label }),
+      edit: (page, path, a, b, text) => sendEdit(state.vol, state.uid, { page, path, a, b, text }),
+      dropEdit: (key) => sendEdit(state.vol, state.uid, { drop: key }).then(() => draw(), (e) => alert(`Not saved: ${e.message}`)),
+      undo, undoLast,
       redraw: draw, fail: (e) => alert(`Not saved: ${e.message}`) };
     const y = window.scrollY;
     renderUnit(root, view, state, nav);

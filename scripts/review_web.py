@@ -812,6 +812,12 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         """Text typed in the merged column: field span (a, b) of normalized becomes `text`. Inside a change's
         segment it is that change's edit; in plain text a free edit, narrowed to the words that differ."""
         vol, doc, u = merge_target(body)[:3]
+        if body.get("drop"):  # a free edit taken back (one reopened: its words no longer there)
+            if not merge_decisions.drop_edit(store.docs, vol, u["uid"], str(body["drop"])):
+                raise ApiError(404, {"error": "no such edit in this unit"})
+            out = merge_rebuild(vol, doc, u, {"progress": merge_decisions.unit_progress(merge_decisions.load(store.docs, vol), u)})
+            out["view"] = merge_view.unit_view(doc, u["uid"], store, merge_decisions.load(store.docs, vol))
+            return out
         try:
             page, a, b, path, text = int(body["page"]), int(body["a"]), int(body["b"]), str(body["path"]), str(body["text"])
         except (KeyError, TypeError, ValueError):
@@ -831,6 +837,11 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
             rec = merge_decisions.decide(store.docs, vol, u["uid"], c, "edit", text.strip(),
                                          unit_changes=u.get("changes") or [])
             out = merge_answer(vol, u, c, rec)
+        elif inside and text == texts[part][a:b]:  # back to normalized's text: the edits there go
+            for rec in merge_decisions.free_edits(merge_decisions.load(store.docs, vol), u["uid"]):
+                if (rec["page"], rec["path"]) == (page, path) and rec["at"] < b and a < rec["at"] + max(len(rec["old"]), 1):
+                    merge_decisions.drop_edit(store.docs, vol, u["uid"], rec["key"])
+            out = {"progress": merge_decisions.unit_progress(merge_decisions.load(store.docs, vol), u)}
         elif inside:
             at, old, new = merge_build.narrow(texts[part], a, b, text)
             merge_decisions.free_edit(store.docs, vol, u["uid"], page, path, at, old, new)

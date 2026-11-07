@@ -155,3 +155,24 @@ def test_merge_decide_rebuilds_page(web):
     assert code == 200
     merged = json.loads((web.data / "22_proverbes" / "merged" / "page_0194.json").read_text())
     assert "prudent" in merged["commentary"][1]["french_commentary"]
+
+
+def test_merge_edit_drop(web):
+    base = {"vol": "22_proverbes", "uid": UID}
+    web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 16, "b": 22, "text": " de toute la"})
+    f = web.data.parent / "docs" / "good_merge" / "22_proverbes.json"
+    key = next(k for k in json.loads(f.read_text())["decisions"] if k.startswith("edit@"))
+    code, r = web("/api/merge/edit", {**base, "drop": key})
+    assert code == 200 and not any(k.startswith("edit@") for k in json.loads(f.read_text())["decisions"])
+    merged = json.loads((web.data / "22_proverbes" / "merged" / "page_0194.json").read_text())
+    assert merged["commentary"][1]["french_commentary"] == "Un esclave qui a de la sagesse ^{(a)}."
+    assert web("/api/merge/edit", {**base, "drop": "edit@other:1:x:0"})[0] == 404
+
+
+def test_merge_edit_reverting_a_segment_removes_its_edit(web):
+    base = {"vol": "22_proverbes", "uid": UID}
+    web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 10, "b": 22, "text": " lequel a de la"})
+    f = web.data.parent / "docs" / "good_merge" / "22_proverbes.json"
+    assert any(k.startswith("edit@") for k in json.loads(f.read_text())["decisions"])
+    code, _ = web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 10, "b": 22, "text": " qui a de la"})
+    assert code == 200 and not any(k.startswith("edit@") for k in json.loads(f.read_text())["decisions"])

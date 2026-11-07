@@ -1,8 +1,9 @@
 // The Good_Calmet crop figure, shared by the queue's proposal cards and the /merge screen. Imports nothing
 // from app.js (its import has side effects against index.html's DOM).
 
-export const el = (tag, props = {}, ...kids) => {
+export const el = (tag, { dataset, ...props } = {}, ...kids) => {
   const e = Object.assign(document.createElement(tag), props);
+  if (dataset) Object.assign(e.dataset, dataset);
   e.append(...kids.filter((k) => k != null));
   return e;
 };
