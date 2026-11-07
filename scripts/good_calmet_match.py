@@ -10,11 +10,15 @@ Usage:
   uv run --with numpy --with scikit-learn scripts/good_calmet_match.py \
       <work_dir> <book_dir> <out.json> <manifest.json>...
   uv run --with numpy scripts/good_calmet_match.py --strays <alignment.json> [crops.json]
-      the stray rule (bracket_strays) on an existing alignment, and the crops.json records it changes
+      the stray and orphan rules (bracket_strays, bracket_orphans) on an existing alignment, and the
+      crops.json records they change
 
 A stray: a page whose best match breaks the page order alone (not in a run of out-of-order pages, which is
 a passage the edition moved) and far from the in-order pages around it. Its OCR matched an unrelated page
 weakly (an added passage of Good's); it takes the sources of the pages around it instead.
+
+An orphan: a page that matches nothing (a passage Good added, or rewrote past recognition) between two pages
+matched in order and close: it takes their sources too, so its notes are read and paired.
 """
 import json, re, sys, unicodedata
 from pathlib import Path
@@ -114,15 +118,38 @@ def bracket_strays(rows, reach=5):
     return changed
 
 
+def bracket_orphans(rows, reach=5):
+    """Orphans (see the module's doc) given the sources of the pages before and after them, in place: source
+    the one before, also the one after (when it differs), orphan: True. rows: one book's alignment rows in PDF
+    order. Returns the rows changed."""
+    changed = []
+    for i in range(1, len(rows) - 1):
+        r, before, after = rows[i], rows[i - 1], rows[i + 1]
+        if r.get("source") or not before.get("source") or not after.get("source") or before.get("orphan"):
+            continue
+        if before.get("out_of_order") or after.get("out_of_order"):
+            continue
+        lo, hi = _num(before["source"]), _num(after["source"])
+        if not 0 <= hi - lo <= reach:
+            continue
+        r.update(source=before["source"], orphan=True)
+        if hi != lo:
+            r["also"] = after["source"]
+        changed.append(r)
+    return changed
+
+
 def strays_cli(argv):
     """--strays <alignment.json> [crops.json]: the rule on an existing alignment (per book, in its order)."""
     al = Path(argv[0])
     rows = json.loads(al.read_text())
     changed = []
     for vol in dict.fromkeys(r.get("vol") for r in rows):
-        changed += bracket_strays([r for r in rows if r.get("vol") == vol])
+        book = [r for r in rows if r.get("vol") == vol]
+        changed += bracket_strays(book) + bracket_orphans(book)
     for r in changed:
-        print(f"stray {r['pdf']} p.{r['pdf_page']}: {r['stray']['source']} ({r['stray']['sim']}) -> {r['source']}"
+        was = f"{r['stray']['source']} ({r['stray']['sim']})" if r.get("stray") else "no match"
+        print(f"{'orphan' if r.get('orphan') else 'stray'} {r['pdf']} p.{r['pdf_page']}: {was} -> {r['source']}"
               + (f" (also {r['also']})" if r.get("also") else ""))
     if not changed:
         return
@@ -133,7 +160,7 @@ def strays_cli(argv):
         for r in changed:
             rec = crops.get(f"{r['pdf']}/page_{r['pdf_page']:04d}")
             if rec is not None:
-                rec.update(source=r["source"], stray=r["stray"])
+                rec.update(source=r["source"], **{k: r[k] for k in ("stray", "orphan") if k in r})
                 if r.get("also"):
                     rec["also"] = r["also"]
         cp.write_text(json.dumps(crops, indent=0), encoding="utf-8")  # crops.json's own format
@@ -178,6 +205,8 @@ def main():
         rows.append(row)
     for r in bracket_strays(rows):
         print(f"  stray {r['pdf']} p.{r['pdf_page']}: {r['stray']['source']} -> {r['source']}")
+    for r in bracket_orphans(rows):
+        print(f"  orphan {r['pdf']} p.{r['pdf_page']}: no match -> {r['source']}")
     out.write_text(json.dumps(rows, indent=1, ensure_ascii=False))
     matched = [r for r in rows if "source" in r]
     sims = np.array([r["sim"] for r in matched])

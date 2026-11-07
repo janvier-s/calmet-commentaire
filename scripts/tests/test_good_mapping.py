@@ -34,6 +34,27 @@ def test_a_near_jitter_is_kept():
     assert gm.bracket_strays(rows) == []
 
 
+def test_orphan_takes_the_sources_around_it():
+    # Good 319 (printed 69, Gen 2:13): mostly text Good added, no match; between 162 and 163
+    rows = [row(318, 162), row(319, None), row(320, 163), row(321, 164)]
+    changed = gm.bracket_orphans(rows)
+    assert [r["pdf_page"] for r in changed] == [319]
+    assert (rows[1]["source"], rows[1]["also"], rows[1]["orphan"]) == ("page_0162", "page_0163", True)
+
+
+def test_an_orphan_between_one_source_has_no_also():
+    rows = [row(282, 136), row(283, None), row(284, 136)]
+    gm.bracket_orphans(rows)
+    assert rows[1]["source"] == "page_0136" and "also" not in rows[1]
+
+
+def test_orphans_not_bracketed_in_order_are_kept():
+    rows = [row(33, None), row(35, None), row(41, None), row(153, 99),  # front matter: nothing before
+            row(265, 238), row(266, None), row(267, 237),               # neighbours out of order
+            row(300, 140), row(301, None), row(302, 160)]               # too far apart
+    assert gm.bracket_orphans(rows) == []
+
+
 def test_good_order_puts_a_moved_passage_after_its_good_page():
     import good_notes as gn
     recs = [{"source": "page_0102", "moved": ["page_0105", "page_0106"]}, {"source": "page_0104"}]

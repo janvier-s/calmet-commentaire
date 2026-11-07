@@ -89,6 +89,15 @@ def block_top(pdf, page):
     return int(0.7 * h), False
 
 
+LOW_TOP = 0.45  # the second crop's top on a page Kraken found no note mark on and Flash read none in
+
+
+def page_height(pdf, page):
+    from PIL import Image
+    with Image.open(image(pdf, page)) as im:
+        return im.size[1]
+
+
 def make_crop(pdf, page, top):
     from PIL import Image
     out = path(pdf, page, "png")
@@ -185,7 +194,7 @@ async def _read_page(pdf, page, tries):
     if prep is None:
         return None
     crop, top, kraken = prep
-    raw, err = None, None
+    raw, err, higher = None, None, False
     for t in range(tries):
         if QUOTA["hit"]:
             return None
@@ -195,9 +204,15 @@ async def _read_page(pdf, page, tries):
         notes = parse(raw) if raw is not None else None
         if notes == [] and kraken and t < tries - 1:
             notes = None  # NONE where Kraken saw a note's mark: Flash missed them, ask again (accepted at the last try)
+        if notes == [] and not kraken and not higher and t < tries - 1:
+            # NONE on a crop from 70% down: a short page (a chapter's end, a vignette below) has its notes
+            # higher up; asked once more on a crop from 45% down
+            higher, notes = True, None
+            top = await asyncio.to_thread(lambda: int(LOW_TOP * page_height(pdf, page)))
+            crop = await asyncio.to_thread(make_crop, pdf, page, top)
         if notes is not None:
             d = {"version": VERSION, "model": MODEL, "pdf": pdf, "pdf_page": page, "top": top,
-                 "top_from": "kraken" if kraken else "70%", "raw": raw, "notes": notes}
+                 "top_from": "kraken" if kraken else "45%" if higher else "70%", "raw": raw, "notes": notes}
             path(pdf, page).write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
             return d
         if err and re.search(r"quota|exhausted|429|rate limit", err, re.I):
