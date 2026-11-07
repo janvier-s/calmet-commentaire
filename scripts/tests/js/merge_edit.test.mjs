@@ -1,7 +1,7 @@
 // The /merge merged column's pure helpers: raw text <-> nodes, the segments edited, undo, the Ctrl+Z gate.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { Undo, inverse, segmentEdits, toNodes, toRaw, undoKey } from "../../review_web/merge_edit.js";
+import { Undo, diffClass, inverse, segmentEdits, toNodes, toRaw, undoKey } from "../../review_web/merge_edit.js";
 
 test("raw text round-trips through nodes, markers atomic, italics marked", () => {
   const raw = "Son Verbe ^{(a)} et _sa_ sagesse.";
@@ -43,4 +43,13 @@ test("Ctrl/Cmd+Z undoes a decision only outside the text being typed", () => {
   assert.equal(undoKey({ key: "z", ctrlKey: true, shiftKey: true, target: body }), false);
   assert.equal(undoKey({ key: "z", ctrlKey: true, target: { tagName: "DIV", isContentEditable: true } }), false);
   assert.equal(undoKey({ key: "z", ctrlKey: true, target: { tagName: "TEXTAREA", isContentEditable: false } }), false);
+});
+
+test("diffClass: colour by kind, strength by class, decided faded", () => {
+  assert.equal(diffClass({ kind: "insert", class: "substantive" }, false), "mg-k-add mg-s-sub");
+  assert.equal(diffClass({ kind: "only_normalized", class: "cosmetic" }, false), "mg-k-cut mg-s-cos");
+  assert.equal(diffClass({ kind: "replace", class: "noise" }, true), "mg-k-swap mg-s-noise mg-decided");
+  assert.equal(diffClass({ kind: "unclear", class: "substantive" }, false), "mg-k-swap mg-s-sub");
+  assert.equal(diffClass({ kind: "replace", class: "moved" }, false), "mg-k-move mg-s-sub");
+  assert.equal(diffClass({ kind: "moved", class: "cosmetic" }, false), "mg-k-move mg-s-cos");
 });

@@ -3,7 +3,7 @@
 import { el } from "./goodfig.js";
 import { badge, ref } from "./merge_list.js";
 import { BOOK_TITLES, toHash, undecided, unitScans } from "./merge_state.js";
-import { segmentEdits, toNodes, undoKey } from "./merge_edit.js";
+import { diffClass, segmentEdits, toNodes, undoKey } from "./merge_edit.js";
 
 const CLS_SHOWN = new Set(["substantive", "cosmetic", "moved"]);
 const ROW_WORDS = 40;  // a row closes after a run that agrees on both sides, once it holds this many words
@@ -36,14 +36,15 @@ function segNode(s, side, state, byKey, onPick) {
   const c = byKey.get(s.id);
   const shown = CLS_SHOWN.has(s.cls) || state.noise;
   if (!shown) return s.t ? document.createTextNode(s.t) : null;
-  const cls = CLS_SHOWN.has(s.cls) ? s.cls : "noise";
   const open = state.open === s.id ? " open" : "";
   const gap = c && c.gap_in_normalized ? " mg-gap" : "";
   const lead = s.t.match(/^\s*/)[0];
   const body = s.t.slice(lead.length);
+  const d = (c && c.decision) || {};
+  const dc = diffClass({ kind: c ? c.kind : "replace", class: s.cls }, !!(d.choice && (d.state === "current" || d.state === "reattached")));
   const node = body
-    ? el("span", { className: `mg-ch mg-${cls}${gap}${open}` }, ...flagged(body, s.flags || [], lead.length))
-    : el("span", { className: `mg-ch mg-mark mg-${cls}${open}`, textContent: side === "good" ? "cut" : "added",
+    ? el("span", { className: `mg-ch ${dc}${gap}${open}` }, ...flagged(body, s.flags || [], lead.length))
+    : el("span", { className: `mg-ch mg-mark ${dc}${open}`, textContent: side === "good" ? "cut" : "added",
       title: side === "good" ? "Good has nothing here" : "only Good has words here" });
   node.dataset.id = s.id;
   node.title = node.title || `${s.cls} · ${c ? c.kind : ""}`;
@@ -138,9 +139,7 @@ function mergedNode(s, i, state, byKey, nav) {
   if (s.kind !== "change") return span;
   const c = byKey.get(s.id);
   if (!(CLS_SHOWN.has(s.cls) || state.noise)) return span;
-  const cls = CLS_SHOWN.has(s.cls) ? s.cls : "noise";
-  span.classList.add("mg-ch", `mg-${cls}`);
-  if (s.choice) span.classList.add("mg-decided");
+  span.classList.add("mg-ch", ...diffClass({ kind: s.ckind, class: s.cls }, !!s.choice).split(" "));
   if (state.open === s.id) span.classList.add("open");
   span.dataset.id = span.dataset.key = s.id;
   span.title = `${s.cls} · ${s.ckind}${s.choice ? ` · decided: ${s.choice}` : ""}`;

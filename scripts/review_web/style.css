@@ -9,6 +9,7 @@
   --info-bg: #eef2f8; --info: #4d6288; --info-border: #b9c6dc; --hi: #ffe1a8; --scan-bg: #e4dccb;
   --mark: #b9a77c; --quote: #9a7200; --trans: #8a5cc4; --save: #3b6ea5; --unsaved: #c2185b;
   --c-verse: #3b6ea5; --c-note: #c27a12; --c-fn: #7a4fa0; --c-head: #3f8a5a; --teal: #1b8a8f;
+  --diff-add: #155c2b; --diff-cut: #a8241c; --diff-swap: #1a56a0; --diff-move: #7238a8;
 }
 :root[data-theme="light"] {
   --bg: #f5f5f7; --panel: #ececf0; --surface: #ffffff; --field: #fbfbfd; --border: #dcdce2;
@@ -17,6 +18,7 @@
   --info-bg: #eef3fb; --info: #3a5a95; --info-border: #c5d3ea; --hi: #ffe7a3; --scan-bg: #e6e6ea;
   --mark: #a8a8b0; --quote: #946f00; --trans: #8656c8; --save: #2f6fb8; --unsaved: #c2185b;
   --c-verse: #2f6fb8; --c-note: #c47100; --c-fn: #7d4cb0; --c-head: #2e8a55; --teal: #0f8a9a;
+  --diff-add: #17602f; --diff-cut: #ab231b; --diff-swap: #1757a8; --diff-move: #7037ad;
 }
 :root[data-theme="dark"] {
   --bg: #171512; --panel: #1f1c17; --surface: #25211b; --field: #2b2620; --border: #3a342a;
@@ -25,6 +27,7 @@
   --info-bg: #1e2633; --info: #9db4dc; --info-border: #34435c; --hi: #6b4f17; --scan-bg: #0f0e0c;
   --mark: #6a6152; --quote: #ecc85a; --trans: #c9a9f2; --save: #33639c; --unsaved: #b0306a;
   --c-verse: #7fb0e8; --c-note: #f0a23a; --c-fn: #b892e0; --c-head: #7cc79a; --teal: #2a9ea8;
+  --diff-add: #74d892; --diff-cut: #ff8f85; --diff-swap: #93bdff; --diff-move: #d3abff;
 }
 
 * { box-sizing: border-box; }
@@ -545,7 +548,7 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 .mg-serif { font-family: "Iowan Old Style", Georgia, serif; }
 .mg-lemma { color: var(--lemma); font-size: 15px; }
 .mg-counts { font-size: 12px; }
-.mg-c-s { color: var(--danger); } .mg-c-c { color: var(--quote); } .mg-c-m { color: var(--info); }
+.mg-c-s { color: var(--danger); } .mg-c-c { color: var(--quote); } .mg-c-m { color: var(--diff-move); }
 .mg-toggle { font-size: 12px; display: inline-flex; align-items: center; gap: 2px; }
 .mg-progress { min-width: 1px; }
 .mg-banner { margin: 8px 12px 0; padding: 4px 10px; border-radius: 6px; color: var(--warn); border: 1px solid var(--warn); background: var(--accent-weak); font-size: 13px; }
@@ -606,6 +609,19 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
 .mg-marker { font: 10px var(--font); color: var(--c-fn); vertical-align: super; padding: 0 1px; user-select: none; }
 .mg-edited { text-decoration: underline dashed var(--accent) 1px; text-underline-offset: 3px; }
 .mg-ghost { user-select: none; }
+/* the diff: colour by what Good did, strength by class, faded with a check once decided */
+.mg-k-add { --dc: var(--diff-add); } .mg-k-cut { --dc: var(--diff-cut); }
+.mg-k-swap { --dc: var(--diff-swap); } .mg-k-move { --dc: var(--diff-move); }
+.mg-ch.mg-s-sub { color: var(--dc); background: color-mix(in srgb, var(--dc) 17%, transparent); }
+.mg-ch.mg-s-cos { color: var(--dc); background: color-mix(in srgb, var(--dc) 7%, transparent); }
+.mg-ch.mg-s-noise { color: inherit; background: none; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--dc) 70%, transparent); }
+.mg-ch.mg-k-cut:not(.mg-decided) { text-decoration: line-through; text-decoration-thickness: 1.5px; }
+.mg-ch.mg-decided { color: var(--text); background: color-mix(in srgb, var(--dc) 6%, transparent); box-shadow: none; }
+.mg-ch.mg-decided::after { content: "✓"; font: 10px var(--font); color: var(--dc); margin-left: 2px; vertical-align: 2px; }
+.mg-ghost-add { color: var(--diff-add); text-decoration: underline dashed var(--diff-add) 1px; text-underline-offset: 3px; opacity: .85; }
+.mg-ghost-cut { color: var(--diff-cut); text-decoration: line-through; opacity: .6; }
+.mg-mark.mg-k-add { color: var(--diff-add); } .mg-mark.mg-k-cut { color: var(--diff-cut); }
+.mg-mark.mg-k-swap { color: var(--diff-swap); } .mg-mark.mg-k-move { color: var(--diff-move); }
 .mg-btns { display: inline-flex; gap: 1px; margin: 0 3px 0 1px; vertical-align: 1px; user-select: none; white-space: nowrap; }
 .mg-btn { font: 11px/1 var(--font); padding: 1px 4px; min-width: 18px; border: 1px solid var(--border); border-radius: 4px;
           background: var(--surface); color: var(--muted); cursor: pointer; }

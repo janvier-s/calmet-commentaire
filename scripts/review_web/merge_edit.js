@@ -50,3 +50,13 @@ export function undoKey(e) {
   if (!(e.ctrlKey || e.metaKey) || e.shiftKey || e.altKey) return false;
   return !(t.isContentEditable || /^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName || ""));
 }
+
+const KIND = { insert: "add", only_normalized: "cut", replace: "swap", unclear: "swap", moved: "move" };
+const STRENGTH = { substantive: "sub", moved: "sub", cosmetic: "cos" };
+
+/** A change's highlight: colour by what Good did (green added, red cut, blue swapped, purple moved), strength
+ * by its class (substantive solid, cosmetic lighter, noise outlined), faded with a ✓ once decided. */
+export function diffClass(c, decided) {
+  const k = c.class === "moved" ? "move" : KIND[c.kind] || "swap";
+  return `mg-k-${k} mg-s-${STRENGTH[c.class] || "noise"}${decided ? " mg-decided" : ""}`;
+}
