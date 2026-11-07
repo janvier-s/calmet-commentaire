@@ -29,6 +29,7 @@ from pathlib import Path
 
 import merge_build
 import merge_decisions
+import good_normalized
 import merge_view
 import review_proposals as rp
 import review_store as rs
@@ -753,7 +754,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     def merge_doc(q):
         """The volume's good_units.json, for the read-only /merge screen."""
         vol = q.get("vol")
-        doc = merge_view.load(store.data, vol) if vol in merge_view.merge_vols(store.data) else None
+        doc = merge_view.load(store.data, vol, store.docs) if vol in merge_view.merge_vols(store.data) else None
         if doc is None:
             raise ApiError(404, {"error": "no good_units for this book"})
         return vol, doc
@@ -807,6 +808,19 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         except ValueError as e:
             raise ApiError(400, {"error": str(e)})
         return merge_rebuild(vol, doc, u, merge_answer(vol, u, c, rec))
+
+    def merge_cleanup(body):
+        """Take back (undo) or put again one automatic change of Good's text (good_normalized record)."""
+        vol, doc, u, c = merge_target(body)
+        rk = body.get("record")
+        if c is None or not isinstance(rk, str) or not any(good_normalized.key(r) == rk for r in c.get("good_records") or []):
+            raise ApiError(400, {"error": "a record of a change is needed"})
+        good_normalized.save_undo(store.docs, vol, c["id"], rk, undo=body.get("undo", True) is not False)
+        doc = merge_view.load(store.data, vol, store.docs)
+        u = next(x for x in doc["units"] if x["uid"] == u["uid"])
+        out = merge_rebuild(vol, doc, u, {})
+        out["view"] = merge_view.unit_view(doc, u["uid"], store, merge_decisions.load(store.docs, vol))
+        return out
 
     def merge_edit(body):
         """Text typed in the merged column: field span (a, b) of normalized becomes `text`. Inside a change's
@@ -877,7 +891,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return merge_view.scan_boxes(store, vol, page, q.get("path") or "", at, n)
 
     def merge_vols(q):
-        return {"vols": [{"vol": v, "summary": (merge_view.load(store.data, v) or {}).get("summary") or {}}
+        return {"vols": [{"vol": v, "summary": (merge_view.load(store.data, v, store.docs) or {}).get("summary") or {}}
                          for v in merge_view.merge_vols(store.data)]}
 
     def get_merged(q):
@@ -892,7 +906,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
 
     def good_taken(vol, page):
         """{index of the page's Good crop: [boxes]}: Good's words on the crops the /merge decisions took."""
-        doc = merge_view.load(store.data, vol)
+        doc = merge_view.load(store.data, vol, store.docs)
         if doc is None:
             return {}
         crops = [Path(c).resolve() for c in store.good_pages(vol, page)]
@@ -922,7 +936,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/proposal/accept_page": accept_page, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
-            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/merge/decide": merge_decide, "/api/merge/edit": merge_edit, "/api/merge/mark": merge_mark, "/api/todo/delete": delete_todo,
+            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/merge/decide": merge_decide, "/api/merge/edit": merge_edit, "/api/merge/cleanup": merge_cleanup, "/api/merge/mark": merge_mark, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
             "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit, "/api/good_link": good_link}
 

@@ -211,3 +211,20 @@ def test_edit_accepted_with_the_fields_hash(web):
     code, _ = web("/api/merge/edit", {**base, "page": 194, "path": T2, "a": 10, "b": 22, "text": " lequel a de la",
                                       "h": v["fields"][f"194:{T2}"]})
     assert code == 200
+
+
+def test_cleanup_lists_records_and_undo_takes_one_back(web):
+    import good_normalized as gn
+    rec = {"i": 0, "before": "sagese", "after": "sagesse", "rule": "spelling"}
+    gn.store_path(web.data, "22_proverbes").write_text(json.dumps(
+        {"changes": {"c2": {"src": gn.src_hash("sagese"), "records": [rec]}}}), encoding="utf-8")
+    k = keys(web)
+    _, u = web(f"/api/merge/unit?vol=22_proverbes&uid={UID}")
+    c2 = next(c for c in u["changes"] if c["id"] == "c2")
+    assert c2["good_normalized"] == "sagesse" and c2["good_records"][0]["undone"] is False
+    st, r = web("/api/merge/cleanup", {"vol": "22_proverbes", "uid": UID, "key": k["c2"], "record": gn.key(rec)})
+    c2 = next(c for c in r["view"]["changes"] if c["id"] == "c2")
+    assert st == 200 and "good_normalized" not in c2 and c2["good_records"][0]["undone"] is True
+    st, r = web("/api/merge/cleanup", {"vol": "22_proverbes", "uid": UID, "key": k["c2"], "record": gn.key(rec), "undo": False})
+    assert next(c for c in r["view"]["changes"] if c["id"] == "c2")["good_normalized"] == "sagesse"
+    assert web("/api/merge/cleanup", {"vol": "22_proverbes", "uid": UID, "key": k["c2"], "record": "x => y"})[0] == 400

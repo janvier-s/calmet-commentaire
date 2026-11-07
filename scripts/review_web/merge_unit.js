@@ -382,6 +382,13 @@ function panel(c, view, state, nav) {
   const ctx = c.good_before || c.good_after
     ? el("span", { className: "mg-ctx" }, `… ${c.good_before || ""} `, el("b", { textContent: c.good_punct || c.good_modern || c.good_raw || "∅" }), ` ${c.good_after || ""} …`)
     : null;
+  const cleaned = !(c.good_records || []).length ? null : el("div", { className: "mg-cleaned" },
+    ...c.good_records.map((r) => el("div", {},
+      el("span", { className: "mg-serif", textContent: `${r.before} → ${r.after}` }),
+      el("span", { className: "muted small", textContent: ` ${r.rule}${r.lost ? " · words not found" : ""} ` }),
+      el("button", { className: "link", textContent: r.undone ? "redo" : "undo",
+        title: r.undone ? "Put this automatic change again" : "A false positive: take this automatic change back",
+        onclick: () => nav.cleanup(c.key, `${r.before} => ${r.after}`, !r.undone).then(() => nav.redraw(), nav.fail) }))));
   const scanBox = el("div", { className: "mg-scan" });
   const toggleScans = () => {
     scansOpen.change = !scanBox.childNodes.length;
@@ -419,7 +426,8 @@ function panel(c, view, state, nav) {
       el("button", { className: "link", textContent: "close", title: "Close (Esc)", onclick: () => nav.pick(null) })),
     el("div", { className: "mg-panel-body" },
       row("old", el("span", { className: "mg-serif", textContent: c.old || "∅" })),
-      row("Good", el("span", { className: "mg-serif", textContent: (state.printed ? c.good_raw : c.good_punct || c.good_modern || c.good_raw) || "∅" })),
+      row("Good", el("span", { className: "mg-serif", textContent: (state.printed ? c.good_raw : c.good_normalized || c.good_italic || c.good_punct || c.good_modern || c.good_raw) || "∅" })),
+      row("cleaned", cleaned),
       row("where", `p.${c.page} ${c.path}`),
       row("Good context", ctx),
       row("moved", moved), edited),

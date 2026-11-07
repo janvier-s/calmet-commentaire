@@ -35,8 +35,8 @@ async function send(path, vol, uid, body) {
 }
 
 /** Text typed in the merged column (or a free edit dropped): the answer carries the unit's fresh view. */
-async function sendEdit(vol, uid, body) {
-  const r = await post("/api/merge/edit", { vol, uid, ...body });
+async function sendEdit(vol, uid, body, url = "/api/merge/edit", extra = {}) {
+  const r = await post(url, { vol, uid, ...body, ...extra });
   unitCache = r.view ? [vol, uid, r.view] : null;
   const row = lists.get(vol)?.rows.find((x) => x.uid === uid);
   if (row && r.progress) row.progress = r.progress;
@@ -112,6 +112,7 @@ async function draw() {
     const nav = { ...neighbours(rows, state.uid), rows, list: l,
       openUnit: (uid, open) => { location.hash = toHash({ ...state, uid, open }); },
       decide: (key, choice, text) => send("/api/merge/decide", state.vol, state.uid, { key, choice, text }),
+      cleanup: (key, record, undoIt) => sendEdit(state.vol, state.uid, {}, "/api/merge/cleanup", { key, record, undo: undoIt }),
       mark: (key, label) => send("/api/merge/mark", state.vol, state.uid, { key, label }),
       edit: (page, path, a, b, text, h) => sendEdit(state.vol, state.uid, { page, path, a, b, text, h }),
       dropEdit: (key) => sendEdit(state.vol, state.uid, { drop: key }).then(() => draw(), (e) => alert(`Not saved: ${e.message}`)),
