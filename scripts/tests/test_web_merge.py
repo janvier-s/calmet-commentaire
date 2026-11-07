@@ -67,6 +67,7 @@ def test_api_printed(web):
     assert st == 200 and r == {"text": "l'Homme et Terre.", "flags": []}
     assert web("/api/printed", {"words": []}, token=None)[0] == 403
     assert web("/api/printed", {"words": "x"})[0] == 400
+    assert web("/api/printed", {"words": [{"pt": "Deus"}, {"pt": "&"}], "latin": True})[1]["text"] == "Deus &"
 
 
 UID = "commentary:17:2:0"

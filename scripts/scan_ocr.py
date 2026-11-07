@@ -250,9 +250,13 @@ def modern(text):
         return None
 
 
+OLD_FORMS = [("oi", "ai"), ("oî", "aî"), ("ans", "ants"), ("ens", "ents")]  # avoit, paroît, enfans, présens
+
+
 def modern_words(text, known=None):
-    """Old spellings the modernization left (confondoient, connoissance) as the modern word normalized uses,
-    one or two letter groups changed (spellcheck.old_spelling); a word French already knows stays (lois, fois)."""
+    """Old spellings the modernization left (confondoient, connoissance, enfans) as the modern word normalized
+    uses: one OLD_FORMS change, and only to a word French knows (spellcheck.bare_french_words) when the word
+    itself is unknown. Nothing else is guessed: names (Esau, Cain), Latin (Deus) and verbs (multipliez) stay."""
     import spellcheck
     known = spellcheck.bare_french_words() if known is None else known
     if not known:
@@ -260,12 +264,21 @@ def modern_words(text, known=None):
 
     def one(m):
         w = m.group()
-        if w.lower() in known or len(w) < 4 or w.lower() in PRINTED_ABBREV:  # Matth. is not Math.
+        wl = w.lower()
+        if wl in known or len(w) < 4 or wl in PRINTED_ABBREV:  # Matth. is not Math.
             return w
-        new = spellcheck.old_spelling(w.lower(), known)
-        if not new:
+        found = set()
+        for old, new in OLD_FORMS:
+            i = wl.find(old)
+            while i >= 0:
+                v = wl[:i] + new + wl[i + len(old):]
+                if v in known:
+                    found.add(v)
+                i = wl.find(old, i + 1)
+        if len(found) != 1:
             return w
-        return new.upper() if w.isupper() else new[0].upper() + new[1:] if w[0].isupper() else new
+        v = found.pop()
+        return v.upper() if w.isupper() else v[0].upper() + v[1:] if w[0].isupper() else v
     return re.sub(r"[^\W\d_]+", one, text)
 
 
@@ -279,16 +292,16 @@ MARK = re.compile(r"[.,;:!?]")
 WC_LOW = 0.6  # a mark from a word Kraken read below this is to check
 
 
-def printed(words, closes=False):
+def printed(words, closes=False, latin=False):
     """The words' printed surfaces (`pt`, else `t`) as modern text: {text, flags}. Flags point at marks to check
     against the scan, as offsets into text: {a, b, why}; why: stop_lower (a stop, then a lowercase word),
     inner (a mark inside a word), doubled (two marks), low_conf (a mark Kraken read unsure), no_end (`closes`:
-    the text should end a sentence and has no mark)."""
+    the text should end a sentence and has no mark). `latin`: not modernized, only ſ and ’ made plain."""
     raw = ""
     for w in words:
         p = w.get("pt") or w.get("t") or ""
         raw = raw + p if not raw or raw.endswith(("’", "'")) else raw + " " + p
-    text = modern(raw) if raw else ""
+    text = (raw.replace("ſ", "s").replace("’", "'") if latin else modern(raw)) if raw else ""
     if text is None:
         text = raw
     return {"text": text, "flags": flags_of(text, [w.get("wc", 1) for w in words for _ in MARK.findall(w.get("pt") or "")], closes)}

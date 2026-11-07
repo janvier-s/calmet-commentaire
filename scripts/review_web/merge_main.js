@@ -81,7 +81,7 @@ async function draw() {
     }
     const sameUnit = prev && prev.uid === state.uid && prev.vol === state.vol;
     state._scrollTo = sameUnit && prev.open !== state.open;
-    const rows = sortRows(filterRows(l.rows, state));
+    const rows = sortRows(filterRows(l.rows, state, state.uid));
     const nav = { ...neighbours(rows, state.uid), rows, list: l,
       openUnit: (uid, open) => { location.hash = toHash({ ...state, uid, open }); },
       decide: (key, choice, text) => send("/api/merge/decide", state.vol, state.uid, { key, choice, text }),

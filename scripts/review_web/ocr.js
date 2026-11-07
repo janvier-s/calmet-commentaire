@@ -533,9 +533,9 @@ function extrasAt(i, j, loc) {
 
 /** The scan's words i..j as modern text with their printed punctuation (server side: the modernization is
  * Python's), the marks to check said in a toast; the bare words when the server can't. */
-async function printedWords(i, j) {
+async function printedWords(i, j, latin) {
   const ws = res.words.slice(i, j + 1);
-  const r = await api("/api/printed", { words: ws.map((w) => ({ pt: w.pt || w.t, wc: w.wc })) });
+  const r = await api("/api/printed", { words: ws.map((w) => ({ pt: w.pt || w.t, wc: w.wc })), latin });
   if (r.status !== 200) return ws.map((w) => w.t).join(" ");
   const { text, flags } = r.body, WHY = { stop_lower: "stop then lowercase", inner: "mark inside a word",
     doubled: "two marks", low_conf: "mark read unsure", no_end: "no closing mark" };
@@ -546,8 +546,10 @@ async function printedWords(i, j) {
 /** Put the scan's words i..j into the text where they belong: over the text's red words there, if any
  * (when i..j is the whole missing run), else between the words around. */
 async function insertWords(i, j) {
-  if (!placeWord(i, j)) { toast("No place found in the text for it"); return; }
-  const t = await printedWords(i, j);
+  const first = placeWord(i, j), was = res;
+  if (!first) { toast("No place found in the text for it"); return; }
+  const t = await printedWords(i, j, /latin/.test(first.path));  // the Latin is not modernized
+  if (res !== was) { toast("The page changed meanwhile: nothing inserted"); return; }
   const loc = placeWord(i, j), f = loc && fieldOf(loc.path)?.field;  // placed again: the text may have moved meanwhile
   if (!f) { toast("No place found in the text for it"); return; }
   const s = f.text;

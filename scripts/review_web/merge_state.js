@@ -8,9 +8,9 @@ export const BOOK_TITLES = { "01_genese": "Genèse" };
 const isDone = (r) => !!(r.progress && r.progress.done);
 
 /** The rows that pass the filters: `types` null = every type; `chapter` null = every chapter; `progress`
- * "todo" / "done" / null = both. */
-export function filterRows(rows, f) {
-  return rows.filter((r) => (!f.types || f.types.has(r.type)) && f.statuses.has(r.status)
+ * "todo" / "done" / null = both; `keep`: a uid that stays whatever (the unit open, just done under "to do"). */
+export function filterRows(rows, f, keep = null) {
+  return rows.filter((r) => r.uid === keep || (!f.types || f.types.has(r.type)) && f.statuses.has(r.status)
     && (f.chapter == null || r.chapter === f.chapter)
     && (!f.progress || (f.progress === "done") === isDone(r)));
 }

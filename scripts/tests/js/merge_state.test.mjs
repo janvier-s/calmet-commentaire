@@ -67,3 +67,12 @@ test("undecided: noise needs nothing unless marked real; a reopened choice count
   assert.equal(undecided({ class: "cosmetic", decision: dec({ choice: "old", state: "reopened" }) }), true);
   assert.equal(undecided({ class: "cosmetic" }), true);
 });
+
+test("the unit open stays among the rows, done or not, so prev/next still work", () => {
+  const rows = [{ uid: "a", type: "verse", status: "substantive", progress: { done: false }, i: 0 },
+    { uid: "b", type: "verse", status: "substantive", progress: { done: true }, i: 1 },
+    { uid: "c", type: "verse", status: "substantive", progress: { done: false }, i: 2 }];
+  const f = { types: null, statuses: new Set(["substantive"]), chapter: null, progress: "todo" };
+  assert.deepEqual(filterRows(rows, f).map((r) => r.uid), ["a", "c"]);
+  assert.deepEqual(neighbours(sortRows(filterRows(rows, f, "b")), "b"), { prev: "a", next: "c" });
+});

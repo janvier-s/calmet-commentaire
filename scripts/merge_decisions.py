@@ -7,6 +7,7 @@ the unit. A change-less one-sided unit takes a unit decision (keep/drop) under `
 overrides the change's class: what needs a decision, and the gold items for good_variants.
 Nothing here writes normalized.
 """
+import collections
 import datetime
 import hashlib
 import json
@@ -17,7 +18,7 @@ CHOICES = {"good", "old", "both", "edit"}  # take Good / keep old / keep both / 
 UNIT_CHOICES = {"keep", "drop"}
 LABELS = {"noise", "real"}
 ONE_SIDED = {"only_old", "only_good", "uncovered", "unaligned"}  # change-less, they need a unit decision
-_lock = threading.Lock()
+_lock = threading.RLock()  # mark() holds it across its write and the gold export
 
 
 def path(docs, vol):
@@ -56,13 +57,21 @@ def _save(docs, vol, doc):
     os.replace(tmp, f)
 
 
-def _update(docs, vol, uid, c, fields):
-    """Set (or, None, drop) fields of the change's record; a record left with neither choice nor mark goes."""
+def _update(docs, vol, uid, c, fields, unit_changes=None):
+    """Set (or, None, drop) fields of the change's record; a record left with neither choice nor mark goes.
+    With `unit_changes`, a re-attached record moves to the change's key; a reopened one (made against other
+    texts) is dropped: what it said no longer holds, and the new fields start a fresh record."""
     with _lock:
         doc = load(docs, vol)
-        doc.pop("_by_uid", None)
         key = change_key(c) if c is not None else unit_key(uid)
-        rec = doc["decisions"].get(key) or {"uid": uid, "key": key}
+        rec = doc["decisions"].get(key)
+        if c is not None:
+            found, state = lookup(doc, uid, c, unit_changes if unit_changes is not None else [c])
+            if found is not None and state in ("reattached", "reopened"):
+                doc["decisions"].pop(found["key"], None)
+                rec = dict(found, key=key) if state == "reattached" else None
+        doc.pop("_by_uid", None)
+        rec = rec or {"uid": uid, "key": key}
         if c is not None:
             rec.update(id=c["id"], page=c.get("page"), path=c.get("path"), at=c.get("at"), hash=text_hash(c),
                        old=c.get("old") or "", good_raw=c.get("good_raw") or "")
@@ -80,7 +89,7 @@ def _update(docs, vol, uid, c, fields):
         return doc, rec
 
 
-def decide(docs, vol, uid, c, choice, text=None):
+def decide(docs, vol, uid, c, choice, text=None, unit_changes=None):
     """The decision on change c of unit uid (c None: the unit's own keep/drop); choice None clears it."""
     if c is None and choice not in UNIT_CHOICES | {None}:
         raise ValueError(f"a unit decision is keep or drop, not {choice!r}")
@@ -88,17 +97,18 @@ def decide(docs, vol, uid, c, choice, text=None):
         raise ValueError(f"a change decision is one of {sorted(CHOICES)}, not {choice!r}")
     if choice == "edit" and not (text or "").strip():
         raise ValueError("edit needs the text")
-    return _update(docs, vol, uid, c, {"choice": choice, "text": text if choice == "edit" else None})[1]
+    return _update(docs, vol, uid, c, {"choice": choice, "text": text if choice == "edit" else None}, unit_changes)[1]
 
 
-def mark(docs, vol, uid, c, label, data=None, units_doc=None):
+def mark(docs, vol, uid, c, label, data=None, units_doc=None, unit_changes=None):
     """Mark change c noise or real (None clears): overrides its class. With `data` and `units_doc` (the
     volume's good_units.json), the marks go out again as a reference set (export_gold)."""
     if label not in LABELS | {None}:
         raise ValueError(f"a mark is noise or real, not {label!r}")
-    rec = _update(docs, vol, uid, c, {"mark": label})[1]
-    if data is not None and units_doc is not None:
-        export_gold(docs, data, vol, units_doc)
+    with _lock:
+        rec = _update(docs, vol, uid, c, {"mark": label}, unit_changes)[1]
+        if data is not None and units_doc is not None:
+            export_gold(docs, data, vol, units_doc)
     return rec
 
 
@@ -109,8 +119,9 @@ def export_gold(docs, data, vol, units_doc):
     items, chapters = [], set()
     for u in units_doc.get("units") or []:
         changes = u.get("changes") or []
+        found = _matches(doc, u.get("uid"), changes)
         for c in changes:
-            rec, state = lookup(doc, u.get("uid"), c, changes)
+            rec, state = found.get(change_key(c), (None, "none"))
             if not rec or not rec.get("mark") or state not in ("current", "reattached"):
                 continue
             try:
@@ -131,22 +142,43 @@ def export_gold(docs, data, vol, units_doc):
 
 
 def lookup(doc, uid, c, unit_changes):
-    """(record or None, state): current, reattached (key gone, id unique in the unit, same texts),
-    reopened (the texts it was made against changed), none."""
-    rec = doc["decisions"].get(change_key(c))
-    if rec is not None:
-        return rec, "current" if rec.get("hash") == text_hash(c) else "reopened"
-    if sum(1 for x in unit_changes if x.get("id") == c.get("id")) == 1:
-        h = text_hash(c)
-        live = {change_key(x) for x in unit_changes}
-        if "_by_uid" not in doc:
-            doc["_by_uid"] = {}
-            for r in doc["decisions"].values():
-                doc["_by_uid"].setdefault(r.get("uid"), []).append(r)
-        for r in doc["_by_uid"].get(uid, []):
-            if r.get("id") == c.get("id") and r.get("hash") == h and r["key"] not in live:
-                return r, "reattached"
-    return None, "none"
+    """(record or None, state) for change c among its unit's changes: current; reattached (key gone, id unique in
+    the unit, same texts); reopened (the texts it was made against changed: same key, or an orphaned record at
+    the same page, path and at, since a change of texts gives good_variants a new id); none."""
+    return _matches(doc, uid, unit_changes if any(change_key(x) == change_key(c) for x in unit_changes)
+                    else list(unit_changes) + [c]).get(change_key(c), (None, "none"))
+
+
+def _matches(doc, uid, unit_changes):
+    """{change key: (record, state)} for a unit's changes; an orphaned record goes to one change at most."""
+    if "_by_uid" not in doc:
+        doc["_by_uid"] = {}
+        for r in doc["decisions"].values():
+            doc["_by_uid"].setdefault(r.get("uid"), []).append(r)
+    live = {change_key(x) for x in unit_changes}
+    orphans = [r for r in doc["_by_uid"].get(uid, []) if r["key"] not in live and not r["key"].startswith("unit@")]
+    ids = collections.Counter(x.get("id") for x in unit_changes)
+    out, used = {}, set()
+    for c in unit_changes:
+        rec = doc["decisions"].get(change_key(c))
+        if rec is not None:
+            out[change_key(c)] = (rec, "current" if rec.get("hash") == text_hash(c) else "reopened")
+            continue
+        if ids[c.get("id")] == 1:
+            h = text_hash(c)
+            r = next((r for r in orphans if r["key"] not in used and r.get("id") == c.get("id") and r.get("hash") == h), None)
+            if r is not None:
+                used.add(r["key"])
+                out[change_key(c)] = (r, "reattached")
+    for c in unit_changes:  # then the orphans left, by place
+        if change_key(c) in out:
+            continue
+        r = next((r for r in orphans if r["key"] not in used and (r.get("page"), r.get("path"), r.get("at"))
+                  == (c.get("page"), c.get("path"), c.get("at"))), None)
+        if r is not None:
+            used.add(r["key"])
+            out[change_key(c)] = (r, "reopened")
+    return out
 
 
 def needs(c, rec, state):
@@ -166,8 +198,9 @@ def unit_progress(doc, u):
         got = (doc["decisions"].get(unit_key(uid)) or {}).get("choice")
         return {"done": bool(got), "decided": int(bool(got)), "todo": int(not got), "reopened": 0}
     decided = todo = reopened = 0
+    found = _matches(doc, uid, changes)
     for c in changes:
-        rec, state = lookup(doc, uid, c, changes)
+        rec, state = found.get(change_key(c), (None, "none"))
         if not needs(c, rec, state):
             continue
         if rec is not None and rec.get("choice") and state in ("current", "reattached"):

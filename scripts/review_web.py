@@ -295,7 +295,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         ws = body.get("words")
         if not isinstance(ws, list) or not all(isinstance(w, dict) for w in ws):
             raise ApiError(400, {"error": "words: a list of {pt, wc}"})
-        return scan_ocr.printed(ws, closes=bool(body.get("closes")))
+        return scan_ocr.printed(ws, closes=bool(body.get("closes")), latin=bool(body.get("latin")))
 
     def delete_todo(body):
         it = by_id.get(body.get("id"))
@@ -792,7 +792,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     def merge_decide(body):
         vol, doc, u, c = merge_target(body)
         try:
-            rec = merge_decisions.decide(store.docs, vol, u["uid"], c, body.get("choice"), body.get("text"))
+            rec = merge_decisions.decide(store.docs, vol, u["uid"], c, body.get("choice"), body.get("text"),
+                                         unit_changes=u.get("changes") or [])
         except ValueError as e:
             raise ApiError(400, {"error": str(e)})
         return merge_answer(vol, u, c, rec)
@@ -802,7 +803,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if c is None:
             raise ApiError(400, {"error": "a mark is on a change"})
         try:
-            rec = merge_decisions.mark(store.docs, vol, u["uid"], c, body.get("label"), store.data, doc)
+            rec = merge_decisions.mark(store.docs, vol, u["uid"], c, body.get("label"), store.data, doc,
+                                       unit_changes=u.get("changes") or [])
         except ValueError as e:
             raise ApiError(400, {"error": str(e)})
         return merge_answer(vol, u, c, rec)

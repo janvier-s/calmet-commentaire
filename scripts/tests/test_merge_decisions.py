@@ -124,3 +124,53 @@ def test_export_gold(docs, tmp_path):
     assert ev.same({**a, "good_raw": a["good_raw"]}, ref["items"][0])
     md.mark(docs, VOL, "commentary:17:2:0", a, None, data=data, units_doc=units)
     assert [i["label"] for i in json.loads(f.read_text(encoding="utf-8"))["items"]] == ["noise"]
+
+
+def test_reattached_decision_can_be_marked_and_cleared(docs):
+    md.decide(docs, VOL, "u", ch(at=11), "good")
+    moved = ch(at=19)
+    md.mark(docs, VOL, "u", moved, "real", unit_changes=[moved])
+    rec, state = md.lookup(md.load(docs, VOL), "u", moved, [moved])
+    assert state == "current" and (rec["choice"], rec["mark"]) == ("good", "real")
+    assert len(md.load(docs, VOL)["decisions"]) == 1
+    md.decide(docs, VOL, "u", moved, None, unit_changes=[moved])
+    md.mark(docs, VOL, "u", moved, None, unit_changes=[moved])
+    assert md.lookup(md.load(docs, VOL), "u", moved, [moved]) == (None, "none")
+
+
+def test_new_id_at_the_same_place_reopens(docs):
+    md.decide(docs, VOL, "u", ch(id="c1", old="sage", good_raw="sages", at=11), "good")
+    now = ch(id="c9", old="sage", good_raw="prudent", at=11)   # the texts changed: good_variants gave a new id
+    rec, state = md.lookup(md.load(docs, VOL), "u", now, [now])
+    assert state == "reopened" and rec["good_raw"] == "sages"
+    md.decide(docs, VOL, "u", now, "old", unit_changes=[now])
+    doc = md.load(docs, VOL)
+    assert list(doc["decisions"]) == [md.change_key(now)] and md.lookup(doc, "u", now, [now])[1] == "current"
+
+
+def test_an_orphan_reopens_one_change_only(docs):
+    md.decide(docs, VOL, "u", ch(id="c1", at=11), "good")
+    a, b = ch(id="c8", good_raw="x", at=11), ch(id="c9", good_raw="y", at=11)
+    doc = md.load(docs, VOL)
+    assert [md.lookup(doc, "u", c, [a, b])[1] for c in (a, b)] == ["reopened", "none"]
+
+
+def test_marks_from_two_threads_keep_the_gold_file_whole(docs, tmp_path):
+    import threading
+    data = tmp_path / "data"
+    cs = [ch(id=f"c{i}", at=i * 10) for i in range(40)]
+    units = {"vol": VOL, "units": [unit(cs)]}
+    errors = []
+
+    def run(part):
+        try:
+            for c in part:
+                md.mark(docs, VOL, "commentary:17:2:0", c, "noise", data=data, units_doc=units, unit_changes=cs)
+        except Exception as e:  # os.replace of a temp file another thread already moved
+            errors.append(e)
+    ts = [threading.Thread(target=run, args=(cs[k::2],)) for k in range(2)]
+    [t.start() for t in ts]
+    [t.join() for t in ts]
+    assert errors == []
+    ref = json.loads((data / "good_variants_gold" / f"{VOL}_merge.json").read_text(encoding="utf-8"))
+    assert len(ref["items"]) == 40

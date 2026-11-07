@@ -760,3 +760,16 @@ def test_old_spellings_modernized_only_to_known_words():
     assert O.modern_words("Les Cyniques la confondoient, il avoit des lois; Connoissance", known) \
         == "Les Cyniques la confondaient, il avait des lois; Connaissance"
     assert O.modern_words("des Xyzoient", known) == "des Xyzoient"
+
+
+def test_modern_words_leaves_correct_words_names_and_latin():
+    known = frozenset({"multipliés", "levés", "saisi", "eau", "coin", "bétel", "deux", "die", "cos",
+                       "confondaient", "enfants", "connaissance"})
+    text = "Croissez multipliez Levez saisis Esau Cain Béthel Deus dies quos confondoient enfans connoissance"
+    assert O.modern_words(text, known) == \
+        "Croissez multipliez Levez saisis Esau Cain Béthel Deus dies quos confondaient enfants connaissance"
+
+
+def test_printed_without_modernizing_for_latin():
+    r = O.printed([tok("Dixit"), tok("Deus:"), tok("fiat"), tok("lux.")], latin=True)
+    assert r["text"] == "Dixit Deus: fiat lux."
