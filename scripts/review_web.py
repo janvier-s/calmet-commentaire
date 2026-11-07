@@ -155,6 +155,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return {"page": page, "data": data, "version": version, "scan": store.scan(vol, page) is not None,
                 "scan_crop": store.scan_crop(vol, page)[1],
                 "good": len(store.good_pages(vol, page)),
+                "good_keys": [store.good_key(c) for c in store.good_pages(vol, page)],
+                "merged_edited": merged_edited(vol, page, data),
                 "context": store.context(vol, page), "pages": store.pages(vol),
                 "chapters": store.chapters(vol),
                 "issues": rs.page_issues(items, progress, vol, page),
@@ -943,14 +945,36 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if mp.exists() and np_.exists() and np_.stat().st_mtime_ns > mp.stat().st_mtime_ns:
             merged_refresh(vol, page)
         if not mp.exists():
-            return {"data": None, "marks": {}, "hand": {}}
+            return {"data": None, "marks": {}, "italics": {}, "hand": {}}
         merged = json.loads(mp.read_text(encoding="utf-8"))
         old = store.read(vol, page)[0]
         hand = {r["path"]: {"edited": r["text"] is not None, "conflict": r.get("conflict"), "was": r.get("built"),
                             "versions": len(r["versions"])}
                 for r in merged_hand.page_records(merged_hand.load(store.docs, vol), page)}
-        marks = {k: v for k, v in merge_build.page_marks(old, merged).items() if not (hand.get(k) or {}).get("edited")}
-        return {"data": merged, "marks": marks, "scan": good_taken(vol, page), "hand": hand}
+        mine = lambda k: (hand.get(k) or {}).get("edited")  # noqa: E731 - hand-edited fields: the user's text, unmarked
+        marks = {k: v for k, v in merge_build.page_marks(old, merged).items() if not mine(k)}
+        italics = {k: v for k, v in merge_build.page_italics(old, merged).items() if not mine(k)}
+        return {"data": merged, "marks": marks, "italics": italics, "scan": good_taken(vol, page), "hand": hand}
+
+    def merged_edited(vol, page, data):
+        """Has /merge changed this page: its merged page differs from normalized's."""
+        mp = merged_file(vol, page)
+        try:
+            return mp.exists() and json.loads(mp.read_text(encoding="utf-8")) != data
+        except (OSError, ValueError):
+            return False
+
+    def good_step(q):
+        """The Good_Calmet crop before or after `key` (dir -1 / 1) in the book's Good order: {key} or {key: None}."""
+        vol = q.get("vol")
+        if vol not in store.volumes():
+            raise ApiError(404, {"error": f"no volume {vol}"})
+        seq = store.good_seq(vol)
+        key, d = q.get("key"), -1 if q.get("dir") == "-1" else 1
+        if key not in seq:
+            raise ApiError(404, {"error": f"no Good page {key}"})
+        i = seq.index(key) + d
+        return {"key": seq[i] if 0 <= i < len(seq) else None}
 
     def merged_target(b):
         vol, page = vol_page(b)
@@ -1052,7 +1076,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                         out.setdefault(str(crops.index(crop)), []).extend(g.get("boxes") or [])
         return out
 
-    GET = {"/api/config": lambda q: config, "/api/merged": get_merged, "/api/merged/flags": merged_flags, "/api/page": get_page, "/api/queue": queue,
+    GET = {"/api/config": lambda q: config, "/api/merged": get_merged, "/api/merged/flags": merged_flags, "/api/good_step": good_step, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
            "/api/proposal": get_proposal, "/api/good_note": good_note, "/api/good_note/candidates": good_note_candidates,
            "/api/batch": batch, "/api/search": search, "/api/versions": versions,

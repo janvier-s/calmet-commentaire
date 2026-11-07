@@ -287,3 +287,22 @@ def test_merged_rebuilt_when_a_script_wrote_normalized(web):
     os.utime(mf, ns=(1, 1))  # older than normalized
     _, m = web("/api/merged?vol=22_proverbes&page=194")
     assert m["data"]["commentary"][0]["french_commentary"] == "Écrit par un script."
+
+
+def test_page_says_merged_edited_and_good_italics():
+    import merge_build
+    assert merge_build.good_italics("il dit mot ici", "il dit _mot ici_ là") == [(8, 15)]
+    assert merge_build.good_italics("il _dit_ mot", "il _dit_ _mot_") == [(10, 13)]
+    assert merge_build.good_italics("a b", "a b") == []
+    assert merge_build.page_italics({"t": ["x y", "a"]}, {"t": ["_x_ y", "a"]}) == {"t/0": [(1, 2)]}
+
+
+def test_merged_edited_flag(web):
+    _, p = web("/api/page?vol=22_proverbes&page=194")
+    assert p["merged_edited"] is False and p["good_keys"] == []
+    web("/api/merge/decide", {"vol": "22_proverbes", "uid": UID, "key": keys(web)["c1"], "choice": "good"})
+    _, p = web("/api/page?vol=22_proverbes&page=194")
+    assert p["merged_edited"] is True
+    code, m = web("/api/merged?vol=22_proverbes&page=194")
+    assert code == 200 and "italics" in m
+    assert web("/api/good_step?vol=22_proverbes&key=nope&dir=1")[0] == 404

@@ -418,6 +418,55 @@ def page_marks(old_page, new_page, path=""):
     return out
 
 
+def good_italics(old, new):
+    """[(a, b)] in `new`: its italic stretches (between _marks_) whose words were not italic in `old`: the
+    italics the merge took from Good. Words are compared with the marks left out; a run is one span."""
+    import difflib
+    from page_text import italic_runs
+
+    def words(s):
+        it = bytearray(len(s))
+        for a, b in italic_runs(s)[0]:
+            it[a:b] = b"\1" * (b - a)
+        return [(m.group(), m.start(), m.end(), any(it[m.start():m.end()]), it) for m in re.finditer(r"[^\s_]+", s or "")]
+
+    wa, wb = words(old or ""), words(new or "")
+    if not any(w[3] for w in wb):
+        return []
+    was = [False] * len(wb)
+    for tag, i1, _, j1, j2 in difflib.SequenceMatcher(None, [w[0] for w in wa], [w[0] for w in wb], autojunk=False).get_opcodes():
+        if tag == "equal":
+            for k in range(j2 - j1):
+                was[j1 + k] = wa[i1 + k][3]
+    out = []
+    for k, (_, a, b, italic, it) in enumerate(wb):
+        if not italic or was[k]:
+            continue
+        gap = new[out[-1][1]:a] if out else None
+        if out and out[-1][2] == k - 1 and all(c == "_" or (c.isspace() and it[i]) for i, c in enumerate(gap, out[-1][1])):
+            out[-1] = (out[-1][0], b, k)
+        else:
+            out.append((a, b, k))
+    return [(a, b) for a, b, _ in out]
+
+
+def page_italics(old_page, new_page, path=""):
+    """{field path: [(a, b)]}: good_italics of every string of new_page against old_page's (same shape)."""
+    out = {}
+    if isinstance(new_page, dict) and isinstance(old_page, dict):
+        for k, v in new_page.items():
+            out.update(page_italics(old_page.get(k), v, f"{path}/{k}" if path else k))
+    elif isinstance(new_page, list) and isinstance(old_page, list):
+        for i, v in enumerate(new_page):
+            if i < len(old_page):
+                out.update(page_italics(old_page[i], v, f"{path}/{i}"))
+    elif isinstance(new_page, str) and isinstance(old_page, str) and new_page != old_page:
+        spans = good_italics(old_page, new_page)
+        if spans:
+            out[path] = spans
+    return out
+
+
 def merged_dir(data, vol):
     return Path(data) / vol / "merged"
 

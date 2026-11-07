@@ -198,16 +198,26 @@ class Store:
         try:
             mt = (f.stat().st_mtime, mf.stat().st_mtime if mf.exists() else 0)
             if getattr(self, "_good", (0,))[0] != mt:
-                self._good = (mt, {})
+                self._good = (mt, {}, {})
                 import good_calmet_kraken as gk
                 mv = gk.moved(self.data / "good_calmet")
                 for key, rec in sorted(json.loads(f.read_text()).items()):
                     v = rec.get("vol") or "01_genese"
+                    self._good[2].setdefault(v, []).append(key)
                     for s in ([rec["source"]] if rec.get("source") else []) + mv.get(key, []):
                         self._good[1].setdefault((v, s), []).append(self.data / "good_calmet" / f"{key}.png")
         except OSError:
             return []
         return [p for p in self._good[1].get((vol, f"page_{page:04d}"), []) if p.exists()]
+
+    def good_key(self, crop):
+        """A crop's key in crops.json ("<pdf>/page_NNNN")."""
+        return Path(crop).relative_to(self.data / "good_calmet").with_suffix("").as_posix()
+
+    def good_seq(self, vol):
+        """Every Good_Calmet crop key of the volume, in PDF order (crops.json's, sorted)."""
+        self.good_pages(vol, 1)  # the cache filled
+        return [k for k in getattr(self, "_good", (0, {}, {}))[2].get(vol, []) if (self.data / "good_calmet" / f"{k}.png").exists()]
 
     def good_shown(self, crop):
         """The image the editor shows for a Good_Calmet crop: its contrast-raised copy
