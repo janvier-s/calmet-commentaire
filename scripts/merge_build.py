@@ -484,10 +484,13 @@ def merged_pages(store, vol, units_doc, decisions, pages=None):
 
 
 def build_pages(store, vol, units_doc, decisions, pages=None):
-    """Rebuild data/<vol>/merged/ for those pages (None: all): normalized + decisions + free edits; never writes
-    normalized. -> {"written": [pages], "skipped", "reopened"}."""
+    """Rebuild data/<vol>/merged/ for those pages (None: all): normalized + decisions + free edits, then the hand
+    edits of the Merged view over them (merged_hand: kept, flagged when the built text moved); never writes
+    normalized. -> {"written": [pages], "skipped", "reopened", "conflicts"}."""
+    import merged_hand
     import review_store
     built, report = merged_pages(store, vol, units_doc, decisions, pages)
+    report["conflicts"] = merged_hand.apply_pages(store.docs, vol, {p: page for p, (_, page) in built.items()})
     folder = merged_dir(store.data, vol)
     folder.mkdir(parents=True, exist_ok=True)
     for p, (_, page) in built.items():

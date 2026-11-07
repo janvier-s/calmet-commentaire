@@ -3,7 +3,9 @@
     python good_merge_apply.py 01_genese            # rebuild every merged page
     python good_merge_apply.py 01_genese --dry-run  # write nothing: print each changed page's diff
 
-merged is derived: normalized (still hand-fixed) is never written, and every run starts from it again. Decisions
+merged is derived: normalized (still hand-fixed) is never written, and every run starts from it again; the text
+typed in the editor's Merged view (docs/good_merge/<vol>.hand.json, merged_hand) is laid over it, never lost, and
+listed when the built text moved under it. The dry run leaves the hand edits out. Decisions
 whose change is no longer where it was decided (reopened, not found, overlapping another) are not applied and
 are listed.
 """
@@ -44,6 +46,8 @@ def main(argv=None):
         print(f"{a.vol}: {len(report['written'])} merged pages written to {merge_build.merged_dir(DATA, a.vol)}")
     for s in report["skipped"]:
         print(f"  not applied: {s['uid']} {s['key']} ({s['why']})")
+    for c in report.get("conflicts") or []:
+        print(f"  hand edit flagged: p.{c['page']} {c['path']} ({c['why']}: the built text moved under it; kept)")
     if report["reopened"]:
         print(f"  {report['reopened']} decision(s) reopened: the texts changed since; decide them again on /merge")
 

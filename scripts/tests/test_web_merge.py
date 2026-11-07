@@ -228,3 +228,62 @@ def test_cleanup_lists_records_and_undo_takes_one_back(web):
     st, r = web("/api/merge/cleanup", {"vol": "22_proverbes", "uid": UID, "key": k["c2"], "record": gn.key(rec), "undo": False})
     assert next(c for c in r["view"]["changes"] if c["id"] == "c2")["good_normalized"] == "sagesse"
     assert web("/api/merge/cleanup", {"vol": "22_proverbes", "uid": UID, "key": k["c2"], "record": "x => y"})[0] == 400
+
+
+def merged_page(web, page=194):
+    return json.loads((web.data / "22_proverbes" / "merged" / f"page_{page:04d}.json").read_text())
+
+
+def test_merged_view_edit_kept_flagged_and_undone(web):
+    k = keys(web)
+    web("/api/merge/decide", {"vol": "22_proverbes", "uid": UID, "key": k["c1"], "choice": "good"})
+    code, m = web("/api/merged?vol=22_proverbes&page=194")
+    assert code == 200 and m["hand"] == {}
+    shown = m["data"]["commentary"][1]["french_commentary"]
+    body = {"vol": "22_proverbes", "page": 194, "fields": {T2: "Tapé à la main."}, "was": {T2: "stale"}}
+    assert web("/api/merged/save", body)[0] == 409
+    code, m = web("/api/merged/save", {**body, "was": {T2: shown}})
+    assert code == 200 and m["hand"][T2]["edited"] and not m["hand"][T2]["conflict"]
+    assert T2 not in m["marks"] and merged_page(web)["commentary"][1]["french_commentary"] == "Tapé à la main."
+    # normalized saved in the editor: merged rebuilt at once, the hand edit kept and flagged
+    _, p = web("/api/page?vol=22_proverbes&page=194")
+    p["data"]["commentary"][1]["french_commentary"] = p["data"]["commentary"][1]["french_commentary"].replace("esclave", "serf")
+    p["data"]["commentary"][0]["french_commentary"] = "Changé dans normalized."
+    code, r = web("/api/page", {"vol": "22_proverbes", "page": 194, "data": p["data"], "version": p["version"]})
+    assert code == 200 and r["merged_flags"] == 1
+    mp = merged_page(web)
+    assert mp["commentary"][1]["french_commentary"] == "Tapé à la main."
+    assert mp["commentary"][0]["french_commentary"] == "Changé dans normalized."
+    _, f = web("/api/merged/flags?vol=22_proverbes")
+    assert [(x["page"], x["path"], x["why"]) for x in f["flags"]] == [(194, T2, "changed")] and "serf" in f["flags"][0]["built"]
+    # take the rebuilt text, then undo that
+    code, m = web("/api/merged/resolve", {"vol": "22_proverbes", "page": 194, "path": T2, "choice": "theirs"})
+    assert code == 200 and "serf" in merged_page(web)["commentary"][1]["french_commentary"] and not m["hand"][T2]["edited"]
+    code, m = web("/api/merged/restore", {"vol": "22_proverbes", "page": 194, "path": T2})
+    assert code == 200 and merged_page(web)["commentary"][1]["french_commentary"] == "Tapé à la main."
+    assert m["hand"][T2]["conflict"]["why"] == "changed"
+    code, m = web("/api/merged/resolve", {"vol": "22_proverbes", "page": 194, "path": T2, "choice": "mine"})
+    assert code == 200 and not m["hand"][T2]["conflict"]
+    assert web("/api/merged/flags?vol=22_proverbes")[1]["flags"] == []
+
+
+def test_merged_errors(web):
+    assert web("/api/merged/save", {"vol": "22_proverbes", "page": 194, "fields": {}})[0] == 404  # no merged/ yet
+    web("/api/merge/decide", {"vol": "22_proverbes", "uid": UID, "key": keys(web)["c1"], "choice": "good"})
+    assert web("/api/merged/save", {"vol": "22_proverbes", "page": 194, "fields": {"nope/0/x": "a"}, "was": {}})[0] == 400
+    assert web("/api/merged/save", {"vol": "22_proverbes", "page": 194, "fields": "x"})[0] == 400
+    assert web("/api/merged/resolve", {"vol": "22_proverbes", "page": 194, "path": T2, "choice": "mine"})[0] == 404
+    assert web("/api/merged/restore", {"vol": "22_proverbes", "page": 194, "path": T2})[0] == 404
+
+
+def test_merged_rebuilt_when_a_script_wrote_normalized(web):
+    import os
+    web("/api/merge/decide", {"vol": "22_proverbes", "uid": UID, "key": keys(web)["c1"], "choice": "good"})
+    other = Store(web.data, web.data.parent / "docs")  # a script's store: no listener
+    d, v = other.read("22_proverbes", 194)
+    d["commentary"][0]["french_commentary"] = "Écrit par un script."
+    other.save("22_proverbes", 194, d, v)
+    mf = web.data / "22_proverbes" / "merged" / "page_0194.json"
+    os.utime(mf, ns=(1, 1))  # older than normalized
+    _, m = web("/api/merged?vol=22_proverbes&page=194")
+    assert m["data"]["commentary"][0]["french_commentary"] == "Écrit par un script."

@@ -224,7 +224,7 @@ const TAGS = { chapter: "ch", verse_number: "v", commentary_id: "#", verse_ref: 
  *  text as typed. */
 export const hooks = { makeField: null, beforeRender: null, collect: null, afterRender: [], valueAt: null, afterSave: null,
                        blockTools: null, addTop: null, addBelow: null, addEnd: null, footnoteTags: null,
-                       remember: null, volShown: null };
+                       remember: null, volShown: null, saveMerged: null };
 
 S.reveal = new Set();  // empty optional fields the user asked to see ("+ annotations")
 const key = (path) => path.join("/");

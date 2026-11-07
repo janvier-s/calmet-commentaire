@@ -96,6 +96,7 @@ export function typedData() {
 
 /** Save the page; true when written. A page changed on disk is never overwritten unasked. */
 export async function save({ redraw = true } = {}) {
+  if (hooks.saveMerged) return hooks.saveMerged({ redraw });  // the Merged view saves its own text
   if (!S.data) return true;
   const data = typedData();
   const edits = S.edits;

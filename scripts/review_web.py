@@ -29,6 +29,7 @@ from pathlib import Path
 
 import merge_build
 import merge_decisions
+import merged_hand
 import good_normalized
 import merge_view
 import review_proposals as rp
@@ -181,6 +182,9 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         if nxt:
             store.save(vol, later[0], nxt, None)
             out["carried"] = later[0]
+        flags = [c for c in merged_hand.conflicts(merged_hand.load(store.docs, vol)) if c["page"] in (page, out.get("carried"))]
+        if flags:  # the save moved the built text under hand edits of the Merged view
+            out["merged_flags"] = len(flags)
         return out
 
     def get_page(q):
@@ -794,7 +798,8 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     def merge_rebuild(vol, doc, u, out):
         """data/<vol>/merged/ rebuilt for the unit's pages; a failure is reported, the decision stays."""
         try:
-            merge_build.build_pages(store, vol, doc, merge_decisions.load(store.docs, vol), merge_build.unit_pages(u))
+            with merged_lock:
+                merge_build.build_pages(store, vol, doc, merge_decisions.load(store.docs, vol), merge_build.unit_pages(u))
         except Exception as e:  # noqa: BLE001 - the decision is saved; merged is rebuilt by good_merge_apply.py
             print(f"merged rebuild failed for {vol} {u['uid']}: {e!r}", file=sys.stderr)
             out["merged_error"] = str(e)
@@ -894,15 +899,135 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return {"vols": [{"vol": v, "summary": (merge_view.load(store.data, v, store.docs) or {}).get("summary") or {}}
                          for v in merge_view.merge_vols(store.data)]}
 
+    # --- merged/: rebuilt when normalized is saved; the Merged view's typing kept apart (merged_hand) ---
+    merged_lock = threading.RLock()
+
+    def merged_file(vol, page):
+        return merge_build.merged_dir(store.data, vol) / f"page_{page:04d}.json"
+
+    def merged_refresh(vol, page):
+        """normalized's page saved: its merged page rebuilt, with the pages of the units on it (a unit's text
+        runs over a page turn); hand edits kept and flagged by build_pages. Only once /merge has built merged/
+        for the volume; a failure is logged, the save stays."""
+        if not merge_build.merged_dir(store.data, vol).exists():
+            return
+        try:
+            doc = merge_view.load(store.data, vol, store.docs)
+            if doc is None:
+                return
+            pages = {page} | {q for u in doc.get("units") or [] if page in merge_build.unit_pages(u)
+                              for q in merge_build.unit_pages(u)}
+            with merged_lock:
+                merge_build.build_pages(store, vol, doc, merge_decisions.load(store.docs, vol), pages)
+        except Exception as e:  # noqa: BLE001 - normalized is saved; good_merge_apply.py rebuilds merged
+            print(f"merged rebuild failed for {vol} p.{page}: {e!r}", file=sys.stderr)
+
+    store.saved.append(merged_refresh)
+
+    def built_page(vol, page):
+        """The merged page as the build makes it, without the hand edits."""
+        doc = merge_view.load(store.data, vol, store.docs)
+        if doc is None:
+            return store.read(vol, page)[0]
+        built, _ = merge_build.merged_pages(store, vol, doc, merge_decisions.load(store.docs, vol), [page])
+        if page not in built:
+            raise ApiError(404, {"error": f"{vol} page {page} has no JSON"})
+        return built[page][1]
+
     def get_merged(q):
-        """The page as /merge built it (data/<vol>/merged), and the words it took from Good: {path: [[a, b]]}."""
+        """The page as /merge built it (data/<vol>/merged), the words it took from Good ({path: [[a, b]]}, the
+        hand-edited fields left out) and its hand edits {path: {edited, conflict, was, versions}}. A merged page
+        older than its normalized page (written by a script) is rebuilt first."""
         vol, page = vol_page(q)
-        mp = merge_build.merged_dir(store.data, vol) / f"page_{page:04d}.json"
+        mp, np_ = merged_file(vol, page), store.path(vol, page)
+        if mp.exists() and np_.exists() and np_.stat().st_mtime_ns > mp.stat().st_mtime_ns:
+            merged_refresh(vol, page)
         if not mp.exists():
-            return {"data": None, "marks": {}}
+            return {"data": None, "marks": {}, "hand": {}}
         merged = json.loads(mp.read_text(encoding="utf-8"))
         old = store.read(vol, page)[0]
-        return {"data": merged, "marks": merge_build.page_marks(old, merged), "scan": good_taken(vol, page)}
+        hand = {r["path"]: {"edited": r["text"] is not None, "conflict": r.get("conflict"), "was": r.get("built"),
+                            "versions": len(r["versions"])}
+                for r in merged_hand.page_records(merged_hand.load(store.docs, vol), page)}
+        marks = {k: v for k, v in merge_build.page_marks(old, merged).items() if not (hand.get(k) or {}).get("edited")}
+        return {"data": merged, "marks": marks, "scan": good_taken(vol, page), "hand": hand}
+
+    def merged_target(b):
+        vol, page = vol_page(b)
+        if not merged_file(vol, page).exists():
+            raise ApiError(404, {"error": f"{vol} p.{page} has no merged page: nothing was decided in /merge here"})
+        return vol, page
+
+    def merged_save(b):
+        """Fields typed in the Merged view: {fields: {path: text}, was: {path: the text shown}}. A field changed
+        since it was shown is refused (409); a field typed back to the built text loses its edit."""
+        vol, page = merged_target(b)
+        fields, was = b.get("fields"), b.get("was") or {}
+        if not isinstance(fields, dict) or not all(isinstance(v, str) for v in fields.values()):
+            raise ApiError(400, {"error": "fields: {path: text} is needed"})
+        with merged_lock:
+            cur = json.loads(merged_file(vol, page).read_text(encoding="utf-8"))
+            built = built_page(vol, page)
+            for path, text in fields.items():
+                now, bt = merge_view.field(cur, path), merge_view.field(built, path)
+                if now is None or bt is None:
+                    raise ApiError(400, {"error": f"no text field {path} on the merged page"})
+                if was.get(path) != now:
+                    raise ApiError(409, {"error": "the merged text changed since the page loaded: reload it"})
+            for path, text in fields.items():
+                if text != merge_view.field(cur, path):
+                    merged_hand.edit(store.docs, vol, page, path, merge_view.field(built, path), text)
+            merged_rebuild_page(vol, page)
+        return get_merged({"vol": vol, "page": page})
+
+    def merged_rebuild_page(vol, page):
+        doc = merge_view.load(store.data, vol, store.docs)
+        if doc is not None:
+            merge_build.build_pages(store, vol, doc, merge_decisions.load(store.docs, vol), [page])
+
+    def merged_field(b):
+        vol, page = merged_target(b)
+        path = b.get("path")
+        if not isinstance(path, str) or merged_hand.key(page, path) not in merged_hand.load(store.docs, vol)["fields"]:
+            raise ApiError(404, {"error": "no hand edit on that field"})
+        return vol, page, path
+
+    def merged_resolve(b):
+        """A flagged field: keep "mine" (the hand text) or take "theirs" (the rebuilt text)."""
+        vol, page, path = merged_field(b)
+        with merged_lock:
+            bt = merge_view.field(built_page(vol, page), path)
+            if bt is None:
+                raise ApiError(409, {"error": "the field is gone from the page: undo or copy your text elsewhere"})
+            try:
+                merged_hand.resolve(store.docs, vol, page, path, b.get("choice"), bt)
+            except ValueError as e:
+                raise ApiError(400, {"error": str(e)})
+            except KeyError:
+                raise ApiError(404, {"error": "no hand edit on that field"})
+            merged_rebuild_page(vol, page)
+        return get_merged({"vol": vol, "page": page})
+
+    def merged_restore(b):
+        """Undo (the last version back) or any version: {index} (default -1)."""
+        vol, page, path = merged_field(b)
+        try:
+            index = int(b.get("index", -1))
+        except (TypeError, ValueError):
+            raise ApiError(400, {"error": "index must be a number"})
+        with merged_lock:
+            try:
+                merged_hand.restore(store.docs, vol, page, path, index)
+            except (KeyError, IndexError):
+                raise ApiError(404, {"error": "no such version"})
+            merged_rebuild_page(vol, page)
+        return get_merged({"vol": vol, "page": page})
+
+    def merged_flags(q):
+        vol = q.get("vol")
+        if vol not in store.volumes():
+            raise ApiError(404, {"error": f"no volume {vol}"})
+        return {"flags": merged_hand.conflicts(merged_hand.load(store.docs, vol))}
 
     def good_taken(vol, page):
         """{index of the page's Good crop: [boxes]}: Good's words on the crops the /merge decisions took."""
@@ -927,7 +1052,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
                         out.setdefault(str(crops.index(crop)), []).extend(g.get("boxes") or [])
         return out
 
-    GET = {"/api/config": lambda q: config, "/api/merged": get_merged, "/api/page": get_page, "/api/queue": queue,
+    GET = {"/api/config": lambda q: config, "/api/merged": get_merged, "/api/merged/flags": merged_flags, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
            "/api/proposal": get_proposal, "/api/good_note": good_note, "/api/good_note/candidates": good_note_candidates,
            "/api/batch": batch, "/api/search": search, "/api/versions": versions,
@@ -936,7 +1061,7 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
     POST = {"/api/page": save_page,
             "/api/page/create": create, "/api/op": op, "/api/mark": mark, "/api/flag": flag,
             "/api/open": open_file, "/api/recheck": run_recheck, "/api/proposal/accept_page": accept_page, "/api/refresh_generated": run_refresh_generated, "/api/latin_case": latin, "/api/italics": italics, "/api/state": state,
-            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/merge/decide": merge_decide, "/api/merge/edit": merge_edit, "/api/merge/cleanup": merge_cleanup, "/api/merge/mark": merge_mark, "/api/todo/delete": delete_todo,
+            "/api/reviewed": reviewed, "/api/note": note, "/api/todo": add_todo, "/api/ocr": ocr, "/api/printed": printed, "/api/merge/decide": merge_decide, "/api/merge/edit": merge_edit, "/api/merge/cleanup": merge_cleanup, "/api/merge/mark": merge_mark, "/api/merged/save": merged_save, "/api/merged/resolve": merged_resolve, "/api/merged/restore": merged_restore, "/api/todo/delete": delete_todo,
             "/api/proposal/accept": accept, "/api/proposal/reject": reject, "/api/batch/accept": batch_accept,
             "/api/batch/mark": batch_mark, "/api/batch/edit": batch_edit, "/api/good_link": good_link}
 

@@ -54,6 +54,7 @@ def dumps(d):
 class Store:
     def __init__(self, data: Path, docs: Path):
         self.data, self.docs = Path(data), Path(docs)
+        self.saved = []  # f(vol, page) after each save of a page (the web app rebuilds merged/ from it)
         self._index = {}  # volume -> chapter:verse index, see locate()
         self._chapters = {}  # volume -> [{"chapter": n, "pages": [...]}], see chapters()
         self._crops = {}  # volume -> (mtime, source_images_cropped/crops.json), see scan_crop()
@@ -144,6 +145,8 @@ class Store:
         d = trim(clean_page(form_values(data)))
         v = self._write(p, d)
         self.changed(vol)
+        for f in self.saved:
+            f(vol, page)
         return d, v
 
     def create(self, vol, page):
