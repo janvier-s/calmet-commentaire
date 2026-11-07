@@ -10,6 +10,7 @@ import "./goodlinks.js";
 import "./batch.js";
 import "./search.js";
 import "./tags.js";
+import "./merged_view.js";
 import "./todo.js";
 import "./reviewed.js";
 import "./watch.js";

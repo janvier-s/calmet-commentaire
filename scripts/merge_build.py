@@ -356,6 +356,38 @@ def field_hash(text):
     return hashlib.md5((text or "").encode()).hexdigest()[:10]
 
 
+def new_spans(old, new):
+    """[(a, b)] in `new`: the words that are not in `old` (inserted or swapped in), whitespace left out."""
+    import difflib
+    import re
+    ta = re.findall(r"\s+|\S+", old or "")
+    tb = re.findall(r"\s+|\S+", new or "")
+    out, pos = [], [0]
+    for t in tb:
+        pos.append(pos[-1] + len(t))
+    for tag, _, _, j1, j2 in difflib.SequenceMatcher(None, ta, tb, autojunk=False).get_opcodes():
+        if tag in ("insert", "replace"):
+            ks = [k for k in range(j1, j2) if not tb[k].isspace()]
+            if ks:
+                out.append((pos[ks[0]], pos[ks[-1] + 1]))
+    return out
+
+
+def page_marks(old_page, new_page, path=""):
+    """{field path: [(a, b)]} for every string of new_page that differs from old_page's (same shape), as new_spans."""
+    out = {}
+    if isinstance(new_page, dict) and isinstance(old_page, dict):
+        for k, v in new_page.items():
+            out.update(page_marks(old_page.get(k), v, f"{path}/{k}" if path else k))
+    elif isinstance(new_page, list) and isinstance(old_page, list):
+        for i, v in enumerate(new_page):
+            if i < len(old_page):
+                out.update(page_marks(old_page[i], v, f"{path}/{i}"))
+    elif isinstance(new_page, str) and isinstance(old_page, str) and new_page != old_page:
+        out[path] = new_spans(old_page, new_page)
+    return out
+
+
 def merged_dir(data, vol):
     return Path(data) / vol / "merged"
 

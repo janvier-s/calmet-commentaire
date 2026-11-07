@@ -709,3 +709,8 @@ body.mg { display: block; overflow: auto; height: auto; min-height: 100%; }
              box-shadow: 0 6px 24px #0003; }
 #scan-menu .ocr-phase { margin-left: 0; }
 #scan-tools #ocr-filters { flex-wrap: wrap; }
+
+/* Merged view: read-only; the words taken from Good, blue and wavy */
+body.merged-view .f.mv { cursor: default; }
+body.merged-view .f.mv mark { background: none; color: inherit; text-decoration: underline wavy #2f6fd6; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+#merged-btn.on { background: #2f6fd6; color: #fff; border-color: #2f6fd6; }

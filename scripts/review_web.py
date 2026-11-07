@@ -880,7 +880,17 @@ def make_server(store, queue_path, port=0, token=None, include_optional=False, s
         return {"vols": [{"vol": v, "summary": (merge_view.load(store.data, v) or {}).get("summary") or {}}
                          for v in merge_view.merge_vols(store.data)]}
 
-    GET = {"/api/config": lambda q: config, "/api/page": get_page, "/api/queue": queue,
+    def get_merged(q):
+        """The page as /merge built it (data/<vol>/merged), and the words it took from Good: {path: [[a, b]]}."""
+        vol, page = vol_page(q)
+        mp = merge_build.merged_dir(store.data, vol) / f"page_{page:04d}.json"
+        if not mp.exists():
+            return {"data": None, "marks": {}}
+        merged = json.loads(mp.read_text(encoding="utf-8"))
+        old = store.read(vol, page)[0]
+        return {"data": merged, "marks": merge_build.page_marks(old, merged)}
+
+    GET = {"/api/config": lambda q: config, "/api/merged": get_merged, "/api/page": get_page, "/api/queue": queue,
            "/api/locate": locate, "/api/state": lambda q: state(None), "/api/turn": get_turn,
            "/api/proposal": get_proposal, "/api/good_note": good_note, "/api/good_note/candidates": good_note_candidates,
            "/api/batch": batch, "/api/search": search, "/api/versions": versions,
